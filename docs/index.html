@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#10292b" />
+  <meta name="description" content="A small collection of playable worlds, including Grovebound." />
+  <title>Games by Daniel Schiff</title>
+  <link rel="icon" type="image/svg+xml" href="./art/tree.svg" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="page">
+    <header class="site-header">
+      <a class="wordmark" href="./" aria-label="Games home"><span class="mark">✦</span> DS / GAMES</a>
+      <span class="edition">SMALL WORLDS, LONG STORIES</span>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div class="eyebrow"><span></span> A COLLECTION IN PROGRESS</div>
+        <h1>Find a world.<br /><em>Make it yours.</em></h1>
+        <p>Games built for curiosity, one more attempt, and the surprising stories that emerge along the way.</p>
+      </section>
+
+      <section class="shelf" aria-label="Games">
+        <article class="game-card grovebound">
+          <div class="card-art" aria-hidden="true">
+            <div class="forest-glow"></div>
+            <img class="tree left" src="./art/tree.svg" alt="" />
+            <img class="tree right" src="./art/tree.svg" alt="" />
+            <img class="warden" src="./art/warden.svg" alt="" />
+            <div class="ground"></div>
+          </div>
+          <div class="card-body">
+            <div class="card-top"><span class="tag live">PLAYABLE NOW</span><span class="number">01 / 02</span></div>
+            <h2>Grovebound</h2>
+            <p>Break the wards, grow stronger, and cross three wild regions in a pocket roguelite made for your phone.</p>
+            <div class="facts"><span>PORTRAIT ACTION</span><span>10–12 MIN RUNS</span><span>FREE IN BROWSER</span></div>
+            <div class="actions"><a class="primary" href="https://dsschiff.github.io/grovebound/">PLAY GROVEBOUND <span>↗</span></a><a class="source" href="https://github.com/dsschiff/grovebound">SOURCE ↗</a></div>
+          </div>
+        </article>
+
+        <article class="game-card planetfall">
+          <div class="card-art cosmic" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="planet"></div><div class="moon"></div><div class="star s1"></div><div class="star s2"></div><div class="star s3"></div></div>
+          <div class="card-body">
+            <div class="card-top"><span class="tag building">IN DEVELOPMENT</span><span class="number">02 / 02</span></div>
+            <h2>Planetfall</h2>
+            <p>A strategy world taking shape. Its public release will appear here when it is ready to play.</p>
+            <div class="facts"><span>STRATEGY</span><span>COMING LATER</span></div>
+            <div class="actions"><span class="coming">PUBLIC PLAY LINK COMING LATER</span></div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer><span>© <span id="year">2026</span> Daniel Schiff</span><span>More worlds are on the way.</span></footer>
+  </div>
+  <script>document.getElementById('year').textContent = String(new Date().getFullYear());</script>
+</body>
+</html>
