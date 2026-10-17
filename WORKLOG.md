@@ -93,3 +93,16 @@
 - Coordinator independently inspected victory/defeat/retry images and raw saved JSON and verified source/fixture hashes. C and Retry runtime logs report no errors. A continuations lack separate post-continuation logcat; initial smoke logs are retained. Evidence and precise limitations are indexed in `android-games/evidence/gear-android-outcomes-0.2.1.json`.
 - Android execution is idle and emulator geometry restored1080x2400. Full campaign builder remains live and has begun data/profile/menu integration plus policy sweeps. Initial draft guard spam and long cap-idle periods were caught as exploration failures, not accepted content. All five other game implementations remain unstarted under the staged plan; physical-phone checks remain pending.
 
+### Canonical artifact preservation
+
+- Preserved95selected files (331.6MiB) from the coordinator worktree to the canonical games checkout's ignored `.artifacts/`, retaining relative paths. This includes the original0.1APK, latest0.2.1test/build, successful/strict-failed upgrade packets, actual trial/Retry evidence, and original executed fixture bytes. Every copied file was SHA256-checked; conflicting existing bytes would abort rather than overwrite.
+- Receipt: canonical `.artifacts/preservation/gear-bastion-0.2.1.json`, indexed in `android-games/evidence/gear-artifact-preservation.json`. APKs, runtime saves and signing secrets remain outside tracked source; no signing material was part of this copy. These are prototype checkpoints, not final six-game delivery.
+- Full campaign work continues in its isolated task. Independent Gear footage comparison, bounded Butcher interaction research and emulator-only heavy-render diagnostics are running; none is a physical-phone acceptance claim.
+
+### Heavy rendering diagnostic and isolated experiment
+
+- Immutable0.2.1/code3 was measured on the generic API35 emulator using its actual SurfaceView presentation layer. Ready/no-actor state presented435frames at38.711fps; an injected copy of the earlier120-unit victory save presented46frames at3.740fps. Each bounded capture lasted approximately11.4seconds. This injected fixture supplies performance state only, not new gameplay or migration evidence.
+- Heavy idle victory skips combat simulation. Its GL thread saturated one guest core while composition latency stayed approximately7-11ms, so combat target searches alone do not explain the slowdown. Exact script/engine/emulated-driver/host-GPU costs remain unmeasured. FrameTimeline had zero coverage; no jank or phone-performance acceptance is inferred.
+- Coordinator checked the raw per-layer frame totals/FPS and preserved69files (2.8MiB) under the canonical checkout's ignored `.artifacts/performance/gear-bastion-0.2.1-20261017/`. Summary, hashes and preservation receipt are indexed in `android-games/evidence/gear-performance-0.2.1.json`. Ready state,1080x2400geometry and disabled tracing were restored.
+- Assigned a bounded isolated experiment from49bee21 in `games-gear-perf-20261017`: cache original troop artwork while preserving120actors, simulation and display resolution. Compare real presentation evidence against the unchanged prototype; do not substitute idle redraw throttling for active-battle performance. Full campaign logic/content continues in its separate builder task while emulator access is reserved for the experiment.
+

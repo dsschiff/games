@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-17",
+  "scope": "Preserved verified Gear prototype checkpoints, not full campaign delivery",
+  "source_root": "C:\\projects\\active\\_worktrees\\games-android-portfolio-20261017",
+  "preserved_root": "C:\\projects\\active\\games",
+  "file_count": 95,
+  "bytes": 347695224,
+  "physical_phone_tested": false,
+  "readiness": "prototype_only",
+  "limits": [
+    "Historical source/command paths remain original; artifact-relative paths preserved",
+    "Campaign and remaining five games unfinished",
+    "No actual phone performance or final fidelity acceptance"
+  ],
+  "receipt_path": "C:\\projects\\active\\games\\.artifacts\\preservation\\gear-bastion-0.2.1.json",
+  "receipt_sha256": "94c607f6638ff7900d82ab4b58e4fa6173fac1f79f74d25abd52f62dc4f9eff5",
+  "artifact_relative_paths_preserved": true
+}

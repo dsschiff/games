@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "scope": "Immutable prototype0.2.1 emulator rendering diagnostic; not campaign or phone acceptance",
+  "source_sha256": "38e5f0c35b66cfb18983d14b0614b01a500e258b7aefe42960d7ba938f9d5aec",
+  "apk_sha256": "063c4c36046c7cae2f362bb949391ae47f1823c5086ff257702bcf68ce6c9a60",
+  "physical_phone_tested": false,
+  "ready": {
+    "actors": 0,
+    "surfaceview_frames": 435,
+    "average_present_fps": 38.711,
+    "glthread_median_percent_one_guest_core": 82
+  },
+  "heavy": {
+    "actors": 120,
+    "enemies": 0,
+    "phase": "victory",
+    "state_injected_from_prior_app_save": true,
+    "surfaceview_frames": 46,
+    "average_present_fps": 3.74,
+    "glthread_median_percent_one_guest_core": 100
+  },
+  "finding": "Heavy idle slowdown exists without combat ticks; investigate original-art caching/batching in isolated worktree",
+  "limits": [
+    "Generic API35 x86_64 emulator, host GPU, 1080x2400",
+    "Approximately11.4-second captures; no phone inference",
+    "FrameTimeline zero coverage; no jank classification",
+    "Exact GDScript/engine/emulated-driver/host-GPU split unmeasured",
+    "Injected heavy state is performance fixture only"
+  ],
+  "artifact_root": "C:\\projects\\active\\games\\.artifacts\\performance\\gear-bastion-0.2.1-20261017",
+  "report_sha256": "9c227bf7c4a60400db55b24e3a0b2e84a58b32ea0c6601fcecc40ec6290ec671",
+  "preservation_receipt": "C:\\projects\\active\\games\\.artifacts\\preservation\\gear-performance-0.2.1.json",
+  "preservation_receipt_sha256": "c4bc84baacb0d66a7d12698d69b8117130d2f1dec1bb6844072c0f1636a99dfa",
+  "preserved_files": 69,
+  "preserved_bytes": 2940794,
+  "restore": {
+    "ready": true,
+    "geometry": "1080x2400",
+    "timestats_disabled": true
+  }
+}
