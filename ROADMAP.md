@@ -16,8 +16,8 @@ The active portfolio goal is defined in `GOAL.md`. Status reflects evidence, not
 
 ## Current next actions
 
-1. Complete and independently review the other five reference briefs; expand Gear sustained/late-level evidence before campaign fidelity acceptance.
-2. Land the verified foundation and reference records. Physical Samsung checks remain separate from emulator evidence.
-3. Independently review and Android-test Gear Bastion's committed interactive prototype, then continue the campaign after findings are resolved.
+1. Finish the bounded continuous-footage pass and qualify seek/frame timing; six prototype interpretations are reviewed, final fidelity is open.
+2. Keep verified foundation/prototype evidence landed. Physical Samsung checks remain separate from emulator evidence.
+3. Review Gear's next save/dispatch/counter-challenge checkpoint, verify a real version0.1.0 → 0.2.0 APK update, then unlock campaign expansion after findings are resolved.
 4. Thread/worktree mapping is in `android-games/threads.json`; executable evidence is indexed under `android-games/evidence/`.
 

@@ -1,0 +1,126 @@
+{
+  "recorded_utc": "2026-10-17T21:24:58.621849+00:00",
+  "tested_commit": "d0e7cce4e6d72da40e18a4ea9ada27429b8680ec",
+  "tested_source_sha256": "4ae244a7a75f35dfa448c6304e18f7057ff88d03bb2a83d9856cc0496d2df899",
+  "worker_test_manifest": "C:/projects/active/_worktrees/games-gear-bastion-20261017/.artifacts/gear-bastion/20261017T211821993097Z/manifest.json",
+  "worker_build_manifest": "C:/projects/active/_worktrees/games-gear-bastion-20261017/.artifacts/gear-bastion/20261017T211853142504Z/manifest.json",
+  "apk_sha256": "e1dc69ed1f35a3aee1cc65558ec590e3b81f2278657163b40100464ab0e78736",
+  "apk_bytes": 57091452,
+  "builder_vs_independent_apk_uncompressed_zip_entries_identical": 118,
+  "checkpoints": ".artifacts/emulator/com.dsschiff.gearbastion/checkpoints-d0e7cce/report.json",
+  "geometry_runs": {
+    "20261017T212200902040Z": {
+      "checks": {
+        "version2": true,
+        "phase_battle": true,
+        "simulation_advanced": true,
+        "troops_produced": true,
+        "guard_reconnected": true,
+        "drive_adjacent_to_guard": true,
+        "unique_piece_ids": true,
+        "unique_cells": true,
+        "unit_cap": true,
+        "enemy_cap": true,
+        "production_bounds": true
+      },
+      "time": 6.099999999999988,
+      "produced": 8,
+      "wall": 220.0,
+      "expected_guard_rate": 0.9,
+      "expected_ranger_rate": 0.52
+    },
+    "20261017T212323442497Z": {
+      "checks": {
+        "version2": true,
+        "phase_battle": true,
+        "simulation_advanced": true,
+        "troops_produced": true,
+        "guard_reconnected": true,
+        "drive_adjacent_to_guard": true,
+        "unique_piece_ids": true,
+        "unique_cells": true,
+        "unit_cap": true,
+        "enemy_cap": true,
+        "production_bounds": true
+      },
+      "time": 6.066666666666655,
+      "produced": 8,
+      "wall": 220.0,
+      "expected_guard_rate": 0.9,
+      "expected_ranger_rate": 0.52
+    }
+  },
+  "physical_phone_tested": false,
+  "scope": "Prototype only; same-APK retention, generic-emulator resolution approximation. Newly authorized save/dispatch source fixes after this checkpoint are NOT covered.",
+  "final_nested_expectation_runs": {
+    "cover": {
+      "run": "20261017T212807432210Z",
+      "apk_sha256": "e1dc69ed1f35a3aee1cc65558ec590e3b81f2278657163b40100464ab0e78736",
+      "expectation_coverage": {
+        "exact_fields": 8,
+        "numeric_fields": 3,
+        "failures": []
+      },
+      "save_sha256": "a114456170637f3e2596bfe900a5fccfb8d240f1d457e2a466652f0608230409",
+      "same_apk_reinstall_save_identical": true,
+      "manifest": ".artifacts/emulator/com.dsschiff.gearbastion/20261017T212807432210Z/manifest.json",
+      "display_pixels": [
+        1080,
+        2520
+      ]
+    },
+    "inner": {
+      "run": "20261017T213042716879Z",
+      "apk_sha256": "e1dc69ed1f35a3aee1cc65558ec590e3b81f2278657163b40100464ab0e78736",
+      "expectation_coverage": {
+        "exact_fields": 8,
+        "numeric_fields": 3,
+        "failures": []
+      },
+      "save_sha256": "a114456170637f3e2596bfe900a5fccfb8d240f1d457e2a466652f0608230409",
+      "same_apk_reinstall_save_identical": true,
+      "manifest": ".artifacts/emulator/com.dsschiff.gearbastion/20261017T213042716879Z/manifest.json",
+      "display_pixels": [
+        1968,
+        2184
+      ]
+    }
+  },
+  "tooling_tests_passed": 32,
+  "smoke_fixture_sha256": "8e3a844c893ca57c4f10b68e810db4892d6ef30e624572682b3fc18a7ef2948f",
+  "smoke_runner_sha256": "6e4bb1c74780cfba6c26601b4265fcd15396797d70edfff1ef435ab03e8efdeb",
+  "expected_save": {
+    "version": 2,
+    "state.phase": "battle",
+    "state.board.1.id": 2,
+    "state.board.1.x": 1,
+    "state.board.1.y": 2,
+    "state.board.4.id": 5,
+    "state.board.4.x": 1,
+    "state.board.4.y": 1
+  },
+  "expected_numeric": {
+    "state.time": {
+      "min": 5,
+      "max": 12
+    },
+    "state.produced": {
+      "min": 6,
+      "max": 20
+    },
+    "state.wall": {
+      "min": 1,
+      "max": 220
+    }
+  },
+  "preserved_transient_failure": {
+    "run": "20261017T212907714767Z",
+    "error": "adb device offline during lifecycle; display reset failed in that run",
+    "cause": "unconfirmed",
+    "resolution": "device recovered on next inspection; explicit reset and one bounded retry passed"
+  },
+  "schema_version": 1,
+  "coordinator_verified_date": "2026-10-17",
+  "integrated_as": "17386c6",
+  "canonical_retest_manifest": "C:/projects/active/games/.artifacts/gear-bastion/20261017T212414600931Z/manifest.json"
+}
