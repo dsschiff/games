@@ -158,7 +158,27 @@ default; `--schema-path` can select another dot path. It is independent of APK
 version codes. `--new-expectations` optionally supplies additional nested
 `expected_save` and `expected_numeric` assertions for the new app state.
 The old input fixture must contain real taps/drags and nonempty saved-state
-assertions; at least one critical `--preserve-path` is mandatory.
+assertions; at least one critical `--preserve-path` or `--preserve-map` is mandatory.
+
+For an intentional saved namespace rename, repeat `--preserve-map OLD=NEW`.
+For example, campaign-core schema 4 moves the entire old `state` object to
+`active_run`, while `settings` keeps its name:
+
+```powershell
+python scripts/android_upgrade.py --from-apk .artifacts/old/gear-bastion.apk --to-apk .artifacts/new/gear-bastion.apk --package com.dsschiff.gearbastion --save files/bastion-save.json --actions scripts/smoke-actions/gear-bastion-0.2.1-upgrade-input.json --preserve-map state=active_run --preserve-path settings --expected-version 4 --new-expectations scripts/smoke-actions/gear-bastion-0.3-upgrade-expectations.json --reset-test-data --serial emulator-5554
+```
+
+Mappings are explicit; the verifier never guesses a rename or drops old fields.
+Installer retention checks the old names before the new app launches. Migration
+checks the declared old/new pairs, cold-relaunch stability checks the new names,
+and the final comparison checks the original old values against the cold save's
+mapped names. Whole-object comparison permits added dictionary keys but retains
+every old key/value and array order/length. Missing paths and duplicate source
+or destination mappings fail. Dot paths support explicit array indices.
+The manifest records both path sets and every mapping. Numeric rules below are
+unchanged by mapping. The campaign expectation fixture requires a fresh profile
+with no campaign clears, medals, best records, challenge clears or ending flag;
+schema conversion alone does not prove preservation or campaign progress.
 
 The explicit `--reset-test-data` flag may uninstall the specified package and
 its data **during initial emulator setup only**, before installing the old APK.

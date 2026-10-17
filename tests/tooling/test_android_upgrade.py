@@ -35,6 +35,59 @@ class UpgradeEvidenceTests(unittest.TestCase):
         self.assertFalse(result["passed"])
         self.assertIn("error", result["paths"]["state.board.0.x"])
 
+    def test_explicit_namespace_move_preserves_whole_old_state_and_settings(self):
+        old = dict(self.old, settings={"muted": True})
+        new = {"version": 4, "active_run": copy.deepcopy(old["state"]),
+               "settings": old["settings"], "profile": {"cleared": []}}
+        new["active_run"]["new_campaign_field"] = 0
+        mappings = upgrade.preservation_mappings(["settings"], ["state=active_run"])
+        result = upgrade.compare_mapped_paths(old, new, mappings)
+        self.assertTrue(result["passed"])
+        self.assertEqual(result["paths"]["state -> active_run"]["new_path"], "active_run")
+        self.assertEqual(upgrade.preservation_mappings(["settings", "settings"], []),
+                         [("settings", "settings")])
+
+    def test_mapping_requires_both_real_paths_and_rejects_actor_reset(self):
+        mappings = upgrade.preservation_mappings([], ["state.board.0.x=active_run.board.0.x"])
+        for new in ({"state": self.old["state"]}, {"active_run": {"board": []}},
+                    {"active_run": {"board": [{"x": 0}]}}):
+            with self.subTest(new=new):
+                self.assertFalse(upgrade.compare_mapped_paths(self.old, new, mappings)["passed"])
+        self.assertFalse(upgrade.compare_mapped_paths({}, {"active_run": self.old["state"]},
+                                                    [("state", "active_run")])["passed"])
+
+    def test_empty_malformed_and_ambiguous_mappings_are_refused(self):
+        for mappings in ([], [""], ["state"], ["=active_run"], ["state="],
+                         ["state=active_run=other"], ["state..board=active_run"],
+                         [" state=active_run"], ["state=active run"],
+                         ["state=a", "state=b"], ["state=a", "settings=a"],
+                         ["state=a", "state=a"]):
+            with self.subTest(mappings=mappings), self.assertRaises(ValueError):
+                upgrade.preservation_mappings([], mappings)
+        with self.assertRaises(ValueError):
+            upgrade.preservation_mappings(["settings"], ["state=settings"])
+
+    def test_rename_mapping_does_not_relax_numeric_or_type_checks(self):
+        mapping = [("state", "active_run")]
+        for old_value, new_value, preserved in (
+                (10**15, 10**15 + 1, False), (1, True, False),
+                (1.0, 1.0000000000000002, False), (1.25, 1.2500000000000002, True),
+                (1.25, 1.26, False), (float("inf"), float("inf"), False)):
+            with self.subTest(old=old_value, new=new_value):
+                self.assertEqual(upgrade.compare_mapped_paths(
+                    {"state": {"value": old_value}}, {"active_run": {"value": new_value}}, mapping
+                )["passed"], preserved)
+
+    def test_mapped_lifecycle_compares_old_installer_paths_then_new_cold_paths(self):
+        old = self.old
+        new = {"active_run": copy.deepcopy(old["state"])}
+        mappings = upgrade.preservation_mappings([], ["state=active_run"])
+        self.assertTrue(upgrade.compare_preserved_paths(old, copy.deepcopy(old), ["state"])["passed"])
+        self.assertTrue(upgrade.compare_mapped_paths(old, new, mappings)["passed"])
+        self.assertTrue(upgrade.compare_preserved_paths(new, copy.deepcopy(new), ["active_run"])["passed"])
+        cold_reset = {"active_run": {"board": [], "produced": 0}}
+        self.assertFalse(upgrade.compare_preserved_paths(new, cold_reset, ["active_run"])["passed"])
+
     def test_board_reset_or_actor_order_change_is_detected(self):
         migrated = copy.deepcopy(self.old)
         migrated["state"]["board"][0]["x"] = 0

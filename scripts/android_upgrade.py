@@ -73,15 +73,51 @@ def semantic_subset(old, new) -> bool:
 
 
 def compare_preserved_paths(old: dict, new: dict, paths: list[str]) -> dict:
-    if not paths or any(not isinstance(path, str) or not path.strip() for path in paths):
-        raise ValueError("At least one explicit nonempty preserved save path is required")
-    records = {}
+    return compare_mapped_paths(old, new, preservation_mappings(paths, []))
+
+
+def preservation_mappings(paths: list[str], specifications: list[str]) -> list[tuple[str, str]]:
+    """Resolve explicit identity paths and OLD=NEW mappings, without guessing renames."""
+    def validate(path):
+        if (not isinstance(path, str) or not path or path != path.strip()
+                or any(not part or any(char.isspace() for char in part) for part in path.split("."))
+                or "=" in path):
+            raise ValueError("Preserved paths must be nonempty unambiguous dot paths")
+
+    pairs = []
     for path in dict.fromkeys(paths):
+        validate(path)
+        pairs.append((path, path))
+    for specification in specifications:
+        if not isinstance(specification, str) or specification.count("=") != 1:
+            raise ValueError("Preserved path mapping must be OLD=NEW")
+        source, target = specification.split("=")
+        validate(source)
+        validate(target)
+        pairs.append((source, target))
+    if not pairs:
+        raise ValueError("At least one explicit nonempty preserved save path or mapping is required")
+    sources, targets = set(), set()
+    for source, target in pairs:
+        if source in sources or target in targets:
+            raise ValueError("Duplicate or ambiguous preserved path mapping")
+        sources.add(source)
+        targets.add(target)
+    return pairs
+
+
+def compare_mapped_paths(old: dict, new: dict, mappings: list[tuple[str, str]]) -> dict:
+    # Validate direct callers too; missing paths must fail rather than disappear.
+    pairs = preservation_mappings([], [f"{source}={target}" for source, target in mappings])
+    records = {}
+    for source, target in pairs:
+        label = source if source == target else f"{source} -> {target}"
         try:
-            before, after = lookup_path(old, path), lookup_path(new, path)
-            records[path] = {"preserved": semantic_subset(before, after), "before": before, "after": after}
+            before, after = lookup_path(old, source), lookup_path(new, target)
+            records[label] = {"old_path": source, "new_path": target,
+                              "preserved": semantic_subset(before, after), "before": before, "after": after}
         except (ValueError, TypeError, OverflowError) as error:
-            records[path] = {"preserved": False, "error": str(error)}
+            records[label] = {"old_path": source, "new_path": target, "preserved": False, "error": str(error)}
     return {"passed": all(record["preserved"] for record in records.values()), "paths": records}
 
 
@@ -120,7 +156,9 @@ def main(argv=None) -> int:
     parser.add_argument("--package", required=True)
     parser.add_argument("--save", required=True, help="Relative app-data JSON path, e.g. files/bastion-save.json")
     parser.add_argument("--actions", required=True, type=Path, help="Old-version input fixture with saved-state assertions")
-    parser.add_argument("--preserve-path", required=True, action="append", help="Repeat for critical dot paths; arrays use numeric indices")
+    parser.add_argument("--preserve-path", action="append", default=[], help="Repeat for unchanged critical dot paths; arrays use numeric indices")
+    parser.add_argument("--preserve-map", action="append", default=[], metavar="OLD=NEW",
+                        help="Repeat for explicitly renamed critical dot paths, e.g. state=active_run")
     parser.add_argument("--expected-version", required=True, type=int, help="Expected NEW saved JSON schema version (APK codes are inspected independently)")
     parser.add_argument("--schema-path", default="version")
     parser.add_argument("--new-expectations", type=Path, help="Optional extra expected_save/expected_numeric JSON for the new version")
@@ -214,7 +252,12 @@ def main(argv=None) -> int:
             raise ValueError("Old-version fixture must contain actual tap or swipe input")
         if action_spec.get("requires_fresh_emulator_app_data") and not args.reset_test_data:
             raise ValueError("This fixture requires --reset-test-data before old-version setup")
-        for path in args.preserve_path + [args.schema_path]:
+        mappings = preservation_mappings(args.preserve_path, args.preserve_map)
+        old_paths = [source for source, _ in mappings]
+        new_paths = [target for _, target in mappings]
+        report["preservation_mappings"] = [{"old_path": source, "new_path": target} for source, target in mappings]
+        report["old_preserve_paths"], report["new_preserve_paths"] = old_paths, new_paths
+        for path in [args.schema_path]:
             if not path or any(not part for part in path.split(".")):
                 raise ValueError("Preserved/schema paths must be nonempty dot paths")
         new_spec = json.loads(args.new_expectations.read_text(encoding="utf-8")) if args.new_expectations else {}
@@ -285,27 +328,28 @@ def main(argv=None) -> int:
         time.sleep(1)
         old_save = snapshot("old-before-upgrade")
         assertions("old_input", old_save, action_spec)
-        check("old_critical_paths_exist", compare_preserved_paths(old_save, old_save, args.preserve_path)["passed"])
+        check("old_critical_paths_exist", compare_preserved_paths(old_save, old_save, old_paths)["passed"])
         run("shell", "am", "force-stop", args.package)
         # The upgrade boundary: no uninstall, data clear, or imported fixture writes.
         run("install", "--no-incremental", "-r", inputs["to"][2], timeout=90)
         check("new_code_installed", installed_version_code(run("shell", "dumpsys", "package", args.package)) == report["version_transition"]["to_version_code"])
         installed_save = snapshot("new-installed-before-launch")
-        report["install_retention"] = compare_preserved_paths(old_save, installed_save, args.preserve_path)
+        report["install_retention"] = compare_preserved_paths(old_save, installed_save, old_paths)
         check("installer_preserved_critical_paths", report["install_retention"]["passed"])
         migrated = launch_background("new-after-launch")
         check("new_app_wrote_save_after_launch", fresh_save_write(
             report["save_file_metadata"]["new-installed-before-launch"], report["save_file_metadata"]["new-after-launch"]))
-        report["migration_preservation"] = compare_preserved_paths(old_save, migrated, args.preserve_path)
+        report["migration_preservation"] = compare_mapped_paths(old_save, migrated, mappings)
         check("migration_preserved_critical_paths", report["migration_preservation"]["passed"])
         assertions("new_after_launch", migrated, new_spec)
         run("shell", "am", "force-stop", args.package)
         reloaded = launch_background("new-cold-relaunch")
         check("new_app_wrote_save_after_cold_relaunch", fresh_save_write(
             report["save_file_metadata"]["new-after-launch"], report["save_file_metadata"]["new-cold-relaunch"]))
-        report["relaunch_stability"] = compare_preserved_paths(migrated, reloaded, args.preserve_path)
+        report["relaunch_stability"] = compare_preserved_paths(migrated, reloaded, new_paths)
         check("relaunch_critical_paths_stable", report["relaunch_stability"]["passed"])
-        check("relaunch_retained_old_critical_paths", compare_preserved_paths(old_save, reloaded, args.preserve_path)["passed"])
+        report["relaunch_old_preservation"] = compare_mapped_paths(old_save, reloaded, mappings)
+        check("relaunch_retained_old_critical_paths", report["relaunch_old_preservation"]["passed"])
         assertions("new_cold_relaunch", reloaded, new_spec)
         for label, (source, expected, archive) in inputs.items():
             check(label + "_input_and_archive_remained_unchanged", sha256(source) == expected == sha256(archive))

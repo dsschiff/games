@@ -1,0 +1,22 @@
+{
+  "scope": "Campaign-core code4/schema4 migration; fresh profile must not fabricate campaign progress",
+  "expected_save": {
+    "version": 4,
+    "recoverable": true,
+    "active_run.encounter": "tutorial",
+    "active_run.phase": "battle",
+    "profile": {
+      "version": 1,
+      "cleared": [],
+      "medals": {},
+      "best": {},
+      "ending_seen": false,
+      "challenge_clears": {}
+    }
+  },
+  "expected_numeric": {
+    "revision": {
+      "min": 1
+    }
+  }
+}
