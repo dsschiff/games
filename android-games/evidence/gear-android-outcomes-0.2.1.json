@@ -152,7 +152,6 @@
   "final_source_sha256": "38e5f0c35b66cfb18983d14b0614b01a500e258b7aefe42960d7ba938f9d5aec",
   "fixture_artifacts": {
     "gear-bastion-0.2.1-trial-a-victory.json": {
-      "sha256": "5aa3ed1eebe85ec78b43d41bd37acf372528f02f3cc8c5157e6b799fa64146f5",
       "final_actual_save_expectations": {
         "checks": {
           "expected_saved_state_after_input": true,
@@ -161,10 +160,13 @@
         "exact_fields": 26,
         "numeric_fields": 4,
         "failures": []
-      }
+      },
+      "executed_sha256": "5aa3ed1eebe85ec78b43d41bd37acf372528f02f3cc8c5157e6b799fa64146f5",
+      "executed_fixture_copy": ".artifacts/gear-bastion/independent-49bee21/executed-fixtures/gear-bastion-0.2.1-trial-a-victory.json",
+      "canonical_fixture_sha256": "7c4078c5a4ba8499a6431aa1c55b92f45a076fb2f7f064f9e2bb043415b75dee",
+      "normalization": "CRLF to LF only; parsed JSON verified identical; executed bytes preserved"
     },
     "gear-bastion-0.2.1-trial-c-defeat.json": {
-      "sha256": "2b6020d4ad1d4a1dfd4d3691b1fd134eae18475edee45c8756216e73658f1c86",
       "final_actual_save_expectations": {
         "checks": {
           "expected_saved_state_after_input": true,
@@ -173,7 +175,11 @@
         "exact_fields": 26,
         "numeric_fields": 4,
         "failures": []
-      }
+      },
+      "executed_sha256": "2b6020d4ad1d4a1dfd4d3691b1fd134eae18475edee45c8756216e73658f1c86",
+      "executed_fixture_copy": ".artifacts/gear-bastion/independent-49bee21/executed-fixtures/gear-bastion-0.2.1-trial-c-defeat.json",
+      "canonical_fixture_sha256": "b26f92dcaa44a585de48c9bea19b7add7eef540c02a4d4cff9259949fc33c898",
+      "normalization": "CRLF to LF only; parsed JSON verified identical; executed bytes preserved"
     }
   },
   "schema_version": 1,
