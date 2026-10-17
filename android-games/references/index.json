@@ -119,10 +119,10 @@
       "game_id": "hook-and-hunger",
       "brief": "butcher-hero.md",
       "package_id": "com.multicastgames.butcher",
-      "selected_loop": "Move, visibly hook/pull, defeat and consume, grow in size/power, reach stronger gated encounter.",
+      "selected_loop": "Observed baseline: move, chained-weapon/proximity combat, earn resources, purchase weapon/power upgrades, reach stronger gated encounter. Hook/reel/consume is conditional original design.",
       "creative_status": "observed_official_developer_promotion_paid_placement_unverified",
-      "core_status": "bounded_melee_encounter_checked_hook_reel_permanent_growth_unresolved",
-      "prototype_scope": "Movement, simple visible hook/pull, consume, conspicuous growth and stronger gated target. Manual aim/dodge/grapple and trait systems deferred.",
+      "core_status": "settled_official_promo_combat_currency_pad_power_health_progression_observed_hook_reel_consume_size_growth_unresolved",
+      "prototype_scope": "Source-supported baseline: movement, chained-weapon combat, resource collection, visible weapon/power purchase and stronger gated encounter. Hook/reel/consume remains an explicit original design choice pending visible corroboration or user-confirmed target creative. Manual aim/dodge/grapple and traits deferred.",
       "sources": [
         {
           "id": "B1",
@@ -150,9 +150,10 @@
         }
       ],
       "unresolved": [
-        "Clearly visible hook/reel/consume and conspicuous permanent growth passage with input cues",
-        "Exact auto-target/manual input and growth equation",
-        "Weapon indicator change cannot establish absorbed permanent growth",
+        "Clearly separated hook launch/contact/enemy reel and consume passage with input cues",
+        "Permanent player size growth and saved stat permanence are not visually established; final pale giant is not established as player",
+        "Exact attack targeting/input, gate unlock and reward equations",
+        "Paid-placement provenance remains unverified but does not block official-core prototype",
         "Final independent settled-footage review"
       ],
       "bounded_sequence": {
@@ -162,6 +163,35 @@
           312
         ],
         "result": "Movement-stick cue, close combat, depleted target and weapon indicator 1 to 2 observed; no clearly resolved hook launch/reel/consume/permanent growth."
+      },
+      "bounded_promo_followup": {
+        "source_id": "B3",
+        "interval_seconds": [
+          0,
+          35.967
+        ],
+        "method": "Paused stepping and separate-call settled screenshots at nominal checkpoints; approximate windows, no certified frame attribution, exhaustive frame coverage or tested input causality. Raw observations retained in butcher-hero.md under Settled official-promo correction and raw observation log.",
+        "observed": [
+          "Meat 30 to 5 on 25-cost green pad at approximately 12.6–14.7 seconds; power 100 to 200 and health 12 to 100.",
+          "Meat 79 to 4 on 75-cost purple pad at approximately 24.1–26.6 seconds; power 200 to 300 and health 26 to 100.",
+          "Chained purple blade extends from small orange player near 35.2 seconds; close combat and resource rewards throughout."
+        ],
+        "withdrawn_interpretation": "Final pale giant is not established as enlarged player; permanent body-size growth and direct consumption cannot be claimed from this promo.",
+        "input_boundary": "Movement-stick cue visible; no distinct aim/hook/consume button resolved. Automatic/contextual attack is inference.",
+        "additional_comparison": {
+          "source_id": "B4",
+          "interval_seconds": [
+            0,
+            15
+          ],
+          "nominal_settled_checkpoints_seconds": [
+            0,
+            5,
+            10,
+            15
+          ],
+          "result": "Movement stick, close contact combat and axe/heart reward UI observed; launch/reel/consume and permanent growth still unresolved."
+        }
       }
     },
     {
