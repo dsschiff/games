@@ -40,7 +40,7 @@ Make **steer a squad along a forward road, shoot zombies and numbered obstacles,
 
 ## Original implementation brief
 
-The first prototype should only prove lateral squad steering → continuous forward bullets → a changing numbered obstacle/recruit outcome → zombie pressure → a large final threat, with win/loss/retry. Establish whether that feels satisfying before committing to the campaign-size candidates below.
+The first prototype should prove lateral squad steering → continuous forward bullets → a changing numbered obstacle/recruit outcome → zombie pressure, with a large sustained-fire side target visible during ordinary road action as in L2, plus win/loss/retry. Do not relegate every large threat to an end boss. Establish whether that feels satisfying before committing to campaign-size candidates. Side-shot shields, weapon families and weak-point systems are deferred original ideas, conditional on later review.
 
 - **Camera/style:** portrait elevated 3D forward view, gently foreshortened road, squad held in lower quarter, incoming decisions readable at least 2 seconds ahead. Original municipal rescue crew, reclaimed transit bridge, scrap machines and fungal infected. Preserve densely visible crowd pressure with strong silhouettes; avoid copying the advertised white armored figure, gun meshes, character uniforms or level.
 - **Input:** one-finger horizontal drag with proportional movement, automatic forward shooting, automatic forward scroll. No joystick arena movement. Optional tap skill added only after core loop review. Clamp steering to safe road bounds and show squad footprint so a wide formation's hazard contact is predictable.

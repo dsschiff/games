@@ -33,3 +33,9 @@
 - Godot uses unmodified official Android templates: actual target SDK36, min24. Installed SDK35/build-tools35.0.1 successfully sign standard APKs. No custom template patching, Windows feature changes or global PATH changes are required.
 - Gear builder committed prototype `d0e7cce`: 39 rules, 31 headless-input and 34 rendered-input checks reported; one tutorial encounter, not a full campaign. Independent Astra source/visual review and coordinator Android checks are underway before campaign expansion.
 
+### Prototype interpretation and Gear review gate
+
+- All six sourced prototype directions now have Astra interpretation review. Butcher/Top Force acceptance wording was corrected so deferred original features cannot silently become mandatory. Dead Run preserves the large sustained-fire side target during ordinary road action. Continuous causal footage passages and final implementation comparisons remain open.
+- Gear prototype integrated as `17386c6`. Astra's static/visual review passes the real gear-production loop and composition, but holds unrestricted campaign expansion for surfaced/atomic save failure handling, powered/fair buffered dispatch, import validation and a meaningful constrained-budget counter challenge. Exact findings are in `android-games/reviews/gear-prototype-astra.md` and have been sent to the builder.
+- Independent Android inputs demonstrate disconnected guard production at 0/s, reconnect at 0.72/s and adjacent-drive boost at 0.90/s, followed by real troop production and pause. Lifecycle/geometry evidence is being finalized separately; this is still a one-encounter prototype.
+

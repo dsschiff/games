@@ -50,8 +50,8 @@ Prove **one directly controlled commander → one front → local equipment queu
 ## Acceptance
 
 1. Early/middle/final captures match T3's local base + direct commander + visible reinforced soldiers and vehicles. A passive upgrade city or detached arena shooter fails.
-2. Demonstrate equipment queue actually changing a soldier's role, an anti-armor counter, supply shortfall affecting battle, two viable station layouts, objective win, commander/base loss and immediate retry. All effects remain legible at phone size.
-3. Rule tests for station costs/occupancy, troop queue, ammunition consumption, deployment cap, scrap collection, target priority, objective outcomes and exact retry/save restoration. Units cannot become permanently stranded at gates.
+2. Prototype demonstrates equipment queue visibly equipping reinforcements, their effect on one front, one vehicle escalation, objective win, loss and immediate retry. Supply shortfall, anti-armor specialization and multiple station layouts become acceptance checks only if adopted after core-loop review. All effects remain legible at phone size.
+3. Rule tests for adopted station costs/occupancy, troop queue, deployment cap, scrap collection, targeting, objectives and exact retry/save restoration. Add ammunition/supply tests only if those deferred systems are adopted. Units cannot become permanently stranded at gates.
 4. Offline Android launch, lifecycle interruption, atomic versioned save, export/import, update preservation and touch accuracy; measure heaviest encounter frame time on phone and review fun separately from functional checks.
 
 ## Remaining evidence

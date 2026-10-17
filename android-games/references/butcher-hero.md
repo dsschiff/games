@@ -52,9 +52,9 @@ Manual aim, dodge, pulling the player toward terrain/heavy targets, tension, exp
 
 ## Acceptance
 
-1. First/middle/final footage shows move, aim, visible cable contact, physical pull, close combat, trait absorption and a build consequence. A generic auto-attacking survivor with decorative rope fails.
-2. Demonstrate miss/obstruction, light-versus-heavy pull, cooldown, enemy wind-up/dodge, explosive interaction, three viable builds and a boss counter. Camera must preserve aiming space without hiding targets behind thumb UI.
-3. Test collision/pull bounds, hook target priority, trait caps, cooldowns, checkpoint reset and save restoration; no path outside nav/collision bounds after repeated pulls.
+1. First/middle/final footage shows movement, visible hook contact/pull, defeat/consumption, conspicuous growth and access to stronger encounters. A generic auto-attacking survivor with decorative rope fails.
+2. Prototype demonstrates contact, pull, consume/grow, stronger gated target, win/loss and immediate retry. Manual aiming, dodge, explosives, traits and multiple builds are conditional acceptance checks only if later adopted after prototype review; they are not established reference requirements. Keep targets visible around thumb UI.
+3. Test collision/pull bounds, targeting, growth, encounter gates, cooldowns, checkpoint reset and save restoration; add trait or explosive tests only if those systems are adopted. Repeated pulls must stay within collision bounds.
 4. Versioned saves, export/import, offline Android win/loss/retry, interrupted-save recovery, background/resume and update compatibility; reduced effects/sound settings. Visual review against B3/B4 and measured phone frame pacing remain required.
 
 ## Open evidence

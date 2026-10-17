@@ -4,9 +4,9 @@ The active portfolio goal is defined in `GOAL.md`. Status reflects evidence, not
 
 | Milestone | Status | Exit condition |
 | --- | --- | --- |
-| M0 Reference briefs | In progress | Six sourced reference briefs and Astra review; observations separated from assumptions |
+| M0 Reference briefs | Prototype interpretations reviewed; final fidelity pending | Six sourced reference briefs and Astra review; observations separated from assumptions |
 | M1 Android foundation | Emulator verified; physical checks pending | Pinned tooling, reproducible test/build commands, working 2D and 3D Android slices |
-| M2 Gear game | Prototype in progress | Complete game, progression, replay, presentation and verified APK |
+| M2 Gear game | Prototype integrated; balance/save fixes in progress | Complete game, progression, replay, presentation and verified APK |
 | M3 Hero puzzle game | Not started | Complete reference-based puzzle game and verified APK |
 | M4 Hook action game | Not started | Complete hook/combat/exploration game and verified APK |
 | M5 Settlement defense game | Not started | Complete movement/build/defense game and verified APK |
