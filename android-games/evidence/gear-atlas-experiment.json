@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "scope": "Isolated experimental runtime art cache; generic emulator performance fixtures only",
+  "candidate_commit": "966136793c48d1fb5415f831d3bf1d18479828f1",
+  "candidate_source_sha256": "a190772e32e5ee60a485e091eb9df60415cf18252a7d6bb1f43d40e9d31bc0cf",
+  "candidate_apk_sha256": "26f1fa7aadc22576eff397e9530a0d92e115ca7cfe3999e24caba0124a7b2177",
+  "physical_phone_tested": false,
+  "integrated_into_campaign": false,
+  "experimental_version_code": 3,
+  "rules_checks": 107,
+  "headless_input_checks": 51,
+  "raw_surfaceview_metrics_verified": {
+    "final/baseline-ready": 33.27,
+    "final/baseline-heavy": 3.068,
+    "final/baseline-active": 13.319,
+    "final/candidate-ready": 30.76,
+    "final/candidate-heavy": 23.437,
+    "final/candidate-active": 23.849,
+    "final-active120/baseline-active": 2.963,
+    "final-active120/candidate-active": 22.044
+  },
+  "active120_raw_state_verified": {
+    "baseline-active": {
+      "army": 120,
+      "moved": 70,
+      "kills_during_capture": 2,
+      "enemy_count_at_both_endpoints": [
+        0,
+        0
+      ]
+    },
+    "candidate-active": {
+      "army": 120,
+      "moved": 70,
+      "kills_during_capture": 2,
+      "enemy_count_at_both_endpoints": [
+        0,
+        0
+      ]
+    }
+  },
+  "visual_review": "Root inspected final baseline/candidate120 moving captures; artwork, silhouettes, shadows, health bars and full army retained. Not pixel-identical certification.",
+  "limits": [
+    "Short sequential samples, not a phone benchmark or target60fps pass",
+    "Ready scene slowed in both preliminary and final pairs; cause unisolated, no universal performance claim",
+    "Exact per-function/emulated-driver GPU split remains unmeasured",
+    "Injected actual saves are performance fixtures, not fresh gameplay/migration evidence",
+    "Experimental APK keepscode3; do not distribute as a new release without integration/review/versioning",
+    "Headless suites exercise fallback path; actual Android atlas path verified through startup log and images",
+    "120-unit active capture has zero enemies at endpoints and two kills during each short sample; not sustained maximum enemy-density stress"
+  ],
+  "artifact_root": "C:\\projects\\active\\games\\.artifacts\\perf-atlas",
+  "preserved_files": 157,
+  "preserved_logical_bytes": 526594455,
+  "receipt": "C:\\projects\\active\\games\\.artifacts\\preservation\\gear-atlas-experiment.json",
+  "receipt_sha256": "908fa8a052116c7f8bf4613e5e95d88cf3733b88f4eea4758c8ee74d4fb7a5dc",
+  "restoration": {
+    "baseline_apk": true,
+    "ready_state": true,
+    "display": "Physical size: 1080x2400\r\n",
+    "no_pending_adb_jobs": true,
+    "final_readback": "final-restoration-verification.json"
+  }
+}
