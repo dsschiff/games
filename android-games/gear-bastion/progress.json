@@ -5,7 +5,7 @@
   "version_code": 5,
   "save_schema": 4,
   "branch": "codex/gear-bastion",
-  "updated_at": "2026-10-17T19:21:40-04:00",
+  "updated_at": "2026-10-17T19:29:20-04:00",
   "milestone": "campaign_visual_checkpoint",
   "status": "ready_for_independent_fidelity_review_balance_and_android_pending",
   "full_v1_complete": false,
@@ -47,7 +47,118 @@
     "constrained_budget_counter_trial": true,
     "sole_staged_backup_reused_without_truncation": true
   },
-  "trial": {
+  "next_action": "Independently review the frozen 0.3.1 motion/source checkpoint; develop and verify per-encounter decision pressure in a separate commit, especially gate allocation in Three Fronts and salvage spending in Furnace Tide.",
+  "remaining": [
+    "independent early/middle/final motion fidelity review",
+    "per-encounter mistake-to-improved-choice evidence, including measurable gate and salvage consequences",
+    "cap-time and pacing assessment without added wave waits",
+    "current presentation Android Back, lifecycle, cold-map and different-APK update checks",
+    "physical Fold7 touch, safe areas, fold behavior, actual sound and measured performance"
+  ],
+  "historical_release_verification": {
+    "rules": {
+      "checks": 107,
+      "passed": true,
+      "suite_complete_marker": true
+    },
+    "headless_input": {
+      "checks": 51,
+      "pointer_events": 356,
+      "passed": true,
+      "suite_complete_marker": true,
+      "current_source_rerun": true
+    },
+    "rendered_input": {
+      "checks": 56,
+      "pointer_events": 370,
+      "keyboard_events": 5731,
+      "passed": true,
+      "audio_driver": "Dummy",
+      "source_version": "0.2.0",
+      "current_source_rerun": false
+    },
+    "normal_app_written_primary_reload": true,
+    "injected_storage_failures_and_recovery": true,
+    "injected_v2_to_v3_migration": true,
+    "repeated_single_vacancy_fairness_and_power_checks": true,
+    "desktop_live_resize_profiles": [
+      [
+        1080,
+        2520
+      ],
+      [
+        1968,
+        2184
+      ]
+    ],
+    "independent_fixes_and_trial_review": "pending",
+    "changed_code_android_launch_and_lifecycle": "pending",
+    "different_apk_upgrade_0_1_to_0_2": {
+      "result": "passed_coordinator_reported",
+      "critical_paths": 21,
+      "covers_current_0_2_1_fix": false
+    },
+    "physical_phone_actual_sound_clipboard_and_performance": "pending",
+    "scope": "Historical 0.2.x verification snapshot; pending labels are not current campaign acceptance status."
+  },
+  "historical_release_build": {
+    "package": "com.dsschiff.gearbastion",
+    "template": "unmodified_official_Godot_4.7.2",
+    "target_sdk": 36,
+    "min_sdk": 24,
+    "gradle": false,
+    "abis": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "result": "built_and_signature_verified",
+    "version": "0.2.1",
+    "version_code": 3,
+    "apk": ".artifacts/gear-bastion/20261017T215725197087Z/gear-bastion.apk",
+    "manifest": ".artifacts/gear-bastion/20261017T215725197087Z/manifest.json",
+    "bytes": 57099799,
+    "sha256": "f740422926578e6cc5fd340c5a17c698badbd1f43dc07b2054dfd46c04978612",
+    "source_commit": "7d67a1ef3ffaf88ef364e23786ea35d1dcce3856",
+    "permissions": []
+  },
+  "verification": {
+    "rules": {
+      "checks": 161,
+      "passed": true
+    },
+    "full_campaign_input": {
+      "headless_checks": 65,
+      "rendered_checks": 66,
+      "campaign_clears": 9,
+      "replay_clears": 3,
+      "combat_seconds": 1830.93333333326
+    },
+    "actor_atlas": {
+      "kinds": 12,
+      "rendered_checks": 13,
+      "texture_size": [
+        1664,
+        256
+      ]
+    },
+    "physical_phone": "pending",
+    "shared_test_manifest": ".artifacts/gear-bastion/20261017T231835942598Z/manifest.json",
+    "source_unchanged_during_test_and_build": true
+  },
+  "build": {
+    "result": "built_and_signature_verified",
+    "version": "0.3.1",
+    "version_code": 5,
+    "source_commit": "c9c301113cf3446529abc6e7ce597409185cdbad",
+    "manifest": ".artifacts/gear-bastion/20261017T232010721642Z/manifest.json",
+    "apk": ".artifacts/gear-bastion/20261017T232010721642Z/gear-bastion.apk",
+    "sha256": "91443384b50bd95d96455848b37185f59626229ddac818c96e9f485b225a9bda",
+    "bytes": 57255454,
+    "package": "com.dsschiff.gearbastion",
+    "permissions": [],
+    "current_android_verification": "pending"
+  },
+  "historical_0_2_trial": {
     "seed": 1701,
     "budget": 54,
     "kill_income": false,
@@ -121,7 +232,7 @@
       ]
     }
   },
-  "evidence": {
+  "historical_0_2_evidence": {
     "rendered_report": "android-games/gear-bastion/.artifacts/review-playthrough/report.json",
     "headless_report": "android-games/gear-bastion/.artifacts/review-playthrough/headless/report.json",
     "rendered_log": "android-games/gear-bastion/.artifacts/review-rendered.log",
@@ -131,115 +242,10 @@
     "previous_0_2_0_apk_sha256": "dd3bb862182cd213d9947913a99e4b232ba16c4098a83219e97de870d1392f7a",
     "coordinator_nearby_seed_probe": "C:/projects/active/_worktrees/games-android-portfolio-20261017/android-games/gear-bastion/.artifacts/coordinator-checks.json"
   },
-  "next_action": "Coordinator independently reviews the narrow staged-backup fix before authorizing campaign work. Current 0.2.1 Android runtime acceptance remains pending.",
-  "remaining": [
-    "independent fixes/trial gate",
-    "three-region 30-60-minute campaign, strategic unlocks and distinct roles",
-    "bosses, seeded replay and final presentation polish",
-    "different-APK update and changed-code Android lifecycle tests",
-    "Android Back/modal/pause/save behavior before phone RC",
-    "physical Fold7 identity, touch/safe-area/fold checks and measured performance"
-  ],
-  "historical_release_verification": {
-    "rules": {
-      "checks": 107,
-      "passed": true,
-      "suite_complete_marker": true
-    },
-    "headless_input": {
-      "checks": 51,
-      "pointer_events": 356,
-      "passed": true,
-      "suite_complete_marker": true,
-      "current_source_rerun": true
-    },
-    "rendered_input": {
-      "checks": 56,
-      "pointer_events": 370,
-      "keyboard_events": 5731,
-      "passed": true,
-      "audio_driver": "Dummy",
-      "source_version": "0.2.0",
-      "current_source_rerun": false
-    },
-    "normal_app_written_primary_reload": true,
-    "injected_storage_failures_and_recovery": true,
-    "injected_v2_to_v3_migration": true,
-    "repeated_single_vacancy_fairness_and_power_checks": true,
-    "desktop_live_resize_profiles": [
-      [
-        1080,
-        2520
-      ],
-      [
-        1968,
-        2184
-      ]
-    ],
-    "independent_fixes_and_trial_review": "pending",
-    "changed_code_android_launch_and_lifecycle": "pending",
-    "different_apk_upgrade_0_1_to_0_2": {
-      "result": "passed_coordinator_reported",
-      "critical_paths": 21,
-      "covers_current_0_2_1_fix": false
-    },
-    "physical_phone_actual_sound_clipboard_and_performance": "pending"
-  },
-  "historical_release_build": {
-    "package": "com.dsschiff.gearbastion",
-    "template": "unmodified_official_Godot_4.7.2",
-    "target_sdk": 36,
-    "min_sdk": 24,
-    "gradle": false,
-    "abis": [
-      "arm64-v8a",
-      "x86_64"
-    ],
-    "result": "built_and_signature_verified",
-    "version": "0.2.1",
-    "version_code": 3,
-    "apk": ".artifacts/gear-bastion/20261017T215725197087Z/gear-bastion.apk",
-    "manifest": ".artifacts/gear-bastion/20261017T215725197087Z/manifest.json",
-    "bytes": 57099799,
-    "sha256": "f740422926578e6cc5fd340c5a17c698badbd1f43dc07b2054dfd46c04978612",
-    "source_commit": "7d67a1ef3ffaf88ef364e23786ea35d1dcce3856",
-    "permissions": []
-  },
-  "verification": {
-    "rules": {
-      "checks": 161,
-      "passed": true
-    },
-    "full_campaign_input": {
-      "headless_checks": 65,
-      "rendered_checks": 66,
-      "campaign_clears": 9,
-      "replay_clears": 3,
-      "combat_seconds": 1830.93333333326
-    },
-    "actor_atlas": {
-      "kinds": 12,
-      "rendered_checks": 13,
-      "texture_size": [
-        1664,
-        256
-      ]
-    },
-    "physical_phone": "pending",
-    "shared_test_manifest": ".artifacts/gear-bastion/20261017T231835942598Z/manifest.json",
-    "source_unchanged_during_test_and_build": true
-  },
-  "build": {
-    "result": "built_and_signature_verified",
-    "version": "0.3.1",
-    "version_code": 5,
-    "source_commit": "c9c301113cf3446529abc6e7ce597409185cdbad",
-    "manifest": ".artifacts/gear-bastion/20261017T232010721642Z/manifest.json",
-    "apk": ".artifacts/gear-bastion/20261017T232010721642Z/gear-bastion.apk",
-    "sha256": "91443384b50bd95d96455848b37185f59626229ddac818c96e9f485b225a9bda",
-    "bytes": 57255454,
-    "package": "com.dsschiff.gearbastion",
-    "permissions": [],
-    "current_android_verification": "pending"
+  "evidence": {
+    "campaign_checkpoint": "android-games/gear-bastion/CAMPAIGN_CHECKPOINT.md",
+    "frozen_visual_index": "android-games/gear-bastion/evidence/campaign-visual-checkpoint.json",
+    "headless_report": "android-games/gear-bastion/.artifacts/campaign-input/headless/report.json",
+    "rendered_report": "android-games/gear-bastion/.artifacts/campaign-input/report.json"
   }
 }
