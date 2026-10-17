@@ -1,0 +1,15 @@
+{
+  "reference_display": [1080, 2400],
+  "viewport": [720, 1280],
+  "actions": [
+    {"type": "tap", "x": 540, "y": 2035},
+    {"type": "tap", "x": 207, "y": 904},
+    {"type": "tap", "x": 537, "y": 904},
+    {"type": "tap", "x": 864, "y": 904},
+    {"type": "tap", "x": 540, "y": 1740},
+    {"type": "tap", "x": 540, "y": 1740},
+    {"type": "tap", "x": 540, "y": 1740},
+    {"type": "tap", "x": 540, "y": 1886}
+  ],
+  "expected_save": {"wave": 3, "pads": [0, 1, 2]}
+}

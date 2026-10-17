@@ -1,0 +1,10 @@
+{
+  "reference_display": [1080, 2400],
+  "viewport": [720, 1280],
+  "actions": [
+    {"type": "tap", "x": 780, "y": 2044},
+    {"type": "swipe", "x1": 540, "y1": 1200, "x2": 900, "y2": 1200, "duration_ms": 1200},
+    {"type": "tap", "x": 260, "y": 2044}
+  ],
+  "expected_numeric": {"x": {"min": 1.0}}
+}

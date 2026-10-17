@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-17",
+  "scope": "technical probes; emulator verified",
+  "physical_phone_tested": false,
+  "tooling_unit_tests": 25,
+  "limits": [
+    "Not finished games or commercial-reference fidelity acceptance",
+    "Generic emulator geometry only; no Samsung hardware or folding lifecycle evidence",
+    "Same-APK retention is not different-version compatibility",
+    "No physical touch, actual sound, fun or measured phone FPS acceptance"
+  ],
+  "projects": [
+    {
+      "project": "input-2d",
+      "project_source_sha256": "101066e2be3004526dd3c2ac674cae4ac04dc7252d083afd2987cd0969177661",
+      "test_manifest": ".artifacts/input-2d/20261017T211036653786Z/manifest.json",
+      "build_manifest": ".artifacts/input-2d/20261017T211132692151Z/manifest.json",
+      "apk": {
+        "path": ".artifacts/input-2d/20261017T211132692151Z/input-2d.apk",
+        "bytes": 57078808,
+        "sha256": "10b125dfb357a9df779f981902dacadb68d55cea5fd8f18c424d3f0a91f8adfb"
+      },
+      "apk_inspection": {
+        "package": "com.dsschiff.probeinput2d",
+        "version_code": "1",
+        "version_name": "0.1.0",
+        "permissions": [],
+        "internet_permission": false,
+        "signature_verified": true
+      },
+      "emulator_runs": [
+        {
+          "manifest": ".artifacts/emulator/com.dsschiff.probeinput2d/20261017T211253822947Z/manifest.json",
+          "display_pixels": [
+            1080,
+            2520
+          ],
+          "checks": {
+            "offline_radios_disabled": true,
+            "offline_launch": true,
+            "expected_saved_state_after_input": true,
+            "expected_numeric_state_after_input": true,
+            "background_resume_process_alive": true,
+            "same_apk_reinstall_save_identical": true,
+            "relaunch_after_reinstall": true,
+            "no_godot_or_android_runtime_errors": true,
+            "valid_saved_json": true
+          },
+          "same_apk_save_sha256": "dcf32002241ac12fb04181c752d35c9fd9c8ea5dd2af4120136a497c568746c0"
+        },
+        {
+          "manifest": ".artifacts/emulator/com.dsschiff.probeinput2d/20261017T211433684814Z/manifest.json",
+          "display_pixels": [
+            1968,
+            2184
+          ],
+          "checks": {
+            "offline_radios_disabled": true,
+            "offline_launch": true,
+            "expected_saved_state_after_input": true,
+            "expected_numeric_state_after_input": true,
+            "background_resume_process_alive": true,
+            "same_apk_reinstall_save_identical": true,
+            "relaunch_after_reinstall": true,
+            "no_godot_or_android_runtime_errors": true,
+            "valid_saved_json": true
+          },
+          "same_apk_save_sha256": "dcf32002241ac12fb04181c752d35c9fd9c8ea5dd2af4120136a497c568746c0"
+        }
+      ]
+    },
+    {
+      "project": "combat-3d",
+      "project_source_sha256": "b5c391b784d485dbb59dd37195f868ed44b51e9430f29227ef8a21eb2985e9c9",
+      "test_manifest": ".artifacts/combat-3d/20261017T211043229649Z/manifest.json",
+      "build_manifest": ".artifacts/combat-3d/20261017T211152930604Z/manifest.json",
+      "apk": {
+        "path": ".artifacts/combat-3d/20261017T211152930604Z/combat-3d.apk",
+        "bytes": 57025560,
+        "sha256": "b39d71e5e508c916d8f13b7cef47c683a610bf610a7f6e6f49093d01f4a7cde5"
+      },
+      "apk_inspection": {
+        "package": "com.dsschiff.probecombat3d",
+        "version_code": "1",
+        "version_name": "0.1.0",
+        "permissions": [],
+        "internet_permission": false,
+        "signature_verified": true
+      },
+      "emulator_runs": [
+        {
+          "manifest": ".artifacts/emulator/com.dsschiff.probecombat3d/20261017T211526561221Z/manifest.json",
+          "display_pixels": [
+            1080,
+            2520
+          ],
+          "checks": {
+            "offline_radios_disabled": true,
+            "offline_launch": true,
+            "expected_saved_state_after_input": true,
+            "expected_numeric_state_after_input": true,
+            "background_resume_process_alive": true,
+            "same_apk_reinstall_save_identical": true,
+            "relaunch_after_reinstall": true,
+            "no_godot_or_android_runtime_errors": true,
+            "valid_saved_json": true
+          },
+          "same_apk_save_sha256": "a7aec875db97a20234f75b67b0044b100a87cf7268d72d1c45dbe01000b7b797"
+        },
+        {
+          "manifest": ".artifacts/emulator/com.dsschiff.probecombat3d/20261017T211351184061Z/manifest.json",
+          "display_pixels": [
+            1968,
+            2184
+          ],
+          "checks": {
+            "offline_radios_disabled": true,
+            "offline_launch": true,
+            "expected_saved_state_after_input": true,
+            "expected_numeric_state_after_input": true,
+            "background_resume_process_alive": true,
+            "same_apk_reinstall_save_identical": true,
+            "relaunch_after_reinstall": true,
+            "no_godot_or_android_runtime_errors": true,
+            "valid_saved_json": true
+          },
+          "same_apk_save_sha256": "7db029a8ba0ef2732627440f847ef42f31cfdd3b4a151ae5a219240bd3bb37e0"
+        }
+      ]
+    }
+  ]
+}

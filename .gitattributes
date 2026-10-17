@@ -1,0 +1,5 @@
+# Keep Android project source fingerprints stable across Windows checkouts.
+android-games/** text eol=lf
+scripts/** text eol=lf
+tests/** text eol=lf
+toolchain.json text eol=lf

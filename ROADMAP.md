@@ -5,7 +5,7 @@ The active portfolio goal is defined in `GOAL.md`. Status reflects evidence, not
 | Milestone | Status | Exit condition |
 | --- | --- | --- |
 | M0 Reference briefs | In progress | Six sourced reference briefs and Astra review; observations separated from assumptions |
-| M1 Android foundation | In progress | Pinned tooling, reproducible test/build commands, working 2D and 3D Android slices |
+| M1 Android foundation | Emulator verified; physical checks pending | Pinned tooling, reproducible test/build commands, working 2D and 3D Android slices |
 | M2 Gear game | Prototype in progress | Complete game, progression, replay, presentation and verified APK |
 | M3 Hero puzzle game | Not started | Complete reference-based puzzle game and verified APK |
 | M4 Hook action game | Not started | Complete hook/combat/exploration game and verified APK |
@@ -17,7 +17,7 @@ The active portfolio goal is defined in `GOAL.md`. Status reflects evidence, not
 ## Current next actions
 
 1. Complete and independently review the other five reference briefs; expand Gear sustained/late-level evidence before campaign fidelity acceptance.
-2. Verify 2D/3D APK install and lifecycle behavior on the local emulator; record physical-phone checks separately.
-3. Integrate the shared status/test/build commands after verification and independent review.
-4. Review the Gear Bastion input-driven prototype from its persistent development thread before campaign expansion. Thread/worktree mapping is in `android-games/threads.json`.
+2. Land the verified foundation and reference records. Physical Samsung checks remain separate from emulator evidence.
+3. Independently review and Android-test Gear Bastion's committed interactive prototype, then continue the campaign after findings are resolved.
+4. Thread/worktree mapping is in `android-games/threads.json`; executable evidence is indexed under `android-games/evidence/`.
 

@@ -19,4 +19,3 @@ Preserve the portrait battlefield, wall exits, powered lower board and visible t
 Input-driven playthroughs must demonstrate disconnection/reconnection, perceptible production change, two viable layouts, a repairable failed strategy, victory, defeat and immediate retry. Preserve uninterrupted comparison footage with both board and battle visible.
 
 Before final campaign fidelity acceptance, review the full sustained walkthrough and a late-level recording. Existing samples establish the central loop but not exact late-game balance, gear math or gate behavior.
-

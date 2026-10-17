@@ -14,8 +14,7 @@
 
 ## Executed evidence recorded by coordinator
 
-- `python -m unittest discover -s tests/tooling -v`: 19 tests pass.
+- `python -m unittest discover -s tests/tooling -v`: 25 tests pass after final geometry/provenance additions (19 at the earlier static checkpoint).
 - `python scripts/portfolio.py test input-2d combat-3d`: both rule and actual engine-input suites pass with completion markers and unchanged source fingerprints; normal-save and interrupted-save checks included.
 - Signed, provenance-stable APKs exist under ignored `.artifacts/`; APK hashes and install/runtime evidence belong to the build/smoke manifests rather than this static verdict.
-- Desktop-rendered snapshots inspected; API35 emulator rendering/retention checks are separately underway. Physical-phone testing is outstanding.
-
+- Desktop-rendered snapshots inspected. API35 emulator input, offline launch, background/resume and byte-identical save retention across same-APK reinstall passed for both probes at both Fold7 resolution approximations. Exact manifests are indexed in `android-games/evidence/foundation.json`. This does not establish compatibility with a different APK version, Samsung folding lifecycle or phone performance. Physical-phone testing is outstanding.

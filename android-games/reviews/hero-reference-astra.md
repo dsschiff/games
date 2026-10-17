@@ -7,4 +7,3 @@
 Validate a small sequence of distinct, enjoyable puzzles before expanding toward the provisional 36-puzzle campaign. Solver state must include keys, shields, collapsed bridges, opened routes and ordered enemies; undo must restore all of it. Our prototype default is repeatable undo through the current puzzle's action history, with an optional no-undo medal.
 
 Final visual-fidelity approval requires directly viewing selected source footage and comparing actual game recordings. This interpretation review does not grant that acceptance.
-

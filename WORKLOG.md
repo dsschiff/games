@@ -24,3 +24,12 @@
 - Carry authorization through setup, coordination, builds and validation without repeated routine approval questions. Keep paid services and public/store publication outside the approved plan.
 - Require cover/unfolded readability and progress-preserving resize/fold transitions. Emulator results remain distinct from physical Samsung testing.
 
+### Android foundation verified on emulator
+
+- Shared installer, project discovery, source-fingerprinted tests/builds and emulator smoke commands are implemented. Final 25 tooling tests pass. Missing suites and incomplete completion markers fail coverage; source drift invalidates a result.
+- Both technical probes pass rule and actual engine-input suites, export signed APKs with no requested permissions and unchanged matching source fingerprints, and run on API35 emulator `emulator-5554` with host NVIDIA graphics. SwiftShader failed real shader limits; this host uses `-gpu host`.
+- Each probe passed emulator input, offline launch, app-written JSON state assertions, background/resume and byte-identical save retention across same-APK reinstall at both 1080x2520 and 1968x2184. Resolution overrides were restored. Exact artifact/source hashes and four smoke runs are indexed in `android-games/evidence/foundation.json`.
+- Same-APK reinstall is installation-retention evidence, not different-version save compatibility. No physical device is attached; Samsung safe areas, folding lifecycle, sound, actual touch, fun and measured FPS remain unverified.
+- Godot uses unmodified official Android templates: actual target SDK36, min24. Installed SDK35/build-tools35.0.1 successfully sign standard APKs. No custom template patching, Windows feature changes or global PATH changes are required.
+- Gear builder committed prototype `d0e7cce`: 39 rules, 31 headless-input and 34 rendered-input checks reported; one tutorial encounter, not a full campaign. Independent Astra source/visual review and coordinator Android checks are underway before campaign expansion.
+
