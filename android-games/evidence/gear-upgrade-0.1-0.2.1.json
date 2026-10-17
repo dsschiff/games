@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-17",
+  "scope": "Actual0.1.0\u21920.2.1 emulator update, new schema/save writes and21declared gameplay/settings paths",
+  "physical_phone_tested": false,
+  "worker_fix_commit": "7d67a1e",
+  "integrated_fix_commit": "8ba1294",
+  "integrated_metadata_commit": "49bee21",
+  "source_sha256": "38e5f0c35b66cfb18983d14b0614b01a500e258b7aefe42960d7ba938f9d5aec",
+  "test_manifest": ".artifacts/gear-bastion/20261017T220048208306Z/manifest.json",
+  "build_manifest": ".artifacts/gear-bastion/20261017T220126111874Z/manifest.json",
+  "upgrade_manifest": ".artifacts/upgrades/com.dsschiff.gearbastion/20261017T220728760125Z/manifest.json",
+  "apks": {
+    "from": {
+      "original_path": "C:\\projects\\active\\_worktrees\\games-android-portfolio-20261017\\.artifacts\\gear-bastion\\independent-d0e7cce\\gear-bastion.apk",
+      "archive": {
+        "path": ".artifacts/upgrades/com.dsschiff.gearbastion/20261017T220728760125Z/apks/from.apk",
+        "bytes": 57091452,
+        "sha256": "e1dc69ed1f35a3aee1cc65558ec590e3b81f2278657163b40100464ab0e78736"
+      },
+      "metadata": {
+        "package": "com.dsschiff.gearbastion",
+        "version_code": "1",
+        "version_name": "0.1.0",
+        "permissions": [],
+        "internet_permission": false,
+        "signature_verified": true
+      }
+    },
+    "to": {
+      "original_path": "C:\\projects\\active\\_worktrees\\games-android-portfolio-20261017\\.artifacts\\gear-bastion\\20261017T220126111874Z\\gear-bastion.apk",
+      "archive": {
+        "path": ".artifacts/upgrades/com.dsschiff.gearbastion/20261017T220728760125Z/apks/to.apk",
+        "bytes": 57099799,
+        "sha256": "063c4c36046c7cae2f362bb949391ae47f1823c5086ff257702bcf68ce6c9a60"
+      },
+      "metadata": {
+        "package": "com.dsschiff.gearbastion",
+        "version_code": "3",
+        "version_name": "0.2.1",
+        "permissions": [],
+        "internet_permission": false,
+        "signature_verified": true
+      }
+    }
+  },
+  "version_transition": {
+    "from_version_code": 1,
+    "to_version_code": 3
+  },
+  "schema_transition": [
+    2,
+    3,
+    3
+  ],
+  "new_revisions": [
+    2,
+    4
+  ],
+  "preserve_paths": [
+    "state.board",
+    "state.units",
+    "state.enemies",
+    "state.production",
+    "state.gold",
+    "state.next_id",
+    "state.wall",
+    "state.time",
+    "state.wave",
+    "state.wave_time",
+    "state.spawn_clock",
+    "state.spawned",
+    "state.serial",
+    "state.seed",
+    "state.kills",
+    "state.produced",
+    "state.peak_units",
+    "state.wall_hits",
+    "state.cap_time",
+    "state.phase",
+    "settings"
+  ],
+  "all_declared_paths_preserved": true,
+  "numeric_comparison_policy": {
+    "integer_valued_numbers": "exact",
+    "fractional_floats": "math.isclose",
+    "relative_tolerance": 1e-12,
+    "absolute_tolerance": 1e-12,
+    "booleans": "exact type and value",
+    "nonfinite_numbers": "rejected"
+  },
+  "checks": {
+    "from_archive_unchanged": true,
+    "to_archive_unchanged": true,
+    "different_apk_bytes": true,
+    "valid_signed_offline_increasing_version_pair": true,
+    "emulator_booted": true,
+    "old_code_installed": true,
+    "offline_radios_disabled": true,
+    "old_process_alive": true,
+    "old_input_assertions": true,
+    "old_critical_paths_exist": true,
+    "new_code_installed": true,
+    "installer_preserved_critical_paths": true,
+    "new-after-launch_process_alive": true,
+    "new_app_wrote_save_after_launch": true,
+    "migration_preserved_critical_paths": true,
+    "new_after_launch_assertions": true,
+    "new-cold-relaunch_process_alive": true,
+    "new_app_wrote_save_after_cold_relaunch": true,
+    "relaunch_critical_paths_stable": true,
+    "relaunch_retained_old_critical_paths": true,
+    "new_cold_relaunch_assertions": true,
+    "from_input_and_archive_remained_unchanged": true,
+    "to_input_and_archive_remained_unchanged": true,
+    "no_runtime_errors": true
+  },
+  "save_hashes": {
+    "old-before-upgrade": "6f765f63f22884d9fdcab4bf035b57d880f556b00b5a0b4c8acd51f6601c220c",
+    "new-installed-before-launch": "6f765f63f22884d9fdcab4bf035b57d880f556b00b5a0b4c8acd51f6601c220c",
+    "new-after-launch": "91d16c3890900866811400eb47bcaa0781999e11314c577dc4d79903696d5850",
+    "new-cold-relaunch": "859f081dc4912e0c52c5b6093f9331264b7c7b17b95bfd8d4769f5a4796ed6f6"
+  },
+  "save_file_metadata": {
+    "old-before-upgrade": {
+      "modified_epoch_seconds": 1792274874,
+      "inode": 573722,
+      "bytes": 2140
+    },
+    "new-installed-before-launch": {
+      "modified_epoch_seconds": 1792274874,
+      "inode": 573722,
+      "bytes": 2140
+    },
+    "new-after-launch": {
+      "modified_epoch_seconds": 1792274886,
+      "inode": 573724,
+      "bytes": 2239
+    },
+    "new-cold-relaunch": {
+      "modified_epoch_seconds": 1792274896,
+      "inode": 573723,
+      "bytes": 2239
+    }
+  },
+  "tooling_unit_tests": 47,
+  "preserved_strict_comparison_failure": ".artifacts/upgrades/com.dsschiff.gearbastion/20261017T220401496738Z/manifest.json",
+  "diagnosis": "Four fractional JSON round-trip differences, maximum absolute delta5.7e-14. Exact integer/boolean semantics retained; material changes still fail.",
+  "limits": [
+    "Prototype plus one trial, campaign still under construction",
+    "Injected preservation-fault regressions do not establish actual Android disk-full/flush-fault durability",
+    "No physicalSamsung/performance acceptance"
+  ]
+}
