@@ -66,3 +66,10 @@
 - Astra's initial static/visual gate approval was superseded by a coordinator fault probe: when `.bak.tmp` is the sole valid save, attempting to rewrite it during backup preparation can destroy it on partial-write failure. Astra confirmed this P2. Worker is preparing a narrow 0.2.1/code3 fix and preservation regressions; campaign expansion remains held until that fix passes.
 - Coordinator tested fixed plans at three nearby seeds. A wins1701 but loses1700/1702; B and the paid adaptive repair win all three; both single-role extremes fail all three. The 50/52-brass plans are comparable resource witnesses, not two robust policies. Raw fault/seed evidence is indexed in `android-games/evidence/gear-fix-adversarial.json`; review amendment is in `android-games/reviews/gear-fixes-astra.md`.
 
+### Real version0.1 to0.2 Android upgrade passed
+
+- Independently rebuilt immutable `a0e59d7`: signed APK0.2.0/code2, permissions[], SHA256 `59014f306a288c79b8945922048a7b9aa6b9e47ed0b115dd961a96ed0dda5f9c`. Clean test/build source fingerprints match; 97 rules and 51 input checks pass.
+- Installed old code1, created the boosted-board/eight-troop battle by actual Android input, captured its schema2 save, installed code2 over it without clearing data, then launched/persisted and cold-relaunched. All 21 declared critical gameplay/settings paths survive; schema migrates2→3 and new revision advances2→4. Advancing file modification times/inodes and new schema establish actual new-app writes.
+- Coordinator independently checked raw saved JSON, archive hashes, metadata, preservation assertions and inspected the restored paused battle capture. No runtime errors or adb failures occurred in this upgrade run. Exact evidence is indexed in `android-games/evidence/gear-upgrade-0.1-0.2.json`.
+- This validates the normal update path for this prototype pair; pending sole-staged-backup preservation fixes and actual device storage faults remain outside it. No physical phone claim. Emulator remains1080x2400; builder export hold released for the narrow0.2.1 fix.
+

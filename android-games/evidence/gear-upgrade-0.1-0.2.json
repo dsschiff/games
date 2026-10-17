@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-17",
+  "scope": "Actual 0.1.0 to 0.2.0 emulator update and declared gameplay/save preservation only",
+  "physical_phone_tested": false,
+  "worker_commit": "d13387b",
+  "integrated_commit": "a0e59d7",
+  "source_sha256": "7b9c7320713f3dd90ddd595c887498a68b69d6dce3ebafae91bc1bcc3cffbf37",
+  "test_manifest": ".artifacts/gear-bastion/20261017T215144568866Z/manifest.json",
+  "build_manifest": ".artifacts/gear-bastion/20261017T215231411411Z/manifest.json",
+  "upgrade_manifest": ".artifacts/upgrades/com.dsschiff.gearbastion/20261017T215422782794Z/manifest.json",
+  "apks": {
+    "from": {
+      "original_path": "C:\\projects\\active\\_worktrees\\games-android-portfolio-20261017\\.artifacts\\gear-bastion\\independent-d0e7cce\\gear-bastion.apk",
+      "archive": {
+        "path": ".artifacts/upgrades/com.dsschiff.gearbastion/20261017T215422782794Z/apks/from.apk",
+        "bytes": 57091452,
+        "sha256": "e1dc69ed1f35a3aee1cc65558ec590e3b81f2278657163b40100464ab0e78736"
+      },
+      "metadata": {
+        "package": "com.dsschiff.gearbastion",
+        "version_code": "1",
+        "version_name": "0.1.0",
+        "permissions": [],
+        "internet_permission": false,
+        "signature_verified": true
+      }
+    },
+    "to": {
+      "original_path": "C:\\projects\\active\\_worktrees\\games-android-portfolio-20261017\\.artifacts\\gear-bastion\\20261017T215231411411Z\\gear-bastion.apk",
+      "archive": {
+        "path": ".artifacts/upgrades/com.dsschiff.gearbastion/20261017T215422782794Z/apks/to.apk",
+        "bytes": 57099799,
+        "sha256": "59014f306a288c79b8945922048a7b9aa6b9e47ed0b115dd961a96ed0dda5f9c"
+      },
+      "metadata": {
+        "package": "com.dsschiff.gearbastion",
+        "version_code": "2",
+        "version_name": "0.2.0",
+        "permissions": [],
+        "internet_permission": false,
+        "signature_verified": true
+      }
+    }
+  },
+  "version_transition": {
+    "from_version_code": 1,
+    "to_version_code": 2
+  },
+  "schema_transition": [
+    2,
+    3,
+    3
+  ],
+  "new_revisions": [
+    2,
+    4
+  ],
+  "preserve_paths": [
+    "state.board",
+    "state.units",
+    "state.enemies",
+    "state.production",
+    "state.gold",
+    "state.next_id",
+    "state.wall",
+    "state.time",
+    "state.wave",
+    "state.wave_time",
+    "state.spawn_clock",
+    "state.spawned",
+    "state.serial",
+    "state.seed",
+    "state.kills",
+    "state.produced",
+    "state.peak_units",
+    "state.wall_hits",
+    "state.cap_time",
+    "state.phase",
+    "settings"
+  ],
+  "all_declared_paths_preserved": true,
+  "checks": {
+    "from_archive_unchanged": true,
+    "to_archive_unchanged": true,
+    "different_apk_bytes": true,
+    "valid_signed_offline_increasing_version_pair": true,
+    "emulator_booted": true,
+    "old_code_installed": true,
+    "offline_radios_disabled": true,
+    "old_process_alive": true,
+    "old_input_assertions": true,
+    "old_critical_paths_exist": true,
+    "new_code_installed": true,
+    "installer_preserved_critical_paths": true,
+    "new-after-launch_process_alive": true,
+    "new_app_wrote_save_after_launch": true,
+    "migration_preserved_critical_paths": true,
+    "new_after_launch_assertions": true,
+    "new-cold-relaunch_process_alive": true,
+    "new_app_wrote_save_after_cold_relaunch": true,
+    "relaunch_critical_paths_stable": true,
+    "relaunch_retained_old_critical_paths": true,
+    "new_cold_relaunch_assertions": true,
+    "from_input_and_archive_remained_unchanged": true,
+    "to_input_and_archive_remained_unchanged": true,
+    "no_runtime_errors": true
+  },
+  "save_hashes": {
+    "old-before-upgrade": "a114456170637f3e2596bfe900a5fccfb8d240f1d457e2a466652f0608230409",
+    "new-installed-before-launch": "a114456170637f3e2596bfe900a5fccfb8d240f1d457e2a466652f0608230409",
+    "new-after-launch": "1a72fb526b1f4c7a028b536034ed036633ed8e59c1295445503a8050c4039d70",
+    "new-cold-relaunch": "2c1400e348f29e5b40dce7c6f1036326fea993a425c67cf76548317f498865a4"
+  },
+  "save_file_metadata": {
+    "old-before-upgrade": {
+      "modified_epoch_seconds": 1792274089,
+      "inode": 573716,
+      "bytes": 2140
+    },
+    "new-installed-before-launch": {
+      "modified_epoch_seconds": 1792274089,
+      "inode": 573716,
+      "bytes": 2140
+    },
+    "new-after-launch": {
+      "modified_epoch_seconds": 1792274101,
+      "inode": 573718,
+      "bytes": 2239
+    },
+    "new-cold-relaunch": {
+      "modified_epoch_seconds": 1792274111,
+      "inode": 573717,
+      "bytes": 2239
+    }
+  },
+  "coordinator_visual_review": "new-cold-relaunch foreground inspected; paused boosted board and 8 troops retained",
+  "limits": [
+    "Prototype with two encounters, not a complete campaign",
+    "Known sole staged-backup write failure fix is pending0.2.1 and not covered by this APK",
+    "No actual Android disk-full/flush-fault durability test",
+    "No physical Samsung or phone performance acceptance"
+  ]
+}
