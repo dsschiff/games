@@ -1,5 +1,11 @@
 # Gear Bastion worklog
 
+## 2026-10-17 17:58 America/Indianapolis — 0.2.1 signed build
+
+After the coordinator's Android all-clear, the shared pipeline built clean committed source **7d67a1e**, with unchanged source fingerprints and no dirty project files. Signed official-template **0.2.1/code 3**, target 36/min 24, arm64-v8a+x86_64, no permissions. APK: `.artifacts/gear-bastion/20261017T215725197087Z/gear-bastion.apk`; manifest beside it. Size **57,099,799 bytes**; SHA-256 `f740422926578e6cc5fd340c5a17c698badbd1f43dc07b2054dfd46c04978612`. Only completion documentation changes follow this build.
+
+The coordinator reports the immutable 0.1/code1→0.2/code2 upgrade passed 21 critical saved-state paths, schema migration, subsequent saves and cold relaunch. That result does not cover the 0.2.1 staged-backup amendment. No adb or 0.2.1 Android launch was performed here. Next gate remains the coordinator's narrow review before campaign authorization.
+
 ## 2026-10-17 — 0.2.1 narrow staged-backup amendment
 
 Root's independent d13387b probe found that a sole valid `.bak.tmp` was read successfully, then overwritten in place during backup staging. A truncating write failure could destroy the last known good candidate. The fix reuses/renames that staged file when its bytes exactly equal the already-validated prior source; no rewrite occurs. If rename fails, the staged bytes remain untouched. If a later new-save write/rename fails, the prior source is already protected in `.bak`.
@@ -8,7 +14,7 @@ Added ten focused checks: normal staged-only load, avoidance of an injected dest
 
 The coordinator's independent nearby-seed probe also narrows the balance claim: A wins only the curated seed 1701 and loses 1700 at 61.07s / 1702 at 51.67s. B and the live-refit strategy win all three; both single-role builds lose all three. This is independently reported d13387b evidence, read from coordinator `.artifacts/coordinator-checks.json`; no balance adjustment was made here. A is not a robust second strategy, and the campaign gate remains held.
 
-Shared validation passed **107 rule checks** and **51 headless input checks / 356 pointer events**, with both completion markers and unchanged source fingerprints. Evidence: `.artifacts/gear-bastion/20261017T215550440176Z/manifest.json`; only completion metadata was updated afterward. Prior rendered UI evidence belongs to 0.2.0; this amendment changes no drawing/input. Android exports and adb remain idle under the coordinator's hold while the immutable 0.2.0 upgrade is tested. No 0.2.1 APK or Android acceptance is claimed.
+Shared validation passed **107 rule checks** and **51 headless input checks / 356 pointer events**, with both completion markers and unchanged source fingerprints. Evidence: `.artifacts/gear-bastion/20261017T215550440176Z/manifest.json`; only completion metadata was updated afterward. Prior rendered UI evidence belongs to 0.2.0; this amendment changes no drawing/input. Exports and adb were held during the coordinator's immutable 0.2.0 upgrade test; the later all-clear/build is recorded above. No 0.2.1 Android runtime acceptance is claimed.
 
 ## 2026-10-17 17:46 America/Indianapolis — reviewed fixes and Iron Trial
 

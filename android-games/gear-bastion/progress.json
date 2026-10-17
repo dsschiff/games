@@ -5,7 +5,7 @@
   "version_code": 3,
   "save_schema": 3,
   "branch": "codex/gear-bastion",
-  "updated_at": "2026-10-17T17:56:54-04:00",
+  "updated_at": "2026-10-17T17:58:33-04:00",
   "milestone": "sole_staged_backup_fix",
   "status": "ready_for_independent_narrow_fix_review",
   "full_v1_complete": false,
@@ -60,7 +60,11 @@
     ],
     "independent_fixes_and_trial_review": "pending",
     "changed_code_android_launch_and_lifecycle": "pending",
-    "different_apk_upgrade_0_1_to_0_2": "pending_coordinator_test",
+    "different_apk_upgrade_0_1_to_0_2": {
+      "result": "passed_coordinator_reported",
+      "critical_paths": 21,
+      "covers_current_0_2_1_fix": false
+    },
     "physical_phone_actual_sound_clipboard_and_performance": "pending"
   },
   "trial": {
@@ -147,10 +151,15 @@
       "arm64-v8a",
       "x86_64"
     ],
-    "result": "deferred_under_coordinator_android_hold",
+    "result": "built_and_signature_verified",
     "version": "0.2.1",
     "version_code": 3,
-    "apk": null
+    "apk": ".artifacts/gear-bastion/20261017T215725197087Z/gear-bastion.apk",
+    "manifest": ".artifacts/gear-bastion/20261017T215725197087Z/manifest.json",
+    "bytes": 57099799,
+    "sha256": "f740422926578e6cc5fd340c5a17c698badbd1f43dc07b2054dfd46c04978612",
+    "source_commit": "7d67a1ef3ffaf88ef364e23786ea35d1dcce3856",
+    "permissions": []
   },
   "evidence": {
     "rendered_report": "android-games/gear-bastion/.artifacts/review-playthrough/report.json",
@@ -162,7 +171,7 @@
     "previous_0_2_0_apk_sha256": "dd3bb862182cd213d9947913a99e4b232ba16c4098a83219e97de870d1392f7a",
     "coordinator_nearby_seed_probe": "C:/projects/active/_worktrees/games-android-portfolio-20261017/android-games/gear-bastion/.artifacts/coordinator-checks.json"
   },
-  "next_action": "Coordinator independently reviews the staged-backup amendment and nearby-seed strategy fragility. No export/adb until all-clear; no campaign expansion.",
+  "next_action": "Coordinator independently reviews the narrow staged-backup fix before authorizing campaign work. Current 0.2.1 Android runtime acceptance remains pending.",
   "remaining": [
     "independent fixes/trial gate",
     "three-region 30-60-minute campaign, strategic unlocks and distinct roles",
