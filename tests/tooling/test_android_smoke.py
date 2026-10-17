@@ -29,5 +29,51 @@ class DisplayMappingTests(unittest.TestCase):
         self.assertEqual(mapped["duration_ms"], 1200)
 
 
+class SavedStateExpectationTests(unittest.TestCase):
+    def setUp(self):
+        self.saved = {"version": 2, "state": {"phase": "battle", "time": 6.1,
+                                             "board": [{"id": 2, "x": 1}]}}
+
+    def test_nested_dictionary_and_array_equality(self):
+        result = smoke.evaluate_expectations(self.saved, {"expected_save": {
+            "state.phase": "battle", "state.board.0.id": 2, "state.board.0.x": 1}})
+        self.assertTrue(result["checks"]["expected_saved_state_after_input"])
+        self.assertEqual(result["exact_fields"], 3)
+
+    def test_valid_numeric_bounds(self):
+        result = smoke.evaluate_expectations(self.saved, {"expected_numeric": {"state.time": {"min": 5, "max": 8}}})
+        self.assertTrue(result["checks"]["expected_numeric_state_after_input"])
+
+    def test_missing_nested_field_fails(self):
+        result = smoke.evaluate_expectations(self.saved, {"expected_save": {"state.board.8.x": 1}})
+        self.assertFalse(result["checks"]["expected_saved_state_after_input"])
+        self.assertTrue(result["failures"])
+
+    def test_wrong_container_and_numeric_type_fail(self):
+        result = smoke.evaluate_expectations(self.saved, {
+            "expected_save": {"state.phase.value": "battle"},
+            "expected_numeric": {"state.phase": {"min": 0}}})
+        self.assertFalse(result["checks"]["expected_saved_state_after_input"])
+        self.assertFalse(result["checks"]["expected_numeric_state_after_input"])
+
+    def test_out_of_bounds_or_invalid_bounds_fail(self):
+        for bounds in ({"min": 8}, {"max": 5}, {"min": "5"}, {}, {"max": float("inf")}):
+            with self.subTest(bounds=bounds):
+                result = smoke.evaluate_expectations(self.saved, {"expected_numeric": {"state.time": bounds}})
+                self.assertFalse(result["checks"]["expected_numeric_state_after_input"])
+
+    def test_equality_mismatch_and_boolean_number_fail(self):
+        for path, expected in (("version", 3), ("state.board.0.x", True)):
+            with self.subTest(path=path, expected=expected):
+                result = smoke.evaluate_expectations(self.saved, {"expected_save": {path: expected}})
+                self.assertFalse(result["checks"]["expected_saved_state_after_input"])
+
+    def test_absent_expectations_do_not_add_success_checks(self):
+        result = smoke.evaluate_expectations(self.saved, {})
+        self.assertEqual(result["checks"], {})
+        self.assertEqual(result["exact_fields"], 0)
+        self.assertEqual(result["numeric_fields"], 0)
+
+
 if __name__ == "__main__":
     unittest.main()

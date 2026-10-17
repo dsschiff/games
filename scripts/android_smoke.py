@@ -10,12 +10,67 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
+import math
 from pathlib import Path
 import re
 import subprocess
 import time
 
 from portfolio import REPO_ROOT, artifact_record, read_config, tool_environment
+
+
+def lookup_path(value, path: str):
+    """Read explicit dictionary keys and nonnegative list indices in a dot path."""
+    if not isinstance(path, str) or not path or any(not part for part in path.split(".")):
+        raise ValueError(f"Invalid expectation path: {path!r}")
+    current = value
+    for part in path.split("."):
+        if isinstance(current, dict) and part in current:
+            current = current[part]
+        elif isinstance(current, list) and part.isdecimal() and int(part) < len(current):
+            current = current[int(part)]
+        else:
+            raise ValueError(f"Missing field or wrong container at {path!r}")
+    return current
+
+
+def evaluate_expectations(saved_state: dict, action_spec: dict) -> dict:
+    checks = {}
+    failures = []
+    exact = action_spec.get("expected_save", {})
+    numeric = action_spec.get("expected_numeric", {})
+    if exact:
+        matched = True
+        for path, expected in exact.items():
+            try:
+                actual = lookup_path(saved_state, path)
+                valid = actual == expected and (not isinstance(actual, bool) and not isinstance(expected, bool)
+                                                or type(actual) is type(expected))
+            except ValueError:
+                valid = False
+            if not valid:
+                failures.append(f"Exact saved-state expectation failed: {path}")
+                matched = False
+        checks["expected_saved_state_after_input"] = matched
+    if numeric:
+        matched = True
+        for path, bounds in numeric.items():
+            try:
+                actual = lookup_path(saved_state, path)
+                valid = isinstance(actual, (int, float)) and not isinstance(actual, bool) and math.isfinite(actual)
+                valid = valid and isinstance(bounds, dict) and bool(bounds) and set(bounds) <= {"min", "max"}
+                if valid:
+                    valid = all(isinstance(bound, (int, float)) and not isinstance(bound, bool)
+                                and math.isfinite(bound) for bound in bounds.values())
+                if valid:
+                    valid = bounds.get("min", -math.inf) <= actual <= bounds.get("max", math.inf)
+            except (ValueError, TypeError, OverflowError):
+                valid = False
+            if not valid:
+                failures.append(f"Numeric saved-state expectation failed: {path}")
+                matched = False
+        checks["expected_numeric_state_after_input"] = matched
+    return {"checks": checks, "exact_fields": len(exact), "numeric_fields": len(numeric), "failures": failures}
 
 
 def scale_action(action: dict, reference: tuple[int, int], target: tuple[int, int],
@@ -138,11 +193,9 @@ def main() -> int:
         saved = snapshot("background")
         saved_state = json.loads(saved)
         if isinstance(action_spec, dict):
-            report["checks"]["expected_saved_state_after_input"] = all(
-                saved_state.get(key) == value for key, value in action_spec.get("expected_save", {}).items())
-            report["checks"]["expected_numeric_state_after_input"] = all(
-                key in saved_state and bounds.get("min", float("-inf")) <= saved_state[key] <= bounds.get("max", float("inf"))
-                for key, bounds in action_spec.get("expected_numeric", {}).items())
+            expectations = evaluate_expectations(saved_state, action_spec)
+            report["checks"].update(expectations.pop("checks"))
+            report["expectation_coverage"] = expectations
         run("shell", "am", "start", "-W", "-n", activity)
         time.sleep(1)
         report["checks"]["background_resume_process_alive"] = bool(run("shell", "pidof", args.package))

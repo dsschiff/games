@@ -106,3 +106,33 @@ To stop only this emulator:
 ```powershell
 & "$env:ANDROID_HOME/platform-tools/adb.exe" -s emulator-5554 emu kill
 ```
+
+## Gear Bastion prototype fixture
+
+`smoke-actions/gear-bastion-pixel6.json` uses the game's 600x1066 viewport.
+It requires fresh data in the test emulator: it moves the initial guard away
+from the core, reconnects it, moves a drive beside it, starts defense, waits six
+real seconds and pauses. Final expectations check the saved battle phase,
+guard/drive piece IDs and board positions, elapsed simulation time, troops
+produced and wall bounds. Exact and numeric expectations accept dot paths such
+as `state.board.1.x` and `state.time`; numeric list segments select array indices.
+Missing fields, wrong types and violated bounds fail. A corresponding check is
+omitted when no expectations were supplied, with field counts in the manifest.
+
+The optional `checkpoint` labels are metadata only in the general smoke runner.
+Intermediate disconnection/reconnection/rate assertions were separately run
+against app-written saves and retained in the independent checkpoint report;
+they are distinct from the repeatable fixture's final-state assertions.
+
+After installing the prototype once, clear **only its emulator test data** before
+each replay, then use its exact independently built APK:
+
+```powershell
+& 'C:/projects/active/.game-toolchain/android-sdk/platform-tools/adb.exe' -s emulator-5554 shell pm clear com.dsschiff.gearbastion
+python scripts/android_smoke.py --apk .artifacts/gear-bastion/independent-d0e7cce/gear-bastion.apk --package com.dsschiff.gearbastion --save files/bastion-save.json --actions scripts/smoke-actions/gear-bastion-pixel6.json --serial emulator-5554 --display-size 1080x2520
+```
+
+Repeat with `--display-size 1968x2184` for the inner resolution approximation.
+Do not clear data on a physical phone. These runs preserve save bytes across a
+same-APK reinstall; future-version migration and real fold transitions require
+separate checks.
