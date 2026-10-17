@@ -3,13 +3,14 @@
   "reviewed_date": "2026-10-17",
   "milestone": "M0 reference research",
   "status": "six_interpretation_reviewed_prototype_briefs_final_fidelity_pending",
-  "method": "Exact public video URLs, direct browser visual observations at recorded media times, official listing identity checks, sampled sustained gameplay comparisons. No original apps installed; no third-party footage copied into Git.",
+  "method": "Exact public video URLs, official listing identity checks, approximate browser scene observations and four bounded source-passage follow-ups. Original table times are player seek/read positions, not certified image timestamps. No original apps installed; no third-party footage copied into Git.",
   "observation_limits": [
     "All gameplay recordings were sampled; none was exhaustively observed frame by frame.",
     "Videos depict controls and state changes but do not prove playable input causality.",
     "Audio was muted; no audio-fidelity claims.",
     "Working names, art, rules and depth additions are original design proposals, not claims of observed mechanics.",
-    "No final implementation fidelity, physical-phone performance or fun certification is implied by these briefs."
+    "No final implementation fidelity, physical-phone performance or fun certification is implied by these briefs.",
+    "Immediate post-seek screenshots may retain an earlier decoded frame or appear black even after currentTime updates; original millisecond annotations are seek/read positions. Settled follow-up checkpoints supersede conflicting interpretations."
   ],
   "games": [
     {
@@ -20,7 +21,7 @@
       "package_id": "com.iogame.gearworld",
       "selected_loop": "Place powered gears and troop generators, start/observe wall defense, improve network and army.",
       "creative_status": "observed_official_store_linked_promotion",
-      "core_status": "observed_early_and_late_samples",
+      "core_status": "observed_early_late_samples_and_bounded_preparation_to_battle_sequence",
       "prototype_scope": "Powered placement, visible production, wall defense, prep/battle phase, win/loss/retry.",
       "sources": [
         {
@@ -52,9 +53,17 @@
       ],
       "unresolved": [
         "Exact gear/merge/negative-modifier/multiple-core equations",
-        "Full continuous early and late input passage",
-        "Final independent footage review"
-      ]
+        "Exact drag-contact frame and before/after production formula",
+        "Final independent settled-footage review"
+      ],
+      "bounded_sequence": {
+        "source_id": "G3",
+        "interval_seconds": [
+          25,
+          43
+        ],
+        "result": "Cream 1 and tutorial tray/hand precede installed blue 2; next battle displays generator 0.2/s and emitted troop. Exact drag contact and speed equation unresolved."
+      }
     },
     {
       "reference": "Hero Wars",
@@ -112,7 +121,7 @@
       "package_id": "com.multicastgames.butcher",
       "selected_loop": "Move, visibly hook/pull, defeat and consume, grow in size/power, reach stronger gated encounter.",
       "creative_status": "observed_official_developer_promotion_paid_placement_unverified",
-      "core_status": "observed_exploration_combat_healing_samples_hook_passage_pending",
+      "core_status": "bounded_melee_encounter_checked_hook_reel_permanent_growth_unresolved",
       "prototype_scope": "Movement, simple visible hook/pull, consume, conspicuous growth and stronger gated target. Manual aim/dodge/grapple and trait systems deferred.",
       "sources": [
         {
@@ -141,11 +150,19 @@
         }
       ],
       "unresolved": [
-        "Uninterrupted hook/reel/consume passage with input UI",
+        "Clearly visible hook/reel/consume and conspicuous permanent growth passage with input cues",
         "Exact auto-target/manual input and growth equation",
-        "Paid-ad provenance not required to block selected official-promotion prototype",
-        "Final independent footage review"
-      ]
+        "Weapon indicator change cannot establish absorbed permanent growth",
+        "Final independent settled-footage review"
+      ],
+      "bounded_sequence": {
+        "source_id": "B4",
+        "interval_seconds": [
+          290,
+          312
+        ],
+        "result": "Movement-stick cue, close combat, depleted target and weapon indicator 1 to 2 observed; no clearly resolved hook launch/reel/consume/permanent growth."
+      }
     },
     {
       "reference": "Kingshot",
@@ -155,7 +172,7 @@
       "package_id": "com.run.tower.defense",
       "selected_loop": "Move avatar, collect battle coins, fund marked pads, build towers and defend enemy road.",
       "creative_status": "observed_exact_third_party_indexed_creative",
-      "core_status": "observed_settlement_task_samples",
+      "core_status": "observed_settlement_samples_and_bounded_promotion_funding_sequence",
       "prototype_scope": "Movement, coin pickup, pad funding, tower fire and wave outcome. Avatar firing/dash/hero death/mount assumptions deferred.",
       "sources": [
         {
@@ -192,10 +209,18 @@
       ],
       "unresolved": [
         "Original advertiser/ad-library corroboration",
-        "Uninterrupted pickup-to-counter-to-build causal cycle",
-        "Exact pad activation input and economy",
-        "Final independent footage review"
-      ]
+        "Exact stand-to-fund versus explicit button input, hold duration and pickup radius",
+        "Intermediate pad numeral obscured; complete debit ledger unverified",
+        "Final independent settled-footage review"
+      ],
+      "bounded_sequence": {
+        "source_id": "K2",
+        "interval_seconds": [
+          0,
+          14
+        ],
+        "result": "Wallet 0 to 2 to 5, avatar occupies 5-cost pad with wallet lower, then firing tower replaces pad; hidden intermediate cost and concurrent pickups prevent exact debit proof."
+      }
     },
     {
       "reference": "Top Force",
@@ -254,7 +279,7 @@
       "package_id": "com.avenue.zombie.gp",
       "selected_loop": "Steer forward-shooting squad along a road, shoot numbered threats, recruit strength and defeat a large end threat.",
       "creative_status": "observed_exact_user_recorded_social_ad_with_last_human_overlay",
-      "core_status": "observed_road_shooting_and_shelter_progression_samples",
+      "core_status": "observed_road_shelter_samples_and_bounded_side_target_harmful_gate_sequence",
       "prototype_scope": "Lateral steering, forward bullets, changing numbered obstacle/recruit outcome, zombie pressure and final large threat.",
       "comparison_only": {
         "name": "Last Z: Survival Shooter",
@@ -309,10 +334,19 @@
       ],
       "unresolved": [
         "Original social-ad advertiser/library corroboration",
-        "Uninterrupted input/gate/recruit causality and exact arithmetic",
+        "Positive recruit event, exact gate arithmetic and tested steering input",
+        "Exact near-gate numeral obscured by projectile glow",
         "Giant statue may be ad-only and must not be copied",
-        "Final independent footage review"
-      ]
+        "Final independent settled-footage review"
+      ],
+      "bounded_sequence": {
+        "source_id": "L2",
+        "interval_seconds": [
+          32,
+          38.2
+        ],
+        "result": "Left side target counter 5283 to 1600 during attack; squad shifts right, crosses red gate and shrinks to three visible troops. Earlier +1 recruitment interpretation withdrawn."
+      }
     }
   ],
   "review_records": [
@@ -320,5 +354,12 @@
     "../reviews/hero-reference-astra.md",
     "../reviews/three-action-references-astra.md",
     "../reviews/last-human-reference-astra.md"
-  ]
+  ],
+  "bounded_followup": {
+    "date": "2026-10-17",
+    "source_passages": 4,
+    "observation_mode": "Playback plus paused seeking/frame stepping within contiguous source passages, using separate settled screenshot calls; no exhaustive frame-by-frame viewing and no tested game input.",
+    "scope": "No new source discovery, app installation, media downloads or paid access.",
+    "result": "Kingshot funding sequence and Last Human side-target/harmful-crossing sequence narrowed gaps; Butcher hook/growth remains unresolved; Gear preparation change followed by troop production corroborated."
+  }
 }

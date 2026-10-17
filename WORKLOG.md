@@ -47,3 +47,10 @@
 - Both final geometry smokes pass nested saved-state assertions, offline launch, background/resume and same-APK retention. One intervening adb-offline run failed and is preserved; the cause remains unconfirmed. Device recovered and one bounded retry passed. Emulator restored to 1080x2400. Coordinator inspected the inner-screen actual rendered game capture.
 - These results cover the immutable tutorial prototype only. Builder's newer save/dispatch/challenge edits need a fresh committed checkpoint and re-review. Next APK should be version0.2.0/code2 for a real different-APK upgrade from the input-created version0.1.0 save. Physical Samsung testing remains pending.
 
+### Bounded reference follow-up and timing correction
+
+- A four-passage follow-up found that immediate screenshots after video seeking can retain stale decoded frames despite changed player time. All six briefs and index now qualify original millisecond annotations as seek/read positions, not certified frame timestamps. Separately settled checkpoints take precedence where interpretations conflict.
+- Gear's preparation-piece change followed by Battle, a displayed 0.2/s rate and troop output is corroborated; exact merge contact/formula remains unresolved. Kingshot's wallet collection, pad funding and completed firing tower are corroborated, while exact debit is obscured.
+- Last Human's sustained side-target counter reduction and harmful gate crossing are corroborated. The earlier +1/recruit reading is withdrawn: the settled crossing reduces the squad. Positive recruitment and precise arithmetic remain inferred original prototype rules pending observation. Butcher's inspected passage does not isolate hook/reel/consumption/permanent growth, and the brief preserves that open evidence.
+- Gear fix builder remains live. Its rule-level trial reports two equal-cost winning approaches and a connected but inappropriate build that loses; actual input, rendered evidence and an immutable checkpoint are still required before re-review. Shared tooling work now prepares a real different-version APK upgrade verifier; no newer game behavior is claimed verified yet.
+

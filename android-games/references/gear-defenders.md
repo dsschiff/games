@@ -14,7 +14,7 @@ Reviewed 2026-10-17. Candidate original title: **Gear Bastion**. Status: **obser
 
 ## Timestamped observations
 
-Times are media times. Fixed samples were paused and time read from the visible video's DOM; ranges describe moving observations without frame precision.
+**Timestamp correction, bounded follow-up 2026-10-17:** original table times are player seek/read positions, not certified frame timestamps. Browser screenshots immediately after a seek sometimes retained an earlier decoded frame or went black, even after `currentTime` changed. Treat those rows as approximate scene observations. The follow-up below used a separate settled screenshot call after seeking; its checkpoints take precedence where they conflict. No claim of exhaustive continuous watching or tested game input follows from these frames.
 
 | Source/time | Directly observed |
 | --- | --- |
@@ -59,3 +59,9 @@ Review full G3 rather than only samples; preserve a local permitted comparison c
 G5 was sampled at 01:00.425, 03:00.659, 05:00.691 and 05:30.857. At 01:00 the lower board has generators, numeric 1 gears, negative -2 modifiers, more than one gold core-like disk, food 0/46, a purchasable piece tray and **Battle/Refresh** buttons. At 03:00 a “Necro Summon” presentation appears over the same board; production rates include 0.72/s and 0.43/s, a green x1.5 modifier and purple 4. At 05:00 the expanded setup includes 8, x1.5, 1, 2 and -2 pieces, four differently illustrated generators and an upgrade/refresh shop. At 05:30 the upper field is crowded with units and spell effects while lower generators show rates; three wall lanes still divide the same board/defense composition.
 
 This adds direct later-game evidence that powered-board construction and generated-unit defense persist beyond levels 1–2. It also corrects a possible overinterpretation: the interface can emphasize the board/tray between fights, so the prototype should support an explicit preparation phase and start-battle action rather than require constant live rearrangement as a claimed reference fact. The later recording appears sped up and has dense effects; its elapsed battle seconds cannot set our pacing targets. Exact gear arithmetic, multiple-core function and negative-modifier effects remain unverified. G3 and G5 remain sampled recordings, not continuous exhaustive observation or original-app play.
+
+## Bounded sequence follow-up: G3 00:25–00:43
+
+One contiguous source passage was inspected with paused frame stepping and settled screenshot checkpoints, not an instrumented app session. At player position 00:25.977, a cream 1 drive is below the sword generator and troops already exist. At 00:30.977, the preparation tray offers 1/2/1 pieces, a tutorial hand points at a movable cream piece, and a cream 1 remains under the generator. At 00:32.977 that installed drive is blue 2 and the tutorial hand points to Battle. At settled 00:35.977 the blue 2 is still installed and generator label reads 0.2/s. At settled 00:42.977, wave 2/5 is active, a sword troop has emerged beneath the wall, and the same generator still displays 0.2/s.
+
+This corroborates a visible preparation-piece change followed by battle and troop output. It is consistent with merging a purchased 1 into an installed 1, but the exact drag-contact frame and before/after speed formula were not resolved at the available video resolution. Do not certify additive versus multiplicative gearing or manual lane selection from this sequence. The prototype's explicit merge/connect rules remain original, reviewable choices.

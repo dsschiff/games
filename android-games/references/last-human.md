@@ -18,11 +18,13 @@ Last Human is **Last Human: Final Stand**, Iterflor Pte Ltd, Android package **c
 
 ## Timestamped observations
 
+**Timestamp correction, bounded follow-up 2026-10-17:** original table times are player seek/read positions, not certified frame timestamps. Immediate post-seek screenshots can retain an earlier decoded frame. Treat the original rows as approximate scene observations; the settled checkpoints below supersede conflicting interpretations. No game or playable-ad input was executed.
+
 | Source/media time | Direct observation |
 | --- | --- |
 | L2 00:14.381 | Portrait elevated forward view along narrow bridge. Three blue soldiers near bottom fire cyan bullets forward. Dense zombies approach in right lane; negative red gate -48; giant white armored figure/statue with glowing sword dominates left lane and a large 8613 counter. Ad overlay visibly names Last Human. |
 | L2 00:28.372 | Group is larger and shifted left while firing at giant figure, counter now 6034. Right lane continues with zombies and red gate -49; camera keeps forward road and bottom squad visible. |
-| L2 00:37.782 | Larger squad near lower-right passes a red gate; small +1 feedback visible. Statue counter 1600; next gate -23 and large orange enemy farther ahead. |
+| L2 seek/read position 00:37.782 | Earlier immediate-seek image was interpreted as a larger squad with +1 feedback. This interpretation is not reliable: settled follow-up at 00:37–00:38 below shows a red-gate crossing followed by squad reduction. Statue counter 1600 and next red gate/large enemy remain approximate scene observations. |
 | L2 00:48.752 | Explosion at squad/front; giant figure counter 20 and a separate red enemy health bar 495. This fixed frame does not establish victory or defeat. |
 | L3 00:30.794 | Road shooting with a large group of military units around blue-clad lead; “COMPLETE” banner. Same elevated portrait shooter framing as advertised, without the giant statue. |
 | L3 02:00.557 | Player near lower-left shoots at zombies; numbered red obstacle 12 ahead, projectile effects and dismemberment. Shooting/road activity continues beyond first stage. |
@@ -61,3 +63,9 @@ The first prototype should prove lateral squad steering → continuous forward b
 ## Open evidence
 
 Selected ad is accessible and directly observed; original advertiser identity/campaign URL remains to be corroborated. Watch an uninterrupted steering/gate/recruit passage to lock causal input and arithmetic. The sci-fi giant could be ad-only; keep original large threats within the selected visual function while stating this uncertainty. No original app installed; no phone testing performed.
+
+## Bounded sequence follow-up: L2 00:32–00:38
+
+One contiguous source passage was inspected with paused, separately settled screenshots. At player position 00:32.197 the squad is left and cyan bullets strike the large side figure's pedestal; its counter reads **5283**. A red right-lane gate approaches. At 00:37.197 the squad has shifted right toward the near red gate; the side figure's counter is **1600**, and the next farther gate clearly reads **-23**. At 00:38.197 the near gate has passed below the squad; the squad now has three readily visible soldiers, fewer than before crossing, while the side figure still reads **1600** and bullets strike the right-lane horde.
+
+This corroborates **sustained attack on a side target with a falling counter, steering away toward a gate/forward threat, and a harmful gate crossing that reduces the formation**. It supports the side-target-versus-forward-lane attention tradeoff required by the selected creative. It does **not** verify a positive recruit event, +1-per-bullet gate arithmetic, exactly how many soldiers the gate removes, or actual drag input. A gate numeral under bullet glow was not reliably legible and is deliberately not transcribed. The earlier +1/recruit interpretation is withdrawn. Recruit gain remains an open observation task; no substitute Last Z footage is used to close it.

@@ -15,6 +15,8 @@ Reviewed 2026-10-17. Candidate title: **Hearthguard** (`hearthguard`). Status: *
 
 ## Direct observations
 
+**Timestamp correction, bounded follow-up 2026-10-17:** original table times are player seek/read positions, not certified frame timestamps. Immediate post-seek screenshots can retain an earlier decoded frame. Treat those rows as approximate scene observations. The settled checkpoints below take precedence; video sequence evidence is distinct from tested playable input.
+
 | Source/time | Visible content |
 | --- | --- |
 | K2 approximately 00:05–00:15 | Portrait, angled overhead 3D. Small crowned/blue-cloaked figure on grassy ledge, winding lower road, snowy cliff boundaries. Empty dashed pads have coin prices 15/20/25; a crossbow tower fires across the road at a stream of red enemies. Gold drops scatter densely along the road. |
@@ -54,3 +56,9 @@ Prove **avatar movement → nearby coin collection → visible pad cost/funding 
 ## Evidence still open
 
 K2 is an exact accessible creative with product attribution from a third-party snapshot, not a proven original platform ad-library entry. Find an official account/ad-library counterpart if possible. Input and causal economy rules remain inferred; compare the implemented interpretation with the video before claiming fidelity. No audio review, no app install, no physical-phone validation.
+
+## Bounded sequence follow-up: K2 00:00–00:14
+
+The opening was replayed as one contiguous source passage, then inspected with paused checkpoints. At approximately 00:00.7, wallet is 0 and there is an empty 5-cost pad. At settled player position 00:02.817, coins cluster beside the avatar and wallet is 2. At 00:05.071 the wallet is 5, the avatar has moved toward the empty 5-cost pad, and drops remain on the road. At 00:06.198 the avatar occupies that pad, gold particles appear above it and wallet reads 3; the pad's remaining numeral is partly hidden by the avatar. At 00:07.324 a constructed crossbow tower occupies the former pad and fires at the road. By approximately 00:13.8 a second tower is visible near the former 15-cost pad and wallet reads 5.
+
+This supports the temporal sequence **nearby drops and rising wallet → avatar on priced pad with lower wallet → constructed firing tower**. The hidden intermediate pad numeral and simultaneous collection prevent an exact debit ledger; do not claim that the wallet's 5→3 difference is the complete tower price. Build-button versus stand-to-spend input, hold duration, pickup radius and whether these are authentic playable rules remain untested. The principal coin-funded construction gap is substantially narrowed by the visible sequence; original advertiser mapping remains qualified.

@@ -15,6 +15,8 @@ Reviewed 2026-10-17. Candidate title: **Hook and Hunger** (`hook-and-hunger`). S
 
 ## Timestamped observations
 
+**Timestamp correction, bounded follow-up 2026-10-17:** original table times are player seek/read positions, not certified frame timestamps. Immediate post-seek screenshots can retain an earlier decoded frame. Treat those rows as approximate scene observations; the settled checkpoints below take precedence. Playback of an uncut source and frame stepping do not establish tested game-input causality.
+
 | Source/time | Observed |
 | --- | --- |
 | B3 00:05.324 | Angled overhead stylized 3D scene: large orange character at bottom, fenced enemy pens, power-marked gates, weapon pedestals with price markers. “Power 100” then “300” gates ahead. |
@@ -28,7 +30,7 @@ Reviewed 2026-10-17. Candidate title: **Hook and Hunger** (`hook-and-hunger`). S
 | B4 05:00.688 | Hero in close combat with health-71 humanoid; hero health 120 and red damage numbers. |
 | B4 05:05.565 | Hero moved away from the encounter, health 91.1; 13-second circular marker near a fence. |
 
-B4 establishes continuous movement/combat/recovery over several minutes, not just a tutorial still. The exact hook shot/reel and absorption formula were **not isolated in these fixed samples**. B1 explicitly describes them; their exact timing, auto-target/manual aim behavior and permanent-stat formula remain unverified. Do not label a melee-only prototype “hook fidelity verified.” No original app installed.
+B4 samples establish repeated movement/combat/recovery across several minutes, not just a tutorial still. The exact hook shot/reel and absorption formula were **not isolated in these fixed samples**. B1 explicitly describes them; their exact timing, auto-target/manual aim behavior and permanent-stat formula remain unverified. Do not label a melee-only prototype “hook fidelity verified.” No original app installed.
 
 ## Comparison decision
 
@@ -60,3 +62,9 @@ Manual aim, dodge, pulling the player toward terrain/heavy targets, tension, exp
 ## Open evidence
 
 Capture a paid mobile creative or playable recording and continuous hook/absorption passage from B4 or another first-hand recording before locking ad fidelity. Current brief authorizes a design prototype based on observed core and Daniel's selected mechanic, not final reference certification. Reviewer must distinguish our added manual aim/dodge/trait systems from verified reference mechanics.
+
+## Bounded sequence follow-up: B4 04:50–05:12
+
+One contiguous encounter passage was inspected using playback and frame stepping. Settled checkpoints at player positions 04:50.852, 05:03.185 and 05:08.185 confirm the same portrait world and movement-stick overlay. At the first, hero health is 206 and the first weapon-slot indicator is 1. At 05:03.185 the hero is in close contact with a humanoid whose red health reads 5, while the hero reads 85.7. At 05:08.185 the camera has followed the hero into other nearby enemies and the first weapon-slot indicator reads 2. Subsequent movement away is visible near 05:12; a thin pale line in some combat frames is insufficient to identify a tether rather than a weapon edge.
+
+**Gap remains open:** this passage did not clearly reveal a launched hook, distinct reel motion, consume animation, permanent stat grant or conspicuous size growth. The changing slot indicator cannot be relabelled as permanent absorbed growth without more evidence. Only the movement-stick cue was clear; manual versus automatic hook control remains unresolved. This bounded pass stops here rather than searching indefinitely. The original developer promotion and Daniel's selected hook/growth intent still support the limited prototype; final hook fidelity is not certified.

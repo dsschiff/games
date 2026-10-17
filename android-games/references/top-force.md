@@ -16,6 +16,8 @@ Reviewed 2026-10-17. Original title: **Frontline Foundry** (`frontline-foundry`)
 
 ## Direct observations
 
+**Timestamp qualification, 2026-10-17:** original table times are browser player seek/read positions, not certified frame timestamps. A later bounded pass on other sources demonstrated that immediate post-seek screenshots can retain an earlier decoded frame. Treat these rows as approximate scene observations unless independently rechecked with a settled frame. No new Top Force segment was inspected in this four-passage follow-up.
+
 | Source/time | Visible behavior |
 | --- | --- |
 | T3 00:02.282 | Portrait angled overhead 3D. Yellow soldier fires at red enemies outside a sandbag perimeter. Green coin-priced square 2 has a four-direction movement cue. Health bar and projectile flashes visible. |

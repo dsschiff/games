@@ -15,6 +15,8 @@ Reviewed 2026-10-17. Candidate title: **Tower Trials** (`tower-trials`). Status:
 
 ## Direct observations
 
+**Timestamp qualification, 2026-10-17:** original table times are browser player seek/read positions, not certified frame timestamps. A later bounded pass on other sources demonstrated that immediate post-seek screenshots can retain an earlier decoded frame. Treat these rows as approximate scene observations unless independently rechecked with a settled frame. This does not invalidate the official creative URL, but millisecond precision must not imply frame accuracy.
+
 | Source/media time | Observed, not inferred |
 | --- | --- |
 | H1 00:00.230 | Flat 2D portrait creative. Left tower has red enemies 5, 2, 3 in separate floors; right tower holds blue hero 3. Caption instructs defeating enemies and growing a tower. |
