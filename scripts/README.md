@@ -251,3 +251,38 @@ linked packets. These two encounter cases do not establish phone performance,
 physical folding behavior, or completion of the game's campaign.
 
 Android smoke fixtures may use {"type":"key","key":"BACK"} for actual Android Back. BACK is the only permitted key; unknown action/key values fail. Home lifecycle transitions remain separate runner actions. Code-version fixtures under smoke-actions specify their required starting campaign state and display geometry; do not substitute a tutorial fixture for campaign update evidence.
+
+Code 4 campaign update uses `gear-bastion-code4-campaign-upgrade.json` from an
+archived fresh `camp_01` ready save. Preserve entire `active_run`, `profile`, and
+`settings` with `android_upgrade.py --preserve-path` for each. Code 4's pinned
+config has no `deployment_seconds`; confirm that it remains absent after the
+code 5 update, where the runtime default is zero. No reset is needed at this
+update boundary.
+
+For code 5, `gear-bastion-code5-campaign-a-ready.json` creates Plan A using the
+ready board at logical y=500. Begin uses native `(882,1821)` at 1080x2400;
+the running board then moves to logical y=660. `gear-bastion-code5-back-live.json`
+requires a running battle and records separate Back pause/map/resume and menu
+checkpoints. Main smoke assertions check final JSON only; compare checkpoint
+saves and inspect screenshots for intermediate transitions. The original
+exploratory sequence is preserved separately and is not the Back assertion
+packet.
+
+`gear-bastion-code5-campaign-a-win-continuation.json` resumes that actual Plan A
+battle from the cold map and waits 200 real seconds in capped ten-second
+actions. It is a continuation, not a fresh complete-board recipe.
+`gear-bastion-code5-disconnected-defeat.json` starts mission 1 from the map after
+the earned clear, leaving its starter guard disconnected. Preserve the loss
+before Retry. From the terminal game view, Retry is `(882,1393)`; require ready,
+30 brass, wall 220, zero time/spend/actors, three starter pieces, and exact
+profile/settings retention. Geometry fixtures `code5-cover-ready` and
+`code5-inner-ready` require this ready save and run respectively with
+`--display-size 1080x2520` and `--display-size 1968x2184`; they move the starter
+guard out and back while retaining the earned clear. These are emulator
+approximations, not physical folding tests.
+
+The immutable code 5 APK passed saved victory/loss assertions but has a confirmed
+terminal redraw finding: the live display can retain its prior battle frame
+after the saved result changes. Data assertions do not accept that terminal UI.
+Keep the original screenshots and the later cold-map-resume terminal screenshot
+separate when reviewing this checkpoint.

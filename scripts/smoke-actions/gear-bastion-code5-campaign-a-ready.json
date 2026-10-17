@@ -1,0 +1,80 @@
+{
+  "reference_display": [
+    1080,
+    2400
+  ],
+  "viewport": [
+    600,
+    1066
+  ],
+  "scope": "Actual code5 PlanA board-creation prefix, starting from map with fresh ready camp01. This prefix was executed and captured as code5-plan-a-ready; later Back evidence uses the separately executed back-live fixture.",
+  "actions": [
+    {
+      "type": "tap",
+      "x": 279,
+      "y": 1961
+    },
+    {
+      "type": "swipe",
+      "x1": 252,
+      "y1": 1501,
+      "x2": 396,
+      "y2": 1501,
+      "duration_ms": 600
+    },
+    {
+      "type": "swipe",
+      "x1": 329,
+      "y1": 2005,
+      "x2": 684,
+      "y2": 1501,
+      "duration_ms": 600
+    },
+    {
+      "type": "tap",
+      "x": 871,
+      "y": 1069
+    },
+    {
+      "type": "swipe",
+      "x1": 117,
+      "y1": 2005,
+      "x2": 396,
+      "y2": 1357,
+      "duration_ms": 600
+    },
+    {
+      "type": "swipe",
+      "x1": 117,
+      "y1": 2005,
+      "x2": 684,
+      "y2": 1357,
+      "duration_ms": 600,
+      "capture": "code5-plan-a-ready"
+    }
+  ],
+  "expected_save": {
+    "version": 4,
+    "active_run.encounter": "camp_01",
+    "active_run.phase": "ready",
+    "active_run.spent": 24,
+    "active_run.gold": 6,
+    "active_run.board.2.x": 1,
+    "active_run.board.2.y": 2,
+    "active_run.board.3.kind": "guard",
+    "active_run.board.3.lane": 2,
+    "active_run.board.4.kind": "drive",
+    "active_run.board.5.kind": "drive",
+    "profile.cleared": []
+  },
+  "expected_numeric": {
+    "active_run.time": {
+      "min": 0,
+      "max": 0
+    },
+    "active_run.wall": {
+      "min": 220,
+      "max": 220
+    }
+  }
+}
