@@ -391,5 +391,15 @@
     "decision pressure including static stage7/8 wins unresolved",
     "independent motion fidelity review pending",
     "new presentation Android and physical phone checks pending"
-  ]
+  ],
+  "source_commit": "c9c301113cf3446529abc6e7ce597409185cdbad",
+  "shared_tests": ".artifacts/gear-bastion/20261017T231835942598Z/manifest.json",
+  "build": {
+    "path": ".artifacts/gear-bastion/20261017T232010721642Z/gear-bastion.apk",
+    "bytes": 57255454,
+    "sha256": "91443384b50bd95d96455848b37185f59626229ddac818c96e9f485b225a9bda"
+  },
+  "build_manifest": ".artifacts/gear-bastion/20261017T232010721642Z/manifest.json",
+  "source_fingerprint": "f1df7eac9f7847f5423e7a79cd3ec31614a766d74f2f79760df2c9bab0ff3830",
+  "source_clean_and_unchanged_during_test_and_build": true
 }

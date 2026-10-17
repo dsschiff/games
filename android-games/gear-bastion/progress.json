@@ -5,7 +5,7 @@
   "version_code": 5,
   "save_schema": 4,
   "branch": "codex/gear-bastion",
-  "updated_at": "2026-10-17T19:18:11-04:00",
+  "updated_at": "2026-10-17T19:21:40-04:00",
   "milestone": "campaign_visual_checkpoint",
   "status": "ready_for_independent_fidelity_review_balance_and_android_pending",
   "full_v1_complete": false,
@@ -27,7 +27,7 @@
       "current presentation Android lifecycle and update",
       "physical phone and performance"
     ],
-    "build": "not_yet_exported_new_presentation",
+    "build": "built_official_templates_after_hold_cleared",
     "replay_actual_input_clears": 3,
     "nearby_seed_wins": 54,
     "nearby_seed_cases": 54,
@@ -225,11 +225,21 @@
         256
       ]
     },
-    "physical_phone": "pending"
+    "physical_phone": "pending",
+    "shared_test_manifest": ".artifacts/gear-bastion/20261017T231835942598Z/manifest.json",
+    "source_unchanged_during_test_and_build": true
   },
   "build": {
-    "result": "not_exported",
+    "result": "built_and_signature_verified",
     "version": "0.3.1",
-    "version_code": 5
+    "version_code": 5,
+    "source_commit": "c9c301113cf3446529abc6e7ce597409185cdbad",
+    "manifest": ".artifacts/gear-bastion/20261017T232010721642Z/manifest.json",
+    "apk": ".artifacts/gear-bastion/20261017T232010721642Z/gear-bastion.apk",
+    "sha256": "91443384b50bd95d96455848b37185f59626229ddac818c96e9f485b225a9bda",
+    "bytes": 57255454,
+    "package": "com.dsschiff.gearbastion",
+    "permissions": [],
+    "current_android_verification": "pending"
   }
 }
