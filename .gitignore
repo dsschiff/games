@@ -1,0 +1,19 @@
+# Local development, signing, references, and delivery artifacts
+.godot/
+**/.godot/
+**/export_credentials.cfg
+*.apk
+*.aab
+*.keystore
+*.jks
+*.pck
+*.tpz
+.local/
+.artifacts/
+.references/
+builds/
+**/builds/
+__pycache__/
+*.pyc
+.pytest_cache/
+

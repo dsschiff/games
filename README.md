@@ -7,3 +7,7 @@ GitHub Pages serves `main:/docs` at https://dsschiff.github.io/games/. The site 
 ## Game ideas
 
 - [Mobile gameplay references](ideas/mobile-gameplay-references.md): Gear Defenders, Butcher Hero, Top Force, Kingshot, Last Human (Last Z-like), and Hero Wars. Build versions that deliver the advertised gameplay, or preserve the core gameplay when the ads represent it accurately.
+
+## Personal Android development
+
+[Six standalone Android games](android-games/README.md) are being built in this repository. [The goal](GOAL.md), [roadmap](ROADMAP.md), and [worklog](WORKLOG.md) track the staged implementation and its verification. Game source is separate from the existing website in `docs/`.
