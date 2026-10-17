@@ -1,6 +1,6 @@
 # Gear Defenders reference and original game brief
 
-Reviewed 2026-10-17. Candidate original title: **Clockwork Bastion**. Status: **observed store-linked promotional creative and sampled sustained gameplay; ready for independent interpretation review**. This is a selected representative creative, not a claim to identify the precise ad Daniel previously saw.
+Reviewed 2026-10-17. Candidate original title: **Gear Bastion**. Status: **observed store-linked promotional creative and sampled sustained gameplay; ready for independent interpretation review**. This is a selected representative creative, not a claim to identify the precise ad Daniel previously saw.
 
 ## Exact sources
 
@@ -10,6 +10,7 @@ Reviewed 2026-10-17. Candidate original title: **Clockwork Bastion**. Status: **
 | G2 | https://www.youtube.com/watch?v=S-EyqmFMw_0 | Store-linked 18.901-second promotional creative, title “Gear Defenders,” unlisted upload by “Business Simulation.” Official provenance is the store link, not the channel name. Watched in browser, sound muted. |
 | G3 | https://www.youtube.com/watch?v=EKsNmmKn7GM | Usman's Gaming, “Gameplay Walkthrough Part 1 - Levels 1 & 2,” 2026-01-04; duration 8:32.961. Player-recorded sustained core reference. Sampled opening, middle of level 1 and level 2; not an exhaustive playthrough. |
 | G4 | https://www.youtube.com/watch?v=8XuHy6hyDPk | Additional candidate walkthrough by Prohan Gamer; discovered but not visually reviewed. Do not use for observed claims. |
+| G5 | https://www.youtube.com/watch?v=aMGkye6yZ7g | Rong, “Gear Defenders: Nightmare Lv110,” 5:50.021. Later-game recording directly sampled after initial prototype review; see addendum below. |
 
 ## Timestamped observations
 
@@ -51,4 +52,10 @@ Repeated action: inspect approaching threats, drag gear/generator pieces into a 
 
 ## Remaining reference work
 
-Review full G3 rather than only samples; preserve a local permitted comparison clip under ignored `.references/` through coordinator; inspect one late-level recording before claiming late-game fidelity. Audio was muted; original audio should be created and tested rather than described as matched.
+Review full G3 rather than only samples; preserve a local permitted comparison clip under ignored `.references/` through coordinator. Audio was muted; original audio should be created and tested rather than described as matched.
+
+## Later-game addendum, 2026-10-17
+
+G5 was sampled at 01:00.425, 03:00.659, 05:00.691 and 05:30.857. At 01:00 the lower board has generators, numeric 1 gears, negative -2 modifiers, more than one gold core-like disk, food 0/46, a purchasable piece tray and **Battle/Refresh** buttons. At 03:00 a “Necro Summon” presentation appears over the same board; production rates include 0.72/s and 0.43/s, a green x1.5 modifier and purple 4. At 05:00 the expanded setup includes 8, x1.5, 1, 2 and -2 pieces, four differently illustrated generators and an upgrade/refresh shop. At 05:30 the upper field is crowded with units and spell effects while lower generators show rates; three wall lanes still divide the same board/defense composition.
+
+This adds direct later-game evidence that powered-board construction and generated-unit defense persist beyond levels 1–2. It also corrects a possible overinterpretation: the interface can emphasize the board/tray between fights, so the prototype should support an explicit preparation phase and start-battle action rather than require constant live rearrangement as a claimed reference fact. The later recording appears sped up and has dense effects; its elapsed battle seconds cannot set our pacing targets. Exact gear arithmetic, multiple-core function and negative-modifier effects remain unverified. G3 and G5 remain sampled recordings, not continuous exhaustive observation or original-app play.

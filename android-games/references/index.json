@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "reviewed_date": "2026-10-17",
+  "milestone": "M0 reference research",
+  "status": "six_briefs_written_independent_final_review_pending",
+  "method": "Exact public video URLs, direct browser visual observations at recorded media times, official listing identity checks, sampled sustained gameplay comparisons. No original apps installed; no third-party footage copied into Git.",
+  "observation_limits": [
+    "All gameplay recordings were sampled; none was exhaustively observed frame by frame.",
+    "Videos depict controls and state changes but do not prove playable input causality.",
+    "Audio was muted; no audio-fidelity claims.",
+    "Working names, art, rules and depth additions are original design proposals, not claims of observed mechanics.",
+    "No final implementation fidelity, physical-phone performance or fun certification is implied by these briefs."
+  ],
+  "games": [
+    {
+      "reference": "Gear Defenders",
+      "original_title": "Gear Bastion",
+      "game_id": "gear-bastion",
+      "brief": "gear-defenders.md",
+      "package_id": "com.iogame.gearworld",
+      "selected_loop": "Place powered gears and troop generators, start/observe wall defense, improve network and army.",
+      "creative_status": "observed_official_store_linked_promotion",
+      "core_status": "observed_early_and_late_samples",
+      "prototype_scope": "Powered placement, visible production, wall defense, prep/battle phase, win/loss/retry.",
+      "sources": [
+        {"id":"G1","role":"official_identity","url":"https://play.google.com/store/apps/details?id=com.iogame.gearworld"},
+        {"id":"G2","role":"selected_creative","url":"https://www.youtube.com/watch?v=S-EyqmFMw_0","observed":true,"duration_seconds":18.901},
+        {"id":"G3","role":"early_core","url":"https://www.youtube.com/watch?v=EKsNmmKn7GM","observed":true,"duration_seconds":512.961},
+        {"id":"G5","role":"late_core","url":"https://www.youtube.com/watch?v=aMGkye6yZ7g","observed":true,"duration_seconds":350.021}
+      ],
+      "unresolved": ["Exact gear/merge/negative-modifier/multiple-core equations", "Full continuous early and late input passage", "Final independent footage review"]
+    },
+    {
+      "reference": "Hero Wars",
+      "original_title": "Tower Trials",
+      "game_id": "tower-trials",
+      "brief": "hero-wars.md",
+      "package_id": "com.nexters.herowars",
+      "selected_loop": "Choose numbered tower rooms, resolve brief fights, gain power and unlock a route.",
+      "creative_status": "observed_official_verified_page_ad",
+      "core_status": "observed_party_rpg_and_roster_samples",
+      "prototype_scope": "Room selection, explicit deterministic power rule, tower progression, win/loss/undo/retry.",
+      "sources": [
+        {"id":"H1","role":"selected_creative","url":"https://www.facebook.com/herowarsalliance/videos/3547563985326593/","observed":true,"duration_seconds":18.005},
+        {"id":"H3","role":"sustained_core","url":"https://www.youtube.com/watch?v=jH6xAF_TYV4","observed":true,"duration_seconds":745.061},
+        {"id":"H4","role":"official_core_help","url":"https://support-hwa.nexters.com/hc/en-us/articles/23898228203666-Game-Basics"},
+        {"id":"H5","role":"official_campaign_help","url":"https://support-hwa.nexters.com/hc/en-us/articles/13341501847314-Campaign"},
+        {"id":"H6","role":"official_identity","url":"https://play.google.com/store/apps/details?id=com.nexters.herowars"}
+      ],
+      "unresolved": ["Exact arithmetic is inferred from number changes", "Ad animation is not a tested playable", "Current tower side modes not comprehensively audited", "Final independent footage review"]
+    },
+    {
+      "reference": "Butcher Hero",
+      "original_title": "Hook and Hunger",
+      "game_id": "hook-and-hunger",
+      "brief": "butcher-hero.md",
+      "package_id": "com.multicastgames.butcher",
+      "selected_loop": "Move, visibly hook/pull, defeat and consume, grow in size/power, reach stronger gated encounter.",
+      "creative_status": "observed_official_developer_promotion_paid_placement_unverified",
+      "core_status": "observed_exploration_combat_healing_samples_hook_passage_pending",
+      "prototype_scope": "Movement, simple visible hook/pull, consume, conspicuous growth and stronger gated target. Manual aim/dodge/grapple and trait systems deferred.",
+      "sources": [
+        {"id":"B1","role":"official_identity_and_hook_description","url":"https://play.google.com/store/apps/details?id=com.multicastgames.butcher"},
+        {"id":"B2","role":"official_promotion_provenance","url":"https://multicastgames.com/"},
+        {"id":"B3","role":"selected_promotion","url":"https://multicastgames.com/assets/videos/butcher-hero-gameplay.75fb997234.mp4","observed":true,"duration_seconds":35.967},
+        {"id":"B4","role":"sustained_core","url":"https://www.youtube.com/watch?v=AxpwgYdgf0U","observed":true,"duration_seconds":709.141}
+      ],
+      "unresolved": ["Uninterrupted hook/reel/consume passage with input UI", "Exact auto-target/manual input and growth equation", "Paid-ad provenance not required to block selected official-promotion prototype", "Final independent footage review"]
+    },
+    {
+      "reference": "Kingshot",
+      "original_title": "Hearthguard",
+      "game_id": "hearthguard",
+      "brief": "kingshot.md",
+      "package_id": "com.run.tower.defense",
+      "selected_loop": "Move avatar, collect battle coins, fund marked pads, build towers and defend enemy road.",
+      "creative_status": "observed_exact_third_party_indexed_creative",
+      "core_status": "observed_settlement_task_samples",
+      "prototype_scope": "Movement, coin pickup, pad funding, tower fire and wave outcome. Avatar firing/dash/hero death/mount assumptions deferred.",
+      "sources": [
+        {"id":"K1","role":"official_identity","url":"https://play.google.com/store/apps/details?id=com.run.tower.defense"},
+        {"id":"K2","role":"selected_creative","url":"https://cdn.admapix.com/f/aHR0cHM6Ly9hZGluc2lnaHRzLTEyNTg4OTI2MjQub3NzLWFjY2VsZXJhdGUuYWxpeXVuY3MuY29tL3ZpZGVvc192My8yMDI2LzEvMS94X3ZfZTM4Yzg3ZjAxZjZjZTQ0ODZiZGQ0ZTk2Mjc3MzM4NDgubXA0.mp4","observed":true,"duration_seconds":56.341},
+        {"id":"K3","role":"frozen_attribution_record","url":"https://pub-adf48a42024e40fea45150c01a16dbd0.r2.dev/blog/evidence/8202670970cbbfb7cfd9fcd657aad031d61660d503389d0e4fc0df648af6ae55.json","record_id":"9aef093bdca67ee24f4a02724d5671ea","video_fingerprint":"501bf3370d8306042968ab765763d47b"},
+        {"id":"K4","role":"sustained_core","url":"https://www.youtube.com/watch?v=Y2EgJ-0yv3c","observed":true,"duration_seconds":1345.383},
+        {"id":"K5","role":"first_hand_hands_on_context","url":"https://www.pocketgamer.com/kingshot/hands-on/"}
+      ],
+      "unresolved": ["Original advertiser/ad-library corroboration", "Uninterrupted pickup-to-counter-to-build causal cycle", "Exact pad activation input and economy", "Final independent footage review"]
+    },
+    {
+      "reference": "Top Force",
+      "original_title": "Frontline Foundry",
+      "game_id": "frontline-foundry",
+      "brief": "top-force.md",
+      "package_id": "com.project.idle.cd",
+      "selected_loop": "Direct commander shoots near base, equipment queue creates reinforcements, base expands to vehicle support.",
+      "creative_status": "observed_exact_indexed_creative_with_top_general_endcard_mapping_qualified",
+      "core_status": "observed_early_and_later_base_progression_samples",
+      "prototype_scope": "One commander, one front, equipment queue, visible reinforcements and one vehicle transition. Multiple fronts/ammo/carts/medics deferred.",
+      "sources": [
+        {"id":"T1","role":"official_identity","url":"https://play.google.com/store/apps/details?id=com.project.idle.cd"},
+        {"id":"T2","role":"creative_attribution_discovery","url":"https://www.creativescope.ai/blog/top-force-ads-july-august-2026"},
+        {"id":"T3","role":"selected_creative","url":"https://shuhang-resouce.oss-ap-southeast-1.aliyuncs.com/GoogleVideoFile/b85f6ba2af49ac43bbc93be3c4fa8c48.webm","observed":true,"duration_seconds":28.963},
+        {"id":"T4","role":"early_core","url":"https://www.youtube.com/watch?v=Emo7e_uDwbA","observed":true,"duration_seconds":889.241},
+        {"id":"T5","role":"later_core","url":"https://www.youtube.com/watch?v=IRIZ4EB_1rM","observed":true,"duration_seconds":952.661}
+      ],
+      "unresolved": ["Official Top General creative-to-package corroboration", "Direct-control and supply causal equivalence", "Final independent footage review"]
+    },
+    {
+      "reference": "Last Human: Final Stand",
+      "original_title": "Dead Run",
+      "game_id": "dead-run",
+      "brief": "last-human.md",
+      "package_id": "com.avenue.zombie.gp",
+      "selected_loop": "Steer forward-shooting squad along a road, shoot numbered threats, recruit strength and defeat a large end threat.",
+      "creative_status": "observed_exact_user_recorded_social_ad_with_last_human_overlay",
+      "core_status": "observed_road_shooting_and_shelter_progression_samples",
+      "prototype_scope": "Lateral steering, forward bullets, changing numbered obstacle/recruit outcome, zombie pressure and final large threat.",
+      "comparison_only": {"name":"Last Z: Survival Shooter","package_id":"com.readygo.barrel.gp"},
+      "sources": [
+        {"id":"L1","role":"official_identity","url":"https://play.google.com/store/apps/details?id=com.avenue.zombie.gp"},
+        {"id":"L2","role":"selected_recorded_ad","url":"https://www.youtube.com/shorts/xhW1r3ZVJ2Q","observed":true,"duration_seconds":51.581},
+        {"id":"L3","role":"core_road_shooting","url":"https://www.youtube.com/watch?v=nKq8ZE9ThQo","observed":true,"duration_seconds":442.861},
+        {"id":"L4","role":"core_shelter_progression","url":"https://www.youtube.com/watch?v=3Ixl8-7WvDA","observed":true,"duration_seconds":1250.599},
+        {"id":"L5","role":"comparison_identity_only","url":"https://play.google.com/store/apps/details?id=com.readygo.barrel.gp"},
+        {"id":"L6","role":"comparison_footage_only","url":"https://www.youtube.com/watch?v=my9R_tkgrrQ","observed":true,"duration_seconds":284.881},
+        {"id":"L7","role":"unavailable_comparison_candidate","url":"https://www.youtube.com/watch?v=Q3TFYLtGDZE","observed":false,"availability":"unavailable_in_browser"}
+      ],
+      "unresolved": ["Original social-ad advertiser/library corroboration", "Uninterrupted input/gate/recruit causality and exact arithmetic", "Giant statue may be ad-only and must not be copied", "Final independent footage review"]
+    }
+  ]
+}

@@ -14,7 +14,7 @@ The chosen mechanic should remain the main activity throughout play, with enough
 | **Butcher Hero** | Hook enemies, pull them in, defeat them, absorb power, and grow stronger. | Compare the advertised hook-and-growth loop with actual play; retain the core mechanics if the ad represents them accurately. |
 | **Top Force** | The military base and combat interaction shown in the selected ad. | Identify the exact advertised actions and how directly the player controls them before defining the version. |
 | **Kingshot** | Active movement, building defenses, and surviving attacks, taking the action and defense presentation of its ads as the candidate main game. | Choose a specific ad as the reference. Distinguish its action and defense loop from the settlement and alliance systems. |
-| **Last Human** | Zombie survival gameplay, with **Last Z** as Daniel's comparison. | Keep the name Last Human until the exact app is identified. Last Z is a comparison, not a seventh entry or a confirmed alternate title. Capture the particular ad before choosing its mechanics. |
+| **Last Human** | Zombie survival gameplay, with **Last Z** as Daniel's comparison. Working Android identity: **Last Human: Final Stand** by Iterflor (`com.avenue.zombie.gp`). | Select and inspect a representative creative before locking mechanics. Last Z is a comparison, not a seventh entry or a confirmed alternate title. |
 | **Hero Wars** | A complete game built around the puzzle or action sequence in the selected ad. | Choose the particular ad and puzzle mechanic; compare it with the actual hero-team RPG before deciding which loop to preserve. |
 
 The row order is not a priority ranking.
@@ -35,6 +35,5 @@ Use original names, characters, art, and levels for our versions. The references
 - [Top Force on Google Play](https://play.google.com/store/apps/details?id=com.project.idle.cd)
 - [Kingshot on Google Play](https://play.google.com/store/apps/details?id=com.run.tower.defense)
 - [Kingshot hands-on comparison of ads and gameplay](https://www.pocketgamer.com/kingshot/hands-on/)
+- [Last Human Final Stand on Google Play](https://play.google.com/store/apps/details?id=com.avenue.zombie.gp)
 - [Hero Wars Alliance game basics](https://support-hwa.nexters.com/hc/en-us/articles/23898228203666-Game-Basics)
-
-Last Human's store link remains to be identified.
