@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "scope": "Independent static review and root copied-snapshot adversarial logic probes, not final campaign acceptance",
+  "production_files": 20,
+  "production_snapshot_hashes_verified": true,
+  "physical_phone_tested": false,
+  "android_execution": false,
+  "actual_input_execution": false,
+  "live_builder_modified": false,
+  "status": "four_findings_open_pending_builder_fixes",
+  "practice": {
+    "after_encounter": "tutorial",
+    "after_next_id": 6,
+    "before_encounter": "camp_09",
+    "before_next_id": 7,
+    "decode_message": "Invalid piece sequence",
+    "replaced_without_prompt": true,
+    "save_decode_ok_after_undo": false,
+    "scope": "Immutable WIP2240 logic reproduction; fixture setup and action-handler calls, not actual UI input",
+    "stale_undo_pieces": 6
+  },
+  "invariants": {
+    "cooldown": {
+      "config_accepted": true,
+      "cooldown_after_attack": 6.0,
+      "decode_ok_after": false,
+      "decode_ok_before": true,
+      "error": "Invalid unit counters"
+    },
+    "profile": {
+      "accepted_missing_profile": true,
+      "backup_clears": [
+        "camp_01"
+      ],
+      "selected_clears": [],
+      "selected_revision": 9
+    },
+    "retry": [
+      {
+        "import_accepted": true,
+        "retry_decode_ok": false,
+        "retry_error": "Invalid board",
+        "variant": "overlap_core"
+      },
+      {
+        "import_accepted": true,
+        "retry_decode_ok": false,
+        "retry_error": "Invalid board",
+        "variant": "duplicate_starters"
+      },
+      {
+        "import_accepted": true,
+        "retry_decode_ok": false,
+        "retry_error": "Socket unavailable in this encounter",
+        "variant": "outside_socket"
+      }
+    ],
+    "scope": "Immutable WIP2240 adversarial configuration/recovery fixtures; not UI/Android evidence",
+    "zero_boss": {
+      "import_accepted": true,
+      "runtime_division_not_executed": true,
+      "snapshot_accepted": true
+    }
+  },
+  "artifact_root": "C:\\projects\\active\\games\\.artifacts\\reviews\\campaign-wip-20261017-2240",
+  "receipt": "C:\\projects\\active\\games\\.artifacts\\preservation\\gear-campaign-wip-review.json",
+  "receipt_sha256": "4f2182d30bd1847e71db2146f391b1c70ffb42ed5d84c0e826fa81d9376fe50c",
+  "preserved_files": 27,
+  "preserved_bytes": 162209,
+  "limits": [
+    "WIP snapshot may be superseded by builder; no current-main regression claim",
+    "Only Practice helper reports two ObjectDB exit cleanup warnings; not attributed to production game",
+    "Zero-health boss division not executed",
+    "Logical fixtures do not establish full gameplay, migration on Android, phone performance or fun"
+  ]
+}
