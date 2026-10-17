@@ -249,3 +249,5 @@ and board count. Actual images, JSON, transcripts and continuation helpers live
 under the ignored `.artifacts/gear-bastion/independent-49bee21/verification.json` index and its
 linked packets. These two encounter cases do not establish phone performance,
 physical folding behavior, or completion of the game's campaign.
+
+Android smoke fixtures may use {"type":"key","key":"BACK"} for actual Android Back. BACK is the only permitted key; unknown action/key values fail. Home lifecycle transitions remain separate runner actions. Code-version fixtures under smoke-actions specify their required starting campaign state and display geometry; do not substitute a tutorial fixture for campaign update evidence.

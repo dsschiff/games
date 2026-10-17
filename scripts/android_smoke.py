@@ -88,6 +88,20 @@ def scale_action(action: dict, reference: tuple[int, int], target: tuple[int, in
     return result
 
 
+def input_command(action: dict) -> list[str]:
+    """Translate the supported actual input events; BACK is the only allowed key."""
+    kind = action["type"]
+    if kind == "tap":
+        return ["shell", "input", "tap", str(int(action["x"])), str(int(action["y"]))]
+    if kind == "swipe":
+        return ["shell", "input", "swipe", *[str(int(action[k])) for k in ("x1", "y1", "x2", "y2", "duration_ms")]]
+    if kind == "key" and action.get("key") == "BACK":
+        return ["shell", "input", "keyevent", "KEYCODE_BACK"]
+    if kind == "wait":
+        return []
+    raise ValueError(f"Unsupported input action or key: {kind!r} {action.get('key')!r}")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--apk", type=Path, required=True)
@@ -179,13 +193,9 @@ def main() -> int:
                                     tuple(action_spec.get("viewport", [720, 1280]))) for action in actions]
         report["actions"] = actions
         for action in actions:
-            kind = action["type"]
-            if kind == "tap":
-                run("shell", "input", "tap", str(int(action["x"])), str(int(action["y"])))
-            elif kind == "swipe":
-                run("shell", "input", "swipe", *[str(int(action[k])) for k in ("x1", "y1", "x2", "y2", "duration_ms")])
-            elif kind != "wait":
-                raise ValueError(f"Unknown action: {kind}")
+            command = input_command(action)
+            if command:
+                run(*command)
             time.sleep(min(10.0, max(0.0, float(action.get("wait_seconds", 0.2)))))
         screenshot("after-input")
         run("shell", "input", "keyevent", "KEYCODE_HOME")

@@ -29,6 +29,23 @@ class DisplayMappingTests(unittest.TestCase):
         self.assertEqual(mapped["duration_ms"], 1200)
 
 
+class ActualBackInputTests(unittest.TestCase):
+    def test_back_uses_android_back_not_home(self):
+        self.assertEqual(smoke.input_command({"type": "key", "key": "BACK"}),
+                         ["shell", "input", "keyevent", "KEYCODE_BACK"])
+
+    def test_unknown_actions_and_keys_fail(self):
+        for event in ({"type": "key", "key": "HOME"}, {"type": "key"},
+                      {"type": "key", "key": "BACK; reboot"}, {"type": "unknown"}):
+            with self.subTest(event=event), self.assertRaises(ValueError):
+                smoke.input_command(event)
+
+    def test_wait_has_no_input_and_touch_remains_explicit(self):
+        self.assertEqual(smoke.input_command({"type": "wait"}), [])
+        self.assertEqual(smoke.input_command({"type": "tap", "x": 12, "y": 34}),
+                         ["shell", "input", "tap", "12", "34"])
+
+
 class SavedStateExpectationTests(unittest.TestCase):
     def setUp(self):
         self.saved = {"version": 2, "state": {"phase": "battle", "time": 6.1,
