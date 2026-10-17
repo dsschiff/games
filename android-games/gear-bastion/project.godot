@@ -2,7 +2,7 @@ config_version=5
 
 [application]
 config/name="Gear Bastion"
-config/version="0.3.0"
+config/version="0.3.1"
 config/icon="res://icon.svg"
 run/main_scene="res://main.tscn"
 

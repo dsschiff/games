@@ -1,6 +1,18 @@
 # Gear Bastion
 
-An original offline Godot 4.7.2 prototype: connect a powered gear foundry while brass automata emerge through a three-exit wall and fight beetle raiders above it. Version 0.2.1/code 3 retains the approximately 80-second tutorial and constrained **Iron Trial**, with a narrow staged-backup safety fix. This remains an independent-review checkpoint, not a complete campaign or a phone-tested release.
+An original offline Godot 4.7.2 defense game: connect a powered foundry while brass automata emerge from generators, march through three wall arches and fight beetle raiders. Source 0.3.1/code 5 adds nine encounters across three foundries, a mortar role, bosses, medals, an ending and three seeded replays. It is a campaign review checkpoint; final balance, fidelity and physical-phone acceptance remain open.
+
+## Campaign
+
+Start on the journey map. Clear a gate to unlock the next; no grind or account is needed. Campaign budgets are fixed, with wave salvage in Furnace Tide. Place gears before Begin, then adjust power, roles and exits during combat. Tap a troop gear and a numbered wall arch to change future troops' exit. Guards screen fire, rangers give efficient single-target damage, and mortars clear dense packs. Refit previews the next role and price difference; existing troops keep their role. Equal drives merge immediately; Undo restores the last move or merge.
+
+Preparation expands the board and shop. Combat expands the illustrated field and keeps the board live. The Menu contains speed, sound, calm effects, guide and save/export. Back closes a modal, pauses battle, then returns to the map. Cleared gates and medals are separate from the active run. Save schema 4 retains pinned encounter content and accepts older schema 1–3 saves; portable `GB4:` codes include the profile and active run.
+
+The primary `tests/playthrough.gd` now exercises the full nine-gate campaign, all three reduced-budget seeded replay wins, normal save/reload, typed desktop import, Back/menu behavior, and guarded Practice replacement. The earlier tutorial/Iron Trial suite remains `tests/legacy_playthrough.gd`. Rules, rendered actor atlas checks and policy probes are separate. See [campaign checkpoint](CAMPAIGN_CHECKPOINT.md) for evidence and limitations.
+
+## Earlier tutorial and Iron Trial
+
+The controls and trial evidence below describe the retained practice mode and earlier release.
 
 ## Play
 

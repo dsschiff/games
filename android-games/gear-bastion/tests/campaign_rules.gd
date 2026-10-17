@@ -25,6 +25,13 @@ static func run(check: Callable) -> bool:
 	check.call(Profile.award(profile, run_state) and Profile.accessible(profile, "camp_02") and profile.medals.camp_01 == 3, "Clear, intact-wall and efficient medals unlock next foundry")
 	Profile.award(profile, run_state)
 	check.call(profile.cleared.size() == 1, "Repeated awards cannot duplicate clear entries")
+	var replay_run := run_state.duplicate(true)
+	replay_run.config.challenge = true
+	Profile.award(profile, replay_run)
+	replay_run.wall = 100.0
+	replay_run.time = 500.0
+	Profile.award(profile, replay_run)
+	check.call(profile.challenge_clears["camp_01:1701"] == 3 and profile.cleared.size() == 1, "A worse replay preserves the best earned challenge medals without campaign advancement")
 	var serialized := Saves.encode(run_state, {}, 0, true, profile)
 	var profile_packet := Saves.decode(serialized)
 	check.call(profile_packet.ok, "Completed-run profile fixture validates: " + str(profile_packet.get("message", "valid")))
@@ -51,6 +58,7 @@ static func run(check: Callable) -> bool:
 	var pinned := Battle.initial(1701, "camp_01")
 	pinned.config.name = "Pinned old foundry"
 	pinned.config.budget = 41
+	pinned.config.deployment_seconds = 0.0
 	pinned.gold = 41
 	pinned.config.starter = [["guard", 1, 2, 1, 0]]
 	pinned.config.actor_stats.beetle.hp = 7.0
@@ -107,6 +115,28 @@ static func run(check: Callable) -> bool:
 	var cooled := Saves.decode(Saves.encode(mortar_test, {}))
 	check.call(gun.cooldown == 6.0 and cooled.ok and cooled.state.units[0].cooldown == 6.0, "Accepted six-second attack period remains saveable after attack and restore")
 	check.call(19.0 / 2.6 < 11.0 / 1.05, "Mortar gives up single-target damage efficiency compared with ranger")
+	var deployment := Battle.initial(1701, "camp_01")
+	Policy.apply(deployment, "A")
+	Battle.start(deployment)
+	for i in 36:
+		Battle.tick(deployment, Battle.STEP)
+	var staged: Array = deployment.units.filter(func(u): return float(u.get("deploy_left", 0)) > 0)
+	check.call(not staged.is_empty() and deployment.produced == deployment.units.size(), "Production creates real capped staging actors rather than decorative duplicates")
+	var staged_packet := Saves.decode(Saves.encode(deployment, {}))
+	check.call(staged_packet.ok, "Generator-to-gate path persists through a normal save")
+	var original_run := deployment.duplicate(true)
+	var continued: Dictionary = staged_packet.state
+	for i in 120:
+		Battle.tick(original_run, Battle.STEP)
+		Battle.tick(continued, Battle.STEP)
+	var same: bool = original_run.units.size() == continued.units.size() and original_run.enemies.size() == continued.enemies.size() and original_run.produced == continued.produced and original_run.kills == continued.kills and is_equal_approx(float(original_run.wall), float(continued.wall))
+	for index in mini(original_run.units.size(), continued.units.size()):
+		for key in ["id", "x", "y", "hp", "deploy_left"]:
+			same = same and is_equal_approx(float(original_run.units[index].get(key, 0)), float(continued.units[index].get(key, 0)))
+	check.call(same, "Saved staging path resumes deterministically through gate deployment and combat")
+	var staged_bad := deployment.duplicate(true)
+	staged_bad.units[0].deploy_total = 0.0
+	check.call(not Saves.decode(Saves.encode(staged_bad, {})).ok, "Zero-duration staging path is rejected before rendering")
 	var captured := Frames.new()
 	captured.warmup = 0.0
 	captured.start({"fixture": true})

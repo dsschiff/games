@@ -1,8 +1,9 @@
-extends "res://tests/playthrough.gd"
+extends "res://tests/legacy_playthrough.gd"
 const Content = preload("res://scripts/campaign_data.gd")
 const Profile = preload("res://scripts/campaign_profile.gd")
 const Policy = preload("res://tests/campaign_policies.gd")
 var journey: Array = []
+var replay_results: Array = []
 
 func _initialize() -> void:
 	super._initialize()
@@ -29,6 +30,16 @@ func key_back() -> void:
 	Input.flush_buffered_events()
 	await process_frame
 
+func action(key: String) -> void:
+	if game.buttons().has(key):
+		await tap(game.buttons()[key].get_center())
+		return
+	await tap(game.buttons().menu.get_center())
+	var button: Button = game.menu_dialog.find_child("Action_" + key, true, false)
+	check(button != null, "Menu contains " + key)
+	if button != null:
+		await tap(Vector2(game.menu_dialog.position) + button.get_global_rect().get_center())
+
 func steps(actions: Array) -> void:
 	for step in actions:
 		if step.has("move"):
@@ -48,6 +59,12 @@ func steps(actions: Array) -> void:
 func confirm_transition(accept: bool) -> void:
 	var button: Button = game.abandon_dialog.get_ok_button() if accept else game.abandon_dialog.get_cancel_button()
 	await tap(Vector2(game.abandon_dialog.position) + button.get_global_rect().get_center())
+
+func motion_snapshot(name: String) -> void:
+	DirAccess.make_dir_recursive_absolute("res://.artifacts/campaign-motion")
+	var file := FileAccess.open("res://.artifacts/campaign-motion/" + name + ".json", FileAccess.WRITE)
+	file.store_string(Saves.encode(game.state, game.settings, 0, true, game.profile))
+	file.close()
 
 func run() -> void:
 	DirAccess.make_dir_recursive_absolute(evidence)
@@ -77,21 +94,32 @@ func run() -> void:
 		await action("begin")
 		if chapter == 0:
 			await advance(8)
+			motion_snapshot("early")
 			await key_back()
 			check(game.paused and game.screen == "game", "Back first pauses and saves battle")
 			await key_back()
 			check(game.screen == "map", "Second Back opens journey while keeping run")
 			await action("resume_run")
 			check(game.paused and game.state.phase == "battle", "Map resume keeps battle paused")
+			await action("menu")
+			await key_back()
+			check(not game.menu_dialog.visible and game.screen == "game" and game.paused, "Back closes utility menu before leaving paused defense")
 			await action("save")
 			await key_back()
 			check(not game.save_dialog.visible and game.screen == "game", "Back closes save modal before navigation")
 			await action("pause")
+		var boss_snapshot := false
 		for segment in 110:
 			await steps(Policy.adaptations(game.state, plan))
 			await advance(4)
 			if segment == 8 and chapter in [0, 4, 8]:
 				await frame("%02d-live" % (chapter + 2))
+				if chapter == 4:
+					motion_snapshot("middle")
+			if chapter == 8 and game.state.boss_spawned and game.state.phase == "battle" and not boss_snapshot:
+				motion_snapshot("final-boss")
+				await frame("10-final-boss")
+				boss_snapshot = true
 			if segment == 10 and chapter == 4:
 				await action("save")
 				var source: String = game.save_text.text
@@ -130,6 +158,23 @@ func run() -> void:
 		await action("challenges")
 		check(game.screen == "challenges", "Ending unlocks curated replay menu")
 		await frame("13-challenges")
+		for slot in 3:
+			await action("challenge%d" % slot)
+			var replay_id: String = game.state.encounter
+			var replay_policy := "A" if slot == 0 else "B"
+			await steps(Policy.plan(game.state, replay_policy))
+			await action("begin")
+			for segment in 110:
+				await steps(Policy.adaptations(game.state, replay_policy))
+				await advance(4)
+				if game.state.phase != "battle":
+					break
+			var key := replay_id + ":" + str(1729 + slot)
+			check(game.state.phase == "victory" and game.profile.challenge_clears.has(key) and game.profile.cleared.size() == 9, "Actual-input reduced-budget replay clear recorded separately for " + replay_id)
+			replay_results.append({"id": replay_id, "seed": game.state.seed, "policy": replay_policy, "phase": game.state.phase, "wall": game.state.wall, "seconds": game.state.time, "medals": game.profile.challenge_clears.get(key, 0)})
+			await frame("14-replay-%d" % slot)
+			await action("next")
+			check(game.screen == "challenges", "Replay victory returns to trials without starting another campaign encounter")
 		await action("challenge0")
 		check(bool(game.state.config.challenge) and game.state.seed == 1729, "Seeded challenge uses explicit versioned run config")
 		await steps(Policy.plan(game.state, "A"))
@@ -150,10 +195,14 @@ func run() -> void:
 	var total := 0.0
 	for entry in journey:
 		total += float(entry.seconds)
-	var report := {"checks": checks, "failures": failures, "pointer_events": pointer_events, "keyboard_events": key_events, "journey": journey, "simulated_combat_seconds": total, "result": "passed" if failures.is_empty() else "failed", "scope": "actual input; simulation time accelerated; not human/phone acceptance"}
+	var report := {"checks": checks, "failures": failures, "pointer_events": pointer_events, "keyboard_events": key_events, "journey": journey, "replays": replay_results, "simulated_combat_seconds": total, "result": "passed" if failures.is_empty() else "failed", "scope": "actual input; simulation time accelerated; not human/phone acceptance"}
 	var file := FileAccess.open(evidence + "/report.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify(report, "  "))
 	file.close()
 	print("CAMPAIGN INPUT: ", checks, " checks; ", journey.size(), " clears; ", total, " combat seconds; ", failures.size(), " failures")
 	print("SUITE_COMPLETE: PASS" if failures.is_empty() else "SUITE_COMPLETE: FAIL")
+	game.audio.stop()
+	game.queue_free()
+	await process_frame
+	await process_frame
 	quit(0 if failures.is_empty() else 1)

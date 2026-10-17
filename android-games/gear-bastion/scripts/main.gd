@@ -9,6 +9,8 @@ const Profile = preload("res://scripts/campaign_profile.gd")
 const CampaignUI = preload("res://scripts/campaign_ui.gd")
 const FrameCapture = preload("res://scripts/frame_capture.gd")
 const LocalAudio = preload("res://scripts/local_audio.gd")
+const CampaignView = preload("res://scripts/campaign_view.gd")
+const ActorArt = preload("res://scripts/actor_art.gd")
 const BOARD_ORIGIN := Vector2(100, 660)
 const CELL := 80.0
 const INK := Color("172b36")
@@ -29,7 +31,11 @@ var pointer := Vector2.ZERO
 var dragging := false
 var active_touch := -1
 var undo_board: Array = []
-var message := "Drag a drive beside a troop gear to raise its rate."
+var message_until := 0.0
+var message := "Drag a drive beside a troop gear to raise its rate.":
+	set(value):
+		message = value
+		message_until = clock + 3.0
 var clock := 0.0
 var accumulator := 0.0
 var save_clock := 0.0
@@ -51,6 +57,8 @@ var frame_capture := FrameCapture.new()
 var sound_bank := LocalAudio.new()
 var draw_microseconds := 0
 var fx_sound_clock := 0.0
+var actor_art := ActorArt.new()
+var menu_dialog: AcceptDialog
 
 func _ready() -> void:
 	get_tree().quit_on_go_back = false
@@ -82,6 +90,8 @@ func _ready() -> void:
 	help_dialog.get_label().autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	help_dialog.get_ok_button().custom_minimum_size = Vector2(160, 80)
 	add_child(help_dialog)
+	_build_menu()
+	actor_art.bake(self)
 	queue_redraw()
 
 func _notification(what: int) -> void:
@@ -97,6 +107,10 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_APPLICATION_RESUMED and state.phase == "battle":
 		paused = true
 		message = "Welcome back · Resume when ready"
+
+func _exit_tree() -> void:
+	if is_instance_valid(audio):
+		audio.stop()
 
 func persist() -> bool:
 	# Every caller is covered by the persistent warning, including autosave and
@@ -159,6 +173,8 @@ func handle_back() -> void:
 		save_dialog.hide()
 	elif is_instance_valid(help_dialog) and help_dialog.visible:
 		help_dialog.hide()
+	elif is_instance_valid(menu_dialog) and menu_dialog.visible:
+		menu_dialog.hide()
 	elif is_instance_valid(abandon_dialog) and abandon_dialog.visible:
 		abandon_dialog.hide()
 	elif screen == "game" and state.phase == "battle" and not paused:
@@ -174,7 +190,7 @@ func handle_back() -> void:
 	queue_redraw()
 
 func _capture_render_frame() -> void:
-	var eligible: bool = screen == "game" and state.phase == "battle" and not paused and not save_dialog.visible and not abandon_dialog.visible and not help_dialog.visible
+	var eligible: bool = screen == "game" and state.phase == "battle" and not paused and not save_dialog.visible and not abandon_dialog.visible and not help_dialog.visible and not menu_dialog.visible
 	frame_capture.sample(Time.get_ticks_usec(), eligible, {"friendly": state.units.size(), "enemies": state.enemies.size(), "encounter": state.encounter, "reduced_effects": settings.reduced_effects}, draw_microseconds)
 
 func stop_frame_capture() -> void:
@@ -219,10 +235,13 @@ func start_mission(id: String, challenge: int = -1) -> void:
 	persist()
 
 func cell_center(x: int, y: int) -> Vector2:
-	return BOARD_ORIGIN + Vector2(x + 0.5, y + 0.5) * CELL
+	return board_origin() + Vector2(x + 0.5, y + 0.5) * CELL
+
+func board_origin() -> Vector2:
+	return BOARD_ORIGIN if state.config.is_empty() else CampaignView.board_origin(self)
 
 func cell_at(point: Vector2) -> Vector2i:
-	return Vector2i(floori((point.x - BOARD_ORIGIN.x) / CELL), floori((point.y - BOARD_ORIGIN.y) / CELL))
+	return Vector2i(floori((point.x - board_origin().x) / CELL), floori((point.y - board_origin().y) / CELL))
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
@@ -267,6 +286,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func buttons() -> Dictionary:
 	if screen != "game":
 		return CampaignUI.buttons(self)
+	if not state.config.is_empty():
+		return CampaignView.buttons(self)
 	var result := {"pause": Rect2(20, 65, 110, 46), "speed": Rect2(140, 65, 88, 46),
 		"mute": Rect2(238, 65, 104, 46), "effects": Rect2(352, 65, 110, 46),
 		"save": Rect2(472, 65, 108, 46), "begin": Rect2(420, 584, 160, 50),
@@ -287,7 +308,7 @@ func buttons() -> Dictionary:
 
 func hitboxes() -> Dictionary:
 	var result := buttons()
-	if screen != "game":
+	if screen != "game" or not state.config.is_empty():
 		return result
 	# Minimum 80 logical pixels = 48 dp at a 360 dp-wide portrait presentation.
 	for key in ["pause", "speed", "mute", "effects", "save", "begin"]:
@@ -384,6 +405,12 @@ func act(action: String) -> void:
 		"map", "journey":
 			paused = true
 			screen = "map"
+		"menu":
+			paused = true
+			menu_dialog.find_child("Action_speed", true, false).text = "Speed: %d×" % speed
+			menu_dialog.find_child("Action_mute", true, false).text = "Sound: off" if settings.muted else "Sound: on"
+			menu_dialog.find_child("Action_effects", true, false).text = "Calm FX: on" if settings.reduced_effects else "Calm FX: off"
+			menu_dialog.popup_centered(Vector2i(520, 590))
 		"resume_run":
 			screen = "game"
 			paused = state.phase == "battle"
@@ -393,7 +420,9 @@ func act(action: String) -> void:
 			screen = "challenges"
 		"next":
 			var index := Content.IDS.find(state.encounter)
-			if index == 8:
+			if bool(state.config.get("challenge", false)):
+				screen = "challenges"
+			elif index == 8:
 				screen = "ending"
 				profile.ending_seen = true
 			else:
@@ -403,7 +432,7 @@ func act(action: String) -> void:
 			message = "Next formations arriving faster" if state.rally else "Normal formation pace"
 		"help":
 			paused = true
-			help_dialog.dialog_text = str(state.config.decision) + "\n\nGreen links carry power from the gold core. Drives add 25% per level to adjacent troop gears, up to 3x. A stopped gear reads OFF.\n\nGuards absorb fire. Rangers give strong single-target damage. Mortars hit packed enemies, with lower single-target damage.\n\nTap a troop gear to choose its exit. Refit shows the next role and price difference. Equal drives merge by dragging; Undo restores a move or merge.\n\nBosses call escorts as they weaken. Rangers pierce their armor. Keep troops near siege engines to interrupt volleys. After 60 seconds a surviving boss attacks the wall.\n\nMedals: clear, wall intact, and efficiency (save 6 brass and finish under par). Rally sends formations faster when ready."
+			help_dialog.dialog_text = str(state.config.decision) + "\n\nMint joints show power carried by touching gears from the gold core. Drives add 25% per level to adjacent troop gears, up to 3x. A stopped gear reads OFF.\n\nGuards absorb fire. Rangers give strong single-target damage. Mortars hit packed enemies, with lower single-target damage.\n\nTap a troop gear to choose its exit. Refit shows the next role and price difference. Equal drives merge by dragging; Undo restores a move or merge.\n\nBosses call escorts as they weaken. Rangers pierce their armor. Keep troops near siege engines to interrupt volleys. After 60 seconds a surviving boss attacks the wall.\n\nMedals: clear, wall intact, and efficiency (save 6 brass and finish under par). Rally sends formations faster when ready."
 			help_dialog.popup_centered(Vector2i(540, 800))
 		"pause":
 			paused = not paused
@@ -431,7 +460,10 @@ func act(action: String) -> void:
 				message = "Battle live · rearrange to balance your army"
 				_tone(740)
 			else:
-				message = "Carapaces shrug off guards and cleave crowds · use rangers" if state.encounter == "iron_trial" else "Shells resist guards · support them with rangers"
+				if not state.config.is_empty():
+					act("help")
+				else:
+					message = "Carapaces shrug off guards and cleave crowds · use rangers" if state.encounter == "iron_trial" else "Shells resist guards · support them with rangers"
 		"tutorial", "trial":
 			state = Battle.initial(int(state.seed), "iron_trial" if action == "trial" else "tutorial")
 			undo_board.clear()
@@ -542,6 +574,26 @@ func _tone(frequency: float) -> void:
 	audio.stream = sound_bank.tone(frequency)
 	audio.play()
 
+func _build_menu() -> void:
+	menu_dialog = AcceptDialog.new()
+	menu_dialog.title = "Defense menu"
+	menu_dialog.ok_button_text = "Close"
+	menu_dialog.get_ok_button().custom_minimum_size = Vector2(180, 80)
+	add_child(menu_dialog)
+	var rows := GridContainer.new()
+	rows.columns = 2
+	menu_dialog.add_child(rows)
+	for item in [["pause", "Resume defense"], ["map", "Journey map"], ["speed", "Change speed"], ["mute", "Toggle sound"], ["effects", "Toggle calm FX"], ["save", "Save / export"], ["help", "Foundry guide"]]:
+		var button := Button.new()
+		button.name = "Action_" + item[0]
+		button.text = item[1]
+		button.custom_minimum_size = Vector2(232, 90)
+		rows.add_child(button)
+		button.pressed.connect(func():
+			menu_dialog.hide()
+			act(item[0])
+		)
+
 func panel(rect: Rect2, color: Color, border: Color = Color.TRANSPARENT, radius: int = 14) -> void:
 	var style := StyleBoxFlat.new()
 	style.bg_color = color
@@ -567,6 +619,9 @@ func _draw_content() -> void:
 		if save_failed:
 			panel(Rect2(28, 116, 544, 44), INK, RED, 6)
 			label_at("Save failed · retry Save or export before closing", Vector2(300, 145), 18, RED, true)
+		return
+	if not state.config.is_empty():
+		CampaignView.draw(self)
 		return
 	draw_rect(Rect2(0, 0, 600, 1066), Color("10212c"))
 	label_at("GEAR BASTION", Vector2(20, 37), 28, GOLD)
@@ -800,65 +855,7 @@ func _draw_gear(center: Vector2, piece: Dictionary, active: bool, ghost: bool) -
 		draw_arc(center, 31, 0, TAU, 48, GOLD, 2, true)
 
 func _draw_unit(unit: Dictionary, friendly: bool) -> void:
-	var point := Vector2(float(unit.x), float(unit.y))
-	var kind: String = unit.kind
-	var color := GOLD if friendly else Color("b75e5e")
-	if kind == "ranger":
-		color = BLUE
-	elif kind == "mortar":
-		color = Color("d5a3dd")
-	elif kind == "shell":
-		color = Color("a5a875")
-	elif kind == "carapace":
-		color = Color("ac8cd3")
-	elif kind == "spitter":
-		color = Color("db9b5f")
-	elif kind in ["captain", "siege", "matriarch"]:
-		color = Color("cd78a9")
-		point += Vector2(0, 3)
-	elif kind == "skitter":
-		color = Color("d48f61")
-	if float(unit.flash) > 0 and not settings.reduced_effects:
-		color = Color.WHITE
-	draw_ellipse_shadow(point)
-	if friendly:
-		var bob := sin(clock * 9 + int(unit.id)) * 1.2 if not paused and not settings.reduced_effects else 0.0
-		point.y += bob
-		draw_line(point + Vector2(-4, 5), point + Vector2(-5, 10), INK, 3)
-		draw_line(point + Vector2(4, 5), point + Vector2(5, 10), INK, 3)
-		panel(Rect2(point - Vector2(6, 4), Vector2(12, 12)), color, INK, 3)
-		draw_circle(point + Vector2(0, -7), 5, color)
-		draw_circle(point + Vector2(-2, -8), 1, INK)
-		draw_circle(point + Vector2(2, -8), 1, INK)
-		if kind == "guard":
-			draw_line(point + Vector2(9, 5), point + Vector2(9, -9), CREAM, 2)
-			draw_circle(point + Vector2(-8, 1), 5, Color("6fa7a3"))
-		elif kind == "mortar":
-			draw_circle(point + Vector2(8, 3), 6, Color("cab0d4"))
-			draw_line(point + Vector2(5, 3), point + Vector2(13, -8), INK, 5)
-		else:
-			draw_arc(point + Vector2(8, 0), 7, -1.5, 1.5, 8, CREAM, 2)
-	else:
-		if kind in ["captain", "siege", "matriarch"]:
-			draw_circle(point, 19, INK)
-			draw_circle(point, 16, color)
-			for tooth in 6:
-				draw_line(point + Vector2.from_angle(tooth * TAU / 6) * 13, point + Vector2.from_angle(tooth * TAU / 6) * 24, color, 5)
-		for leg in [-1, 1]:
-			for offset in [-5, 2, 7]:
-				draw_line(point + Vector2(leg * 4, offset), point + Vector2(leg * 12, offset + 3), INK, 2)
-		draw_circle(point, 10 if kind == "shell" else 8, INK)
-		draw_circle(point - Vector2(0, 1), 8 if kind == "shell" else 6, color)
-		draw_line(point + Vector2(0, -7), point + Vector2(0, 6), INK, 2)
-		if kind == "carapace":
-			draw_arc(point, 11, 0, TAU, 14, color, 3)
-			draw_line(point + Vector2(-5, -5), point + Vector2(5, -5), CREAM, 2)
-			draw_line(point + Vector2(-5, 2), point + Vector2(5, 2), CREAM, 2)
-		elif kind == "spitter":
-			draw_circle(point + Vector2(0, 4), 3, MINT)
-	if float(unit.hp) < float(unit.max_hp):
-		draw_rect(Rect2(point + Vector2(-9, -17), Vector2(18, 3)), INK)
-		draw_rect(Rect2(point + Vector2(-9, -17), Vector2(18 * float(unit.hp) / float(unit.max_hp), 3)), MINT if friendly else RED)
+	actor_art.draw_unit(self, unit, friendly, Vector2(float(unit.x), float(unit.y)))
 
 func draw_ellipse_shadow(point: Vector2) -> void:
 	draw_circle(point + Vector2(1, 6), 9, Color(0.04, 0.09, 0.08, 0.3))

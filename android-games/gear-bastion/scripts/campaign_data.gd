@@ -94,6 +94,7 @@ static func definition(id: String) -> Dictionary:
 	config.hp_scale = [1.0, 1.5, 1.65, 1.9, 2.0, 2.1, 2.2, 2.35, 2.5][index]
 	config.damage_scale = [1.0, 1.2, 1.3, 1.35, 1.4, 1.5, 1.5, 1.6, 1.6][index]
 	config["par_seconds"] = [135, 220, 205, 220, 245, 220, 240, 265, 300][index]
+	config["deployment_seconds"] = 2.0
 	if index > 0:
 		config.waves[0]["hp_scale"] = minf(1.0, 1.5 / float(config.hp_scale))
 		config.waves[0]["damage_scale"] = minf(1.0, 1.2 / float(config.damage_scale))
@@ -114,6 +115,8 @@ static func valid_snapshot(config: Dictionary) -> bool:
 	if not config.name is String or config.name.length() > 80 or not config.decision is String or config.decision.length() > 200:
 		return false
 	if config.has("par_seconds") and not numeric(config.par_seconds, 1, 2000):
+		return false
+	if config.has("deployment_seconds") and not numeric(config.deployment_seconds, 0, 2):
 		return false
 	if not numeric(config.act, 1, 3, true) or not numeric(config.budget, 0, 200, true) or not numeric(config.wall, 100, 500) or not numeric(config.hp_scale, 0.5, 5) or not numeric(config.damage_scale, 0.5, 3) or not numeric(config.speed_scale, 0.5, 2) or not numeric(config.boss_hp, 0, 30000):
 		return false

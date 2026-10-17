@@ -1,28 +1,39 @@
 {
   "schema_version": 1,
   "game": "gear-bastion",
-  "version": "0.3.0",
-  "version_code": 4,
+  "version": "0.3.1",
+  "version_code": 5,
   "save_schema": 4,
   "branch": "codex/gear-bastion",
-  "updated_at": "2026-10-17T17:58:33-04:00",
-  "milestone": "campaign_core_checkpoint",
-  "status": "core_verified_visual_balance_and_android_gates_open",
+  "updated_at": "2026-10-17T19:18:11-04:00",
+  "milestone": "campaign_visual_checkpoint",
+  "status": "ready_for_independent_fidelity_review_balance_and_android_pending",
   "full_v1_complete": false,
   "campaign_expansion": "authorized_and_in_progress",
   "campaign_checkpoint": {
     "encounters": 9,
     "acts": 3,
-    "rules_checks": 156,
+    "rules_checks": 161,
     "rules_passed": true,
-    "headless_actual_input_checks": 56,
-    "rendered_actual_input_checks": 57,
+    "headless_actual_input_checks": 65,
+    "rendered_actual_input_checks": 66,
     "actual_input_clears": 9,
-    "simulated_combat_seconds": 1825.0,
+    "simulated_combat_seconds": 1830.93333333326,
     "schema_3_migration_and_profile_recovery": "passed",
     "practice_cancel_confirm_undo_and_save": "passed_actual_input",
-    "open_gates": ["visual fidelity and real production staging", "nearby variants and baseline policies", "per-encounter mistakes and corrections", "curated replay wins", "changed-code Android lifecycle and update", "physical phone and performance"],
-    "build": "not_exported_coordinator_hold"
+    "open_gates": [
+      "independent motion fidelity review",
+      "encounter decision pressure and mistake/correction validation",
+      "current presentation Android lifecycle and update",
+      "physical phone and performance"
+    ],
+    "build": "not_yet_exported_new_presentation",
+    "replay_actual_input_clears": 3,
+    "nearby_seed_wins": 54,
+    "nearby_seed_cases": 54,
+    "reduced_budget_replay_wins": 18,
+    "reduced_budget_replay_cases": 18,
+    "rendered_atlas_checks": 13
   },
   "review_fixes": {
     "checked_write_flush_readback_before_rename": true,
@@ -35,51 +46,6 @@
     "global_actor_id_faction_and_health_validation": true,
     "constrained_budget_counter_trial": true,
     "sole_staged_backup_reused_without_truncation": true
-  },
-  "verification": {
-    "rules": {
-      "checks": 107,
-      "passed": true,
-      "suite_complete_marker": true
-    },
-    "headless_input": {
-      "checks": 51,
-      "pointer_events": 356,
-      "passed": true,
-      "suite_complete_marker": true,
-      "current_source_rerun": true
-    },
-    "rendered_input": {
-      "checks": 56,
-      "pointer_events": 370,
-      "keyboard_events": 5731,
-      "passed": true,
-      "audio_driver": "Dummy",
-      "source_version": "0.2.0",
-      "current_source_rerun": false
-    },
-    "normal_app_written_primary_reload": true,
-    "injected_storage_failures_and_recovery": true,
-    "injected_v2_to_v3_migration": true,
-    "repeated_single_vacancy_fairness_and_power_checks": true,
-    "desktop_live_resize_profiles": [
-      [
-        1080,
-        2520
-      ],
-      [
-        1968,
-        2184
-      ]
-    ],
-    "independent_fixes_and_trial_review": "pending",
-    "changed_code_android_launch_and_lifecycle": "pending",
-    "different_apk_upgrade_0_1_to_0_2": {
-      "result": "passed_coordinator_reported",
-      "critical_paths": 21,
-      "covers_current_0_2_1_fix": false
-    },
-    "physical_phone_actual_sound_clipboard_and_performance": "pending"
   },
   "trial": {
     "seed": 1701,
@@ -155,7 +121,71 @@
       ]
     }
   },
-  "build": {
+  "evidence": {
+    "rendered_report": "android-games/gear-bastion/.artifacts/review-playthrough/report.json",
+    "headless_report": "android-games/gear-bastion/.artifacts/review-playthrough/headless/report.json",
+    "rendered_log": "android-games/gear-bastion/.artifacts/review-rendered.log",
+    "shared_tests": ".artifacts/gear-bastion/20261017T215550440176Z/manifest.json",
+    "prior_immutable_prototype_build": ".artifacts/gear-bastion/20261017T211149104303Z/manifest.json",
+    "previous_0_2_0_build": ".artifacts/gear-bastion/20261017T214754547937Z/manifest.json",
+    "previous_0_2_0_apk_sha256": "dd3bb862182cd213d9947913a99e4b232ba16c4098a83219e97de870d1392f7a",
+    "coordinator_nearby_seed_probe": "C:/projects/active/_worktrees/games-android-portfolio-20261017/android-games/gear-bastion/.artifacts/coordinator-checks.json"
+  },
+  "next_action": "Coordinator independently reviews the narrow staged-backup fix before authorizing campaign work. Current 0.2.1 Android runtime acceptance remains pending.",
+  "remaining": [
+    "independent fixes/trial gate",
+    "three-region 30-60-minute campaign, strategic unlocks and distinct roles",
+    "bosses, seeded replay and final presentation polish",
+    "different-APK update and changed-code Android lifecycle tests",
+    "Android Back/modal/pause/save behavior before phone RC",
+    "physical Fold7 identity, touch/safe-area/fold checks and measured performance"
+  ],
+  "historical_release_verification": {
+    "rules": {
+      "checks": 107,
+      "passed": true,
+      "suite_complete_marker": true
+    },
+    "headless_input": {
+      "checks": 51,
+      "pointer_events": 356,
+      "passed": true,
+      "suite_complete_marker": true,
+      "current_source_rerun": true
+    },
+    "rendered_input": {
+      "checks": 56,
+      "pointer_events": 370,
+      "keyboard_events": 5731,
+      "passed": true,
+      "audio_driver": "Dummy",
+      "source_version": "0.2.0",
+      "current_source_rerun": false
+    },
+    "normal_app_written_primary_reload": true,
+    "injected_storage_failures_and_recovery": true,
+    "injected_v2_to_v3_migration": true,
+    "repeated_single_vacancy_fairness_and_power_checks": true,
+    "desktop_live_resize_profiles": [
+      [
+        1080,
+        2520
+      ],
+      [
+        1968,
+        2184
+      ]
+    ],
+    "independent_fixes_and_trial_review": "pending",
+    "changed_code_android_launch_and_lifecycle": "pending",
+    "different_apk_upgrade_0_1_to_0_2": {
+      "result": "passed_coordinator_reported",
+      "critical_paths": 21,
+      "covers_current_0_2_1_fix": false
+    },
+    "physical_phone_actual_sound_clipboard_and_performance": "pending"
+  },
+  "historical_release_build": {
     "package": "com.dsschiff.gearbastion",
     "template": "unmodified_official_Godot_4.7.2",
     "target_sdk": 36,
@@ -175,23 +205,31 @@
     "source_commit": "7d67a1ef3ffaf88ef364e23786ea35d1dcce3856",
     "permissions": []
   },
-  "evidence": {
-    "rendered_report": "android-games/gear-bastion/.artifacts/review-playthrough/report.json",
-    "headless_report": "android-games/gear-bastion/.artifacts/review-playthrough/headless/report.json",
-    "rendered_log": "android-games/gear-bastion/.artifacts/review-rendered.log",
-    "shared_tests": ".artifacts/gear-bastion/20261017T215550440176Z/manifest.json",
-    "prior_immutable_prototype_build": ".artifacts/gear-bastion/20261017T211149104303Z/manifest.json",
-    "previous_0_2_0_build": ".artifacts/gear-bastion/20261017T214754547937Z/manifest.json",
-    "previous_0_2_0_apk_sha256": "dd3bb862182cd213d9947913a99e4b232ba16c4098a83219e97de870d1392f7a",
-    "coordinator_nearby_seed_probe": "C:/projects/active/_worktrees/games-android-portfolio-20261017/android-games/gear-bastion/.artifacts/coordinator-checks.json"
+  "verification": {
+    "rules": {
+      "checks": 161,
+      "passed": true
+    },
+    "full_campaign_input": {
+      "headless_checks": 65,
+      "rendered_checks": 66,
+      "campaign_clears": 9,
+      "replay_clears": 3,
+      "combat_seconds": 1830.93333333326
+    },
+    "actor_atlas": {
+      "kinds": 12,
+      "rendered_checks": 13,
+      "texture_size": [
+        1664,
+        256
+      ]
+    },
+    "physical_phone": "pending"
   },
-  "next_action": "Coordinator independently reviews the narrow staged-backup fix before authorizing campaign work. Current 0.2.1 Android runtime acceptance remains pending.",
-  "remaining": [
-    "independent fixes/trial gate",
-    "three-region 30-60-minute campaign, strategic unlocks and distinct roles",
-    "bosses, seeded replay and final presentation polish",
-    "different-APK update and changed-code Android lifecycle tests",
-    "Android Back/modal/pause/save behavior before phone RC",
-    "physical Fold7 identity, touch/safe-area/fold checks and measured performance"
-  ]
+  "build": {
+    "result": "not_exported",
+    "version": "0.3.1",
+    "version_code": 5
+  }
 }

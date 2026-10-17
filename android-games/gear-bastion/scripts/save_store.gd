@@ -130,6 +130,9 @@ static func decode(source: String) -> Dictionary:
 			actor_ids[int(unit.id)] = true
 			if unit.has("wave_damage") and not Content.numeric(unit.wave_damage, 0.1, 3):
 				return {"ok": false, "message": "Invalid saved wave modifier"}
+			if unit.has("deploy_left") or unit.has("deploy_total") or unit.has("deploy_x") or unit.has("deploy_y"):
+				if group_index != 0 or not Content.numeric(unit.get("deploy_total"), 0.01, 2) or not Content.numeric(unit.get("deploy_left"), 0, float(unit.deploy_total)) or not Content.numeric(unit.get("deploy_x"), 0, 4, true) or not Content.numeric(unit.get("deploy_y"), 0, 3, true):
+					return {"ok": false, "message": "Invalid deployment path"}
 			var period: float = state.config.get("actor_stats", Battle.STATS)[unit.kind].period
 			if int(unit.id) < 1 or int(unit.id) >= int(state.serial) or int(unit.lane) < 0 or int(unit.lane) > 2 or float(unit.cooldown) < 0 or float(unit.cooldown) > maxf(0.1, period):
 				return {"ok": false, "message": "Invalid unit counters"}

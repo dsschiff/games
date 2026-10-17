@@ -20,7 +20,10 @@ static func award(profile: Dictionary, run: Dictionary) -> bool:
 	if int(run.gold) >= 6 and float(run.time) <= float(config.get("par_seconds", 300)):
 		medal += 1
 	if bool(config.get("challenge", false)):
-		profile.challenge_clears[id + ":" + str(int(run.seed))] = medal
+		var key := id + ":" + str(int(run.seed))
+		profile.challenge_clears[key] = maxi(int(profile.challenge_clears.get(key, 0)), medal)
+		while profile.challenge_clears.size() > 200:
+			profile.challenge_clears.erase(profile.challenge_clears.keys()[0])
 		return true
 	if not id in profile.cleared:
 		profile.cleared.append(id)

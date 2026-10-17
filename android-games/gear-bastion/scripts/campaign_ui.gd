@@ -36,19 +36,21 @@ static func draw(game: Variant) -> void:
 			game.panel(Rect2(82 + i * 150, 425, 136, 150), Color("344b50"), game.GOLD)
 			game.draw_circle(Vector2(150 + i * 150, 473), 24, game.GOLD)
 			game.label_at(str(i + 1), Vector2(150 + i * 150, 536), 34, game.CREAM, true)
-		game.label_at("9 foundries defended · %d / 27 medals" % medals, Vector2(300, 639), 22, game.GOLD, true)
+		game.label_at("9 gates defended · %d / 27 medals" % medals, Vector2(300, 639), 22, game.GOLD, true)
 		for key in ["journey", "challenges"]:
 			game.panel(ui[key], Color("304754"), game.MINT)
 			game.label_at("Revisit the journey" if key == "journey" else "Seeded trials", ui[key].get_center() + Vector2(0, 8), 25, game.CREAM, true)
 		return
 	if game.screen == "challenges":
 		game.label_at("SEEDED TRIALS", Vector2(300, 188), 30, game.MINT, true)
-		game.label_at("New fronts. Six less brass. Same rules.", Vector2(300, 224), 21, game.CREAM, true)
+		game.label_at("New seeds · budgets reduced by 6", Vector2(300, 224), 21, game.CREAM, true)
 		for i in 3:
 			var id: String = ["camp_05", "camp_07", "camp_09"][i]
 			game.panel(ui["challenge%d" % i], Color("223c48"), game.GOLD)
 			game.label_at(Content.NAMES[Content.IDS.find(id)], ui["challenge%d" % i].get_center() - Vector2(0, 17), 26, game.CREAM, true)
-			game.label_at("Seed %d · replay for efficiency medals" % (1729 + i), ui["challenge%d" % i].get_center() + Vector2(0, 25), 19, game.MINT, true)
+			var key := id + ":" + str(1729 + i)
+			var earned: int = game.profile.challenge_clears.get(key, 0)
+			game.label_at("Seed %d · %s" % [1729 + i, "◆".repeat(earned) if earned > 0 else "uncleared"], ui["challenge%d" % i].get_center() + Vector2(0, 25), 19, game.MINT, true)
 		game.panel(ui.journey, Color("304754"))
 		game.label_at("Back to journey", ui.journey.get_center() + Vector2(0, 8), 24, game.CREAM, true)
 		return

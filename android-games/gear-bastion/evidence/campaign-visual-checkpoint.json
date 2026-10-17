@@ -1,0 +1,395 @@
+{
+  "source_version": "0.3.1",
+  "version_code": 5,
+  "source_base": "ce84547",
+  "created_at": "2026-10-17T19:18:11-04:00",
+  "files": [
+    {
+      "path": "scripts/actor_art.gd",
+      "sha256": "cfdc0115448a74d1d9de234047d054a5fbfcdae9ccd299df814e801915f08646"
+    },
+    {
+      "path": "scripts/actor_art.gd.uid",
+      "sha256": "4ac0b687ab7cd08ce88a94bb34efd2292095577f2d97ea5950793aa181dee982"
+    },
+    {
+      "path": "scripts/battle_rules.gd",
+      "sha256": "479b7f61c3dd45c248ce3243a15add5d329a84b362d923c18e1e24b1a3dfe088"
+    },
+    {
+      "path": "scripts/battle_rules.gd.uid",
+      "sha256": "5f73808caa711b3f57e3e08e4ab721e4fb74118e5454aae3e9692c4ca69f5aff"
+    },
+    {
+      "path": "scripts/campaign_data.gd",
+      "sha256": "39cbd1afd8133452d4e7e62a68aaa47eac5109b376ca44588499de7bf567f5e4"
+    },
+    {
+      "path": "scripts/campaign_data.gd.uid",
+      "sha256": "85a5237196b4790e371c8a378f103ea3332fb742f87c9d7b08f6b8fa740fb8cb"
+    },
+    {
+      "path": "scripts/campaign_profile.gd",
+      "sha256": "7bf9dfee2adb8abde4613220c81d28ced30888cbeba8410cff0cb8a88700c963"
+    },
+    {
+      "path": "scripts/campaign_profile.gd.uid",
+      "sha256": "ae1db9d8810c86e9c3e74f4502e11945dc81a1acd7920485887ea76789726287"
+    },
+    {
+      "path": "scripts/campaign_ui.gd",
+      "sha256": "5333b8b341845892b860fe87fda1e6c9fe9bf592dc76c14f7113e695e9810a57"
+    },
+    {
+      "path": "scripts/campaign_ui.gd.uid",
+      "sha256": "cc9b0e2088931d76961282881cfb6150349623437e2b24ceeccfb94dd333cd16"
+    },
+    {
+      "path": "scripts/campaign_view.gd",
+      "sha256": "5bf2b71b69cd1cd4cb20069fbbc3954b5795a030653e55c3dc793b37225b8c27"
+    },
+    {
+      "path": "scripts/campaign_view.gd.uid",
+      "sha256": "3729a5ce4e03186f91e90aaa42e0b8e9edb40b726d8303ab1f717f5307cc0911"
+    },
+    {
+      "path": "scripts/frame_capture.gd",
+      "sha256": "4e54d3ee42d6802576d672f3dad486d1478a04e72f7f3c0ad60e77f85a2c9985"
+    },
+    {
+      "path": "scripts/frame_capture.gd.uid",
+      "sha256": "b10b3856057b8f9a7e6063f5391560caeba252c09dd947161f1fbe10ee556903"
+    },
+    {
+      "path": "scripts/gear_rules.gd",
+      "sha256": "2be2feadec7c6ec5f54e5ac2f9a3001c66a32906eb0c8303926425fb6883ca8b"
+    },
+    {
+      "path": "scripts/gear_rules.gd.uid",
+      "sha256": "1a06bd276b22e2bd54ea342354bc8f4cc26bce90d4bc882f5fa485c3bb9d7110"
+    },
+    {
+      "path": "scripts/local_audio.gd",
+      "sha256": "62e5b953ef6f18148f279028e454a5546074d5692dc5e378368f12764ac18bf9"
+    },
+    {
+      "path": "scripts/local_audio.gd.uid",
+      "sha256": "ed14ec7f09f99734c9d0aec53f20333e07cc06a8027a316e7c72c912a5e76ac2"
+    },
+    {
+      "path": "scripts/main.gd",
+      "sha256": "127bd71136af1f3e2161b11b4d1b511efc0d316ad09a851cdeba62ab7636272e"
+    },
+    {
+      "path": "scripts/main.gd.uid",
+      "sha256": "2bb3cfe348895fd8a302427797d9f3d95685d2730eca3c879215ff61824b7a0d"
+    },
+    {
+      "path": "scripts/save_files.gd",
+      "sha256": "67b532124aab977b2fb103c12d05a9a9152f6d9aee93113b8476796f880859db"
+    },
+    {
+      "path": "scripts/save_files.gd.uid",
+      "sha256": "97534c2828da05dddcbd66ff2b670f2084d4b10083ff5458d7e1f0f2a612b6c2"
+    },
+    {
+      "path": "scripts/save_store.gd",
+      "sha256": "ab983f203713c6fbea653e54046bdeb9e260c14a63f89f329463bbd84868da1a"
+    },
+    {
+      "path": "scripts/save_store.gd.uid",
+      "sha256": "566b2a01bab56e7c5518d336baab8e0dcbc82d2b872436eac2dd4b9f4849cba3"
+    },
+    {
+      "path": "tests/actor_render.gd",
+      "sha256": "f61c69f00ed10401231a191535da6501f17b17bc52dbfbf0e0c28b5b1f53aeba"
+    },
+    {
+      "path": "tests/actor_render.gd.uid",
+      "sha256": "859001ff6ac7eb658649dddcb5a9f8d0ef225b2dfd1a6fd27f28322a1d5591fe"
+    },
+    {
+      "path": "tests/campaign_motion.gd",
+      "sha256": "56109cd4b5a7d6d8bcea79ae54ca04787d9c0a2811b0a41e2c774b48aee1936e"
+    },
+    {
+      "path": "tests/campaign_motion.gd.uid",
+      "sha256": "d468e15e790c024324d0a28e99e0a81c5d73503ee81b26e3b80c9c4aa8a1cbc6"
+    },
+    {
+      "path": "tests/campaign_playthrough.gd",
+      "sha256": "09032b627f1f4274df762133243b6233d123247d080b78ee4a726284ed073f49"
+    },
+    {
+      "path": "tests/campaign_playthrough.gd.uid",
+      "sha256": "36e9bcb147ae9d364abfdb74805a7a65556c68e1570475e5b72c07cabfd964a4"
+    },
+    {
+      "path": "tests/campaign_policies.gd",
+      "sha256": "1b3eb20f9fb0d5df7097bbfc10bd3f1df170e8ce3616b0c841d46b18fd2ca82c"
+    },
+    {
+      "path": "tests/campaign_policies.gd.uid",
+      "sha256": "967a082eaa6aeccb2779ec7f0a5c5d9678e1158449616086a459eb387eac86a8"
+    },
+    {
+      "path": "tests/campaign_probe.gd",
+      "sha256": "93435c408e105de7c68ef8b93a8ab59ee356194cd4e864bd8854d2502cd18e66"
+    },
+    {
+      "path": "tests/campaign_probe.gd.uid",
+      "sha256": "245df08ed28c163f715599bda5d01c9644ab33f5e67ff670cc0fc533651f5f22"
+    },
+    {
+      "path": "tests/campaign_rules.gd",
+      "sha256": "a8be09fb39b35fb7e8763f1df0f3977f8375f0b343407090da37b7a1b7fb1b1a"
+    },
+    {
+      "path": "tests/campaign_rules.gd.uid",
+      "sha256": "80a632f25d3d6d313dbb77e9ca1f35444a0e21bdb8fd6a37ac4c19164c2a0508"
+    },
+    {
+      "path": "tests/fault_files.gd",
+      "sha256": "17cbbe3147a916429b8d8da3ee1da29d6c72b068537a188916f3a8ec3dde5d13"
+    },
+    {
+      "path": "tests/fault_files.gd.uid",
+      "sha256": "c11bd4d604a2a688bb100030f38a943ef29bfe6b168d58aafe7d452a01b851c8"
+    },
+    {
+      "path": "tests/legacy_playthrough.gd",
+      "sha256": "41f8a97b37727372eb52dfc24b70cdbb98253a095d5a41300e57ac60690a7a72"
+    },
+    {
+      "path": "tests/legacy_playthrough.gd.uid",
+      "sha256": "a2247372ad9e3e4641b44a8175707d6a4d89997d1be42c329c6d07e282609c3a"
+    },
+    {
+      "path": "tests/playthrough.gd",
+      "sha256": "030ac286d263581b1114ed00d5b36ef057dd9c0d20f210aeef40c4462290a8e7"
+    },
+    {
+      "path": "tests/playthrough.gd.uid",
+      "sha256": "21b1ce6086761e30799026c8606dc5f27b6220dd03ff3cb5a803ef9af37bcb8c"
+    },
+    {
+      "path": "tests/review_regressions.gd",
+      "sha256": "afe2b5fffce780701478111b4ec882da25ec45077d99b9155a28fd418f2f8ce3"
+    },
+    {
+      "path": "tests/review_regressions.gd.uid",
+      "sha256": "03afb6addb486b94e67510e39f77c646824f21e4b89740f3cbc4894e31858e08"
+    },
+    {
+      "path": "tests/run_tests.gd",
+      "sha256": "f981689c4a2fbf864c76b8ba7a9035ece3ba0ccec66496a2c8439be6abb9fe51"
+    },
+    {
+      "path": "tests/run_tests.gd.uid",
+      "sha256": "4e00f7fd439686d0763bbcd9e97e6265eba7c11e0101384ece0de4db60b0328b"
+    },
+    {
+      "path": "tests/trial_cases.gd",
+      "sha256": "b18720da25205074abf0c632ef30f92d9b1ae8e30892c8b6ff33c80ff6b36a19"
+    },
+    {
+      "path": "tests/trial_cases.gd.uid",
+      "sha256": "c8eeb324fff71a33d67b5c8988ed1abaf327843f4e06438497cf44fb89ffc638"
+    },
+    {
+      "path": "art/beetle.svg",
+      "sha256": "1d34b84df53b0e15c09cbb3bba38566bc8776e530ca56c8e83dbaf4beddf5473"
+    },
+    {
+      "path": "art/beetle.svg.import",
+      "sha256": "540c5cf0599b694bcfecbe99911b1ca404f25ba8bd5525b82ed5d1ff378d6802"
+    },
+    {
+      "path": "art/captain.svg",
+      "sha256": "0bb298a12e9c814f1f890d886bf221f8f2f010a82085adfa002155de5670e31a"
+    },
+    {
+      "path": "art/captain.svg.import",
+      "sha256": "5dd460e4b8f3d339018cc24770572f7505dd72dbafd9565ca9358eff9a18a0f0"
+    },
+    {
+      "path": "art/carapace.svg",
+      "sha256": "d78279bb2ddec20492f8e36c86240174fcd0037a0d0546caa1e01ac33d386406"
+    },
+    {
+      "path": "art/carapace.svg.import",
+      "sha256": "75f5fd0d586e70d9c22ee4c04e973e8b60a81a41f81504323d82b010af50381b"
+    },
+    {
+      "path": "art/gear_blue.svg",
+      "sha256": "a3625a69e42c8d40f557a64315b051d15e027a1ec0e79ea2519c618a0c6b4975"
+    },
+    {
+      "path": "art/gear_blue.svg.import",
+      "sha256": "a8d2f83106627cd1a5452e0bce3132f76025c2e41fc272d66c508336100ee99e"
+    },
+    {
+      "path": "art/gear_cream.svg",
+      "sha256": "c5ece22f8a35ba9d650e23ffcdedc17d197dd58ff247f88c97576b02bec43c43"
+    },
+    {
+      "path": "art/gear_cream.svg.import",
+      "sha256": "b74805d88947f01815408ab8e15050aacfe5445f67152b9a9c503d4784104bfb"
+    },
+    {
+      "path": "art/gear_gold.svg",
+      "sha256": "26e54bc0d2abecba8650853fa84496ccc40a3171d15a9f28b43086d1bedae82a"
+    },
+    {
+      "path": "art/gear_gold.svg.import",
+      "sha256": "086bd085c86a82ae1615b01abee0c9ac199c2af44c78ca46467b759dda83db0c"
+    },
+    {
+      "path": "art/guard.svg",
+      "sha256": "1011fee3240d09f674124b7c43fee8df20f618552b9399fc7de07bb461524813"
+    },
+    {
+      "path": "art/guard.svg.import",
+      "sha256": "2df520bfda21453f8b32b9e24329d619cbbeac8590aa85e1ed279d24c5cc7ae9"
+    },
+    {
+      "path": "art/matriarch.svg",
+      "sha256": "c487b906ca214673718a816fb0ca8fd925a764b0ba400a57f6b4bcdb27685a71"
+    },
+    {
+      "path": "art/matriarch.svg.import",
+      "sha256": "f04bae0a3ae9b70d42dc6fc5783245715396f98bc7cddc6cc9b1b1f99940e822"
+    },
+    {
+      "path": "art/mortar.svg",
+      "sha256": "b81610d3a9a0f8ea57a18ece305745e8e364c8d9caee9c6734de70c79e9c6c31"
+    },
+    {
+      "path": "art/mortar.svg.import",
+      "sha256": "59ea8bc5d1a61afd2871f0208351c027a14e6b7f3bdb23c4239b2937cd34ea8a"
+    },
+    {
+      "path": "art/ranger.svg",
+      "sha256": "069eba405c57809a7a7f3ebe573e957f6733409c71bc9e2f7a88e5a738d32ebe"
+    },
+    {
+      "path": "art/ranger.svg.import",
+      "sha256": "052e4a3d3bcbf3fdfe15fe490a30a5f2d7b03351d72c8683879eec823e22f595"
+    },
+    {
+      "path": "art/README.md",
+      "sha256": "15611139c88c78a930bfa8b60fecdbd06ff4897b1dbc45ff9dde82513be38760"
+    },
+    {
+      "path": "art/shell.svg",
+      "sha256": "60b6b6cdfec2eadb107ade584b9640afb06af9e81550cce259ead45a49990a39"
+    },
+    {
+      "path": "art/shell.svg.import",
+      "sha256": "7d763eb1aab77aadf293bfeadfcf43f7fef666a28360e1220f1f05a8a2d5771d"
+    },
+    {
+      "path": "art/siege.svg",
+      "sha256": "8b416ea28d1b7240509d346351a23b301b0bb136e50acd886b011383af216012"
+    },
+    {
+      "path": "art/siege.svg.import",
+      "sha256": "fc44bb3834d5a757a3c93a7fae340ae3bfa3aeef6ba5ebe08a5eed4aa49ac4c7"
+    },
+    {
+      "path": "art/skitter.svg",
+      "sha256": "ec6c7bef277cc9995417afb35002905ea2c0544f274fb4b7e2766c2f1913de08"
+    },
+    {
+      "path": "art/skitter.svg.import",
+      "sha256": "8730c25bfc77475339816d8188a5eb13a8bb13a6c5e9633aef911bd08456a405"
+    },
+    {
+      "path": "art/spitter.svg",
+      "sha256": "4f6f7e2d9ec2dd018c9776187f210878edba5685bb6d883164416719f793371a"
+    },
+    {
+      "path": "art/spitter.svg.import",
+      "sha256": "5e30124a48827a624595cfa7749c027bfcad11aff63f0603f578f1fe3cfe8bdb"
+    },
+    {
+      "path": "art/swarm.svg",
+      "sha256": "8296ee6c7794e3035719fda4422dc6b6f933e3615ad514d15d939d0581a81fb3"
+    },
+    {
+      "path": "art/swarm.svg.import",
+      "sha256": "215993b6910f413ac6e7cb2ae6c4cee989e3b880a4884a98677b8b473015d758"
+    },
+    {
+      "path": "project.godot",
+      "sha256": "a120a635cccc173a43409ec4600c6eee1fd7190d2d2ab00c0aa839635e4ee0ee"
+    },
+    {
+      "path": "export_presets.cfg",
+      "sha256": "72a6569892fe3e7eea3de0bffcee7a83fa0e733084913966023ecd83a5b93b18"
+    },
+    {
+      "path": "main.tscn",
+      "sha256": "fd00a5f044de3322296831cf8b315ac73a54e88d12d6fee0766aeec95d23b035"
+    }
+  ],
+  "clips": [
+    {
+      "scene": "early",
+      "path": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\campaign-motion\\early.mp4",
+      "sha256": "548bb94e87e8572f1c16a2b323c29f803ab3be058a156b233d265a50903cda76",
+      "bytes": 949462,
+      "snapshot_sha256": "ad1859783706696793b774f019958ef5d7ced02576907b4ca09893d79635e751",
+      "scope": "12 seconds; fixed30fps desktop replay of real input-generated save; not measured FPS or human play"
+    },
+    {
+      "scene": "middle",
+      "path": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\campaign-motion\\middle.mp4",
+      "sha256": "955d1da01baafa67c863cedab97063c5515e5efa18972bd37a24bb5fe4f2b7ba",
+      "bytes": 2527329,
+      "snapshot_sha256": "f6699aad752b3e6217e88236b7023c034f3a0e9e7ba7e7fb7b18450474a98ae7",
+      "scope": "12 seconds; fixed30fps desktop replay of real input-generated save; not measured FPS or human play"
+    },
+    {
+      "scene": "final-boss",
+      "path": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\campaign-motion\\final-boss.mp4",
+      "sha256": "81a74f3397b7ae6ac2193e27c28ca2e64204f7fb948218ecc4fe7ffc41381a46",
+      "bytes": 1415733,
+      "snapshot_sha256": "00e9c501fe8ec9af13f20254e395ffbd0534df6c772561b589a38a0ae905daef",
+      "scope": "12 seconds; fixed30fps desktop replay of real input-generated save; not measured FPS or human play"
+    }
+  ],
+  "rules": {
+    "checks": 161,
+    "passed": true
+  },
+  "input": {
+    "headless_checks": 65,
+    "rendered_checks": 66,
+    "campaign_clears": 9,
+    "replay_clears": 3,
+    "combat_seconds": 1830.93333333326
+  },
+  "actor_atlas": {
+    "kinds": 12,
+    "rendered_checks": 13,
+    "texture_size": [
+      1664,
+      256
+    ]
+  },
+  "nearby_seed_cases": {
+    "wins": 54,
+    "total": 54
+  },
+  "replay_policy_cases": {
+    "wins": 18,
+    "total": 18
+  },
+  "full_v1_accepted": false,
+  "limits": [
+    "decision pressure including static stage7/8 wins unresolved",
+    "independent motion fidelity review pending",
+    "new presentation Android and physical phone checks pending"
+  ]
+}

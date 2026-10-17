@@ -109,7 +109,9 @@ static func tick(state: Dictionary, dt: float) -> void:
 		return
 	state.time = float(state.time) + dt
 	state.wave_time = float(state.wave_time) + dt
-	state.spawn_clock = float(state.spawn_clock) + dt
+	# The opening gives the first produced defenders the same travel allowance.
+	if float(state.time) > float(state.config.get("deployment_seconds", 0.0)):
+		state.spawn_clock = float(state.spawn_clock) + dt
 	state.projectiles.clear()
 	var rates := Gear.rates(state.board, state.config)
 	var production: Dictionary = {}
@@ -127,7 +129,14 @@ static func tick(state: Dictionary, dt: float) -> void:
 		var producer := next_producer(state, rates)
 		if producer.is_empty():
 			break
-		state.units.append(make_unit(state, str(producer.kind), int(producer.lane), true))
+		var generated := make_unit(state, str(producer.kind), int(producer.lane), true)
+		var deployment: float = state.config.get("deployment_seconds", 0.0)
+		if deployment > 0:
+			generated["deploy_left"] = deployment
+			generated["deploy_total"] = deployment
+			generated["deploy_x"] = int(producer.x)
+			generated["deploy_y"] = int(producer.y)
+		state.units.append(generated)
 		state.produced = int(state.produced) + 1
 		state.produced_by_role[producer.kind] = int(state.produced_by_role.get(producer.kind, 0)) + 1
 		state.production[str(int(producer.id))] = 0.0
@@ -155,13 +164,16 @@ static func tick(state: Dictionary, dt: float) -> void:
 		for unit in attackers:
 			if float(unit.hp) <= 0:
 				continue
+			if float(unit.get("deploy_left", 0.0)) > 0:
+				unit.deploy_left = maxf(0, float(unit.deploy_left) - dt)
+				continue
 			unit.flash = maxf(0.0, float(unit.flash) - dt)
 			unit.cooldown = maxf(0.0, float(unit.cooldown) - dt)
 			var stats: Dictionary = config.get("actor_stats", STATS)[unit.kind]
 			var target: Dictionary = {}
 			var distance := INF
 			for candidate in targets:
-				if float(candidate.hp) <= 0:
+				if float(candidate.hp) <= 0 or float(candidate.get("deploy_left", 0.0)) > 0:
 					continue
 				var dx := float(candidate.x) - float(unit.x)
 				var dy := float(candidate.y) - float(unit.y)
@@ -193,7 +205,7 @@ static func tick(state: Dictionary, dt: float) -> void:
 					if unit.kind == "carapace":
 						var splashed := 0
 						for nearby in targets:
-							if int(nearby.id) == int(target.id) or float(nearby.hp) <= 0:
+							if int(nearby.id) == int(target.id) or float(nearby.hp) <= 0 or float(nearby.get("deploy_left", 0.0)) > 0:
 								continue
 							if Vector2(float(nearby.x) - float(target.x), float(nearby.y) - float(target.y)).length_squared() <= 36 * 36:
 								nearby.hp = float(nearby.hp) - damage * 0.65
@@ -205,7 +217,7 @@ static func tick(state: Dictionary, dt: float) -> void:
 						var splash_hits := 0
 						var radius := 44.0 if unit.kind == "mortar" else 55.0
 						for nearby in targets:
-							if int(nearby.id) == int(target.id) or float(nearby.hp) <= 0:
+							if int(nearby.id) == int(target.id) or float(nearby.hp) <= 0 or float(nearby.get("deploy_left", 0.0)) > 0:
 								continue
 							if Vector2(float(nearby.x) - float(target.x), float(nearby.y) - float(target.y)).length_squared() <= radius * radius:
 								nearby.hp = float(nearby.hp) - damage * 0.7
@@ -314,7 +326,7 @@ static func boss_tick(state: Dictionary, dt: float) -> void:
 		state.boss_volley += dt
 		if state.boss_volley >= 12:
 			state.boss_volley = 0.0
-			var screened: bool = state.units.any(func(u): return Vector2(float(u.x) - float(boss.x), float(u.y) - float(boss.y)).length_squared() < 85 * 85)
+			var screened: bool = state.units.any(func(u): return float(u.get("deploy_left", 0.0)) <= 0 and Vector2(float(u.x) - float(boss.x), float(u.y) - float(boss.y)).length_squared() < 85 * 85)
 			if not screened or float(state.boss_total) >= 60:
 				state.wall = maxf(0.0, float(state.wall) - (20.0 if float(state.boss_total) >= 60 else 14.0))
 				state.wall_hits += 1

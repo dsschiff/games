@@ -14,6 +14,7 @@ func run() -> void:
 	var seeds: Array = [1701]
 	var delay := 0.0
 	var challenge := false
+	var static_plan := false
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--policy="):
 			policies = arg.trim_prefix("--policy=").split(",")
@@ -29,8 +30,10 @@ func run() -> void:
 			delay = float(arg.trim_prefix("--delay="))
 		if arg == "--challenge":
 			challenge = true
+		if arg == "--static":
+			static_plan = true
 	for id in Content.IDS:
-		if selected != "" and selected != id:
+		if selected != "" and not id in selected.split(","):
 			continue
 		for slot in seeds.size() * policies.size():
 			var policy: String = policies[slot % policies.size()]
@@ -50,7 +53,7 @@ func run() -> void:
 				if not applied and float(state.time) >= delay:
 					Policy.apply(state, policy)
 					applied = true
-				if applied and policy in ["A", "B"]:
+				if applied and policy in ["A", "B"] and not static_plan:
 					Policy.adapt(state, policy)
 				Battle.tick(state, dt)
 				if state.phase != "battle":
