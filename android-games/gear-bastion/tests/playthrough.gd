@@ -62,7 +62,7 @@ func action(key: String) -> void:
 
 func purchase(kind: String, x: int, y: int, lane: int = 1) -> void:
 	await drag(game.buttons()[kind].get_center(), game.cell_center(x, y))
-	if kind in ["guard", "ranger"]:
+	if kind in Gear.BASE_RATES:
 		await action("gate%d" % lane)
 
 func trial_build(strategy: String) -> void:
@@ -139,6 +139,7 @@ func frame(name: String) -> void:
 
 func create_game() -> void:
 	game = Scene.instantiate()
+	game.start_on_map = false
 	game.save_path = "user://input-playthrough.json"
 	root.add_child(game)
 	game.set_process(false)

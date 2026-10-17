@@ -4,6 +4,11 @@ extends Node2D
 const Gear = preload("res://scripts/gear_rules.gd")
 const Battle = preload("res://scripts/battle_rules.gd")
 const Saves = preload("res://scripts/save_store.gd")
+const Content = preload("res://scripts/campaign_data.gd")
+const Profile = preload("res://scripts/campaign_profile.gd")
+const CampaignUI = preload("res://scripts/campaign_ui.gd")
+const FrameCapture = preload("res://scripts/frame_capture.gd")
+const LocalAudio = preload("res://scripts/local_audio.gd")
 const BOARD_ORIGIN := Vector2(100, 660)
 const CELL := 80.0
 const INK := Color("172b36")
@@ -35,20 +40,53 @@ var save_text: TextEdit
 var save_path := Saves.PATH
 var save_backend: Variant = null
 var save_failed := false
+var profile: Dictionary = Profile.fresh()
+var screen := "map"
+var start_on_map := true
+var abandon_dialog: ConfirmationDialog
+var help_dialog: AcceptDialog
+var pending_mission := ""
+var pending_challenge := -1
+var frame_capture := FrameCapture.new()
+var sound_bank := LocalAudio.new()
+var draw_microseconds := 0
+var fx_sound_clock := 0.0
 
 func _ready() -> void:
+	get_tree().quit_on_go_back = false
 	var loaded := Saves.read(save_path, save_backend)
 	if loaded.ok:
 		state = loaded.state
 		settings = loaded.settings
+		profile = loaded.profile
 		paused = state.phase == "battle"
 		message = "Resumed safely · tap Resume when ready" if paused else "Saved foundry restored"
+	elif start_on_map:
+		state = Battle.initial(1701, "camp_01")
+	if not start_on_map:
+		screen = "game"
 	audio = AudioStreamPlayer.new()
 	add_child(audio)
 	_build_save_dialog()
+	RenderingServer.frame_post_draw.connect(_capture_render_frame)
+	abandon_dialog = ConfirmationDialog.new()
+	abandon_dialog.title = "Replace active defense?"
+	abandon_dialog.dialog_text = "Starting another foundry replaces this active run.\nYour cleared foundries and medals stay saved."
+	abandon_dialog.ok_button_text = "Start new defense"
+	abandon_dialog.get_ok_button().custom_minimum_size = Vector2(210, 80)
+	abandon_dialog.get_cancel_button().custom_minimum_size = Vector2(180, 80)
+	add_child(abandon_dialog)
+	abandon_dialog.confirmed.connect(func(): start_mission(pending_mission, pending_challenge))
+	help_dialog = AcceptDialog.new()
+	help_dialog.title = "Foundry guide"
+	help_dialog.get_label().autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	help_dialog.get_ok_button().custom_minimum_size = Vector2(160, 80)
+	add_child(help_dialog)
 	queue_redraw()
 
 func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		handle_back()
 	if what == NOTIFICATION_APPLICATION_PAUSED or what == NOTIFICATION_WM_CLOSE_REQUEST:
 		drag_id = -1
 		drag_kind = ""
@@ -63,19 +101,23 @@ func _notification(what: int) -> void:
 func persist() -> bool:
 	# Every caller is covered by the persistent warning, including autosave and
 	# lifecycle notifications. Only confirmed success clears a prior failure.
-	var success := Saves.write(state, settings, save_path, save_backend)
+	var success := Saves.write(state, settings, save_path, save_backend, true, profile)
+	if save_failed == success:
+		queue_redraw()
 	save_failed = not success
 	return success
 
 func _process(delta: float) -> void:
 	clock += delta
-	if not paused:
+	fx_sound_clock += delta
+	if not paused and screen == "game":
 		advance(minf(delta, 0.2) * speed)
 	save_clock += delta
 	if save_clock >= 5:
 		save_clock = 0
 		persist()
-	queue_redraw()
+	if (screen == "game" and state.phase in ["ready", "battle"] and not paused) or dragging:
+		queue_redraw()
 
 func advance(seconds: float) -> void:
 	if paused:
@@ -83,15 +125,25 @@ func advance(seconds: float) -> void:
 	accumulator += seconds
 	while accumulator + 0.000000001 >= Battle.STEP:
 		var before: String = state.phase
+		var before_wave: int = state.wave
+		var before_kills: int = state.kills
 		Battle.tick(state, Battle.STEP)
 		accumulator = maxf(0.0, accumulator - Battle.STEP)
+		if state.wave != before_wave:
+			_tone(580 + int(state.wave) * 30)
+		elif int(state.kills) > before_kills and fx_sound_clock >= 0.6:
+			_tone(190 + int(state.kills) % 4 * 20)
+			fx_sound_clock = 0.0
 		if before == "battle" and state.phase != before:
+			if state.phase == "victory":
+				Profile.award(profile, state)
 			message = "Foundry held. Every gear helped." if state.phase == "victory" else "Wall breached. Retry and reconnect your foundry."
 			_tone(660 if state.phase == "victory" else 140)
 			persist()
 
 func retry() -> void:
-	state = Battle.initial(int(state.seed), str(state.encounter))
+	var snapshot: Dictionary = state.config.duplicate(true)
+	state = Battle.from_snapshot(snapshot, int(state.seed)) if not snapshot.is_empty() else Battle.initial(int(state.seed), str(state.encounter))
 	paused = false
 	speed = 1
 	undo_board.clear()
@@ -100,6 +152,70 @@ func retry() -> void:
 	selected = 2
 	accumulator = 0
 	message = "Fresh attempt · rearrange freely, then Begin"
+	persist()
+
+func handle_back() -> void:
+	if is_instance_valid(save_dialog) and save_dialog.visible:
+		save_dialog.hide()
+	elif is_instance_valid(help_dialog) and help_dialog.visible:
+		help_dialog.hide()
+	elif is_instance_valid(abandon_dialog) and abandon_dialog.visible:
+		abandon_dialog.hide()
+	elif screen == "game" and state.phase == "battle" and not paused:
+		paused = true
+		message = "Paused and saved · Back again opens the journey"
+	elif screen == "game":
+		paused = true
+		screen = "map"
+	else:
+		screen = "map"
+		message = "Progress saved · use Home to leave"
+	persist()
+	queue_redraw()
+
+func _capture_render_frame() -> void:
+	var eligible: bool = screen == "game" and state.phase == "battle" and not paused and not save_dialog.visible and not abandon_dialog.visible and not help_dialog.visible
+	frame_capture.sample(Time.get_ticks_usec(), eligible, {"friendly": state.units.size(), "enemies": state.enemies.size(), "encounter": state.encounter, "reduced_effects": settings.reduced_effects}, draw_microseconds)
+
+func stop_frame_capture() -> void:
+	var report := frame_capture.stop()
+	var source := JSON.stringify(report)
+	var path := "user://frames-%d.json" % int(Time.get_unix_time_from_system())
+	var file := FileAccess.open(path, FileAccess.WRITE)
+	if file != null:
+		file.store_string(source)
+		file.close()
+	save_text.text = source
+	save_dialog.title = "Local frame timing report · copy to export"
+
+func request_mission(id: String, challenge: int = -1) -> void:
+	if id != "tutorial" and not Profile.accessible(profile, id):
+		message = "Defend the previous foundry first"
+		return
+	pending_mission = id
+	pending_challenge = challenge
+	if state.phase == "battle":
+		abandon_dialog.popup_centered(Vector2i(520, 260))
+	else:
+		start_mission(id, challenge)
+
+func start_mission(id: String, challenge: int = -1) -> void:
+	state = Battle.initial(1701 if challenge < 0 else 1729 + challenge, id)
+	if challenge >= 0:
+		state.config.challenge = true
+		state.config.budget -= 6
+		state.gold -= 6
+		state.config.seed_offset = challenge
+	paused = false
+	speed = 1
+	screen = "game"
+	selected = 1
+	accumulator = 0
+	undo_board.clear()
+	drag_id = -1
+	drag_kind = ""
+	dragging = false
+	message = state.config.get("decision", "Tutorial · connect your foundry")
 	persist()
 
 func cell_center(x: int, y: int) -> Vector2:
@@ -131,6 +247,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			return
 		pointer = event.position
 		dragging = pointer.distance_to(drag_start) > 12
+		queue_redraw()
 		get_viewport().set_input_as_handled()
 	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.device == -1:
@@ -143,17 +260,26 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventMouseMotion and (drag_id >= 0 or drag_kind != ""):
 		pointer = event.position
 		dragging = pointer.distance_to(drag_start) > 12
+		queue_redraw()
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
-		paused = not paused
+		handle_back()
 
 func buttons() -> Dictionary:
+	if screen != "game":
+		return CampaignUI.buttons(self)
 	var result := {"pause": Rect2(20, 65, 110, 46), "speed": Rect2(140, 65, 88, 46),
 		"mute": Rect2(238, 65, 104, 46), "effects": Rect2(352, 65, 110, 46),
 		"save": Rect2(472, 65, 108, 46), "begin": Rect2(420, 584, 160, 50),
 		"drive": Rect2(20, 1001, 130, 53), "guard": Rect2(160, 1001, 130, 53),
 		"ranger": Rect2(300, 1001, 140, 53), "undo": Rect2(450, 1001, 130, 53),
 		"gate0": Rect2(510, 700, 80, 80), "gate1": Rect2(510, 790, 80, 80), "gate2": Rect2(510, 880, 80, 80)}
-	if state.phase == "ready":
+	if not state.config.is_empty():
+		result.merge({"map": Rect2(8, 685, 84, 80), "refit": Rect2(8, 785, 84, 80), "help": Rect2(8, 885, 84, 80), "drive": Rect2(10, 1001, 110, 53), "guard": Rect2(125, 1001, 110, 53), "ranger": Rect2(240, 1001, 110, 53), "mortar": Rect2(355, 1001, 110, 53), "undo": Rect2(470, 1001, 120, 53)}, true)
+		if state.phase == "victory":
+			result["next"] = Rect2(310, 440, 220, 80)
+		elif state.phase == "battle":
+			result["rally"] = Rect2(185, 239, 230, 46)
+	elif state.phase == "ready":
 		result.merge({"tutorial": Rect2(90, 440, 200, 80), "trial": Rect2(310, 440, 200, 80)})
 	if state.encounter == "iron_trial":
 		result["refit"] = Rect2(8, 880, 84, 80)
@@ -161,21 +287,30 @@ func buttons() -> Dictionary:
 
 func hitboxes() -> Dictionary:
 	var result := buttons()
+	if screen != "game":
+		return result
 	# Minimum 80 logical pixels = 48 dp at a 360 dp-wide portrait presentation.
 	for key in ["pause", "speed", "mute", "effects", "save", "begin"]:
 		var box: Rect2 = result[key]
 		result[key] = Rect2(box.position.x, box.get_center().y - 40, box.size.x, 80)
-	for key in ["drive", "guard", "ranger", "undo"]:
+	for key in ["drive", "guard", "ranger", "mortar", "undo"]:
+		if not result.has(key):
+			continue
 		var box: Rect2 = result[key]
 		result[key] = Rect2(box.position.x, 986, box.size.x, 80)
 	return result
 
 func press(point: Vector2) -> void:
+	queue_redraw()
 	pointer = point
 	drag_start = point
 	dragging = false
 	var ui := hitboxes()
-	for kind in ["drive", "guard", "ranger"]:
+	if screen != "game":
+		return
+	for kind in ["drive", "guard", "ranger", "mortar"]:
+		if not ui.has(kind):
+			continue
 		if ui[kind].has_point(point):
 			drag_kind = kind
 			drag_id = -1
@@ -188,16 +323,23 @@ func press(point: Vector2) -> void:
 		drag_kind = ""
 
 func release(point: Vector2) -> void:
+	queue_redraw()
 	pointer = point
+	if screen != "game":
+		for action in buttons():
+			if buttons()[action].has_point(point) and buttons()[action].has_point(drag_start):
+				act(action)
+				return
+		return
 	if drag_kind != "":
 		if dragging:
 			var cell := cell_at(point)
-			var result := Gear.buy(state.board, drag_kind, cell.x, cell.y, int(state.gold), int(state.next_id), str(state.encounter))
+			var result := Gear.buy(state.board, drag_kind, cell.x, cell.y, int(state.gold), int(state.next_id), str(state.encounter), state.config)
 			message = result.message
 			if result.ok:
 				state.board = result.board
 				state.gold = result.gold
-				state.spent = int(state.spent) + int(Gear.COSTS[drag_kind])
+				state.spent = int(state.spent) + int(state.config.get("costs", Gear.COSTS)[drag_kind])
 				selected = int(state.next_id)
 				state.next_id = int(state.next_id) + 1
 				undo_board.clear()
@@ -211,7 +353,7 @@ func release(point: Vector2) -> void:
 	if drag_id >= 0:
 		if dragging:
 			var cell := cell_at(point)
-			var result := Gear.move(state.board, drag_id, cell.x, cell.y, str(state.encounter))
+			var result := Gear.move(state.board, drag_id, cell.x, cell.y, str(state.encounter), state.config)
 			message = result.message
 			if result.ok:
 				undo_board = state.board.duplicate(true)
@@ -231,13 +373,46 @@ func release(point: Vector2) -> void:
 			return
 
 func act(action: String) -> void:
+	if action.begins_with("mission"):
+		request_mission(Content.IDS[int(action.trim_prefix("mission"))])
+		return
+	if action.begins_with("challenge") and action != "challenges":
+		var slot := int(action.trim_prefix("challenge"))
+		request_mission(["camp_05", "camp_07", "camp_09"][slot], slot)
+		return
 	match action:
+		"map", "journey":
+			paused = true
+			screen = "map"
+		"resume_run":
+			screen = "game"
+			paused = state.phase == "battle"
+		"practice":
+			request_mission("tutorial")
+		"challenges":
+			screen = "challenges"
+		"next":
+			var index := Content.IDS.find(state.encounter)
+			if index == 8:
+				screen = "ending"
+				profile.ending_seen = true
+			else:
+				start_mission(Content.IDS[index + 1])
+		"rally":
+			state.rally = not state.rally
+			message = "Next formations arriving faster" if state.rally else "Normal formation pace"
+		"help":
+			paused = true
+			help_dialog.dialog_text = str(state.config.decision) + "\n\nGreen links carry power from the gold core. Drives add 25% per level to adjacent troop gears, up to 3x. A stopped gear reads OFF.\n\nGuards absorb fire. Rangers give strong single-target damage. Mortars hit packed enemies, with lower single-target damage.\n\nTap a troop gear to choose its exit. Refit shows the next role and price difference. Equal drives merge by dragging; Undo restores a move or merge.\n\nBosses call escorts as they weaken. Rangers pierce their armor. Keep troops near siege engines to interrupt volleys. After 60 seconds a surviving boss attacks the wall.\n\nMedals: clear, wall intact, and efficiency (save 6 brass and finish under par). Rally sends formations faster when ready."
+			help_dialog.popup_centered(Vector2i(540, 800))
 		"pause":
 			paused = not paused
 		"speed":
 			speed = 2 if speed == 1 else 1
 		"mute":
 			settings.muted = not settings.muted
+			if settings.muted:
+				audio.stop()
 		"effects":
 			settings.reduced_effects = not settings.reduced_effects
 		"save":
@@ -246,8 +421,8 @@ func act(action: String) -> void:
 				save_dialog.title = "Save failed · export current progress below"
 			else:
 				save_dialog.title = "Portable save · copy or paste below"
-			save_text.text = Saves.encode(state, settings)
-			save_dialog.popup_centered(Vector2i(540, 760))
+			save_text.text = Saves.portable(state, settings, profile)
+			save_dialog.popup_centered(Vector2i(540, 850))
 		"begin":
 			if state.phase in ["defeat", "victory"]:
 				retry()
@@ -264,7 +439,10 @@ func act(action: String) -> void:
 			paused = false
 			message = "54 brass total · no kill income · refit costs the difference" if action == "trial" else "Tutorial · connect your foundry"
 		"refit":
-			var result := Gear.refit(state.board, selected, int(state.gold))
+			if not state.config.is_empty() and state.config.allowed.size() < 2:
+				message = "Rangers unlock at the next foundry"
+				return
+			var result := Gear.refit(state.board, selected, int(state.gold), state.config.allowed if not state.config.is_empty() else ["guard", "ranger"], state.config.get("costs", Gear.COSTS))
 			message = result.message
 			if result.ok:
 				state.board = result.board
@@ -280,7 +458,7 @@ func act(action: String) -> void:
 				message = "Undo restores your last move or merge"
 		"gate0", "gate1", "gate2":
 			var piece := selected_piece()
-			if not piece.is_empty() and piece.kind in ["guard", "ranger"]:
+			if not piece.is_empty() and piece.kind in Gear.BASE_RATES:
 				piece.lane = int(action.right(1))
 				message = "New %s troops use exit %d" % [piece.kind, int(piece.lane) + 1]
 	if action != "save":
@@ -304,7 +482,7 @@ func _build_save_dialog() -> void:
 	content.custom_minimum_size = Vector2(500, 540)
 	save_dialog.add_child(content)
 	var explanation := Label.new()
-	explanation.text = "Select all / copy to export. Paste a save, then Import.\nYour local save resumes the battle paused."
+	explanation.text = "Copy the save code to export. Paste a code, then Import.\nYour local save resumes the battle paused."
 	content.add_child(explanation)
 	save_text = TextEdit.new()
 	save_text.custom_minimum_size = Vector2(500, 420)
@@ -326,9 +504,10 @@ func _build_save_dialog() -> void:
 			else:
 				var result := Saves.decode(save_text.text)
 				if result.ok:
-					if Saves.write(result.state, result.settings, save_path, save_backend, false):
+					if Saves.write(result.state, result.settings, save_path, save_backend, false, result.profile):
 						state = result.state
 						settings = result.settings
+						profile = result.profile
 						undo_board.clear()
 						accumulator = 0
 						paused = true
@@ -341,21 +520,26 @@ func _build_save_dialog() -> void:
 				else:
 					save_dialog.title = "Invalid save · current game retained"
 		)
+	var timing_row := HBoxContainer.new()
+	content.add_child(timing_row)
+	for caption in ["Start timings", "Stop + export"]:
+		var button := Button.new()
+		button.text = caption
+		button.custom_minimum_size = Vector2(238, 80)
+		timing_row.add_child(button)
+		button.pressed.connect(func():
+			if caption == "Start timings":
+				frame_capture.start()
+				message = "Local timings started · resume battle to sample"
+				save_dialog.hide()
+			else:
+				stop_frame_capture()
+		)
 
 func _tone(frequency: float) -> void:
 	if settings.muted or not is_instance_valid(audio):
 		return
-	var data := PackedByteArray()
-	data.resize(4410)
-	for i in 2205:
-		var t := float(i) / 22050.0
-		var value := int(sin(t * frequency * TAU) * (1.0 - float(i) / 2205.0) * 3500)
-		data.encode_s16(i * 2, value)
-	var stream := AudioStreamWAV.new()
-	stream.format = AudioStreamWAV.FORMAT_16_BITS
-	stream.mix_rate = 22050
-	stream.data = data
-	audio.stream = stream
+	audio.stream = sound_bank.tone(frequency)
 	audio.play()
 
 func panel(rect: Rect2, color: Color, border: Color = Color.TRANSPARENT, radius: int = 14) -> void:
@@ -373,9 +557,22 @@ func label_at(value: String, point: Vector2, size: int = 20, color: Color = CREA
 	draw_string(font, origin, value, HORIZONTAL_ALIGNMENT_LEFT, -1, size, color)
 
 func _draw() -> void:
+	var started := Time.get_ticks_usec()
+	_draw_content()
+	draw_microseconds = Time.get_ticks_usec() - started
+
+func _draw_content() -> void:
+	if screen != "game":
+		CampaignUI.draw(self)
+		if save_failed:
+			panel(Rect2(28, 116, 544, 44), INK, RED, 6)
+			label_at("Save failed · retry Save or export before closing", Vector2(300, 145), 18, RED, true)
+		return
 	draw_rect(Rect2(0, 0, 600, 1066), Color("10212c"))
 	label_at("GEAR BASTION", Vector2(20, 37), 28, GOLD)
 	var heading := "IRON TRIAL · 54 BRASS" if state.encounter == "iron_trial" else "THE FIRST FOUNDRY"
+	if not state.config.is_empty():
+		heading = "%02d · %s" % [int(state.config.index) + 1, state.config.name]
 	label_at(heading, Vector2(578, 32) - Vector2(font.get_string_size(heading, HORIZONTAL_ALIGNMENT_LEFT, -1, 14).x, 0), 14, MINT)
 	var ui := buttons()
 	for key in ["pause", "speed", "mute", "effects", "save"]:
@@ -385,12 +582,14 @@ func _draw() -> void:
 	for key in labels:
 		label_at(labels[key], ui[key].get_center() + Vector2(0, 6), 17, CREAM, true)
 	_draw_field()
+	if frame_capture.enabled:
+		label_at("Local timings · %d frames" % frame_capture.rows.size(), Vector2(300, 234), 15, MINT, true)
 	if save_failed:
 		panel(Rect2(28, 194, 544, 44), INK, RED, 6)
 		label_at("Save failed · retry Save or export before closing", Vector2(300, 222), 18, RED, true)
 	_draw_wall()
 	panel(Rect2(20, 584, 388, 50), Color("203844"))
-	label_at("%d brass   ·   %.2f troops/s" % [int(state.gold), Gear.total_rate(state.board)], Vector2(34, 617), 21, GOLD)
+	label_at("%d brass   ·   %.2f troops/s" % [int(state.gold), Gear.total_rate(state.board, state.config)], Vector2(34, 617), 21, GOLD)
 	panel(ui.begin, MINT if state.phase == "ready" else Color("344e58"))
 	var begin_text := "Begin defense" if state.phase == "ready" else "Threat tips"
 	if state.phase in ["defeat", "victory"]:
@@ -398,33 +597,41 @@ func _draw() -> void:
 	label_at(begin_text, ui.begin.get_center() + Vector2(0, 7), 21, INK if state.phase == "ready" else CREAM, true)
 	label_at("POWER NETWORK", Vector2(20, 653), 15, MINT)
 	_draw_board()
-	label_at("BRASS", Vector2(50, 718), 17, GOLD, true)
-	label_at("CORE", Vector2(50, 742), 17, GOLD, true)
-	label_at("+25%", Vector2(50, 794), 24, BLUE, true)
-	label_at("per level", Vector2(50, 820), 17, CREAM, true)
-	label_at("adjacent", Vector2(50, 845), 17, CREAM, true)
-	label_at("drive", Vector2(50, 870), 17, CREAM, true)
+	if not state.config.is_empty():
+		for key in ["map", "refit", "help"]:
+			panel(ui[key], Color("304754"))
+			label_at("Map" if key == "map" else "Refit" if key == "refit" else "Guide", ui[key].get_center() + Vector2(0, 7), 20, CREAM, true)
+	else:
+		label_at("BRASS", Vector2(50, 718), 17, GOLD, true)
+		label_at("CORE", Vector2(50, 742), 17, GOLD, true)
+		label_at("+25%", Vector2(50, 794), 24, BLUE, true)
+		label_at("per level", Vector2(50, 820), 17, CREAM, true)
+		label_at("adjacent", Vector2(50, 845), 17, CREAM, true)
+		label_at("drive", Vector2(50, 870), 17, CREAM, true)
 	if state.encounter == "iron_trial":
 		var refit_piece := selected_piece()
 		panel(ui.refit, Color("304754"))
 		label_at("Refit", Vector2(50, 913), 20, CREAM, true)
 		label_at("-2" if refit_piece.get("kind", "") == "ranger" else "+2", Vector2(50, 944), 24, GOLD, true)
-	else:
+	elif state.config.is_empty():
 		label_at("cap 3×", Vector2(50, 911), 20, GOLD, true)
 	var chosen := selected_piece()
 	label_at("EXIT", Vector2(550, 686), 17, MINT, true)
 	for lane in 3:
-		var active: bool = not chosen.is_empty() and chosen.kind in ["guard", "ranger"] and int(chosen.lane) == lane
+		var active: bool = not chosen.is_empty() and chosen.kind in Gear.BASE_RATES and int(chosen.lane) == lane
 		panel(ui["gate%d" % lane], Color("385d65") if active else Color("1b323e"), MINT if active else Color.TRANSPARENT)
 		label_at("Exit %d" % (lane + 1), ui["gate%d" % lane].get_center() + Vector2(0, 7), 20, CREAM, true)
 	var shortened := message
 	if shortened.length() > 60:
 		shortened = shortened.left(57) + "…"
 	label_at(shortened, Vector2(300, 996), 17, MINT, true)
-	for key in ["drive", "guard", "ranger", "undo"]:
+	for key in ["drive", "guard", "ranger", "mortar", "undo"]:
+		if not ui.has(key):
+			continue
 		panel(ui[key], Color("304754"), GOLD if key == "undo" and not undo_board.is_empty() else Color.TRANSPARENT)
-		var text := "Undo move" if key == "undo" else "%s  %d" % [key.capitalize(), Gear.COSTS[key]]
-		label_at(text, ui[key].get_center() + Vector2(0, 7), 20, CREAM, true)
+		var text := "Undo" if key == "undo" else "%s %d" % [key.capitalize(), state.config.get("costs", Gear.COSTS)[key]]
+		var available: bool = state.config.is_empty() or key in ["drive", "undo"] or key in state.config.allowed
+		label_at(text if available else "Locked", ui[key].get_center() + Vector2(0, 7), 18 if not state.config.is_empty() else 20, CREAM if available else Color("75858c"), true)
 	if dragging and (drag_id >= 0 or drag_kind != ""):
 		var piece := selected_piece() if drag_kind == "" else Gear.piece(0, drag_kind, 0, 0)
 		if not piece.is_empty():
@@ -440,6 +647,9 @@ func _draw_field() -> void:
 	label_at("WALL %d / %d" % [ceili(float(state.wall)), int(Battle.wall_limit(state))], Vector2(36, 150), 20, CREAM)
 	label_at("ARMY %d / %d" % [state.units.size(), Battle.UNIT_CAP], Vector2(564, 150) - Vector2(font.get_string_size("ARMY %d / %d" % [state.units.size(), Battle.UNIT_CAP], HORIZONTAL_ALIGNMENT_LEFT, -1, 18).x, 0), 18, GOLD)
 	if state.phase == "ready":
+		if not state.config.is_empty():
+			_draw_campaign_brief()
+			return
 		label_at("Iron Trial · one fixed budget" if state.encounter == "iron_trial" else "The beetle tide is coming", Vector2(300, 254), 25, CREAM, true)
 		label_at("1. Connect gears to the gold core", Vector2(300, 299), 21, MINT, true)
 		label_at("2. Place drives beside troop gears", Vector2(300, 333), 21, MINT, true)
@@ -457,14 +667,26 @@ func _draw_field() -> void:
 			for arrow in state.projectiles:
 				draw_line(Vector2(arrow[0], arrow[1]), Vector2(arrow[2], arrow[3]), GOLD if arrow.size() < 5 or arrow[4] else RED, 2)
 		var wave_index := maxi(0, int(state.wave) - 1)
-		var wave: Dictionary = Battle.waves(str(state.encounter))[wave_index]
+		var wave: Dictionary = Battle.run_waves(state)[wave_index]
 		panel(Rect2(145, 164, 310, 28), Color(0.06, 0.12, 0.15, 0.8), Color.TRANSPARENT, 6)
-		label_at("WAVE %d / 3 · %s" % [int(state.wave), wave.name], Vector2(300, 185), 17, CREAM, true)
+		label_at("WAVE %d / %d · %s" % [int(state.wave), Battle.run_waves(state).size(), wave.name], Vector2(300, 185), 17, CREAM, true)
 		var forecast := "Final push · armor + crowd-cleave · use rangers" if state.encounter == "iron_trial" else "Final push · shells resist guard attacks"
-		if int(state.wave) < 3:
-			forecast = "Next: " + str(Battle.waves(str(state.encounter))[int(state.wave)].name)
+		if int(state.wave) < Battle.run_waves(state).size():
+			forecast = "Next: " + str(Battle.run_waves(state)[int(state.wave)].name)
+		if not state.config.is_empty():
+			forecast = "Now: " + str(wave.name) + " · exits " + ",".join(PackedStringArray(wave.lanes.map(func(v): return str(int(v) + 1))))
+			if state.boss_spawned:
+				forecast = "Boss phase %d · screen the front to stop volleys" % int(state.boss_phase)
+				for enemy in state.enemies:
+					if enemy.kind in ["captain", "siege", "matriarch"]:
+						panel(Rect2(90, 196, 420, 32), INK, GOLD, 5)
+						draw_rect(Rect2(96, 220, 408 * maxf(0, float(enemy.hp)) / float(enemy.max_hp), 4), RED)
+						label_at("%s · %d HP" % [str(enemy.kind).capitalize(), ceili(float(enemy.hp))], Vector2(300, 216), 18, GOLD, true)
+			elif state.phase == "battle":
+				panel(buttons().rally, Color("263c46"))
+				label_at("Normal pace" if state.rally else "Rally formations", buttons().rally.get_center() + Vector2(0, 7), 18, CREAM, true)
 		if state.units.size() >= Battle.UNIT_CAP:
-			var producer := Battle.next_producer(state, Gear.rates(state.board))
+			var producer := Battle.next_producer(state, Gear.rates(state.board, state.config))
 			forecast = "Army full · fair turns · next " + str(producer.get("kind", "charging"))
 		if state.encounter == "iron_trial":
 			panel(Rect2(46, 474, 508, 48), Color(0.06, 0.12, 0.15, 0.9), Color.TRANSPARENT, 5)
@@ -479,7 +701,25 @@ func _draw_field() -> void:
 			panel(Rect2(82, 277, 436, 155), Color("172b36"), MINT if state.phase == "victory" else RED)
 			label_at("FOUNDRY HELD" if state.phase == "victory" else "WALL BREACHED", Vector2(300, 319), 30, MINT if state.phase == "victory" else RED, true)
 			label_at("%d troops built · %d raiders stopped" % [int(state.produced), int(state.kills)], Vector2(300, 360), 20, CREAM, true)
-			label_at("Tap Retry now below", Vector2(300, 401), 20, GOLD, true)
+			label_at("Choose Next or Retry" if not state.config.is_empty() and state.phase == "victory" else "Tap Retry now below", Vector2(300, 401), 20, GOLD, true)
+			if not state.config.is_empty() and state.phase == "victory":
+				panel(buttons().next, Color("2c5c59"), MINT)
+				label_at("Ending" if state.encounter == "camp_09" else "Next foundry", buttons().next.get_center() + Vector2(0, 8), 23, CREAM, true)
+
+func _draw_campaign_brief() -> void:
+	label_at(state.config.name, Vector2(300, 242), 29, GOLD, true)
+	var line := ""
+	var y := 295
+	for word in str(state.config.decision).split(" "):
+		if font.get_string_size(line + word, HORIZONTAL_ALIGNMENT_LEFT, -1, 21).x > 485:
+			label_at(line, Vector2(300, y), 21, CREAM, true)
+			y += 31
+			line = ""
+		line += word + " "
+	label_at(line, Vector2(300, y), 21, CREAM, true)
+	label_at("%d brass · %s" % [int(state.config.budget), " / ".join(PackedStringArray(state.config.allowed)).capitalize()], Vector2(300, 396), 22, MINT, true)
+	label_at("Drag gears, choose exits, then Begin.", Vector2(300, 438), 21, CREAM, true)
+	label_at("The board stays live throughout the defense.", Vector2(300, 475), 20, CREAM, true)
 
 func _draw_wall() -> void:
 	draw_rect(Rect2(20, 530, 560, 48), Color("a09c7e"))
@@ -497,7 +737,7 @@ func _draw_board() -> void:
 	for y in 4:
 		for x in 5:
 			var center := cell_center(x, y)
-			if not Gear.cell_allowed(x, y, str(state.encounter)):
+			if not Gear.cell_allowed(x, y, str(state.encounter), state.config):
 				draw_line(center - Vector2(12, 12), center + Vector2(12, 12), Color("39505a"), 3)
 				draw_line(center + Vector2(-12, 12), center + Vector2(12, -12), Color("39505a"), 3)
 				continue
@@ -516,9 +756,9 @@ func _draw_board() -> void:
 		if cell.x >= 0 and cell.x < 5 and cell.y >= 0 and cell.y < 4:
 			var valid := false
 			if drag_id >= 0:
-				valid = Gear.move(state.board, drag_id, cell.x, cell.y, str(state.encounter)).ok
+				valid = Gear.move(state.board, drag_id, cell.x, cell.y, str(state.encounter), state.config).ok
 			else:
-				valid = Gear.buy(state.board, drag_kind, cell.x, cell.y, int(state.gold), int(state.next_id), str(state.encounter)).ok
+				valid = Gear.buy(state.board, drag_kind, cell.x, cell.y, int(state.gold), int(state.next_id), str(state.encounter), state.config).ok
 			panel(Rect2(cell_center(cell.x, cell.y) - Vector2(37, 37), Vector2(74, 74)), Color(0, 0, 0, 0), MINT if valid else RED)
 
 func _draw_gear(center: Vector2, piece: Dictionary, active: bool, ghost: bool) -> void:
@@ -544,12 +784,15 @@ func _draw_gear(center: Vector2, piece: Dictionary, active: bool, ghost: bool) -
 	elif kind == "guard":
 		draw_line(center + Vector2(0, 9), center + Vector2(0, -11), color, 4)
 		draw_line(center + Vector2(-7, 3), center + Vector2(7, 3), color, 3)
+	elif kind == "mortar":
+		draw_circle(center + Vector2(-4, 5), 8, color)
+		draw_line(center + Vector2(-4, 5), center + Vector2(10, -9), color, 8)
 	else:
 		draw_arc(center + Vector2(-6, 0), 12, -1.1, 1.1, 12, color, 3, true)
 		draw_line(center + Vector2(0, -11), center + Vector2(0, 11), color, 2)
 		draw_line(center + Vector2(-9, 0), center + Vector2(12, 0), color, 2)
-	if kind in ["guard", "ranger"] and not ghost:
-		var rate := Gear.rate(state.board, int(piece.id))
+	if kind in Gear.BASE_RATES and not ghost:
+		var rate := Gear.rate(state.board, int(piece.id), state.config)
 		panel(Rect2(center + Vector2(-37, 20), Vector2(74, 23)), INK, Color.TRANSPARENT, 4)
 		label_at("%.2f/s" % rate if active else "OFF", center + Vector2(0, 38), 20, MINT if active else RED, true)
 		label_at(str(int(piece.lane) + 1), center + Vector2(21, -16), 13, GOLD, true)
@@ -562,12 +805,17 @@ func _draw_unit(unit: Dictionary, friendly: bool) -> void:
 	var color := GOLD if friendly else Color("b75e5e")
 	if kind == "ranger":
 		color = BLUE
+	elif kind == "mortar":
+		color = Color("d5a3dd")
 	elif kind == "shell":
 		color = Color("a5a875")
 	elif kind == "carapace":
 		color = Color("ac8cd3")
 	elif kind == "spitter":
 		color = Color("db9b5f")
+	elif kind in ["captain", "siege", "matriarch"]:
+		color = Color("cd78a9")
+		point += Vector2(0, 3)
 	elif kind == "skitter":
 		color = Color("d48f61")
 	if float(unit.flash) > 0 and not settings.reduced_effects:
@@ -585,9 +833,17 @@ func _draw_unit(unit: Dictionary, friendly: bool) -> void:
 		if kind == "guard":
 			draw_line(point + Vector2(9, 5), point + Vector2(9, -9), CREAM, 2)
 			draw_circle(point + Vector2(-8, 1), 5, Color("6fa7a3"))
+		elif kind == "mortar":
+			draw_circle(point + Vector2(8, 3), 6, Color("cab0d4"))
+			draw_line(point + Vector2(5, 3), point + Vector2(13, -8), INK, 5)
 		else:
 			draw_arc(point + Vector2(8, 0), 7, -1.5, 1.5, 8, CREAM, 2)
 	else:
+		if kind in ["captain", "siege", "matriarch"]:
+			draw_circle(point, 19, INK)
+			draw_circle(point, 16, color)
+			for tooth in 6:
+				draw_line(point + Vector2.from_angle(tooth * TAU / 6) * 13, point + Vector2.from_angle(tooth * TAU / 6) * 24, color, 5)
 		for leg in [-1, 1]:
 			for offset in [-5, 2, 7]:
 				draw_line(point + Vector2(leg * 4, offset), point + Vector2(leg * 12, offset + 3), INK, 2)

@@ -4,11 +4,16 @@ extends RefCounted
 
 const WIDTH := 5
 const HEIGHT := 4
-const COSTS := {"drive": 6, "guard": 12, "ranger": 14}
-const BASE_RATES := {"guard": 0.72, "ranger": 0.52}
+const COSTS := {"drive": 6, "guard": 12, "ranger": 14, "mortar": 18}
+const BASE_RATES := {"guard": 0.72, "ranger": 0.52, "mortar": 0.38}
 
-static func cell_allowed(x: int, y: int, encounter: String = "tutorial") -> bool:
+static func cell_allowed(x: int, y: int, encounter: String = "tutorial", config: Dictionary = {}) -> bool:
 	if x < 0 or x >= WIDTH or y < 0 or y >= HEIGHT:
+		return false
+	if not config.is_empty():
+		for cell in config.sockets:
+			if int(cell[0]) == x and int(cell[1]) == y:
+				return true
 		return false
 	if encounter != "iron_trial":
 		return true
@@ -45,10 +50,10 @@ static func powered(board: Array) -> Dictionary:
 				frontier.append(neighbor)
 	return result
 
-static func rate(board: Array, id: int) -> float:
-	return float(rates(board).get(id, 0.0))
+static func rate(board: Array, id: int, config: Dictionary = {}) -> float:
+	return float(rates(board, config).get(id, 0.0))
 
-static func rates(board: Array) -> Dictionary:
+static func rates(board: Array, config: Dictionary = {}) -> Dictionary:
 	var network := powered(board)
 	var result: Dictionary = {}
 	for p in board:
@@ -59,18 +64,18 @@ static func rates(board: Array) -> Dictionary:
 			if other.kind == "drive" and network.has(int(other.id)):
 				if absi(int(p.x) - int(other.x)) + absi(int(p.y) - int(other.y)) == 1:
 					adjacent_levels += int(other.level)
-		result[int(p.id)] = float(BASE_RATES[p.kind]) * minf(3.0, 1.0 + 0.25 * adjacent_levels)
+		result[int(p.id)] = float(config.get("generator_rates", BASE_RATES)[p.kind]) * minf(3.0, 1.0 + 0.25 * adjacent_levels)
 	return result
 
-static func total_rate(board: Array) -> float:
+static func total_rate(board: Array, config: Dictionary = {}) -> float:
 	var result := 0.0
-	for value in rates(board).values():
+	for value in rates(board, config).values():
 		result += float(value)
 	return result
 
-static func move(board: Array, id: int, x: int, y: int, encounter: String = "tutorial") -> Dictionary:
+static func move(board: Array, id: int, x: int, y: int, encounter: String = "tutorial", config: Dictionary = {}) -> Dictionary:
 	var unchanged := {"ok": false, "board": board.duplicate(true), "message": "Move cancelled · board retained"}
-	if not cell_allowed(x, y, encounter):
+	if not cell_allowed(x, y, encounter, config):
 		return unchanged
 	var source := -1
 	for i in board.size():
@@ -92,21 +97,24 @@ static func move(board: Array, id: int, x: int, y: int, encounter: String = "tut
 	copy[source].y = y
 	return {"ok": true, "board": copy, "message": "Network changed · Undo available"}
 
-static func buy(board: Array, kind: String, x: int, y: int, gold: int, next_id: int, encounter: String = "tutorial") -> Dictionary:
-	if not COSTS.has(kind) or not cell_allowed(x, y, encounter) or at(board, x, y) >= 0:
+static func buy(board: Array, kind: String, x: int, y: int, gold: int, next_id: int, encounter: String = "tutorial", config: Dictionary = {}) -> Dictionary:
+	if not config.is_empty() and kind != "drive" and not kind in config.allowed:
+		return {"ok": false, "message": "This foundry has not unlocked %s" % kind}
+	if not COSTS.has(kind) or not cell_allowed(x, y, encounter, config) or at(board, x, y) >= 0:
 		return {"ok": false, "message": "Choose an empty socket"}
-	if gold < int(COSTS[kind]):
-		return {"ok": false, "message": "Need %d brass" % int(COSTS[kind])}
+	var costs: Dictionary = config.get("costs", COSTS)
+	if gold < int(costs[kind]):
+		return {"ok": false, "message": "Need %d brass" % int(costs[kind])}
 	var copy := board.duplicate(true)
 	copy.append(piece(next_id, kind, x, y))
-	return {"ok": true, "board": copy, "gold": gold - int(COSTS[kind]), "message": "Installed · connect to the core"}
+	return {"ok": true, "board": copy, "gold": gold - int(costs[kind]), "message": "Installed · connect to the core"}
 
-static func refit(board: Array, id: int, gold: int) -> Dictionary:
+static func refit(board: Array, id: int, gold: int, roles: Array = ["guard", "ranger"], costs: Dictionary = COSTS) -> Dictionary:
 	var copy := board.duplicate(true)
 	for p in copy:
-		if int(p.id) == id and p.kind in ["guard", "ranger"]:
-			var replacement := "ranger" if p.kind == "guard" else "guard"
-			var cost: int = int(COSTS[replacement]) - int(COSTS[p.kind])
+		if int(p.id) == id and p.kind in roles:
+			var replacement: String = roles[(roles.find(p.kind) + 1) % roles.size()]
+			var cost: int = int(costs[replacement]) - int(costs[p.kind])
 			if gold < cost:
 				return {"ok": false, "message": "Refit needs %d brass" % cost}
 			p.kind = replacement
@@ -128,7 +136,7 @@ static func valid_board(board: Array) -> bool:
 		for key in ["id", "x", "y", "level", "lane"]:
 			if not (p[key] is int or p[key] is float) or not is_finite(float(p[key])) or absf(float(p[key])) > 100000000 or float(p[key]) != int(p[key]):
 				return false
-		if not str(p.kind) in ["core", "drive", "guard", "ranger"]:
+		if not str(p.kind) in ["core", "drive", "guard", "ranger", "mortar"]:
 			return false
 		if float(p.x) != int(p.x) or float(p.y) != int(p.y) or int(p.x) < 0 or int(p.x) >= WIDTH or int(p.y) < 0 or int(p.y) >= HEIGHT:
 			return false

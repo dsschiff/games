@@ -4,6 +4,7 @@ const Gear = preload("res://scripts/gear_rules.gd")
 const Battle = preload("res://scripts/battle_rules.gd")
 const Saves = preload("res://scripts/save_store.gd")
 const Review = preload("res://tests/review_regressions.gd")
+const Campaign = preload("res://tests/campaign_rules.gd")
 var checks := 0
 var failures: Array[String] = []
 
@@ -172,7 +173,10 @@ func run() -> void:
 		worst_step = maxi(worst_step, Time.get_ticks_usec() - tick_began)
 	check(stress.units.size() <= Battle.UNIT_CAP and stress.enemies.size() <= Battle.ENEMY_CAP, "120-troop / 90-raider stress remains bounded")
 	print("HEAVY 120 steps: ", (Time.get_ticks_usec() - began) / 1000.0, " ms; max step ", worst_step / 1000.0, " ms; desktop only")
-	Review.run(check)
+	var review_outcomes: Variant = Review.run(check)
+	check(review_outcomes is Dictionary and review_outcomes.size() == 5, "All review regression scenarios reached completion")
+	var campaign_completed: Variant = Campaign.run(check)
+	check(campaign_completed == true, "All campaign rule scenarios reached completion")
 	print("RULE TESTS: ", checks, " checks, ", failures.size(), " failures")
 	print("SUITE_COMPLETE: PASS" if failures.is_empty() else "SUITE_COMPLETE: FAIL")
 	quit(0 if failures.is_empty() else 1)
