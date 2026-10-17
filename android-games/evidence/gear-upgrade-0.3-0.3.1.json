@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "scope": "Actual active campaign code4 to code5 update with unchanged schema4",
+  "result": "passed",
+  "checks": 24,
+  "version_transition": [
+    4,
+    5
+  ],
+  "schema_transition": [
+    4,
+    4
+  ],
+  "source_sha256": "7a7a7e2bba5c0773dd8705e221747682f422208da5b91649e5a2482e0e89275c",
+  "source_unchanged": true,
+  "old_apk_sha256": "de8d3db025671dadea70aef98fbc0d8bfe715049319423a4e94a31314116b7bf",
+  "new_apk_sha256": "09180d81ade2166e7ffa3cf1652c976e76d40f7fb4aff720d9e5a67780f0a2cd",
+  "whole_paths_preserved": [
+    "active_run",
+    "profile",
+    "settings"
+  ],
+  "old_campaign": "camp_01",
+  "army_preserved": 10,
+  "revisions": {
+    "old-before-upgrade": 33,
+    "new-installed-before-launch": 33,
+    "new-after-launch": 35,
+    "new-cold-relaunch": 37
+  },
+  "actual_new_app_writes_verified": true,
+  "legacy_deployment_seconds_absent_in_all_captures": true,
+  "legacy_source_default_seconds": 0,
+  "independent_tooling_tests": 55,
+  "back_tooling_commit": "47184a0",
+  "artifact_root": "C:\\projects\\active\\games\\.artifacts\\upgrades\\com.dsschiff.gearbastion\\20261017T233642230661Z",
+  "build_manifest": "C:\\projects\\active\\games\\.artifacts\\gear-bastion\\20261017T233419282637Z\\manifest.json",
+  "coordinator_verification": "C:\\projects\\active\\games\\.artifacts\\upgrades\\com.dsschiff.gearbastion\\20261017T233642230661Z\\coordinator-verification.json",
+  "receipt": "C:\\projects\\active\\games\\.artifacts\\preservation\\gear-upgrade-0.3-0.3.1.json",
+  "receipt_sha256": "93efc85a7cc081b190688940595615847c05cf25940619a659f96edff2a0cbed",
+  "preserved_files": 27,
+  "preserved_bytes": 173043441,
+  "physical_phone_tested": false,
+  "release_candidate": false,
+  "limits": [
+    "Intermediate current-art checkpoint still has the documented boss HUD P2 and balance work",
+    "Update opens the map with paused resumable active defense; future legacy production was not advanced in this packet",
+    "Profile is initially empty in this active campaign case; prior schema3-to4 migration has its own packet",
+    "No fresh code5 win/loss/Retry, actual Back, Fold geometry or measured FPS result is claimed by this update packet",
+    "Shader-cache recompilation warnings were recorded; no runtime errors found by the runner"
+  ]
+}
