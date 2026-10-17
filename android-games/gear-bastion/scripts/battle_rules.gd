@@ -10,16 +10,28 @@ const STATS := {
 	"ranger": {"hp": 14.0, "damage": 11.0, "reach": 103.0, "speed": 25.0, "period": 1.05},
 	"beetle": {"hp": 30.0, "damage": 7.0, "reach": 21.0, "speed": 22.0, "period": 0.9},
 	"shell": {"hp": 70.0, "damage": 10.0, "reach": 23.0, "speed": 17.0, "period": 1.15},
-	"skitter": {"hp": 18.0, "damage": 5.0, "reach": 18.0, "speed": 39.0, "period": 0.65}}
+	"skitter": {"hp": 18.0, "damage": 5.0, "reach": 18.0, "speed": 39.0, "period": 0.65},
+	"carapace": {"hp": 110.0, "damage": 18.0, "reach": 26.0, "speed": 24.0, "period": 0.9},
+	"spitter": {"hp": 42.0, "damage": 7.0, "reach": 145.0, "speed": 24.0, "period": 0.9}}
 
-static func initial(seed_value: int = 1701) -> Dictionary:
-	return {"board": Gear.initial_board(), "gold": 24, "next_id": 6, "wall": 220.0,
+static func initial(seed_value: int = 1701, encounter: String = "tutorial") -> Dictionary:
+	var trial := encounter == "iron_trial"
+	return {"board": [Gear.piece(1, "core", 2, 2), Gear.piece(2, "drive", 2, 1)] if trial else Gear.initial_board(), "gold": 54 if trial else 24, "next_id": 3 if trial else 6, "wall": 160.0 if trial else 220.0,
+		"encounter": encounter, "spent": 0, "production_last_id": 0,
 		"units": [], "enemies": [], "projectiles": [], "production": {}, "phase": "ready",
 		"time": 0.0, "wave": 0, "wave_time": 0.0, "spawn_clock": 0.0, "spawned": 0,
 		"serial": 1, "seed": seed_value, "kills": 0, "produced": 0, "peak_units": 0,
-		"wall_hits": 0, "cap_time": 0.0}
+		"wall_hits": 0, "cap_time": 0.0, "losses": 0}
 
-static func waves() -> Array:
+static func wall_limit(state: Dictionary) -> float:
+	return 160.0 if state.encounter == "iron_trial" else 220.0
+
+static func waves(encounter: String = "tutorial") -> Array:
+	if encounter == "iron_trial":
+		return [
+			{"name": "Spitter screen", "count": 18, "interval": 0.9, "kind": "spitter", "duration": 22.0},
+			{"name": "Carapace column", "count": 18, "interval": 1.35, "kind": "carapace", "duration": 30.0},
+			{"name": "Combined assault", "count": 30, "interval": 0.65, "kind": "carapace", "duration": 30.0}]
 	return [
 		{"name": "Scouts", "count": 12, "interval": 1.6, "kind": "beetle", "duration": 24.0},
 		{"name": "Fast flanks", "count": 20, "interval": 1.1, "kind": "skitter", "duration": 27.0},
@@ -40,6 +52,17 @@ static func make_unit(state: Dictionary, kind: String, lane: int, friendly: bool
 		"y": 537.0 if friendly else 205.0, "hp": stats.hp, "max_hp": stats.hp,
 		"cooldown": 0.1, "flash": 0.0}
 
+static func next_producer(state: Dictionary, rates: Dictionary) -> Dictionary:
+	var available: Array = []
+	for p in state.board:
+		if float(rates.get(int(p.id), 0.0)) > 0 and float(state.production.get(str(int(p.id)), 0.0)) >= 1:
+			available.append(p)
+	available.sort_custom(func(a, b): return int(a.id) < int(b.id))
+	for p in available:
+		if int(p.id) > int(state.production_last_id):
+			return p
+	return available[0] if not available.is_empty() else {}
+
 static func tick(state: Dictionary, dt: float) -> void:
 	if state.phase != "battle":
 		return
@@ -55,16 +78,22 @@ static func tick(state: Dictionary, dt: float) -> void:
 		var key := str(int(p.id))
 		var stored := float(state.production.get(key, 0.0))
 		stored = minf(1.0, stored + float(rates.get(int(p.id), 0.0)) * dt)
-		if stored >= 1.0 and state.units.size() < UNIT_CAP:
-			state.units.append(make_unit(state, str(p.kind), int(p.lane), true))
-			state.produced = int(state.produced) + 1
-			stored -= 1.0
 		production[key] = stored
 	state.production = production
+	# Round-robin by stable piece ID, independent of board array order. Only
+	# currently powered generators can dispatch even if they hold a full buffer.
+	while state.units.size() < UNIT_CAP:
+		var producer := next_producer(state, rates)
+		if producer.is_empty():
+			break
+		state.units.append(make_unit(state, str(producer.kind), int(producer.lane), true))
+		state.produced = int(state.produced) + 1
+		state.production[str(int(producer.id))] = 0.0
+		state.production_last_id = int(producer.id)
 	state.peak_units = maxi(int(state.peak_units), state.units.size())
 	if state.units.size() >= UNIT_CAP:
 		state.cap_time = float(state.cap_time) + dt
-	var wave: Dictionary = waves()[int(state.wave) - 1]
+	var wave: Dictionary = waves(str(state.encounter))[int(state.wave) - 1]
 	if int(state.spawned) < int(wave.count) and float(state.spawn_clock) >= float(wave.interval) and state.enemies.size() < ENEMY_CAP:
 		state.spawn_clock = float(state.spawn_clock) - float(wave.interval)
 		var lane := (int(state.spawned) + int(state.wave)) % 3
@@ -96,13 +125,27 @@ static func tick(state: Dictionary, dt: float) -> void:
 			if not target.is_empty() and distance <= float(stats.reach):
 				if float(unit.cooldown) <= 0:
 					var damage := float(stats.damage)
-					if str(target.kind) == "shell" and str(unit.kind) == "guard":
-						damage *= 0.4
+					if str(unit.kind) == "guard":
+						if str(target.kind) == "shell":
+							damage *= 0.4
+						elif str(target.kind) == "carapace":
+							damage *= 0.04
 					target.hp = float(target.hp) - damage
 					target.flash = 0.16
 					unit.cooldown = stats.period
-					if unit.kind == "ranger":
-						state.projectiles.append([float(unit.x), float(unit.y), float(target.x), float(target.y)])
+					if unit.kind == "carapace":
+						var splashed := 0
+						for nearby in targets:
+							if int(nearby.id) == int(target.id) or float(nearby.hp) <= 0:
+								continue
+							if Vector2(float(nearby.x) - float(target.x), float(nearby.y) - float(target.y)).length_squared() <= 36 * 36:
+								nearby.hp = float(nearby.hp) - damage * 0.65
+								nearby.flash = 0.16
+								splashed += 1
+								if splashed >= 4:
+									break
+					if unit.kind in ["ranger", "spitter"]:
+						state.projectiles.append([float(unit.x), float(unit.y), float(target.x), float(target.y), friendly])
 			else:
 				var direction := Vector2(0, -1 if friendly else 1)
 				if not target.is_empty():
@@ -123,13 +166,17 @@ static func tick(state: Dictionary, dt: float) -> void:
 		if float(enemy.hp) <= 0:
 			dead += 1
 	state.kills = int(state.kills) + dead
-	state.gold = int(state.gold) + dead
+	for unit in state.units:
+		if float(unit.hp) <= 0:
+			state.losses = int(state.losses) + 1
+	if state.encounter != "iron_trial":
+		state.gold = int(state.gold) + dead
 	state.units = state.units.filter(func(u): return float(u.hp) > 0)
 	state.enemies = state.enemies.filter(func(u): return float(u.hp) > 0)
 	if float(state.wall) <= 0:
 		state.phase = "defeat"
 	elif int(state.spawned) >= int(wave.count) and float(state.wave_time) >= float(wave.duration) and state.enemies.is_empty():
-		if int(state.wave) == waves().size():
+		if int(state.wave) == waves(str(state.encounter)).size():
 			state.phase = "victory"
 		else:
 			state.wave = int(state.wave) + 1

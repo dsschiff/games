@@ -3,13 +3,15 @@ extends SceneTree
 const Scene = preload("res://main.tscn")
 const Gear = preload("res://scripts/gear_rules.gd")
 const Saves = preload("res://scripts/save_store.gd")
+const FaultFiles = preload("res://tests/fault_files.gd")
 var game: Node2D
 var checks := 0
 var failures: Array[String] = []
 var events := 0
 var pointer_events := 0
 var key_events := 0
-var evidence := "res://.artifacts/playthrough"
+var evidence := "res://.artifacts/review-playthrough"
+var trial_outcomes: Dictionary = {}
 
 func _initialize() -> void:
 	if DisplayServer.get_name() == "headless":
@@ -57,6 +59,33 @@ func move(x: int, y: int, target_x: int, target_y: int) -> void:
 
 func action(key: String) -> void:
 	await tap(game.buttons()[key].get_center())
+
+func purchase(kind: String, x: int, y: int, lane: int = 1) -> void:
+	await drag(game.buttons()[kind].get_center(), game.cell_center(x, y))
+	if kind in ["guard", "ranger"]:
+		await action("gate%d" % lane)
+
+func trial_build(strategy: String) -> void:
+	if strategy == "B":
+		await purchase("guard", 1, 2, 0)
+		await purchase("guard", 3, 2, 2)
+		await purchase("guard", 2, 3, 1)
+		await purchase("ranger", 1, 1, 0)
+	elif strategy == "R":
+		await purchase("ranger", 1, 2, 0)
+		await purchase("ranger", 3, 2, 2)
+		await purchase("ranger", 2, 3, 1)
+		await purchase("drive", 1, 3)
+		await purchase("drive", 3, 3)
+	else:
+		await purchase("guard", 1, 2, 0)
+		await purchase("guard", 3, 2, 2)
+		await purchase("guard" if strategy == "C" else "ranger", 1, 1, 0)
+		await purchase("guard" if strategy == "C" else "ranger", 3, 1, 2)
+
+func trial_result(name: String) -> void:
+	trial_outcomes[name] = {"phase": game.state.phase, "wall": game.state.wall, "spent": game.state.spent, "gold": game.state.gold, "time": game.state.time, "losses": game.state.losses, "kills": game.state.kills}
+	print("INPUT TRIAL ", name, ": ", trial_outcomes[name])
 
 func dialog_action(text: String) -> void:
 	for node in game.save_dialog.find_children("*", "Button", true, false):
@@ -117,7 +146,7 @@ func create_game() -> void:
 
 func run() -> void:
 	DirAccess.make_dir_recursive_absolute(evidence)
-	for suffix in ["", ".bak", ".tmp"]:
+	for suffix in ["", ".bak", ".tmp", ".bak.tmp"]:
 		DirAccess.remove_absolute("user://input-playthrough.json" + suffix)
 	await create_game()
 	await frame("01-first-foundry")
@@ -173,6 +202,8 @@ func run() -> void:
 	await action("mute")
 	await action("effects")
 	check(game.settings.muted and game.settings.reduced_effects, "Touch accessibility preferences")
+	var app_written := Saves.read(game.save_path)
+	check(app_written.ok and not app_written.recovered and app_written.path == game.save_path, "Normal app-written primary save reads directly without recovery fixtures")
 	if DisplayServer.get_name() != "headless":
 		await action("save")
 		await frame("03b-portable-save")
@@ -232,7 +263,96 @@ func run() -> void:
 	await frame("08-defeat")
 	await action("begin")
 	check(game.state.phase == "ready" and game.state.units.is_empty() and game.state.wall == 220, "Defeat permits immediate clean retry")
-	var report := {"checks": checks, "failures": failures, "input_events": events, "pointer_events": pointer_events, "keyboard_events": key_events, "renderer": DisplayServer.get_name(), "result": "passed" if failures.is_empty() else "failed", "scope": "prototype; simulated time accelerated; desktop aspect resize only; no device claim; clipboard not verified"}
+	# The following backend is an explicitly injected storage fault, separate from
+	# normal app-save/reload above. UI actions still enter through actual input.
+	var fault := FaultFiles.new()
+	var protected_source := Saves.encode(game.state, game.settings, 100)
+	fault.files[game.save_path] = protected_source
+	fault.files[game.save_path + ".bak"] = protected_source
+	fault.fail_suffix = ".json.tmp"
+	fault.fail_mode = "flush"
+	game.save_backend = fault
+	await action("save")
+	check(game.save_failed and game.save_dialog.visible and fault.files[game.save_path] == protected_source, "Touch Save surfaces injected flush failure while preserving good primary")
+	if DisplayServer.get_name() != "headless":
+		var import_state: Dictionary = game.state.duplicate(true)
+		import_state.seed = 9999
+		await type_save(Saves.encode(import_state, game.settings))
+		await dialog_action("Import")
+		check(game.state.seed != 9999 and game.save_dialog.visible and game.save_failed, "Failed import persistence retains current in-memory game and shows failure")
+		check(Saves.read(game.save_path, fault).state.seed != 9999, "Failed import temp cannot silently replace game on next load")
+	await dialog_action("Close")
+	await frame("09-save-failure-visible")
+	await action("speed")
+	check(game.save_failed, "Save warning survives unrelated gameplay status messages")
+	game.save_backend = null
+	await action("save")
+	check(not game.save_failed and Saves.read(game.save_path).ok, "Successful retry clears save warning")
+	await dialog_action("Close")
+	await action("trial")
+	check(game.state.encounter == "iron_trial" and game.state.gold == 54 and game.state.board.size() == 2, "Touch enters fixed-budget constrained trial")
+	await purchase("guard", 0, 0)
+	check(game.state.gold == 54 and game.state.board.size() == 2, "Blocked trial socket rejects purchase without spending")
+	await trial_build("A")
+	check(game.state.spent == 52 and game.state.gold == 2 and Gear.powered(game.state.board).size() == 6, "First trial strategy spends 52 brass on fully connected mixed army")
+	var mixed_rate: float = Gear.total_rate(game.state.board)
+	await action("begin")
+	await advance(30)
+	await frame("10-trial-A-battle")
+	await advance(180)
+	check(game.state.phase == "victory", "Actual-input constrained strategy A wins")
+	trial_result("A")
+	await frame("11-trial-A-victory")
+	await action("begin")
+	check(game.state.encounter == "iron_trial" and game.state.gold == 54, "Retry retains trial and resets its fixed budget")
+	await trial_build("B")
+	check(game.state.spent == 50 and game.state.gold == 4 and Gear.powered(game.state.board).size() == 6, "Second trial strategy spends comparable 50 brass on three-gate guards and one ranger generator")
+	await action("begin")
+	await advance(30)
+	await frame("12-trial-B-battle")
+	await advance(180)
+	check(game.state.phase == "victory", "Actual-input constrained strategy B wins")
+	trial_result("B")
+	await action("begin")
+	await trial_build("R")
+	check(game.state.spent == 54 and Gear.powered(game.state.board).size() == 7, "All-ranger comparison spends full budget and remains connected")
+	await action("begin")
+	await advance(180)
+	check(game.state.phase == "defeat", "Actual-input all-ranger build fails against opening ranged pressure")
+	trial_result("R")
+	await frame("12b-trial-unshielded-defeat")
+	await action("begin")
+	await trial_build("C")
+	check(game.state.spent == 48 and Gear.powered(game.state.board).size() == game.state.board.size() and Gear.total_rate(game.state.board) > mixed_rate, "Counter-inappropriate trial build is fully powered and produces faster than winning mixed build")
+	await action("begin")
+	await advance(36)
+	check(game.state.losses >= 40 and game.state.wave == 2 and game.state.enemies.any(func(e): return e.kind == "carapace") and game.state.phase == "battle", "All-guard trial has visible casualties and carapace pressure")
+	await frame("13-trial-connected-counter-failure")
+	await advance(180)
+	check(game.state.phase == "defeat", "Actual-input connected but counter-inappropriate army loses")
+	trial_result("C")
+	await frame("14-trial-counter-defeat")
+	await action("begin")
+	await trial_build("C")
+	await action("begin")
+	await advance(36)
+	check(game.state.losses >= 40 and game.state.wave == 2 and game.state.phase == "battle", "Repair starts at same visible failure point")
+	await tap(game.cell_center(1, 1))
+	await action("refit")
+	await tap(game.cell_center(3, 1))
+	await action("refit")
+	check(game.state.spent == 52 and game.state.gold == 2 and Gear.powered(game.state.board).size() == 6, "Live role refit costs only four brass and keeps every generator connected")
+	await advance(8)
+	await frame("15-trial-live-refit")
+	await advance(180)
+	check(game.state.phase == "victory", "Actual-input live counter repair rescues same connected losing strategy")
+	trial_result("repair")
+	await frame("16-trial-repaired-victory")
+	game.queue_free()
+	await process_frame
+	await create_game()
+	check(game.state.phase == "victory" and game.state.encounter == "iron_trial" and game.state.spent == 52 and not Saves.read(game.save_path).recovered, "Normal app-written challenge result reloads from primary without fixture recovery")
+	var report := {"checks": checks, "failures": failures, "input_events": events, "pointer_events": pointer_events, "keyboard_events": key_events, "trial_outcomes": trial_outcomes, "renderer": DisplayServer.get_name(), "result": "passed" if failures.is_empty() else "failed", "scope": "prototype plus constrained review trial; simulated time accelerated; injected storage fault separately labeled; desktop resize only; no phone claim; clipboard not verified"}
 	var file := FileAccess.open(evidence + "/report.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify(report, "  "))
 	file.close()

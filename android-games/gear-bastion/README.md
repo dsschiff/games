@@ -1,6 +1,6 @@
 # Gear Bastion
 
-An original offline Godot 4.7.2 prototype: connect a powered gear foundry while brass automata emerge through a three-exit wall and fight beetle raiders above it. This checkpoint contains one approximately 80-second, three-wave tutorial encounter. It is ready for independent prototype review, not a complete campaign or a phone-tested release.
+An original offline Godot 4.7.2 prototype: connect a powered gear foundry while brass automata emerge through a three-exit wall and fight beetle raiders above it. Version 0.2.0/code 2 contains the approximately 80-second tutorial and one constrained **Iron Trial**. This is a fixes/balance checkpoint for independent review, not a complete campaign or a phone-tested release.
 
 ## Play
 
@@ -16,7 +16,23 @@ An original offline Godot 4.7.2 prototype: connect a powered gear foundry while 
 
 `scripts/gear_rules.gd` owns flood-fill connectivity, deterministic rates, purchases and transactional moves/merges. `scripts/battle_rules.gd` owns fixed-step seeded production, gate spawning, enemy counters, targeting and wall damage. `scripts/save_store.gd` owns versioned validation, atomic replacement, backup recovery and v1 migration. Drawing/input live in `scripts/main.gd`.
 
-There is a 120-troop cap and a 90-raider bound. At cap each generator buffers at most one reinforcement; changing its exit still affects its next spawn. The idle army disperses into a holding formation. All art is original procedural/vector drawing; the short action/outcome tones are synthesized locally. No network permissions, ads, purchases, accounts or paid assets are used.
+There is a 120-troop cap and a 90-raider bound. At cap each generator buffers at most one reinforcement. Only currently powered generators dispatch; stable-ID round-robin turns prevent board order from starving later roles. The next eligible role is visible while the army is full, and the turn survives saving. Changing an exit still affects its next spawn. The idle army disperses into a holding formation. All art is original procedural/vector drawing; the short action/outcome tones are synthesized locally. No network permissions, ads, purchases, accounts or paid assets are used.
+
+## Iron Trial
+
+Select **Iron Trial** before battle. Its restricted sockets, fixed 54-brass budget, 160-health wall and lack of kill income make the kit consequential. Guards screen long-range spitters; rangers pierce the later carapaces, which shrug off 96% of guard damage and cleave nearby troops. Tap a troop generator, then **Refit** to switch its future production: guard to ranger costs the two-brass price difference, and the reverse refunds two. Connectivity and existing troops remain intact.
+
+The following actual-input cases are verified at the fixed encounter seed 1701; they are not a broad campaign balance study:
+
+| Plan | Spend | Result | Simulated time |
+| --- | ---: | --- | ---: |
+| Two guards and two rangers, covering both flanks | 52 | Win, wall 160 | 98.17s |
+| Three gate-screening guards and one supported ranger | 50 | Win, wall 160 | 91.03s |
+| Fully connected four-guard build, higher production than the first winning plan | 48 | Defeat | 65.63s |
+| Three unshielded rangers and two extra drives | 54 | Defeat in the opening ranged pressure | 23.17s |
+| Four-guard build, refit two generators after visible casualties/armor pressure at 36s | 52 final | Win, wall 160 | 96.47s |
+
+Save schema 3 adds checked write/flush/readback, ordered revisions and a protected backup before replacing an interrupted temporary save. Newer valid recoverable temporary progress wins over an older primary/backup. Failed imports remain unaccepted until primary replacement succeeds. A persistent save-failure warning offers retry/export, and successful saving clears it. Prototype schema-2 saves migrate; the package and user-data location remain unchanged. Fault-injection recovery tests are separate from normal app-written primary save/reload tests.
 
 Portrait canvas: 600 x 1066, preserved with centered letterboxing on other aspect ratios. Board sockets and menu hit areas are at least 80 logical pixels (48 dp if presented 360 dp wide). Galaxy Z Fold7 working profiles are 1080 x 2520 cover and 1968 x 2184 unfolded. Desktop tests resize the live battle to both dimensions and exercise gear input after each resize. Those tests do not establish Android fold lifecycle, physical safe areas, readable on-device text, or touch accuracy.
 
@@ -32,14 +48,14 @@ $godot = 'C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win
 & $godot --path android-games/gear-bastion --audio-driver Dummy --resolution 600x1066 -s tests/playthrough.gd
 ```
 
-The rendered playthrough creates ignored PNGs and `report.json` in the game's `.artifacts/playthrough/`; headless reports go in its `headless/` subdirectory. Inputs use `Input.parse_input_event`; only simulation time is accelerated. The UI save import test uses keyboard events because this restricted desktop session cannot open the Windows clipboard. Clipboard convenience buttons are implemented but not verified here.
+The rendered playthrough creates ignored PNGs and `report.json` in the game's `.artifacts/review-playthrough/`; headless reports go in its `headless/` subdirectory. Inputs use `Input.parse_input_event`; only simulation time is accelerated. The UI save import test uses keyboard events because this restricted desktop session cannot open the Windows clipboard. Clipboard convenience buttons are implemented but not verified here.
 
 Android uses the unmodified official template, non-Gradle export, package `com.dsschiff.gearbastion`, min SDK 24, actual template target SDK 36, arm64-v8a and x86_64. There is deliberately no `gradle_build/target_sdk` override. No binary template patcher or custom template is part of this project.
 
 ## Review packet and remaining work
 
-Read `WORKLOG.md` and `progress.json` for exact checks and local artifact paths. Useful rendered frames: `03a-first-clash`, `03-battle-first-layout`, `05-battle-second-layout`, `06-failing-strategy`, `07-repaired-victory`, `08-defeat`, and `03-aspect-*`.
+Read `WORKLOG.md` and `progress.json` for exact checks and local artifact paths. The review frames include `09-save-failure-visible`, `10-trial-A-battle`, `12-trial-B-battle`, `12b-trial-unshielded-defeat`, `13-trial-connected-counter-failure`, `14-trial-counter-defeat`, `15-trial-live-refit` and `16-trial-repaired-victory`. Original tutorial and Fold7 desktop-aspect frames remain in the same review packet.
 
 The design follows the observed split portrait composition and connected-board → real production → visible army → wall-defense loop in [the source brief](../references/gear-defenders.md). The numeric equation, direct merge/undo, resource prices, troop designs and gate allocation are original rules. The primitive art, tutorial pacing, army abundance and late-game fidelity have not been accepted by an independent review.
 
-Next gate: coordinator/Astra prototype review before campaign expansion. The three-region campaign, 30–60-minute progression, constrained boards, strategic unlocks, additional distinct roles, bosses, seeded challenge/replay and final sound/animation polish remain unfinished. Android launch, background/resume, interrupted Android write recovery, real APK update preservation, physical Fold7 transitions, clipboard/keyboard behavior and measured phone performance also remain pending. Corrupt-save and prior-version tests are injected fixtures, distinct from the app-owned save/reload input test.
+Next gate: coordinator/Astra fixes-and-trial review before campaign expansion. The three-region campaign, 30–60-minute progression, strategic unlocks, additional distinct roles, bosses, seeded challenge/replay and final sound/animation polish remain unfinished. The coordinator's prototype Android checks do not validate this changed save/dispatch code. Version-0.2 Android lifecycle, a real 0.1→0.2 APK upgrade, interrupted Android write recovery, physical Fold7 transitions, clipboard/keyboard behavior, Android Back handling and measured phone performance remain pending. Corrupt-save, storage-failure and prior-version tests are injected fixtures, distinct from app-owned save/reload input tests.

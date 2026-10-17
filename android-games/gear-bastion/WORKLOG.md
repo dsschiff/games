@@ -1,5 +1,35 @@
 # Gear Bastion worklog
 
+## 2026-10-17 17:46 America/Indianapolis — reviewed fixes and Iron Trial
+
+Addressed the prototype review in the game-owned scope; campaign expansion remains held. APK source version is **0.2.0/code 2**, with stable package/signing and migration from schema-2 prototype saves. Save schema 3 adds ordered revisions and saved production turns.
+
+- Writes check both write and flush errors, then exact readback/validation before rename. The newest valid prior state is backed up before overwriting an interrupted temporary file. Recovery ranks revisions before timestamps and prefers newer valid recoverable temporary progress over older primary/backup data. Write, flush, readback, rename and backup failures have injected regressions.
+- All main persistence calls feed a persistent visible failure warning. Save offers export; successful retry clears the warning. Import replacement must succeed before in-memory acceptance; failed import temporary files are unaccepted at next launch. Normal app-written primary save/reload tests are separate from recovery/storage-failure fixtures.
+- Full generator buffers dispatch only with current power. Saved stable-ID round-robin turns prevent board-order starvation and display the next ready role at cap. Reversed board order, repeated single vacancies, disconnected buffers, reconnection and all-unpowered vacancy cases are tested.
+- Imports reject duplicate actor IDs within/across factions, wrong-faction kinds, nonpositive maximum health and health above maximum.
+- Added **one** restricted-board, fixed-54-brass Iron Trial with no kill income. Long-range spitters require screening; armored crowd-cleaving carapaces require ranged support. Refit changes future production for the actual price difference. There is no campaign, new generator family or grind progression in this checkpoint.
+
+### Actual-input trial outcomes at seed 1701
+
+| Plan | Spend | Result | Simulated time | Friendly losses |
+| --- | ---: | --- | ---: | ---: |
+| A: two guards + two flank ranger generators | 52 | Win, wall 160/160 | 98.17s | 82 |
+| B: three gate-screening guards + one supported ranger | 50 | Win, wall 160/160 | 91.03s | 70 |
+| C: four guards, all connected; 3.24/s versus A's 2.74/s | 48 | Defeat | 65.63s | 206 |
+| R: three rangers + two paid drives, all connected | 54 | Defeat in opening pressure | 23.17s | 45 |
+| C repaired at 36s by refitting two generators, keeping connectivity | 52 final | Win, wall 160/160 | 96.47s | 167 |
+
+This is deterministic encounter evidence, not broad campaign balance validation. At repair the all-guard build has lost 44 troops and faces visible carapaces. Both single-role extremes fail; the two mixed plans cost within four percent. All input-suite actions use real touch/keyboard events, with simulation time alone accelerated.
+
+Rules: **97 checks passed**. Shared headless input: **51 checks**, **356 pointer events**, passed. Rendered desktop input: **56 checks passed**, **370 pointer + 5,731 keyboard events**, Dummy audio. Both suites emit `SUITE_COMPLETE: PASS`. Inspected save-error state, both mixed builds, unshielded defeat, connected counter failure, live refit and repaired victory. Frames/reports: game-local `.artifacts/review-playthrough/`. Storage faults are labeled separately from normal primary restoration.
+
+Shared tests: `.artifacts/gear-bastion/20261017T214712692584Z/manifest.json`. Shared build: `.artifacts/gear-bastion/20261017T214754547937Z/manifest.json`. Source fingerprints were unchanged during both commands. The official-template APK is **0.2.0/code 2**, target SDK 36/min 24, arm64-v8a+x86_64, no permissions, signature verified; **57,099,799 bytes**, SHA-256 `dd3bb862182cd213d9947913a99e4b232ba16c4098a83219e97de870d1392f7a`. Only completion metadata was updated afterward. The old immutable prototype artifact was not changed.
+
+No adb/emulator command was issued by this builder. Earlier coordinator 0.1 Android checks do not validate changed code. Different-APK 0.1→0.2 upgrade, changed-code Android lifecycle, real flush failure/durability, physical Fold7 behavior, actual sound, clipboard and phone performance remain pending. Android Back/modal/pause behavior is recorded for the later phone-RC gate; Home/resume evidence does not establish Back behavior.
+
+Next: coordinator/Astra independently reviews this owned checkpoint and runs the real different-APK update test. No full campaign expansion before that gate.
+
 ## 2026-10-17 17:14 America/Indianapolis — prototype review checkpoint
 
 Implemented one three-wave tutorial encounter with a fixed portrait battlefield, three-exit wall and continuously interactive powered socket board. Orthogonal core flood fill drives real guard/ranger production; adjacent powered drive levels add 25% each, bounded at 3x. Disconnection stops production. Equal-drive drag merges and one-step move/merge undo are immediate; cancelled and invalid placement retain the old board. Brass prices, forecast, role counter, cap feedback, victory/defeat/retry, pause/speed, original vector/procedural art, synthesized tones, mute/reduced effects, version-2 local saves and a portable JSON dialog are present.

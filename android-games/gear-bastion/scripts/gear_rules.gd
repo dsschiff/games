@@ -7,6 +7,13 @@ const HEIGHT := 4
 const COSTS := {"drive": 6, "guard": 12, "ranger": 14}
 const BASE_RATES := {"guard": 0.72, "ranger": 0.52}
 
+static func cell_allowed(x: int, y: int, encounter: String = "tutorial") -> bool:
+	if x < 0 or x >= WIDTH or y < 0 or y >= HEIGHT:
+		return false
+	if encounter != "iron_trial":
+		return true
+	return (y == 0 and x == 2) or (y in [1, 3] and x in [1, 2, 3]) or y == 2
+
 static func initial_board() -> Array:
 	return [piece(1, "core", 2, 2), piece(2, "guard", 1, 2, 1, 0),
 		piece(3, "ranger", 3, 2, 1, 2), piece(4, "drive", 2, 1),
@@ -61,9 +68,9 @@ static func total_rate(board: Array) -> float:
 		result += float(value)
 	return result
 
-static func move(board: Array, id: int, x: int, y: int) -> Dictionary:
+static func move(board: Array, id: int, x: int, y: int, encounter: String = "tutorial") -> Dictionary:
 	var unchanged := {"ok": false, "board": board.duplicate(true), "message": "Move cancelled · board retained"}
-	if x < 0 or x >= WIDTH or y < 0 or y >= HEIGHT:
+	if not cell_allowed(x, y, encounter):
 		return unchanged
 	var source := -1
 	for i in board.size():
@@ -85,14 +92,26 @@ static func move(board: Array, id: int, x: int, y: int) -> Dictionary:
 	copy[source].y = y
 	return {"ok": true, "board": copy, "message": "Network changed · Undo available"}
 
-static func buy(board: Array, kind: String, x: int, y: int, gold: int, next_id: int) -> Dictionary:
-	if not COSTS.has(kind) or x < 0 or x >= WIDTH or y < 0 or y >= HEIGHT or at(board, x, y) >= 0:
+static func buy(board: Array, kind: String, x: int, y: int, gold: int, next_id: int, encounter: String = "tutorial") -> Dictionary:
+	if not COSTS.has(kind) or not cell_allowed(x, y, encounter) or at(board, x, y) >= 0:
 		return {"ok": false, "message": "Choose an empty socket"}
 	if gold < int(COSTS[kind]):
 		return {"ok": false, "message": "Need %d brass" % int(COSTS[kind])}
 	var copy := board.duplicate(true)
 	copy.append(piece(next_id, kind, x, y))
 	return {"ok": true, "board": copy, "gold": gold - int(COSTS[kind]), "message": "Installed · connect to the core"}
+
+static func refit(board: Array, id: int, gold: int) -> Dictionary:
+	var copy := board.duplicate(true)
+	for p in copy:
+		if int(p.id) == id and p.kind in ["guard", "ranger"]:
+			var replacement := "ranger" if p.kind == "guard" else "guard"
+			var cost: int = int(COSTS[replacement]) - int(COSTS[p.kind])
+			if gold < cost:
+				return {"ok": false, "message": "Refit needs %d brass" % cost}
+			p.kind = replacement
+			return {"ok": true, "board": copy, "gold": gold - cost, "cost": cost, "message": "Refit to %s · network retained" % replacement}
+	return {"ok": false, "message": "Select a troop gear to refit"}
 
 static func valid_board(board: Array) -> bool:
 	if board.size() > WIDTH * HEIGHT or board.is_empty():
