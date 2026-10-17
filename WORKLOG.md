@@ -8,3 +8,19 @@
 - Node and Java are available. Godot/adb were not on PATH; standard Android SDK/Studio locations were absent. Tool installation and device testing remain unverified.
 - Research, Android foundation and per-game milestones will record actual commands/build hashes/evidence as they finish.
 
+### Verified desktop probes and first game task
+
+- Portable Godot 4.7.2 (`4.7.2.stable.official.ed1daf0bf`) installed with official SHA512 verification by the toolchain worker. Android export templates and SDK setup are underway.
+- Both probe rule suites pass. Save tests exposed JSON integer/float restoration differences; restores now normalize whole-number fields and tests cover restored placement duplicate detection and continued encounter behavior.
+- Both input-driven playthroughs pass using `Input.parse_input_event`, including 2D placement/win/lose/pause/retry/reload and 3D drag/release/pause/full encounter win/reload/retry. Commands: Godot `--headless --fixed-fps 60 --path <probe> --script tests/playthrough.gd` with isolated child-process APPDATA.
+- Rendered desktop playthroughs also pass; inspected PNGs in ignored `.artifacts/visual/`. These are technical probes, not six finished games, ad-fidelity validation or phone performance evidence.
+- Desktop graphics use the NVIDIA OpenGL Compatibility renderer. Restricted-context WASAPI audio failed and fell back to Dummy; actual sound output is not yet verified.
+- Gear Defenders reference uses the official store-linked promotional creative and sampled sustained footage. Astra's interpretation review cleared the prototype with explicit mechanical rules and fidelity limits, recorded under `android-games/reviews/`.
+- Created persistent Sol High game task `01a14b9d-90d7-73c1-9fd4-9b74cbda3fa9`, exclusive `android-games/gear-bastion/` ownership in separate branch/worktree. It must produce a reviewable prototype before broad campaign construction.
+
+### Device target and standing authorization
+
+- Daniel supplied "Samsung ultra fold 7" and "I give permission for all." Working target is Galaxy Z Fold7; actual connected model and OS remain unconfirmed. Official Samsung profiles are recorded in `android-games/device-target.json`.
+- Carry authorization through setup, coordination, builds and validation without repeated routine approval questions. Keep paid services and public/store publication outside the approved plan.
+- Require cover/unfolded readability and progress-preserving resize/fold transitions. Emulator results remain distinct from physical Samsung testing.
+

@@ -13,6 +13,7 @@ var drag_start := Vector2.ZERO
 var movement := Vector2.ZERO
 var paused := false
 var save_clock := 0.0
+var save_error := ""
 
 func _ready() -> void:
 	_load_save()
@@ -156,6 +157,8 @@ func _sync_visuals() -> void:
 			meshes[id].queue_free()
 			meshes.erase(id)
 	status.text = "FIELD TEST 3D  •  %s\nIntegrity %d   •   Cleared %d/30" % ["PAUSED" if paused else str(state["result"]).to_upper(), int(state["health"]), state["kills"]]
+	if not save_error.is_empty():
+		status.text += "\n" + save_error
 
 func _pause() -> void:
 	paused = not paused
@@ -166,20 +169,34 @@ func _pause() -> void:
 func _restart() -> void:
 	state = Rules.initial_state()
 	paused = false
+	dragging = false
+	movement = Vector2.ZERO
 	_save()
 
-func _save() -> void:
+func _save() -> bool:
 	var file := FileAccess.open(SAVE + ".tmp", FileAccess.WRITE)
 	if file == null:
-		push_error("Cannot open probe save")
-		return
+		save_error = "SAVE FAILED: could not write progress"
+		push_warning(save_error)
+		return false
 	file.store_string(JSON.stringify(state))
 	file.flush()
+	var write_error := file.get_error()
 	file.close()
-	DirAccess.rename_absolute(SAVE + ".tmp", SAVE)
+	if write_error != OK:
+		save_error = "SAVE FAILED: storage write error"
+		push_warning(save_error)
+		return false
+	if DirAccess.rename_absolute(SAVE + ".tmp", SAVE) != OK:
+		save_error = "SAVE PENDING: temporary copy preserved"
+		push_warning(save_error)
+		return false
+	save_error = ""
+	return true
 
 func _load_save() -> void:
-	for path in [SAVE, SAVE + ".tmp"]:
+	# A valid leftover temporary file is the newer interrupted write.
+	for path in [SAVE + ".tmp", SAVE]:
 		if FileAccess.file_exists(path):
 			var candidate: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
 			if Rules.valid(candidate):

@@ -41,7 +41,19 @@ func _initialize() -> void:
 	state["health"] = -1
 	_check(not Rules.valid(state), "negative health save rejected")
 	_check(not Rules.valid({"version": 1}), "partial save rejected")
+	state = Rules.initial_state()
+	state["serial"] = 2
+	state["enemies"] = [{"id": 1, "x": 1.0, "z": 1.0}, {"id": 1, "x": 2.0, "z": 2.0}]
+	_check(not Rules.valid(state), "duplicate actor identity rejected")
+	state["enemies"] = [{"id": 1.5, "x": 1.0, "z": 1.0}]
+	_check(not Rules.valid(state), "fractional actor identity rejected")
+	state["enemies"] = [{"id": 3, "x": 1.0, "z": 1.0}]
+	_check(not Rules.valid(state), "actor identity beyond serial rejected")
+	state["enemies"] = []
+	state["kills"] = 1.5
+	_check(not Rules.valid(state), "fractional counter rejected")
 	print("PROBE_3D_TESTS: ", "PASS" if failures == 0 else "FAIL", " failures=", failures)
+	print("SUITE_COMPLETE: ", "PASS" if failures == 0 else "FAIL")
 	quit(0 if failures == 0 else 1)
 
 func _check(condition: bool, message: String) -> void:

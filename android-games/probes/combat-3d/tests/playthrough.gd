@@ -48,16 +48,37 @@ func _run() -> void:
 	await _capture()
 	await _click(scene, "PAUSE")
 	var kills: int = int(scene.state["kills"])
-	scene.queue_free()
-	await process_frame
-	scene = load("res://main.tscn").instantiate()
-	root.add_child(scene)
-	await process_frame
-	_check(scene.state["kills"] == kills and scene.state["result"] == "victory", "victory and encounter restore from disk")
+	_check(scene.save_error.is_empty(), "normal pause reported successful save")
+	scene = await _reload(scene)
+	_check(scene.state["kills"] == kills and scene.state["result"] == "victory", "ordinary gameplay save restores without test fixture writes")
+	_write("user://combat-probe.json.tmp", JSON.stringify(scene.state))
+	_write("user://combat-probe.json", JSON.stringify(load("res://rules.gd").initial_state()))
+	scene = await _reload(scene)
+	_check(scene.state["kills"] == kills and scene.state["result"] == "victory", "new temporary encounter takes precedence over older valid primary")
+	_write("user://combat-probe.json.tmp", JSON.stringify(scene.state))
+	_write("user://combat-probe.json", "corrupt interrupted primary")
+	scene = await _reload(scene)
+	_check(scene.state["kills"] == kills and scene.state["result"] == "victory", "valid temporary encounter recovers corrupt primary")
 	await _click(scene, "RESTART")
 	_check(scene.state["kills"] == 0 and scene.state["health"] == 100, "restart creates a playable encounter")
 	print("PROBE_3D_INPUT_PLAYTHROUGH: ", "PASS" if failures == 0 else "FAIL", " failures=", failures)
+	print("SUITE_COMPLETE: ", "PASS" if failures == 0 else "FAIL")
 	quit(0 if failures == 0 else 1)
+
+func _reload(scene: Node) -> Node:
+	scene.queue_free()
+	await process_frame
+	var replacement = load("res://main.tscn").instantiate()
+	root.add_child(replacement)
+	await process_frame
+	return replacement
+
+func _write(path: String, text: String) -> void:
+	var file := FileAccess.open(path, FileAccess.WRITE)
+	_check(file != null, "fixture storage available")
+	if file != null:
+		file.store_string(text)
+		file.close()
 
 func _click(scene: Node, text: String) -> void:
 	var target: Button

@@ -38,6 +38,7 @@ func _initialize() -> void:
 	state["pads"] = [1.5]
 	_check(not Rules.valid(state), "fractional save placements rejected")
 	print("PROBE_2D_TESTS: ", "PASS" if failures == 0 else "FAIL", " failures=", failures)
+	print("SUITE_COMPLETE: ", "PASS" if failures == 0 else "FAIL")
 	quit(0 if failures == 0 else 1)
 
 func _check(condition: bool, message: String) -> void:

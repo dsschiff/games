@@ -7,6 +7,7 @@ var status_label: Label
 var board: GridContainer
 var pulse := 0.0
 var paused := false
+var save_error := ""
 
 func _ready() -> void:
 	_load_save()
@@ -78,24 +79,38 @@ func _restart() -> void:
 
 func _refresh() -> void:
 	status_label.text = "%s  •  Wave %d/8\n%d scrap  •  %d integrity" % ["PAUSED" if paused else str(state["result"]).to_upper(), state["wave"], state["coins"], state["health"]]
+	if not save_error.is_empty():
+		status_label.text += "\n" + save_error
 	for cell in range(board.get_child_count()):
 		var built: bool = state["pads"].has(cell)
 		var button := board.get_child(cell) as Button
 		button.text = "⚙\nONLINE" if built else "+\n20 SCRAP"
 		button.modulate = Color(0.4, 1.0, 0.76) if built else Color(0.65, 0.76, 0.9)
 
-func _save() -> void:
+func _save() -> bool:
 	var file := FileAccess.open(SAVE + ".tmp", FileAccess.WRITE)
 	if file == null:
-		push_error("Save open failed")
-		return
+		save_error = "SAVE FAILED: could not write progress"
+		push_warning(save_error)
+		return false
 	file.store_string(JSON.stringify(state))
 	file.flush()
+	var write_error := file.get_error()
 	file.close()
-	DirAccess.rename_absolute(SAVE + ".tmp", SAVE)
+	if write_error != OK:
+		save_error = "SAVE FAILED: storage write error"
+		push_warning(save_error)
+		return false
+	if DirAccess.rename_absolute(SAVE + ".tmp", SAVE) != OK:
+		save_error = "SAVE PENDING: temporary copy preserved"
+		push_warning(save_error)
+		return false
+	save_error = ""
+	return true
 
 func _load_save() -> void:
-	for path in [SAVE, SAVE + ".tmp"]:
+	# A valid leftover temporary file is the newer interrupted write.
+	for path in [SAVE + ".tmp", SAVE]:
 		if FileAccess.file_exists(path):
 			var candidate: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
 			if Rules.valid(candidate):

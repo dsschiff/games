@@ -58,14 +58,22 @@ static func valid(value: Variant) -> bool:
 		return false
 	if value["kills"] < 0 or value["kills"] > 30 or value["elapsed"] < 0 or value["serial"] < 0:
 		return false
+	for key in ["version", "kills", "serial"]:
+		if value[key] != int(value[key]):
+			return false
 	if not value["result"] in ["playing", "victory", "defeat"]:
 		return false
+	var ids := {}
 	for enemy in value["enemies"]:
 		if not enemy is Dictionary:
 			return false
 		for key in ["id", "x", "z"]:
 			if not enemy.has(key) or not (enemy[key] is int or enemy[key] is float) or not is_finite(float(enemy[key])):
 				return false
+		var id: float = float(enemy["id"])
+		if id != int(id) or id <= 0 or id > value["serial"] or ids.has(int(id)):
+			return false
+		ids[int(id)] = true
 	return true
 
 static func restore(value: Variant) -> Dictionary:

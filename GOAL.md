@@ -4,6 +4,8 @@ Build six complete offline Android games in this existing repository, inspired b
 
 Each standalone game needs meaningful progression, a complete initial arc targeting 30-60 minutes without padding, replay value, onboarding, sound/reduced-effects settings, win/loss/retry, versioned saves and export/import. No ads, purchases, accounts, servers, energy restrictions, or monetization-driven waiting. Existing website and repository visibility remain unchanged.
 
+Daniel specified a Samsung Fold7 on 2026-10-17 and authorized all work within this plan. Use Galaxy Z Fold7 as the working device target, confirming exact model/Android version from the connected physical device. Cover and unfolded displays, safe areas and state-preserving resize/fold transitions are required checks; profiles are recorded in `android-games/device-target.json`. This authorization includes task coordination, setup, builds and validation; retain the plan's separate public-release and paid-service boundaries.
+
 ## Stages
 
 1. Select representative creatives, preserve source URLs and observed mechanics, compare sustained core gameplay, and obtain Astra review of each brief.

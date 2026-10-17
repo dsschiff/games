@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "user_description": "Samsung ultra fold 7",
+  "working_model": "Samsung Galaxy Z Fold7",
+  "physical_identity_confirmed": false,
+  "android_version_confirmed": false,
+  "specification_source": "https://news.samsung.com/global/samsung-galaxy-z-fold7-raising-the-bar-for-smartphones",
+  "display_profiles": [
+    {"name": "cover_portrait", "width_pixels": 1080, "height_pixels": 2520},
+    {"name": "inner_portrait", "width_pixels": 1968, "height_pixels": 2184}
+  ],
+  "acceptance": [
+    "Readable controls and safe areas on cover and unfolded displays",
+    "Preserve reference camera and portrait composition without stretching",
+    "Resizing/folding/unfolding preserves active encounter and progress",
+    "Target60fps and heavy encounters above30fps measured on physical device",
+    "Emulator dimensions do not establish Samsung hardware performance"
+  ]
+}

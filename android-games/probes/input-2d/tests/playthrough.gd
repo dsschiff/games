@@ -22,12 +22,17 @@ func _run() -> void:
 		await _click(run)
 	_check(scene.state["result"] == "victory", "pointer-controlled playthrough wins")
 	await _capture()
-	scene.queue_free()
-	await process_frame
-	scene = load("res://main.tscn").instantiate()
-	root.add_child(scene)
-	await process_frame
-	_check(scene.state["result"] == "victory" and scene.state["pads"].size() == 5, "winning save restores through scene reload")
+	_check(scene.save_error.is_empty(), "ordinary gameplay reported successful save")
+	scene = await _reload(scene)
+	_check(scene.state["result"] == "victory" and scene.state["pads"].size() == 5, "ordinary gameplay save restores without test fixture writes")
+	_write("user://probe-save.json.tmp", JSON.stringify(scene.state))
+	_write("user://probe-save.json", JSON.stringify(load("res://rules.gd").initial_state()))
+	scene = await _reload(scene)
+	_check(scene.state["result"] == "victory" and scene.state["pads"].size() == 5, "new temporary progress takes precedence over older valid primary")
+	_write("user://probe-save.json.tmp", JSON.stringify(scene.state))
+	_write("user://probe-save.json", "corrupt interrupted primary")
+	scene = await _reload(scene)
+	_check(scene.state["result"] == "victory" and scene.state["pads"].size() == 5, "valid temporary save recovers corrupt primary after interruption")
 	buttons = scene.find_children("*", "Button", true, false)
 	await _click(_button(buttons, "RESTART"))
 	await _click(_button(buttons, "PAUSE / RESUME"))
@@ -40,7 +45,23 @@ func _run() -> void:
 	await _click(_button(buttons, "RESTART"))
 	_check(scene.state["wave"] == 0 and scene.state["health"] == 100, "restart restores playable state")
 	print("PROBE_2D_INPUT_PLAYTHROUGH: ", "PASS" if failures == 0 else "FAIL", " failures=", failures)
+	print("SUITE_COMPLETE: ", "PASS" if failures == 0 else "FAIL")
 	quit(0 if failures == 0 else 1)
+
+func _reload(scene: Node) -> Node:
+	scene.queue_free()
+	await process_frame
+	var replacement = load("res://main.tscn").instantiate()
+	root.add_child(replacement)
+	await process_frame
+	return replacement
+
+func _write(path: String, text: String) -> void:
+	var file := FileAccess.open(path, FileAccess.WRITE)
+	_check(file != null, "fixture storage available")
+	if file != null:
+		file.store_string(text)
+		file.close()
 
 func _button(buttons: Array[Node], text: String) -> Button:
 	for node in buttons:

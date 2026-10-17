@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "coordinator_thread_id": "01a14b7c-82d1-7e00-9bf6-5298fc8b737b",
+  "coordinator_worktree": "C:/projects/active/_worktrees/games-android-portfolio-20261017",
+  "coordinator_branch": "codex/android-portfolio",
+  "games": [
+    {
+      "slug": "gear-bastion",
+      "thread_id": "01a14b9d-90d7-73c1-9fd4-9b74cbda3fa9",
+      "host_id": "local",
+      "model": "gpt-6.1-sol",
+      "worktree": "C:/projects/active/_worktrees/games-gear-bastion-20261017",
+      "branch": "codex/gear-bastion",
+      "ownership": "android-games/gear-bastion/",
+      "state": "prototype implementation"
+    }
+  ]
+}
