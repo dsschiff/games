@@ -61,7 +61,7 @@
   },
   "tooling_tests": 52,
   "mapping_review": "Astra narrow static approval; root independently passed52tests and checked raw saves/archive hashes/mtime/transcript",
-  "visual_review": "Root inspected cold map:0/9clears,0/27medals, Resume defense. Missing title/top control fills separately investigated, no final visual acceptance.",
+  "visual_review": "Root byte/pixel verification: both upgrade map PNGs match four probe maps; all display GEAR title, filled settings controls,0/9clears,0/27medals and Resume. Earlier missing-header/black-frame interpretations withdrawn.",
   "artifact_root": "C:\\projects\\active\\games\\.artifacts\\upgrades\\com.dsschiff.gearbastion\\20261017T230227922343Z",
   "build_manifest": "C:\\projects\\active\\games\\.artifacts\\gear-bastion\\20261017T225907083667Z\\manifest.json",
   "receipt": "C:\\projects\\active\\games\\.artifacts\\preservation\\gear-upgrade-0.2.1-0.3.json",
@@ -72,6 +72,7 @@
     "New campaign artwork/deployment fields are not in this immutable core APK",
     "Normal update tested; actual device storage faults and physical phone remain untested",
     "No new Android campaign win/loss/ending or phone FPS claim",
-    "Small map rendering defect remains separate from successful migration evidence"
-  ]
+    "No map rendering defect established; earlier visual interpretations were incorrect and explicitly superseded"
+  ],
+  "visual_correction_evidence": "gear-map-visual-correction.json"
 }

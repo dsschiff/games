@@ -1,0 +1,28 @@
+{
+  "scope": "Correct erroneous map visual interpretation; no app/source changes",
+  "map_count": 6,
+  "all_six_byte_identical": true,
+  "map_sha256": "9e6d676f3c4d1768a72ecea512446be83a2ccf19ac37d4e4048ed50c08e8104c",
+  "image_pixels": [
+    1080,
+    2400
+  ],
+  "title_gold_pixels_in_20_245_500_325": 3217,
+  "settings_fill_pixels_in_400_350_1060_450": 42121,
+  "conclusion": "Proper title and filled settings buttons present. No black screen, missing header or redraw change established.",
+  "raw_images_mutated": false,
+  "schema_version": 1,
+  "physical_phone_tested": false,
+  "withdrawn_claims": [
+    "Missing map title",
+    "Missing top settings panel fills",
+    "Black frame after blank tap",
+    "Cold/warm redraw behavior difference"
+  ],
+  "cause": "Reviewer visual interpretation error; no game rendering defect established",
+  "artifact_root": "C:\\projects\\active\\games\\.artifacts\\gear-bastion\\core-map-redraw-probe",
+  "receipt": "C:\\projects\\active\\games\\.artifacts\\preservation\\gear-map-visual-correction.json",
+  "receipt_sha256": "3af4218df29835a259ff81a31beab1d7766484ab20ee95df892e64628ead850f",
+  "preserved_files": 19,
+  "preserved_bytes": 1566287
+}
