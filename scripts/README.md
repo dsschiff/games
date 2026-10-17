@@ -136,3 +136,47 @@ Repeat with `--display-size 1968x2184` for the inner resolution approximation.
 Do not clear data on a physical phone. These runs preserve save bytes across a
 same-APK reinstall; future-version migration and real fold transitions require
 separate checks.
+
+## Real different-APK upgrade verification
+
+`android_upgrade.py` prepares a separate evidence packet under
+`.artifacts/upgrades/<package>/<UTC run id>/`. Both input APKs are copied and
+hashed before use, inspected for verified signatures and no INTERNET permission,
+and must have the requested package with a strictly increasing **actual APK
+version code**. Installed version codes are also read back from Android.
+
+Run it only after both immutable APKs are available and Android execution has
+been authorized. Example command (paths and schema version must match the real
+release pair):
+
+```powershell
+python scripts/android_upgrade.py --from-apk .artifacts/old/gear-bastion.apk --to-apk .artifacts/new/gear-bastion.apk --package com.dsschiff.gearbastion --save files/bastion-save.json --actions scripts/smoke-actions/gear-bastion-pixel6.json --preserve-path state.board --preserve-path state.gold --preserve-path state.time --preserve-path state.produced --expected-version 3 --reset-test-data --serial emulator-5554
+```
+
+`--expected-version` describes the **new saved JSON schema**, at `version` by
+default; `--schema-path` can select another dot path. It is independent of APK
+version codes. `--new-expectations` optionally supplies additional nested
+`expected_save` and `expected_numeric` assertions for the new app state.
+The old input fixture must contain real taps/drags and nonempty saved-state
+assertions; at least one critical `--preserve-path` is mandatory.
+
+The explicit `--reset-test-data` flag may uninstall the specified package and
+its data **during initial emulator setup only**, before installing the old APK.
+It permits repeating the test when a newer test package remains installed.
+Without that flag no uninstall/clear occurs, and a fixture requiring fresh data
+is refused. Physical device serials are always refused.
+
+After actual old-version input, backgrounding captures the app-written old JSON.
+The upgrade boundary uses `install -r` with no uninstall, clear or fixture writes.
+Critical semantic paths must survive installation, the new app's migration/save
+and a cold relaunch. Dictionary key order and newly added migration keys are
+allowed; old values, list order/length and selected nested fields must survive.
+Each new-version launch must also advance the app save's modification time
+beyond its pre-launch value, proving a new persist occurred rather than merely
+accepting the untouched old JSON. File times, inode and size are recorded;
+nonadvancing timestamps fail conservatively. The default foreground settle is
+six seconds before backgrounding, covering the current five-second autosave.
+Screenshots, raw saves, runtime logs, command transcripts, exact APK archives,
+hashes and expectation results remain in the ignored evidence packet. Screenshots
+still require visual review. This verifier's source and unit tests alone do not
+establish a successful Android upgrade or physical-phone compatibility.

@@ -28,6 +28,10 @@ Keep stable app identifiers and signing identities across updates. Signing keys,
 
 The technical probes verify normal gameplay save/readback and recovery from a corrupt primary or an older valid primary when a newer temporary save is present. Production games must additionally support export/import and prior-version compatibility.
 
+## Android navigation
+
+Home/background and system Back are separate test paths. Godot 4.7 documents a distinct [Android Back notification](https://docs.godotengine.org/en/4.7/classes/class_node.html#class-node-constant-notification-wm-go-back-request), and [`SceneTree.quit_on_go_back`](https://docs.godotengine.org/en/4.7/classes/class_scenetree.html#class-scenetree-property-quit-on-go-back) defaults to true. Each complete game's navigation should explicitly close the active modal first, then pause or return to its menu while saving predictably. Test actual Android Back followed by relaunch and save readback; a passing Home smoke does not cover it. These are release checks, not a claim that the current prototype has lost data.
+
 ## Verification labels
 
 - **Implemented:** source and intended behavior exist.

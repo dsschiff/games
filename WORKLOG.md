@@ -54,3 +54,9 @@
 - Last Human's sustained side-target counter reduction and harmful gate crossing are corroborated. The earlier +1/recruit reading is withdrawn: the settled crossing reduces the squad. Positive recruitment and precise arithmetic remain inferred original prototype rules pending observation. Butcher's inspected passage does not isolate hook/reel/consumption/permanent growth, and the brief preserves that open evidence.
 - Gear fix builder remains live. Its rule-level trial reports two equal-cost winning approaches and a connected but inappropriate build that loses; actual input, rendered evidence and an immutable checkpoint are still required before re-review. Shared tooling work now prepares a real different-version APK upgrade verifier; no newer game behavior is claimed verified yet.
 
+### Upgrade verifier prepared
+
+- Implemented an emulator-only different-APK verifier, with signed/offline matching packages, strictly increasing actual APK codes, archived input hashes, old-version real input and saved-state assertions, install-over-existing transition, declared semantic-path preservation, new schema and actual persist evidence, cold relaunch and runtime logs. Initial test-data reset requires an explicit flag and occurs before the old save exists; the upgrade boundary does not clear or import data.
+- Coordinator inspected source and independently passed all 44 tooling tests. Source/unit tests do not establish a successful Android upgrade. Execution waits for the builder's next immutable version0.2.0/code2 checkpoint with save schema3.
+- Added a separate Android Back release check to development guidance, grounded in Godot4.7 documentation. Home/background smoke coverage does not imply system Back coverage; no actual Back-related progress loss is claimed.
+
