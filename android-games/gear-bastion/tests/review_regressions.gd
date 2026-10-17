@@ -15,6 +15,34 @@ static func run(check: Callable) -> Dictionary:
 	Battle.start(newer)
 	simulate(newer, 8)
 	var path := "user://fault-slot.json"
+	var staged_source := Saves.encode(old, {}, 8)
+	var staged := FaultFiles.new()
+	staged.files[path + ".bak.tmp"] = staged_source
+	var staged_load := Saves.read(path, staged)
+	check.call(staged_load.ok and staged_load.revision == 8 and staged_load.path == path + ".bak.tmp", "Sole valid staged backup loads normally")
+	staged.fail_suffix = ".bak.tmp"
+	staged.fail_mode = "write"
+	check.call(Saves.write(newer, {}, path, staged), "Matching sole staged backup is reused despite injected truncating write failure")
+	check.call(staged.files[path + ".bak"] == staged_source and staged.write_count == 1, "Validated staged bytes reach backup without being rewritten")
+	check.call(Saves.read(path, staged).revision == 9, "New primary loads normally after sole staged backup reuse")
+	var staged_rename := FaultFiles.new()
+	staged_rename.files[path + ".bak.tmp"] = staged_source
+	staged_rename.fail_suffix = ".bak.tmp"
+	staged_rename.fail_mode = "rename"
+	check.call(not Saves.write(newer, {}, path, staged_rename), "Sole staged-backup rename failure returns false")
+	check.call(staged_rename.write_count == 0 and staged_rename.files[path + ".bak.tmp"] == staged_source and Saves.read(path, staged_rename).revision == 8, "Rename failure keeps sole staged candidate byte-for-byte readable")
+	var staged_new_write := FaultFiles.new()
+	staged_new_write.files[path + ".bak.tmp"] = staged_source
+	staged_new_write.fail_suffix = "fault-slot.json.tmp"
+	staged_new_write.fail_mode = "write"
+	check.call(not Saves.write(newer, {}, path, staged_new_write), "New temporary write failure after sole staged-backup recovery returns false")
+	check.call(staged_new_write.files[path + ".bak"] == staged_source and Saves.read(path, staged_new_write).revision == 8, "Failed replacement preserves recovered sole candidate in final backup")
+	var staged_new_rename := FaultFiles.new()
+	staged_new_rename.files[path + ".bak.tmp"] = staged_source
+	staged_new_rename.fail_suffix = "fault-slot.json.tmp"
+	staged_new_rename.fail_mode = "rename"
+	check.call(not Saves.write(newer, {}, path, staged_new_rename), "New primary rename failure after staged recovery returns false")
+	check.call(staged_new_rename.files[path + ".bak"] == staged_source and Saves.read(path, staged_new_rename).ok, "Primary rename failure leaves prior staged data protected and loadable")
 	for mode in ["write", "flush", "readback", "rename"]:
 		var io := FaultFiles.new()
 		var original := Saves.encode(old, {}, 7)

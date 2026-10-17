@@ -113,7 +113,12 @@ static func write(state: Dictionary, settings: Dictionary, path: String = PATH, 
 	if previous.ok:
 		var backup_source: String = previous.source
 		if not io.exists(path + ".bak") or io.read_text(path + ".bak") != backup_source:
-			if not checked_write(io, path + ".bak.tmp", backup_source) or not io.rename(path + ".bak.tmp", path + ".bak"):
+			# The staged backup may itself be the only surviving good candidate.
+			# Reuse identical validated bytes instead of opening them for truncation.
+			var staged_matches: bool = io.exists(path + ".bak.tmp") and io.read_text(path + ".bak.tmp") == backup_source
+			if not staged_matches and not checked_write(io, path + ".bak.tmp", backup_source):
+				return false
+			if not io.rename(path + ".bak.tmp", path + ".bak"):
 				return false
 	if not checked_write(io, path + ".tmp", source):
 		return false

@@ -1,5 +1,15 @@
 # Gear Bastion worklog
 
+## 2026-10-17 — 0.2.1 narrow staged-backup amendment
+
+Root's independent d13387b probe found that a sole valid `.bak.tmp` was read successfully, then overwritten in place during backup staging. A truncating write failure could destroy the last known good candidate. The fix reuses/renames that staged file when its bytes exactly equal the already-validated prior source; no rewrite occurs. If rename fails, the staged bytes remain untouched. If a later new-save write/rename fails, the prior source is already protected in `.bak`.
+
+Added ten focused checks: normal staged-only load, avoidance of an injected destructive staged write, successful replacement/normal primary load, staged-rename failure with zero writes, and later write/rename failures preserving prior data. Direct rules now pass **107 checks**. No battle, board, input, save-schema or campaign behavior changed. Source version is **0.2.1/code 3**, schema remains 3.
+
+The coordinator's independent nearby-seed probe also narrows the balance claim: A wins only the curated seed 1701 and loses 1700 at 61.07s / 1702 at 51.67s. B and the live-refit strategy win all three; both single-role builds lose all three. This is independently reported d13387b evidence, read from coordinator `.artifacts/coordinator-checks.json`; no balance adjustment was made here. A is not a robust second strategy, and the campaign gate remains held.
+
+Shared validation passed **107 rule checks** and **51 headless input checks / 356 pointer events**, with both completion markers and unchanged source fingerprints. Evidence: `.artifacts/gear-bastion/20261017T215550440176Z/manifest.json`; only completion metadata was updated afterward. Prior rendered UI evidence belongs to 0.2.0; this amendment changes no drawing/input. Android exports and adb remain idle under the coordinator's hold while the immutable 0.2.0 upgrade is tested. No 0.2.1 APK or Android acceptance is claimed.
+
 ## 2026-10-17 17:46 America/Indianapolis — reviewed fixes and Iron Trial
 
 Addressed the prototype review in the game-owned scope; campaign expansion remains held. APK source version is **0.2.0/code 2**, with stable package/signing and migration from schema-2 prototype saves. Save schema 3 adds ordered revisions and saved production turns.

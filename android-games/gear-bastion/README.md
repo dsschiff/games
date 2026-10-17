@@ -1,6 +1,6 @@
 # Gear Bastion
 
-An original offline Godot 4.7.2 prototype: connect a powered gear foundry while brass automata emerge through a three-exit wall and fight beetle raiders above it. Version 0.2.0/code 2 contains the approximately 80-second tutorial and one constrained **Iron Trial**. This is a fixes/balance checkpoint for independent review, not a complete campaign or a phone-tested release.
+An original offline Godot 4.7.2 prototype: connect a powered gear foundry while brass automata emerge through a three-exit wall and fight beetle raiders above it. Version 0.2.1/code 3 retains the approximately 80-second tutorial and constrained **Iron Trial**, with a narrow staged-backup safety fix. This remains an independent-review checkpoint, not a complete campaign or a phone-tested release.
 
 ## Play
 
@@ -32,7 +32,11 @@ The following actual-input cases are verified at the fixed encounter seed 1701; 
 | Three unshielded rangers and two extra drives | 54 | Defeat in the opening ranged pressure | 23.17s |
 | Four-guard build, refit two generators after visible casualties/armor pressure at 36s | 52 final | Win, wall 160 | 96.47s |
 
+Strategy A is a **curated seed-1701 witness**, not a robust second strategy. The coordinator's independent d13387b probe found A loses seed 1700 at 61.07s and seed 1702 at 51.67s. B and the live-refit plan win all three tested seeds (1700/1701/1702); both single-role builds fail all three. No trial balance was changed in 0.2.1. Nearby-variant and broader policy validation are still campaign gates.
+
 Save schema 3 adds checked write/flush/readback, ordered revisions and a protected backup before replacing an interrupted temporary save. Newer valid recoverable temporary progress wins over an older primary/backup. Failed imports remain unaccepted until primary replacement succeeds. A persistent save-failure warning offers retry/export, and successful saving clears it. Prototype schema-2 saves migrate; the package and user-data location remain unchanged. Fault-injection recovery tests are separate from normal app-written primary save/reload tests.
+
+The 0.2.1 amendment reuses an existing staged `.bak.tmp` when its bytes exactly match the validated prior save. This avoids truncating that file when it is the sole surviving candidate. Focused tests cover ordinary load, a would-be staged-write failure, staged-rename failure and later replacement write/rename failures.
 
 Portrait canvas: 600 x 1066, preserved with centered letterboxing on other aspect ratios. Board sockets and menu hit areas are at least 80 logical pixels (48 dp if presented 360 dp wide). Galaxy Z Fold7 working profiles are 1080 x 2520 cover and 1968 x 2184 unfolded. Desktop tests resize the live battle to both dimensions and exercise gear input after each resize. Those tests do not establish Android fold lifecycle, physical safe areas, readable on-device text, or touch accuracy.
 
