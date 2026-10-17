@@ -4,7 +4,7 @@ Six standalone Godot games are being developed here under the staged goal in the
 
 | Directory | Working original title | Reference | Current state |
 | --- | --- | --- | --- |
-| `gear-bastion` | Gear Bastion | Gear Defenders | Prototype reviewed; save/dispatch/balance fixes underway |
+| `gear-bastion` | Gear Bastion | Gear Defenders | Prototype gate cleared; full campaign implementation |
 | `tower-trials` | Tower Trials | Hero Wars | Prototype brief reviewed; implementation not started |
 | `hook-and-hunger` | Hook and Hunger | Butcher Hero | Bounded prototype direction reviewed; causal footage pending |
 | `hearthguard` | Hearthguard | Kingshot | Prototype direction reviewed; causal footage pending |

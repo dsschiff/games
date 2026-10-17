@@ -2,7 +2,11 @@
 
 2026-10-17. GPT-6 Astra High reviewed worker `d13387b` (integrated as `a0e59d7`), source/tests and rendered captures/report. No reviewer execution, Android operation, commercial footage playback or phone testing. The initial static approval below is superseded by the confirmed recovery finding.
 
-## Current verdict: one P2 recovery fix required
+## Resolution: campaign gate cleared after narrow preservation fix
+
+Worker `7d67a1e` / integrated `8ba1294` reuses matching validated staged bytes before promotion. Astra's narrow static re-review confirmed the fix and ten added preservation assertions. Coordinator's independent run `.artifacts/gear-bastion/20261017T215818617760Z/manifest.json` passed 107 rule and 51 actual-input checks against unchanged clean source `0ebee54a139c678488f0f4e6149994497b9dc541a5ba17996a6664c1198ced13`. This satisfies the conditional gate. Subsequent `034e7f3` / integrated `49bee21` updates build records only. Full campaign implementation is authorized; final release, Android latest-build and physical-device checks remain separate.
+
+## Reopened finding and required fix (resolved above)
 
 Coordinator ran an additional fault probe against the unchanged integrated source. With only `path + ".bak.tmp"` containing a valid revision8 save, initial recovery succeeds. Injecting a partial write failure on `.bak.tmp` during the next save returns failure and leaves no valid recovery copy. `save_store.gd:112–117` rewrites the sole known-good staged backup before protecting it.
 

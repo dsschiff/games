@@ -73,3 +73,9 @@
 - Coordinator independently checked raw saved JSON, archive hashes, metadata, preservation assertions and inspected the restored paused battle capture. No runtime errors or adb failures occurred in this upgrade run. Exact evidence is indexed in `android-games/evidence/gear-upgrade-0.1-0.2.json`.
 - This validates the normal update path for this prototype pair; pending sole-staged-backup preservation fixes and actual device storage faults remain outside it. No physical phone claim. Emulator remains1080x2400; builder export hold released for the narrow0.2.1 fix.
 
+### Preservation fix verified; full campaign authorized
+
+- Integrated narrow worker fix `7d67a1e` as `8ba1294`, then metadata-only `034e7f3` as `49bee21`. Matching valid staged backup bytes are promoted without reopening them for truncation. Ten added assertions cover sole-candidate load, avoided rewrite, failed promotion and failed subsequent primary writes/renames.
+- Coordinator independently passed107rules/51input checks against clean unchanged source `0ebee54a139c678488f0f4e6149994497b9dc541a5ba17996a6664c1198ced13`. Astra's narrow static re-review confirms the fix and closes the gate upon that execution result. The previous reopened P2 is resolved; actual device storage-fault durability remains untested.
+- Authorized the persistent Gear builder to implement the complete three-act campaign, distinct mortar role, progression/endings, seeded replay/medals, profile/run saves, navigation and presentation under the reviewed architecture. No new game chats yet; Gear remains first. Latest0.2.1 Android verification runs against the immutable coordinator checkout while campaign work stays isolated.
+
