@@ -18,6 +18,6 @@ The active portfolio goal is defined in `GOAL.md`. Status reflects evidence, not
 
 1. Six prototype interpretations and bounded follow-up are saved; final implementation/footage fidelity review remains open.
 2. Keep verified foundation/prototype evidence landed. Physical Samsung checks remain separate from emulator evidence.
-3. Finish Gear's presentation, decision pressure, replay and full-game acceptance around the verified nine-encounter core. All four WIP save findings are resolved. Real0.1→0.2.1 migration and prototype Android win/loss/retry are verified; actual0.2.1→0.3core migration is being checked separately from final visuals and phone acceptance.
+3. Finish Gear's presentation, decision pressure, replay and full-game acceptance around the verified nine-encounter core. All four WIP save findings are resolved. Real0.1→0.2.1 and0.2.1→0.3core migration plus prototype Android win/loss/retry are verified; changed visuals/full-game Android and phone acceptance remain separate.
 4. Thread/worktree mapping is in `android-games/threads.json`; executable evidence is indexed under `android-games/evidence/`.
 

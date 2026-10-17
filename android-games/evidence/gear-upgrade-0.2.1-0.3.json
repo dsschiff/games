@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "scope": "Actual code3/schema3 to code4/schema4 campaign core upgrade; no data clear after old save creation",
+  "result": "passed",
+  "checks": 24,
+  "physical_phone_tested": false,
+  "source_sha256": "410fd97928dcd4f1edbcb3e4e76b619bcaae07a3ef4ac487c88d5186cda31317",
+  "old_apk_sha256": "063c4c36046c7cae2f362bb949391ae47f1823c5086ff257702bcf68ce6c9a60",
+  "new_apk_sha256": "de8d3db025671dadea70aef98fbc0d8bfe715049319423a4e94a31314116b7bf",
+  "version_transition": {
+    "from_version_code": 3,
+    "to_version_code": 4
+  },
+  "save_schema_transition": [
+    3,
+    4
+  ],
+  "old_state_key_count": 25,
+  "all_old_state_keys_preserved_under_active_run": [
+    "board",
+    "cap_time",
+    "encounter",
+    "enemies",
+    "gold",
+    "kills",
+    "losses",
+    "next_id",
+    "peak_units",
+    "phase",
+    "produced",
+    "production",
+    "production_last_id",
+    "projectiles",
+    "seed",
+    "serial",
+    "spawn_clock",
+    "spawned",
+    "spent",
+    "time",
+    "units",
+    "wall",
+    "wall_hits",
+    "wave",
+    "wave_time"
+  ],
+  "settings_preserved": true,
+  "army_preserved": 8,
+  "revisions": [
+    5,
+    7,
+    9
+  ],
+  "actual_new_app_writes_verified": true,
+  "fresh_profile_exactly_verified_twice": {
+    "version": 1,
+    "cleared": [],
+    "medals": {},
+    "best": {},
+    "ending_seen": false,
+    "challenge_clears": {}
+  },
+  "tooling_tests": 52,
+  "mapping_review": "Astra narrow static approval; root independently passed52tests and checked raw saves/archive hashes/mtime/transcript",
+  "visual_review": "Root inspected cold map:0/9clears,0/27medals, Resume defense. Missing title/top control fills separately investigated, no final visual acceptance.",
+  "artifact_root": "C:\\projects\\active\\games\\.artifacts\\upgrades\\com.dsschiff.gearbastion\\20261017T230227922343Z",
+  "build_manifest": "C:\\projects\\active\\games\\.artifacts\\gear-bastion\\20261017T225907083667Z\\manifest.json",
+  "receipt": "C:\\projects\\active\\games\\.artifacts\\preservation\\gear-upgrade-0.2.1-0.3.json",
+  "receipt_sha256": "dbddabcee79ec16359b3cfb8c5aee20571566b75aae437bbb3b7f29c6c746b46",
+  "preserved_files": 33,
+  "preserved_bytes": 174318071,
+  "limits": [
+    "New campaign artwork/deployment fields are not in this immutable core APK",
+    "Normal update tested; actual device storage faults and physical phone remain untested",
+    "No new Android campaign win/loss/ending or phone FPS claim",
+    "Small map rendering defect remains separate from successful migration evidence"
+  ]
+}
