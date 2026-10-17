@@ -35,6 +35,9 @@ var save_text: TextEdit
 var save_path := Saves.PATH
 var save_backend: Variant = null
 var save_failed := false
+const ACTOR_KINDS := ["guard", "ranger", "beetle", "shell", "carapace", "spitter", "skitter"]
+const ACTOR_TILE := 64.0
+var actor_atlas: Texture2D
 
 func _ready() -> void:
 	var loaded := Saves.read(save_path, save_backend)
@@ -46,6 +49,8 @@ func _ready() -> void:
 	audio = AudioStreamPlayer.new()
 	add_child(audio)
 	_build_save_dialog()
+	if DisplayServer.get_name() != "headless":
+		call_deferred("_bake_actor_atlas")
 	queue_redraw()
 
 func _notification(what: int) -> void:
@@ -572,37 +577,94 @@ func _draw_unit(unit: Dictionary, friendly: bool) -> void:
 		color = Color("d48f61")
 	if float(unit.flash) > 0 and not settings.reduced_effects:
 		color = Color.WHITE
-	draw_ellipse_shadow(point)
-	if friendly:
-		var bob := sin(clock * 9 + int(unit.id)) * 1.2 if not paused and not settings.reduced_effects else 0.0
-		point.y += bob
-		draw_line(point + Vector2(-4, 5), point + Vector2(-5, 10), INK, 3)
-		draw_line(point + Vector2(4, 5), point + Vector2(5, 10), INK, 3)
-		panel(Rect2(point - Vector2(6, 4), Vector2(12, 12)), color, INK, 3)
-		draw_circle(point + Vector2(0, -7), 5, color)
-		draw_circle(point + Vector2(-2, -8), 1, INK)
-		draw_circle(point + Vector2(2, -8), 1, INK)
-		if kind == "guard":
-			draw_line(point + Vector2(9, 5), point + Vector2(9, -9), CREAM, 2)
-			draw_circle(point + Vector2(-8, 1), 5, Color("6fa7a3"))
-		else:
-			draw_arc(point + Vector2(8, 0), 7, -1.5, 1.5, 8, CREAM, 2)
+	var body_point := point
+	if friendly and not paused and not settings.reduced_effects:
+		body_point.y += sin(clock * 9 + int(unit.id)) * 1.2
+	if actor_atlas != null:
+		var index := ACTOR_KINDS.find(kind)
+		var row := 1 if float(unit.flash) > 0 and not settings.reduced_effects else 0
+		_draw_actor_tile(point, 7, 0)
+		_draw_actor_tile(body_point, index, row)
 	else:
-		for leg in [-1, 1]:
-			for offset in [-5, 2, 7]:
-				draw_line(point + Vector2(leg * 4, offset), point + Vector2(leg * 12, offset + 3), INK, 2)
-		draw_circle(point, 10 if kind == "shell" else 8, INK)
-		draw_circle(point - Vector2(0, 1), 8 if kind == "shell" else 6, color)
-		draw_line(point + Vector2(0, -7), point + Vector2(0, 6), INK, 2)
-		if kind == "carapace":
-			draw_arc(point, 11, 0, TAU, 14, color, 3)
-			draw_line(point + Vector2(-5, -5), point + Vector2(5, -5), CREAM, 2)
-			draw_line(point + Vector2(-5, 2), point + Vector2(5, 2), CREAM, 2)
-		elif kind == "spitter":
-			draw_circle(point + Vector2(0, 4), 3, MINT)
+		draw_ellipse_shadow(point)
+		_draw_actor_art(self, body_point, kind, friendly, color)
 	if float(unit.hp) < float(unit.max_hp):
-		draw_rect(Rect2(point + Vector2(-9, -17), Vector2(18, 3)), INK)
-		draw_rect(Rect2(point + Vector2(-9, -17), Vector2(18 * float(unit.hp) / float(unit.max_hp), 3)), MINT if friendly else RED)
+		draw_rect(Rect2(body_point + Vector2(-9, -17), Vector2(18, 3)), INK)
+		draw_rect(Rect2(body_point + Vector2(-9, -17), Vector2(18 * float(unit.hp) / float(unit.max_hp), 3)), MINT if friendly else RED)
 
 func draw_ellipse_shadow(point: Vector2) -> void:
 	draw_circle(point + Vector2(1, 6), 9, Color(0.04, 0.09, 0.08, 0.3))
+
+func _actor_panel(canvas: CanvasItem, rect: Rect2, color: Color) -> void:
+	var style := StyleBoxFlat.new()
+	style.bg_color = color
+	style.border_color = INK
+	style.set_border_width_all(2)
+	style.set_corner_radius_all(3)
+	canvas.draw_style_box(style, rect)
+
+func _draw_actor_art(canvas: CanvasItem, point: Vector2, kind: String, friendly: bool, color: Color) -> void:
+	if friendly:
+		canvas.draw_line(point + Vector2(-4, 5), point + Vector2(-5, 10), INK, 3)
+		canvas.draw_line(point + Vector2(4, 5), point + Vector2(5, 10), INK, 3)
+		_actor_panel(canvas, Rect2(point - Vector2(6, 4), Vector2(12, 12)), color)
+		canvas.draw_circle(point + Vector2(0, -7), 5, color)
+		canvas.draw_circle(point + Vector2(-2, -8), 1, INK)
+		canvas.draw_circle(point + Vector2(2, -8), 1, INK)
+		if kind == "guard":
+			canvas.draw_line(point + Vector2(9, 5), point + Vector2(9, -9), CREAM, 2)
+			canvas.draw_circle(point + Vector2(-8, 1), 5, Color("6fa7a3"))
+		else:
+			canvas.draw_arc(point + Vector2(8, 0), 7, -1.5, 1.5, 8, CREAM, 2)
+	else:
+		for leg in [-1, 1]:
+			for offset in [-5, 2, 7]:
+				canvas.draw_line(point + Vector2(leg * 4, offset), point + Vector2(leg * 12, offset + 3), INK, 2)
+		canvas.draw_circle(point, 10 if kind == "shell" else 8, INK)
+		canvas.draw_circle(point - Vector2(0, 1), 8 if kind == "shell" else 6, color)
+		canvas.draw_line(point + Vector2(0, -7), point + Vector2(0, 6), INK, 2)
+		if kind == "carapace":
+			canvas.draw_arc(point, 11, 0, TAU, 14, color, 3)
+			canvas.draw_line(point + Vector2(-5, -5), point + Vector2(5, -5), CREAM, 2)
+			canvas.draw_line(point + Vector2(-5, 2), point + Vector2(5, 2), CREAM, 2)
+		elif kind == "spitter":
+			canvas.draw_circle(point + Vector2(0, 4), 3, MINT)
+
+func _draw_actor_tile(point: Vector2, column: int, row: int) -> void:
+	draw_texture_rect_region(actor_atlas, Rect2(point - Vector2.ONE * 32, Vector2.ONE * ACTOR_TILE),
+		Rect2(Vector2(column, row) * ACTOR_TILE * 2, Vector2.ONE * ACTOR_TILE * 2))
+
+func _draw_actor_atlas(canvas: Node2D) -> void:
+	for row in 2:
+		for index in ACTOR_KINDS.size():
+			var kind: String = ACTOR_KINDS[index]
+			var color := GOLD if kind == "guard" else BLUE
+			if kind == "beetle": color = Color("b75e5e")
+			elif kind == "shell": color = Color("a5a875")
+			elif kind == "carapace": color = Color("ac8cd3")
+			elif kind == "spitter": color = Color("db9b5f")
+			elif kind == "skitter": color = Color("d48f61")
+			if row == 1: color = Color.WHITE
+			_draw_actor_art(canvas, Vector2(index * ACTOR_TILE + 32, row * ACTOR_TILE + 32), kind, index < 2, color)
+	canvas.draw_circle(Vector2(7 * ACTOR_TILE + 33, 38), 9, Color(0.04, 0.09, 0.08, 0.3))
+
+func _bake_actor_atlas() -> void:
+	# Bake the same vector art once at 2x logical resolution; dynamic bob, flash
+	# selection and health bars remain independent of the cached body and shadow.
+	var viewport := SubViewport.new()
+	viewport.size = Vector2i(1024, 256)
+	viewport.transparent_bg = true
+	viewport.disable_3d = true
+	viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
+	var canvas := Node2D.new()
+	canvas.scale = Vector2.ONE * 2
+	canvas.draw.connect(_draw_actor_atlas.bind(canvas))
+	viewport.add_child(canvas)
+	add_child(viewport)
+	await RenderingServer.frame_post_draw
+	if not is_inside_tree():
+		return
+	actor_atlas = ImageTexture.create_from_image(viewport.get_texture().get_image())
+	viewport.queue_free()
+	print("ACTOR_ATLAS_READY: ", actor_atlas.get_size())
+	queue_redraw()
