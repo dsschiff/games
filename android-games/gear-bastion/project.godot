@@ -1,0 +1,26 @@
+config_version=5
+
+[application]
+config/name="Gear Bastion"
+config/version="0.1.0"
+config/icon="res://icon.svg"
+run/main_scene="res://main.tscn"
+
+[display]
+window/size/viewport_width=600
+window/size/viewport_height=1066
+window/size/window_width_override=450
+window/size/window_height_override=800
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+window/handheld/orientation=1
+window/subwindows/embed_subwindows=true
+
+[rendering]
+textures/vram_compression/import_etc2_astc=true
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.055,0.08,0.11,1)
+
+[audio]
+driver/enable_input=false

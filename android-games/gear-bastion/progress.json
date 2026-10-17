@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "game": "gear-bastion",
+  "version": "0.1.0",
+  "branch": "codex/gear-bastion",
+  "updated_at": "2026-10-17T17:14:00-04:00",
+  "milestone": "interactive_prototype",
+  "status": "ready_for_independent_prototype_review",
+  "full_v1_complete": false,
+  "implemented": [
+    "orthogonal core-powered board with bounded adjacent-drive rates",
+    "live drag rearrangement, direct equal-drive merge and move/merge undo",
+    "actual production, three exits, guard/ranger auto-battle and wall damage",
+    "three-wave tutorial, costs, forecast, 120-troop cap and role counter",
+    "win/loss/retry, pause/speed, mute/reduced effects",
+    "versioned local save/resume, backup recovery and portable JSON import/export",
+    "original vector/procedural art and locally synthesized tones",
+    "centered portrait composition and live aspect resize support"
+  ],
+  "verification": {
+    "rules": {"checks": 39, "passed": true, "suite_complete_marker": true},
+    "headless_input": {"checks": 31, "pointer_events": 146, "passed": true, "suite_complete_marker": true},
+    "rendered_input": {"checks": 34, "pointer_events": 156, "keyboard_events": 4909, "passed": true, "audio_driver": "Dummy"},
+    "two_winning_layouts": true,
+    "repairable_failed_connectivity_strategy": true,
+    "defeat_and_immediate_retry": true,
+    "app_owned_scene_save_reload": true,
+    "portable_save_ui_import_by_keyboard_and_touch": true,
+    "injected_backup_and_v1_migration_fixtures": true,
+    "desktop_live_resize_profiles": [[1080, 2520], [1968, 2184]],
+    "heavy_rules_cpu_only": {"friendly_cap": 120, "enemy_bound": 90, "steps": 120, "elapsed_ms": 522.7, "max_step_ms": 9.1},
+    "independent_prototype_review": "pending",
+    "android_launch": "pending",
+    "physical_phone": "pending",
+    "actual_sound": "pending",
+    "clipboard": "blocked_in_desktop_sandbox_unverified_on_phone",
+    "android_background_resume_and_apk_update": "pending"
+  },
+  "build": {
+    "result": "built_and_signature_verified",
+    "godot": "4.7.2.stable.official.ed1daf0bf",
+    "template": "unmodified_official",
+    "gradle": false,
+    "package": "com.dsschiff.gearbastion",
+    "min_sdk": 24,
+    "target_sdk": 36,
+    "abis": ["arm64-v8a", "x86_64"],
+    "permissions": [],
+    "apk": ".artifacts/gear-bastion/20261017T211149104303Z/gear-bastion.apk",
+    "bytes": 57091452,
+    "sha256": "557732780aa69e958b897b78e80feed53f37346697ab49b42acb299422117178",
+    "manifest": ".artifacts/gear-bastion/20261017T211149104303Z/manifest.json"
+  },
+  "evidence": {
+    "shared_tests": ".artifacts/gear-bastion/20261017T211054429925Z/manifest.json",
+    "rendered_frames": "android-games/gear-bastion/.artifacts/playthrough/",
+    "game_local_logs": "android-games/gear-bastion/.artifacts/"
+  },
+  "next_action": "Coordinator independently reviews and builds prototype checkpoint before campaign expansion.",
+  "remaining": [
+    "three-region 30-60-minute campaign and meaningful balance",
+    "constrained boards, strategic unlocks and distinct additional roles",
+    "bosses, seeded challenge/replay and presentation polish",
+    "Android launch/lifecycle, update preservation, clipboard/keyboard and offline checks",
+    "physical Galaxy Z Fold7 identity, safe-area/touch/fold checks and measured performance",
+    "independent release review"
+  ]
+}
