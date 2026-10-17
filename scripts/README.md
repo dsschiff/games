@@ -171,6 +171,11 @@ The upgrade boundary uses `install -r` with no uninstall, clear or fixture write
 Critical semantic paths must survive installation, the new app's migration/save
 and a cold relaunch. Dictionary key order and newly added migration keys are
 allowed; old values, list order/length and selected nested fields must survive.
+Integer-valued numbers and booleans remain exact. Finite fractional floats allow
+only JSON round-trip noise with relative/absolute tolerance `1e-12`; the manifest
+records that policy. Material position/time changes and adjacent large integer
+changes fail. The original strict-comparison failure packet is retained when
+such serialization noise is diagnosed; it is not relabeled as a passing run.
 Each new-version launch must also advance the app save's modification time
 beyond its pre-launch value, proving a new persist occurred rather than merely
 accepting the untouched old JSON. File times, inode and size are recorded;

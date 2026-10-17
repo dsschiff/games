@@ -19,6 +19,10 @@ import time
 from android_smoke import evaluate_expectations, lookup_path, scale_action
 from portfolio import REPO_ROOT, artifact_record, inspect_apk, read_config, tool_environment
 
+NUMERIC_COMPARISON = {"integer_valued_numbers": "exact", "fractional_floats": "math.isclose",
+                      "relative_tolerance": 1e-12, "absolute_tolerance": 1e-12,
+                      "booleans": "exact type and value", "nonfinite_numbers": "rejected"}
+
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -56,7 +60,15 @@ def semantic_subset(old, new) -> bool:
         return isinstance(new, list) and len(old) == len(new) and all(
             semantic_subset(left, right) for left, right in zip(old, new))
     if isinstance(old, (int, float)) and isinstance(new, (int, float)):
-        return math.isfinite(old) and math.isfinite(new) and old == new
+        if not math.isfinite(old) or not math.isfinite(new):
+            return False
+        if old == new:
+            return True
+        # JSON round trips can move fractional doubles by a few final digits.
+        # Keep IDs, counts and integer-valued currency exact, even at large values.
+        return (isinstance(old, float) and isinstance(new, float)
+                and not old.is_integer() and not new.is_integer()
+                and math.isclose(old, new, rel_tol=1e-12, abs_tol=1e-12))
     return type(old) is type(new) and old == new
 
 
@@ -133,6 +145,7 @@ def main(argv=None) -> int:
               "physical_phone_tested": False, "screenshots_need_visual_review": True,
               "package": args.package, "serial": args.serial, "result": "failed", "checks": {},
               "reset_test_data_authorized": args.reset_test_data, "preserve_paths": args.preserve_path,
+              "numeric_comparison_policy": NUMERIC_COMPARISON,
               "runner_sha256": sha256(Path(__file__))}
     transcript = []
     adb_started = False

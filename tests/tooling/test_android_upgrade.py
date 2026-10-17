@@ -46,6 +46,25 @@ class UpgradeEvidenceTests(unittest.TestCase):
         self.assertFalse(upgrade.semantic_subset({"x": 1}, {"x": True}))
         self.assertFalse(upgrade.semantic_subset(float("nan"), float("nan")))
 
+    def test_fractional_json_roundtrip_roundoff_preserves_semantics(self):
+        old = {"clock": 1.2000000000000057, "actors": [{"y": 411.73873879114717}]}
+        new = {"clock": 1.2000000000000055, "actors": [{"y": 411.7387387911472}]}
+        self.assertTrue(upgrade.semantic_subset(old, new))
+        self.assertFalse(upgrade.semantic_subset(old, {"clock": 1.21, "actors": new["actors"]}))
+        self.assertFalse(upgrade.semantic_subset(old, {"clock": new["clock"], "actors": [{"y": 411.74}]}))
+
+    def test_integer_ids_counts_and_integer_valued_floats_stay_exact(self):
+        self.assertFalse(upgrade.semantic_subset(10**15, 10**15 + 1))
+        self.assertFalse(upgrade.semantic_subset(1.0, 1.0000000000000002))
+        self.assertFalse(upgrade.semantic_subset(10**15, float(10**15 + 1)))
+        self.assertTrue(upgrade.semantic_subset(2, 2.0))
+
+    def test_numeric_tolerance_never_accepts_bool_or_nonfinite(self):
+        for old, new in ((True, 1.0), (0.0, False), (float("inf"), float("inf")),
+                         (float("nan"), 1.1), (1.1, float("-inf"))):
+            with self.subTest(old=old, new=new):
+                self.assertFalse(upgrade.semantic_subset(old, new))
+
     def test_missing_preservation_and_expectation_assertions_are_rejected(self):
         with self.assertRaises(ValueError):
             upgrade.compare_preserved_paths(self.old, self.old, [])

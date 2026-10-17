@@ -32,6 +32,10 @@ The technical probes verify normal gameplay save/readback and recovery from a co
 
 Home/background and system Back are separate test paths. Godot 4.7 documents a distinct [Android Back notification](https://docs.godotengine.org/en/4.7/classes/class_node.html#class-node-constant-notification-wm-go-back-request), and [`SceneTree.quit_on_go_back`](https://docs.godotengine.org/en/4.7/classes/class_scenetree.html#class-scenetree-property-quit-on-go-back) defaults to true. Each complete game's navigation should explicitly close the active modal first, then pause or return to its menu while saving predictably. Test actual Android Back followed by relaunch and save readback; a passing Home smoke does not cover it. These are release checks, not a claim that the current prototype has lost data.
 
+## Performance evidence
+
+Keep opt-in capture local. Record actual render-frame intervals before simulation-delta clamping, device/OS/renderer, encounter and actor counts, effects settings, warmup, capture duration and frame count. Report median/p95/p99 intervals and slow-frame counts; label excluded pause/loading periods. Desktop fixed-step CPU timings and emulator observations cannot establish phone FPS. Android's [rendering guidance](https://developer.android.com/google/play/vitals/render) explains that non-View OpenGL games may lack the usual rendering statistics; verify measurement coverage before treating `gfxinfo` output as game-frame evidence. The 60fps target and heavy-encounter floor require actual physical-device captures and a separate playability check.
+
 ## Verification labels
 
 - **Implemented:** source and intended behavior exist.
