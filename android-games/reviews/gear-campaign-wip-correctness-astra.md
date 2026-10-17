@@ -2,7 +2,7 @@
 
 Astra statically reviewed all20files in the immutable uncommitted snapshot `.artifacts/reviews/campaign-wip-20261017-2240/`, verifying its hash manifest. Locations below refer to that snapshot, not the changing builder branch. This is a pre-freeze review; no final campaign acceptance. Root sent all findings to the builder for correction and regression coverage.
 
-## Open findings
+## Findings at the frozen WIP checkpoint
 
 1. **P2 — Practice replaces an active campaign run and retains Undo.** `scripts/main.gd:387` bypasses the abandonment confirmation used by `request_mission`, replaces state, retains `undo_board`, then persists. A campaign board with pieceID≥6 can be restored by Practice→Undo into tutorial `next_id=6`, failing the save validator's piece-sequence check. Route Practice through guarded replacement and centralized transient-state reset. Cover cancel-preserves-run and confirmed-reset-clears-Undo.
 
@@ -21,3 +21,13 @@ The previous staged-backup preservation, failed-import handling, revision orderi
 Astra did not execute Godot, tests or Android. Root additionally executed copied-snapshot recovery/import invariants: schema4 primary revision9 missing its profile was selected with no clears over an intact revision8 backup with camp01clear; core-overlap, duplicate-starter and outside-socket configs imported successfully but each Retry failed decoding; accepted period6 produced a valid pre-attack save, then an actual battle tick set cooldown6 and decoding failed with `Invalid unit counters`. Zero-boss-health config/import acceptance was confirmed; its runtime division was deliberately not executed. These are isolated logic/configuration fixtures, not actual-input or Android results. Harnesses, outputs and snapshot hashes are indexed in [the evidence record](../evidence/gear-campaign-wip-review.json).
 
 Findings remain open until changed source and meaningful regression execution are reviewed; live builder work may already supersede the snapshot. Physical phone, full campaign balance/fun, final fidelity and release acceptance remain pending.
+
+## Resolution at the campaign core checkpoint
+
+**All four bounded findings are resolved at `94e601f`, source SHA256 `410fd97928dcd4f1edbcb3e4e76b619bcaae07a3ef4ac487c88d5186cda31317`.** Worker fix is in `ce84547`, integrated as `6bf1476`; resource identity sidecars were copied unchanged from the worker before clean import.
+
+Astra independently re-read the committed source/regressions and found no remaining blocker within this narrow scope. Practice uses guarded transitions and clears transient state on confirmation. Schema4 rejects an absent profile and recovers the intact backup. Starting-kit validation rejects overlap/unavailable sockets/disallowed roles. Actor cooldown validation uses the saved period; zero-health bosses and excessive scaled health are rejected.
+
+Coordinator then independently passed156rule checks,51legacy input checks and56full-campaign actual-input checks with744pointer/4keyboard events. The latter reaches all nine clears and explicitly tests Practice cancellation/confirmation/Undo/save. The rules exercise backup-profile recovery, malformed kits and accepted six-second attacks followed by save/restore. Source fingerprints stayed identical and game tree clean. Evidence: [campaign core record](../evidence/gear-campaign-core-0.3.json).
+
+This closes these four correctness findings only. It does not certify campaign pacing, final visuals, Android update behavior or physical-phone acceptance.

@@ -7,7 +7,7 @@
   "android_execution": false,
   "actual_input_execution": false,
   "live_builder_modified": false,
-  "status": "four_findings_open_pending_builder_fixes",
+  "status": "resolved_by_independent_campaign_core_verification",
   "practice": {
     "after_encounter": "tutorial",
     "after_next_id": 6,
@@ -72,5 +72,7 @@
     "Only Practice helper reports two ObjectDB exit cleanup warnings; not attributed to production game",
     "Zero-health boss division not executed",
     "Logical fixtures do not establish full gameplay, migration on Android, phone performance or fun"
-  ]
+  ],
+  "discovery_status": "four_findings_open_pending_builder_fixes",
+  "resolution_evidence": "gear-campaign-core-0.3.json"
 }
