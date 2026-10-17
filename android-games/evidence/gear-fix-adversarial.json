@@ -1,0 +1,135 @@
+{
+  "seed_variants": [
+    {
+      "phase": "defeat",
+      "plan": "A",
+      "seed": 1700,
+      "spent": 52,
+      "time": 61.0666666666658,
+      "wall": 0.0
+    },
+    {
+      "phase": "victory",
+      "plan": "B",
+      "seed": 1700,
+      "spent": 50,
+      "time": 91.5999999999974,
+      "wall": 160.0
+    },
+    {
+      "phase": "defeat",
+      "plan": "C",
+      "seed": 1700,
+      "spent": 48,
+      "time": 65.3333333333322,
+      "wall": 0.0
+    },
+    {
+      "phase": "defeat",
+      "plan": "R",
+      "seed": 1700,
+      "spent": 54,
+      "time": 23.166666666667,
+      "wall": 0.0
+    },
+    {
+      "phase": "victory",
+      "plan": "repair",
+      "seed": 1700,
+      "spent": 52,
+      "time": 102.366666666663,
+      "wall": 160.0
+    },
+    {
+      "phase": "victory",
+      "plan": "A",
+      "seed": 1701,
+      "spent": 52,
+      "time": 98.1666666666637,
+      "wall": 160.0
+    },
+    {
+      "phase": "victory",
+      "plan": "B",
+      "seed": 1701,
+      "spent": 50,
+      "time": 91.0333333333307,
+      "wall": 160.0
+    },
+    {
+      "phase": "defeat",
+      "plan": "C",
+      "seed": 1701,
+      "spent": 48,
+      "time": 65.6333333333322,
+      "wall": 0.0
+    },
+    {
+      "phase": "defeat",
+      "plan": "R",
+      "seed": 1701,
+      "spent": 54,
+      "time": 23.166666666667,
+      "wall": 0.0
+    },
+    {
+      "phase": "victory",
+      "plan": "repair",
+      "seed": 1701,
+      "spent": 52,
+      "time": 96.4666666666638,
+      "wall": 160.0
+    },
+    {
+      "phase": "defeat",
+      "plan": "A",
+      "seed": 1702,
+      "spent": 52,
+      "time": 51.6666666666663,
+      "wall": 0.0
+    },
+    {
+      "phase": "victory",
+      "plan": "B",
+      "seed": 1702,
+      "spent": 50,
+      "time": 91.0666666666641,
+      "wall": 160.0
+    },
+    {
+      "phase": "defeat",
+      "plan": "C",
+      "seed": 1702,
+      "spent": 48,
+      "time": 62.799999999999,
+      "wall": 0.0
+    },
+    {
+      "phase": "defeat",
+      "plan": "R",
+      "seed": 1702,
+      "spent": 54,
+      "time": 23.166666666667,
+      "wall": 0.0
+    },
+    {
+      "phase": "victory",
+      "plan": "repair",
+      "seed": 1702,
+      "spent": 52,
+      "time": 97.199999999997,
+      "wall": 160.0
+    }
+  ],
+  "sole_backup_tmp": {
+    "recoverable_after_failed_write": false,
+    "write_ok": false
+  },
+  "schema_version": 1,
+  "scope": "coordinator adversarial rule/fault probes; no physical-device claim",
+  "tested_integrated_commit": "a0e59d7",
+  "tested_source_sha256": "7b9c7320713f3dd90ddd595c887498a68b69d6dce3ebafae91bc1bcc3cffbf37",
+  "storage_failure_scope": "Injected FaultFiles backend, not actual Android disk failure",
+  "raw_script": "android-games/gear-bastion/.artifacts/coordinator_checks.gd",
+  "raw_script_sha256": "70afda0caf41fcd21ef76c16606a1d6833514b7e2b502647598f42201b83ed03"
+}

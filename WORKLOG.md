@@ -60,3 +60,9 @@
 - Coordinator inspected source and independently passed all 44 tooling tests. Source/unit tests do not establish a successful Android upgrade. Execution waits for the builder's next immutable version0.2.0/code2 checkpoint with save schema3.
 - Added a separate Android Back release check to development guidance, grounded in Godot4.7 documentation. Home/background smoke coverage does not imply system Back coverage; no actual Back-related progress loss is claimed.
 
+### Gear fix checkpoint and reopened recovery gate
+
+- Integrated worker `d13387b` as `a0e59d7`: schema3, APK0.2.0/code2, fair powered dispatch, surfaced save errors, tightened import validation and Iron Trial. Builder reports 97 rule, 51 headless-input and 56 rendered-input checks. Independent shared rules/input tests pass against clean source `7b9c7320713f3dd90ddd595c887498a68b69d6dce3ebafae91bc1bcc3cffbf37`; Android upgrade evidence is being collected against this immutable source.
+- Astra's initial static/visual gate approval was superseded by a coordinator fault probe: when `.bak.tmp` is the sole valid save, attempting to rewrite it during backup preparation can destroy it on partial-write failure. Astra confirmed this P2. Worker is preparing a narrow 0.2.1/code3 fix and preservation regressions; campaign expansion remains held until that fix passes.
+- Coordinator tested fixed plans at three nearby seeds. A wins1701 but loses1700/1702; B and the paid adaptive repair win all three; both single-role extremes fail all three. The 50/52-brass plans are comparable resource witnesses, not two robust policies. Raw fault/seed evidence is indexed in `android-games/evidence/gear-fix-adversarial.json`; review amendment is in `android-games/reviews/gear-fixes-astra.md`.
+
