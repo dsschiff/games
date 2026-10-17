@@ -3,7 +3,7 @@
   "reviewed_date": "2026-10-17",
   "milestone": "M0 reference research",
   "status": "six_interpretation_reviewed_prototype_briefs_final_fidelity_pending",
-  "method": "Exact public video URLs, official listing identity checks, approximate browser scene observations and four bounded source-passage follow-ups. Original table times are player seek/read positions, not certified image timestamps. No original apps installed; no third-party footage copied into Git.",
+  "method": "Exact public video URLs, official listing identity checks, approximate browser scene observations and bounded source-passage follow-ups including independent Hero playback. Original table times are player seek/read positions, not certified image timestamps. No original apps installed; no third-party footage copied into Git.",
   "observation_limits": [
     "All gameplay recordings were sampled; none was exhaustively observed frame by frame.",
     "Videos depict controls and state changes but do not prove playable input causality.",
@@ -71,9 +71,9 @@
       "game_id": "tower-trials",
       "brief": "hero-wars.md",
       "package_id": "com.nexters.herowars",
-      "selected_loop": "Choose numbered tower rooms, resolve brief fights, gain power and unlock a route.",
-      "creative_status": "observed_official_verified_page_ad",
-      "core_status": "observed_party_rpg_and_roster_samples",
+      "selected_loop": "Choose numbered tower rooms, resolve brief fights, gain power, visibly grow or claim the player tower, and unlock harder routes.",
+      "creative_status": "official_ad_directly_played_start_to_end_by_independent_astra",
+      "core_status": "party_rpg_passage_continuously_played_by_independent_astra",
       "prototype_scope": "Room selection, explicit deterministic power rule, tower progression, win/loss/undo/retry.",
       "sources": [
         {
@@ -107,11 +107,19 @@
         }
       ],
       "unresolved": [
-        "Exact arithmetic is inferred from number changes",
+        "Universal arithmetic formula, equality behavior and multi-enemy order unproven; introductory additions observed",
         "Ad animation is not a tested playable",
         "Current tower side modes not comprehensively audited",
-        "Final independent footage review"
-      ]
+        "Final fidelity comparison with original implementation recordings"
+      ],
+      "independent_direct_followup": {
+        "date": "2026-10-17",
+        "review": "../reviews/hero-reference-astra.md",
+        "H1": "Full approximately18-second playback with consecutive checkpoints; 3 to 5 to 8 to 13, brief fights, disappearing enemy floors, blue-roofed tower growth; terminal FAIL cause unresolved",
+        "H3": "Continuous approximately0:30 to1:26 after settled seek; party combat, map/team selection, rewards, mission loot/energy/raid controls and further fight",
+        "timestamp_limit": "Approximate playback positions, not certified frame timestamps",
+        "verdict": "Prototype reference direction approved; implementation/pacing/final fidelity pending"
+      }
     },
     {
       "reference": "Butcher Hero",
@@ -172,8 +180,8 @@
         ],
         "method": "Paused stepping and separate-call settled screenshots at nominal checkpoints; approximate windows, no certified frame attribution, exhaustive frame coverage or tested input causality. Raw observations retained in butcher-hero.md under Settled official-promo correction and raw observation log.",
         "observed": [
-          "Meat 30 to 5 on 25-cost green pad at approximately 12.6–14.7 seconds; power 100 to 200 and health 12 to 100.",
-          "Meat 79 to 4 on 75-cost purple pad at approximately 24.1–26.6 seconds; power 200 to 300 and health 26 to 100.",
+          "Meat 30 to 5 on 25-cost green pad at approximately 12.6â€“14.7 seconds; power 100 to 200 and health 12 to 100.",
+          "Meat 79 to 4 on 75-cost purple pad at approximately 24.1â€“26.6 seconds; power 200 to 300 and health 26 to 100.",
           "Chained purple blade extends from small orange player near 35.2 seconds; close combat and resource rewards throughout."
         ],
         "withdrawn_interpretation": "Final pale giant is not established as enlarged player; permanent body-size growth and direct consumption cannot be claimed from this promo.",

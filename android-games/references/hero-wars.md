@@ -1,6 +1,6 @@
 # Hero Wars reference and original game brief
 
-Reviewed 2026-10-17. Candidate title: **Tower Trials** (`tower-trials`). Status: **exact official tower ad observed; sampled sustained RPG comparison; ready for independent review**. Select the numbered-tower puzzle, not pin pulling or a collage of unrelated ads.
+Reviewed 2026-10-17. Candidate title: **Tower Trials** (`tower-trials`). Status: **exact official tower ad and sustained RPG passage directly viewed by independent Astra reviewer; prototype direction approved; implementation comparison pending**. Select the numbered-tower puzzle, not pin pulling or a collage of unrelated ads.
 
 ## Sources and provenance
 
@@ -30,6 +30,10 @@ Reviewed 2026-10-17. Candidate title: **Tower Trials** (`tower-trials`). Status:
 
 The rise 3 → 8 → 13 is consistent with adding defeated enemy values (2 + 3 + 5); that exact formula is an **inference**, not a reverse-engineered rule. The creative is animation with a pointer, not proven playable input. Its approximate sub-two-second combat beats are presentation targets, not measured action latency.
 
+Independent direct-playback follow-up: Astra played H1 from its start through the approximately 18-second ending and inspected consecutive checkpoints. The introductory sequence is visibly 3→5→8→13, with brief clashes, disappearing enemy floors and growth of the blue-roofed player's tower. Around 13–16 seconds, a taller tower introduces stronger enemies and multiple numbered enemies in a room. The ending zooms out to larger towers and displays FAIL; the particular cause was not isolated. Addition is supported in these introductory encounters, while a universal formula, equality rule, multi-enemy order and actual touch input remain unproven. Winning must visibly grow or claim the player's tower; a static list of numerical encounters would lose this spatial payoff.
+
+Astra also continuously played approximately 0:30–1:26 of H3 after a settled seek, observing landscape five-character party combat with health/energy portraits and Auto, campaign map/team selection, victory currency/equipment/XP, then a later mission's loot/energy/raid controls and another battle. This independently confirms the bounded party-RPG comparison without establishing absence of tower puzzles across all versions/modes. Times are approximate playback positions, not certified frames. See `../reviews/hero-reference-astra.md`.
+
 ## Decision
 
 Make the selected **numbered-room route puzzle** the complete game. The sampled sustained source and official help establish the reference's broader party RPG; they do not establish that tower puzzles are absent in every version/mode. Do not reproduce RPG grind or claim a universal bait-and-switch judgment from four samples. Ad/core mismatch for this selected loop is sufficient to choose the advertised puzzle as the main activity.
@@ -54,4 +58,4 @@ Make the selected **numbered-room route puzzle** the complete game. The sampled 
 
 ## Remaining evidence limits
 
-The official selected ad is old but its URL and visible content were verified now. The sustained recording was sampled rather than exhaustively watched; no claim of late-game RPG coverage. Audio muted. Independent reviewer must watch H1 and H3 directly before final fidelity approval; source links and these notes alone are not that approval.
+The official selected ad is old but its URL and visible content were verified now, including independent continuous playback. The sustained recording was sampled rather than exhaustively watched; no claim of late-game RPG coverage. Source validation supports prototype direction. Final fidelity approval still requires comparison with the actual original game's first/middle/final recordings; no implementation or human-pacing acceptance is implied.
