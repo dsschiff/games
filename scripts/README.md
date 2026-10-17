@@ -185,3 +185,47 @@ Screenshots, raw saves, runtime logs, command transcripts, exact APK archives,
 hashes and expectation results remain in the ignored evidence packet. Screenshots
 still require visual review. This verifier's source and unit tests alone do not
 establish a successful Android upgrade or physical-phone compatibility.
+
+## Gear Bastion 0.2.1 Iron Trial input fixtures
+
+The versioned `smoke-actions/gear-bastion-0.2.1-trial-a-victory.json` and
+`gear-bastion-0.2.1-trial-c-defeat.json` target APK code 3 and saved schema 3.
+Both select Iron Trial, drag four generators from the tray, assign exits, Begin,
+and select 2x speed. A buys two guards and two rangers for 52 brass; C buys four
+guards for 48. Final assertions include all purchased piece positions/exits,
+budget, encounter, outcome, wall, elapsed simulation time, and the army cap.
+
+Reset only emulator test data before each case, with the code 3 APK installed:
+
+```powershell
+$apk = '.artifacts/gear-bastion/20261017T220126111874Z/gear-bastion.apk'
+& 'C:/projects/active/.game-toolchain/android-sdk/platform-tools/adb.exe' -s emulator-5554 shell pm clear com.dsschiff.gearbastion
+python scripts/android_smoke.py --apk $apk --package com.dsschiff.gearbastion --save files/bastion-save.json --actions scripts/smoke-actions/gear-bastion-0.2.1-trial-c-defeat.json --serial emulator-5554
+```
+
+Substitute the A fixture for the mixed-army case. Wait events are bounded to ten
+seconds each. A's original 60-second wait ended at simulation time 86.63 before
+victory, so that packet remains failed. The same encounter subsequently won at
+98.17 simulation seconds after 20 and 10 seconds of recorded continuation at 1x
+(the lifecycle reinstall reset speed). Its adjusted 80-second fresh 2x fixture
+is prospective and has not been replayed end to end. C's 60-second fixture did
+run end to end and captured defeat at simulation time 65.63.
+
+Retry is a separate manual assertion after preserving C's defeat screenshot and
+JSON. Tap screen `(900, 1337)` at the reference 1080x2400 geometry, then background
+the app and read its real save:
+
+```powershell
+$adb = 'C:/projects/active/.game-toolchain/android-sdk/platform-tools/adb.exe'
+& $adb -s emulator-5554 shell input tap 900 1337
+& $adb -s emulator-5554 shell input keyevent KEYCODE_HOME
+& $adb -s emulator-5554 exec-out run-as com.dsschiff.gearbastion cat files/bastion-save.json
+```
+
+Require schema 3, `recoverable=true`, a later revision, Iron Trial/ready, 54 brass,
+zero spent/time/wave, wall 160, empty actors/production, and exactly the initial
+core and drive. The observed Retry packet checked 22 exact fields plus revision
+and board count. Actual images, JSON, transcripts and continuation helpers live
+under the ignored `.artifacts/gear-bastion/independent-49bee21/verification.json` index and its
+linked packets. These two encounter cases do not establish phone performance,
+physical folding behavior, or completion of the game's campaign.

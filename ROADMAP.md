@@ -18,6 +18,6 @@ The active portfolio goal is defined in `GOAL.md`. Status reflects evidence, not
 
 1. Six prototype interpretations and bounded follow-up are saved; final implementation/footage fidelity review remains open.
 2. Keep verified foundation/prototype evidence landed. Physical Samsung checks remain separate from emulator evidence.
-3. Build Gear's complete three-act campaign and replay around the reviewed architecture. Real0.1→0.2.1 migration passed; touch-driven Android trial outcomes are being checked independently.
+3. Build Gear's complete three-act campaign and replay around the reviewed architecture. Real0.1→0.2.1 migration and Android trial win/loss/retry are verified with recorded scope limits.
 4. Thread/worktree mapping is in `android-games/threads.json`; executable evidence is indexed under `android-games/evidence/`.
 

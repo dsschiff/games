@@ -1,0 +1,187 @@
+{
+  "scope": "Independent clean 0.2.1 source test/build, original code1 to code3 upgrade, bounded Iron Trial real Android inputs",
+  "physical_phone_tested": false,
+  "source_checkpoint": "49bee21",
+  "project_source_sha256": "38e5f0c35b66cfb18983d14b0614b01a500e258b7aefe42960d7ba938f9d5aec",
+  "test_manifest": ".artifacts/gear-bastion/20261017T220048208306Z/manifest.json",
+  "rules_checks": 107,
+  "input_checks": 51,
+  "build_manifest": ".artifacts/gear-bastion/20261017T220126111874Z/manifest.json",
+  "apk": {
+    "path": ".artifacts/gear-bastion/20261017T220126111874Z/gear-bastion.apk",
+    "bytes": 57099799,
+    "sha256": "063c4c36046c7cae2f362bb949391ae47f1823c5086ff257702bcf68ce6c9a60"
+  },
+  "apk_inspection": {
+    "package": "com.dsschiff.gearbastion",
+    "version_code": "3",
+    "version_name": "0.2.1",
+    "permissions": [],
+    "internet_permission": false,
+    "signature_verified": true
+  },
+  "build_git_revision": "4120c60ac987f9b36cc2907ec00d24a3673a8d58",
+  "upgrade_manifest": ".artifacts/upgrades/com.dsschiff.gearbastion/20261017T220728760125Z/manifest.json",
+  "upgrade_result": "passed",
+  "upgrade_checks": 24,
+  "preserved_path_count": 21,
+  "numeric_comparison_policy": {
+    "integer_valued_numbers": "exact",
+    "fractional_floats": "math.isclose",
+    "relative_tolerance": 1e-12,
+    "absolute_tolerance": 1e-12,
+    "booleans": "exact type and value",
+    "nonfinite_numbers": "rejected"
+  },
+  "save_file_metadata": {
+    "old-before-upgrade": {
+      "modified_epoch_seconds": 1792274874,
+      "inode": 573722,
+      "bytes": 2140
+    },
+    "new-installed-before-launch": {
+      "modified_epoch_seconds": 1792274874,
+      "inode": 573722,
+      "bytes": 2140
+    },
+    "new-after-launch": {
+      "modified_epoch_seconds": 1792274886,
+      "inode": 573724,
+      "bytes": 2239
+    },
+    "new-cold-relaunch": {
+      "modified_epoch_seconds": 1792274896,
+      "inode": 573723,
+      "bytes": 2239
+    }
+  },
+  "visual_review": {
+    "upgrade_screenshots": [
+      "old-after-input.png",
+      "new-cold-relaunch-foreground.png"
+    ],
+    "observation": "Same paused wave1 battle, eight troops, boosted board and wall220; readable controls."
+  },
+  "strict_failed_packet": ".artifacts/upgrades/com.dsschiff.gearbastion/20261017T220401496738Z/manifest.json",
+  "strict_failure_diagnosis": ".artifacts/upgrades/com.dsschiff.gearbastion/20261017T220401496738Z/strict-comparison-diagnosis.json",
+  "limitations": [
+    "Generic emulator only; no physical Fold7 testing or measured phone performance",
+    "Staged-backup injected disk faults were tested separately by coordinator; no actual Android disk-fault claim",
+    "Adjusted fresh80-second A fixture not replayed end-to-end; actual victory is same-encounter continuation with preserved earlier failed deadlines",
+    "Generic emulator wall/simulation pacing was not measured as phone FPS",
+    "A continuation captured screenshots, real JSON and commands but no separate post-continuation logcat; initial A smoke log remains preserved. C and Retry have runtime logs."
+  ],
+  "trial_a": {
+    "initial_packet": ".artifacts/emulator/com.dsschiff.gearbastion/20261017T220854381283Z/manifest.json",
+    "initial_packet_result": "failed premature deadline",
+    "initial_waits_seconds": [
+      10,
+      10,
+      10,
+      10,
+      10,
+      10
+    ],
+    "initial_simulation_time": 86.63333333333098,
+    "initial_speed": 2,
+    "first_continuation": ".artifacts/emulator/com.dsschiff.gearbastion/20261017T220854381283Z/continuation/manifest.json",
+    "first_continuation_result": "failed not yet victory",
+    "first_continuation_waits_seconds": [
+      10,
+      10
+    ],
+    "first_continuation_simulation_time": 95.0333333333305,
+    "second_continuation": ".artifacts/emulator/com.dsschiff.gearbastion/20261017T220854381283Z/continuation-2/manifest.json",
+    "second_continuation_result": "passed",
+    "second_continuation_waits_seconds": [
+      10
+    ],
+    "continuation_speed": 1,
+    "explanation": "Same encounter, no reset/replay/new seed; cold reinstall reset speed to1. Preserved each failed observation. Total explicit waits90real seconds, not a frame-performance test.",
+    "victory_simulation_time": 98.16666666666366,
+    "wall": 160,
+    "spent": 52,
+    "gold": 2,
+    "produced": 202,
+    "kills": 66,
+    "peak_units": 120,
+    "army_count": 120,
+    "enemy_count": 0,
+    "visual_review": "Actual FOUNDRY HELD screenshot inspected; wall160/army120/Retry visible.",
+    "adjusted_80_second_fixture": "Prospective; not replayed from fresh data end-to-end"
+  },
+  "trial_c": {
+    "manifest": ".artifacts/emulator/com.dsschiff.gearbastion/20261017T221314620460Z/manifest.json",
+    "result": "passed",
+    "waits_seconds": [
+      10,
+      10,
+      10,
+      10,
+      10,
+      10
+    ],
+    "state_summary": {
+      "phase": "defeat",
+      "time": 65.63333333333217,
+      "wall": 0.0,
+      "spent": 48,
+      "gold": 6,
+      "produced": 206,
+      "peak_units": 73,
+      "kills": 19,
+      "losses": 206
+    },
+    "army_count": 0,
+    "enemy_count": 17,
+    "retry_manifest": ".artifacts/emulator/com.dsschiff.gearbastion/20261017T221314620460Z/retry/manifest.json",
+    "retry_result": "passed",
+    "retry_assertion_count": {
+      "exact": 22,
+      "numeric": 1,
+      "board_count": 1
+    },
+    "retry_revision_transition": [
+      31,
+      35
+    ],
+    "retry_runtime_errors": false,
+    "visual_review": "WALL BREACHED screenshot inspected before Retry; subsequent ready screen has54brass/core+drive/emptyarmy/wall160."
+  },
+  "display_after_checks": "Physical size:1080x2400; no override",
+  "final_source_sha256": "38e5f0c35b66cfb18983d14b0614b01a500e258b7aefe42960d7ba938f9d5aec",
+  "fixture_artifacts": {
+    "gear-bastion-0.2.1-trial-a-victory.json": {
+      "sha256": "5aa3ed1eebe85ec78b43d41bd37acf372528f02f3cc8c5157e6b799fa64146f5",
+      "final_actual_save_expectations": {
+        "checks": {
+          "expected_saved_state_after_input": true,
+          "expected_numeric_state_after_input": true
+        },
+        "exact_fields": 26,
+        "numeric_fields": 4,
+        "failures": []
+      }
+    },
+    "gear-bastion-0.2.1-trial-c-defeat.json": {
+      "sha256": "2b6020d4ad1d4a1dfd4d3691b1fd134eae18475edee45c8756216e73658f1c86",
+      "final_actual_save_expectations": {
+        "checks": {
+          "expected_saved_state_after_input": true,
+          "expected_numeric_state_after_input": true
+        },
+        "exact_fields": 26,
+        "numeric_fields": 4,
+        "failures": []
+      }
+    }
+  },
+  "schema_version": 1,
+  "date": "2026-10-17",
+  "coordinator_visual_review": [
+    "A actual victory screenshot inspected",
+    "C actual defeat screenshot inspected beforeRetry",
+    "Actual retryready screenshot inspected"
+  ],
+  "coordinator_raw_json_verified": true
+}
