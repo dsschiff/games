@@ -13,7 +13,7 @@
       "thread_id": "01a14cf9-259a-7473-8a90-2a4e341e8219",
       "ownership_when_started": "android-games/hearthguard/",
       "handoff": "android-games/handoffs/hearthguard-prototype.md",
-      "state": "frozencompletecampaignworker6c0b0ef integrated11a3f93 forindependent/Astra/actual1-to2review; bothbuilderrenderedroutes78functionalbutrawreceiptsfailhostclipboard; oldAndroidcode1rev164fixtureuntouched; builderidle"
+      "state": "Frozen full campaign6c0b0ef: independent123/56/44/10/76 headless pass; Astra conditional go. Independent rendered78 fails clipboard. Actual signed code1-to2 update24 checks, legacy/campaign parking and native first-watch natural loss pass. Retry/win/platform and phone gates pending; builder idle."
     },
     {
       "slug": "frontline-foundry",
@@ -22,7 +22,7 @@
       "initial_base": "c4eeeb515dc5ed7a179776932797484319c3b51c",
       "ownership_when_started": "android-games/frontline-foundry/",
       "handoff": "android-games/handoffs/frontline-foundry-prototype.md",
-      "state": "complete0.2.0/code2 campaign development ACTIVE fromfrozenbd2bfd9 afterfirstloopindependent/Astra/nativeacceptance; twelve-missionhandoff, exactcatalog1fixturepreservation and presentation/decisionconditions; alongsideDeadRunscopeP2amendment whileHearthfrozenforreview",
+      "state": "Full0.2/code2 twelve-mission campaign active from bd2bfd9. Preserve genuine catalog1 active Android fixture and investment/presentation conditions. Hearth frozen under root native review; Dead Run frozen for native prototype delivery.",
       "activation_base": "d771247958d550e4cd4a345ff7db3c310d9ab677",
       "thread_id": "01a14d1d-c90a-7562-b246-6cd243ad96ed"
     },
@@ -33,7 +33,7 @@
       "initial_base": "e41cb09cdbe1d78da0a004aa9ef0ea5a73c0dcb9",
       "ownership_when_started": "android-games/dead-run/",
       "handoff": "android-games/handoffs/dead-run-prototype.md",
-      "state": "firstprototypeworker8d7187e integrated2ef5245 withindependent124/34/35/full87.233sAstradirectionreview; confirmedP2exhaustion/queuedcranerewardinvalidsaveunderfocusedbuilderamendment; noAPKexportbeforeclosure",
+      "state": "Exhaustion P2 closed9952c89; final preset omission8fe7b04/integration8c66b45 exports signed offline code1. Independent139/34/17 headless and stable focusedGUI17 pass. Earlier normal35/0 provenance failure retained with exact19runtime byte qualification. Native install/outcomes pending; full campaign queued.",
       "activation_base": "369f9dce162d91ad27eff75f3f52aba2139736e1",
       "thread_id": "01a14d53-a3ae-7f61-ab87-0006aaa25dd4"
     }
@@ -78,7 +78,7 @@
       "branch": "codex/hearthguard",
       "ownership": "android-games/hearthguard/",
       "activation_base": "1e3bfe7a73b15a3fadce3232a75a2e143f41d8a4",
-      "state": "frozencompletecampaignworker6c0b0ef integrated11a3f93 forindependent/Astra/actual1-to2review; bothbuilderrenderedroutes78functionalbutrawreceiptsfailhostclipboard; oldAndroidcode1rev164fixtureuntouched; builderidle"
+      "state": "Frozen full campaign6c0b0ef: independent123/56/44/10/76 headless pass; Astra conditional go. Independent rendered78 fails clipboard. Actual signed code1-to2 update24 checks, legacy/campaign parking and native first-watch natural loss pass. Retry/win/platform and phone gates pending; builder idle."
     },
     {
       "slug": "frontline-foundry",
@@ -89,7 +89,7 @@
       "branch": "codex/frontline-foundry",
       "ownership": "android-games/frontline-foundry/",
       "activation_base": "d771247958d550e4cd4a345ff7db3c310d9ab677",
-      "state": "complete0.2.0/code2 campaign development ACTIVE fromfrozenbd2bfd9 afterfirstloopindependent/Astra/nativeacceptance; twelve-missionhandoff, exactcatalog1fixturepreservation and presentation/decisionconditions; alongsideDeadRunscopeP2amendment whileHearthfrozenforreview"
+      "state": "Full0.2/code2 twelve-mission campaign active from bd2bfd9. Preserve genuine catalog1 active Android fixture and investment/presentation conditions. Hearth frozen under root native review; Dead Run frozen for native prototype delivery."
     },
     {
       "slug": "dead-run",
@@ -100,7 +100,7 @@
       "branch": "codex/dead-run",
       "ownership": "android-games/dead-run/",
       "activation_base": "369f9dce162d91ad27eff75f3f52aba2139736e1",
-      "state": "firstprototypeworker8d7187e integrated2ef5245 withindependent124/34/35/full87.233sAstradirectionreview; confirmedP2exhaustion/queuedcranerewardinvalidsaveunderfocusedbuilderamendment; noAPKexportbeforeclosure"
+      "state": "Exhaustion P2 closed9952c89; final preset omission8fe7b04/integration8c66b45 exports signed offline code1. Independent139/34/17 headless and stable focusedGUI17 pass. Earlier normal35/0 provenance failure retained with exact19runtime byte qualification. Native install/outcomes pending; full campaign queued."
     }
   ]
 }

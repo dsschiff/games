@@ -1,0 +1,63 @@
+{
+  "purpose": "Actual Hearthguard1-to2 preservation from the already-earned paused native schema1 fixture; exact fresh campaign defaults and entire original meaning remain separate.",
+  "expected_save": {
+    "version": 2,
+    "committed": true,
+    "state.schema": 1,
+    "state.phase": "playing",
+    "state.pads": [
+      1,
+      0
+    ],
+    "state.spent": 5,
+    "state.wallet": 0,
+    "state.collected": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "state.spawned": 1,
+    "state.enemies.0.id": 0,
+    "state.enemies.0.hp": 2,
+    "state.killed": [],
+    "state.leaked": [],
+    "state.integrity": 8,
+    "profile.attempts": 2,
+    "profile.wins": 1,
+    "profile.best_kills": 20,
+    "profile.no_leak": true,
+    "settings.sound": false,
+    "settings.reduced_effects": true,
+    "campaign": {
+      "version": 1,
+      "attempts": 0,
+      "wins": 0,
+      "clears": [],
+      "records": {},
+      "ending": false,
+      "endless_best": {},
+      "legacy_snapshot": {},
+      "parked": {}
+    }
+  },
+  "expected_numeric": {
+    "state.time": {
+      "min": 5.6333,
+      "max": 5.6334
+    },
+    "state.x": {
+      "min": 2.6254,
+      "max": 2.6256
+    },
+    "state.z": {
+      "min": -1.9919,
+      "max": -1.9917
+    },
+    "state.enemies.0.z": {
+      "min": -8.4617,
+      "max": -8.4616
+    }
+  }
+}

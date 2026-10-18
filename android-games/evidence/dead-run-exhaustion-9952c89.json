@@ -1,0 +1,77 @@
+{
+  "stage": "prototype_exhaustion_P2_closed_native_delivery_pending",
+  "runtime_worker": "9952c89a18e72546609b01e503cf8bfdfb5e6ac0",
+  "runtime_integration": "3d7e4d6",
+  "runtime_fingerprint_before_delivery_metadata": "a80da4d70fce227a74264c45cd9be2af7fb91832bb56ae89e6ecf080b80c657d",
+  "preservation": {
+    "receipt": "C:\\projects\\active\\games\\.artifacts\\preservation\\hearth-dead-run-review-upgrade-20261018.json",
+    "sha256": "e41cdbe5f08886042c45f4b1a00f215c14f82e92cc88cb76ee4612f67fb2c9b8",
+    "files": 3110,
+    "bytes": 845225986,
+    "decoded_pngs": 286,
+    "prior_receipts": 31,
+    "prior_files": 9891
+  },
+  "review": "android-games/reviews/dead-run-prototype-8d7187e-astra.md",
+  "P2_status": "Closed by exact terminal-order amendment, paired regressions and independent unchanged root probe",
+  "root_probe": {
+    "probe_sha256": "768f858030742264131d868cdba22b1810e9cc4f9466188eb067496919355d11",
+    "report_sha256": "f29dcbd6313b6c83952d3b0bd3c037ff86f647fc5805dd6061532d7a79c46b3f",
+    "before": "Valid synthetic imported rule state, not earned gameplay or reachability proof",
+    "after": "defeat/crew0/joined4/lost7/crane1/unclaimed/rule-valid/save-decode-valid"
+  },
+  "independent_headless": {
+    "rules": 139,
+    "normal_input": 34,
+    "focused_exhaustion_input": 17,
+    "result": "passed"
+  },
+  "amendment_binding": {
+    "executed_raw_lf": 27,
+    "all_tracked_lf": 29,
+    "new_receipt_artifacts": 395,
+    "old_receipt_artifacts_unchanged": 289,
+    "new_pngs_decoded": 21,
+    "index_sha256": "4c073d36667833d1a121b7d195cf49789ee26bd0d0977788b001489a2ab5c486"
+  },
+  "original_movie_scope": "87.233-second original movie remains attributed to old8d7187e; amendment normal inputs and focused PNGs are separately bound.",
+  "delivery_status": "Final omission correction worker8fe7b04 integrated8c66b45; third actual export signed/offline and source unchanged. Initial and string-zero failed exports retained. Native install and outcomes pending.",
+  "rendered_status": "Normal35/0/engine0/errorfree but full-source provenance FAIL retained due coordinator metadata integration. Exact19runtime/testbytes match captured source separately. Fresh stable finalmetadata focusedGUI17 passes17/0/exit0,6PNG/noerrors or warnings/source58f8unchanged. No automatic normal-route repetition.",
+  "campaign_handoff": "android-games/handoffs/dead-run-campaign.md",
+  "campaign_activation": "Queued until explicit root activation after native prototype checks.",
+  "software_candidate": false,
+  "android_native_tested": false,
+  "physical_phone_tested": false,
+  "complete_game_gate": false,
+  "delivery_source_sha256": "58f8de780b7a7ecc15bf664286fe1c7b4305ff8cea8f69027755d794541a587d",
+  "apk": {
+    "path": "C:/projects/active/games/.artifacts/dead-run/20261018T055423978075Z/dead-run.apk",
+    "sha256": "a553c601a1238cf2e8f1e1d1ba9437ff949e69bdc8b6aaef760f22ee53a6c240",
+    "bytes": 57067015,
+    "version": "0.1.0",
+    "version_code": 1,
+    "signed": true,
+    "permissions": [],
+    "min_sdk": 24,
+    "target_sdk": 36,
+    "abis": [
+      "arm64-v8a",
+      "x86_64"
+    ]
+  },
+  "delivery_preservation": {
+    "path": "C:/projects/active/games/.artifacts/preservation/dead-run-code1-delivery-8fe7b04.json",
+    "sha256": "fc1109bc07bcf2cad4a36d6bdc6ff275cce5d357b1a82dcf0bc01d8037eabc2f",
+    "files": 82,
+    "bytes": 57796977
+  },
+  "focused_rendered_report_sha256": "81fa493c7950abc562f8134ad17c4d9966420f8660abc21e34860f341897a19c",
+  "independent_rendered_preservation": {
+    "path": "C:/projects/active/games/.artifacts/preservation/dead-run-independent-rendered-final-metadata.json",
+    "sha256": "ef0a1966f5c755578606bdd9a311f25ba2c47ca8bcd8bc8ca1d2a1ffc5ab09e7",
+    "files": 195,
+    "bytes": 2806458,
+    "decoded_pngs": 21,
+    "scope": "Normal35/0/engine0 with whole-source provenance FAIL; stable finalmetadata focusedGUI17 PASS and exact19runtime byte equivalence, separately qualified."
+  }
+}
