@@ -1,0 +1,28 @@
+{
+  "reference_display": [1080, 2400],
+  "viewport": [720, 1280],
+  "scope": "Cold-launch the separately touch-earned code1 save at its safe dock, then pause using the actual button. Earlier packets prove movement, two kills, defeat and Retry. This fixture does not inject or manufacture that progress. Use the normal six-second launch settle, not the observed-too-early one-second splash capture.",
+  "actions": [
+    {"type": "tap", "x": 967, "y": 360, "wait_seconds": 0.5}
+  ],
+  "expected_save": {
+    "version": 1,
+    "committed": true,
+    "state.schema": 1,
+    "state.phase": "playing",
+    "state.tier": 0,
+    "state.hp": 100,
+    "state.wallet": 14,
+    "state.dead": [2, 1],
+    "state.collected": [2, 1],
+    "state.deaths": 1,
+    "state.hits": 8,
+    "state.x": 0,
+    "settings.sound": false,
+    "settings.reduced_effects": true
+  },
+  "expected_numeric": {
+    "state.time": {"min": 11.9, "max": 120},
+    "state.z": {"min": 6.79, "max": 6.81}
+  }
+}

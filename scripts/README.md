@@ -374,3 +374,20 @@ through Journey and loses to equality. Follow with
 LANTERN EXTINGUISHED and KEEPER RESCUED captures, respectively. All three
 fixtures preserve the two earlier clears plus the newly earned ferry clear.
 These bounded Android outcomes do not establish a full36-puzzle Android run.
+
+The Hook campaign-update precondition now uses actual old-version Retry:
+`hook-and-hunger-code2-from-prepared-code1.json` starts from the archived dock
+save with hull100, salvage14, two earned kills, one recovery and changed
+settings. The preceding raw packet proves HULL BREACHED and the actual Retry;
+no JSON is injected. Use the normal six-second launch settle: a one-second
+probe captured the Godot splash and did not prove UI readiness. At the safe
+dock, old-version enemy AI stays inactive while launch settles.
+
+For the future different-APK test, use `--save files/hook-save
+--alternating-envelope --expected-version 2`, preserve whole `state`,
+`settings` and `committed`, and pass
+`hook-and-hunger-code2-upgrade-expectations.json` as `--new-expectations`.
+The precondition has been checked against the real archived code1 packet;
+the campaign-APK migration assertions remain unexecuted until that APK is
+frozen. Bounds on the setup clock/location do not relax the separate whole
+saved-state comparison across the update.

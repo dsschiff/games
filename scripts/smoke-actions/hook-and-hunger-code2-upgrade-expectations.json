@@ -1,0 +1,23 @@
+{
+  "scope": "Require the old active schema1 fight, complete earned ledger and settings after actual campaign-APK migration and cold relaunch. Whole state/settings/commit flag are additionally compared by the update runner.",
+  "expected_save": {
+    "version": 2,
+    "committed": true,
+    "state.schema": 1,
+    "state.phase": "playing",
+    "state.tier": 0,
+    "state.hp": 100,
+    "state.wallet": 14,
+    "state.dead": [2, 1],
+    "state.collected": [2, 1],
+    "state.deaths": 1,
+    "state.hits": 8,
+    "state.x": 0,
+    "settings.sound": false,
+    "settings.reduced_effects": true
+  },
+  "expected_numeric": {
+    "state.time": {"min": 11.9, "max": 120},
+    "state.z": {"min": 6.79, "max": 6.81}
+  }
+}
