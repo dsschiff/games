@@ -1,0 +1,1939 @@
+{
+  "checkpoint": "frontline-foundry-first-loop-0.1.0-code1",
+  "activation_base": "d771247958d550e4cd4a345ff7db3c310d9ab677",
+  "branch": "codex/frontline-foundry",
+  "status": "Desktop first loop verified; independent review and all Android/physical gates open",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "raw_source_sha256": {
+    "export_presets.cfg": "bbb016bbc3a3bb6dd897bf0b122dba2636b997b1a215b702a16334735be92e3b",
+    "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+    "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+    "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+    "project.godot": "62d4a52afa36e920ff9757acd138af6d5b202dd3e9adae7f6613ef14ce9d57cb",
+    "README.md": "62cc3db6b3695f96722afc091f859c88f1f8c8a389939255c32250b453851e92",
+    "scripts/main.gd": "07e4491ac774a7bf80c170b74cd10cf923e386cb8ff0081f6d508c3948f5eff7",
+    "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+    "scripts/rules.gd": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+    "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+    "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+    "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+    "scripts/save_store.gd": "7c55451b52bbeb0f494fb29923404039cd9b9e512bc993686ce0b3ca8b000df9",
+    "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+    "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+    "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+    "tests/freeze_checkpoint.py": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+    "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+    "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+    "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+    "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+    "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+    "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+    "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+    "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+    "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+  },
+  "lf_source_sha256": {
+    "export_presets.cfg": "bbb016bbc3a3bb6dd897bf0b122dba2636b997b1a215b702a16334735be92e3b",
+    "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+    "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+    "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+    "project.godot": "62d4a52afa36e920ff9757acd138af6d5b202dd3e9adae7f6613ef14ce9d57cb",
+    "README.md": "62cc3db6b3695f96722afc091f859c88f1f8c8a389939255c32250b453851e92",
+    "scripts/main.gd": "07e4491ac774a7bf80c170b74cd10cf923e386cb8ff0081f6d508c3948f5eff7",
+    "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+    "scripts/rules.gd": "7715cb3bca3d84cf066c33b34c781756529308c2c247fe135cda9dafff6e4d59",
+    "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+    "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+    "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+    "scripts/save_store.gd": "7c55451b52bbeb0f494fb29923404039cd9b9e512bc993686ce0b3ca8b000df9",
+    "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+    "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+    "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+    "tests/freeze_checkpoint.py": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+    "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+    "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+    "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+    "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+    "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+    "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+    "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+    "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+    "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+  },
+  "non_runtime_metadata_sources": [
+    "README.md",
+    "tests/freeze_checkpoint.py"
+  ],
+  "lf_tree_sha256": "a02c792af2ef1c4ea4e7df366f04572f890bf1032ebb1395eededb792c12092d",
+  "runs": [
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z",
+      "scope": "movie",
+      "executed_raw_source_sha256": {
+        "export_presets.cfg": "bbb016bbc3a3bb6dd897bf0b122dba2636b997b1a215b702a16334735be92e3b",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "62d4a52afa36e920ff9757acd138af6d5b202dd3e9adae7f6613ef14ce9d57cb",
+        "README.md": "ec6d6f0de471ec636b9cb09b756416e51677d3d925e5e92a411140e801d93a49",
+        "scripts/main.gd": "07e4491ac774a7bf80c170b74cd10cf923e386cb8ff0081f6d508c3948f5eff7",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "7c55451b52bbeb0f494fb29923404039cd9b9e512bc993686ce0b3ca8b000df9",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_checkpoint.py": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "executed_lf_source_sha256": {
+        "export_presets.cfg": "bbb016bbc3a3bb6dd897bf0b122dba2636b997b1a215b702a16334735be92e3b",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "62d4a52afa36e920ff9757acd138af6d5b202dd3e9adae7f6613ef14ce9d57cb",
+        "README.md": "ec6d6f0de471ec636b9cb09b756416e51677d3d925e5e92a411140e801d93a49",
+        "scripts/main.gd": "07e4491ac774a7bf80c170b74cd10cf923e386cb8ff0081f6d508c3948f5eff7",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "7715cb3bca3d84cf066c33b34c781756529308c2c247fe135cda9dafff6e4d59",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "7c55451b52bbeb0f494fb29923404039cd9b9e512bc993686ce0b3ca8b000df9",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_checkpoint.py": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "runtime_and_input_test_bytes_match_checkpoint": true,
+      "post_execution_metadata_deltas": [
+        {
+          "path": "README.md",
+          "executed_sha256": "ec6d6f0de471ec636b9cb09b756416e51677d3d925e5e92a411140e801d93a49",
+          "checkpoint_sha256": "62cc3db6b3695f96722afc091f859c88f1f8c8a389939255c32250b453851e92",
+          "reason": "README toolchain path correction"
+        },
+        {
+          "path": "tests/freeze_checkpoint.py",
+          "executed_sha256": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6",
+          "checkpoint_sha256": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+          "reason": "Receipt/index packaging utility; never loaded by game or engine test"
+        }
+      ],
+      "checks": 19
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z",
+      "scope": "headless",
+      "executed_raw_source_sha256": {
+        "export_presets.cfg": "bbb016bbc3a3bb6dd897bf0b122dba2636b997b1a215b702a16334735be92e3b",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "62d4a52afa36e920ff9757acd138af6d5b202dd3e9adae7f6613ef14ce9d57cb",
+        "README.md": "62cc3db6b3695f96722afc091f859c88f1f8c8a389939255c32250b453851e92",
+        "scripts/main.gd": "07e4491ac774a7bf80c170b74cd10cf923e386cb8ff0081f6d508c3948f5eff7",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "7c55451b52bbeb0f494fb29923404039cd9b9e512bc993686ce0b3ca8b000df9",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_checkpoint.py": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "executed_lf_source_sha256": {
+        "export_presets.cfg": "bbb016bbc3a3bb6dd897bf0b122dba2636b997b1a215b702a16334735be92e3b",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "62d4a52afa36e920ff9757acd138af6d5b202dd3e9adae7f6613ef14ce9d57cb",
+        "README.md": "62cc3db6b3695f96722afc091f859c88f1f8c8a389939255c32250b453851e92",
+        "scripts/main.gd": "07e4491ac774a7bf80c170b74cd10cf923e386cb8ff0081f6d508c3948f5eff7",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "7715cb3bca3d84cf066c33b34c781756529308c2c247fe135cda9dafff6e4d59",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "7c55451b52bbeb0f494fb29923404039cd9b9e512bc993686ce0b3ca8b000df9",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_checkpoint.py": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "runtime_and_input_test_bytes_match_checkpoint": true,
+      "post_execution_metadata_deltas": [
+        {
+          "path": "tests/freeze_checkpoint.py",
+          "executed_sha256": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6",
+          "checkpoint_sha256": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+          "reason": "Receipt/index packaging utility; never loaded by game or engine test"
+        }
+      ],
+      "checks": 40
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z",
+      "scope": "rendered",
+      "executed_raw_source_sha256": {
+        "export_presets.cfg": "bbb016bbc3a3bb6dd897bf0b122dba2636b997b1a215b702a16334735be92e3b",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "62d4a52afa36e920ff9757acd138af6d5b202dd3e9adae7f6613ef14ce9d57cb",
+        "README.md": "62cc3db6b3695f96722afc091f859c88f1f8c8a389939255c32250b453851e92",
+        "scripts/main.gd": "07e4491ac774a7bf80c170b74cd10cf923e386cb8ff0081f6d508c3948f5eff7",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "7c55451b52bbeb0f494fb29923404039cd9b9e512bc993686ce0b3ca8b000df9",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_checkpoint.py": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "executed_lf_source_sha256": {
+        "export_presets.cfg": "bbb016bbc3a3bb6dd897bf0b122dba2636b997b1a215b702a16334735be92e3b",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "62d4a52afa36e920ff9757acd138af6d5b202dd3e9adae7f6613ef14ce9d57cb",
+        "README.md": "62cc3db6b3695f96722afc091f859c88f1f8c8a389939255c32250b453851e92",
+        "scripts/main.gd": "07e4491ac774a7bf80c170b74cd10cf923e386cb8ff0081f6d508c3948f5eff7",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "7715cb3bca3d84cf066c33b34c781756529308c2c247fe135cda9dafff6e4d59",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "7c55451b52bbeb0f494fb29923404039cd9b9e512bc993686ce0b3ca8b000df9",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_checkpoint.py": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "runtime_and_input_test_bytes_match_checkpoint": true,
+      "post_execution_metadata_deltas": [
+        {
+          "path": "tests/freeze_checkpoint.py",
+          "executed_sha256": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6",
+          "checkpoint_sha256": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+          "reason": "Receipt/index packaging utility; never loaded by game or engine test"
+        }
+      ],
+      "checks": 42
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z",
+      "scope": "restore",
+      "executed_raw_source_sha256": {
+        "export_presets.cfg": "bbb016bbc3a3bb6dd897bf0b122dba2636b997b1a215b702a16334735be92e3b",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "62d4a52afa36e920ff9757acd138af6d5b202dd3e9adae7f6613ef14ce9d57cb",
+        "README.md": "62cc3db6b3695f96722afc091f859c88f1f8c8a389939255c32250b453851e92",
+        "scripts/main.gd": "07e4491ac774a7bf80c170b74cd10cf923e386cb8ff0081f6d508c3948f5eff7",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "7c55451b52bbeb0f494fb29923404039cd9b9e512bc993686ce0b3ca8b000df9",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_checkpoint.py": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "executed_lf_source_sha256": {
+        "export_presets.cfg": "bbb016bbc3a3bb6dd897bf0b122dba2636b997b1a215b702a16334735be92e3b",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "62d4a52afa36e920ff9757acd138af6d5b202dd3e9adae7f6613ef14ce9d57cb",
+        "README.md": "62cc3db6b3695f96722afc091f859c88f1f8c8a389939255c32250b453851e92",
+        "scripts/main.gd": "07e4491ac774a7bf80c170b74cd10cf923e386cb8ff0081f6d508c3948f5eff7",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "7715cb3bca3d84cf066c33b34c781756529308c2c247fe135cda9dafff6e4d59",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "7c55451b52bbeb0f494fb29923404039cd9b9e512bc993686ce0b3ca8b000df9",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_checkpoint.py": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "runtime_and_input_test_bytes_match_checkpoint": true,
+      "post_execution_metadata_deltas": [
+        {
+          "path": "tests/freeze_checkpoint.py",
+          "executed_sha256": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6",
+          "checkpoint_sha256": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+          "reason": "Receipt/index packaging utility; never loaded by game or engine test"
+        }
+      ],
+      "checks": 7
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z",
+      "scope": "rules",
+      "executed_raw_source_sha256": {
+        "export_presets.cfg": "bbb016bbc3a3bb6dd897bf0b122dba2636b997b1a215b702a16334735be92e3b",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "62d4a52afa36e920ff9757acd138af6d5b202dd3e9adae7f6613ef14ce9d57cb",
+        "README.md": "62cc3db6b3695f96722afc091f859c88f1f8c8a389939255c32250b453851e92",
+        "scripts/main.gd": "07e4491ac774a7bf80c170b74cd10cf923e386cb8ff0081f6d508c3948f5eff7",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "7c55451b52bbeb0f494fb29923404039cd9b9e512bc993686ce0b3ca8b000df9",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_checkpoint.py": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "executed_lf_source_sha256": {
+        "export_presets.cfg": "bbb016bbc3a3bb6dd897bf0b122dba2636b997b1a215b702a16334735be92e3b",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "62d4a52afa36e920ff9757acd138af6d5b202dd3e9adae7f6613ef14ce9d57cb",
+        "README.md": "62cc3db6b3695f96722afc091f859c88f1f8c8a389939255c32250b453851e92",
+        "scripts/main.gd": "07e4491ac774a7bf80c170b74cd10cf923e386cb8ff0081f6d508c3948f5eff7",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "7715cb3bca3d84cf066c33b34c781756529308c2c247fe135cda9dafff6e4d59",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "7c55451b52bbeb0f494fb29923404039cd9b9e512bc993686ce0b3ca8b000df9",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_checkpoint.py": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "runtime_and_input_test_bytes_match_checkpoint": true,
+      "post_execution_metadata_deltas": [
+        {
+          "path": "tests/freeze_checkpoint.py",
+          "executed_sha256": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6",
+          "checkpoint_sha256": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+          "reason": "Receipt/index packaging utility; never loaded by game or engine test"
+        }
+      ],
+      "checks": 69
+    }
+  ],
+  "artifacts": [
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/01-ready-saves.json",
+      "bytes": 1685,
+      "sha256": "abb1ee372a31bf3b696786687a40f79783ab6cb9b0a43f6400f60855dbf37776"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/01-ready.png",
+      "bytes": 175317,
+      "sha256": "047ffdca2b86703aa89bfe2ae6e4988995ce4ff766438305e62f734e4d312348"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/04-commander-fire-saves.json",
+      "bytes": 3476,
+      "sha256": "72180d13100866bce0fabc2bd73c823b295d710fd8e32da17a94b31ce97c4f3b"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/04-commander-fire.png",
+      "bytes": 181527,
+      "sha256": "8ea4bd7581d01b98c5918d177cab51a16e81b4055b457f77977bead1d7e5be29"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/05-before-rifles-saves.json",
+      "bytes": 3586,
+      "sha256": "fb719b83c639dcaa0d532be75bebe5e889016b40ca07d03cdee4f30876562a2f"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/05-before-rifles.png",
+      "bytes": 180646,
+      "sha256": "814b7dfd8c2a605f2c96825a9bc978c61c1520cf39c4881256649627d7ed15a0"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/06-rifle-station-saves.json",
+      "bytes": 3568,
+      "sha256": "2c4eb0223f4d6cda3fed8a69e62aa21860608f42984b1735da5d755117e10db4"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/06-rifle-station.png",
+      "bytes": 182294,
+      "sha256": "0d6312a4180b7bd281f82f3df38f07a362cafa339a2a3d63be4884648fd8bcd3"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/07-visible-arming-saves.json",
+      "bytes": 3568,
+      "sha256": "2c4eb0223f4d6cda3fed8a69e62aa21860608f42984b1735da5d755117e10db4"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/07-visible-arming.png",
+      "bytes": 182331,
+      "sha256": "c1267149c676ad66b98f26144a503d8a230791529adc957fb33963bed7ed5887"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/08-departure-saves.json",
+      "bytes": 3584,
+      "sha256": "4df06be6c9b669bb2be4b54dccc592208b85e0bdf13283629411487f17484575"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/08-departure.png",
+      "bytes": 186387,
+      "sha256": "a85951fba205b8aa4576f8b2ffcd5b9d08933e25efed6c98577a797bc3e6b298"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/08b-recruit-combat-saves.json",
+      "bytes": 3960,
+      "sha256": "81e33f15d03d70ceeac1e75bfe179380d047d944460aa303bb76b456185c0f53"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/08b-recruit-combat.png",
+      "bytes": 188484,
+      "sha256": "7264b71bdde22ce3c5d4b60fced3c3de56ce1b81ca80f34e58783423ca5c510b"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/08c-earned-scrap-saves.json",
+      "bytes": 4145,
+      "sha256": "393bbd8aec11abb04c2c947370d1de2677859245c1b41c7efa237fcfe85dc0e5"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/08c-earned-scrap.png",
+      "bytes": 188608,
+      "sha256": "5e2954c7cad84bbe65bafa4a2a605ebe8f334b04a13ec99826515d4e15d44ab6"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/09-before-rover-saves.json",
+      "bytes": 3877,
+      "sha256": "4976e921f8c937336f24dc9b2730d768448f1e3606a93a2a43a032d1b9ec5bda"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/09-before-rover.png",
+      "bytes": 181062,
+      "sha256": "bd2e9429a46ab2fe8a4c1d51ee6cbdeb4ddbff0cbc42005f02a15797de3e9c4d"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/10-rover-station-saves.json",
+      "bytes": 3762,
+      "sha256": "a08619a67858330e9086c09e117cabac67fa2d121ee81eaf0e60f31519f0db80"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/10-rover-station.png",
+      "bytes": 175454,
+      "sha256": "90bbd63c768fb40756e4aa94ee53aa1a9a19ea5dde40f97ce461c9b3bbf80bfe"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/11-vehicle-combat-saves.json",
+      "bytes": 3975,
+      "sha256": "ab103767ac513a134560decdb6fc1f2b6de61e91dc3d88c6f187bb6ced418bd7"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/11-vehicle-combat.png",
+      "bytes": 179666,
+      "sha256": "ac043ecb9b39a534e755ce40f9e1ddd3aaffe043d34a5f6baf4022eb475d2b2d"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/12-armored-siege-saves.json",
+      "bytes": 4152,
+      "sha256": "7e878ece9ce6b2ab8a44a957ea8b2e9d89dfbcac4b56a8ada983f2a2221dce51"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/12-armored-siege.png",
+      "bytes": 190847,
+      "sha256": "f047f465f50a10106d85ae5ae86265e00c4e26d13ef41e88726020606daaeebc"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/13-natural-victory-saves.json",
+      "bytes": 4912,
+      "sha256": "1de73bff124d88b383e19491a9de31436a983ddf85786ab12296331041e7d779"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/13-natural-victory.png",
+      "bytes": 114928,
+      "sha256": "74ca851156b6f2393cabf76e3963f15bacb6a282645cf26561573177bb209c4a"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/15-retry-win-saves.json",
+      "bytes": 4118,
+      "sha256": "020730e0769255726320fc54d9922deff5a57cebacabd84b0be9b24c00813282"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/15-retry-win.png",
+      "bytes": 176912,
+      "sha256": "fa7ae5d6936aa1a7592c9a40ebdc920dd1bbc6414b04b666836d53f6f71ee56b"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/16-commander-defeat-saves.json",
+      "bytes": 4107,
+      "sha256": "7e3e61fee7ff18ec1feb90247e825414620983574431f4a316a19cd5a0f700e3"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/16-commander-defeat.png",
+      "bytes": 110338,
+      "sha256": "bc03762cfb5ce443530d8cf7a114e0d1a7d759930a939b97ed424350b9430016"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/17-immediate-retry-saves.json",
+      "bytes": 3747,
+      "sha256": "63a4ff4e42ad2b3e35543fed1a8b21ecc7b129396e16da32c0451d78de607225"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/17-immediate-retry.png",
+      "bytes": 176912,
+      "sha256": "fa7ae5d6936aa1a7592c9a40ebdc920dd1bbc6414b04b666836d53f6f71ee56b"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/18-final-saves.json",
+      "bytes": 3377,
+      "sha256": "7e30286b26c1cec141e69854be7b1bb08157ba2c74d0fea2be471907cd80bfe1"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/18-final.png",
+      "bytes": 176881,
+      "sha256": "db00ac64f36e43cf13e164fc3230307b5e0dc4341a91fd0cc192b17d375836fd"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-0",
+      "bytes": 1283,
+      "sha256": "f179a3594253298c22fe0897568acd8c16907428a824275cb7c6c0d7e201e412"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-1",
+      "bytes": 1282,
+      "sha256": "a331266542c53346074aa613a5e7e0b41c3b7ef0961b58263bb3fd5553378ce0"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log",
+      "bytes": 2325,
+      "sha256": "28bc8084629f64ac7af0863abbe862f01045baf7f47e6ec8a65dbf85b87f3b31"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/CanvasShaderGLES3/5c2a443430aed63756000ed4fdb23f02b8d89e1b28bd9ba01ddd60635f2085ac/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache",
+      "bytes": 32624,
+      "sha256": "965b20fc6b31684f4552b5a1a8c0806a3f434bf4139af72d2270646de230e457"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/CopyShaderGLES3/b69dbe566cf70bccd27fd9bee4f59d5f4c3b4b0bf0afc490c771cad63be608ad/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache",
+      "bytes": 118055,
+      "sha256": "ee1229a8a50df18c72e36dd6234a9dce64a967127b4154b688199d3904bbf97f"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/FeedShaderGLES3/04959e861c350b844d43ff6438c41d016246b8bb1c7ce08d02bc8891823f37dc/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache",
+      "bytes": 8261,
+      "sha256": "4d8978e62c18efc9879de2f3953f0f1853ce2a62c0094dc6e85471648241d5fc"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/PostShaderGLES3/1548e0d952e335627b9be9dd73291d4d4e68ba4a81fafbfb14e7a07898d5c9c1/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache",
+      "bytes": 13656,
+      "sha256": "4b2826f9c0bf9ea3f2f557428ac4f2ea5dd50ccb9f842eb3af65ef36a9289229"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/2115c615c01c3a0177be29c6ddcef01907dcf654.cache",
+      "bytes": 758243,
+      "sha256": "f7a92c15f6da0adb8f2ed975bffa4d35b658af6b70a7178842aa05a6f9212e7e"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache",
+      "bytes": 800909,
+      "sha256": "a247dd7fab54ea9b2a859c64586aabc741bcee95329cadd79252c59d0f649fa0"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/77047cd41f429f33ceff24e890e174f5465e755e.cache",
+      "bytes": 822095,
+      "sha256": "34f73a6cbc549fc8562afd56d382a4c68b056ed52eb19955e85d3de68af63717"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/f2e328ac8a780a17a0c65e242b0c8bc4fc063f03.cache",
+      "bytes": 929255,
+      "sha256": "b1f40e8ad31d5b513644d3c19959c4084f9516da20b04d0d2ccf3d0c53592fae"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/combat-events.json",
+      "bytes": 23706,
+      "sha256": "a11d234a1a2fcf0f91a6b2b013f09a91d2ec493e8890792df36a217849b65efd"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/continuous.avi",
+      "bytes": 223258756,
+      "sha256": "f5f4562418d94c7e8a6f4f4df470be4505f2e02013a4a7020bb7845506e78104"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/continuous.mp4",
+      "bytes": 1859709,
+      "sha256": "9e2fc629d6c3cf72ef5c47cd5dc0dcda4d055bf828a9cf3595cafb0ed89d8675"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/export_presets.cfg",
+      "bytes": 627,
+      "sha256": "bbb016bbc3a3bb6dd897bf0b122dba2636b997b1a215b702a16334735be92e3b"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/icon.svg",
+      "bytes": 353,
+      "sha256": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/icon.svg.import",
+      "bytes": 1012,
+      "sha256": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/main.tscn",
+      "bytes": 171,
+      "sha256": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/project.godot",
+      "bytes": 735,
+      "sha256": "62d4a52afa36e920ff9757acd138af6d5b202dd3e9adae7f6613ef14ce9d57cb"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/README.md",
+      "bytes": 7361,
+      "sha256": "ec6d6f0de471ec636b9cb09b756416e51677d3d925e5e92a411140e801d93a49"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/scripts/main.gd",
+      "bytes": 23121,
+      "sha256": "07e4491ac774a7bf80c170b74cd10cf923e386cb8ff0081f6d508c3948f5eff7"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/scripts/main.gd.uid",
+      "bytes": 19,
+      "sha256": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/scripts/rules.gd",
+      "bytes": 11950,
+      "sha256": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/scripts/rules.gd.uid",
+      "bytes": 20,
+      "sha256": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/scripts/save_files.gd",
+      "bytes": 651,
+      "sha256": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/scripts/save_files.gd.uid",
+      "bytes": 19,
+      "sha256": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/scripts/save_store.gd",
+      "bytes": 2691,
+      "sha256": "7c55451b52bbeb0f494fb29923404039cd9b9e512bc993686ce0b3ca8b000df9"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/scripts/save_store.gd.uid",
+      "bytes": 20,
+      "sha256": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/tests/fault_files.gd",
+      "bytes": 581,
+      "sha256": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/tests/fault_files.gd.uid",
+      "bytes": 20,
+      "sha256": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/tests/freeze_checkpoint.py",
+      "bytes": 3365,
+      "sha256": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/tests/playthrough.gd",
+      "bytes": 15069,
+      "sha256": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/tests/playthrough.gd.uid",
+      "bytes": 20,
+      "sha256": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/tests/preview.gd",
+      "bytes": 498,
+      "sha256": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/tests/preview.gd.uid",
+      "bytes": 20,
+      "sha256": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/tests/restore.gd",
+      "bytes": 2652,
+      "sha256": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/tests/restore.gd.uid",
+      "bytes": 20,
+      "sha256": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/tests/run_desktop.py",
+      "bytes": 4277,
+      "sha256": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/tests/run_tests.gd",
+      "bytes": 10071,
+      "sha256": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/executed-source/tests/run_tests.gd.uid",
+      "bytes": 19,
+      "sha256": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/godot.log",
+      "bytes": 2971,
+      "sha256": "3a9abd5e69506d4511965cdd34fb79dc4f46bbd4dd37763c374a5226d3ff2484"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/input-report.json",
+      "bytes": 100331,
+      "sha256": "3a237d0abdba17f369366932bd40876e2f097ee2f446ef7960b5aa9a77179534"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/movie-29s.png",
+      "bytes": 218273,
+      "sha256": "1ce304c6bbe213706236b47078628f224b5408c33f4038abaaa330b238ef6ecc"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/movie-5s.png",
+      "bytes": 204686,
+      "sha256": "db70e8810d7fe5ac99ea5097d153813bc482faa6dd8c807a160fd6f3c5b23787"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/movie-probe.json",
+      "bytes": 4626,
+      "sha256": "02b9b6651d014a2307f9aaf9dec5e0246d5dbb291b46e384dd093b39986be032"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/raw-input-events.json",
+      "bytes": 464365,
+      "sha256": "9308cae017ad548a12fbf634e85862f209f3bd8f10b22e4a2444b1012d941b0f"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/receipt.json",
+      "bytes": 15644,
+      "sha256": "075e0438e50a040a204a2e7fd789711aed1dbf40749fc84a55a3533915ed1382"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/source-hashes-lf.json",
+      "bytes": 2433,
+      "sha256": "c47df135d8b480cb5d8fd1b3761e847265c92a7612074144690bc46211477c17"
+    },
+    {
+      "path": ".artifacts/final-movie-20261018T041309653470Z/source-hashes.json",
+      "bytes": 2433,
+      "sha256": "1668483a58415df628d4ba848c93a86ca8c742918599c9d7670e37c1fb9de55c"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/01-ready-saves.json",
+      "bytes": 1685,
+      "sha256": "abb1ee372a31bf3b696786687a40f79783ab6cb9b0a43f6400f60855dbf37776"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/02-hq-defeat-saves.json",
+      "bytes": 4312,
+      "sha256": "b9b5c0614fbd65c9f264c0fe7ace448f41f9ca4c103c8fe8e1de56a6caf890bd"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/03-retry-hq-saves.json",
+      "bytes": 3790,
+      "sha256": "288534cb3e73e13e054187af95ee7587ae04d2f3f6cbb304bef9d2a68609fb4d"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/04-commander-fire-saves.json",
+      "bytes": 3361,
+      "sha256": "6931baa9ae5952e77b4fe6128f47ed7dca14840e24cd74ab715e379c9c4aa216"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/05-before-rifles-saves.json",
+      "bytes": 3588,
+      "sha256": "fe78b3b1595c219bdbb4a3dd541119eb0938d5f43462be49dcb6044fed758f16"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/06-rifle-station-saves.json",
+      "bytes": 3571,
+      "sha256": "a981ae8b4418c329911d15f1825d12c12614a71921cc0d27f36ecdcd92584b35"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/07-visible-arming-saves.json",
+      "bytes": 3571,
+      "sha256": "a981ae8b4418c329911d15f1825d12c12614a71921cc0d27f36ecdcd92584b35"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/08-departure-saves.json",
+      "bytes": 3584,
+      "sha256": "f63fffe96ce54d0f9a15a3ab1d80c325621604c9162bac64a18800d7355734cf"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/08b-recruit-combat-saves.json",
+      "bytes": 3984,
+      "sha256": "1efb87667312a0527327fe947559279fda2b0d71b66592ed375d1bbb387f2bd7"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/08c-earned-scrap-saves.json",
+      "bytes": 4128,
+      "sha256": "0450701e0b21075c6ccb034e6b528d1612ec42963e263033cc898341b4e173f1"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/08d-active-inner-paused-saves.json",
+      "bytes": 4029,
+      "sha256": "cb3c27a658d2d3c70f666f3a0088ef9f2c00acd5454f34bc4498d3640490b0f0"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/08e-active-tall-paused-saves.json",
+      "bytes": 4029,
+      "sha256": "cb3c27a658d2d3c70f666f3a0088ef9f2c00acd5454f34bc4498d3640490b0f0"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/09-before-rover-saves.json",
+      "bytes": 3993,
+      "sha256": "f4dbddd6290e13b5fa2fc3dc9638dbb251a6cc3c5a120020458296e943448f90"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/10-rover-station-saves.json",
+      "bytes": 3874,
+      "sha256": "2074bdf4b97da7056d6e172afa1e13edf24f846685b763bc8c527380f6f807e6"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/11-vehicle-combat-saves.json",
+      "bytes": 3956,
+      "sha256": "d9dce5a971ff466b1185e0985b0911e6d69918be405ed03b990cfe33a4a2a71e"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/12-armored-siege-saves.json",
+      "bytes": 4262,
+      "sha256": "d94cf3d79daea6c8f5d41576a1054398adf79a8d3611f1cec9c2e37d94b5b6bb"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/13-natural-victory-saves.json",
+      "bytes": 5020,
+      "sha256": "cc753001eaaee0f88956ebef2363f2a39918c544f399681c6b1c0da931f33f19"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/14-invalid-import-saves.json",
+      "bytes": 4967,
+      "sha256": "28e3860cce9687a81e22d744b5e94f01f698c7fed25b6fc3ab11fa84679b6ebd"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/15-retry-win-saves.json",
+      "bytes": 4225,
+      "sha256": "526f5a68800c67078cc769c367f2e3da7421537aa13eaace3fd9cfba7e2b4187"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/16-commander-defeat-saves.json",
+      "bytes": 4132,
+      "sha256": "bb96770b592b2a16fc2d5540dddacb63c4362fe1d8a165b48f21e77dd8bb0d85"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/17-immediate-retry-saves.json",
+      "bytes": 3757,
+      "sha256": "3f186c59d956a04122ee138f808bd5b0887875a9c685bfb67b6452fee4199995"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/18-final-saves.json",
+      "bytes": 3387,
+      "sha256": "d42defc576de56669ac16326a07879e2b2fcf1e8a0052aeeb152eaa57301a1bd"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-0",
+      "bytes": 1287,
+      "sha256": "94356c0de5b445007981b9089f4a09909b83ac531cf50c6dd0acaa3340b2eac1"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-1",
+      "bytes": 1288,
+      "sha256": "b725725937e5362acf8d9cab3346d409a3bef638e1d8179733bb5f69b23a1a3b"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log",
+      "bytes": 2630,
+      "sha256": "892540f02879a118a29fda16eaccfd1da518476bd3ae896b60bc2a4cd006420b"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/combat-events.json",
+      "bytes": 27723,
+      "sha256": "5da3a763c92ba22c15cd6d5636f2caf77c5297c4476c205001b1bc1e59111954"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/export_presets.cfg",
+      "bytes": 627,
+      "sha256": "bbb016bbc3a3bb6dd897bf0b122dba2636b997b1a215b702a16334735be92e3b"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/icon.svg",
+      "bytes": 353,
+      "sha256": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/icon.svg.import",
+      "bytes": 1012,
+      "sha256": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/main.tscn",
+      "bytes": 171,
+      "sha256": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/project.godot",
+      "bytes": 735,
+      "sha256": "62d4a52afa36e920ff9757acd138af6d5b202dd3e9adae7f6613ef14ce9d57cb"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/README.md",
+      "bytes": 7364,
+      "sha256": "62cc3db6b3695f96722afc091f859c88f1f8c8a389939255c32250b453851e92"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/scripts/main.gd",
+      "bytes": 23121,
+      "sha256": "07e4491ac774a7bf80c170b74cd10cf923e386cb8ff0081f6d508c3948f5eff7"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/scripts/main.gd.uid",
+      "bytes": 19,
+      "sha256": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/scripts/rules.gd",
+      "bytes": 11950,
+      "sha256": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/scripts/rules.gd.uid",
+      "bytes": 20,
+      "sha256": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/scripts/save_files.gd",
+      "bytes": 651,
+      "sha256": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/scripts/save_files.gd.uid",
+      "bytes": 19,
+      "sha256": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/scripts/save_store.gd",
+      "bytes": 2691,
+      "sha256": "7c55451b52bbeb0f494fb29923404039cd9b9e512bc993686ce0b3ca8b000df9"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/scripts/save_store.gd.uid",
+      "bytes": 20,
+      "sha256": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/tests/fault_files.gd",
+      "bytes": 581,
+      "sha256": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/tests/fault_files.gd.uid",
+      "bytes": 20,
+      "sha256": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/tests/freeze_checkpoint.py",
+      "bytes": 3365,
+      "sha256": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/tests/playthrough.gd",
+      "bytes": 15069,
+      "sha256": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/tests/playthrough.gd.uid",
+      "bytes": 20,
+      "sha256": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/tests/preview.gd",
+      "bytes": 498,
+      "sha256": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/tests/preview.gd.uid",
+      "bytes": 20,
+      "sha256": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/tests/restore.gd",
+      "bytes": 2652,
+      "sha256": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/tests/restore.gd.uid",
+      "bytes": 20,
+      "sha256": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/tests/run_desktop.py",
+      "bytes": 4277,
+      "sha256": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/tests/run_tests.gd",
+      "bytes": 10071,
+      "sha256": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/executed-source/tests/run_tests.gd.uid",
+      "bytes": 19,
+      "sha256": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/godot.log",
+      "bytes": 2662,
+      "sha256": "dddaeb253cc466c2b2fe95732fb9c1b42846879cf5811a08c72e87807ad78ce0"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/input-report.json",
+      "bytes": 133760,
+      "sha256": "95382209aeed99d577f8958db59ce7b6c4126645f7b656c778885f59ee04b92b"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/raw-input-events.json",
+      "bytes": 671620,
+      "sha256": "a8a61f6d055142135dad5f8492b786f4dc7230d8d054d78764e04ff42eec737d"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/receipt.json",
+      "bytes": 10713,
+      "sha256": "7fb02e7b763137291d342f8870bbdb2c7d416a3a39499c1d1dd460553bc4b16e"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/source-hashes-lf.json",
+      "bytes": 2433,
+      "sha256": "b60e69c4466ec42e45ce1cbba13c780aa10fd66d1da3ba03745a589d81c569b8"
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T041710628756Z/source-hashes.json",
+      "bytes": 2433,
+      "sha256": "ae79c366bf1d8b2c482c8daec75bd78efbf6323c11acaed575995173d4618a4d"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/01-ready-saves.json",
+      "bytes": 1685,
+      "sha256": "abb1ee372a31bf3b696786687a40f79783ab6cb9b0a43f6400f60855dbf37776"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/01-ready.png",
+      "bytes": 175317,
+      "sha256": "047ffdca2b86703aa89bfe2ae6e4988995ce4ff766438305e62f734e4d312348"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/02-hq-defeat-saves.json",
+      "bytes": 4312,
+      "sha256": "b9b5c0614fbd65c9f264c0fe7ace448f41f9ca4c103c8fe8e1de56a6caf890bd"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/02-hq-defeat.png",
+      "bytes": 106978,
+      "sha256": "da34ad9b810f2dcbde91312b5889a08df5403ca00aa82d3462fbc610605a6b7f"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/03-retry-hq-saves.json",
+      "bytes": 3790,
+      "sha256": "288534cb3e73e13e054187af95ee7587ae04d2f3f6cbb304bef9d2a68609fb4d"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/03-retry-hq.png",
+      "bytes": 176912,
+      "sha256": "fa7ae5d6936aa1a7592c9a40ebdc920dd1bbc6414b04b666836d53f6f71ee56b"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/04-commander-fire-saves.json",
+      "bytes": 3361,
+      "sha256": "6931baa9ae5952e77b4fe6128f47ed7dca14840e24cd74ab715e379c9c4aa216"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/04-commander-fire.png",
+      "bytes": 181527,
+      "sha256": "8ea4bd7581d01b98c5918d177cab51a16e81b4055b457f77977bead1d7e5be29"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/05-before-rifles-saves.json",
+      "bytes": 3589,
+      "sha256": "c39dc703f7f17d6c7f836a19fa5804b483047646a2c8a7e21e5ebc4005ac5b1d"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/05-before-rifles.png",
+      "bytes": 180646,
+      "sha256": "814b7dfd8c2a605f2c96825a9bc978c61c1520cf39c4881256649627d7ed15a0"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/06-rifle-station-saves.json",
+      "bytes": 3572,
+      "sha256": "dd4fc9eba52b48ecc56e9e23fb2ee45adda63bc2a96d13f911b7dca76900682e"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/06-rifle-station.png",
+      "bytes": 182294,
+      "sha256": "0d6312a4180b7bd281f82f3df38f07a362cafa339a2a3d63be4884648fd8bcd3"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/07-visible-arming-saves.json",
+      "bytes": 3572,
+      "sha256": "dd4fc9eba52b48ecc56e9e23fb2ee45adda63bc2a96d13f911b7dca76900682e"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/07-visible-arming.png",
+      "bytes": 182331,
+      "sha256": "c1267149c676ad66b98f26144a503d8a230791529adc957fb33963bed7ed5887"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/08-departure-saves.json",
+      "bytes": 3584,
+      "sha256": "c33c46de0d436879597000fbff2fef2737a01132032caf101005eb4b9994c558"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/08-departure.png",
+      "bytes": 186387,
+      "sha256": "a85951fba205b8aa4576f8b2ffcd5b9d08933e25efed6c98577a797bc3e6b298"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/08b-recruit-combat-saves.json",
+      "bytes": 3984,
+      "sha256": "f5b60fe908211c280677c0123945fbc77fe8c69d5b9c96099f633910d27fa043"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/08b-recruit-combat.png",
+      "bytes": 188484,
+      "sha256": "7264b71bdde22ce3c5d4b60fced3c3de56ce1b81ca80f34e58783423ca5c510b"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/08c-earned-scrap-saves.json",
+      "bytes": 4117,
+      "sha256": "cc6553fd46eca859f2f6824a151671e9e6a7ea5d56c8d0986e0dc3a2a4cb59bb"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/08c-earned-scrap.png",
+      "bytes": 188608,
+      "sha256": "5e2954c7cad84bbe65bafa4a2a605ebe8f334b04a13ec99826515d4e15d44ab6"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/08d-active-inner-paused-saves.json",
+      "bytes": 4042,
+      "sha256": "c9fb8874b44ef56062303f39ab92f35e8d8599c5c9cf1ed51244c7a09c038aa4"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/08d-active-inner-paused.png",
+      "bytes": 94876,
+      "sha256": "6e87ee042b5c4e10cbfed6b20950674eed8b14ad9f1619b8af36f3311496e2ee"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/08e-active-tall-paused-saves.json",
+      "bytes": 4042,
+      "sha256": "c9fb8874b44ef56062303f39ab92f35e8d8599c5c9cf1ed51244c7a09c038aa4"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/08e-active-tall-paused.png",
+      "bytes": 118121,
+      "sha256": "324da4d3c6a2c068d9fb53bb6fea11dcf12b0d7393719b3d0e5e262cde74a08f"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/09-before-rover-saves.json",
+      "bytes": 4006,
+      "sha256": "4dfc933794a056e038d526508beb5a0a476e90b722a43b6d64307b864a0abc22"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/09-before-rover.png",
+      "bytes": 181062,
+      "sha256": "bd2e9429a46ab2fe8a4c1d51ee6cbdeb4ddbff0cbc42005f02a15797de3e9c4d"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/10-rover-station-saves.json",
+      "bytes": 3874,
+      "sha256": "06851fc01517b78addf5c6395930b354bc9594b4197ac3e26abdadac9018707b"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/10-rover-station.png",
+      "bytes": 175454,
+      "sha256": "90bbd63c768fb40756e4aa94ee53aa1a9a19ea5dde40f97ce461c9b3bbf80bfe"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/11-vehicle-combat-saves.json",
+      "bytes": 3958,
+      "sha256": "3f4b72b8059d10fdd1ba82c5ac0b326906df97ed96261599db984d6d38ebf164"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/11-vehicle-combat.png",
+      "bytes": 179666,
+      "sha256": "ac043ecb9b39a534e755ce40f9e1ddd3aaffe043d34a5f6baf4022eb475d2b2d"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/12-armored-siege-saves.json",
+      "bytes": 4264,
+      "sha256": "cd40c763e4c67a1ca25e65e3ee04c771e4f324d8ee7199c79c9a6a37ec3fd034"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/12-armored-siege.png",
+      "bytes": 190847,
+      "sha256": "f047f465f50a10106d85ae5ae86265e00c4e26d13ef41e88726020606daaeebc"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/13-natural-victory-saves.json",
+      "bytes": 5022,
+      "sha256": "db4c6fdd8cc083fd9f5d1739e74613a2dad65eb71d249bd39f43b9ebad3ce77f"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/13-natural-victory.png",
+      "bytes": 114928,
+      "sha256": "74ca851156b6f2393cabf76e3963f15bacb6a282645cf26561573177bb209c4a"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/14-invalid-import-saves.json",
+      "bytes": 4969,
+      "sha256": "971598e88bf99e29998ebb092f69059db6d1e6849e30f732e27c970c55fb85cf"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/14-invalid-import.png",
+      "bytes": 105187,
+      "sha256": "b441dec2b1bee4778772fbcfbdbe8a3bb49ff642832e320ea85a78b1b6dd660c"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/15-retry-win-saves.json",
+      "bytes": 4225,
+      "sha256": "20ef24793f7aa7a4d6ecda79de39b2fed6c45efc6dfec4b6883e45dc62a04cb4"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/15-retry-win.png",
+      "bytes": 176912,
+      "sha256": "fa7ae5d6936aa1a7592c9a40ebdc920dd1bbc6414b04b666836d53f6f71ee56b"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/16-commander-defeat-saves.json",
+      "bytes": 4119,
+      "sha256": "ea7c31cca232159e17faf4ea86bc96163361c50e612d2c2af983bc9882572670"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/16-commander-defeat.png",
+      "bytes": 110338,
+      "sha256": "bc03762cfb5ce443530d8cf7a114e0d1a7d759930a939b97ed424350b9430016"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/17-immediate-retry-saves.json",
+      "bytes": 3757,
+      "sha256": "3f186c59d956a04122ee138f808bd5b0887875a9c685bfb67b6452fee4199995"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/17-immediate-retry.png",
+      "bytes": 176912,
+      "sha256": "fa7ae5d6936aa1a7592c9a40ebdc920dd1bbc6414b04b666836d53f6f71ee56b"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/18-final-saves.json",
+      "bytes": 3401,
+      "sha256": "0fb5a796e4e825d2701afc0398d628329ad0a98a99eee69e0e719f8bd8bcbffa"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/18-final.png",
+      "bytes": 176881,
+      "sha256": "db00ac64f36e43cf13e164fc3230307b5e0dc4341a91fd0cc192b17d375836fd"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-0",
+      "bytes": 1287,
+      "sha256": "94356c0de5b445007981b9089f4a09909b83ac531cf50c6dd0acaa3340b2eac1"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-1",
+      "bytes": 1302,
+      "sha256": "69720715479c73c02cb2c1254b5ce481feb4adbfd4f8b87ea0d8d210e7aee734"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log",
+      "bytes": 2729,
+      "sha256": "d567e44ff141d2133f4e5ddcab72c8c40470e206aa6f407fbf584e1896cf4a36"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/CanvasShaderGLES3/5c2a443430aed63756000ed4fdb23f02b8d89e1b28bd9ba01ddd60635f2085ac/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache",
+      "bytes": 32624,
+      "sha256": "73342a556acc8faf07fd7d487cad8c31b8125aebd40ee3de9f0747b0a7558314"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/CopyShaderGLES3/b69dbe566cf70bccd27fd9bee4f59d5f4c3b4b0bf0afc490c771cad63be608ad/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache",
+      "bytes": 118055,
+      "sha256": "0b978c7467d9cc8435b363d96e0a5586754e3b6079025005150cd0baaab269f9"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/FeedShaderGLES3/04959e861c350b844d43ff6438c41d016246b8bb1c7ce08d02bc8891823f37dc/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache",
+      "bytes": 8261,
+      "sha256": "93c85f1d305fe54ab8e0e91f0a819dd166b920b4eb2ae84f59630f7e50066ad5"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/PostShaderGLES3/1548e0d952e335627b9be9dd73291d4d4e68ba4a81fafbfb14e7a07898d5c9c1/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache",
+      "bytes": 13656,
+      "sha256": "ec63a462b89282e506265bc98fbe3af307bb0f9e4d2ef69db5e7a47fc16383f5"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/2115c615c01c3a0177be29c6ddcef01907dcf654.cache",
+      "bytes": 758243,
+      "sha256": "4548ca1e26e916d328007be3c91937d02d4a18e07f66ecccbf701dcacdeb3718"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache",
+      "bytes": 800909,
+      "sha256": "02830a3504e9a681042549a2e80bc05ac039cf707a1c969cd28242ae9514e68f"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/77047cd41f429f33ceff24e890e174f5465e755e.cache",
+      "bytes": 822095,
+      "sha256": "5a6f8493b69324ad7e84e7bb6ae072ca13f7e348c4553935017c2d01c39e4c6b"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/f2e328ac8a780a17a0c65e242b0c8bc4fc063f03.cache",
+      "bytes": 929255,
+      "sha256": "f365a41fc78755207345b4374425d99e2a89603498fac203d8be8296e859387f"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/combat-events.json",
+      "bytes": 27735,
+      "sha256": "5ff417ce38b157aeeb19c6f4b83ff6d14f0f9eb4ca4b76c1c07728dc6595cfdf"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/export_presets.cfg",
+      "bytes": 627,
+      "sha256": "bbb016bbc3a3bb6dd897bf0b122dba2636b997b1a215b702a16334735be92e3b"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/icon.svg",
+      "bytes": 353,
+      "sha256": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/icon.svg.import",
+      "bytes": 1012,
+      "sha256": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/main.tscn",
+      "bytes": 171,
+      "sha256": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/project.godot",
+      "bytes": 735,
+      "sha256": "62d4a52afa36e920ff9757acd138af6d5b202dd3e9adae7f6613ef14ce9d57cb"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/README.md",
+      "bytes": 7364,
+      "sha256": "62cc3db6b3695f96722afc091f859c88f1f8c8a389939255c32250b453851e92"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/scripts/main.gd",
+      "bytes": 23121,
+      "sha256": "07e4491ac774a7bf80c170b74cd10cf923e386cb8ff0081f6d508c3948f5eff7"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/scripts/main.gd.uid",
+      "bytes": 19,
+      "sha256": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/scripts/rules.gd",
+      "bytes": 11950,
+      "sha256": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/scripts/rules.gd.uid",
+      "bytes": 20,
+      "sha256": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/scripts/save_files.gd",
+      "bytes": 651,
+      "sha256": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/scripts/save_files.gd.uid",
+      "bytes": 19,
+      "sha256": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/scripts/save_store.gd",
+      "bytes": 2691,
+      "sha256": "7c55451b52bbeb0f494fb29923404039cd9b9e512bc993686ce0b3ca8b000df9"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/scripts/save_store.gd.uid",
+      "bytes": 20,
+      "sha256": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/tests/fault_files.gd",
+      "bytes": 581,
+      "sha256": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/tests/fault_files.gd.uid",
+      "bytes": 20,
+      "sha256": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/tests/freeze_checkpoint.py",
+      "bytes": 3365,
+      "sha256": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/tests/playthrough.gd",
+      "bytes": 15069,
+      "sha256": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/tests/playthrough.gd.uid",
+      "bytes": 20,
+      "sha256": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/tests/preview.gd",
+      "bytes": 498,
+      "sha256": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/tests/preview.gd.uid",
+      "bytes": 20,
+      "sha256": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/tests/restore.gd",
+      "bytes": 2652,
+      "sha256": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/tests/restore.gd.uid",
+      "bytes": 20,
+      "sha256": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/tests/run_desktop.py",
+      "bytes": 4277,
+      "sha256": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/tests/run_tests.gd",
+      "bytes": 10071,
+      "sha256": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/executed-source/tests/run_tests.gd.uid",
+      "bytes": 19,
+      "sha256": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/godot.log",
+      "bytes": 2762,
+      "sha256": "fb0932042d34d680e9b0a2aa632612a2746fff58d703becb39fb37d11e90e1cf"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/input-report.json",
+      "bytes": 134037,
+      "sha256": "f664411df99d7473df53880a8de032c8815ed1add5f6992c8853e65860f78754"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/raw-input-events.json",
+      "bytes": 671671,
+      "sha256": "67d76486e16fc7222668ab21fbcb5ce677a84a596ea0f7af395f71aed808d1de"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/receipt.json",
+      "bytes": 16936,
+      "sha256": "e7464285e5c3b67b8e800d7b5dc0ad22735526756046f91b7465715379b2df11"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/source-hashes-lf.json",
+      "bytes": 2433,
+      "sha256": "b60e69c4466ec42e45ce1cbba13c780aa10fd66d1da3ba03745a589d81c569b8"
+    },
+    {
+      "path": ".artifacts/release-rendered-20261018T041715640833Z/source-hashes.json",
+      "bytes": 2433,
+      "sha256": "ae79c366bf1d8b2c482c8daec75bd78efbf6323c11acaed575995173d4618a4d"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-0",
+      "bytes": 1446,
+      "sha256": "c4f4060471a1c5df8fc3cb4dcc291856d3625f3c0632841fb1ac2f17e4f125c2"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-1",
+      "bytes": 1340,
+      "sha256": "718b5be3394f21e0477db168c6afa85340403387e17e38f672f16b5c39ed58e0"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log",
+      "bytes": 125,
+      "sha256": "af61fedaa736c382032b7ac53acc21afd278ba1096445c8e15e94a8d1b7d434f"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/appdata/Godot/app_userdata/Frontline Foundry/logs/godot2026-10-18T00.18.15.log",
+      "bytes": 2630,
+      "sha256": "892540f02879a118a29fda16eaccfd1da518476bd3ae896b60bc2a4cd006420b"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/export_presets.cfg",
+      "bytes": 627,
+      "sha256": "bbb016bbc3a3bb6dd897bf0b122dba2636b997b1a215b702a16334735be92e3b"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/icon.svg",
+      "bytes": 353,
+      "sha256": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/icon.svg.import",
+      "bytes": 1012,
+      "sha256": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/main.tscn",
+      "bytes": 171,
+      "sha256": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/project.godot",
+      "bytes": 735,
+      "sha256": "62d4a52afa36e920ff9757acd138af6d5b202dd3e9adae7f6613ef14ce9d57cb"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/README.md",
+      "bytes": 7364,
+      "sha256": "62cc3db6b3695f96722afc091f859c88f1f8c8a389939255c32250b453851e92"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/scripts/main.gd",
+      "bytes": 23121,
+      "sha256": "07e4491ac774a7bf80c170b74cd10cf923e386cb8ff0081f6d508c3948f5eff7"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/scripts/main.gd.uid",
+      "bytes": 19,
+      "sha256": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/scripts/rules.gd",
+      "bytes": 11950,
+      "sha256": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/scripts/rules.gd.uid",
+      "bytes": 20,
+      "sha256": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/scripts/save_files.gd",
+      "bytes": 651,
+      "sha256": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/scripts/save_files.gd.uid",
+      "bytes": 19,
+      "sha256": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/scripts/save_store.gd",
+      "bytes": 2691,
+      "sha256": "7c55451b52bbeb0f494fb29923404039cd9b9e512bc993686ce0b3ca8b000df9"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/scripts/save_store.gd.uid",
+      "bytes": 20,
+      "sha256": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/tests/fault_files.gd",
+      "bytes": 581,
+      "sha256": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/tests/fault_files.gd.uid",
+      "bytes": 20,
+      "sha256": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/tests/freeze_checkpoint.py",
+      "bytes": 3365,
+      "sha256": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/tests/playthrough.gd",
+      "bytes": 15069,
+      "sha256": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/tests/playthrough.gd.uid",
+      "bytes": 20,
+      "sha256": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/tests/preview.gd",
+      "bytes": 498,
+      "sha256": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/tests/preview.gd.uid",
+      "bytes": 20,
+      "sha256": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/tests/restore.gd",
+      "bytes": 2652,
+      "sha256": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/tests/restore.gd.uid",
+      "bytes": 20,
+      "sha256": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/tests/run_desktop.py",
+      "bytes": 4277,
+      "sha256": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/tests/run_tests.gd",
+      "bytes": 10071,
+      "sha256": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/executed-source/tests/run_tests.gd.uid",
+      "bytes": 19,
+      "sha256": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/godot.log",
+      "bytes": 129,
+      "sha256": "f723208a6990f63a77a0d14bdcbf97e2b04a606ed9877577e108b89f0522c384"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/receipt.json",
+      "bytes": 6934,
+      "sha256": "8f325d0f197d88e6534c70bdd604e2939af5db64839266fba040142117fdc255"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/restore-report.json",
+      "bytes": 5395,
+      "sha256": "0b617085ca4157a4060c2f70da23747e16e3b142c9a0d9f45c4a371852a09173"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/source-hashes-lf.json",
+      "bytes": 2433,
+      "sha256": "b60e69c4466ec42e45ce1cbba13c780aa10fd66d1da3ba03745a589d81c569b8"
+    },
+    {
+      "path": ".artifacts/release-restore-20261018T041815174103Z/source-hashes.json",
+      "bytes": 2433,
+      "sha256": "ae79c366bf1d8b2c482c8daec75bd78efbf6323c11acaed575995173d4618a4d"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log",
+      "bytes": 4119,
+      "sha256": "b4344d72f37d0db3551718392dae74b575476f9dc4dc0edb2496d40ac5221cea"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/export_presets.cfg",
+      "bytes": 627,
+      "sha256": "bbb016bbc3a3bb6dd897bf0b122dba2636b997b1a215b702a16334735be92e3b"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/icon.svg",
+      "bytes": 353,
+      "sha256": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/icon.svg.import",
+      "bytes": 1012,
+      "sha256": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/main.tscn",
+      "bytes": 171,
+      "sha256": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/project.godot",
+      "bytes": 735,
+      "sha256": "62d4a52afa36e920ff9757acd138af6d5b202dd3e9adae7f6613ef14ce9d57cb"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/README.md",
+      "bytes": 7364,
+      "sha256": "62cc3db6b3695f96722afc091f859c88f1f8c8a389939255c32250b453851e92"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/scripts/main.gd",
+      "bytes": 23121,
+      "sha256": "07e4491ac774a7bf80c170b74cd10cf923e386cb8ff0081f6d508c3948f5eff7"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/scripts/main.gd.uid",
+      "bytes": 19,
+      "sha256": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/scripts/rules.gd",
+      "bytes": 11950,
+      "sha256": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/scripts/rules.gd.uid",
+      "bytes": 20,
+      "sha256": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/scripts/save_files.gd",
+      "bytes": 651,
+      "sha256": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/scripts/save_files.gd.uid",
+      "bytes": 19,
+      "sha256": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/scripts/save_store.gd",
+      "bytes": 2691,
+      "sha256": "7c55451b52bbeb0f494fb29923404039cd9b9e512bc993686ce0b3ca8b000df9"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/scripts/save_store.gd.uid",
+      "bytes": 20,
+      "sha256": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/tests/fault_files.gd",
+      "bytes": 581,
+      "sha256": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/tests/fault_files.gd.uid",
+      "bytes": 20,
+      "sha256": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/tests/freeze_checkpoint.py",
+      "bytes": 3365,
+      "sha256": "1cb6909f5813c89186efe90488a7d5a926ea37cc13938eac2cf424d1118fb9f6"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/tests/playthrough.gd",
+      "bytes": 15069,
+      "sha256": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/tests/playthrough.gd.uid",
+      "bytes": 20,
+      "sha256": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/tests/preview.gd",
+      "bytes": 498,
+      "sha256": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/tests/preview.gd.uid",
+      "bytes": 20,
+      "sha256": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/tests/restore.gd",
+      "bytes": 2652,
+      "sha256": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/tests/restore.gd.uid",
+      "bytes": 20,
+      "sha256": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/tests/run_desktop.py",
+      "bytes": 4277,
+      "sha256": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/tests/run_tests.gd",
+      "bytes": 10071,
+      "sha256": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/executed-source/tests/run_tests.gd.uid",
+      "bytes": 19,
+      "sha256": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/godot.log",
+      "bytes": 4125,
+      "sha256": "683a2933b286ed07177e5ce4b3a4f0b36b20ab739deb2ad8d82633ac0020c284"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/receipt.json",
+      "bytes": 6307,
+      "sha256": "e0d3cc3b9b8c11b7183c27ff387f3f99c76cff827e900908848a3b39b714031c"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/rules-report.json",
+      "bytes": 15950,
+      "sha256": "0efe57d97dcd7107d04bbdd3e2a461d8241251f47a0bb33be4edc9fbf985b4b7"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/source-hashes-lf.json",
+      "bytes": 2433,
+      "sha256": "b60e69c4466ec42e45ce1cbba13c780aa10fd66d1da3ba03745a589d81c569b8"
+    },
+    {
+      "path": ".artifacts/release-rules-20261018T041708781580Z/source-hashes.json",
+      "bytes": 2433,
+      "sha256": "ae79c366bf1d8b2c482c8daec75bd78efbf6323c11acaed575995173d4618a4d"
+    },
+    {
+      "path": ".artifacts/portable-import/import.log",
+      "bytes": 2285,
+      "sha256": "9f7593ce07ec3436e4ca9eb1c07767694a4fe32d3892a4258e4bcb9cd144ff58"
+    },
+    {
+      "path": ".artifacts/portable-import/import-second.log",
+      "bytes": 1033,
+      "sha256": "b728de0c23f24d9aa31bc7608b177d7ca13857d7c3aca862a08506d00675123b"
+    },
+    {
+      "path": ".artifacts/portable-import/official-template-manifest.txt",
+      "bytes": 5848,
+      "sha256": "45d979120ccd286019839e104ad3f6a6f042073a015b0ae5351bd54cd158be83"
+    },
+    {
+      "path": ".artifacts/portable-import/import-proof.json",
+      "bytes": 1814,
+      "sha256": "805958cc888a97658bef87b83dceedbf2dc9d95c6a3848e4d2eefbd8fa475e37"
+    }
+  ],
+  "excluded_private_runtime": [
+    ".artifacts/portable-import/editor_data",
+    ".artifacts/portable-import/*.exe"
+  ],
+  "limits": [
+    "First playable only; no complete campaign",
+    "Desktop input/clipboard are not Android or physical-phone evidence",
+    "No APK export/install, ADB, shared-file edits, pushes or public release",
+    "Top General-to-Top Force creative mapping remains qualified",
+    "No human fun, phone FPS, audible phone sound, IME, safe area or physical fold acceptance"
+  ]
+}
