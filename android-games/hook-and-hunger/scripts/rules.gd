@@ -251,6 +251,8 @@ static func valid(v: Variant) -> bool:
 	for d in v.drops:
 		if not d is Dictionary or not numeric(d.get("id"), 0, 7, true) or int(d.id) in accounted or not int(d.id) in dead_ids or not numeric(d.get("x"), -6, 6) or not numeric(d.get("z"), -20, 5):
 			return false
+		if not numeric(d.z, -5.652 if int(ROSTER[int(d.id)].pen) == 0 else -19.052, 4.052 if int(ROSTER[int(d.id)].pen) == 0 else -7.448):
+			return false
 		accounted.append(int(d.id))
 	if accounted.size() != v.dead.size():
 		return false

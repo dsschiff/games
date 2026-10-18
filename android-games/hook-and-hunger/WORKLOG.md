@@ -9,3 +9,9 @@
 - Consequential rule/fault suite: 57 checks. Actual-input suites: 18 checks each, natural wounded shoal → purchase with 78→100 hull recovery, power100→200, wallet42→6, stronger pen → defeat → Retry retaining tier1/earned ledger → boss victory → export/import/reload. Final route reaches victory at ~45.43 simulated seconds with one recovery; this is a small review slice, not campaign-duration evidence.
 - Exact final source/artifact bindings are in `evidence/appeal-checkpoint.json`; ignored raw inputs, PNGs and real-tempo movie are preserved under `.artifacts/appeal-final/`. Fixed60Hz/NVIDIA desktop capture does not establish phone frame pacing, real touch, physical folding or audible sound.
 - Checkpoint intentionally precedes broad campaign expansion. `CAMPAIGN_PLAN.md` prepares the four-island candidate and economy safeguards while the coordinator arranges independent Astra appeal/fidelity review. Full game, Android export/lifecycle/update and phone acceptance remain unfinished. Runtime source is frozen for coordinator export/review until review findings arrive.
+
+## Appeal cleared; required P2 fix
+
+- Coordinator relayed Astra approval of the first loop after direct full28.25s playback and independent57rules/18headless/18rendered checks against integratedff8fabc.
+- Fixed malformed imports placing a first-pen required reward behind the power gate: drop coordinates now obey the same roster-pen bounds as enemies. Actual Import UI rejects the unreachable but balanced ledger and preserves all current in-memory/persisted progress; eight dedicated headless/rendered regression checks and57legacy rules pass. This was a malformed-import defect, not observed natural gameplay.
+- Full four-island expansion is authorized. Preserve fixed version1 definitions and complete old active state before new content; Android remains coordinator-owned.
