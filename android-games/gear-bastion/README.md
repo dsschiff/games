@@ -1,6 +1,6 @@
 # Gear Bastion
 
-An original offline Godot 4.7.2 defense game: connect a powered foundry while brass automata emerge from generators, march through three wall arches and fight beetle raiders. Source 0.3.1/code 5 adds nine encounters across three foundries, a mortar role, bosses, medals, an ending and three seeded replays. It is a campaign review checkpoint; final balance, fidelity and physical-phone acceptance remain open.
+An original offline Godot 4.7.2 defense game: connect a powered foundry while brass automata emerge from generators, march through three wall arches and fight beetle raiders. Source 0.3.2 / code 6 contains nine encounters across three foundries, a mortar role, bosses, medals, an ending and three seeded replays. The current [decision/HUD candidate](DECISION_PRESSURE_CHECKPOINT.md) includes nine input-driven mistake/correction comparisons and a natural victory/defeat rendering fix. Independent software review and physical-phone acceptance remain open.
 
 ## Campaign
 
@@ -8,7 +8,7 @@ Start on the journey map. Clear a gate to unlock the next; no grind or account i
 
 Preparation expands the board and shop. Combat expands the illustrated field and keeps the board live. The Menu contains speed, sound, calm effects, guide and save/export. Back closes a modal, pauses battle, then returns to the map. Cleared gates and medals are separate from the active run. Save schema 4 retains pinned encounter content and accepts older schema 1–3 saves; portable `GB4:` codes include the profile and active run.
 
-The primary `tests/playthrough.gd` now exercises the full nine-gate campaign, all three reduced-budget seeded replay wins, normal save/reload, typed desktop import, Back/menu behavior, and guarded Practice replacement. The earlier tutorial/Iron Trial suite remains `tests/legacy_playthrough.gd`. Rules, rendered actor atlas checks and policy probes are separate. See [campaign checkpoint](CAMPAIGN_CHECKPOINT.md) for evidence and limitations.
+The primary `tests/playthrough.gd` exercises the full nine-gate campaign, all nine weak-choice/Retry-correction pairs, all three reduced-budget seeded replay wins, normal save/reload, typed desktop import, Back/menu behavior and guarded Practice replacement. The earlier tutorial/Iron Trial suite remains `tests/legacy_playthrough.gd`. Rules, rendered actor atlas checks, natural-terminal rendering and policy probes are separate. The [earlier visual checkpoint](CAMPAIGN_CHECKPOINT.md) is retained as historical code 5 evidence.
 
 ## Earlier tutorial and Iron Trial
 

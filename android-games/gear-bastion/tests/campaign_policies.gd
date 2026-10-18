@@ -55,12 +55,43 @@ static func apply(state: Dictionary, policy: String) -> void:
 			state.spent += int(state.config.costs[step.kind])
 			state.next_id += 1
 
+static func refit_steps(state: Dictionary, x: int, y: int, desired: String) -> Array:
+	var board: Array = state.board.duplicate(true)
+	var index := Gear.at(board, x, y)
+	var result: Array = []
+	var gold := int(state.gold)
+	if index < 0:
+		return result
+	for attempt in 3:
+		if board[index].kind == desired:
+			break
+		var refitted := Gear.refit(board, int(board[index].id), gold, state.config.allowed, state.config.costs)
+		if not refitted.ok:
+			break
+		result.append({"refit": int(board[index].id), "x": x, "y": y, "cost": refitted.cost})
+		board = refitted.board
+		gold = refitted.gold
+	return result
+
 static func adaptations(state: Dictionary, policy: String) -> Array:
 	var steps: Array = []
-	if policy == "A" and state.encounter in ["camp_02", "camp_08"] and int(state.wave) >= 2:
-		var index := Gear.at(state.board, 2, 3)
-		if index >= 0 and state.board[index].kind == "guard" and int(state.gold) >= 2:
-			steps.append({"refit": int(state.board[index].id), "x": 2, "y": 3})
+	if policy in ["A", "B"] and state.encounter == "camp_08":
+		if int(state.wave) >= 2:
+			if policy == "A":
+				steps.append_array(refit_steps(state, 2, 3, "ranger"))
+				var used := 0
+				for step in steps:
+					used += int(step.cost)
+				if Gear.at(state.board, 1, 3) < 0 and int(state.gold) - used >= int(state.config.costs.drive):
+					steps.append({"kind": "drive", "x": 1, "y": 3, "lane": 1})
+			else:
+				steps.append_array(refit_steps(state, 1, 2, "ranger"))
+				steps.append_array(refit_steps(state, 3, 2, "ranger"))
+		return steps
+	if policy == "A" and state.encounter == "camp_02" and int(state.wave) >= 2:
+		steps.append_array(refit_steps(state, 2, 3, "ranger"))
+	if policy == "splash" and state.encounter == "camp_08" and int(state.wave) >= 2:
+		steps.append_array(refit_steps(state, 1, 1, "ranger" if int(state.wave) >= 5 else "mortar"))
 	if state.encounter == "camp_07":
 		for p in state.board:
 			if not p.kind in Gear.BASE_RATES:
@@ -68,10 +99,20 @@ static func adaptations(state: Dictionary, policy: String) -> Array:
 			var lane: int = 0 if state.wave == 1 else 2 if state.wave == 2 else 1 if state.wave == 3 else 0 if int(p.x) < 2 else 2
 			if int(p.lane) != lane:
 				steps.append({"gate": lane, "id": int(p.id), "x": int(p.x), "y": int(p.y)})
-	if state.encounter == "camp_08" and state.wave >= 2:
-		for x in [0, 4]:
-			if Gear.at(state.board, x, 2) < 0 and int(state.gold) >= 6:
-				steps.append({"kind": "drive", "x": x, "y": 2, "lane": 1})
+	if policy == "splash" and state.encounter == "camp_08" and state.wave >= 2:
+		var available: int = int(state.gold)
+		for step in steps:
+			if step.has("refit"):
+				available -= int(step.cost)
+		var purchases: Array = [["drive", 0, 2, 1], ["drive", 4, 2, 1], ["drive", 1, 0, 1], ["drive", 3, 0, 1]]
+		for purchase in purchases:
+			if Gear.at(state.board, int(purchase[1]), int(purchase[2])) >= 0:
+				continue
+			var cost: int = state.config.costs[purchase[0]]
+			if available < cost:
+				break
+			available -= cost
+			steps.append({"kind": purchase[0], "x": purchase[1], "y": purchase[2], "lane": purchase[3]})
 	return steps
 
 static func adapt(state: Dictionary, policy: String) -> void:
@@ -90,6 +131,7 @@ static func adapt(state: Dictionary, policy: String) -> void:
 			var result := Gear.buy(state.board, step.kind, int(step.x), int(step.y), int(state.gold), int(state.next_id), state.encounter, state.config)
 			if result.ok:
 				state.board = result.board
+				state.board.back().lane = int(step.get("lane", 1))
 				state.gold = result.gold
 				state.next_id += 1
 				state.spent += int(state.config.costs[step.kind])

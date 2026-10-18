@@ -5,7 +5,7 @@ func run() -> void:
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--capture="):
 			which = arg.trim_prefix("--capture=")
-	var source := FileAccess.get_file_as_string("res://.artifacts/campaign-motion/" + which + ".json")
+	var source := FileAccess.get_file_as_string(motion_directory + "/" + which + ".json")
 	var packet := Saves.decode(source)
 	if not packet.ok:
 		push_error("Missing or invalid actual-input capture state: " + which)

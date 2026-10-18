@@ -1,39 +1,37 @@
 {
   "schema_version": 1,
   "game": "gear-bastion",
-  "version": "0.3.1",
-  "version_code": 5,
+  "version": "0.3.2",
+  "version_code": 6,
   "save_schema": 4,
   "branch": "codex/gear-bastion",
-  "updated_at": "2026-10-17T19:29:20-04:00",
-  "milestone": "campaign_visual_checkpoint",
-  "status": "ready_for_independent_fidelity_review_balance_and_android_pending",
+  "updated_at": "2026-10-17T20:11:52-04:00",
+  "milestone": "decision_pressure_hud_redraw_candidate",
+  "status": "ready_for_independent_code6_review",
   "full_v1_complete": false,
-  "campaign_expansion": "authorized_and_in_progress",
+  "campaign_expansion": "full_nine_encounter_campaign_implemented_candidate",
   "campaign_checkpoint": {
     "encounters": 9,
     "acts": 3,
-    "rules_checks": 161,
+    "rules_checks": 164,
     "rules_passed": true,
-    "headless_actual_input_checks": 65,
-    "rendered_actual_input_checks": 66,
+    "headless_actual_input_checks": 82,
+    "rendered_actual_input_checks": 83,
     "actual_input_clears": 9,
-    "simulated_combat_seconds": 1830.93333333326,
+    "simulated_combat_seconds": 1796.39999999993,
     "schema_3_migration_and_profile_recovery": "passed",
     "practice_cancel_confirm_undo_and_save": "passed_actual_input",
     "open_gates": [
-      "independent motion fidelity review",
-      "encounter decision pressure and mistake/correction validation",
-      "current presentation Android lifecycle and update",
-      "physical phone and performance"
+      "independent current boss HUD/motion and natural terminal display review",
+      "current code6 Android update, lifecycle, Back, clipboard and natural terminal checks",
+      "physical Fold7 touch, safe areas, fold behavior, sound, performance and human pacing/fun assessment"
     ],
-    "build": "built_official_templates_after_hold_cleared",
+    "build": "pending_coordinator_export",
     "replay_actual_input_clears": 3,
     "nearby_seed_wins": 54,
     "nearby_seed_cases": 54,
-    "reduced_budget_replay_wins": 18,
-    "reduced_budget_replay_cases": 18,
-    "rendered_atlas_checks": 13
+    "rendered_atlas_checks": 13,
+    "decision_pairs": 9
   },
   "review_fixes": {
     "checked_write_flush_readback_before_rename": true,
@@ -47,13 +45,11 @@
     "constrained_budget_counter_trial": true,
     "sole_staged_backup_reused_without_truncation": true
   },
-  "next_action": "Independently review the frozen 0.3.1 motion/source checkpoint; develop and verify per-encounter decision pressure in a separate commit, especially gate allocation in Three Fronts and salvage spending in Furnace Tide.",
+  "next_action": "Coordinator independently verifies the frozen code6 source, boss HUD motion and natural terminal display, then performs the code5-to-code6 Android update/lifecycle checks. No additional exploration sweep is required before the software RC decision.",
   "remaining": [
-    "independent early/middle/final motion fidelity review",
-    "per-encounter mistake-to-improved-choice evidence, including measurable gate and salvage consequences",
-    "cap-time and pacing assessment without added wave waits",
-    "current presentation Android Back, lifecycle, cold-map and different-APK update checks",
-    "physical Fold7 touch, safe areas, fold behavior, actual sound and measured performance"
+    "independent current boss HUD/motion and natural terminal display review",
+    "current code6 Android update, lifecycle, Back, clipboard and natural terminal checks",
+    "physical Fold7 touch, safe areas, fold behavior, sound, performance and human pacing/fun assessment"
   ],
   "historical_release_verification": {
     "rules": {
@@ -123,40 +119,45 @@
   },
   "verification": {
     "rules": {
-      "checks": 161,
+      "checks": 164,
       "passed": true
     },
-    "full_campaign_input": {
-      "headless_checks": 65,
-      "rendered_checks": 66,
+    "headless_full_route": {
+      "checks": 82,
       "campaign_clears": 9,
       "replay_clears": 3,
-      "combat_seconds": 1830.93333333326
+      "decision_pairs": 9,
+      "passed": true
+    },
+    "rendered_full_route": {
+      "checks": 83,
+      "passed": true
+    },
+    "natural_terminal_render": {
+      "checks": 10,
+      "passed": true,
+      "negative_control_old_code5_expected_failures": 2
     },
     "actor_atlas": {
-      "kinds": 12,
-      "rendered_checks": 13,
-      "texture_size": [
-        1664,
-        256
-      ]
+      "checks": 13,
+      "passed": true
     },
-    "physical_phone": "pending",
-    "shared_test_manifest": ".artifacts/gear-bastion/20261017T231835942598Z/manifest.json",
-    "source_unchanged_during_test_and_build": true
+    "nearby_seed_cases": {
+      "wins": 54,
+      "cases": 54,
+      "cohort_notes": "See the versioned case provenance for replacement of all six Furnace Tide cases."
+    },
+    "three_second_response_cases": {
+      "wins": 12,
+      "cases": 12
+    },
+    "current_android": "pending",
+    "physical_phone": "pending"
   },
   "build": {
-    "result": "built_and_signature_verified",
-    "version": "0.3.1",
-    "version_code": 5,
-    "source_commit": "c9c301113cf3446529abc6e7ce597409185cdbad",
-    "manifest": ".artifacts/gear-bastion/20261017T232010721642Z/manifest.json",
-    "apk": ".artifacts/gear-bastion/20261017T232010721642Z/gear-bastion.apk",
-    "sha256": "91443384b50bd95d96455848b37185f59626229ddac818c96e9f485b225a9bda",
-    "bytes": 57255454,
-    "package": "com.dsschiff.gearbastion",
-    "permissions": [],
-    "current_android_verification": "pending"
+    "result": "pending_coordinator_independent_export",
+    "version": "0.3.2",
+    "version_code": 6
   },
   "historical_0_2_trial": {
     "seed": 1701,
@@ -243,9 +244,73 @@
     "coordinator_nearby_seed_probe": "C:/projects/active/_worktrees/games-android-portfolio-20261017/android-games/gear-bastion/.artifacts/coordinator-checks.json"
   },
   "evidence": {
-    "campaign_checkpoint": "android-games/gear-bastion/CAMPAIGN_CHECKPOINT.md",
-    "frozen_visual_index": "android-games/gear-bastion/evidence/campaign-visual-checkpoint.json",
-    "headless_report": "android-games/gear-bastion/.artifacts/campaign-input/headless/report.json",
-    "rendered_report": "android-games/gear-bastion/.artifacts/campaign-input/report.json"
+    "current_checkpoint": "android-games/gear-bastion/DECISION_PRESSURE_CHECKPOINT.md",
+    "current_index": "android-games/gear-bastion/evidence/decision-pressure-checkpoint.json",
+    "policy_cases": "android-games/gear-bastion/evidence/decision-pressure-policy-cases.json",
+    "headless_report": "android-games/gear-bastion/.artifacts/campaign-pressure-input/headless/report.json",
+    "rendered_report": "android-games/gear-bastion/.artifacts/campaign-pressure-input/report.json",
+    "historical_visual_checkpoint": "android-games/gear-bastion/evidence/campaign-visual-checkpoint.json"
+  },
+  "historical_0_3_1_build": {
+    "result": "built_and_signature_verified",
+    "version": "0.3.1",
+    "version_code": 5,
+    "source_commit": "c9c301113cf3446529abc6e7ce597409185cdbad",
+    "manifest": ".artifacts/gear-bastion/20261017T232010721642Z/manifest.json",
+    "apk": ".artifacts/gear-bastion/20261017T232010721642Z/gear-bastion.apk",
+    "sha256": "91443384b50bd95d96455848b37185f59626229ddac818c96e9f485b225a9bda",
+    "bytes": 57255454,
+    "package": "com.dsschiff.gearbastion",
+    "permissions": [],
+    "current_android_verification": "pending"
+  },
+  "historical_0_3_1_verification": {
+    "rules": {
+      "checks": 161,
+      "passed": true
+    },
+    "full_campaign_input": {
+      "headless_checks": 65,
+      "rendered_checks": 66,
+      "campaign_clears": 9,
+      "replay_clears": 3,
+      "combat_seconds": 1830.93333333326
+    },
+    "actor_atlas": {
+      "kinds": 12,
+      "rendered_checks": 13,
+      "texture_size": [
+        1664,
+        256
+      ]
+    },
+    "physical_phone": "pending",
+    "shared_test_manifest": ".artifacts/gear-bastion/20261017T231835942598Z/manifest.json",
+    "source_unchanged_during_test_and_build": true
+  },
+  "historical_0_3_1_campaign_checkpoint": {
+    "encounters": 9,
+    "acts": 3,
+    "rules_checks": 161,
+    "rules_passed": true,
+    "headless_actual_input_checks": 65,
+    "rendered_actual_input_checks": 66,
+    "actual_input_clears": 9,
+    "simulated_combat_seconds": 1830.93333333326,
+    "schema_3_migration_and_profile_recovery": "passed",
+    "practice_cancel_confirm_undo_and_save": "passed_actual_input",
+    "open_gates": [
+      "independent motion fidelity review",
+      "encounter decision pressure and mistake/correction validation",
+      "current presentation Android lifecycle and update",
+      "physical phone and performance"
+    ],
+    "build": "built_official_templates_after_hold_cleared",
+    "replay_actual_input_clears": 3,
+    "nearby_seed_wins": 54,
+    "nearby_seed_cases": 54,
+    "reduced_budget_replay_wins": 18,
+    "reduced_budget_replay_cases": 18,
+    "rendered_atlas_checks": 13
   }
 }

@@ -235,6 +235,10 @@ static func tick(state: Dictionary, dt: float) -> void:
 					# A dispersed holding formation keeps a large army readable at the field edge.
 					var slot := int(unit.id) % UNIT_CAP
 					var holding := Vector2(62 + (slot % 20) * 25, 219 + (slot / 20) * 18)
+					if bool(config.get("reserve_by_exit", false)):
+						# Reserves stay near their own exit instead of spreading across
+						# the entire wall and silently correcting a neglected flank.
+						holding = Vector2(116 + int(unit.lane) * 184 - 60 + (slot % 9) * 15, 219 + (slot / 9) * 14)
 					direction = (holding - Vector2(float(unit.x), float(unit.y))).limit_length(1.0)
 				var movement_speed := float(stats.speed) * (1.0 if friendly or config.is_empty() else float(config.speed_scale))
 				unit.x = clampf(float(unit.x) + direction.x * movement_speed * dt, 48, 552)

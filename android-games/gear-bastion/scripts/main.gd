@@ -104,9 +104,11 @@ func _notification(what: int) -> void:
 		active_touch = -1
 		persist()
 		paused = true
+		queue_redraw()
 	if what == NOTIFICATION_APPLICATION_RESUMED and state.phase == "battle":
 		paused = true
 		message = "Welcome back · Resume when ready"
+		queue_redraw()
 
 func _exit_tree() -> void:
 	if is_instance_valid(audio):
@@ -154,6 +156,7 @@ func advance(seconds: float) -> void:
 			message = "Foundry held. Every gear helped." if state.phase == "victory" else "Wall breached. Retry and reconnect your foundry."
 			_tone(660 if state.phase == "victory" else 140)
 			persist()
+			queue_redraw()
 
 func retry() -> void:
 	var snapshot: Dictionary = state.config.duplicate(true)
@@ -569,7 +572,7 @@ func _build_save_dialog() -> void:
 		)
 
 func _tone(frequency: float) -> void:
-	if settings.muted or not is_instance_valid(audio):
+	if settings.muted or not is_instance_valid(audio) or DisplayServer.get_name() == "headless":
 		return
 	audio.stream = sound_bank.tone(frequency)
 	audio.play()

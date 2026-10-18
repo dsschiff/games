@@ -4,10 +4,12 @@ const Profile = preload("res://scripts/campaign_profile.gd")
 const Policy = preload("res://tests/campaign_policies.gd")
 var journey: Array = []
 var replay_results: Array = []
+var decision_results: Array = []
+var motion_directory := "res://.artifacts/campaign-pressure-motion"
 
 func _initialize() -> void:
 	super._initialize()
-	evidence = "res://.artifacts/campaign-input" + ("/headless" if DisplayServer.get_name() == "headless" else "")
+	evidence = "res://.artifacts/campaign-pressure-input" + ("/headless" if DisplayServer.get_name() == "headless" else "")
 
 func create_game() -> void:
 	game = Scene.instantiate()
@@ -54,17 +56,22 @@ func steps(actions: Array) -> void:
 			await tap(game.cell_center(int(step.x), int(step.y)))
 			await action("gate%d" % int(step.gate))
 		else:
-			await purchase(step.kind, int(step.x), int(step.y), int(step.lane))
+			var allowed := Gear.buy(game.state.board, step.kind, int(step.x), int(step.y), int(game.state.gold), int(game.state.next_id), game.state.encounter, game.state.config)
+			if allowed.ok:
+				await purchase(step.kind, int(step.x), int(step.y), int(step.lane))
 
 func confirm_transition(accept: bool) -> void:
 	var button: Button = game.abandon_dialog.get_ok_button() if accept else game.abandon_dialog.get_cancel_button()
 	await tap(Vector2(game.abandon_dialog.position) + button.get_global_rect().get_center())
 
 func motion_snapshot(name: String) -> void:
-	DirAccess.make_dir_recursive_absolute("res://.artifacts/campaign-motion")
-	var file := FileAccess.open("res://.artifacts/campaign-motion/" + name + ".json", FileAccess.WRITE)
+	DirAccess.make_dir_recursive_absolute(motion_directory)
+	var file := FileAccess.open(motion_directory + "/" + name + ".json", FileAccess.WRITE)
 	file.store_string(Saves.encode(game.state, game.settings, 0, true, game.profile))
 	file.close()
+
+func outcome() -> Dictionary:
+	return {"phase": game.state.phase, "seconds": game.state.time, "wall": game.state.wall, "losses": game.state.losses, "spent": game.state.spent, "gold": game.state.gold, "produced": game.state.produced, "cap_seconds": game.state.cap_time, "medals": game.profile.medals.get(game.state.encounter, 0)}
 
 func run() -> void:
 	DirAccess.make_dir_recursive_absolute(evidence)
@@ -82,12 +89,28 @@ func run() -> void:
 	await advance(60)
 	check(game.state.phase == "defeat" and game.profile.cleared.is_empty(), "Failed first defense cannot unlock progression")
 	await frame("01-first-defeat")
+	var first_mistake := outcome()
 	await action("begin")
 	check(game.state.phase == "ready" and game.state.wall == game.state.config.wall, "Campaign retry resets only the active run")
 	for chapter in 9:
 		var id: String = Content.IDS[chapter]
 		check(game.state.encounter == id, "Navigation reached " + id)
 		var plan := "A" if chapter % 2 == 0 else "B"
+		var mistaken: Dictionary = first_mistake
+		if chapter > 0:
+			var policy: String = ["starter", "ranger", "guard", "guard", "ranger", "guard", "A", "splash", "guard"][chapter]
+			await steps(Policy.plan(game.state, policy))
+			await action("begin")
+			for segment in 125:
+				if policy == "splash":
+					await steps(Policy.adaptations(game.state, policy))
+				await advance(4)
+				if game.state.phase != "battle":
+					break
+			mistaken = outcome()
+			check(game.state.phase != "battle", "Mistake witness reaches a bounded outcome at " + id)
+			await frame("%02d-mistake" % (chapter + 2))
+			await action("begin")
 		await steps(Policy.plan(game.state, plan))
 		check(Gear.powered(game.state.board).size() == game.state.board.size(), "Input preparation fully powers " + id)
 		await frame("%02d-prepared" % (chapter + 2))
@@ -149,11 +172,19 @@ func run() -> void:
 			break
 		check(id in game.profile.cleared and Profile.accessible(game.profile, Content.IDS[mini(chapter + 1, 8)]), "Victory unlocks next foundry")
 		journey.append({"id": id, "policy": plan, "seconds": game.state.time, "wall": game.state.wall, "losses": game.state.losses, "spent": game.state.spent, "cap_seconds": game.state.cap_time})
+		var corrected := outcome()
+		var saved_resources: bool = int(corrected.spent) + 6 <= int(mistaken.spent) and float(corrected.wall) >= float(mistaken.wall) and float(corrected.seconds) <= float(mistaken.seconds) * 1.05
+		var improved: bool = mistaken.phase != "victory" or float(corrected.wall) > float(mistaken.wall) + 1 or int(corrected.losses) < int(mistaken.losses) * 0.8 or float(corrected.seconds) < float(mistaken.seconds) * 0.9 or saved_resources
+		check(improved, "Retry correction improves outcome, wall or efficiency at " + id)
+		var explanation: String = ["Connect the stopped starter and fund production", "Screen unshielded rangers", "Add ranged damage against captain armor", "Use splash and ranged support through dense packs", "Protect rangers on the broken flanks", "Use ranged damage to shorten siege attrition", "Reallocate future production with the shifting fronts", "Use a focused ranger refit instead of expensive splash and drive expansion", "Keep a mixed army through the final assault"][chapter]
+		decision_results.append({"id": id, "decision": explanation, "mistake": mistaken, "correction": corrected, "improved": improved, "scope": "actual input, Retry preparation correction; simulated time accelerated"})
+		print("INPUT DECISION ", JSON.stringify(decision_results.back()))
 		print("INPUT JOURNEY ", journey.back())
 		await frame("%02d-victory" % (chapter + 2))
 		await action("next")
 	check(game.profile.cleared.size() == 9 and game.screen == "ending", "Full actual-input arc reaches ending with all nine clears")
 	await frame("12-ending")
+	motion_snapshot("ending")
 	if game.profile.cleared.size() == 9:
 		await action("challenges")
 		check(game.screen == "challenges", "Ending unlocks curated replay menu")
@@ -195,7 +226,7 @@ func run() -> void:
 	var total := 0.0
 	for entry in journey:
 		total += float(entry.seconds)
-	var report := {"checks": checks, "failures": failures, "pointer_events": pointer_events, "keyboard_events": key_events, "journey": journey, "replays": replay_results, "simulated_combat_seconds": total, "result": "passed" if failures.is_empty() else "failed", "scope": "actual input; simulation time accelerated; not human/phone acceptance"}
+	var report := {"checks": checks, "failures": failures, "pointer_events": pointer_events, "keyboard_events": key_events, "journey": journey, "decisions": decision_results, "replays": replay_results, "simulated_combat_seconds": total, "result": "passed" if failures.is_empty() else "failed", "scope": "actual input; simulation time accelerated; not human/phone acceptance"}
 	var file := FileAccess.open(evidence + "/report.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify(report, "  "))
 	file.close()

@@ -1,18 +1,18 @@
 class_name CampaignData
 extends RefCounted
 ## Authoritative content is copied into each active run, never read mid-battle.
-const CONTENT_VERSION := 1
+const CONTENT_VERSION := 2
 const IDS := ["camp_01", "camp_02", "camp_03", "camp_04", "camp_05", "camp_06", "camp_07", "camp_08", "camp_09"]
 const NAMES := ["First Spark", "Glass Arrows", "The Forked Wall", "Hammer Chorus", "Broken Lattice", "The Cinder Engine", "Three Fronts", "Furnace Tide", "Heart of the Foundry"]
 const DECISIONS := [
 	"Connect a working foundry; place adjacent drives without breaking the path.",
 	"Guards screen the spitter fire; rangers cut through shells.",
 	"Cover both exits before the shell captain arrives with escorts.",
-	"Mortars clear dense packs, but need guards against the ranged screen.",
+	"Mortars strike dense packs. Compare splash, protection and single-target fire as formations change.",
 	"Bridge the broken board; choose concentrated splash or dispersed arrows.",
 	"Sustain the front to interrupt siege volleys while escorts press the flanks.",
-	"Enemy pressure changes exits. Reallocate future troops before each shift.",
-	"Spend wave salvage on the weakness your last wave exposed.",
+	"Reserves hold their exit. Pressure shifts West, East, Center, then all fronts. Reallocate future troops ahead of each shift.",
+	"Use salvage for ranger refits before the armored surge. Keep the screen alive; extra splash or drives can cost more than they help.",
 	"Keep a mixed army through the matriarch's escorts, siege and final charge."]
 
 static func wave(name: String, count: int, interval: float, pattern: Array, lanes: Array = [0, 1, 2], pack: int = 2, grant: int = 0) -> Dictionary:
@@ -74,6 +74,7 @@ static func definition(id: String) -> Dictionary:
 			config.boss = "siege"
 			config.boss_hp = 6500.0
 		6:
+			config["reserve_by_exit"] = true
 			config.allowed.append("mortar")
 			config.budget = 84
 			config.sockets = sockets("cross")
@@ -83,6 +84,16 @@ static func definition(id: String) -> Dictionary:
 			config.budget = 70
 			config.sockets = sockets("ring")
 			config.waves = [wave("Furnace mouth", 80, 1.2, ["beetle", "spitter"], [0, 2], 2, 6), wave("Spend the salvage", 120, 1.3, ["swarm", "shell"], [1], 3, 6), wave("Thin the screen", 80, 1.2, ["spitter", "shell"], [0, 2], 2, 6), wave("Hot tide", 144, 1.3, ["swarm", "beetle"], [0, 1, 2], 4, 6), wave("Last embers", 96, 1.2, ["shell", "spitter", "skitter"], [0, 1, 2], 3)]
+			config.waves[2].count = 100
+			config.waves[2].pack = 4
+			config.waves[2].interval = 1.0
+			config.waves[2]["damage_scale"] = 1.5
+			config.waves[2]["hp_scale"] = 1.2
+			config.waves[4].count = 120
+			config.waves[4].pack = 4
+			config.waves[4].interval = 0.8
+			config.waves[4]["hp_scale"] = 1.8
+			config.waves[4]["damage_scale"] = 1.3
 		8:
 			config.allowed.append("mortar")
 			config.budget = 94
@@ -117,6 +128,8 @@ static func valid_snapshot(config: Dictionary) -> bool:
 	if config.has("par_seconds") and not numeric(config.par_seconds, 1, 2000):
 		return false
 	if config.has("deployment_seconds") and not numeric(config.deployment_seconds, 0, 2):
+		return false
+	if config.has("reserve_by_exit") and not config.reserve_by_exit is bool:
 		return false
 	if not numeric(config.act, 1, 3, true) or not numeric(config.budget, 0, 200, true) or not numeric(config.wall, 100, 500) or not numeric(config.hp_scale, 0.5, 5) or not numeric(config.damage_scale, 0.5, 3) or not numeric(config.speed_scale, 0.5, 2) or not numeric(config.boss_hp, 0, 30000):
 		return false

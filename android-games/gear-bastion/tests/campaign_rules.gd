@@ -92,6 +92,28 @@ static func run(check: Callable) -> bool:
 				bad.config.hp_scale = 5.0
 		check.call(not Saves.decode(Saves.encode(bad, {})).ok, "Invalid configuration import rejected: " + invalid)
 	check.call(Saves.decode(Saves.encode(retry, {})).ok, "Accepted altered starting kit remains valid after retry")
+	var reserves := Battle.initial(1701, "camp_07")
+	var old_reserves := reserves.duplicate(true)
+	old_reserves.config.erase("reserve_by_exit")
+	for run in [reserves, old_reserves]:
+		Battle.start(run)
+		run.serial = 12
+		var defender := Battle.make_unit(run, "guard", 0, true)
+		defender.x = 116.0
+		defender.y = 300.0
+		run.units = [defender]
+		Battle.tick(run, Battle.STEP)
+	check.call(float(reserves.units[0].x) < 116 and float(old_reserves.units[0].x) > 116, "Exit-specific reserves retain their flank while older snapshots retain global holding behavior")
+	var restored_reserves := Saves.decode(Saves.encode(reserves, {}))
+	check.call(restored_reserves.ok and restored_reserves.state.config.reserve_by_exit, "Exit-reserve behavior is pinned in the active encounter save")
+	var salvage := Battle.initial(1701, "camp_08")
+	Policy.apply(salvage, "B")
+	Battle.start(salvage)
+	salvage.wave = 2
+	salvage.gold += 6
+	salvage.claimed_grants = 6
+	Policy.adapt(salvage, "B")
+	check.call(salvage.spent == 72 and salvage.gold == 4 and salvage.board[Gear.at(salvage.board, 1, 2)].kind == "ranger" and salvage.board[Gear.at(salvage.board, 3, 2)].kind == "ranger" and Saves.decode(Saves.encode(salvage, {})).ok, "Salvage refits use their actual price and preserve the saved budget")
 	var mortar_test := Battle.initial(1701, "camp_04")
 	mortar_test.config.actor_stats.mortar.period = 6.0
 	Battle.start(mortar_test)

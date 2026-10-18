@@ -1,5 +1,7 @@
 # Campaign presentation checkpoint
 
+Historical code 5 checkpoint. The current source candidate is documented in [the decision/HUD checkpoint](DECISION_PRESSURE_CHECKPOINT.md); the source and movie evidence below remain versioned historical records.
+
 Source 0.3.1/code 5 adds nine gates in three acts and three reduced-budget seeded replays. This checkpoint is for independent review; it does not establish full v1, human enjoyment, final fidelity or physical-phone performance.
 
 ## Implemented and exercised

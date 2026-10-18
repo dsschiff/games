@@ -20,7 +20,10 @@ static func buttons(game: Variant) -> Dictionary:
 	if game.state.phase == "victory":
 		result.next = Rect2(310, 425, 220, 80)
 	elif game.state.phase == "battle":
-		result.rally = Rect2(424, 111, 156, 80)
+		if game.state.boss_spawned:
+			result.erase("begin")
+		else:
+			result.rally = Rect2(510, 800, 80, 80)
 	return result
 
 static func fitted(game: Variant, text: String, width: float, size: int) -> String:
@@ -131,8 +134,9 @@ static func draw(game: Variant) -> void:
 	var ui := buttons(game)
 	game.draw_rect(Rect2(0, 0, 600, 1066), Color("25343b"))
 	terrain(game)
-	game.label_at("GEAR BASTION", Vector2(18, 30), 24, game.GOLD)
-	game.label_at(fitted(game, "%02d · %s" % [int(state.config.index) + 1, state.config.name], 380, 19), Vector2(18, 59), 19, game.CREAM)
+	var current_wave: Dictionary = state.config.waves[maxi(0, int(state.wave) - 1)]
+	game.label_at("GEAR BASTION" if ready else fitted(game, str(state.config.name), 380, 24), Vector2(18, 30), 24, game.GOLD)
+	game.label_at(fitted(game, "%02d · %s" % [int(state.config.index) + 1, state.config.name] if ready else "%d / %d · %s" % [int(state.wave), state.config.waves.size(), current_wave.name], 380, 19), Vector2(18, 59), 19, game.CREAM)
 	for key in ["pause", "menu"]:
 		game.panel(ui[key], Color("3d5159"))
 		game.label_at("Resume" if key == "pause" and game.paused else "Pause" if key == "pause" else "Menu", ui[key].get_center() + Vector2(0, 7), 19, game.CREAM, true)
@@ -156,7 +160,6 @@ static func draw(game: Variant) -> void:
 			game.label_at(kind.capitalize(), Vector2(x, 379), 18, game.INK, true)
 	else:
 		var wave: Dictionary = state.config.waves[maxi(0, int(state.wave) - 1)]
-		game.label_at(fitted(game, "%d / %d · %s" % [int(state.wave), state.config.waves.size(), wave.name], 390, 18), Vector2(18, 135), 18, game.INK)
 		for unit in state.units:
 			if float(unit.get("deploy_left", 0)) <= 0:
 				game.actor_art.draw_unit(game, unit, true, unit_point(game, unit))
@@ -165,15 +168,10 @@ static func draw(game: Variant) -> void:
 		if not game.settings.reduced_effects:
 			for arrow in state.projectiles:
 				game.draw_line(field_point(Vector2(arrow[0], arrow[1])), field_point(Vector2(arrow[2], arrow[3])), game.GOLD if arrow[4] else game.RED, 2)
-		if state.phase == "battle":
+		if ui.has("rally"):
 			game.panel(ui.rally, Color("3d5159"))
-			game.label_at("Normal pace" if state.rally else "Rally", ui.rally.get_center() + Vector2(0, 7), 18, game.CREAM, true)
-		if state.boss_spawned:
-			for boss in state.enemies:
-				if boss.kind in ["captain", "siege", "matriarch"]:
-					game.panel(Rect2(48, 162, 360, 44), game.INK, game.GOLD, 5)
-					game.label_at("%s · %d HP · phase %d" % [str(boss.kind).capitalize(), ceili(float(boss.hp)), int(state.boss_phase)], Vector2(228, 185), 17, game.GOLD, true)
-					game.draw_rect(Rect2(54, 195, 348 * float(boss.hp) / float(boss.max_hp), 5), game.RED)
+			game.label_at("Rally", ui.rally.get_center() + Vector2(0, -4), 18, game.CREAM, true)
+			game.label_at("Fast" if state.rally else "Normal", ui.rally.get_center() + Vector2(0, 22), 15, game.GOLD, true)
 	wall(game)
 	board(game)
 	for unit in state.units:
@@ -183,8 +181,19 @@ static func draw(game: Variant) -> void:
 		game.panel(Rect2(10, 596, 205, 62), Color("25343b"), Color.TRANSPARENT, 4)
 	game.label_at("%d brass" % int(state.gold), Vector2(20, 867 if ready else 620), 24, game.GOLD)
 	game.label_at("%.2f troops/s" % Gear.total_rate(state.board, state.config), Vector2(20, 900 if ready else 650), 20, game.MINT)
-	game.panel(ui.begin, game.MINT if ready else Color("405761"))
-	game.label_at("Begin defense" if ready else "Retry" if state.phase in ["defeat", "victory"] else "Threat guide", ui.begin.get_center() + Vector2(0, 7), 22, game.INK if ready else game.CREAM, true)
+	if ui.has("begin"):
+		game.panel(ui.begin, game.MINT if ready else Color("405761"))
+		game.label_at("Begin defense" if ready else "Retry" if state.phase in ["defeat", "victory"] else "Threat guide", ui.begin.get_center() + Vector2(0, 7), 22, game.INK if ready else game.CREAM, true)
+	elif state.phase == "battle" and state.boss_spawned:
+		for boss in state.enemies:
+			if boss.kind in ["captain", "siege", "matriarch"]:
+				game.panel(Rect2(220, 598, 365, 58), game.INK, game.GOLD, 5)
+				game.label_at("%s · P%d · %d HP" % [str(boss.kind).capitalize(), int(state.boss_phase), ceili(float(boss.hp))], Vector2(402, 620), 20, game.GOLD, true)
+				game.draw_rect(Rect2(226, 627, 353 * float(boss.hp) / float(boss.max_hp), 4), game.RED)
+				var warning := "Enrage in %ds" % ceili(maxf(0, 60 - float(state.boss_total)))
+				if boss.kind != "captain" or float(state.boss_total) >= 60:
+					warning = "Volley %ds · %s" % [ceili(12 - float(state.boss_volley)), "ENRAGED" if float(state.boss_total) >= 60 else "enrage %ds" % ceili(60 - float(state.boss_total))]
+				game.label_at(warning, Vector2(402, 650), 18, game.RED if float(state.boss_total) >= 60 else game.CREAM, true)
 	for key in ["map", "refit", "help"]:
 		game.panel(ui[key], Color("3d5159"))
 		var text := "Map" if key == "map" else "Guide" if key == "help" else "Refit"
@@ -203,12 +212,7 @@ static func draw(game: Variant) -> void:
 	if ready:
 		game.label_at(fitted(game, game.message, 565, 17), Vector2(300, 1050), 17, game.MINT, true)
 	elif state.phase == "battle":
-		if state.boss_spawned:
-			var charged: bool = float(state.boss_total) >= 60
-			var hint := "Enraged · wall volley in %ds" % ceili(12 - float(state.boss_volley)) if charged else "Enrage in %ds · screen siege volleys" % ceili(60 - float(state.boss_total))
-			game.panel(Rect2(72, 211, 456, 30), game.INK, Color.TRANSPARENT, 4)
-			game.label_at(fitted(game, hint, 440, 16), Vector2(300, 232), 16, game.GOLD, true)
-		elif game.clock < game.message_until:
+		if not state.boss_spawned and game.clock < game.message_until:
 			game.panel(Rect2(20, 484, 560, 36), game.INK, Color.TRANSPARENT, 5)
 			game.label_at(fitted(game, game.message, 540, 17), Vector2(300, 509), 17, game.MINT, true)
 	if game.paused or state.phase in ["victory", "defeat"]:
