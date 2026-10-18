@@ -86,5 +86,21 @@
     "Final candidate export/import/Android Back/interrupted-save/cover-inner checks after amendments",
     "Human duration/difficulty/repetition/fun, audible sound and physical Fold7 folding/safe areas/performance",
     "No full36-puzzle Android journey claim; fixed-rate desktop movie is not measured phone FPS"
-  ]
+  ],
+  "challenge_update_prepared_packet": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.towertrials/20261018T014107329313Z/manifest.json",
+  "challenge_update_prepared_state": {
+    "catalog": 2,
+    "level": 3,
+    "level_id": "watch_03",
+    "actions": [
+      "key"
+    ],
+    "power": 14,
+    "keys": 1,
+    "earned_clears": 3,
+    "revision": 65,
+    "used_undo": false
+  },
+  "challenge_update_preparation_receipt": "C:/projects/active/games/.artifacts/preservation/tower-code2-challenge-update-ready.json",
+  "challenge_update_preparation_receipt_sha256": "f6be7f6cabe6e489ae1a7f9fddd57cadeac6e902a46ec55363eb0b3138a80ab0"
 }

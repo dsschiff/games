@@ -3,6 +3,17 @@
   "coordinator_thread_id": "01a14b7c-82d1-7e00-9bf6-5298fc8b737b",
   "coordinator_worktree": "C:/projects/active/_worktrees/games-android-portfolio-20261017",
   "coordinator_branch": "codex/android-portfolio",
+  "prepared_worktrees": [
+    {
+      "slug": "hearthguard",
+      "worktree": "C:/projects/active/_worktrees/games-hearthguard-20261018",
+      "branch": "codex/hearthguard",
+      "initial_base": "e4e70f09ca7fe7f338d4faab65b91281fe067416",
+      "ownership_when_started": "android-games/hearthguard/",
+      "handoff": "android-games/handoffs/hearthguard-prototype.md",
+      "state": "clean isolated workspace prepared; no implementation/chat started; waiting for an accepted builder handoff to keep two active builders"
+    }
+  ],
   "games": [
     {
       "slug": "gear-bastion",
