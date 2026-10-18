@@ -12,12 +12,12 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from mesh_tools import *
 
-BRASS = material("Brass", (.63, .43, .20), .67, .22)
-EDGE = material("PolishedRim", (.82, .65, .35), .58, .25)
+BRASS = material("Brass", (.42, .29, .13), .67, .22)
+EDGE = material("PolishedRim", (.63, .49, .25), .58, .25)
 IRON = material("Iron", (.12, .20, .22), .72, .25)
-TEAL = material("Enamel", (.14, .36, .39), .72, .12)
-IVORY = material("Ivory", (.78, .76, .61), .75, .1)
-GLASS = material("MintLens", (.32, .70, .57), .48, .10)
+TEAL = material("Enamel", (.10, .27, .29), .72, .12)
+IVORY = material("Ivory", (.52, .50, .39), .75, .1)
+GLASS = material("MintLens", (.20, .50, .39), .48, .10)
 RED = material("Carapace", (.67, .23, .17), .7, .12)
 DARK = material("Chitin", (.24, .14, .17), .8)
 
@@ -281,33 +281,73 @@ def deck_and_environment():
     clear()
     deck=material("DeckEnamel",(.22,.30,.30),.86,.12)
     recess=material("SocketRecess",(.12,.20,.21),.86,.08)
-    block("Beveled foundry bed",(0,0,-.26),(10.40,12.0,.52),IRON,.14)
-    block("Inset assembly floor",(0,0,-.045),(10.12,11.72,.09),deck,.08)
+    block("Beveled foundry bed",(0,0,-.38),(10.40,12.0,.52),IRON,.14)
+    floor=block("Inset assembly floor",(0,0,-.045),(10.12,11.72,.09),deck,.08)
+    cutters=[]
+    def cut_box(location, dimensions):
+        bpy.ops.mesh.primitive_cube_add(size=1,location=location)
+        obj=bpy.context.object;obj.scale=dimensions
+        bpy.ops.object.transform_apply(location=False,rotation=False,scale=True)
+        cutters.append(obj)
     for x in [-5.12,5.12]:
-        block("Brass rim side",(x,0,-.015),(.15,11.84,.03),BRASS,.015)
+        block("Brass rim side",(x,0,.005),(.15,11.84,.03),BRASS,.015)
     for y in [-5.92,5.92]:
-        block("Brass rim end",(0,y,-.015),(10.26,.15,.03),BRASS,.015)
+        block("Brass rim end",(0,y,.005),(10.26,.15,.03),BRASS,.015)
     for y in range(4):
         for x in range(5):
             px=(x-2)*2;py=(1.5-y)*math.sqrt(8)
-            cylinder("Inset socket well",(px,py,-.015),.35,.025,recess)
-            bpy.ops.mesh.primitive_torus_add(major_segments=16,minor_segments=6,location=(px,py,-.025),major_radius=.34,minor_radius=.035)
+            cylinder("Inset socket well",(px,py,-.108),.30,.015,recess)
+            bpy.ops.mesh.primitive_cylinder_add(vertices=24,radius=.305,depth=.5,location=(px,py,-.05))
+            cutters.append(bpy.context.object)
+            bpy.ops.mesh.primitive_torus_add(major_segments=24,minor_segments=6,location=(px,py,-.025),major_radius=.34,minor_radius=.035)
             finish(bpy.context.object,"Socket collar",BRASS)
             for dx in [-.67,.67]:
                 cylinder("Recessed fastener",(px+dx,py,-.005),.035,.015,EDGE)
             if x<4:
-                block("Conduit inset",(px+1,py,-.016),(1.24,.06,.025),recess,.015)
+                cut_box((px+1,py,0),(1.24,.06,.08))
+                block("Conduit inset",(px+1,py,-.040),(1.24,.05,.01),recess,.005)
             if y<3:
-                block("Conduit inset",(px,py-math.sqrt(2),-.016),(.06,2.04,.025),recess,.015)
+                cut_box((px,py-math.sqrt(2),0),(.06,2.04,.08))
+                block("Conduit inset",(px,py-math.sqrt(2),-.040),(.05,2.04,.01),recess,.005)
+    bpy.ops.object.select_all(action="DESELECT")
+    for cutter in cutters:
+        cutter.select_set(True)
+    bpy.context.view_layer.objects.active=cutters[0]
+    bpy.ops.object.join()
+    cutter=cutters[0]
+    bpy.context.view_layer.objects.active=floor
+    boolean=floor.modifiers.new("Machined sockets and conduits","BOOLEAN")
+    boolean.operation="DIFFERENCE";boolean.solver="EXACT";boolean.object=cutter
+    bpy.ops.object.modifier_apply(modifier=boolean.name)
+    bpy.data.objects.remove(cutter,do_unlink=True)
     group_surfaces([o for o in bpy.context.scene.objects if o.type=="MESH"])
     export("foundry_deck")
+    for name, outline, color in [
+        ("paver",[(-.40,-.54),(.28,-.54),(.41,-.32),(.35,.46),(-.25,.55),(-.42,.31)],(.36,.35,.30)),
+        ("paver_broken",[(-.42,-.32),(-.18,-.40),(.40,-.35),(.40,.20),(.18,.20),(.18,.39),(-.36,.35)],(.32,.33,.285)),
+        ("paver_long",[(-.50,-.25),(-.36,-.37),(.42,-.33),(.50,-.12),(.41,.35),(-.44,.32)],(.38,.37,.31))]:
+        clear()
+        paving=material("PavingStone_"+name,color,.96)
+        edge=material("PavingEdge",(.30,.31,.27),.95)
+        n=len(outline)
+        vertices=[(x,y,z) for z in [-.09,0] for x,y in outline]
+        faces=[tuple(reversed(range(n))),tuple(range(n,2*n))]+[(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)]
+        mesh=bpy.data.meshes.new("Irregular beveled flagstone");mesh.from_pydata(vertices,[],faces);mesh.update()
+        obj=bpy.data.objects.new("Hand shaped paving",mesh);bpy.context.collection.objects.link(obj)
+        obj.data.materials.append(paving);obj.data.materials.append(edge)
+        for poly in obj.data.polygons: poly.material_index=0 if poly.index==1 else 1
+        bpy.context.view_layer.objects.active=obj;obj.select_set(True)
+        bevel=obj.modifiers.new("Soft chipped edge","BEVEL");bevel.width=.025;bevel.segments=2
+        bpy.ops.object.modifier_apply(modifier=bevel.name)
+        export(name)
     clear()
-    paving=material("PavingStone",(.52,.51,.43),.96)
-    edge=material("PavingEdge",(.42,.43,.37),.95)
-    block("Rounded paving flag",(0,0,-.045),(.83,1.10,.09),paving,.055)
-    block("Worn corner",(.28,.38,-.025),(.20,.22,.04),edge,.03).rotation_euler.z=.25
-    group_surfaces([o for o in bpy.context.scene.objects if o.type=="MESH"])
-    export("paver")
+    earth=material("WornCourtyard",(.30,.30,.25),.98)
+    vertices=[(-2.1,-1.3,-.012),(-.8,-1.7,-.012),(1.4,-1.35,-.012),(2.0,-.2,-.012),(1.4,1.2,-.012),(-.6,1.5,-.012),(-2.0,.7,-.012)]
+    mesh=bpy.data.meshes.new("Authored irregular courtyard patch")
+    mesh.from_pydata(vertices,[],[tuple(range(len(vertices)))])
+    mesh.update();obj=bpy.data.objects.new("Flush worn stone/earth",mesh);bpy.context.collection.objects.link(obj)
+    finish(obj,"Courtyard wear",earth)
+    export("courtyard_patch")
     clear()
     stone=material("WorkshopStone",(.42,.43,.39),.90)
     block("Workshop plinth",(0,0,.10),(1.04,.86,.20),stone,.08)

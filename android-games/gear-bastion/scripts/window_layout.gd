@@ -36,11 +36,16 @@ func arrange(available: Vector2) -> void:
 			controls[shop[i]] = Rect2(12 + i * (width + 2), size.y - 112, width - 4, 80)
 
 func gate_x(lane: int) -> float:
-	return size.x * float(116 + lane * 184) / 600.0
+	return field_x(float(116 + lane * 184))
+
+func field_x(x: float) -> float:
+	# Authored scenic shoulders are part of the expanded world, outside the actual
+	# actor-body corridor. Model scale and authoritative simulation coordinates stay fixed.
+	return 100 + x / 600.0 * (size.x - 200)
 
 func field_point(point: Vector2) -> Vector2:
 	# Reposition actors over the expanded terrain without stretching their art.
-	return Vector2(point.x / 600.0 * size.x, field.position.y + 115 + (point.y - 205) / 332.0 * (field.size.y - 121))
+	return Vector2(field_x(point.x), field.position.y + 115 + (point.y - 205) / 332.0 * (field.size.y - 121))
 
 func game_buttons(game: Variant) -> Dictionary:
 	var result := controls.duplicate()

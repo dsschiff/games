@@ -4,6 +4,9 @@ extends "res://tests/window_fit.gd"
 func _initialize() -> void:
 	rendered = DisplayServer.get_name() != "headless"
 	evidence = "res://.artifacts/graphics-production/input" + ("/rendered" if rendered else "/headless")
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--run-dir="):
+			evidence = arg.trim_prefix("--run-dir=")+"/input"
 	root.size = Vector2i(600,1066)
 	call_deferred("run")
 

@@ -130,3 +130,11 @@ CPU follow-up stacks narrow utilities beside the unchanged socket geometry, puts
 
 The helper now separates import churn from post-import execution bindings, fails source drift, keeps run-local result JSON and uses reachable landed fit33ab8d7 for the exact prior rules. A mistakenly overlapping byte-identical asset regeneration/input invocation was rejected by that guard; its raw receipt is retained, and the subsequent serialized input run passes with source unchanged. The new scene remains unrendered/unaccepted pending a second bounded coordinator GPU slot. Code7/package/saves and root release authority remain intact.
 
+# 2026-10-18 — Second inspection deck cause and bounded composition repair
+
+The coordinator's second slot runs frozen129c759 with six passing checks, unchanged sources and ten original cover/inner captures. Deployment is unobstructed. Worker/root/Astra agree the deck has strong horizontal bands, paving remains too repetitive and workshops are cropped. The process exits and the slot returns to Frontline. No long clip or acceptance is claimed.
+
+Source and actual-exported geometry identify coplanar broad bed/floor faces at Y=0, with wells/conduits buried below a solid floor. The repair separates bed/floor/rim and Boolean-machines all20 socket apertures and conduit channels. Eight geometry assertions reproduce old coplanarity/zero apertures and pass new separated layers/20 open wells. Three irregular beveled pavers now form quiet courtyard clusters with batched material groups; a worn ground patch breaks the strips. Actual projected mesh bounds place complete workshops/regional silhouettes in scenic shoulders clear of the conservative rotating-boss corridor, HUD and arches. Shared field/gate mapping, uniform models, five-by-four picking, rules/economy/saves remain intact.
+
+Final CPU **12,071/12,071**, main input **1,462/1,462 /194 events**, deck geometry **8/8**, fresh import and all **28 byte-identical repeated models** pass. Initial import/type failures remain retained; runner result JSON is now unique per run, avoiding stale output on failed preflight. Third actual short inspection remains required before long movies; GPU stays with coordinator/Frontline until a new grant. Versioncode8/Android export remain separately gated by final graphics freeze.
+

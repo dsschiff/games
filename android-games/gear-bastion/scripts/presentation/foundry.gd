@@ -25,6 +25,7 @@ var attacks_emitted := 0
 var impacts_emitted := 0
 var wall_hit_left := 0.0
 var arches: Array[Node3D] = []
+var scenic_nodes: Array[Node3D] = []
 var ghost: Node3D
 var ghost_kind := ""
 
@@ -126,21 +127,15 @@ func rebuild_scenery(act: int) -> void:
 	for child in scenery.get_children():
 		child.free()
 	arches.clear()
+	scenic_nodes.clear()
 	region = act
 	ground.material_override = mat(["a4a18a", "a38e7d", "9da5a3"][act-1])
 	var field: Rect2 = layout.field
 	for side in [-1, 1]:
-		var x := -10.0 if side < 0 else canvas_size.x + 10
-		for i in maxi(2, int(field.size.y / 210)):
-			var point := Vector2(x, field.position.y + 100 + i * 210)
-			var prop := asset("region_" + str(act), scenery, canvas_to_world(point))
-			prop.rotation.y = side * .3 + i * .9
-			prop.scale = Vector3.ONE * (.58 + float(i % 3) * .10)
 		for i in 2:
-			var point := Vector2(7 if side < 0 else canvas_size.x - 7,field.position.y+165+i*maxf(150,field.size.y*.48))
-			var workshop := asset("workshop",scenery,canvas_to_world(point))
-			workshop.rotation.y = -.28 * side
-			workshop.scale = Vector3.ONE * .78
+			var y := field.position.y + field.size.y * (.28 if i == 0 else .72)
+			place_scenic("workshop",side,y,1.05,-side*.18)
+			place_scenic("region_"+str(act),side,y+65,.65,side*.35+i*.8)
 	# A connected brass deck beneath the power board, with depth and an open route
 	# through all three arches; it is part of the same ground/camera composition.
 	var board: Rect2 = layout.board
@@ -159,17 +154,62 @@ func rebuild_scenery(act: int) -> void:
 		if lane == 2:
 			for x in range(int(gate_end), int(right), 38):
 				asset("wall", scenery, canvas_to_world(Vector2(x+18, layout.wall.end.y)))
-	var paving: Array[Transform3D] = []
-	for lane in 3:
-		for row in maxi(3,int(field.size.y/34)):
-			for column in [-1,0,1]:
-				var offset := sin(row*.72+lane*.90)*18
-				var point := Vector2(layout.gate_x(lane)+offset+column*30,field.position.y+40+row*34+(15 if column==0 else 0))
-				if point.y > layout.wall.end.y:
-					continue
-				var transform := Transform3D(Basis(Vector3.UP,sin(row*1.17+column)*.12),canvas_to_world(point))
-				paving.append(transform)
-	batch_asset("paver",paving)
+	var groups: Array = [[],[],[]]
+	var clusters: Array[Vector2] = [Vector2(layout.field_x(145),field.position.y+field.size.y*.30),Vector2(layout.field_x(440),field.position.y+field.size.y*.45),Vector2(layout.field_x(275),field.position.y+field.size.y*.72)]
+	var patches: Array[Transform3D] = []
+	for i in clusters.size():
+		patches.append(Transform3D(Basis(Vector3.UP,i*.7),canvas_to_world(clusters[i])))
+	batch_asset("courtyard_patch",patches)
+	for row in maxi(3,int(field.size.y/44)):
+		for column in maxi(2,int((canvas_size.x-160)/54)):
+			var ordinal: int = row*37+column*17
+			var point := Vector2(90+column*54+(12 if row%2==0 else 0)+sin(ordinal)*2,field.position.y+65+row*44+cos(ordinal)*2)
+			if point.y > layout.wall.position.y-8 or point.x > canvas_size.x-80:
+				continue
+			var near: bool = point.y > layout.wall.position.y-95
+			for center in clusters:
+				near = near or Vector2((point.x-center.x)/95,(point.y-center.y)/85).length_squared() < 1
+			if not near or ordinal%5==0:
+				continue
+			groups[ordinal%3].append(Transform3D(Basis(Vector3.UP,sin(ordinal*1.17)*.20),canvas_to_world(point)))
+	for i in 3:
+		var paving: Array[Transform3D] = []
+		paving.assign(groups[i])
+		batch_asset(["paver","paver_broken","paver_long"][i],paving)
+
+func projected_bounds(node: Node3D) -> Rect2:
+	var points: Array[Vector2] = []
+	collect_projected(node,points)
+	if points.is_empty():
+		return Rect2(world_to_canvas(node.global_position),Vector2.ZERO)
+	var rect := Rect2(points[0],Vector2.ZERO)
+	for point in points:
+		rect = rect.expand(point)
+	return rect
+
+func collect_projected(node: Node3D, points: Array[Vector2]) -> void:
+	if node is MeshInstance3D:
+		var bounds: AABB = node.mesh.get_aabb()
+		for corner in 8:
+			points.append(world_to_canvas(node.global_transform*bounds.get_endpoint(corner)))
+	for child in node.get_children():
+		if child is Node3D:
+			collect_projected(child,points)
+
+func place_scenic(id: String, side: int, y: float, model_scale: float, angle: float) -> void:
+	# 70 logical pixels conservatively encloses the largest rotating boss kit;
+	# retain a further five-pixel gap beyond that body corridor.
+	var limit: float = layout.field_x(44)-75
+	var frame := Rect2(6 if side < 0 else canvas_size.x-limit,layout.field.position.y+60,limit-6,layout.field.size.y-80)
+	var node := asset(id,scenery,canvas_to_world(Vector2(frame.get_center().x,y)))
+	node.rotation.y = angle
+	node.scale = Vector3.ONE * model_scale
+	var bounds := projected_bounds(node)
+	node.scale *= minf(1,minf(frame.size.x/maxf(1,bounds.size.x),frame.size.y/maxf(1,bounds.size.y)))
+	bounds = projected_bounds(node)
+	var center := Vector2(frame.get_center().x,clampf(y,frame.position.y+bounds.size.y/2,frame.end.y-bounds.size.y/2))
+	node.position = canvas_to_world(world_to_canvas(node.position)+center-bounds.get_center())
+	scenic_nodes.append(node)
 
 func batch_asset(id: String, transforms: Array[Transform3D]) -> void:
 	# Repeated ground sculpture uses one MultiMesh per authored material group.
@@ -184,13 +224,15 @@ func batch_meshes(source: Node3D, inherited: Transform3D, transforms: Array[Tran
 	if source is MeshInstance3D:
 		var multi := MultiMesh.new()
 		multi.transform_format = MultiMesh.TRANSFORM_3D
-		multi.mesh = source.mesh
+		var mesh := source.mesh.duplicate() as ArrayMesh
+		for surface in mesh.get_surface_count():
+			mesh.surface_set_material(surface,source.get_surface_override_material(surface))
+		multi.mesh = mesh
 		multi.instance_count = transforms.size()
 		for i in transforms.size():
 			multi.set_instance_transform(i,transforms[i]*local)
 		var node := MultiMeshInstance3D.new()
 		node.multimesh = multi
-		node.material_override = source.get_surface_override_material(0)
 		node.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		scenery.add_child(node)
 	for child in source.get_children():

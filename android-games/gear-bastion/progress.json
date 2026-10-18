@@ -6,8 +6,8 @@
   "save_schema": 4,
   "branch": "codex/gear-graphics",
   "updated_at": "2026-10-18T12:01:25.186469+00:00",
-  "milestone": "original_3d_corridor_and_environment_polish",
-  "status": "cpu_verified_second_render_pending",
+  "milestone": "original_3d_concrete_composition_repair",
+  "status": "cpu_verified_third_inspection_pending",
   "full_v1_complete": false,
   "campaign_expansion": "full_nine_encounter_campaign_implemented_candidate",
   "campaign_checkpoint": {
@@ -46,7 +46,7 @@
     "constrained_budget_counter_trial": true,
     "sole_staged_backup_reused_without_truncation": true
   },
-  "next_action": "Request second bounded render slot for cleared deployment corridor, modeled deck/pistons, winding paving/workshops and restrained materials. First inspection images/failures retained; no long movies until actual composition closes.",
+  "next_action": "Coordinator grants third short inspection of separated deck/wells, irregular clustered paving and fully framed scenic silhouettes. No long clips until the three concrete findings are visibly closed.",
   "remaining": [
     "Coordinator independent code7 review and signed Android update/resize/input checks",
     "Frontline benchmark art-pipeline approval before full3D Gear work",
@@ -332,12 +332,13 @@
   "graphics_production": {
     "plan": "GRAPHICS_PRODUCTION.md",
     "cpu_evidence": "evidence/graphics-cpu.json",
-    "models": 25,
+    "models": 28,
     "byte_identical_repeat": true,
-    "focused_cpu_checks": 11975,
+    "focused_cpu_checks": 12071,
     "focused_input_checks": 1462,
-    "gpu_phase": "first_inspection_rejected_composition_cpu_polish_ready_for_second_slot",
+    "gpu_phase": "second_inspection_identified_concrete_geometry_and_composition_defects_third_pending",
     "full_3d_accepted": false,
-    "target_freeze": "0.4.0/code8_after_review"
+    "target_freeze": "0.4.0/code8_after_review",
+    "deck_geometry_checks": 8
   }
 }

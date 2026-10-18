@@ -8,8 +8,12 @@ const Layout = preload("res://scripts/window_layout.gd")
 var checks := 0
 var failures: Array[String] = []
 var event_count := 0
+var result_path := "res://.artifacts/graphics-production/cpu-checks.json"
 
 func _initialize() -> void:
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--run-dir="):
+			result_path = arg.trim_prefix("--run-dir=")+"/checks-data.json"
 	call_deferred("run")
 
 func check(ok: bool, detail: String) -> void:
@@ -137,6 +141,11 @@ func run() -> void:
 				var point := layout.board.position + Vector2(x+.5,y+.5)*80
 				check(world.world_to_canvas(world.canvas_to_world(point)).distance_to(point) < .01,"Actual camera projection round-trips board cell at " + str(dimensions))
 		check(world.arches.size() == 3,"Exactly three modeled open arches at " + str(dimensions))
+		for scenic in world.scenic_nodes:
+			var bounds := world.projected_bounds(scenic)
+			check(Rect2(Vector2.ZERO,dimensions).encloses(bounds),"Whole authored scenic silhouette stays inside frame")
+			check(bounds.end.x <= layout.field_x(44)-74 or bounds.position.x >= layout.field_x(556)+74,"Actual projected scenery clears a conservative rotating-boss body corridor")
+			check(not bounds.intersects(layout.summary) and bounds.end.y < layout.wall.position.y,"Actual projected scenery clears HUD and arches")
 		for lane in 3:
 			for row in 4:
 				for column in 5:
@@ -144,7 +153,7 @@ func run() -> void:
 						var progress := float(step)/20
 						var data := {"point":Vector2(116+lane*184,537),"deploy_left":3*(1-progress),"deploy_total":3.0,"deploy_x":column,"deploy_y":row,"lane":lane}
 						var foot := world.world_to_canvas(world.point_for(data))
-						var body := Rect2(foot-Vector2(17,50),Vector2(34,57))
+						var body := Rect2(foot-Vector2(25,50),Vector2(50,57))
 						var clear := not body.intersects(layout.summary)
 						for key in ["map","refit","help","begin","pause","menu","drive","guard","ranger","mortar","undo"]:
 							clear = clear and not body.intersects(layout.controls[key])
@@ -173,7 +182,7 @@ func run() -> void:
 	check(world.actors.is_empty() and world.corpses.is_empty() and world.effects.is_empty(),"Legacy hydration clears actors/corpses/transients with no phantom shot")
 	viewport.free()
 	var report := {"checks":checks,"failures":failures,"event_count":event_count,"scope":"CPU source/rig/projection/invariance; no visible quality or FPS claim"}
-	var file := FileAccess.open("res://.artifacts/graphics-production/cpu-checks.json",FileAccess.WRITE)
+	var file := FileAccess.open(result_path,FileAccess.WRITE)
 	file.store_string(JSON.stringify(report,"\t"))
 	file.close()
 	print("PRESENTATION_CHECKS: %d checks, %d failures, %d real event recipients" % [checks,failures.size(),event_count])

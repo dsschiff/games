@@ -3,7 +3,7 @@
   "authorship": "Original Gear Bastion authored brass machinery, automata and insect sculpture; no external art",
   "blender": "4.5.14 LTS 62c1db4208e8",
   "portable_archive_sha256": "b9533d2397ac1984db4466fb23a7a4649391cca93f6e84209f9bcc60d071c8b9",
-  "generator_sha256": "40c3f831a39c0ad5ea7933f14fe98916da8e07398cf431550c67c24cc349e6b6",
+  "generator_sha256": "1986e3821a9b524ce5b7f7362b7943abc3419f584b8ca1440a0b176a570ca850",
   "mesh_helpers_sha256": "ef6336d19019b76d6d7f81556ac649b50ccffb865bbd2a2da6802197f3b162fb",
   "units": "meters; Blender +Y forward / Godot -Z forward; glTF Y-up",
   "animation": {
@@ -24,8 +24,8 @@
   "assets": [
     {
       "file": "models/arch.glb",
-      "sha256": "4e225cff31f433c88c0921f1235db63bf3e2e0179efcc4882f2ec56f3a0661a1",
-      "bytes": 115244,
+      "sha256": "26d4bf423dd44e8878e1d30ffda76352936409a47af55a604aa5467bc686a158",
+      "bytes": 115232,
       "contact_socket_godot": null,
       "triangles": 3008,
       "mesh_nodes": 4,
@@ -40,8 +40,8 @@
     },
     {
       "file": "models/beetle.glb",
-      "sha256": "234b03ff2e78a9a95dbb11eaaf55b3551bd10af6555e2a841a0a5ca978e3ecdc",
-      "bytes": 419572,
+      "sha256": "a69c90fb314422db74b13d8f90a2df03e80af4e15ffa59ad91b19ed3f7a4f20d",
+      "bytes": 419556,
       "contact_socket_godot": [
         0,
         0.25,
@@ -78,8 +78,8 @@
     },
     {
       "file": "models/captain.glb",
-      "sha256": "0b56751ee6a46dc65cb6898bdb9014b748600de70e81202e6fce394f32b6f780",
-      "bytes": 493880,
+      "sha256": "227a123fe3a5e5ce1fa489ba13721df52044967512675787b703dc75deb51fd4",
+      "bytes": 493868,
       "contact_socket_godot": [
         0,
         0.4,
@@ -116,8 +116,8 @@
     },
     {
       "file": "models/carapace.glb",
-      "sha256": "a110228ab4c97767de4149c25d1e26be2027e39d42fe89458f081ae49fafbdfa",
-      "bytes": 495044,
+      "sha256": "409518e5a157c4d7b35951c55101784ecf46ea11b241bfb166292edf660562a4",
+      "bytes": 495032,
       "contact_socket_godot": [
         0,
         0.25,
@@ -155,8 +155,8 @@
     },
     {
       "file": "models/core.glb",
-      "sha256": "70240c54e7617363b21ee3d4d9fa1d41a7c5483eda8003f7fb782da98b23bd08",
-      "bytes": 216564,
+      "sha256": "db167f46e3d3bf94aa0668b713d4e8a1893636071318863e14cb3d806213580f",
+      "bytes": 216540,
       "contact_socket_godot": null,
       "triangles": 4888,
       "mesh_nodes": 4,
@@ -170,9 +170,22 @@
       "joints": []
     },
     {
+      "file": "models/courtyard_patch.glb",
+      "sha256": "5f6aec0cdfe6e82f2d9fa63c943b8af5fc5ba02f62dfaee5429cad9c4593061d",
+      "bytes": 1280,
+      "contact_socket_godot": null,
+      "triangles": 5,
+      "mesh_nodes": 1,
+      "materials": [
+        "WornCourtyard"
+      ],
+      "skin_joints": [],
+      "joints": []
+    },
+    {
       "file": "models/drive.glb",
-      "sha256": "2e0021e3d7569914d3f9f581c2a31fba390a3bba2508312a47caa99df4ebebd1",
-      "bytes": 216548,
+      "sha256": "ffcce456c0e385765f60e8d0afdcf8b4c32f1dcbbc96d5bd300a6f0b21e265fd",
+      "bytes": 216524,
       "contact_socket_godot": null,
       "triangles": 4888,
       "mesh_nodes": 4,
@@ -187,10 +200,10 @@
     },
     {
       "file": "models/foundry_deck.glb",
-      "sha256": "099f762157724a9d466a799f8c4c3c093b8ef2a1512fc63baf0135f049240ad5",
-      "bytes": 1071688,
+      "sha256": "dea1ec422f61d561d77e93b49e613813621f9c6126d1011f32950be249e04cad",
+      "bytes": 1297824,
       "contact_socket_godot": null,
-      "triangles": 22076,
+      "triangles": 26646,
       "mesh_nodes": 5,
       "materials": [
         "Iron",
@@ -204,8 +217,8 @@
     },
     {
       "file": "models/generator_guard.glb",
-      "sha256": "c15f34d65711cb63f8b6ca8476c3aa75a5bfcbc663e0c25584a3be7c48176535",
-      "bytes": 147060,
+      "sha256": "7ad8e5f39285951082e53b45a162a1ff6d0ecc3cf73cb4c15acb87d07070d997",
+      "bytes": 147032,
       "contact_socket_godot": null,
       "triangles": 1692,
       "mesh_nodes": 5,
@@ -227,8 +240,8 @@
     },
     {
       "file": "models/generator_mortar.glb",
-      "sha256": "9644a9e8fa3670f847992052c346bab36889a07d5a65cf2ffc93e7d8ae807c71",
-      "bytes": 152040,
+      "sha256": "edd0d4d3abf2422977853da1f2761b448f57847f40266f0e8ec5b00609b19ced",
+      "bytes": 152012,
       "contact_socket_godot": null,
       "triangles": 1692,
       "mesh_nodes": 5,
@@ -250,8 +263,8 @@
     },
     {
       "file": "models/generator_ranger.glb",
-      "sha256": "50ddd2f0af3513c2b5c574a7fa8dfd7858e3f238d00a816be7aed9ca760c2325",
-      "bytes": 164296,
+      "sha256": "5d242c8f73730e1d5625de0bb0f5b31fba6a8fa65a97d8246c2f4888b3b47216",
+      "bytes": 164272,
       "contact_socket_godot": null,
       "triangles": 1880,
       "mesh_nodes": 5,
@@ -273,8 +286,8 @@
     },
     {
       "file": "models/guard.glb",
-      "sha256": "87ab7644e2e13042ea74a615a72ad10f903de548cba0e3128f7b0e52cdd6f175",
-      "bytes": 505216,
+      "sha256": "09dc00d949bb79987889d99436980f5f6ffb83454fa6f6f63550080b90d8abeb",
+      "bytes": 505180,
       "contact_socket_godot": [
         0.34,
         1.28,
@@ -314,8 +327,8 @@
     },
     {
       "file": "models/matriarch.glb",
-      "sha256": "1a83f9e34caf872e01168aaebfea1e77850cde300996998c6226acfa8208b12e",
-      "bytes": 511692,
+      "sha256": "7dd503142d2f2ce18c640506a87351d4db1bfba8fe5cc1875f3856756ce7dd5c",
+      "bytes": 511664,
       "contact_socket_godot": [
         0,
         0.4,
@@ -355,8 +368,8 @@
     },
     {
       "file": "models/mortar.glb",
-      "sha256": "0324c72ee5e99b8abeb1d21cbe471819139206bd5fabce069c8c549321083d7e",
-      "bytes": 497504,
+      "sha256": "1cf68d6943469bf6746f3b6e51974f1c59701753da011163bed10f56d50932a9",
+      "bytes": 497464,
       "contact_socket_godot": [
         0.34,
         1.12,
@@ -396,13 +409,41 @@
     },
     {
       "file": "models/paver.glb",
-      "sha256": "710336f9c559d4b01cba4b254158b6e8abf5703bd71196f390582274467ed800",
-      "bytes": 15836,
+      "sha256": "4abd66f3fe4b5995ede82e7ffb28fd1b05ad834476620ea9edbe9f110ba3cb7c",
+      "bytes": 10664,
       "contact_socket_godot": null,
-      "triangles": 376,
-      "mesh_nodes": 2,
+      "triangles": 164,
+      "mesh_nodes": 1,
       "materials": [
-        "PavingStone",
+        "PavingStone_paver",
+        "PavingEdge"
+      ],
+      "skin_joints": [],
+      "joints": []
+    },
+    {
+      "file": "models/paver_broken.glb",
+      "sha256": "70a00516dccd2f2f70d4c540d99074f5db3766e48adabac583249e847a3791d2",
+      "bytes": 11276,
+      "contact_socket_godot": null,
+      "triangles": 176,
+      "mesh_nodes": 1,
+      "materials": [
+        "PavingStone_paver_broken",
+        "PavingEdge"
+      ],
+      "skin_joints": [],
+      "joints": []
+    },
+    {
+      "file": "models/paver_long.glb",
+      "sha256": "599df35a83f68b24bb2dc798a51c8becacbe56c3e818092afcbccc9a5bb9f8d7",
+      "bytes": 10672,
+      "contact_socket_godot": null,
+      "triangles": 164,
+      "mesh_nodes": 1,
+      "materials": [
+        "PavingStone_paver_long",
         "PavingEdge"
       ],
       "skin_joints": [],
@@ -410,8 +451,8 @@
     },
     {
       "file": "models/ranger.glb",
-      "sha256": "481eac1974ab1bc2a333219514f9143a318bf5385ec7e174d1fbbcf2306d49b6",
-      "bytes": 510944,
+      "sha256": "26008f06ad6ef9ecf17500edbf2d2db519ae34f5cb66a058acea35151e7ba547",
+      "bytes": 510908,
       "contact_socket_godot": [
         0.34,
         0.86,
@@ -451,8 +492,8 @@
     },
     {
       "file": "models/region_1.glb",
-      "sha256": "61a49f79d94afa383a524d586f1196b304080932e3c232fddb3490f889b0554e",
-      "bytes": 52948,
+      "sha256": "8682136d8942721948d08221458940ba8ea02cdb2df5913da415ab9996d07f35",
+      "bytes": 52936,
       "contact_socket_godot": null,
       "triangles": 1128,
       "mesh_nodes": 3,
@@ -481,8 +522,8 @@
     },
     {
       "file": "models/region_3.glb",
-      "sha256": "aa647c9658a3410c4a9a2a388390a9e9a89499d6504ef3221476280f4f517afa",
-      "bytes": 35392,
+      "sha256": "bcece928a0405b9f11007548d5b9ea76da7b4a206dcf775cd611dbbd6fce164f",
+      "bytes": 35380,
       "contact_socket_godot": null,
       "triangles": 1040,
       "mesh_nodes": 2,
@@ -495,8 +536,8 @@
     },
     {
       "file": "models/shell.glb",
-      "sha256": "e036ca51d2aa05268057edcde4cbc6fd46be5893bc96e31a434be5ddb190f15b",
-      "bytes": 444012,
+      "sha256": "9dcdb66879716013fe0ff35435db8c2f6a7ed8b5d05b89155e2a3f1f00686ccb",
+      "bytes": 444000,
       "contact_socket_godot": [
         0,
         0.25,
@@ -533,8 +574,8 @@
     },
     {
       "file": "models/siege.glb",
-      "sha256": "a3c75ad57e913a9808578c5ac8ceb535eae48df56d29d7652cd4364e777d1f64",
-      "bytes": 467532,
+      "sha256": "e0296619abe151dd12d4e13c26c47403c130f8e83803d8a23bcbb57a6a183fb3",
+      "bytes": 467520,
       "contact_socket_godot": [
         0,
         1.0,
@@ -573,8 +614,8 @@
     },
     {
       "file": "models/skitter.glb",
-      "sha256": "35ba98306e06ee596bd5422fe211eaf0dbe7a6111ebe67b5735bbd04fe469f76",
-      "bytes": 419564,
+      "sha256": "26a8a36a45c989e4ecd00cd1db05a3910b8e83130a59fb10e140044cb6768d63",
+      "bytes": 419548,
       "contact_socket_godot": [
         0,
         0.25,
@@ -611,8 +652,8 @@
     },
     {
       "file": "models/spitter.glb",
-      "sha256": "1dbfc1d26cd022f2d2676a9b7b737a5052b97dee10f97bb0f4eacb6566530758",
-      "bytes": 454856,
+      "sha256": "cd483aa32e5d3db5db2bfc43cecaac78db5e67f5f481b966d380d693e59aa638",
+      "bytes": 454832,
       "contact_socket_godot": [
         0,
         0.33999999999999997,
@@ -651,8 +692,8 @@
     },
     {
       "file": "models/swarm.glb",
-      "sha256": "b6b078ed07ffd385c7ecfb19c1dda216020148a357c1c110740a10327f946577",
-      "bytes": 437316,
+      "sha256": "30c06d08a33cb81f1a64b9c0d5bc86569972cc44e0e9bd135f9d3eff807b3d77",
+      "bytes": 437288,
       "contact_socket_godot": [
         0,
         0.25,
@@ -692,7 +733,7 @@
     },
     {
       "file": "models/wall.glb",
-      "sha256": "d95ad1be3021a375331c47b7695d7009aec1cbb1791849e63b70ae259cba3045",
+      "sha256": "46c9e55fd833ea17a9cba2d221941da1384899f32ea392b36415dd767ed22221",
       "bytes": 30840,
       "contact_socket_godot": null,
       "triangles": 752,
@@ -706,8 +747,8 @@
     },
     {
       "file": "models/workshop.glb",
-      "sha256": "03088d9968fdde05cf64013e066c8bef94c618662a29fae9cd6016f5bd22e61e",
-      "bytes": 132708,
+      "sha256": "a08844742cb53014ecb6a266f9a2098cb06db0e094e53d040187117e0bd99d78",
+      "bytes": 132684,
       "contact_socket_godot": null,
       "triangles": 2632,
       "mesh_nodes": 6,
