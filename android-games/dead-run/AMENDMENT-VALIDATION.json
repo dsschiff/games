@@ -1,0 +1,706 @@
+{
+  "amends": "0aebe4c144aec08fc781d653f5f979fa0a6d8789",
+  "root_integrated_candidate": "133883877f64202a2c58ca1c608a446e968911b3",
+  "scope": "Two P2 validation corrections only; headless builder evidence. Independent root/Astra closure/native gates remain pending.",
+  "production_delta": {
+    "files": [
+      "scripts/campaign_data.gd",
+      "scripts/campaign_rules.gd"
+    ],
+    "all_other_production_files_lf_unchanged": true,
+    "definitions_before_same_function_byte_unchanged": true,
+    "gameplay_before_valid_function_byte_unchanged": true,
+    "patch": "",
+    "numeric_policy": "Numeric comparisons reject nonfinite values. Any int or mathematically integral operand requires exact numeric equality, including int/whole-float JSON compatibility. Existing <1e-9 tolerance remains only between finite genuinely fractional floats for serialization/geometry comparisons. Malformed near-integer pins are rejected before existing decode normalization; no casting or rounding of malformed periods.",
+    "boss_policy": "Move the unchanged full boss shape/value/death checks before hazards; retain pre-spawn chronology check after tick validation. Missing/null/non-dictionary/malformed boss imports return false without unsafe dereference."
+  },
+  "production_source_hashes": {
+    "campaign.tscn": {
+      "raw": "54e285a2a987f6d1b8e331226f2a34027ab8564c46c9a4fc74afca041037a2a4",
+      "lf": "54e285a2a987f6d1b8e331226f2a34027ab8564c46c9a4fc74afca041037a2a4",
+      "before_lf": "54e285a2a987f6d1b8e331226f2a34027ab8564c46c9a4fc74afca041037a2a4"
+    },
+    "export_presets.cfg": {
+      "raw": "20e86f2cf6398beb27ca90d3a696ae89dbd5c52bbf184ae253cb997df6e2905c",
+      "lf": "20e86f2cf6398beb27ca90d3a696ae89dbd5c52bbf184ae253cb997df6e2905c",
+      "before_lf": "20e86f2cf6398beb27ca90d3a696ae89dbd5c52bbf184ae253cb997df6e2905c"
+    },
+    "icon.svg": {
+      "raw": "dc7fc1cf18e8d6a5a52d8643184498ea23b2569c5b4286c63ebf80012f89ee4e",
+      "lf": "dc7fc1cf18e8d6a5a52d8643184498ea23b2569c5b4286c63ebf80012f89ee4e",
+      "before_lf": "dc7fc1cf18e8d6a5a52d8643184498ea23b2569c5b4286c63ebf80012f89ee4e"
+    },
+    "icon.svg.import": {
+      "raw": "9de5e899d3323aa37fec5bf7cb0e35314530dcbe2809929dc0bcfb9ecc9f00cd",
+      "lf": "9de5e899d3323aa37fec5bf7cb0e35314530dcbe2809929dc0bcfb9ecc9f00cd",
+      "before_lf": "9de5e899d3323aa37fec5bf7cb0e35314530dcbe2809929dc0bcfb9ecc9f00cd"
+    },
+    "main.tscn": {
+      "raw": "576922271b75eeb00ec25953db5efa509f0d9d4c2b7a0bf901336ab28438e200",
+      "lf": "576922271b75eeb00ec25953db5efa509f0d9d4c2b7a0bf901336ab28438e200",
+      "before_lf": "576922271b75eeb00ec25953db5efa509f0d9d4c2b7a0bf901336ab28438e200"
+    },
+    "project.godot": {
+      "raw": "58954fbb3104fa51bc37bde75aab4f3ef0fe2f7e339bc565cd9cd694ad3fd1d2",
+      "lf": "58954fbb3104fa51bc37bde75aab4f3ef0fe2f7e339bc565cd9cd694ad3fd1d2",
+      "before_lf": "58954fbb3104fa51bc37bde75aab4f3ef0fe2f7e339bc565cd9cd694ad3fd1d2"
+    },
+    "scripts/campaign.gd": {
+      "raw": "dbe5a97350785d87c884503299b906a4af8da53758424332ecd3040a2ad27af7",
+      "lf": "dbe5a97350785d87c884503299b906a4af8da53758424332ecd3040a2ad27af7",
+      "before_lf": "dbe5a97350785d87c884503299b906a4af8da53758424332ecd3040a2ad27af7"
+    },
+    "scripts/campaign.gd.uid": {
+      "raw": "cdfc72fb77e00f69c945f01b697122982261b7c3de279c8be89ee9b15b9d8a32",
+      "lf": "cdfc72fb77e00f69c945f01b697122982261b7c3de279c8be89ee9b15b9d8a32",
+      "before_lf": "cdfc72fb77e00f69c945f01b697122982261b7c3de279c8be89ee9b15b9d8a32"
+    },
+    "scripts/campaign_data.gd": {
+      "raw": "bf44e9948fb9044b13d170926b3a5d7823f82fdf8125dd41cfc2e6954a2f167f",
+      "lf": "bf44e9948fb9044b13d170926b3a5d7823f82fdf8125dd41cfc2e6954a2f167f",
+      "before_lf": "1d8c48371f0d17eea70a0f6aa065419ce3512373743dd7d3b28784a21bbd11b1"
+    },
+    "scripts/campaign_data.gd.uid": {
+      "raw": "5085fb14a2d97fa5770566b70d8bef781ce78e993ecae8ec046122cd29fa9997",
+      "lf": "5085fb14a2d97fa5770566b70d8bef781ce78e993ecae8ec046122cd29fa9997",
+      "before_lf": "5085fb14a2d97fa5770566b70d8bef781ce78e993ecae8ec046122cd29fa9997"
+    },
+    "scripts/campaign_rules.gd": {
+      "raw": "94240a37afe9e3bc426e48ae9e68d327b384a9a0e06a3c6982376b4f4e034794",
+      "lf": "94240a37afe9e3bc426e48ae9e68d327b384a9a0e06a3c6982376b4f4e034794",
+      "before_lf": "5c82274015ce7be88036a38f053af641a4e5b3f5676d7f452e44a20144aabb51"
+    },
+    "scripts/campaign_rules.gd.uid": {
+      "raw": "5271b756f2966d21317ef5bb4a926e9d4aeda5ca6020e83ef1f8897b068f5a84",
+      "lf": "5271b756f2966d21317ef5bb4a926e9d4aeda5ca6020e83ef1f8897b068f5a84",
+      "before_lf": "5271b756f2966d21317ef5bb4a926e9d4aeda5ca6020e83ef1f8897b068f5a84"
+    },
+    "scripts/campaign_store.gd": {
+      "raw": "7db3bbdf2b3cbaa216e31848e9be5da58d0b624162d579f6a81c27a0f4d842bf",
+      "lf": "7db3bbdf2b3cbaa216e31848e9be5da58d0b624162d579f6a81c27a0f4d842bf",
+      "before_lf": "7db3bbdf2b3cbaa216e31848e9be5da58d0b624162d579f6a81c27a0f4d842bf"
+    },
+    "scripts/campaign_store.gd.uid": {
+      "raw": "c1373104f9820c49293606656e2d3cd4062dded980049ef4e1529fe7c6edef17",
+      "lf": "c1373104f9820c49293606656e2d3cd4062dded980049ef4e1529fe7c6edef17",
+      "before_lf": "c1373104f9820c49293606656e2d3cd4062dded980049ef4e1529fe7c6edef17"
+    },
+    "scripts/clipboard_backend.gd": {
+      "raw": "ea55c408c6bcb56538206d97dfecd5c22581d0fb508f88fec4b54a0c3af7825e",
+      "lf": "ea55c408c6bcb56538206d97dfecd5c22581d0fb508f88fec4b54a0c3af7825e",
+      "before_lf": "ea55c408c6bcb56538206d97dfecd5c22581d0fb508f88fec4b54a0c3af7825e"
+    },
+    "scripts/clipboard_backend.gd.uid": {
+      "raw": "2eb34fadb1ae994f7a7ad098ce14ef4cf4b5b11894833b0affae921ac8b220a8",
+      "lf": "2eb34fadb1ae994f7a7ad098ce14ef4cf4b5b11894833b0affae921ac8b220a8",
+      "before_lf": "2eb34fadb1ae994f7a7ad098ce14ef4cf4b5b11894833b0affae921ac8b220a8"
+    },
+    "scripts/copy_confirm.gd": {
+      "raw": "37db7f0d298f76abe145057564c111496470763564cf8b5abe6f9ec1d9f6609f",
+      "lf": "37db7f0d298f76abe145057564c111496470763564cf8b5abe6f9ec1d9f6609f",
+      "before_lf": "37db7f0d298f76abe145057564c111496470763564cf8b5abe6f9ec1d9f6609f"
+    },
+    "scripts/copy_confirm.gd.uid": {
+      "raw": "55cbd817947ba4bb2f4d40b979dfe9a3222706a3247059eda2699d09111a34e2",
+      "lf": "55cbd817947ba4bb2f4d40b979dfe9a3222706a3247059eda2699d09111a34e2",
+      "before_lf": "55cbd817947ba4bb2f4d40b979dfe9a3222706a3247059eda2699d09111a34e2"
+    },
+    "scripts/legacy_view.gd": {
+      "raw": "087a482ef14bdbb79ffd9e5ac8ed4bfc8d012f627fce5a1535b21e91ade7d8de",
+      "lf": "087a482ef14bdbb79ffd9e5ac8ed4bfc8d012f627fce5a1535b21e91ade7d8de",
+      "before_lf": "087a482ef14bdbb79ffd9e5ac8ed4bfc8d012f627fce5a1535b21e91ade7d8de"
+    },
+    "scripts/legacy_view.gd.uid": {
+      "raw": "38bd51a76d4a5aecf4f58d756c6d05e624eb7ef1141099d5558db6b703745aee",
+      "lf": "38bd51a76d4a5aecf4f58d756c6d05e624eb7ef1141099d5558db6b703745aee",
+      "before_lf": "38bd51a76d4a5aecf4f58d756c6d05e624eb7ef1141099d5558db6b703745aee"
+    },
+    "scripts/main.gd": {
+      "raw": "02429fc8abc9af87fcb4df288ea49b0b2eeb3bdb82ef04e15828a43db7886c81",
+      "lf": "02429fc8abc9af87fcb4df288ea49b0b2eeb3bdb82ef04e15828a43db7886c81",
+      "before_lf": "02429fc8abc9af87fcb4df288ea49b0b2eeb3bdb82ef04e15828a43db7886c81"
+    },
+    "scripts/main.gd.uid": {
+      "raw": "b406494d69da9bfba6324f52bf8650be5abb9da630dc7f81f5ea82af0cae0c5a",
+      "lf": "b406494d69da9bfba6324f52bf8650be5abb9da630dc7f81f5ea82af0cae0c5a",
+      "before_lf": "b406494d69da9bfba6324f52bf8650be5abb9da630dc7f81f5ea82af0cae0c5a"
+    },
+    "scripts/rules.gd": {
+      "raw": "7b3b5e45ef81e97aa9d1b1ebce72e751ed8416f82193913a14492ef58130290c",
+      "lf": "7b3b5e45ef81e97aa9d1b1ebce72e751ed8416f82193913a14492ef58130290c",
+      "before_lf": "7b3b5e45ef81e97aa9d1b1ebce72e751ed8416f82193913a14492ef58130290c"
+    },
+    "scripts/rules.gd.uid": {
+      "raw": "e9f74a7ea5170698b290ff06ba523b4768513931cd64607c76f1006cdb2a8ed4",
+      "lf": "e9f74a7ea5170698b290ff06ba523b4768513931cd64607c76f1006cdb2a8ed4",
+      "before_lf": "e9f74a7ea5170698b290ff06ba523b4768513931cd64607c76f1006cdb2a8ed4"
+    },
+    "scripts/save_files.gd": {
+      "raw": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+      "lf": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+      "before_lf": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac"
+    },
+    "scripts/save_files.gd.uid": {
+      "raw": "dc1d77381e96bee721244fd2c0d44191b128807192785eb44a1df3fa6ecb2bac",
+      "lf": "dc1d77381e96bee721244fd2c0d44191b128807192785eb44a1df3fa6ecb2bac",
+      "before_lf": "dc1d77381e96bee721244fd2c0d44191b128807192785eb44a1df3fa6ecb2bac"
+    },
+    "scripts/save_store.gd": {
+      "raw": "cdd0a07ef25381252af6dc3fd2f4d390bdbd4372a079873b897628f218475316",
+      "lf": "cdd0a07ef25381252af6dc3fd2f4d390bdbd4372a079873b897628f218475316",
+      "before_lf": "cdd0a07ef25381252af6dc3fd2f4d390bdbd4372a079873b897628f218475316"
+    },
+    "scripts/save_store.gd.uid": {
+      "raw": "d431cc0e3c84918fc1e5136eddd8f13d9e472ea8336a218685e0b2cf3b9162c3",
+      "lf": "d431cc0e3c84918fc1e5136eddd8f13d9e472ea8336a218685e0b2cf3b9162c3",
+      "before_lf": "d431cc0e3c84918fc1e5136eddd8f13d9e472ea8336a218685e0b2cf3b9162c3"
+    }
+  },
+  "focused_regression": {
+    "checks": 3548,
+    "integral_definition_leaf_paths": 875,
+    "paths_sha256": "a15e8010c37687365585d78ae07fddd59a0bce4ef44fefabc0aab7dcbda27fa8",
+    "coverage": "Direct validator plus correctly checksummed import for 875 integral leaves on canonical final-road schema, period above/below/outside boundary, ten missing/null/wrong-type/malformed boss forms on source=-1 cancelled hazard, exact whole-number-float JSON normalization/ordinary step, nonfinite equality, large-int precision. Synthetic late/profile fixtures are fabricated solely for structural validation, not earned evidence."
+  },
+  "accepted_headless_runs": [
+    {
+      "path": ".artifacts/p2-final-fixed-boss-array-validation-headless-20261018T082521023242Z",
+      "scope": "validation-headless",
+      "checks": 4,
+      "failures": 0,
+      "case": "boss-array",
+      "receipt_sha256": "58491df7362bd9dbb148f5b06e9ee966bb6be5489cf9f0cef77577d05436de2c",
+      "source_raw_manifest_sha256": "44e220c5fe859b53e1249fee70e850991ddd2fdb68ab811fb269702f03e4137f",
+      "source_lf_manifest_sha256": "8cd48ec80e9d36dd5d7ada58a0deb74c9ca6ee8a7901e95d0dd4d80fb1ceea8e",
+      "artifact_rows_verified": 170,
+      "script_errors": 0
+    },
+    {
+      "path": ".artifacts/p2-final-fixed-boss-missing-validation-headless-20261018T082527264756Z",
+      "scope": "validation-headless",
+      "checks": 4,
+      "failures": 0,
+      "case": "boss-missing",
+      "receipt_sha256": "ecda7d3c4e2e0bc0d1e77c7088bd1970db639d1f1f1e7c31e3ac95b2b3200a9e",
+      "source_raw_manifest_sha256": "44e220c5fe859b53e1249fee70e850991ddd2fdb68ab811fb269702f03e4137f",
+      "source_lf_manifest_sha256": "8cd48ec80e9d36dd5d7ada58a0deb74c9ca6ee8a7901e95d0dd4d80fb1ceea8e",
+      "artifact_rows_verified": 170,
+      "script_errors": 0
+    },
+    {
+      "path": ".artifacts/p2-final-fixed-boss-null-validation-headless-20261018T082514824708Z",
+      "scope": "validation-headless",
+      "checks": 4,
+      "failures": 0,
+      "case": "boss-null",
+      "receipt_sha256": "8287debe32f7d881caacc29f5376cb1f77de9837b3b6a9ddb74a84f529c13005",
+      "source_raw_manifest_sha256": "44e220c5fe859b53e1249fee70e850991ddd2fdb68ab811fb269702f03e4137f",
+      "source_lf_manifest_sha256": "8cd48ec80e9d36dd5d7ada58a0deb74c9ca6ee8a7901e95d0dd4d80fb1ceea8e",
+      "artifact_rows_verified": 170,
+      "script_errors": 0
+    },
+    {
+      "path": ".artifacts/p2-final-fixed-campaign-headless-20261018T082458005090Z",
+      "scope": "campaign-headless",
+      "checks": 115,
+      "failures": 0,
+      "case": null,
+      "receipt_sha256": "f73966d062dbceb7c5afa0db7ad49c59897d2074a20f89a2630db8bcb243df33",
+      "source_raw_manifest_sha256": "44e220c5fe859b53e1249fee70e850991ddd2fdb68ab811fb269702f03e4137f",
+      "source_lf_manifest_sha256": "8cd48ec80e9d36dd5d7ada58a0deb74c9ca6ee8a7901e95d0dd4d80fb1ceea8e",
+      "artifact_rows_verified": 232,
+      "script_errors": 0
+    },
+    {
+      "path": ".artifacts/p2-final-fixed-campaign-rules-20261018T082419653866Z",
+      "scope": "campaign-rules",
+      "checks": 226,
+      "failures": 0,
+      "case": null,
+      "receipt_sha256": "cccbb7f2874aee7c7ba0eddae4c20e5a03a70b958ec5a32244f3410c03f4fd05",
+      "source_raw_manifest_sha256": "44e220c5fe859b53e1249fee70e850991ddd2fdb68ab811fb269702f03e4137f",
+      "source_lf_manifest_sha256": "8cd48ec80e9d36dd5d7ada58a0deb74c9ca6ee8a7901e95d0dd4d80fb1ceea8e",
+      "artifact_rows_verified": 170,
+      "script_errors": 0
+    },
+    {
+      "path": ".artifacts/p2-final-fixed-migration-headless-20261018T082440077577Z",
+      "scope": "migration-headless",
+      "checks": 11,
+      "failures": 0,
+      "case": null,
+      "receipt_sha256": "988cbdccc1b51c3a1a5b1a9223b63c1de0633cf83bfc441034036e98616a6bf8",
+      "source_raw_manifest_sha256": "44e220c5fe859b53e1249fee70e850991ddd2fdb68ab811fb269702f03e4137f",
+      "source_lf_manifest_sha256": "8cd48ec80e9d36dd5d7ada58a0deb74c9ca6ee8a7901e95d0dd4d80fb1ceea8e",
+      "artifact_rows_verified": 176,
+      "script_errors": 0
+    },
+    {
+      "path": ".artifacts/p2-final-fixed-period-near-validation-headless-20261018T082508396356Z",
+      "scope": "validation-headless",
+      "checks": 4,
+      "failures": 0,
+      "case": "period-near",
+      "receipt_sha256": "0c4e220745731997498acaee91d9ccb237dd931de5ccb51a878ea462cb0d2b15",
+      "source_raw_manifest_sha256": "44e220c5fe859b53e1249fee70e850991ddd2fdb68ab811fb269702f03e4137f",
+      "source_lf_manifest_sha256": "8cd48ec80e9d36dd5d7ada58a0deb74c9ca6ee8a7901e95d0dd4d80fb1ceea8e",
+      "artifact_rows_verified": 170,
+      "script_errors": 0
+    },
+    {
+      "path": ".artifacts/p2-final-fixed-period-whole-validation-headless-20261018T082533717753Z",
+      "scope": "validation-headless",
+      "checks": 4,
+      "failures": 0,
+      "case": "period-whole",
+      "receipt_sha256": "60664bf9b7b27a535693dae78899ca0c952fb21c8155941b21e4f373b56b6478",
+      "source_raw_manifest_sha256": "44e220c5fe859b53e1249fee70e850991ddd2fdb68ab811fb269702f03e4137f",
+      "source_lf_manifest_sha256": "8cd48ec80e9d36dd5d7ada58a0deb74c9ca6ee8a7901e95d0dd4d80fb1ceea8e",
+      "artifact_rows_verified": 169,
+      "script_errors": 0
+    },
+    {
+      "path": ".artifacts/p2-final-fixed-validation-headless-20261018T082419623776Z",
+      "scope": "validation-headless",
+      "checks": 3548,
+      "failures": 0,
+      "case": "all",
+      "receipt_sha256": "03c83101c203aced365eb44708e132b9689a0cd68857aa2029f12f205eab7169",
+      "source_raw_manifest_sha256": "44e220c5fe859b53e1249fee70e850991ddd2fdb68ab811fb269702f03e4137f",
+      "source_lf_manifest_sha256": "8cd48ec80e9d36dd5d7ada58a0deb74c9ca6ee8a7901e95d0dd4d80fb1ceea8e",
+      "artifact_rows_verified": 183,
+      "script_errors": 0
+    }
+  ],
+  "verified_new_artifact_rows": 1610,
+  "sensitivity": [
+    {
+      "case": "period-near",
+      "old_path": ".artifacts/p2-final-regression-old-project/.artifacts/p2-final-old-period-validation-headless-20261018T082409869009Z",
+      "old_receipt_sha256": "e81f7eb38dc50cfe8d336ae4aeef2d831e9535835f629d061cd6c1ed71810377",
+      "old_runner_passed": false,
+      "old_script_error_count": 1,
+      "old_exit_code": 1,
+      "fixed_path": ".artifacts/p2-final-fixed-period-near-validation-headless-20261018T082508396356Z",
+      "same_test_and_runner_lf_bytes": true,
+      "same_checked_fixture_bytes": true,
+      "qualification": "Expected old-source sensitivity failure"
+    },
+    {
+      "case": "boss-null",
+      "old_path": ".artifacts/p2-final-regression-old-project/.artifacts/p2-final-old-boss-null-validation-headless-20261018T082419680674Z",
+      "old_receipt_sha256": "b8986e50bf4abc0443d401c727b5747955cddf7d565f3b23717982deebf89765",
+      "old_runner_passed": false,
+      "old_script_error_count": 2,
+      "old_exit_code": 1,
+      "fixed_path": ".artifacts/p2-final-fixed-boss-null-validation-headless-20261018T082514824708Z",
+      "same_test_and_runner_lf_bytes": true,
+      "same_checked_fixture_bytes": true,
+      "qualification": "Expected old-source sensitivity failure"
+    },
+    {
+      "case": "boss-array",
+      "old_path": ".artifacts/p2-final-regression-old-project/.artifacts/p2-final-old-boss-array-validation-headless-20261018T082419702567Z",
+      "old_receipt_sha256": "41e0ecc34dcd0f06ab66ede90042dd7149b1153218de218bc291e57ddd3f2de9",
+      "old_runner_passed": false,
+      "old_script_error_count": 2,
+      "old_exit_code": 1,
+      "fixed_path": ".artifacts/p2-final-fixed-boss-array-validation-headless-20261018T082521023242Z",
+      "same_test_and_runner_lf_bytes": true,
+      "same_checked_fixture_bytes": true,
+      "qualification": "Expected old-source sensitivity failure"
+    },
+    {
+      "case": "boss-missing",
+      "old_path": ".artifacts/p2-final-regression-old-project/.artifacts/p2-final-old-boss-missing-validation-headless-20261018T082440076070Z",
+      "old_receipt_sha256": "a514a50e36c56acc0c6a6d28749d030c106116a70c0f7cad03e2df0090ffc7e9",
+      "old_runner_passed": false,
+      "old_script_error_count": 2,
+      "old_exit_code": 0,
+      "fixed_path": ".artifacts/p2-final-fixed-boss-missing-validation-headless-20261018T082527264756Z",
+      "same_test_and_runner_lf_bytes": true,
+      "same_checked_fixture_bytes": true,
+      "qualification": "Expected old-source sensitivity failure"
+    },
+    {
+      "case": "period-whole",
+      "old_path": ".artifacts/p2-final-regression-old-project/.artifacts/p2-final-old-period-whole-validation-headless-20261018T082716102067Z",
+      "old_receipt_sha256": "517694b60f6bb2d5c74b67a64f7196db610c72ba7d33dbc84ebb61ba8d637e0d",
+      "old_runner_passed": true,
+      "old_script_error_count": 0,
+      "old_exit_code": 0,
+      "fixed_path": ".artifacts/p2-final-fixed-period-whole-validation-headless-20261018T082533717753Z",
+      "same_test_and_runner_lf_bytes": true,
+      "same_checked_fixture_bytes": false,
+      "qualification": "Valid whole-number-float compatibility control passes on both sources"
+    }
+  ],
+  "sensitivity_source_origin_sha256": "1944f185de42c0386456ec21e89ad5bfe3bf8c2a6f40427a3742e2d70eb957bc",
+  "root_probe_copy_receipt_sha256": "7b59640b26b40bbe4b3ef6942565891f9c922d2d32ab9004579c8cdacdbb3a26",
+  "legacy_preservation": {
+    "source_decoded_sha256": "206b429590c6655c4033acc09b7441b0bd883a3f0fb084c9648f442e28b73a99",
+    "revision": 384,
+    "all_body_fields_exactly_equal": true,
+    "settings_exactly_equal": true,
+    "empty_new_profile": true,
+    "qualification": "Actual code1 fixture migrated on desktop, not native code2 update evidence."
+  },
+  "new_whole_journey": {
+    "checks": 115,
+    "road_outcomes": 24,
+    "every_road_outcome_exactly_equal_to_frozen_journey": true,
+    "raw_input_event_count": 2170,
+    "driven_ticks": 161072
+  },
+  "frozen_evidence_preserved": {
+    "checkpoint_sha256": "7c3b568cf489168f9d08cb7ac9f2877ee8abf09eb79af153cb15d717976e250e",
+    "accepted_historical_artifact_rows_reverified": 2720,
+    "movies": [
+      {
+        "segment": "early",
+        "run": "release-freeze-campaign-movie-early-20261018T074655987629Z",
+        "encode_command": [
+          "ffmpeg",
+          "-v",
+          "error",
+          "-nostdin",
+          "-n",
+          "-threads",
+          "2",
+          "-i",
+          "C:\\projects\\active\\_worktrees\\games-dead-run-20261018\\android-games\\dead-run\\.artifacts\\release-freeze-campaign-movie-early-20261018T074655987629Z\\continuous.avi",
+          "-c:v",
+          "libx264",
+          "-threads",
+          "2",
+          "-crf",
+          "21",
+          "-preset",
+          "fast",
+          "-pix_fmt",
+          "yuv420p",
+          "-c:a",
+          "aac",
+          "-movflags",
+          "+faststart",
+          "C:\\projects\\active\\_worktrees\\games-dead-run-20261018\\android-games\\dead-run\\.artifacts\\release-freeze-campaign-movie-early-20261018T074655987629Z\\continuous.mp4"
+        ],
+        "encode_exit": 0,
+        "engine_receipt_sha256": "4b58e47022e9919f6a7edd615a04084003fdda76973f85392f1f7502aa0a92ab",
+        "qualification": "Continuous normal-speed segment; no cuts or time changes. Middle/final are explicit separate genuine earned-checkpoint loads.",
+        "files": {
+          "continuous.avi": {
+            "sha256": "d7d2b515a0e3867b700ef4371a06ff8851af4be39706bd6c2058e0ab57a0d08e",
+            "bytes": 190969886,
+            "probe": {
+              "programs": [],
+              "stream_groups": [],
+              "streams": [
+                {
+                  "width": 450,
+                  "height": 800,
+                  "r_frame_rate": "60/1",
+                  "duration": "79.016667",
+                  "nb_read_frames": "4741"
+                }
+              ]
+            },
+            "full_decode_exit": 0,
+            "full_decode_errors": "",
+            "decode_command": [
+              "ffmpeg",
+              "-v",
+              "error",
+              "-nostdin",
+              "-threads",
+              "2",
+              "-i",
+              "C:\\projects\\active\\_worktrees\\games-dead-run-20261018\\android-games\\dead-run\\.artifacts\\release-freeze-campaign-movie-early-20261018T074655987629Z\\continuous.avi",
+              "-f",
+              "null",
+              "-"
+            ]
+          },
+          "continuous.mp4": {
+            "sha256": "a8b4b0a6293f70bd3ffb1d47602dfcabaefbebfc36450fcf12f1276325905631",
+            "bytes": 5015341,
+            "probe": {
+              "programs": [],
+              "stream_groups": [],
+              "streams": [
+                {
+                  "width": 450,
+                  "height": 800,
+                  "r_frame_rate": "60/1",
+                  "duration": "79.016667",
+                  "nb_read_frames": "4741"
+                }
+              ]
+            },
+            "full_decode_exit": 0,
+            "full_decode_errors": "",
+            "decode_command": [
+              "ffmpeg",
+              "-v",
+              "error",
+              "-nostdin",
+              "-threads",
+              "2",
+              "-i",
+              "C:\\projects\\active\\_worktrees\\games-dead-run-20261018\\android-games\\dead-run\\.artifacts\\release-freeze-campaign-movie-early-20261018T074655987629Z\\continuous.mp4",
+              "-f",
+              "null",
+              "-"
+            ]
+          }
+        }
+      },
+      {
+        "segment": "middle",
+        "run": "release-freeze-campaign-movie-middle-20261018T075224911519Z",
+        "encode_command": [
+          "ffmpeg",
+          "-v",
+          "error",
+          "-nostdin",
+          "-n",
+          "-threads",
+          "2",
+          "-i",
+          "C:\\projects\\active\\_worktrees\\games-dead-run-20261018\\android-games\\dead-run\\.artifacts\\release-freeze-campaign-movie-middle-20261018T075224911519Z\\continuous.avi",
+          "-c:v",
+          "libx264",
+          "-threads",
+          "2",
+          "-crf",
+          "21",
+          "-preset",
+          "fast",
+          "-pix_fmt",
+          "yuv420p",
+          "-c:a",
+          "aac",
+          "-movflags",
+          "+faststart",
+          "C:\\projects\\active\\_worktrees\\games-dead-run-20261018\\android-games\\dead-run\\.artifacts\\release-freeze-campaign-movie-middle-20261018T075224911519Z\\continuous.mp4"
+        ],
+        "encode_exit": 0,
+        "engine_receipt_sha256": "6125cd1053c68a89f5ec062e824fe6494f27237f9e96701a039d5a1fa9d0f224",
+        "qualification": "Continuous normal-speed segment; no cuts or time changes. Middle/final are explicit separate genuine earned-checkpoint loads.",
+        "files": {
+          "continuous.avi": {
+            "sha256": "df682ca522ad2e05b894ed9dc94f36b6f853a2b8fcddd88108cd1b7527a425c1",
+            "bytes": 279044602,
+            "probe": {
+              "programs": [],
+              "stream_groups": [],
+              "streams": [
+                {
+                  "width": 450,
+                  "height": 800,
+                  "r_frame_rate": "60/1",
+                  "duration": "113.983333",
+                  "nb_read_frames": "6839"
+                }
+              ]
+            },
+            "full_decode_exit": 0,
+            "full_decode_errors": "",
+            "decode_command": [
+              "ffmpeg",
+              "-v",
+              "error",
+              "-nostdin",
+              "-threads",
+              "2",
+              "-i",
+              "C:\\projects\\active\\_worktrees\\games-dead-run-20261018\\android-games\\dead-run\\.artifacts\\release-freeze-campaign-movie-middle-20261018T075224911519Z\\continuous.avi",
+              "-f",
+              "null",
+              "-"
+            ]
+          },
+          "continuous.mp4": {
+            "sha256": "9a35397353b32280188a25a15f54d583c6307b0ebbc412ab5f0c5ba8863f78db",
+            "bytes": 10771386,
+            "probe": {
+              "programs": [],
+              "stream_groups": [],
+              "streams": [
+                {
+                  "width": 450,
+                  "height": 800,
+                  "r_frame_rate": "60/1",
+                  "duration": "113.983333",
+                  "nb_read_frames": "6839"
+                }
+              ]
+            },
+            "full_decode_exit": 0,
+            "full_decode_errors": "",
+            "decode_command": [
+              "ffmpeg",
+              "-v",
+              "error",
+              "-nostdin",
+              "-threads",
+              "2",
+              "-i",
+              "C:\\projects\\active\\_worktrees\\games-dead-run-20261018\\android-games\\dead-run\\.artifacts\\release-freeze-campaign-movie-middle-20261018T075224911519Z\\continuous.mp4",
+              "-f",
+              "null",
+              "-"
+            ]
+          }
+        }
+      },
+      {
+        "segment": "final",
+        "run": "release-freeze-campaign-movie-final-20261018T075437015258Z",
+        "encode_command": [
+          "ffmpeg",
+          "-v",
+          "error",
+          "-nostdin",
+          "-n",
+          "-threads",
+          "2",
+          "-i",
+          "C:\\projects\\active\\_worktrees\\games-dead-run-20261018\\android-games\\dead-run\\.artifacts\\release-freeze-campaign-movie-final-20261018T075437015258Z\\continuous.avi",
+          "-c:v",
+          "libx264",
+          "-threads",
+          "2",
+          "-crf",
+          "21",
+          "-preset",
+          "fast",
+          "-pix_fmt",
+          "yuv420p",
+          "-c:a",
+          "aac",
+          "-movflags",
+          "+faststart",
+          "C:\\projects\\active\\_worktrees\\games-dead-run-20261018\\android-games\\dead-run\\.artifacts\\release-freeze-campaign-movie-final-20261018T075437015258Z\\continuous.mp4"
+        ],
+        "encode_exit": 0,
+        "engine_receipt_sha256": "a14b541b9e4d50108d1d1600617ab70402d0b8c911bf2bfa7a6fbc98d06f0419",
+        "qualification": "Continuous normal-speed segment; no cuts or time changes. Middle/final are explicit separate genuine earned-checkpoint loads.",
+        "files": {
+          "continuous.avi": {
+            "sha256": "ffc6541ecf97af3eae0e2ac1d62834e4d2bdcdfb1b6b0a7e7f8461ddf0a4bd55",
+            "bytes": 324581048,
+            "probe": {
+              "programs": [],
+              "stream_groups": [],
+              "streams": [
+                {
+                  "width": 450,
+                  "height": 800,
+                  "r_frame_rate": "60/1",
+                  "duration": "128.983333",
+                  "nb_read_frames": "7739"
+                }
+              ]
+            },
+            "full_decode_exit": 0,
+            "full_decode_errors": "",
+            "decode_command": [
+              "ffmpeg",
+              "-v",
+              "error",
+              "-nostdin",
+              "-threads",
+              "2",
+              "-i",
+              "C:\\projects\\active\\_worktrees\\games-dead-run-20261018\\android-games\\dead-run\\.artifacts\\release-freeze-campaign-movie-final-20261018T075437015258Z\\continuous.avi",
+              "-f",
+              "null",
+              "-"
+            ]
+          },
+          "continuous.mp4": {
+            "sha256": "d8984546d320af86cd8a86667b1ece71d141a4c106935c9026ebc6615bdb807f",
+            "bytes": 12615785,
+            "probe": {
+              "programs": [],
+              "stream_groups": [],
+              "streams": [
+                {
+                  "width": 450,
+                  "height": 800,
+                  "r_frame_rate": "60/1",
+                  "duration": "128.983333",
+                  "nb_read_frames": "7739"
+                }
+              ]
+            },
+            "full_decode_exit": 0,
+            "full_decode_errors": "",
+            "decode_command": [
+              "ffmpeg",
+              "-v",
+              "error",
+              "-nostdin",
+              "-threads",
+              "2",
+              "-i",
+              "C:\\projects\\active\\_worktrees\\games-dead-run-20261018\\android-games\\dead-run\\.artifacts\\release-freeze-campaign-movie-final-20261018T075437015258Z\\continuous.mp4",
+              "-f",
+              "null",
+              "-"
+            ]
+          }
+        }
+      }
+    ],
+    "qualification": "All original source/test/movie bytes remain bound to0aebe4c. These movies are not repinned or claimed as new-source captures."
+  },
+  "test_source_bindings": {
+    "tests/validation_tests.gd": {
+      "raw": "f1666b3b0514c9abe61329ac5a4d01d1696805a6eb0e0cd24d4fa6b1438c8903",
+      "lf": "f1666b3b0514c9abe61329ac5a4d01d1696805a6eb0e0cd24d4fa6b1438c8903"
+    },
+    "tests/validation_tests.gd.uid": {
+      "raw": "7bd5a2727ead650a71fd4f55fb46fcbb32db725ab9e03477b2627c675b0f41a9",
+      "lf": "7bd5a2727ead650a71fd4f55fb46fcbb32db725ab9e03477b2627c675b0f41a9"
+    },
+    "tests/run_desktop.py": {
+      "raw": "0f42b0b0a9931e39dacf498de4721ab06b59aea0d292d9cd7a8be6169c611022",
+      "lf": "0f42b0b0a9931e39dacf498de4721ab06b59aea0d292d9cd7a8be6169c611022"
+    }
+  },
+  "retained_earlier_attempts": [
+    {
+      "path": ".artifacts/p2-fixed-validation-headless-20261018T082300850131Z",
+      "receipt_sha256": "99122ae850a572aa2aa94a7786033631803cb892bace6ce832c703f15b79c491",
+      "passed": true
+    },
+    {
+      "path": ".artifacts/p2-old-boss-array-validation-headless-20261018T082235649901Z",
+      "receipt_sha256": "765d72ee132efea3c3f5035d06469d1ac1d90adbca34b518ec76d6196d1d5c3e",
+      "passed": false
+    },
+    {
+      "path": ".artifacts/p2-old-boss-missing-validation-headless-20261018T082235686992Z",
+      "receipt_sha256": "2c6d20f5cdc6970bfd4024c7dbdf652de4d006edbf9a84de942c36f4910430da",
+      "passed": false
+    },
+    {
+      "path": ".artifacts/p2-old-boss-null-validation-headless-20261018T082235649901Z",
+      "receipt_sha256": "b984dca2ae7d06e145645980f10391654fbcb23c72bf60efe3580ba22f62d49e",
+      "passed": false
+    },
+    {
+      "path": ".artifacts/p2-old-period-validation-headless-20261018T082223392948Z",
+      "receipt_sha256": "5070df6952fdfa3066ee9b14ce4ac77c5c7e61b8924d6501b4c2fe793bfb370c",
+      "passed": false
+    }
+  ],
+  "boundaries": [
+    "No new rendered/GPU/clipboard/foreground use",
+    "No shared edits, pushes, APK/export/ADB/device operations or new agents/repos/worktrees",
+    "No schema/catalog/version/definitions/balance/UI change",
+    "Stop after scoped clean follow-up commit for independent root rerun/Astra closure/native gates"
+  ]
+}

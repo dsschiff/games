@@ -22,10 +22,11 @@ def sources():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=["rules", "headless", "rendered", "movie", "exhaustion-headless", "exhaustion-rendered", "campaign-smoke", "campaign-visual", "campaign-rules", "campaign-headless", "campaign-rendered", "late-priority-headless", "platform-headless", "platform-rendered", "clipboard-headless", "clipboard-rendered", "clipboard-locked", "migration-headless", "migration-rendered", "campaign-movie-early", "campaign-movie-middle", "campaign-movie-final"])
+    parser.add_argument("mode", choices=["rules", "headless", "rendered", "movie", "exhaustion-headless", "exhaustion-rendered", "campaign-smoke", "campaign-visual", "validation-headless", "campaign-rules", "campaign-headless", "campaign-rendered", "late-priority-headless", "platform-headless", "platform-rendered", "clipboard-headless", "clipboard-rendered", "clipboard-locked", "migration-headless", "migration-rendered", "campaign-movie-early", "campaign-movie-middle", "campaign-movie-final"])
     parser.add_argument("--label", default="run")
     parser.add_argument("--earned-checkpoint", type=Path)
     parser.add_argument("--opening-only", action="store_true")
+    parser.add_argument("--validation-case", default="all")
     args = parser.parse_args()
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     run = PROJECT / ".artifacts" / f"{args.label}-{args.mode}-{stamp}"
@@ -58,11 +59,12 @@ def main():
                 (dest / p.name).write_bytes(p.read_bytes())
                 inputs.append({"kind": "earned-app-written-checkpoint-load", "source": str(p), "sha256": hashlib.sha256(p.read_bytes()).hexdigest()})
     command = [str(GODOT), "--path", str(PROJECT)]
-    if args.mode in ["rules", "headless", "exhaustion-headless", "campaign-smoke", "campaign-rules", "campaign-headless", "clipboard-headless", "migration-headless", "platform-headless", "late-priority-headless"]:
+    if args.mode in ["rules", "headless", "exhaustion-headless", "campaign-smoke", "validation-headless", "campaign-rules", "campaign-headless", "clipboard-headless", "migration-headless", "platform-headless", "late-priority-headless"]:
         command += ["--headless"]
     else:
         command += ["--resolution", "720x1280", "--position", "0,0"]
-    script = ("res://tests/campaign_smoke.gd" if args.mode == "campaign-smoke" else
+    script = ("res://tests/validation_tests.gd" if args.mode == "validation-headless" else
+              "res://tests/campaign_smoke.gd" if args.mode == "campaign-smoke" else
               "res://tests/campaign_visual.gd" if args.mode == "campaign-visual" else
               "res://tests/migration_input.gd" if args.mode.startswith("migration-") else
               "res://tests/platform_input.gd" if args.mode.startswith("platform-") else
@@ -80,6 +82,8 @@ def main():
     command += ["--", "--capture-dir=" + str(run), "--report=" + str(run / "rules-report.json")]
     if args.mode in ["campaign-rules", "migration-headless", "migration-rendered"] and legacy.exists():
         command += ["--legacy-fixture=" + str(target)]
+    if args.mode == "validation-headless":
+        command += ["--case=" + args.validation_case]
     if args.mode == "movie":
         command += ["--movie-only"]
     if args.mode.startswith("campaign-movie-"):

@@ -108,7 +108,13 @@ static func stage(index: int, seed: int = 0) -> Dictionary:
 			"arms": 45 if index == 23 else 0, "x": 0.0, "z": 23.0}}
 
 static func same(a: Variant, b: Variant) -> bool:
-	if (a is int or a is float) and (b is int or b is float): return absf(float(a) - float(b)) < 0.000000001
+	if (a is int or a is float) and (b is int or b is float):
+		if not is_finite(float(a)) or not is_finite(float(b)): return false
+		# JSON reads whole numbers as floats. Their values must still match exactly;
+		# a near-integer must never pass as a pinned count, ID or modulo period.
+		if a is int or b is int or a == floor(a) or b == floor(b): return a == b
+		# Keep round-trip tolerance only for finite, genuinely fractional floats.
+		return absf(a - b) < 0.000000001
 	if a is Dictionary and b is Dictionary:
 		if a.size() != b.size(): return false
 		for k in a:

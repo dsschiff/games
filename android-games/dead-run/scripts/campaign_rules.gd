@@ -233,6 +233,12 @@ static func valid(s: Variant) -> bool:
 	if not s is Dictionary or not s.get("definition") is Dictionary: return false
 	var d: Dictionary = s.definition
 	if not N.number(d.get("index"), 0, 23, true) or not N.number(d.get("seed"), 0, 999999, true) or not D.same(d, D.stage(int(d.index), int(d.seed))): return false
+	# Hazards can refer to boss death, so validate the complete boss first.
+	var b: Variant = s.get("boss")
+	if not b is Dictionary or not N.number(b.get("hp"), 0, d.boss.hp, true) or not b.get("arms") is Array or b.arms.size() != 2 or not N.number(b.get("x"), -2.65, 2.65) or not N.number(b.get("z"), 0, 23) or not b.get("dead") is bool or not N.number(b.get("next_attack"), d.boss.born + 210, d.duration + 720, true) or not N.number(b.get("phase"), 0, 10, true): return false
+	for arm in b.arms:
+		if not N.number(arm, 0, d.boss.arms, true): return false
+	if b.dead != (b.hp == 0 and b.arms[0] + b.arms[1] == 0): return false
 	if not D.WEAPONS.has(s.get("weapon")) or s.get("phase") not in ["ready", "playing", "victory", "defeat"]: return false
 	for k in ["tick", "crew", "next_member", "joined", "lost", "shots", "next_hazard", "kills", "leaks", "contacts"]:
 		if not N.number(s.get(k), 0, 100000, true): return false
@@ -327,11 +333,6 @@ static func valid(s: Variant) -> bool:
 		if 5 + event_joined - event_lost < 0 or 5 + event_joined - event_lost > 20: return false
 		depleted = depleted or 5 + event_joined - event_lost == 0
 	if event_joined != earned or event_lost != lost: return false
-	var b: Variant = s.get("boss")
-	if not b is Dictionary or not N.number(b.get("hp"), 0, d.boss.hp, true) or not b.get("arms") is Array or b.arms.size() != 2 or not N.number(b.get("x"), -2.65, 2.65) or not N.number(b.get("z"), 0, 23) or not b.get("dead") is bool or not N.number(b.get("next_attack"), d.boss.born + 210, d.duration + 720, true) or not N.number(b.get("phase"), 0, 10, true): return false
-	for arm in b.arms:
-		if not N.number(arm, 0, d.boss.arms, true): return false
-	if b.dead != (b.hp == 0 and b.arms[0] + b.arms[1] == 0): return false
 	if s.tick < d.boss.born and (b.hp != d.boss.hp or b.arms[0] != d.boss.arms or b.arms[1] != d.boss.arms or b.dead): return false
 	ids = {}
 	var gun: Dictionary = d.weapons[s.weapon]
