@@ -1,0 +1,60 @@
+{
+  "stage": "actual_retry_verified_native_paid_route_held_for_emulator_graphics",
+  "source_sha256": "9e58d59a34dc7e12028ba4077217a23a4cdfe03d29ce3056723a099102640195",
+  "apk_sha256": "eef7f08a32dbc61245d29f281f5dc8500786c852019c025f07cd39fc7407d45c",
+  "assessment": ".artifacts/frontline-native-retry-graphics-assessment.json",
+  "assessment_sha256": "8925fdd02ceab85628f47b2c8379cfdd688e37b3d055cd2d71d5944f45845d3c",
+  "preservation": {
+    "receipt": "C:/projects/active/games/.artifacts/preservation/frontline-retry-graphics-isolation.json",
+    "sha256": "bb4bc662a88729b377565c94117ca4d4e856e8ad9477a99631ce39f12a705bfd",
+    "files": 2297,
+    "bytes": 7845275204,
+    "PNG_full_source_destination_decodes": 38,
+    "checksummed_save_envelopes": 30,
+    "duplicate_apks_referenced_to_verified_existing_canonical_bytes": 37,
+    "prior_receipts_unchanged": 52,
+    "all_destination_hashes_read_back": true
+  },
+  "actual_native_inputs": {
+    "one_Retry_from_real_victory_to_READY": true,
+    "ready_revision": 354,
+    "whole_career_profile_settings_legacy_backups_retained": true,
+    "one_support_panel_open": true,
+    "planned_support": "ward",
+    "Relay_selection_executed": false,
+    "paid_route_started": false,
+    "natural_loss_proven": false
+  },
+  "renderer_evidence": {
+    "black_frames_in_guest_PNG_native_video_and_host_console": true,
+    "first_video_nearblack_frames": 12,
+    "first_video_frames": 36,
+    "second_video_nearblack_frames": 14,
+    "second_video_frames": 49,
+    "host_console_black_samples": 1,
+    "host_console_samples": 4,
+    "adjacent_guest_black_samples": 2,
+    "adjacent_guest_samples": 4,
+    "samples_simultaneous": false,
+    "FPS_claimed": false,
+    "cause_established": false
+  },
+  "controlled_backend_trials": {
+    "same_saved_AVD_no_wipe_restore_reinstall": true,
+    "six_APKs_and_all_present_save_bytes_backed_up_before_each_restart": true,
+    "software_and_swangle": "Both select limited SwiftShader GLES and fail fragment-uniform261 shader linking; root actually viewed only app background. Neither accepted.",
+    "whole_Frontline_meaning_retained_except_lifecycle_revisions": [
+      354,
+      355,
+      356
+    ],
+    "original_host_restored": true,
+    "all_six_post_restoration_APKs_save_bytes_exact": true,
+    "post_restoration_game_launched": false,
+    "post_restoration_stability_established": false,
+    "startup_context_preemption_error_retained": true
+  },
+  "raw_failures_and_original_statuses_unchanged": true,
+  "ready_for_phone_testing": false,
+  "physical_phone_tested": false
+}

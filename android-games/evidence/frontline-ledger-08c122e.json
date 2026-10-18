@@ -1,5 +1,5 @@
 {
-  "stage": "campaign_reviewed_actual_android_update_verified_native_campaign_pending",
+  "stage": "native_campaign_core_win_loss_Retry_verified_platform_pending",
   "worker_commit": "08c122eb4608d369ff9314110054dd7a812b4047",
   "integration_commit": "a71acc91eb37deae51ef6665df7a932c9865ec0e",
   "source_sha256": "9e58d59a34dc7e12028ba4077217a23a4cdfe03d29ce3056723a099102640195",
@@ -84,7 +84,12 @@
     "old_apk_reinstalled": false,
     "data_reset_or_injected": false,
     "actual_intermediate_sound_on_and_off": true,
-    "whole_preserved": ["state", "profile", "settings", "committed"],
+    "whole_preserved": [
+      "state",
+      "profile",
+      "settings",
+      "committed"
+    ],
     "exact_empty_career": true,
     "cold_retained_whole_packet": true,
     "final_revision": 217,
@@ -123,7 +128,9 @@
     "hq": 210,
     "career_attempts": 1,
     "career_victories": 1,
-    "clears": {"ash_gate": 3},
+    "clears": {
+      "ash_gate": 3
+    },
     "untouched_terminal_viewed": true,
     "paid_reinforcement_loop_proven_by_this_win": false,
     "natural_loss_or_actual_retry_verified": false,
@@ -133,5 +140,7 @@
     "astra_disposition": "P3 balance/teaching issue: perfect idle opening does not establish investment necessity; later controls remain specific. No new P1/P2; conditional advancement stands."
   },
   "ready_for_phone_testing": false,
-  "physical_phone_tested": false
+  "physical_phone_tested": false,
+  "native_retry_and_graphics_evidence": "android-games/evidence/frontline-retry-graphics.json",
+  "native_campaign_core_evidence": "android-games/evidence/frontline-code2-native-core.json"
 }

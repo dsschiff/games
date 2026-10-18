@@ -1,0 +1,97 @@
+{
+  "stage": "campaign_reviewed_validation_P2_closed_code2_built_native_update_pending",
+  "worker_commit": "f9609eb8cf03b99a814ae09e6334b5762fbbeea4",
+  "integration_commit": "0e246ba37d067356a13b440efae1f5f04a057690",
+  "parent_campaign_intake": "android-games/evidence/dead-run-campaign-0aebe4c-intake.json",
+  "source_sha256": "829fdd47ee4c78e0959620af3cab6cd9dfb85597fd674bfd480bc62152a46b64",
+  "tracked_LF_binding_count": 83,
+  "root_worker_raw_identity_claimed": false,
+  "runtime_delta": "Only D.same finite/integral numeric matching and existing boss shape/death validation moved before hazard dereference. Definitions/gameplay/UI/schema unchanged.",
+  "owner_amendment_intake": {
+    "accepted_runs": 9,
+    "new_artifact_rows_verified": 1610,
+    "sensitivity_pairs": 5,
+    "four_malformed_old_cases_fail_expected": true,
+    "valid_whole_float_control_has_no_checked_fixture_file_either_side": true,
+    "earlier_attempts_retained": 5,
+    "historical_16_receipts_rows_declared": 2720,
+    "historical_allowed_rows_reverified": 2658,
+    "historical_cache_rows_explicitly_excluded_this_followup": 62,
+    "original_complete_intake_unchanged": true,
+    "receipt": "C:/projects/active/games/.artifacts/preservation/dead-run-validation-f9609eb.json",
+    "sha256": "588b683e3aa9fdf1722f7be97dfc1ff0bcb44727312e4e8b06c471db661a9850",
+    "files": 3529,
+    "bytes": 31052251,
+    "prior_receipts_unchanged": 56
+  },
+  "independent": {
+    "same_six_original_GDScript_and_checked_save_bytes": true,
+    "old_script_errors": 5,
+    "new_script_errors": 0,
+    "focused_validation": 3548,
+    "campaign_rules": 226,
+    "whole_journey": 115,
+    "genuine_legacy_migration": 11,
+    "all_pass": true,
+    "unexpected_errors": 0,
+    "all24_journey_outcomes_and_driven_ticks_exact_to_baseline": true,
+    "whole_legacy_body_settings_and_empty_profile_exact": true,
+    "source_unchanged": true,
+    "index_sha256": "c845c430ed91998f18a48340676dc6da1462f052502bc7e63ff7434e205c6577",
+    "assessment_sha256": "c7ff64dc2919931f28d5332dd36f01b56c2ff904df51fffafbb3b085dc9bf0db",
+    "source_binding_sha256": "b635f3101b84d7e7d975446c581cbe77c6fb019b93e6fbdac6ed9b11c442fc35"
+  },
+  "Astra": {
+    "review": "android-games/reviews/dead-run-campaign-0aebe4c-astra.md",
+    "full_three_normal_1x_playbacks_ended": true,
+    "durations_seconds": [
+      79.016667,
+      113.983333,
+      128.983333
+    ],
+    "original_movies_still_bound_to": "0aebe4c144aec08fc781d653f5f979fa0a6d8789",
+    "both_P2s_closed_no_remaining_P1_P2_in_reviewed_scope": true,
+    "P3s": [
+      "distant-actor readability",
+      "cap-heavy and sparse post-boss countdown pacing",
+      "human duration and fun remain untested"
+    ],
+    "owned_browser_tab_closed_and_server_stopped": true
+  },
+  "independent_review_preservation": {
+    "receipt": "C:/projects/active/games/.artifacts/preservation/dead-run-f9609eb-independent-review.json",
+    "sha256": "d07fba7df5a10495d8aab312be738643a77d441d03d9a0bbd176ce16e5749a9a",
+    "files": 823,
+    "bytes": 17652358,
+    "prior_receipts_unchanged": 57
+  },
+  "apk": {
+    "path": "C:/projects/active/games/.artifacts/dead-run/20261018T084034281651Z/dead-run.apk",
+    "sha256": "8fa2c577b32aba697e2f3dc8a7da072b2bf105aae22be8b09760a63453b68b75",
+    "bytes": 57146320,
+    "version": "0.2.0",
+    "version_code": 2,
+    "package": "com.dsschiff.deadrun",
+    "signed": true,
+    "permissions": [],
+    "min_sdk": 24,
+    "target_sdk": 36,
+    "abis": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "source_stable": true,
+    "manifest_sha256": "929d24e5d31d34c86041326ed267bdbdbb5f205b12364c8ed3f5456aada71c0b",
+    "preservation_receipt": "C:/projects/active/games/.artifacts/preservation/dead-run-code2-f9609eb-build.json",
+    "preservation_sha256": "ce2c93d1282e28acd5cf5cdc3dec4042c112864ff40384eaa80ac05ed0c2f570"
+  },
+  "actual_code2_install_or_migration_verified": false,
+  "emulator_still_installed_code": 1,
+  "current_genuine_legacy_revisions": [
+    387,
+    386
+  ],
+  "whole_current_code1_body_settings_equal_historical384": true,
+  "ready_for_phone_testing": false,
+  "physical_phone_tested": false
+}

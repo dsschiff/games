@@ -1,0 +1,88 @@
+{
+  "stage": "complete_campaign_integrated_baseline_independent_pass_validation_fix_active",
+  "worker_commit": "0aebe4c144aec08fc781d653f5f979fa0a6d8789",
+  "integration_commit": "133883877f64202a2c58ca1c608a446e968911b3",
+  "root_raw_source_sha256": "ddd68db702f490b513da2380ff7e24ee006c5c10109752f6126cf65061605a8b",
+  "source_bindings": {
+    "path": ".artifacts/dead-run-0aebe4c-root-integration-bindings.json",
+    "sha256": "e01524d85c9294a2393eeb659118995770f58b449e125f21422f35b4339cc838",
+    "all_tracked_LF_equal": 79,
+    "root_worker_whole_raw_identity_claimed": false,
+    "worker_metadata_EOL_differences": 6
+  },
+  "content": {
+    "roads": 24,
+    "districts": 4,
+    "weapons": 3,
+    "enemy_roles": 6,
+    "bosses": 4,
+    "authored_active_simulation_minutes": 37.6666666667,
+    "human_duration_measured": false
+  },
+  "intake": {
+    "index": ".artifacts/dead-run-campaign-0aebe4c-intake-preparation/index.json",
+    "index_sha256": "e4a1c0ead9169cd3a9040bdbf6baf81a330390b9e794b53bc5be6588abf13151",
+    "accepted_runs": 16,
+    "accepted_artifact_rows": 2720,
+    "historical_artifact_rows": 684,
+    "retained_failure_artifact_rows": 1093,
+    "retained_raw_failure_tree_files": 1122,
+    "PNG_integrity_full_decodes": 87,
+    "AVI_MP4_full_CPU_decodes": 8,
+    "movie_integrity_is_visual_acceptance": false,
+    "preservation_receipt": "C:/projects/active/games/.artifacts/preservation/dead-run-campaign-0aebe4c-intake.json",
+    "preservation_sha256": "f1141d7ee1abfc124d07c1d138ed7de7f92da7546c369ed2ca6c32d49c1c39b4",
+    "preserved_files": 4633,
+    "preserved_bytes": 1096372232,
+    "prior_receipts_unchanged": 53
+  },
+  "independent_baseline_headless": {
+    "index": ".artifacts/dead-run-campaign-0aebe4c-independent/index.json",
+    "index_sha256": "df41b0994c08e7b8efbbfbaeec11c083f12982289556c8b810762391ef4ae0d1",
+    "all_nine_pass": true,
+    "campaign_rules": 226,
+    "whole_journey": 115,
+    "same_stage_opposite_orders": 9,
+    "genuine_legacy_migration": 11,
+    "notifications": 8,
+    "headless_clipboard_backend": 14,
+    "legacy_rules": 139,
+    "legacy_input": 34,
+    "legacy_exhaustion_input": 17,
+    "unexpected_errors": 0,
+    "source_unchanged": true,
+    "preservation_receipt": "C:/projects/active/games/.artifacts/preservation/dead-run-campaign-0aebe4c-independent.json",
+    "preservation_sha256": "3acfdc5ce7123d0d77dda092501d4f9e9f81ff7fdc0a19ee26e2420b128bb7b2",
+    "files": 1663,
+    "bytes": 21986918,
+    "prior_receipts_unchanged": 54,
+    "wrapper_NameError_and_no_replay_recovery_retained": true
+  },
+  "reproduced_import_findings": {
+    "assessment": ".artifacts/verification/dead-run-campaign-adversarial-1338838-20261018T081940862440Z/assessment.json",
+    "assessment_sha256": "abd1cd49547f63308f79d6cf7315ad81bbc292b0658c01af3fd19dcd13d2b451",
+    "baseline_controls_clean": true,
+    "script_errors_despite_exit_zero": 5,
+    "P2s": [
+      "near-integer pinned firing period accepted then int%float runtime error",
+      "cancelled boss hazard dereferences null/array boss before validating shape"
+    ],
+    "owner_narrow_fix_active": true,
+    "closed": false
+  },
+  "full_Astra_movie_playback": "active in reserved browser window; source P2 findings provisional then independently reproduced; no final visual acceptance yet",
+  "new_code2_APK_built_or_installed": false,
+  "genuine_current_code1_fixture": {
+    "actual_revisions": [
+      387,
+      386
+    ],
+    "whole_state_settings_exact_to_historical384": true,
+    "historical384_preserved": true,
+    "migration_preparation_index_sha256": "d3a972c29c025362197e59998e848adef6158e6af7f285950e22c9be1b7751cf"
+  },
+  "prior_native_prototype_evidence": "android-games/evidence/dead-run-code1-native.json",
+  "ready_for_phone_testing": false,
+  "physical_phone_tested": false,
+  "amended_by": "android-games/evidence/dead-run-validation-f9609eb.json"
+}
