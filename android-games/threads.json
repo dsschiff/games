@@ -13,7 +13,7 @@
       "thread_id": "01a14cf9-259a-7473-8a90-2a4e341e8219",
       "ownership_when_started": "android-games/hearthguard/",
       "handoff": "android-games/handoffs/hearthguard-prototype.md",
-      "state": "activated after Tower code4 acceptance; persistent Hearthguard builder owns first prototype in this existing worktree alongside Hook amendment, maintaining two builders"
+      "state": "frozencompletecampaignworker6c0b0ef integrated11a3f93 forindependent/Astra/actual1-to2review; bothbuilderrenderedroutes78functionalbutrawreceiptsfailhostclipboard; oldAndroidcode1rev164fixtureuntouched; builderidle"
     },
     {
       "slug": "frontline-foundry",
@@ -22,7 +22,7 @@
       "initial_base": "c4eeeb515dc5ed7a179776932797484319c3b51c",
       "ownership_when_started": "android-games/frontline-foundry/",
       "handoff": "android-games/handoffs/frontline-foundry-prototype.md",
-      "state": "frozen workerbd2bfd9/code1 first loop independently69/40/42/7, Astra and native verified; full campaign handoff queued for builder lane; genuine active Android catalog1 fixture retained, phone untested",
+      "state": "complete0.2.0/code2 campaign development ACTIVE fromfrozenbd2bfd9 afterfirstloopindependent/Astra/nativeacceptance; twelve-missionhandoff, exactcatalog1fixturepreservation and presentation/decisionconditions; alongsideDeadRunscopeP2amendment whileHearthfrozenforreview",
       "activation_base": "d771247958d550e4cd4a345ff7db3c310d9ab677",
       "thread_id": "01a14d1d-c90a-7562-b246-6cd243ad96ed"
     },
@@ -33,7 +33,7 @@
       "initial_base": "e41cb09cdbe1d78da0a004aa9ef0ea5a73c0dcb9",
       "ownership_when_started": "android-games/dead-run/",
       "handoff": "android-games/handoffs/dead-run-prototype.md",
-      "state": "activated after accepted Frontline first loop; sixth persistent builder alongside Hearthguard, Frontline full campaign queued",
+      "state": "firstprototypeworker8d7187e integrated2ef5245 withindependent124/34/35/full87.233sAstradirectionreview; confirmedP2exhaustion/queuedcranerewardinvalidsaveunderfocusedbuilderamendment; noAPKexportbeforeclosure",
       "activation_base": "369f9dce162d91ad27eff75f3f52aba2139736e1",
       "thread_id": "01a14d53-a3ae-7f61-ab87-0006aaa25dd4"
     }
@@ -78,7 +78,7 @@
       "branch": "codex/hearthguard",
       "ownership": "android-games/hearthguard/",
       "activation_base": "1e3bfe7a73b15a3fadce3232a75a2e143f41d8a4",
-      "state": "complete campaign0.2.0/code2 development active after independent56/44/46checks,Astra first-loopGO and actualcode1 native11outcome+14platformchecks; genuineactivelegacyfixture ready for future1-to2 update, phonechecks unverified"
+      "state": "frozencompletecampaignworker6c0b0ef integrated11a3f93 forindependent/Astra/actual1-to2review; bothbuilderrenderedroutes78functionalbutrawreceiptsfailhostclipboard; oldAndroidcode1rev164fixtureuntouched; builderidle"
     },
     {
       "slug": "frontline-foundry",
@@ -89,7 +89,7 @@
       "branch": "codex/frontline-foundry",
       "ownership": "android-games/frontline-foundry/",
       "activation_base": "d771247958d550e4cd4a345ff7db3c310d9ab677",
-      "state": "frozen workerbd2bfd9/code1 first loop independently69/40/42/7, Astra and native verified; full campaign handoff queued for builder lane; genuine active Android catalog1 fixture retained, phone untested"
+      "state": "complete0.2.0/code2 campaign development ACTIVE fromfrozenbd2bfd9 afterfirstloopindependent/Astra/nativeacceptance; twelve-missionhandoff, exactcatalog1fixturepreservation and presentation/decisionconditions; alongsideDeadRunscopeP2amendment whileHearthfrozenforreview"
     },
     {
       "slug": "dead-run",
@@ -100,7 +100,7 @@
       "branch": "codex/dead-run",
       "ownership": "android-games/dead-run/",
       "activation_base": "369f9dce162d91ad27eff75f3f52aba2139736e1",
-      "state": "active first prototype: lateral forward squad/gate shooting/gain and harmful crossings/ordinary sustained side target/natural outcomes/Retry; reference arithmetic explicitly original; no campaign expansion before independent/Astra/native review"
+      "state": "firstprototypeworker8d7187e integrated2ef5245 withindependent124/34/35/full87.233sAstradirectionreview; confirmedP2exhaustion/queuedcranerewardinvalidsaveunderfocusedbuilderamendment; noAPKexportbeforeclosure"
     }
   ]
 }
