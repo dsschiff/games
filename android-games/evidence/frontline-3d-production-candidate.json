@@ -1,0 +1,45 @@
+{
+  "status": "built_candidate_source_supported_visual_and_native_review_pending",
+  "worker_runtime_art_commit": "dca06bf7b31a6c113e969133562adb1776826c4f",
+  "worker_production_commit": "998dce3063eeedd2e60954b89b2796a0771ca257",
+  "integration_runtime_commit": "e5aeb5ea6c5bb96309f3e57ba4dce2868fd1c24c",
+  "docs_only_followup": "df2b8d7 integrated4487451; GRAPHICS_PRODUCTION.md only, no runtime/art delta or rebuild requirement",
+  "original_models": 47,
+  "independent_checks": {
+    "count": 103,
+    "failures": 0,
+    "source_unchanged": true,
+    "receipt": "android-games/frontline-foundry/.artifacts/root-production-corrections-checks-20261018T142133300376Z/receipt.json"
+  },
+  "closed_source_findings": [
+    "Ranger visible long rifle/optic and actual weighted-tip socket",
+    "Same-call current bone attachment synchronization",
+    "Transformed regional solid clearance including commander body"
+  ],
+  "asset_delta": "Only Ranger geometry changes after998dce3;24 byte-exact GLBs,22 mesh-name-only JSON deltas with exact binary chunks;47 models independently parsed by Astra",
+  "apk": {
+    "path": ".artifacts/frontline-foundry/20261018T142221129070Z/frontline-foundry.apk",
+    "bytes": 60408254,
+    "sha256": "3629f4c9d60413c7f89a43fc1495ad2ecaa71a17d5626f89a634855ad11a6e72"
+  },
+  "apk_inspection": {
+    "package": "com.dsschiff.frontlinefoundry",
+    "version_code": "3",
+    "version_name": "0.3.0",
+    "permissions": [],
+    "internet_permission": false,
+    "signature_verified": true
+  },
+  "build_source_raw_sha256": "620153b8fd4aecc1d0297e9e752119bb6d1ad3226e425b34c58081be3dece65e",
+  "build_clean_and_source_stable": true,
+  "canonical_apk": "C:/projects/active/games/.artifacts/frontline-foundry/20261018T142221129070Z/frontline-foundry.apk",
+  "canonical_build_preservation": {
+    "files": 7,
+    "bytes": 60904241,
+    "receipt_sha256": "7ea1462358ca5388f729692b88ee38ffdbbbea566091206fb3326df1325bc037"
+  },
+  "visual_review_packet": ".artifacts/graphics-overhaul/frontline-production-review/review-packet.json",
+  "visual_status": "Astra normal1x playback active; no final score or release disposition yet",
+  "native_status": "Not installed; actual code2 binary and genuine saves preserved, update/Back/transfer/resize/cold pending",
+  "physical_human_acceptance": "Deferred by user; not established"
+}
