@@ -1,0 +1,653 @@
+{
+  "schema_version": 1,
+  "milestone": "four-puzzle appeal checkpoint",
+  "base_commit": "790f722",
+  "branch": "codex/tower-trials",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "source_binding": "Exact engine/test/tool files; copied under ignored .artifacts/prototype/source. Runtime captures executed against these bytes. Documents/index are not runtime inputs.",
+  "source_files": [
+    {
+      "path": "export_presets.cfg",
+      "bytes": 509,
+      "sha256": "e663757eda980ac52b8e771b438f3bb09f97fd3dfb01f15da3d6383a8ded78f0"
+    },
+    {
+      "path": "icon.svg",
+      "bytes": 394,
+      "sha256": "6bca3ee031a419daa07bd4b2790d6ce481b5686cff75a0ee197ebcc9f7053d1b"
+    },
+    {
+      "path": "icon.svg.import",
+      "bytes": 1013,
+      "sha256": "3847de679c56f4fcad0e14fb11b5eb0f45f068b7c59f489254b5c2c75c1b2320"
+    },
+    {
+      "path": "main.tscn",
+      "bytes": 166,
+      "sha256": "539a74d0621571fab563c8871aad99acdf0158e9202a9453217fb7bf17a4a5df"
+    },
+    {
+      "path": "project.godot",
+      "bytes": 777,
+      "sha256": "751c70e415c79b990af09f50ad47d0aedfce015b2ca067e91ed5c74e4fd789b0"
+    },
+    {
+      "path": "scripts/catalog_v1.gd",
+      "bytes": 2934,
+      "sha256": "4369130a59afd53fbe09db68adc6545a301d289d991670b6a2edfdca3dc04f53"
+    },
+    {
+      "path": "scripts/catalog_v1.gd.uid",
+      "bytes": 20,
+      "sha256": "06b7209b6113ae43f26a8a34359abc8d292cd4f2c0fb0382be2cfece5d7f1313"
+    },
+    {
+      "path": "scripts/content.gd",
+      "bytes": 430,
+      "sha256": "b733193eb2f228a911b83f087b1fc912d173baee7aed5bb9d33748b2e81b64e7"
+    },
+    {
+      "path": "scripts/content.gd.uid",
+      "bytes": 19,
+      "sha256": "2090f499c7cdeb2093df29a2ce8448caefcde09d6a6c13d2b2317b109ef2374d"
+    },
+    {
+      "path": "scripts/local_audio.gd",
+      "bytes": 727,
+      "sha256": "62e5b953ef6f18148f279028e454a5546074d5692dc5e378368f12764ac18bf9"
+    },
+    {
+      "path": "scripts/local_audio.gd.uid",
+      "bytes": 20,
+      "sha256": "a8c0c2c84080c34bac60f9d017e40759cd0f5a47b20b93fce6f75006d05a050e"
+    },
+    {
+      "path": "scripts/main.gd",
+      "bytes": 21428,
+      "sha256": "5f1dacc3cf1ad23bc52796daa96a3c741fcc05270176bbbe98210d8061b0e5b2"
+    },
+    {
+      "path": "scripts/main.gd.uid",
+      "bytes": 19,
+      "sha256": "814681d5bf55ea28a102a3c53c7176d636a272c31f8947c448fb1cf73512f486"
+    },
+    {
+      "path": "scripts/rules.gd",
+      "bytes": 5378,
+      "sha256": "5432339e42e95e02b14d64871cade704ccbb87f89a5c002412deed797291d950"
+    },
+    {
+      "path": "scripts/rules.gd.uid",
+      "bytes": 20,
+      "sha256": "0f0da31b6f4b0164d53f22234d2e228b740294f4e9929aa73b6355b36bc710e8"
+    },
+    {
+      "path": "scripts/save_files.gd",
+      "bytes": 736,
+      "sha256": "67b532124aab977b2fb103c12d05a9a9152f6d9aee93113b8476796f880859db"
+    },
+    {
+      "path": "scripts/save_files.gd.uid",
+      "bytes": 20,
+      "sha256": "b1be48ebc254694afe695f6332e8f7cd498af14fd3926377cae93d9e861bf37e"
+    },
+    {
+      "path": "scripts/save_store.gd",
+      "bytes": 5870,
+      "sha256": "0a483542dd34977e9f233458e8277bf6d0f0ffd5950c9cf8ded5977ec6db80b7"
+    },
+    {
+      "path": "scripts/save_store.gd.uid",
+      "bytes": 20,
+      "sha256": "6983810b6668e5705d11e88ab7b7d6494086044a9599ef5e929ea98cb4c1a887"
+    },
+    {
+      "path": "tests/fault_files.gd",
+      "bytes": 1112,
+      "sha256": "17cbbe3147a916429b8d8da3ee1da29d6c72b068537a188916f3a8ec3dde5d13"
+    },
+    {
+      "path": "tests/fault_files.gd.uid",
+      "bytes": 20,
+      "sha256": "1640215fc56b9294bffa536d71f18cb82fdb1964f71a39e63f3dae1dbb1ed8e1"
+    },
+    {
+      "path": "tests/motion.gd",
+      "bytes": 1848,
+      "sha256": "c80eab5da92ff80b7c56a3a4a79db7fd3fc25632e2dc7a6422f8762735765f93"
+    },
+    {
+      "path": "tests/motion.gd.uid",
+      "bytes": 19,
+      "sha256": "dbf01c19540c458ec75449b46cbc57dcf4bd5ed719a9e92df5870cdb9f0978c6"
+    },
+    {
+      "path": "tests/playthrough.gd",
+      "bytes": 9964,
+      "sha256": "bbdd78ee3b076be70f34a46bd159a2f3d6e9b82770c0fc94eaf1138f99a703cd"
+    },
+    {
+      "path": "tests/playthrough.gd.uid",
+      "bytes": 20,
+      "sha256": "66b700d6cf0a31a9f810a27c889ef9de8d0f76da2464d19fdaeaddd89094f739"
+    },
+    {
+      "path": "tests/run_tests.gd",
+      "bytes": 7421,
+      "sha256": "22db1a3eb9ce4273e8a6f8c5db8488032dc612039dbac99b7d1db9f4395a4332"
+    },
+    {
+      "path": "tests/run_tests.gd.uid",
+      "bytes": 20,
+      "sha256": "83bcb327fd121e34d059d662a0a9743250335f4e195f75375a466ced854d05fa"
+    },
+    {
+      "path": "tools/capture.py",
+      "bytes": 1866,
+      "sha256": "b697117846f8bc130e948d3b4b22a107450b5834065c836a55781e3cdf18bc15"
+    },
+    {
+      "path": "tools/check.py",
+      "bytes": 1649,
+      "sha256": "907509b1208656db9cf9a150b147344fac93487dedc3d49760da71c4b1e71601"
+    }
+  ],
+  "reports": {
+    "rules": {
+      "checks": 84,
+      "failures": []
+    },
+    "headless": {
+      "checks": 96,
+      "failures": [],
+      "actual_touch_taps": 67
+    },
+    "rendered": {
+      "checks": 113,
+      "failures": [],
+      "actual_touch_taps": 67
+    },
+    "motion": {
+      "checks": 29,
+      "failures": [],
+      "touch_taps": 25
+    }
+  },
+  "motion": {
+    "path": ".artifacts/prototype/motion/tower-prototype.mp4",
+    "frames": 1411,
+    "fixed_fps": 60,
+    "seconds": 23.516666666666666,
+    "input": "Input.parse_input_event touches; natural _process; no gameplay state injection",
+    "scope": "fixed engine capture clock; Dummy audio; not physical/device FPS"
+  },
+  "artifacts": [
+    {
+      "path": ".artifacts/prototype/headless/00-first-light.json",
+      "bytes": 557,
+      "sha256": "5d4a7c05e41f824887681f3b80f7a8569bb92a316ef9c374a2757431b711117f"
+    },
+    {
+      "path": ".artifacts/prototype/headless/01-equality-forecast.json",
+      "bytes": 567,
+      "sha256": "903c2e8c7bd4fa004584123819ba8025a6d7620d618c93eba9308599d1755ab4"
+    },
+    {
+      "path": ".artifacts/prototype/headless/02-natural-defeat.json",
+      "bytes": 575,
+      "sha256": "69637104bf087c10b3425b698e91d3c1e4fce8402a1394bf572caf64c5772411"
+    },
+    {
+      "path": ".artifacts/prototype/headless/03-flight.json",
+      "bytes": 887,
+      "sha256": "9d79581a7f19eff45f9bbbc8f99e72237bce8ceae9e4a321e043f5da80ee5369"
+    },
+    {
+      "path": ".artifacts/prototype/headless/04-grown-watch.json",
+      "bytes": 587,
+      "sha256": "d8b9c425b38a2f8c2d6453ebf342c123bac1ff53f0463657ae15fe95c19c1031"
+    },
+    {
+      "path": ".artifacts/prototype/headless/05-natural-victory.json",
+      "bytes": 721,
+      "sha256": "870d294a8a6077311750bb6f2190026b5c10a9397742ab691fb793dd2764aa4f"
+    },
+    {
+      "path": ".artifacts/prototype/headless/06-ordered-preview.json",
+      "bytes": 624,
+      "sha256": "86273d82cb137a1b293995b32c755035f7267edb736a4ed07dd341ac7ed82a96"
+    },
+    {
+      "path": ".artifacts/prototype/headless/07-chime-victory.json",
+      "bytes": 771,
+      "sha256": "b7293a34ae63828c8efd166f98f071a8f89b7e1abd07969541318feeb599bb24"
+    },
+    {
+      "path": ".artifacts/prototype/headless/08-greedy-danger.json",
+      "bytes": 677,
+      "sha256": "f1616610178296eb8ec5618739114bc034cb1838a2c13d7fe91243f3e737843d"
+    },
+    {
+      "path": ".artifacts/prototype/headless/09-greedy-stranded.json",
+      "bytes": 715,
+      "sha256": "ba847e77c893f3e428b09abfbf67ce62145b306046527a3098be2db0d7366329"
+    },
+    {
+      "path": ".artifacts/prototype/headless/10-key-claimed.json",
+      "bytes": 711,
+      "sha256": "937891f51add4fd2484a6fdf6135f771aa4c10562adc719a8dca883adb08c708"
+    },
+    {
+      "path": ".artifacts/prototype/headless/11-trap-defeat.json",
+      "bytes": 740,
+      "sha256": "2b932af56307b885f93947d9b12d7d5a7579f013bfa53fd4cf062ba0449c47ac"
+    },
+    {
+      "path": ".artifacts/prototype/headless/12-shield-forecast.json",
+      "bytes": 778,
+      "sha256": "b37c97e73ffc26ac61950650bcfd81bf8af74b9cf639175a53ec5717254951aa"
+    },
+    {
+      "path": ".artifacts/prototype/headless/13-sequence-victory.json",
+      "bytes": 899,
+      "sha256": "f547e2fdecc966980f536dd968459530b2b0d950f353b0cf633bac67953c6829"
+    },
+    {
+      "path": ".artifacts/prototype/headless/14-sun-route-victory.json",
+      "bytes": 875,
+      "sha256": "39d5e480f6c0eccb8e912c6933786b20fb60231dee5efe74a22815b5f3767dde"
+    },
+    {
+      "path": ".artifacts/prototype/headless/15-earned-journey.json",
+      "bytes": 883,
+      "sha256": "883b138385b24a4a570ef2ff2e384f02b942b7ccfb7bb3ba2987a8706648e207"
+    },
+    {
+      "path": ".artifacts/prototype/headless/16-unfolded-aspect.json",
+      "bytes": 886,
+      "sha256": "6912b1f5dd105a419498a3bdd612e316af80b0fba54a7d92361ed280d155d2e2"
+    },
+    {
+      "path": ".artifacts/prototype/headless/result.json",
+      "bytes": 2109,
+      "sha256": "30e93d58ff388db03153ed6577af5b94f69def2b48d48beb34667b7ba0c794a4"
+    },
+    {
+      "path": ".artifacts/prototype/import.log",
+      "bytes": 1669,
+      "sha256": "631fba7b9e3b64797511e3e81b9e7fa0a169c9deb515e06c812c9d9a40b3306b"
+    },
+    {
+      "path": ".artifacts/prototype/input.log",
+      "bytes": 133,
+      "sha256": "4701b5cf0d7c528cd6bc61afa52aad70bde6b187ebcab9471467816106fb66c6"
+    },
+    {
+      "path": ".artifacts/prototype/motion/capture.log",
+      "bytes": 1086,
+      "sha256": "48a2133d8800f7215c9ff4ab022cb7f2043768a7a0332199310d27badc65ed2a"
+    },
+    {
+      "path": ".artifacts/prototype/motion/commands.json",
+      "bytes": 1357,
+      "sha256": "0c6437d1296fc582a0ce5d9c02dbced0ba87455215c1e8d659e2bc6bcac52868"
+    },
+    {
+      "path": ".artifacts/prototype/motion/result.json",
+      "bytes": 445,
+      "sha256": "173393cb01756b53336742ae421b73ccf1f6dde5cae2a1ab368c99e3f087d427"
+    },
+    {
+      "path": ".artifacts/prototype/motion/tower-prototype.mp4",
+      "bytes": 909602,
+      "sha256": "bda0d6f44a9d826fdd5764b7e84514cfad73dce0ca61e3a06856040a91b878a5"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/00-first-light.json",
+      "bytes": 557,
+      "sha256": "5d4a7c05e41f824887681f3b80f7a8569bb92a316ef9c374a2757431b711117f"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/00-first-light.png",
+      "bytes": 70156,
+      "sha256": "2911b190af34c9260c82877e3cf9462714f06b799b6661b70fe95d1888565805"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/01-equality-forecast.json",
+      "bytes": 567,
+      "sha256": "903c2e8c7bd4fa004584123819ba8025a6d7620d618c93eba9308599d1755ab4"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/01-equality-forecast.png",
+      "bytes": 64792,
+      "sha256": "2f77550158bef491120ef78af4b542db61774f4aed7acc8ed11254dfacbc2b66"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/02-natural-defeat.json",
+      "bytes": 575,
+      "sha256": "69637104bf087c10b3425b698e91d3c1e4fce8402a1394bf572caf64c5772411"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/02-natural-defeat.png",
+      "bytes": 66849,
+      "sha256": "bd914c55f5d4b69e1b3e1e3cde26534f46f5c8770523a0f120c7143ab2ba442b"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/03-flight.json",
+      "bytes": 887,
+      "sha256": "9d79581a7f19eff45f9bbbc8f99e72237bce8ceae9e4a321e043f5da80ee5369"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/03-flight.png",
+      "bytes": 60779,
+      "sha256": "e828fc6dc936e7acde3941b55d91269b2405aebff406cdfe636bed6db4c62d20"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/04-grown-watch.json",
+      "bytes": 587,
+      "sha256": "d8b9c425b38a2f8c2d6453ebf342c123bac1ff53f0463657ae15fe95c19c1031"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/04-grown-watch.png",
+      "bytes": 62012,
+      "sha256": "10f72d98aa1e3f834666270856854773030bc27d2297f0581f680b064b8b9300"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/05-natural-victory.json",
+      "bytes": 721,
+      "sha256": "870d294a8a6077311750bb6f2190026b5c10a9397742ab691fb793dd2764aa4f"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/05-natural-victory.png",
+      "bytes": 77190,
+      "sha256": "419084a4d05da292a9a7fdcbe7b5b5504b52ebaf5de872b59f7c266dfc5fa5b1"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/06-ordered-preview.json",
+      "bytes": 624,
+      "sha256": "86273d82cb137a1b293995b32c755035f7267edb736a4ed07dd341ac7ed82a96"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/06-ordered-preview.png",
+      "bytes": 69306,
+      "sha256": "429f5d9cec93fe16eff8d1772abde1a6bb809ebf5f59c9fb90cc0e4285ee8440"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/07-chime-victory.json",
+      "bytes": 771,
+      "sha256": "b7293a34ae63828c8efd166f98f071a8f89b7e1abd07969541318feeb599bb24"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/07-chime-victory.png",
+      "bytes": 81991,
+      "sha256": "873fb7d98528edd11c0e289c98d477f758d03847a377b30f56ee1d2e69d3d492"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/08-greedy-danger.json",
+      "bytes": 677,
+      "sha256": "f1616610178296eb8ec5618739114bc034cb1838a2c13d7fe91243f3e737843d"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/08-greedy-danger.png",
+      "bytes": 77105,
+      "sha256": "cd6c32dea3bc448e09afbb1d7bdcb00aa9891aa7d96fdbe096a561e2a72d3204"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/09-greedy-stranded.json",
+      "bytes": 715,
+      "sha256": "ba847e77c893f3e428b09abfbf67ce62145b306046527a3098be2db0d7366329"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/09-greedy-stranded.png",
+      "bytes": 84142,
+      "sha256": "73f8c7265836f0593aca57903ebf55cbcfa915e459a46b8eca93c0d554ab9096"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/10-key-claimed.json",
+      "bytes": 711,
+      "sha256": "937891f51add4fd2484a6fdf6135f771aa4c10562adc719a8dca883adb08c708"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/10-key-claimed.png",
+      "bytes": 66382,
+      "sha256": "31ee1cb0cd4f1c63fcab46181b1d0b8f43a9ffbdf3406bf16fdea208cd384b2c"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/11-trap-defeat.json",
+      "bytes": 740,
+      "sha256": "2b932af56307b885f93947d9b12d7d5a7579f013bfa53fd4cf062ba0449c47ac"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/11-trap-defeat.png",
+      "bytes": 74294,
+      "sha256": "adeaa85ff1cb9c9277bf868048c7423449c22bf3f6e5365de65eed55dec2552d"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/12-shield-forecast.json",
+      "bytes": 778,
+      "sha256": "b37c97e73ffc26ac61950650bcfd81bf8af74b9cf639175a53ec5717254951aa"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/12-shield-forecast.png",
+      "bytes": 73916,
+      "sha256": "073e0623e2f1cd9158b82795bae34bd9bb9d5198116624f8b5e8ef843f7af21c"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/13-sequence-victory.json",
+      "bytes": 899,
+      "sha256": "f547e2fdecc966980f536dd968459530b2b0d950f353b0cf633bac67953c6829"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/13-sequence-victory.png",
+      "bytes": 84898,
+      "sha256": "514044cc4ae051ac67d454805a3425163217927f3d5ccb599dc5c98dff0e2b84"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/14-sun-route-victory.json",
+      "bytes": 875,
+      "sha256": "39d5e480f6c0eccb8e912c6933786b20fb60231dee5efe74a22815b5f3767dde"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/14-sun-route-victory.png",
+      "bytes": 85932,
+      "sha256": "d68728a0b2f7804c53b29e6aebd335d98c59f297eba0afa439d096e343111d18"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/15-earned-journey.json",
+      "bytes": 883,
+      "sha256": "883b138385b24a4a570ef2ff2e384f02b942b7ccfb7bb3ba2987a8706648e207"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/15-earned-journey.png",
+      "bytes": 97920,
+      "sha256": "db9ea275988d3250fe76744f78e47179cce6fc0aa8e717efd0b22b6621177628"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/16-unfolded-aspect.json",
+      "bytes": 886,
+      "sha256": "6912b1f5dd105a419498a3bdd612e316af80b0fba54a7d92361ed280d155d2e2"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/16-unfolded-aspect.png",
+      "bytes": 110380,
+      "sha256": "70f9658622c3e7434520bbe9c7bb833aa9cfc2f9c41e6cd8d04e1596e842f74c"
+    },
+    {
+      "path": ".artifacts/prototype/rendered/result.json",
+      "bytes": 2109,
+      "sha256": "731d527bf0b56b5110f3407813dc3fc8bde1737af3108c723d4d3f53b1c4f5ed"
+    },
+    {
+      "path": ".artifacts/prototype/rendered.log",
+      "bytes": 234,
+      "sha256": "762990a052a3c27ffec402bcddff485b0f3beed1a598acf3a35151dea81e2be3"
+    },
+    {
+      "path": ".artifacts/prototype/rules/result.json",
+      "bytes": 706,
+      "sha256": "b2cd690dc00b11d939bd9a848d97ece63c6aacd38093d0f0291c7d994e91743d"
+    },
+    {
+      "path": ".artifacts/prototype/rules.log",
+      "bytes": 111,
+      "sha256": "9eeabf86e1e3e2febe1b0b6672799f84978c6ef8b3cdf4f59667535b80ffb4ab"
+    },
+    {
+      "path": ".artifacts/prototype/source/export_presets.cfg",
+      "bytes": 509,
+      "sha256": "e663757eda980ac52b8e771b438f3bb09f97fd3dfb01f15da3d6383a8ded78f0"
+    },
+    {
+      "path": ".artifacts/prototype/source/icon.svg",
+      "bytes": 394,
+      "sha256": "6bca3ee031a419daa07bd4b2790d6ce481b5686cff75a0ee197ebcc9f7053d1b"
+    },
+    {
+      "path": ".artifacts/prototype/source/icon.svg.import",
+      "bytes": 1013,
+      "sha256": "3847de679c56f4fcad0e14fb11b5eb0f45f068b7c59f489254b5c2c75c1b2320"
+    },
+    {
+      "path": ".artifacts/prototype/source/main.tscn",
+      "bytes": 166,
+      "sha256": "539a74d0621571fab563c8871aad99acdf0158e9202a9453217fb7bf17a4a5df"
+    },
+    {
+      "path": ".artifacts/prototype/source/project.godot",
+      "bytes": 777,
+      "sha256": "751c70e415c79b990af09f50ad47d0aedfce015b2ca067e91ed5c74e4fd789b0"
+    },
+    {
+      "path": ".artifacts/prototype/source/scripts/catalog_v1.gd",
+      "bytes": 2934,
+      "sha256": "4369130a59afd53fbe09db68adc6545a301d289d991670b6a2edfdca3dc04f53"
+    },
+    {
+      "path": ".artifacts/prototype/source/scripts/catalog_v1.gd.uid",
+      "bytes": 20,
+      "sha256": "06b7209b6113ae43f26a8a34359abc8d292cd4f2c0fb0382be2cfece5d7f1313"
+    },
+    {
+      "path": ".artifacts/prototype/source/scripts/content.gd",
+      "bytes": 430,
+      "sha256": "b733193eb2f228a911b83f087b1fc912d173baee7aed5bb9d33748b2e81b64e7"
+    },
+    {
+      "path": ".artifacts/prototype/source/scripts/content.gd.uid",
+      "bytes": 19,
+      "sha256": "2090f499c7cdeb2093df29a2ce8448caefcde09d6a6c13d2b2317b109ef2374d"
+    },
+    {
+      "path": ".artifacts/prototype/source/scripts/local_audio.gd",
+      "bytes": 727,
+      "sha256": "62e5b953ef6f18148f279028e454a5546074d5692dc5e378368f12764ac18bf9"
+    },
+    {
+      "path": ".artifacts/prototype/source/scripts/local_audio.gd.uid",
+      "bytes": 20,
+      "sha256": "a8c0c2c84080c34bac60f9d017e40759cd0f5a47b20b93fce6f75006d05a050e"
+    },
+    {
+      "path": ".artifacts/prototype/source/scripts/main.gd",
+      "bytes": 21428,
+      "sha256": "5f1dacc3cf1ad23bc52796daa96a3c741fcc05270176bbbe98210d8061b0e5b2"
+    },
+    {
+      "path": ".artifacts/prototype/source/scripts/main.gd.uid",
+      "bytes": 19,
+      "sha256": "814681d5bf55ea28a102a3c53c7176d636a272c31f8947c448fb1cf73512f486"
+    },
+    {
+      "path": ".artifacts/prototype/source/scripts/rules.gd",
+      "bytes": 5378,
+      "sha256": "5432339e42e95e02b14d64871cade704ccbb87f89a5c002412deed797291d950"
+    },
+    {
+      "path": ".artifacts/prototype/source/scripts/rules.gd.uid",
+      "bytes": 20,
+      "sha256": "0f0da31b6f4b0164d53f22234d2e228b740294f4e9929aa73b6355b36bc710e8"
+    },
+    {
+      "path": ".artifacts/prototype/source/scripts/save_files.gd",
+      "bytes": 736,
+      "sha256": "67b532124aab977b2fb103c12d05a9a9152f6d9aee93113b8476796f880859db"
+    },
+    {
+      "path": ".artifacts/prototype/source/scripts/save_files.gd.uid",
+      "bytes": 20,
+      "sha256": "b1be48ebc254694afe695f6332e8f7cd498af14fd3926377cae93d9e861bf37e"
+    },
+    {
+      "path": ".artifacts/prototype/source/scripts/save_store.gd",
+      "bytes": 5870,
+      "sha256": "0a483542dd34977e9f233458e8277bf6d0f0ffd5950c9cf8ded5977ec6db80b7"
+    },
+    {
+      "path": ".artifacts/prototype/source/scripts/save_store.gd.uid",
+      "bytes": 20,
+      "sha256": "6983810b6668e5705d11e88ab7b7d6494086044a9599ef5e929ea98cb4c1a887"
+    },
+    {
+      "path": ".artifacts/prototype/source/tests/fault_files.gd",
+      "bytes": 1112,
+      "sha256": "17cbbe3147a916429b8d8da3ee1da29d6c72b068537a188916f3a8ec3dde5d13"
+    },
+    {
+      "path": ".artifacts/prototype/source/tests/fault_files.gd.uid",
+      "bytes": 20,
+      "sha256": "1640215fc56b9294bffa536d71f18cb82fdb1964f71a39e63f3dae1dbb1ed8e1"
+    },
+    {
+      "path": ".artifacts/prototype/source/tests/motion.gd",
+      "bytes": 1848,
+      "sha256": "c80eab5da92ff80b7c56a3a4a79db7fd3fc25632e2dc7a6422f8762735765f93"
+    },
+    {
+      "path": ".artifacts/prototype/source/tests/motion.gd.uid",
+      "bytes": 19,
+      "sha256": "dbf01c19540c458ec75449b46cbc57dcf4bd5ed719a9e92df5870cdb9f0978c6"
+    },
+    {
+      "path": ".artifacts/prototype/source/tests/playthrough.gd",
+      "bytes": 9964,
+      "sha256": "bbdd78ee3b076be70f34a46bd159a2f3d6e9b82770c0fc94eaf1138f99a703cd"
+    },
+    {
+      "path": ".artifacts/prototype/source/tests/playthrough.gd.uid",
+      "bytes": 20,
+      "sha256": "66b700d6cf0a31a9f810a27c889ef9de8d0f76da2464d19fdaeaddd89094f739"
+    },
+    {
+      "path": ".artifacts/prototype/source/tests/run_tests.gd",
+      "bytes": 7421,
+      "sha256": "22db1a3eb9ce4273e8a6f8c5db8488032dc612039dbac99b7d1db9f4395a4332"
+    },
+    {
+      "path": ".artifacts/prototype/source/tests/run_tests.gd.uid",
+      "bytes": 20,
+      "sha256": "83bcb327fd121e34d059d662a0a9743250335f4e195f75375a466ced854d05fa"
+    },
+    {
+      "path": ".artifacts/prototype/source/tools/capture.py",
+      "bytes": 1866,
+      "sha256": "b697117846f8bc130e948d3b4b22a107450b5834065c836a55781e3cdf18bc15"
+    },
+    {
+      "path": ".artifacts/prototype/source/tools/check.py",
+      "bytes": 1649,
+      "sha256": "907509b1208656db9cf9a150b147344fac93487dedc3d49760da71c4b1e71601"
+    },
+    {
+      "path": ".artifacts/prototype/source-bindings.json",
+      "bytes": 4296,
+      "sha256": "2cf1fdee0069293e48bd2d6259644b6700ebf482b77649797724a4f1b0861932"
+    }
+  ],
+  "limitations": [
+    "Four puzzles only; full authored journey not implemented",
+    "Independent appeal/fidelity review pending",
+    "Android export/lifecycle/update and physical Fold7 testing pending",
+    "Sound output, safe areas, human pacing/fun and measured phone FPS unverified",
+    "Solver shortest routes cover complete represented state; no uniqueness claim"
+  ]
+}
