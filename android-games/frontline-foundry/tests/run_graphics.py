@@ -50,15 +50,20 @@ def import_project(run, env):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=["checks", "capture"])
+    parser.add_argument("mode", choices=["checks", "capture", "closure"])
     parser.add_argument("--render", action="store_true")
     parser.add_argument("--movie", action="store_true")
     parser.add_argument("--seconds", type=float, default=145)
     parser.add_argument("--resume-from", type=Path)
     parser.add_argument("--label", default="graphics")
+    parser.add_argument("--stage", choices=["sideways", "park", "restore", "retry"], default="park")
+    parser.add_argument("--native-frames", action="store_true")
+    parser.add_argument("--movie-fps", type=int, choices=[30, 60], default=30)
     args = parser.parse_args()
     if args.movie and (args.mode != "capture" or not args.render):
         parser.error("Movie recording requires capture --render and the coordinator's GPU slot")
+    if args.native_frames and (args.mode != "closure" or not args.render or args.movie):
+        parser.error("Native frame recording requires closure --render and the coordinator's GPU slot")
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     run = PROJECT / ".artifacts" / f"{args.label}-{args.mode}-{stamp}"
     run.mkdir(parents=True)
@@ -92,12 +97,19 @@ def main():
         expected_start.write_text(json.dumps(max(packets, key=lambda item: item["revision"])))
     command = [str(GODOT), "--path", str(PROJECT)]
     command += ["--resolution", "720x1280", "--position", "0,0"] if args.render else ["--headless"]
-    command += ["--script", "res://tests/" + ("presentation_tests.gd" if args.mode == "checks" else "graphics_benchmark.gd")]
+    script = {"checks": "presentation_tests.gd", "capture": "graphics_benchmark.gd", "closure": "graphics_closure.gd"}[args.mode]
+    command += ["--script", "res://tests/" + script]
     if args.movie:
-        command += ["--fixed-fps", "30", "--write-movie", str(run / "continuous.avi")]
+        command += ["--fixed-fps", str(args.movie_fps), "--write-movie", str(run / "continuous.avi")]
+    elif args.mode == "closure":
+        command += ["--fixed-fps", str(args.movie_fps)]
     command += ["--", "--capture-dir=" + str(run), "--seconds=" + str(args.seconds)]
     if expected_start:
         command += ["--expected-start=" + str(expected_start)]
+    if args.mode == "closure":
+        command += ["--stage=" + args.stage]
+        if args.native_frames:
+            command += ["--native-frames"]
     if args.mode == "checks":
         baseline = run / "baseline"
         baseline.mkdir()
@@ -128,16 +140,29 @@ def main():
     report = json.loads((run / "benchmark-report.json").read_text()) if (run / "benchmark-report.json").exists() else None
     passed = imported["passed"] and code == 0 and not any(x in output for x in ["ERROR:", "SCRIPT ERROR:", "Parse Error:"])
     passed &= ("SUITE_COMPLETE: PASS" in output) if args.mode == "checks" else (report is not None and not report["errors"])
+    frame_encoding = None
+    if args.native_frames and (run / "frames/000000.png").exists():
+        encode = ["ffmpeg", "-v", "error", "-framerate", str(args.movie_fps), "-i", str(run / "frames/%06d.png"),
+                  "-c:v", "libx264", "-preset", "fast", "-crf", "18", "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(run / "continuous.mp4")]
+        encoded = subprocess.run(encode, capture_output=True)
+        frame_encoding = {"command": encode, "exit_code": encoded.returncode, "stderr": encoded.stderr.decode(errors="replace"),
+                          "pixel_policy": "Native game frames blitted at 1:1 into a fixed evidence canvas; padding only, no scaling or temporal retiming", "audio": "silent focused validation"}
+        passed &= encoded.returncode == 0
+        (run / "frame-encoding.json").write_text(json.dumps(frame_encoding, indent=2) + "\n")
+    elif args.native_frames:
+        passed = False
     probe = None
-    if args.movie and (run / "continuous.avi").exists():
-        probe = json.loads(subprocess.check_output(["ffprobe", "-v", "error", "-show_streams", "-show_format", "-of", "json", str(run / "continuous.avi")]))
+    movie_path = run / ("continuous.mp4" if args.native_frames else "continuous.avi")
+    if (args.movie or args.native_frames) and movie_path.exists():
+        probe = json.loads(subprocess.check_output(["ffprobe", "-v", "error", "-show_streams", "-show_format", "-of", "json", str(movie_path)]))
         video = next(stream for stream in probe["streams"] if stream["codec_type"] == "video")
         probe["meets_native_720x1280"] = video["width"] >= 720 and video["height"] >= 1280
-        probe["full_decode_passed"] = subprocess.run(["ffmpeg", "-v", "error", "-i", str(run / "continuous.avi"), "-f", "null", "-"], capture_output=True).returncode == 0
+        probe["full_decode_passed"] = subprocess.run(["ffmpeg", "-v", "error", "-i", str(movie_path), "-f", "null", "-"], capture_output=True).returncode == 0
         (run / "movie-probe.json").write_text(json.dumps(probe, indent=2) + "\n")
         passed &= probe["meets_native_720x1280"] and probe["full_decode_passed"]
     receipt = {"mode": args.mode, "command": command, "exit_code": code, "passed": passed,
                "command_executed": imported["passed"], "import_preflight": imported,
+               "native_frame_encoding": frame_encoding,
                "source_unchanged": before == sources(), "resume_from": str(args.resume_from) if args.resume_from else None,
                "resume_slot_sha256": resume, "engine": str(GODOT),
                "encoded_movie_dimensions": ({key: next(stream for stream in probe["streams"] if stream["codec_type"] == "video")[key] for key in ["width", "height", "r_frame_rate"]} if probe else None),

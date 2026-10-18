@@ -73,8 +73,8 @@ barrel and locates them just beyond its forward cap. The added geometry control
 keeps the hull facing forward while aiming sideways and recoiling; the socket
 must stay at the transformed barrel tip throughout. This changes `actor.gd` and
 `presentation_tests.gd`, not rules, damage timing or GLB assets. Those changes
-postdate the historical final clips above; refreshed captures are deliberately
-held until the independent visual report identifies any other material fixes.
+postdate the historical full clips. Focused rendered closure evidence for that
+declared delta is recorded below; the original full clips retain their own pins.
 
 ```powershell
 python -B android-games/frontline-foundry/tests/run_graphics.py checks
@@ -94,6 +94,19 @@ wall speed and movie CPU/GPU averages do not establish real-time host FPS, frame
 time tails or physical-phone performance. ffprobe and full decode determine the
 actual encoded dimensions, separately from logical/window/framebuffer values.
 No video upscaling, retiming, frame interpolation, cuts or hidden state injection.
+
+The separate `closure` mode uses real GUI input, the Window size API and actual
+app-written saves. `--native-frames` captures each native framebuffer at 1:1 into
+a fixed 984x1280 evidence canvas, with padding only. This preserves both the
+720x1280 native window and the resized 984x1092 window without stretching/cropping
+the recording. These focused MP4s are silent, separate process passages. They
+are not stitched into a purported continuous cold-relaunch movie. For example:
+
+```powershell
+python -B android-games/frontline-foundry/tests/run_graphics.py closure --stage sideways --render --native-frames --movie-fps 60 --resume-from android-games/frontline-foundry/.artifacts/graphics-closure-earned/sideways
+python -B android-games/frontline-foundry/tests/run_graphics.py closure --stage park --render --native-frames --resume-from android-games/frontline-foundry/.artifacts/graphics-closure-earned/park
+# Then use that park run's closure-save directory for --stage restore.
+```
 
 ## Candidate evidence
 
@@ -124,8 +137,46 @@ Finale: 67.4 encoded seconds, genuine Foundry Liberation 145.4667 to victory at
 `2485da69468e9d9d0f0dfc3e537dc2d3aade5d6f8a4038545f25e51e9c187f75`.
 Both AVI originals and CPU H.264 transcodes fully decode at native 720x1280,
 30 FPS, with no rescaling or retiming. All 100 recorded executable/resource
-source hashes match current source. `video-transcode.json` binds each MP4 to its
+source hashes pin the original captured candidate. `video-transcode.json` binds each MP4 to its
 original AVI; `benchmark720-evidence-summary.json` indexes both runs.
+
+## Focused review closure, after the vehicle socket fix
+
+The runtime difference from the original full clips is **only** the six-line
+vehicle socket branch in `scripts/presentation/actor.gd` (`24f4175`). Rules, damage
+timing, GLB assets, adapter, outpost and project settings are unchanged. Other
+executable differences are `tests/presentation_tests.gd` (geometry control),
+`tests/run_graphics.py` (import/closure tooling), and the new
+`tests/graphics_closure.gd` plus UID. The 60-check source/geometry suite is retained
+in `vehicle-socket-review-fix-checks-20261018T125134233352Z/receipt.json`; the old
+root-fixed socket fails the same lateral/recoil geometry sensitivity control.
+
+All four focused passages below share the exact same 102 executable/resource
+hashes; every receipt artifact/hash was read back, all directly captured PNGs
+decoded, and all four MP4s fully decoded. The encoded canvas is 984x1280; native
+game pixels are 720x1280, plus 984x1092 during the actual resize passage.
+
+| Passage | Checks | Duration / FPS | Clip under `.artifacts/` |
+| --- | --- | --- | --- |
+| Actual authoritative lateral rover shot, tracer and recoil; GUI pause | 5 | 14.9167 s / 60 | `focused-sideways-closure-20261018T130653959971Z/continuous.mp4` |
+| GUI pause/resume, reduced-effects Storm telegraph, paused and live window resize, app-written cold-save boundary | 18 | 31.3333 s / 30 | `focused-reset-park-closure-20261018T130834682611Z/continuous.mp4` |
+| Separate cold process loading that exact complete app-written boundary; reduced-effects warning/motion and resumed pause | 9 | 5.9 s / 30 | `focused-cold-restore-closure-20261018T130957436032Z/continuous.mp4` |
+| Genuine terminal victory to actual Retry, ready/Launch/movement/pause, retaining the whole earned profile | 6 | 4.9333 s / 30 | `focused-genuine-retry-closure-20261018T131027480039Z/continuous.mp4` |
+
+`focused-closure-verification.json` indexes all four clip/receipt hashes, actual
+native frame sizes and source deltas. Each run retains its raw native frame
+sequence, `closure-report.json` (input checks, frame timing, actual shot geometry,
+window events), full source archive, original app slots and expected full saved
+boundary. The cold run begins exactly at the park run's 192.8 simulation-second
+app-written state/profile/settings/career; the two save-slot hashes match. The
+initial opening/finale/terminal boundaries were extracted byte-for-byte from
+hash-verified raw slot snapshots in the original passed, genuinely input-earned
+`paced-rendered-20261018T064825390242Z` run. Their provenance is retained in
+`graphics-closure-earned/{sideways,park,retry}/provenance.json`.
+
+These checks and the directly viewed lateral-shot/resize originals support the
+focused fix; independent root/Astra playback and acceptance remain pending. No
+full campaign or original long-clip rerun was performed for this closure.
 
 Historical low-resolution and washed-out previews remain separate. In particular,
 `dense-finale-capture-20261018T121953737629Z` is rejected as finale evidence: the
@@ -137,11 +188,11 @@ validation and complete-boundary equality. No source save or validator was alter
 
 ## Review and release boundaries
 
-Opening and later normal-speed full playback, grounded gait/grip/aim, boss kit
-materials/attachments, shadows, death/victory transitions, composition and all
-scorecard categories still require independent root/Astra review. The captured
-first mission and finale do not certify unseen regional art. The first review
-should cite actual frames/timestamps; skeleton assertions alone are insufficient.
+The initial independent Astra review scored seven rows 3/4 and attacks/contact
+2/4 because of the old vehicle socket. It also required the short reset passage.
+The source fix and focused rendered evidence above await final review; no
+acceptance is inferred from checks alone. The captured first mission and finale
+do not certify unseen regional art or every actor/attack combination.
 
 The source remains version 0.2.0/code 2 because this is a benchmark, with no APK
 export/install or claimed graphics release. Coordinator must assign a higher
