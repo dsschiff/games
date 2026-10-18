@@ -1,0 +1,122 @@
+{
+  "checkpoint": "hearthguard-first-playable-0.1.0",
+  "status": "Frozen for independent first-loop review; not campaign or Android/phone acceptance",
+  "base_commit": "1e3bfe7a73b15a3fadce3232a75a2e143f41d8a4",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "ownership": "android-games/hearthguard/",
+  "executed_source_files": {
+    "icon.svg": "1fe2f709f71be5250ecbe223a0e12eb785952e6c13b470a0392d8fb5e70c4b2f",
+    "main.tscn": "1683e3956d37b6f520277287ade4ae0572672b75c62d17cc878a6896ae2ce093",
+    "project.godot": "3f722c4b7e4b15c6160e1f72f90367d3fd0922ea857845b2daafc72dd0a3e8f6",
+    "README.md": "ff074fc9a0985783b1dd581b97a5869b65cf6b1bf1cfed8219e5c9ee0a302013",
+    "scripts/main.gd": "b3344a5b878ea3119be281846a9b96944f849ebd5b354f2e352b3a163fc34acf",
+    "scripts/rules.gd": "64ec77aa1e43f3d0ceda2c4404286de74c16dcb530da1427619ecfc5c8f57483",
+    "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+    "scripts/save_store.gd": "951b5688d9fb02f1eb1028649cc73e48de50944bc8c580a5a3253b8877c3279f",
+    "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+    "tests/playthrough.gd": "75c2ed00b77064ed4d28dff99079f8be2e9866b9c279053655e56aa5ec2f5d00",
+    "tests/run_desktop.py": "e694625de77366140de431ee2226abcb2109caffd90af6c5ef0d2989b371e9a1",
+    "tests/run_tests.gd": "64e7df771f05c35da7cf5ad655542923c10d17fb431d8d4e94daaa99e927321e"
+  },
+  "source_fingerprint": "9ba19e1dbd1af91c356ccedb0c2cbed270f11d19880a39874b684299dcd55d97",
+  "suite_receipts": [
+    {
+      "path": ".artifacts/freeze1-headless-20261018T032208565258Z/receipt.json",
+      "sha256": "7ab0ba90cb93813c4c38398d8a8041e0770f8e18f5d841030cacf8c1586c1a3a",
+      "scope": "headless",
+      "passed": true,
+      "source_unchanged": true
+    },
+    {
+      "path": ".artifacts/freeze1-movie-20261018T032413941224Z/receipt.json",
+      "sha256": "33192799e5031424b91be680f37f702508f78041e7e00daefa8dd0f505cbe25e",
+      "scope": "movie",
+      "passed": true,
+      "source_unchanged": true
+    },
+    {
+      "path": ".artifacts/freeze1-rendered-20261018T032226763170Z/receipt.json",
+      "sha256": "52a6bf498524f6c37c9cdfc74e9cd04512e93abc6cb7f746eb0f91c4cca47280",
+      "scope": "rendered",
+      "passed": true,
+      "source_unchanged": true
+    },
+    {
+      "path": ".artifacts/freeze1-rules-20261018T032207744871Z/receipt.json",
+      "sha256": "acf197a8e4be5743220ceb078775d97a423217405d09e9a0651b196a99870c49",
+      "scope": "rules",
+      "passed": true,
+      "source_unchanged": true
+    }
+  ],
+  "derived_artifacts": [
+    {
+      "path": ".artifacts/freeze1-movie-20261018T032413941224Z/continuous.mp4",
+      "bytes": 906767,
+      "sha256": "4ee4c52bdb7564a926b0c0f2ab9ec70f34c09e7684df0db18ae4a68a45f6f92e"
+    },
+    {
+      "path": ".artifacts/freeze1-movie-20261018T032413941224Z/ffmpeg.log",
+      "bytes": 4275,
+      "sha256": "7fdd16fa715af7458ef8f2cae535567ed76b0e9abaaade3f236c7740afbec0d8"
+    },
+    {
+      "path": ".artifacts/freeze1-movie-20261018T032413941224Z/movie-probe.json",
+      "bytes": 4686,
+      "sha256": "fb43eb27b8c0853fe3687f5024c2c1df40c8ac0a3a9e5e310fa36c072c667d2c"
+    },
+    {
+      "path": ".artifacts/freeze1-movie-20261018T032413941224Z/full-decode.log",
+      "bytes": 49,
+      "sha256": "9d0761854539a4ab28980b2fea351bf97bb46bd2242e42b4e17403afe2fd09d7"
+    },
+    {
+      "path": ".artifacts/freeze1-movie-20261018T032413941224Z/png-validation.json",
+      "bytes": 4342,
+      "sha256": "5f873958fcc03a518cf89bfabae5f0d47d92973b7ed8bb3fdf979fa64b6885d1"
+    },
+    {
+      "path": ".artifacts/freeze1-movie-20261018T032413941224Z/movie-frame-19.png",
+      "bytes": 237487,
+      "sha256": "3e737c4d84024142c76bdd75bdbd149de68a7695a9fde746037c9ef169afc4ad"
+    }
+  ],
+  "results": {
+    "rules_checks": 56,
+    "headless_input_checks": 44,
+    "rendered_input_checks": 46,
+    "continuous_movie_checks": 9,
+    "rendered_original_pngs": 21,
+    "movie_original_pngs": 9,
+    "defeat_sim_seconds": 29.9333333333329,
+    "victory_sim_seconds": 43.6166666666655,
+    "victory_integrity": 8,
+    "victory_kills": 20,
+    "victory_wallet": 42,
+    "victory_spent": 20,
+    "profile_attempts": 2,
+    "profile_wins": 1,
+    "movie_seconds": 24.033333,
+    "movie_dimensions": [
+      450,
+      800
+    ],
+    "movie_frames": 1442,
+    "movie_edited": false
+  },
+  "scope_notes": [
+    "All gameplay evidence uses actual engine ScreenTouch/drag/GUI/key input and normal processing. Policy reads state but never injects earned economy or progress. No forced terminal redraw.",
+    "The continuous fresh-run movie ends after second investment; natural loss/Retry/win and active reload/resize are separate full-run captures.",
+    "Storage fault adapters are synthetic. Headless restoration of code text is a fixture because that display has no clipboard; interactive rendered run verifies the real clipboard and key editing.",
+    "Reference K2 attribution remains third-party qualified. Explicit button, exact economy, finite five-coin bootstrap and original assets are our design choices.",
+    "Development failures remain under ignored .artifacts. Earlier sandbox clipboard failures and an earlier source-changing rendered development run are not accepted frozen receipts.",
+    "Runtime, tests and README bytes are identical across all four accepted frozen suites. This index and CHECKPOINT.md are metadata added after execution, deliberately outside the recursive source binding."
+  ],
+  "limits": [
+    "No APK/export, Android/emulator/ADB or physical-phone work performed.",
+    "Native Android Back, clipboard, offline lifecycle, update preservation and storage interruption still need coordinator verification.",
+    "Fold7 identity, Android version, physical folding/safe areas, sound audibility, frame rate and human pacing/fun remain unverified.",
+    "First slice only: full 30-60-minute arc, 10maps/3regions, three tower families/forks, six enemy roles/three bosses and seeded replay remain future work after review."
+  ],
+  "next_milestone": "Coordinator independent Astra first-loop appeal/fidelity/correctness review on this exact checkpoint before campaign expansion."
+}
