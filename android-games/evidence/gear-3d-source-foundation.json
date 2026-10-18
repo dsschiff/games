@@ -1,0 +1,72 @@
+{
+  "scope": "First Gear3D source foundation and bounded first rendered inspection; full visual and Android graphics acceptance remain open",
+  "status": "source_supported_first_render_requires_polish",
+  "worker_commit": "f67112c590d0db67ade6814416ec752a1d6a2422",
+  "integration_commit": "39750be290f32511cbf3d753ccc3f5c93d810e97",
+  "game_tree": "b2ef3a4528453049aaa61df1a9eb01380968e416",
+  "source_review": "android-games/reviews/gear-3d-early-source-astra.md",
+  "assets": {
+    "original_glbs": 22,
+    "bytes": 6637524,
+    "skinned_actor_models": 12,
+    "joint_range": [
+      16,
+      18
+    ],
+    "repeat_exports_byte_identical": true,
+    "runtime_skeletal_animation": true
+  },
+  "independent_coordinator_checks": {
+    "focused": 6932,
+    "input": 1462,
+    "failures": 0,
+    "source_unchanged": true,
+    "state_equality_ticks": 4500,
+    "event_recipients": 2236,
+    "cases": [
+      "camp_04",
+      "camp_09",
+      "legacy iron_trial"
+    ],
+    "input_backend": "Isolated test save backend; not native Android transfer"
+  },
+  "worker_existing_rules_and_saves": {
+    "checks": 164,
+    "reported_pass": true
+  },
+  "bounded_render": {
+    "run": "inspect-20261018T134711202492Z",
+    "source_unchanged": true,
+    "checks": 6,
+    "failures": 0,
+    "original_images": 10,
+    "actual_input": "Fresh First Spark, connected board, production/deployment/combat, pause, inner resize, exit selection and transfer dialog",
+    "root_direct_views": [
+      "05-early-battle.png",
+      "08-resumed-inner.png"
+    ],
+    "renderer": "Godot4.7.2 Compatibility / NVIDIA GeForce RTX5070 Ti",
+    "performance_acceptance": false
+  },
+  "canonical_preservation": {
+    "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\gear-cpu-foundation-f67112c",
+    "files": 51,
+    "bytes": 2814537,
+    "receipt_sha256": "d127bf68bd420d24aa909f252591922d3cac5718f2d82b0526ca8c6ba55d3e2c"
+  },
+  "visible_followups": [
+    "Opaque utility panels obscure deploying troops",
+    "Plain three-stripe field and repeated edge scenery need authored variation",
+    "Foundry deck, rim, inset sockets and material restraint need polish"
+  ],
+  "evidence_qualification": "Historical worker input receipt has three generated test UID additions; runtime/art unchanged. Current independent coordinator checks and input source remain stable. Helper must bind after import and reject subsequent source drift before final captures.",
+  "remaining": [
+    "Correct composition/corridor issues before long movies",
+    "Review normal-speed opening/heavy/later motion and reset passage in all eight categories",
+    "Measure actual representative heavy host frame tails and rendering counters",
+    "Freeze0.4.0/code8, signed APK and genuine7-to8 native update/lifecycle/resize/transfer checks"
+  ],
+  "visual_categories_scored": false,
+  "new_graphical_apk_delivered": false,
+  "physical_phone_testing": "deferred_by_user"
+}

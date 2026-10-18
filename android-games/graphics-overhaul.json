@@ -128,5 +128,12 @@
     "android_release": "not_yet_built",
     "production": "authorized_first_pair"
   },
-  "render_slot": "Frontline full production; Gear CPU only until serialized grant"
+  "render_slot": "Returned to Frontline full production after Gear first inspection; Gear CPU polish before second bounded slot",
+  "gear_3d_checkpoint": {
+    "evidence": "android-games/evidence/gear-3d-source-foundation.json",
+    "worker_commit": "f67112c590d0db67ade6814416ec752a1d6a2422",
+    "integration_commit": "39750be290f32511cbf3d753ccc3f5c93d810e97",
+    "status": "source_supported_first_render_requires_polish",
+    "graphical_apk": "not_yet_built"
+  }
 }
