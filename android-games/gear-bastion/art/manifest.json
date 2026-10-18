@@ -3,7 +3,7 @@
   "authorship": "Original Gear Bastion authored brass machinery, automata and insect sculpture; no external art",
   "blender": "4.5.14 LTS 62c1db4208e8",
   "portable_archive_sha256": "b9533d2397ac1984db4466fb23a7a4649391cca93f6e84209f9bcc60d071c8b9",
-  "generator_sha256": "b07ec1271cf35c99ae8604f9a3909629ff49447ecf55dd8c90fd5ffac945b483",
+  "generator_sha256": "40c3f831a39c0ad5ea7933f14fe98916da8e07398cf431550c67c24cc349e6b6",
   "mesh_helpers_sha256": "ef6336d19019b76d6d7f81556ac649b50ccffb865bbd2a2da6802197f3b162fb",
   "units": "meters; Blender +Y forward / Godot -Z forward; glTF Y-up",
   "animation": {
@@ -24,8 +24,8 @@
   "assets": [
     {
       "file": "models/arch.glb",
-      "sha256": "d6457bc5e90c932c256db6a64132783dd42894d1b601c00fcc8098f39fd5d702",
-      "bytes": 115256,
+      "sha256": "4e225cff31f433c88c0921f1235db63bf3e2e0179efcc4882f2ec56f3a0661a1",
+      "bytes": 115244,
       "contact_socket_godot": null,
       "triangles": 3008,
       "mesh_nodes": 4,
@@ -40,8 +40,8 @@
     },
     {
       "file": "models/beetle.glb",
-      "sha256": "728f9ee21f60c766e264b20fab6b117f9961fffc5cfeb988d9cc8e959986f739",
-      "bytes": 419584,
+      "sha256": "234b03ff2e78a9a95dbb11eaaf55b3551bd10af6555e2a841a0a5ca978e3ecdc",
+      "bytes": 419572,
       "contact_socket_godot": [
         0,
         0.25,
@@ -78,8 +78,8 @@
     },
     {
       "file": "models/captain.glb",
-      "sha256": "73096bf5a1c42d3cf3d902c0582aa70f2a99433055aad4fea8ce40410023a91d",
-      "bytes": 493896,
+      "sha256": "0b56751ee6a46dc65cb6898bdb9014b748600de70e81202e6fce394f32b6f780",
+      "bytes": 493880,
       "contact_socket_godot": [
         0,
         0.4,
@@ -116,8 +116,8 @@
     },
     {
       "file": "models/carapace.glb",
-      "sha256": "6dde02a757b4099c496cef63500feabc6b02b7476ce58d753b9298b1534d293a",
-      "bytes": 495060,
+      "sha256": "a110228ab4c97767de4149c25d1e26be2027e39d42fe89458f081ae49fafbdfa",
+      "bytes": 495044,
       "contact_socket_godot": [
         0,
         0.25,
@@ -155,8 +155,8 @@
     },
     {
       "file": "models/core.glb",
-      "sha256": "c19cb9fd0b4c96b95d40d871fb70e23aa421e8ec93216150cde3c2de3e14367a",
-      "bytes": 216580,
+      "sha256": "70240c54e7617363b21ee3d4d9fa1d41a7c5483eda8003f7fb782da98b23bd08",
+      "bytes": 216564,
       "contact_socket_godot": null,
       "triangles": 4888,
       "mesh_nodes": 4,
@@ -171,8 +171,8 @@
     },
     {
       "file": "models/drive.glb",
-      "sha256": "8fe210b3a9ef4c0b8d2be17e2738a3522e1ce6a437f6b5dcaa07eeea57eae9d1",
-      "bytes": 216580,
+      "sha256": "2e0021e3d7569914d3f9f581c2a31fba390a3bba2508312a47caa99df4ebebd1",
+      "bytes": 216548,
       "contact_socket_godot": null,
       "triangles": 4888,
       "mesh_nodes": 4,
@@ -186,60 +186,95 @@
       "joints": []
     },
     {
+      "file": "models/foundry_deck.glb",
+      "sha256": "099f762157724a9d466a799f8c4c3c093b8ef2a1512fc63baf0135f049240ad5",
+      "bytes": 1071688,
+      "contact_socket_godot": null,
+      "triangles": 22076,
+      "mesh_nodes": 5,
+      "materials": [
+        "Iron",
+        "DeckEnamel",
+        "Brass",
+        "SocketRecess",
+        "PolishedRim"
+      ],
+      "skin_joints": [],
+      "joints": []
+    },
+    {
       "file": "models/generator_guard.glb",
-      "sha256": "234d363dbecca3a8a30e1b1bc34eb4c6c695d6cbcf9f5816c7fb85f952685282",
-      "bytes": 85948,
+      "sha256": "c15f34d65711cb63f8b6ca8476c3aa75a5bfcbc663e0c25584a3be7c48176535",
+      "bytes": 147060,
       "contact_socket_godot": null,
       "triangles": 1692,
       "mesh_nodes": 5,
       "materials": [
-        "Iron",
-        "Enamel",
         "Brass",
-        "PolishedRim",
-        "Ivory"
+        "Enamel",
+        "Iron",
+        "Ivory",
+        "PolishedRim"
       ],
-      "skin_joints": [],
-      "joints": []
+      "skin_joints": [
+        3
+      ],
+      "joints": [
+        "Root",
+        "PistonL",
+        "PistonR"
+      ]
     },
     {
       "file": "models/generator_mortar.glb",
-      "sha256": "874d36bb5f1a4f4516d7e9be25be1e1f191bbecb43eab6bfaacd3b959e752fcd",
-      "bytes": 88744,
+      "sha256": "9644a9e8fa3670f847992052c346bab36889a07d5a65cf2ffc93e7d8ae807c71",
+      "bytes": 152040,
       "contact_socket_godot": null,
       "triangles": 1692,
       "mesh_nodes": 5,
       "materials": [
-        "Iron",
-        "Enamel",
         "Brass",
-        "PolishedRim",
-        "Ivory"
+        "Enamel",
+        "Iron",
+        "Ivory",
+        "PolishedRim"
       ],
-      "skin_joints": [],
-      "joints": []
+      "skin_joints": [
+        3
+      ],
+      "joints": [
+        "Root",
+        "PistonL",
+        "PistonR"
+      ]
     },
     {
       "file": "models/generator_ranger.glb",
-      "sha256": "37d9aedc375bbba7b5d61de780dfbd9a31357fc5f4b41f8417971a5e90b190ac",
-      "bytes": 95892,
+      "sha256": "50ddd2f0af3513c2b5c574a7fa8dfd7858e3f238d00a816be7aed9ca760c2325",
+      "bytes": 164296,
       "contact_socket_godot": null,
       "triangles": 1880,
       "mesh_nodes": 5,
       "materials": [
-        "Iron",
-        "Enamel",
         "Brass",
-        "PolishedRim",
-        "Ivory"
+        "Enamel",
+        "Iron",
+        "Ivory",
+        "PolishedRim"
       ],
-      "skin_joints": [],
-      "joints": []
+      "skin_joints": [
+        3
+      ],
+      "joints": [
+        "Root",
+        "PistonL",
+        "PistonR"
+      ]
     },
     {
       "file": "models/guard.glb",
-      "sha256": "75ea3544b03e7afc8033257f0526d4792b07deb3d4e1dbc99fb552ce3be32b65",
-      "bytes": 505244,
+      "sha256": "87ab7644e2e13042ea74a615a72ad10f903de548cba0e3128f7b0e52cdd6f175",
+      "bytes": 505216,
       "contact_socket_godot": [
         0.34,
         1.28,
@@ -279,8 +314,8 @@
     },
     {
       "file": "models/matriarch.glb",
-      "sha256": "58ec33f3addb78f1ddad1722c5dac8300d8c1f61b3ebb4573e20f088b768272c",
-      "bytes": 511708,
+      "sha256": "1a83f9e34caf872e01168aaebfea1e77850cde300996998c6226acfa8208b12e",
+      "bytes": 511692,
       "contact_socket_godot": [
         0,
         0.4,
@@ -320,8 +355,8 @@
     },
     {
       "file": "models/mortar.glb",
-      "sha256": "646d96875ffa1e35aebb6fc559d4c2d26e0898eb84e45d94f5b207871a6b1b53",
-      "bytes": 497532,
+      "sha256": "0324c72ee5e99b8abeb1d21cbe471819139206bd5fabce069c8c549321083d7e",
+      "bytes": 497504,
       "contact_socket_godot": [
         0.34,
         1.12,
@@ -360,9 +395,23 @@
       ]
     },
     {
+      "file": "models/paver.glb",
+      "sha256": "710336f9c559d4b01cba4b254158b6e8abf5703bd71196f390582274467ed800",
+      "bytes": 15836,
+      "contact_socket_godot": null,
+      "triangles": 376,
+      "mesh_nodes": 2,
+      "materials": [
+        "PavingStone",
+        "PavingEdge"
+      ],
+      "skin_joints": [],
+      "joints": []
+    },
+    {
       "file": "models/ranger.glb",
-      "sha256": "3d68dd4f04f383a061285e102e7b35e8690477bf24b6e92d33e03716678356ee",
-      "bytes": 510976,
+      "sha256": "481eac1974ab1bc2a333219514f9143a318bf5385ec7e174d1fbbcf2306d49b6",
+      "bytes": 510944,
       "contact_socket_godot": [
         0.34,
         0.86,
@@ -402,8 +451,8 @@
     },
     {
       "file": "models/region_1.glb",
-      "sha256": "ed8c7b1430ac0c301b42acebbe2b1d64491055a57d51f0222168ec808e23c7ea",
-      "bytes": 52964,
+      "sha256": "61a49f79d94afa383a524d586f1196b304080932e3c232fddb3490f889b0554e",
+      "bytes": 52948,
       "contact_socket_godot": null,
       "triangles": 1128,
       "mesh_nodes": 3,
@@ -432,8 +481,8 @@
     },
     {
       "file": "models/region_3.glb",
-      "sha256": "0a9416ec86299194c10715189233f1fbd143db234a951cb313ed006dd88b1ee7",
-      "bytes": 35396,
+      "sha256": "aa647c9658a3410c4a9a2a388390a9e9a89499d6504ef3221476280f4f517afa",
+      "bytes": 35392,
       "contact_socket_godot": null,
       "triangles": 1040,
       "mesh_nodes": 2,
@@ -446,8 +495,8 @@
     },
     {
       "file": "models/shell.glb",
-      "sha256": "6bd322de5c3d2b29dd1314589fe75113b453574dc58f2bf09653e021d31177a5",
-      "bytes": 444028,
+      "sha256": "e036ca51d2aa05268057edcde4cbc6fd46be5893bc96e31a434be5ddb190f15b",
+      "bytes": 444012,
       "contact_socket_godot": [
         0,
         0.25,
@@ -484,8 +533,8 @@
     },
     {
       "file": "models/siege.glb",
-      "sha256": "1bb297b0d894ca1e9fe32f6cc2355e4f7c99ad918d84aae125e3142c5287b1f9",
-      "bytes": 467548,
+      "sha256": "a3c75ad57e913a9808578c5ac8ceb535eae48df56d29d7652cd4364e777d1f64",
+      "bytes": 467532,
       "contact_socket_godot": [
         0,
         1.0,
@@ -524,8 +573,8 @@
     },
     {
       "file": "models/skitter.glb",
-      "sha256": "a443d21383d2ef2f93bbdc4b185a0879bda75e5c9e41fcfabbc9643daeaf0802",
-      "bytes": 419576,
+      "sha256": "35ba98306e06ee596bd5422fe211eaf0dbe7a6111ebe67b5735bbd04fe469f76",
+      "bytes": 419564,
       "contact_socket_godot": [
         0,
         0.25,
@@ -562,8 +611,8 @@
     },
     {
       "file": "models/spitter.glb",
-      "sha256": "9e9da7957ad18c743ccaefe0c9c2083921d62a2a4d950ba8ec79d5b415048fa4",
-      "bytes": 454872,
+      "sha256": "1dbfc1d26cd022f2d2676a9b7b737a5052b97dee10f97bb0f4eacb6566530758",
+      "bytes": 454856,
       "contact_socket_godot": [
         0,
         0.33999999999999997,
@@ -602,8 +651,8 @@
     },
     {
       "file": "models/swarm.glb",
-      "sha256": "8b66d2f910748ba75103f94ec51e66f23640115673c7cdc0bfa8cb65b13c7132",
-      "bytes": 437344,
+      "sha256": "b6b078ed07ffd385c7ecfb19c1dda216020148a357c1c110740a10327f946577",
+      "bytes": 437316,
       "contact_socket_godot": [
         0,
         0.25,
@@ -643,7 +692,7 @@
     },
     {
       "file": "models/wall.glb",
-      "sha256": "4413d8dbd2fd4d86bb200421d043ab751f78f111cfdc116b784c39221cc713b5",
+      "sha256": "d95ad1be3021a375331c47b7695d7009aec1cbb1791849e63b70ae259cba3045",
       "bytes": 30840,
       "contact_socket_godot": null,
       "triangles": 752,
@@ -651,6 +700,24 @@
       "materials": [
         "FoundryStone",
         "Brass"
+      ],
+      "skin_joints": [],
+      "joints": []
+    },
+    {
+      "file": "models/workshop.glb",
+      "sha256": "03088d9968fdde05cf64013e066c8bef94c618662a29fae9cd6016f5bd22e61e",
+      "bytes": 132708,
+      "contact_socket_godot": null,
+      "triangles": 2632,
+      "mesh_nodes": 6,
+      "materials": [
+        "WorkshopStone",
+        "Enamel",
+        "Iron",
+        "Brass",
+        "PolishedRim",
+        "Ivory"
       ],
       "skin_joints": [],
       "joints": []

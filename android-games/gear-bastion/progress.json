@@ -6,8 +6,8 @@
   "save_schema": 4,
   "branch": "codex/gear-graphics",
   "updated_at": "2026-10-18T12:01:25.186469+00:00",
-  "milestone": "original_3d_cpu_foundation",
-  "status": "cpu_verified_first_render_pending",
+  "milestone": "original_3d_corridor_and_environment_polish",
+  "status": "cpu_verified_second_render_pending",
   "full_v1_complete": false,
   "campaign_expansion": "full_nine_encounter_campaign_implemented_candidate",
   "campaign_checkpoint": {
@@ -46,7 +46,7 @@
     "constrained_budget_counter_trial": true,
     "sole_staged_backup_reused_without_truncation": true
   },
-  "next_action": "Use coordinator-granted first bounded GPU inspection slot for actual fresh early play, original actor/gear/deployment composition and resize input; fix visible findings before long source-bound motion review.",
+  "next_action": "Request second bounded render slot for cleared deployment corridor, modeled deck/pistons, winding paving/workshops and restrained materials. First inspection images/failures retained; no long movies until actual composition closes.",
   "remaining": [
     "Coordinator independent code7 review and signed Android update/resize/input checks",
     "Frontline benchmark art-pipeline approval before full3D Gear work",
@@ -332,11 +332,11 @@
   "graphics_production": {
     "plan": "GRAPHICS_PRODUCTION.md",
     "cpu_evidence": "evidence/graphics-cpu.json",
-    "models": 22,
+    "models": 25,
     "byte_identical_repeat": true,
-    "focused_cpu_checks": 6932,
+    "focused_cpu_checks": 11975,
     "focused_input_checks": 1462,
-    "gpu_phase": "waiting_for_coordinator_first_inspection_slot",
+    "gpu_phase": "first_inspection_rejected_composition_cpu_polish_ready_for_second_slot",
     "full_3d_accepted": false,
     "target_freeze": "0.4.0/code8_after_review"
   }

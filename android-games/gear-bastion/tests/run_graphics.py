@@ -14,6 +14,7 @@ import subprocess
 
 PROJECT = Path(__file__).resolve().parents[1]
 GODOT = Path("C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe")
+BASELINE = "33ab8d76eaa74f7a3439350d54cad0fc8511841e"
 
 
 def sources(project=PROJECT):
@@ -49,15 +50,18 @@ def main():
     env = os.environ.copy()
     for key in ["APPDATA", "LOCALAPPDATA", "TEMP", "TMP"]:
         folder = run/key.lower(); folder.mkdir(); env[key] = str(folder)
-    before = sources()
     target = PROJECT
     if args.mode == "fresh-import":
         target = run/"fresh-source"
         shutil.copytree(PROJECT, target, ignore=shutil.ignore_patterns(".artifacts", ".godot", "__pycache__"))
+    import_before = sources(target)
     preflight, _ = execute([str(GODOT), "--headless", "--editor", "--import", "--quit", "--path", str(target)], run, env, "import")
+    before = sources(target)
+    import_changes = {name: {"before": import_before.get(name), "after": before.get(name)}
+                      for name in sorted(set(import_before)|set(before)) if import_before.get(name) != before.get(name)}
     result = preflight
     if preflight["passed"] and args.mode != "fresh-import":
-        baseline = subprocess.check_output(["git", "show", "45baca5:android-games/gear-bastion/scripts/battle_rules.gd"], cwd=PROJECT)
+        baseline = subprocess.check_output(["git", "show", BASELINE+":android-games/gear-bastion/scripts/battle_rules.gd"], cwd=PROJECT)
         baseline = baseline.replace(b"class_name BattleRules\n", b"")
         (PROJECT/".artifacts/graphics-production/baseline_battle.gd").write_bytes(baseline)
         script = {"checks": "presentation_tests.gd", "input": "graphics_input.gd", "inspect": "graphics_inspect.gd"}[args.mode]
@@ -66,13 +70,22 @@ def main():
         command += ["-s", "tests/"+script, "--", "--run-dir="+str(run)]
         result, output = execute(command, run, env, args.mode)
         result["passed"] = result["passed"] and "SUITE_COMPLETE: PASS" in output
-    after = sources()
+    after = sources(target)
+    result["passed"] = result["passed"] and before == after
+    data_path = PROJECT/".artifacts/graphics-production/cpu-checks.json" if args.mode == "checks" else PROJECT/".artifacts/graphics-production/input"/("rendered" if args.render else "headless")/"report.json"
+    retained_data = None
+    if args.mode in {"checks", "input"} and data_path.exists():
+        retained_data = run/"result-data.json"
+        shutil.copyfile(data_path, retained_data)
     receipt = {"mode": args.mode, "rendered": args.render, "source_before": before, "source_after": after,
+               "import_source_before": import_before, "import_source_after": before, "import_changes": import_changes,
                "source_unchanged": before == after, "result": result,
                "limits": "Source/import/input evidence; no automatic visible-quality, Android or phone acceptance"}
+    if retained_data:
+        receipt["result_data"] = {"file": retained_data.name, "sha256": hashlib.sha256(retained_data.read_bytes()).hexdigest()}
     baseline_path = PROJECT/".artifacts/graphics-production/baseline_battle.gd"
     if baseline_path.exists():
-        receipt["baseline"] = {"commit": "45baca53cf6b422db98813a92a2be05198aa9f0b",
+        receipt["baseline"] = {"commit": BASELINE, "worker_equivalent_rule_blob": "45baca53cf6b422db98813a92a2be05198aa9f0b",
                                "class_name_removed_for_side_by_side_load": True,
                                "sha256": hashlib.sha256(baseline_path.read_bytes()).hexdigest()}
     (run/"receipt.json").write_text(json.dumps(receipt, indent=2), encoding="utf-8")

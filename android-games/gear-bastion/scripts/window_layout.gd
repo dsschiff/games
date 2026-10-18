@@ -15,7 +15,7 @@ func arrange(available: Vector2) -> void:
 	board = Rect2((size.x - 400) / 2, size.y - (390 if wide else 450), 400, 320)
 	wall = Rect2(0, board.position.y - 184, size.x, 64)
 	field = Rect2(0, 84, size.x, wall.position.y - 84)
-	summary = Rect2(board.position.x, board.position.y - 100, 400, 62) if wide else Rect2(16, 86, size.x - 32, 50)
+	summary = Rect2(size.x - 608, 8, 400, 62) if wide else Rect2(16, 86, size.x - 32, 50)
 	controls = {"pause": Rect2(size.x - 188, 0, 80, 80), "menu": Rect2(size.x - 96, 0, 80, 80)}
 	for lane in 3:
 		controls["gate%d" % lane] = Rect2(gate_x(lane) - 40, wall.position.y, 80, 80)
@@ -28,8 +28,8 @@ func arrange(available: Vector2) -> void:
 			controls[shop[i]] = Rect2(size.x - side_width - 16, size.y - 468 + i * 88, side_width, 80)
 	else:
 		for i in 3:
-			controls[tools[i]] = Rect2(12 + i * 90, board.position.y - 100, 80, 80)
-		controls.begin = Rect2(286, board.position.y - 100, size.x - 298, 80)
+			controls[tools[i]] = Rect2(10, board.position.y + i * 110, 80, 80)
+		controls.begin = Rect2(board.end.x + 10, board.position.y + 100, 80, 100)
 		controls.rally = Rect2(controls.begin.position, controls.begin.size)
 		var width := (size.x - 32) / 5
 		for i in 5:
@@ -40,7 +40,7 @@ func gate_x(lane: int) -> float:
 
 func field_point(point: Vector2) -> Vector2:
 	# Reposition actors over the expanded terrain without stretching their art.
-	return Vector2(point.x / 600.0 * size.x, field.position.y + 80 + (point.y - 205) / 332.0 * (field.size.y - 86))
+	return Vector2(point.x / 600.0 * size.x, field.position.y + 115 + (point.y - 205) / 332.0 * (field.size.y - 121))
 
 func game_buttons(game: Variant) -> Dictionary:
 	var result := controls.duplicate()

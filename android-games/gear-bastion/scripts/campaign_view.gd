@@ -123,8 +123,9 @@ static func draw(game: Variant) -> void:
 	var waves: Array = Battle.run_waves(state)
 	var wave: Dictionary = waves[maxi(0, int(state.wave) - 1)]
 	var title: String = config.get("name", "Iron Trial" if state.encounter == "iron_trial" else "Practice foundry")
-	game.label_at(fitted(game, title, size.x - 222, 24), Vector2(18, 30), 24, game.GOLD)
-	game.label_at(fitted(game, "Prepare your defense" if ready else "%d / %d · %s" % [int(state.wave), waves.size(), wave.name], size.x - 222, 19), Vector2(18, 59), 19, game.CREAM)
+	var heading_width: float = layout.summary.position.x - 36 if layout.wide else size.x - 222
+	game.label_at(fitted(game, title, heading_width, 24), Vector2(18, 30), 24, game.GOLD)
+	game.label_at(fitted(game, "Prepare your defense" if ready else "%d / %d · %s" % [int(state.wave), waves.size(), wave.name], heading_width, 19), Vector2(18, 59), 19, game.CREAM)
 	for key in ["pause", "menu"]:
 		game.panel(ui[key], Color("3d5159"))
 		game.label_at("Resume" if key == "pause" and game.paused else "Pause" if key == "pause" else "Menu", ui[key].get_center() + Vector2(0, 7), 19, game.CREAM, true)
@@ -172,7 +173,17 @@ static func draw(game: Variant) -> void:
 			continue
 		game.panel(ui[key], game.MINT if key == "begin" and ready else Color("3d5159"))
 		var text: String = {"map": "Map", "refit": "Refit", "help": "Guide", "begin": "Begin defense" if ready else "Retry" if state.phase in ["victory", "defeat"] else "Threat guide", "rally": "Rally: fast" if state.rally else "Rally"}[key]
-		game.label_at(text, ui[key].get_center() + Vector2(0, -2 if key == "refit" else 7), 19, game.INK if ready and key == "begin" else game.CREAM, true)
+		if ui[key].size.x < 160 and key == "begin" and ready:
+			game.label_at("Begin",ui[key].get_center()+Vector2(0,-3),19,game.INK,true)
+			game.label_at("defense",ui[key].get_center()+Vector2(0,22),17,game.INK,true)
+		elif ui[key].size.x < 160 and key == "rally":
+			game.label_at("Rally",ui[key].get_center()+Vector2(0,-3),19,game.CREAM,true)
+			game.label_at("Fast" if state.rally else "Normal",ui[key].get_center()+Vector2(0,22),17,game.GOLD,true)
+		elif ui[key].size.x < 160 and key == "begin" and state.phase == "battle":
+			game.label_at("Threat",ui[key].get_center()+Vector2(0,-3),19,game.CREAM,true)
+			game.label_at("guide",ui[key].get_center()+Vector2(0,22),17,game.CREAM,true)
+		else:
+			game.label_at(text, ui[key].get_center() + Vector2(0, -2 if key == "refit" else 7), 19, game.INK if ready and key == "begin" else game.CREAM, true)
 		if key == "refit":
 			var piece: Dictionary = game.selected_piece()
 			if piece.get("kind", "") in allowed and allowed.size() > 1:

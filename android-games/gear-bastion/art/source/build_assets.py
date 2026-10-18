@@ -12,12 +12,12 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from mesh_tools import *
 
-BRASS = material("Brass", (.78, .52, .18), .52, .45)
-EDGE = material("PolishedRim", (.97, .78, .38), .42, .35)
+BRASS = material("Brass", (.63, .43, .20), .67, .22)
+EDGE = material("PolishedRim", (.82, .65, .35), .58, .25)
 IRON = material("Iron", (.12, .20, .22), .72, .25)
-TEAL = material("Enamel", (.18, .49, .52), .65, .12)
-IVORY = material("Ivory", (.90, .83, .60), .68, .1)
-GLASS = material("MintLens", (.40, .87, .69), .3, .15)
+TEAL = material("Enamel", (.14, .36, .39), .72, .12)
+IVORY = material("Ivory", (.78, .76, .61), .75, .1)
+GLASS = material("MintLens", (.32, .70, .57), .48, .10)
 RED = material("Carapace", (.67, .23, .17), .7, .12)
 DARK = material("Chitin", (.24, .14, .17), .8)
 
@@ -224,7 +224,7 @@ def props():
         block("Generator enamel", (0, -.12, .43), (.64, .48, .54), TEAL, .10)
         for side in [-1, 1]:
             cylinder("Piston sleeve", (side*.30, .12, .39), .08, .50, BRASS)
-            cylinder("Piston rod", (side*.30, .12, .70), .035, .26, EDGE)
+            cylinder("PistonRod"+("L" if side<0 else "R"), (side*.30, .12, .70), .035, .26, EDGE)
         cylinder("Assembly ring", (0, .20, .32), .27, .18, EDGE, rotation=(math.pi/2, 0, 0))
         cylinder("Exit aperture", (0, .31, .32), .20, .03, IRON, rotation=(math.pi/2, 0, 0))
         if role=="guard":
@@ -234,8 +234,10 @@ def props():
             block("Scope sign", (0, -.15, .94), (.15, .10, .08), EDGE, .02)
         else:
             rod("Mortar sign", (0, -.15, .75), (0, .06, 1.08), .12, IVORY)
-        group_surfaces([o for o in bpy.context.scene.objects if o.type=="MESH"])
-        export("generator_"+role)
+        for obj in bpy.context.scene.objects:
+            if obj.type=="MESH":
+                PARTS.append((obj,"PistonL" if obj.name=="PistonRodL" else "PistonR" if obj.name=="PistonRodR" else "Root"))
+        rigged("generator_"+role,{"Root":(0,0,0),"PistonL":(-.30,.12,.70),"PistonR":(.30,.12,.70)}, {"PistonL":"Root","PistonR":"Root"})
     clear()
     stone=material("FoundryStone", (.54, .51, .40), .88)
     for side in [-1, 1]:
@@ -273,6 +275,56 @@ def props():
             oval("Mint beacon", (0,0,2.1), (.17,.17,.25), GLASS)
         group_surfaces([o for o in bpy.context.scene.objects if o.type=="MESH"])
         export("region_"+str(act))
+
+
+def deck_and_environment():
+    clear()
+    deck=material("DeckEnamel",(.22,.30,.30),.86,.12)
+    recess=material("SocketRecess",(.12,.20,.21),.86,.08)
+    block("Beveled foundry bed",(0,0,-.26),(10.40,12.0,.52),IRON,.14)
+    block("Inset assembly floor",(0,0,-.045),(10.12,11.72,.09),deck,.08)
+    for x in [-5.12,5.12]:
+        block("Brass rim side",(x,0,-.015),(.15,11.84,.03),BRASS,.015)
+    for y in [-5.92,5.92]:
+        block("Brass rim end",(0,y,-.015),(10.26,.15,.03),BRASS,.015)
+    for y in range(4):
+        for x in range(5):
+            px=(x-2)*2;py=(1.5-y)*math.sqrt(8)
+            cylinder("Inset socket well",(px,py,-.015),.35,.025,recess)
+            bpy.ops.mesh.primitive_torus_add(major_segments=16,minor_segments=6,location=(px,py,-.025),major_radius=.34,minor_radius=.035)
+            finish(bpy.context.object,"Socket collar",BRASS)
+            for dx in [-.67,.67]:
+                cylinder("Recessed fastener",(px+dx,py,-.005),.035,.015,EDGE)
+            if x<4:
+                block("Conduit inset",(px+1,py,-.016),(1.24,.06,.025),recess,.015)
+            if y<3:
+                block("Conduit inset",(px,py-math.sqrt(2),-.016),(.06,2.04,.025),recess,.015)
+    group_surfaces([o for o in bpy.context.scene.objects if o.type=="MESH"])
+    export("foundry_deck")
+    clear()
+    paving=material("PavingStone",(.52,.51,.43),.96)
+    edge=material("PavingEdge",(.42,.43,.37),.95)
+    block("Rounded paving flag",(0,0,-.045),(.83,1.10,.09),paving,.055)
+    block("Worn corner",(.28,.38,-.025),(.20,.22,.04),edge,.03).rotation_euler.z=.25
+    group_surfaces([o for o in bpy.context.scene.objects if o.type=="MESH"])
+    export("paver")
+    clear()
+    stone=material("WorkshopStone",(.42,.43,.39),.90)
+    block("Workshop plinth",(0,0,.10),(1.04,.86,.20),stone,.08)
+    block("Boiler house",(0,0,.52),(.82,.68,.84),TEAL,.11)
+    block("Workshop roof",(0,0,.98),(1.03,.91,.16),IRON,.07)
+    cylinder("Copper pressure vessel",(0,-.02,1.25),.25,.55,BRASS)
+    cylinder("Vessel collar",(0,-.02,1.54),.28,.09,EDGE)
+    cylinder("Chimney",(.31,-.20,1.44),.09,.94,IRON)
+    cylinder("Chimney lip",(.31,-.20,1.94),.12,.10,BRASS)
+    cylinder("Dial rim",(0,.38,.67),.17,.07,EDGE,rotation=(math.pi/2,0,0))
+    cylinder("Dial face",(0,.425,.67),.13,.02,IVORY,rotation=(math.pi/2,0,0))
+    rod("Dial needle",(0,.442,.67),(.065,.442,.74),.012,IRON)
+    for side in [-1,1]:
+        rod("Copper riser",(side*.39,.22,.18),(side*.39,.22,.85),.045,BRASS)
+        rod("Elbow pipe",(side*.39,.22,.85),(side*.19,.22,.85),.045,BRASS)
+    group_surfaces([o for o in bpy.context.scene.objects if o.type=="MESH"])
+    export("workshop")
 
 
 def manifest():
@@ -314,5 +366,6 @@ for role in ["beetle","shell","skitter","spitter","swarm","carapace","captain","
 cog("drive")
 cog("core", core=True)
 props()
+deck_and_environment()
 manifest()
 print("GEAR_ASSET_EXPORT_COMPLETE", OUT)

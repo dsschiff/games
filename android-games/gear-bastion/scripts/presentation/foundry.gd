@@ -35,16 +35,16 @@ func build(game_layout: RefCounted, pixels: Vector2) -> void:
 	env.background_mode = Environment.BG_COLOR
 	env.background_color = Color("9ba993")
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	env.ambient_light_color = Color("dce3c8")
-	env.ambient_light_energy = .30
+	env.ambient_light_color = Color("e1e7e0")
+	env.ambient_light_energy = .38
 	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
-	env.tonemap_exposure = .9
+	env.tonemap_exposure = .86
 	world.environment = env
 	add_child(world)
 	var sun := DirectionalLight3D.new()
 	sun.rotation_degrees = Vector3(-52, -30, 0)
-	sun.light_color = Color("fff1cc")
-	sun.light_energy = .75
+	sun.light_color = Color("fff7e8")
+	sun.light_energy = .62
 	sun.shadow_enabled = true
 	sun.directional_shadow_max_distance = 100
 	sun.shadow_bias = .20
@@ -54,7 +54,7 @@ func build(game_layout: RefCounted, pixels: Vector2) -> void:
 	add_child(sun)
 	var fill := DirectionalLight3D.new()
 	fill.rotation_degrees = Vector3(-35, 145, 0)
-	fill.light_color = Color("b3d4d5")
+	fill.light_color = Color("d5e0df")
 	fill.light_energy = .20
 	add_child(fill)
 	camera = Camera3D.new()
@@ -127,21 +127,24 @@ func rebuild_scenery(act: int) -> void:
 		child.free()
 	arches.clear()
 	region = act
-	ground.material_override = mat(["a4ac83", "ad9983", "9ca8a5"][act-1])
+	ground.material_override = mat(["a4a18a", "a38e7d", "9da5a3"][act-1])
 	var field: Rect2 = layout.field
 	for side in [-1, 1]:
-		var x := 4.0 if side < 0 else canvas_size.x - 4
-		for i in maxi(3, int(field.size.y / 100)):
-			var point := Vector2(x, field.position.y + 55 + i * 102)
+		var x := -10.0 if side < 0 else canvas_size.x + 10
+		for i in maxi(2, int(field.size.y / 210)):
+			var point := Vector2(x, field.position.y + 100 + i * 210)
 			var prop := asset("region_" + str(act), scenery, canvas_to_world(point))
 			prop.rotation.y = side * .3 + i * .9
-			prop.scale = Vector3.ONE * (.65 + float(i % 3) * .12)
+			prop.scale = Vector3.ONE * (.58 + float(i % 3) * .10)
+		for i in 2:
+			var point := Vector2(7 if side < 0 else canvas_size.x - 7,field.position.y+165+i*maxf(150,field.size.y*.48))
+			var workshop := asset("workshop",scenery,canvas_to_world(point))
+			workshop.rotation.y = -.28 * side
+			workshop.scale = Vector3.ONE * .78
 	# A connected brass deck beneath the power board, with depth and an open route
 	# through all three arches; it is part of the same ground/camera composition.
 	var board: Rect2 = layout.board
-	var a := canvas_to_world(board.position - Vector2(12, 12))
-	var b := canvas_to_world(board.end + Vector2(12, 12))
-	box(scenery, (a+b)/2 - Vector3(0, .11, 0), Vector3(b.x-a.x, .20, b.z-a.z), "4d6865")
+	asset("foundry_deck",scenery,canvas_to_world(board.get_center(),.24))
 	for lane in 3:
 		var gate_point := Vector2(layout.gate_x(lane), layout.wall.end.y)
 		var arch := asset("arch", scenery, canvas_to_world(gate_point))
@@ -156,27 +159,62 @@ func rebuild_scenery(act: int) -> void:
 		if lane == 2:
 			for x in range(int(gate_end), int(right), 38):
 				asset("wall", scenery, canvas_to_world(Vector2(x+18, layout.wall.end.y)))
+	var paving: Array[Transform3D] = []
 	for lane in 3:
-		var p := Vector2(layout.gate_x(lane), field.position.y + 70)
-		var q := Vector2(layout.gate_x(lane), layout.wall.end.y)
-		var from := canvas_to_world(p)
-		var to := canvas_to_world(q)
-		box(scenery, (from+to)/2 + Vector3(0, -.012, 0), Vector3(.85, .012, to.z-from.z), ["b7bb91","b8a68c","b1bab3"][act-1])
+		for row in maxi(3,int(field.size.y/34)):
+			for column in [-1,0,1]:
+				var offset := sin(row*.72+lane*.90)*18
+				var point := Vector2(layout.gate_x(lane)+offset+column*30,field.position.y+40+row*34+(15 if column==0 else 0))
+				if point.y > layout.wall.end.y:
+					continue
+				var transform := Transform3D(Basis(Vector3.UP,sin(row*1.17+column)*.12),canvas_to_world(point))
+				paving.append(transform)
+	batch_asset("paver",paving)
+
+func batch_asset(id: String, transforms: Array[Transform3D]) -> void:
+	# Repeated ground sculpture uses one MultiMesh per authored material group.
+	# It is walkable flush paving, with no runtime collision or rule geometry.
+	var source := (load("res://art/models/"+id+".glb") as PackedScene).instantiate() as Node3D
+	Actor.finish_materials(source)
+	batch_meshes(source,Transform3D.IDENTITY,transforms)
+	source.free()
+
+func batch_meshes(source: Node3D, inherited: Transform3D, transforms: Array[Transform3D]) -> void:
+	var local := inherited * source.transform
+	if source is MeshInstance3D:
+		var multi := MultiMesh.new()
+		multi.transform_format = MultiMesh.TRANSFORM_3D
+		multi.mesh = source.mesh
+		multi.instance_count = transforms.size()
+		for i in transforms.size():
+			multi.set_instance_transform(i,transforms[i]*local)
+		var node := MultiMeshInstance3D.new()
+		node.multimesh = multi
+		node.material_override = source.get_surface_override_material(0)
+		node.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		scenery.add_child(node)
+	for child in source.get_children():
+		if child is Node3D:
+			batch_meshes(child,local,transforms)
 
 func point_for(data: Dictionary) -> Vector3:
 	var canvas: Vector2 = layout.field_point(data.point)
+	var height := 0.0
 	if float(data.deploy_left) > 0:
 		var start: Vector2 = layout.board.position + Vector2(data.deploy_x+.5, data.deploy_y+.5) * 80
-		var bend := Vector2(layout.gate_x(int(data.lane)), layout.board.position.y - 12)
-		var gate := Vector2(bend.x, layout.wall.end.y + 6)
+		# Travel up the board's clear central footprint, then branch in the corridor
+		# above the side controls. Troops never disappear beneath an opaque HUD row.
+		var bend := Vector2(start.x, layout.wall.end.y + 28)
+		var gate := Vector2(layout.gate_x(int(data.lane)), bend.y)
 		var progress := clampf(1.0 - data.deploy_left / data.deploy_total, 0, 1)
-		if progress < .4:
-			canvas = start.lerp(bend, progress/.4)
-		elif progress < .65:
-			canvas = bend.lerp(gate, (progress-.4)/.25)
+		if progress < .5:
+			canvas = start.lerp(bend, progress/.5)
+		elif progress < .75:
+			canvas = bend.lerp(gate, (progress-.5)/.25)
 		else:
-			canvas = gate.lerp(canvas, (progress-.65)/.35)
-	return canvas_to_world(canvas)
+			canvas = gate.lerp(canvas, (progress-.75)/.25)
+		height = .24 * clampf((canvas.y-(layout.board.position.y-16))/32,0,1)
+	return canvas_to_world(canvas,height)
 
 func hydrate(state: Dictionary, held: bool) -> void:
 	adapter.reset(state, held)
@@ -239,31 +277,24 @@ func sync_board(state: Dictionary, force: bool = false) -> void:
 	for child in connections.get_children():
 		child.free()
 	var powered := Gear.powered(state.board)
-	var ring := TorusMesh.new()
-	ring.inner_radius = .22
-	ring.outer_radius = .29
-	ring.rings = 12
-	ring.ring_segments = 6
 	for y in 4:
 		for x in 5:
-			if not Gear.cell_allowed(x,y,str(state.encounter),state.config):
+			if Gear.cell_allowed(x,y,str(state.encounter),state.config):
 				continue
-			var socket := MeshInstance3D.new()
-			socket.mesh = ring
-			socket.material_override = mat("385351")
-			socket.position = canvas_to_world(layout.board.position + Vector2(x+.5,y+.5)*80) + Vector3(0,.012,0)
-			socket.scale.y = .25
-			socket.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-			connections.add_child(socket)
+			var point := canvas_to_world(layout.board.position + Vector2(x+.5,y+.5)*80,.24)+Vector3(0,.025,0)
+			for angle in [-.7,.7]:
+				var bar := box(connections,point,Vector3(.12,.05,.62),"78685c")
+				bar.rotation.y = angle
 	for piece in state.board:
 		var center: Vector2 = layout.board.position + Vector2(piece.x+.5,piece.y+.5)*80
 		var root := Node3D.new()
 		add_child(root)
-		root.position = canvas_to_world(center)
+		root.position = canvas_to_world(center,.24)
 		var rotor := asset("core" if piece.kind == "core" else "drive",root,Vector3.ZERO)
+		var generator_rig: Skeleton3D
 		if piece.kind in Gear.BASE_RATES:
-			asset("generator_"+str(piece.kind),root,Vector3(0,.26,0))
-		gears[int(piece.id)] = {"root":root,"rotor":rotor,"powered":powered.has(int(piece.id)),"direction":1 if (int(piece.x)+int(piece.y))%2 == 0 else -1,"point":center,"kind":str(piece.kind)}
+			generator_rig = Actor.find_skeleton(asset("generator_"+str(piece.kind),root,Vector3(0,.26,0)))
+		gears[int(piece.id)] = {"root":root,"rotor":rotor,"generator_rig":generator_rig,"powered":powered.has(int(piece.id)),"direction":1 if (int(piece.x)+int(piece.y))%2 == 0 else -1,"point":center,"kind":str(piece.kind)}
 	for piece in state.board:
 		for other in state.board:
 			if int(other.id) <= int(piece.id) or not powered.has(int(piece.id)) or not powered.has(int(other.id)) or absi(int(piece.x)-int(other.x))+absi(int(piece.y)-int(other.y)) != 1:
@@ -357,6 +388,11 @@ func step(dt: float, held: bool, calm: bool) -> void:
 	for key in gears:
 		if gears[key].powered:
 			gears[key].rotor.rotation.y = presentation_time * .55 * int(gears[key].direction)
+			var rig: Skeleton3D = gears[key].generator_rig
+			if rig != null:
+				for side in ["L","R"]:
+					var piston := rig.find_bone("Piston"+side)
+					rig.set_bone_pose_position(piston,Vector3(0,sin(presentation_time*5+key*.6+(0 if side=="L" else PI))*.07,0))
 	for i in range(effects.size()-1,-1,-1):
 		effects[i].left -= dt
 		if effects[i].left <= 0:

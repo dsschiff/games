@@ -137,12 +137,38 @@ func run() -> void:
 				var point := layout.board.position + Vector2(x+.5,y+.5)*80
 				check(world.world_to_canvas(world.canvas_to_world(point)).distance_to(point) < .01,"Actual camera projection round-trips board cell at " + str(dimensions))
 		check(world.arches.size() == 3,"Exactly three modeled open arches at " + str(dimensions))
+		for lane in 3:
+			for row in 4:
+				for column in 5:
+					for step in 21:
+						var progress := float(step)/20
+						var data := {"point":Vector2(116+lane*184,537),"deploy_left":3*(1-progress),"deploy_total":3.0,"deploy_x":column,"deploy_y":row,"lane":lane}
+						var foot := world.world_to_canvas(world.point_for(data))
+						var body := Rect2(foot-Vector2(17,50),Vector2(34,57))
+						var clear := not body.intersects(layout.summary)
+						for key in ["map","refit","help","begin","pause","menu","drive","guard","ranger","mortar","undo"]:
+							clear = clear and not body.intersects(layout.controls[key])
+						check(clear,"Projected generator-to-arch body clears opaque controls at " + str(dimensions))
 	var before_time := world.presentation_time
 	var before_pose: Transform3D = world.actors.values()[0].model.transform
 	world.step(1,true,false)
 	check(world.presentation_time == before_time and world.actors.values()[0].model.transform == before_pose,"Pause freezes presentation time and model pose")
 	world.step(.10,false,true)
 	check(world.presentation_time > before_time,"Reduced effects retains actual articulation/time")
+	var generator_rig: Skeleton3D
+	for gear in world.gears.values():
+		if gear.generator_rig != null and gear.powered:
+			generator_rig = gear.generator_rig
+			break
+	check(generator_rig != null,"Powered generator imports an actual piston rig")
+	if generator_rig != null:
+		var piston := generator_rig.find_bone("PistonL")
+		var before_piston := generator_rig.get_bone_pose_position(piston)
+		world.step(.13,false,true)
+		check(not before_piston.is_equal_approx(generator_rig.get_bone_pose_position(piston)),"Powered generator piston works under reduced effects")
+		var held_piston := generator_rig.get_bone_pose_position(piston)
+		world.step(.5,true,false)
+		check(held_piston == generator_rig.get_bone_pose_position(piston),"Pause freezes actual generator mechanics")
 	world.hydrate(Battle.initial(1701,"tutorial"),true)
 	check(world.actors.is_empty() and world.corpses.is_empty() and world.effects.is_empty(),"Legacy hydration clears actors/corpses/transients with no phantom shot")
 	viewport.free()
