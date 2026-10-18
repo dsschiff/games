@@ -1,12 +1,12 @@
 {
   "game": "hook-and-hunger",
-  "milestone": "save-validation-review-amendment",
-  "version": "0.2.1/code3",
+  "milestone": "native-input-clipboard-amendment",
+  "version": "0.2.2/code4",
   "implemented": "Pinned schema1 prologue, twelve passages/four islands/four beacon bosses/six enemy roles, three power purchases, conclusive ending, arena seeds/refits/efficiency, progression-preserving Retry, settings and versioned local save recovery/export/import",
-  "automatically_verified": "Code3:31 headless+31 rendered save regressions;57 legacy/81 campaign/8 prior import/174 full actual-input checks;36 exact code2 snapshots and120-step continuations match;code2 artifacts preserved",
-  "independent_appeal_review": "full-code2-visual-direction-cleared;two-P2-fixes-implemented-awaiting-independent-recheck",
+  "automatically_verified": "Code4:36 rendered native-focus/Unicode/import/OS-clipboard/Paste/movement checks;32 headless;31 prior-save/57 legacy/81 campaign/8 import/18 opening-input;editor import;68 code3 and88 code2 artifacts preserved. Historical code3 full174 route unchanged;not repeated for input-only amendment.",
+  "independent_appeal_review": "full-code2-visual-direction-cleared;coordinator-reports-both-code3-P2s-independently-closed",
   "full_campaign": "implemented-and-automated-route-verified;human-pacing-fun-pending",
-  "android": "coordinator reports realcode1-to2update24checks and earned campaign fixture;code3 export/update/acceptance pending",
+  "android": "coordinator reports realcode2-to3update24checks and earned native first-passage victory;code3-to4update and native keyboard/clipboard verification pending",
   "phone_tested": false,
-  "runtime_source": "frozen-for-code3-amendment-recheck-and-export"
+  "runtime_source": "frozen-for-code4-export-and-Android-input-update-verification"
 }

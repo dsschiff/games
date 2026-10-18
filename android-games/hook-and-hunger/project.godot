@@ -2,7 +2,7 @@ config_version=5
 
 [application]
 config/name="Hook and Hunger"
-config/version="0.2.1"
+config/version="0.2.2"
 config/icon="res://icon.svg"
 run/main_scene="res://main.tscn"
 config/auto_accept_quit=false
@@ -24,4 +24,4 @@ textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.025,0.09,0.13,1)
 
 [input_devices]
-pointing/emulate_mouse_from_touch=false
+pointing/emulate_mouse_from_touch=true

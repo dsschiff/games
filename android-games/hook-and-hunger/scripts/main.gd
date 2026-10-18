@@ -306,6 +306,10 @@ func _ui() -> void:
 	menu.visible = false
 
 func _unhandled_input(event: InputEvent) -> void:
+	# Native text controls need touch-to-mouse emulation; world movement owns
+	# the original finger events and must not process their mouse copies.
+	if event is InputEventMouse and event.device == InputEvent.DEVICE_ID_EMULATION:
+		return
 	if paused or state.phase != "playing":
 		return
 	if event is InputEventScreenTouch:
@@ -612,9 +616,16 @@ func _transfer(action: String) -> void:
 	if action == "EXPORT":
 		transfer.text = Store.encode(state, settings, 0, true, profile)
 		transfer.select_all()
-		transfer_status.text = "Exported in this field. Copy the selected code to keep a private backup."
+		if DisplayServer.has_feature(DisplayServer.FEATURE_CLIPBOARD):
+			DisplayServer.clipboard_set(transfer.text)
+			transfer_status.text = "Copied save code to clipboard. Keep a private backup." if DisplayServer.clipboard_get() == transfer.text else "Exported in this field. Clipboard unavailable; copy the selected code."
+		else:
+			transfer_status.text = "Exported in this field. Clipboard unavailable on this display."
 	elif action == "PASTE":
-		transfer.text = DisplayServer.clipboard_get()
+		if DisplayServer.has_feature(DisplayServer.FEATURE_CLIPBOARD):
+			transfer.text = DisplayServer.clipboard_get()
+		else:
+			transfer_status.text = "Clipboard unavailable on this display. Type a save code here."
 	else:
 		var imported := Store.decode(transfer.text)
 		if not imported.ok:
