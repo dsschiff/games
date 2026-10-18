@@ -1,0 +1,17 @@
+{
+  "reference_display":[1080,2400],"viewport":[600,1066],
+  "scope":"Code5-to-code6 actual APK update. Requires the separately archived touch-built code5 PlanA camp01 battle paused with earnedcamp01 profile retained. This fixture resumes the cold map into the already-paused real run; it does not create that run or inject save JSON.",
+  "actions":[
+    {"type":"wait","wait_seconds":10},
+    {"type":"tap","x":279,"y":1961,"wait_seconds":6}
+  ],
+  "expected_save":{
+    "version":4,"active_run.encounter":"camp_01","active_run.phase":"battle",
+    "active_run.config.definition_version":1,"active_run.config.deployment_seconds":2,
+    "active_run.gold":6,"active_run.spent":24,"active_run.board.2.x":1,"active_run.board.2.y":2,
+    "active_run.board.3.kind":"guard","active_run.board.3.lane":2,
+    "active_run.board.4.kind":"drive","active_run.board.5.kind":"drive",
+    "active_run.produced":10,"profile.cleared":["camp_01"]
+  },
+  "expected_numeric":{"active_run.time":{"min":6,"max":7},"active_run.wall":{"min":220,"max":220}}
+}

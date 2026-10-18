@@ -1,0 +1,5 @@
+{
+  "scope":"Upgraded active run must retain its old code5 pinned content, not replace it with new definition2.",
+  "expected_save":{"version":4,"active_run.encounter":"camp_01","active_run.phase":"battle","active_run.config.definition_version":1,"active_run.config.deployment_seconds":2,"active_run.gold":6,"active_run.spent":24,"active_run.produced":10,"profile.cleared":["camp_01"]},
+  "expected_numeric":{"active_run.time":{"min":6,"max":7},"active_run.wall":{"min":220,"max":220}}
+}

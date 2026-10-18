@@ -286,3 +286,36 @@ terminal redraw finding: the live display can retain its prior battle frame
 after the saved result changes. Data assertions do not accept that terminal UI.
 Keep the original screenshots and the later cold-map-resume terminal screenshot
 separate when reviewing this checkpoint.
+
+The code 6 fixtures separate old saved content from fresh content:
+`gear-bastion-code6-from-prepared-code5.json` requires the touch-built, paused
+code 5 Plan A save and earned `camp_01` clear; preserve entire `active_run`,
+`profile`, and `settings`. Use
+`--new-expectations scripts/smoke-actions/gear-bastion-code6-upgrade-expectations.json`
+to require the pinned definition-1 config and two-second deployment delay after
+the update. Its preparation inputs and app-written save files are separate
+evidence; the resume-only update fixture does not fabricate a prepared run.
+`gear-bastion-code6-old-code5-prepare.json` records those actual preparation
+inputs for code 5, starting on the map with a fresh ready mission and the earned
+clear retained.
+
+Start a fresh mission through the actual map/confirmation UI before
+`gear-bastion-code6-natural-campaign-a-win.json`. It requires definition 2 and
+performs real board input, then waits without post-Begin touches. Follow with
+`gear-bastion-code6-natural-disconnected-defeat.json`, preserving the earned
+profile. In each packet, validate `after-input.png` with `PIL.Image.load()` and
+visually require respectively GATE HELD + Next gate or WALL BREACHED + Retry.
+This screenshot precedes Home; JSON phase alone does not verify terminal UI.
+Keep later lifecycle/resume images separate from the untouched terminal image.
+
+The bounded code 6 clipboard check uses the app's own Copy save button. At
+1080x2400 the dialog buttons are Copy `(208,1380)`, Paste `(494,1380)`, and Import
+`(776,1380)`. Focus its TextEdit, send actual Android Ctrl-End
+(`input keycombination -t 100 113 123`), then type `X`. Require visible `==X`,
+Invalid save/current game retained, and unchanged run/profile/settings. Paste
+must replace the edited code, and Import must close the dialog with the battle
+paused. Resume must advance simulation; Home followed by app resume must hold
+the saved run while showing PAUSED. This manual keyboard check does not expand
+the smoke runner's BACK-only key whitelist. No clipboard or save-file injection
+is involved. Preserve strict serialization-roundoff observations separately;
+semantic comparisons use the existing fractional-float-only 1e-12 policy.
