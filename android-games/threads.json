@@ -13,7 +13,7 @@
       "thread_id": "01a14cf9-259a-7473-8a90-2a4e341e8219",
       "ownership_when_started": "android-games/hearthguard/",
       "handoff": "android-games/handoffs/hearthguard-prototype.md",
-      "state": "Frozen6c0b0ef/code2 conditional software candidate ready for phone testing. Independent full campaign headless/Astra, actual1-to2 whole old-save preservation, native bridge/loss/Retry/win/transfer/active resize/cold pass. Windows rendered clipboard FAIL retained; physical IME/sound/FPS/folding/human gates open; builder idle."
+      "state": "Historical functional worktree record; functional chat archived; physical acceptance deferred. Active assignments are in games."
     },
     {
       "slug": "frontline-foundry",
@@ -22,7 +22,7 @@
       "initial_base": "c4eeeb515dc5ed7a179776932797484319c3b51c",
       "ownership_when_started": "android-games/frontline-foundry/",
       "handoff": "android-games/handoffs/frontline-foundry-prototype.md",
-      "state": "Frozen code2 conditional software candidate ready for physical-phone testing; actual update/core outcomes/transfer/native Back/settings/active lifecycle/emulated resize independently reviewed. Builder idle.",
+      "state": "Historical functional worktree record; functional chat archived; physical acceptance deferred. Active assignments are in games.",
       "activation_base": "d771247958d550e4cd4a345ff7db3c310d9ab677",
       "thread_id": "01a14d1d-c90a-7562-b246-6cd243ad96ed"
     },
@@ -33,13 +33,13 @@
       "initial_base": "e41cb09cdbe1d78da0a004aa9ef0ea5a73c0dcb9",
       "ownership_when_started": "android-games/dead-run/",
       "handoff": "android-games/handoffs/dead-run-prototype.md",
-      "state": "Frozen worker63406d0/code3 conditional software candidate ready for physical testing. Camera-only fix independently reviewed; actual2-to3 whole-earned-save retention and native/cover/inner/live geometry verified. Inherited code2 outcomes/platform retained. Builder idle; all physical/human gates open.",
+      "state": "Historical functional worktree record; functional chat archived; physical acceptance deferred. Active assignments are in games.",
       "activation_base": "369f9dce162d91ad27eff75f3f52aba2139736e1",
       "thread_id": "01a14d53-a3ae-7f61-ab87-0006aaa25dd4",
       "campaign_handoff": "android-games/handoffs/dead-run-campaign.md"
     }
   ],
-  "games": [
+  "archived_functional_sessions": [
     {
       "slug": "gear-bastion",
       "thread_id": "01a14b9d-90d7-73c1-9fd4-9b74cbda3fa9",
@@ -48,7 +48,9 @@
       "worktree": "C:/projects/active/_worktrees/games-gear-bastion-20261017",
       "branch": "codex/gear-bastion",
       "ownership": "android-games/gear-bastion/",
-      "state": "frozen code6 software candidate ready for phone testing; independently verified campaign/replay/source review and actual Android update/natural win/loss/Retry"
+      "state": "frozen code6 software candidate ready for phone testing; independently verified campaign/replay/source review and actual Android update/natural win/loss/Retry",
+      "archive_status": "native_archived_verified",
+      "physical_acceptance": "deferred_by_user"
     },
     {
       "slug": "tower-trials",
@@ -58,7 +60,9 @@
       "worktree": "C:/projects/active/_worktrees/games-tower-trials-20261018",
       "branch": "codex/tower-trials",
       "ownership": "android-games/tower-trials/",
-      "state": "frozen worker18dde71/code4 software candidate ready for phone testing; whole authored/generated evidence, independent focused Back review/tests and actual3-to4 full-save preservation/native Back/clipboard/Home/cold/cover-inner resize pass; builder idle"
+      "state": "frozen worker18dde71/code4 software candidate ready for phone testing; whole authored/generated evidence, independent focused Back review/tests and actual3-to4 full-save preservation/native Back/clipboard/Home/cold/cover-inner resize pass; builder idle",
+      "archive_status": "native_archived_verified",
+      "physical_acceptance": "deferred_by_user"
     },
     {
       "slug": "hook-and-hunger",
@@ -68,7 +72,9 @@
       "worktree": "C:/projects/active/_worktrees/games-hook-and-hunger-20261018",
       "branch": "codex/hook-and-hunger",
       "ownership": "android-games/hook-and-hunger/",
-      "state": "frozen worker283522e/code4 conditional software candidate ready for physical-phone testing; independent input/clipboard, real3-to4 whole-save retention and eight native platform checks pass; engine/emulator hardware-keyboard suppression leaves physical IME gate explicit"
+      "state": "frozen worker283522e/code4 conditional software candidate ready for physical-phone testing; independent input/clipboard, real3-to4 whole-save retention and eight native platform checks pass; engine/emulator hardware-keyboard suppression leaves physical IME gate explicit",
+      "archive_status": "native_archived_verified",
+      "physical_acceptance": "deferred_by_user"
     },
     {
       "slug": "hearthguard",
@@ -79,7 +85,9 @@
       "branch": "codex/hearthguard",
       "ownership": "android-games/hearthguard/",
       "activation_base": "1e3bfe7a73b15a3fadce3232a75a2e143f41d8a4",
-      "state": "Frozen6c0b0ef/code2 conditional software candidate ready for phone testing. Independent full campaign headless/Astra, actual1-to2 whole old-save preservation, native bridge/loss/Retry/win/transfer/active resize/cold pass. Windows rendered clipboard FAIL retained; physical IME/sound/FPS/folding/human gates open; builder idle."
+      "state": "Frozen6c0b0ef/code2 conditional software candidate ready for phone testing. Independent full campaign headless/Astra, actual1-to2 whole old-save preservation, native bridge/loss/Retry/win/transfer/active resize/cold pass. Windows rendered clipboard FAIL retained; physical IME/sound/FPS/folding/human gates open; builder idle.",
+      "archive_status": "native_archived_verified",
+      "physical_acceptance": "deferred_by_user"
     },
     {
       "slug": "frontline-foundry",
@@ -90,7 +98,9 @@
       "branch": "codex/frontline-foundry",
       "ownership": "android-games/frontline-foundry/",
       "activation_base": "d771247958d550e4cd4a345ff7db3c310d9ab677",
-      "state": "Frozen code2 conditional software candidate ready for physical-phone testing; actual update/core outcomes/transfer/native Back/settings/active lifecycle/emulated resize independently reviewed. Builder idle."
+      "state": "Frozen code2 conditional software candidate ready for physical-phone testing; actual update/core outcomes/transfer/native Back/settings/active lifecycle/emulated resize independently reviewed. Builder idle.",
+      "archive_status": "native_archived_verified",
+      "physical_acceptance": "deferred_by_user"
     },
     {
       "slug": "dead-run",
@@ -102,7 +112,35 @@
       "ownership": "android-games/dead-run/",
       "activation_base": "369f9dce162d91ad27eff75f3f52aba2139736e1",
       "state": "Frozen worker63406d0/code3 conditional software candidate ready for physical testing. Camera-only fix independently reviewed; actual2-to3 whole-earned-save retention and native/cover/inner/live geometry verified. Inherited code2 outcomes/platform retained. Builder idle; all physical/human gates open.",
-      "campaign_handoff": "android-games/handoffs/dead-run-campaign.md"
+      "campaign_handoff": "android-games/handoffs/dead-run-campaign.md",
+      "archive_status": "native_archived_verified",
+      "physical_acceptance": "deferred_by_user"
+    }
+  ],
+  "games": [
+    {
+      "slug": "frontline-foundry",
+      "title": "Frontline Foundry graphics overhaul",
+      "thread_id": "01a14ecf-a3f6-7dc0-9276-3457e84da5f3",
+      "branch": "codex/frontline-graphics",
+      "worktree": "C:/projects/active/_worktrees/games-frontline-foundry-20261018",
+      "phase": "playable_3D_benchmark",
+      "host_id": "local",
+      "model": "gpt-6.1-sol",
+      "ownership": "android-games/frontline-foundry/",
+      "state": "active_graphics_implementation"
+    },
+    {
+      "slug": "gear-bastion",
+      "title": "Gear Bastion graphics and window fit",
+      "thread_id": "01a14ecf-ca7d-7ff1-a858-ca1aa9682d76",
+      "branch": "codex/gear-graphics",
+      "worktree": "C:/projects/active/_worktrees/games-gear-bastion-20261017",
+      "phase": "adaptive_window_fit_code7",
+      "host_id": "local",
+      "model": "gpt-6.1-sol",
+      "ownership": "android-games/gear-bastion/",
+      "state": "active_graphics_implementation"
     }
   ]
 }

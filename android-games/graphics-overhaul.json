@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "approved_implementation_starting",
+  "status": "first_pair_in_progress",
   "baseline_commit": "6e26b3c2a3938de1828527630f95fb6a219f61b8",
   "reference": {
     "private_path": ".references/graphics-overhaul/user-top-force-44941.jpg",
@@ -43,43 +43,61 @@
       "title": "Gear Bastion Android game",
       "thread_id": "01a14b9d-90d7-73c1-9fd4-9b74cbda3fa9",
       "handoff": "android-games/handoffs/graphics-gear-bastion.md",
-      "archive_status": "pending_native_action"
+      "archive_status": "native_archived_verified"
     },
     {
       "slug": "tower-trials",
       "title": "Tower Trials Android game",
       "thread_id": "01a14c6a-7df5-7001-a1a2-b833cd66c2a4",
       "handoff": "android-games/handoffs/graphics-tower-trials.md",
-      "archive_status": "pending_native_action"
+      "archive_status": "native_archived_verified"
     },
     {
       "slug": "hook-and-hunger",
       "title": "Hook and Hunger Android game",
       "thread_id": "01a14c6d-ed39-77a3-ba23-93b5210f38b1",
       "handoff": "android-games/handoffs/graphics-hook-and-hunger.md",
-      "archive_status": "pending_native_action"
+      "archive_status": "native_archived_verified"
     },
     {
       "slug": "hearthguard",
       "title": "Hearthguard Android game",
       "thread_id": "01a14cf9-259a-7473-8a90-2a4e341e8219",
       "handoff": "android-games/handoffs/graphics-hearthguard.md",
-      "archive_status": "pending_native_action"
+      "archive_status": "native_archived_verified"
     },
     {
       "slug": "frontline-foundry",
       "title": "Frontline Foundry Android game",
       "thread_id": "01a14d1d-c90a-7562-b246-6cd243ad96ed",
       "handoff": "android-games/handoffs/graphics-frontline-foundry.md",
-      "archive_status": "pending_native_action"
+      "archive_status": "native_archived_verified"
     },
     {
       "slug": "dead-run",
       "title": "Dead Run Android game",
       "thread_id": "01a14d53-a3ae-7f61-ab87-0006aaa25dd4",
       "handoff": "android-games/handoffs/graphics-dead-run.md",
-      "archive_status": "pending_native_action"
+      "archive_status": "native_archived_verified"
     }
   ],
-  "active_graphics_sessions": []
+  "active_graphics_sessions": [
+    {
+      "slug": "frontline-foundry",
+      "title": "Frontline Foundry graphics overhaul",
+      "thread_id": "01a14ecf-a3f6-7dc0-9276-3457e84da5f3",
+      "branch": "codex/frontline-graphics",
+      "worktree": "C:/projects/active/_worktrees/games-frontline-foundry-20261018",
+      "phase": "playable_3D_benchmark"
+    },
+    {
+      "slug": "gear-bastion",
+      "title": "Gear Bastion graphics and window fit",
+      "thread_id": "01a14ecf-ca7d-7ff1-a858-ca1aa9682d76",
+      "branch": "codex/gear-graphics",
+      "worktree": "C:/projects/active/_worktrees/games-gear-bastion-20261017",
+      "phase": "adaptive_window_fit_code7"
+    }
+  ],
+  "review_contract": "android-games/reviews/graphics-quality-contract-astra.md"
 }

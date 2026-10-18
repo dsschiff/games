@@ -16,6 +16,15 @@ overrides the executable; `--config` selects another toolchain JSON. Godot must
 still match the pinned version. `GAME_TOOLCHAIN_ROOT` relocates machine tooling.
 No global PATH, Windows features or system Java settings are changed.
 
+For original graphics assets, run `python -B scripts/install_blender.py`.
+This installs portable Blender 4.5.14 LTS without changing file associations or
+global settings. The Windows x64 archive SHA256 is pinned in the installer and
+toolchain config; matching release manifests were checked at the RWTH Aachen
+and dotsrc Blender mirrors. The installer verifies the downloaded archive before
+extracting, rejects paths escaping its destination, and verifies the executable's
+version. Original asset generators and GLBs belong in each game directory;
+installation receipts and tool binaries remain outside Git.
+
 The installer verifies pinned official Godot editor/templates SHA512 and Google
 command-line tools SHA256 before extraction. It installs Android platform 35 and
 build-tools 35.0.1, plus current platform-tools. Optional emulator/image versions

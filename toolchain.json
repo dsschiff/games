@@ -13,6 +13,10 @@
     "godot_checksums": "https://github.com/godotengine/godot-builds/releases/download/4.7.2-stable/SHA512-SUMS.txt",
     "android_tools": "https://dl.google.com/android/repository/commandlinetools-win-15859902_latest.zip",
     "android_tools_sha256": "90ae805d20434428bffcb699c290860f19bb5f66a67e6b330067e3de801fb04a",
-    "requirements": "https://github.com/godotengine/godot-docs/blob/4.7/tutorials/export/exporting_for_android.rst"
-  }
+    "requirements": "https://github.com/godotengine/godot-docs/blob/4.7/tutorials/export/exporting_for_android.rst",
+    "blender_release": "https://www.blender.org/releases/4-5/",
+    "blender_archive_sha256": "b9533d2397ac1984db4466fb23a7a4649391cca93f6e84209f9bcc60d071c8b9"
+  },
+  "blender_version": "4.5.14",
+  "blender": "{toolchain_root}/blender/4.5.14/blender-4.5.14-windows-x64/blender.exe"
 }

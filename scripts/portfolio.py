@@ -37,8 +37,9 @@ def read_config(root: Path, config_path: str | None = None) -> dict:
         path = root / path
     config = json.loads(path.read_text(encoding="utf-8"))
     home = os.environ.get("GAME_TOOLCHAIN_ROOT", config["toolchain_root"])
-    for key in ("godot", "android_sdk", "java_home"):
-        config[key] = config[key].replace("{toolchain_root}", home)
+    for key in ("godot", "android_sdk", "java_home", "blender"):
+        if key in config:
+            config[key] = config[key].replace("{toolchain_root}", home)
     config["toolchain_root"] = home
     return config
 
