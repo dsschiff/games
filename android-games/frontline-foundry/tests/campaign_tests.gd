@@ -33,6 +33,36 @@ func synthetically_unlocked(index: int) -> Dictionary:
 		c.records[D.IDS[i]] = {"medal": 1, "seconds": 190, "kills": D.mission(i).schedule.size(), "spent": 70, "seed": 900 + i, "style": "authored"}
 	return c
 
+func ledger_imports(profile: Dictionary, settings: Dictionary) -> void:
+	var malformed := [
+		{"label": "string", "value": "0"},
+		{"label": "dictionary", "value": {}},
+		{"label": "null", "value": null},
+		{"label": "boolean", "value": false},
+		{"label": "array", "value": []},
+		{"label": "negative", "value": -1},
+		{"label": "fraction", "value": 0.5},
+		{"label": "over_pool", "value": 4},
+	]
+	for key in ["bought", "stock", "consumed"]:
+		for index in 4:
+			for fixture in malformed:
+				var bad := C.fresh(D.mission(0))
+				bad[key][index] = fixture.value
+				var label: String = key + "[" + str(index) + "]/" + fixture.label
+				check(not C.valid(bad), "ledger rejects malformed scalar before arithmetic: " + label)
+				check(not S.decode(S.encode(bad, profile, settings, 1, true, C.career())).ok, "correctly checksummed full import rejects malformed ledger: " + label)
+	var valid := C.fresh(D.mission(0))
+	valid.phase = "playing"
+	valid.x = D.PADS[0].x
+	valid.z = D.PADS[0].y
+	C.buy(valid, 0)
+	C.tick(valid, Vector2.ZERO, 0.05)
+	for key in ["bought", "stock", "consumed"]:
+		for index in 4:
+			valid[key][index] = float(valid[key][index])
+	check(C.valid(valid) and S.decode(S.encode(valid, profile, settings, 1, true, C.career())).ok, "whole-number JSON floats preserve valid purchased and consumed equipment")
+
 func simulate(index: int, support: String = "relay", variant: String = "A") -> Dictionary:
 	var s := C.fresh(D.mission(index))
 	s.planned_support = support
@@ -60,6 +90,7 @@ func simulate(index: int, support: String = "relay", variant: String = "A") -> D
 func run() -> void:
 	var p := L.profile()
 	var settings := {"sound": false, "reduced_effects": true}
+	ledger_imports(p, settings)
 	for i in 12:
 		var d := D.mission(i)
 		check(D.valid(d) and D.valid(JSON.parse_string(JSON.stringify(d))), "complete authored definition validates before/after JSON " + str(i + 1))

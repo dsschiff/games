@@ -1,0 +1,2631 @@
+{
+  "checkpoint": "frontline-ledger-validation-followup",
+  "parent_campaign_commit": "2b58feea60f668d1010b0b3722e661bfb392f98b",
+  "lf_source_sha256": {
+    "boot.tscn": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+    "export_presets.cfg": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+    "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+    "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+    "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+    "project.godot": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+    "scripts/boot.gd": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+    "scripts/boot.gd.uid": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+    "scripts/campaign_main.gd": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+    "scripts/campaign_main.gd.uid": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+    "scripts/campaign_rules.gd": "4d58a79a8b604450d04898f2d806a509719469d1323679993ecfac5ca77b78f2",
+    "scripts/campaign_rules.gd.uid": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+    "scripts/definitions.gd": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+    "scripts/definitions.gd.uid": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+    "scripts/main.gd": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+    "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+    "scripts/rules.gd": "7715cb3bca3d84cf066c33b34c781756529308c2c247fe135cda9dafff6e4d59",
+    "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+    "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+    "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+    "scripts/save_store.gd": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+    "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+    "tests/campaign_balance.gd": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+    "tests/campaign_balance.gd.uid": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+    "tests/campaign_clipboard.gd": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+    "tests/campaign_clipboard.gd.uid": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+    "tests/campaign_cold.gd": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+    "tests/campaign_cold.gd.uid": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+    "tests/campaign_input.gd": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+    "tests/campaign_input.gd.uid": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+    "tests/campaign_legacy.gd": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+    "tests/campaign_legacy.gd.uid": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+    "tests/campaign_preview.gd": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+    "tests/campaign_preview.gd.uid": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+    "tests/campaign_tests.gd": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+    "tests/campaign_tests.gd.uid": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+    "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+    "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+    "tests/freeze_campaign.py": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+    "tests/freeze_checkpoint.py": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+    "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+    "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+    "tests/policy.gd": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+    "tests/policy.gd.uid": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+    "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+    "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+    "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+    "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+    "tests/run_campaign.py": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+    "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+    "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+    "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+  },
+  "raw_source_sha256": {
+    "boot.tscn": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+    "export_presets.cfg": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+    "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+    "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+    "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+    "project.godot": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+    "scripts/boot.gd": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+    "scripts/boot.gd.uid": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+    "scripts/campaign_main.gd": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+    "scripts/campaign_main.gd.uid": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+    "scripts/campaign_rules.gd": "4d58a79a8b604450d04898f2d806a509719469d1323679993ecfac5ca77b78f2",
+    "scripts/campaign_rules.gd.uid": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+    "scripts/definitions.gd": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+    "scripts/definitions.gd.uid": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+    "scripts/main.gd": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+    "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+    "scripts/rules.gd": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+    "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+    "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+    "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+    "scripts/save_store.gd": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+    "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+    "tests/campaign_balance.gd": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+    "tests/campaign_balance.gd.uid": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+    "tests/campaign_clipboard.gd": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+    "tests/campaign_clipboard.gd.uid": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+    "tests/campaign_cold.gd": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+    "tests/campaign_cold.gd.uid": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+    "tests/campaign_input.gd": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+    "tests/campaign_input.gd.uid": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+    "tests/campaign_legacy.gd": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+    "tests/campaign_legacy.gd.uid": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+    "tests/campaign_preview.gd": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+    "tests/campaign_preview.gd.uid": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+    "tests/campaign_tests.gd": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+    "tests/campaign_tests.gd.uid": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+    "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+    "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+    "tests/freeze_campaign.py": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+    "tests/freeze_checkpoint.py": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+    "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+    "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+    "tests/policy.gd": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+    "tests/policy.gd.uid": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+    "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+    "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+    "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+    "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+    "tests/run_campaign.py": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+    "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+    "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+    "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+  },
+  "lf_tree_sha256": "aa0edc50ed41c809d0967615b5ec82525d0b1be7d951356cadbc8c4be4ae02c0",
+  "explicit_source_delta": [
+    {
+      "path": "scripts/campaign_rules.gd",
+      "parent_lf_sha256": "06ff58754a63363094f9037c13558ac43e9bedbfe8be2b2fbb1fe82f5bab97ab",
+      "candidate_lf_sha256": "4d58a79a8b604450d04898f2d806a509719469d1323679993ecfac5ca77b78f2"
+    },
+    {
+      "path": "tests/campaign_tests.gd",
+      "parent_lf_sha256": "17bafcffa3420a26b3a3b4fd1c8913ed8304e53cc0d3cbe73222c531bd8d432b",
+      "candidate_lf_sha256": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f"
+    }
+  ],
+  "sensitivity_comparison": "Identical regression tests and source archive; only campaign_rules.gd differs between expected-fail and fixed rules runs. Runner rejects old SCRIPT ERROR output despite boolean assertions reporting zero failures.",
+  "runs": [
+    {
+      "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z",
+      "classification": "accepted focused headless validation",
+      "passed": true,
+      "source_unchanged": true,
+      "executed_raw_source_sha256": {
+        "boot.tscn": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+        "export_presets.cfg": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+        "scripts/boot.gd": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+        "scripts/boot.gd.uid": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+        "scripts/campaign_main.gd": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+        "scripts/campaign_main.gd.uid": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+        "scripts/campaign_rules.gd": "4d58a79a8b604450d04898f2d806a509719469d1323679993ecfac5ca77b78f2",
+        "scripts/campaign_rules.gd.uid": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+        "scripts/definitions.gd": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+        "scripts/definitions.gd.uid": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+        "scripts/main.gd": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/campaign_balance.gd": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+        "tests/campaign_balance.gd.uid": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+        "tests/campaign_clipboard.gd": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+        "tests/campaign_clipboard.gd.uid": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+        "tests/campaign_cold.gd": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+        "tests/campaign_cold.gd.uid": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+        "tests/campaign_input.gd": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+        "tests/campaign_input.gd.uid": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+        "tests/campaign_legacy.gd": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+        "tests/campaign_legacy.gd.uid": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+        "tests/campaign_preview.gd": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+        "tests/campaign_preview.gd.uid": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+        "tests/campaign_tests.gd": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+        "tests/campaign_tests.gd.uid": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_campaign.py": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+        "tests/freeze_checkpoint.py": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/policy.gd": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+        "tests/policy.gd.uid": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_campaign.py": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "executed_lf_source_sha256": {
+        "boot.tscn": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+        "export_presets.cfg": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+        "scripts/boot.gd": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+        "scripts/boot.gd.uid": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+        "scripts/campaign_main.gd": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+        "scripts/campaign_main.gd.uid": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+        "scripts/campaign_rules.gd": "4d58a79a8b604450d04898f2d806a509719469d1323679993ecfac5ca77b78f2",
+        "scripts/campaign_rules.gd.uid": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+        "scripts/definitions.gd": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+        "scripts/definitions.gd.uid": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+        "scripts/main.gd": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "7715cb3bca3d84cf066c33b34c781756529308c2c247fe135cda9dafff6e4d59",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/campaign_balance.gd": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+        "tests/campaign_balance.gd.uid": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+        "tests/campaign_clipboard.gd": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+        "tests/campaign_clipboard.gd.uid": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+        "tests/campaign_cold.gd": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+        "tests/campaign_cold.gd.uid": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+        "tests/campaign_input.gd": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+        "tests/campaign_input.gd.uid": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+        "tests/campaign_legacy.gd": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+        "tests/campaign_legacy.gd.uid": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+        "tests/campaign_preview.gd": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+        "tests/campaign_preview.gd.uid": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+        "tests/campaign_tests.gd": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+        "tests/campaign_tests.gd.uid": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_campaign.py": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+        "tests/freeze_checkpoint.py": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/policy.gd": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+        "tests/policy.gd.uid": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_campaign.py": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "script_error_lines": 0,
+      "artifacts": [
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log",
+          "sha256": "795ca6c804f3dcad4313b9d050e14dcedb4efde78bf9af481db9ba73638057a0",
+          "bytes": 162
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/boot.tscn",
+          "sha256": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+          "bytes": 169
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/export_presets.cfg",
+          "sha256": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+          "bytes": 652
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/icon.svg",
+          "sha256": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+          "bytes": 353
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/icon.svg.import",
+          "sha256": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+          "bytes": 1012
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/main.tscn",
+          "sha256": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+          "bytes": 171
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/project.godot",
+          "sha256": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+          "bytes": 735
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/scripts/boot.gd",
+          "sha256": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+          "bytes": 462
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/scripts/boot.gd.uid",
+          "sha256": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/scripts/campaign_main.gd",
+          "sha256": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+          "bytes": 23336
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/scripts/campaign_main.gd.uid",
+          "sha256": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/scripts/campaign_rules.gd",
+          "sha256": "4d58a79a8b604450d04898f2d806a509719469d1323679993ecfac5ca77b78f2",
+          "bytes": 26463
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/scripts/campaign_rules.gd.uid",
+          "sha256": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/scripts/definitions.gd",
+          "sha256": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+          "bytes": 9268
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/scripts/definitions.gd.uid",
+          "sha256": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/scripts/main.gd",
+          "sha256": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+          "bytes": 24091
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/scripts/main.gd.uid",
+          "sha256": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/scripts/rules.gd",
+          "sha256": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+          "bytes": 11950
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/scripts/rules.gd.uid",
+          "sha256": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/scripts/save_files.gd",
+          "sha256": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+          "bytes": 651
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/scripts/save_files.gd.uid",
+          "sha256": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/scripts/save_store.gd",
+          "sha256": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+          "bytes": 3864
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/scripts/save_store.gd.uid",
+          "sha256": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/campaign_balance.gd",
+          "sha256": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+          "bytes": 1793
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/campaign_balance.gd.uid",
+          "sha256": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/campaign_clipboard.gd",
+          "sha256": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+          "bytes": 4122
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/campaign_clipboard.gd.uid",
+          "sha256": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/campaign_cold.gd",
+          "sha256": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+          "bytes": 6295
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/campaign_cold.gd.uid",
+          "sha256": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/campaign_input.gd",
+          "sha256": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+          "bytes": 16729
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/campaign_input.gd.uid",
+          "sha256": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/campaign_legacy.gd",
+          "sha256": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+          "bytes": 3909
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/campaign_legacy.gd.uid",
+          "sha256": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/campaign_preview.gd",
+          "sha256": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+          "bytes": 492
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/campaign_preview.gd.uid",
+          "sha256": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/campaign_tests.gd",
+          "sha256": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+          "bytes": 19194
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/campaign_tests.gd.uid",
+          "sha256": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/fault_files.gd",
+          "sha256": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+          "bytes": 581
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/fault_files.gd.uid",
+          "sha256": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/freeze_campaign.py",
+          "sha256": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+          "bytes": 6493
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/freeze_checkpoint.py",
+          "sha256": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+          "bytes": 4211
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/playthrough.gd",
+          "sha256": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+          "bytes": 15069
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/playthrough.gd.uid",
+          "sha256": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/policy.gd",
+          "sha256": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+          "bytes": 2860
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/policy.gd.uid",
+          "sha256": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/preview.gd",
+          "sha256": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+          "bytes": 498
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/preview.gd.uid",
+          "sha256": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/restore.gd",
+          "sha256": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+          "bytes": 2652
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/restore.gd.uid",
+          "sha256": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/run_campaign.py",
+          "sha256": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+          "bytes": 4973
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/run_desktop.py",
+          "sha256": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+          "bytes": 4277
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/run_tests.gd",
+          "sha256": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+          "bytes": 10071
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/executed-source/tests/run_tests.gd.uid",
+          "sha256": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/godot.log",
+          "sha256": "61239626632f85bf45d105165a710f92b085aa1a80f3e53fe03902fd080da13e",
+          "bytes": 166
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/receipt.json",
+          "sha256": "1f98b39863b977572ae2fffe68004a956178d3633c0635ff90810e72c022da5c",
+          "bytes": 11011
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/rules-report.json",
+          "sha256": "d0fbb9bf61a742c3168188a1ccc65640e479583b861c05a3feb1001c8175be81",
+          "bytes": 313915
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/source-hashes-lf.json",
+          "sha256": "735f1fa460ef848ad3e290e024869ff81845e7ae9d439ed06bda560d5a467741",
+          "bytes": 5016
+        },
+        {
+          "path": ".artifacts/ledger-fixed-rules-20261018T072045626798Z/source-hashes.json",
+          "sha256": "1e55cdf1d042253ac22a996ee6908180575e435f3c4a5ed58b6c97905852da41",
+          "bytes": 5016
+        }
+      ],
+      "checks": 412,
+      "assertion_failures": 0
+    },
+    {
+      "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z",
+      "classification": "accepted focused headless validation",
+      "passed": true,
+      "source_unchanged": true,
+      "executed_raw_source_sha256": {
+        "boot.tscn": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+        "export_presets.cfg": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+        "scripts/boot.gd": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+        "scripts/boot.gd.uid": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+        "scripts/campaign_main.gd": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+        "scripts/campaign_main.gd.uid": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+        "scripts/campaign_rules.gd": "4d58a79a8b604450d04898f2d806a509719469d1323679993ecfac5ca77b78f2",
+        "scripts/campaign_rules.gd.uid": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+        "scripts/definitions.gd": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+        "scripts/definitions.gd.uid": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+        "scripts/main.gd": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/campaign_balance.gd": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+        "tests/campaign_balance.gd.uid": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+        "tests/campaign_clipboard.gd": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+        "tests/campaign_clipboard.gd.uid": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+        "tests/campaign_cold.gd": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+        "tests/campaign_cold.gd.uid": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+        "tests/campaign_input.gd": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+        "tests/campaign_input.gd.uid": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+        "tests/campaign_legacy.gd": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+        "tests/campaign_legacy.gd.uid": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+        "tests/campaign_preview.gd": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+        "tests/campaign_preview.gd.uid": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+        "tests/campaign_tests.gd": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+        "tests/campaign_tests.gd.uid": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_campaign.py": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+        "tests/freeze_checkpoint.py": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/policy.gd": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+        "tests/policy.gd.uid": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_campaign.py": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "executed_lf_source_sha256": {
+        "boot.tscn": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+        "export_presets.cfg": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+        "scripts/boot.gd": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+        "scripts/boot.gd.uid": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+        "scripts/campaign_main.gd": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+        "scripts/campaign_main.gd.uid": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+        "scripts/campaign_rules.gd": "4d58a79a8b604450d04898f2d806a509719469d1323679993ecfac5ca77b78f2",
+        "scripts/campaign_rules.gd.uid": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+        "scripts/definitions.gd": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+        "scripts/definitions.gd.uid": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+        "scripts/main.gd": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "7715cb3bca3d84cf066c33b34c781756529308c2c247fe135cda9dafff6e4d59",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/campaign_balance.gd": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+        "tests/campaign_balance.gd.uid": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+        "tests/campaign_clipboard.gd": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+        "tests/campaign_clipboard.gd.uid": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+        "tests/campaign_cold.gd": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+        "tests/campaign_cold.gd.uid": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+        "tests/campaign_input.gd": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+        "tests/campaign_input.gd.uid": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+        "tests/campaign_legacy.gd": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+        "tests/campaign_legacy.gd.uid": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+        "tests/campaign_preview.gd": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+        "tests/campaign_preview.gd.uid": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+        "tests/campaign_tests.gd": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+        "tests/campaign_tests.gd.uid": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_campaign.py": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+        "tests/freeze_checkpoint.py": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/policy.gd": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+        "tests/policy.gd.uid": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_campaign.py": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "script_error_lines": 0,
+      "artifacts": [
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-0",
+          "sha256": "790562a798ba332d56d30f1697a1b447fcc4f26a858aa7380e38c4d2bf4b1edf",
+          "bytes": 11117
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-1",
+          "sha256": "af46ac69172eef186ef34954443ae8c838a6245c6c9322a59eb15d76a4526073",
+          "bytes": 11116
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log",
+          "sha256": "0a763b07587b646653798899850725f2664b52306d9e753cefb854478f359029",
+          "bytes": 132
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/appdata/Godot/app_userdata/Frontline Foundry/logs/godot2026-10-18T03.20.47.log",
+          "sha256": "624c2a6803e8eedb67e041a7749ad498e2c07e02b4f470a3c3fc22471a47f216",
+          "bytes": 18854
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/cold-report.json",
+          "sha256": "a4ac74183bc5e7b96a831122044f061688d823703dd8b89447a95ba5ef75500b",
+          "bytes": 46542
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/boot.tscn",
+          "sha256": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+          "bytes": 169
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/export_presets.cfg",
+          "sha256": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+          "bytes": 652
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/icon.svg",
+          "sha256": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+          "bytes": 353
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/icon.svg.import",
+          "sha256": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+          "bytes": 1012
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/main.tscn",
+          "sha256": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+          "bytes": 171
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/project.godot",
+          "sha256": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+          "bytes": 735
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/scripts/boot.gd",
+          "sha256": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+          "bytes": 462
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/scripts/boot.gd.uid",
+          "sha256": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/scripts/campaign_main.gd",
+          "sha256": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+          "bytes": 23336
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/scripts/campaign_main.gd.uid",
+          "sha256": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/scripts/campaign_rules.gd",
+          "sha256": "4d58a79a8b604450d04898f2d806a509719469d1323679993ecfac5ca77b78f2",
+          "bytes": 26463
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/scripts/campaign_rules.gd.uid",
+          "sha256": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/scripts/definitions.gd",
+          "sha256": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+          "bytes": 9268
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/scripts/definitions.gd.uid",
+          "sha256": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/scripts/main.gd",
+          "sha256": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+          "bytes": 24091
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/scripts/main.gd.uid",
+          "sha256": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/scripts/rules.gd",
+          "sha256": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+          "bytes": 11950
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/scripts/rules.gd.uid",
+          "sha256": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/scripts/save_files.gd",
+          "sha256": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+          "bytes": 651
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/scripts/save_files.gd.uid",
+          "sha256": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/scripts/save_store.gd",
+          "sha256": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+          "bytes": 3864
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/scripts/save_store.gd.uid",
+          "sha256": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/campaign_balance.gd",
+          "sha256": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+          "bytes": 1793
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/campaign_balance.gd.uid",
+          "sha256": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/campaign_clipboard.gd",
+          "sha256": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+          "bytes": 4122
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/campaign_clipboard.gd.uid",
+          "sha256": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/campaign_cold.gd",
+          "sha256": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+          "bytes": 6295
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/campaign_cold.gd.uid",
+          "sha256": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/campaign_input.gd",
+          "sha256": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+          "bytes": 16729
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/campaign_input.gd.uid",
+          "sha256": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/campaign_legacy.gd",
+          "sha256": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+          "bytes": 3909
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/campaign_legacy.gd.uid",
+          "sha256": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/campaign_preview.gd",
+          "sha256": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+          "bytes": 492
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/campaign_preview.gd.uid",
+          "sha256": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/campaign_tests.gd",
+          "sha256": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+          "bytes": 19194
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/campaign_tests.gd.uid",
+          "sha256": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/fault_files.gd",
+          "sha256": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+          "bytes": 581
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/fault_files.gd.uid",
+          "sha256": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/freeze_campaign.py",
+          "sha256": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+          "bytes": 6493
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/freeze_checkpoint.py",
+          "sha256": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+          "bytes": 4211
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/playthrough.gd",
+          "sha256": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+          "bytes": 15069
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/playthrough.gd.uid",
+          "sha256": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/policy.gd",
+          "sha256": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+          "bytes": 2860
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/policy.gd.uid",
+          "sha256": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/preview.gd",
+          "sha256": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+          "bytes": 498
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/preview.gd.uid",
+          "sha256": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/restore.gd",
+          "sha256": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+          "bytes": 2652
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/restore.gd.uid",
+          "sha256": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/run_campaign.py",
+          "sha256": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+          "bytes": 4973
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/run_desktop.py",
+          "sha256": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+          "bytes": 4277
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/run_tests.gd",
+          "sha256": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+          "bytes": 10071
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/executed-source/tests/run_tests.gd.uid",
+          "sha256": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/godot.log",
+          "sha256": "f805e33210ec7e0796fe7fc1255f2ad35baa72b03d97b71ee143d35c63c7e142",
+          "bytes": 136
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/receipt.json",
+          "sha256": "f28dcee901e6d62a1a0a17766aaddcf2e4b29281221c371f7fee453b5915c4ba",
+          "bytes": 11711
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/source-hashes-lf.json",
+          "sha256": "735f1fa460ef848ad3e290e024869ff81845e7ae9d439ed06bda560d5a467741",
+          "bytes": 5016
+        },
+        {
+          "path": ".artifacts/ledger-fixed-cold-20261018T072045660047Z/source-hashes.json",
+          "sha256": "1e55cdf1d042253ac22a996ee6908180575e435f3c4a5ed58b6c97905852da41",
+          "bytes": 5016
+        }
+      ],
+      "checks": 16,
+      "assertion_failures": 0
+    },
+    {
+      "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z",
+      "classification": "accepted focused headless validation",
+      "passed": true,
+      "source_unchanged": true,
+      "executed_raw_source_sha256": {
+        "boot.tscn": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+        "export_presets.cfg": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+        "scripts/boot.gd": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+        "scripts/boot.gd.uid": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+        "scripts/campaign_main.gd": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+        "scripts/campaign_main.gd.uid": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+        "scripts/campaign_rules.gd": "4d58a79a8b604450d04898f2d806a509719469d1323679993ecfac5ca77b78f2",
+        "scripts/campaign_rules.gd.uid": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+        "scripts/definitions.gd": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+        "scripts/definitions.gd.uid": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+        "scripts/main.gd": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/campaign_balance.gd": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+        "tests/campaign_balance.gd.uid": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+        "tests/campaign_clipboard.gd": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+        "tests/campaign_clipboard.gd.uid": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+        "tests/campaign_cold.gd": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+        "tests/campaign_cold.gd.uid": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+        "tests/campaign_input.gd": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+        "tests/campaign_input.gd.uid": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+        "tests/campaign_legacy.gd": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+        "tests/campaign_legacy.gd.uid": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+        "tests/campaign_preview.gd": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+        "tests/campaign_preview.gd.uid": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+        "tests/campaign_tests.gd": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+        "tests/campaign_tests.gd.uid": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_campaign.py": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+        "tests/freeze_checkpoint.py": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/policy.gd": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+        "tests/policy.gd.uid": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_campaign.py": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "executed_lf_source_sha256": {
+        "boot.tscn": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+        "export_presets.cfg": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+        "scripts/boot.gd": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+        "scripts/boot.gd.uid": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+        "scripts/campaign_main.gd": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+        "scripts/campaign_main.gd.uid": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+        "scripts/campaign_rules.gd": "4d58a79a8b604450d04898f2d806a509719469d1323679993ecfac5ca77b78f2",
+        "scripts/campaign_rules.gd.uid": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+        "scripts/definitions.gd": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+        "scripts/definitions.gd.uid": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+        "scripts/main.gd": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "7715cb3bca3d84cf066c33b34c781756529308c2c247fe135cda9dafff6e4d59",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/campaign_balance.gd": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+        "tests/campaign_balance.gd.uid": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+        "tests/campaign_clipboard.gd": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+        "tests/campaign_clipboard.gd.uid": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+        "tests/campaign_cold.gd": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+        "tests/campaign_cold.gd.uid": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+        "tests/campaign_input.gd": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+        "tests/campaign_input.gd.uid": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+        "tests/campaign_legacy.gd": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+        "tests/campaign_legacy.gd.uid": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+        "tests/campaign_preview.gd": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+        "tests/campaign_preview.gd.uid": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+        "tests/campaign_tests.gd": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+        "tests/campaign_tests.gd.uid": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_campaign.py": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+        "tests/freeze_checkpoint.py": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/policy.gd": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+        "tests/policy.gd.uid": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_campaign.py": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "script_error_lines": 0,
+      "artifacts": [
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-0",
+          "sha256": "058ab68630037b1b038499671fb288b5e5e6eec776654ebbb661795cf298820c",
+          "bytes": 9051
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-1",
+          "sha256": "def72e56ed793be57a990a7a5d0a000b28b9d40157cb1d6ad1907e9dc535b019",
+          "bytes": 9373
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log",
+          "sha256": "e568b0e7a4bf88b9bb32b63041dde39a3124bca17db187b9b9b1eb6124f5bf0e",
+          "bytes": 133
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/boot.tscn",
+          "sha256": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+          "bytes": 169
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/export_presets.cfg",
+          "sha256": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+          "bytes": 652
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/icon.svg",
+          "sha256": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+          "bytes": 353
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/icon.svg.import",
+          "sha256": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+          "bytes": 1012
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/main.tscn",
+          "sha256": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+          "bytes": 171
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/project.godot",
+          "sha256": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+          "bytes": 735
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/scripts/boot.gd",
+          "sha256": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+          "bytes": 462
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/scripts/boot.gd.uid",
+          "sha256": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/scripts/campaign_main.gd",
+          "sha256": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+          "bytes": 23336
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/scripts/campaign_main.gd.uid",
+          "sha256": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/scripts/campaign_rules.gd",
+          "sha256": "4d58a79a8b604450d04898f2d806a509719469d1323679993ecfac5ca77b78f2",
+          "bytes": 26463
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/scripts/campaign_rules.gd.uid",
+          "sha256": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/scripts/definitions.gd",
+          "sha256": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+          "bytes": 9268
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/scripts/definitions.gd.uid",
+          "sha256": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/scripts/main.gd",
+          "sha256": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+          "bytes": 24091
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/scripts/main.gd.uid",
+          "sha256": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/scripts/rules.gd",
+          "sha256": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+          "bytes": 11950
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/scripts/rules.gd.uid",
+          "sha256": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/scripts/save_files.gd",
+          "sha256": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+          "bytes": 651
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/scripts/save_files.gd.uid",
+          "sha256": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/scripts/save_store.gd",
+          "sha256": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+          "bytes": 3864
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/scripts/save_store.gd.uid",
+          "sha256": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/campaign_balance.gd",
+          "sha256": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+          "bytes": 1793
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/campaign_balance.gd.uid",
+          "sha256": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/campaign_clipboard.gd",
+          "sha256": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+          "bytes": 4122
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/campaign_clipboard.gd.uid",
+          "sha256": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/campaign_cold.gd",
+          "sha256": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+          "bytes": 6295
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/campaign_cold.gd.uid",
+          "sha256": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/campaign_input.gd",
+          "sha256": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+          "bytes": 16729
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/campaign_input.gd.uid",
+          "sha256": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/campaign_legacy.gd",
+          "sha256": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+          "bytes": 3909
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/campaign_legacy.gd.uid",
+          "sha256": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/campaign_preview.gd",
+          "sha256": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+          "bytes": 492
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/campaign_preview.gd.uid",
+          "sha256": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/campaign_tests.gd",
+          "sha256": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+          "bytes": 19194
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/campaign_tests.gd.uid",
+          "sha256": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/fault_files.gd",
+          "sha256": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+          "bytes": 581
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/fault_files.gd.uid",
+          "sha256": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/freeze_campaign.py",
+          "sha256": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+          "bytes": 6493
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/freeze_checkpoint.py",
+          "sha256": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+          "bytes": 4211
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/playthrough.gd",
+          "sha256": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+          "bytes": 15069
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/playthrough.gd.uid",
+          "sha256": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/policy.gd",
+          "sha256": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+          "bytes": 2860
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/policy.gd.uid",
+          "sha256": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/preview.gd",
+          "sha256": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+          "bytes": 498
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/preview.gd.uid",
+          "sha256": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/restore.gd",
+          "sha256": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+          "bytes": 2652
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/restore.gd.uid",
+          "sha256": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/run_campaign.py",
+          "sha256": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+          "bytes": 4973
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/run_desktop.py",
+          "sha256": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+          "bytes": 4277
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/run_tests.gd",
+          "sha256": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+          "bytes": 10071
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/executed-source/tests/run_tests.gd.uid",
+          "sha256": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/godot.log",
+          "sha256": "3479b76c3216737b09b2e6248578583b1e2a0aac5dc7daefd1da040f2f12ac7c",
+          "bytes": 137
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/legacy-report.json",
+          "sha256": "228dbdc627c8e20b3430d2ba64f1bb0d0a571f3c498b9c4d20ae00f8e84fcb13",
+          "bytes": 23984
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/receipt.json",
+          "sha256": "27ebd2134b9325af5cfb8ebe7952f4563aee44cab2308d16fb00f80eccdc47a3",
+          "bytes": 11504
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/source-hashes-lf.json",
+          "sha256": "735f1fa460ef848ad3e290e024869ff81845e7ae9d439ed06bda560d5a467741",
+          "bytes": 5016
+        },
+        {
+          "path": ".artifacts/ledger-fixed-fixture-legacy-20261018T072104590513Z/source-hashes.json",
+          "sha256": "1e55cdf1d042253ac22a996ee6908180575e435f3c4a5ed58b6c97905852da41",
+          "bytes": 5016
+        }
+      ],
+      "checks": 9,
+      "assertion_failures": 0
+    },
+    {
+      "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z",
+      "classification": "accepted focused headless validation",
+      "passed": true,
+      "source_unchanged": true,
+      "executed_raw_source_sha256": {
+        "boot.tscn": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+        "CAMPAIGN_CHECKPOINT.json": "e176c22fd6ee8384869cd79885a1f39146778395ccad6b2046d38052c40bfe99",
+        "CAMPAIGN_CHECKPOINT.md": "17d947c8b9cb90ddd9ca9192978d9195021aa756f2a02ce260ed496a78895235",
+        "export_presets.cfg": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+        "README.md": "0e3cb6251b607c84db675da28bbd7b15396fe5137a9b781f724d6722b25b99e4",
+        "scripts/boot.gd": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+        "scripts/boot.gd.uid": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+        "scripts/campaign_main.gd": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+        "scripts/campaign_main.gd.uid": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+        "scripts/campaign_rules.gd": "4d58a79a8b604450d04898f2d806a509719469d1323679993ecfac5ca77b78f2",
+        "scripts/campaign_rules.gd.uid": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+        "scripts/definitions.gd": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+        "scripts/definitions.gd.uid": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+        "scripts/main.gd": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/campaign_balance.gd": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+        "tests/campaign_balance.gd.uid": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+        "tests/campaign_clipboard.gd": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+        "tests/campaign_clipboard.gd.uid": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+        "tests/campaign_cold.gd": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+        "tests/campaign_cold.gd.uid": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+        "tests/campaign_input.gd": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+        "tests/campaign_input.gd.uid": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+        "tests/campaign_legacy.gd": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+        "tests/campaign_legacy.gd.uid": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+        "tests/campaign_preview.gd": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+        "tests/campaign_preview.gd.uid": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+        "tests/campaign_tests.gd": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+        "tests/campaign_tests.gd.uid": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_campaign.py": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+        "tests/freeze_checkpoint.py": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/policy.gd": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+        "tests/policy.gd.uid": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_campaign.py": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "executed_lf_source_sha256": {
+        "boot.tscn": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+        "CAMPAIGN_CHECKPOINT.json": "20c2ceb88d1954a218bc853152ac0594c40e0b4db12a96f23d58414245491495",
+        "CAMPAIGN_CHECKPOINT.md": "17d947c8b9cb90ddd9ca9192978d9195021aa756f2a02ce260ed496a78895235",
+        "export_presets.cfg": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+        "README.md": "0e3cb6251b607c84db675da28bbd7b15396fe5137a9b781f724d6722b25b99e4",
+        "scripts/boot.gd": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+        "scripts/boot.gd.uid": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+        "scripts/campaign_main.gd": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+        "scripts/campaign_main.gd.uid": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+        "scripts/campaign_rules.gd": "4d58a79a8b604450d04898f2d806a509719469d1323679993ecfac5ca77b78f2",
+        "scripts/campaign_rules.gd.uid": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+        "scripts/definitions.gd": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+        "scripts/definitions.gd.uid": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+        "scripts/main.gd": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "7715cb3bca3d84cf066c33b34c781756529308c2c247fe135cda9dafff6e4d59",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/campaign_balance.gd": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+        "tests/campaign_balance.gd.uid": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+        "tests/campaign_clipboard.gd": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+        "tests/campaign_clipboard.gd.uid": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+        "tests/campaign_cold.gd": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+        "tests/campaign_cold.gd.uid": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+        "tests/campaign_input.gd": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+        "tests/campaign_input.gd.uid": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+        "tests/campaign_legacy.gd": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+        "tests/campaign_legacy.gd.uid": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+        "tests/campaign_preview.gd": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+        "tests/campaign_preview.gd.uid": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+        "tests/campaign_tests.gd": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+        "tests/campaign_tests.gd.uid": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_campaign.py": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+        "tests/freeze_checkpoint.py": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/policy.gd": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+        "tests/policy.gd.uid": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_campaign.py": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "script_error_lines": 0,
+      "artifacts": [
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log",
+          "sha256": "b4344d72f37d0db3551718392dae74b575476f9dc4dc0edb2496d40ac5221cea",
+          "bytes": 4119
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/boot.tscn",
+          "sha256": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+          "bytes": 169
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/CAMPAIGN_CHECKPOINT.json",
+          "sha256": "e176c22fd6ee8384869cd79885a1f39146778395ccad6b2046d38052c40bfe99",
+          "bytes": 431243
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/CAMPAIGN_CHECKPOINT.md",
+          "sha256": "17d947c8b9cb90ddd9ca9192978d9195021aa756f2a02ce260ed496a78895235",
+          "bytes": 6310
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/export_presets.cfg",
+          "sha256": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+          "bytes": 652
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/icon.svg",
+          "sha256": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+          "bytes": 353
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/icon.svg.import",
+          "sha256": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+          "bytes": 1012
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/main.tscn",
+          "sha256": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+          "bytes": 171
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/project.godot",
+          "sha256": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+          "bytes": 735
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/README.md",
+          "sha256": "0e3cb6251b607c84db675da28bbd7b15396fe5137a9b781f724d6722b25b99e4",
+          "bytes": 7983
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/scripts/boot.gd",
+          "sha256": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+          "bytes": 462
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/scripts/boot.gd.uid",
+          "sha256": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/scripts/campaign_main.gd",
+          "sha256": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+          "bytes": 23336
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/scripts/campaign_main.gd.uid",
+          "sha256": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/scripts/campaign_rules.gd",
+          "sha256": "4d58a79a8b604450d04898f2d806a509719469d1323679993ecfac5ca77b78f2",
+          "bytes": 26463
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/scripts/campaign_rules.gd.uid",
+          "sha256": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/scripts/definitions.gd",
+          "sha256": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+          "bytes": 9268
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/scripts/definitions.gd.uid",
+          "sha256": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/scripts/main.gd",
+          "sha256": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+          "bytes": 24091
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/scripts/main.gd.uid",
+          "sha256": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/scripts/rules.gd",
+          "sha256": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+          "bytes": 11950
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/scripts/rules.gd.uid",
+          "sha256": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/scripts/save_files.gd",
+          "sha256": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+          "bytes": 651
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/scripts/save_files.gd.uid",
+          "sha256": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/scripts/save_store.gd",
+          "sha256": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+          "bytes": 3864
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/scripts/save_store.gd.uid",
+          "sha256": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/campaign_balance.gd",
+          "sha256": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+          "bytes": 1793
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/campaign_balance.gd.uid",
+          "sha256": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/campaign_clipboard.gd",
+          "sha256": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+          "bytes": 4122
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/campaign_clipboard.gd.uid",
+          "sha256": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/campaign_cold.gd",
+          "sha256": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+          "bytes": 6295
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/campaign_cold.gd.uid",
+          "sha256": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/campaign_input.gd",
+          "sha256": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+          "bytes": 16729
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/campaign_input.gd.uid",
+          "sha256": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/campaign_legacy.gd",
+          "sha256": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+          "bytes": 3909
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/campaign_legacy.gd.uid",
+          "sha256": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/campaign_preview.gd",
+          "sha256": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+          "bytes": 492
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/campaign_preview.gd.uid",
+          "sha256": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/campaign_tests.gd",
+          "sha256": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+          "bytes": 19194
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/campaign_tests.gd.uid",
+          "sha256": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/fault_files.gd",
+          "sha256": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+          "bytes": 581
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/fault_files.gd.uid",
+          "sha256": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/freeze_campaign.py",
+          "sha256": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+          "bytes": 6493
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/freeze_checkpoint.py",
+          "sha256": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+          "bytes": 4211
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/playthrough.gd",
+          "sha256": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+          "bytes": 15069
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/playthrough.gd.uid",
+          "sha256": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/policy.gd",
+          "sha256": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+          "bytes": 2860
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/policy.gd.uid",
+          "sha256": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/preview.gd",
+          "sha256": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+          "bytes": 498
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/preview.gd.uid",
+          "sha256": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/restore.gd",
+          "sha256": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+          "bytes": 2652
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/restore.gd.uid",
+          "sha256": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/run_campaign.py",
+          "sha256": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+          "bytes": 4973
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/run_desktop.py",
+          "sha256": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+          "bytes": 4277
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/run_tests.gd",
+          "sha256": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+          "bytes": 10071
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/executed-source/tests/run_tests.gd.uid",
+          "sha256": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/godot.log",
+          "sha256": "683a2933b286ed07177e5ce4b3a4f0b36b20ab739deb2ad8d82633ac0020c284",
+          "bytes": 4125
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/receipt.json",
+          "sha256": "d35fe23e5f2ac1a18485653c7fa968adace3a6015a7d320a3aeaa02ba163452d",
+          "bytes": 11522
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/rules-report.json",
+          "sha256": "0efe57d97dcd7107d04bbdd3e2a461d8241251f47a0bb33be4edc9fbf985b4b7",
+          "bytes": 15950
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/source-hashes-lf.json",
+          "sha256": "33a017abd723663a21dd8fb18492815723d38e7c2c9c16c2ca6f319d9c0f1e04",
+          "bytes": 5296
+        },
+        {
+          "path": ".artifacts/ledger-legacy-rules-rules-20261018T072104591546Z/source-hashes.json",
+          "sha256": "d702bbe19a5d094a7892a1328dbe3f10accddde8d9a57df84f930a5e474ebb82",
+          "bytes": 5296
+        }
+      ],
+      "checks": 69,
+      "assertion_failures": 0
+    },
+    {
+      "path": ".artifacts/ledger-before-rules-20261018T072025640927Z",
+      "classification": "expected sensitivity failure: old validator emits invalid-operand errors",
+      "passed": false,
+      "source_unchanged": true,
+      "executed_raw_source_sha256": {
+        "boot.tscn": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+        "export_presets.cfg": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+        "scripts/boot.gd": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+        "scripts/boot.gd.uid": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+        "scripts/campaign_main.gd": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+        "scripts/campaign_main.gd.uid": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+        "scripts/campaign_rules.gd": "06ff58754a63363094f9037c13558ac43e9bedbfe8be2b2fbb1fe82f5bab97ab",
+        "scripts/campaign_rules.gd.uid": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+        "scripts/definitions.gd": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+        "scripts/definitions.gd.uid": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+        "scripts/main.gd": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/campaign_balance.gd": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+        "tests/campaign_balance.gd.uid": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+        "tests/campaign_clipboard.gd": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+        "tests/campaign_clipboard.gd.uid": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+        "tests/campaign_cold.gd": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+        "tests/campaign_cold.gd.uid": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+        "tests/campaign_input.gd": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+        "tests/campaign_input.gd.uid": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+        "tests/campaign_legacy.gd": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+        "tests/campaign_legacy.gd.uid": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+        "tests/campaign_preview.gd": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+        "tests/campaign_preview.gd.uid": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+        "tests/campaign_tests.gd": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+        "tests/campaign_tests.gd.uid": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_campaign.py": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+        "tests/freeze_checkpoint.py": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/policy.gd": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+        "tests/policy.gd.uid": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_campaign.py": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "executed_lf_source_sha256": {
+        "boot.tscn": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+        "export_presets.cfg": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+        "scripts/boot.gd": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+        "scripts/boot.gd.uid": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+        "scripts/campaign_main.gd": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+        "scripts/campaign_main.gd.uid": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+        "scripts/campaign_rules.gd": "06ff58754a63363094f9037c13558ac43e9bedbfe8be2b2fbb1fe82f5bab97ab",
+        "scripts/campaign_rules.gd.uid": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+        "scripts/definitions.gd": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+        "scripts/definitions.gd.uid": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+        "scripts/main.gd": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "7715cb3bca3d84cf066c33b34c781756529308c2c247fe135cda9dafff6e4d59",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/campaign_balance.gd": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+        "tests/campaign_balance.gd.uid": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+        "tests/campaign_clipboard.gd": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+        "tests/campaign_clipboard.gd.uid": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+        "tests/campaign_cold.gd": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+        "tests/campaign_cold.gd.uid": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+        "tests/campaign_input.gd": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+        "tests/campaign_input.gd.uid": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+        "tests/campaign_legacy.gd": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+        "tests/campaign_legacy.gd.uid": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+        "tests/campaign_preview.gd": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+        "tests/campaign_preview.gd.uid": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+        "tests/campaign_tests.gd": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+        "tests/campaign_tests.gd.uid": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_campaign.py": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+        "tests/freeze_checkpoint.py": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/policy.gd": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+        "tests/policy.gd.uid": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_campaign.py": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "script_error_lines": 140,
+      "artifacts": [
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log",
+          "sha256": "6ac83015171b17a336b26f0dcb31d9a6726fe8cc61d4e6f68b65932508a7f457",
+          "bytes": 58086
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/boot.tscn",
+          "sha256": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+          "bytes": 169
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/export_presets.cfg",
+          "sha256": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+          "bytes": 652
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/icon.svg",
+          "sha256": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+          "bytes": 353
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/icon.svg.import",
+          "sha256": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+          "bytes": 1012
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/main.tscn",
+          "sha256": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+          "bytes": 171
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/project.godot",
+          "sha256": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+          "bytes": 735
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/scripts/boot.gd",
+          "sha256": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+          "bytes": 462
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/scripts/boot.gd.uid",
+          "sha256": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/scripts/campaign_main.gd",
+          "sha256": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+          "bytes": 23336
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/scripts/campaign_main.gd.uid",
+          "sha256": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/scripts/campaign_rules.gd",
+          "sha256": "06ff58754a63363094f9037c13558ac43e9bedbfe8be2b2fbb1fe82f5bab97ab",
+          "bytes": 26529
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/scripts/campaign_rules.gd.uid",
+          "sha256": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/scripts/definitions.gd",
+          "sha256": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+          "bytes": 9268
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/scripts/definitions.gd.uid",
+          "sha256": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/scripts/main.gd",
+          "sha256": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+          "bytes": 24091
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/scripts/main.gd.uid",
+          "sha256": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/scripts/rules.gd",
+          "sha256": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+          "bytes": 11950
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/scripts/rules.gd.uid",
+          "sha256": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/scripts/save_files.gd",
+          "sha256": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+          "bytes": 651
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/scripts/save_files.gd.uid",
+          "sha256": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/scripts/save_store.gd",
+          "sha256": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+          "bytes": 3864
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/scripts/save_store.gd.uid",
+          "sha256": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/campaign_balance.gd",
+          "sha256": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+          "bytes": 1793
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/campaign_balance.gd.uid",
+          "sha256": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/campaign_clipboard.gd",
+          "sha256": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+          "bytes": 4122
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/campaign_clipboard.gd.uid",
+          "sha256": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/campaign_cold.gd",
+          "sha256": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+          "bytes": 6295
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/campaign_cold.gd.uid",
+          "sha256": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/campaign_input.gd",
+          "sha256": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+          "bytes": 16729
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/campaign_input.gd.uid",
+          "sha256": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/campaign_legacy.gd",
+          "sha256": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+          "bytes": 3909
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/campaign_legacy.gd.uid",
+          "sha256": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/campaign_preview.gd",
+          "sha256": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+          "bytes": 492
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/campaign_preview.gd.uid",
+          "sha256": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/campaign_tests.gd",
+          "sha256": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+          "bytes": 19194
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/campaign_tests.gd.uid",
+          "sha256": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/fault_files.gd",
+          "sha256": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+          "bytes": 581
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/fault_files.gd.uid",
+          "sha256": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/freeze_campaign.py",
+          "sha256": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+          "bytes": 6493
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/freeze_checkpoint.py",
+          "sha256": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+          "bytes": 4211
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/playthrough.gd",
+          "sha256": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+          "bytes": 15069
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/playthrough.gd.uid",
+          "sha256": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/policy.gd",
+          "sha256": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+          "bytes": 2860
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/policy.gd.uid",
+          "sha256": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/preview.gd",
+          "sha256": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+          "bytes": 498
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/preview.gd.uid",
+          "sha256": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/restore.gd",
+          "sha256": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+          "bytes": 2652
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/restore.gd.uid",
+          "sha256": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/run_campaign.py",
+          "sha256": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+          "bytes": 4973
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/run_desktop.py",
+          "sha256": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+          "bytes": 4277
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/run_tests.gd",
+          "sha256": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+          "bytes": 10071
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/executed-source/tests/run_tests.gd.uid",
+          "sha256": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/godot.log",
+          "sha256": "9c312c416846379be8247e000db4827621c89bd54329b007d6244f0e163653dc",
+          "bytes": 59100
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/receipt.json",
+          "sha256": "4af82f0999fd6714bbdbad8ed86dc2345ceffb61da815ab672a5ed336a82bc41",
+          "bytes": 11018
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/rules-report.json",
+          "sha256": "d0fbb9bf61a742c3168188a1ccc65640e479583b861c05a3feb1001c8175be81",
+          "bytes": 313915
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/source-hashes-lf.json",
+          "sha256": "e8c67aa255d1c17fe5cbd8c5f29588e2e0f972632288e3b74b211067e9348e3a",
+          "bytes": 5016
+        },
+        {
+          "path": ".artifacts/ledger-before-rules-20261018T072025640927Z/source-hashes.json",
+          "sha256": "74903721b3e50c14e0801b86b51cd8c40dff71b4c201d1fa341db005e0bc687b",
+          "bytes": 5016
+        }
+      ],
+      "checks": 412,
+      "assertion_failures": 0
+    },
+    {
+      "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z",
+      "classification": "retained setup failure: invocation omitted genuine legacy fixture",
+      "passed": false,
+      "source_unchanged": true,
+      "executed_raw_source_sha256": {
+        "boot.tscn": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+        "export_presets.cfg": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+        "scripts/boot.gd": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+        "scripts/boot.gd.uid": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+        "scripts/campaign_main.gd": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+        "scripts/campaign_main.gd.uid": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+        "scripts/campaign_rules.gd": "4d58a79a8b604450d04898f2d806a509719469d1323679993ecfac5ca77b78f2",
+        "scripts/campaign_rules.gd.uid": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+        "scripts/definitions.gd": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+        "scripts/definitions.gd.uid": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+        "scripts/main.gd": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/campaign_balance.gd": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+        "tests/campaign_balance.gd.uid": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+        "tests/campaign_clipboard.gd": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+        "tests/campaign_clipboard.gd.uid": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+        "tests/campaign_cold.gd": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+        "tests/campaign_cold.gd.uid": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+        "tests/campaign_input.gd": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+        "tests/campaign_input.gd.uid": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+        "tests/campaign_legacy.gd": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+        "tests/campaign_legacy.gd.uid": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+        "tests/campaign_preview.gd": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+        "tests/campaign_preview.gd.uid": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+        "tests/campaign_tests.gd": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+        "tests/campaign_tests.gd.uid": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_campaign.py": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+        "tests/freeze_checkpoint.py": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/policy.gd": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+        "tests/policy.gd.uid": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_campaign.py": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "executed_lf_source_sha256": {
+        "boot.tscn": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+        "export_presets.cfg": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+        "icon.svg": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+        "icon.svg.import": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+        "main.tscn": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+        "project.godot": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+        "scripts/boot.gd": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+        "scripts/boot.gd.uid": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+        "scripts/campaign_main.gd": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+        "scripts/campaign_main.gd.uid": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+        "scripts/campaign_rules.gd": "4d58a79a8b604450d04898f2d806a509719469d1323679993ecfac5ca77b78f2",
+        "scripts/campaign_rules.gd.uid": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+        "scripts/definitions.gd": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+        "scripts/definitions.gd.uid": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+        "scripts/main.gd": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+        "scripts/main.gd.uid": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+        "scripts/rules.gd": "7715cb3bca3d84cf066c33b34c781756529308c2c247fe135cda9dafff6e4d59",
+        "scripts/rules.gd.uid": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+        "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+        "scripts/save_files.gd.uid": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+        "scripts/save_store.gd": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+        "scripts/save_store.gd.uid": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+        "tests/campaign_balance.gd": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+        "tests/campaign_balance.gd.uid": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+        "tests/campaign_clipboard.gd": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+        "tests/campaign_clipboard.gd.uid": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+        "tests/campaign_cold.gd": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+        "tests/campaign_cold.gd.uid": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+        "tests/campaign_input.gd": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+        "tests/campaign_input.gd.uid": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+        "tests/campaign_legacy.gd": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+        "tests/campaign_legacy.gd.uid": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+        "tests/campaign_preview.gd": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+        "tests/campaign_preview.gd.uid": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+        "tests/campaign_tests.gd": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+        "tests/campaign_tests.gd.uid": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+        "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+        "tests/fault_files.gd.uid": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+        "tests/freeze_campaign.py": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+        "tests/freeze_checkpoint.py": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+        "tests/playthrough.gd": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+        "tests/playthrough.gd.uid": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+        "tests/policy.gd": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+        "tests/policy.gd.uid": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+        "tests/preview.gd": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+        "tests/preview.gd.uid": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+        "tests/restore.gd": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+        "tests/restore.gd.uid": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+        "tests/run_campaign.py": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+        "tests/run_desktop.py": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+        "tests/run_tests.gd": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+        "tests/run_tests.gd.uid": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77"
+      },
+      "script_error_lines": 0,
+      "artifacts": [
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log",
+          "sha256": "fab654911bcb672f40070eaa5802871c0e121d5cf169df0d2619e80c86bb9b91",
+          "bytes": 371
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/boot.tscn",
+          "sha256": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+          "bytes": 169
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/export_presets.cfg",
+          "sha256": "4431e248435e49c0593911e9ec00ff342ea25144344626f514add43e7f34fc37",
+          "bytes": 652
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/icon.svg",
+          "sha256": "179d6d8fd5975de099b791943181ad45d23882d4305ef2509dfc4c4787a644ea",
+          "bytes": 353
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/icon.svg.import",
+          "sha256": "b5ed4ea83ce7c0de90699568878ae434d383ba5db29f8dd1a5b76c88e1cce652",
+          "bytes": 1012
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/main.tscn",
+          "sha256": "299d7037fd2a6dc4a84c73d69f1ca4bf16b8886b40079f040effb13c6a9c4861",
+          "bytes": 171
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/project.godot",
+          "sha256": "3891d6eb38955f2e8a334ef52894387053dfe0dce5f20d96b51d685312273292",
+          "bytes": 735
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/scripts/boot.gd",
+          "sha256": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+          "bytes": 462
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/scripts/boot.gd.uid",
+          "sha256": "9b42d8239c97a8870ae0172fa48fe4cfd23fc6a5e872abd17eb31c30de1346ea",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/scripts/campaign_main.gd",
+          "sha256": "91e46f366f7c4664584afcfb6ff4b651f435e6e490d5e6036c3c63b662a834e1",
+          "bytes": 23336
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/scripts/campaign_main.gd.uid",
+          "sha256": "2d777c3a43b189bb54941bfc5bb0e2ecb01125222c26ef9ba3bca8d3afcd0a95",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/scripts/campaign_rules.gd",
+          "sha256": "4d58a79a8b604450d04898f2d806a509719469d1323679993ecfac5ca77b78f2",
+          "bytes": 26463
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/scripts/campaign_rules.gd.uid",
+          "sha256": "dd57908dc8185aab515960c35f5c40c25c35f4f4d7b85b97b60d75110fc0f6a9",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/scripts/definitions.gd",
+          "sha256": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+          "bytes": 9268
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/scripts/definitions.gd.uid",
+          "sha256": "b11b75a4a9e137fe747290d65e94b956e4e7a3d66cff1ae5c267f62269611a1a",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/scripts/main.gd",
+          "sha256": "8a0d7461c336c7754517307f09e3cfced5ad2ddfc283ede1aa2266752cdb783d",
+          "bytes": 24091
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/scripts/main.gd.uid",
+          "sha256": "408f0d4cd0a4176ec7254cdb5571b55bfcfe6141e88583f41d02d1497400036d",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/scripts/rules.gd",
+          "sha256": "dde51b89eaf989fa4810ffba5572083d9d082bb3793064c3efb7186413bd4a56",
+          "bytes": 11950
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/scripts/rules.gd.uid",
+          "sha256": "b8c37d805b537789ac97880ff9703e293845727ecbb3501f7e839736f632b8b4",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/scripts/save_files.gd",
+          "sha256": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+          "bytes": 651
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/scripts/save_files.gd.uid",
+          "sha256": "fec5773f381b7087061e37fc9afee293e66889f7eefad8832de813bc325e0a24",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/scripts/save_store.gd",
+          "sha256": "474418aadd7fbb359fb370b3a78a159b44f5bbde815e017ff7b3b00307cca11e",
+          "bytes": 3864
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/scripts/save_store.gd.uid",
+          "sha256": "db5ccf74e1cd88ac6158dba40d33f83ac9a0f2867d2d1cb17526e1bc7e76410f",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/campaign_balance.gd",
+          "sha256": "95a02a00b5b0d9b80b4ce1ea0b684bb608f369e2645e24762ace99f3e040ddbd",
+          "bytes": 1793
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/campaign_balance.gd.uid",
+          "sha256": "67c68f34b6165bf0b15dff042ad21e465d95077cdefc2924dd88e71a0a1c2045",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/campaign_clipboard.gd",
+          "sha256": "d6bc8dd805e6c4a67be307b01e89d8b6fdf3389c7c3e1816131a988701e095f9",
+          "bytes": 4122
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/campaign_clipboard.gd.uid",
+          "sha256": "9b88abe386691103e0b478f37bf988d45179c07e0cea3738a789e03b1e3ff5d3",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/campaign_cold.gd",
+          "sha256": "771b8d79b99096df46f6fec064f6a52558d7ab49745ed76127f0afed11dd0dd0",
+          "bytes": 6295
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/campaign_cold.gd.uid",
+          "sha256": "50817b5eb2e4b15806935ef5eab157a98c4f4dcf63fe91ff5d8013f80c95bf30",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/campaign_input.gd",
+          "sha256": "5f166cdc04e73ceb56d189c9e9435eed8553d00546f8a302ce3f3cf1d9fc9491",
+          "bytes": 16729
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/campaign_input.gd.uid",
+          "sha256": "00981bc34fb9ee26fa697886cc866cd44ae2effe6ecec0f8e42b16de74fdf339",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/campaign_legacy.gd",
+          "sha256": "d337a9679006a6a75e6513885a5ed44c6dc1923f73e489569a7fca4f2edfa00c",
+          "bytes": 3909
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/campaign_legacy.gd.uid",
+          "sha256": "fe0bddba7cb9b1ca1c34c7c99e2fc89cd8f26f116228175bc785b0bf440411f2",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/campaign_preview.gd",
+          "sha256": "6278d0d78ea9ff336e3b09994351f4cb21a284adfb5020f21745d0093ec17e5c",
+          "bytes": 492
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/campaign_preview.gd.uid",
+          "sha256": "57a0e020b5a29c50198456e281791694eeb95aec4f85a4c27171bc7fd4a528d2",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/campaign_tests.gd",
+          "sha256": "7d1231052f2b56d607a85c679ada118c0955e8015089f3578725a55e3ce1930f",
+          "bytes": 19194
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/campaign_tests.gd.uid",
+          "sha256": "353a1d6a2e5ed15c2fbab431251eb519670edb858146695c8b3fe5bd15401e38",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/fault_files.gd",
+          "sha256": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+          "bytes": 581
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/fault_files.gd.uid",
+          "sha256": "5514be437c651a71b31a981f1d3ff5c0fcdc3823e130bbb97e9a6da64183ba8a",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/freeze_campaign.py",
+          "sha256": "65ad85b6769765e3c087fb91fbd564207d0c4bb7aaf74944d9b2eff517906aa1",
+          "bytes": 6493
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/freeze_checkpoint.py",
+          "sha256": "80e96746745b54d1bdf629527b25042c9b891af266e9b7c91fcdfae5f989d4d5",
+          "bytes": 4211
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/playthrough.gd",
+          "sha256": "07b9e9889b41dcde32fce37361e3e989a817146e76dfcf4f589d52f71b84370b",
+          "bytes": 15069
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/playthrough.gd.uid",
+          "sha256": "dfe5dbd79c2ebd1647844e6f2860ec0cd43cb1fa6f02855a0f7d0a3d8ad39950",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/policy.gd",
+          "sha256": "f27a1fe7b1a6865eadcd7df1e57893aca2150a496d64564186cc9a2a80bde413",
+          "bytes": 2860
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/policy.gd.uid",
+          "sha256": "c693bf0a94965b0679bc2f822f4c18b884a612a05fd88cd90257b4f1f03efaf4",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/preview.gd",
+          "sha256": "ce2df64d109c655fb3077865cf47b4de66d89f63e94cde58c5c1490d484c7858",
+          "bytes": 498
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/preview.gd.uid",
+          "sha256": "08ac71e951cf840507fdb39e23c4bf06bd936943db4a7fbfc02408567a504012",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/restore.gd",
+          "sha256": "05b05396576522fc2afceec0c2744c1c78da55f7fd62d091202305ea8c870da9",
+          "bytes": 2652
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/restore.gd.uid",
+          "sha256": "3cccb55c7cf18867997ec2d347e1a77e067f847558bf5ecb42cc67f955c8b6ae",
+          "bytes": 20
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/run_campaign.py",
+          "sha256": "0005c906f204605a2d5e7230ef46ba5faedcb1dabc1e44c4e33155b0eb406f6a",
+          "bytes": 4973
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/run_desktop.py",
+          "sha256": "5a954f3f47fcb59e33c997beeb62b3a3007c0aa0ed6b61767c01d6a67eb9f4e2",
+          "bytes": 4277
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/run_tests.gd",
+          "sha256": "993cd531020cf4e9ac5f6851be89aa58c06e650e77c8c4b2bf0835269d88b600",
+          "bytes": 10071
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/executed-source/tests/run_tests.gd.uid",
+          "sha256": "ed1f7755ce5138a2fd3289050c13cb6ae0d9a021663b619517ff03b523ae9b77",
+          "bytes": 19
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/godot.log",
+          "sha256": "1fcb31f43c700d6c08205e3d96e893ac2b0b05b298f1a48ed148ab157d1da931",
+          "bytes": 378
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/receipt.json",
+          "sha256": "e02caaa1c8a42af1319ed613416614824191a2ff9cc325dd65e3ebf42d30c313",
+          "bytes": 10862
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/source-hashes-lf.json",
+          "sha256": "735f1fa460ef848ad3e290e024869ff81845e7ae9d439ed06bda560d5a467741",
+          "bytes": 5016
+        },
+        {
+          "path": ".artifacts/ledger-fixed-legacy-20261018T072045695809Z/source-hashes.json",
+          "sha256": "1e55cdf1d042253ac22a996ee6908180575e435f3c4a5ed58b6c97905852da41",
+          "bytes": 5016
+        }
+      ]
+    }
+  ],
+  "historical_evidence": {
+    "campaign_checkpoint": "CAMPAIGN_CHECKPOINT.json",
+    "commit": "2b58feea60f668d1010b0b3722e661bfb392f98b",
+    "binding": "Original full-input/rendered/clipboard/movie reports remain bound to 2b58; no report was repinned to this follow-up."
+  },
+  "limits": [
+    "Validator ordering and focused regressions only; encounter definitions, pacing, gameplay, UI, schema and legacy rule source unchanged.",
+    "No foreground, global clipboard, ADB, APK, shared files or push.",
+    "Independent coordinator/Astra closure and new-pin native acceptance pending."
+  ]
+}

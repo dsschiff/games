@@ -410,6 +410,9 @@ static func valid(s: Variant) -> bool:
 	for key in ["bought", "stock", "consumed"]:
 		if not s.get(key) is Array or s[key].size() != 4:
 			return false
+		for i in 4:
+			if not L.number(s[key][i], 0, d.pool[i], true):
+				return false
 	for key in ["enemies", "recruits", "killed", "escaped", "coins", "collected", "purchases", "captures", "marks"]:
 		if not s.get(key) is Array:
 			return false
@@ -466,7 +469,7 @@ static func valid(s: Variant) -> bool:
 	if support != s.support or costs != s.spent or (support != "none" and support != s.planned_support):
 		return false
 	for i in 4:
-		if not L.number(s.bought[i], 0, d.pool[i], true) or not L.number(s.stock[i], 0, d.pool[i], true) or not L.number(s.consumed[i], 0, d.pool[i], true) or s.bought[i] != bought[i] or s.consumed[i] != consumed[i] or s.bought[i] != s.stock[i] + s.consumed[i]:
+		if s.bought[i] != bought[i] or s.consumed[i] != consumed[i] or s.bought[i] != s.stock[i] + s.consumed[i]:
 			return false
 		if equipping[i] > 1:
 			return false
