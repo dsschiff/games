@@ -184,3 +184,56 @@ delta rather than assuming it from equal file sizes.
 The earlier broad movies remain historical production coverage. Corrected
 focused legacy/rifle, Ranger combat, regional replay, Retry and Drill passages
 bind to the corrected sources and supersede the affected socket/scenery behavior.
+
+## Corrected rendered handoff
+
+Runtime/art freeze: `dca06bf7b31a6c113e969133562adb1776826c4f` (on `998dce3`).
+`.artifacts/production-corrected-bindings.json` indexes every corrected run, receipt,
+MP4 hash, exact executed runtime source comparison, full artifact hash readback
+and full video decode. All 125 runtime/art files in each corrected run match
+committed bytes (text compared with LF normalization; GLBs exactly).
+No corrected run changes sources while executing.
+
+| Corrected passage | Run / MP4 | Seconds | SHA256 |
+| --- | --- | ---: | --- |
+| legacy-legacy | `production-corrected-legacy-legacy-20261018T141558437191Z/continuous.mp4` | 6.967 | `9d190e2efcd27a52ffb2bd259e3b1442692a130b491d3b8ac153992279f4764f` |
+| ranger-capture | `production-corrected-ranger-capture-20261018T141724710674Z/continuous.mp4` | 12.367 | `e0916b2fad8c2e44e75e24c7e724c878f1e568defd12cc029f50bb246e32431b` |
+| regions-tour | `production-corrected-regions-tour-20261018T141855911702Z/continuous.mp4` | 45.300 | `60aa42aa21786daa5d5e1859602f35718f6d342de8a77bb7f54dc8ebc4167057` |
+| drill-capture | `production-corrected-drill-capture-20261018T142011569833Z/continuous.mp4` | 180.367 | `5579dcf20990825bbced7d0695a2b062cbde632b7392e5c3cc51fc4db7ce6ba9` |
+| retry-closure | `production-corrected-retry-closure-20261018T142232608584Z/continuous.mp4` | 4.933 | `0c93b8d4a86caf2b9b4d672a1ef9f33139496974cdd58fe38f027cbca9ac6d6f` |
+
+The Drill retains the complete 180.367s native capture and a contiguous 30s
+`production-corrected-drill-capture-20261018T142011569833Z/drill-final-30s.mp4` excerpt beginning at parent-movie second 150
+(SHA256 `8c50b137f5aa7a3970f48523868d3d1b3c5eed5b87eb2fde60c288ce0b822f93`). Both remain 1x; the excerpt is not a new run.
+The natural duration boundary is simulation time 185.133, with the Drill dead
+and 23/24 enemies stopped; another enemy is still alive. It does not claim a
+new mission clear. The parent continuous movie preserves the earlier play.
+
+The corrected Ranger passage records two shots each from genuine fighting
+Rangers 6 and 7 (four new attacks), plus actual commander/other-crew fire.
+The legacy passage restores the complete genuine catalog-one active save,
+resumes through GUI input, then explicitly enters campaign while retaining the
+whole resumed legacy battle/profile/settings as its backup and inventing no clears.
+The regional tour selects all twelve genuinely unlocked Journey entries plus
+support and seeded menus through real touch/mouse-wheel GUI events. The corrected
+Retry passage passes all six actual-input checks and shows the long Foundry brief
+inside its scroll body above the fixed support action. It preserves the entire
+earned career/profile. These are bounded presentation passages, not phone tests.
+
+Corrected real-time timing: `production-corrected-realtime-capture-20261018T142328598243Z/frame-timing.json`.
+Hardware, resolution, VSync, 2x MSAA, effects-on settings and methodology match
+prior desktop sample. This new run binds to corrected runtime/art.
+
+| Corrected sample | Frames | Seconds | Median / p95 / p99 ms | Above 33.333 ms |
+| --- | ---: | ---: | --- | ---: |
+| All warmed active gameplay | 2,649 | 44.212 | 16.666 / 16.754 / 18.151 | 0 |
+| Live-boss subset | 968 | 16.161 | 16.667 / 16.745 / 18.177 | 0 |
+
+Observed peaks: 1,018 draw calls, 288,650 primitives, 734 nodes, seven combatants.
+Raw metadata and every sampled interval remain available. This is desktop
+render-loop submission timing and does not establish phone FPS or maximum crowd load.
+
+Builder visual inspection covers sampled native still frames. Independent normal
+1x motion review and native code2-to-code3 update validation remain coordinator-owned.
+No builder APK export/install, ADB, clipboard use, push, publication or phone test
+was performed. All builder rendering is stopped and the shared render slot released.
