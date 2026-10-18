@@ -201,13 +201,19 @@ static func draw(game: Variant) -> void:
 	if not ready and state.boss_spawned:
 		for boss in state.enemies:
 			if boss.kind in ["captain", "siege", "matriarch"]:
-				var box := Rect2(48, layout.field.position.y + 66, size.x - 96, 64)
+				var box: Rect2 = layout.boss_status()
 				game.panel(box, game.INK, game.GOLD, 5)
-				var warning := "Enrage in %ds" % ceili(maxf(0, 60 - float(state.boss_total)))
-				if boss.kind != "captain" or float(state.boss_total) >= 60:
-					warning = "Volley %ds · %s" % [ceili(12 - float(state.boss_volley)), "ENRAGED" if float(state.boss_total) >= 60 else "enrage %ds" % ceili(60 - float(state.boss_total))]
-				game.label_at("%s · P%d · %d HP · %s" % [str(boss.kind).capitalize(), int(state.boss_phase), ceili(float(boss.hp)), warning], box.get_center() + Vector2(0, 3), 18, game.GOLD, true)
-				game.draw_rect(Rect2(box.position + Vector2(8, 52), Vector2((box.size.x - 16) * float(boss.hp) / float(boss.max_hp), 4)), game.RED)
+				var volley := "%ds" % ceili(12 - float(state.boss_volley)) if boss.kind != "captain" or float(state.boss_total) >= 60 else "—"
+				var enrage := "%ds" % ceili(maxf(0, 60 - float(state.boss_total)))
+				var center_x := box.get_center().x
+				if layout.wide:
+					for line in [[str(boss.kind).capitalize(),22,19], ["Phase %d · %d HP" % [int(state.boss_phase),ceili(float(boss.hp))],52,16], ["Volley " + volley,83,16], ["ENRAGED" if float(state.boss_total)>=60 else "Enrage " + enrage,113,16]]:
+						game.label_at(str(line[0]),Vector2(center_x,box.position.y+float(line[1])),int(line[2]),game.GOLD,true)
+				else:
+					for line in [[str(boss.kind).capitalize(),22,13], ["Phase %d" % int(state.boss_phase),52,16], ["%d HP" % ceili(float(boss.hp)),80,15], ["Volley",126,14], [volley,151,19], ["Enraged" if float(state.boss_total)>=60 else "Enrage",195,14], [enrage,221,19]]:
+						game.label_at(str(line[0]),Vector2(center_x,box.position.y+float(line[1])),int(line[2]),game.GOLD,true)
+				game.draw_rect(Rect2(box.position + Vector2(8,box.size.y-18),Vector2(box.size.x-16,5)),Color("3d5159"))
+				game.draw_rect(Rect2(box.position + Vector2(8,box.size.y-18),Vector2((box.size.x-16)*float(boss.hp)/float(boss.max_hp),5)),game.RED)
 	if (game.paused and state.phase == "battle") or state.phase in ["victory", "defeat"]:
 		var center: Vector2 = layout.field.get_center()
 		game.panel(Rect2(center - Vector2(230, 100), Vector2(460, 155)), game.INK, game.GOLD)

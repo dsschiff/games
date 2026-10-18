@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "game": "gear-bastion",
-  "version": "0.3.3",
-  "version_code": 7,
+  "version": "0.4.0",
+  "version_code": 8,
   "save_schema": 4,
   "branch": "codex/gear-graphics",
-  "updated_at": "2026-10-18T12:01:25.186469+00:00",
-  "milestone": "original_3d_concrete_composition_repair",
-  "status": "cpu_verified_third_inspection_pending",
+  "updated_at": "2026-10-18T16:01:20.688169+00:00",
+  "milestone": "original_3d_source_bound_motion_candidate",
+  "status": "final_motion_captured_independent_review_pending",
   "full_v1_complete": false,
   "campaign_expansion": "full_nine_encounter_campaign_implemented_candidate",
   "campaign_checkpoint": {
@@ -46,11 +46,11 @@
     "constrained_budget_counter_trial": true,
     "sole_staged_backup_reused_without_truncation": true
   },
-  "next_action": "Coordinator grants third short inspection of separated deck/wells, irregular clustered paving and fully framed scenic silhouettes. No long clips until the three concrete findings are visibly closed.",
+  "next_action": "Root/Astra reviews source-bound normal-speed movies against all eight categories, then coordinator signs/validates the genuine code7-to8 native update.",
   "remaining": [
-    "Coordinator independent code7 review and signed Android update/resize/input checks",
-    "Frontline benchmark art-pipeline approval before full3D Gear work",
-    "Full original 3D presentation remains queued; phone acceptance is deferred and unverified"
+    "Independent eight-category final motion/source review",
+    "Coordinator signed code7-to8 native update/save/Back/lifecycle/clipboard checks",
+    "Physical Fold7 touch/fold/sound/performance and human pacing/fun acceptance deferred"
   ],
   "historical_release_verification": {
     "rules": {
@@ -336,9 +336,17 @@
     "byte_identical_repeat": true,
     "focused_cpu_checks": 12071,
     "focused_input_checks": 1462,
-    "gpu_phase": "second_inspection_identified_concrete_geometry_and_composition_defects_third_pending",
+    "gpu_phase": "released_final_motion_candidate_pending_independent_review",
     "full_3d_accepted": false,
-    "target_freeze": "0.4.0/code8_after_review",
-    "deck_geometry_checks": 8
-  }
+    "target_freeze": "0.4.0/code8_review_candidate",
+    "deck_geometry_checks": 8,
+    "final_motion_evidence": "evidence/graphics-motion.json",
+    "boss_hud_checks": 637,
+    "motion_checks": 66,
+    "motion_input_events": 146,
+    "actual_heavy_samples": 2433,
+    "actual_heavy_seconds": 41.177079,
+    "actual_peak_population": 123
+  },
+  "version_status": "review_candidate"
 }

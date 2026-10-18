@@ -138,3 +138,10 @@ Source and actual-exported geometry identify coplanar broad bed/floor faces at Y
 
 Final CPU **12,071/12,071**, main input **1,462/1,462 /194 events**, deck geometry **8/8**, fresh import and all **28 byte-identical repeated models** pass. Initial import/type failures remain retained; runner result JSON is now unique per run, avoiding stale output on failed preflight. Third actual short inspection remains required before long movies; GPU stays with coordinator/Frontline until a new grant. Versioncode8/Android export remain separately gated by final graphics freeze.
 
+
+
+# 2026-10-18 — Corrected source-bound motion candidate and GPU release
+
+Third composition inspection closed with root/Astra; finale then exposed boss-HUD occlusion. Status now uses vacated side utility space; 637 focused exported-mesh/control/font checks pass and reproduce old overlap. All 28 models unchanged. Final seven-stage genuine input/process-loop batch passes 66 checks/146 events with independent process/gameplay reports, native 30 fps movies/full decode, whole decoded save comparisons, earned opening/finale outcomes, Retry/resize/actual move-Undo/paused-pixel/reduced-FX/cold restore and legacy. Earlier overwritten, drifted and interrupted evidence is retained and explicitly superseded.
+
+Separate normal-clock RTX 5070 Ti dense run: 2,433 samples/41.18 s, 16.669/17.471/22.496 ms median/p95/p99; peak 123 actors. Raw rows/counters and scope limits retained. No phone FPS, sound or eight-category approval claimed. `evidence/graphics-motion.json` binds actual captures and candidate runtime/art; version-only metadata is 0.4.0/code 8 per coordinator, pending independent motion/source review and root's signed 7→8 native checks. No broad campaign rerun/export/ADB/clipboard/push/shared edits. GPU explicitly released after final owned processes exited.

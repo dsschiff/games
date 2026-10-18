@@ -47,6 +47,11 @@ func field_point(point: Vector2) -> Vector2:
 	# Reposition actors over the expanded terrain without stretching their art.
 	return Vector2(field_x(point.x), field.position.y + 115 + (point.y - 205) / 332.0 * (field.size.y - 121))
 
+func boss_status() -> Rect2:
+	# Bosses replace Begin/Rally; their status belongs in that vacated utility
+	# space beside the board, never over the projected combat silhouettes.
+	return Rect2(controls.begin.position, Vector2(controls.begin.size.x, 168)) if wide else Rect2(board.end.x + 10, board.position.y + 20, 80, 260)
+
 func game_buttons(game: Variant) -> Dictionary:
 	var result := controls.duplicate()
 	if game.state.phase != "battle":

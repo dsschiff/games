@@ -1,0 +1,535 @@
+{
+  "schema": 1,
+  "art_runtime_base": "bbb8fe1af6d8eea7071e955bcb840d5a72235dc9",
+  "scope": "Actual native desktop process-loop/input movies and separate host timing. Source-bound, genuine raw saved states; no fixture state assignment.",
+  "runs": [
+    {
+      "stage": "later",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-later-20261018T154529066901Z",
+      "receipt_sha256": "4949ced9e69069ee104c12840b30d73f24272de725e2eeeeb40a4157ff3d94e6",
+      "gameplay_report_sha256": "827b84d27b39ce2332944ce1597522c572ff5bed864f9ce828f5687958be1a20",
+      "checks": 10,
+      "input_events": 4,
+      "frames": 1092,
+      "peak_allies": 115,
+      "peak_enemies": 17,
+      "roles_observed": [
+        "beetle",
+        "guard",
+        "matriarch",
+        "mortar",
+        "ranger",
+        "skitter",
+        "spitter",
+        "swarm"
+      ],
+      "start": {
+        "encounter": "camp_09",
+        "time": 227.99999999999,
+        "clears": 8
+      },
+      "end": {
+        "encounter": "camp_09",
+        "time": 261.033333333325,
+        "phase": "victory",
+        "clears": 9
+      },
+      "app_written_slots": {
+        "bastion-save.json": "da9653ed2ae1648d231d3d095f718fd806966f0d2386e278722555e7e04f8439",
+        "bastion-save.json.bak": "2bba04b4b13337eabe4d03fee058df8ec09991902cc37f940d6fd1248a2c8be2"
+      },
+      "movie": {
+        "path": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-later-20261018T154529066901Z\\continuous.mp4",
+        "sha256": "c2914a4f187f71d1b63fa39173fe6107c1dba35a8f62f1eae40f06adf0d5a1d0",
+        "resolution": [
+          720,
+          1680
+        ],
+        "seconds": 36.4,
+        "fps": "30/1",
+        "full_decode": true,
+        "scaling": "none; native 1:1 pixels, padded canvas for resize stages"
+      },
+      "observed_sim_seconds_per_encoded_second": {
+        "samples": 32,
+        "minimum": 0.9999999999989768,
+        "median": 1.0,
+        "maximum": 1.0000000000010232
+      },
+      "final_runtime_art_binding": {
+        "files_checked": 126,
+        "equal": true,
+        "only_ignored_runtime_differences": "Version-only project/export metadata from0.3.3/code7 to0.4.0/code8. No visual/rule/save behavior changed."
+      }
+    },
+    {
+      "stage": "reset",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-reset-20261018T154734271728Z",
+      "receipt_sha256": "ea83736fd328feae055e5c60d887103b512dcbf1d612020a50c37b62eca370f1",
+      "gameplay_report_sha256": "1c516343ab87228f11ee10f2677e591f039173f3cdf57b36dcc4fdb8d643a618",
+      "checks": 16,
+      "input_events": 88,
+      "frames": 371,
+      "peak_allies": 81,
+      "peak_enemies": 9,
+      "roles_observed": [
+        "beetle",
+        "guard",
+        "mortar",
+        "ranger",
+        "shell",
+        "spitter"
+      ],
+      "start": {
+        "encounter": "camp_09",
+        "time": 261.033333333325,
+        "clears": 9
+      },
+      "end": {
+        "encounter": "camp_09",
+        "time": 7.13333333333332,
+        "phase": "battle",
+        "clears": 9
+      },
+      "app_written_slots": {
+        "bastion-save.json": "7a01b843c12516968d782cb1ab6921fcf0a15143da7b2af908f8d9600ce99d90",
+        "bastion-save.json.bak": "3213f3980ce32f359de1e813ba839d0fe0c285da3d62f2a2680024415ff590db"
+      },
+      "movie": {
+        "path": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-reset-20261018T154734271728Z\\continuous.mp4",
+        "sha256": "7a5ec6679ff8da420e012895f497203b4f0865b7b69a62e8732bdc5349bfce2e",
+        "resolution": [
+          1092,
+          1680
+        ],
+        "seconds": 12.366016,
+        "fps": "30/1",
+        "full_decode": true,
+        "scaling": "none; native 1:1 pixels, padded canvas for resize stages"
+      },
+      "observed_sim_seconds_per_encoded_second": {
+        "samples": 5,
+        "minimum": 0.9999999999999902,
+        "median": 1.0,
+        "maximum": 1.000000000000007
+      },
+      "final_runtime_art_binding": {
+        "files_checked": 126,
+        "equal": true,
+        "only_ignored_runtime_differences": "Version-only project/export metadata from0.3.3/code7 to0.4.0/code8. No visual/rule/save behavior changed."
+      }
+    },
+    {
+      "stage": "restore",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-restore-20261018T154823267295Z",
+      "receipt_sha256": "773aea41d119923138a805e0ac8c0bd2e556cb45a3ca268c49533c76f00c9592",
+      "gameplay_report_sha256": "55a73e8744cd90a6926ec3852aba8870036d041cb59cc6ee64c14fb26dc3fc06",
+      "checks": 8,
+      "input_events": 6,
+      "frames": 160,
+      "peak_allies": 41,
+      "peak_enemies": 17,
+      "roles_observed": [
+        "beetle",
+        "guard",
+        "mortar",
+        "ranger",
+        "shell",
+        "spitter"
+      ],
+      "start": {
+        "encounter": "camp_09",
+        "time": 7.13333333333332,
+        "clears": 9
+      },
+      "end": {
+        "encounter": "camp_09",
+        "time": 11.2,
+        "phase": "battle",
+        "clears": 9
+      },
+      "app_written_slots": {
+        "bastion-save.json": "6d86d879909b8d29f377e633d94dfe0deda163f7649277f978643414036df42b",
+        "bastion-save.json.bak": "401d54d9b1971b20be6fb4b7495aa260b4d6469d9f53551886e496bc07559a8c"
+      },
+      "movie": {
+        "path": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-restore-20261018T154823267295Z\\continuous.mp4",
+        "sha256": "91a1d4318d156330e9703923fbc5aa1e162e9426be5d98f807969a7f8aeec7c8",
+        "resolution": [
+          1092,
+          1680
+        ],
+        "seconds": 5.333008,
+        "fps": "30/1",
+        "full_decode": true,
+        "scaling": "none; native 1:1 pixels, padded canvas for resize stages"
+      },
+      "observed_sim_seconds_per_encoded_second": {
+        "samples": 3,
+        "minimum": 0.9999999999999893,
+        "median": 1.0,
+        "maximum": 1.0000000000000009
+      },
+      "final_runtime_art_binding": {
+        "files_checked": 126,
+        "equal": true,
+        "only_ignored_runtime_differences": "Version-only project/export metadata from0.3.3/code7 to0.4.0/code8. No visual/rule/save behavior changed."
+      }
+    },
+    {
+      "stage": "legacy",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-legacy-20261018T154857291430Z",
+      "receipt_sha256": "8139e9e5d95561e5cd3df20e7b697a0e69886f895d796e2f495d7aa1bfbda65f",
+      "gameplay_report_sha256": "8972df0722f6041464e3b5b7c3ff1b2a9a5575309dba807cdbef1916e3483f07",
+      "checks": 6,
+      "input_events": 6,
+      "frames": 369,
+      "peak_allies": 14,
+      "peak_enemies": 5,
+      "roles_observed": [
+        "beetle",
+        "guard",
+        "ranger"
+      ],
+      "start": {
+        "encounter": "camp_01",
+        "time": 0.0,
+        "clears": 0
+      },
+      "end": {
+        "encounter": "tutorial",
+        "time": 12.0666666666666,
+        "phase": "battle",
+        "clears": 0
+      },
+      "app_written_slots": {
+        "bastion-save.json": "87e4fb1f1715820e53022d6d006308f048447b87a7371df954f4464892cfcbd2",
+        "bastion-save.json.bak": "fd1c58c72bef1a383441ad5863661a5f72496441ca617d5dd22bec4428c136b3"
+      },
+      "movie": {
+        "path": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-legacy-20261018T154857291430Z\\continuous.mp4",
+        "sha256": "2a61c60c8abfe22aafcefa2f8d10e5020e7ae13887def11023a9f2d4435c7aee",
+        "resolution": [
+          720,
+          1680
+        ],
+        "seconds": 12.3,
+        "fps": "30/1",
+        "full_decode": true,
+        "scaling": "none; native 1:1 pixels, padded canvas for resize stages"
+      },
+      "observed_sim_seconds_per_encoded_second": {
+        "samples": 11,
+        "minimum": 0.9999999999999893,
+        "median": 1.0,
+        "maximum": 1.0000000000000069
+      },
+      "final_runtime_art_binding": {
+        "files_checked": 126,
+        "equal": true,
+        "only_ignored_runtime_differences": "Version-only project/export metadata from0.3.3/code7 to0.4.0/code8. No visual/rule/save behavior changed."
+      }
+    },
+    {
+      "stage": "metrics",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-metrics-20261018T154941869334Z",
+      "receipt_sha256": "9b9994b3d566d3fb7e64625c958531caab26b60b8bd39261ff072bbe1073f6d0",
+      "gameplay_report_sha256": "d86acbc1022d64f34b4bdcfc6c1b60cabd4f9762427d787e5c3bb8cc82b4bd48",
+      "checks": 11,
+      "input_events": 6,
+      "frames": 2681,
+      "peak_allies": 120,
+      "peak_enemies": 3,
+      "roles_observed": [
+        "beetle",
+        "guard",
+        "mortar",
+        "ranger",
+        "shell",
+        "spitter",
+        "swarm"
+      ],
+      "start": {
+        "encounter": "camp_05",
+        "time": 36.0000000000005,
+        "clears": 4
+      },
+      "end": {
+        "encounter": "camp_05",
+        "time": 81.299999999998,
+        "phase": "battle",
+        "clears": 4
+      },
+      "app_written_slots": {
+        "bastion-save.json": "15a4e0afd8f0ae9f0b1109c2d6c8400946771ba84ec860bc8f20d83c05c01f02",
+        "bastion-save.json.bak": "e0b7686cc3de4554614cdcb67a88d51dde5e0e0a7b52eadcb531ac27fb04ef76"
+      },
+      "wall_clock": {
+        "all_frames": {
+          "frames": 2582,
+          "median_ms": 16.669,
+          "over_16_667_ms": 1336,
+          "over_33_333_ms": 9,
+          "p95_ms": 17.539,
+          "p99_ms": 22.401,
+          "seconds": 43.6797020000001
+        },
+        "columns": [
+          "frame_ms",
+          "friendly",
+          "enemies",
+          "encounter",
+          "reduced_effects",
+          "draw_cpu_usec",
+          "draw_calls_3d",
+          "primitives_3d",
+          "nodes_process",
+          "render_size"
+        ],
+        "criteria": {
+          "clock": "Time.get_ticks_usec at RenderingServer.frame_post_draw; render-loop submission intervals, not OS presentation timestamps",
+          "excluded": "menus, explicit pause, loading/ready states and visible modals; gaps reset before resumed samples",
+          "heavy_filter": "friendly + enemy actors >= 120",
+          "max_samples": 30000,
+          "warmup_eligible_seconds": 1.5
+        },
+        "excluded_frames": 0,
+        "heavy_frames": {
+          "frames": 2433,
+          "median_ms": 16.669,
+          "over_16_667_ms": 1263,
+          "over_33_333_ms": 9,
+          "p95_ms": 17.471,
+          "p99_ms": 22.496,
+          "seconds": 41.177079
+        },
+        "metadata": {
+          "capture": "real-time, no movie writer, no still readback during sampling",
+          "capture_fixed_fps": 0,
+          "command_line": [
+            "-s",
+            "tests/graphics_motion.gd"
+          ],
+          "counter_scope": "SubViewport visible 3D draw calls/primitives; shadow passes excluded; node count is process-wide",
+          "device_model": "ROG STRIX X670E-E GAMING WIFI",
+          "draw_cpu_usec_scope": "Main 2D draw callback CPU elapsed only; excludes complete 3D/GPU rendering",
+          "fixed_cadence_capture": false,
+          "godot": "4.7.2-stable (official)",
+          "movie_writer_path": "",
+          "os": "Windows",
+          "os_version": "10.0.26100",
+          "purpose": "separate sustained actual dense encounter",
+          "render_device": "NVIDIA GeForce RTX 5070 Ti",
+          "render_vendor": "NVIDIA",
+          "renderer": "gl_compatibility",
+          "started_unix": 1792338594.002,
+          "window": [
+            720,
+            1680
+          ]
+        },
+        "schema": 2,
+        "observed_peak_population": 123,
+        "heavy_counter_medians": {
+          "visible_3d_draw_calls": 2292,
+          "visible_3d_primitives": 1051939,
+          "process_nodes": 2229
+        }
+      },
+      "final_runtime_art_binding": {
+        "files_checked": 126,
+        "equal": true,
+        "only_ignored_runtime_differences": "Version-only project/export metadata from0.3.3/code7 to0.4.0/code8. No visual/rule/save behavior changed."
+      }
+    },
+    {
+      "stage": "opening",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-opening-20261018T155044370977Z",
+      "receipt_sha256": "baa3b630da12ca3f83c678a6b38fe04e2c2e0f091c789fd4e5bb2ab1cca55e1d",
+      "gameplay_report_sha256": "d1a63409b6204b6697a21c32b4107a086d5eee412c4a5950ac4ed9fedf57d425",
+      "checks": 6,
+      "input_events": 30,
+      "frames": 3886,
+      "peak_allies": 120,
+      "peak_enemies": 10,
+      "roles_observed": [
+        "beetle",
+        "guard",
+        "shell",
+        "skitter"
+      ],
+      "start": {
+        "encounter": "camp_01",
+        "time": 0.0,
+        "clears": 0
+      },
+      "end": {
+        "encounter": "camp_01",
+        "time": 120.666666666662,
+        "phase": "victory",
+        "clears": 1
+      },
+      "app_written_slots": {
+        "bastion-save.json": "df35bb0e074a512b143fc6ad7ee647ef51dc977de55e120c5791d8bf19cdc28d",
+        "bastion-save.json.bak": "84691ad57e832794c508bbafe7b44a291fc8afd824f6b318954da8b07e158c22"
+      },
+      "movie": {
+        "path": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-opening-20261018T155044370977Z\\continuous.mp4",
+        "sha256": "98e76256620e3a6336baa75e34d0fa7d38bb56abf5ce7768b5d95ee17548b66a",
+        "resolution": [
+          720,
+          1680
+        ],
+        "seconds": 129.533008,
+        "fps": "30/1",
+        "full_decode": true,
+        "scaling": "none; native 1:1 pixels, padded canvas for resize stages"
+      },
+      "observed_sim_seconds_per_encoded_second": {
+        "samples": 120,
+        "minimum": 0.999999999998991,
+        "median": 1.0,
+        "maximum": 1.0000000000004121
+      },
+      "final_runtime_art_binding": {
+        "files_checked": 126,
+        "equal": true,
+        "only_ignored_runtime_differences": "Version-only project/export metadata from0.3.3/code7 to0.4.0/code8. No visual/rule/save behavior changed."
+      }
+    },
+    {
+      "stage": "heavy",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-heavy-20261018T155704508405Z",
+      "receipt_sha256": "31346c7c6d75ba82db9f062e999cfefdf6856b46c282c3cafff5518c71dd9a58",
+      "gameplay_report_sha256": "c705a9905522034e0d787a7cb0d1b9ae7323ac0c3fd5afdae0adc09a520395a1",
+      "checks": 9,
+      "input_events": 6,
+      "frames": 2050,
+      "peak_allies": 120,
+      "peak_enemies": 3,
+      "roles_observed": [
+        "guard",
+        "mortar",
+        "ranger",
+        "shell",
+        "spitter",
+        "swarm"
+      ],
+      "start": {
+        "encounter": "camp_05",
+        "time": 36.0000000000005,
+        "clears": 4
+      },
+      "end": {
+        "encounter": "camp_05",
+        "time": 101.066666666663,
+        "phase": "battle",
+        "clears": 4
+      },
+      "app_written_slots": {
+        "bastion-save.json": "1280a43ef4a9b769a705df5a901be3fe07b4f91607648fcebb62250194ccba30",
+        "bastion-save.json.bak": "5fd3526f40bd244f9576f31c53d03434db70a3f0913b83bbb5b3b47df517a9b1"
+      },
+      "movie": {
+        "path": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-heavy-20261018T155704508405Z\\continuous.mp4",
+        "sha256": "08a198c99dc16d18466b81d2c92c3b809c14fb1778bd9ea95fc2546076f27bc5",
+        "resolution": [
+          720,
+          1680
+        ],
+        "seconds": 68.333008,
+        "fps": "30/1",
+        "full_decode": true,
+        "scaling": "none; native 1:1 pixels, padded canvas for resize stages"
+      },
+      "observed_sim_seconds_per_encoded_second": {
+        "samples": 64,
+        "minimum": 0.9999999999998863,
+        "median": 0.9999999999999005,
+        "maximum": 1.0000000000000995
+      },
+      "final_runtime_art_binding": {
+        "files_checked": 126,
+        "equal": true,
+        "only_ignored_runtime_differences": "Version-only project/export metadata from0.3.3/code7 to0.4.0/code8. No visual/rule/save behavior changed."
+      }
+    }
+  ],
+  "roles_observed": [
+    "beetle",
+    "guard",
+    "matriarch",
+    "mortar",
+    "ranger",
+    "shell",
+    "skitter",
+    "spitter",
+    "swarm"
+  ],
+  "limits": [
+    "Independent eight-category motion review remains pending.",
+    "No simultaneous120allies/90enemies maximum-cap stress claim.",
+    "Captain, siege and carapace are CPU-rig/event tested but are absent from the observed roles in these retained-run movies.",
+    "Silent desktop movies, host render-loop submission intervals; no Android or phone performance/sound/fun acceptance.",
+    "Earlier clobbered telemetry/undersized AVI/source-drift failures remain preserved; final runs use separate process and gameplay reports."
+  ],
+  "candidate_version": "0.4.0",
+  "candidate_version_code": 8,
+  "generated_utc": "2026-10-18T16:01:20.688169+00:00",
+  "motion_review": "pending independent eight-category normal-speed review",
+  "gpu_slot": "released after every owned final rendered subprocess returned",
+  "loaded_equality": "Existing SaveStore.decode semantic normalization, including cleared transient projectiles; numeric absolute tolerance below1e-9. Raw originals/slots retained separately.",
+  "non_runtime_source_followup": "Final CLI rejects the known undersized internal AVI writer; final videos already use native PNGs. Documentation/evidence/version updates follow capture; no recapture for these nonvisual changes.",
+  "preserved_incidents": {
+    "scope": "Preserved current motion-phase failures, incomplete runs and superseded evidence. No overwritten gameplay telemetry is reconstructed from process PASS.",
+    "runs": [
+      {
+        "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-heavy-20261018T151855718108Z",
+        "exists": true,
+        "disposition": "GDScript inference parse failure; no accepted run."
+      },
+      {
+        "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-heavy-20261018T151924107226Z",
+        "exists": true,
+        "disposition": "Short internal-AVI probe uses450x800 startup canvas versus720x1680 native window; process report overwrote gameplay report. Not final evidence."
+      },
+      {
+        "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-opening-20261018T152033406816Z",
+        "exists": true,
+        "disposition": "Original continuous movie/log/raw saves retained; process report overwrote detailed gameplay report. Superseded."
+      },
+      {
+        "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-heavy-20261018T152609030953Z",
+        "exists": true,
+        "disposition": "Original continuous movie/log/raw saves retained; process report overwrote detailed gameplay report. Superseded."
+      },
+      {
+        "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-later-20261018T152953049250Z",
+        "exists": true,
+        "disposition": "Original movie reveals boss HUD occlusion; gameplay report overwritten. Superseded by corrected runtime/capture."
+      },
+      {
+        "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-metrics-20261018T153148498589Z",
+        "exists": true,
+        "disposition": "Source drift correctly failed; gameplay/timing report overwritten. No accepted performance claim."
+      },
+      {
+        "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-opening-20261018T153414830569Z",
+        "exists": true,
+        "disposition": "Stopped verified queue supervisor to avoid queuing clips before HUD repair. Windows also ended child;3547 PNGs retained, no completed receipt. Incomplete, not accepted."
+      },
+      {
+        "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-later-20261018T154206553288Z",
+        "exists": true,
+        "disposition": "Three-second HUD probe retained full report and native frames; consequential-kill assertion failed because no enemy killed in this short duration. Visual inspection only; full corrected finale supersedes."
+      }
+    ]
+  },
+  "focused_boss_hud_regression": {
+    "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\boss-hud-20261018T154408440216Z",
+    "checks": 637,
+    "old_overlap_reproduced": true,
+    "receipt_sha256": "05abd9e03d565cffb0863698efa819c0cd9698a09f95ebcd35310067284ce7c8",
+    "result_data_sha256": "386f3ed5d11f23896a02aca893036019ab53f4b530b3a663657b9bb94f31f731"
+  }
+}

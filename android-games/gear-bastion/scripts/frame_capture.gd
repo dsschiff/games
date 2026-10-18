@@ -18,7 +18,17 @@ func start(extra: Dictionary = {}) -> void:
 	metadata["render_device"] = RenderingServer.get_video_adapter_name()
 	metadata["render_vendor"] = RenderingServer.get_video_adapter_vendor()
 	metadata["command_line"] = Array(OS.get_cmdline_args())
-	metadata["fixed_cadence_capture"] = "--fixed-fps" in OS.get_cmdline_args() or "--write-movie" in OS.get_cmdline_args()
+	# Godot strips its engine flags from OS.get_cmdline_args(). Use the actual
+	# writer state plus the runner's explicit fixed-rate marker instead.
+	metadata["movie_writer_path"] = Engine.get_write_movie_path()
+	var capture_fps := 0
+	for argument in OS.get_cmdline_user_args():
+		if argument.begins_with("--capture-fixed-fps="):
+			capture_fps = int(argument.trim_prefix("--capture-fixed-fps="))
+	metadata["fixed_cadence_capture"] = not Engine.get_write_movie_path().is_empty() or capture_fps > 0
+	metadata["capture_fixed_fps"] = capture_fps
+	metadata["counter_scope"] = "SubViewport visible 3D draw calls/primitives; shadow passes excluded; node count is process-wide"
+	metadata["draw_cpu_usec_scope"] = "Main 2D draw callback CPU elapsed only; excludes complete 3D/GPU rendering"
 	metadata.merge(extra, true)
 	enabled = true
 
