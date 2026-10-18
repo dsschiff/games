@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "status": "verified_native_first_loop_and_scoped_platform_only",
+  "package": "com.dsschiff.frontlinefoundry",
+  "version_name": "0.1.0",
+  "version_code": 1,
+  "source_sha256": "53185ee31496452392e58d49f5c5d0453c2fa7d1e92fa1d042c8893f57022d10",
+  "desktop_build_receipt": "C:/projects/active/games/.artifacts/preservation/frontline-first-loop-desktop-build.json",
+  "apk_sha256": "4ecc1aa7b20306416088d2ec843c82533daa44fc7afbca54cad09ab323c0e537",
+  "packets": [
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-initial-20261018T043021126707Z",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-first-loop-20261018T043049939051Z",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-after-observer-race-20261018T043226663050Z",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-earned-loss-continuation-20261018T043347795634Z",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-transfer-control-confirmation-20261018T043555604631Z",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-platform-active-20261018T043616544947Z"
+  ],
+  "independent_findings": {
+    "natural_loss": {
+      "revision": 45,
+      "hp": 100.0,
+      "hq": 0.0,
+      "leaked": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "profile": {
+        "attempts": 1.0,
+        "best_kills": 0,
+        "wins": 0.0
+      },
+      "read_only_after_race_capture": true
+    },
+    "natural_victory": {
+      "revision": 149,
+      "killed": 10,
+      "leaked": 0,
+      "hp": 60.0,
+      "hq": 120.0,
+      "profile": {
+        "attempts": 2.0,
+        "best_kills": 10,
+        "wins": 1.0
+      }
+    },
+    "invalid_import": {
+      "before_revision": 155,
+      "after_revision": 155,
+      "whole_decoded_packet_equal": true,
+      "all_present_slot_tmp_names_and_bytes_equal": true,
+      "raw_packet_files": 2
+    },
+    "valid_clipboard_import": {
+      "revision": 156,
+      "committed": false,
+      "whole_gameplay_equal": true
+    },
+    "active_upgrade_fixture": {
+      "revision": 213,
+      "phase": "playing",
+      "pads": [
+        true,
+        false
+      ],
+      "spent": 8.0,
+      "commander_shots": 12.0,
+      "recruit0_shots": 1.0,
+      "recruit0_damage": 9.0,
+      "profile": {
+        "attempts": 2.0,
+        "best_kills": 10.0,
+        "wins": 1.0
+      },
+      "settings": {
+        "reduced_effects": true,
+        "sound": false
+      },
+      "whole_active_retained_across": [
+        "cover",
+        "inner",
+        "Home",
+        "cold",
+        "cold_hold",
+        "final_background"
+      ],
+      "geometry_restored": "Physical size: 1080x2400"
+    },
+    "future_fixture": {
+      "canonical_path": "C:/projects/active/games/.artifacts/frontline-foundry/code1-native-helpers/future-upgrade-fixture/frontline-foundry-code2-from-earned-code1.json",
+      "exact_fields": 24,
+      "numeric_fields": 3,
+      "read_only_match_to_actual_rev213": true,
+      "actual_apk_upgrade_executed": false
+    }
+  },
+  "assertion_counts": {
+    "first_loop_continuation_raw_passed": 14,
+    "platform_raw_passed": 53,
+    "platform_png_size_assertions": 14,
+    "platform_repeated_step_profile_assertions": 16,
+    "qualification": "Counts derived from raw keys; not distinct feature counts."
+  },
+  "observer_failure": {
+    "failed_packet": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-first-loop-20261018T043049939051Z",
+    "retained_missing_reads": [
+      {
+        "packet": "code1-first-loop-20261018T043049939051Z",
+        "command": "commands/0103.stdout.bin",
+        "stdout": "cat: files/frontline-save-1: No such file or directory",
+        "exit_code": 0
+      },
+      {
+        "packet": "code1-earned-loss-continuation-20261018T043347795634Z",
+        "command": "commands/0123.stdout.bin",
+        "stdout": "cat: files/frontline-save-1: No such file or directory",
+        "exit_code": 0
+      }
+    ],
+    "source_explanation": "S.write selects1-best.slot; save_files removes only that older destination before tmp rename, newest checked slot retained. Initial observer parsed an exit0 cat-missing diagnostic as JSON.",
+    "corrected_reader": "Only cat: files/... No such file or directory category triggers full-snapshot retry bounded3; corruptJSON/checksum still fail closed. Reader qualifies checksum/observation shape, not full Godot R.valid.",
+    "same_earned_loss_continuation": true,
+    "gameplay_reset_or_replay": false,
+    "actual_retry_taps": 2,
+    "retry_scopes": [
+      "same earned loss to victory",
+      "prior victory to active fixture"
+    ]
+  },
+  "gates": {
+    "native_first_loop": true,
+    "scoped_native_platform": true,
+    "complete_game": false,
+    "physical_phone": false,
+    "onscreen_ime": false,
+    "actual_apk_upgrade": false,
+    "physical_folding": false,
+    "audible_sound": false,
+    "measured_fps": false,
+    "human_fun": false
+  },
+  "visual_review": {
+    "root_reported_direct_views": [
+      "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-after-observer-race-20261018T043226663050Z/observed.png",
+      "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-earned-loss-continuation-20261018T043347795634Z/armed-front-outcome-natural-terminal-no-further-input.png",
+      "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-earned-loss-continuation-20261018T043347795634Z/purchase-0-individual-equipping-phase.png",
+      "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-earned-loss-continuation-20261018T043347795634Z/route-step-014-rifle-owned-attack.png",
+      "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-earned-loss-continuation-20261018T043347795634Z/purchase-1-live-after.png",
+      "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-platform-active-20261018T043616544947Z/native-invalid-import-feedback.png",
+      "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-platform-active-20261018T043616544947Z/valid-import-returned-to-parent-menu.png",
+      "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-platform-active-20261018T043616544947Z/back-closes-transfer-first.png",
+      "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-platform-active-20261018T043616544947Z/second-back-terminal.png",
+      "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-platform-active-20261018T043616544947Z/inner-active-paused-native.png",
+      "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-platform-active-20261018T043616544947Z/cold-active-fixture-paused.png"
+    ],
+    "archivist_scope": "Independent bytes/state/commands/full-PNG-decode checks; root direct-view report is attributed, no new UI execution."
+  },
+  "limits": [
+    "Finite code1 prototype only, not full campaign/game acceptance.",
+    "ASCII/clipboard paths do not certify on-screen IME, phone keyboard, audio/FPS/fun.",
+    "Emulated geometry is not physical folding or safe-area proof.",
+    "Future fixture checked read-only; no actual APK update."
+  ],
+  "receipt": "C:/projects/active/games/.artifacts/preservation/frontline-code1-native.json",
+  "receipt_sha256": "bfcb2b109978ed9a895220cf9bb78200506bf34a44f90490fd29cde1997b0cd6",
+  "preserved_files": 1968,
+  "preserved_bytes": 18159676,
+  "decoded_pngs": 35,
+  "raw_commands_verified": 702,
+  "checked_native_envelopes": 295,
+  "ready_for_phone_testing": false,
+  "software_candidate": false,
+  "physical_phone_tested": false,
+  "active_fixture": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.frontlinefoundry/code1-platform-active-20261018T043616544947Z/final-genuine-active-upgrade-fixture-decoded.json",
+  "active_fixture_sha256": "fddeb2ea9b47a0ecc16ce96acd9222afd68328729badb4a1e0b065b0cd6aa032",
+  "future_old_version_setup_fixture": "scripts/smoke-actions/frontline-foundry-code2-from-earned-code1.json",
+  "native_live_memory_independently_observed_on_invalid_import": false
+}

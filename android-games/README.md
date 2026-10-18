@@ -8,12 +8,12 @@ Six standalone Godot games are being developed here under the staged goal in the
 | `tower-trials` | Tower Trials | Hero Wars | Software candidate ready for phone testing; authored/generated campaign, save updates and corrected native Back/clipboard/resize checks verified |
 | `hook-and-hunger` | Hook and Hunger | Butcher Hero | Conditional software candidate ready for phone testing; update/native transfer verified; phone IME gate explicit |
 | `hearthguard` | Hearthguard | Kingshot | Full campaign in development after independent/Astra/native first-loop checks; not a full-game candidate |
-| `frontline-foundry` | Frontline Foundry | Top Force | First reinforcement-loop prototype in development; advertiser mapping qualified |
-| `dead-run` | Dead Run | Last Human: Final Stand | Bounded prototype direction reviewed; exact gate arithmetic pending |
+| `frontline-foundry` | Frontline Foundry | Top Force | First loop independently/Astra/native verified; full campaign queued; advertiser mapping qualified |
+| `dead-run` | Dead Run | Last Human: Final Stand | First lateral-squad/gate/side-target prototype in development; exact commercial arithmetic unverified |
 
 Each app is offline and has independent saves. APKs and signing materials are local artifacts, excluded from Git. The existing public website is not changed by these builds.
 
-See [local builds](delivery.json) and [installation and phone checks](INSTALL.md) for the current Gear Bastion and Tower Trials candidates.
+See [local builds](delivery.json) and [installation and phone checks](INSTALL.md) for the current Gear Bastion, Tower Trials and conditional Hook and Hunger candidates.
 
 The working phone target is Galaxy Z Fold7, based on Daniel's description. Exact device identity, Android version and physical performance remain unconfirmed. See [device targets](device-target.json), [current milestones](../ROADMAP.md) and [verification records](evidence/).
 

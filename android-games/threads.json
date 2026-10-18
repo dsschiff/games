@@ -22,7 +22,7 @@
       "initial_base": "c4eeeb515dc5ed7a179776932797484319c3b51c",
       "ownership_when_started": "android-games/frontline-foundry/",
       "handoff": "android-games/handoffs/frontline-foundry-prototype.md",
-      "state": "active first playable in persistent Frontline Foundry chat after Hook conditional candidate acceptance; owns existing isolated worktree, alongside Hearthguard",
+      "state": "frozen workerbd2bfd9/code1 first loop independently69/40/42/7, Astra and native verified; full campaign handoff queued for builder lane; genuine active Android catalog1 fixture retained, phone untested",
       "activation_base": "d771247958d550e4cd4a345ff7db3c310d9ab677",
       "thread_id": "01a14d1d-c90a-7562-b246-6cd243ad96ed"
     },
@@ -33,7 +33,9 @@
       "initial_base": "e41cb09cdbe1d78da0a004aa9ef0ea5a73c0dcb9",
       "ownership_when_started": "android-games/dead-run/",
       "handoff": "android-games/handoffs/dead-run-prototype.md",
-      "state": "clean isolated workspace and qualified first-loop handoff prepared; no implementation/chat started; waits for accepted builder handoff to keep two builders"
+      "state": "activated after accepted Frontline first loop; sixth persistent builder alongside Hearthguard, Frontline full campaign queued",
+      "activation_base": "369f9dce162d91ad27eff75f3f52aba2139736e1",
+      "thread_id": "01a14d53-a3ae-7f61-ab87-0006aaa25dd4"
     }
   ],
   "games": [
@@ -87,7 +89,18 @@
       "branch": "codex/frontline-foundry",
       "ownership": "android-games/frontline-foundry/",
       "activation_base": "d771247958d550e4cd4a345ff7db3c310d9ab677",
-      "state": "active first prototype: commander movement/firing/coins \u2192 station investment \u2192 individually equipped recruit \u2192 changed adjacent combat, second investment/vehicle escalation and natural win/loss/Retry; review before campaign expansion"
+      "state": "frozen workerbd2bfd9/code1 first loop independently69/40/42/7, Astra and native verified; full campaign handoff queued for builder lane; genuine active Android catalog1 fixture retained, phone untested"
+    },
+    {
+      "slug": "dead-run",
+      "thread_id": "01a14d53-a3ae-7f61-ab87-0006aaa25dd4",
+      "host_id": "local",
+      "model": "configured_default_no_override",
+      "worktree": "C:/projects/active/_worktrees/games-dead-run-20261018",
+      "branch": "codex/dead-run",
+      "ownership": "android-games/dead-run/",
+      "activation_base": "369f9dce162d91ad27eff75f3f52aba2139736e1",
+      "state": "active first prototype: lateral forward squad/gate shooting/gain and harmful crossings/ordinary sustained side target/natural outcomes/Retry; reference arithmetic explicitly original; no campaign expansion before independent/Astra/native review"
     }
   ]
 }

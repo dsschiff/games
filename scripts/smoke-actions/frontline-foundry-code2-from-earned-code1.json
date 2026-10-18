@@ -1,0 +1,37 @@
+{
+  "reference_display": [1080, 2400],
+  "viewport": [720, 1280],
+  "scope": "Genuine code1 native active battle after HQ loss, actual Retry/victory, native transfer/settings and another real Retry. Commander fought, collected starter scrap, funded rifles and an individual recruit fired. Cold launch restores playing state paused. No injected save/reset. Future code2 schema expectations await the frozen campaign; whole-state preservation is separate from these observer bounds.",
+  "actions": [{"type": "wait", "wait_seconds": 0.3}],
+  "expected_save": {
+    "version": 1,
+    "committed": true,
+    "state.catalog": 1,
+    "state.seed": 17,
+    "state.phase": "playing",
+    "state.pads": [true, false],
+    "state.spent": 8,
+    "state.wallet": 6,
+    "state.collected": [100],
+    "state.killed": [0],
+    "state.leaked": [],
+    "state.spawned": 4,
+    "state.hp": 68,
+    "state.hq": 120,
+    "state.commander_shots": 12,
+    "state.consumed": [3, 0],
+    "state.recruits.0.phase": "fighting",
+    "state.recruits.0.shots": 1,
+    "state.recruits.0.damage": 9,
+    "profile.attempts": 2,
+    "profile.wins": 1,
+    "profile.best_kills": 10,
+    "settings.sound": false,
+    "settings.reduced_effects": true
+  },
+  "expected_numeric": {
+    "state.time": {"min": 16.6999, "max": 16.7001},
+    "state.x": {"min": -0.0571, "max": -0.0569},
+    "state.z": {"min": 1.4302, "max": 1.4305}
+  }
+}

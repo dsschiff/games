@@ -59,14 +59,18 @@
     },
     {
       "slug": "frontline-foundry",
-      "state": "first_prototype_in_development",
+      "state": "first_loop_verified_full_campaign_queued",
       "thread_id": "01a14d1d-c90a-7562-b246-6cd243ad96ed",
       "ready_for_phone_testing": false,
-      "physical_phone_tested": false
+      "physical_phone_tested": false,
+      "evidence": "android-games/evidence/frontline-first-loop.json"
     },
     {
       "slug": "dead-run",
-      "state": "brief_reviewed"
+      "state": "first_prototype_in_development",
+      "thread_id": "01a14d53-a3ae-7f61-ab87-0006aaa25dd4",
+      "ready_for_phone_testing": false,
+      "physical_phone_tested": false
     }
   ]
 }
