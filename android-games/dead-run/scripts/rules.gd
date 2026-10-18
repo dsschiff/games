@@ -124,6 +124,11 @@ static func step(s: Dictionary) -> void:
 				s.leaks += 1
 				s.contact += int(touching)
 				s.notice = "Contact: -2 crew" if touching else "Infected reached rescue line: -1 crew"
+	# Complete world movement first, then exhaustion wins over queued impacts/rewards.
+	if s.crew == 0:
+		s.phase = "defeat"
+		s.notice = "The rescue crew was depleted. Retry immediately."
+		return
 	if s.tick % 30 == 0:
 		for i in s.crew:
 			var q := offset(i, s.crew)
@@ -135,10 +140,7 @@ static func step(s: Dictionary) -> void:
 		b.z += 24.0 / 60.0
 		if hit(s, b, old) or b.z > 34:
 			s.bullets.remove_at(i)
-	if s.crew == 0:
-		s.phase = "defeat"
-		s.notice = "The rescue crew was depleted. Retry immediately."
-	elif s.tick >= 2910 and s.final_hp > 0:
+	if s.tick >= 2910 and s.final_hp > 0:
 		s.phase = "defeat"
 		s.notice = "The barricade reached the line. Aim down the centre."
 	elif s.tick >= END_TICK:

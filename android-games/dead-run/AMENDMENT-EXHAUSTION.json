@@ -1,0 +1,179 @@
+{
+  "amends": "8d7187e33a18034e69fdc0c94b4bffa2368cf9e4",
+  "scope": "P2 exhaustion precedence/save-validity fix only. No campaign/content/balance/preset/schema change.",
+  "production_change": "After all gate/enemy movement and contact resolves, zero crew is terminal before firing or queued projectile impacts/recruits. Surviving same-tick crane claims remain enabled. Validator is unchanged.",
+  "synthetic_fixture_qualification": "Controlled valid-import fixtures, not naturally earned routes or proof of exact touch reachability. GUI Import/Resume uses engine touch and ordinary processing; no gameplay handler calls or model assignment.",
+  "boundary_outcomes": {
+    "fatal": {
+      "before_tick": 1226,
+      "before_crew": 1,
+      "before_joined": 4,
+      "before_lost": 6,
+      "after_tick": 1227,
+      "phase": "defeat",
+      "crew": 0,
+      "joined": 4,
+      "lost": 7,
+      "leaks": 1,
+      "contact": 1,
+      "side_hp": 1,
+      "side_claimed": false,
+      "rule_valid": true,
+      "decode_valid": true,
+      "cold_restore": true
+    },
+    "surviving": {
+      "before_tick": 1226,
+      "before_crew": 3,
+      "before_joined": 6,
+      "before_lost": 6,
+      "after_contact_and_claim_crew": 4,
+      "joined": 9,
+      "lost": 8,
+      "leaks": 1,
+      "contact": 1,
+      "side_hp": 0,
+      "side_claimed": true,
+      "rule_valid": true,
+      "decode_valid": true,
+      "cold_restore": true
+    }
+  },
+  "runs": {
+    "rules": {
+      "path": ".artifacts/amendment-final-rules-20261018T053216207635Z",
+      "checks": 139,
+      "receipt_sha256": "b0cb030edf2fd21c3b579a460f4b25d3a9a52002a6b106462e9cfa442563e59c",
+      "fully_decoded_pngs": 0
+    },
+    "headless": {
+      "path": ".artifacts/amendment-final-headless-20261018T053219261211Z",
+      "checks": 34,
+      "receipt_sha256": "3a36550aa845566ab0fcb42e62bc8ba81d5ef0e0cc9192d945b3b8a0987d900b",
+      "fully_decoded_pngs": 0
+    },
+    "rendered": {
+      "path": ".artifacts/amendment-final-rendered-20261018T053240354561Z",
+      "checks": 35,
+      "receipt_sha256": "11d4fe3b3f4b57899cb755b8949b600945ecd41447b332d9bc2e7310801f15d4",
+      "fully_decoded_pngs": 15
+    },
+    "exhaustion-headless": {
+      "path": ".artifacts/amendment-final-exhaustion-headless-20261018T053217764825Z",
+      "checks": 17,
+      "receipt_sha256": "e729e28be0dd345091e773b0449accc502c51220a3b2f8e5f05a459b3f0024ca",
+      "fully_decoded_pngs": 0
+    },
+    "exhaustion-rendered": {
+      "path": ".artifacts/amendment-final-exhaustion-rendered-20261018T053237088064Z",
+      "checks": 17,
+      "receipt_sha256": "9ed17623581b750877b47a15efe3282de8d04c5d377f611aab77c7330d428a51",
+      "fully_decoded_pngs": 6
+    }
+  },
+  "executed_file_count": 27,
+  "source_hashes": {
+    "CHECKPOINT.json": "3dcf35b46c57195da7aa4c8561da47be0600c7747e01ee0a9bfa2bdaae794dbb",
+    "CHECKPOINT.md": "af3837e100fa3c83a0f5ae6e934a2f338b37798d026ade04692161d10ced56ba",
+    "export_presets.cfg": "5026ce4000d614c1afc00cae1903de1547b1f9c4b470ec09e68b317d44ba472b",
+    "icon.svg": "dc7fc1cf18e8d6a5a52d8643184498ea23b2569c5b4286c63ebf80012f89ee4e",
+    "icon.svg.import": "9de5e899d3323aa37fec5bf7cb0e35314530dcbe2809929dc0bcfb9ecc9f00cd",
+    "main.tscn": "576922271b75eeb00ec25953db5efa509f0d9d4c2b7a0bf901336ab28438e200",
+    "project.godot": "961d6df703b54b658ef8b290f72c37431967592e4781e8aafd423d3a14f3105e",
+    "README.md": "3c0bab98384c1e9ac0c5e2e382b5e94389dc1e918dfb5ee8e63a1b5d409d6d8f",
+    "scripts/main.gd": "f8905e597a26ce49db7159fd7ce22bc4a163574c4f3760373ea0f4966fde07c6",
+    "scripts/main.gd.uid": "b406494d69da9bfba6324f52bf8650be5abb9da630dc7f81f5ea82af0cae0c5a",
+    "scripts/rules.gd": "7b3b5e45ef81e97aa9d1b1ebce72e751ed8416f82193913a14492ef58130290c",
+    "scripts/rules.gd.uid": "e9f74a7ea5170698b290ff06ba523b4768513931cd64607c76f1006cdb2a8ed4",
+    "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+    "scripts/save_files.gd.uid": "dc1d77381e96bee721244fd2c0d44191b128807192785eb44a1df3fa6ecb2bac",
+    "scripts/save_store.gd": "cdd0a07ef25381252af6dc3fd2f4d390bdbd4372a079873b897628f218475316",
+    "scripts/save_store.gd.uid": "d431cc0e3c84918fc1e5136eddd8f13d9e472ea8336a218685e0b2cf3b9162c3",
+    "tests/exhaustion_fixture.gd": "52c1e982b92e55c1079beda454381132b6059b25b7e00a8403a30fe7dbf910ef",
+    "tests/exhaustion_fixture.gd.uid": "babcd42a929a18d6f8dd7047187b5b0b149a7cd23eef84427344da1477977739",
+    "tests/exhaustion_playthrough.gd": "06cd3fb827e422014bc1a4998190ff0b56354e34df2cc469762a45066705c8fd",
+    "tests/exhaustion_playthrough.gd.uid": "bbdbd1385f300a708efaf5360edb76ee8845ee49ac64e4a6b9de4294d6ca7bb5",
+    "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+    "tests/fault_files.gd.uid": "6845ad81df88c95a024821ae005a9af425eb850852f7da09f79cdc618c9bf2eb",
+    "tests/playthrough.gd": "aece89ab0beda649a2a4012e3bebec7435bb4a5b7e701c64939bb9c2728bb314",
+    "tests/playthrough.gd.uid": "57e9ee88cfa12b57d7996213426dd88fa385b3d31a531cfc6556a22862ddb7dc",
+    "tests/run_desktop.py": "163407025f8810aa65312939f0990d18f2e05438ca5a81a94ff853465ba6c5ab",
+    "tests/run_tests.gd": "d8bbedd442669df0c18da25698c18a1327b3402845fc387714f953e45792f04a",
+    "tests/run_tests.gd.uid": "3c30dd48f3117008e8e28f41f7ca9aea1d4667e58032b325c5f41ae53a124abc"
+  },
+  "source_hashes_lf": {
+    "CHECKPOINT.json": "0aa9d286bcc5fe51bf98f51b3c23fa9f8cd9fdfa04f3118ddcd0905652156977",
+    "CHECKPOINT.md": "9d90dde161423d88125422f4d4fcd9492092d035b016b5ceabe09be2cdf5e360",
+    "export_presets.cfg": "5026ce4000d614c1afc00cae1903de1547b1f9c4b470ec09e68b317d44ba472b",
+    "icon.svg": "dc7fc1cf18e8d6a5a52d8643184498ea23b2569c5b4286c63ebf80012f89ee4e",
+    "icon.svg.import": "9de5e899d3323aa37fec5bf7cb0e35314530dcbe2809929dc0bcfb9ecc9f00cd",
+    "main.tscn": "576922271b75eeb00ec25953db5efa509f0d9d4c2b7a0bf901336ab28438e200",
+    "project.godot": "961d6df703b54b658ef8b290f72c37431967592e4781e8aafd423d3a14f3105e",
+    "README.md": "3c0bab98384c1e9ac0c5e2e382b5e94389dc1e918dfb5ee8e63a1b5d409d6d8f",
+    "scripts/main.gd": "f8905e597a26ce49db7159fd7ce22bc4a163574c4f3760373ea0f4966fde07c6",
+    "scripts/main.gd.uid": "b406494d69da9bfba6324f52bf8650be5abb9da630dc7f81f5ea82af0cae0c5a",
+    "scripts/rules.gd": "7b3b5e45ef81e97aa9d1b1ebce72e751ed8416f82193913a14492ef58130290c",
+    "scripts/rules.gd.uid": "e9f74a7ea5170698b290ff06ba523b4768513931cd64607c76f1006cdb2a8ed4",
+    "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+    "scripts/save_files.gd.uid": "dc1d77381e96bee721244fd2c0d44191b128807192785eb44a1df3fa6ecb2bac",
+    "scripts/save_store.gd": "cdd0a07ef25381252af6dc3fd2f4d390bdbd4372a079873b897628f218475316",
+    "scripts/save_store.gd.uid": "d431cc0e3c84918fc1e5136eddd8f13d9e472ea8336a218685e0b2cf3b9162c3",
+    "tests/exhaustion_fixture.gd": "52c1e982b92e55c1079beda454381132b6059b25b7e00a8403a30fe7dbf910ef",
+    "tests/exhaustion_fixture.gd.uid": "babcd42a929a18d6f8dd7047187b5b0b149a7cd23eef84427344da1477977739",
+    "tests/exhaustion_playthrough.gd": "06cd3fb827e422014bc1a4998190ff0b56354e34df2cc469762a45066705c8fd",
+    "tests/exhaustion_playthrough.gd.uid": "bbdbd1385f300a708efaf5360edb76ee8845ee49ac64e4a6b9de4294d6ca7bb5",
+    "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+    "tests/fault_files.gd.uid": "6845ad81df88c95a024821ae005a9af425eb850852f7da09f79cdc618c9bf2eb",
+    "tests/playthrough.gd": "aece89ab0beda649a2a4012e3bebec7435bb4a5b7e701c64939bb9c2728bb314",
+    "tests/playthrough.gd.uid": "57e9ee88cfa12b57d7996213426dd88fa385b3d31a531cfc6556a22862ddb7dc",
+    "tests/run_desktop.py": "163407025f8810aa65312939f0990d18f2e05438ca5a81a94ff853465ba6c5ab",
+    "tests/run_tests.gd": "d8bbedd442669df0c18da25698c18a1327b3402845fc387714f953e45792f04a",
+    "tests/run_tests.gd.uid": "3c30dd48f3117008e8e28f41f7ca9aea1d4667e58032b325c5f41ae53a124abc"
+  },
+  "executed_raw_bundle_sha256": "7db7e08641e50c159ea437575a27544c6bb050821d1cfa6309e4953e0d569320",
+  "executed_lf_bundle_sha256": "18d5f271d33270f2a2e777d3d1a339f5d79c487dbfb5c1326cf00f4033028f2d",
+  "new_receipt_artifacts_verified": 395,
+  "old_receipt_artifacts_reverified": 289,
+  "probes": {
+    "exhaustion-old-sensitivity.json": {
+      "path": ".artifacts/exhaustion-old-sensitivity.json",
+      "sha256": "a5bce1b1f21a2e066adacabfd53ef8663814bc8f6e8815a474491d37bfa0d189"
+    },
+    "exhaustion-normal-route-comparison.json": {
+      "path": ".artifacts/exhaustion-normal-route-comparison.json",
+      "sha256": "ab83ced8c97a613368f993cc5cd02e87234f3bf1bc969f06d179d8997624b1c6"
+    },
+    "exhaustion-root-probe/copy-manifest.json": {
+      "path": ".artifacts/exhaustion-root-probe/copy-manifest.json",
+      "sha256": "a1347b7fdc87ac3800363ab3aa6531eefd22b49eaca2d6e4d19910e156ce6f64"
+    }
+  },
+  "clipboard": {
+    "display_server": "Windows",
+    "equal": true,
+    "feedback": "Copied checked rescue save."
+  },
+  "preserved_original_movie": {
+    "path": ".artifacts/freeze-movie-20261018T051042189912Z/continuous.mp4",
+    "sha256": "3518fc3f47a0d5a1798b1def7228cf3495abcd6f9cd1dbeda41d98c43f94a237",
+    "seconds": "87.233333",
+    "source_commit": "8d7187e33a18034e69fdc0c94b4bffa2368cf9e4",
+    "qualification": "Original old-source normal-route footage, NOT a new exact-amendment recording. New GUI boundary captures and normal-route checks cover amended source separately."
+  },
+  "retained_failed_gui_attempt": {
+    "path": ".artifacts/exhaustion-amendment-exhaustion-headless-20261018T053131438890Z",
+    "receipt_sha256": "03d5daaff6bf42bd84454fa4104efeb6d11407dc577ad68f05c22bf5814150b0",
+    "explanation": "Observer clicked clipped transfer menu in fresh ready overlay. Corrected helper starts via actual Start before Pause/Transfer. Retained failed20-check/14-failure packet; no game-source workaround."
+  },
+  "reporting_additions": [
+    "AMENDMENT-EXHAUSTION.md",
+    "AMENDMENT-EXHAUSTION.json"
+  ],
+  "boundaries": {
+    "android_exported": false,
+    "adb_operated": false,
+    "phone_tested": false,
+    "new_movie_required_or_recorded": false,
+    "next": "Root independent exact-amendment/Astra P2 closure before native Android export."
+  }
+}

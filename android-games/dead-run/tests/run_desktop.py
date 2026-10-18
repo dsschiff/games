@@ -21,7 +21,7 @@ def sources():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=["rules", "headless", "rendered", "movie"])
+    parser.add_argument("mode", choices=["rules", "headless", "rendered", "movie", "exhaustion-headless", "exhaustion-rendered"])
     parser.add_argument("--label", default="run")
     args = parser.parse_args()
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
@@ -33,12 +33,14 @@ def main():
     Path(env["APPDATA"]).mkdir()
     Path(env["LOCALAPPDATA"]).mkdir()
     command = [str(GODOT), "--path", str(PROJECT)]
-    if args.mode in ["rules", "headless"]:
+    if args.mode in ["rules", "headless", "exhaustion-headless"]:
         command += ["--headless"]
     else:
         command += ["--resolution", "720x1280", "--position", "0,0"]
-    command += ["--fixed-fps", "60", "--script",
-                "res://tests/run_tests.gd" if args.mode == "rules" else "res://tests/playthrough.gd"]
+    script = ("res://tests/run_tests.gd" if args.mode == "rules" else
+              "res://tests/exhaustion_playthrough.gd" if args.mode.startswith("exhaustion-") else
+              "res://tests/playthrough.gd")
+    command += ["--fixed-fps", "60", "--script", script]
     if args.mode == "movie":
         command += ["--write-movie", str(run / "continuous.avi")]
     command += ["--", "--capture-dir=" + str(run), "--report=" + str(run / "rules-report.json")]

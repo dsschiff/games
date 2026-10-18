@@ -2,6 +2,7 @@ extends SceneTree
 const R = preload("res://scripts/rules.gd")
 const S = preload("res://scripts/save_store.gd")
 const F = preload("res://tests/fault_files.gd")
+const Exhaustion = preload("res://tests/exhaustion_fixture.gd")
 var checks := 0
 var failures := 0
 var details: Array = []
@@ -36,6 +37,24 @@ func equal(a: Variant, b: Variant) -> bool:
 	return a == b
 
 func run() -> void:
+	for survives in [false, true]:
+		var fixture := Exhaustion.make(survives)
+		var config := {"sound": false, "reduced_effects": true}
+		check(R.valid(fixture), "synthetic exhaustion fixture valid before step; survives=" + str(survives))
+		check(S.decode(S.encode(fixture, config, 1)).ok, "synthetic exhaustion fixture importable before step; survives=" + str(survives))
+		R.step(fixture)
+		check(R.valid(fixture), "exhaustion boundary valid after ordinary step; survives=" + str(survives))
+		check(S.decode(S.encode(fixture, config, 2)).ok, "exhaustion boundary remains save-decodable; survives=" + str(survives))
+		check(fixture.leaks == 1 and fixture.contact == 1, "paired fixture actually applies same-tick contact")
+		if survives:
+			check(fixture.phase == "playing" and fixture.crew == 4 and fixture.joined == 9 and fixture.lost == 8, "living formation receives legitimate same-tick crane recruits")
+			check(fixture.side_hp == 0 and fixture.side_claimed, "living queued projectile finishes crane and claims payout")
+		else:
+			check(fixture.phase == "defeat" and fixture.crew == 0 and fixture.joined == 4 and fixture.lost == 7, "exhaustion precedes queued impacts; no revival or recruit payout")
+			check(fixture.side_hp == 1 and not fixture.side_claimed and fixture.bullets[0].z == 11.99, "fatal contact freezes queued projectile before crane impact")
+			var terminal := fixture.duplicate(true)
+			R.step(fixture)
+			check(fixture == terminal, "fatal boundary is stable on subsequent step")
 	var s := R.fresh()
 	check(R.valid(s), "fresh pinned run validates")
 	check(S.decode(S.encode(s, {"sound": true, "reduced_effects": false}, 0)).ok, "ready save survives JSON type normalization")
