@@ -13,7 +13,7 @@ import re
 import shutil
 import subprocess
 
-from production_sources import PROJECT, PLAN, envelope, resolve, sha
+from production_sources import PROJECT, PLAN, acceptance_index_identity, envelope, resolve, sha
 from run_graphics import GODOT, sources
 
 
@@ -62,28 +62,29 @@ def prepare_start(args, run, env, plan):
             assert any(item["path"] == row["path"] and item["sha256"] == row["sha256"] for item in receipt["artifacts"])
             shutil.copy2(source, user / name)
             assert sha(source) == sha(user / name)
-            code = source.read_text(encoding="utf-8")
+            code = source.read_bytes().decode("utf-8")
             packet = envelope(code)
             if not name.endswith(".tmp") or packet["committed"]:
                 candidates.append((packet["revision"], name, code))
         assert candidates
         _, _, code = max(candidates, key=lambda item: item[0])
         expected = run / "expected-start.code"
-        expected.write_text(code, encoding="utf-8", newline="")
+        expected.write_bytes(code.encode("utf-8"))
         provenance = {"kind": "exact raw app slots from prior passed production process", "parent": str(parent), "receipt_sha256": sha(parent / "receipt.json"), "report_sha256": sha(parent / "production-report.json"), "files": report["raw_slot_snapshots"]["final"]["files"]}
     else:
         key = args.earned or plan["stages"].get(args.stage, {}).get("earned")
         if key:
             code, packet, entry = resolve(key)
             expected = run / "expected-start.code"
-            expected.write_text(code, encoding="utf-8", newline="")
+            expected.write_bytes(code.encode("utf-8"))
             (user / "hearth-save-0").write_bytes(expected.read_bytes())
             assert sha(user / "hearth-save-0") == entry["selected_envelope_sha256"]
             provenance = {"kind": "accepted genuine app-written historical envelope", "key": key, "entry": entry, "plan_sha256": sha(PLAN)}
         else:
             provenance = {"kind": "fresh isolated app, no progress or settings injection"}
     if expected:
-        (run / "expected-start.json").write_text(json.dumps(envelope(expected.read_text()), indent=2) + "\n")
+        (run / "expected-start.json").write_text(json.dumps(envelope(expected.read_bytes().decode("utf-8")), indent=2) + "\n")
+    provenance["acceptance_index_identity"] = acceptance_index_identity(plan)
     (run / "start-provenance.json").write_text(json.dumps(provenance, indent=2) + "\n")
     return expected, provenance
 
@@ -148,10 +149,10 @@ def main():
         inventory = {}
         for key in plan["earned_sources"]:
             code, packet, entry = resolve(key)
-            (fixtures / (key + ".code")).write_text(code, encoding="utf-8", newline="")
+            (fixtures / (key + ".code")).write_bytes(code.encode("utf-8"))
             inventory[key] = entry
         (run / "fixture-provenance.json").write_text(json.dumps(inventory, indent=2) + "\n")
-        expected, provenance = None, {"kind": "pinned historical validation fixtures only"}
+        expected, provenance = None, {"kind": "pinned historical validation fixtures only", "acceptance_index_identity": acceptance_index_identity(plan)}
     else:
         expected, provenance = prepare_start(args, run, env, plan)
     preflight, _ = execute([str(GODOT), "--headless", "--editor", "--import", "--quit", "--path", str(PROJECT)], run, env, "import", 180)

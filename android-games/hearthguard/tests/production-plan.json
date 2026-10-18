@@ -2,7 +2,6 @@
   "schema": 1,
   "runtime_freeze": "34ce0743afeabfee303146b7ab0ec0303147b561",
   "acceptance_index": "campaign-checkpoint.json",
-  "acceptance_index_sha256": "273a622c8dce459d7c236a4367d58b27211a638578f648dd3374840450b95ae2",
   "earned_sources": {
     "middle": {
       "path": ".artifacts/release-headless-20261018T045517382023Z/middle-earned.code",
@@ -398,5 +397,7 @@
     "Fixed30 movies are not FPS",
     "First internal450x800 writer retained and rejected for future production",
     "Accepted receipt, artifact hash and complete state equality required before first input"
-  ]
+  ],
+  "acceptance_index_original_raw_sha256": "273a622c8dce459d7c236a4367d58b27211a638578f648dd3374840450b95ae2",
+  "acceptance_index_lf_sha256": "66a45f7ec813544732e237427ed93c4e35be99aa76111ace72d5e526991d912e"
 }

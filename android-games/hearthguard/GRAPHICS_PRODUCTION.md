@@ -111,3 +111,21 @@ root explicitly grants the batch. Root owns export/ADB/clipboard/shared writes
 and actual code2-to3 native update; its installed code2 revisions479/478 backup
 and native helper preparation are coordinator evidence, not builder execution.
 Physical-phone testing remains deferred with no phone FPS or human-fun claim.
+
+## Portable tracked-index binding correction
+
+Root's independent attempt stopped before execution because this checkout's
+`campaign-checkpoint.json` was CRLF and the coordinator's was LF. The failed
+root attempt remains retained. The plan now pins the recorded original raw SHA
+273a622c... and exact text-LF SHA66a45f7e.... Only this tracked acceptance index
+permits CRLF-to-LF byte replacement; bare CR, trailing whitespace and content
+changes reject. Provenance records original raw, actual checkout raw and text-LF
+identities separately. Receipt/artifact/envelope/raw-slot validation remains
+byte-exact; envelope reads/writes now explicitly avoid text newline translation.
+
+The narrow Python regression verifies both newline variants, the coordinator's
+actual LF index read-only, all three negative mutations, and all eleven original
+source/envelope hashes. It neither runs Godot nor repeats a campaign/full suite.
+Timestamped results and checked source hashes are retained under
+`.artifacts/source-index-portability-*.json`. No art/runtime/save/version change
+or rendered execution accompanies this correction.

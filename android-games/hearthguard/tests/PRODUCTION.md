@@ -17,6 +17,13 @@ Each process gets isolated userdata and a byte-exact executed-source snapshot
 after successful CPU import/parse. Runtime/art bytes must match the frozen commit.
 Execution-time source drift rejects the result.
 
+The tracked acceptance index alone permits exact CRLF-to-LF replacement. Its
+recorded original raw SHA and text-LF SHA are both pinned; each provenance report
+also records the actual checkout raw SHA. Bare CR, whitespace and content changes
+reject. Receipt/artifact/envelope/raw-slot bytes never use this normalization.
+The narrow cross-checkout regression is `python -B tests/source_index_checks.py`
+(optionally `--index <other-checkout-index>` for read-only verification).
+
 The former `campaign-final-headless-20261018T044447829884Z` path is **not used**:
 its receipt has `passed=true` but `source_unchanged=false`. That evidence stays
 retained. The selected campaign inputs instead come from accepted

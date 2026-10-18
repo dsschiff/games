@@ -17,12 +17,27 @@ def envelope(code):
     return json.loads(data["payload"])
 
 
+def acceptance_index_identity(plan, raw=None):
+    """Only the tracked text index permits CRLF→LF; no other byte transform."""
+    if raw is None:
+        raw = (PROJECT / plan["acceptance_index"]).read_bytes()
+    lf = raw.replace(b"\r\n", b"\n")
+    assert b"\r" not in lf, "Acceptance index contains a bare CR"
+    lf.decode("utf-8")
+    digest = hashlib.sha256(lf).hexdigest()
+    assert digest == plan["acceptance_index_lf_sha256"], "Acceptance index differs beyond CRLF/LF"
+    return {"path": plan["acceptance_index"], "recorded_original_raw_sha256": plan["acceptance_index_original_raw_sha256"],
+            "actual_raw_sha256": hashlib.sha256(raw).hexdigest(), "text_lf_sha256": digest,
+            "matches_recorded_raw": hashlib.sha256(raw).hexdigest() == plan["acceptance_index_original_raw_sha256"],
+            "policy": "Tracked acceptance index only: exact CRLF-to-LF replacement; no stripping, JSON reserialization, whitespace or content normalization. Artifact/receipt/envelope/save-slot identities remain byte-exact."}
+
+
 def resolve(key):
     plan = json.loads(PLAN.read_text(encoding="utf-8"))
     entry = plan["earned_sources"][key]
     index = PROJECT / plan["acceptance_index"]
-    assert sha(index) == plan["acceptance_index_sha256"]
-    accepted = json.loads(index.read_text(encoding="utf-8"))["accepted_receipts"]
+    identity = acceptance_index_identity(plan)
+    accepted = json.loads(index.read_bytes().decode("utf-8"))["accepted_receipts"]
     assert any(row["path"] == entry["receipt"] and row["sha256"] == entry["receipt_sha256"] for row in accepted)
     path = (PROJECT / entry["path"]).resolve()
     assert path.is_relative_to((PROJECT / ".artifacts").resolve())
@@ -33,13 +48,13 @@ def resolve(key):
     assert sha(path) == entry["sha256"]
     relative = path.relative_to(receipt_path.parent).as_posix()
     assert any(row["path"] == relative and row["sha256"] == entry["sha256"] for row in receipt["artifacts"])
-    code = path.read_text(encoding="utf-8")
+    code = path.read_bytes().decode("utf-8")
     if entry.get("slot_key") is not None:
         code = json.loads(code)[entry["slot_key"]]
     assert hashlib.sha256(code.encode()).hexdigest() == entry["selected_envelope_sha256"]
     packet = envelope(code)
     assert packet["revision"] == entry["revision"]
-    return code, packet, entry
+    return code, packet, {**entry, "acceptance_index_identity": identity}
 
 
 def summarize(packet, seconds=40):
