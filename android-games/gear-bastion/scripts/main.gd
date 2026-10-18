@@ -1,5 +1,5 @@
 extends Node2D
-## Fixed portrait battlefield and continuously interactive socket board.
+## Expandable battlefield and continuously interactive socket board.
 
 const Gear = preload("res://scripts/gear_rules.gd")
 const Battle = preload("res://scripts/battle_rules.gd")
@@ -11,7 +11,7 @@ const FrameCapture = preload("res://scripts/frame_capture.gd")
 const LocalAudio = preload("res://scripts/local_audio.gd")
 const CampaignView = preload("res://scripts/campaign_view.gd")
 const ActorArt = preload("res://scripts/actor_art.gd")
-const BOARD_ORIGIN := Vector2(100, 660)
+const WindowLayout = preload("res://scripts/window_layout.gd")
 const CELL := 80.0
 const INK := Color("172b36")
 const CREAM := Color("f4e7bd")
@@ -59,6 +59,10 @@ var draw_microseconds := 0
 var fx_sound_clock := 0.0
 var actor_art := ActorArt.new()
 var menu_dialog: AcceptDialog
+var layout := WindowLayout.new()
+var usable := Rect2()
+var safe_area_override := Rect2()
+var dialog_scrolls: Dictionary = {}
 
 func _ready() -> void:
 	get_tree().quit_on_go_back = false
@@ -79,6 +83,7 @@ func _ready() -> void:
 	RenderingServer.frame_post_draw.connect(_capture_render_frame)
 	abandon_dialog = ConfirmationDialog.new()
 	abandon_dialog.title = "Replace active defense?"
+	abandon_dialog.get_label().autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	abandon_dialog.dialog_text = "Starting another foundry replaces this active run.\nYour cleared foundries and medals stay saved."
 	abandon_dialog.ok_button_text = "Start new defense"
 	abandon_dialog.get_ok_button().custom_minimum_size = Vector2(210, 80)
@@ -87,10 +92,22 @@ func _ready() -> void:
 	abandon_dialog.confirmed.connect(func(): start_mission(pending_mission, pending_challenge))
 	help_dialog = AcceptDialog.new()
 	help_dialog.title = "Foundry guide"
-	help_dialog.get_label().autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	var guide := Label.new()
+	guide.name = "GuideText"
+	guide.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	guide.custom_minimum_size.x = 280
+	scroll_content(help_dialog, guide)
 	help_dialog.get_ok_button().custom_minimum_size = Vector2(160, 80)
 	add_child(help_dialog)
 	_build_menu()
+	# AcceptDialog rewrites button minima from its theme during every layout.
+	var dialog_theme := Theme.new()
+	dialog_theme.set_constant("buttons_min_width", "AcceptDialog", 160)
+	dialog_theme.set_constant("buttons_min_height", "AcceptDialog", 80)
+	for dialog in [save_dialog, menu_dialog, help_dialog, abandon_dialog]:
+		dialog.theme = dialog_theme
+	get_viewport().size_changed.connect(refresh_layout)
+	refresh_layout()
 	actor_art.bake(self)
 	queue_redraw()
 
@@ -124,6 +141,7 @@ func persist() -> bool:
 	return success
 
 func _process(delta: float) -> void:
+	refresh_layout()
 	clock += delta
 	fx_sound_clock += delta
 	if not paused and screen == "game":
@@ -214,7 +232,7 @@ func request_mission(id: String, challenge: int = -1) -> void:
 	pending_mission = id
 	pending_challenge = challenge
 	if state.phase == "battle":
-		abandon_dialog.popup_centered(Vector2i(520, 260))
+		show_dialog(abandon_dialog)
 	else:
 		start_mission(id, challenge)
 
@@ -241,7 +259,7 @@ func cell_center(x: int, y: int) -> Vector2:
 	return board_origin() + Vector2(x + 0.5, y + 0.5) * CELL
 
 func board_origin() -> Vector2:
-	return BOARD_ORIGIN if state.config.is_empty() else CampaignView.board_origin(self)
+	return layout.board.position
 
 func cell_at(point: Vector2) -> Vector2i:
 	return Vector2i(floori((point.x - board_origin().x) / CELL), floori((point.y - board_origin().y) / CELL))
@@ -252,7 +270,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			if active_touch >= 0:
 				return
 			active_touch = event.index
-			press(event.position)
+			press(to_local(event.position))
 		else:
 			if active_touch != event.index:
 				return
@@ -262,12 +280,12 @@ func _unhandled_input(event: InputEvent) -> void:
 				drag_kind = ""
 				dragging = false
 			else:
-				release(event.position)
+				release(to_local(event.position))
 		get_viewport().set_input_as_handled()
 	elif event is InputEventScreenDrag:
 		if event.index != active_touch:
 			return
-		pointer = event.position
+		pointer = to_local(event.position)
 		dragging = pointer.distance_to(drag_start) > 12
 		queue_redraw()
 		get_viewport().set_input_as_handled()
@@ -275,54 +293,87 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.device == -1:
 			return
 		if event.pressed:
-			press(event.position)
+			press(to_local(event.position))
 		else:
-			release(event.position)
+			release(to_local(event.position))
 		get_viewport().set_input_as_handled()
 	elif event is InputEventMouseMotion and (drag_id >= 0 or drag_kind != ""):
-		pointer = event.position
+		pointer = to_local(event.position)
 		dragging = pointer.distance_to(drag_start) > 12
 		queue_redraw()
 	elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		handle_back()
 
 func buttons() -> Dictionary:
-	if screen != "game":
-		return CampaignUI.buttons(self)
-	if not state.config.is_empty():
-		return CampaignView.buttons(self)
-	var result := {"pause": Rect2(20, 65, 110, 46), "speed": Rect2(140, 65, 88, 46),
-		"mute": Rect2(238, 65, 104, 46), "effects": Rect2(352, 65, 110, 46),
-		"save": Rect2(472, 65, 108, 46), "begin": Rect2(420, 584, 160, 50),
-		"drive": Rect2(20, 1001, 130, 53), "guard": Rect2(160, 1001, 130, 53),
-		"ranger": Rect2(300, 1001, 140, 53), "undo": Rect2(450, 1001, 130, 53),
-		"gate0": Rect2(510, 700, 80, 80), "gate1": Rect2(510, 790, 80, 80), "gate2": Rect2(510, 880, 80, 80)}
-	if not state.config.is_empty():
-		result.merge({"map": Rect2(8, 685, 84, 80), "refit": Rect2(8, 785, 84, 80), "help": Rect2(8, 885, 84, 80), "drive": Rect2(10, 1001, 110, 53), "guard": Rect2(125, 1001, 110, 53), "ranger": Rect2(240, 1001, 110, 53), "mortar": Rect2(355, 1001, 110, 53), "undo": Rect2(470, 1001, 120, 53)}, true)
-		if state.phase == "victory":
-			result["next"] = Rect2(310, 440, 220, 80)
-		elif state.phase == "battle":
-			result["rally"] = Rect2(185, 239, 230, 46)
-	elif state.phase == "ready":
-		result.merge({"tutorial": Rect2(90, 440, 200, 80), "trial": Rect2(310, 440, 200, 80)})
-	if state.encounter == "iron_trial":
-		result["refit"] = Rect2(8, 880, 84, 80)
-	return result
+	return CampaignUI.buttons(self) if screen != "game" else layout.game_buttons(self)
 
 func hitboxes() -> Dictionary:
-	var result := buttons()
-	if screen != "game" or not state.config.is_empty():
-		return result
-	# Minimum 80 logical pixels = 48 dp at a 360 dp-wide portrait presentation.
-	for key in ["pause", "speed", "mute", "effects", "save", "begin"]:
-		var box: Rect2 = result[key]
-		result[key] = Rect2(box.position.x, box.get_center().y - 40, box.size.x, 80)
-	for key in ["drive", "guard", "ranger", "mortar", "undo"]:
-		if not result.has(key):
-			continue
-		var box: Rect2 = result[key]
-		result[key] = Rect2(box.position.x, 986, box.size.x, 80)
-	return result
+	return buttons()
+
+func cancel_drag() -> void:
+	drag_start = Vector2(-1000, -1000)
+	drag_id = -1
+	drag_kind = ""
+	dragging = false
+	active_touch = -1
+
+func refresh_layout() -> void:
+	var viewport_size := get_viewport_rect().size
+	if viewport_size.x <= 0 or viewport_size.y <= 0:
+		return
+	var next := Rect2(Vector2.ZERO, viewport_size)
+	if safe_area_override.has_area():
+		next = next.intersection(safe_area_override)
+	elif OS.has_feature("android"):
+		var physical := Rect2(DisplayServer.get_display_safe_area())
+		if physical.has_area():
+			var inverse := get_viewport().get_screen_transform().affine_inverse()
+			next = next.intersection(Rect2(inverse * physical.position, inverse.basis_xform(physical.size)))
+	if not next.has_area():
+		next = Rect2(Vector2.ZERO, viewport_size)
+	if next == usable:
+		return
+	usable = next
+	# Below the normal minimum, shrink uniformly rather than clip sockets or controls.
+	var factor := minf(1, minf(usable.size.x / 600, usable.size.y / 1000))
+	position = usable.position
+	scale = Vector2.ONE * factor
+	layout.arrange(usable.size / factor)
+	cancel_drag()
+	for dialog in [save_dialog, menu_dialog, help_dialog, abandon_dialog]:
+		if is_instance_valid(dialog) and dialog.visible:
+			fit_dialog(dialog)
+	queue_redraw()
+
+func show_dialog(dialog: AcceptDialog) -> void:
+	# A hidden window can retain a position from a previous, wider viewport.
+	fit_dialog(dialog)
+	dialog.popup()
+	fit_dialog(dialog)
+
+func fit_dialog(dialog: AcceptDialog) -> void:
+	var extent := usable.size - Vector2(24, 64)
+	var desired := Vector2(minf(620, extent.x), minf(850, extent.y))
+	if dialog == abandon_dialog:
+		desired.y = minf(300, extent.y)
+	elif dialog == menu_dialog:
+		desired.y = minf(620, extent.y)
+	elif dialog == help_dialog:
+		desired.y = minf(800, extent.y)
+	if dialog_scrolls.has(dialog):
+		var scroll: ScrollContainer = dialog_scrolls[dialog]
+		scroll.custom_minimum_size = Vector2(maxf(200, desired.x - 36), maxf(100, desired.y - 140))
+	# Embedded window decorations extend above the client rectangle.
+	dialog.size = Vector2i(desired)
+	dialog.position = Vector2i(usable.position + (usable.size - Vector2(dialog.size)) / 2 + Vector2(0, 12))
+
+func scroll_content(dialog: AcceptDialog, content: Control) -> void:
+	var scroll := ScrollContainer.new()
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	dialog.add_child(scroll)
+	scroll.add_child(content)
+	content.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	dialog_scrolls[dialog] = scroll
 
 func press(point: Vector2) -> void:
 	queue_redraw()
@@ -413,7 +464,7 @@ func act(action: String) -> void:
 			menu_dialog.find_child("Action_speed", true, false).text = "Speed: %d×" % speed
 			menu_dialog.find_child("Action_mute", true, false).text = "Sound: off" if settings.muted else "Sound: on"
 			menu_dialog.find_child("Action_effects", true, false).text = "Calm FX: on" if settings.reduced_effects else "Calm FX: off"
-			menu_dialog.popup_centered(Vector2i(520, 590))
+			show_dialog(menu_dialog)
 		"resume_run":
 			screen = "game"
 			paused = state.phase == "battle"
@@ -435,8 +486,8 @@ func act(action: String) -> void:
 			message = "Next formations arriving faster" if state.rally else "Normal formation pace"
 		"help":
 			paused = true
-			help_dialog.dialog_text = str(state.config.decision) + "\n\nMint joints show power carried by touching gears from the gold core. Drives add 25% per level to adjacent troop gears, up to 3x. A stopped gear reads OFF.\n\nGuards absorb fire. Rangers give strong single-target damage. Mortars hit packed enemies, with lower single-target damage.\n\nTap a troop gear to choose its exit. Refit shows the next role and price difference. Equal drives merge by dragging; Undo restores a move or merge.\n\nBosses call escorts as they weaken. Rangers pierce their armor. Keep troops near siege engines to interrupt volleys. After 60 seconds a surviving boss attacks the wall.\n\nMedals: clear, wall intact, and efficiency (save 6 brass and finish under par). Rally sends formations faster when ready."
-			help_dialog.popup_centered(Vector2i(540, 800))
+			help_dialog.find_child("GuideText", true, false).text = str(state.config.get("decision", "Connect gears to the brass core; balance guards and rangers.")) + "\n\nMint joints show power carried by touching gears from the gold core. Drives add 25% per level to adjacent troop gears, up to 3x. A stopped gear reads OFF.\n\nGuards absorb fire. Rangers give strong single-target damage. Mortars hit packed enemies, with lower single-target damage.\n\nTap a troop gear to choose its exit. Refit shows the next role and price difference. Equal drives merge by dragging; Undo restores a move or merge.\n\nBosses call escorts as they weaken. Rangers pierce their armor. Keep troops near siege engines to interrupt volleys. After 60 seconds a surviving boss attacks the wall.\n\nMedals: clear, wall intact, and efficiency (save 6 brass and finish under par). Rally sends formations faster when ready."
+			show_dialog(help_dialog)
 		"pause":
 			paused = not paused
 		"speed":
@@ -454,7 +505,7 @@ func act(action: String) -> void:
 			else:
 				save_dialog.title = "Portable save · copy or paste below"
 			save_text.text = Saves.portable(state, settings, profile)
-			save_dialog.popup_centered(Vector2i(540, 850))
+			show_dialog(save_dialog)
 		"begin":
 			if state.phase in ["defeat", "victory"]:
 				retry()
@@ -514,13 +565,15 @@ func _build_save_dialog() -> void:
 	save_dialog.get_ok_button().custom_minimum_size = Vector2(160, 80)
 	add_child(save_dialog)
 	var content := VBoxContainer.new()
-	content.custom_minimum_size = Vector2(500, 540)
-	save_dialog.add_child(content)
+	content.custom_minimum_size = Vector2(280, 540)
+	scroll_content(save_dialog, content)
 	var explanation := Label.new()
 	explanation.text = "Copy the save code to export. Paste a code, then Import.\nYour local save resumes the battle paused."
+	explanation.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	content.add_child(explanation)
 	save_text = TextEdit.new()
-	save_text.custom_minimum_size = Vector2(500, 420)
+	save_text.custom_minimum_size = Vector2(280, 320)
+	save_text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	save_text.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
 	content.add_child(save_text)
 	var row := HBoxContainer.new()
@@ -528,7 +581,8 @@ func _build_save_dialog() -> void:
 	for label in ["Copy save", "Paste", "Import"]:
 		var button := Button.new()
 		button.text = label
-		button.custom_minimum_size = Vector2(155, 80)
+		button.custom_minimum_size = Vector2(80, 80)
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.add_child(button)
 		button.pressed.connect(func():
 			if label == "Copy save":
@@ -560,7 +614,8 @@ func _build_save_dialog() -> void:
 	for caption in ["Start timings", "Stop + export"]:
 		var button := Button.new()
 		button.text = caption
-		button.custom_minimum_size = Vector2(238, 80)
+		button.custom_minimum_size = Vector2(110, 80)
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		timing_row.add_child(button)
 		button.pressed.connect(func():
 			if caption == "Start timings":
@@ -585,12 +640,13 @@ func _build_menu() -> void:
 	add_child(menu_dialog)
 	var rows := GridContainer.new()
 	rows.columns = 2
-	menu_dialog.add_child(rows)
+	scroll_content(menu_dialog, rows)
 	for item in [["pause", "Resume defense"], ["map", "Journey map"], ["speed", "Change speed"], ["mute", "Toggle sound"], ["effects", "Toggle calm FX"], ["save", "Save / export"], ["help", "Foundry guide"]]:
 		var button := Button.new()
 		button.name = "Action_" + item[0]
 		button.text = item[1]
-		button.custom_minimum_size = Vector2(232, 90)
+		button.custom_minimum_size = Vector2(130, 90)
+		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		rows.add_child(button)
 		button.pressed.connect(func():
 			menu_dialog.hide()
@@ -617,248 +673,7 @@ func _draw() -> void:
 	draw_microseconds = Time.get_ticks_usec() - started
 
 func _draw_content() -> void:
-	if screen != "game":
-		CampaignUI.draw(self)
-		if save_failed:
-			panel(Rect2(28, 116, 544, 44), INK, RED, 6)
-			label_at("Save failed · retry Save or export before closing", Vector2(300, 145), 18, RED, true)
-		return
-	if not state.config.is_empty():
+	if screen == "game":
 		CampaignView.draw(self)
-		return
-	draw_rect(Rect2(0, 0, 600, 1066), Color("10212c"))
-	label_at("GEAR BASTION", Vector2(20, 37), 28, GOLD)
-	var heading := "IRON TRIAL · 54 BRASS" if state.encounter == "iron_trial" else "THE FIRST FOUNDRY"
-	if not state.config.is_empty():
-		heading = "%02d · %s" % [int(state.config.index) + 1, state.config.name]
-	label_at(heading, Vector2(578, 32) - Vector2(font.get_string_size(heading, HORIZONTAL_ALIGNMENT_LEFT, -1, 14).x, 0), 14, MINT)
-	var ui := buttons()
-	for key in ["pause", "speed", "mute", "effects", "save"]:
-		panel(ui[key], Color("243c48"))
-	var labels := {"pause": "Resume" if paused else "Pause", "speed": "%d× speed" % speed,
-		"mute": "Muted" if settings.muted else "Sound on", "effects": "Calm FX" if settings.reduced_effects else "Full FX", "save": "Save"}
-	for key in labels:
-		label_at(labels[key], ui[key].get_center() + Vector2(0, 6), 17, CREAM, true)
-	_draw_field()
-	if frame_capture.enabled:
-		label_at("Local timings · %d frames" % frame_capture.rows.size(), Vector2(300, 234), 15, MINT, true)
-	if save_failed:
-		panel(Rect2(28, 194, 544, 44), INK, RED, 6)
-		label_at("Save failed · retry Save or export before closing", Vector2(300, 222), 18, RED, true)
-	_draw_wall()
-	panel(Rect2(20, 584, 388, 50), Color("203844"))
-	label_at("%d brass   ·   %.2f troops/s" % [int(state.gold), Gear.total_rate(state.board, state.config)], Vector2(34, 617), 21, GOLD)
-	panel(ui.begin, MINT if state.phase == "ready" else Color("344e58"))
-	var begin_text := "Begin defense" if state.phase == "ready" else "Threat tips"
-	if state.phase in ["defeat", "victory"]:
-		begin_text = "Retry now"
-	label_at(begin_text, ui.begin.get_center() + Vector2(0, 7), 21, INK if state.phase == "ready" else CREAM, true)
-	label_at("POWER NETWORK", Vector2(20, 653), 15, MINT)
-	_draw_board()
-	if not state.config.is_empty():
-		for key in ["map", "refit", "help"]:
-			panel(ui[key], Color("304754"))
-			label_at("Map" if key == "map" else "Refit" if key == "refit" else "Guide", ui[key].get_center() + Vector2(0, 7), 20, CREAM, true)
 	else:
-		label_at("BRASS", Vector2(50, 718), 17, GOLD, true)
-		label_at("CORE", Vector2(50, 742), 17, GOLD, true)
-		label_at("+25%", Vector2(50, 794), 24, BLUE, true)
-		label_at("per level", Vector2(50, 820), 17, CREAM, true)
-		label_at("adjacent", Vector2(50, 845), 17, CREAM, true)
-		label_at("drive", Vector2(50, 870), 17, CREAM, true)
-	if state.encounter == "iron_trial":
-		var refit_piece := selected_piece()
-		panel(ui.refit, Color("304754"))
-		label_at("Refit", Vector2(50, 913), 20, CREAM, true)
-		label_at("-2" if refit_piece.get("kind", "") == "ranger" else "+2", Vector2(50, 944), 24, GOLD, true)
-	elif state.config.is_empty():
-		label_at("cap 3×", Vector2(50, 911), 20, GOLD, true)
-	var chosen := selected_piece()
-	label_at("EXIT", Vector2(550, 686), 17, MINT, true)
-	for lane in 3:
-		var active: bool = not chosen.is_empty() and chosen.kind in Gear.BASE_RATES and int(chosen.lane) == lane
-		panel(ui["gate%d" % lane], Color("385d65") if active else Color("1b323e"), MINT if active else Color.TRANSPARENT)
-		label_at("Exit %d" % (lane + 1), ui["gate%d" % lane].get_center() + Vector2(0, 7), 20, CREAM, true)
-	var shortened := message
-	if shortened.length() > 60:
-		shortened = shortened.left(57) + "…"
-	label_at(shortened, Vector2(300, 996), 17, MINT, true)
-	for key in ["drive", "guard", "ranger", "mortar", "undo"]:
-		if not ui.has(key):
-			continue
-		panel(ui[key], Color("304754"), GOLD if key == "undo" and not undo_board.is_empty() else Color.TRANSPARENT)
-		var text := "Undo" if key == "undo" else "%s %d" % [key.capitalize(), state.config.get("costs", Gear.COSTS)[key]]
-		var available: bool = state.config.is_empty() or key in ["drive", "undo"] or key in state.config.allowed
-		label_at(text if available else "Locked", ui[key].get_center() + Vector2(0, 7), 18 if not state.config.is_empty() else 20, CREAM if available else Color("75858c"), true)
-	if dragging and (drag_id >= 0 or drag_kind != ""):
-		var piece := selected_piece() if drag_kind == "" else Gear.piece(0, drag_kind, 0, 0)
-		if not piece.is_empty():
-			_draw_gear(pointer - Vector2(0, 42), piece, true, true)
-
-func _draw_field() -> void:
-	panel(Rect2(20, 121, 560, 408), Color("314a49"), Color("587369"))
-	for lane in 3:
-		var lane_x := 116 + 184 * lane
-		draw_rect(Rect2(lane_x - 64, 161, 128, 364), Color("38534d"))
-		for y in range(190, 520, 56):
-			draw_line(Vector2(lane_x - 22, y), Vector2(lane_x + 22, y - 8), Color("426052"), 2)
-	label_at("WALL %d / %d" % [ceili(float(state.wall)), int(Battle.wall_limit(state))], Vector2(36, 150), 20, CREAM)
-	label_at("ARMY %d / %d" % [state.units.size(), Battle.UNIT_CAP], Vector2(564, 150) - Vector2(font.get_string_size("ARMY %d / %d" % [state.units.size(), Battle.UNIT_CAP], HORIZONTAL_ALIGNMENT_LEFT, -1, 18).x, 0), 18, GOLD)
-	if state.phase == "ready":
-		if not state.config.is_empty():
-			_draw_campaign_brief()
-			return
-		label_at("Iron Trial · one fixed budget" if state.encounter == "iron_trial" else "The beetle tide is coming", Vector2(300, 254), 25, CREAM, true)
-		label_at("1. Connect gears to the gold core", Vector2(300, 299), 21, MINT, true)
-		label_at("2. Place drives beside troop gears", Vector2(300, 333), 21, MINT, true)
-		label_at("3. Begin · keep building as they fight", Vector2(300, 367), 21, MINT, true)
-		label_at("Guards screen spitters. Rangers pierce armor." if state.encounter == "iron_trial" else "Guards block. Rangers pierce shells.", Vector2(300, 426), 19, GOLD, true)
-		for key in ["tutorial", "trial"]:
-			panel(buttons()[key], Color("243c48"), MINT if (key == "trial") == (state.encounter == "iron_trial") else Color.TRANSPARENT)
-			label_at("Tutorial" if key == "tutorial" else "Iron Trial", buttons()[key].get_center() + Vector2(0, 7), 22, CREAM, true)
-	else:
-		for unit in state.units:
-			_draw_unit(unit, true)
-		for enemy in state.enemies:
-			_draw_unit(enemy, false)
-		if not settings.reduced_effects:
-			for arrow in state.projectiles:
-				draw_line(Vector2(arrow[0], arrow[1]), Vector2(arrow[2], arrow[3]), GOLD if arrow.size() < 5 or arrow[4] else RED, 2)
-		var wave_index := maxi(0, int(state.wave) - 1)
-		var wave: Dictionary = Battle.run_waves(state)[wave_index]
-		panel(Rect2(145, 164, 310, 28), Color(0.06, 0.12, 0.15, 0.8), Color.TRANSPARENT, 6)
-		label_at("WAVE %d / %d · %s" % [int(state.wave), Battle.run_waves(state).size(), wave.name], Vector2(300, 185), 17, CREAM, true)
-		var forecast := "Final push · armor + crowd-cleave · use rangers" if state.encounter == "iron_trial" else "Final push · shells resist guard attacks"
-		if int(state.wave) < Battle.run_waves(state).size():
-			forecast = "Next: " + str(Battle.run_waves(state)[int(state.wave)].name)
-		if not state.config.is_empty():
-			forecast = "Now: " + str(wave.name) + " · exits " + ",".join(PackedStringArray(wave.lanes.map(func(v): return str(int(v) + 1))))
-			if state.boss_spawned:
-				forecast = "Boss phase %d · screen the front to stop volleys" % int(state.boss_phase)
-				for enemy in state.enemies:
-					if enemy.kind in ["captain", "siege", "matriarch"]:
-						panel(Rect2(90, 196, 420, 32), INK, GOLD, 5)
-						draw_rect(Rect2(96, 220, 408 * maxf(0, float(enemy.hp)) / float(enemy.max_hp), 4), RED)
-						label_at("%s · %d HP" % [str(enemy.kind).capitalize(), ceili(float(enemy.hp))], Vector2(300, 216), 18, GOLD, true)
-			elif state.phase == "battle":
-				panel(buttons().rally, Color("263c46"))
-				label_at("Normal pace" if state.rally else "Rally formations", buttons().rally.get_center() + Vector2(0, 7), 18, CREAM, true)
-		if state.units.size() >= Battle.UNIT_CAP:
-			var producer := Battle.next_producer(state, Gear.rates(state.board, state.config))
-			forecast = "Army full · fair turns · next " + str(producer.get("kind", "charging"))
-		if state.encounter == "iron_trial":
-			panel(Rect2(46, 474, 508, 48), Color(0.06, 0.12, 0.15, 0.9), Color.TRANSPARENT, 5)
-			label_at("%d lost · carapaces shrug off guards and cleave crowds" % int(state.losses), Vector2(300, 491), 15, CREAM, true)
-		else:
-			panel(Rect2(72, 494, 456, 28), Color(0.06, 0.12, 0.15, 0.85), Color.TRANSPARENT, 5)
-		label_at(forecast, Vector2(300, 514), 16, GOLD, true)
-		if paused:
-			panel(Rect2(192, 308, 216, 63), Color("172b36"), GOLD)
-			label_at("PAUSED", Vector2(300, 349), 28, GOLD, true)
-		if state.phase in ["victory", "defeat"]:
-			panel(Rect2(82, 277, 436, 155), Color("172b36"), MINT if state.phase == "victory" else RED)
-			label_at("FOUNDRY HELD" if state.phase == "victory" else "WALL BREACHED", Vector2(300, 319), 30, MINT if state.phase == "victory" else RED, true)
-			label_at("%d troops built · %d raiders stopped" % [int(state.produced), int(state.kills)], Vector2(300, 360), 20, CREAM, true)
-			label_at("Choose Next or Retry" if not state.config.is_empty() and state.phase == "victory" else "Tap Retry now below", Vector2(300, 401), 20, GOLD, true)
-			if not state.config.is_empty() and state.phase == "victory":
-				panel(buttons().next, Color("2c5c59"), MINT)
-				label_at("Ending" if state.encounter == "camp_09" else "Next foundry", buttons().next.get_center() + Vector2(0, 8), 23, CREAM, true)
-
-func _draw_campaign_brief() -> void:
-	label_at(state.config.name, Vector2(300, 242), 29, GOLD, true)
-	var line := ""
-	var y := 295
-	for word in str(state.config.decision).split(" "):
-		if font.get_string_size(line + word, HORIZONTAL_ALIGNMENT_LEFT, -1, 21).x > 485:
-			label_at(line, Vector2(300, y), 21, CREAM, true)
-			y += 31
-			line = ""
-		line += word + " "
-	label_at(line, Vector2(300, y), 21, CREAM, true)
-	label_at("%d brass · %s" % [int(state.config.budget), " / ".join(PackedStringArray(state.config.allowed)).capitalize()], Vector2(300, 396), 22, MINT, true)
-	label_at("Drag gears, choose exits, then Begin.", Vector2(300, 438), 21, CREAM, true)
-	label_at("The board stays live throughout the defense.", Vector2(300, 475), 20, CREAM, true)
-
-func _draw_wall() -> void:
-	draw_rect(Rect2(20, 530, 560, 48), Color("a09c7e"))
-	for x in range(20, 579, 40):
-		draw_rect(Rect2(x, 521, 22, 16), Color("c3bd95"))
-	for lane in 3:
-		var x := 116 + lane * 184
-		panel(Rect2(x - 27, 531, 54, 47), Color("152f3c"), GOLD, 5)
-		label_at(str(lane + 1), Vector2(x, 561), 25, GOLD, true)
-	draw_rect(Rect2(20, 577, 560, 5), Color("6d443f"))
-	draw_rect(Rect2(20, 577, 560 * float(state.wall) / Battle.wall_limit(state), 5), MINT)
-
-func _draw_board() -> void:
-	var network := Gear.powered(state.board)
-	for y in 4:
-		for x in 5:
-			var center := cell_center(x, y)
-			if not Gear.cell_allowed(x, y, str(state.encounter), state.config):
-				draw_line(center - Vector2(12, 12), center + Vector2(12, 12), Color("39505a"), 3)
-				draw_line(center + Vector2(-12, 12), center + Vector2(12, -12), Color("39505a"), 3)
-				continue
-			panel(Rect2(center - Vector2(36, 36), Vector2(72, 72)), Color("213b49"), Color("365361"), 10)
-	for p in state.board:
-		for other in state.board:
-			if int(other.id) <= int(p.id):
-				continue
-			if absi(int(p.x) - int(other.x)) + absi(int(p.y) - int(other.y)) == 1:
-				var active := network.has(int(p.id)) and network.has(int(other.id))
-				draw_line(cell_center(int(p.x), int(p.y)), cell_center(int(other.x), int(other.y)), MINT if active else Color("6e5251"), 7)
-	for p in state.board:
-		_draw_gear(cell_center(int(p.x), int(p.y)), p, network.has(int(p.id)), false)
-	if dragging:
-		var cell := cell_at(pointer)
-		if cell.x >= 0 and cell.x < 5 and cell.y >= 0 and cell.y < 4:
-			var valid := false
-			if drag_id >= 0:
-				valid = Gear.move(state.board, drag_id, cell.x, cell.y, str(state.encounter), state.config).ok
-			else:
-				valid = Gear.buy(state.board, drag_kind, cell.x, cell.y, int(state.gold), int(state.next_id), str(state.encounter), state.config).ok
-			panel(Rect2(cell_center(cell.x, cell.y) - Vector2(37, 37), Vector2(74, 74)), Color(0, 0, 0, 0), MINT if valid else RED)
-
-func _draw_gear(center: Vector2, piece: Dictionary, active: bool, ghost: bool) -> void:
-	var kind: String = piece.kind
-	var color := GOLD if kind == "core" else BLUE if kind == "drive" else CREAM
-	if not active:
-		color = Color("81736d")
-	var rotation_angle := 0.0
-	if active and not settings.reduced_effects and not paused:
-		rotation_angle = clock * 0.55 * (1 if (int(piece.x) + int(piece.y)) % 2 == 0 else -1)
-	for tooth in 10:
-		var angle := TAU * tooth / 10.0 + rotation_angle
-		var radial := Vector2.from_angle(angle)
-		draw_line(center + radial * 21, center + radial * 28, color, 9, true)
-	draw_circle(center, 23, color)
-	draw_circle(center, 18, INK)
-	if kind == "core":
-		draw_circle(center, 10, GOLD)
-		draw_line(center + Vector2(-3, -7), center + Vector2(5, -1), CREAM, 3)
-		draw_line(center + Vector2(5, -1), center + Vector2(-2, 7), CREAM, 3)
-	elif kind == "drive":
-		label_at(str(int(piece.level)), center + Vector2(0, 8), 26, BLUE if active else color, true)
-	elif kind == "guard":
-		draw_line(center + Vector2(0, 9), center + Vector2(0, -11), color, 4)
-		draw_line(center + Vector2(-7, 3), center + Vector2(7, 3), color, 3)
-	elif kind == "mortar":
-		draw_circle(center + Vector2(-4, 5), 8, color)
-		draw_line(center + Vector2(-4, 5), center + Vector2(10, -9), color, 8)
-	else:
-		draw_arc(center + Vector2(-6, 0), 12, -1.1, 1.1, 12, color, 3, true)
-		draw_line(center + Vector2(0, -11), center + Vector2(0, 11), color, 2)
-		draw_line(center + Vector2(-9, 0), center + Vector2(12, 0), color, 2)
-	if kind in Gear.BASE_RATES and not ghost:
-		var rate := Gear.rate(state.board, int(piece.id), state.config)
-		panel(Rect2(center + Vector2(-37, 20), Vector2(74, 23)), INK, Color.TRANSPARENT, 4)
-		label_at("%.2f/s" % rate if active else "OFF", center + Vector2(0, 38), 20, MINT if active else RED, true)
-		label_at(str(int(piece.lane) + 1), center + Vector2(21, -16), 13, GOLD, true)
-	if int(piece.id) == selected and not ghost:
-		draw_arc(center, 31, 0, TAU, 48, GOLD, 2, true)
-
-func _draw_unit(unit: Dictionary, friendly: bool) -> void:
-	actor_art.draw_unit(self, unit, friendly, Vector2(float(unit.x), float(unit.y)))
-
-func draw_ellipse_shadow(point: Vector2) -> void:
-	draw_circle(point + Vector2(1, 6), 9, Color(0.04, 0.09, 0.08, 0.3))
+		CampaignUI.draw(self)

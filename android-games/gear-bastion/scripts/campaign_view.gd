@@ -6,84 +6,63 @@ const GOLD_GEAR = preload("res://art/gear_gold.svg")
 const CREAM_GEAR = preload("res://art/gear_cream.svg")
 
 static func board_origin(game: Variant) -> Vector2:
-	return Vector2(100, 500 if game.state.phase == "ready" else 660)
+	return game.layout.board.position
 
 static func buttons(game: Variant) -> Dictionary:
-	var ready: bool = game.state.phase == "ready"
-	var result := {"pause": Rect2(414, 8, 80, 64), "menu": Rect2(506, 8, 80, 64),
-		"map": Rect2(8, 525 if ready else 690, 80, 80), "refit": Rect2(8, 635 if ready else 800, 80, 80),
-		"help": Rect2(8, 745 if ready else 900, 80, 80), "begin": Rect2(400, 838 if ready else 600, 180, 80)}
-	for lane in 3:
-		result["gate%d" % lane] = Rect2(76 + lane * 184, 420 if ready else 525, 80, 80)
-	for i in 5:
-		result[["drive", "guard", "ranger", "mortar", "undo"][i]] = Rect2(10 + i * 118, 940 if ready else 986, 110, 80)
-	if game.state.phase == "victory":
-		result.next = Rect2(310, 425, 220, 80)
-	elif game.state.phase == "battle":
-		if game.state.boss_spawned:
-			result.erase("begin")
-		else:
-			result.rally = Rect2(510, 800, 80, 80)
-	return result
+	return game.layout.game_buttons(game)
 
 static func fitted(game: Variant, text: String, width: float, size: int) -> String:
 	while game.font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x > width and text.length() > 2:
 		text = text.left(text.length() - (2 if text.ends_with("…") else 1)) + "…"
 	return text
 
-static func terrain(game: Variant) -> void:
-	var act: int = game.state.config.act
-	var ready: bool = game.state.phase == "ready"
-	var bottom := 438.0 if ready else 548.0
-	var land: Color = [Color("a8bc83"), Color("b5a282"), Color("9d9eac")][act - 1]
-	game.draw_rect(Rect2(0, 76, 600, bottom - 76), land)
-	game.draw_colored_polygon(PackedVector2Array([Vector2(0, 77), Vector2(600, 77), Vector2(600, 165), Vector2(420, 130), Vector2(220, 174), Vector2(0, 142)]), land.darkened(0.17))
-	# Broad curved tracks converge on arches; they are terrain rather than lanes.
-	for x in [116, 300, 484]:
-		game.draw_polyline(PackedVector2Array([Vector2(x + 30, 155), Vector2(x - 22, 290), Vector2(x + 8, bottom - 80), Vector2(x, bottom)]), land.lightened(0.12), 40, true)
-	for i in 21:
-		var x := float((i * 137 + act * 37) % 578 + 11)
-		var y := 185.0 + float((i * 79) % int(bottom - 220))
-		game.draw_circle(Vector2(x, y), 3 + i % 3, land.darkened(0.12))
-		game.draw_line(Vector2(x - 4, y), Vector2(x - 9, y - 5), land.darkened(0.28), 2)
-	for side in [0, 1]:
-		var x := 8.0 if side == 0 else 558.0
-		game.draw_colored_polygon(PackedVector2Array([Vector2(x, 95), Vector2(x + 34, 82), Vector2(x + 37, 166), Vector2(x - 3, 171)]), Color("596b69"))
-		game.draw_rect(Rect2(x + 5, 108, 23, 34), Color("35484d"))
-		game.draw_rect(Rect2(x + 12, 116, 10, 18), game.GOLD)
-
-static func wall(game: Variant) -> void:
-	var ready: bool = game.state.phase == "ready"
-	var top := 432.0 if ready else 537.0
-	game.draw_rect(Rect2(0, top, 600, 56), Color("8b8173"))
-	game.draw_rect(Rect2(0, top + 6, 600, 14), Color("d7c79c"))
-	for x in range(0, 600, 36):
-		game.draw_rect(Rect2(x, top - 12, 23, 18), Color("d7c79c"))
-		game.draw_line(Vector2(x, top + 20), Vector2(x, top + 52), Color("655f59"), 2)
-	var chosen: Dictionary = game.selected_piece()
-	for lane in 3:
-		var x := 116 + lane * 184
-		var active: bool = chosen.get("kind", "") in Gear.BASE_RATES and int(chosen.get("lane", -1)) == lane
-		game.draw_circle(Vector2(x, top + 20), 28, game.GOLD if active else Color("b5a584"))
-		game.draw_rect(Rect2(x - 28, top + 20, 56, 36), game.GOLD if active else Color("b5a584"))
-		game.draw_circle(Vector2(x, top + 22), 20, game.INK)
-		game.draw_rect(Rect2(x - 20, top + 22, 40, 34), game.INK)
-		game.label_at(str(lane + 1), Vector2(x, top + 29), 22, game.MINT if active else game.CREAM, true)
-	game.draw_rect(Rect2(0, top + 55, 600, 5), Color("6d443f"))
-	game.draw_rect(Rect2(0, top + 55, 600 * float(game.state.wall) / Battle.wall_limit(game.state), 5), game.MINT)
-
-static func field_point(point: Vector2) -> Vector2:
-	return Vector2(point.x, 160 + (point.y - 205) * 1.12)
-
 static func unit_point(game: Variant, unit: Dictionary) -> Vector2:
 	var remaining := float(unit.get("deploy_left", 0.0))
 	if remaining <= 0:
-		return field_point(Vector2(float(unit.x), float(unit.y)))
-	var start: Vector2 = board_origin(game) + Vector2(float(unit.deploy_x) + 0.5, float(unit.deploy_y) + 0.5) * 80
-	var gate := Vector2(116 + int(unit.lane) * 184, 532)
+		return game.layout.field_point(Vector2(float(unit.x), float(unit.y)))
+	var start: Vector2 = game.cell_center(int(unit.deploy_x), int(unit.deploy_y))
+	var gate := Vector2(game.layout.gate_x(int(unit.lane)), game.layout.wall.position.y)
 	var progress := 1.0 - remaining / float(unit.deploy_total)
-	var bend := Vector2(gate.x, 628)
+	var bend := Vector2(gate.x, game.layout.board.position.y - 16)
 	return start.lerp(bend, progress / 0.65) if progress < 0.65 else bend.lerp(gate, (progress - 0.65) / 0.35)
+
+static func terrain(game: Variant) -> void:
+	var field: Rect2 = game.layout.field
+	var act: int = game.state.config.get("act", 1)
+	var land: Color = [Color("a8bc83"), Color("b5a282"), Color("9d9eac")][act - 1]
+	game.draw_rect(field, land)
+	game.draw_rect(Rect2(field.position, Vector2(field.size.x, 68)), land.darkened(0.17))
+	for lane in 3:
+		var x: float = game.layout.gate_x(lane)
+		game.draw_polyline(PackedVector2Array([Vector2(x + 30, field.position.y + 65), Vector2(x - 22, field.get_center().y), Vector2(x + 8, field.end.y - 80), Vector2(x, field.end.y)]), land.lightened(0.12), 40, true)
+	for i in maxi(21, int(field.size.x * field.size.y / 10000)):
+		var x := fmod(float(i * 137 + act * 37), field.size.x - 20) + 10
+		var y := field.position.y + 80 + fmod(float(i * 79), maxf(1, field.size.y - 90))
+		game.draw_circle(Vector2(x, y), 3 + i % 3, land.darkened(0.12))
+		game.draw_line(Vector2(x - 4, y), Vector2(x - 9, y - 5), land.darkened(0.28), 2)
+	for side in [0, 1]:
+		var x: float = 8 if side == 0 else field.size.x - 42
+		game.draw_rect(Rect2(x, field.position.y + 8, 34, 70), Color("596b69"))
+		game.draw_rect(Rect2(x + 5, field.position.y + 22, 23, 34), Color("35484d"))
+		game.draw_rect(Rect2(x + 12, field.position.y + 30, 10, 18), game.GOLD)
+
+static func wall(game: Variant) -> void:
+	var box: Rect2 = game.layout.wall
+	game.draw_rect(box, Color("8b8173"))
+	game.draw_rect(Rect2(box.position + Vector2(0, 6), Vector2(box.size.x, 14)), Color("d7c79c"))
+	for x in range(0, int(box.size.x), 36):
+		game.draw_rect(Rect2(x, box.position.y - 12, 23, 18), Color("d7c79c"))
+	var chosen: Dictionary = game.selected_piece()
+	for lane in 3:
+		var x: float = game.layout.gate_x(lane)
+		var active: bool = chosen.get("kind", "") in Gear.BASE_RATES and int(chosen.get("lane", -1)) == lane
+		game.draw_circle(Vector2(x, box.position.y + 20), 28, game.GOLD if active else Color("b5a584"))
+		game.draw_rect(Rect2(x - 28, box.position.y + 20, 56, 36), game.GOLD if active else Color("b5a584"))
+		game.draw_circle(Vector2(x, box.position.y + 22), 20, game.INK)
+		game.draw_rect(Rect2(x - 20, box.position.y + 22, 40, 34), game.INK)
+		game.label_at(str(lane + 1), Vector2(x, box.position.y + 29), 22, game.MINT if active else game.CREAM, true)
+	game.draw_rect(Rect2(0, box.end.y - 5, box.size.x, 5), Color("6d443f"))
+	game.draw_rect(Rect2(0, box.end.y - 5, box.size.x * float(game.state.wall) / Battle.wall_limit(game.state), 5), game.MINT)
 
 static func gear(game: Variant, center: Vector2, piece: Dictionary, active: bool, ghost: bool = false) -> void:
 	var kind: String = piece.kind
@@ -130,36 +109,40 @@ static func board(game: Variant) -> void:
 
 static func draw(game: Variant) -> void:
 	var state: Dictionary = game.state
+	var layout: RefCounted = game.layout
+	var size: Vector2 = layout.size
 	var ready: bool = state.phase == "ready"
 	var ui := buttons(game)
-	game.draw_rect(Rect2(0, 0, 600, 1066), Color("25343b"))
+	var config: Dictionary = state.config
+	var allowed: Array = config.get("allowed", ["guard", "ranger"])
+	game.draw_rect(Rect2(Vector2.ZERO, size), Color("25343b"))
 	terrain(game)
-	var current_wave: Dictionary = state.config.waves[maxi(0, int(state.wave) - 1)]
-	game.label_at("GEAR BASTION" if ready else fitted(game, str(state.config.name), 380, 24), Vector2(18, 30), 24, game.GOLD)
-	game.label_at(fitted(game, "%02d · %s" % [int(state.config.index) + 1, state.config.name] if ready else "%d / %d · %s" % [int(state.wave), state.config.waves.size(), current_wave.name], 380, 19), Vector2(18, 59), 19, game.CREAM)
+	var waves: Array = Battle.run_waves(state)
+	var wave: Dictionary = waves[maxi(0, int(state.wave) - 1)]
+	var title: String = config.get("name", "Iron Trial" if state.encounter == "iron_trial" else "Practice foundry")
+	game.label_at(fitted(game, title, size.x - 222, 24), Vector2(18, 30), 24, game.GOLD)
+	game.label_at(fitted(game, "Prepare your defense" if ready else "%d / %d · %s" % [int(state.wave), waves.size(), wave.name], size.x - 222, 19), Vector2(18, 59), 19, game.CREAM)
 	for key in ["pause", "menu"]:
 		game.panel(ui[key], Color("3d5159"))
 		game.label_at("Resume" if key == "pause" and game.paused else "Pause" if key == "pause" else "Menu", ui[key].get_center() + Vector2(0, 7), 19, game.CREAM, true)
-	game.label_at("WALL %d" % ceili(float(state.wall)), Vector2(18, 104), 20, game.INK)
-	game.label_at("%d / 120" % state.units.size(), Vector2(580, 104) - Vector2(game.font.get_string_size("%d / 120" % state.units.size(), HORIZONTAL_ALIGNMENT_LEFT, -1, 20).x, 0), 20, game.INK)
 	if ready:
-		game.label_at("BUILD YOUR DEFENSE", Vector2(300, 184), 25, game.INK, true)
+		var brief := Rect2(36, layout.field.position.y + 85, size.x - 72, layout.field.size.y - 95)
+		game.label_at("BUILD YOUR DEFENSE", Vector2(size.x / 2, brief.position.y + 25), 25, game.INK, true)
 		var line := ""
-		var y := 228
-		for word in str(state.config.decision).split(" "):
-			if game.font.get_string_size(line + word, HORIZONTAL_ALIGNMENT_LEFT, -1, 21).x > 450:
-				game.label_at(line, Vector2(300, y), 21, game.INK, true)
+		var y: float = brief.position.y + 65
+		var decision: String = config.get("decision", "Connect gears to the brass core. Drives speed adjacent troop gears.")
+		for word in decision.split(" "):
+			if game.font.get_string_size(line + word, HORIZONTAL_ALIGNMENT_LEFT, -1, 21).x > minf(720, brief.size.x):
+				game.label_at(line, Vector2(size.x / 2, y), 21, game.INK, true)
 				y += 28
 				line = ""
 			line += word + " "
-		game.label_at(line, Vector2(300, y), 21, game.INK, true)
-		for i in state.config.allowed.size():
-			var kind: String = state.config.allowed[i]
-			var x: float = 300.0 + (i - (state.config.allowed.size() - 1) / 2.0) * 110
-			game.draw_texture_rect(game.actor_art.textures[kind], Rect2(x - 24, 292, 48, 60), false)
-			game.label_at(kind.capitalize(), Vector2(x, 379), 18, game.INK, true)
+		game.label_at(line, Vector2(size.x / 2, y), 21, game.INK, true)
+		if config.is_empty():
+			for key in ["tutorial", "trial"]:
+				game.panel(ui[key], game.INK)
+				game.label_at("Practice" if key == "tutorial" else "Iron Trial", ui[key].get_center() + Vector2(0, 8), 23, game.CREAM, true)
 	else:
-		var wave: Dictionary = state.config.waves[maxi(0, int(state.wave) - 1)]
 		for unit in state.units:
 			if float(unit.get("deploy_left", 0)) <= 0:
 				game.actor_art.draw_unit(game, unit, true, unit_point(game, unit))
@@ -167,65 +150,59 @@ static func draw(game: Variant) -> void:
 			game.actor_art.draw_unit(game, unit, false, unit_point(game, unit))
 		if not game.settings.reduced_effects:
 			for arrow in state.projectiles:
-				game.draw_line(field_point(Vector2(arrow[0], arrow[1])), field_point(Vector2(arrow[2], arrow[3])), game.GOLD if arrow[4] else game.RED, 2)
-		if ui.has("rally"):
-			game.panel(ui.rally, Color("3d5159"))
-			game.label_at("Rally", ui.rally.get_center() + Vector2(0, -4), 18, game.CREAM, true)
-			game.label_at("Fast" if state.rally else "Normal", ui.rally.get_center() + Vector2(0, 22), 15, game.GOLD, true)
+				game.draw_line(layout.field_point(Vector2(arrow[0], arrow[1])), layout.field_point(Vector2(arrow[2], arrow[3])), game.GOLD if arrow[4] else game.RED, 2)
 	wall(game)
+	game.panel(layout.board.grow(8), Color("1e3038"), Color("516365"))
 	board(game)
 	for unit in state.units:
 		if float(unit.get("deploy_left", 0)) > 0:
 			game.actor_art.draw_unit(game, unit, true, unit_point(game, unit))
-	if not ready:
-		game.panel(Rect2(10, 596, 205, 62), Color("25343b"), Color.TRANSPARENT, 4)
-	game.label_at("%d brass" % int(state.gold), Vector2(20, 867 if ready else 620), 24, game.GOLD)
-	game.label_at("%.2f troops/s" % Gear.total_rate(state.board, state.config), Vector2(20, 900 if ready else 650), 20, game.MINT)
-	if ui.has("begin"):
-		game.panel(ui.begin, game.MINT if ready else Color("405761"))
-		game.label_at("Begin defense" if ready else "Retry" if state.phase in ["defeat", "victory"] else "Threat guide", ui.begin.get_center() + Vector2(0, 7), 22, game.INK if ready else game.CREAM, true)
-	elif state.phase == "battle" and state.boss_spawned:
+	var summary: Rect2 = layout.summary
+	game.panel(summary, game.INK, Color.TRANSPARENT, 4)
+	game.label_at("%d brass · %.2f troops/s" % [int(state.gold), Gear.total_rate(state.board, config)], summary.position + Vector2(12, 25), 21, game.GOLD)
+	game.label_at("Wall %d · Army %d / 120" % [ceili(float(state.wall)), state.units.size()], summary.position + Vector2(12, 48), 18, game.MINT)
+	for key in ["map", "refit", "help", "begin", "rally"]:
+		if not ui.has(key):
+			continue
+		game.panel(ui[key], game.MINT if key == "begin" and ready else Color("3d5159"))
+		var text: String = {"map": "Map", "refit": "Refit", "help": "Guide", "begin": "Begin defense" if ready else "Retry" if state.phase in ["victory", "defeat"] else "Threat guide", "rally": "Rally: fast" if state.rally else "Rally"}[key]
+		game.label_at(text, ui[key].get_center() + Vector2(0, -2 if key == "refit" else 7), 19, game.INK if ready and key == "begin" else game.CREAM, true)
+		if key == "refit":
+			var piece: Dictionary = game.selected_piece()
+			if piece.get("kind", "") in allowed and allowed.size() > 1:
+				var next: String = allowed[(allowed.find(piece.kind) + 1) % allowed.size()]
+				var costs: Dictionary = config.get("costs", Gear.COSTS)
+				game.label_at("%s %+d" % [next.left(1).to_upper(), int(costs[next]) - int(costs[piece.kind])], ui[key].get_center() + Vector2(0, 25), 17, game.GOLD, true)
+	for key in ["drive", "guard", "ranger", "mortar", "undo"]:
+		if not ui.has(key):
+			continue
+		var available: bool = key in ["drive", "undo"] or key in allowed
+		game.panel(ui[key], Color("405761") if available else Color("2d3d44"))
+		game.label_at(key.capitalize() if available else "Locked", ui[key].get_center() + Vector2(0, -5), 19, game.CREAM if available else Color("83908c"), true)
+		game.label_at(str(config.get("costs", Gear.COSTS)[key]) if key != "undo" else "move", ui[key].get_center() + Vector2(0, 22), 18, game.GOLD, true)
+	game.label_at(fitted(game, game.message, size.x - 30, 17), Vector2(size.x / 2, size.y - 10), 17, game.MINT, true)
+	if not ready and state.boss_spawned:
 		for boss in state.enemies:
 			if boss.kind in ["captain", "siege", "matriarch"]:
-				game.panel(Rect2(220, 598, 365, 58), game.INK, game.GOLD, 5)
-				game.label_at("%s · P%d · %d HP" % [str(boss.kind).capitalize(), int(state.boss_phase), ceili(float(boss.hp))], Vector2(402, 620), 20, game.GOLD, true)
-				game.draw_rect(Rect2(226, 627, 353 * float(boss.hp) / float(boss.max_hp), 4), game.RED)
+				var box := Rect2(48, layout.field.position.y + 66, size.x - 96, 64)
+				game.panel(box, game.INK, game.GOLD, 5)
 				var warning := "Enrage in %ds" % ceili(maxf(0, 60 - float(state.boss_total)))
 				if boss.kind != "captain" or float(state.boss_total) >= 60:
 					warning = "Volley %ds · %s" % [ceili(12 - float(state.boss_volley)), "ENRAGED" if float(state.boss_total) >= 60 else "enrage %ds" % ceili(60 - float(state.boss_total))]
-				game.label_at(warning, Vector2(402, 650), 18, game.RED if float(state.boss_total) >= 60 else game.CREAM, true)
-	for key in ["map", "refit", "help"]:
-		game.panel(ui[key], Color("3d5159"))
-		var text := "Map" if key == "map" else "Guide" if key == "help" else "Refit"
-		game.label_at(text, ui[key].get_center() + Vector2(0, -2 if key == "refit" else 7), 19, game.CREAM, true)
-		if key == "refit":
-			var p: Dictionary = game.selected_piece()
-			if p.get("kind", "") in state.config.allowed and state.config.allowed.size() > 1:
-				var next: String = state.config.allowed[(state.config.allowed.find(p.kind) + 1) % state.config.allowed.size()]
-				var cost: int = int(state.config.costs[next]) - int(state.config.costs[p.kind])
-				game.label_at("%s %+d" % [next.left(1).to_upper(), cost], ui[key].get_center() + Vector2(0, 25), 17, game.GOLD, true)
-	for key in ["drive", "guard", "ranger", "mortar", "undo"]:
-		var available: bool = key in ["drive", "undo"] or key in state.config.allowed
-		game.panel(ui[key], Color("405761") if available else Color("2d3d44"))
-		game.label_at(key.capitalize() if available else "Locked", ui[key].get_center() + Vector2(0, -5), 19, game.CREAM if available else Color("83908c"), true)
-		game.label_at(str(state.config.costs[key]) if key != "undo" else "move", ui[key].get_center() + Vector2(0, 22), 18, game.GOLD, true)
-	if ready:
-		game.label_at(fitted(game, game.message, 565, 17), Vector2(300, 1050), 17, game.MINT, true)
-	elif state.phase == "battle":
-		if not state.boss_spawned and game.clock < game.message_until:
-			game.panel(Rect2(20, 484, 560, 36), game.INK, Color.TRANSPARENT, 5)
-			game.label_at(fitted(game, game.message, 540, 17), Vector2(300, 509), 17, game.MINT, true)
+				game.label_at("%s · P%d · %d HP · %s" % [str(boss.kind).capitalize(), int(state.boss_phase), ceili(float(boss.hp)), warning], box.get_center() + Vector2(0, 3), 18, game.GOLD, true)
+				game.draw_rect(Rect2(box.position + Vector2(8, 52), Vector2((box.size.x - 16) * float(boss.hp) / float(boss.max_hp), 4)), game.RED)
 	if game.paused or state.phase in ["victory", "defeat"]:
-		game.panel(Rect2(70, 260, 460, 155), game.INK, game.GOLD)
-		game.label_at("GATE HELD" if state.phase == "victory" else "WALL BREACHED" if state.phase == "defeat" else "PAUSED", Vector2(300, 307), 30, game.MINT if state.phase == "victory" else game.RED if state.phase == "defeat" else game.GOLD, true)
-		game.label_at("%d built · %d raiders stopped" % [int(state.produced), int(state.kills)], Vector2(300, 351), 21, game.CREAM, true)
-		game.label_at("%d troops lost · %d:%02d" % [int(state.losses), int(state.time) / 60, int(state.time) % 60] if state.phase in ["victory", "defeat"] else "Resume when ready", Vector2(300, 389), 21, game.GOLD, true)
-		if state.phase == "victory":
+		var center: Vector2 = layout.field.get_center()
+		game.panel(Rect2(center - Vector2(230, 100), Vector2(460, 155)), game.INK, game.GOLD)
+		game.label_at("GATE HELD" if state.phase == "victory" else "WALL BREACHED" if state.phase == "defeat" else "PAUSED", center + Vector2(0, -53), 30, game.MINT if state.phase == "victory" else game.RED if state.phase == "defeat" else game.GOLD, true)
+		game.label_at("%d built · %d raiders stopped" % [int(state.produced), int(state.kills)], center + Vector2(0, -9), 21, game.CREAM, true)
+		game.label_at("%d troops lost · %d:%02d" % [int(state.losses), int(state.time) / 60, int(state.time) % 60] if state.phase in ["victory", "defeat"] else "Resume when ready", center + Vector2(0, 29), 21, game.GOLD, true)
+		if ui.has("next"):
 			game.panel(ui.next, Color("32645b"), game.MINT)
-			game.label_at("More trials" if bool(state.config.get("challenge", false)) else "Ending" if state.encounter == "camp_09" else "Next gate", ui.next.get_center() + Vector2(0, 8), 23, game.CREAM, true)
+			game.label_at("More trials" if bool(config.get("challenge", false)) else "Ending" if state.encounter == "camp_09" else "Next gate", ui.next.get_center() + Vector2(0, 8), 23, game.CREAM, true)
 	if game.save_failed:
-		game.panel(Rect2(20, 208, 560, 44), game.INK, game.RED)
-		game.label_at("Save failed · Menu > Save offers export", Vector2(300, 237), 19, game.RED, true)
+		game.panel(Rect2(20, 84, size.x - 40, 50), game.INK, game.RED)
+		game.label_at("Save failed · Menu > Save offers export", Vector2(size.x / 2, 116), 19, game.RED, true)
 	if game.dragging:
 		var piece: Dictionary = game.selected_piece() if game.drag_kind == "" else Gear.piece(0, game.drag_kind, 0, 0)
 		if not piece.is_empty():

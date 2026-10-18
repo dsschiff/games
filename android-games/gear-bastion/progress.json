@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "game": "gear-bastion",
-  "version": "0.3.2",
-  "version_code": 6,
+  "version": "0.3.3",
+  "version_code": 7,
   "save_schema": 4,
-  "branch": "codex/gear-bastion",
-  "updated_at": "2026-10-17T20:11:52-04:00",
-  "milestone": "decision_pressure_hud_redraw_candidate",
-  "status": "ready_for_independent_code6_review",
+  "branch": "codex/gear-graphics",
+  "updated_at": "2026-10-18T12:01:25.186469+00:00",
+  "milestone": "responsive_window_fit_before_3d",
+  "status": "desktop_fit_verified_pending_coordinator_android_review",
   "full_v1_complete": false,
   "campaign_expansion": "full_nine_encounter_campaign_implemented_candidate",
   "campaign_checkpoint": {
@@ -31,7 +31,8 @@
     "nearby_seed_wins": 54,
     "nearby_seed_cases": 54,
     "rendered_atlas_checks": 13,
-    "decision_pairs": 9
+    "decision_pairs": 9,
+    "scope": "Historical code6 worker checkpoint; current coordinator functional acceptance is recorded in the root handoff."
   },
   "review_fixes": {
     "checked_write_flush_readback_before_rename": true,
@@ -45,11 +46,11 @@
     "constrained_budget_counter_trial": true,
     "sole_staged_backup_reused_without_truncation": true
   },
-  "next_action": "Coordinator independently verifies the frozen code6 source, boss HUD motion and natural terminal display, then performs the code5-to-code6 Android update/lifecycle checks. No additional exploration sweep is required before the software RC decision.",
+  "next_action": "Coordinator reviews the clean fit commit, exports signed code7 and verifies the genuine code6-to-code7 preserved-save update plus native layout/input. Wait for root before full3D.",
   "remaining": [
-    "independent current boss HUD/motion and natural terminal display review",
-    "current code6 Android update, lifecycle, Back, clipboard and natural terminal checks",
-    "physical Fold7 touch, safe areas, fold behavior, sound, performance and human pacing/fun assessment"
+    "Coordinator independent code7 review and signed Android update/resize/input checks",
+    "Frontline benchmark art-pipeline approval before full3D Gear work",
+    "Full original 3D presentation remains queued; phone acceptance is deferred and unverified"
   ],
   "historical_release_verification": {
     "rules": {
@@ -312,5 +313,20 @@
     "reduced_budget_replay_wins": 18,
     "reduced_budget_replay_cases": 18,
     "rendered_atlas_checks": 13
+  },
+  "window_fit_checkpoint": {
+    "evidence": "evidence/window-fit.json",
+    "notes": "WINDOW_FIT_CHECKPOINT.md",
+    "rules_checks": 164,
+    "legacy_actual_input_checks": 57,
+    "focused_headless_checks": 9893,
+    "focused_rendered_checks": 9893,
+    "focused_events_per_run": 1169,
+    "rendered_pngs": 140,
+    "passed": true,
+    "gpu_slot": "released_after_owned_processes_exited",
+    "android_update": "pending_coordinator",
+    "phone_testing": "deferred_by_user",
+    "full_3d": "not_started_waiting_for_coordinator"
   }
 }

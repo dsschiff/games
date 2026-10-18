@@ -58,7 +58,14 @@ func move(x: int, y: int, target_x: int, target_y: int) -> void:
 	await drag(game.cell_center(x, y), game.cell_center(target_x, target_y))
 
 func action(key: String) -> void:
-	await tap(game.buttons()[key].get_center())
+	if game.buttons().has(key):
+		await tap(game.buttons()[key].get_center())
+		return
+	await tap(game.buttons().menu.get_center())
+	var button: Button = game.menu_dialog.find_child("Action_" + key, true, false)
+	check(button != null, "Menu contains " + key)
+	if button != null:
+		await tap(Vector2(game.menu_dialog.position) + button.get_global_rect().get_center())
 
 func purchase(kind: String, x: int, y: int, lane: int = 1) -> void:
 	await drag(game.buttons()[kind].get_center(), game.cell_center(x, y))

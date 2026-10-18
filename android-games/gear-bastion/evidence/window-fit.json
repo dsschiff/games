@@ -1,0 +1,1208 @@
+{
+  "version": "0.3.3",
+  "version_code": 7,
+  "baseline": "501f6dcd36b31f1236556e141350ad2430f9d33d",
+  "status": "desktop_fit_verified_android_update_pending",
+  "source_text_lf_sha256": {
+    "project.godot": "a7f174c78af1e30c78aaccacccf901c66e73ec66b8bf2fef5319036ae3b01722",
+    "export_presets.cfg": "03cd25ed54b48b2c934155ec64be5d535387205e51602c6add96ef18b7143963",
+    "main.tscn": "fd00a5f044de3322296831cf8b315ac73a54e88d12d6fee0766aeec95d23b035",
+    "scripts/actor_art.gd": "cfdc0115448a74d1d9de234047d054a5fbfcdae9ccd299df814e801915f08646",
+    "scripts/battle_rules.gd": "858cc389d4e09156e1f8caeff4a2220a50cc8d544a6db128188f9ff0f2b4d933",
+    "scripts/campaign_data.gd": "84210017396ef3aef92494d11c76047dfe175debdc8d2bd0268b8022010515bb",
+    "scripts/campaign_profile.gd": "7bf9dfee2adb8abde4613220c81d28ced30888cbeba8410cff0cb8a88700c963",
+    "scripts/campaign_ui.gd": "bf3314722545e40ad41bd594074c5a84b21db3bb3df65d5e5e6896492a5f7e8b",
+    "scripts/campaign_view.gd": "28efc54b388964debbea91661b9c3f0b67be0180e5b711ba1f8e4a06375c288e",
+    "scripts/frame_capture.gd": "4e54d3ee42d6802576d672f3dad486d1478a04e72f7f3c0ad60e77f85a2c9985",
+    "scripts/gear_rules.gd": "2be2feadec7c6ec5f54e5ac2f9a3001c66a32906eb0c8303926425fb6883ca8b",
+    "scripts/local_audio.gd": "62e5b953ef6f18148f279028e454a5546074d5692dc5e378368f12764ac18bf9",
+    "scripts/main.gd": "26d1e0a218b3e5020bda6768ac95134ad14a72050b59176f4787211d1e8bc6d4",
+    "scripts/save_files.gd": "67b532124aab977b2fb103c12d05a9a9152f6d9aee93113b8476796f880859db",
+    "scripts/save_store.gd": "ab983f203713c6fbea653e54046bdeb9e260c14a63f89f329463bbd84868da1a",
+    "scripts/window_layout.gd": "6d7a4a3002ab09cec610be95eb120d4d38360628de9788f038e5743cf776229b",
+    "tests/window_fit.gd": "b61727e5c49db6775670ee550c1c273fd416934ce460b35f08be2f05e489f1c0",
+    "tests/legacy_playthrough.gd": "1cd290a7348774d3701b85d0fcf0b926062fbc469ad144aa547b7d85e60eaa78"
+  },
+  "reports": {
+    "headless": {
+      "path": ".artifacts/window-fit/headless/report.json",
+      "sha256": "cb72da65434528f5b016f83602f4b826dc4711b19ec6406d2bafac05ceac88a8",
+      "checks": 9893,
+      "events": 1169,
+      "failures": []
+    },
+    "rendered": {
+      "path": ".artifacts/window-fit/rendered/report.json",
+      "sha256": "e411ce2d919dee18e78861c56067e0646f91af9a81ebf7510d23315ca3e4ca94",
+      "checks": 9893,
+      "events": 1169,
+      "failures": []
+    }
+  },
+  "rendered_pngs": [
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-battle.png",
+      "sha256": "cd28592ef5dd7c077112ad9f23688617b8be781d2f96be422f0bb7a731e52c7e",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-challenges.png",
+      "sha256": "1cfabdb1b41bd9279199a852ef85ab1572d07909280b6a7f8afc969a60272ece",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-ending.png",
+      "sha256": "04e567e3670e21908bb0d714d9b40413cde4b3b5219f8bced2d7fd3bfc97abac",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-help.png",
+      "sha256": "0ae491e506fa49456e18f9d49687ea15b54adf5a957400ba3b2a11e41e7b482a",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-legacy-battle.png",
+      "sha256": "14daf3c050d215f0326b6af4b367a86b14017d34693892fa87b0e28c5d383c09",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-legacy-help.png",
+      "sha256": "a6a97b9270ae785e9cdb4baec715d61ca701c4d3b8ea79a3b562983d1d3e0af9",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-legacy-menu.png",
+      "sha256": "7af9ea47d2e9a19df65554c6182fee336d8c505238b10123e9d8a101125febee",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-legacy-ready.png",
+      "sha256": "c3b7f0c18e9d085e6fd022adfc5941220e51d760bfec7262807d769ca7b8efac",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-legacy-save.png",
+      "sha256": "ac761b29e4d2324e804bfa9fbf6b66806333e02fc6ee668e082df5179ff94d1f",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-map.png",
+      "sha256": "cb390a97e0de5870a582e721d390c78ac6217f0076a04a90bb34ae93e1801bb8",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-menu.png",
+      "sha256": "df0bf49d432b3081119642d5a8b94d2c5dd0aab7b380c7106d8e2ae4f7c3acd2",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-ready.png",
+      "sha256": "e999e9c739be73009cd274ddac3e2f6402fc983ecd4d90cc0c454777cb7f4544",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-safe-battle.png",
+      "sha256": "388a7e99e93bba0510256473d15faa9121f2f323c05181c82d01a9dcbd930fc2",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-safe-defeat-fixture.png",
+      "sha256": "c4b3fa3307722a6857808a557cfba1cc9364356fbccc70898e5c5fb4796b5ac6",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-safe-help.png",
+      "sha256": "afdbc4fd9f6d868187846f36ac2d525481ef0f7de986d68b2cb114701b350e9a",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-safe-menu.png",
+      "sha256": "e99d881b33f0e252b5dfd8b7049fc5b9fdd781a150c5415c29251d5ac0dd25ee",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-safe-ready.png",
+      "sha256": "0f38df68a4134c915ffa3782d9a2ad1e4a623e0f5202fc98838d4c74f748e0f3",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-safe-save.png",
+      "sha256": "573ff7f5f5a349ba83e87921d37bc0351ef413948d83ee36ca51c38ed3e74237",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-safe-victory-fixture.png",
+      "sha256": "afb12686e3433be7f7606eca5cb63167111891bc977568a83f025198e4b7867a",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2400-save.png",
+      "sha256": "93ffabf4996fafdc561b703811a2e1dae8e8d0a096bbbbc568f135824b298f41",
+      "dimensions": [
+        1080,
+        2400
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-battle.png",
+      "sha256": "ad8d513045b6cc33b53565e5d662b2569c3167b7b8f2a757f8475e7cb14807ba",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-challenges.png",
+      "sha256": "ed47c737a8e83baf42080328ca4be5a5dd5a9b7ce756ca9d409c68cf9474342a",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-ending.png",
+      "sha256": "2c3b2bf38dcdba67c1d5bf9047958899dff2069aa76b5d356f756e25f12ae2bf",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-help.png",
+      "sha256": "27f016be78cf99af9bb7e1a07a402a18fb6f21da35d7420b3c11ddfb1d186108",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-legacy-battle.png",
+      "sha256": "e68d4cdc9fd9b398ce0184fa320a88a452593f47f61df38a062b2c78ee830fcb",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-legacy-help.png",
+      "sha256": "f1304822b27df86934bcfa75964acf5b109b9420ebf0836d643b3f0152819106",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-legacy-menu.png",
+      "sha256": "ce78b2bed251b184603deb8c5294bf8cf629250a66a003a540d0cb7e21745d1f",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-legacy-ready.png",
+      "sha256": "509dddc5b88381d1ab47923e543bcfb6a6602626522264109203d31eef2d14d1",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-legacy-save.png",
+      "sha256": "20341c121fb689febb29320a035b10b1542cd02eec211a3e1093b05b8de60ab2",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-map.png",
+      "sha256": "8baeb2492215d0e2574eebe2850094122e4297f52fb5a0b3afd8fcbab4baf56c",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-menu.png",
+      "sha256": "2da60c1588dd644b37a3eadaf141c53bef31ca65e1618f183176bcc9563f7313",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-ready.png",
+      "sha256": "475535ab9bba0e0fcc1b8430b65e6c2047601445b2f61998d1a791253223568a",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-safe-battle.png",
+      "sha256": "88fba0c244e8976de7cf745579dc77db237ced178289e7a7136c3af77564bbbd",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-safe-defeat-fixture.png",
+      "sha256": "657db83d74436a6bbfec6ffcae2edd1e2abc6c56eca9fe0fbda4bfc911e281fe",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-safe-help.png",
+      "sha256": "b639da66a17c366b755b4ec697911e311372ddc559a5124877406769d2f13aeb",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-safe-menu.png",
+      "sha256": "fecb106bc7e1833fd2dc62f93822e9162d463cd38239d9d4185d85f527651147",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-safe-ready.png",
+      "sha256": "dfecb9d59f64fa1a9b40516c7678b2531809a0de79802ca2b10932bd785a1725",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-safe-save.png",
+      "sha256": "df11f49ebb939eb93f4f0747de36073621da3a661e97994f0d24659b6abaf55f",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-safe-victory-fixture.png",
+      "sha256": "f8c0ef366f2560aa4208f03e517c932fb409b91c8e0d78dff3aa0fa1e70d1176",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1080x2520-save.png",
+      "sha256": "e7e9799616d71bc52f4e3d935b45c8203aa916ef8829428f81b92fb252069cc6",
+      "dimensions": [
+        1080,
+        2520
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-battle.png",
+      "sha256": "5a87afbd18e350c22d5527acba25f6fcff8d513bcfe4271b7e5c910cbfce99a9",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-challenges.png",
+      "sha256": "480a99083536cc14502d54360202b3d28a7b82ba817b388560f5cf9e656693bf",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-ending.png",
+      "sha256": "dedc08a1bcefc48ccf5cd9b836ec5b512a7104c7d042545b08df3e298f35aa55",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-help.png",
+      "sha256": "06c60a6aa628593932b2b47de666a6f79c04d6afccbb4c09606675f24ef29ecd",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-legacy-battle.png",
+      "sha256": "a075a66f8fb6926a0b40b7ea8916dbe15c46554de98eff5e91ca650949c4e501",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-legacy-help.png",
+      "sha256": "865fb35a43d97cba66237479196a199e1193e53f5becec0f8a7a50424a4e7826",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-legacy-menu.png",
+      "sha256": "2168c1d2b7271ac61557a6e72557c0204e372bb9fd693627f13eda729665da2f",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-legacy-ready.png",
+      "sha256": "b97336749647e183000431ff32841b190be091dc0c0e5139f3d7bff641727e2e",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-legacy-save.png",
+      "sha256": "9932ff16a6edb8f86b5c6c2aa097eab8909de0e82015cf8c129e24dd4f9d76e8",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-map.png",
+      "sha256": "4376c2287c0a3e8ebc2bc419cad76ad352f936d5fe11d6729ed6844d935650e8",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-menu.png",
+      "sha256": "be262c1e340d1eb4e4674849e92c1e46705ac5a3f641a30baaefe4027671dd43",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-ready.png",
+      "sha256": "8cd930f07901f1cdcd1c5ba938aebd618a939e9690380642946cacff714512c8",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-safe-battle.png",
+      "sha256": "9ad114946486434f32b683cce4d2cbe52d7cde4624c8327a4200b1cc0e6a0d8a",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-safe-defeat-fixture.png",
+      "sha256": "a37bb8a17028d2bccb6b09233cc4909b6c54ab02cb64271ba1645b5abd01a989",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-safe-help.png",
+      "sha256": "cb974493f953a34ee2e1fef45d59110465b7debaa90d00a36c85af4db536d679",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-safe-menu.png",
+      "sha256": "f69bc08a1394fb4d84bfd84fc4f3967fd0a04ea7805d5dc768dc1488e3fa3628",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-safe-ready.png",
+      "sha256": "258e8c997b4d06984d35687a8ed2dd74d91816e9ec5c8af82217e98b12bba9e9",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-safe-save.png",
+      "sha256": "68d5d51e7de519fca5f5df8bc761b5af6db1d36e01deed4cb2eeeade184ca2be",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-safe-victory-fixture.png",
+      "sha256": "039c7fd5c76e9038415d26b383582a1a0680408e302ab229709e0acd016a88d0",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1200x1600-save.png",
+      "sha256": "0d4730faa66e637dbf67ed475b64cc9b233f1002989930d225ae9af2a2efb4c7",
+      "dimensions": [
+        1200,
+        1600
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-battle.png",
+      "sha256": "4e69bd90fad27ae78dd3990a30d6ec7233d15362888da97114610a3156db02a4",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-challenges.png",
+      "sha256": "3ce78c6504e92d839cf2fc4028cee513d8448a10671c3734db6bfa7f0f81ed0c",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-ending.png",
+      "sha256": "b62799435849e62034517f92c5c869430d2f83eead5d8522f17bc8841ce09467",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-help.png",
+      "sha256": "7f6363d8eb7a66e7272b0dc7a6304aa5f85e6c9e150aca7daa212428bab36e9d",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-legacy-battle.png",
+      "sha256": "42a3fa805824d519a5738bd9629c3aa8cd8adb474ca4ac5848c9edfec98bf5aa",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-legacy-help.png",
+      "sha256": "e6c9a5cc11e791ee0bba89cb566f03c062a1c8e04f54f9d78702c50f77bf1b97",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-legacy-menu.png",
+      "sha256": "56edc172ef67cc8589911a8b43c520262f4af3492ecf38f3d3d30fa939e19bf1",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-legacy-ready.png",
+      "sha256": "4e97b3d6827f57578f0247f7b5a7159938e0ad4bf7d3811bd79ab083f3722699",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-legacy-save.png",
+      "sha256": "ae69128e9c1dfe226f3dd7982f8acfebc51803925e11d0f68bc8d6302c2dfd69",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-map.png",
+      "sha256": "6a9f5dd888e32e1c6a3fc8076ee1df06a7a25d05c93a7601711213d1c794ea35",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-menu.png",
+      "sha256": "4a4e37ea8f68912cf026884b55c8550d288a1b2edad253139a290eed7efff118",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-ready.png",
+      "sha256": "7e3bdf990ba45e46fdfc5bdce02e40afa6273167afaeecf5b1c31b7c2d778b6d",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-safe-battle.png",
+      "sha256": "ed9b8196a374033ef42364880ce5dc26a6ce2c7696ff2d6eea51c86f5b0d8b7b",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-safe-defeat-fixture.png",
+      "sha256": "0c710b3cd0d2d791fbd549aa6aef1b3ac34b5a43158c0e3745f0a7831fc4dbe1",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-safe-help.png",
+      "sha256": "facd490afa2de5623b6e7392d184eeb41cb1eaf3061d3445e49652d6c565773b",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-safe-menu.png",
+      "sha256": "88c90222ef5a7b27c65c293bff14174e7b17ce965828ac5b49909b1dbeaf9636",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-safe-ready.png",
+      "sha256": "2253b0324ff70b57c4dd98aa0e52c8a4ef16fbb03d330fc5e5fbc787dc937dc0",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-safe-save.png",
+      "sha256": "ae8be8f821d23dd459d13ffa606e6b59bcd42dcb3ae57850208d990ca7e066ea",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-safe-victory-fixture.png",
+      "sha256": "59be7d224869f2c1284d6a0c087b70a22376ed99a20c9c29b6dbabf973811ee9",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/1968x2184-save.png",
+      "sha256": "0ab1578ad92c94380c20612d07c1c1225e8cfa3eaa8c215b24047545db4862a9",
+      "dimensions": [
+        1968,
+        2184
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-battle.png",
+      "sha256": "7b58e9f38fc5effed44409d8e06786ab26d961ae1b72b8f7c31e75f723847c62",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-challenges.png",
+      "sha256": "564ba306af6cafcb3f98a8ba3f78a54610a3c12d18b4d9956d7037f882e0120d",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-ending.png",
+      "sha256": "b89ff2fa67723bd5814c94b6f48b3893e834b31ece756cea7bbc52b0266c5dfe",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-help.png",
+      "sha256": "cf719d32122432e4768d2ca8122c6be4356509cf2a98749ad529fef9e0e03971",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-legacy-battle.png",
+      "sha256": "1ac4ea723160ec02f2df2aca656d190015281eb5bd0447c41ce62fbbdc93a049",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-legacy-help.png",
+      "sha256": "6cf6e92a26e2c68d6eb8d683293b82961f0b4bc5bc79e29c69b111b182a2134d",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-legacy-menu.png",
+      "sha256": "5b7752f9760cb7ab2e60fa5e5efbe0b697bcbd940d5850a0eb47ce559bdb7df8",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-legacy-ready.png",
+      "sha256": "d5b4ef421eef29da5033f72fe86240e00933ce26c322dea552be6afd3531e499",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-legacy-save.png",
+      "sha256": "952c9aaf6eb434e06f692637a5849b69b542bf80034370db3d224291c099c42b",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-map.png",
+      "sha256": "e778850004c352561af22535b366dc9ec0c736243aef085271dcd29be7b3d3db",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-menu.png",
+      "sha256": "f8dc9fe0d28160fcefc37fe713cc7938bb70c8a3a0a05b596931ed1bee9af360",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-ready.png",
+      "sha256": "3d3ca7233cbb12feaaae76e386cd394da5b4190f1f734fd9482eceb77d35b9b2",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-safe-battle.png",
+      "sha256": "4a56886d763819b03545eaf08680ed9935c7a781d528033576e0b3cdcb8c5bec",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-safe-defeat-fixture.png",
+      "sha256": "1f2d0163e534b75ccbfb996db3396a8a1c15d062c516e2a0e9b29db313363878",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-safe-help.png",
+      "sha256": "ff59e381801b179b68b15d08bbc416cb18dee9f171cb58b1803d44f2e764ba26",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-safe-menu.png",
+      "sha256": "ed263aa8a1c6bd0d13a55117503926c8e933fe0456e948735354e9bd60d4c01f",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-safe-ready.png",
+      "sha256": "b9fd4cd01fa1a436adf2808f556ef5b54492843c3a3604043d2a6b537eec56dd",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-safe-save.png",
+      "sha256": "f0ddb501aa184a0334e4e9e881bfd93379a46fe9b15e3f0c153fe5ded4e1719c",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-safe-victory-fixture.png",
+      "sha256": "3ba9c6b4cd1696340ec713525fda1e4bce1f672a5e2df7c6ba6428030496dcb1",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/2184x1968-save.png",
+      "sha256": "ecff089e9c693e2a3f30aef67166c82eb4e018e3c446e32bd579a053e49b9ca6",
+      "dimensions": [
+        2184,
+        1968
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-battle.png",
+      "sha256": "b621c9583ea83209d7ca8735f8c14aec324edc67979b82af95be4dc730e568de",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-challenges.png",
+      "sha256": "64969a9a79e16936d06e9457b4a73ab60ff68480ddbada04bdc4f40152f9c703",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-ending.png",
+      "sha256": "abbfb3998f6cf4814f71a94766ab515f34570d264b6bcaf368769e80ed15794d",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-help.png",
+      "sha256": "ab83314db603db75ec81e77cf8cd934467e220fe9a5fda136672136937f1c8cd",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-legacy-battle.png",
+      "sha256": "659506c60adfb67ff55e5a8fb260aa3df2de06bad5f5b2b3cbf6eb0fd0139b0a",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-legacy-help.png",
+      "sha256": "7ff1562273dab3ea74f9e28b818a7ac0d0a53cf3bf6ac4d3624509d9d6eecbe3",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-legacy-menu.png",
+      "sha256": "44752f27cb35ce004663d1dc722cfc98ab8a8bd44ebb253237cb63729fbecf48",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-legacy-ready.png",
+      "sha256": "1dd57c68fccd1aea9b750728b7530885bd069fe5a5c25f49e209e17157d2be93",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-legacy-save.png",
+      "sha256": "de0cd9d651d86641eb678b4e9aba5e76e2bd34a252597f1446c224b2bf4722c5",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-map.png",
+      "sha256": "b94b5c1c4c996215c936265dcf70debd14ffb4be170eef1ffbf21057fa2633f1",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-menu.png",
+      "sha256": "4c89e9ef97e0adeb5c5652da868d38a59a98d817f84cfc534905e57079ca3a5f",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-ready.png",
+      "sha256": "ec05246b535a67aa0cd7e80a59baadd1cb68f53141566e28cda263f155143978",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-safe-battle.png",
+      "sha256": "d840954f5ab5cfa2217683448115ce37b6f76d87337e45558ac681fc6d87c82c",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-safe-defeat-fixture.png",
+      "sha256": "1b86363ec576f0e4bc80cde5e060cf02c90ec9046c8e62328d45fbbabdc1ed86",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-safe-help.png",
+      "sha256": "9a04d5e606242785e1693f41f510a572e648fb11df009702d51f8a5ea08af32b",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-safe-menu.png",
+      "sha256": "3e764b0f6e82ade05b701a1cdcd895ad3a9d7808c6a72d3084711e0d50c0ac5a",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-safe-ready.png",
+      "sha256": "96a09a8737d47c03a06dd38015d50b8b79ac0048feb9d069b73e12a48a5d354b",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-safe-save.png",
+      "sha256": "a5236e4a30ea111be209b74ff78ebde14162640640c9a615297928b494d07241",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-safe-victory-fixture.png",
+      "sha256": "266485c6cd3912a906a0ba42d150422106418702cb355b4340cf1d5118944289",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/600x1066-save.png",
+      "sha256": "22292a56cc1fc278a6c81a5c7f251939addb0748a35433af5055c60ba9d98afc",
+      "dimensions": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-battle.png",
+      "sha256": "126db59e515e96bdc123220dc1132439c9f422572005a66779dae0e37043210b",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-challenges.png",
+      "sha256": "40d116ca20e5f6c8634ce88b5e1f79ee41cd8fa2e5caef011e4f6557c821cc1c",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-ending.png",
+      "sha256": "a1422b5d320a3bbcabcd1498d344ecab544d07f5cae66b7508c53352a1a0bc92",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-help.png",
+      "sha256": "7790565b37aef23350072064fda2d8e67e5668e18c10f6ffd275f192c8d4664a",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-legacy-battle.png",
+      "sha256": "6bf9780d314f70ab7052a479053d6e5610d4eb054ab4440c253bbd228ba45ae1",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-legacy-help.png",
+      "sha256": "93db56fb1ef8b0fefbaf123285ddd148601113d6097650fb5e3d231ce7949af8",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-legacy-menu.png",
+      "sha256": "f09fed5c6b2ffcf400e6ce85202239cb5f953893e1a2aaf53bcfa6bd7037989e",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-legacy-ready.png",
+      "sha256": "3daf37618e520e63b05a6277d61912d4291fcebb936fac6e36511770707b8ad2",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-legacy-save.png",
+      "sha256": "2816b7d78acf709eb0bf34d74ed18f74721038c280ce2715d1964ad4dd88410f",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-map.png",
+      "sha256": "1b6db2f63d4d570fc2379920a1d9a337d571e2a7fafdc1de2d4cf1a0cdc1a6cc",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-menu.png",
+      "sha256": "8d00b846152c04f350252212d0eded79454b23348b42b3727d03d354c885a37c",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-ready.png",
+      "sha256": "db3242008388607b0c49e53408e1b00887cdb537b53d3ce66302e2d79829c6b9",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-safe-battle.png",
+      "sha256": "f703c4f5bca9b4bd1faf21ccc64db25ff90bf7303663452a2ec8daae53d73963",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-safe-defeat-fixture.png",
+      "sha256": "2cd932ef4543b294170f995898dfa2a21b1040fa61ca8042aa2858565a92dc3c",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-safe-help.png",
+      "sha256": "7fe905c04a0fac64da88ce172a8166b7382be0e72a0740b06c7c6196d460c203",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-safe-menu.png",
+      "sha256": "8a8d2a637d6ae27fa285366ef0f66487d8c08b8c12ba647f847526fd9bcf272a",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-safe-ready.png",
+      "sha256": "84f7e8950b2802d6076d562cfd562ad9f354e6846987dce648b4eeec12f77a46",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-safe-save.png",
+      "sha256": "d80e977ec9b9053efb5c35bda3fb4be1851e21f65dda42abbe2eff51686e7bcd",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-safe-victory-fixture.png",
+      "sha256": "f4c5596ea320e9e402fefd37087a1b160f3bf920c97cababb0b4a3bd86f2f4da",
+      "dimensions": [
+        900,
+        1300
+      ]
+    },
+    {
+      "path": ".artifacts/window-fit/rendered/900x1300-save.png",
+      "sha256": "afa6c88b7b7e6ed7e70688e882923b030d0fcf7a1a9d2cca169c494443b831e1",
+      "dimensions": [
+        900,
+        1300
+      ]
+    }
+  ],
+  "rules": {
+    "checks": 164,
+    "failures": 0,
+    "log": ".artifacts/window-fit-rules/rules.log"
+  },
+  "host_renderer": "Godot 4.7.2 Compatibility / NVIDIA GeForce RTX 5070 Ti / driver 610.88",
+  "limits": [
+    "No Android export/install/update, ADB or clipboard performed by this worker",
+    "Synthetic safe insets and desktop resize do not establish physical Fold7 usability or folding",
+    "Ready captures intentionally use paused ready fixtures; terminal captures are generated rule fixtures, not phone wins",
+    "No full 3D work or visual-quality acceptance claimed"
+  ],
+  "legacy_input": {
+    "checks": 57,
+    "pointer_events": 368,
+    "failures": 0,
+    "log": ".artifacts/window-fit-legacy/legacy.log"
+  },
+  "artifact_integrity": {
+    "all_rendered_pngs_fully_decoded": 140,
+    "all_image_report_source_hashes_read_back": true
+  },
+  "final_logs": {
+    "rules": {
+      "path": ".artifacts/window-fit-rules/rules.log",
+      "sha256": "fa42f7f0fb10dda50e0739cff9ee3bb505a09e980e01e50feac7292d53c98eb2"
+    },
+    "legacy": {
+      "path": ".artifacts/window-fit-legacy/legacy.log",
+      "sha256": "bee9142b4e0f060d3edfc34248cc9e2a8ba2f93fb68e382510f56159868d7a93"
+    },
+    "headless": {
+      "path": ".artifacts/window-fit-runtime/final-cpu.log",
+      "sha256": "1216c0e2e12c8aa6e217fa5dff434a80d5d6ecd2a5c5f6df62344bc25e87100f"
+    },
+    "rendered": {
+      "path": ".artifacts/window-fit-render-runtime/final-gpu.log",
+      "sha256": "410de4dd7b5bf3351ce45f3901aa13edffe6e07e4a18a48b89a091adacd077dd"
+    },
+    "import": {
+      "path": ".artifacts/window-fit-runtime/final-import.log",
+      "sha256": "22f9df97785252c43ddd707fdcd40f146f1f21d1f57d2bbee7aa15c284684833"
+    }
+  }
+}

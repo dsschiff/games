@@ -1,6 +1,6 @@
 # Gear Bastion
 
-An original offline Godot 4.7.2 defense game: connect a powered foundry while brass automata emerge from generators, march through three wall arches and fight beetle raiders. Source 0.3.2 / code 6 contains nine encounters across three foundries, a mortar role, bosses, medals, an ending and three seeded replays. The current [decision/HUD candidate](DECISION_PRESSURE_CHECKPOINT.md) includes nine input-driven mistake/correction comparisons and a natural victory/defeat rendering fix. Independent software review and physical-phone acceptance remain open.
+An original offline Godot 4.7.2 defense game: connect a powered foundry while brass automata emerge from generators, march through three wall arches and fight beetle raiders. Source 0.3.3 / code 7 retains nine encounters across three foundries, a mortar role, bosses, medals, an ending and three seeded replays. The current [decision/HUD candidate](DECISION_PRESSURE_CHECKPOINT.md) includes nine input-driven mistake/correction comparisons and a natural victory/defeat rendering fix. Independent software review and physical-phone acceptance remain open.
 
 ## Campaign
 
@@ -50,7 +50,7 @@ Save schema 3 adds checked write/flush/readback, ordered revisions and a protect
 
 The 0.2.1 amendment reuses an existing staged `.bak.tmp` when its bytes exactly match the validated prior save. This avoids truncating that file when it is the sole surviving candidate. Focused tests cover ordinary load, a would-be staged-write failure, staged-rename failure and later replacement write/rename failures.
 
-Portrait canvas: 600 x 1066, preserved with centered letterboxing on other aspect ratios. Board sockets and menu hit areas are at least 80 logical pixels (48 dp if presented 360 dp wide). Galaxy Z Fold7 working profiles are 1080 x 2520 cover and 1968 x 2184 unfolded. Desktop tests resize the live battle to both dimensions and exercise gear input after each resize. Those tests do not establish Android fold lifecycle, physical safe areas, readable on-device text, or touch accuracy.
+Responsive canvas: `canvas_items/expand` recomposes the battlefield, wall/exits, board and controls from the usable viewport. Tall windows add battlefield depth; windows at least 820 logical pixels wide place utilities left of the five-by-four board and the shop right. Shapes retain uniform scale; simulation positions and saves retain their original meaning. Android safe insets are converted from screen coordinates, and touch/mouse picking converts viewport coordinates into the same local canvas used to draw. Resize cancels stale gestures and refits visible scrollable dialogs. Board sockets and main targets are at least 80 logical pixels at normal minimum size; dialog confirmation buttons use themed 160-by-80 minima. Extremely constrained safe regions shrink uniformly to keep the layout reachable. See [the fit checkpoint](WINDOW_FIT_CHECKPOINT.md) for desktop evidence and remaining Android checks.
 
 ## Verify and build
 
