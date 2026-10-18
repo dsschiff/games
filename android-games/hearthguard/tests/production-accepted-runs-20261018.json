@@ -1,0 +1,883 @@
+{
+  "schema": 1,
+  "created_utc": "2026-10-18T18:19:40.317620+00:00",
+  "evidence_root": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts",
+  "runtime_freeze": "042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0",
+  "runtime_files_reverified": 98,
+  "candidate": {
+    "version_name": "0.3.0",
+    "version_code": 3
+  },
+  "accepted_runs": [
+    {
+      "label": "ui-cold-closure",
+      "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-restore-20261018T175458240947Z",
+      "stage": "restore",
+      "checks": 10,
+      "failures": 0,
+      "runtime_freeze": "042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0",
+      "receipt_sha256": "4c6bf366929746a053d6de6a93431c49cbbfe61598a8341e4f50fda3c90ef388",
+      "verified_artifact_rows": 453,
+      "executed_source_files": 141,
+      "native_frames": 277,
+      "native_raw_bytes": 105555223,
+      "movie_sha256": "b0b0757b916aecf4843da658b77bed3748eaa0bc5f0c543d1891ea8fe36a6ee0",
+      "movie_seconds": 9.233333,
+      "canvas": [
+        720,
+        1280
+      ],
+      "end": {
+        "schema": 2,
+        "phase": "playing",
+        "simulation_seconds": 68.3333333333307,
+        "kills": 30,
+        "leaks": 0,
+        "refuge": 16,
+        "gold": 10
+      },
+      "source_hashes_sha256": "d925aa68e2bce18d0cfe4c2297e137c79596e98a305c6d29ef439877bbdade31",
+      "production_report_sha256": "53db768d32fa41347eda1611327273c6a6ddd3f6926526377e31f75370eddf06",
+      "start_provenance_sha256": "c595346c2e6aeb5a419613858b8ba397328dfb6326a0f9cab6bcd0af66d9cb4b",
+      "executed_harness_commit": "af59a73",
+      "stream_duration_seconds": 9.233333,
+      "source_kind": "exact raw app slots from prior passed production process",
+      "start": {
+        "schema": 2,
+        "phase": "playing",
+        "simulation_seconds": 60.1666666666645
+      },
+      "paths": {
+        "receipt": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-restore-20261018T175458240947Z\\receipt.json",
+        "source_hashes": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-restore-20261018T175458240947Z\\source-hashes.json",
+        "production_report": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-restore-20261018T175458240947Z\\production-report.json",
+        "start_provenance": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-restore-20261018T175458240947Z\\start-provenance.json",
+        "movie": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-restore-20261018T175458240947Z\\continuous.mp4"
+      }
+    },
+    {
+      "label": "heavy",
+      "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-heavy-20261018T175629952989Z",
+      "stage": "heavy",
+      "checks": 8,
+      "failures": 0,
+      "runtime_freeze": "042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0",
+      "receipt_sha256": "dcb4ce4ce7eeceaabb30c16c8fc0bc601f94bbd8850fdf95e12536932b27046d",
+      "verified_artifact_rows": 1219,
+      "executed_source_files": 141,
+      "native_frames": 1043,
+      "native_raw_bytes": 437972293,
+      "movie_sha256": "095786c3dc1b10f209abf244a98a34b88f14849a533ec5f095019bb1d895e634",
+      "movie_seconds": 34.766667,
+      "canvas": [
+        720,
+        1280
+      ],
+      "end": {
+        "schema": 2,
+        "phase": "victory",
+        "simulation_seconds": 191.566666666711,
+        "kills": 101,
+        "leaks": 0,
+        "refuge": 16,
+        "gold": 0
+      },
+      "source_hashes_sha256": "d925aa68e2bce18d0cfe4c2297e137c79596e98a305c6d29ef439877bbdade31",
+      "production_report_sha256": "fc90ab27d3c9522d1cffad1b184c3616bfd659be6e9e1615fba1dfc39abc2f7c",
+      "start_provenance_sha256": "396f56e95ef627f3c5a7ece7b6808db27388331e13fd8729df4f310aae1356e5",
+      "executed_harness_commit": "af59a73",
+      "stream_duration_seconds": 34.766667,
+      "source_kind": "accepted genuine app-written historical envelope",
+      "start": {
+        "schema": 2,
+        "phase": "playing",
+        "simulation_seconds": 157.03333333335
+      },
+      "paths": {
+        "receipt": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-heavy-20261018T175629952989Z\\receipt.json",
+        "source_hashes": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-heavy-20261018T175629952989Z\\source-hashes.json",
+        "production_report": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-heavy-20261018T175629952989Z\\production-report.json",
+        "start_provenance": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-heavy-20261018T175629952989Z\\start-provenance.json",
+        "movie": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-heavy-20261018T175629952989Z\\continuous.mp4"
+      }
+    },
+    {
+      "label": "later",
+      "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-later-20261018T175843497815Z",
+      "stage": "later",
+      "checks": 8,
+      "failures": 0,
+      "runtime_freeze": "042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0",
+      "receipt_sha256": "e5df93b7c7162817bd20a8032a012ef15228ca7821f4b3302c127d7a2a9b2814",
+      "verified_artifact_rows": 1172,
+      "executed_source_files": 141,
+      "native_frames": 996,
+      "native_raw_bytes": 438902445,
+      "movie_sha256": "3949b1452336f6f133f5fd647a0fcd08b2c58d8b22ccaca2efe7a28f4b1f9c7a",
+      "movie_seconds": 33.2,
+      "canvas": [
+        720,
+        1280
+      ],
+      "end": {
+        "schema": 2,
+        "phase": "victory",
+        "simulation_seconds": 238.016666666749,
+        "kills": 141,
+        "leaks": 0,
+        "refuge": 16,
+        "gold": 149
+      },
+      "source_hashes_sha256": "d925aa68e2bce18d0cfe4c2297e137c79596e98a305c6d29ef439877bbdade31",
+      "production_report_sha256": "db42d58beb39ad087378786f4e433643ce9df92eac6fc82abb21449b6d4f4d1b",
+      "start_provenance_sha256": "4feef62aeeb97b30e50f6f9228b876cfbec4a97d0474cd76e6d3832c638da84a",
+      "executed_harness_commit": "af59a73",
+      "stream_duration_seconds": 33.2,
+      "source_kind": "accepted genuine app-written historical envelope",
+      "start": {
+        "schema": 2,
+        "phase": "playing",
+        "simulation_seconds": 205.033333333389
+      },
+      "paths": {
+        "receipt": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-later-20261018T175843497815Z\\receipt.json",
+        "source_hashes": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-later-20261018T175843497815Z\\source-hashes.json",
+        "production_report": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-later-20261018T175843497815Z\\production-report.json",
+        "start_provenance": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-later-20261018T175843497815Z\\start-provenance.json",
+        "movie": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-later-20261018T175843497815Z\\continuous.mp4"
+      }
+    },
+    {
+      "label": "retry",
+      "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-retry-20261018T180108734690Z",
+      "stage": "retry",
+      "checks": 17,
+      "failures": 0,
+      "runtime_freeze": "042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0",
+      "receipt_sha256": "a4264fd652ed6abffe8bf2ac99f0fec4ac998e5c461a51d44ebb6b78ced74a03",
+      "verified_artifact_rows": 288,
+      "executed_source_files": 141,
+      "native_frames": 106,
+      "native_raw_bytes": 40666217,
+      "movie_sha256": "ad6dd549d1142f083ce15eeb291548b5bd752846c7417a943ea258d69b3136cc",
+      "movie_seconds": 3.533333,
+      "canvas": [
+        720,
+        1280
+      ],
+      "end": {
+        "schema": 2,
+        "phase": "playing",
+        "simulation_seconds": 3.29999999999999,
+        "kills": 0,
+        "leaks": 0,
+        "refuge": 16,
+        "gold": 8
+      },
+      "source_hashes_sha256": "d925aa68e2bce18d0cfe4c2297e137c79596e98a305c6d29ef439877bbdade31",
+      "production_report_sha256": "07d7314b9a39779fdb2464d95475b35379721c828273326492c922896f08ebc9",
+      "start_provenance_sha256": "0d6c43eb70618db6e07ede6e71523378116b4de760ebd0b25a2b4adf63511881",
+      "executed_harness_commit": "af59a73",
+      "stream_duration_seconds": 3.533333,
+      "source_kind": "accepted genuine app-written historical envelope",
+      "start": {
+        "schema": 2,
+        "phase": "defeat",
+        "simulation_seconds": 33.4666666666661
+      },
+      "paths": {
+        "receipt": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-retry-20261018T180108734690Z\\receipt.json",
+        "source_hashes": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-retry-20261018T180108734690Z\\source-hashes.json",
+        "production_report": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-retry-20261018T180108734690Z\\production-report.json",
+        "start_provenance": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-retry-20261018T180108734690Z\\start-provenance.json",
+        "movie": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-retry-20261018T180108734690Z\\continuous.mp4"
+      }
+    },
+    {
+      "label": "lifecycle",
+      "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-lifecycle-20261018T180216667030Z",
+      "stage": "lifecycle",
+      "checks": 38,
+      "failures": 0,
+      "runtime_freeze": "042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0",
+      "receipt_sha256": "e487a83c4a32402a3c057cd922304ad09e3226cb783944555bacaa86fa5e0d82",
+      "verified_artifact_rows": 515,
+      "executed_source_files": 141,
+      "native_frames": 321,
+      "native_raw_bytes": 169109284,
+      "movie_sha256": "e06eb24173abddea7b30fb090247e5dbd5d316540f9812bf90e855854aa14551",
+      "movie_seconds": 10.7,
+      "canvas": [
+        1968,
+        2520
+      ],
+      "end": {
+        "schema": 2,
+        "phase": "playing",
+        "simulation_seconds": 165.033333333356,
+        "kills": 86,
+        "leaks": 0,
+        "refuge": 16,
+        "gold": 13
+      },
+      "source_hashes_sha256": "d925aa68e2bce18d0cfe4c2297e137c79596e98a305c6d29ef439877bbdade31",
+      "production_report_sha256": "f85c7fbe8852bd827cf32c36901945b9f815019d9e02bea1f347bfee24ea3725",
+      "start_provenance_sha256": "396f56e95ef627f3c5a7ece7b6808db27388331e13fd8729df4f310aae1356e5",
+      "executed_harness_commit": "af59a73",
+      "stream_duration_seconds": 10.7,
+      "source_kind": "accepted genuine app-written historical envelope",
+      "start": {
+        "schema": 2,
+        "phase": "playing",
+        "simulation_seconds": 157.03333333335
+      },
+      "paths": {
+        "receipt": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-lifecycle-20261018T180216667030Z\\receipt.json",
+        "source_hashes": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-lifecycle-20261018T180216667030Z\\source-hashes.json",
+        "production_report": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-lifecycle-20261018T180216667030Z\\production-report.json",
+        "start_provenance": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-lifecycle-20261018T180216667030Z\\start-provenance.json",
+        "movie": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-lifecycle-20261018T180216667030Z\\continuous.mp4"
+      }
+    },
+    {
+      "label": "cold-restore-after-lifecycle",
+      "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-restore-20261018T180358427814Z",
+      "stage": "restore",
+      "checks": 10,
+      "failures": 0,
+      "runtime_freeze": "042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0",
+      "receipt_sha256": "e33e3651bdb8b13dc066a449e7984f210b920a7583692608574086f771c0a7ba",
+      "verified_artifact_rows": 273,
+      "executed_source_files": 141,
+      "native_frames": 97,
+      "native_raw_bytes": 34311497,
+      "movie_sha256": "c559aa926c19453492fa5df06708e9f93aad152978fda849d9a370d24c23f5ac",
+      "movie_seconds": 3.233333,
+      "canvas": [
+        720,
+        1280
+      ],
+      "end": {
+        "schema": 2,
+        "phase": "playing",
+        "simulation_seconds": 167.200000000024,
+        "kills": 87,
+        "leaks": 0,
+        "refuge": 16,
+        "gold": 1
+      },
+      "source_hashes_sha256": "d925aa68e2bce18d0cfe4c2297e137c79596e98a305c6d29ef439877bbdade31",
+      "production_report_sha256": "379b4abb9bf411c6a60dc2f5b28fad1485d619b698f4c3fa753cfe0b00be358e",
+      "start_provenance_sha256": "f60c97287883a64f3953056342419eb2250a55421a461977b69a859c2b668bee",
+      "executed_harness_commit": "af59a73",
+      "stream_duration_seconds": 3.233333,
+      "source_kind": "exact raw app slots from prior passed production process",
+      "start": {
+        "schema": 2,
+        "phase": "playing",
+        "simulation_seconds": 165.033333333356
+      },
+      "paths": {
+        "receipt": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-restore-20261018T180358427814Z\\receipt.json",
+        "source_hashes": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-restore-20261018T180358427814Z\\source-hashes.json",
+        "production_report": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-restore-20261018T180358427814Z\\production-report.json",
+        "start_provenance": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-restore-20261018T180358427814Z\\start-provenance.json",
+        "movie": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-restore-20261018T180358427814Z\\continuous.mp4"
+      }
+    },
+    {
+      "label": "legacy-retake",
+      "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-legacy-20261018T180929396675Z",
+      "stage": "legacy",
+      "checks": 9,
+      "failures": 0,
+      "runtime_freeze": "042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0",
+      "receipt_sha256": "6a271080dd254cfb0003af019c76e1930b98ba0b9d46489b8b6508172457ba11",
+      "verified_artifact_rows": 380,
+      "executed_source_files": 141,
+      "native_frames": 198,
+      "native_raw_bytes": 72185489,
+      "movie_sha256": "e2d92bb228999b09bda8ee29cef241870e4bb80bcd9017fc5358593c40629e9a",
+      "movie_seconds": 6.6,
+      "canvas": [
+        720,
+        1280
+      ],
+      "end": {
+        "schema": 2,
+        "phase": "ready",
+        "simulation_seconds": 0.0,
+        "kills": 0,
+        "leaks": 0,
+        "refuge": 16,
+        "gold": 0
+      },
+      "source_hashes_sha256": "4d1a45f8e097cc13cd49150237339545dc67cf6606894b1ef920e84dde3f3301",
+      "production_report_sha256": "e8bb71d41cca050daf5693765a1bec7e4592338761e8b6b06b108e822752ddc9",
+      "start_provenance_sha256": "7a3bc7481af8c8dda26381742a6d8a64b4c2892dd709c22cc6ab89681fd08038",
+      "executed_harness_commit": "3e76816",
+      "stream_duration_seconds": 6.6,
+      "source_kind": "accepted genuine app-written historical envelope",
+      "start": {
+        "schema": 1.0,
+        "phase": "playing",
+        "simulation_seconds": 18.2000000000003
+      },
+      "paths": {
+        "receipt": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-legacy-20261018T180929396675Z\\receipt.json",
+        "source_hashes": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-legacy-20261018T180929396675Z\\source-hashes.json",
+        "production_report": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-legacy-20261018T180929396675Z\\production-report.json",
+        "start_provenance": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-legacy-20261018T180929396675Z\\start-provenance.json",
+        "movie": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-legacy-20261018T180929396675Z\\continuous.mp4"
+      }
+    },
+    {
+      "label": "earned-tour",
+      "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-tour-20261018T181046336385Z",
+      "stage": "tour",
+      "checks": 20,
+      "failures": 0,
+      "runtime_freeze": "042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0",
+      "receipt_sha256": "e327564b0e28b2d4718a83b7c8b9b63280043aafed5d22cba4876e2d5185f7f7",
+      "verified_artifact_rows": 471,
+      "executed_source_files": 141,
+      "native_frames": 273,
+      "native_raw_bytes": 87752787,
+      "movie_sha256": "54e083136870e0bcaed158b6f3e453a1b71c9a5072d6014e08c1af6d9c1fd4c8",
+      "movie_seconds": 9.1,
+      "canvas": [
+        720,
+        1280
+      ],
+      "end": {
+        "schema": 2,
+        "phase": "ready",
+        "simulation_seconds": 0.0,
+        "kills": 0,
+        "leaks": 0,
+        "refuge": 16,
+        "gold": 0
+      },
+      "source_hashes_sha256": "4d1a45f8e097cc13cd49150237339545dc67cf6606894b1ef920e84dde3f3301",
+      "production_report_sha256": "1554547e9bbd57503eb8c42da1e6eae63b0622e90133a752a30469e53dd1a9b8",
+      "start_provenance_sha256": "586c32b2bb6f0064f44f56785db1a75aef20e7356742fbd7b2c9622362db4fdd",
+      "executed_harness_commit": "3e76816",
+      "stream_duration_seconds": 9.1,
+      "source_kind": "accepted genuine app-written historical envelope",
+      "start": {
+        "schema": 2,
+        "phase": "victory",
+        "simulation_seconds": 238.016666666748
+      },
+      "paths": {
+        "receipt": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-tour-20261018T181046336385Z\\receipt.json",
+        "source_hashes": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-tour-20261018T181046336385Z\\source-hashes.json",
+        "production_report": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-tour-20261018T181046336385Z\\production-report.json",
+        "start_provenance": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-tour-20261018T181046336385Z\\start-provenance.json",
+        "movie": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-tour-20261018T181046336385Z\\continuous.mp4"
+      }
+    },
+    {
+      "label": "uncapped-host-timing",
+      "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-timing-20261018T181204508893Z",
+      "stage": "timing",
+      "checks": 11,
+      "failures": 0,
+      "runtime_freeze": "042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0",
+      "receipt_sha256": "4c1e84069921e851fb8ce5afbe09bac749c3b58dcb489f50037a9158d30b8ec0",
+      "verified_artifact_rows": 173,
+      "executed_source_files": 141,
+      "native_frames": 0,
+      "native_raw_bytes": 0,
+      "movie_sha256": null,
+      "movie_seconds": 0.0,
+      "canvas": null,
+      "end": {
+        "schema": 2,
+        "phase": "playing",
+        "simulation_seconds": 83.7833333333299,
+        "kills": 41,
+        "leaks": 4,
+        "refuge": 6,
+        "gold": 5
+      },
+      "source_hashes_sha256": "4d1a45f8e097cc13cd49150237339545dc67cf6606894b1ef920e84dde3f3301",
+      "production_report_sha256": "2ff76c33cc4036d4ecae618a35a3dc6e32500724a92b198939e0be1b676ed94d",
+      "start_provenance_sha256": "c9d038bd008bfc04e3fd96806e6f4173bb72c9cd98a7a777fad563b4a9c3bb74",
+      "executed_harness_commit": "3e76816",
+      "stream_duration_seconds": null,
+      "source_kind": "accepted genuine app-written historical envelope",
+      "start": {
+        "schema": 2,
+        "phase": "playing",
+        "simulation_seconds": 43.5666666666655
+      },
+      "paths": {
+        "receipt": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-timing-20261018T181204508893Z\\receipt.json",
+        "source_hashes": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-timing-20261018T181204508893Z\\source-hashes.json",
+        "production_report": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-timing-20261018T181204508893Z\\production-report.json",
+        "start_provenance": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-timing-20261018T181204508893Z\\start-provenance.json"
+      }
+    },
+    {
+      "label": "actual-ram-gap",
+      "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-ram-gap-20261018T181416554051Z",
+      "stage": "ram-gap",
+      "checks": 14,
+      "failures": 0,
+      "runtime_freeze": "042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0",
+      "receipt_sha256": "09589f0c264bc27b60fdf96b6e51e682ae5db0f3774b9d32c01c5cb4d545c8a7",
+      "verified_artifact_rows": 1148,
+      "executed_source_files": 141,
+      "native_frames": 968,
+      "native_raw_bytes": 391143506,
+      "movie_sha256": "52ede12c22f17d69a4958970cd832504b0d3838a0e775fe5d8afbcb845758bea",
+      "movie_seconds": 32.266667,
+      "canvas": [
+        720,
+        1280
+      ],
+      "end": {
+        "schema": 2,
+        "phase": "victory",
+        "simulation_seconds": 157.300000000017,
+        "kills": 77,
+        "leaks": 0,
+        "refuge": 16,
+        "gold": 20
+      },
+      "source_hashes_sha256": "4d1a45f8e097cc13cd49150237339545dc67cf6606894b1ef920e84dde3f3301",
+      "production_report_sha256": "87a17745a12c30a7473feab19e98d662b93c9b0cbce5c294a816ad9854d7b4db",
+      "start_provenance_sha256": "f8da9515b9d32d9d95cff62c13d2a26caf3d4d08b2013238d354df71c1514bfb",
+      "executed_harness_commit": "3e76816",
+      "stream_duration_seconds": 32.266667,
+      "source_kind": "accepted genuine app-written historical envelope",
+      "start": {
+        "schema": 2,
+        "phase": "playing",
+        "simulation_seconds": 79.9666666666634
+      },
+      "paths": {
+        "receipt": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-ram-gap-20261018T181416554051Z\\receipt.json",
+        "source_hashes": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-ram-gap-20261018T181416554051Z\\source-hashes.json",
+        "production_report": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-ram-gap-20261018T181416554051Z\\production-report.json",
+        "start_provenance": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-ram-gap-20261018T181416554051Z\\start-provenance.json",
+        "movie": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-ram-gap-20261018T181416554051Z\\continuous.mp4"
+      }
+    }
+  ],
+  "passed_invocations": 10,
+  "new_native_movies": 9,
+  "new_native_frames": 4279,
+  "verified_artifact_rows": 6092,
+  "batch_audit": {
+    "path": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-batch-verified-20261018T181837423840Z.json",
+    "sha256": "6ea76694d609b4316b7fd4c3c41b2e91b2a637f02698b55d8343323ce04e84c6"
+  },
+  "historical_opening": {
+    "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-opening-20261018T172122880462Z",
+    "source_hashes_sha256": "8e7c7fe097936255724cd728fd99d28956426adb49ecc8fb1ca11e066628014e",
+    "receipt_sha256": "34adf3d524d3b98b2bfbb023383d5ae16d7e2beb3e9da36e25304c1e897237e7",
+    "movie_sha256": "b980627353127365eb4591836a3681be01d97dc44613e57202b830b36305ff8c",
+    "stream_duration_seconds": 60.266667,
+    "frames": 1808,
+    "runtime_freeze": "576d4af9e7a49eefc65b1fa9faa47d185b9415ac",
+    "policy": "Retained historical60s opening at576d4af. No replay. New-runtime short UI/cold closure uses its exact genuine final raw slots."
+  },
+  "failed_first_legacy": {
+    "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-legacy-20261018T180510376893Z",
+    "passed": false,
+    "source_hashes_sha256": "d925aa68e2bce18d0cfe4c2297e137c79596e98a305c6d29ef439877bbdade31",
+    "execution_log_sha256": "f02c70235aa11cb70c6f15f5cfa843b43cf0914a3b0bdd82290f2359f2fde819",
+    "receipt": null,
+    "movie": "Partial failed evidence only; excluded even if encoded movie exists.",
+    "retained_frames": 3366,
+    "failure": "Campaign click helper accessed journey_list absent from legacy main;180s timeout; original runner then failed on absent final inventory before writing a receipt.",
+    "audit": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\legacy-failed-run-audit-20261018T180928348826Z.json",
+    "retake": "production-legacy-20261018T180929396675Z"
+  },
+  "harness_delta": {
+    "commit": "3e76816f72082baee0eb8667e92e661c31658f21",
+    "runtime_changed": false,
+    "changes": [
+      "tests/campaign_journey.gd: access Journey scrolling controls only for schema2 campaign scenes.",
+      "tests/run_production.py: missing final report/inventory now retains a failed receipt and skips movie processing instead of crashing."
+    ],
+    "scope": "First six passed invocations executed af59a73 harness; legacy retake/tour/timing/Ram use3e76816. All have identical clean042d7c2 runtime/art. Retake validates actual legacy flow; no additional full suite or campaign."
+  },
+  "new_runtime_coverage": {
+    "sources": [
+      "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-restore-20261018T175458240947Z",
+      "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-heavy-20261018T175629952989Z",
+      "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-later-20261018T175843497815Z",
+      "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-ram-gap-20261018T181416554051Z"
+    ],
+    "roles": {
+      "regent": {
+        "live_active_frames": 750,
+        "longest_single_actor_live_frames": 750,
+        "runs": [
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-later-20261018T175843497815Z",
+            "stage": "later",
+            "max_contiguous_frames": 750,
+            "seconds_at_fixed30": 25.0
+          }
+        ]
+      },
+      "citizen": {
+        "live_active_frames": 3236,
+        "longest_single_actor_live_frames": 1036,
+        "runs": [
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-restore-20261018T175458240947Z",
+            "stage": "restore",
+            "max_contiguous_frames": 245,
+            "seconds_at_fixed30": 8.166666666666666
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-heavy-20261018T175629952989Z",
+            "stage": "heavy",
+            "max_contiguous_frames": 1036,
+            "seconds_at_fixed30": 34.53333333333333
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-later-20261018T175843497815Z",
+            "stage": "later",
+            "max_contiguous_frames": 990,
+            "seconds_at_fixed30": 33.0
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-ram-gap-20261018T181416554051Z",
+            "stage": "ram-gap",
+            "max_contiguous_frames": 965,
+            "seconds_at_fixed30": 32.166666666666664
+          }
+        ]
+      },
+      "shade": {
+        "live_active_frames": 459,
+        "longest_single_actor_live_frames": 190,
+        "runs": [
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-heavy-20261018T175629952989Z",
+            "stage": "heavy",
+            "max_contiguous_frames": 42,
+            "seconds_at_fixed30": 1.4
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-later-20261018T175843497815Z",
+            "stage": "later",
+            "max_contiguous_frames": 190,
+            "seconds_at_fixed30": 6.333333333333333
+          }
+        ]
+      },
+      "mender": {
+        "live_active_frames": 427,
+        "longest_single_actor_live_frames": 76,
+        "runs": [
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-heavy-20261018T175629952989Z",
+            "stage": "heavy",
+            "max_contiguous_frames": 45,
+            "seconds_at_fixed30": 1.5
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-later-20261018T175843497815Z",
+            "stage": "later",
+            "max_contiguous_frames": 76,
+            "seconds_at_fixed30": 2.533333333333333
+          }
+        ]
+      },
+      "defender": {
+        "live_active_frames": 3236,
+        "longest_single_actor_live_frames": 1036,
+        "runs": [
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-restore-20261018T175458240947Z",
+            "stage": "restore",
+            "max_contiguous_frames": 245,
+            "seconds_at_fixed30": 8.166666666666666
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-heavy-20261018T175629952989Z",
+            "stage": "heavy",
+            "max_contiguous_frames": 1036,
+            "seconds_at_fixed30": 34.53333333333333
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-later-20261018T175843497815Z",
+            "stage": "later",
+            "max_contiguous_frames": 990,
+            "seconds_at_fixed30": 33.0
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-ram-gap-20261018T181416554051Z",
+            "stage": "ram-gap",
+            "max_contiguous_frames": 965,
+            "seconds_at_fixed30": 32.166666666666664
+          }
+        ]
+      },
+      "ram": {
+        "live_active_frames": 604,
+        "longest_single_actor_live_frames": 604,
+        "runs": [
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-ram-gap-20261018T181416554051Z",
+            "stage": "ram-gap",
+            "max_contiguous_frames": 604,
+            "seconds_at_fixed30": 20.133333333333333
+          }
+        ]
+      },
+      "commander": {
+        "live_active_frames": 3236,
+        "longest_single_actor_live_frames": 1036,
+        "runs": [
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-restore-20261018T175458240947Z",
+            "stage": "restore",
+            "max_contiguous_frames": 245,
+            "seconds_at_fixed30": 8.166666666666666
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-heavy-20261018T175629952989Z",
+            "stage": "heavy",
+            "max_contiguous_frames": 1036,
+            "seconds_at_fixed30": 34.53333333333333
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-later-20261018T175843497815Z",
+            "stage": "later",
+            "max_contiguous_frames": 990,
+            "seconds_at_fixed30": 33.0
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-ram-gap-20261018T181416554051Z",
+            "stage": "ram-gap",
+            "max_contiguous_frames": 965,
+            "seconds_at_fixed30": 32.166666666666664
+          }
+        ]
+      },
+      "swarm": {
+        "live_active_frames": 265,
+        "longest_single_actor_live_frames": 142,
+        "runs": [
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-heavy-20261018T175629952989Z",
+            "stage": "heavy",
+            "max_contiguous_frames": 23,
+            "seconds_at_fixed30": 0.7666666666666667
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-later-20261018T175843497815Z",
+            "stage": "later",
+            "max_contiguous_frames": 142,
+            "seconds_at_fixed30": 4.733333333333333
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-ram-gap-20261018T181416554051Z",
+            "stage": "ram-gap",
+            "max_contiguous_frames": 39,
+            "seconds_at_fixed30": 1.3
+          }
+        ]
+      },
+      "runner": {
+        "live_active_frames": 476,
+        "longest_single_actor_live_frames": 86,
+        "runs": [
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-restore-20261018T175458240947Z",
+            "stage": "restore",
+            "max_contiguous_frames": 86,
+            "seconds_at_fixed30": 2.8666666666666667
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-heavy-20261018T175629952989Z",
+            "stage": "heavy",
+            "max_contiguous_frames": 17,
+            "seconds_at_fixed30": 0.5666666666666667
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-later-20261018T175843497815Z",
+            "stage": "later",
+            "max_contiguous_frames": 48,
+            "seconds_at_fixed30": 1.6
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-ram-gap-20261018T181416554051Z",
+            "stage": "ram-gap",
+            "max_contiguous_frames": 39,
+            "seconds_at_fixed30": 1.3
+          }
+        ]
+      },
+      "matriarch": {
+        "live_active_frames": 585,
+        "longest_single_actor_live_frames": 585,
+        "runs": [
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-heavy-20261018T175629952989Z",
+            "stage": "heavy",
+            "max_contiguous_frames": 585,
+            "seconds_at_fixed30": 19.5
+          }
+        ]
+      },
+      "armor": {
+        "live_active_frames": 977,
+        "longest_single_actor_live_frames": 179,
+        "runs": [
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-heavy-20261018T175629952989Z",
+            "stage": "heavy",
+            "max_contiguous_frames": 161,
+            "seconds_at_fixed30": 5.366666666666666
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-later-20261018T175843497815Z",
+            "stage": "later",
+            "max_contiguous_frames": 179,
+            "seconds_at_fixed30": 5.966666666666667
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-ram-gap-20261018T181416554051Z",
+            "stage": "ram-gap",
+            "max_contiguous_frames": 121,
+            "seconds_at_fixed30": 4.033333333333333
+          }
+        ]
+      },
+      "raider": {
+        "live_active_frames": 302,
+        "longest_single_actor_live_frames": 121,
+        "runs": [
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-restore-20261018T175458240947Z",
+            "stage": "restore",
+            "max_contiguous_frames": 121,
+            "seconds_at_fixed30": 4.033333333333333
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-heavy-20261018T175629952989Z",
+            "stage": "heavy",
+            "max_contiguous_frames": 24,
+            "seconds_at_fixed30": 0.8
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-later-20261018T175843497815Z",
+            "stage": "later",
+            "max_contiguous_frames": 51,
+            "seconds_at_fixed30": 1.7
+          },
+          {
+            "run": "C:\\projects\\active\\_worktrees\\games-hearthguard-20261018\\android-games\\hearthguard\\.artifacts\\production-ram-gap-20261018T181416554051Z",
+            "stage": "ram-gap",
+            "max_contiguous_frames": 71,
+            "seconds_at_fixed30": 2.3666666666666667
+          }
+        ]
+      }
+    },
+    "active_regions": [
+      0,
+      1,
+      2
+    ],
+    "roles_not_observed_alive": [],
+    "roles_below_half_second_single_actor": [],
+    "full_opening_replayed": false,
+    "limits": "Projected model/ID exposure is a review index, not independent visual acceptance. Ram14check clip was authorized only after primary actual inventory proved Ram missing."
+  },
+  "timing": {
+    "all_frames": {
+      "draw_calls_max": 1051,
+      "enemies_max": 14,
+      "frames": 18712,
+      "median_ms": 1.803,
+      "nodes_max": 847,
+      "over_16_667_ms": 23,
+      "over_33_333_ms": 0,
+      "p95_ms": 3.488,
+      "p99_ms": 4.467,
+      "primitives_max": 228596,
+      "seconds": 38.527002
+    },
+    "heavy_frames": {
+      "draw_calls_max": 1051,
+      "enemies_max": 14,
+      "frames": 13394,
+      "median_ms": 1.843,
+      "nodes_max": 842,
+      "over_16_667_ms": 17,
+      "over_33_333_ms": 0,
+      "p95_ms": 3.539,
+      "p99_ms": 4.511,
+      "primitives_max": 228596,
+      "seconds": 28.128648
+    },
+    "dropped": 0,
+    "warmup_frames": 769,
+    "excluded_frames": 0,
+    "percentiles_independently_recomputed": true,
+    "metadata": {
+      "capture": "No movie/fixed-fps/PNG/framebuffer readback during measured interval; metadata dimensions only",
+      "cpu": "AMD Ryzen 9 7950X3D 16-Core Processor",
+      "engine": {
+        "build": "official",
+        "hash": "ed1daf0bf001b61586d9930840f2f1394092c079",
+        "hex": 263938,
+        "major": 4,
+        "minor": 7,
+        "patch": 2,
+        "status": "stable",
+        "string": "4.7.2-stable (official)",
+        "timestamp": 0
+      },
+      "framebuffer_pixels": "(720.0, 1280.0)",
+      "gpu": "NVIDIA GeForce RTX 5070 Ti",
+      "gpu_driver": "3.3.0 NVIDIA 610.88",
+      "gpu_vendor": "NVIDIA",
+      "logical_processors": 32,
+      "max_fps": 0,
+      "msaa_3d": 0,
+      "os": "Windows",
+      "os_version": "10.0.26100",
+      "physics_ticks_per_second": 60,
+      "renderer": "gl_compatibility",
+      "scaling_3d_scale": 1.0,
+      "screen_space_aa": 0,
+      "settings": {
+        "reduced_effects": false,
+        "sound": true
+      },
+      "started_unix": 1792347146.456,
+      "time_scale": 1.0,
+      "visible_rect": "(720.0, 1280.0)",
+      "vsync": 0,
+      "window_pixels": "(720, 1280)"
+    },
+    "actor_reuses_lower_bound": 12,
+    "effect_reuses_lower_bound": 143
+  },
+  "gpu_release": {
+    "all_owned_synchronous_godot_children_returned_zero": true,
+    "last_native_writes_complete": true,
+    "no_render_after_release": true,
+    "process_query_limit": "Get-Process returned0 during active legacy capture in this sandbox; not reliable release proof. All owned import/parse/render subprocess exits and final runner completion establish own-work release."
+  },
+  "limits": [
+    "Projected coverage and selected original PNG review are not independent normal1x motion/art acceptance.",
+    "Unpaced host submission timing is not displayed FPS, GPU timestamp, phone performance, maximum possible density or human fun.",
+    "Lifecycle large-canvas originals use declared1:1 padding; two inspected previews were downscaled by tool.",
+    "No full campaign replay, fabricated progression, export/sign, Android install, ADB or clipboard work.",
+    "Actual video durations are preserved separately from scene simulation times. Retry/legacy/tour change scene or timebase; end-start is not an implied passage duration.",
+    "Independent Astra review of actual clips, especially physical Pad5 label/control association, remains pending.",
+    "No further rendering or suites after this accepted batch."
+  ]
+}

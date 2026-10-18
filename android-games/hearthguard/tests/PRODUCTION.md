@@ -166,3 +166,11 @@ bounded correction. Rendering still requires the coordinator's explicit grant.
 Current production-plan runtime_freeze is042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0,
 the separate clean circular-control/label-clearance commit. Candidate metadata
 continues to be0.3.0/code3; no later render has yet validated the changed UI.
+
+Completed authorized results now live in
+[PRODUCTION_RESULTS_20261018.md](PRODUCTION_RESULTS_20261018.md), with the explicit
+[accepted-run index](production-accepted-runs-20261018.json). The short genuine
+cold UI closure and planned production batch are captured on042d7c2; independent
+visual review is pending. GPU is released and no additional captures/suites are
+authorized by this handoff. Helper-only3e76816 fixes legacy Journey-control
+lookup and failed-passage receipt handling; it does not change the runtime.

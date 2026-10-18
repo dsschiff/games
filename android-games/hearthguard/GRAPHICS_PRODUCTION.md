@@ -212,3 +212,19 @@ The following metadata-only pin binds production-plan.json.runtime_freeze to
 that commit; it leaves config/version0.3.0 and export version0.3.0/code3 intact.
 The old opening receipt is immutable historical evidence. Future heavy/later
 and short UI closure must validate the042d7c2 runtime before execution.
+
+## Authorized production batch complete; GPU released
+
+[The complete handoff](tests/PRODUCTION_RESULTS_20261018.md) and
+[explicit accepted-run index](tests/production-accepted-runs-20261018.json) bind
+all source/receipt/movie hashes, actual durations, runtime and helper revisions.
+Ten invocations pass: nine native movies totaling4279frames and separate uncapped
+host timing. All6092 receipt artifact rows were independently hash/size verified.
+New-runtime observations cover12/12 roles and3/3 regions; these are review
+denominators, not independent all-model visual acceptance. The old60s opening
+remains historical; the new short genuine-slot cold closure supports the
+builder's control correction pending independent physical-association/readability
+review. One failed legacy capture stays excluded and retained; helper-only
+3e76816 fixes its cause. Runtime/art remain clean042d7c2, metadata0.3.0/code3.
+GPU was released before final CPU verification. No more captures/suites/campaign
+or native/export work is performed here; root owns review and the next build.
