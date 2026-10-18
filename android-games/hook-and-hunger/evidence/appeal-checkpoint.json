@@ -1,0 +1,281 @@
+{
+  "schema_version": 1,
+  "game": "hook-and-hunger",
+  "milestone": "first-appeal-purchase-cycle",
+  "base_commit": "790f722bdb2731c1ea82a5ae6b0b92e275a4e061",
+  "branch": "codex/hook-and-hunger",
+  "created_utc": "2026-10-18T00:49:49.696615+00:00",
+  "godot": "4.7.2.stable.official.ed1daf0bf",
+  "scope": "First original two-pen slice, not full campaign or phone acceptance",
+  "source_record_sha256": "7af89fc3b5aaf0421795ba73f7effef1fd4e86ba74a86983e905cf143e340299",
+  "source_files": [
+    {
+      "path": "export_presets.cfg",
+      "bytes": 507,
+      "sha256": "fd08edc9fd84cb2193122d8390a92516918fb7f9592946f240a47eab8a22b014",
+      "normalized_lf_sha256": "fd08edc9fd84cb2193122d8390a92516918fb7f9592946f240a47eab8a22b014"
+    },
+    {
+      "path": "icon.svg",
+      "bytes": 452,
+      "sha256": "b59972edf091c65c1176192b21cf655106e9f4a56ea0636c8ec7bdebff79c034",
+      "normalized_lf_sha256": "b59972edf091c65c1176192b21cf655106e9f4a56ea0636c8ec7bdebff79c034"
+    },
+    {
+      "path": "icon.svg.import",
+      "bytes": 1013,
+      "sha256": "0704f19cbe370da4ae0adc41e214c5e172bee5a7eeefebc5cefc4c5d06d47b75",
+      "normalized_lf_sha256": "0704f19cbe370da4ae0adc41e214c5e172bee5a7eeefebc5cefc4c5d06d47b75"
+    },
+    {
+      "path": "main.tscn",
+      "bytes": 168,
+      "sha256": "f292ddda8d1ef52f9de3d096dafbf6e07aaff69ce89cfeedb2d7846063fccb11",
+      "normalized_lf_sha256": "f292ddda8d1ef52f9de3d096dafbf6e07aaff69ce89cfeedb2d7846063fccb11"
+    },
+    {
+      "path": "project.godot",
+      "bytes": 704,
+      "sha256": "3b4ad93f139c2d9d8bc4a4404d75a4eee50473f1492f8c71e9f7f565ddd65f00",
+      "normalized_lf_sha256": "3b4ad93f139c2d9d8bc4a4404d75a4eee50473f1492f8c71e9f7f565ddd65f00"
+    },
+    {
+      "path": "scripts/art.gd",
+      "bytes": 4266,
+      "sha256": "cf77c441b0697c45187d76f8024a27c04f7bc31cf65761eee2e228bc4bbba2f3",
+      "normalized_lf_sha256": "cf77c441b0697c45187d76f8024a27c04f7bc31cf65761eee2e228bc4bbba2f3"
+    },
+    {
+      "path": "scripts/art.gd.uid",
+      "bytes": 20,
+      "sha256": "6ec2f05a598251944972e523db5d4c8207a2026fedff3c6645bfa54f752f785e",
+      "normalized_lf_sha256": "6ec2f05a598251944972e523db5d4c8207a2026fedff3c6645bfa54f752f785e"
+    },
+    {
+      "path": "scripts/main.gd",
+      "bytes": 18837,
+      "sha256": "d4a84066b79c5c410a50c9e4b39595d02ec0eef905b0f5181976acd3f2c6f1f1",
+      "normalized_lf_sha256": "d4a84066b79c5c410a50c9e4b39595d02ec0eef905b0f5181976acd3f2c6f1f1"
+    },
+    {
+      "path": "scripts/main.gd.uid",
+      "bytes": 20,
+      "sha256": "eb31d1e55d02f62c62b3b95183e688ac37be72a3ef4f63aa8be42b44b60ebf50",
+      "normalized_lf_sha256": "eb31d1e55d02f62c62b3b95183e688ac37be72a3ef4f63aa8be42b44b60ebf50"
+    },
+    {
+      "path": "scripts/rules.gd",
+      "bytes": 11388,
+      "sha256": "d78c0958f203d6b9ef0892f69abd5955c3dca4e7bfe7a00d255e2027b8db2f73",
+      "normalized_lf_sha256": "d78c0958f203d6b9ef0892f69abd5955c3dca4e7bfe7a00d255e2027b8db2f73"
+    },
+    {
+      "path": "scripts/rules.gd.uid",
+      "bytes": 20,
+      "sha256": "e7c20b049e53f54af4b2e9bb72ded10ba4b4cb665fcd01a21dda535b864c5efd",
+      "normalized_lf_sha256": "e7c20b049e53f54af4b2e9bb72ded10ba4b4cb665fcd01a21dda535b864c5efd"
+    },
+    {
+      "path": "scripts/save_files.gd",
+      "bytes": 584,
+      "sha256": "98f3129008f8cc5d55d04e9dffdce435b8789e4a0e42c0412da3099586e534b7",
+      "normalized_lf_sha256": "98f3129008f8cc5d55d04e9dffdce435b8789e4a0e42c0412da3099586e534b7"
+    },
+    {
+      "path": "scripts/save_files.gd.uid",
+      "bytes": 19,
+      "sha256": "c4f7f54218ff262fdcd88ab704783ca9ca8e42599b4e1bbcd8e74bfee8f36afd",
+      "normalized_lf_sha256": "c4f7f54218ff262fdcd88ab704783ca9ca8e42599b4e1bbcd8e74bfee8f36afd"
+    },
+    {
+      "path": "scripts/save_store.gd",
+      "bytes": 2795,
+      "sha256": "62e53ae08c840e988339a01ea49c9faf353af9b03bbc56cac240587234fabdea",
+      "normalized_lf_sha256": "62e53ae08c840e988339a01ea49c9faf353af9b03bbc56cac240587234fabdea"
+    },
+    {
+      "path": "scripts/save_store.gd.uid",
+      "bytes": 20,
+      "sha256": "82b908d6446554591cccf68c0637ecb02db057288b17df29fff2b46f15e32279",
+      "normalized_lf_sha256": "82b908d6446554591cccf68c0637ecb02db057288b17df29fff2b46f15e32279"
+    },
+    {
+      "path": "scripts/stick.gd",
+      "bytes": 372,
+      "sha256": "d2593ce7cb8267e6adb46e7a40287872d22a529698771ff3e057ec15db7989ee",
+      "normalized_lf_sha256": "d2593ce7cb8267e6adb46e7a40287872d22a529698771ff3e057ec15db7989ee"
+    },
+    {
+      "path": "scripts/stick.gd.uid",
+      "bytes": 20,
+      "sha256": "ded97ec939ada93bebcca78d33239f764298b3e6448e95771b74e7c44ef1d9b1",
+      "normalized_lf_sha256": "ded97ec939ada93bebcca78d33239f764298b3e6448e95771b74e7c44ef1d9b1"
+    },
+    {
+      "path": "tests/fault_files.gd",
+      "bytes": 496,
+      "sha256": "e9f04fd6c5149fbf2b598776522ee811de41208b1375a8d91bb1a1bdf8991b6f",
+      "normalized_lf_sha256": "e9f04fd6c5149fbf2b598776522ee811de41208b1375a8d91bb1a1bdf8991b6f"
+    },
+    {
+      "path": "tests/fault_files.gd.uid",
+      "bytes": 19,
+      "sha256": "2c5a6bd1bde714520474f8f23c5168df285979bd6199b65bb7d1dc6b17dcaa5a",
+      "normalized_lf_sha256": "2c5a6bd1bde714520474f8f23c5168df285979bd6199b65bb7d1dc6b17dcaa5a"
+    },
+    {
+      "path": "tests/playthrough.gd",
+      "bytes": 9930,
+      "sha256": "c5f03b36c9874fb366bb79df279ac2b4109fe495f3d2af2b7bc0fe28307a1770",
+      "normalized_lf_sha256": "c5f03b36c9874fb366bb79df279ac2b4109fe495f3d2af2b7bc0fe28307a1770"
+    },
+    {
+      "path": "tests/playthrough.gd.uid",
+      "bytes": 20,
+      "sha256": "663f4fa6abca438fe1d4542924cca652866745002222b78e75f865565dc66553",
+      "normalized_lf_sha256": "663f4fa6abca438fe1d4542924cca652866745002222b78e75f865565dc66553"
+    },
+    {
+      "path": "tests/run_tests.gd",
+      "bytes": 6710,
+      "sha256": "22708c49d5c5d33d74d56058de31a1c3700f2c767c8254e5a318aaf8eaf18bfb",
+      "normalized_lf_sha256": "84ff39bce5fda672b194e87396fb3e39e087a5456c3bebf0be9a953b7fe04067"
+    },
+    {
+      "path": "tests/run_tests.gd.uid",
+      "bytes": 20,
+      "sha256": "1193a783c33e2cb8d7fecc877528780facd598ca29bf15120d4423c5152e3d6a",
+      "normalized_lf_sha256": "1193a783c33e2cb8d7fecc877528780facd598ca29bf15120d4423c5152e3d6a"
+    }
+  ],
+  "tests": {
+    "rules_faults": 57,
+    "headless_actual_input": 18,
+    "rendered_actual_input": 18,
+    "failures": 0
+  },
+  "capture": {
+    "method": "Godot --write-movie actual-input-full.avi --fixed-fps 60 --script tests/playthrough.gd",
+    "video": "450x800,60fps engine movie; PNGs preserve larger viewport and final unfold aspect",
+    "short_clip": "purchase-cycle-28s.mp4",
+    "short_clip_edit": "Unretimed source intervals [3,20] and [37,48.25] seconds concatenated, encoded30fps H264/AAC; about28.25seconds",
+    "raw_input": "raw-input-events.json records actual touch/GUI mouse events",
+    "report": "input-report.json contains actual milestone states and checks",
+    "source_drift": "Runtime/test code unchanged between final rendered capture and final headless checks; editor import then finalized test UID files",
+    "performance_limit": "Fixed-rate NVIDIA desktop capture is not measured phone FPS, audible output or actual finger/folding evidence"
+  },
+  "artifacts": [
+    {
+      "path": ".artifacts/appeal-final/01-dock.png",
+      "bytes": 146924,
+      "sha256": "4c98281aaa68efb5e7b09b06174bcdc4b08f5071a9955f45128bdd7db78daddd"
+    },
+    {
+      "path": ".artifacts/appeal-final/02-wounded-shoal.png",
+      "bytes": 176878,
+      "sha256": "8d702b5f7361032d8c0c0e3bdca3352c22eb1332f6cf0747eb04887dade80dc7"
+    },
+    {
+      "path": ".artifacts/appeal-final/04-chain-extension.png",
+      "bytes": 174021,
+      "sha256": "ff87dcd66768c16a716327a754e9292701fd84555bcd2a6b9cc118dd01593666"
+    },
+    {
+      "path": ".artifacts/appeal-final/05-salvage-drop.png",
+      "bytes": 191707,
+      "sha256": "7a02912ec6f2fd28cbc460fb4b1b3ccb3c1592763c6a5372049637abd357b273"
+    },
+    {
+      "path": ".artifacts/appeal-final/06-before-purchase.png",
+      "bytes": 141509,
+      "sha256": "7d9594a5b6d51d39775ab67bf6299ea20ee3e5541cf3426cfef294330129635a"
+    },
+    {
+      "path": ".artifacts/appeal-final/07-upgrade-payoff.png",
+      "bytes": 134395,
+      "sha256": "872fe2b13c8ac7a470afa1a6bf2ee4bd5f97a0cd2ac375cdba4e542b9da413a9"
+    },
+    {
+      "path": ".artifacts/appeal-final/08-natural-defeat.png",
+      "bytes": 109775,
+      "sha256": "bfa680a0cd396bd8cacfcd3bd460e227f79f653bf53bb2aafac2e526b2b76875"
+    },
+    {
+      "path": ".artifacts/appeal-final/09-retry-upgraded.png",
+      "bytes": 127715,
+      "sha256": "51536dd29ab03eb0c12ea4cb3985b5440d6c0ec7f8f929f2b4d24f557eaf4a67"
+    },
+    {
+      "path": ".artifacts/appeal-final/10-stronger-pen.png",
+      "bytes": 146402,
+      "sha256": "fde5248d55c16ae47e0034eb30f4fbabff8c425b44d51bcfdaba37072553c38e"
+    },
+    {
+      "path": ".artifacts/appeal-final/11-natural-victory.png",
+      "bytes": 104716,
+      "sha256": "7a81bb815af13f7a46c964c6a938d4a49132df3099d3d2f34a561f821e3fda16"
+    },
+    {
+      "path": ".artifacts/appeal-final/12-unfolded-victory.png",
+      "bytes": 130017,
+      "sha256": "43b35ec8fc01c6a87ad76e360038e7f2cfb271bbfc5664c7fe8b7a20854eabbc"
+    },
+    {
+      "path": ".artifacts/appeal-final/actual-input-full.avi",
+      "bytes": 118358796,
+      "sha256": "68f5cedea3e4bdde673af0c8b8931c635584ce1f9b7d1a2bf060719b6f7944fb"
+    },
+    {
+      "path": ".artifacts/appeal-final/headless-input.log",
+      "bytes": 1092,
+      "sha256": "938403742613857e96378e6f986a90b95d73e6b529d8ee89d0d39c0a9d27e495"
+    },
+    {
+      "path": ".artifacts/appeal-final/input-report.json",
+      "bytes": 23108,
+      "sha256": "ac5c9593d4252eff0a19a07a10d35fdb96f480a0ae665714396b26ba0310fe27"
+    },
+    {
+      "path": ".artifacts/appeal-final/motion-contact-sheet.png",
+      "bytes": 437410,
+      "sha256": "b3a43ee0cb272a6f5645fc84c7ab14c994fe709abadafd72db3ec59c8419f85e"
+    },
+    {
+      "path": ".artifacts/appeal-final/purchase-cycle-28s.mp4",
+      "bytes": 2753937,
+      "sha256": "27c1382c533e9e6ddff6ef30d450c52b677eb7e35a8fc86c445d648b1234d8d8"
+    },
+    {
+      "path": ".artifacts/appeal-final/raw-input-events.json",
+      "bytes": 204091,
+      "sha256": "d0427a53e61e4846d6b02e1a310929666bf68177bb792b49d456e2a448f844c0"
+    },
+    {
+      "path": ".artifacts/appeal-final/render-input.log",
+      "bytes": 1856,
+      "sha256": "75d6261d0ac2a58e58aded4edfbf06454f2fa50d9e1bbb6bca613b77cb46981f"
+    },
+    {
+      "path": ".artifacts/appeal-final/rules.log",
+      "bytes": 132,
+      "sha256": "5ca0d8aa422e4a1f8366f036e38678b3dcb7fe7800db7aa35560c0137450f690"
+    },
+    {
+      "path": ".artifacts/appeal-final/source-binding.json",
+      "bytes": 6241,
+      "sha256": "1b373c730230686a97c1876c7ed721d1eca83d6d7463ca4c79d8a9cbaaa78093"
+    }
+  ],
+  "review_request": [
+    "Appeal and original art/control readability",
+    "Movement -> visible chain extension/contact -> salvage -> larger weapon/power/full heal -> stronger gate/boss fidelity",
+    "Windup/positioning and reach payoff; no decorative-rope survivor substitution",
+    "Save/retry economy and failed-import semantics"
+  ],
+  "outstanding": [
+    "Independent Astra appeal/fidelity review",
+    "Complete meaningful30-60minute campaign and replay after review",
+    "Coordinator Android export/offline touch/lifecycle/update checks",
+    "Physical Fold7 touch/cover/unfold/folding/sound/performance and human fun/pacing"
+  ]
+}

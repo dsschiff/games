@@ -1,0 +1,11 @@
+{
+  "game": "hook-and-hunger",
+  "milestone": "first-playable-purchase-cycle",
+  "implemented": "Two-pen original 3D slice: chain contact, salvage, power purchase/full heal, gate, boss, natural win/loss/Retry, settings and checked local saves/export/import",
+  "automatically_verified": "57 rules/fault checks and 18 actual-input checks; rendered evidence indexed separately",
+  "independent_appeal_review": "requested-at-scoped-checkpoint",
+  "full_campaign": "not-yet-expanded",
+  "android": "coordinator-export-pending",
+  "phone_tested": false,
+  "runtime_source": "frozen-for-first-appeal-review"
+}
