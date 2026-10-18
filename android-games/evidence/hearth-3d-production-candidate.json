@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "status": "production_batch_complete_independent_visual_review_active_signed_candidate_built_native_pending",
+  "worker_commit": "1e117a62d170915710a2bf6a7a42b762d2c694b6",
+  "production_index_commit": "2b54d75e2325b0a4493e12a56c7bdbce3acd35e1",
+  "runtime_freeze": "042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0",
+  "production_integration_commit": "b974ba283b9106b3e8ca381268b274c91bca9ad2",
+  "handoff_integration_commit": "3a28329",
+  "production_index": "android-games/hearthguard/tests/production-accepted-runs-20261018.json",
+  "preservation": {
+    "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\hearth-production-2b54d75",
+    "files": 392,
+    "bytes": 89205767,
+    "receipt_sha256": "4105a410a611f7ac5d0f9f3f73cb64d767a8a6490dd79eed13f344130acaf719"
+  },
+  "runtime_binding": "98 frozen worker raw files exact; root GLBs exact and declared text line ending equivalence only",
+  "opening": "Historical576d4af with old floating square control;042 correction shown in short actual cold-restore passage; failed first legacy retained and excluded",
+  "all_role_coverage": "12live role IDs/3regions observed; does not establish pixel/motion acceptance",
+  "candidate_build": {
+    "canonical_path": "C:\\projects\\active\\games\\.artifacts\\hearthguard\\20261018T182945982997Z\\hearthguard.apk",
+    "version": "0.3.0",
+    "code": 3,
+    "bytes": 59073994,
+    "sha256": "d2cadff5f81074bccfc88954799e23eeb39546e6c873e1bcf5e9891e1a088455",
+    "build_git_revision": "b974ba283b9106b3e8ca381268b274c91bca9ad2",
+    "clean_source": true,
+    "source_unchanged": true,
+    "signature_verified": true,
+    "permissions": [],
+    "build_preservation_sha256": "c97ff536d6917afa284468808095466d4a54bae9254930fa1f07854efe48fefe",
+    "installed": false,
+    "delivered": false
+  },
+  "native_status": "First code2 inspection stopped because emulator-5554 not found; no install or launch occurred. ADB no devices; no emulator process. Root will restart existing persistent AVD after Astra releases GPU.",
+  "remaining": [
+    "Astra full normal1x visual review and actual Pad5 association",
+    "Actual signed2to3 whole-save preservation/native controls/transfer/Back/resize/lifecycle/cold",
+    "Private delivery bundle and final native review"
+  ],
+  "physical_testing": "deferred_by_user"
+}
