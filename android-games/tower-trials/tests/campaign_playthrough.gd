@@ -1,0 +1,154 @@
+extends "res://tests/input_base.gd"
+const Content = preload("res://scripts/content.gd")
+
+func _initialize() -> void:
+	root.size = Vector2i(600, 1066)
+	rendered = DisplayServer.get_name() != "headless"
+	folder = "res://.artifacts/campaign/" + ("rendered" if rendered else "headless")
+	test_path = "user://tower-campaign-v2.json"
+	call_deferred("run")
+
+func mistake(actions: Array, label: String, undo: bool = false) -> void:
+	for id in actions:
+		await enter(id)
+	check(game.state.status == "lost", "Natural mistake reaches defeat: " + label)
+	await frame("mistake-" + label)
+	await action("undo" if undo else "retry")
+	check(game.state.status == "active", "Undo/Retry naturally corrects " + label)
+
+func checkpoint(index: int) -> void:
+	var directory := "res://.artifacts/campaign/checkpoints"
+	DirAccess.make_dir_recursive_absolute(directory)
+	check(game.persist(), "App commits earned movie checkpoint " + str(index))
+	var bytes := FileAccess.get_file_as_bytes(test_path)
+	var file := FileAccess.open(directory + "/stage%02d.json" % index, FileAccess.WRITE)
+	file.store_buffer(bytes)
+	file.close()
+
+func run() -> void:
+	DirAccess.make_dir_recursive_absolute(folder)
+	for suffix in ["", ".tmp", ".bak", ".bak.tmp"]:
+		DirAccess.remove_absolute(test_path + suffix)
+	await create_game()
+	for key in game.buttons():
+		check(game.buttons()[key].size.x >= 80 and game.buttons()[key].size.y >= 80, "Cover-width minimum48dp game target: " + key)
+	check(game.state.power == 3 and game.data.profile.is_empty(), "Fresh campaign has no synthetic clears")
+	await action("map")
+	await action("chapter3")
+	for key in game.buttons():
+		check(game.buttons()[key].size.x >= 80 and game.buttons()[key].size.y >= 80, "Cover-width minimum48dp journey target: " + key)
+	await action("level35")
+	check(game.map_scroll > 0, "Actual drag reveals the ninth watch without shrinking entries")
+	check(game.screen == "map" and game.data.level_id == "watch_01", "Actual map tap cannot bypass progression")
+	await frame("00-journey-scrolled")
+	await action("resume")
+	await frame("00-first-tower")
+	for i in Content.levels().size():
+		var definition: Dictionary = Content.levels()[i]
+		check(game.data.level_id == definition.id, "Natural journey reached " + definition.id)
+		if i in [0, 18, 35]: await checkpoint(i)
+		if i == 0: await mistake(["rope"], "equality")
+		elif i == 1: await mistake(["reverse"], "ordered-voices", true)
+		elif i == 3: await mistake(["easy"], "greedy-ferry")
+		elif i == 4: await mistake(["trap"], "unshielded-glass", true)
+		elif i == 7: await mistake(["bridge"], "sealed-keeper")
+		elif i == 9: await mistake(["key", "chest"], "wasted-key", true)
+		elif i == 18: await mistake(["sun", "key", "door"], "sun-cannot-replace-shield")
+		elif i == 26: await mistake(["shells", "waste", "west", "east"], "wasted-second-shield")
+		elif i == 35: await mistake(["bridge"], "final-bridge-too-early")
+		var route: Array = Rules.solve(game.level, game.state).route
+		check(not route.is_empty(), "Solver supplies route from corrected live state " + definition.id)
+		for step_index in route.size():
+			var id: String = route[step_index]
+			var before: Dictionary = game.state.duplicate(true)
+			await choose(id)
+			if i == 35 and step_index == 3:
+				await action("details")
+				check(game.details, "Complete multi-effect forecast opens through actual input")
+				await frame("36-complete-forecast")
+				await action("close_details")
+			if i in [0, 17, 26, 35] and step_index == route.size() - 1:
+				await frame("%02d-final-forecast" % (i + 1))
+			await action("enter")
+			if i == 0 and step_index == 0:
+				await wait_frames(25)
+				check(not game.pending.is_empty(), "Clash is visible before natural power transfer")
+				await frame("01-in-flight")
+				await press(KEY_ESCAPE)
+				var held_beat: float = game.beat
+				await wait_frames(70)
+				check(game.state == before and game.beat == held_beat, "Actual Back freezes an in-flight action")
+				await action("resume")
+			await wait_frames(65)
+			if game.paused:
+				await action("resume")
+				await wait_frames(65)
+			check(game.state.status != "lost", "Touch route succeeds " + definition.id + ":" + id)
+			check(not game.buttons().has("enter"), "Claimed room never offers Enter " + definition.id)
+			if i in [0, 9, 18, 27] and step_index == 0:
+				var after: Dictionary = game.state.duplicate(true)
+				await action("undo")
+				check(game.state == before, "Input Undo restores every field at " + definition.id)
+				await enter(id)
+				check(game.state == after, "Replay after Undo is deterministic " + definition.id)
+			if i == 13 and step_index == 0:
+				var saved: Dictionary = game.state.duplicate(true)
+				var profile: Dictionary = game.data.profile.duplicate(true)
+				game.queue_free()
+				await wait_frames(3)
+				await create_game()
+				check(game.state == saved and game.data.profile == profile, "Cold restart retains later-chapter route and whole earned profile")
+		check(game.state.status == "won" and game.data.profile.size() == i + 1, "Natural rescue awards exact progress " + definition.id)
+		if game.state.status != "won":
+			await frame("failed-natural-transition")
+			printerr("FAIL: bounded campaign abort at " + definition.id)
+			quit(1)
+			return
+		journey.append({"index": i, "id": definition.id, "route": game.data.actions.duplicate(), "state": game.state.duplicate(true), "medal": game.data.profile[definition.id].duplicate()})
+		if i in [0, 8, 17, 26, 35]: await frame("%02d-natural-chapter-victory" % (i + 1))
+		await action("next")
+	check(game.screen == "ending" and game.data.profile.size() == 36, "Natural final Next opens authored ending with 36 clears")
+	await frame("36-all-lanterns-ending")
+	await action("map")
+	await action("chapter1")
+	await frame("37-earned-map")
+	await action("level10")
+	check(game.data.level_id == "archive_02" and game.state.status == "active", "Earned map supports replay")
+	for id in Rules.solve(game.level, {}, true).route: await enter(id)
+	check(game.state.status == "won" and game.state.treasure == 1 and int(game.data.profile.archive_02.medals) & 4 != 0, "Input treasure detour earns optional replay medal")
+	await frame("37-treasure-replay")
+	await action("settings")
+	await action("sound")
+	await action("effects")
+	check(not game.data.settings.sound and game.data.settings.reduced_effects, "Touch sound/reduced-effects settings persist")
+	await action("guide")
+	check(game.guide, "Rules/medal guide remains available after onboarding")
+	await press(KEY_ESCAPE)
+	check(game.menu and not game.guide, "Back closes guide first")
+	await action("transfer")
+	check(game.editor.visible and Saves.decode(game.editor.text).ok, "Export UI contains valid 36-clear save")
+	var before_import: Dictionary = game.state.duplicate(true)
+	await action("import")
+	check(game.state == before_import and not game.transfer, "UI import preserves whole route")
+	await action("settings")
+	await action("transfer")
+	await tap(Vector2(100, 350))
+	await press(KEY_A, true)
+	await press(KEY_BACKSPACE)
+	for letter in "bad": await press(KEY_NONE, false, letter.unicode_at(0))
+	await action("import")
+	check(game.transfer and game.state == before_import and not Saves.decode(game.editor.text).ok, "Typed invalid import preserves route")
+	await action("close_transfer")
+	await action("close_menu")
+	root.size = Vector2i(900, 1000)
+	await wait_frames(5)
+	check(game.state == before_import, "Unfolded desktop aspect preserves complete route")
+	await frame("38-unfolded-candidate")
+	var file := FileAccess.open(folder + "/result.json", FileAccess.WRITE)
+	file.store_string(JSON.stringify({"checks": checks, "failures": failures, "actual_touch_taps": taps, "actual_key_events": keys, "journey": journey, "captures": captures, "renderer": DisplayServer.get_name(), "limitations": ["Desktop engine input, not physical touch", "Fixed frames do not measure human duration or phone FPS", "No Android/device/sound-output claim"]}, "\t"))
+	file.close()
+	print("TOWER CAMPAIGN INPUT: %d checks; %d failures; %d touch taps; %d watches" % [checks, failures.size(), taps, journey.size()])
+	game.queue_free()
+	await wait_frames(3)
+	if failures.is_empty(): print("SUITE_COMPLETE: PASS")
+	quit(0 if failures.is_empty() else 1)

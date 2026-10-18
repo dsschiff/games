@@ -1,0 +1,47 @@
+extends "res://tests/input_base.gd"
+
+func _initialize() -> void:
+	root.size = Vector2i(360, 800)
+	rendered = DisplayServer.get_name() != "headless"
+	folder = "res://.artifacts/campaign/layout-" + ("rendered" if rendered else "headless")
+	test_path = "user://tower-layout-input.json"
+	call_deferred("run")
+
+func run() -> void:
+	DirAccess.make_dir_recursive_absolute(folder)
+	for suffix in ["", ".tmp", ".bak", ".bak.tmp"]:
+		DirAccess.remove_absolute(test_path + suffix)
+	await create_game()
+	root.size = Vector2i(360, 800)
+	await wait_frames(5)
+	check(root.size == Vector2i(360, 800), "Requested cover-size desktop viewport is active")
+	await enter("bell")
+	check(game.state.power == 5, "Cover-aspect actual input claims room")
+	await tap(game.buttons().retry.end - Vector2.ONE)
+	check(game.state.power == 3 and game.data.actions.is_empty(), "Bottom-right hit-area boundary activates Retry without adjacent action")
+	await enter("bell")
+	await tap(game.buttons().undo.position + Vector2.ONE)
+	check(game.state.power == 3 and game.data.used_undo, "Top-left Undo hit-area boundary restores whole action")
+	await frame("00-cover-boundaries")
+	await action("map")
+	await drag(Vector2(540, 840), Vector2(540, 400))
+	check(game.screen == "map" and game.map_scroll > 0 and game.data.level_id == "watch_01", "Drag scrolls without selecting the touched row")
+	await frame("01-cover-map-footer")
+	await action("level8")
+	check(game.screen == "map" and game.data.profile.is_empty(), "Scrolled locked chapter finale remains locked")
+	await action("resume")
+	var before: Dictionary = game.state.duplicate(true)
+	root.size = Vector2i(900, 1000)
+	await wait_frames(5)
+	check(game.state == before, "Resize preserves action and Undo state")
+	await enter("bell")
+	check(game.state.power == 5, "Actual unfolded-aspect room input still aligns after resize")
+	await frame("02-unfolded-input")
+	var file := FileAccess.open(folder + "/result.json", FileAccess.WRITE)
+	file.store_string(JSON.stringify({"checks": checks, "failures": failures, "actual_touch_taps": taps, "scope": "Desktop 360x800 and900x1000 aspect tests and logical hit boundaries; not phone safe-area/density measurement"}, "\t"))
+	file.close()
+	print("TOWER LAYOUT INPUT: %d checks; %d failures" % [checks, failures.size()])
+	game.queue_free()
+	await wait_frames(3)
+	if failures.is_empty(): print("SUITE_COMPLETE: PASS")
+	quit(0 if failures.is_empty() else 1)

@@ -20,6 +20,13 @@ var selected := ""
 var screen := "game"
 var menu := false
 var transfer := false
+var guide := false
+var details := false
+var chapter := 0
+var map_scroll := 0.0
+var map_press := Vector2.ZERO
+var map_touch_pending := false
+var map_dragged := false
 var save_error := ""
 var note := ""
 var pending: Dictionary = {}
@@ -63,6 +70,7 @@ func load_run() -> void:
 	selected = ""
 	pending = {}
 	beat = 0
+	chapter = maxi(0, Content.index_of(data.level_id)) / 9
 
 func layout() -> void:
 	var area := get_viewport_rect().size
@@ -95,7 +103,7 @@ func tone(hz: float) -> void:
 		player.play()
 
 func _process(delta: float) -> void:
-	if paused or menu or transfer or screen != "game":
+	if paused or menu or transfer or guide or details or screen != "game":
 		return
 	if not pending.is_empty():
 		beat += delta
@@ -123,34 +131,81 @@ func award() -> void:
 	data.profile[level.id] = {"best": mini(int(prior.best), int(state.moves)), "medals": int(prior.medals) | medals}
 
 func buttons() -> Dictionary:
+	if details:
+		return {"close_details": Rect2(42, 910, 516, 80)}
+	if guide:
+		return {"close_guide": Rect2(42, 876, 516, 80)}
 	if transfer:
-		return {"copy": Rect2(42, 710, 160, 60), "paste": Rect2(220, 710, 160, 60), "import": Rect2(398, 710, 160, 60), "close_transfer": Rect2(42, 794, 516, 60)}
+		return {"copy": Rect2(42, 710, 160, 80), "paste": Rect2(220, 710, 160, 80), "import": Rect2(398, 710, 160, 80), "close_transfer": Rect2(42, 804, 516, 80)}
 	if menu:
-		return {"sound": Rect2(58, 312, 484, 64), "effects": Rect2(58, 392, 484, 64), "transfer": Rect2(58, 472, 484, 64), "close_menu": Rect2(58, 568, 484, 64)}
+		return {"sound": Rect2(58, 282, 484, 80), "effects": Rect2(58, 370, 484, 80), "transfer": Rect2(58, 458, 484, 80), "guide": Rect2(58, 546, 484, 80), "close_menu": Rect2(58, 650, 484, 80)}
+	if screen == "ending":
+		return {"map": Rect2(26, 930, 548, 80), "settings": Rect2(496, 18, 80, 80)}
 	if screen == "map":
-		var result := {"settings": Rect2(500, 28, 76, 60), "resume": Rect2(26, 912, 548, 68)}
-		for i in Content.levels().size():
-			result["level%d" % i] = Rect2(26, 240 + i * 132, 548, 112)
+		var result := {"settings": Rect2(496, 18, 80, 80), "resume": Rect2(26, 966, 548, 80)}
+		for i in 4:
+			result["chapter%d" % i] = Rect2(26 + i * 140, 154, 128, 80)
+		for i in 9:
+			var rect := Rect2(26, 240 + i * 84 - map_scroll, 548, 80)
+			if rect.position.y >= 240 and rect.end.y <= 922:
+				result["level%d" % (chapter * 9 + i)] = rect
 		return result
-	var result := {"settings": Rect2(500, 28, 76, 60), "undo": Rect2(24, 966, 174, 64), "retry": Rect2(213, 966, 174, 64), "map": Rect2(402, 966, 174, 64)}
+	var result := {"settings": Rect2(496, 18, 80, 80), "undo": Rect2(24, 966, 174, 80), "retry": Rect2(213, 966, 174, 80), "map": Rect2(402, 966, 174, 80)}
 	if state.status == "won":
-		result["next"] = Rect2(38, 862, 524, 72)
+		result["next"] = Rect2(38, 862, 524, 80)
 	elif paused:
-		result["resume"] = Rect2(38, 862, 524, 72)
+		result["resume"] = Rect2(38, 862, 524, 80)
 	elif selected != "" and pending.is_empty() and Rules.blocked(state, Rules.find_room(level, selected)) == "":
-		result["enter"] = Rect2(38, 882, 524, 60)
+		result["enter"] = Rect2(38, 866, 524, 80)
+		result["details"] = Rect2(38, 786, 524, 80)
 	return result
 
 func room_rect(room: Dictionary) -> Rect2:
-	return Rect2(182 + (int(room.column) - 1) * 200, 620 - int(room.floor) * 140, 180, 122)
+	var rows := 1
+	for item in level.rooms:
+		rows = maxi(rows, int(item.floor) + 1)
+	var stride := 115 if rows >= 4 else 140
+	return Rect2(182 + (int(room.column) - 1) * 200, 620 - int(room.floor) * stride, 180, 104 if rows >= 4 else 122)
+
+func home_stride() -> float:
+	return minf(64, 384.0 / maxi(1, state.claimed.size()))
 
 func home_point() -> Vector2:
-	return Vector2(89, 637 - mini(5, state.claimed.size()) * 64)
+	return Vector2(89, 637 - state.claimed.size() * home_stride())
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Native text editing needs touch-to-mouse emulation; avoid handling it twice.
 	if event is InputEventMouse and event.device == InputEvent.DEVICE_ID_EMULATION:
 		return
+	if screen == "map" and not menu and not transfer and not guide:
+		if event is InputEventScreenDrag and map_touch_pending:
+			map_dragged = true
+			map_scroll = clampf(map_scroll - event.relative.y / scale.y, 0, 76)
+			queue_redraw()
+			get_viewport().set_input_as_handled()
+			return
+		if event is InputEventScreenTouch:
+			var local := to_local(event.position)
+			if event.pressed and Rect2(26, 240, 548, 682).has_point(local):
+				map_touch_pending = true
+				map_press = local
+				map_dragged = false
+				get_viewport().set_input_as_handled()
+				return
+			if not event.pressed and map_touch_pending:
+				map_touch_pending = false
+				if not map_dragged and local.distance_to(map_press) < 20:
+					var visible_buttons := buttons()
+					for key in visible_buttons:
+						if key.begins_with("level") and visible_buttons[key].has_point(local):
+							action(key)
+							break
+				get_viewport().set_input_as_handled()
+				return
+		if event is InputEventMouseButton and event.pressed and event.button_index in [MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN]:
+			map_scroll = clampf(map_scroll + (84 if event.button_index == MOUSE_BUTTON_WHEEL_DOWN else -84), 0, 76)
+			queue_redraw()
+			return
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		back()
 		get_viewport().set_input_as_handled()
@@ -168,7 +223,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			action(key)
 			get_viewport().set_input_as_handled()
 			return
-	if screen == "game" and not menu and not transfer and pending.is_empty() and not paused:
+	if screen == "game" and not menu and not transfer and not guide and not details and pending.is_empty() and not paused:
 		for room in level.rooms:
 			if room_rect(room).has_point(point):
 				selected = room.id
@@ -178,7 +233,12 @@ func _unhandled_input(event: InputEvent) -> void:
 				return
 
 func back() -> void:
-	if transfer:
+	if details:
+		details = false
+	elif guide:
+		guide = false
+		menu = true
+	elif transfer:
 		transfer = false
 		editor.visible = false
 	elif menu:
@@ -197,6 +257,16 @@ func action(key: String) -> void:
 		menu = true
 	elif key == "close_menu":
 		menu = false
+	elif key == "guide":
+		guide = true
+		menu = false
+	elif key == "close_guide":
+		guide = false
+		menu = true
+	elif key == "details":
+		details = true
+	elif key == "close_details":
+		details = false
 	elif key == "sound":
 		data.settings.sound = not data.settings.sound
 		persist()
@@ -233,11 +303,14 @@ func action(key: String) -> void:
 	elif key == "map":
 		screen = "map"
 		persist()
+	elif key.begins_with("chapter"):
+		chapter = int(key.trim_prefix("chapter"))
+		map_scroll = 0
 	elif key.begins_with("level"):
 		var index := int(key.trim_prefix("level"))
 		var levels := Content.levels()
-		if index == 0 or data.profile.has(levels[index - 1].id):
-			if index != int(data.level):
+		if Content.unlocked(index, data.profile) or levels[index].id == data.level_id or data.profile.has(levels[index].id):
+			if levels[index].id != data.level_id:
 				data.level = index
 				data.level_id = levels[index].id
 				data.catalog = Content.VERSION
@@ -263,8 +336,14 @@ func action(key: String) -> void:
 			note = "Undone: power, key, shield and bridges restored."
 			persist()
 	elif key == "next" and state.status == "won":
-		if int(data.level) + 1 < Content.levels().size():
-			data.level += 1
+		var next_index := Content.index_of(data.level_id) + 1
+		# Inserted tutorials remain real requirements for historic profiles.
+		for i in next_index:
+			if not data.profile.has(Content.levels()[i].id):
+				next_index = i
+				break
+		if next_index < Content.levels().size():
+			data.level = next_index
 			data.level_id = Content.levels()[int(data.level)].id
 			data.catalog = Content.VERSION
 			data.actions = []
@@ -273,7 +352,7 @@ func action(key: String) -> void:
 			note = ""
 			persist()
 		else:
-			screen = "map"
+			screen = "ending"
 	elif key == "enter" and pending.is_empty() and not paused:
 		var result := Rules.step(level, state, selected)
 		if result.ok:
@@ -330,14 +409,15 @@ func courier(at: Vector2, factor: float = 1.0) -> void:
 	draw_line(at + Vector2(11, 4) * factor, at + Vector2(25, 9) * factor, GOLD, 4 * factor)
 	draw_circle(at + Vector2(27, 10) * factor, 6 * factor, GOLD)
 
-func spirit(at: Vector2, number: int, active: bool = true) -> void:
+func spirit(at: Vector2, active: bool = true, compact: bool = false) -> void:
 	var tint := RED if active else Color("4b7c83")
-	draw_colored_polygon(PackedVector2Array([at + Vector2(-16, 15), at + Vector2(-13, -8), at + Vector2(13, -8), at + Vector2(17, 15), at + Vector2(5, 10), at + Vector2(-6, 15)]), tint)
-	draw_circle(at + Vector2(0, -8), 16, tint)
-	draw_circle(at + Vector2(0, -8), 11, INK)
-	draw_line(at + Vector2(0, -8), at + Vector2(0, -15), SAND, 2)
-	draw_line(at + Vector2(0, -8), at + Vector2(6, -5), SAND, 2)
-	centered(str(number), Rect2(at + Vector2(-42, -67), Vector2(84, 40)), 34, INK if active else GOLD)
+	draw_set_transform(at, 0, Vector2.ONE * (0.7 if compact else 1.0))
+	draw_colored_polygon(PackedVector2Array([Vector2(-16, 15), Vector2(-13, -8), Vector2(13, -8), Vector2(17, 15), Vector2(5, 10), Vector2(-6, 15)]), tint)
+	draw_circle(Vector2(0, -8), 16, tint)
+	draw_circle(Vector2(0, -8), 11, INK)
+	draw_line(Vector2(0, -8), Vector2(0, -15), SAND, 2)
+	draw_line(Vector2(0, -8), Vector2(6, -5), SAND, 2)
+	draw_set_transform(Vector2.ZERO)
 
 func background() -> void:
 	for y in 54:
@@ -359,12 +439,14 @@ func draw_header() -> void:
 	button("settings", "•••")
 	text_at("COAST OF THE LOST CHIMES", Vector2(26, 84), 15, MUTED)
 	if screen == "game":
-		text_at("%02d / %02d  ·  %s" % [int(data.level) + 1, Content.levels().size(), level.name], Vector2(26, 126), 23)
+		text_at("%02d / %02d  ·  %s" % [Content.index_of(data.level_id) + 1, Content.levels().size(), level.name], Vector2(26, 126), 23)
 		box(Rect2(24, 146, 260, 72), Color("173e53"), 12, Color("347b7d"))
 		text_at("COURIER POWER", Vector2(40, 170), 15, TEAL)
 		text_at(str(state.power), Vector2(40, 205), 34, GOLD)
 		text_at("Keys  %d    Shields  %d" % [state.keys, state.shields], Vector2(310, 172), 20)
 		text_at("Moves %d    Treasure %d" % [state.moves, state.treasure], Vector2(310, 204), 19, MUTED)
+		if not state.get("rescued", []).is_empty():
+			text_at("Keepers rescued: %d" % state.rescued.size(), Vector2(310, 232), 17, TEAL)
 
 func draw_board() -> void:
 	for column in [1, 2]:
@@ -374,7 +456,8 @@ func draw_board() -> void:
 				highest = maxi(highest, int(room.floor))
 		if highest >= 0:
 			var x: int = 182 + (column - 1) * 200
-			var y: int = 620 - highest * 140
+			var highest_room: Dictionary = level.rooms.filter(func(item): return int(item.column) == column and int(item.floor) == highest)[0]
+			var y: int = int(room_rect(highest_room).position.y)
 			draw_rect(Rect2(x + 6, y + 5, 168, 742 - y), Color("345566"))
 			draw_colored_polygon(PackedVector2Array([Vector2(x - 7, y), Vector2(x + 90, y - 50), Vector2(x + 187, y)]), Color("5f7e89"))
 	for room in level.rooms:
@@ -388,12 +471,12 @@ func draw_board() -> void:
 				draw_dashed_line(room_rect(room).get_center(), room_rect(other).get_center(), GOLD, 2, 8)
 	var floors: int = state.claimed.size() + 1
 	for i in floors:
-		var rect := Rect2(31, 692 - i * 64, 116, 62)
+		var rect := Rect2(31, 692 - i * home_stride(), 116, home_stride() - 2)
 		box(rect, Color("397781") if i > 0 else Color("345566"), 4, Color("64bea9"))
-		draw_rect(Rect2(72, rect.position.y + 19, 29, 32), INK)
+		draw_rect(Rect2(72, rect.position.y + 19, 29, minf(32, home_stride() - 22)), INK)
 		if i > 0:
 			draw_circle(rect.position + Vector2(100, 12), 4, GOLD)
-	var top: int = 692 - (floors - 1) * 64
+	var top: float = 692 - (floors - 1) * home_stride()
 	draw_colored_polygon(PackedVector2Array([Vector2(23, top), Vector2(89, top - 42), Vector2(156, top)]), TEAL)
 	draw_line(Vector2(89, top - 42), Vector2(89, top - 69), GOLD, 3)
 	draw_colored_polygon(PackedVector2Array([Vector2(90, top - 69), Vector2(116, top - 61), Vector2(90, top - 52)]), GOLD)
@@ -401,7 +484,7 @@ func draw_board() -> void:
 	for room in level.rooms:
 		var rect := room_rect(room)
 		var claimed: bool = room.id in state.claimed
-		var collapsed: bool = room.id in state.collapsed
+		var collapsed: bool = room.id in state.collapsed and not claimed
 		var blocked := Rules.blocked(state, room)
 		var fill := Color("405a66") if blocked != "" else Color("e0cba5")
 		if claimed:
@@ -409,8 +492,8 @@ func draw_board() -> void:
 		if collapsed:
 			fill = Color("263c50")
 		box(rect, fill, 5, GOLD if selected == room.id else Color("75949a"))
-		draw_rect(Rect2(rect.position + Vector2(0, 98), Vector2(180, 24)), Color("274859"))
-		centered(room.name, Rect2(rect.position + Vector2(0, 98), Vector2(180, 24)), 16, WHITE)
+		draw_rect(Rect2(rect.position + Vector2(0, rect.size.y - 24), Vector2(180, 24)), Color("274859"))
+		centered(room.name, Rect2(rect.position + Vector2(0, rect.size.y - 24), Vector2(180, 24)), 16, WHITE)
 		if collapsed:
 			centered("COLLAPSED", Rect2(rect.position, Vector2(180, 90)), 18, MUTED)
 		elif claimed:
@@ -418,15 +501,19 @@ func draw_board() -> void:
 			centered("Power sent home", Rect2(rect.position + Vector2(0, 57), Vector2(180, 25)), 14, SAND)
 		else:
 			for i in room.enemies.size():
-				spirit(rect.position + Vector2((i + 1) * 180.0 / (room.enemies.size() + 1), 77), int(room.enemies[i]), blocked == "")
+				var enemy_x: float = (i + 1) * 180.0 / (room.enemies.size() + 1)
+				var compact: bool = rect.size.y < 120
+				spirit(rect.position + Vector2(enemy_x, 67 if compact else 77), blocked == "", compact)
+				centered(str(room.enemies[i]), Rect2(rect.position + Vector2(enemy_x - 42, 22), Vector2(84, 34)), 32, INK if blocked == "" else GOLD)
 			var tags: Array = []
 			if room.key_cost > 0: tags.append("LOCK %d" % room.key_cost)
-			if room.keys > 0: tags.append("+KEY")
-			if room.shields > 0: tags.append("+SHIELD")
+			if room.keys > 0: tags.append("+%d KEY" % int(room.keys))
+			if room.shields > 0: tags.append("+%d SHIELD" % int(room.shields))
 			if room.trap > 0: tags.append("TRAP %d" % room.trap)
 			if room.multiplier > 1: tags.append("SUN x%d" % room.multiplier)
 			if room.treasure: tags.append("CHEST")
 			if room.rescue: tags.append("RESCUE")
+			if room.get("keeper", false): tags.append("KEEPER")
 			centered("  ".join(tags), Rect2(rect.position + Vector2(0, 2), Vector2(180, 20)), 13, INK if blocked == "" else GOLD)
 	var hero := home_point()
 	if not pending.is_empty() and not data.settings.reduced_effects:
@@ -445,7 +532,7 @@ func draw_game() -> void:
 	if state.status == "won":
 		text_at("KEEPER RESCUED", Vector2(40, 826), 29, TEAL)
 		text_at("Your watch stands %d rooms tall.  Best: %d moves" % [state.claimed.size() + 1, int(data.profile[level.id].best)], Vector2(40, 850), 17, SAND)
-		button("next", "Next watch" if int(data.level) + 1 < Content.levels().size() else "Sequence complete · Journey", TEAL)
+		button("next", "Next watch" if Content.index_of(data.level_id) + 1 < Content.levels().size() else "The ending · all lanterns rise", TEAL)
 	elif paused:
 		text_at("ROUTE PAUSED", Vector2(40, 829), 27, GOLD)
 		button("resume", "Resume route", TEAL)
@@ -462,8 +549,8 @@ func draw_game() -> void:
 			text_at("ROUTE CLOSED", Vector2(40, 824), 22, MUTED)
 			lines(preview.message, Vector2(40, 854), 500, 18, WHITE, 1)
 		else:
-			text_at("FORECAST: " + ("CLAIM" if preview.win else "DEFEAT"), Vector2(40, 822), 22, TEAL if preview.win else RED)
-			lines("  /  ".join(preview.events), Vector2(40, 848), 510, 17, SAND, 2)
+			text_at("FORECAST: %s · %d to %d" % ["CLAIM" if preview.win else "DEFEAT", int(state.power), int(preview.state.power)], Vector2(40, 820), 21, TEAL if preview.win else RED)
+			text_at("Tap forecast for all steps and resources", Vector2(40, 851), 17, SAND)
 		button("enter", "Enter room" if preview.get("win", false) else "Enter anyway · danger", TEAL if preview.get("win", false) else Color("633f4b"))
 	else:
 		text_at("READ THE TOWER", Vector2(40, 825), 22, GOLD)
@@ -473,21 +560,43 @@ func draw_game() -> void:
 	button("map", "Journey")
 
 func draw_map() -> void:
-	text_at("The lost watches", Vector2(26, 143), 35)
-	lines("Rescue each keeper. Return for treasure, a shorter route or a clean run.", Vector2(28, 181), 540, 21, SAND, 2)
-	var levels := Content.levels()
-	for i in levels.size():
-		var unlocked: bool = i == 0 or data.profile.has(levels[i - 1].id)
+	var titles := ["Lantern Coast", "Salt Archives", "Glass March", "Last Meridian"]
+	text_at(titles[chapter], Vector2(26, 130), 32)
+	for i in 4:
+		button("chapter%d" % i, ["Coast", "Archive", "Glass", "Meridian"][i], TEAL if chapter == i else Color("24485e"))
+	var all := Content.levels()
+	for slot in 9:
+		var i := chapter * 9 + slot
+		var current: bool = all[i].id == data.level_id
+		var earned: bool = data.profile.has(all[i].id)
+		var available: bool = Content.unlocked(i, data.profile) or current or earned
+		if not buttons().has("level%d" % i): continue
 		var rect: Rect2 = buttons()["level%d" % i]
-		box(rect, Color("254c5e") if unlocked else Color("182f43"), 14, TEAL if i == int(data.level) else Color.TRANSPARENT)
-		text_at("%02d" % (i + 1), rect.position + Vector2(18, 43), 28, GOLD if unlocked else MUTED)
-		text_at(levels[i].name if unlocked else "Keeper still lost", rect.position + Vector2(80, 41), 26)
-		var medals: Dictionary = data.profile.get(levels[i].id, {})
-		var possible: int = 4 if levels[i].rooms.any(func(room): return room.treasure) else 3
-		text_at("Best %d moves · medals %d/%d" % [medals.best, (1 if int(medals.medals) & 1 else 0) + (1 if int(medals.medals) & 2 else 0) + (1 if int(medals.medals) & 4 else 0) + (1 if int(medals.medals) & 8 else 0), possible] if not medals.is_empty() else ("Tap to begin · par %d" % int(levels[i].par) if unlocked else "Rescue the previous keeper"), rect.position + Vector2(80, 79), 19, TEAL if unlocked else MUTED)
-	lines("Medals: rescue · par route · no undo · treasure where offered. Replay any earned watch.", Vector2(28, 824), 530, 20, SAND, 3)
+		box(rect, Color("254c5e") if available else Color("182f43"), 10, TEAL if current else Color.TRANSPARENT)
+		text_at("%02d" % (i + 1), rect.position + Vector2(16, 32), 24, GOLD if available else MUTED)
+		text_at(all[i].name, rect.position + Vector2(70, 29), 23, WHITE if available else MUTED)
+		var medals: Dictionary = data.profile.get(all[i].id, {})
+		var possible: int = 4 if all[i].rooms.any(func(room): return room.treasure) else 3
+		var count := 0
+		for bit in [1, 2, 4, 8]:
+			if int(medals.get("medals", 0)) & bit: count += 1
+		text_at("Best %d · medals %d/%d" % [int(medals.best), count, possible] if earned else ("Par %d%s" % [int(all[i].par), " · chapter finale" if bool(all[i].get("finale", false)) else ""] if available else "Rescue the previous keepers"), rect.position + Vector2(70, 55), 17, TEAL if available else MUTED)
+	text_at("Drag the list to see all nine watches", Vector2(26, 945), 18, SAND)
 	button("resume", "Return to current route", TEAL)
-	text_at("Prototype · four authored watches", Vector2(26, 1023), 18, MUTED)
+	text_at("%d / 36 rescued · rules and medal guide in •••" % data.profile.size(), Vector2(26, 962), 15, MUTED)
+
+func draw_ending() -> void:
+	text_at("ALL LANTERNS RISE", Vector2(26, 180), 36, GOLD)
+	lines("The last chime crosses the sea. Every watch answers. You brought the lost keepers home.", Vector2(28, 234), 530, 27, WHITE, 4)
+	for i in 12:
+		var x := 34 + (i % 6) * 93
+		var y := 488 + (i / 6) * 168
+		box(Rect2(x, y, 68, 104), Color("397781"), 5, TEAL)
+		draw_colored_polygon(PackedVector2Array([Vector2(x - 5, y), Vector2(x + 34, y - 36), Vector2(x + 73, y)]), TEAL)
+		draw_circle(Vector2(x + 34, y + 44), 10, GOLD)
+	courier(Vector2(300, 750), 1.6)
+	lines("36 authored watches. Return for unclaimed treasure, par routes, clean runs and alternate branches.", Vector2(28, 836), 530, 22, SAND, 3)
+	button("map", "Explore your journey", TEAL)
 
 func _draw() -> void:
 	if state == null:
@@ -495,17 +604,19 @@ func _draw() -> void:
 	background()
 	draw_header()
 	if screen == "game": draw_game()
+	elif screen == "ending": draw_ending()
 	else: draw_map()
 	if save_error != "":
 		box(Rect2(12, 226, 576, 65), Color("6a2838"), 8)
 		lines(save_error, Vector2(24, 250), 550, 19, WHITE, 2)
 	if menu:
 		draw_rect(Rect2(0, 0, 600, 1066), Color(0.01, 0.03, 0.08, 0.85))
-		box(Rect2(30, 222, 540, 454), INK, 20, Color("467a87"))
-		text_at("Your lantern", Vector2(58, 277), 32, GOLD)
+		box(Rect2(30, 180, 540, 580), INK, 20, Color("467a87"))
+		text_at("Your lantern", Vector2(58, 242), 32, GOLD)
 		button("sound", "Sound: " + ("on" if data.settings.sound else "off"))
 		button("effects", "Reduced effects: " + ("on" if data.settings.reduced_effects else "off"))
 		button("transfer", "Export / import save")
+		button("guide", "Rules and medals")
 		button("close_menu", "Return", TEAL)
 	if transfer:
 		draw_rect(Rect2(0, 0, 600, 1066), Color(0.01, 0.03, 0.08, 0.95))
@@ -516,3 +627,24 @@ func _draw() -> void:
 		button("import", "Import", TEAL)
 		button("close_transfer", "Return")
 		lines(note, Vector2(42, 893), 516, 19, WHITE, 3)
+
+	if guide:
+		draw_rect(Rect2(0, 0, 600, 1066), Color("0b2037"))
+		text_at("Carry the light", Vector2(42, 107), 34, GOLD)
+		var help := ["Power must be GREATER than each enemy. Equality loses. Add each defeated strength before the next voice.", "A key opens one lock, then is gone. Read the lock cost and the keys a room gives.", "A dashed bridge seals the named alternative rooms. Rescue KEEPER rooms before their bridge closes.", "A shield blocks one trap before combat. Otherwise subtract the trap from power first.", "A sun lens multiplies after enemies. It refuses a carried shield: spend protection before entering.", "Medals reward rescue, a route at par, no Undo and treasure where offered. Earn them on separate replays. Retry starts a clean attempt; earned medals stay."]
+		for i in help.size():
+			text_at(str(i + 1), Vector2(42, 174 + i * 111), 26, TEAL)
+			lines(help[i], Vector2(80, 168 + i * 111), 470, 21, WHITE, 4)
+		button("close_guide", "Return", TEAL)
+	if details:
+		draw_rect(Rect2(0, 0, 600, 1066), Color("0b2037"))
+		var preview := Rules.step(level, state, selected)
+		text_at("Every step is visible", Vector2(42, 104), 32, GOLD)
+		text_at(Rules.find_room(level, selected).name, Vector2(42, 148), 26, WHITE)
+		text_at("Power %d to %d" % [state.power, preview.state.power], Vector2(42, 196), 26, TEAL if preview.get("win", false) else RED)
+		text_at("Keys %d to %d · Shields %d to %d" % [state.keys, preview.state.keys, state.shields, preview.state.shields], Vector2(42, 231), 22, SAND)
+		var y := 290
+		for event in preview.events:
+			lines(str(event), Vector2(42, y), 516, 23, WHITE, 2)
+			y += 78
+		button("close_details", "Return to room choice", TEAL)

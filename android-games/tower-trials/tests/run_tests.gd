@@ -26,7 +26,9 @@ func _initialize() -> void:
 			route_states.append(state.duplicate(true))
 		check(state.status == "won", "Solver witness replays " + level.id)
 		check(int(state.moves) <= int(level.par), "Par is achievable " + level.id)
-		solutions.append({"id": level.id, "route": solved.route, "visited": solved.visited, "shortest": solved.shortest, "greedy": Rules.greedy(level).won})
+		if level.rooms.any(func(room): return room.treasure):
+			check(Rules.solve(level, {}, true).ok, "Treasure medal is reachable " + level.id)
+		solutions.append({"id": level.id, "route": solved.route, "visited": solved.visited, "shortest": solved.shortest, "greedy": Rules.greedy(level), "topology": topology(level), "room_count": level.rooms.size(), "treasure_offered": level.rooms.any(func(room): return room.treasure)})
 		for i in route_states.size():
 			var replay := Rules.initial(level)
 			for j in i:
@@ -45,13 +47,13 @@ func _initialize() -> void:
 	check(forward.state.power == 15 and forward.state.claimed == ["pair"], "Multi-enemy order adds before second fight")
 	var reverse := Rules.step(pair, Rules.initial(pair), "reverse")
 	check(reverse.state.status == "lost" and reverse.state.power == 5, "Reverse order loses")
-	var ferry: Dictionary = levels[2]
+	var ferry: Dictionary = Content.by_id("watch_03")
 	var keyed: Dictionary = Rules.step(ferry, Rules.initial(ferry), "key").state
 	check(keyed.keys == 1 and keyed.collapsed == ["easy"] and keyed.power == 14, "Key ferry claims resources and collapses alternative")
 	check(not Rules.step(ferry, keyed, "easy").ok, "Collapsed route unavailable")
 	check(Rules.step(ferry, keyed, "door").state.keys == 0, "Door consumes key exactly once")
 	check(not Rules.greedy(ferry).won and Rules.greedy(ferry).state.status == "lost", "Greedy smallest-first is stranded and reaches visible loss")
-	var glass: Dictionary = levels[3]
+	var glass: Dictionary = Content.by_id("watch_04")
 	var shield: Dictionary = Rules.step(glass, Rules.initial(glass), "shield").state
 	var trap: Dictionary = Rules.step(glass, shield, "trap").state
 	check(trap.shields == 0 and trap.power == 17, "Shield blocks trap before fighting and is consumed")
@@ -67,14 +69,21 @@ func _initialize() -> void:
 	wrong.claimed = ["key"]
 	check(not Rules.step(ferry, wrong, "door").ok, "Door checks actual key not only prerequisite")
 	save_checks()
-	DirAccess.make_dir_recursive_absolute("res://.artifacts/prototype/rules")
-	var file := FileAccess.open("res://.artifacts/prototype/rules/result.json", FileAccess.WRITE)
+	DirAccess.make_dir_recursive_absolute("res://.artifacts/campaign/rules")
+	var file := FileAccess.open("res://.artifacts/campaign/rules/result.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify({"checks": checks, "failures": failures, "solutions": solutions, "claim": "BFS gives shortest successful routes; no uniqueness claim"}, "\t"))
 	file.close()
 	print("TOWER RULES: %d checks; %d failures" % [checks, failures.size()])
 	if failures.is_empty():
 		print("SUITE_COMPLETE: PASS")
 	quit(0 if failures.is_empty() else 1)
+
+func topology(level: Dictionary) -> String:
+	var ids: Array = level.rooms.map(func(room): return room.id)
+	var graph: Array = []
+	for room in level.rooms:
+		graph.append([room.enemies.size(), room.requires.map(func(id): return ids.find(id)), room.get("requires_any", []).map(func(id): return ids.find(id)), room.collapse.map(func(id): return ids.find(id)), room.key_cost, room.keys, room.shields, int(room.trap) > 0, room.multiplier, room.treasure, room.get("keeper", false), room.rescue])
+	return JSON.stringify(graph).sha256_text()
 
 func save_checks() -> void:
 	var data := Saves.fresh()
@@ -132,3 +141,36 @@ func save_checks() -> void:
 	imported.actions.append("rope")
 	check(not Saves.write(imported, "save", io, false), "Failed import surfaces commit failure")
 	check(Saves.read("save", io).data.actions == ["bell"], "Failed import cannot silently replace current run on restart")
+	io = Fault.new()
+	check(Saves.write(data, "save", io) and Saves.write(imported, "save", io, false) and Saves.write(imported, "save", io), "Committed import can become the next backup")
+	io.files["save"] = "{"
+	check(Saves.read("save", io).ok and Saves.read("save", io).data.actions == imported.actions, "Committed import backup remains recoverable after primary corruption")
+	var old_source := FileAccess.get_file_as_string("res://tests/fixtures/code1-active-route.json")
+	var old_expected: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://tests/fixtures/code1-active-route.json.expected.json"))
+	for key in ["power", "keys", "shields", "moves", "treasure"]:
+		old_expected.state[key] = int(old_expected.state[key])
+	var old := Saves.decode(old_source)
+	check(old.ok and old.state == old_expected.state and old.data.catalog == 1 and old.data.schema == 2, "Genuine touch-created code1 route keeps exact state while schema migrates")
+	if old.ok:
+		var legacy_level := Content.by_id(old.data.level_id, 1)
+		check(Rules.step(legacy_level, old.state, "rope").state.power == 8, "Updated runtime can naturally continue immutable catalog1 arithmetic")
+		var old_mutation: Dictionary = JSON.parse_string(old_source)
+		old_mutation.level = 4
+		check(not Saves.decode(Saves.encode(old_mutation)).ok, "Malformed catalog1/level4 is rejected before array indexing")
+		old_mutation = JSON.parse_string(old_source)
+		old_mutation.level = 35
+		check(not Saves.decode(Saves.encode(old_mutation)).ok, "Latest-catalog upper bound cannot admit invalid legacy index")
+		old_mutation = JSON.parse_string(old_source)
+		old_mutation.level = 3
+		old_mutation.level_id = "watch_04"
+		old_mutation.actions = []
+		old_mutation.profile = {"watch_01": {"best": 4, "medals": 3}, "watch_02": {"best": 3, "medals": 3}, "watch_03": {"best": 3, "medals": 3}}
+		check(Saves.decode(Saves.encode(old_mutation)).ok and Content.index_of("watch_04") == 8, "Historic active puzzle remains valid when new tutorials precede its current display index")
+		old_mutation.level = 2
+		old_mutation.level_id = "watch_03"
+		old_mutation.actions = ["key"]
+		old_mutation.profile.erase("watch_03")
+		old_mutation.settings = {"sound": false, "reduced_effects": true}
+		old_mutation.used_undo = true
+		var ferry_upgrade := Saves.decode(Saves.encode(old_mutation))
+		check(ferry_upgrade.ok and ferry_upgrade.state.power == 14 and ferry_upgrade.state.keys == 1 and ferry_upgrade.state.collapsed == ["easy"] and ferry_upgrade.data.level == 2 and ferry_upgrade.data.catalog == 1 and ferry_upgrade.data.used_undo and not ferry_upgrade.data.settings.sound, "Coordinator-described code1 key-ferry route/settings survive its shifted current display index")

@@ -3,7 +3,7 @@ extends RefCounted
 const Content = preload("res://scripts/content.gd")
 const Rules = preload("res://scripts/rules.gd")
 const Files = preload("res://scripts/save_files.gd")
-const VERSION := 1
+const VERSION := 2
 const PATH := "user://tower-save.json"
 const LIMIT := 200000
 
@@ -38,15 +38,16 @@ static func decode(source: String) -> Dictionary:
 			return {"ok": false, "message": "Incomplete save"}
 	if not whole(data.catalog, 1, Content.VERSION) or not data.level_id is String or Content.by_id(data.level_id, int(data.catalog)).is_empty():
 		return {"ok": false, "message": "Unknown saved catalog or puzzle ID"}
-	if not whole(data.schema, 1, VERSION) or not whole(data.revision, 0, 1000000000) or not whole(data.level, 0, Content.levels().size() - 1):
+	var saved_levels := Content.levels(int(data.catalog))
+	if not whole(data.schema, 1, VERSION) or not whole(data.revision, 0, 1000000000) or not whole(data.level, 0, saved_levels.size() - 1):
 		return {"ok": false, "message": "Unsupported save or level"}
 	if not data.recoverable is bool or not data.used_undo is bool or not data.actions is Array or data.actions.size() > 32 or not data.profile is Dictionary or not data.settings is Dictionary:
 		return {"ok": false, "message": "Invalid save structure"}
 	for key in ["sound", "reduced_effects"]:
 		if not data.settings.has(key) or not data.settings[key] is bool:
 			return {"ok": false, "message": "Invalid settings"}
-	var levels := Content.levels(int(data.catalog))
-	if levels[int(data.level)].id != data.level_id:
+	var levels := Content.levels()
+	if saved_levels[int(data.level)].id != data.level_id:
 		return {"ok": false, "message": "Puzzle ID and index disagree"}
 	for id in data.profile:
 		var index := -1
@@ -60,16 +61,20 @@ static func decode(source: String) -> Dictionary:
 			return {"ok": false, "message": "Invalid earned medal"}
 		if int(medal.medals) & 1 == 0 or (int(medal.medals) & 4 != 0 and not levels[index].rooms.any(func(room): return room.treasure)):
 			return {"ok": false, "message": "Impossible medal type"}
-		for prior in index:
-			if not data.profile.has(levels[prior].id):
-				return {"ok": false, "message": "Nonsequential progress"}
-	for prior in int(data.level):
-		if not data.profile.has(levels[prior].id):
-			return {"ok": false, "message": "Locked active level"}
+		medal.best = int(medal.best)
+		medal.medals = int(medal.medals)
+	# Historic clears may predate tutorials inserted in catalog2. Validate the
+	# active route against its own catalog, without manufacturing new clears.
+	if not data.profile.has(data.level_id):
+		for prior in int(data.level):
+			if not data.profile.has(saved_levels[prior].id):
+				return {"ok": false, "message": "Locked active level"}
 	for action in data.actions:
 		if not action is String:
 			return {"ok": false, "message": "Invalid route"}
 	data.level = int(data.level)
+	data.catalog = int(data.catalog)
+	data.schema = VERSION
 	data.revision = int(data.revision)
 	var state := replay(data)
 	if state.is_empty():
@@ -91,7 +96,7 @@ static func read(path: String = PATH, backend: Variant = null) -> Dictionary:
 		if io.exists(candidate):
 			var source: String = io.read_text(candidate)
 			var decoded := decode(source)
-			if decoded.ok and (candidate == path or decoded.data.recoverable):
+			if decoded.ok and (candidate != path + ".tmp" or decoded.data.recoverable):
 				if not best.ok or int(decoded.data.revision) > int(best.data.revision):
 					best = decoded
 					best["source"] = source

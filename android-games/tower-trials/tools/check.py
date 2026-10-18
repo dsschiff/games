@@ -25,9 +25,9 @@ def main():
         command += ["--editor", "--import", "--quit"]
     else:
         command += ["--fixed-fps", "60", "--script", "tests/run_tests.gd" if args.mode == "rules" else "tests/playthrough.gd"]
-    log = ROOT / f".artifacts/prototype/{args.mode}.log"
+    log = ROOT / f".artifacts/campaign/{args.mode}.log"
     log.parent.mkdir(parents=True, exist_ok=True)
-    result = subprocess.run(command, env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace", timeout=180)
+    result = subprocess.run(command, env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace", timeout=600)
     log.write_text(result.stdout, encoding="utf-8")
     print(result.stdout)
     bad = any(word in result.stdout for word in ["SCRIPT ERROR:", "ERROR:", "FAIL:"])

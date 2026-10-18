@@ -1,5 +1,7 @@
 # First loop for independent review
 
+Historical packet: coordinator reported Astra approval for expansion after full motion playback. Current candidate is documented in `CAMPAIGN_CHECKPOINT.md`.
+
 Four authored playable watches; **prototype gate only**. Source on `codex/tower-trials`; all writes scoped to this game.
 
 Review the source brief's observed introductory addition and watch growth separately from our original equality-loses, ordered-enemy, key, fork, shield/trap and multiplier rules. No party auto-battle or pull-pin loop.

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "game": "tower-trials",
+  "software_version": "0.2.0",
+  "android_version_code": 2,
+  "implemented": {
+    "authored_puzzles": 36,
+    "chapters": 4,
+    "finales": 4,
+    "core_tutorials": 6,
+    "ending": true,
+    "undo_retry": true,
+    "replay_medals": true,
+    "sound_reduced_effects": true,
+    "versioned_save_export_import": true,
+    "legacy_catalog_and_rules_preserved": true
+  },
+  "automatically_verified": {
+    "solver_witnesses": "36/36",
+    "treasure_witnesses": "14/14",
+    "greedy_smallest_policy_failures": "18/36",
+    "rules_and_save_checks": 398,
+    "headless_campaign_checks": 994,
+    "input_earned_campaign_clears": 36,
+    "headless_touch_taps": 471,
+    "legacy_headless_checks": 19,
+    "legacy_rendered_checks": 21,
+    "first_middle_final_motion_checks": 40,
+    "exact_rendered_result": ".artifacts/campaign/rendered/result.json",
+    "rendered_campaign_checks": 1020,
+    "layout_headless_checks": 17,
+    "layout_rendered_checks": 20
+  },
+  "review": {
+    "prototype_appeal_expansion": "Astra approved via coordinator after complete movie playback",
+    "full_candidate_appeal_fidelity_release": "requested at frozen checkpoint"
+  },
+  "android": "coordinator export/runtime/update work pending",
+  "phone_tested": false,
+  "human_duration_minutes_target": [
+    30,
+    60
+  ],
+  "human_duration_measured": false,
+  "limits": [
+    "No unique-solution claim",
+    "No random challenge generator",
+    "Desktop fixed-rate captures do not measure phone FPS",
+    "Physical safe areas, folding, audible output and human fun remain unverified",
+    "Seeded solver-verified challenge replay awaits coordinator assessment after this bounded freeze"
+  ],
+  "next_action": "Coordinator/Astra full-candidate review and shared frozen code2 Android export/update acceptance"
+}

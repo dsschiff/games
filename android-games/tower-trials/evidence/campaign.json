@@ -1,0 +1,1410 @@
+{
+  "schema_version": 1,
+  "milestone": "bounded 36-watch software candidate; full independent review/Android acceptance pending",
+  "software_version": "0.2.0",
+  "android_version_code": 2,
+  "branch": "codex/tower-trials",
+  "previous_checkpoints": [
+    "3b4643b",
+    "4d96954"
+  ],
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "source_binding": {
+    "scope": "All game source/assets/configuration, tests/tools and progress metadata, excluding Markdown/evidence/cache/output. Copied unchanged under .artifacts/campaign/source; raw Windows and LF-normalized hashes supplied. This is not the shared runner whole-project fingerprint.",
+    "files": 54,
+    "raw_sha256": "6c67bf233b01c602b05558a2ed647f917991c33ae73e0f127c23046b874d2798",
+    "lf_normalized_sha256": "2e05ed3d23adb3b1eef63bcbd0d7747ac5cb5883008d97a1e31b04792cc69f25"
+  },
+  "source_files": [
+    {
+      "path": "design/prepared_cases.gd",
+      "bytes": 3102,
+      "sha256": "d06a857d45adf9e8f04deffa484c2e95497b489cb08ba591b684386ad9bd6867",
+      "sha256_lf_normalized": "d06a857d45adf9e8f04deffa484c2e95497b489cb08ba591b684386ad9bd6867"
+    },
+    {
+      "path": "design/prepared_cases.gd.uid",
+      "bytes": 20,
+      "sha256": "bf2dd28198a064a43d466850aa353bf94aa7debf58c7ed5a352e93d2b3e95ed4",
+      "sha256_lf_normalized": "bf2dd28198a064a43d466850aa353bf94aa7debf58c7ed5a352e93d2b3e95ed4"
+    },
+    {
+      "path": "export_presets.cfg",
+      "bytes": 518,
+      "sha256": "156f979fc8cc34e6a721aeab4472217e86531a5670bea6b31bf54f58ee2a6b3f",
+      "sha256_lf_normalized": "156f979fc8cc34e6a721aeab4472217e86531a5670bea6b31bf54f58ee2a6b3f"
+    },
+    {
+      "path": "icon.svg",
+      "bytes": 394,
+      "sha256": "6bca3ee031a419daa07bd4b2790d6ce481b5686cff75a0ee197ebcc9f7053d1b",
+      "sha256_lf_normalized": "6bca3ee031a419daa07bd4b2790d6ce481b5686cff75a0ee197ebcc9f7053d1b"
+    },
+    {
+      "path": "icon.svg.import",
+      "bytes": 1013,
+      "sha256": "3847de679c56f4fcad0e14fb11b5eb0f45f068b7c59f489254b5c2c75c1b2320",
+      "sha256_lf_normalized": "3847de679c56f4fcad0e14fb11b5eb0f45f068b7c59f489254b5c2c75c1b2320"
+    },
+    {
+      "path": "main.tscn",
+      "bytes": 166,
+      "sha256": "539a74d0621571fab563c8871aad99acdf0158e9202a9453217fb7bf17a4a5df",
+      "sha256_lf_normalized": "539a74d0621571fab563c8871aad99acdf0158e9202a9453217fb7bf17a4a5df"
+    },
+    {
+      "path": "progress.json",
+      "bytes": 1833,
+      "sha256": "cc4a73b2ad1337c5782a1b72bc58ba5e9436667ef39eeefb6df26d222d74b6a4",
+      "sha256_lf_normalized": "cc4a73b2ad1337c5782a1b72bc58ba5e9436667ef39eeefb6df26d222d74b6a4"
+    },
+    {
+      "path": "project.godot",
+      "bytes": 777,
+      "sha256": "6c38859ad5583b55b6e6eb3ae30108dfebdb7c2619987c320bb55f8827b1f19f",
+      "sha256_lf_normalized": "81a786725ad6c1a5dc0461cdeeb39b123f605b044783451ba199d39ce8d2c4d5"
+    },
+    {
+      "path": "scripts/catalog_v1.gd",
+      "bytes": 2934,
+      "sha256": "4369130a59afd53fbe09db68adc6545a301d289d991670b6a2edfdca3dc04f53",
+      "sha256_lf_normalized": "cacac155762576b19d295a4cb98a900bf7f0a4ba418cff35d132b202923eb7e4"
+    },
+    {
+      "path": "scripts/catalog_v1.gd.uid",
+      "bytes": 20,
+      "sha256": "06b7209b6113ae43f26a8a34359abc8d292cd4f2c0fb0382be2cfece5d7f1313",
+      "sha256_lf_normalized": "06b7209b6113ae43f26a8a34359abc8d292cd4f2c0fb0382be2cfece5d7f1313"
+    },
+    {
+      "path": "scripts/catalog_v2.gd",
+      "bytes": 20348,
+      "sha256": "b0550bf10f67f43c0f1d8c998b9074b5192f05155c8939269e57a47614ace7cb",
+      "sha256_lf_normalized": "f9e558d173c64f6a37dfa996efc6075c6279f520b968406cb7234cce614aa9e9"
+    },
+    {
+      "path": "scripts/catalog_v2.gd.uid",
+      "bytes": 20,
+      "sha256": "868ed66e8974a6bdb486191bd9c4a265b09a4409abfff4a09532fa658d7708e6",
+      "sha256_lf_normalized": "868ed66e8974a6bdb486191bd9c4a265b09a4409abfff4a09532fa658d7708e6"
+    },
+    {
+      "path": "scripts/content.gd",
+      "bytes": 1044,
+      "sha256": "18251c7e05c053e9da1697d1ae5a7cfd99f8b4873528ec6abfc6841bfe24c1dc",
+      "sha256_lf_normalized": "a7a15f49be61f36c28e3d5301effa4185cca27871fc7362361ac7b2ba9fae868"
+    },
+    {
+      "path": "scripts/content.gd.uid",
+      "bytes": 19,
+      "sha256": "2090f499c7cdeb2093df29a2ce8448caefcde09d6a6c13d2b2317b109ef2374d",
+      "sha256_lf_normalized": "2090f499c7cdeb2093df29a2ce8448caefcde09d6a6c13d2b2317b109ef2374d"
+    },
+    {
+      "path": "scripts/local_audio.gd",
+      "bytes": 727,
+      "sha256": "62e5b953ef6f18148f279028e454a5546074d5692dc5e378368f12764ac18bf9",
+      "sha256_lf_normalized": "62e5b953ef6f18148f279028e454a5546074d5692dc5e378368f12764ac18bf9"
+    },
+    {
+      "path": "scripts/local_audio.gd.uid",
+      "bytes": 20,
+      "sha256": "a8c0c2c84080c34bac60f9d017e40759cd0f5a47b20b93fce6f75006d05a050e",
+      "sha256_lf_normalized": "a8c0c2c84080c34bac60f9d017e40759cd0f5a47b20b93fce6f75006d05a050e"
+    },
+    {
+      "path": "scripts/main.gd",
+      "bytes": 27213,
+      "sha256": "970d4f18001e22d8a2bac11e6ec21aa9918415273f78cbec6ec92dd45949cb72",
+      "sha256_lf_normalized": "970d4f18001e22d8a2bac11e6ec21aa9918415273f78cbec6ec92dd45949cb72"
+    },
+    {
+      "path": "scripts/main.gd.uid",
+      "bytes": 19,
+      "sha256": "814681d5bf55ea28a102a3c53c7176d636a272c31f8947c448fb1cf73512f486",
+      "sha256_lf_normalized": "814681d5bf55ea28a102a3c53c7176d636a272c31f8947c448fb1cf73512f486"
+    },
+    {
+      "path": "scripts/rules.gd",
+      "bytes": 6200,
+      "sha256": "5db58d5d73e2a8b584d12548dba71c864be0d6302ac2c9f84ca1ca4ad5b6f8f6",
+      "sha256_lf_normalized": "5db58d5d73e2a8b584d12548dba71c864be0d6302ac2c9f84ca1ca4ad5b6f8f6"
+    },
+    {
+      "path": "scripts/rules.gd.uid",
+      "bytes": 20,
+      "sha256": "0f0da31b6f4b0164d53f22234d2e228b740294f4e9929aa73b6355b36bc710e8",
+      "sha256_lf_normalized": "0f0da31b6f4b0164d53f22234d2e228b740294f4e9929aa73b6355b36bc710e8"
+    },
+    {
+      "path": "scripts/rules_v1.gd",
+      "bytes": 5378,
+      "sha256": "5432339e42e95e02b14d64871cade704ccbb87f89a5c002412deed797291d950",
+      "sha256_lf_normalized": "5432339e42e95e02b14d64871cade704ccbb87f89a5c002412deed797291d950"
+    },
+    {
+      "path": "scripts/rules_v1.gd.uid",
+      "bytes": 19,
+      "sha256": "fe8e014622b836b5a4e92d5db70b2368ef4241702788e144c94431755f99bc70",
+      "sha256_lf_normalized": "fe8e014622b836b5a4e92d5db70b2368ef4241702788e144c94431755f99bc70"
+    },
+    {
+      "path": "scripts/save_files.gd",
+      "bytes": 736,
+      "sha256": "67b532124aab977b2fb103c12d05a9a9152f6d9aee93113b8476796f880859db",
+      "sha256_lf_normalized": "67b532124aab977b2fb103c12d05a9a9152f6d9aee93113b8476796f880859db"
+    },
+    {
+      "path": "scripts/save_files.gd.uid",
+      "bytes": 20,
+      "sha256": "b1be48ebc254694afe695f6332e8f7cd498af14fd3926377cae93d9e861bf37e",
+      "sha256_lf_normalized": "b1be48ebc254694afe695f6332e8f7cd498af14fd3926377cae93d9e861bf37e"
+    },
+    {
+      "path": "scripts/save_store.gd",
+      "bytes": 6118,
+      "sha256": "7826de0a09dcaf11ac46bf69f7cb2e9172dad9345e5d5ace52e4aeded81740ed",
+      "sha256_lf_normalized": "1c628128659e3987e016d3ea9cad2da900e89f6f1f572ce9983ac8a13725a73a"
+    },
+    {
+      "path": "scripts/save_store.gd.uid",
+      "bytes": 20,
+      "sha256": "6983810b6668e5705d11e88ab7b7d6494086044a9599ef5e929ea98cb4c1a887",
+      "sha256_lf_normalized": "6983810b6668e5705d11e88ab7b7d6494086044a9599ef5e929ea98cb4c1a887"
+    },
+    {
+      "path": "tests/campaign_motion.gd",
+      "bytes": 2207,
+      "sha256": "ea8f35ca588f333f88d769314179e92f4b95898b1cf2de570ad955411eeff0fb",
+      "sha256_lf_normalized": "ea8f35ca588f333f88d769314179e92f4b95898b1cf2de570ad955411eeff0fb"
+    },
+    {
+      "path": "tests/campaign_motion.gd.uid",
+      "bytes": 20,
+      "sha256": "36c6d6d964926168c89ab46de1db4f11337324b01b9b51ffdec907c2cc0037db",
+      "sha256_lf_normalized": "36c6d6d964926168c89ab46de1db4f11337324b01b9b51ffdec907c2cc0037db"
+    },
+    {
+      "path": "tests/campaign_playthrough.gd",
+      "bytes": 8183,
+      "sha256": "1ac1772971ceb3b5aac79456d8414ca9f2e974c349be55f2814d53a7107657fc",
+      "sha256_lf_normalized": "1ac1772971ceb3b5aac79456d8414ca9f2e974c349be55f2814d53a7107657fc"
+    },
+    {
+      "path": "tests/campaign_playthrough.gd.uid",
+      "bytes": 19,
+      "sha256": "82de2bc2822e65bda6e43153a31d5f256d529a141a9172b91a0698f02928e5a1",
+      "sha256_lf_normalized": "82de2bc2822e65bda6e43153a31d5f256d529a141a9172b91a0698f02928e5a1"
+    },
+    {
+      "path": "tests/create_legacy_fixture.gd",
+      "bytes": 1807,
+      "sha256": "a6c9f790c09113aa15e6a6dad45ed085842278d2c79753e37c519bccf1ddd46f",
+      "sha256_lf_normalized": "a6c9f790c09113aa15e6a6dad45ed085842278d2c79753e37c519bccf1ddd46f"
+    },
+    {
+      "path": "tests/create_legacy_fixture.gd.uid",
+      "bytes": 20,
+      "sha256": "089c402a963afed06292fb38c044fb607420cde237792912b1dae1b37d538472",
+      "sha256_lf_normalized": "089c402a963afed06292fb38c044fb607420cde237792912b1dae1b37d538472"
+    },
+    {
+      "path": "tests/fault_files.gd",
+      "bytes": 1112,
+      "sha256": "17cbbe3147a916429b8d8da3ee1da29d6c72b068537a188916f3a8ec3dde5d13",
+      "sha256_lf_normalized": "17cbbe3147a916429b8d8da3ee1da29d6c72b068537a188916f3a8ec3dde5d13"
+    },
+    {
+      "path": "tests/fault_files.gd.uid",
+      "bytes": 20,
+      "sha256": "1640215fc56b9294bffa536d71f18cb82fdb1964f71a39e63f3dae1dbb1ed8e1",
+      "sha256_lf_normalized": "1640215fc56b9294bffa536d71f18cb82fdb1964f71a39e63f3dae1dbb1ed8e1"
+    },
+    {
+      "path": "tests/fixtures/code1-active-route.json",
+      "bytes": 188,
+      "sha256": "7ca9a01904e82629d72c62f91897cdd32be0bb50c6a9c21ad38d890f4cf045d5",
+      "sha256_lf_normalized": "7ca9a01904e82629d72c62f91897cdd32be0bb50c6a9c21ad38d890f4cf045d5"
+    },
+    {
+      "path": "tests/fixtures/code1-active-route.json.expected.json",
+      "bytes": 508,
+      "sha256": "9203621fa9b31bf1d7313e8a1add8732357026ad57a024c3067f73741819fac4",
+      "sha256_lf_normalized": "9203621fa9b31bf1d7313e8a1add8732357026ad57a024c3067f73741819fac4"
+    },
+    {
+      "path": "tests/import_backup_probe.gd",
+      "bytes": 1402,
+      "sha256": "3f3f39a4d7f825db013e4afc1188b347a3a64696d6b8aaf00e248460f0470503",
+      "sha256_lf_normalized": "3f3f39a4d7f825db013e4afc1188b347a3a64696d6b8aaf00e248460f0470503"
+    },
+    {
+      "path": "tests/import_backup_probe.gd.uid",
+      "bytes": 19,
+      "sha256": "cdd978f62c9ffb6afa2b7c25d55e5da2049ab182e7e31feb1478f3629119668a",
+      "sha256_lf_normalized": "cdd978f62c9ffb6afa2b7c25d55e5da2049ab182e7e31feb1478f3629119668a"
+    },
+    {
+      "path": "tests/input_base.gd",
+      "bytes": 3890,
+      "sha256": "842b8c9472c2201032781b05c639bf427a76d1a02a0bab689a3ab008bb8e0029",
+      "sha256_lf_normalized": "86e29715d9de512cbf7a408e2ab74913804b54f2280a4fb344daa0d9ed57be8e"
+    },
+    {
+      "path": "tests/input_base.gd.uid",
+      "bytes": 20,
+      "sha256": "3b7c9adbfd0026fa702238609679dbe1f20fd30b27b2cdf7b86dc4dc2da68ce5",
+      "sha256_lf_normalized": "3b7c9adbfd0026fa702238609679dbe1f20fd30b27b2cdf7b86dc4dc2da68ce5"
+    },
+    {
+      "path": "tests/layout_probe.gd",
+      "bytes": 2405,
+      "sha256": "8a75c46f7b0eacf48d9f39b7b81429a8315659ae14765efc1d989353a68e5c6f",
+      "sha256_lf_normalized": "8a75c46f7b0eacf48d9f39b7b81429a8315659ae14765efc1d989353a68e5c6f"
+    },
+    {
+      "path": "tests/layout_probe.gd.uid",
+      "bytes": 19,
+      "sha256": "82cd324bd9aa68de42d686d8163e69555dcdc6fd780794f44ffdc7cb9c066f86",
+      "sha256_lf_normalized": "82cd324bd9aa68de42d686d8163e69555dcdc6fd780794f44ffdc7cb9c066f86"
+    },
+    {
+      "path": "tests/legacy_update_input.gd",
+      "bytes": 2373,
+      "sha256": "ee9dd43ff1af20a79cca05bc112ebe64c5a22933aba2bff5048f2defb2bfe212",
+      "sha256_lf_normalized": "ee9dd43ff1af20a79cca05bc112ebe64c5a22933aba2bff5048f2defb2bfe212"
+    },
+    {
+      "path": "tests/legacy_update_input.gd.uid",
+      "bytes": 20,
+      "sha256": "53119ab6d3cfb9752cd7dc5ed8254f921339612780d51274f2eca462c2a3f1d9",
+      "sha256_lf_normalized": "53119ab6d3cfb9752cd7dc5ed8254f921339612780d51274f2eca462c2a3f1d9"
+    },
+    {
+      "path": "tests/motion.gd",
+      "bytes": 42,
+      "sha256": "3229fced96068a515b4e0a76a81828c537ab942e35cfddc445390e2768db1505",
+      "sha256_lf_normalized": "2a1e9ac2d99449799b1ec4971e25755b38b14ff4977da5412ec77502e3c87141"
+    },
+    {
+      "path": "tests/motion.gd.uid",
+      "bytes": 19,
+      "sha256": "dbf01c19540c458ec75449b46cbc57dcf4bd5ed719a9e92df5870cdb9f0978c6",
+      "sha256_lf_normalized": "dbf01c19540c458ec75449b46cbc57dcf4bd5ed719a9e92df5870cdb9f0978c6"
+    },
+    {
+      "path": "tests/playthrough.gd",
+      "bytes": 47,
+      "sha256": "8f063c07248f3756c907582e512f2bdb8419648f5e07b389d2f1f3f2c4fe471a",
+      "sha256_lf_normalized": "3a85e700145c112b3ba830c66b6729a9c7ff40a75eea39e9b2e2ff8b29684a46"
+    },
+    {
+      "path": "tests/playthrough.gd.uid",
+      "bytes": 20,
+      "sha256": "66b700d6cf0a31a9f810a27c889ef9de8d0f76da2464d19fdaeaddd89094f739",
+      "sha256_lf_normalized": "66b700d6cf0a31a9f810a27c889ef9de8d0f76da2464d19fdaeaddd89094f739"
+    },
+    {
+      "path": "tests/preparation.gd",
+      "bytes": 2980,
+      "sha256": "1248f2740dfea14addeb9500cf51be70689a9ca2477a0c190f9ac75dc88109aa",
+      "sha256_lf_normalized": "1248f2740dfea14addeb9500cf51be70689a9ca2477a0c190f9ac75dc88109aa"
+    },
+    {
+      "path": "tests/preparation.gd.uid",
+      "bytes": 20,
+      "sha256": "3f8a1086c50d128caedeb80fa5d45014d2056d1d42cf24aedbb0160e5a4ee40a",
+      "sha256_lf_normalized": "3f8a1086c50d128caedeb80fa5d45014d2056d1d42cf24aedbb0160e5a4ee40a"
+    },
+    {
+      "path": "tests/run_tests.gd",
+      "bytes": 11070,
+      "sha256": "de897ff3508a9d0283089cd51ecfa750969e47090f6569fe5f13bd7760761620",
+      "sha256_lf_normalized": "1dabf2949af215dbc94b34cb51ce6175069d6f9a164f5e9ff691f770db00809f"
+    },
+    {
+      "path": "tests/run_tests.gd.uid",
+      "bytes": 20,
+      "sha256": "83bcb327fd121e34d059d662a0a9743250335f4e195f75375a466ced854d05fa",
+      "sha256_lf_normalized": "83bcb327fd121e34d059d662a0a9743250335f4e195f75375a466ced854d05fa"
+    },
+    {
+      "path": "tools/capture.py",
+      "bytes": 1880,
+      "sha256": "e2129eccc3a530db9a45af7bd8056330dc0080194c6390322c2c8d8d23b8e77a",
+      "sha256_lf_normalized": "e2129eccc3a530db9a45af7bd8056330dc0080194c6390322c2c8d8d23b8e77a"
+    },
+    {
+      "path": "tools/check.py",
+      "bytes": 1685,
+      "sha256": "93b891b62381858609cb0868c64fa72bc7d565d2e5cea6c98264dbe3970aff29",
+      "sha256_lf_normalized": "404c6a7a00aa16f88c03b9870ef56c9f553bd76dc2054ea505d926a088b8de09"
+    }
+  ],
+  "reports": {
+    "rules": {
+      "checks": 398,
+      "failures": []
+    },
+    "headless": {
+      "checks": 994,
+      "failures": [],
+      "actual_touch_taps": 471,
+      "actual_key_events": 7
+    },
+    "rendered": {
+      "checks": 1020,
+      "failures": [],
+      "actual_touch_taps": 471,
+      "actual_key_events": 7
+    },
+    "legacy_headless": {
+      "checks": 19,
+      "failures": [],
+      "actual_touch_taps": 13
+    },
+    "legacy_rendered": {
+      "checks": 21,
+      "failures": [],
+      "actual_touch_taps": 13
+    },
+    "layout_headless": {
+      "checks": 17,
+      "failures": [],
+      "actual_touch_taps": 11
+    },
+    "layout_rendered": {
+      "checks": 20,
+      "failures": [],
+      "actual_touch_taps": 11
+    },
+    "motion": {
+      "checks": 40,
+      "failures": [],
+      "touch_taps": 33
+    }
+  },
+  "content": {
+    "authored_puzzles": 36,
+    "solver_verified": 36,
+    "treasure_puzzles_verified": 14,
+    "shortest_route_moves": {
+      "total": 177,
+      "minimum": 3,
+      "maximum": 8
+    },
+    "greedy_smallest_enemy_total": {
+      "wins": 18,
+      "fails": 18
+    },
+    "structural_signatures_excluding_enemy_numbers": 36,
+    "shared_signatures": [],
+    "input_earned_clears": 36,
+    "duration": {
+      "target_minutes": [
+        30,
+        60
+      ],
+      "human_measured": false,
+      "qualification": "Authored content and fixed-frame input routes are verified. They do not establish human solving time, appeal or phone performance."
+    },
+    "rules": "Full represented resources, rescued keepers, claims/collapses, ordered combat; no uniqueness claim"
+  },
+  "motion": {
+    "path": ".artifacts/campaign/motion/tower-campaign.mp4",
+    "frames": 1568,
+    "fixed_fps": 60,
+    "seconds": 26.133333333333333,
+    "provenance": "First/middle/final scenes restore unchanged app-written checkpoints earned by the complete touch journey, then resolve new touch inputs through natural engine updates; no gameplay field injection.",
+    "qualification": "Fixed capture clock/Dummy audio; not measured device FPS or human solving time"
+  },
+  "pngs_validated": 31,
+  "artifacts": [
+    {
+      "path": ".artifacts/campaign/checkpoints/stage00.json",
+      "bytes": 182,
+      "sha256": "7e2274d4b905707c0b9e6c142dab422e3c1369514348656d7dd02cae21efc724"
+    },
+    {
+      "path": ".artifacts/campaign/checkpoints/stage18.json",
+      "bytes": 822,
+      "sha256": "efc0a9fef737c399edc37e83fb7c48ba1c6b7c36e8a002a4d58733224db61930"
+    },
+    {
+      "path": ".artifacts/campaign/checkpoints/stage35.json",
+      "bytes": 1425,
+      "sha256": "e5b2e3bc28e308727e1545c8dde326f0bd9d8b6b810d9e532e8f659cf1c3a9b1"
+    },
+    {
+      "path": ".artifacts/campaign/content-analysis.json",
+      "bytes": 749,
+      "sha256": "85161734c9655ada46a3291cbc454347da78f9b9550e8015d0f74cfdcf173e0a"
+    },
+    {
+      "path": ".artifacts/campaign/headless/00-first-tower.json",
+      "bytes": 574,
+      "sha256": "a44528d99a353fcadca0a303331b5c545664377ef48c32a6a9b0d3c6b126a9b5"
+    },
+    {
+      "path": ".artifacts/campaign/headless/00-journey-scrolled.json",
+      "bytes": 578,
+      "sha256": "889dc4bd059522a95ba24adc44a2e7399acb45293c18579e4f5df8fc89e07a98"
+    },
+    {
+      "path": ".artifacts/campaign/headless/01-final-forecast.json",
+      "bytes": 656,
+      "sha256": "f59811ac0c925b3614de431cb021f41b6668befafa00f038e347ffeb9750a0d1"
+    },
+    {
+      "path": ".artifacts/campaign/headless/01-in-flight.json",
+      "bytes": 925,
+      "sha256": "06f98342a8c4bbe09a23cb9556cd2273f738e3a636722ca550fd5c928ff8ad9f"
+    },
+    {
+      "path": ".artifacts/campaign/headless/01-natural-chapter-victory.json",
+      "bytes": 742,
+      "sha256": "4a0f430b74412732ff165ed144d6230b99d33d7c5411ea571d544a1c6cdddd4f"
+    },
+    {
+      "path": ".artifacts/campaign/headless/09-natural-chapter-victory.json",
+      "bytes": 1182,
+      "sha256": "d8aebe175947c1619d0f5bf8f0e4402ed5953d9ed7349b9424c670b7abc6b985"
+    },
+    {
+      "path": ".artifacts/campaign/headless/18-final-forecast.json",
+      "bytes": 1751,
+      "sha256": "1e69c5a70f73ba35f81d90092c8ecd81564c4d901b454ea6980a4103579806fa"
+    },
+    {
+      "path": ".artifacts/campaign/headless/18-natural-chapter-victory.json",
+      "bytes": 1837,
+      "sha256": "9236f4791a895a5661bf96f3818d2703f562556e9e0a7721ada2d0570a9c2637"
+    },
+    {
+      "path": ".artifacts/campaign/headless/27-final-forecast.json",
+      "bytes": 2185,
+      "sha256": "c5ce26610dc189e5b608a13d3e18fcd363a4f01bbe6427fdad25b27d624b02ac"
+    },
+    {
+      "path": ".artifacts/campaign/headless/27-natural-chapter-victory.json",
+      "bytes": 2271,
+      "sha256": "108a25658aa53f67cc8f67e531520f2ef5e1c47813abac65c64ad2390a136ce3"
+    },
+    {
+      "path": ".artifacts/campaign/headless/36-all-lanterns-ending.json",
+      "bytes": 2871,
+      "sha256": "753798e72420ccbc0f433fe23898e45ee117bd000b3bec5d253f3ccce33e5dfd"
+    },
+    {
+      "path": ".artifacts/campaign/headless/36-complete-forecast.json",
+      "bytes": 2695,
+      "sha256": "92e75efe5ce165b84f33eea752ab753940e7def819a0c9ae5652bbda74a081e7"
+    },
+    {
+      "path": ".artifacts/campaign/headless/36-final-forecast.json",
+      "bytes": 2784,
+      "sha256": "7a31f437dd585c25596518c0de74100ea7863a38011428916b0613bd91e63029"
+    },
+    {
+      "path": ".artifacts/campaign/headless/36-natural-chapter-victory.json",
+      "bytes": 2873,
+      "sha256": "5a1290377eaa2e8b925c42906582fefda218b8fe2517f9dff8900d74bdbaf5eb"
+    },
+    {
+      "path": ".artifacts/campaign/headless/37-earned-map.json",
+      "bytes": 2859,
+      "sha256": "9750b5312281b95a415db4f1a29d5f48c138e24f3ae6a8c50c62099f215ae9c3"
+    },
+    {
+      "path": ".artifacts/campaign/headless/37-treasure-replay.json",
+      "bytes": 2741,
+      "sha256": "4e1a3c124e003b46331fcafba8dc55f90e4eb0045755af81791a007ca57caaae"
+    },
+    {
+      "path": ".artifacts/campaign/headless/38-unfolded-candidate.json",
+      "bytes": 2739,
+      "sha256": "0ddf97788cf49d300f1ab34f789a149c6641ee7007d7c0950d3e1af203c1b3bd"
+    },
+    {
+      "path": ".artifacts/campaign/headless/mistake-equality.json",
+      "bytes": 591,
+      "sha256": "31d182c8a4e58ddd7ff27ee89e917d21fbf17244351cd5324b3b147cc2ecdcee"
+    },
+    {
+      "path": ".artifacts/campaign/headless/mistake-final-bridge-too-early.json",
+      "bytes": 2636,
+      "sha256": "dad1b095025ed18eeb4060d7b505fb9c99c7b9fc1f98722e1c7467f91ec8a0b9"
+    },
+    {
+      "path": ".artifacts/campaign/headless/mistake-greedy-ferry.json",
+      "bytes": 787,
+      "sha256": "35953425c4c8c009c2b08dbf3a68cf0b8764f4ed243254a5753bf06557310244"
+    },
+    {
+      "path": ".artifacts/campaign/headless/mistake-ordered-voices.json",
+      "bytes": 663,
+      "sha256": "e0933b09c27c1af5555eae8a42b450e664a3a964a0b5de0bc20260c85f6e5dd3"
+    },
+    {
+      "path": ".artifacts/campaign/headless/mistake-sealed-keeper.json",
+      "bytes": 1035,
+      "sha256": "4111105fade753931e7c627b8aee0d59dbe662e2b829fb14897d24c858dec7a9"
+    },
+    {
+      "path": ".artifacts/campaign/headless/mistake-sun-cannot-replace-shield.json",
+      "bytes": 1687,
+      "sha256": "9c6e9f2be7a9c0f09aeb5dffe8af5d8d9b66ec7cfbc00ff9809b8a273ab0891b"
+    },
+    {
+      "path": ".artifacts/campaign/headless/mistake-unshielded-glass.json",
+      "bytes": 827,
+      "sha256": "3e53c264b4d9ddef4073c8cfe43853cac775a0a3a8c7156e1d792f7aa2fe112f"
+    },
+    {
+      "path": ".artifacts/campaign/headless/mistake-wasted-key.json",
+      "bytes": 1142,
+      "sha256": "6b99c676b69a594645f6d290804cd42c3b99cac90e2952c521229de0286a881b"
+    },
+    {
+      "path": ".artifacts/campaign/headless/mistake-wasted-second-shield.json",
+      "bytes": 2151,
+      "sha256": "f3ff33639003f3080d4a4cbc514feee212e5b0f329fca0c4d154bb3fe615f7f1"
+    },
+    {
+      "path": ".artifacts/campaign/headless/result.json",
+      "bytes": 19102,
+      "sha256": "fbc222cf3205368429f508494fab0963e5a0ef87c53baaeb846432f82e4c6401"
+    },
+    {
+      "path": ".artifacts/campaign/import.log",
+      "bytes": 1433,
+      "sha256": "e86dc130dd37f4ec435c066d1789018be7d337fa25441fa207eedc96da4d3fb1"
+    },
+    {
+      "path": ".artifacts/campaign/input.log",
+      "bytes": 171,
+      "sha256": "ad3cfbcf72ae66578c4c1b7ac6a2ca53bcf1da0de63a0154d28b75df3d39251f"
+    },
+    {
+      "path": ".artifacts/campaign/layout-headless/00-cover-boundaries.json",
+      "bytes": 578,
+      "sha256": "6337b381ae9d781b2d122bb001d6f1152e9436e414d85d0929ce8cddf8509a4a"
+    },
+    {
+      "path": ".artifacts/campaign/layout-headless/01-cover-map-footer.json",
+      "bytes": 577,
+      "sha256": "4b98b55d4b97491d2a1eb2c9d51010aea2819e4404a17e0d0bc0edff1a0180d2"
+    },
+    {
+      "path": ".artifacts/campaign/layout-headless/02-unfolded-input.json",
+      "bytes": 607,
+      "sha256": "1c79dbf0df599a3cccd83372fb853a4617f258a2cf71b8fe5e3cd9e41f99430f"
+    },
+    {
+      "path": ".artifacts/campaign/layout-headless/result.json",
+      "bytes": 182,
+      "sha256": "1ac5875803058dc38ef2a3873cdfb4276297caf755b8aa2c0eacf9f5d5cc0311"
+    },
+    {
+      "path": ".artifacts/campaign/layout-headless.log",
+      "bytes": 140,
+      "sha256": "72c023aa40bd124ed682eccb68b695aeb3735ee0e468d9f9dfa11b5eb752e1f3"
+    },
+    {
+      "path": ".artifacts/campaign/layout-rendered/00-cover-boundaries.json",
+      "bytes": 578,
+      "sha256": "6337b381ae9d781b2d122bb001d6f1152e9436e414d85d0929ce8cddf8509a4a"
+    },
+    {
+      "path": ".artifacts/campaign/layout-rendered/00-cover-boundaries.png",
+      "bytes": 49523,
+      "sha256": "f34c172e0585da66ffba799b63a28f7ea58041078821997834d32ff65b67cfb6",
+      "pixels": [
+        360,
+        800
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/layout-rendered/01-cover-map-footer.json",
+      "bytes": 577,
+      "sha256": "4b98b55d4b97491d2a1eb2c9d51010aea2819e4404a17e0d0bc0edff1a0180d2"
+    },
+    {
+      "path": ".artifacts/campaign/layout-rendered/01-cover-map-footer.png",
+      "bytes": 78049,
+      "sha256": "6dfd2c330c8aa385852c9d9b4e83fa7242ac0a3029c73dfdc59a40beec78894c",
+      "pixels": [
+        360,
+        800
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/layout-rendered/02-unfolded-input.json",
+      "bytes": 607,
+      "sha256": "1c79dbf0df599a3cccd83372fb853a4617f258a2cf71b8fe5e3cd9e41f99430f"
+    },
+    {
+      "path": ".artifacts/campaign/layout-rendered/02-unfolded-input.png",
+      "bytes": 79923,
+      "sha256": "48bba3c013965343b687ccd0309d90fafcc7864f964ac99b753232515f27789c",
+      "pixels": [
+        900,
+        1000
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/layout-rendered/result.json",
+      "bytes": 182,
+      "sha256": "dfe0c8c2eb17fc87923ab333cc8b09fc9f94f9103cb6f7acbb4a915a4a00a850"
+    },
+    {
+      "path": ".artifacts/campaign/legacy-headless/00-legacy-restored.json",
+      "bytes": 587,
+      "sha256": "95cc5d83e15afb8c61c8ed71d4f808120f668bf15f15e2791b326ec92c1318c9"
+    },
+    {
+      "path": ".artifacts/campaign/legacy-headless/01-current-after-legacy.json",
+      "bytes": 641,
+      "sha256": "d44826935b1d092649b3669b5a96f957b75ba9473a2457818c215c250ca09de3"
+    },
+    {
+      "path": ".artifacts/campaign/legacy-headless/result.json",
+      "bytes": 158,
+      "sha256": "5a55dc66591894fd85363bc5bc0934e68401b820dadc7b2667468108289d30af"
+    },
+    {
+      "path": ".artifacts/campaign/legacy-headless.log",
+      "bytes": 140,
+      "sha256": "19c0a4b029dbc287ed4528d297b039004b0ea829430ea62a34567f426f540935"
+    },
+    {
+      "path": ".artifacts/campaign/legacy-rendered/00-legacy-restored.json",
+      "bytes": 587,
+      "sha256": "95cc5d83e15afb8c61c8ed71d4f808120f668bf15f15e2791b326ec92c1318c9"
+    },
+    {
+      "path": ".artifacts/campaign/legacy-rendered/00-legacy-restored.png",
+      "bytes": 72779,
+      "sha256": "0033b32201700e6acedc28dbd45e27e153443006de288ff694dd7f769d0d93a6",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/legacy-rendered/01-current-after-legacy.json",
+      "bytes": 641,
+      "sha256": "d44826935b1d092649b3669b5a96f957b75ba9473a2457818c215c250ca09de3"
+    },
+    {
+      "path": ".artifacts/campaign/legacy-rendered/01-current-after-legacy.png",
+      "bytes": 76785,
+      "sha256": "ec006a03bc62e27436828ad7fea4a6c70d4a0390993703693596f45854e70bf1",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/legacy-rendered/result.json",
+      "bytes": 158,
+      "sha256": "4c922ea242e8f12f7879d76ca86368474f50eaf239225555f0e0ab3143232aef"
+    },
+    {
+      "path": ".artifacts/campaign/motion/capture.log",
+      "bytes": 901,
+      "sha256": "80e300be843ad2566e1b77b136f27333b6251b53dc0446226853d96f70708e30"
+    },
+    {
+      "path": ".artifacts/campaign/motion/commands.json",
+      "bytes": 1369,
+      "sha256": "dea0dce746fdc8d0c18d4ae814fedb85ff4330748c42469c2bfcf2def8fb34f1"
+    },
+    {
+      "path": ".artifacts/campaign/motion/decode-validation.json",
+      "bytes": 96,
+      "sha256": "19d3080a2d2ef40766d88a68de574f9367319bac2ba27b9e9e723dac33c44224"
+    },
+    {
+      "path": ".artifacts/campaign/motion/result.json",
+      "bytes": 1808,
+      "sha256": "519f38fac288ad4de03637f934e5d81a2f7ffd586d4640037468c66429e07d52"
+    },
+    {
+      "path": ".artifacts/campaign/motion/tower-campaign.avi",
+      "bytes": 73174208,
+      "sha256": "d28ec6b9a9338c1a67777b2988e7f95b2ea4a61c70b9d904df766bccf2c953aa"
+    },
+    {
+      "path": ".artifacts/campaign/motion/tower-campaign.mp4",
+      "bytes": 1326177,
+      "sha256": "31190d06d673712832fa7c0a6539a5be46d359b7d863d84e77788e240509fb0c"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/00-first-tower.json",
+      "bytes": 574,
+      "sha256": "a44528d99a353fcadca0a303331b5c545664377ef48c32a6a9b0d3c6b126a9b5"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/00-first-tower.png",
+      "bytes": 70185,
+      "sha256": "865400c1a5c092bf550271850755989e6fec39e111f6c9c79fa813bfbf39b50a",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/00-journey-scrolled.json",
+      "bytes": 578,
+      "sha256": "889dc4bd059522a95ba24adc44a2e7399acb45293c18579e4f5df8fc89e07a98"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/00-journey-scrolled.png",
+      "bytes": 117447,
+      "sha256": "124b9ae51194e931c341c1e5299ded65e0eaebf8a4bfed6a0f59f0169c0e4983",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/01-final-forecast.json",
+      "bytes": 656,
+      "sha256": "f59811ac0c925b3614de431cb021f41b6668befafa00f038e347ffeb9750a0d1"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/01-final-forecast.png",
+      "bytes": 77621,
+      "sha256": "f008136e00ac1095e5373d653c6e025b0ac3c70e94906d3a5387fe7619aaaba2",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/01-in-flight.json",
+      "bytes": 925,
+      "sha256": "06f98342a8c4bbe09a23cb9556cd2273f738e3a636722ca550fd5c928ff8ad9f"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/01-in-flight.png",
+      "bytes": 61073,
+      "sha256": "cfe004bdd0c48e920993c6a64bb490ec0f26a01842d6f2f10e66a9c9b29741bd",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/01-natural-chapter-victory.json",
+      "bytes": 742,
+      "sha256": "4a0f430b74412732ff165ed144d6230b99d33d7c5411ea571d544a1c6cdddd4f"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/01-natural-chapter-victory.png",
+      "bytes": 77524,
+      "sha256": "fce1c1ce9c96782ea7f17ba9d4ce0b5d813d3428903fb88577c84d49db2c4e70",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/09-natural-chapter-victory.json",
+      "bytes": 1182,
+      "sha256": "d8aebe175947c1619d0f5bf8f0e4402ed5953d9ed7349b9424c670b7abc6b985"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/09-natural-chapter-victory.png",
+      "bytes": 83689,
+      "sha256": "03ea4d5b747c7d4f3c82d7ab1f9892959380d00a17e5f2b4dde694301ded6c76",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/18-final-forecast.json",
+      "bytes": 1751,
+      "sha256": "1e69c5a70f73ba35f81d90092c8ecd81564c4d901b454ea6980a4103579806fa"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/18-final-forecast.png",
+      "bytes": 93165,
+      "sha256": "f08d2ff4356723b2a7ba023cb8448ebee59c10a7998775ba11359f2846ccb7fd",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/18-natural-chapter-victory.json",
+      "bytes": 1837,
+      "sha256": "9236f4791a895a5661bf96f3818d2703f562556e9e0a7721ada2d0570a9c2637"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/18-natural-chapter-victory.png",
+      "bytes": 94504,
+      "sha256": "fe4c570b67dbd056afb1e90848e0beed1d8a2ba736343db171180e27260654f3",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/27-final-forecast.json",
+      "bytes": 2185,
+      "sha256": "c5ce26610dc189e5b608a13d3e18fcd363a4f01bbe6427fdad25b27d624b02ac"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/27-final-forecast.png",
+      "bytes": 96188,
+      "sha256": "459163cc5db3af7f4fde1fa845ba50317381b0509a599e7ec4d7665bb8d98850",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/27-natural-chapter-victory.json",
+      "bytes": 2271,
+      "sha256": "108a25658aa53f67cc8f67e531520f2ef5e1c47813abac65c64ad2390a136ce3"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/27-natural-chapter-victory.png",
+      "bytes": 97378,
+      "sha256": "7aea1b048be63d46b7f02060ba04d3c9b54f332fc214f799fe1428bed5bbd2ff",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/36-all-lanterns-ending.json",
+      "bytes": 2871,
+      "sha256": "753798e72420ccbc0f433fe23898e45ee117bd000b3bec5d253f3ccce33e5dfd"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/36-all-lanterns-ending.png",
+      "bytes": 72048,
+      "sha256": "9de68a05359041c9d05f217df20ec28e1a27ea584acc071d44b773e7c134e43f",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/36-complete-forecast.json",
+      "bytes": 2695,
+      "sha256": "92e75efe5ce165b84f33eea752ab753940e7def819a0c9ae5652bbda74a081e7"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/36-complete-forecast.png",
+      "bytes": 39613,
+      "sha256": "07da266e12a1d53008cc06cb4360dbe46b73cf5bbcb383b25054fb1f0d2c972c",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/36-final-forecast.json",
+      "bytes": 2784,
+      "sha256": "7a31f437dd585c25596518c0de74100ea7863a38011428916b0613bd91e63029"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/36-final-forecast.png",
+      "bytes": 97581,
+      "sha256": "c353d3cd6d583c85f82c8140d6fbbb91ff9c2293637ca52e259f5b46d2ba589c",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/36-natural-chapter-victory.json",
+      "bytes": 2873,
+      "sha256": "5a1290377eaa2e8b925c42906582fefda218b8fe2517f9dff8900d74bdbaf5eb"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/36-natural-chapter-victory.png",
+      "bytes": 98550,
+      "sha256": "895527aface3ca3499bc9b7664d284a06f1b302c7669558f4603419f009edb2e",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/37-earned-map.json",
+      "bytes": 2859,
+      "sha256": "9750b5312281b95a415db4f1a29d5f48c138e24f3ae6a8c50c62099f215ae9c3"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/37-earned-map.png",
+      "bytes": 110431,
+      "sha256": "d4ba27dbda74f964a5f5b50de16f4f1f885e0b5facf155da20a150149ce12053",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/37-treasure-replay.json",
+      "bytes": 2741,
+      "sha256": "4e1a3c124e003b46331fcafba8dc55f90e4eb0045755af81791a007ca57caaae"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/37-treasure-replay.png",
+      "bytes": 81533,
+      "sha256": "24915d5578e4bac7c801210fb5c7685eaa97a13ae46a2e258996b1bd3e3e0ffc",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/38-unfolded-candidate.json",
+      "bytes": 2739,
+      "sha256": "0ddf97788cf49d300f1ab34f789a149c6641ee7007d7c0950d3e1af203c1b3bd"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/38-unfolded-candidate.png",
+      "bytes": 111618,
+      "sha256": "c315dd4510cc878244c62cd8fdffde94fcd0ddeda178a4568f411d9b4dc8ec2e",
+      "pixels": [
+        900,
+        1000
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/mistake-equality.json",
+      "bytes": 591,
+      "sha256": "31d182c8a4e58ddd7ff27ee89e917d21fbf17244351cd5324b3b147cc2ecdcee"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/mistake-equality.png",
+      "bytes": 66888,
+      "sha256": "3c7ad2129974f22c92f909d61b7be317ed8979a8ceae2ca9726199a743eb895d",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/mistake-final-bridge-too-early.json",
+      "bytes": 2636,
+      "sha256": "dad1b095025ed18eeb4060d7b505fb9c99c7b9fc1f98722e1c7467f91ec8a0b9"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/mistake-final-bridge-too-early.png",
+      "bytes": 105336,
+      "sha256": "8a659d0dc9a34aa34b4340720e6800e3371199e9ac6460b84a99f33fb3f93373",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/mistake-greedy-ferry.json",
+      "bytes": 787,
+      "sha256": "35953425c4c8c009c2b08dbf3a68cf0b8764f4ed243254a5753bf06557310244"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/mistake-greedy-ferry.png",
+      "bytes": 84565,
+      "sha256": "a5295749cc84d210783ac5bed1ce7788d3dde685af5fbd7c4d1dfd390fef319d",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/mistake-ordered-voices.json",
+      "bytes": 663,
+      "sha256": "e0933b09c27c1af5555eae8a42b450e664a3a964a0b5de0bc20260c85f6e5dd3"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/mistake-ordered-voices.png",
+      "bytes": 72609,
+      "sha256": "f1b9e004aa653d89ef4168d506fac6b60367c5ebf79fa88687b1136c56d2b074",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/mistake-sealed-keeper.json",
+      "bytes": 1035,
+      "sha256": "4111105fade753931e7c627b8aee0d59dbe662e2b829fb14897d24c858dec7a9"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/mistake-sealed-keeper.png",
+      "bytes": 89656,
+      "sha256": "99c18e909706d88e033f4a5b39f884a859b5c20a6505f34f2c9be8b55527868a",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/mistake-sun-cannot-replace-shield.json",
+      "bytes": 1687,
+      "sha256": "9c6e9f2be7a9c0f09aeb5dffe8af5d8d9b66ec7cfbc00ff9809b8a273ab0891b"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/mistake-sun-cannot-replace-shield.png",
+      "bytes": 85713,
+      "sha256": "79585c9cce3c8b3fefcf3871ca7fca84783f698fcee2a0f7c26dcbd7c5f800fd",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/mistake-unshielded-glass.json",
+      "bytes": 827,
+      "sha256": "3e53c264b4d9ddef4073c8cfe43853cac775a0a3a8c7156e1d792f7aa2fe112f"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/mistake-unshielded-glass.png",
+      "bytes": 72400,
+      "sha256": "b8bdf14cc4f629c78375acdc6c6119e134ec23f92d0ca04851918ac93deb21db",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/mistake-wasted-key.json",
+      "bytes": 1142,
+      "sha256": "6b99c676b69a594645f6d290804cd42c3b99cac90e2952c521229de0286a881b"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/mistake-wasted-key.png",
+      "bytes": 87938,
+      "sha256": "51a495d54018813119f2fcb3ea4105da57aeb39c88f75a12c4f2609630d31715",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/mistake-wasted-second-shield.json",
+      "bytes": 2151,
+      "sha256": "f3ff33639003f3080d4a4cbc514feee212e5b0f329fca0c4d154bb3fe615f7f1"
+    },
+    {
+      "path": ".artifacts/campaign/rendered/mistake-wasted-second-shield.png",
+      "bytes": 94935,
+      "sha256": "adf5a3208ade84231a238cb7f3806248af06342de4e9452c7c2e6c4a3adb593c",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/campaign/rendered/result.json",
+      "bytes": 19102,
+      "sha256": "b6ffa51fa17283f668595155c4aa95baa63e2d0376aa5d599c36a67b7d3704c7"
+    },
+    {
+      "path": ".artifacts/campaign/rendered.log",
+      "bytes": 272,
+      "sha256": "645079dbc3ecdfc658c3f031687fcb127bb5a2123850fe24faa59731d5196566"
+    },
+    {
+      "path": ".artifacts/campaign/rules/result.json",
+      "bytes": 25884,
+      "sha256": "6bf07837f002faf212fee1ec649927cfa1dbec5cb990d4011ffeb388a5dacda9"
+    },
+    {
+      "path": ".artifacts/campaign/rules.log",
+      "bytes": 134,
+      "sha256": "b206158f5ca32140f5731774a2c70f018a5db9c035be34c65beb4b265dd10d44"
+    },
+    {
+      "path": ".artifacts/campaign/source/design/prepared_cases.gd",
+      "bytes": 3102,
+      "sha256": "d06a857d45adf9e8f04deffa484c2e95497b489cb08ba591b684386ad9bd6867"
+    },
+    {
+      "path": ".artifacts/campaign/source/design/prepared_cases.gd.uid",
+      "bytes": 20,
+      "sha256": "bf2dd28198a064a43d466850aa353bf94aa7debf58c7ed5a352e93d2b3e95ed4"
+    },
+    {
+      "path": ".artifacts/campaign/source/export_presets.cfg",
+      "bytes": 518,
+      "sha256": "156f979fc8cc34e6a721aeab4472217e86531a5670bea6b31bf54f58ee2a6b3f"
+    },
+    {
+      "path": ".artifacts/campaign/source/icon.svg",
+      "bytes": 394,
+      "sha256": "6bca3ee031a419daa07bd4b2790d6ce481b5686cff75a0ee197ebcc9f7053d1b"
+    },
+    {
+      "path": ".artifacts/campaign/source/icon.svg.import",
+      "bytes": 1013,
+      "sha256": "3847de679c56f4fcad0e14fb11b5eb0f45f068b7c59f489254b5c2c75c1b2320"
+    },
+    {
+      "path": ".artifacts/campaign/source/main.tscn",
+      "bytes": 166,
+      "sha256": "539a74d0621571fab563c8871aad99acdf0158e9202a9453217fb7bf17a4a5df"
+    },
+    {
+      "path": ".artifacts/campaign/source/progress.json",
+      "bytes": 1833,
+      "sha256": "cc4a73b2ad1337c5782a1b72bc58ba5e9436667ef39eeefb6df26d222d74b6a4"
+    },
+    {
+      "path": ".artifacts/campaign/source/project.godot",
+      "bytes": 777,
+      "sha256": "6c38859ad5583b55b6e6eb3ae30108dfebdb7c2619987c320bb55f8827b1f19f"
+    },
+    {
+      "path": ".artifacts/campaign/source/scripts/catalog_v1.gd",
+      "bytes": 2934,
+      "sha256": "4369130a59afd53fbe09db68adc6545a301d289d991670b6a2edfdca3dc04f53"
+    },
+    {
+      "path": ".artifacts/campaign/source/scripts/catalog_v1.gd.uid",
+      "bytes": 20,
+      "sha256": "06b7209b6113ae43f26a8a34359abc8d292cd4f2c0fb0382be2cfece5d7f1313"
+    },
+    {
+      "path": ".artifacts/campaign/source/scripts/catalog_v2.gd",
+      "bytes": 20348,
+      "sha256": "b0550bf10f67f43c0f1d8c998b9074b5192f05155c8939269e57a47614ace7cb"
+    },
+    {
+      "path": ".artifacts/campaign/source/scripts/catalog_v2.gd.uid",
+      "bytes": 20,
+      "sha256": "868ed66e8974a6bdb486191bd9c4a265b09a4409abfff4a09532fa658d7708e6"
+    },
+    {
+      "path": ".artifacts/campaign/source/scripts/content.gd",
+      "bytes": 1044,
+      "sha256": "18251c7e05c053e9da1697d1ae5a7cfd99f8b4873528ec6abfc6841bfe24c1dc"
+    },
+    {
+      "path": ".artifacts/campaign/source/scripts/content.gd.uid",
+      "bytes": 19,
+      "sha256": "2090f499c7cdeb2093df29a2ce8448caefcde09d6a6c13d2b2317b109ef2374d"
+    },
+    {
+      "path": ".artifacts/campaign/source/scripts/local_audio.gd",
+      "bytes": 727,
+      "sha256": "62e5b953ef6f18148f279028e454a5546074d5692dc5e378368f12764ac18bf9"
+    },
+    {
+      "path": ".artifacts/campaign/source/scripts/local_audio.gd.uid",
+      "bytes": 20,
+      "sha256": "a8c0c2c84080c34bac60f9d017e40759cd0f5a47b20b93fce6f75006d05a050e"
+    },
+    {
+      "path": ".artifacts/campaign/source/scripts/main.gd",
+      "bytes": 27213,
+      "sha256": "970d4f18001e22d8a2bac11e6ec21aa9918415273f78cbec6ec92dd45949cb72"
+    },
+    {
+      "path": ".artifacts/campaign/source/scripts/main.gd.uid",
+      "bytes": 19,
+      "sha256": "814681d5bf55ea28a102a3c53c7176d636a272c31f8947c448fb1cf73512f486"
+    },
+    {
+      "path": ".artifacts/campaign/source/scripts/rules.gd",
+      "bytes": 6200,
+      "sha256": "5db58d5d73e2a8b584d12548dba71c864be0d6302ac2c9f84ca1ca4ad5b6f8f6"
+    },
+    {
+      "path": ".artifacts/campaign/source/scripts/rules.gd.uid",
+      "bytes": 20,
+      "sha256": "0f0da31b6f4b0164d53f22234d2e228b740294f4e9929aa73b6355b36bc710e8"
+    },
+    {
+      "path": ".artifacts/campaign/source/scripts/rules_v1.gd",
+      "bytes": 5378,
+      "sha256": "5432339e42e95e02b14d64871cade704ccbb87f89a5c002412deed797291d950"
+    },
+    {
+      "path": ".artifacts/campaign/source/scripts/rules_v1.gd.uid",
+      "bytes": 19,
+      "sha256": "fe8e014622b836b5a4e92d5db70b2368ef4241702788e144c94431755f99bc70"
+    },
+    {
+      "path": ".artifacts/campaign/source/scripts/save_files.gd",
+      "bytes": 736,
+      "sha256": "67b532124aab977b2fb103c12d05a9a9152f6d9aee93113b8476796f880859db"
+    },
+    {
+      "path": ".artifacts/campaign/source/scripts/save_files.gd.uid",
+      "bytes": 20,
+      "sha256": "b1be48ebc254694afe695f6332e8f7cd498af14fd3926377cae93d9e861bf37e"
+    },
+    {
+      "path": ".artifacts/campaign/source/scripts/save_store.gd",
+      "bytes": 6118,
+      "sha256": "7826de0a09dcaf11ac46bf69f7cb2e9172dad9345e5d5ace52e4aeded81740ed"
+    },
+    {
+      "path": ".artifacts/campaign/source/scripts/save_store.gd.uid",
+      "bytes": 20,
+      "sha256": "6983810b6668e5705d11e88ab7b7d6494086044a9599ef5e929ea98cb4c1a887"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/campaign_motion.gd",
+      "bytes": 2207,
+      "sha256": "ea8f35ca588f333f88d769314179e92f4b95898b1cf2de570ad955411eeff0fb"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/campaign_motion.gd.uid",
+      "bytes": 20,
+      "sha256": "36c6d6d964926168c89ab46de1db4f11337324b01b9b51ffdec907c2cc0037db"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/campaign_playthrough.gd",
+      "bytes": 8183,
+      "sha256": "1ac1772971ceb3b5aac79456d8414ca9f2e974c349be55f2814d53a7107657fc"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/campaign_playthrough.gd.uid",
+      "bytes": 19,
+      "sha256": "82de2bc2822e65bda6e43153a31d5f256d529a141a9172b91a0698f02928e5a1"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/create_legacy_fixture.gd",
+      "bytes": 1807,
+      "sha256": "a6c9f790c09113aa15e6a6dad45ed085842278d2c79753e37c519bccf1ddd46f"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/create_legacy_fixture.gd.uid",
+      "bytes": 20,
+      "sha256": "089c402a963afed06292fb38c044fb607420cde237792912b1dae1b37d538472"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/fault_files.gd",
+      "bytes": 1112,
+      "sha256": "17cbbe3147a916429b8d8da3ee1da29d6c72b068537a188916f3a8ec3dde5d13"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/fault_files.gd.uid",
+      "bytes": 20,
+      "sha256": "1640215fc56b9294bffa536d71f18cb82fdb1964f71a39e63f3dae1dbb1ed8e1"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/fixtures/code1-active-route.json",
+      "bytes": 188,
+      "sha256": "7ca9a01904e82629d72c62f91897cdd32be0bb50c6a9c21ad38d890f4cf045d5"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/fixtures/code1-active-route.json.expected.json",
+      "bytes": 508,
+      "sha256": "9203621fa9b31bf1d7313e8a1add8732357026ad57a024c3067f73741819fac4"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/import_backup_probe.gd",
+      "bytes": 1402,
+      "sha256": "3f3f39a4d7f825db013e4afc1188b347a3a64696d6b8aaf00e248460f0470503"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/import_backup_probe.gd.uid",
+      "bytes": 19,
+      "sha256": "cdd978f62c9ffb6afa2b7c25d55e5da2049ab182e7e31feb1478f3629119668a"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/input_base.gd",
+      "bytes": 3890,
+      "sha256": "842b8c9472c2201032781b05c639bf427a76d1a02a0bab689a3ab008bb8e0029"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/input_base.gd.uid",
+      "bytes": 20,
+      "sha256": "3b7c9adbfd0026fa702238609679dbe1f20fd30b27b2cdf7b86dc4dc2da68ce5"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/layout_probe.gd",
+      "bytes": 2405,
+      "sha256": "8a75c46f7b0eacf48d9f39b7b81429a8315659ae14765efc1d989353a68e5c6f"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/layout_probe.gd.uid",
+      "bytes": 19,
+      "sha256": "82cd324bd9aa68de42d686d8163e69555dcdc6fd780794f44ffdc7cb9c066f86"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/legacy_update_input.gd",
+      "bytes": 2373,
+      "sha256": "ee9dd43ff1af20a79cca05bc112ebe64c5a22933aba2bff5048f2defb2bfe212"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/legacy_update_input.gd.uid",
+      "bytes": 20,
+      "sha256": "53119ab6d3cfb9752cd7dc5ed8254f921339612780d51274f2eca462c2a3f1d9"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/motion.gd",
+      "bytes": 42,
+      "sha256": "3229fced96068a515b4e0a76a81828c537ab942e35cfddc445390e2768db1505"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/motion.gd.uid",
+      "bytes": 19,
+      "sha256": "dbf01c19540c458ec75449b46cbc57dcf4bd5ed719a9e92df5870cdb9f0978c6"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/playthrough.gd",
+      "bytes": 47,
+      "sha256": "8f063c07248f3756c907582e512f2bdb8419648f5e07b389d2f1f3f2c4fe471a"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/playthrough.gd.uid",
+      "bytes": 20,
+      "sha256": "66b700d6cf0a31a9f810a27c889ef9de8d0f76da2464d19fdaeaddd89094f739"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/preparation.gd",
+      "bytes": 2980,
+      "sha256": "1248f2740dfea14addeb9500cf51be70689a9ca2477a0c190f9ac75dc88109aa"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/preparation.gd.uid",
+      "bytes": 20,
+      "sha256": "3f8a1086c50d128caedeb80fa5d45014d2056d1d42cf24aedbb0160e5a4ee40a"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/run_tests.gd",
+      "bytes": 11070,
+      "sha256": "de897ff3508a9d0283089cd51ecfa750969e47090f6569fe5f13bd7760761620"
+    },
+    {
+      "path": ".artifacts/campaign/source/tests/run_tests.gd.uid",
+      "bytes": 20,
+      "sha256": "83bcb327fd121e34d059d662a0a9743250335f4e195f75375a466ced854d05fa"
+    },
+    {
+      "path": ".artifacts/campaign/source/tools/capture.py",
+      "bytes": 1880,
+      "sha256": "e2129eccc3a530db9a45af7bd8056330dc0080194c6390322c2c8d8d23b8e77a"
+    },
+    {
+      "path": ".artifacts/campaign/source/tools/check.py",
+      "bytes": 1685,
+      "sha256": "93b891b62381858609cb0868c64fa72bc7d565d2e5cea6c98264dbe3970aff29"
+    },
+    {
+      "path": ".artifacts/campaign/source-bindings.json",
+      "bytes": 13432,
+      "sha256": "b57d8466b555610c522b11372c19746715215a41c43da3bc0fa9acfbc6355c25"
+    }
+  ],
+  "pending": [
+    "Independent full-candidate appeal/fidelity/release review",
+    "Shared Android code2 export and actual code1-to2 install-over-existing route validation",
+    "Seeded solver-verified challenge replay assessment after this bounded freeze; currently omitted",
+    "Human 30-60 minute duration/difficulty/fun assessment",
+    "Physical Fold7 safe areas/folding/audible output/device FPS"
+  ]
+}

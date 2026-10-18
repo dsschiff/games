@@ -1,0 +1,24 @@
+{
+	"input": "Two actual touch taps; natural engine frames; app-written save bytes copied unchanged",
+	"profile": {},
+	"scope": "Desktop old-project fixture, not the separate coordinator Android install-r evidence",
+	"settings": {
+		"reduced_effects": false,
+		"sound": true
+	},
+	"source_commit": "3b4643b",
+	"state": {
+		"claimed": [
+			"bell"
+		],
+		"collapsed": [],
+		"keys": 0,
+		"last": "bell",
+		"level": "watch_01",
+		"moves": 1,
+		"power": 5,
+		"shields": 0,
+		"status": "active",
+		"treasure": 0
+	}
+}
