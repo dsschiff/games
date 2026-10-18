@@ -2,6 +2,7 @@ extends Node3D
 const R = preload("res://scripts/rules.gd")
 const S = preload("res://scripts/save_store.gd")
 const Copy = preload("res://scripts/copy_confirm.gd")
+const CAMERA_PORTRAIT_ASPECT := 1080.0 / 2400.0
 var copy_service := Copy.new()
 var state := R.fresh()
 var settings := {"sound": true, "reduced_effects": false}
@@ -120,8 +121,8 @@ func build_world() -> void:
 	add_child(camera)
 	camera.position = Vector3(0, 13, 9)
 	camera.look_at(Vector3(0, 0, -16))
-	camera.fov = 58
 	camera.current = true
+	frame_camera()
 	var sun := DirectionalLight3D.new()
 	add_child(sun)
 	sun.rotation_degrees = Vector3(-50, -20, 0)
@@ -281,6 +282,19 @@ func build_ui() -> void:
 	button(tcol, "CLOSE TRANSFER", close_transfer).set_meta("transfer_row", 3)
 	transfer.visible = false
 
+func camera_base_fov() -> float:
+	return 58.0
+
+func frame_camera() -> void:
+	var size := get_viewport().get_visible_rect().size
+	var expansion := maxf(1.0, size.x / maxf(1.0, size.y) / CAMERA_PORTRAIT_ASPECT)
+	camera.keep_aspect = Camera3D.KEEP_WIDTH
+	camera.fov = camera_base_fov()
+	# Wider displays retain native portrait vertical coverage and reveal more sides.
+	# Always derive from the authored FOV, never the previous resize result.
+	if expansion > 1.0:
+		camera.fov = rad_to_deg(2.0 * atan(tan(deg_to_rad(camera_base_fov()) * 0.5) * expansion))
+
 func layout() -> void:
 	var v := get_viewport().get_visible_rect().size
 	title.position = Vector2(20, 26)
@@ -313,7 +327,7 @@ func layout() -> void:
 		else:
 			child.position = Vector2(int(row) % 2 * (tw + 12) / 2, th - 200 + (int(row) / 2) * 100)
 			child.size = Vector2((tw - 12) / 2, 88)
-	camera.keep_aspect = Camera3D.KEEP_WIDTH
+	frame_camera()
 
 func start_run() -> void:
 	state = R.fresh()

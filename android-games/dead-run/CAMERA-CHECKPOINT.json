@@ -1,0 +1,440 @@
+{
+  "game": "Dead Run",
+  "version": "0.2.1",
+  "code": 3,
+  "package": "com.dsschiff.deadrun",
+  "parent": "f9609eb8cf03b99a814ae09e6334b5762fbbeea4",
+  "status": "Camera-only builder candidate; independent root/Astra/new-APK geometry/update checks pending.",
+  "camera_policy": {
+    "reference_aspect": [
+      1080,
+      2400
+    ],
+    "authored_horizontal_fov": {
+      "campaign": 46,
+      "legacy": 58
+    },
+    "formula": "effective_hfov = degrees(2 * atan(tan(radians(authored_hfov)/2) * max(1, viewport_aspect / (1080/2400))))",
+    "keep_aspect": "KEEP_WIDTH",
+    "native_and_cover": "Exactly unchanged matrices and geometry projections",
+    "wide_display": "Preserve native vertical coverage, expand ambient side coverage; no stretching, viewport crop or camera pose change. Derive from authored FOV at camera creation/rebuild and every resize/layout."
+  },
+  "runtime_delta": [
+    "export_presets.cfg",
+    "project.godot",
+    "scripts/campaign.gd",
+    "scripts/main.gd"
+  ],
+  "runtime_source_hashes": {
+    "campaign.tscn": {
+      "raw": "54e285a2a987f6d1b8e331226f2a34027ab8564c46c9a4fc74afca041037a2a4",
+      "lf": "54e285a2a987f6d1b8e331226f2a34027ab8564c46c9a4fc74afca041037a2a4",
+      "before_lf": "54e285a2a987f6d1b8e331226f2a34027ab8564c46c9a4fc74afca041037a2a4"
+    },
+    "export_presets.cfg": {
+      "raw": "17379b1735127d0dc681c6f9cf87f94a90835e163d4e102937de65dd7f5c468c",
+      "lf": "17379b1735127d0dc681c6f9cf87f94a90835e163d4e102937de65dd7f5c468c",
+      "before_lf": "20e86f2cf6398beb27ca90d3a696ae89dbd5c52bbf184ae253cb997df6e2905c"
+    },
+    "icon.svg": {
+      "raw": "dc7fc1cf18e8d6a5a52d8643184498ea23b2569c5b4286c63ebf80012f89ee4e",
+      "lf": "dc7fc1cf18e8d6a5a52d8643184498ea23b2569c5b4286c63ebf80012f89ee4e",
+      "before_lf": "dc7fc1cf18e8d6a5a52d8643184498ea23b2569c5b4286c63ebf80012f89ee4e"
+    },
+    "icon.svg.import": {
+      "raw": "9de5e899d3323aa37fec5bf7cb0e35314530dcbe2809929dc0bcfb9ecc9f00cd",
+      "lf": "9de5e899d3323aa37fec5bf7cb0e35314530dcbe2809929dc0bcfb9ecc9f00cd",
+      "before_lf": "9de5e899d3323aa37fec5bf7cb0e35314530dcbe2809929dc0bcfb9ecc9f00cd"
+    },
+    "main.tscn": {
+      "raw": "576922271b75eeb00ec25953db5efa509f0d9d4c2b7a0bf901336ab28438e200",
+      "lf": "576922271b75eeb00ec25953db5efa509f0d9d4c2b7a0bf901336ab28438e200",
+      "before_lf": "576922271b75eeb00ec25953db5efa509f0d9d4c2b7a0bf901336ab28438e200"
+    },
+    "project.godot": {
+      "raw": "b21eadaec42538268032648f322958a84ebb8ec2d8ac1f4953e1c33d71cd0fed",
+      "lf": "b21eadaec42538268032648f322958a84ebb8ec2d8ac1f4953e1c33d71cd0fed",
+      "before_lf": "58954fbb3104fa51bc37bde75aab4f3ef0fe2f7e339bc565cd9cd694ad3fd1d2"
+    },
+    "scripts/campaign.gd": {
+      "raw": "7c9c4a58c41a4e46d89957d4a1bdd18d7c8d36eadeda007968ae4d022efcea31",
+      "lf": "7c9c4a58c41a4e46d89957d4a1bdd18d7c8d36eadeda007968ae4d022efcea31",
+      "before_lf": "dbe5a97350785d87c884503299b906a4af8da53758424332ecd3040a2ad27af7"
+    },
+    "scripts/campaign.gd.uid": {
+      "raw": "cdfc72fb77e00f69c945f01b697122982261b7c3de279c8be89ee9b15b9d8a32",
+      "lf": "cdfc72fb77e00f69c945f01b697122982261b7c3de279c8be89ee9b15b9d8a32",
+      "before_lf": "cdfc72fb77e00f69c945f01b697122982261b7c3de279c8be89ee9b15b9d8a32"
+    },
+    "scripts/campaign_data.gd": {
+      "raw": "bf44e9948fb9044b13d170926b3a5d7823f82fdf8125dd41cfc2e6954a2f167f",
+      "lf": "bf44e9948fb9044b13d170926b3a5d7823f82fdf8125dd41cfc2e6954a2f167f",
+      "before_lf": "bf44e9948fb9044b13d170926b3a5d7823f82fdf8125dd41cfc2e6954a2f167f"
+    },
+    "scripts/campaign_data.gd.uid": {
+      "raw": "5085fb14a2d97fa5770566b70d8bef781ce78e993ecae8ec046122cd29fa9997",
+      "lf": "5085fb14a2d97fa5770566b70d8bef781ce78e993ecae8ec046122cd29fa9997",
+      "before_lf": "5085fb14a2d97fa5770566b70d8bef781ce78e993ecae8ec046122cd29fa9997"
+    },
+    "scripts/campaign_rules.gd": {
+      "raw": "94240a37afe9e3bc426e48ae9e68d327b384a9a0e06a3c6982376b4f4e034794",
+      "lf": "94240a37afe9e3bc426e48ae9e68d327b384a9a0e06a3c6982376b4f4e034794",
+      "before_lf": "94240a37afe9e3bc426e48ae9e68d327b384a9a0e06a3c6982376b4f4e034794"
+    },
+    "scripts/campaign_rules.gd.uid": {
+      "raw": "5271b756f2966d21317ef5bb4a926e9d4aeda5ca6020e83ef1f8897b068f5a84",
+      "lf": "5271b756f2966d21317ef5bb4a926e9d4aeda5ca6020e83ef1f8897b068f5a84",
+      "before_lf": "5271b756f2966d21317ef5bb4a926e9d4aeda5ca6020e83ef1f8897b068f5a84"
+    },
+    "scripts/campaign_store.gd": {
+      "raw": "7db3bbdf2b3cbaa216e31848e9be5da58d0b624162d579f6a81c27a0f4d842bf",
+      "lf": "7db3bbdf2b3cbaa216e31848e9be5da58d0b624162d579f6a81c27a0f4d842bf",
+      "before_lf": "7db3bbdf2b3cbaa216e31848e9be5da58d0b624162d579f6a81c27a0f4d842bf"
+    },
+    "scripts/campaign_store.gd.uid": {
+      "raw": "c1373104f9820c49293606656e2d3cd4062dded980049ef4e1529fe7c6edef17",
+      "lf": "c1373104f9820c49293606656e2d3cd4062dded980049ef4e1529fe7c6edef17",
+      "before_lf": "c1373104f9820c49293606656e2d3cd4062dded980049ef4e1529fe7c6edef17"
+    },
+    "scripts/clipboard_backend.gd": {
+      "raw": "ea55c408c6bcb56538206d97dfecd5c22581d0fb508f88fec4b54a0c3af7825e",
+      "lf": "ea55c408c6bcb56538206d97dfecd5c22581d0fb508f88fec4b54a0c3af7825e",
+      "before_lf": "ea55c408c6bcb56538206d97dfecd5c22581d0fb508f88fec4b54a0c3af7825e"
+    },
+    "scripts/clipboard_backend.gd.uid": {
+      "raw": "2eb34fadb1ae994f7a7ad098ce14ef4cf4b5b11894833b0affae921ac8b220a8",
+      "lf": "2eb34fadb1ae994f7a7ad098ce14ef4cf4b5b11894833b0affae921ac8b220a8",
+      "before_lf": "2eb34fadb1ae994f7a7ad098ce14ef4cf4b5b11894833b0affae921ac8b220a8"
+    },
+    "scripts/copy_confirm.gd": {
+      "raw": "37db7f0d298f76abe145057564c111496470763564cf8b5abe6f9ec1d9f6609f",
+      "lf": "37db7f0d298f76abe145057564c111496470763564cf8b5abe6f9ec1d9f6609f",
+      "before_lf": "37db7f0d298f76abe145057564c111496470763564cf8b5abe6f9ec1d9f6609f"
+    },
+    "scripts/copy_confirm.gd.uid": {
+      "raw": "55cbd817947ba4bb2f4d40b979dfe9a3222706a3247059eda2699d09111a34e2",
+      "lf": "55cbd817947ba4bb2f4d40b979dfe9a3222706a3247059eda2699d09111a34e2",
+      "before_lf": "55cbd817947ba4bb2f4d40b979dfe9a3222706a3247059eda2699d09111a34e2"
+    },
+    "scripts/legacy_view.gd": {
+      "raw": "087a482ef14bdbb79ffd9e5ac8ed4bfc8d012f627fce5a1535b21e91ade7d8de",
+      "lf": "087a482ef14bdbb79ffd9e5ac8ed4bfc8d012f627fce5a1535b21e91ade7d8de",
+      "before_lf": "087a482ef14bdbb79ffd9e5ac8ed4bfc8d012f627fce5a1535b21e91ade7d8de"
+    },
+    "scripts/legacy_view.gd.uid": {
+      "raw": "38bd51a76d4a5aecf4f58d756c6d05e624eb7ef1141099d5558db6b703745aee",
+      "lf": "38bd51a76d4a5aecf4f58d756c6d05e624eb7ef1141099d5558db6b703745aee",
+      "before_lf": "38bd51a76d4a5aecf4f58d756c6d05e624eb7ef1141099d5558db6b703745aee"
+    },
+    "scripts/main.gd": {
+      "raw": "e560b0560d5ec8c61a626fc8ae06c2076ef6a21a83eabcd610259624b0f930e8",
+      "lf": "e560b0560d5ec8c61a626fc8ae06c2076ef6a21a83eabcd610259624b0f930e8",
+      "before_lf": "02429fc8abc9af87fcb4df288ea49b0b2eeb3bdb82ef04e15828a43db7886c81"
+    },
+    "scripts/main.gd.uid": {
+      "raw": "b406494d69da9bfba6324f52bf8650be5abb9da630dc7f81f5ea82af0cae0c5a",
+      "lf": "b406494d69da9bfba6324f52bf8650be5abb9da630dc7f81f5ea82af0cae0c5a",
+      "before_lf": "b406494d69da9bfba6324f52bf8650be5abb9da630dc7f81f5ea82af0cae0c5a"
+    },
+    "scripts/rules.gd": {
+      "raw": "7b3b5e45ef81e97aa9d1b1ebce72e751ed8416f82193913a14492ef58130290c",
+      "lf": "7b3b5e45ef81e97aa9d1b1ebce72e751ed8416f82193913a14492ef58130290c",
+      "before_lf": "7b3b5e45ef81e97aa9d1b1ebce72e751ed8416f82193913a14492ef58130290c"
+    },
+    "scripts/rules.gd.uid": {
+      "raw": "e9f74a7ea5170698b290ff06ba523b4768513931cd64607c76f1006cdb2a8ed4",
+      "lf": "e9f74a7ea5170698b290ff06ba523b4768513931cd64607c76f1006cdb2a8ed4",
+      "before_lf": "e9f74a7ea5170698b290ff06ba523b4768513931cd64607c76f1006cdb2a8ed4"
+    },
+    "scripts/save_files.gd": {
+      "raw": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+      "lf": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+      "before_lf": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac"
+    },
+    "scripts/save_files.gd.uid": {
+      "raw": "dc1d77381e96bee721244fd2c0d44191b128807192785eb44a1df3fa6ecb2bac",
+      "lf": "dc1d77381e96bee721244fd2c0d44191b128807192785eb44a1df3fa6ecb2bac",
+      "before_lf": "dc1d77381e96bee721244fd2c0d44191b128807192785eb44a1df3fa6ecb2bac"
+    },
+    "scripts/save_store.gd": {
+      "raw": "cdd0a07ef25381252af6dc3fd2f4d390bdbd4372a079873b897628f218475316",
+      "lf": "cdd0a07ef25381252af6dc3fd2f4d390bdbd4372a079873b897628f218475316",
+      "before_lf": "cdd0a07ef25381252af6dc3fd2f4d390bdbd4372a079873b897628f218475316"
+    },
+    "scripts/save_store.gd.uid": {
+      "raw": "d431cc0e3c84918fc1e5136eddd8f13d9e472ea8336a218685e0b2cf3b9162c3",
+      "lf": "d431cc0e3c84918fc1e5136eddd8f13d9e472ea8336a218685e0b2cf3b9162c3",
+      "before_lf": "d431cc0e3c84918fc1e5136eddd8f13d9e472ea8336a218685e0b2cf3b9162c3"
+    }
+  },
+  "all_other_runtime_lf_unchanged": true,
+  "rule_definition_save_modules_byte_unchanged": true,
+  "all_existing_methods_except_camera_creation_and_layout_byte_unchanged": true,
+  "metadata_change_only_version_fields": true,
+  "projection_regression": {
+    "checks": 862,
+    "envelopes": 108,
+    "portrait_cases_exactly_equal_to_old_source": 72,
+    "viewport_sizes": [
+      [
+        1080,
+        2400
+      ],
+      [
+        1080,
+        2520
+      ],
+      [
+        1968,
+        2184
+      ]
+    ],
+    "campaign_crew": [
+      5,
+      20
+    ],
+    "legacy_crew": [
+      3,
+      5,
+      12
+    ],
+    "weapons": [
+      "rivet",
+      "lance",
+      "fan"
+    ],
+    "lateral_positions": "center and both reachable limits using actual rule half-widths",
+    "geometry": "Real authored MeshInstance3D/BoxMesh/SphereMesh/TorusMesh AABBs at both bob extrema; full footprint; real line mesh and billboarded caption font AABB; drifter/bulwark meshes at three lanes and near z=-6/-0.1; full near-road box x[-4.35,4.35], y[0,2], z[-6,0].",
+    "minimum_margins": {
+      "left_right": 0.015,
+      "top": 0.02,
+      "bottom": 0.1
+    },
+    "engine": "Real Camera3D projection matrix, unproject_position and is_position_in_frustum in actual source scenes/isolated SubViewport, render target updates disabled, --headless. Synthetic geometry fixtures, not earned gameplay/rendered pixels/physical phone evidence.",
+    "lifecycle": "Actual size_changed signals, creation/rebuild fit before manual layout, repeated inner/native/cover round trips, noncompounding layout, pose/state equality. Includes parked legacy child and standalone legacy scene.",
+    "inner_results": [
+      {
+        "kind": "campaign",
+        "inner_horizontal_fov": 80.72815704345703,
+        "old_worst_bottom": 1.222034215927124,
+        "new_worst_bottom": 0.8605768084526062,
+        "new_leftmost": 0.27436181902885437,
+        "new_rightmost": 0.7256381511688232
+      },
+      {
+        "kind": "legacy-bridge",
+        "inner_horizontal_fov": 95.96710968017578,
+        "old_worst_bottom": 1.084053874015808,
+        "new_worst_bottom": 0.7916707992553711,
+        "new_leftmost": 0.3450583815574646,
+        "new_rightmost": 0.6549416780471802
+      },
+      {
+        "kind": "legacy-standalone",
+        "inner_horizontal_fov": 95.96710968017578,
+        "old_worst_bottom": 1.084053874015808,
+        "new_worst_bottom": 0.7916707992553711,
+        "new_leftmost": 0.3450583815574646,
+        "new_rightmost": 0.6549416780471802
+      }
+    ]
+  },
+  "accepted_headless_runs": [
+    {
+      "path": ".artifacts/camera-final-fixed-camera-headless-20261018T104614178757Z",
+      "scope": "camera-headless",
+      "checks": 862,
+      "receipt_sha256": "7593d0d324a85dd3e53b97d8955959d4e09751b6dec0672daece7f4bc96872b3",
+      "source_raw_manifest_sha256": "6808285d210f4f24b397c349001c593d2d8e9147878441b1a202fdbdf16eeb26",
+      "source_lf_manifest_sha256": "7a3e8a354fc939cbc3d8dcd476814882411f6dbdca971fbb77de61ca68713b1a",
+      "artifact_rows_verified": 179,
+      "script_errors": 0
+    },
+    {
+      "path": ".artifacts/camera-final-fixed-campaign-smoke-20261018T104614227518Z",
+      "scope": "campaign-smoke",
+      "checks": null,
+      "receipt_sha256": "3c915a98a9ac02381eaef61c0a6ea4128b9ba546d1489aeb63bcbfd0c30b0382",
+      "source_raw_manifest_sha256": "6808285d210f4f24b397c349001c593d2d8e9147878441b1a202fdbdf16eeb26",
+      "source_lf_manifest_sha256": "7a3e8a354fc939cbc3d8dcd476814882411f6dbdca971fbb77de61ca68713b1a",
+      "artifact_rows_verified": 177,
+      "script_errors": 0
+    },
+    {
+      "path": ".artifacts/camera-final-fixed-migration-headless-20261018T104614227518Z",
+      "scope": "migration-headless",
+      "checks": 11,
+      "receipt_sha256": "54788dd078f00bda1ddb7ae02a6dae3d24da83d7022ae10ea679a26dbdd3f2e7",
+      "source_raw_manifest_sha256": "6808285d210f4f24b397c349001c593d2d8e9147878441b1a202fdbdf16eeb26",
+      "source_lf_manifest_sha256": "7a3e8a354fc939cbc3d8dcd476814882411f6dbdca971fbb77de61ca68713b1a",
+      "artifact_rows_verified": 184,
+      "script_errors": 0
+    }
+  ],
+  "new_artifact_rows_verified": 540,
+  "old_source_sensitivity": {
+    "path": ".artifacts/camera-old-source-project/.artifacts/camera-final-old-camera-headless-20261018T104604315705Z",
+    "receipt_sha256": "90c3d3cb7775182eea5d356460d85cdf7e98a7324940c5330154f4eaf277fe26",
+    "checks": 862,
+    "failures": 180,
+    "script_errors": 0,
+    "runner_passed": false,
+    "same_final_regression_runner_and_uid_lf_bytes": true,
+    "all_old_runtime_lf_match_parent": true,
+    "qualification": "Expected assertion failures, all at inner aspect; native/cover controls and round trips pass. The earlier parse-error attempt and partial regression draft remain historical."
+  },
+  "native_code2_capture_origin": {
+    "source": "C:\\projects\\active\\_worktrees\\games-android-portfolio-20261017\\.artifacts\\dead-run-code2-platform-preparation\\runs\\inner-20261018T103728745096Z",
+    "qualification": "Independent root native code2 capture/control; no new builder Android/rendering operations.",
+    "files": [
+      {
+        "name": "inner-STOP-review.png",
+        "sha256": "4b551a803bc096cf2b7d2f7db0c5c5ae77afed44861df66c34b66d41bf21628b",
+        "bytes": 320170,
+        "fully_decoded_size": [
+          1968,
+          2184
+        ]
+      },
+      {
+        "name": "held-STOP-review.png",
+        "sha256": "046714136e9055a7fa7534fcbf4e541a49aaa8d428e5a9a04445ffe99c438277",
+        "bytes": 206364,
+        "fully_decoded_size": [
+          1080,
+          2400
+        ]
+      },
+      {
+        "name": "phase.json",
+        "sha256": "e15d61d82d12662292e31c0ea64d5f5028d0f2df0cbf68c961ef9af3cdafad8a",
+        "bytes": 2792
+      },
+      {
+        "name": "before-decoded.json",
+        "sha256": "15239b6d6e77df6e122064a8b0ea3b6238d64055692a8cbdcc67e651948498a3",
+        "bytes": 31871
+      },
+      {
+        "name": "transcript.json",
+        "sha256": "12cc0ef60882358fe3af3527b1938eeec5a2ebe7c96a500b4395fff57bb90c8a",
+        "bytes": 27648
+      }
+    ]
+  },
+  "native_capture_copy_receipt_sha256": "3cc49e9fd948f763a4641821dd252ee4bd176b81c1d069e1b908ea60f14d333b",
+  "bounded_save_smoke": {
+    "fresh_campaign_context_valid": true,
+    "fresh_save_valid": true,
+    "journey_open": true,
+    "native_legacy_revision": 384,
+    "native_legacy_entire_body_settings_exact": true,
+    "both_migration_contexts_equal_prior_source": true,
+    "migration_driven_ticks": 0,
+    "qualification": "Existing fresh/save smoke and11-check migration/input/import/cold test,112 gameplay ticks. No full campaign/rules/movie rerun needed for unchanged rule/save source."
+  },
+  "test_source_bindings": {
+    "tests/camera_projection.gd": {
+      "raw": "5b6ad7ebfd7d22961cdfca6014d634b6212870e54f8c2d182ab72bea1daccefa",
+      "lf": "5b6ad7ebfd7d22961cdfca6014d634b6212870e54f8c2d182ab72bea1daccefa"
+    },
+    "tests/camera_projection.gd.uid": {
+      "raw": "46a54ba6bec839cc1fe5f784ccde2e71d1ca0b8ffb63b129f625787bc99b2be6",
+      "lf": "46a54ba6bec839cc1fe5f784ccde2e71d1ca0b8ffb63b129f625787bc99b2be6"
+    },
+    "tests/run_desktop.py": {
+      "raw": "c9a19027ea6808b08f3ab93af643741ed418b668297ce6750e1657453669f60d",
+      "lf": "c9a19027ea6808b08f3ab93af643741ed418b668297ce6750e1657453669f60d"
+    }
+  },
+  "preserved_prior_manifests": {
+    "CHECKPOINT.json": {
+      "raw": "3dcf35b46c57195da7aa4c8561da47be0600c7747e01ee0a9bfa2bdaae794dbb",
+      "lf": "0aa9d286bcc5fe51bf98f51b3c23fa9f8cd9fdfa04f3118ddcd0905652156977",
+      "raw_matches_pre_fix_capture": true,
+      "lf_matches_parent_git_tree": true
+    },
+    "CAMPAIGN-CHECKPOINT.json": {
+      "raw": "7c3b568cf489168f9d08cb7ac9f2877ee8abf09eb79af153cb15d717976e250e",
+      "lf": "7c3b568cf489168f9d08cb7ac9f2877ee8abf09eb79af153cb15d717976e250e",
+      "raw_matches_pre_fix_capture": true,
+      "lf_matches_parent_git_tree": true
+    },
+    "AMENDMENT-EXHAUSTION.json": {
+      "raw": "20cd768f06f8da87e53b7db97d9d4a57fe9bae3c4584d531b39f7e702a6c0880",
+      "lf": "9082e81313e611a0dda199f06daa72e7862391196af4f5cd1a1a96c10d2df650",
+      "raw_matches_pre_fix_capture": true,
+      "lf_matches_parent_git_tree": true
+    },
+    "AMENDMENT-VALIDATION.json": {
+      "raw": "f3adc2ef6db3b15b5cefe280f02a8660652194a1fe8945a9c0a0590b70cd4a33",
+      "lf": "f3adc2ef6db3b15b5cefe280f02a8660652194a1fe8945a9c0a0590b70cd4a33",
+      "raw_matches_pre_fix_capture": true,
+      "lf_matches_parent_git_tree": true
+    },
+    "delivery-metadata.json": {
+      "raw": "b90e9423227d438a2d4e3b526da8c415c252436e2075907087b44aeacf0ccb58",
+      "lf": "75a5b320ff3ae573a23d1ced1c2eace5117efa337cfc3afad81d25e7ef0bb75e",
+      "raw_matches_pre_fix_capture": true,
+      "lf_matches_parent_git_tree": true
+    }
+  },
+  "preserved_campaign_movies": [
+    {
+      "path": ".artifacts/release-freeze-campaign-movie-early-20261018T074655987629Z/continuous.mp4",
+      "sha256": "a8b4b0a6293f70bd3ffb1d47602dfcabaefbebfc36450fcf12f1276325905631"
+    },
+    {
+      "path": ".artifacts/release-freeze-campaign-movie-middle-20261018T075224911519Z/continuous.mp4",
+      "sha256": "9a35397353b32280188a25a15f54d583c6307b0ebbc412ab5f0c5ba8863f78db"
+    },
+    {
+      "path": ".artifacts/release-freeze-campaign-movie-final-20261018T075437015258Z/continuous.mp4",
+      "sha256": "d8984546d320af86cd8a86667b1ece71d141a4c106935c9026ebc6615bdb807f"
+    }
+  ],
+  "preserved_prototype_movie": {
+    "path": ".artifacts/freeze-movie-20261018T051042189912Z/continuous.mp4",
+    "sha256": "3518fc3f47a0d5a1798b1def7228cf3495abcd6f9cd1dbeda41d98c43f94a237",
+    "bytes": 3988269,
+    "source_avi_sha256": "776f5f45375583ac542b2b597e9a9c569c34b1a19443d3a3c64a575692eb8fc2",
+    "width": 450,
+    "height": 800,
+    "frames": 5234,
+    "fps": "60/1",
+    "duration": "87.233333",
+    "full_decode_passed": true,
+    "scope": "Continuous actual-input original-game loss, Retry, positive/harmful crossings, side/forward tradeoff, crane recruit claim, final objective victory. Re-encoded only; no cuts/speed changes. Fixed simulation/capture fps is not measured device performance."
+  },
+  "prior_attempts": [
+    {
+      "path": ".artifacts/camera-and-footprint-campaign-visual-20261018T071335034411Z",
+      "receipt_sha256": "ade83be5f8e4b3719d3bc4dc12ed422a980627b589b2a78ed186175dd50869ee",
+      "passed": true
+    },
+    {
+      "path": ".artifacts/camera-fixed-first-camera-headless-20261018T104457676082Z",
+      "receipt_sha256": "7097e829ac3bf16de40a07f06777e81cf9a9842d2073c482e5290572379935c6",
+      "passed": true
+    },
+    {
+      "path": ".artifacts/camera-old-camera-headless-20261018T104333392254Z",
+      "receipt_sha256": "a2026eb3605edb0d2e33dc08fafdd269984dd7701c4621cf5a4d15a365a95bff",
+      "passed": false
+    },
+    {
+      "path": ".artifacts/camera-old-typed-camera-headless-20261018T104349340720Z",
+      "receipt_sha256": "44a61ab03c672a4fcb1a9b1da85f7922364e1d57187373cca597ae3e7a125bc5",
+      "passed": false
+    }
+  ],
+  "source_binding_note": "All four current runtime deltas plus24 unchanged runtime files and final test/runner/UID match accepted raw/LF execution snapshots. README version/framing notes and this checkpoint were added after capture. Original movies keep old-source bindings and are not repinned to code3.",
+  "boundaries": [
+    "No builder Android/ADB/export/APK/device operations",
+    "No new rendered Godot/GPU jobs, clipboard or foreground use",
+    "No shared-record edits, pushes, agents, chats, goals, repositories or worktrees",
+    "Root owns export/install/new-APK geometry and update verification",
+    "Physical Fold7/IME/audio/FPS/human fun unverified",
+    "Freeze scoped clean commit and stop for root/Astra/native gates"
+  ]
+}

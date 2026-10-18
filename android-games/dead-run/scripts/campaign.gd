@@ -46,6 +46,9 @@ func button(parent: Node, value: String, action: Callable) -> Button:
 	b.custom_minimum_size.y = 96
 	return b
 
+func camera_base_fov() -> float:
+	return 46.0
+
 func build_world() -> void:
 	if is_instance_valid(world):
 		remove_child(world)
@@ -62,9 +65,8 @@ func build_world() -> void:
 	world.add_child(camera)
 	camera.position = Vector3(0, 12, 8)
 	camera.look_at(Vector3(0, 0, -12))
-	camera.fov = 46
-	camera.keep_aspect = Camera3D.KEEP_WIDTH
 	camera.current = true
+	frame_camera()
 	var light := DirectionalLight3D.new()
 	world.add_child(light)
 	light.rotation_degrees = Vector3(-45, -25, 0)

@@ -1,4 +1,4 @@
-# Dead Run — evacuation campaign (0.2.0/code2)
+# Dead Run — evacuation campaign (0.2.1/code3)
 
 An original offline portrait road shooter for pinned Godot4.7.2/GDScript. Restore
 24 roads through Canal Works, Market Viaduct, Reservoir Ring and Ferry Approach,
@@ -142,10 +142,15 @@ added after movie capture. The production runtime matches all final captures.
 
 ## Delivery boundary
 
-Credential-free standard Android preset: com.dsschiff.deadrun,0.2.0/code2,
+Credential-free standard Android preset: com.dsschiff.deadrun,0.2.1/code3,
 arm64-v8a+x86_64, no permissions, no SDK override keys. Official template supplies
 min24/target36; root verifies the actual APK. Historical code1 SDK-override failures
-are recorded in DELIVERY-METADATA.md/delivery-metadata.json; code2 is this campaign.
+are recorded in DELIVERY-METADATA.md/delivery-metadata.json. Code2 introduced the
+campaign; code3 corrects wide-display camera framing. Native and cover portrait
+projections stay unchanged; wider screens retain native vertical coverage while
+revealing more ambient scenery at the sides. Camera FOV derives from explicit
+authored values on creation and resize. CAMERA-CHECKPOINT.md/json bind the pure
+headless projection evidence; root owns the new APK geometry/update checks.
 Stable UID/icon metadata uses only a private copied portable editor with isolated
 app data and shutdown_adb_on_exit=false. No global toolchain changes.
 
