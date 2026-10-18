@@ -1,19 +1,21 @@
 {
   "amendment": "dead-run-standard-template-sdk-overrides",
   "base_commit": "9952c89a18e72546609b01e503cf8bfdfb5e6ac0",
-  "status": "Static preset/byte-preservation checks pass; root APK export/native verification pending",
+  "status": "SDK override keys removed to match Hearthguard standard preset; corrected root export/native verification pending. Both prior export attempts FAILED.",
   "preset_change_only": {
     "gradle_build/min_sdk": {
-      "before": "24",
-      "after": "0"
+      "before_in_9952c89": "24",
+      "failed_0771fa8_value": "0",
+      "after": "key removed"
     },
     "gradle_build/target_sdk": {
-      "before": "36",
-      "after": "0"
+      "before_in_9952c89": "36",
+      "failed_0771fa8_value": "0",
+      "after": "key removed"
     }
   },
-  "preset_sha256": "25228665e57f56ccd8b239a37408862bb0f3c30db2fc07b3a3444b042da6eeae",
-  "preset_lf_sha256": "25228665e57f56ccd8b239a37408862bb0f3c30db2fc07b3a3444b042da6eeae",
+  "preset_sha256": "feabca41abecec9967cadefe25c70ffba961cf9780182aed0af097c5d013fa7c",
+  "preset_lf_sha256": "feabca41abecec9967cadefe25c70ffba961cf9780182aed0af097c5d013fa7c",
   "gradle_enabled": false,
   "custom_template": false,
   "package": "com.dsschiff.deadrun",
@@ -173,15 +175,50 @@
     {
       "path": ".artifacts/delivery-sdk-override-correction/root-failed-export-manifest.json",
       "sha256": "11dcb79f4ae5cad8a75fdbdbc82a86ead1ad8cc5a5bde6464e150d0c92b21a70"
+    },
+    {
+      "path": ".artifacts/delivery-sdk-override-keys-removed/root-failed-zero-string-console.txt",
+      "sha256": "a56666cf9a29768c85eb42342c8b07ee89cf7a3c8de50af3f39ca0858917e96a"
+    },
+    {
+      "path": ".artifacts/delivery-sdk-override-keys-removed/root-failed-zero-string-manifest.json",
+      "sha256": "6fa519784b1672501fdea989d85e011acaf1e0d59a4694fac0d08749eb246722"
     }
   ],
   "checks": {
-    "only_two_preset_values_changed": true,
     "gradle_disabled": true,
     "runtime_tests_untouched": true,
     "package_version_abis_permissions_unchanged": true,
     "game_suites_repeated": false,
-    "builder_engine_build_export_adb_clipboard": false
+    "builder_engine_build_export_adb_clipboard": false,
+    "only_two_sdk_override_key_lines_removed": true
   },
-  "next": "Root exports corrected standard-template APK and verifies SDKs/package/ABIs/permissions/signature/native behavior. No campaign activation."
+  "next": "Root exports the key-omission correction after live source-bound jobs finish, then verifies actual APK SDKs/package/ABIs/permissions/signature/native behavior. No campaign activation.",
+  "corrects_metadata_commit": "0771fa8bf195a6f2d38ece9e7e339d276b1f1a57",
+  "sdk_override_keys_present": false,
+  "export_attempt_history": [
+    {
+      "source": "9952c89 / root integration3d7e4d6",
+      "result": "failed",
+      "values": {
+        "min_sdk": "24",
+        "target_sdk": "36"
+      },
+      "reason": "Nonempty SDK overrides are invalid for standard non-Gradle export."
+    },
+    {
+      "source": "0771fa8",
+      "result": "failed",
+      "values": {
+        "min_sdk": "0",
+        "target_sdk": "0"
+      },
+      "reason": "Strings \"0\" are still nonempty overrides; same Min/Target SDK configuration errors."
+    },
+    {
+      "source": "current metadata correction",
+      "result": "not executed by builder; pending root",
+      "values": "Both SDK override key lines absent, matching Hearthguard."
+    }
+  ]
 }

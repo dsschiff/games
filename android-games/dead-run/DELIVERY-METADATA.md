@@ -1,9 +1,13 @@
 # Standard-template SDK override correction
 
-Metadata-only amendment to `9952c89`. Root's first Android export rejected the
-nonzero Min/Target SDK overrides because this preset uses the standard non-Gradle
-template. Both unused `gradle_build/min_sdk` and `gradle_build/target_sdk` overrides
-are now zero. Gradle remains disabled; no custom template or tool installation.
+Metadata-only correction after failed attempts at `9952c89` and `0771fa8`.
+Root's first Android export rejected the Min/Target SDK overrides because this
+preset uses the standard non-Gradle template. The next attempt changed their
+values to the strings `"0"`, which remained nonempty overrides and failed with
+the same errors. **Both `gradle_build/min_sdk` and `gradle_build/target_sdk` key
+lines are now removed entirely**, matching Hearthguard's standard preset.
+Gradle remains disabled; no custom template or tool installation. The zero-string
+attempt did not establish a working export; the corrected export remains pending.
 
 The official pinned Godot4.7.2 template supplies min SDK24/target SDK36, as recorded
 in Hearthguard's existing `DELIVERY-METADATA.md` and `delivery-metadata.json` from
@@ -14,9 +18,9 @@ package, ABIs, permissions and signature. Package com.dsschiff.deadrun, version
 
 All runtime, tests, UID/icon metadata and prior reports stay byte-for-byte unchanged
 from9952c89. Existing runtime evidence and original old-source movie retain their
-original bindings. Only two preset values and these additive delivery records
+original bindings. Only the two SDK override key lines and these delivery records
 change. `delivery-metadata.json` binds the preset, unchanged runtime/tests and
-retained copies of root's failed-export console/manifest. No runtime suites were
+retained copies of both root failed-export consoles/manifests. No runtime suites were
 repeated for this metadata-only change.
 
 No builder APK export/build, ADB, clipboard, device operation, shared-file edit,
