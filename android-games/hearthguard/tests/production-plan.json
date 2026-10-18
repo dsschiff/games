@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "runtime_freeze": "34ce0743afeabfee303146b7ab0ec0303147b561",
+  "runtime_freeze": "576d4af9e7a49eefc65b1fa9faa47d185b9415ac",
   "acceptance_index": "campaign-checkpoint.json",
   "earned_sources": {
     "middle": {
@@ -399,5 +399,13 @@
     "Accepted receipt, artifact hash and complete state equality required before first input"
   ],
   "acceptance_index_original_raw_sha256": "273a622c8dce459d7c236a4367d58b27211a638578f648dd3374840450b95ae2",
-  "acceptance_index_lf_sha256": "66a45f7ec813544732e237427ed93c4e35be99aa76111ace72d5e526991d912e"
+  "acceptance_index_lf_sha256": "66a45f7ec813544732e237427ed93c4e35be99aa76111ace72d5e526991d912e",
+  "historical_art_runtime_freeze": "34ce0743afeabfee303146b7ab0ec0303147b561",
+  "candidate_metadata": {
+    "version_name": "0.3.0",
+    "version_code": 3,
+    "package": "com.dsschiff.hearthguard",
+    "freeze_commit": "576d4af9e7a49eefc65b1fa9faa47d185b9415ac",
+    "scope": "Metadata-only change after supported second inspection; art/rules/save unchanged; no APK export or native update implied"
+  }
 }

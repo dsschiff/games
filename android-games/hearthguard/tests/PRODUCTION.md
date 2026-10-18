@@ -1,7 +1,9 @@
 # Production capture handoff
 
-Preparation only. Art and game runtime stay frozen at34ce074, equivalent to
-root's integrated3b58962. Root's second bounded native inspection supported all
+Preparation only. Candidate metadata is0.3.0/code3; the runtime freeze is
+576d4af9e7a49eefc65b1fa9faa47d185b9415ac. This clean metadata-only commit
+changes project/export version fields. Art/rules/save code remains identical to
+34ce074, equivalent to root's integrated3b58962. Root's second bounded native inspection supported all
 five concrete corrections; the full eight-area production review remains open.
 No builder render, export, ADB, clipboard or phone run has occurred. Root must
 explicitly grant the serialized GPU batch before any command below with `--render`.
@@ -141,3 +143,8 @@ known percentile arithmetic, genuine-terminal real-input Retry, exact app-writte
 raw-slot retention, held/reloaded complete context and timing eligibility. It
 does not render, measure performance, replay a complete campaign or establish
 new process/visual behavior. The original parse failure remains retained.
+
+The version freeze predates production films so forthcoming source-bound captures
+and the final root-owned APK build use the same candidate metadata. Historical
+34ce074 second-inspection evidence stays retained; it has identical art/runtime
+behavior but old0.2.0/code2 metadata. No signed0.3.0 APK or update is claimed yet.

@@ -1,8 +1,8 @@
 # Hearthguard graphics production
 
 Current stage: CPU production harness frozen for review; rendered batch awaits grant.
-Only `android-games/hearthguard/` changes. Version stays0.2.0/code2; root owns
-integration, reviewed freeze/version bump, Android exports and native updates.
+Only `android-games/hearthguard/` changes. Candidate metadata is0.3.0/code3;
+root owns integration, Android exports and native updates. No new APK is claimed.
 The builder has performed no rendered execution, browser playback, ADB,
 clipboard, push or phone testing. Gear retains the exclusive render slot until
 root explicitly grants another inspection. Visual acceptance remains open.
@@ -129,3 +129,14 @@ source/envelope hashes. It neither runs Godot nor repeats a campaign/full suite.
 Timestamped results and checked source hashes are retained under
 `.artifacts/source-index-portability-*.json`. No art/runtime/save/version change
 or rendered execution accompanies this correction.
+
+## Candidate metadata freeze
+
+Separate clean commit576d4af9e7a49eefc65b1fa9faa47d185b9415ac changes only
+project.godot config/version to0.3.0 and export version/name/code to0.3.0/3.
+Package/signing/offline options and all art/rules/save code are untouched. The
+production plan now binds runtime_freeze to that metadata commit, so forthcoming
+films and root's final build will share candidate metadata. Original34ce074
+second-scene evidence remains historical and visually identical. Metadata and
+source-index verification are CPU-only; no export/install/render/full-suite run
+was performed for this correction.
