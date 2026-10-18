@@ -41,7 +41,10 @@
     },
     {
       "slug": "hearthguard",
-      "state": "brief_reviewed"
+      "state": "first_prototype_in_development",
+      "thread_id": "01a14cf9-259a-7473-8a90-2a4e341e8219",
+      "ready_for_phone_testing": false,
+      "physical_phone_tested": false
     },
     {
       "slug": "frontline-foundry",

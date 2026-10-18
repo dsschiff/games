@@ -1,9 +1,11 @@
 # Hearthguard first playable handoff
 
-Start only when the coordinator opens a builder lane. The isolated checkout is
+Activated2026-10-18 UTC after Tower code4 software-candidate acceptance. The isolated checkout is
 `C:/projects/active/_worktrees/games-hearthguard-20261018`, branch
-`codex/hearthguard`, prepared from existing games main `e4e70f0`. No game
-implementation or persistent development chat has started at this checkpoint.
+`codex/hearthguard`, initially prepared from existing games main `e4e70f0` and
+advanced cleanly to `1e3bfe7` before activation. Persistent chat **Hearthguard Android game**
+(`01a14cf9-259a-7473-8a90-2a4e341e8219`) now owns the first prototype. Commit and
+review that defining loop before broad campaign expansion.
 
 Read root `AGENTS.md`, `GOAL.md`, `ROADMAP.md`, `WORKLOG.md`,
 `android-games/references/kingshot.md`, and the Kingshot direct-viewing follow-up

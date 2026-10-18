@@ -9,9 +9,11 @@
       "worktree": "C:/projects/active/_worktrees/games-hearthguard-20261018",
       "branch": "codex/hearthguard",
       "initial_base": "e4e70f09ca7fe7f338d4faab65b91281fe067416",
+      "activation_base": "1e3bfe7a73b15a3fadce3232a75a2e143f41d8a4",
+      "thread_id": "01a14cf9-259a-7473-8a90-2a4e341e8219",
       "ownership_when_started": "android-games/hearthguard/",
       "handoff": "android-games/handoffs/hearthguard-prototype.md",
-      "state": "clean isolated workspace prepared; no implementation/chat started; waiting for an accepted builder handoff to keep two active builders"
+      "state": "activated after Tower code4 acceptance; persistent Hearthguard builder owns first prototype in this existing worktree alongside Hook amendment, maintaining two builders"
     }
   ],
   "games": [
@@ -44,6 +46,17 @@
       "branch": "codex/hook-and-hunger",
       "ownership": "android-games/hook-and-hunger/",
       "state": "workerbde8994/code3 save findings independently closed; actual2-to3 whole-state/profile preservation and native first-passage loss/Retry/victory pass; fixing native TextEdit touch focus/export interaction in code4 with old artifacts preserved"
+    },
+    {
+      "slug": "hearthguard",
+      "thread_id": "01a14cf9-259a-7473-8a90-2a4e341e8219",
+      "host_id": "local",
+      "model": "configured_default_no_override",
+      "worktree": "C:/projects/active/_worktrees/games-hearthguard-20261018",
+      "branch": "codex/hearthguard",
+      "ownership": "android-games/hearthguard/",
+      "activation_base": "1e3bfe7a73b15a3fadce3232a75a2e143f41d8a4",
+      "state": "active first-prototype implementation: moving avatar, nearby coins, priced build pads, firing defenses, second investment and natural leak-loss/Retry/win; awaiting committed first-loop review checkpoint before campaign expansion"
     }
   ]
 }
