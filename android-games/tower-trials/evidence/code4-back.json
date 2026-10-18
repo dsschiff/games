@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "milestone": "Native Android Back default-quit policy fix; native retest pending",
+  "software_version": "0.3.1",
+  "android_version_code": 4,
+  "save_schema": 3,
+  "generator_version": 1,
+  "parent_checkpoint": "0feb135",
+  "branch": "codex/tower-trials",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "runtime_delta": [
+    "application/config/quit_on_go_back=false",
+    "SceneTree.quit_on_go_back=false",
+    "APK/software version increment only; no navigation/save/content/rule changes"
+  ],
+  "source_binding": {
+    "scope": "Six changed/new runtime/test/progress files, copied under .artifacts/code4/source; raw and LF hashes. Other runtime source remains frozen0feb135. Not the shared whole-project fingerprint.",
+    "files": 6
+  },
+  "source_files": [
+    {
+      "path": "project.godot",
+      "bytes": 777,
+      "sha256": "2f0fc64ba0dbc41c8e056061c2ed68879fc53ccd5d4eabef10cc72d714f6d295",
+      "sha256_lf_normalized": "2f0fc64ba0dbc41c8e056061c2ed68879fc53ccd5d4eabef10cc72d714f6d295"
+    },
+    {
+      "path": "export_presets.cfg",
+      "bytes": 532,
+      "sha256": "44ebe5c4739ab957c2983b5725ef420b8d22050a48201124de9a95cf4f4a1adc",
+      "sha256_lf_normalized": "44ebe5c4739ab957c2983b5725ef420b8d22050a48201124de9a95cf4f4a1adc"
+    },
+    {
+      "path": "scripts/main.gd",
+      "bytes": 37700,
+      "sha256": "833677d0de86266164f3fb530143502f5860e184980e11c006937850f48e276d",
+      "sha256_lf_normalized": "833677d0de86266164f3fb530143502f5860e184980e11c006937850f48e276d"
+    },
+    {
+      "path": "progress.json",
+      "bytes": 2563,
+      "sha256": "5bc74a1aca56d0b325153b9adcdebed3798f90369fa598ea33bcb37ae6d1abda",
+      "sha256_lf_normalized": "5bc74a1aca56d0b325153b9adcdebed3798f90369fa598ea33bcb37ae6d1abda"
+    },
+    {
+      "path": "tests/back_policy.gd",
+      "bytes": 5135,
+      "sha256": "d769d33679752c5afe20cfaf9cf1ee4b1615e3af5bbd1bac9beae7eb0be61d80",
+      "sha256_lf_normalized": "d769d33679752c5afe20cfaf9cf1ee4b1615e3af5bbd1bac9beae7eb0be61d80"
+    },
+    {
+      "path": "tests/back_policy.gd.uid",
+      "bytes": 19,
+      "sha256": "13fb66e4cdba02f49bf08829c4258bb7504daceac5b8ba21843f9240a1b6f7b3",
+      "sha256_lf_normalized": "13fb66e4cdba02f49bf08829c4258bb7504daceac5b8ba21843f9240a1b6f7b3"
+    }
+  ],
+  "immutable_code3_files": {
+    "scripts/catalog_v1.gd": "cacac155762576b19d295a4cb98a900bf7f0a4ba418cff35d132b202923eb7e4",
+    "scripts/catalog_v2.gd": "f9e558d173c64f6a37dfa996efc6075c6279f520b968406cb7234cce614aa9e9",
+    "scripts/rules.gd": "5db58d5d73e2a8b584d12548dba71c864be0d6302ac2c9f84ca1ca4ad5b6f8f6",
+    "scripts/rules_v1.gd": "5432339e42e95e02b14d64871cade704ccbb87f89a5c002412deed797291d950",
+    "scripts/challenge_v1.gd": "3706f76799c3eccf8a8739d02bd74a226edd274e6cdbd1358f58f97767812071",
+    "scripts/save_store.gd": "75fbf10cc8e8276237007593e08ac6b8706fc5a3ce78c4ea3ab30a4f7489080b"
+  },
+  "code3_artifacts_preserved": 279,
+  "reports": {
+    "headless": {
+      "actual_touch_taps": 27,
+      "captures": [
+        "campaign-modals-closed",
+        "campaign-back-paused",
+        "challenge-modals-closed",
+        "challenge-back-paused"
+      ],
+      "checks": 67,
+      "failures": [],
+      "scope": "Desktop root Window.go_back_requested signal (default quit policy) plus explicit WM_GO_BACK_REQUEST notification propagation (navigation); not actual Android KEYCODE_BACK/gesture or phone evidence",
+      "window_back_requests": 16
+    },
+    "rendered": {
+      "actual_touch_taps": 27,
+      "captures": [
+        "campaign-modals-closed",
+        "campaign-back-paused",
+        "challenge-modals-closed",
+        "challenge-back-paused"
+      ],
+      "checks": 71,
+      "failures": [],
+      "scope": "Desktop root Window.go_back_requested signal (default quit policy) plus explicit WM_GO_BACK_REQUEST notification propagation (navigation); not actual Android KEYCODE_BACK/gesture or phone evidence",
+      "window_back_requests": 16
+    }
+  },
+  "expected_code3_baseline": {
+    "command": [
+      "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+      "--headless",
+      "--audio-driver",
+      "Dummy",
+      "--fixed-fps",
+      "60",
+      "--path",
+      "C:\\projects\\active\\_worktrees\\games-tower-trials-20261018\\android-games\\tower-trials\\.artifacts\\challenge-v1\\source",
+      "--script",
+      "C:\\projects\\active\\_worktrees\\games-tower-trials-20261018\\android-games\\tower-trials\\tests\\back_policy.gd"
+    ],
+    "returncode": 0,
+    "expected_regression": true,
+    "result": "Both Back-policy assertions fail and root Window signal quits before suite completion",
+    "scope": "Frozen0feb135 desktop runtime, not native Android; root native Android failure packet is separate"
+  },
+  "pngs_validated": 4,
+  "artifacts": [
+    {
+      "path": ".artifacts/code4/back-headless/campaign-back-paused.json",
+      "bytes": 681,
+      "sha256": "1a5fefce91e5af3d3c01ca6e158f9427a6a291a462abe3b4ddc9827ccfe64e07"
+    },
+    {
+      "path": ".artifacts/code4/back-headless/campaign-modals-closed.json",
+      "bytes": 684,
+      "sha256": "aaa38ba26edbfc4c6be9f66cadf499aae7f46bdbd8c13b65fb9554636a6c8baa"
+    },
+    {
+      "path": ".artifacts/code4/back-headless/challenge-back-paused.json",
+      "bytes": 3724,
+      "sha256": "0c260dbd4943d9326e9e23e9aacab651542b3fb65e9b4e0bf3fcec4cb68b1e61"
+    },
+    {
+      "path": ".artifacts/code4/back-headless/challenge-modals-closed.json",
+      "bytes": 3727,
+      "sha256": "163d3b8f325891f99574ff565be8db66d395604cd57684f320b9e6710c05b98f"
+    },
+    {
+      "path": ".artifacts/code4/back-headless/result.json",
+      "bytes": 427,
+      "sha256": "2cca00969e82a37e9dbfc9dcd14b4c2690e583c2f0c46437f8a0727db7148eda"
+    },
+    {
+      "path": ".artifacts/code4/back-rendered/campaign-back-paused.json",
+      "bytes": 681,
+      "sha256": "1a5fefce91e5af3d3c01ca6e158f9427a6a291a462abe3b4ddc9827ccfe64e07"
+    },
+    {
+      "path": ".artifacts/code4/back-rendered/campaign-back-paused.png",
+      "bytes": 64272,
+      "sha256": "4670c5f63c953b9f720aec8441076cbaecd98064e35166d46c01f957dad65731",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/code4/back-rendered/campaign-modals-closed.json",
+      "bytes": 684,
+      "sha256": "aaa38ba26edbfc4c6be9f66cadf499aae7f46bdbd8c13b65fb9554636a6c8baa"
+    },
+    {
+      "path": ".artifacts/code4/back-rendered/campaign-modals-closed.png",
+      "bytes": 69953,
+      "sha256": "7bfb1a670d9b77bd61d2e8dcb8723867e08fd6666c550c9437d1556f5896df7c",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/code4/back-rendered/challenge-back-paused.json",
+      "bytes": 3724,
+      "sha256": "0c260dbd4943d9326e9e23e9aacab651542b3fb65e9b4e0bf3fcec4cb68b1e61"
+    },
+    {
+      "path": ".artifacts/code4/back-rendered/challenge-back-paused.png",
+      "bytes": 76990,
+      "sha256": "8b6502fcb10ac5d0e654840c1cf933dbbd102a565f949946d1d7cef2fae79279",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/code4/back-rendered/challenge-modals-closed.json",
+      "bytes": 3727,
+      "sha256": "163d3b8f325891f99574ff565be8db66d395604cd57684f320b9e6710c05b98f"
+    },
+    {
+      "path": ".artifacts/code4/back-rendered/challenge-modals-closed.png",
+      "bytes": 83054,
+      "sha256": "f5bac2d4e1dde879edb92045981b1cdfbee96bb8de9d674b22463df8a2ca930f",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/code4/back-rendered/result.json",
+      "bytes": 427,
+      "sha256": "a20c7d3c70aacd09dd9f9698e359d2fbbcbd9371c546445773000ab2052f49d6"
+    },
+    {
+      "path": ".artifacts/code4/baseline-code3.json",
+      "bytes": 758,
+      "sha256": "880950e9a6beeddae530f9fd64cebda2e3102a5c3c27e12328ea615c7e30d6d2"
+    },
+    {
+      "path": ".artifacts/code4/baseline-code3.log",
+      "bytes": 210,
+      "sha256": "61d63b8206773bd2a1706c61e749c6bc16b0aac9a3dd24230d00440d5541d368"
+    },
+    {
+      "path": ".artifacts/code4/headless.log",
+      "bytes": 152,
+      "sha256": "28f49c2e8be0ce21d600478f48af10fba5e5774c04654841d96b5b2d90814173"
+    },
+    {
+      "path": ".artifacts/code4/import.log",
+      "bytes": 1315,
+      "sha256": "97d3a98b638bde96129f72c0aa2c73756b531bcc790e7a75a73508fdf8f980e1"
+    },
+    {
+      "path": ".artifacts/code4/rendered.log",
+      "bytes": 252,
+      "sha256": "33514e7ffeadbeabf2545320de6cd4e57881b861cff21462ce7809b714389310"
+    },
+    {
+      "path": ".artifacts/code4/source/export_presets.cfg",
+      "bytes": 532,
+      "sha256": "44ebe5c4739ab957c2983b5725ef420b8d22050a48201124de9a95cf4f4a1adc"
+    },
+    {
+      "path": ".artifacts/code4/source/progress.json",
+      "bytes": 2563,
+      "sha256": "5bc74a1aca56d0b325153b9adcdebed3798f90369fa598ea33bcb37ae6d1abda"
+    },
+    {
+      "path": ".artifacts/code4/source/project.godot",
+      "bytes": 777,
+      "sha256": "2f0fc64ba0dbc41c8e056061c2ed68879fc53ccd5d4eabef10cc72d714f6d295"
+    },
+    {
+      "path": ".artifacts/code4/source/scripts/main.gd",
+      "bytes": 37700,
+      "sha256": "833677d0de86266164f3fb530143502f5860e184980e11c006937850f48e276d"
+    },
+    {
+      "path": ".artifacts/code4/source/tests/back_policy.gd",
+      "bytes": 5135,
+      "sha256": "d769d33679752c5afe20cfaf9cf1ee4b1615e3af5bbd1bac9beae7eb0be61d80"
+    },
+    {
+      "path": ".artifacts/code4/source/tests/back_policy.gd.uid",
+      "bytes": 19,
+      "sha256": "13fb66e4cdba02f49bf08829c4258bb7504daceac5b8ba21843f9240a1b6f7b3"
+    },
+    {
+      "path": ".artifacts/code4/source-bindings.json",
+      "bytes": 1465,
+      "sha256": "f8d64b7deb179d3b9ba782406efc511e398bb1947869ae3e4ff6c485c17e1dfd"
+    }
+  ],
+  "scope": "Root Window.go_back_requested signal exercises default quit policy; explicit WM_GO_BACK_REQUEST propagation exercises notification navigation. Desktop simulation, not Android KEYCODE_BACK/gesture/phone evidence. Actual code3 Android exit was separately confirmed by coordinator.",
+  "full_suite_basis": "Coordinator independently verified frozen code3 suites; not rerun for this narrow policy-only fix as requested",
+  "pending": [
+    "Coordinator signed code4 export and real install-over-code3 save preservation",
+    "Actual native Android KEYCODE_BACK/gesture modal/navigation validation",
+    "Physical Fold7/folding/sound/FPS and human duration/fun"
+  ]
+}

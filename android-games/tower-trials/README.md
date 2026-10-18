@@ -1,6 +1,6 @@
 # Tower Trials
 
-Offline numbered-room tower puzzle, software candidate **0.3.0 / Android code3**. Thirty-six authored watches, four coastal chapters and an ending. Astra approved the first loop and the bounded code2 authored/motion candidate. The seeded Challenge amendment now implements the remaining replay requirement; its independent review and code3 Android acceptance are pending.
+Offline numbered-room tower puzzle, software candidate **0.3.1 / Android code4**. Thirty-six authored watches, four coastal chapters and an ending. Astra approved the first loop and the bounded code2 authored/motion candidate. The seeded Challenge amendment now implements the remaining replay requirement; Astra approved the seeded amendment for software-candidate validation. Code4 fixes a confirmed native Android Back-to-quit defect; coordinator Android retesting remains pending.
 
 Tap a room, read its forecast, then Enter. Tap the forecast for every combat/resource step. Power must be strictly greater than each enemy, resolved left to right; defeated strength is added. Claiming a room sends power to a visibly taller home watch. Keys, collapsing bridges, keeper rescues, shields/traps and sun lenses create route decisions. The first six watches introduce the main rules; later chapters combine them.
 
@@ -26,4 +26,4 @@ Every custom button has an 80-logical-pixel minimum hit dimension: 48dp at a 360
 
 Later route hints are optional. Cold-restored defeat retains its visible cause.
 
-See `CHALLENGE_CHECKPOINT.md`, `CAMPAIGN_CHECKPOINT.md`, `progress.json`, `WORKLOG.md` and `evidence/challenge-v1.json` for exact checks and source/artifact bindings. Coordinator owns Android export/device/update work. No APK or phone acceptance is claimed here. Original procedural/SVG art and local generated tones; no network service, account, ads, purchases, energy restrictions or artificial waits.
+See `BACK_POLICY_CHECKPOINT.md`, `CHALLENGE_CHECKPOINT.md`, `CAMPAIGN_CHECKPOINT.md`, `progress.json`, `WORKLOG.md` and `evidence/challenge-v1.json` for exact checks and source/artifact bindings. Coordinator owns Android export/device/update work. No APK or phone acceptance is claimed here. Original procedural/SVG art and local generated tones; no network service, account, ads, purchases, energy restrictions or artificial waits.

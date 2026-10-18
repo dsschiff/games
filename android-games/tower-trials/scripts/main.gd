@@ -49,6 +49,7 @@ var record_page := 0
 
 func _ready() -> void:
 	get_tree().auto_accept_quit = false
+	get_tree().quit_on_go_back = false
 	var restored := Saves.read(save_path)
 	if restored.ok:
 		data = restored.data

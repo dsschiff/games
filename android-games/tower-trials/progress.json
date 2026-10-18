@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "game": "tower-trials",
-  "software_version": "0.3.0",
-  "android_version_code": 3,
+  "software_version": "0.3.1",
+  "android_version_code": 4,
   "implemented": {
     "authored_puzzles": 36,
     "chapters": 4,
@@ -18,7 +18,8 @@
     "pinned_generated_snapshots": true,
     "separate_challenge_medals_and_record_replay": true,
     "optional_later_route_hints": true,
-    "cold_loss_explanation": true
+    "cold_loss_explanation": true,
+    "explicit_android_back_policy": true
   },
   "automatically_verified": {
     "solver_witnesses": "36/36",
@@ -39,13 +40,17 @@
     "challenge_matrix_requests": 512,
     "challenge_structural_signatures": 31,
     "rendered_touch_taps": 586,
-    "challenge_motion_checks": 48
+    "challenge_motion_checks": 48,
+    "code4_back_headless_checks": 67,
+    "code4_back_rendered_checks": 71,
+    "code4_back_window_requests_per_run": 16,
+    "code4_scope": "Focused Back-only regression; full suites remain independently verified on frozen code3"
   },
   "review": {
     "prototype_appeal_expansion": "Astra approved via coordinator after complete movie playback",
     "full_candidate_appeal_fidelity_release": "requested at frozen checkpoint"
   },
-  "android": "Coordinator code1-to-code2 update passed; code3 export/runtime/update pending",
+  "android": "Coordinator confirmed code2-to3 semantic preservation and code3 native Back exit; code4 native Android retest pending",
   "phone_tested": false,
   "human_duration_minutes_target": [
     30,
@@ -58,7 +63,7 @@
     "Physical safe areas, folding, audible output and human fun remain unverified",
     "Small versioned grammars; no claim of infinitely many unique topologies"
   ],
-  "next_action": "Coordinator/Astra Challenge amendment review and shared code3 Android export/update acceptance",
+  "next_action": "Coordinator code4 export/install-over-code3 and actual KEYCODE_BACK modal/navigation validation",
   "save_schema": 3,
   "generator_version": 1
 }
