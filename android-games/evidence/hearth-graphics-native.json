@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "status": "actual_native_checks_pass_independent_review_pending",
+  "actual_apk_sha256": "d2cadff5f81074bccfc88954799e23eeb39546e6c873e1bcf5e9891e1a088455",
+  "version": "0.3.0",
+  "version_code": 3,
+  "report_sha256": "b1d85e609c6bb57f400edaf41e38786e88a52978b990757a6e4fc542812bd329",
+  "preservation": {
+    "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\hearth-native-code3-inspection",
+    "files": 132,
+    "bytes": 11487695,
+    "receipt_sha256": "f4725cc08d74eabc38d6a0fc1951cc1d7718f87027a738795a45fac316f57b5e"
+  },
+  "actual_install_over": "2to3 both ordinaryslotsbyteexactbeforefirstlaunch;actualpm-pathbinaryhashmatches",
+  "whole_context": "26actualsavedslotsets;16wholepacketcomparisonspass, includesfullcampaign/parked/legacy. Onlyrevisionexcepted; explicitordinaryimport committedTrue\u2192False plus1e-12fractionalserializationtolerance.",
+  "native_controls": "Actualportrait+inner movement,Back+modalBack,ReducedEffectssettingtoggle/restoration,copy/invalidrejection/paste/import,activeHome/warmreturn/unfoldedsettledcoldrestore",
+  "native_movie": {
+    "sha256": "5568a86531d930a2cb4c1fa8193095bdf4c5534a7c4a1ee1b4557bb3f57ce676",
+    "path": "17-native-active.mp4",
+    "width": 1080,
+    "height": 2400,
+    "frames": 255,
+    "seconds": 9.553867,
+    "full_decode_passed": true,
+    "phone_fps_claim": false
+  },
+  "orientation": "Requestedlandscape2184x1968 actuallycaptures1968x2184 underunchangedportraitactivitypolicy; native landscapeunproved, desktoplandscapeseparate.",
+  "startup": "02isGodotsplash;03settledportrait.25notcountedsettled;26visibleunfoldedcoldUI.",
+  "final": "AppHome+forceStopped, wmreset1080x2400; savedtime16.7833333333337 revisions499/500 retained",
+  "phone_testing": "deferred_by_user"
+}

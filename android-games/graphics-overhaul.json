@@ -89,24 +89,15 @@
   ],
   "active_graphics_sessions": [
     {
-      "slug": "hearthguard",
-      "title": "Hearthguard graphics overhaul",
-      "thread_id": "01a14f9d-4b9b-7bd3-abd6-897a1188086d",
-      "branch": "codex/hearthguard-graphics",
-      "worktree": "C:/projects/active/_worktrees/games-hearthguard-20261018",
-      "phase": "builder_wrapped_root_review_native_pending",
-      "state": "Clean1e117a6 worker wrapped; final2b54 batch integratedb974ba2, runtime042 unchanged. Astra fullfilmreviewactive, signed0.3/code3clean d2cadff candidate built; rootnativepending emulatordisconnected beforeinstall. Allrawsaves/evidence retained."
-    },
-    {
       "slug": "frontline-foundry",
       "title": "Frontline Foundry graphics overhaul",
       "thread_id": "01a14ecf-a3f6-7dc0-9276-3457e84da5f3",
       "branch": "codex/frontline-pooling",
       "worktree": "C:/projects/active/_worktrees/games-frontline-foundry-20261018",
-      "phase": "bounded_pooling_code4_CPU",
+      "phase": "coordinator_pooling_render_native_followup",
       "archive_status": "reopened_verified",
       "handoff": "android-games/handoffs/frontline-pooling-followup.md",
-      "state": "Existingretainedgraphicschat reopened afterGeararchive; cleannewbranch at d3a3684. Narrowactor/effectreuse0.3.1/code4, original47models/rules/saves unchanged; CPUonly whileHearthownsGPU. Rootowns sourceintegration/export/ADB/clipboard/oneAstrareviewer."
+      "state": "Builderinterrupted/notLoaded; cleanworker78cb4bd completedbyroot/integrated8b306da.93pool+103presentation checks/sourcepins verified andAstraCPUclear. Rootgenuine55smovie passes; separateuncappedtimingactive. Rootownsremainingcode4native/bundle/archive; no newthreadpromptdelivered."
     }
   ],
   "review_contract": "android-games/reviews/graphics-quality-contract-astra.md",
@@ -138,7 +129,7 @@
     "android_release": "not_yet_built",
     "production": "authorized_first_pair"
   },
-  "render_slot": "Astra exclusive Hearthguard normal1x full-film review55292; no native/Godot rendering",
+  "render_slot": "Coordinator Frontline separate55suncapped timing; Hearthstopped/nativereviewCPUonly",
   "gear_3d_checkpoint": {
     "evidence": "android-games/evidence/gear-3d-production-candidate.json",
     "worker_commit": "9ccf4a7a878e291afdf1750338e6e26cd6b96ba7",
@@ -177,14 +168,26 @@
       "archive_status": "native_archived_verified",
       "handoff": "android-games/handoffs/graphics-gear-production.md",
       "state": "Final0.4.0/code8 visual/nativeconditionalcandidate delivered inprivatebundle; clean9ccf4a7, actual7to8 whole-save retention/nativecontrols/transfer/Back/lifecycle verified; nativearchived=true"
+    },
+    {
+      "slug": "hearthguard",
+      "title": "Hearthguard graphics overhaul",
+      "thread_id": "01a14f9d-4b9b-7bd3-abd6-897a1188086d",
+      "branch": "codex/hearthguard-graphics",
+      "worktree": "C:/projects/active/_worktrees/games-hearthguard-20261018",
+      "phase": "builder_archived_root_review_native_pending",
+      "state": "Clean1e117a6 integrated and landed9ea3679; nativearchived=true at user request. Root owns remaining Astra fullfilm/nativecode3/privatebundle. Worktree/rawsaves/evidence retained.",
+      "archive_status": "native_archived_verified"
     }
   ],
   "scheduling_note": "Hearth exclusive production renderer and Frontline narrowpool/code4 CPU follow-up active, two builders. ArchiveFrontlineafterverifiedhigher-version thenHook; laterDeadRun/Tower. Gearcompletearchived, rootgoalall6active.",
   "hearth_production_checkpoint": {
     "evidence": "android-games/evidence/hearth-3d-production-candidate.json",
-    "status": "production_batch_complete_independent_visual_review_active_signed_candidate_built_native_pending",
+    "status": "graphics_reviewed_actual_native_checks_complete_final_native_review_bundle_pending",
     "worker_commit": "1e117a62d170915710a2bf6a7a42b762d2c694b6",
     "runtime_freeze": "042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0",
-    "candidate_apk_sha256": "d2cadff5f81074bccfc88954799e23eeb39546e6c873e1bcf5e9891e1a088455"
+    "candidate_apk_sha256": "d2cadff5f81074bccfc88954799e23eeb39546e6c873e1bcf5e9891e1a088455",
+    "builder_archived": true,
+    "native_evidence": "android-games/evidence/hearth-graphics-native.json"
   }
 }

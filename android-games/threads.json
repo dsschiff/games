@@ -119,28 +119,16 @@
   ],
   "games": [
     {
-      "slug": "hearthguard",
-      "title": "Hearthguard graphics overhaul",
-      "thread_id": "01a14f9d-4b9b-7bd3-abd6-897a1188086d",
-      "branch": "codex/hearthguard-graphics",
-      "worktree": "C:/projects/active/_worktrees/games-hearthguard-20261018",
-      "phase": "builder_wrapped_root_review_native_pending",
-      "host_id": "local",
-      "model": "gpt-6.1-sol",
-      "ownership": "android-games/hearthguard/",
-      "state": "Clean1e117a6 worker wrapped; final2b54 batch integratedb974ba2, runtime042 unchanged. Astra fullfilmreviewactive, signed0.3/code3clean d2cadff candidate built; rootnativepending emulatordisconnected beforeinstall. Allrawsaves/evidence retained."
-    },
-    {
       "slug": "frontline-foundry",
       "title": "Frontline Foundry graphics overhaul",
       "thread_id": "01a14ecf-a3f6-7dc0-9276-3457e84da5f3",
       "branch": "codex/frontline-pooling",
       "worktree": "C:/projects/active/_worktrees/games-frontline-foundry-20261018",
-      "phase": "bounded_pooling_code4_CPU",
+      "phase": "coordinator_pooling_render_native_followup",
       "host_id": "local",
       "model": "gpt-6.1-sol",
       "ownership": "android-games/frontline-foundry/",
-      "state": "Existingretainedgraphicschat reopened afterGeararchive; cleannewbranch at d3a3684. Narrowactor/effectreuse0.3.1/code4, original47models/rules/saves unchanged; CPUonly whileHearthownsGPU. Rootowns sourceintegration/export/ADB/clipboard/oneAstrareviewer.",
+      "state": "Builderinterrupted/notLoaded; cleanworker78cb4bd completedbyroot/integrated8b306da.93pool+103presentation checks/sourcepins verified andAstraCPUclear. Rootgenuine55smovie passes; separateuncappedtimingactive. Rootownsremainingcode4native/bundle/archive; no newthreadpromptdelivered.",
       "handoff": "android-games/handoffs/frontline-pooling-followup.md",
       "archive_status": "reopened_verified"
     }
@@ -159,6 +147,19 @@
       "state": "Final0.4.0/code8 visual/nativeconditionalcandidate delivered inprivatebundle; clean9ccf4a7, actual7to8 whole-save retention/nativecontrols/transfer/Back/lifecycle verified; nativearchived=true",
       "archive_status": "native_archived_verified",
       "handoff": "android-games/handoffs/graphics-gear-production.md"
+    },
+    {
+      "slug": "hearthguard",
+      "title": "Hearthguard graphics overhaul",
+      "thread_id": "01a14f9d-4b9b-7bd3-abd6-897a1188086d",
+      "branch": "codex/hearthguard-graphics",
+      "worktree": "C:/projects/active/_worktrees/games-hearthguard-20261018",
+      "phase": "builder_archived_root_review_native_pending",
+      "host_id": "local",
+      "model": "gpt-6.1-sol",
+      "ownership": "android-games/hearthguard/",
+      "state": "Clean1e117a6 integrated and landed9ea3679; nativearchived=true at user request. Root owns remaining Astra fullfilm/nativecode3/privatebundle. Worktree/rawsaves/evidence retained.",
+      "archive_status": "native_archived_verified"
     }
   ]
 }

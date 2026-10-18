@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "production_batch_complete_independent_visual_review_active_signed_candidate_built_native_pending",
+  "status": "graphics_reviewed_signed_code3_actual2to3_retention_pass_native_checks_active",
   "worker_commit": "1e117a62d170915710a2bf6a7a42b762d2c694b6",
   "production_index_commit": "2b54d75e2325b0a4493e12a56c7bdbce3acd35e1",
   "runtime_freeze": "042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0",
@@ -28,14 +28,26 @@
     "signature_verified": true,
     "permissions": [],
     "build_preservation_sha256": "c97ff536d6917afa284468808095466d4a54bae9254930fa1f07854efe48fefe",
-    "installed": false,
+    "installed": true,
     "delivered": false
   },
-  "native_status": "First code2 inspection stopped because emulator-5554 not found; no install or launch occurred. ADB no devices; no emulator process. Root will restart existing persistent AVD after Astra releases GPU.",
+  "native_status": "Actual2to3 install-over succeeded, bothrawslotsbyteexactbeforelaunch; settledrestoredfullcontextpasses. Realmovement/Back/cover+innerresize/invalidrejection/copy-paste-import/settings restore pass; remaininglayout/lifecycle/nativefilm/review inprogress.",
   "remaining": [
-    "Astra full normal1x visual review and actual Pad5 association",
-    "Actual signed2to3 whole-save preservation/native controls/transfer/Back/resize/lifecycle/cold",
-    "Private delivery bundle and final native review"
+    "Native remainingwindow/lifecycle/cold and actualfilm evidence/review",
+    "Private deliverybundle"
   ],
-  "physical_testing": "deferred_by_user"
+  "physical_testing": "deferred_by_user",
+  "review": "android-games/reviews/hearth-production-final-astra.md",
+  "quality_rows": {
+    "rows": 8,
+    "minimum": 3,
+    "maximum": 3,
+    "scale": 4
+  },
+  "review_preservation": {
+    "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\hearth-production-final-review",
+    "review_sha256": "9cf9ba309fef1bc73c3087a92cb86feb9e27c5d0f83db48d3680720743bc5b06",
+    "audit_sha256": "7e22382ef1a64f1bf0341d04a4fae8a284e2bb1caf18f49bd54cd06569e43f0b",
+    "audit_scope": "Partial recovered observed natural-ended rows, original fullDOMlogs lost duringrefresh; explicitoldtabcloseunverified"
+  }
 }

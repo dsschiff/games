@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "worker_commit": "78cb4bd",
+  "integration_commit": "8b306da",
+  "status": "CPU_source_review_clear_bounded_render_timing_native_pending",
+  "checks": {
+    "pooling": 93,
+    "presentation_regression": 103
+  },
+  "preservation": {
+    "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\frontline-pooling-cpu-78cb4bd",
+    "files": 13,
+    "bytes": 327368,
+    "receipt_sha256": "75ff1959bdeac113de5acc2bb71997747b6f9ec0e38bf22734fc4d1623e2a46c"
+  },
+  "actual_genuine_reuse": "Earlierpassed CPU passage historicalbeforefinalcachedefaultfix; finalclean rendered55s andseparatetimingpending",
+  "art": "47GLBs unchanged; final originalproductionvisualreviewretained subjectto boundedpoolingvisualclosure",
+  "remaining": [
+    "Genuine bounded actualreusefilm andseparatetiming",
+    "Signed0.3.1/code4 actual3to4/native/privatebundle"
+  ],
+  "physical_testing": "deferred_by_user",
+  "source_review": "android-games/reviews/frontline-pooling-early-source-astra.md"
+}
