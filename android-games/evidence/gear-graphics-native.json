@@ -1,0 +1,74 @@
+{
+  "status": "conditional_emulator_software_candidate_supported",
+  "worker_commit": "9ccf4a7a878e291afdf1750338e6e26cd6b96ba7",
+  "integration_commit": "7eb9e0419f6ae79533719b0c2e21d5907715db00",
+  "version": "0.4.0",
+  "code": 8,
+  "apk_sha256": "4e68eb6395bd13ea46b56b0cf25e332144cf49ce66c552527c67bfad07216ad1",
+  "apk_bytes": 60736214,
+  "actual_installed_binary_matches": true,
+  "genuine7to8_both_slots_byte_exact_before_first_launch": true,
+  "whole_packet_comparisons": {
+    "passed": 20,
+    "rejected_premature_Home_witness": 1
+  },
+  "raw_snapshot_sets": 33,
+  "review": "android-games/reviews/gear-graphics-native-astra.md",
+  "report": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\gear-native-code8-review-addendum\\report-v2.json",
+  "visual_native_profiles": [
+    [
+      1080,
+      2400
+    ],
+    [
+      1080,
+      2520
+    ],
+    [
+      1968,
+      2184
+    ],
+    [
+      2184,
+      1968
+    ]
+  ],
+  "cold_UI_proofs": {
+    "portrait": "26-cold-restored-held",
+    "unfolded_warm": "31-Home-warm-return",
+    "unfolded_cold": "32 is splash: disk retention only, no loaded-UI claim"
+  },
+  "private_bundle": "C:\\projects\\active\\games\\.artifacts\\releases\\gear-bastion-0.4.0-graphics",
+  "bundle_manifest_sha256": "e21414e9411b02d8cb42998ab209b9da691bd33a2be966df80d67197174c2d5a",
+  "preservation": {
+    "native_inspection": {
+      "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\gear-native-code8-inspection",
+      "files": 164,
+      "bytes": 73111565,
+      "receipt_sha256": "92e952a28ff46304e940c2a216df2acd70cdf991ecd1d7c0fe94bd7693cfe272"
+    },
+    "visual_closure": {
+      "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\gear-cutaway-9ccf4a7",
+      "files": 118,
+      "bytes": 24613177,
+      "receipt_sha256": "02a357fef74bdaee38f7400aeffaa61aae5215d9bf7c26a0c24cae727d060d44"
+    },
+    "final_build": {
+      "packet": "C:\\projects\\active\\games\\.artifacts\\gear-bastion\\20261018T173328584413Z",
+      "files": 7,
+      "bytes": 61231504,
+      "receipt_sha256": "eb1c9fed2ab30224a4a8d1e7c48324d1ccfa5c77837a91c83df899c9d72e07e0"
+    },
+    "bundle": "C:\\projects\\active\\games\\.artifacts\\releases\\gear-bastion-0.4.0-graphics",
+    "bundle_manifest_sha256": "68d9fb2b465d6cdf26c7613cb4f3b1d8076df6e4f3bcba2afaec0aa27edb5b40"
+  },
+  "review_addendum_preservation": {
+    "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\gear-native-code8-review-addendum",
+    "files": 3,
+    "bytes": 45945,
+    "receipt_sha256": "5fc56073815bce1b30121120dfa0d787d2909aaa77f49ae2e792506cbbefadbd"
+  },
+  "further_phone_testing": "deferred_by_user",
+  "new_full_native_campaign": false,
+  "source_projection_timing_and_native_recording_are_not_phone_FPS": true
+}

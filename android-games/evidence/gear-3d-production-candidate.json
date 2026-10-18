@@ -3,7 +3,7 @@
   "worker_commit": "01f650afc73edaab01be8e5858b410df20babb3c",
   "integration_commit": "60e0281efba424160af5ba7485a41b8a240d00bf",
   "game_tree": "f5701e4f7233e01ab220b39b174ecca137a39803",
-  "status": "pooling_and_carapace_closed_captain_siege_visibility_blocked",
+  "status": "graphics_reviewed_native_validated_private_bundle_ready_archive_pending",
   "observed_visual_rows": {
     "minimum": 3,
     "maximum": 3,
@@ -12,22 +12,9 @@
     "scope": "Observed roles and passages only"
   },
   "review": "android-games/reviews/gear-production-final-astra.md",
-  "production_accepted": false,
-  "apk_delivered": false,
-  "apk_installed": false,
-  "candidate_build": {
-    "canonical_path": "C:/projects/active/games/.artifacts/gear-bastion/20261018T160603834824Z/gear-bastion.apk",
-    "version": "0.4.0",
-    "code": 8,
-    "sha256": "49a2bdb7f4883e5e4e51aa865223f5ae3bbbabe66d1b401b95fa565d3d7f49d7",
-    "bytes": 60719469,
-    "clean_source": true,
-    "source_unchanged": true,
-    "signature_verified": true,
-    "permissions": [],
-    "rebuild_required_after_pool_followup": true,
-    "historical": true
-  },
+  "production_accepted": true,
+  "apk_delivered": true,
+  "apk_installed": true,
   "preservation": {
     "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\gear-production-01f650a",
     "files": 142,
@@ -46,9 +33,7 @@
     "path": "android-games/gear-bastion/.artifacts/graphics-production/boss-hud-20261018T160529816285Z"
   },
   "remaining": [
-    "Readable modeled captain/siege attack/contact and fall in actual dense fights",
-    "Independent additive source and normal-speed corrected-role review",
-    "Final reviewed source rebuild, native7to8 whole-save update, private bundle and archive"
+    "Land durable production handoff and verify native graphics-chat archive"
   ],
   "physical_testing": "deferred_by_user",
   "review_preservation": {
@@ -59,12 +44,8 @@
   "pooling_worker_commit": "cfff7013bfb1ce3e41a11721b84aa8c602d34c7f",
   "pooling_integration_commit": "f33b557",
   "pooling_cpu_checks": 456,
-  "additive_review": "android-games/reviews/gear-pooling-role-closure-astra.md",
-  "blocked_role_scores": {
-    "captain": 2,
-    "siege": 2,
-    "scale": 4
-  },
+  "additive_review": "android-games/reviews/gear-boss-visibility-closure-astra.md",
+  "blocked_role_scores": {},
   "review_addendum_preservation": {
     "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\pooled-review-addendum",
     "files": 3,
@@ -84,5 +65,63 @@
     "installed": false,
     "delivered": false,
     "rebuild_required_after_visibility_fix": true
+  },
+  "historical_pre_pool_candidate_build": {
+    "canonical_path": "C:/projects/active/games/.artifacts/gear-bastion/20261018T160603834824Z/gear-bastion.apk",
+    "version": "0.4.0",
+    "code": 8,
+    "sha256": "49a2bdb7f4883e5e4e51aa865223f5ae3bbbabe66d1b401b95fa565d3d7f49d7",
+    "bytes": 60719469,
+    "clean_source": true,
+    "source_unchanged": true,
+    "signature_verified": true,
+    "permissions": [],
+    "rebuild_required_after_pool_followup": true,
+    "historical": true
+  },
+  "final_worker_commit": "9ccf4a7a878e291afdf1750338e6e26cd6b96ba7",
+  "final_integration_commit": "7eb9e0419f6ae79533719b0c2e21d5907715db00",
+  "candidate_build": {
+    "canonical_path": "C:/projects/active/games/.artifacts/gear-bastion/20261018T173328584413Z/gear-bastion.apk",
+    "version": "0.4.0",
+    "code": 8,
+    "sha256": "4e68eb6395bd13ea46b56b0cf25e332144cf49ce66c552527c67bfad07216ad1",
+    "bytes": 60736214,
+    "source_raw_sha256": "a6eef6ddb182e92294b5cae3af607e5815cc59373dbd562b1dd9206dcb8a2e67",
+    "clean_source": true,
+    "source_unchanged": true,
+    "signature_verified": true,
+    "permissions": []
+  },
+  "native_evidence": "android-games/evidence/gear-graphics-native.json",
+  "final_visual_rows": {
+    "minimum": 3,
+    "maximum": 3,
+    "rows": 8,
+    "scale": 4,
+    "basis": "Historical full films plus pooled roles/carapace and corrected dense captain/siege additive closure"
+  },
+  "private_bundle": "C:\\projects\\active\\games\\.artifacts\\releases\\gear-bastion-0.4.0-graphics",
+  "final_preservation": {
+    "native_inspection": {
+      "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\gear-native-code8-inspection",
+      "files": 164,
+      "bytes": 73111565,
+      "receipt_sha256": "92e952a28ff46304e940c2a216df2acd70cdf991ecd1d7c0fe94bd7693cfe272"
+    },
+    "visual_closure": {
+      "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\gear-cutaway-9ccf4a7",
+      "files": 118,
+      "bytes": 24613177,
+      "receipt_sha256": "02a357fef74bdaee38f7400aeffaa61aae5215d9bf7c26a0c24cae727d060d44"
+    },
+    "final_build": {
+      "packet": "C:\\projects\\active\\games\\.artifacts\\gear-bastion\\20261018T173328584413Z",
+      "files": 7,
+      "bytes": 61231504,
+      "receipt_sha256": "eb1c9fed2ab30224a4a8d1e7c48324d1ccfa5c77837a91c83df899c9d72e07e0"
+    },
+    "bundle": "C:\\projects\\active\\games\\.artifacts\\releases\\gear-bastion-0.4.0-graphics",
+    "bundle_manifest_sha256": "68d9fb2b465d6cdf26c7613cb4f3b1d8076df6e4f3bcba2afaec0aa27edb5b40"
   }
 }
