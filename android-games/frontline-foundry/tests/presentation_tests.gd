@@ -80,6 +80,13 @@ func run() -> void:
 	check(absf(actor.rig.get_bone_pose_rotation(actor.bones.UpperArmL).get_euler().z) > 1, "victory raises an articulated arm")
 	actor.rig.force_update_all_bone_transforms()
 	check(actor.muzzle.get_parent() is BoneAttachment3D and actor.muzzle.get_parent().bone_name == "PrimaryMuzzle" and actor.rig.get_bone_global_rest(actor.bones.PrimaryMuzzle).origin.z < -.55, "authored primary muzzle bone follows the actual weapon tip")
+	actor.fire(Vector3(5, 0, -2))
+	actor.pose(0, Vector3.ZERO, false)
+	actor.rig.force_update_all_bone_transforms()
+	var current_tip: Vector3 = actor.rig.to_global(actor.rig.get_bone_global_pose(actor.bones.PrimaryMuzzle).origin)
+	var same_call_gap: float = actor.socket_position().distance_to(current_tip)
+	print("SAME_CALL_BONE_ATTACHMENT_GAP ", same_call_gap)
+	check(same_call_gap < .00001, "same-call turned shot marker matches current weapon bone tip without a process-frame delay")
 	# Geometry fixture: hull keeps traveling forward while the turret aims sideways.
 	var rover := Actor.new()
 	root.add_child(rover)
@@ -101,6 +108,20 @@ func run() -> void:
 		root.add_child(specialist)
 		specialist.configure(role, "enemy", 0)
 		role_models[role] = specialist.model.scene_file_path
+		if role == "ranger":
+			var front := weapon_front(specialist)
+			var tip: Vector3 = specialist.rig.get_bone_global_rest(specialist.bones.PrimaryMuzzle).origin
+			print("RANGER_VISIBLE_TIP ", front, " socket ", tip, " gap ", tip.distance_to(front))
+			check(tip.distance_to(front) < .01 and front.z < -1.1, "Ranger socket touches actual Weapon-weighted visible long-rifle cap geometry")
+			var cap_local: Vector3 = specialist.rig.get_bone_global_rest(specialist.bones.Weapon).affine_inverse() * front
+			var aimed_cap := true
+			for target in [Vector3(5, 0, -2), Vector3(-3, 0, -5), Vector3(0, 0, -5)]:
+				specialist.fire(target)
+				specialist.pose(.05, Vector3.ZERO, false)
+				var socket: Vector3 = specialist.socket_position()
+				var skinned_cap: Vector3 = specialist.rig.to_global(specialist.rig.get_bone_global_pose(specialist.bones.Weapon) * cap_local)
+				aimed_cap = aimed_cap and socket.distance_to(skinned_cap) < .01
+			check(aimed_cap, "same-call Ranger socket follows actual skinned barrel cap through three aim/recoil poses")
 		if specialist.rig != null:
 			specialist.rig.force_update_all_bone_transforms()
 			check(specialist.bones.has("PrimaryMuzzle") and specialist.muzzle.get_parent().bone_name == "PrimaryMuzzle", "specialist " + role + " retains authored articulated weapon tip")
@@ -115,7 +136,37 @@ func run() -> void:
 		var region: Dictionary = preload("res://scripts/presentation/regions.gd").describe(district)
 		landmarks[region.landmark] = true
 		check(FileAccess.file_exists("res://art/models/" + region.landmark + ".glb") and D.same(district, before_district), "district %d regional art resolves without editing its definition or state" % (index + 1))
+		var world := V.new()
+		root.add_child(world)
+		world.build(district)
+		world.set_process(false)
+		var clear := true
+		var count := 0
+		for node in world.get_children():
+			if not node is Node3D or not node.has_meta("regional_placement"):
+				continue
+			var bounds := V.geometry_bounds(node)
+			clear = clear and (bounds.position.x >= 4.975 or bounds.end.x <= -4.975 or bounds.end.z <= -6.475)
+			count += 1
+		check(clear and count >= 3, "all %d actual transformed regional placements clear commander center bounds plus .275 body radius in district %d" % [count, index + 1])
+		world.queue_free()
+		await process_frame
 	check(landmarks.size() == 12, "all twelve districts have a distinct authored landmark")
+	for style in ["mixed", "flank", "siege"]:
+		var seeded := C.fresh(D.skirmish(137, style))
+		var unchanged := seeded.duplicate(true)
+		var world := V.new()
+		root.add_child(world)
+		world.build(seeded)
+		world.set_process(false)
+		var clear := true
+		for node in world.get_children():
+			if node is Node3D and node.has_meta("regional_placement"):
+				var bounds := V.geometry_bounds(node)
+				clear = clear and (bounds.position.x >= 4.975 or bounds.end.x <= -4.975 or bounds.end.z <= -6.475)
+		check(clear and D.same(seeded, unchanged), "seeded " + style + " scenery clears complete transformed bounds without definition/state changes")
+		world.queue_free()
+		await process_frame
 	var before: String = JSON.stringify(original)
 	for i in 120:
 		view.sync(original, true, true, 0)
@@ -206,6 +257,39 @@ func find_meshes(node: Node) -> Array:
 	for child in node.get_children():
 		result.append_array(find_meshes(child))
 	return result
+
+func weapon_front(actor: Node3D) -> Vector3:
+	var nearest := INF
+	var front: Array[Vector3] = []
+	for node in find_meshes(actor.model):
+		if node.skin == null:
+			continue
+		for surface in node.mesh.get_surface_count():
+			var arrays: Array = node.mesh.surface_get_arrays(surface)
+			var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+			var indices: PackedInt32Array = arrays[Mesh.ARRAY_BONES]
+			var weights: PackedFloat32Array = arrays[Mesh.ARRAY_WEIGHTS]
+			for vertex in vertices.size():
+				var weapon := false
+				for influence in 4:
+					var bind: int = indices[vertex * 4 + influence]
+					var bone: int = node.skin.get_bind_bone(bind)
+					if bone < 0:
+						bone = actor.rig.find_bone(node.skin.get_bind_name(bind))
+					if weights[vertex * 4 + influence] > .99 and bone == actor.bones.Weapon:
+						weapon = true
+				if not weapon:
+					continue
+				var point: Vector3 = actor.rig.to_local(node.to_global(vertices[vertex]))
+				if point.z < nearest - .00001:
+					nearest = point.z
+					front = [point]
+				elif absf(point.z - nearest) < .00001:
+					front.append(point)
+	var center := Vector3.ZERO
+	for point in front:
+		center += point
+	return center / maxf(1, front.size())
 
 func tap(point: Vector2, index: int = 2) -> void:
 	for pressed in [true, false]:

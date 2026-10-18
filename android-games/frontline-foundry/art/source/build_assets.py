@@ -258,13 +258,23 @@ def soldier(variant="rifle"):
         else:
             block("TriggerForearm", (.30, .13, .755), (.17, .27, .15), uniform, .06, "ForearmR")
             oval("TriggerGlove", (.27, .26, .75), (.09, .105, .085), dark, "HandR")
-    muzzle_tip = (.22, 1.16 if variant == "ranger" else .955, .79)
+    muzzle_tip = (.22, .955, .79)
     if variant in ["breaker", "mortar"]:
         cylinder("LauncherBody", (.22, .55, .80), .11 if variant == "breaker" else .13, .78, steel, "Weapon", (math.pi / 2, 0, 0))
         cylinder("LauncherMuzzle", (.22, .94, .80), .14, .08, dark, "Weapon", (math.pi / 2, 0, 0))
         block("LauncherGrip", (.22, .31, .68), (.12, .16, .22), dark, .03, "Weapon")
         block("LauncherSight", (.22, .46, .94), (.06, .17, .05), trim, .01, "Weapon")
         muzzle_tip = (.22, .995, .80)
+    elif variant == "ranger":
+        block("RangerReceiver", (.22, .38, .78), (.15, .43, .15), steel, .025, "Weapon")
+        block("RangerStock", (.22, .08, .78), (.13, .28, .14), dark, .035, "Weapon")
+        block("RangerMagazine", (.22, .34, .67), (.10, .14, .21), dark, .025, "Weapon")
+        cylinder("LongRifleBarrel", (.22, .82, .79), .043, .59, steel, "Weapon", (math.pi / 2, 0, 0))
+        cylinder("RangerMuzzle", (.22, 1.13, .79), .057, .06, dark, "Weapon", (math.pi / 2, 0, 0))
+        block("ScopeMount", (.22, .48, .88), (.10, .20, .10), steel, .02, "Weapon")
+        cylinder("RangerOptic", (.22, .48, .96), .065, .27, dark, "Weapon", (math.pi / 2, 0, 0))
+        cylinder("OpticLens", (.22, .618, .96), .048, .012, glass, "Weapon", (math.pi / 2, 0, 0))
+        muzzle_tip = (.22, 1.165, .79)
     elif variant == "jammer":
         block("EmitterHousing", (.22, .43, .80), (.22, .32, .20), steel, .055, "Weapon")
         cylinder("EmitterCoil", (.22, .69, .82), .11, .12, dark, "Weapon", (math.pi / 2, 0, 0))

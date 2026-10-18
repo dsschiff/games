@@ -211,6 +211,16 @@ func fire(target: Vector3) -> void:
 	if turret != null:
 		turret.rotation.y = torso_yaw
 
+func socket_position() -> Vector3:
+	if rig != null:
+		rig.force_update_all_bone_transforms()
+		var attachment := muzzle.get_parent() as BoneAttachment3D
+		# BoneAttachment's skeleton signal updates later on this engine. The skin
+		# already uses this pose, so hydrate the attachment before same-call sampling.
+		attachment.transform = rig.get_bone_global_pose(bones[attachment.bone_name])
+		attachment.force_update_transform()
+	return muzzle.global_position
+
 func hit() -> void:
 	hit_left = 0.22
 

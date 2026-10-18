@@ -76,7 +76,7 @@ No timing, damage, targeting, stock, costs, progression, schema, Back behavior,
 transfer, package or signing change is part of this production pass. The version
 is consistently 0.3.0/code 3. The package remains `com.dsschiff.frontlinefoundry`.
 
-The focused suite passes 85 checks, covering all specialist imports, authored
+The corrected focused suite passes 103 checks, covering all specialist imports, authored
 muzzle attachments, boss wheels/turrets, all twelve region descriptors, genuine
 GUI launch/pause/movement across five resizes, immutable visual snapshots,
 warning persistence and brief-body separation. Complete original/new states are
@@ -104,12 +104,12 @@ These are desktop render-loop submission intervals, not OS presentation or GPU
 timestamps and not phone FPS. Fixed-movie encoding statistics are excluded from
 performance claims.
 
-## Frozen gameplay captures and timing
+## Preserved broad production captures and timing
 
 All paths below are relative to this game's ignored `.artifacts/` directory.
 Each run retains its exact executed source archive, raw source hashes, import
 preflight, engine inputs, complete captured states and artifact-bound receipt.
-Each receipt passed with unchanged sources. The MP4s are full-duration codec
+Each receipt passed with unchanged sources at candidate `998dce3`. The MP4s are full-duration codec
 transcodes of the retained native AVIs: no scaling, cropping, retiming or edits.
 They are 720x1280 at 30 FPS and decode fully.
 
@@ -120,12 +120,12 @@ They are 720x1280 at 30 FPS and decode fully.
 | Genuine Foundry/Storm continuation through victory | `production-final-storm-capture-20261018T140054974719Z` | 46.067s | `0e634cf8c58f5ca060ad2a4389425ad3367c644dbe47f54e5a679a35d56b26ed` |
 
 The opening predates addition of the separate legacy evidence harness/runner
-mode, while its production runtime, project/preset and all art are the final
-candidate. That test-only delta is explicit; it does not change any movie frames
-or gameplay. The earlier regional tour (`production-regional-tour-tour-20261018T135522608667Z`)
-predates only the final objective-text outline and version bump. Its twelve
-regions, scenery, HQ, role models, lighting, 2x MSAA, briefs and GUI behavior are
-the production presentation. It is not a fresh full-campaign proof.
+mode. All three broad clips precede the independent-review corrections below;
+their receipts and source archives remain intact. They establish the broad
+production delta at their own candidate, not corrected socket or scenery behavior.
+The earlier regional tour (`production-regional-tour-tour-20261018T135522608667Z`)
+also predates the objective-text outline and version bump. It is not a fresh
+full-campaign proof. Corrected focused passages supersede affected behavior.
 
 `production-realtime-storm-capture-20261018T140229392389Z/frame-timing.json`
 records the separate real-time run. Windows 10.0.26100, Ryzen 9 7950X3D (32
@@ -145,3 +145,42 @@ rendered waiting crews and environment. It is not a synthetic maximum-population
 stress test. Raw rows also retain counts above 16.667 ms; the narrow threshold
 splits ordinary VSync jitter and must not be treated as a meaningful failure rate
 by itself. Desktop results do not establish the deferred phone performance gate.
+
+## Independent-review corrections
+
+Astra identified an unmodeled Ranger barrel extension and transformed scenery
+overhangs at `998dce3`. The new regression controls reproduce the actual defects:
+the original Ranger cap is at Godot Z -0.9475 while its socket is at -1.16
+(0.2125-unit gap). A same-call turned-shot control also reproduces deferred
+BoneAttachment synchronization on this engine (0.911021-unit marker/bone gap).
+The failed source-bound sensitivity run is retained as
+`production-review-sensitivity-checks-20261018T141237025481Z`.
+
+The Ranger now contains a real longer receiver/barrel/muzzle and mounted optic
+with a glass lens. The actual Weapon-weighted front cap is at Z -1.16; the socket
+is 0.005 units beyond it. The test computes that cap from imported weighted mesh
+vertices rather than a promised bone position. Three aimed/recoiling poses
+compare the socket against the transformed skinned cap. The common socket sampler
+forces current skeleton transforms and synchronizes the attachment transform
+before emitting; its same-call marker/current-bone gap is now zero.
+
+Every regional landmark uses the entire imported mesh-node hierarchy's transformed
+bounds, including authored scale, runtime yaw and overhang. Right/left placements
+are moved until their solids clear X +/-5.1. Rear placements clear Z -7.1, behind
+the enemy spawn edge as well as commander bounds. CPU assertions inspect every
+actual regional placement across all twelve districts and Mixed/Flank/Siege
+skirmishes against the commander rectangle expanded by its .275 body radius.
+These are presentation transforms; all rule positions/bounds are untouched.
+
+The corrected 103-check run is
+`production-astra-corrections-checks-20261018T141453044137Z`. Three independent
+CPU exports again produce byte-identical current models/manifest. Adding Ranger
+primitives advances Blender's unused mesh datablock number suffixes in some
+other GLBs. `.artifacts/production-astra-asset-delta.json` parses every old/new
+GLB: only Ranger has geometry changes; every non-Ranger binary buffer and all
+JSON fields are exact after ignoring only mesh names. This proves the metadata
+delta rather than assuming it from equal file sizes.
+
+The earlier broad movies remain historical production coverage. Corrected
+focused legacy/rifle, Ranger combat, regional replay, Retry and Drill passages
+bind to the corrected sources and supersede the affected socket/scenery behavior.

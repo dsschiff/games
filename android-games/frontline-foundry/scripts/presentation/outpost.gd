@@ -154,13 +154,9 @@ func build_region() -> void:
 	# All opaque landmarks stay outside the existing playable rectangle. Low
 	# painted tracks/deck lines remain traversable; they never add collision.
 	for side in [-1, 1]:
-		var landmark := asset(region.landmark, Vector3(side * 5.9, 0, -4.5 if side < 0 else 1.0))
-		landmark.rotation.y = side * .45
-		if region.landmark in ["bridge_arch", "floodgate", "quarry_crane", "repair_gantry"]:
-			landmark.scale = Vector3.ONE * .75
-	var horizon := asset(region.landmark, Vector3(-3.4, 0, -7.4))
-	horizon.rotation.y = -.35
-	horizon.scale = Vector3.ONE * .72
+		var scale := .75 if region.landmark in ["bridge_arch", "floodgate", "quarry_crane", "repair_gantry"] else 1.0
+		place_landmark(region.landmark, Vector3(side * 5.9, 0, -4.5 if side < 0 else 1.0), side * .45, scale, side)
+	place_landmark(region.landmark, Vector3(-3.4, 0, -7.4), -.35, .72, 0)
 	if region.terrain == "rail":
 		for x in [-2.7, 2.7]:
 			for offset in [-.23, .23]:
@@ -180,14 +176,45 @@ func build_region() -> void:
 	elif region.terrain == "orchard":
 		for side in [-1, 1]:
 			for j in 3:
-				var tree := asset("orchard_tree", Vector3(side * 6.5, 0, -9.0 + j * 3))
-				tree.scale = Vector3.ONE * .8
+				place_landmark("orchard_tree", Vector3(side * 6.5, 0, -9.0 + j * 3), 0, .8, side)
 	if region.style == "siege":
 		for side in [-1, 1]:
-			asset("watchtower", Vector3(side * 7.5, 0, -8.0))
+			place_landmark("watchtower", Vector3(side * 7.5, 0, -8.0), 0, 1, side)
 	elif region.style == "flank":
 		for side in [-1, 1]:
-			asset("relay_mast", Vector3(side * 7.0, 0, -7.0))
+			place_landmark("relay_mast", Vector3(side * 7.0, 0, -7.0), 0, 1, side)
+
+func place_landmark(id: String, point: Vector3, yaw: float, scale_factor: float, side: int) -> Node3D:
+	var node := asset(id, point)
+	node.rotation.y = yaw
+	node.scale = Vector3.ONE * scale_factor
+	var bounds := geometry_bounds(node)
+	# Includes full mesh-node hierarchy, authored scale, runtime yaw and overhangs.
+	# Commander center x is bounded to +/-4.7 with .275 body clearance. Rear
+	# scenery also clears the actual enemy spawn edge (-6.75 minus body radius).
+	if side > 0:
+		node.position.x += maxf(0, 5.1 - bounds.position.x)
+	elif side < 0:
+		node.position.x -= maxf(0, bounds.end.x + 5.1)
+	else:
+		node.position.z -= maxf(0, bounds.end.z + 7.1)
+	node.set_meta("regional_placement", true)
+	return node
+
+static func geometry_bounds(node: Node3D) -> AABB:
+	var found := false
+	var bounds := AABB()
+	for child in node.find_children("*", "MeshInstance3D", true, false):
+		var instance := child as MeshInstance3D
+		var local := instance.mesh.get_aabb()
+		for index in 8:
+			var point: Vector3 = instance.to_global(local.get_endpoint(index))
+			if found:
+				bounds = bounds.expand(point)
+			else:
+				bounds = AABB(point, Vector3.ZERO)
+				found = true
+	return bounds
 
 func mat(color: String) -> StandardMaterial3D:
 	if not materials.has(color):
@@ -378,9 +405,7 @@ func present_event(event: Dictionary) -> void:
 			if units.has(shooter):
 				# Apply aim before sampling the weapon socket, without advancing time.
 				units[shooter].pose(0, Vector3.ZERO, false)
-				if units[shooter].rig != null:
-					units[shooter].rig.force_update_all_bone_transforms()
-				origin = units[shooter].muzzle.global_position
+				origin = units[shooter].socket_position()
 			elif shooter == "sentry":
 				sentry.rotation.y = atan2(-(destination.x - sentry.position.x), -(destination.z - sentry.position.z))
 				origin = sentry.to_global(Vector3(0, .61, -.66))

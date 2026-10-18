@@ -4,9 +4,9 @@
   "blender": "4.5.14 LTS 62c1db4208e8",
   "portable_archive_sha256": "b9533d2397ac1984db4466fb23a7a4649391cca93f6e84209f9bcc60d071c8b9",
   "generator": "source/build_assets.py",
-  "generator_sha256": "f1a0ec221d5e6f552073c730c6f9d6d375af5b55b9802e270d76bee1c2caf746",
+  "generator_sha256": "277c53eaf3ad5ee66990c44db1892ea3b8b8b630b6de0f8810aa023bb7a80473",
   "generator_sources_sha256": {
-    "build_assets.py": "f1a0ec221d5e6f552073c730c6f9d6d375af5b55b9802e270d76bee1c2caf746",
+    "build_assets.py": "277c53eaf3ad5ee66990c44db1892ea3b8b8b630b6de0f8810aa023bb7a80473",
     "world_kit.py": "2083c830b7844be9fa3b11586f08c681697fd46d62a028a0496f4f7200e03a6e"
   },
   "units": "meters; +Y Blender forward exports -Z Godot; right-handed glTF Y-up",
@@ -92,7 +92,7 @@
     },
     {
       "file": "models/floodgate.glb",
-      "sha256": "a35d545aafa07d246ab4d89d03e036aa9c98cef3910b7024569a306760b271eb",
+      "sha256": "6f669fa20d6fcd64fcdbfe5c259d3f66579ab353bc2e3efb47ff80b097e8d59d",
       "bytes": 69156,
       "triangles": 1692,
       "mesh_nodes": 4,
@@ -119,7 +119,7 @@
     },
     {
       "file": "models/headquarters.glb",
-      "sha256": "c83f30b56f58f0a176513715be2bc07b45b440cd05291ae3f4a59290a074cb9f",
+      "sha256": "1b76bfa142e69565fd3869b5393f8c47e1b77f4c831f0ed4bab12d3f0391696b",
       "bytes": 201756,
       "triangles": 4700,
       "mesh_nodes": 7,
@@ -136,7 +136,7 @@
     },
     {
       "file": "models/kit_breaker.glb",
-      "sha256": "47ef03a0dc8733eee0baba3f9177ce9aa21cde656e40d7c81e10fa4a2a6abf97",
+      "sha256": "5083084f16baef0c42672462888b16a162d826e7010f8ac9278d8a612bd3af88",
       "bytes": 27776,
       "triangles": 564,
       "mesh_nodes": 3,
@@ -161,7 +161,7 @@
     },
     {
       "file": "models/kit_carrier.glb",
-      "sha256": "7be66e1b5057401e107d253acdf909f64aa76dd2de634056efd20f9cb28c5394",
+      "sha256": "ad5bde162486af945701a1bfa049d4b924b841285cce037286ff797ec9c29934",
       "bytes": 28096,
       "triangles": 564,
       "mesh_nodes": 3,
@@ -173,7 +173,7 @@
     },
     {
       "file": "models/kit_jammer.glb",
-      "sha256": "a5edaa2b92074acceebe92cb53110fe6f33aff7b404152eaa1ed5c7de7fb22eb",
+      "sha256": "69de9ca37d050ffd925c45f62f159c7425a685e2c8509cf25ddfd15330d66cbb",
       "bytes": 45508,
       "triangles": 1228,
       "mesh_nodes": 6,
@@ -187,7 +187,7 @@
     },
     {
       "file": "models/kit_mortar.glb",
-      "sha256": "1714b00983137eca0d0cddf3fe4b37cbba9428504cf052389003c89f47681e44",
+      "sha256": "cf28f0e839dae9aab9957915b76bae7fd965fae3b2a1c301eab8d2f8c32ee9a8",
       "bytes": 28144,
       "triangles": 564,
       "mesh_nodes": 3,
@@ -200,7 +200,7 @@
     },
     {
       "file": "models/kit_ranger.glb",
-      "sha256": "3c292c5d7da64d812250bc4c490b639c3f7c5a9f96ccc55f5da13a304240d7f9",
+      "sha256": "7c7e8c835b7e83e63dd11b3e8b1c6ddcc99fc3f2d5670f9071c77280f0a374f8",
       "bytes": 28008,
       "triangles": 564,
       "mesh_nodes": 3,
@@ -212,7 +212,7 @@
     },
     {
       "file": "models/kit_sapper.glb",
-      "sha256": "5f467ec1d79279eb5b8f45c6a36643824554aee6afad116a4c92af985e2b041b",
+      "sha256": "45370659381236dc045f130653296a277b36b2911d5b6edb85fb846c21aa2061",
       "bytes": 36872,
       "triangles": 752,
       "mesh_nodes": 4,
@@ -224,7 +224,7 @@
     },
     {
       "file": "models/kit_storm.glb",
-      "sha256": "9ab9571094b74338ba9baa8b451d1b9c04b17fd634890951c480e5886c0ff552",
+      "sha256": "3e8655f79ef01867343331aca1b5e9c504bf236cb2f15c038d12010e60692ab0",
       "bytes": 53372,
       "triangles": 1128,
       "mesh_nodes": 6,
@@ -262,7 +262,7 @@
     },
     {
       "file": "models/rail_wagon.glb",
-      "sha256": "b14d18d6c27ee247839bcf0e5901b809c5b52db71186b253cfa147d31aa5e855",
+      "sha256": "1156476e27a8c48956c2fddc34f2a784196d41ba9f07e0f720609add66255e88",
       "bytes": 114004,
       "triangles": 2632,
       "mesh_nodes": 10,
@@ -276,7 +276,7 @@
     },
     {
       "file": "models/relay_mast.glb",
-      "sha256": "aa6d8889e871ea47d83f1b7eb37c8585c484617c051c929f95621503013e1e1b",
+      "sha256": "4b24fa4acaf6433be61dafc932bd15dbc36e7826a6f6b32f2f13e5c90eea0241",
       "bytes": 47652,
       "triangles": 1228,
       "mesh_nodes": 4,
@@ -290,7 +290,7 @@
     },
     {
       "file": "models/repair_gantry.glb",
-      "sha256": "99a576713c942963f1be150d943c210535f124b408ff08f0ba1f4527c65f635e",
+      "sha256": "c4ed7a96a685c5f007973b718e03d39c61f05af11c80215acb6a60c372c62f1f",
       "bytes": 87780,
       "triangles": 1880,
       "mesh_nodes": 6,
@@ -306,7 +306,7 @@
     },
     {
       "file": "models/rover.glb",
-      "sha256": "e8d0ddec91da5f93d2a4bdd7e6d9893551b6d0d937fa78a975884cb8c7749558",
+      "sha256": "eb26790c3bdaf31e9022fb6fad820fd9062434b70c814612b4e6568e4ceddbe4",
       "bytes": 122416,
       "triangles": 2632,
       "mesh_nodes": 14,
@@ -332,7 +332,7 @@
     },
     {
       "file": "models/scrap_coin.glb",
-      "sha256": "5c7483820cc2d1777e6a971572ea52dd785deadffe88156d04c9ad5bdb95148d",
+      "sha256": "44e2b61fb41d1d6bf9cae00f80f34583df374d515fe68d1006fc0cc543009520",
       "bytes": 28996,
       "triangles": 564,
       "mesh_nodes": 2,
@@ -344,7 +344,7 @@
     },
     {
       "file": "models/sentry.glb",
-      "sha256": "4f3b3fc660442c6f282a7a3fcecd30ae3400a5f4c4ce81e6734daf3bb2655031",
+      "sha256": "02c8f867df6ec09b04daffe66205525fb435c6d9a348513fc458c4f759b10aa7",
       "bytes": 37068,
       "triangles": 752,
       "mesh_nodes": 4,
@@ -357,7 +357,7 @@
     },
     {
       "file": "models/signal_dish.glb",
-      "sha256": "34b3189cdb7eee9617a7f79bf1200136c8b8f9ba24d8bdafab172d85cb9138fc",
+      "sha256": "fc2f40ca7ac3b9559b8e58daf5ee73073be447db07c33c0d27adb843fa38e560",
       "bytes": 33976,
       "triangles": 852,
       "mesh_nodes": 4,
@@ -466,9 +466,9 @@
     },
     {
       "file": "models/soldier_ranger.glb",
-      "sha256": "198855628935eff7ca96d54d43d41da0b8ee8dd256007105df6f0871df62f1dc",
-      "bytes": 541932,
-      "triangles": 9172,
+      "sha256": "e8ce03a7576554575f2d58430ae744d0b8eb5583d08ba0357f5db2c991764941",
+      "bytes": 575608,
+      "triangles": 9548,
       "mesh_nodes": 7,
       "materials": [
         "Gunmetal",
@@ -550,7 +550,7 @@
     },
     {
       "file": "models/station_ranger.glb",
-      "sha256": "3d29eb53a56d5b99c68b81577f0204bedccea708ee559add4de62f19a47c8dc8",
+      "sha256": "25d06796e8b6b49f01a77772f6efda4e6982addc3415749889a7ff51ea33b488",
       "bytes": 88248,
       "triangles": 2068,
       "mesh_nodes": 7,
@@ -607,7 +607,7 @@
     },
     {
       "file": "models/station_rover.glb",
-      "sha256": "9e4f2510abc1b5979e973661009fb22bd137ae0dd85c789203fc4bb69d307d68",
+      "sha256": "873039a8e81a2a05fcae05e1cc7977662de8d5a3a2505d6dc6a6e4b0d96205b5",
       "bytes": 95008,
       "triangles": 2256,
       "mesh_nodes": 8,
@@ -637,7 +637,7 @@
     },
     {
       "file": "models/supply_truck.glb",
-      "sha256": "4a05c0960675ae9c4d2a419f318bf5eece99a22142c856fa30ebe5d44ce71f65",
+      "sha256": "4557a545b8347ad73767aa3954d23b38a8ee4284ea55038fade1ec756c8c3a1a",
       "bytes": 130516,
       "triangles": 3008,
       "mesh_nodes": 12,
@@ -653,7 +653,7 @@
     },
     {
       "file": "models/vehicle_carrier.glb",
-      "sha256": "b37e91129bb4669405f961d9e5404b2c1e6c0e9be5a3bf72c807969cc21e61c0",
+      "sha256": "4d0885b4c7c69e16c0246aeaa1e516f72ae35e4d1eaaa376e5bec8fde30d244b",
       "bytes": 262112,
       "triangles": 5640,
       "mesh_nodes": 20,
@@ -668,7 +668,7 @@
     },
     {
       "file": "models/vehicle_drill.glb",
-      "sha256": "1ad609ed173e197c6bd1203dd4244ebd929e911e513814f5dca22f4e66ba6655",
+      "sha256": "44f5f1b4a177f27048139defbb3f771305b0fb004e06b329c5856aaf416247bb",
       "bytes": 187028,
       "triangles": 4044,
       "mesh_nodes": 19,
@@ -682,7 +682,7 @@
     },
     {
       "file": "models/vehicle_storm.glb",
-      "sha256": "f9aa9b7fd974254c898a44558710f49b577a4ec9ec6c1f456e9494c88a835664",
+      "sha256": "171151415f0b896b00ae37dba722d581fef34b2af1df8fb011e83d20eca88e68",
       "bytes": 231956,
       "triangles": 5176,
       "mesh_nodes": 19,
