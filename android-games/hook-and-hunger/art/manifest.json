@@ -1,0 +1,746 @@
+{
+  "generator": "source/build_assets.py",
+  "generator_sha256": "1c798c1beb3e905675d8e04b6b87e8b31c63a73f4971831ed2ff046fb35de96d",
+  "generator_lf_sha256": "f17e794f13ce20b31454595b79df8e4b147a84a561f0a3f32b759eb5e3ffcbec",
+  "blender": "4.5.14 LTS",
+  "rendered": false,
+  "original": true,
+  "coordinates": "Blender +Y forward +Z up; glTF -Z forward +Y up",
+  "assets": [
+    {
+      "name": "actor_diver",
+      "sha256": "2de329be10100fa22e8ab97bbb4a50a05913d65d334adfe6e6f3f687d1f3d6ab",
+      "bytes": 236276,
+      "meshes": 6,
+      "skins": 1,
+      "animations": 1,
+      "joints": 18,
+      "bounds_blender": {
+        "min": [
+          -0.63,
+          -0.45153,
+          0.005
+        ],
+        "max": [
+          0.63,
+          0.48461,
+          1.81931
+        ]
+      }
+    },
+    {
+      "name": "actor_skitter",
+      "sha256": "48491ad669ebf8e5d5295b5c318027228c781ada79d70e8899e7649131ad4537",
+      "bytes": 212908,
+      "meshes": 5,
+      "skins": 1,
+      "animations": 1,
+      "joints": 18,
+      "bounds_blender": {
+        "min": [
+          -0.74597,
+          -0.50247,
+          0.005
+        ],
+        "max": [
+          0.74597,
+          0.48461,
+          1.95317
+        ]
+      }
+    },
+    {
+      "name": "actor_lancer",
+      "sha256": "452045ecbc9895dc5e6d0ef2ea0772e89599a17f715b4e9c5c4361799dad6a96",
+      "bytes": 207032,
+      "meshes": 6,
+      "skins": 1,
+      "animations": 1,
+      "joints": 18,
+      "bounds_blender": {
+        "min": [
+          -0.63,
+          -0.47658,
+          0.005
+        ],
+        "max": [
+          0.63266,
+          1.11702,
+          1.95317
+        ]
+      }
+    },
+    {
+      "name": "actor_spitter",
+      "sha256": "abb673aa162e509a4f3acca961496029f87a6c89fb2c165eb1b68ac2acf9c0b9",
+      "bytes": 221156,
+      "meshes": 5,
+      "skins": 1,
+      "animations": 1,
+      "joints": 18,
+      "bounds_blender": {
+        "min": [
+          -0.63,
+          -0.47658,
+          0.005
+        ],
+        "max": [
+          0.63,
+          0.63817,
+          1.95317
+        ]
+      }
+    },
+    {
+      "name": "actor_shield",
+      "sha256": "1d1fd873f86afe6161bfb50feda451d2f4fe46459dab3559ca851e9b45b7e41a",
+      "bytes": 226848,
+      "meshes": 6,
+      "skins": 1,
+      "animations": 1,
+      "joints": 18,
+      "bounds_blender": {
+        "min": [
+          -0.63,
+          -0.47658,
+          0.005
+        ],
+        "max": [
+          0.63,
+          0.6633,
+          1.95317
+        ]
+      }
+    },
+    {
+      "name": "actor_charger",
+      "sha256": "6375282b1355362af1bbe0f849794e971e4af592a022adbdb41b9dc7a4654ff5",
+      "bytes": 202996,
+      "meshes": 5,
+      "skins": 1,
+      "animations": 1,
+      "joints": 18,
+      "bounds_blender": {
+        "min": [
+          -0.63,
+          -0.47658,
+          0.005
+        ],
+        "max": [
+          0.63,
+          0.71007,
+          1.95317
+        ]
+      }
+    },
+    {
+      "name": "actor_tender",
+      "sha256": "06477c047f8f613972617462f5ffe2b9c7539b999c19d17a7b9f47f9f9d34b15",
+      "bytes": 245964,
+      "meshes": 5,
+      "skins": 1,
+      "animations": 1,
+      "joints": 18,
+      "bounds_blender": {
+        "min": [
+          -0.63,
+          -0.47658,
+          0.005
+        ],
+        "max": [
+          0.63,
+          0.63817,
+          1.95317
+        ]
+      }
+    },
+    {
+      "name": "actor_bellkeeper",
+      "sha256": "dab4296af9a19a550aaba899079c31141caf18fd9382ae7711fb3a33feadf9cf",
+      "bytes": 221404,
+      "meshes": 5,
+      "skins": 1,
+      "animations": 1,
+      "joints": 18,
+      "bounds_blender": {
+        "min": [
+          -0.74597,
+          -0.50247,
+          0.005
+        ],
+        "max": [
+          0.74597,
+          0.48461,
+          1.96529
+        ]
+      }
+    },
+    {
+      "name": "actor_warden",
+      "sha256": "025b6093e373c6be0de7217bac38c2da952fd5ec2f4d433ab215e71e74108fe8",
+      "bytes": 224416,
+      "meshes": 6,
+      "skins": 1,
+      "animations": 1,
+      "joints": 18,
+      "bounds_blender": {
+        "min": [
+          -0.74597,
+          -0.50247,
+          0.005
+        ],
+        "max": [
+          0.74597,
+          1.11702,
+          1.96529
+        ]
+      }
+    },
+    {
+      "name": "actor_kiln",
+      "sha256": "6b14ac3b5853de0b871637670cd030ecbfd6b56188730c24bb86a40a7e257887",
+      "bytes": 251700,
+      "meshes": 7,
+      "skins": 1,
+      "animations": 1,
+      "joints": 18,
+      "bounds_blender": {
+        "min": [
+          -0.63,
+          -0.49548,
+          0.005
+        ],
+        "max": [
+          0.63,
+          0.6633,
+          1.96529
+        ]
+      }
+    },
+    {
+      "name": "actor_twin_sun",
+      "sha256": "425afc867f12f82668a165bdf29fb6f0e48548b0256d9957362620a7ad7e2dad",
+      "bytes": 251596,
+      "meshes": 5,
+      "skins": 1,
+      "animations": 1,
+      "joints": 18,
+      "bounds_blender": {
+        "min": [
+          -0.63,
+          -0.47658,
+          0.005
+        ],
+        "max": [
+          0.63,
+          0.63817,
+          1.96529
+        ]
+      }
+    },
+    {
+      "name": "actor_twin_moon",
+      "sha256": "d23487d454366628c0d0d63856a57e9305fd2930450e1174942cb61c4e84109b",
+      "bytes": 233444,
+      "meshes": 5,
+      "skins": 1,
+      "animations": 1,
+      "joints": 18,
+      "bounds_blender": {
+        "min": [
+          -0.63,
+          -0.47658,
+          0.005
+        ],
+        "max": [
+          0.63,
+          0.71007,
+          1.96529
+        ]
+      }
+    },
+    {
+      "name": "actor_crown",
+      "sha256": "644e0e854e5c85306555417ecb95db730430a3699c69583154abd282b7a5b049",
+      "bytes": 251520,
+      "meshes": 5,
+      "skins": 1,
+      "animations": 1,
+      "joints": 18,
+      "bounds_blender": {
+        "min": [
+          -0.70351,
+          -0.70627,
+          0.005
+        ],
+        "max": [
+          0.7701,
+          0.79646,
+          2.10385
+        ]
+      }
+    },
+    {
+      "name": "weapon_0",
+      "sha256": "460a761734fe30b6aa3d0cefb8f305429bc58e829304bf82994ab3caac783f00",
+      "bytes": 41676,
+      "meshes": 3,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -0.60036,
+          -0.395,
+          -0.085
+        ],
+        "max": [
+          0.60036,
+          0.54171,
+          0.085
+        ]
+      }
+    },
+    {
+      "name": "weapon_1",
+      "sha256": "e938478f71290940c7d68b1489696b658c9f83611062cea545c7c4be3d3f3331",
+      "bytes": 41692,
+      "meshes": 3,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -0.60036,
+          -0.395,
+          -0.085
+        ],
+        "max": [
+          0.60036,
+          0.54171,
+          0.085
+        ]
+      }
+    },
+    {
+      "name": "weapon_2",
+      "sha256": "d3ee9c258a9bcb62c8080c1d07e1c694d1f866bb3bd93b2cdab2a31c4f2e67e8",
+      "bytes": 42304,
+      "meshes": 4,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -0.46,
+          -0.395,
+          -0.32
+        ],
+        "max": [
+          0.46,
+          0.58,
+          0.32
+        ]
+      }
+    },
+    {
+      "name": "weapon_3",
+      "sha256": "e82197f551db2af00ac54d7581d338613e077b35b692545258ebb91e652624c0",
+      "bytes": 45744,
+      "meshes": 4,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -0.60036,
+          -0.395,
+          -0.085
+        ],
+        "max": [
+          0.60036,
+          0.54171,
+          0.23
+        ]
+      }
+    },
+    {
+      "name": "terrain_0",
+      "sha256": "e0b5ab29760c30fab06528bf7382e4c291b0739053f052429baab8f199e78081",
+      "bytes": 16220,
+      "meshes": 2,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -9.6,
+          -13.6,
+          -1.01
+        ],
+        "max": [
+          9.6,
+          13.6,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "terrain_1",
+      "sha256": "805ed358a3eb00d0c30202986934621e9b4c817c4658ceaaac1fe3dd55bd5889",
+      "bytes": 16220,
+      "meshes": 2,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -9.6,
+          -13.6,
+          -1.01
+        ],
+        "max": [
+          9.6,
+          13.6,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "terrain_2",
+      "sha256": "b06943f96c4af99bc294ab1fd7cc528b4a37a32197aeaeb85f743050dd2a62e7",
+      "bytes": 16220,
+      "meshes": 2,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -9.6,
+          -13.6,
+          -1.01
+        ],
+        "max": [
+          9.6,
+          13.6,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "terrain_3",
+      "sha256": "fb681ce49529573c91bfaef002a49b2e1fe2040a878197976f1055b98ada2d12",
+      "bytes": 16220,
+      "meshes": 2,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -9.6,
+          -13.6,
+          -1.01
+        ],
+        "max": [
+          9.6,
+          13.6,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "palm",
+      "sha256": "f22107c167a2dd7c79896371480f9f57544b28072b409b5aed445920f02b6dda",
+      "bytes": 35016,
+      "meshes": 2,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -0.97572,
+          -1.48655,
+          0.035
+        ],
+        "max": [
+          1.95092,
+          1.48655,
+          3.11691
+        ]
+      }
+    },
+    {
+      "name": "rock",
+      "sha256": "d0c4b0376e10ab1727fe82053231ae1c25494329e089cc76e7d93a30b372aef3",
+      "bytes": 10160,
+      "meshes": 2,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -0.74,
+          -0.65,
+          -0.06
+        ],
+        "max": [
+          0.74,
+          0.65,
+          1.27
+        ]
+      }
+    },
+    {
+      "name": "coral",
+      "sha256": "406eada02611f7887eae2aaeeb4baf4a761b3553ae92d46b85b36e1e63595457",
+      "bytes": 25004,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -0.68804,
+          -0.49238,
+          -0.14976
+        ],
+        "max": [
+          0.63428,
+          0.49238,
+          1.16662
+        ]
+      }
+    },
+    {
+      "name": "fence",
+      "sha256": "a157641d4242a2fb385617403eb67ee00b23eb3c83d9f8ed07a118c64bcd57db",
+      "bytes": 11908,
+      "meshes": 3,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -1.02364,
+          -0.13,
+          0.0
+        ],
+        "max": [
+          1.02364,
+          0.13,
+          0.88
+        ]
+      }
+    },
+    {
+      "name": "door",
+      "sha256": "3ef6106fc42d68757ae25991aac7a76fcbae64e87f051fa9a2bd9c5037bfa66b",
+      "bytes": 30056,
+      "meshes": 2,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -1.45,
+          -0.11,
+          0.02
+        ],
+        "max": [
+          1.45,
+          0.11,
+          1.42
+        ]
+      }
+    },
+    {
+      "name": "forge",
+      "sha256": "194c9b0144520afde3c2fbfdf91a16389354798cc886f21f47c66a66a9e14fd6",
+      "bytes": 30972,
+      "meshes": 4,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -0.8084,
+          -0.85,
+          0.0
+        ],
+        "max": [
+          0.8084,
+          0.85,
+          0.77
+        ]
+      }
+    },
+    {
+      "name": "salvage",
+      "sha256": "7f0a1d13f93f8edf04dc9c623f096d2fb45878244b44fd961a04a0d291297473",
+      "bytes": 27088,
+      "meshes": 3,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -0.21,
+          -0.195,
+          0.015
+        ],
+        "max": [
+          0.21,
+          0.195,
+          0.51
+        ]
+      }
+    },
+    {
+      "name": "boat",
+      "sha256": "dcddecfdf418bdcde64c28e3313d8427cd3e982ebc75395e03239b5517a60313",
+      "bytes": 37612,
+      "meshes": 5,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -0.8,
+          -1.65,
+          -0.04
+        ],
+        "max": [
+          0.8,
+          1.65,
+          2.55
+        ]
+      }
+    },
+    {
+      "name": "beacon",
+      "sha256": "ba4bab5ffeea331cc408496e440333342275de32b549a7e4930a69edb4afd026",
+      "bytes": 17044,
+      "meshes": 4,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -0.95106,
+          -1.0,
+          0.025
+        ],
+        "max": [
+          0.95106,
+          1.0,
+          2.345
+        ]
+      }
+    },
+    {
+      "name": "kiln_arch",
+      "sha256": "37f49e209234a0a985e605911ca874477ecaa7365996ef180e068200a7d33993",
+      "bytes": 43364,
+      "meshes": 3,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -1.65,
+          -0.575,
+          0.0
+        ],
+        "max": [
+          1.65,
+          0.64629,
+          2.94
+        ]
+      }
+    },
+    {
+      "name": "wreck",
+      "sha256": "eb802383258e6e889e5b494188f79e5cf8290ffa4067d41edc01d2769444dc4d",
+      "bytes": 15212,
+      "meshes": 2,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -1.25,
+          -2.1,
+          0.0
+        ],
+        "max": [
+          1.25,
+          2.1,
+          2.73829
+        ]
+      }
+    },
+    {
+      "name": "crystal_spire",
+      "sha256": "b23e389170f333ea00f05e233e669997a3a2d34eb064706e6c8966352603669b",
+      "bytes": 19276,
+      "meshes": 2,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -1.13,
+          -1.13,
+          0.0
+        ],
+        "max": [
+          1.13,
+          1.13,
+          3.28
+        ]
+      }
+    },
+    {
+      "name": "buoy",
+      "sha256": "e4a721e628dcb93f81c669a5873aaecd598f67bd3b8aa71600918365e03b8af3",
+      "bytes": 9064,
+      "meshes": 3,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -0.45,
+          -0.45,
+          -0.08
+        ],
+        "max": [
+          0.45,
+          0.45,
+          1.3
+        ]
+      }
+    },
+    {
+      "name": "chain_link",
+      "sha256": "162ce243db3508fd5fca858fd31df29276d7f7eb240f14b867a904788a70d311",
+      "bytes": 9992,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "bounds_blender": {
+        "min": [
+          -0.111,
+          -0.111,
+          -0.02252
+        ],
+        "max": [
+          0.111,
+          0.111,
+          0.02252
+        ]
+      }
+    }
+  ]
+}

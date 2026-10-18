@@ -1,3 +1,5 @@
+> Graphics work: see [GRAPHICS_PRODUCTION.md](GRAPHICS_PRODUCTION.md). The original 3D CPU checkpoint awaits its first rendered inspection; it is not a new release. Functional 0.2.2/code4 records below remain retained.
+
 # Hook and Hunger
 
 An original offline portrait 3D salvage-diver game, built with pinned Godot 4.7.2/GDScript. Software candidate 0.2.2/code4: opening purchase cycle, four islands/twelve campaign passages, four distinct beacon bosses, six enemy roles, three power purchases, a conclusive harbor ending and seeded arena replay. No third-party assets, ads, accounts, services, purchases or requested network permission.
