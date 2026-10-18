@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "scope": "Actual code5 Android campaign outcomes/Back/geometry/clipboard, with terminal display defect",
+  "result": "data_and_lifecycle_passed_terminal_display_rejected",
+  "source_commit": "ffd24484bcabf5649da4e90171217c138dda1c9f",
+  "source_sha256": "7a7a7e2bba5c0773dd8705e221747682f422208da5b91649e5a2482e0e89275c",
+  "source_unchanged": true,
+  "apk_sha256": "09180d81ade2166e7ffa3cf1652c976e76d40f7fb4aff720d9e5a67780f0a2cd",
+  "data_victory": {
+    "encounter": "camp_01",
+    "seconds": 120.66666666666238,
+    "wall": 220,
+    "produced": 135,
+    "army": 120,
+    "medals": 3
+  },
+  "mission_02_ready_unlocked": true,
+  "disconnected_defeat": {
+    "seconds": 24.53333333333371,
+    "wall": 0,
+    "produced": 0
+  },
+  "actual_retry": {
+    "phase": "ready",
+    "gold": 30,
+    "wall": 220,
+    "board_pieces": 3,
+    "actors": 0,
+    "earned_profile_and_settings_exact": true,
+    "revisions": [
+      229,
+      231
+    ]
+  },
+  "actual_android_back": {
+    "live_pause_map_resume_whole_state_exact_seconds": 24.46666666666704,
+    "menu_close_whole_state_exact_seconds": 31.0000000000007,
+    "actual_resume_advances": true
+  },
+  "emulator_geometries_tested": [
+    [
+      1080,
+      2520
+    ],
+    [
+      1968,
+      2184
+    ]
+  ],
+  "geometry_actual_board_drags": true,
+  "clipboard_buttons_roundtrip_observed": true,
+  "clipboard_changed_text_replacement_proven": false,
+  "known_bad_capture": [
+    {
+      "path": ".artifacts/gear-bastion/presentation-ffd2448/clipboard-edited-before-paste.png",
+      "error": "image file is truncated"
+    }
+  ],
+  "terminal_display_accepted": false,
+  "terminal_finding_status": "Open pending next candidate and independent regression/Android checks",
+  "natural_regression_pre_fix_code5": "10 checks, two expected terminal paint failures, unchanged source; independent desktop rendered test",
+  "report": "C:\\projects\\active\\games\\.artifacts\\gear-bastion\\presentation-ffd2448\\verification.json",
+  "report_sha256": "b5a23ee1bc2f6662259f5bffc8931fa1800d467e937f8afced1b87d70a2b0855",
+  "artifact_index": "C:\\projects\\active\\games\\.artifacts\\gear-bastion\\presentation-ffd2448\\artifact-index.json",
+  "artifact_index_sha256": "22de341f60a443d95fc500b29e760389ad274379c1ba8043d6b174f18a2b208f",
+  "natural_pre_fix_probe": "C:\\projects\\active\\games\\.artifacts\\reviews\\gear-natural-terminal-code5\\manifest.json",
+  "receipt": "C:\\projects\\active\\games\\.artifacts\\preservation\\gear-android-outcomes-0.3.1.json",
+  "receipt_sha256": "b4613e821b25e9183f6c0412a1dce187f67fe09b63cd7f56284cee51402c7679",
+  "preserved_files": 163,
+  "preserved_bytes": 189077551,
+  "physical_phone_tested": false,
+  "sound_verified": false,
+  "performance_measured": false,
+  "release_candidate": false,
+  "limits": [
+    "Win is continuation of a real touch-built board across explicit Back/cold-lifecycle steps, not one fresh end-to-end fixture",
+    "Current saved outcomes are valid; natural terminal screen stays stale until a later event invalidates it",
+    "Cold map resume visibly paints WALL BREACHED/Retry; this does not close the natural terminal finding",
+    "Clipboard edit capture is truncated during ADB disconnect; no changed-text replacement or cross-app transfer claim",
+    "Early exploratory Back labels are preserved and explicitly excluded; verified Back sequence has separate raw saves",
+    "Emulator geometry checks are not physical folding, phone performance, sound or full nine-encounter Android completion"
+  ]
+}
