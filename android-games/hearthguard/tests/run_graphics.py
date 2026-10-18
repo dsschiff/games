@@ -30,17 +30,20 @@ def sources():
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=["checks", "pool-checks", "inspect", "capture", "closure", "tour", "legacy"])
+    parser.add_argument("mode", choices=["checks", "pool-checks", "composition-checks", "inspect", "capture", "closure", "tour", "legacy"])
     parser.add_argument("--render", action="store_true")
     parser.add_argument("--movie", action="store_true")
+    parser.add_argument("--native-frames", action="store_true")
     parser.add_argument("--seconds", type=float, default=8)
     parser.add_argument("--checkpoint", type=Path)
     parser.add_argument("--label", default="graphics")
     parser.add_argument("--measure-frames", action="store_true")
     args = parser.parse_args()
-    if args.movie and (not args.render or args.measure_frames):
-        parser.error("Movies require --render; real-time timing excludes fixed-cadence recording")
-    cpu_modes = {"checks", "pool-checks"}
+    if args.movie:
+        parser.error("Use --native-frames; the internal writer recorded 450x800 on this host despite the native 720x1280 window")
+    if args.native_frames and (not args.render or args.measure_frames):
+        parser.error("Native frame recording requires --render and excludes real-time timing")
+    cpu_modes = {"checks", "pool-checks", "composition-checks"}
     if args.render and args.mode in cpu_modes:
         parser.error("Checks are CPU only")
     if not args.render and args.mode not in cpu_modes:
@@ -70,13 +73,15 @@ def main():
     (run / "import-report.json").write_text(json.dumps(preflight, indent=2) + "\n")
     command = [str(GODOT), "--path", str(PROJECT)]
     command += ["--resolution", "720x1280", "--position", "0,0"] if args.render else ["--headless"]
-    script = {"checks": "presentation_tests.gd", "pool-checks": "pool_tests.gd"}.get(args.mode, "graphics_passage.gd")
+    script = {"checks": "presentation_tests.gd", "pool-checks": "pool_tests.gd", "composition-checks": "composition_tests.gd"}.get(args.mode, "graphics_passage.gd")
     command += ["--script", "res://tests/" + script]
-    if args.movie:
-        command += ["--fixed-fps", "30", "--write-movie", str(run / "continuous.avi")]
+    if args.native_frames:
+        command += ["--fixed-fps", "30"]
     command += ["--", "--capture-dir=" + str(run), "--seconds=" + str(args.seconds), "--mode=" + args.mode]
     if args.measure_frames:
         command += ["--measure-frames"]
+    if args.native_frames:
+        command += ["--native-frames"]
     if args.checkpoint:
         source = args.checkpoint.resolve()
         if not source.is_relative_to((PROJECT / ".artifacts").resolve()):
@@ -112,16 +117,25 @@ def main():
     passed = preflight["passed"] and code == 0 and "SUITE_COMPLETE: PASS" in output
     passed &= not any(marker in output for marker in ["ERROR:", "SCRIPT ERROR:", "Parse Error:"])
     passed &= before == sources()
-    if args.movie and (run / "continuous.avi").exists():
-        encode = ["ffmpeg", "-v", "error", "-i", str(run / "continuous.avi"), "-c:v", "libx264", "-crf", "18",
+    if args.native_frames and (run / "frames/000000.png").exists():
+        encode = ["ffmpeg", "-v", "error", "-framerate", "30", "-i", str(run / "frames/%06d.png"), "-an", "-c:v", "libx264", "-crf", "18",
                   "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(run / "continuous.mp4")]
         encoded = subprocess.run(encode, capture_output=True)
         decoded = subprocess.run(["ffmpeg", "-v", "error", "-i", str(run / "continuous.mp4"), "-f", "null", "-"], capture_output=True) if encoded.returncode == 0 else None
-        movie = {"encode_command": encode, "encode_exit": encoded.returncode,
+        probe = json.loads(subprocess.check_output(["ffprobe", "-v", "error", "-show_streams", "-show_format", "-of", "json", str(run / "continuous.mp4")])) if encoded.returncode == 0 else {}
+        inventory = json.loads((run / "native-frame-inventory.json").read_text())
+        stream = next((row for row in probe.get("streams", []) if row["codec_type"] == "video"), {})
+        native_okay = bool(inventory["frames"]) and [stream.get("width"), stream.get("height")] == inventory["canvas"] and int(stream.get("nb_frames", -1)) == len(inventory["frames"])
+        if args.mode != "closure":
+            native_okay &= all(row["native"] == [720, 1280] for row in inventory["frames"])
+        movie = {"encode_command": encode, "encode_exit": encoded.returncode, "probe": probe,
                  "decode_exit": decoded.returncode if decoded else None,
-                 "policy": "Unretimed native 30fps movie; fixed cadence does not measure FPS"}
+                 "native_inventory_matches_encoded_canvas_and_count": native_okay,
+                 "policy": "Native source pixels blitted 1:1; padding only, no scaling/retiming; silent fixed30 cadence is not FPS"}
         (run / "movie-report.json").write_text(json.dumps(movie, indent=2) + "\n")
-        passed &= encoded.returncode == 0 and decoded is not None and decoded.returncode == 0
+        passed &= encoded.returncode == 0 and decoded is not None and decoded.returncode == 0 and native_okay
+    elif args.native_frames:
+        passed = False
     receipt = {"mode": args.mode, "command": command, "exit_code": code, "passed": bool(passed),
                "import_preflight": preflight, "source_unchanged": before == sources(),
                "limits": ["No headless visual acceptance", "No phone FPS or fun claim"], "artifacts": []}

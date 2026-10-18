@@ -1,114 +1,84 @@
 # Hearthguard graphics production
 
-CPU implementation frozen for the first rendered inspection on branch
-`codex/hearthguard-graphics`. Only `android-games/hearthguard/` changes. Version
-remains 0.2.0/code2; coordinator owns the eventual reviewed freeze/version bump.
-No rendered Godot run, browser playback, Android export, ADB, clipboard, push or
-phone test was performed. Gear retains exclusive renderer ownership. This is
-CPU readiness, not visual acceptance or a completed graphics candidate.
+Current stage: CPU follow-ups ready for a second short rendered inspection.
+Only `android-games/hearthguard/` changes. Version stays0.2.0/code2; root owns
+integration, reviewed freeze/version bump, Android exports and native updates.
+The builder has performed no rendered execution, browser playback, ADB,
+clipboard, push or phone testing. Gear retains the exclusive render slot until
+root explicitly grants another inspection. Visual acceptance remains open.
 
-## Implemented
+## Source history and implementation
 
-- Original reproducible Blender4.5.14 CPU generator, provenance/dimension/hash
-  manifest and 30 GLBs. Twelve distinct skinned roles have modeled clothes,
-  faces, boots, hands, equipment and 18 joints; three dimensional tower families,
-  three regional houses and settlement props cover all ten named compositions.
-- Articulated stance/swing legs, ankle compensation, smooth turns and stop/start,
-  weapon attacks/recoil, local HP reactions, death, refuge contact and victory.
-  Citizens patrol/work outside traversable body bounds. Tower crews handle their
-  mounted equipment without a duplicate handheld crossbow. Reduced effects
-  retains essential coins/prices/health/status and omits optional pulses.
-- Campaign and legacy consume deep snapshots and stable actor/coin IDs. Tick
-  observations never drive damage, spawning, timing or saved meaning. Pause,
-  Retry, import and hydration reset transients. Resume retains its first real
-  tick's stamped observations; terminal snapshots stop gait despite the last
-  movement delta. These two early Astra findings have focused regression checks.
-- Uniform orthographic fitting reserves the HUD/actions. Full transformed model
-  bounds clear traversable bodies, and projected opaque scenery clears fixed
-  HUD/action/stick rectangles at native1080x2400, cover1080x2520, inner1968x2184,
-  intermediate1100x1400, landscape1600x1000 and wide2560x1440. Actual ScreenTouch
-  and drag/release preserve exact rule displacement through each viewport's
-  inverse input transform. Menus, Journey, transfer, terminal and ending fit.
-- Rules, catalog, save store/files, seeded RNG, complete schemas, package,
-  signing and offline contract remain unchanged. No shared records/tooling or
-  other games were edited.
+- Original freeze `e581026930e55a6ef5626fe2bfb7f3275e784ca0`, integrated by root
+  asd2bf769:30 reproducible original GLBs, twelve articulated skinned roles,
+  three tower families, regional settlements, immutable snapshot/event adapter,
+  stable IDs, adaptive controls and campaign/legacy presentation.
+- Separate pooling commit `2ca853c`: actual scene-owned inactive reserves,
+  maximum4 per actor role/24 actors total and16 per compatible effect kind/64
+  effects total. Active combatants/effects are never capped. Corpses and contact
+  actors return to the role pool; projectiles, pulses, coins and value labels
+  reuse instances. Root/model/bone/gait/mounted/health/socket/effect state resets
+  before reuse; teardown clears reserves and frees retained instances.
+- Current composition correction responds to root's directly viewed native
+  `root-first-inspect-20261018T161522767389Z/passage-end.png`: complete transformed
+  scenery/citizen silhouettes now participate in fitting; ten authored staggered
+  regional clusters replace paired vertical rows, with quiet gaps. Shoulder
+  placement clears complete traversable bodies and projected controls.
+- Header crest now ignores its80px texture minimum, stays40px, and reserves real
+  text inset for both title and subtitle. Essential price/type text is larger.
+  Ground palettes, key/fill light and exposure are muted for the second visual
+  check. Road ribbon winding now matches upward-facing Godot primitives; the
+  prior culled ribbon left only individual pavers visible.
+- Rules, definitions/arithmetic, collision, RNG, saves/schema, package/signing,
+  transfer/Back and offline contract remain unchanged. Astra independently closed
+  both early Resume/terminal source findings; pooling retains focused tests for
+  first resumed tick events, dedupe, hydration and terminal gait.
 
-## Checked evidence
+## Checked artifacts
 
-Paths below are relative to this game directory. All successful execution
-receipts report source unchanged, zero unexpected errors and passing exits.
+Paths are relative to this game directory. Successful receipts include isolated
+userdata, CPU import/parse before source binding, exact executed-source copies,
+zero unexpected errors and unchanged sources. Old evidence/failures remain.
 
 | Evidence | Result |
 | --- | --- |
-| `.artifacts/cpu-final10-checks-20261018T160020025084Z/` | 328 CPU checks, no failures;118 post-import source pins. Import/parse preflight precedes binding; executed source, raw logs, report and receipt retained. |
-| `.artifacts/graphics-baseline-campaign-rules-20261018T155336487821Z/` | Existing123 campaign checks pass; scripted full arc1845.883s is simulation time. |
-| `.artifacts/graphics-baseline-legacy-rules-20261018T155344633061Z/` | Existing56 legacy rule checks pass. |
-| `.artifacts/graphics-kit/stable-indices-reproducibility.json` | All30 GLBs byte-identical across separate Blender CPU processes. Stable triangulation, triangle ordering, normals and deterministic mesh names. |
+| `.artifacts/cpu-final10-checks-20261018T160020025084Z/` | Original freeze328 checks/118 pins; independently repeated by root. Not rerun as a broad suite for these follow-ups. |
+| `.artifacts/graphics-baseline-campaign-rules-20261018T155336487821Z/` and `graphics-baseline-legacy-rules-20261018T155344633061Z/` | Preserved123 campaign/56 legacy checks; unchanged functional files remain pinned. |
+| `.artifacts/pool-first-pool-checks-20261018T161803413384Z/` | Pool commit49 focused checks;122 pins. |
+| `.artifacts/pool-final-pool-checks-20261018T162819252184Z/` | Current49 focused checks;124 pins. Actual node/mesh/material reuse, caps/overflow release, fresh-pose equivalence, corpse/contact, Retry/load/pause, Resume/dedupe, terminal/save and teardown. Eleven rule seconds only; synthetic presentation fixtures, no invented earned progression. |
+| `.artifacts/composition-glyphs-composition-checks-20261018T162805383919Z/` |192 focused checks;124 pins. All ten maps at720x1280/native1080x2400/cover1080x2520/inner1968x2184/intermediate1100x1400/landscape1600x1000/wide2560x1440. Full silhouettes/control clearance, road front faces, crest bounds and actual generated text geometry. Minimum projected two-line price56.03px/type27.00px; this does not establish rendered legibility. |
+| `.artifacts/graphics-kit/stable-indices-reproducibility.json` | All30 original GLBs byte-identical across independent Blender CPU processes. |
+| `.artifacts/pool-preserved-art.json` | All64 original art files unchanged by the pool follow-up. GLBs remain unchanged by the composition correction. |
 
-The final CPU report also compares every complete old/new state and exact event
-for1600 policy ticks each on maps1/6/10 and1000 legacy ticks, pins the five
-functional files to baseline `c36df6e`, samples actual skinned crossbow vertices
-through three aim/recoil poses with same-call BoneAttachment synchronization,
-and samples all three towers' visible weapon geometry through aim/recoil.
-Fresh legacy bootstrap/routing is a synthetic unit fixture; it is explicitly
-separate from genuine earned native update evidence.
+The initial `composition-first` report used billboard culling bounds to estimate
+text height; `composition-glyphs` supersedes that measurement using actual text
+mesh faces. Original failed parse/input/projection/export runs remain retained.
 
-Retained failures include `cpu-first`, `cpu-parse2`, `cpu-boundaries4`,
-`cpu-input-diagnostic5` and `cpu-projected-clearance7`. A test initially omitted
-the native-to-logical transform; corrected real-input checks use the actual
-viewport transform. Projected checks found foreground piers/trees/props over the
-joystick; corrected authored placements pass. Early export drift and corrected
-reproducibility receipts remain in `graphics-kit/`. A separate manual parse
-command initially lacked isolated user data and was denied creation of the
-normal AppData directory; all later execution uses the isolated runner.
+## Capture correction and next step
 
-Astra independently closed both early source-boundary findings against the
-320-check receipt and all118 matching pins; the coordinator retains
-`.artifacts/reviews/hearth-source-boundary-closure-astra.md`. Later328-check
-coverage adds actual tower tip aims and fresh legacy routing. No new independent
-eight-area visual review has occurred.
+Root's first rendered still is native720x1280. Its internal writer movie is
+actually450x800 despite the CLI/root window size: retain that original as a
+low-resolution inspection, with no sustained combat or native-movie claim.
+Future `--movie` use is rejected. Following Gear's existing capture pattern,
+`--native-frames` records frame_post_draw pixels at1:1, then encodes at ordinary
+fixed30 cadence with no scaling/retiming. Ordinary clips reject any actual source
+frame other than720x1280. Resize passages use declared padding and retain every
+native dimension/offset. Encoding checks canvas/count and fully decodes. This
+new capture path has passed CPU parsing only; root must verify it while rendered.
 
-## Next action / renderer request
-
-Request one short, source-frozen first inspection after the coordinator explicitly
-grants rendering. Prepared entry point (do not run while Gear owns the slot):
+After explicit GPU grant, request one bounded second inspection before long clips:
 
 ```powershell
-python -B tests/run_graphics.py inspect --render --movie --seconds 8 --label graphics-first
+python -B tests/run_graphics.py inspect --render --native-frames --seconds 16 --label graphics-second
 ```
 
-The runner imports headlessly before binding, rejects execution-time drift,
-records native unretimed frames and raw input and decodes encoded output. Correct
-actual image findings before longer clips. `capture`, `closure`, `tour` and
-`legacy` passages are prepared but have only passed CPU parsing. Their rendered
-behavior and image quality remain unverified.
-
-Reuse genuinely earned sources in
-`.artifacts/campaign-final-headless-20261018T044447829884Z/`: `middle-earned.code`
-and `final-earned.code` preserve app-written active map6/map10 checkpoints;
-`earned-epilogue-saves.json` retains the actual full campaign. Do not fabricate
-unlocks or replay unchanged full campaigns after art edits. Later normal1x
-opening/heavy/later passages, focused reset/resize/legacy entries, separate
-real-time host timing with raw tails/draw counters, full Astra visual review,
-root integration/export and genuine2-to3 emulator update remain outstanding.
-Physical-phone testing is deferred and does not block those steps; no phone FPS
-or human-fun claim is made.
-
-## Bounded pooling follow-up
-
-CPU-only follow-up adds scene-owned inactive reserves: maximum4 per actor role,
-24 actors total,16 per compatible effect kind and64 effects total. Active
-combatants/effects are never capped. Corpses and contact actors share the role
-pool; projectiles, pulses, coins and coin labels reuse actual nodes. All pose,
-gait, bone scale/position, mounted mode, health, socket and effect transforms
-reset before reuse. Scene teardown clears reserves and frees retained instances.
-
-`.artifacts/pool-first-pool-checks-20261018T161803413384Z/` passes49 focused
-checks with unchanged sources: actual instance/mesh/material reuse, reserve caps,
-overflow release, reset equivalence to fresh actors, Retry/load, contact/pause,
-Resume/dedupe, terminal gait, complete save retention and teardown.
-`.artifacts/pool-preserved-art.json` verifies every original art file unchanged
-frome581026. No broad campaign repeat or rendered run was used. Root's first
-inspection separately found composition/crest/label/lighting problems and a
-450x800 internal movie; those findings are the next scoped correction. Gear
-retains the render slot, so a second inspection awaits explicit grant.
+Sixteen fresh simulation seconds should reach the first incoming combat rather
+than repeating only the first8s; inspect the actual result before claiming that.
+Correct concrete original-image findings before longer opening/heavy/later1x
+passages, reset/resize/legacy passages and separate real-time timing. Reuse genuine
+`middle-earned.code`, `final-earned.code` and `earned-epilogue-saves.json` in
+`.artifacts/campaign-final-headless-20261018T044447829884Z/`; do not fabricate
+unlocks or replay unchanged campaigns. Full independent eight-area review,
+root's signed2-to3 emulator update and final delivery remain outstanding.
+Physical-phone testing is deferred and never blocks this graphics work; no phone
+FPS or human-fun claim is made.

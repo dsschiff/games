@@ -11,6 +11,10 @@ var peak_draws := 0
 var peak_primitives := 0
 var peak_nodes := 0
 var source_stage := -1
+var native_frames := false
+var native_inventory: Array = []
+var native_canvas := Vector2i(720, 1280)
+var native_finished := false
 
 func _initialize() -> void:
 	for arg in OS.get_cmdline_user_args():
@@ -24,10 +28,16 @@ func _initialize() -> void:
 			passage_mode = arg.trim_prefix("--mode=")
 		elif arg == "--measure-frames":
 			measure = true
+		elif arg == "--native-frames":
+			native_frames = true
 	call_deferred("run")
 
 func run() -> void:
 	root.size = Vector2i(720, 1280)
+	if native_frames:
+		if passage_mode == "closure":
+			native_canvas = Vector2i(1968, 2520)
+		DirAccess.make_dir_recursive_absolute(folder.path_join("frames"))
 	if not checkpoint.is_empty():
 		var bytes := FileAccess.get_file_as_string(checkpoint)
 		var decoded := S.decode(bytes)
@@ -51,6 +61,8 @@ func run() -> void:
 		f.store_string(bytes)
 		f.close()
 	await load_app()
+	if native_frames:
+		RenderingServer.frame_post_draw.connect(capture_native_frame)
 	if passage_mode == "legacy":
 		await legacy_passage()
 		finish_passage()
@@ -171,6 +183,11 @@ func tour() -> void:
 	await snap("tour-end")
 
 func finish_passage() -> void:
+	native_finished = true
+	if native_frames:
+		var inventory := FileAccess.open(folder.path_join("native-frame-inventory.json"), FileAccess.WRITE)
+		inventory.store_string(JSON.stringify({"canvas": [native_canvas.x, native_canvas.y], "cadence": 30, "frames": native_inventory, "policy": "Native 1:1 pixels, padding only; no scaling/retiming or FPS claim"}, "\t"))
+		inventory.close()
 	var input_file := FileAccess.open(folder.path_join("raw-input-events.json"), FileAccess.WRITE)
 	input_file.store_string(JSON.stringify(events))
 	input_file.close()
@@ -201,6 +218,31 @@ func finish_passage() -> void:
 		game_root.queue_free()
 	print("SUITE_COMPLETE: ", "PASS" if failures == 0 else "FAIL")
 	quit(0 if failures == 0 else 1)
+
+func capture_native_frame() -> void:
+	if native_finished or not is_instance_valid(scene):
+		return
+	var original := root.get_texture().get_image()
+	var size := original.get_size()
+	if passage_mode != "closure" and size != Vector2i(720, 1280):
+		check(false, "Ordinary native capture must contain actual720x1280 pixels; no low-resolution padding fallback")
+		finish_passage()
+		return
+	if size.x > native_canvas.x or size.y > native_canvas.y:
+		check(false, "Native frame exceeds declared canvas; no scaling fallback")
+		finish_passage()
+		return
+	var canvas := Image.create(native_canvas.x, native_canvas.y, false, Image.FORMAT_RGBA8)
+	canvas.fill(Color("142e3b"))
+	var offset := Vector2i((native_canvas.x - size.x) / 2, 0)
+	canvas.blit_rect(original, Rect2i(Vector2i.ZERO, size), offset)
+	var index := native_inventory.size()
+	var saved := canvas.save_png(folder.path_join("frames/%06d.png" % index))
+	if saved != OK:
+		check(false, "Native frame write failed")
+		finish_passage()
+		return
+	native_inventory.append({"frame": index, "native": [size.x, size.y], "offset": [offset.x, offset.y], "simulation": float(scene.state.time)})
 
 func legacy_passage() -> void:
 	check(scene.state.schema == 1 and scene.paused, "ordinary launch hydrates genuine legacy save paused")

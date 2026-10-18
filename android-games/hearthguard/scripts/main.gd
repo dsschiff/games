@@ -207,7 +207,9 @@ func make_ui() -> void:
 	text_label(header, "HEARTHGUARD", 38).position = Vector2(20, 10)
 	text_label(header, "01 / THE COPPER PASS", 20, "86b7af").position = Vector2(22, 60)
 	var crest := TextureRect.new()
+	crest.name = "Crest"
 	crest.texture = preload("res://art/hearth-crest.svg")
+	crest.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	crest.position = Vector2(21, 10)
 	crest.size = Vector2(40, 40)
 	crest.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -291,7 +293,7 @@ func layout() -> void:
 	head.size = Vector2(w, 184)
 	(head.get_child(0) as Label).add_theme_font_size_override("font_size", 32)
 	(head.get_child(0) as Label).position = Vector2(72, 8)
-	(head.get_child(1) as Label).position = Vector2(22, 50)
+	(head.get_child(1) as Label).position = Vector2(72, 50)
 	wallet_label.position = Vector2(22, 88)
 	wallet_label.add_theme_font_size_override("font_size", 27)
 	integrity_label.position = Vector2(245, 92)

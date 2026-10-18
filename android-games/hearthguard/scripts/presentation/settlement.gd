@@ -58,15 +58,15 @@ func build(state: Dictionary) -> void:
 	env.background_color = Color(region.sky).srgb_to_linear()
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 	env.ambient_light_color = Color("dce6de").srgb_to_linear()
-	env.ambient_light_energy = .36
+	env.ambient_light_energy = .28
 	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
-	env.tonemap_exposure = .95
+	env.tonemap_exposure = .85
 	environment.environment = env
 	add_child(environment)
 	var sun := DirectionalLight3D.new()
 	sun.rotation_degrees = Vector3(-57, -29, 0)
-	sun.light_color = Color("fff0cf")
-	sun.light_energy = .95
+	sun.light_color = Color("fff8ed")
+	sun.light_energy = .70
 	sun.shadow_enabled = true
 	sun.shadow_opacity = .40
 	sun.shadow_blur = 2
@@ -76,7 +76,7 @@ func build(state: Dictionary) -> void:
 	var fill := DirectionalLight3D.new()
 	fill.rotation_degrees = Vector3(-35, 140, 0)
 	fill.light_color = Color("bfdde4")
-	fill.light_energy = .24
+	fill.light_energy = .16
 	add_child(fill)
 	camera = Camera3D.new()
 	camera.projection = Camera3D.PROJECTION_ORTHOGONAL
@@ -94,14 +94,15 @@ func build(state: Dictionary) -> void:
 	for lane in (int(definition.lanes) if campaign else 1):
 		road(lane)
 	for side in [-1, 1]:
-		for j in 15:
+		for j in 13:
 			place("wall", Vector3(side * 5.55, 0, -8.7 + j * 1.15), 0, .85, true)
-		for j in 5:
-			place(region.tree, Vector3(side * (7.3 + (j % 2) * .45), 0, -8.2 + j * 3.0 + region.grove * .28), j * .73, 1.0 + (j % 2) * .15, true)
-		for j in 3:
-			place(region.house, Vector3(side * 6.65, 0, -6.8 + j * 5.7), side * .10, .82, true)
-			place(region.props[j], Vector3(side * 6.30, 0, -4.6 + j * 4.5), side * .25, .72, true)
-			place("lantern", Vector3(side * 5.70, 0, -7.9 + j * 6.0), 0, .70, true)
+	for j in region.clusters.size():
+		var cluster: Array = region.clusters[j]
+		var side := signf(cluster[0])
+		place(region.house, Vector3(cluster[0], 0, cluster[1]), cluster[2], cluster[3], true)
+		place(region.tree, Vector3(side * 7.0, 0, cluster[1] + cluster[4]), cluster[2] + .7, .68 + j * .07, true)
+		place(region.props[j], Vector3(side * 6.22, 0, cluster[1] + 1.40), -cluster[2], .62, true)
+		place("lantern", Vector3(side * 5.72, 0, cluster[1] - .92), 0, .64, true)
 	# Gate piers sit beyond the complete traversable/body rectangle.
 	gate = Node3D.new()
 	add_child(gate)
@@ -128,7 +129,9 @@ func build(state: Dictionary) -> void:
 			var a := j * TAU / 4
 			var mark := box(Vector3(p.x + sin(a) * .57, .13, p.y + cos(a) * .57), Vector3(.15, .035, .07), "f7dfa0")
 			mark.rotation.y = a
-		pad_labels.append(label("", Vector3(p.x, .58, p.y), "ffe1a0", 28))
+		var price := label("", Vector3(p.x, .62, p.y), "ffe1a0", 40)
+		price.pixel_size = .012
+		pad_labels.append(price)
 		towers.append({"family": -1, "fork": -1, "node": null, "operator": null, "turret": null, "tip": null, "recoil": 0.0, "construction": 1.0, "aim": Vector3.FORWARD})
 	var ring := TorusMesh.new()
 	ring.inner_radius = 4.96
@@ -141,9 +144,13 @@ func build(state: Dictionary) -> void:
 	add_child(range_ring)
 	range_ring.hide()
 	for i in 6:
-		var citizen := take_actor("citizen" if i % 3 != 0 else "defender", i * 1.7)
-		var side := -1 if i % 2 == 0 else 1
-		citizen.position = Vector3(side * 6.20, .02, -5.2 + (i / 2) * 5.6)
+		var cluster: Array = region.clusters[i / 2]
+		var side := signf(cluster[0])
+		var worker := i % 2 == 0
+		var citizen := take_actor("citizen" if worker else "defender", i * 1.7)
+		citizen.position = Vector3(side * (6.22 if worker else 6.94), .02, cluster[1] + (2.12 if worker else 1.10))
+		if not worker:
+			citizen.rotation.y = side * PI / 2
 		civilians.append({"actor": citizen, "home": citizen.position, "last": citizen.position})
 	adapter.reset(state, false)
 	synchronize(state, false, 0)
@@ -234,7 +241,8 @@ func road(lane: int) -> void:
 			normals.append(Vector3.UP)
 		if i > 0:
 			var n := i * 2
-			indices.append_array(PackedInt32Array([n - 2, n, n - 1, n - 1, n, n + 1]))
+			# Match Godot's clockwise front faces, keeping upward lighting normals.
+			indices.append_array(PackedInt32Array([n - 2, n - 1, n, n - 1, n + 1, n]))
 	var arrays := []
 	arrays.resize(Mesh.ARRAY_MAX)
 	arrays[Mesh.ARRAY_VERTEX] = verts
@@ -243,6 +251,7 @@ func road(lane: int) -> void:
 	var mesh := ArrayMesh.new()
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 	var n := MeshInstance3D.new()
+	n.name = "RoadLane%d" % lane
 	n.mesh = mesh
 	n.material_override = Actor.material(region.road)
 	add_child(n)
@@ -281,7 +290,7 @@ func label(text: String, at: Vector3, color: String, size: int) -> Label3D:
 	node.text = text
 	node.position = at
 	node.font_size = size
-	node.pixel_size = .007
+	node.pixel_size = .010
 	node.outline_size = 5
 	node.modulate = Color(color)
 	node.billboard = BaseMaterial3D.BILLBOARD_ENABLED
@@ -414,7 +423,8 @@ func rebuild_tower(index: int, spec: Dictionary, hydrated: bool) -> void:
 	t.operator = take_actor("defender", 0, true)
 	t.operator.scale = Vector3.ONE * .67
 	t.operator.position = Vector3(p.x - .20, 1.21, p.y + .17)
-	t.title = label("", Vector3(p.x, 2.66, p.y), "ffe2a0", 23)
+	t.title = label("", Vector3(p.x, 2.74, p.y), "ffe2a0", 38)
+	t.title.pixel_size = .012
 	if spec.fork > 0:
 		for side in [-1, 1]:
 			var plate := place("banner", Vector3(p.x + side * .44, .10, p.y + .20), 0, .40)
@@ -501,13 +511,13 @@ func present(dt: float) -> void:
 		var at: Vector3 = c.home
 		# Citizens remain outside the traversable/body rectangle and keep their own
 		# deterministic local clock, without consuming the game's seeded RNG.
-		if i % 3 != 0 and target_phase == "playing":
+		if c.actor.role == "citizen" and target_phase == "playing":
 			at.z += sin(decor_time * .45 + i) * .55
 		var v: Vector3 = (at - c.last) / maxf(step, .001)
 		c.actor.position = at
 		c.actor.pose(step, v, target_phase)
 		c.last = at
-		if i % 3 != 0 and target_phase == "playing" and fmod(decor_time + i, 4.2) < step:
+		if c.actor.role == "citizen" and target_phase == "playing" and fmod(decor_time + i, 4.2) < step:
 			c.actor.work_left = .6
 	for t in towers:
 		if t.family < 0:
@@ -544,6 +554,14 @@ func framing_points() -> Array[Vector3]:
 		for z in [-9.7, 8.4]:
 			for y in [0.0, 2.7]:
 				points.append(Vector3(x, y, z))
+	# Include complete transformed silhouettes, rather than fitting only the road.
+	for record in bounds_records:
+		for corner in 8:
+			points.append((record.bounds as AABB).get_endpoint(corner))
+	for c in civilians:
+		var silhouette: AABB = c.actor.transform * c.actor.model.transform * (manifest["actor_" + c.actor.role] as AABB)
+		for corner in 8:
+			points.append(silhouette.grow(.55).get_endpoint(corner))
 	return points
 
 func fit(rect: Rect2) -> void:
