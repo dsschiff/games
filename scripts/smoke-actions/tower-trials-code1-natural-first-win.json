@@ -1,0 +1,84 @@
+{
+  "reference_display": [
+    1080,
+    2400
+  ],
+  "viewport": [
+    600,
+    1066
+  ],
+  "scope": "Continue actual lost save; real Retry then four touch-built choices. Untouched victory capture before HOME; earned watch01.",
+  "actions": [
+    {
+      "type": "wait",
+      "wait_seconds": 5
+    },
+    {
+      "type": "tap",
+      "x": 540,
+      "y": 2037,
+      "wait_seconds": 0.4
+    },
+    {
+      "type": "tap",
+      "x": 490,
+      "y": 1466,
+      "wait_seconds": 0.3
+    },
+    {
+      "type": "tap",
+      "x": 540,
+      "y": 1882,
+      "wait_seconds": 1.4
+    },
+    {
+      "type": "tap",
+      "x": 490,
+      "y": 1214,
+      "wait_seconds": 0.3
+    },
+    {
+      "type": "tap",
+      "x": 540,
+      "y": 1882,
+      "wait_seconds": 1.4
+    },
+    {
+      "type": "tap",
+      "x": 490,
+      "y": 962,
+      "wait_seconds": 0.3
+    },
+    {
+      "type": "tap",
+      "x": 540,
+      "y": 1882,
+      "wait_seconds": 1.4
+    },
+    {
+      "type": "tap",
+      "x": 850,
+      "y": 962,
+      "wait_seconds": 0.3
+    },
+    {
+      "type": "tap",
+      "x": 540,
+      "y": 1882,
+      "wait_seconds": 1.4
+    }
+  ],
+  "expected_save": {
+    "schema": 1,
+    "catalog": 1,
+    "level_id": "watch_01",
+    "actions": [
+      "bell",
+      "rope",
+      "clock",
+      "light"
+    ],
+    "profile.watch_01.best": 4,
+    "profile.watch_01.medals": 11
+  }
+}

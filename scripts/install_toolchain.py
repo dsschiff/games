@@ -76,8 +76,9 @@ def configure_editor(config: dict):
     settings = Path(config["godot"]).parent / "editor_data/editor_settings-4.7.tres"
     body = settings.read_text(encoding="utf-8") if settings.exists() else '[gd_resource type="EditorSettings" format=3]\n\n[resource]\n'
     for key, value in (("export/android/android_sdk_path", config["android_sdk"]),
-                       ("export/android/java_sdk_path", config["java_home"])):
-        line = key + " = " + json.dumps(value.replace("\\", "/"))
+                       ("export/android/java_sdk_path", config["java_home"]),
+                       ("export/android/shutdown_adb_on_exit", False)):
+        line = key + " = " + json.dumps(value.replace("\\", "/") if isinstance(value, str) else value)
         if re.search(r"(?m)^" + re.escape(key) + r" = .*", body):
             body = re.sub(r"(?m)^" + re.escape(key) + r" = .*", lambda _: line, body)
         else:

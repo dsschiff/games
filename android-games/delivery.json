@@ -19,11 +19,17 @@
     },
     {
       "slug": "tower-trials",
-      "state": "prototype_in_development"
+      "state": "full_campaign_in_development",
+      "evidence": "android-games/evidence/tower-prototype-code1.json",
+      "ready_for_phone_testing": false,
+      "physical_phone_tested": false
     },
     {
       "slug": "hook-and-hunger",
-      "state": "prototype_in_development"
+      "state": "full_campaign_in_development",
+      "evidence": "android-games/evidence/hook-prototype-code1.json",
+      "ready_for_phone_testing": false,
+      "physical_phone_tested": false
     },
     {
       "slug": "hearthguard",

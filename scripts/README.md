@@ -35,6 +35,15 @@ run in the interactive session outside the restricted sandbox; sandbox errors
 misreported usable WHPX acceleration and prevented `.android` creation. No
 administrator setup or Windows feature changes were necessary.
 
+The portable editor sets `export/android/shutdown_adb_on_exit = false` so a
+parallel editor import/export cannot stop the shared ADB server during a device
+test. Godot's Android export poller otherwise issues `adb kill-server` on exit
+when this setting is enabled ([4.7 source](https://github.com/godotengine/godot/blob/4.7-stable/platform/android/export/export_plugin.cpp#L441)).
+An actual editor import retained server PID18100 and online emulator transport
+after the setting changed. This does not remove the interactive-session
+requirement above; restricted streamed installs can still stall. Keep failed
+transport/install packets separate from accepted gameplay evidence.
+
 ## Test and build evidence
 
 Every test starts with isolated per-run `user://` data and imports resources.
@@ -319,3 +328,15 @@ the saved run while showing PAUSED. This manual keyboard check does not expand
 the smoke runner's BACK-only key whitelist. No clipboard or save-file injection
 is involved. Preserve strict serialization-roundoff observations separately;
 semantic comparisons use the existing fractional-float-only 1e-12 policy.
+
+Tower Trials code1 has three sequential native-resolution fixtures:
+`tower-trials-code1-natural-equality-loss.json` begins from a new first watch;
+`tower-trials-code1-natural-first-win.json` uses Retry from that saved loss;
+`tower-trials-code1-prepare-campaign-upgrade.json` starts from that victory,
+clears the second watch, loses/Undoes the third watch's empty ferry, then takes
+the key ferry and changes settings. Require the untouched pre-Home captures to
+show LANTERN EXTINGUISHED and KEEPER RESCUED for the first two packets.
+The final fixture leaves catalog1/watch_03/actions `["key"]`, power14/Keys1,
+two earned clears, sound off, reduced effects on and used_undo true. These
+are actual tap-created saves for the future install-r update check; do not
+inject the expected JSON or count the old four-puzzle APK as a full campaign.

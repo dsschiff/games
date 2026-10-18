@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "scope": "Portable editor ADB retention and no-wipe emulator recovery",
+  "setting": "export/android/shutdown_adb_on_exit",
+  "value": false,
+  "source": "https://github.com/godotengine/godot/blob/4.7-stable/platform/android/export/export_plugin.cpp#L441",
+  "independent_tooling_tests": 55,
+  "test_log": "C:/projects/active/games/.artifacts/tooling-after-adb-retain-console.txt",
+  "same_server_pid_before_after": 18100,
+  "retention_verification": "C:/projects/active/games/.artifacts/tooling/adb-retention-20261018-pid/verification.json",
+  "guest_package_manager_timeout": "C:/projects/active/games/.artifacts/tooling/emulator-install-20261018/package.txt",
+  "recovery_verification": "C:/projects/active/games/.artifacts/tooling/emulator-recovery-20261018/cold-start-verification.json",
+  "recovery": "Graceful close and cold start of same portfolio-api35 AVD with original flags, no wipe; exact pre-restart save bytes retained",
+  "retained_save_sha256": "1197e02814a1aef192ef62183f93dc9dfada69e279bf55276a2abca232c0208c",
+  "failures_preserved": "Four install failures; failed reboot request; initial cold-start launch omitted AVD home and exited, corrected with explicit environment",
+  "frozen_log_snapshot": "C:/projects/active/games/.artifacts/tooling/emulator-recovery-20261018/log-snapshot.json",
+  "live_emulator_logs_excluded_from_receipt": true,
+  "receipt": "C:/projects/active/games/.artifacts/preservation/prototypes-20261018.json",
+  "receipt_sha256": "2612baa08c37bddecf3d261e18ee467dd170a1dfd04354a6bb750fe5b7f10902",
+  "settings_backup": "C:/projects/active/.game-toolchain/runtime/backups/editor_settings-before-adb-retain-20261018.tres",
+  "settings_backup_copied": false,
+  "physical_phone_tested": false
+}

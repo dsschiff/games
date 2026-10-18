@@ -22,7 +22,7 @@
       "worktree": "C:/projects/active/_worktrees/games-tower-trials-20261018",
       "branch": "codex/tower-trials",
       "ownership": "android-games/tower-trials/",
-      "state": "building first playable numbered-room puzzle sequence; visible tower growth and meaningful route choices before campaign expansion"
+      "state": "four-puzzle prototype approved by Astra and independently tested on desktop/Android; building full campaign with v1 catalog preservation"
     },
     {
       "slug": "hook-and-hunger",
@@ -32,7 +32,7 @@
       "worktree": "C:/projects/active/_worktrees/games-hook-and-hunger-20261018",
       "branch": "codex/hook-and-hunger",
       "ownership": "android-games/hook-and-hunger/",
-      "state": "building first movement/chained-weapon/resource/purchase loop; corrected baseline excludes unverified mandatory reel/consume/body growth"
+      "state": "two-pen movement/combat/purchase loop approved by Astra, import P2 independently closed; building full campaign with pinned v1 rules"
     }
   ]
 }

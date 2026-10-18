@@ -1,0 +1,39 @@
+{
+  "reference_display": [
+    1080,
+    2400
+  ],
+  "viewport": [
+    600,
+    1066
+  ],
+  "scope": "Fresh code1 prototype; actual equality loss, untouched terminal capture before HOME. No save injection.",
+  "actions": [
+    {
+      "type": "wait",
+      "wait_seconds": 10
+    },
+    {
+      "type": "tap",
+      "x": 490,
+      "y": 1214,
+      "wait_seconds": 0.3
+    },
+    {
+      "type": "tap",
+      "x": 540,
+      "y": 1882,
+      "wait_seconds": 1.4
+    }
+  ],
+  "expected_save": {
+    "schema": 1,
+    "catalog": 1,
+    "level_id": "watch_01",
+    "level": 0,
+    "actions": [
+      "rope"
+    ],
+    "profile": {}
+  }
+}
