@@ -1,5 +1,10 @@
 # Android portfolio worklog
 
+## 2026-10-18 UTC Top Force continuous reference follow-up
+
+- Astra played the entire selected28.963-second T3 creative plus continuous early T4 approximately0:32–1:35 and later T5 approximately2:32–3:33 with settled/consecutive checkpoints. Approximate player positions are not certified frames. The conditional prototype boundary remains one commander/front, station investment visibly equipping/deploying a recruit who changes adjacent combat, and vehicle escalation. Decorative queues or a detached shooter fail this selected interaction.
+- Core passages corroborate equipment-to-front continuity but emphasize upgrades, staffing and later base menus/timers; they do not prove T3's free commander control or an identical late loop. Top General creative-to-Top Force attribution remains qualified. Exact controls/economy/targeting/death rules and deferred logistics are not observed requirements. Saved in the existing Top Force brief and three-action review; no commercial-app execution, downloaded footage or implementation acceptance. Reviewer tab closed.
+
 ## 2026-10-17 Goal activation and foundation
 
 - Daniel approved the six-game staged plan, instructed use of the existing games repository, authorized implementation and Astra consultation.

@@ -307,7 +307,7 @@
       "package_id": "com.project.idle.cd",
       "selected_loop": "Direct commander shoots near base, equipment queue creates reinforcements, base expands to vehicle support.",
       "creative_status": "observed_exact_indexed_creative_with_top_general_endcard_mapping_qualified",
-      "core_status": "observed_early_and_later_base_progression_samples",
+      "core_status": "observed_early_and_later_base_progression_samples_and_independent_continuous_passages",
       "prototype_scope": "One commander, one front, equipment queue, visible reinforcements and one vehicle transition. Multiple fronts/ammo/carts/medics deferred.",
       "sources": [
         {
@@ -345,7 +345,7 @@
       "unresolved": [
         "Official Top General creative-to-package corroboration",
         "Direct-control and supply causal equivalence",
-        "Final independent footage review"
+        "Playable original-game prototype and final implementation fidelity review"
       ]
     },
     {

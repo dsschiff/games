@@ -59,8 +59,18 @@ Prove **one directly controlled commander → one front → local equipment queu
 
 ## Remaining evidence
 
-Confirm the T3 alternate-name creative through an official advertiser/ad-library record. Watch continuous T4/T5 segments before asserting exact direct-control equivalence. The chosen playable interpretation may proceed as a prototype; final ad fidelity remains open until an independent reviewer watches the videos and approves the comparison.
+Confirm the T3 alternate-name creative through an official advertiser/ad-library record. The continuous review below supports the selected prototype boundary; exact direct-control equivalence remains unproven. Implementation and final fidelity acceptance still require review of the playable original game.
 
 ## Bounded official-identity follow-up, 2026-10-18 UTC
 
 Rechecked [Google Play's Android listing](https://play.google.com/store/apps/details?id=com.project.idle.cd) and the [official iOS listing](https://apps.apple.com/us/app/top-force-commander/id6761893238). They identify Top Force / Top Force: Commander under Century Games Innovation and describe the same frontline-base, soldier-equipment/support and earned-money expansion theme. This supports the existing product/core-theme mapping, not direct input or the provenance of T3's Top General end card. Apple's visible version history does not name that older title. A bounded official-domain search found no matching rename/creative record; it is not exhaustive proof of absence. T3 attribution stays qualified, and no new gameplay passage was watched or footage downloaded.
+
+## Independent continuous-playback review, 2026-10-18 UTC
+
+Astra played all of T3 (0–28.963 seconds), T4 approximately0:32–1:35 and T5 approximately2:32–3:33, using settled and consecutive checkpoints. Positions are approximate playback readings, not certified frame timestamps. T3 shows a yellow commander shooting outside sandbags, moving between the front and priced base pads, expanding buildings/perimeter, and recruits queuing with weapon-request bubbles/equipment counters before armed infantry fight beyond the gate. Heavy weapons and vehicles escalate in the same connected world. The tall carried yellow stack's contents remain uncertain; the end card still says Top General.
+
+T4 corroborates a snowy compact base, rifle station, waiting recruits and armed perimeter combat, with weapon upgrade prices/production statistics and staffing/build changes while fighting continues. It does not demonstrate free control of T3's yellow commander. T5 shows larger equipment queues, roads, medical facilities and vehicles, alongside base-level timers/premium completion and intelligence/alliance/mission menus. These passages support equipment-to-front continuity, while differing materially from the selected ad's emphasis on continuous commander action.
+
+Verdict: conditional go for the existing first prototype boundary. Its strongest causal check is **station investment → visibly equipped recruit → deployment → changed combat outcome**, followed by vehicle escalation. A decorative queue changing abstract stats, detached arena or passive upgrade city would miss the selected interaction. Preserve portrait angled overhead composition, commander travel between combat and investment, visible currency/pads and adjacent soldiers/front. Actual joystick/touch causality, manual versus automatic fire, exact pickup/spending/production rules, unit caps, targeting and death/Retry remain original design choices or unverified details. Multiple fronts, ammunition logistics, medics, carts and blueprint dragging remain deferred additions.
+
+Official listings corroborate product/theme, not T3's alternate-name creative provenance. No commercial app was executed, no footage downloaded, and no implementation accepted. Reviewer closed its owned tab. See `../reviews/three-action-references-astra.md` for the portfolio review record.
