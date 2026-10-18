@@ -1,5 +1,7 @@
 # Kingshot reference and original game brief
 
+Independent source follow-up, 2026-10-18 UTC: Astra directly played K2 approximately 0–21 seconds with consecutive checkpoints. It observed wallet 0→3→5 during nearby movement/coin drops, construction and firing at the 5 pad, then a second firing tower at the 15 pad while the first remains present. This independently supports the movement/collection/funding/defense prototype, without establishing an exact debit ledger, stand-versus-button controls or official advertiser provenance. Existing qualified attribution remains. Source validation is approved for prototype direction; actual implementation comparison and phone checks remain pending. Details: `../reviews/three-action-references-astra.md`.
+
 Reviewed 2026-10-17. Candidate title: **Hearthguard** (`hearthguard`). Status: **exact indexed defense creative observed and sampled sustained core comparison; creative attribution is third-party indexed, player input inferred**.
 
 ## Exact sources

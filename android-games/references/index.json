@@ -180,8 +180,8 @@
         ],
         "method": "Paused stepping and separate-call settled screenshots at nominal checkpoints; approximate windows, no certified frame attribution, exhaustive frame coverage or tested input causality. Raw observations retained in butcher-hero.md under Settled official-promo correction and raw observation log.",
         "observed": [
-          "Meat 30 to 5 on 25-cost green pad at approximately 12.6Ã¢â‚¬â€œ14.7 seconds; power 100 to 200 and health 12 to 100.",
-          "Meat 79 to 4 on 75-cost purple pad at approximately 24.1Ã¢â‚¬â€œ26.6 seconds; power 200 to 300 and health 26 to 100.",
+          "Meat 30 to 5 on 25-cost green pad at approximately 12.6ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“14.7 seconds; power 100 to 200 and health 12 to 100.",
+          "Meat 79 to 4 on 75-cost purple pad at approximately 24.1ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“26.6 seconds; power 200 to 300 and health 26 to 100.",
           "Chained purple blade extends from small orange player near 35.2 seconds; close combat and resource rewards throughout."
         ],
         "withdrawn_interpretation": "Final pale giant is not established as enlarged player; permanent body-size growth and direct consumption cannot be claimed from this promo.",
@@ -275,6 +275,28 @@
           14
         ],
         "result": "Wallet 0 to 2 to 5, avatar occupies 5-cost pad with wallet lower, then firing tower replaces pad; hidden intermediate cost and concurrent pickups prevent exact debit proof."
+      },
+      "independent_direct_followup": {
+        "date_utc": "2026-10-18",
+        "source_id": "K2",
+        "approximate_playback_seconds": [
+          0,
+          21
+        ],
+        "method": "Continuous playback with consecutive checkpoints; approximate positions, not certified frames",
+        "observed": [
+          "Avatar beside winding enemy road and pads5/15/20/25",
+          "Coin drops and wallet0 to3 to5 during nearby movement",
+          "Constructed firing tower on5pad; subsequent second tower on15pad with both present"
+        ],
+        "attribution": "Third-party CDN/index association remains qualified; no new official advertiser corroboration",
+        "limits": [
+          "Exact debit ledger, stand/button input, pickup radius and targeting unproven",
+          "No avatar attack/dash/mount/hero-death finding",
+          "No implementation or final fidelity acceptance"
+        ],
+        "review": "../reviews/three-action-references-astra.md",
+        "verdict": "Existing movement/coin-funded tower-defense prototype approved"
       }
     },
     {
