@@ -1,7 +1,7 @@
 {
   "stage": "old_version_action_fixture_prepared_unexecuted",
   "fixture": "scripts/smoke-actions/frontline-foundry-code2-from-earned-code1.json",
-  "fixture_sha256": "32c030e7170e3ee7f3efbd6114fd6329a0f580f4bdf8dddabe9ef1ed0ae45686",
+  "fixture_sha256": "18fb1a312c3adb6bc38ddb6ddafa4acc8f7dab32f999276e26a6462fdf3771af",
   "genuine_old_native_fixture_revision": 213,
   "exact_fields": 24,
   "numeric_fields": 3,
@@ -15,5 +15,12 @@
   "new_campaign_schema_expectations": "Await clean frozen campaign source; no assumptions from WIP.",
   "preservation_receipt": "C:\\projects\\active\\games\\.artifacts\\preservation\\frontline-code2-upgrade-action-preparation.json",
   "preservation_receipt_sha256": "0983433fbb669deba885c81ce7a05af3f6478cb1ff80f516f7a298bd1e987e1b",
-  "preserved_files": 3
+  "preserved_files": 3,
+  "prepared_fixture_raw_sha256": "32c030e7170e3ee7f3efbd6114fd6329a0f580f4bdf8dddabe9ef1ed0ae45686",
+  "fixture_sha256_binding": "Committed LF bytes, equal to canonical and normalized coordinator checkout. Original CRLF prepared bytes remain in the original immutable preparation receipt.",
+  "line_ending_binding_correction": {
+    "receipt": "C:/projects/active/games/.artifacts/preservation/upgrade-fixture-line-ending-bindings.json",
+    "sha256": "0aa8b5e381758c7e3d8b60188ae665825d63e209e7c87b8e9b7b4c2b50185a8d",
+    "originals_preserved": true
+  }
 }

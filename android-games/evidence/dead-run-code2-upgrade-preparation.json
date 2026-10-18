@@ -1,7 +1,7 @@
 {
   "stage": "old_version_fixture_prepared_unexecuted",
   "fixture": "scripts/smoke-actions/dead-run-code2-from-earned-code1.json",
-  "fixture_sha256": "72cf181a9e644f4914a1bdd82735fa1db1fd12de05256a078e7d5c3b1c0a4c94",
+  "fixture_sha256": "aaa98c273ca12d85149e794a89bede9159b0d1c98f97271611a39c7569a1f392",
   "genuine_old_fixture_revision": 384,
   "genuine_old_fixture_tick": 103,
   "exact_fields": 39,
@@ -16,5 +16,12 @@
   "preservation_receipt": "C:/projects/active/games/.artifacts/preservation/dead-run-code2-upgrade-fixture-preparation.json",
   "preservation_receipt_sha256": "acd15ab454f0f69c256ad94aa27debf1dd24b8ae959274d2bb8bb82cda4f1a06",
   "preserved_files": 4,
-  "preserved_bytes": 9973
+  "preserved_bytes": 9973,
+  "prepared_fixture_raw_sha256": "72cf181a9e644f4914a1bdd82735fa1db1fd12de05256a078e7d5c3b1c0a4c94",
+  "fixture_sha256_binding": "Committed LF bytes, equal to canonical and normalized coordinator checkout. Original CRLF prepared bytes remain in the original immutable preparation receipt.",
+  "line_ending_binding_correction": {
+    "receipt": "C:/projects/active/games/.artifacts/preservation/upgrade-fixture-line-ending-bindings.json",
+    "sha256": "0aa8b5e381758c7e3d8b60188ae665825d63e209e7c87b8e9b7b4c2b50185a8d",
+    "originals_preserved": true
+  }
 }
