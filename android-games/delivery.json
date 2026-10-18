@@ -19,14 +19,14 @@
     },
     {
       "slug": "tower-trials",
-      "state": "authored_campaign_verified_seeded_challenge_code3_frozen_for_independent_review",
-      "evidence": "android-games/evidence/tower-campaign-code2.json",
+      "state": "seeded_challenge_verified_native_outcomes_pass_android_back_fix_in_progress",
+      "evidence": "android-games/evidence/tower-challenge-code3.json",
       "ready_for_phone_testing": false,
       "physical_phone_tested": false
     },
     {
       "slug": "hook-and-hunger",
-      "state": "full_campaign_independently_exercised_two_persistence_findings_in_remediation",
+      "state": "full_campaign_verified_two_persistence_fixes_frozen_for_independent_recheck_and_android_update",
       "evidence": "android-games/evidence/hook-campaign-code2.json",
       "ready_for_phone_testing": false,
       "physical_phone_tested": false

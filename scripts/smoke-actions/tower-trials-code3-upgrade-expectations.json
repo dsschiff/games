@@ -1,0 +1,23 @@
+{
+  "scope": "Save schema3 adds separate Challenge fields while preserving all old catalog2 route/profile/settings meaning. Whole old-field preservation is also enforced by the upgrade runner.",
+  "expected_save": {
+    "schema": 3,
+    "kind": "campaign",
+    "challenge_run": {},
+    "challenge_records": [],
+    "catalog": 2,
+    "level_id": "watch_03",
+    "level": 3,
+    "actions": ["key"],
+    "used_undo": false,
+    "recoverable": true,
+    "settings.sound": false,
+    "settings.reduced_effects": true,
+    "profile.watch_01.best": 4,
+    "profile.watch_01.medals": 11,
+    "profile.watch_02.best": 3,
+    "profile.watch_02.medals": 11,
+    "profile.watch_03.best": 3,
+    "profile.watch_03.medals": 3
+  }
+}

@@ -1,0 +1,21 @@
+# Tower seeded Challenge review
+
+2026-10-18 UTC. GPT-6 Astra High reviewed frozen worker `0feb135446becc2cc2d5257a727be83df4d3faa1`, integrated as `da22ffb`. **Approved for software-candidate validation; no consequential blocker found in this bounded static and visual review.** Android validation and physical-phone acceptance remain separate.
+
+The immutable package preserves committed Git blobs and the exact Windows source bytes used by the builder. Independent binding checks verify75descriptor raw/LF sources,279declared artifacts and all84tracked Gitblob/worker/integration LF bindings; ten listed differences are checkout line endings. Coordinator whole-project source is `953d5d67f1e10a1e7c3da82a69b974e61da901b29d65290601d20cd35b266aa3`. The reviewer inspected source/captures/controllers and did not execute tests or operate Android.
+
+`challenge_v1.gd:46–139` implements four substantive families: key commitments, shield/trap versus multiplier, collapsing rescue branches and mixed ordered finales. Dependencies, resource locations and irreversible decisions vary. The reported31signatures are finite serialized templates, not unlimited uniqueness or graph-isomorphism evidence. Generation is bounded to four attempts,1024visited/4096queued nodes; exhausted search differs from a proven losing continuation. Winning, optional treasure and consequential losing witnesses are validated; explicit family fallback remains marked as backup.
+
+Active runs retain their full validated snapshot. Restore, Undo, Retry and immediate Replay do not regenerate it. Record replay uses version/seed/options/fallback and verifies the resulting digest. Campaign actions, profile and settings remain separate. Catalogs1/2 and both rules files have zero diff from the reviewed authored checkpoint. Import checks IDs/references, cell occupancy, integer/options/history bounds, witnesses and matching completed records before commit. The synthetic forced-backup fixture is qualified separately from the documented touch-created active fixture.
+
+`main.gd:80–89` reconstructs cold-defeat explanations; later hints require an explicit tap. Source and inspected rendered PNGs support both corrections. Record-book captures separate seed/options and earned medals.
+
+Astra directly played the entire20.1-second clip with consecutive checkpoints, showing key-route failure/correction, claimed rooms/home-tower growth and the shield/trap/lens family. No consequential clipping or interaction ambiguity appeared in the reviewed captures. Clip SHA256: `396d4a13058f108b82663fc74245f353bad00b43f2a3f399988915540d304ffc`. The controller uses actual input and natural scene resolution; encoding retains the complete fixed-rate movie without a declared montage cut. This preserves the selected numbered-room ad identity; arithmetic/locks/shields/generated routes remain original choices.
+
+The required seeded generator is implemented. Root's separate independent verification reports3503rules/save checks (including3105Challenge,512requests/31structures),1173headless/1216rendered combined input,175fresh Challenge input,27/30legacy and17/20layout checks. Every test has a zero exit, completion marker and no runtime error; count deltas43/3/3 correspond exactly to rendered screenshot assertions. These results are attributed to root execution, not Astra. Human fun,30–60-minute duration, physical folding/touch/safe areas, audible sound and phone FPS remain unverified.
+
+Owned reviewer tab closed; root stopped server18190 after playback. The prior authored-campaign review remains applicable within its recorded limits.
+
+## Coordinator Android follow-up
+
+Actual code3 platform testing subsequently found a navigation defect outside this source/visual verdict: Android Back from Settings exits the app because default `quit_on_go_back` remains enabled. The whole active save survives. Root archived the raw launcher screenshot/process observation and assigned a code4 correction with focused notification/modal tests. Code3 therefore remains a checkpoint, not an accepted software candidate. Root separately observed actual code2→3 retained campaign state and native generated loss/Undo/Retry/win/Replay/clipboard/cold snapshot behavior; see `../evidence/tower-challenge-code3.json` for the original misconfigured observer, corrected follow-up and remaining checks.

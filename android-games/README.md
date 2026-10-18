@@ -5,8 +5,8 @@ Six standalone Godot games are being developed here under the staged goal in the
 | Directory | Working original title | Reference | Current state |
 | --- | --- | --- | --- |
 | `gear-bastion` | Gear Bastion | Gear Defenders | Software candidate ready for phone testing; independent campaign/replay, source review and Android update/natural outcomes verified |
-| `tower-trials` | Tower Trials | Hero Wars | Authored36-puzzle campaign and code2 Android update/outcomes verified; seeded Challenge code3 frozen for independent review/Android validation |
-| `hook-and-hunger` | Hook and Hunger | Butcher Hero | Twelve-passage campaign independently exercised; code1→2 Android preservation/legacy victory passed; two save/import review findings being fixed |
+| `tower-trials` | Tower Trials | Hero Wars | Seeded Challenge independently reviewed/exercised, native generated outcomes and update preservation verified; Android Back fix pending in code4 |
+| `hook-and-hunger` | Hook and Hunger | Butcher Hero | Full campaign independently exercised; two save/import fixes frozen in code3 for independent recheck and Android update |
 | `hearthguard` | Hearthguard | Kingshot | Movement/build-pad/defense creative observed; attribution qualified; implementation not started |
 | `frontline-foundry` | Frontline Foundry | Top Force | Bounded prototype direction reviewed; advertiser mapping qualified |
 | `dead-run` | Dead Run | Last Human: Final Stand | Bounded prototype direction reviewed; exact gate arithmetic pending |

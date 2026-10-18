@@ -1,0 +1,22 @@
+{
+  "scope": "Use --schema-path schema --expected-version 3. Code4 changes navigation/version only; preserve every code3 save field except revision, including the complete pinned generated snapshot/records and independent campaign context.",
+  "expected_save": {
+    "schema": 3,
+    "kind": "challenge",
+    "recoverable": true,
+    "challenge_run.actions": ["landing"],
+    "challenge_run.bundle.family": "key",
+    "challenge_run.bundle.seed": 137,
+    "challenge_run.bundle.version": 1,
+    "challenge_records.0.seed": 137,
+    "challenge_records.0.best": 4,
+    "challenge_records.0.medals": 11,
+    "catalog": 2,
+    "level_id": "watch_03",
+    "level": 3,
+    "actions": ["key"],
+    "used_undo": false,
+    "settings.sound": false,
+    "settings.reduced_effects": true
+  }
+}

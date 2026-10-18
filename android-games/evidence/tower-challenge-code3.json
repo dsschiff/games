@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "scope": "Verified seeded Challenge checkpoint; actual Android Back defect requires code4 before candidate acceptance",
+  "worker_commit": "0feb135446becc2cc2d5257a727be83df4d3faa1",
+  "integration_commit": "da22ffb9dda6e775e9f4cf66000e827421713d78",
+  "source_sha256": "953d5d67f1e10a1e7c3da82a69b974e61da901b29d65290601d20cd35b266aa3",
+  "version": "0.3.0",
+  "version_code": 3,
+  "save_schema": 3,
+  "generator_version": 1,
+  "bindings": {
+    "descriptor_sources": 75,
+    "tracked_files": 84,
+    "declared_artifacts": 279,
+    "line_ending_only_differences": 10
+  },
+  "rules_checks": 3503,
+  "challenge_rules_subchecks": 3105,
+  "matrix_requests": 512,
+  "structural_signatures": 31,
+  "headless_input_checks": 1173,
+  "rendered_input_checks": 1216,
+  "fresh_challenge_input_checks": 175,
+  "legacy_checks": [
+    27,
+    30
+  ],
+  "layout_checks": [
+    17,
+    20
+  ],
+  "rendered_count_delta_scope": "43/3/3 screenshot assertions, not additional gameplay decisions or phone testing",
+  "verification_manifest": "C:/projects/active/games/.artifacts/verification/tower-challenge-0feb135-20261018T021908352665Z/manifest.json",
+  "verification_summary": "C:/projects/active/games/.artifacts/verification/tower-challenge-0feb135-20261018T021908352665Z/verification-summary.json",
+  "review": "android-games/reviews/tower-challenge-code3-astra.md",
+  "review_package": "C:/projects/active/games/.artifacts/reviews/tower-challenge-0feb135/review-package.json",
+  "motion_seconds": 20.1,
+  "motion_sha256": "396d4a13058f108b82663fc74245f353bad00b43f2a3f399988915540d304ffc",
+  "apk": "C:/projects/active/games/.artifacts/tower-trials/20261018T022644883562Z/tower-trials.apk",
+  "apk_sha256": "74c29e78df41e45f8b6dd2e7a5181e8e3b4262454bcb1ca511d26c4f8f47a59d",
+  "build_manifest": "C:/projects/active/games/.artifacts/tower-trials/20261018T022644883562Z/manifest.json",
+  "signed": true,
+  "permissions": [],
+  "original_update_manifest": "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.towertrials/20261018T022734367259Z/manifest.json",
+  "original_update_result": "failed_observer_configuration",
+  "original_update_failure": "Root omitted --schema-path schema; default version assertion failed after actual successful install/migration. Original failed packet retained unchanged.",
+  "corrected_update_completion_manifest": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.towertrials/code3-upgrade-corrected-observer-20261018T023008782345Z/manifest.json",
+  "update_revisions": [
+    71,
+    73,
+    75
+  ],
+  "update_preserved_paths": [
+    "actions",
+    "catalog",
+    "level",
+    "level_id",
+    "profile",
+    "recoverable",
+    "settings",
+    "used_undo"
+  ],
+  "update_scope": "Original signed2-to3 install-r/noreset and migrated native save preserved every old semantic field except schema/revision. Separate observer validates actual schema3/new empty fields and cold reload without downgrading/reinstalling/resetting.",
+  "android_native_challenge_manifest": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.towertrials/code3-native-challenge-20261018T023655243441Z/manifest.json",
+  "android_native_challenge_checks": {
+    "native_generation": true,
+    "bad_route_entered_through_touch": true,
+    "cold_loss_captured": true,
+    "actual_undo_restores_previous_actions": true,
+    "retry_keeps_exact_snapshot": true,
+    "win_witness_entered_through_touch": true,
+    "separate_record_present_after_win": true,
+    "replay_keeps_exact_snapshot": true,
+    "native_copy_paste_import_preserves_gameplay_and_sets_import_commit_flag": true,
+    "cold_active_snapshot_preserved": true,
+    "whole_campaign_route_profile_settings_preserved": true,
+    "no_save_injection": true
+  },
+  "android_native_scope": "Native generation seed137, bad/win witness paths via actual room/Enter touches, Undo/Retry/Replay, system clipboard Copy/Paste/Import, Home/cold active snapshot. Witness metadata was read from normal app-written generated save; no progress injection.",
+  "observer_failures_retained": [
+    "First read occurred before the0.9second move animation completed",
+    "Second compared the intentional imported recoverable=false storage flag as gameplay",
+    "Third included that transient flag in campaign context comparison; corrected observer compares all gameplay and explicitly checks flag transitions"
+  ],
+  "android_back_manifest": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.towertrials/code3-native-system-back-20261018T023145285419Z/manifest.json",
+  "open_finding": "Actual Android Back from Settings exits app because default quit_on_go_back remains enabled; whole save retained. Assigned code4 fix.",
+  "android_generated_update_ready_save": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.towertrials/code3-native-challenge-20261018T023655243441Z/update-ready-save.json",
+  "android_update_ready": {
+    "revision": 111,
+    "kind": "challenge",
+    "family": "key",
+    "seed": 137,
+    "challenge_actions": [
+      "landing"
+    ],
+    "record_count": 1,
+    "campaign_catalog": 2,
+    "campaign_actions": [
+      "key"
+    ],
+    "campaign_level": "watch_03"
+  },
+  "root_viewed_native_captures": [
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.towertrials/code3-upgrade-corrected-observer-20261018T023008782345Z/cold-native.png",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.towertrials/code3-native-system-back-20261018T023145285419Z/after-back.png",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.towertrials/code3-native-challenge-20261018T023655243441Z/natural-challenge-loss.png",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.towertrials/code3-native-challenge-20261018T023655243441Z/natural-challenge-victory.png",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.towertrials/code3-native-challenge-20261018T023655243441Z/cold-active-pinned.png"
+  ],
+  "receipt": "C:/projects/active/games/.artifacts/preservation/tower-challenge-code3.json",
+  "receipt_sha256": "dc5cdbb248638d4a33fe58dbdb87d30ea1fb4f7c1076fb9fbb8767c580d35b14",
+  "preserved_files": 784,
+  "preserved_bytes": 245615582,
+  "decoded_images": 124,
+  "ready_for_phone_testing": false,
+  "physical_phone_tested": false,
+  "remaining": [
+    "Code4 Android Back amendment/regression and real3-to4 pinned generated snapshot update",
+    "Corrected candidate native Back/modal/cold and cover-inner checks",
+    "Human duration/fun/readability, physical Fold7 folding/touch/safe areas, audible sound and measured performance"
+  ]
+}

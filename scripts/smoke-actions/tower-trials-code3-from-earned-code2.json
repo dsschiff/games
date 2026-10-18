@@ -1,0 +1,25 @@
+{
+  "reference_display": [1080, 2400],
+  "viewport": [600, 1066],
+  "scope": "Resume the genuine code2 catalog2 key-ferry route archived at revision65, select its already-claimed key room without changing action history, then preserve all old semantic fields through the actual code3 APK install-r. This does not inject progress or create a generated save.",
+  "actions": [
+    {"type": "tap", "x": 850, "y": 1466, "wait_seconds": 0.5}
+  ],
+  "expected_save": {
+    "schema": 2,
+    "catalog": 2,
+    "level_id": "watch_03",
+    "level": 3,
+    "actions": ["key"],
+    "used_undo": false,
+    "recoverable": true,
+    "settings.sound": false,
+    "settings.reduced_effects": true,
+    "profile.watch_01.best": 4,
+    "profile.watch_01.medals": 11,
+    "profile.watch_02.best": 3,
+    "profile.watch_02.medals": 11,
+    "profile.watch_03.best": 3,
+    "profile.watch_03.medals": 3
+  }
+}
