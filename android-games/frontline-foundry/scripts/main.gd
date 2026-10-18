@@ -268,6 +268,9 @@ func make_ui() -> void:
 			effects_button = b
 		row += 1
 	menu.hide()
+	var journey_button := button(menu, "BEGIN CAMPAIGN", enter_campaign)
+	journey_button.position = Vector2(24, 550)
+	journey_button.size = Vector2(572, 96)
 	terminal = panel(ui)
 	terminal_title = label(terminal, "", Vector2(24, 24), Vector2(570, 55), 36, "ffe1a0")
 	terminal_detail = label(terminal, "", Vector2(24, 85), Vector2(570, 175), 28)
@@ -378,6 +381,19 @@ func begin() -> void:
 	save_now()
 	refresh()
 
+func enter_campaign() -> void:
+	var C = load("res://scripts/campaign_rules.gd")
+	var D = load("res://scripts/definitions.gd")
+	var saved := S.read()
+	var c: Dictionary = saved.career if saved.ok else C.career()
+	c.legacy_state = state.duplicate(true)
+	c.legacy_profile = profile.duplicate(true)
+	if S.write(C.fresh(D.mission(0)), profile, settings, S.PATH, save_io, false, c):
+		get_tree().change_scene_to_file("res://boot.tscn")
+	else:
+		save_problem = true
+		refresh()
+
 func build_nearby() -> void:
 	if not paused and R.buy(state, R.nearby_pad(state)):
 		tone(450, 0.25)
@@ -443,7 +459,8 @@ func save_now() -> bool:
 func open_transfer() -> void:
 	stop_move()
 	paused = true
-	code_edit.text = S.encode(state, profile, settings, 0)
+	var saved := S.read()
+	code_edit.text = S.encode(state, profile, settings, 0, true, saved.career if saved.ok else {})
 	notice.text = "Local code. Import replaces this save after validation."
 	transfer.show()
 
@@ -456,14 +473,17 @@ func close_transfer() -> void:
 
 func copy_code() -> void:
 	# Export always regenerates from progress, never copies an edited invalid code.
-	code_edit.text = S.encode(state, profile, settings, 0)
+	var saved := S.read()
+	code_edit.text = S.encode(state, profile, settings, 0, true, saved.career if saved.ok else {})
 	if not DisplayServer.has_feature(DisplayServer.FEATURE_CLIPBOARD):
 		code_edit.select_all()
 		notice.text = "Clipboard unavailable. Select and copy the code."
 		return
 	DisplayServer.clipboard_set(code_edit.text)
 	code_edit.select_all()
-	notice.text = "Code copied." if DisplayServer.clipboard_get() == code_edit.text else "Copy failed. Select and copy the code."
+	notice.text = "Checking clipboard..."
+	await get_tree().create_timer(0.08, true, false, true).timeout
+	notice.text = "Code copied." if DisplayServer.clipboard_get() == code_edit.text else "Copy unconfirmed. Select and copy the code."
 
 func paste_code() -> void:
 	if not DisplayServer.has_feature(DisplayServer.FEATURE_CLIPBOARD):
@@ -481,8 +501,11 @@ func import_code() -> void:
 	if not decoded.ok:
 		notice.text = "Invalid code. Entire current save kept."
 		return
-	if not S.write(decoded.state, decoded.profile, decoded.settings, S.PATH, save_io, true):
+	if not S.write(decoded.state, decoded.profile, decoded.settings, S.PATH, save_io, true, decoded.career):
 		notice.text = "Storage failed. Entire current save kept."
+		return
+	if decoded.state.catalog == 2:
+		get_tree().change_scene_to_file("res://boot.tscn")
 		return
 	state = decoded.state
 	profile = decoded.profile

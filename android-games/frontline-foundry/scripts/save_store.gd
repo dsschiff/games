@@ -1,11 +1,12 @@
 extends RefCounted
 const R = preload("res://scripts/rules.gd")
+const C = preload("res://scripts/campaign_rules.gd")
 const Files = preload("res://scripts/save_files.gd")
 const PATH := "user://frontline-save-"
-const LIMIT := 100000
+const LIMIT := 500000
 
-static func encode(s: Dictionary, p: Dictionary, settings: Dictionary, revision: int, committed: bool = true) -> String:
-	var payload := JSON.stringify({"version": 1, "revision": revision, "committed": committed, "state": s, "profile": p, "settings": settings})
+static func encode(s: Dictionary, p: Dictionary, settings: Dictionary, revision: int, committed: bool = true, career: Dictionary = {}) -> String:
+	var payload := JSON.stringify({"version": 2, "revision": revision, "committed": committed, "state": s, "profile": p, "settings": settings, "career": C.career() if career.is_empty() else career})
 	return JSON.stringify({"payload": payload, "sha256": payload.sha256_text()})
 
 static func decode(text: String) -> Dictionary:
@@ -20,17 +21,37 @@ static func decode(text: String) -> Dictionary:
 	if parser.parse(env.payload) != OK or not parser.data is Dictionary:
 		return {"ok": false}
 	var d: Dictionary = parser.data
-	if d.get("version") != 1 or not R.number(d.get("revision"), 0, 1000000000, true) or not d.get("committed") is bool or not R.valid(d.get("state")) or not R.valid_profile(d.get("profile")) or not d.get("settings") is Dictionary:
+	if not R.number(d.get("version"), 1, 2, true) or not R.number(d.get("revision"), 0, 1000000000, true) or not d.get("committed") is bool or not d.get("state") is Dictionary or not R.valid_profile(d.get("profile")) or not d.get("settings") is Dictionary:
 		return {"ok": false}
+	if d.version == 1:
+		if not R.valid(d.state):
+			return {"ok": false}
+		d["career"] = C.career()
+	else:
+		if not C.valid_career(d.get("career")):
+			return {"ok": false}
+		if d.state.get("catalog") == 1:
+			if not R.valid(d.state):
+				return {"ok": false}
+		elif not C.valid(d.state):
+			return {"ok": false}
 	for key in ["sound", "reduced_effects"]:
 		if not d.settings.get(key) is bool:
 			return {"ok": false}
-	if d.state.phase in ["victory", "defeat"] and (d.profile.attempts < 1 or d.profile.best_kills < d.state.killed.size()):
+	if d.state.catalog == 1 and d.state.phase in ["victory", "defeat"] and (d.profile.attempts < 1 or d.profile.best_kills < d.state.killed.size()):
 		return {"ok": false}
 	if d.state.phase in ["victory", "defeat"] and not d.state.recorded:
 		return {"ok": false}
-	if d.state.phase == "victory" and d.profile.wins < 1:
+	if d.state.catalog == 1 and d.state.phase == "victory" and d.profile.wins < 1:
 		return {"ok": false}
+	if d.state.catalog == 2:
+		var def: Dictionary = d.state.definition
+		if def.mode == "campaign" and def.index > d.career.clears.size():
+			return {"ok": false}
+		if d.state.phase in ["victory", "defeat"] and d.career.attempts < 1:
+			return {"ok": false}
+		if d.state.phase == "victory" and (d.career.victories < 1 or (def.mode == "campaign" and not d.career.clears.has(def.id)) or (def.mode == "skirmish" and not d.career.skirmishes.has(str(int(def.seed)) + ":" + def.style))):
+			return {"ok": false}
 	d["ok"] = true
 	return d
 
@@ -49,12 +70,13 @@ static func read(path: String = PATH, io: Variant = null) -> Dictionary:
 				best = d
 	return best
 
-static func write(s: Dictionary, p: Dictionary, settings: Dictionary, path: String = PATH, io: Variant = null, imported: bool = false) -> bool:
+static func write(s: Dictionary, p: Dictionary, settings: Dictionary, path: String = PATH, io: Variant = null, imported: bool = false, career: Dictionary = {}) -> bool:
 	if io == null:
 		io = Files.new()
 	var best := read(path, io)
 	var file := path + str(1 - int(best.slot))
-	var text := encode(s, p, settings, int(best.revision) + 1, not imported)
+	var saved_career: Dictionary = career if not career.is_empty() else (best.career if best.ok else C.career())
+	var text := encode(s, p, settings, int(best.revision) + 1, not imported, saved_career)
 	if not decode(text).ok or not io.write_text(file + ".tmp", text) or io.read_text(file + ".tmp") != text:
 		return false
 	return io.rename(file + ".tmp", file)

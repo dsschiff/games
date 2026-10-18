@@ -1,117 +1,119 @@
-# Frontline Foundry — first playable checkpoint
+# Frontline Foundry — 0.2.0 / code 2
 
-Original offline portrait 3D commander/base defense prototype. The first loop
-is ready for independent desktop review. It is not the complete game, an Android
-test result, or a 30–60-minute campaign.
+An original offline portrait 3D commander/base defense game. Twelve districts,
+four recruit roles, three support choices, six ordinary enemy roles, three bosses,
+a liberation ending and deterministic seeded skirmishes are implemented.
+Builder verification is in `CAMPAIGN_CHECKPOINT.*`; coordinator/Astra/native
+acceptance and physical-phone play remain open. The full desktop journeys take
+about 37 simulated minutes, not a measurement of human pacing, fun or phone FPS.
 
-Move a gold commander between the compact foundry and its adjacent sandbag
-front. Your weapon fires automatically at living nearby drones. The teal
-recruits start without weapons: approach the left pad and tap **Supply Rifles**
-to spend 8 scrap. Three individual rifles are handed to the queue one at a time;
-armed recruits walk through the gate and attack independently. Their kills drop
-gold scrap. Collect it and return to the right pad: 14 scrap supplies the rover's
-cannon, then that vehicle leaves the workshop and fights armored drones.
+Move the gold commander with the floating left stick. Your weapon fires at
+nearby living targets while you move. Collect gold scrap in the attached field,
+return to a priced equipment station and explicitly tap Equip. Each purchase
+creates one finite weapon token for one waiting recruit. That individual arms,
+walks through the central gate, attacks, takes damage and can die. Crossing pads
+never spends. Three crew members per role and a four-slot later front make
+replacement and collection consequential; the first two teaching missions allow
+six slots. Death frees a slot without refunding its consumed weapon.
 
-Stop at least 8 of 10 finite siege drones while the commander and HQ survive.
-The deliberate successful input route lasts approximately 48 simulation seconds.
-Losing either health pool ends the attempt immediately. **Retry Siege** starts a
-fresh supplied attempt immediately, retaining the entire earned record and
-settings. There are no real-world waits, offline production, ads, purchases,
-accounts, energy restrictions, network features, or external assets.
+| Recruit | Scrap | Distinct use |
+| --- | ---: | --- |
+| Rifle | 7 | Cheap rapid fire, weak against armor |
+| Breaker | 10 | Pierces armor/nearby Bulwark cover; prioritizes armor |
+| Ranger | 10 | Long range; prioritizes mortars, jammers and the Storm Engine |
+| Rover | 18 | A supplied cannon on an individual chassis; splash counters clusters |
 
-## Explicit original rules
+The first district teaches rifles/rovers, the second adds Breakers, the third
+adds Rangers. Choose one support in Sortie Kit, then explicitly build it at the
+center pad for 14 scrap. Ward reduces incoming commander/recruit/HQ damage by
+35%. Relay increases firing range, commander damage and capture speed. Recovery
+spends a finite 200-point budget repairing living allies; it cannot revive a
+fatal casualty. Selection is free; one building per attempt; Retry permits refit.
 
-- Floating left thumb stick, unrestricted movement within the connected base
-  and front; speed 3.4 units/second. No manual aim, ammunition or dodge.
-- Automatic commander fire: 6 damage every 0.55 seconds within 3.6 units.
-  The starter sentry fires 3 damage every 0.95 seconds within 4.4 units. Starting
-  wallet 8 plus an obtainable 6-scrap cache prevents a zero-money bootstrap lock.
-- A station charges only on an explicit contextual button release while within
-  1.45 units. Crossing pads never spends. Each station can be supplied once.
-  Rifles own exactly three tokens and three recruits; the rover owns one token
-  and one chassis. One queue head equips at a time for 0.8 seconds; this is a
-  visible handoff animation, not a production or monetization timer.
-- Four total combat slots. Each token equips exactly one owned recruit and is
-  consumed. Infantry walk to three front positions and attack for 9 damage every
-  0.72 seconds; the rover deals 28 every 1.05 seconds. Unpaid recruits never fire.
-  Direct unobstructed deployment prevents gate/pathfinding stranding.
-- Nearest living in-range target, per-attacker cooldown and actual per-recruit
-  shot/damage ownership. Armored drones take 38% damage from small arms; the
-  rover pierces armor. Enemy fire can kill commander or individual recruits.
-- Unique drop per kill: 5 scrap for light, 8 for armored; only the commander
-  collects within 1.35 units. Drones that reach HQ deal 30/50 integrity damage
-  and cannot also pay a kill reward. Objective, defeat and attempt accounting
-  resolve once. All encounter definitions are immutable **catalog 1 / seed 17**.
+| District | Objective and pressure |
+| --- | --- |
+| Ash Gate | Personal fire, scrap, rifles and rover supply |
+| Switchyard | Three exposed caches and armored bulwarks |
+| Signal Ridge | Two relays and long-range mortar crews |
+| The Iron Drill | Exposed wind-up followed by a charging siege engine |
+| Broken Bridge | Side relays, bypassing runners and sappers |
+| Glass Quarry | Kill every mortar crew under jamming pressure |
+| Night Relays | Capture exposed relays against the full enemy mix |
+| The Brood Carrier | Boss repairs living escorts from a finite tank |
+| Red Causeway | Stop at least 90% of the rush; protect HQ from sappers |
+| Mortar Gardens | Hunt artillery across adjacent approaches |
+| Last Supply | Three caches, collection risk and specialist investment order |
+| Foundry Liberation | Both relays and the Storm Engine; avoid marked ground strikes |
 
-## Controls and local reliability
+Drones fight defenders, runners bypass them, Bulwarks cover escorts, mortar crews
+bombard HQ/troops, sappers detonate, and jammers suppress nearby recruits. Red
+incoming bolts, recipient pulses, repair beams and ground warnings explain effects.
+Reduced Effects removes hit pulses while retaining essential warning information.
 
-At 720 logical pixels representing 360dp, all action/menu buttons are at least
-96 pixels high (48dp); the supply button is 112 pixels high. Pause freezes the
-whole battle. Sound and reduced effects are independent persisted settings.
-Procedural tones are original. Native Back-to-quit and automatic quit are
-explicitly disabled; Back closes the transfer panel first, then toggles pause.
-Native Android Back still needs coordinator validation.
+Waves provide live collection/reinvestment windows. No ads, purchases, accounts,
+servers, energy, offline production, compulsory income grind or real-world
+training waits exist. Each sortie starts with its own finite budget. Victory
+requires the objective/minimum stops and surviving commander/HQ; bosses and
+required mortar crews must be killed. Fatal strikes precede victory, healing and
+pickups. Retry restocks immediately and opens the brief for refit/Launch, retaining
+the whole career/settings. Completing all twelve districts displays liberation.
+Free replay records medals; Mixed/Flank/Siege skirmishes use selectable seeds,
+complete pinned definitions and separate records. Same seed/style reproduces the
+encounter. Skirmish Retry cannot invent campaign clears.
 
-Local saves use schema 1, pinned catalog/seed, complete active entities/cooldowns,
-profile/settings, revision and SHA-256 payload checksum. Alternating checked
-slots protect the newest good copy. Checked committed temporary autosaves may
-recover after interrupted promotion; uncommitted imported temporaries cannot
-replace progress. Malformed imports and failed storage leave current progress
-intact. Save failure is visible in the HUD. A restored active run starts paused.
+Schema 2 stores the whole active run, stable definitions/seed/options, entity
+identities/cooldowns, equipment/reward ledgers, career, legacy profile and settings.
+Checksummed alternating slots retain the newest good state. Committed temporary
+autosaves can recover; uncommitted imported staging cannot become progress.
+Storage failure is visible; cold active restoration starts paused.
 
-Pause → Save / Transfer → **Export** generates and directly copies a complete
-code, with verified clipboard feedback or an honest failure message. **Paste**
-restores clipboard text; **Import** validates and durably commits before replacing
-memory. TextEdit receives touch focus using engine mouse emulation; emulated
-mouse copies are filtered from world movement. Desktop clipboard and keyboard
-checks do not establish phone IME behavior.
+Pause → Save / Transfer → Export directly copies a fresh whole-progress code.
+Readback follows a short clipboard-history settling interval; unconfirmed or
+unavailable copy is reported honestly. Paste restores text; Import validates and
+durably commits before replacing memory. Invalid text/storage failure retains
+the entire current run/career/settings. TextEdit gets actual touch focus via
+mouse emulation; emulated mouse copies are filtered from world movement. Native
+Back-to-quit/automatic quit are disabled. Back closes modals before toggling pause.
+Buttons are at least 96 logical pixels high at 720px, corresponding to 48dp at
+360dp width. Phone IME/touch/folding remain required physical checks.
 
-## Run and review
+Installed schema-1 catalog-1/seed-17 battles retain exact original rules and whole
+state/profile/settings in explicit legacy mode. Launch pauses that same battle.
+Prototype wins never invent campaign clears. Begin Campaign retains the legacy
+run/profile as a backup and starts district one. Root's native rev213 update
+fixture is separate from the builder's genuine desktop legacy packet.
 
-Use the pinned Godot 4.7.2 stable executable from the repository's `toolchain.json`.
-From the exact assigned worktree, run:
+Use pinned Godot 4.7.2 from repository `toolchain.json`, from the assigned worktree:
 
 ```powershell
-python android-games/frontline-foundry/tests/run_desktop.py rules --label review
-python android-games/frontline-foundry/tests/run_desktop.py headless --label review
-python android-games/frontline-foundry/tests/run_desktop.py rendered --label review
-python android-games/frontline-foundry/tests/run_desktop.py movie --label review
-python android-games/frontline-foundry/tests/run_desktop.py restore --label review --resume-from android-games/frontline-foundry/.artifacts/<successful-rendered-run>
+python android-games/frontline-foundry/tests/run_campaign.py rules --label review
+python android-games/frontline-foundry/tests/run_campaign.py input --label review
+python android-games/frontline-foundry/tests/run_campaign.py rendered --label review
+python android-games/frontline-foundry/tests/run_campaign.py cold --label review --resume-from android-games/frontline-foundry/.artifacts/<completed-input-run>
+python android-games/frontline-foundry/tests/run_campaign.py movie --label early --clip early
+python android-games/frontline-foundry/tests/run_campaign.py movie --label middle --clip middle --resume-from android-games/frontline-foundry/.artifacts/<completed-input-run>/earned-middle
+python android-games/frontline-foundry/tests/run_campaign.py movie --label final --clip final --resume-from android-games/frontline-foundry/.artifacts/<completed-input-run>/earned-final
 ```
 
-The runner isolates APPDATA/LOCALAPPDATA and freezes executed source, raw/LF
-hashes, logs, states, raw input events and readable PNGs under ignored
-`.artifacts/`. Rendered clipboard checks need Windows interactive desktop access.
-The playthrough uses actual engine ScreenTouch/drag/key input and ordinary
-physics processing. It does not inject earned currency/progress or force a
-terminal redraw. Synthetic rule/control/storage fixtures are separately labelled.
-Movie mode records one continuous original-game route through commander fire,
-rifle handoff, deployment, independent attacks, rover escalation, natural victory,
-commander defeat and actual Retry. The full input suite separately proves HQ
-defeat, pause, resize, scene restoration, settings, clipboard and import retention.
+The runner isolates APPDATA/LOCALAPPDATA and freezes exact executed raw/LF source,
+commands, logs, raw engine inputs, app-written states, combat events and PNGs.
+Full journeys use labelled 8× engine time; movies use 1×. Read-only state policies
+drive ScreenTouch/GUI/key events without injected progress, gameplay-handler calls
+or forced terminal redraws. Synthetic rule/storage controls are separate. Unique
+sortie-prefixed captures retain original journey, alternatives, failures and
+corrections. Windows clipboard source/fresh-destination checks need an exclusive
+reserved interactive window. Fresh Import validates transfer, not earned play.
 
-The Android preset is **com.dsschiff.frontlinefoundry**, **0.1.0 / code 1**,
-arm64-v8a + x86_64, official unmodified non-Gradle template, zero enabled/custom
-permissions and no signing credentials. The pinned official debug template has
-min SDK 24 / target SDK 36. No APK has been exported or installed by this builder.
-Generated UID/icon metadata comes from an isolated copied portable editor/config;
-its existing `shutdown_adb_on_exit=false` remains in force. Shared editor settings
-and SDKs were not changed.
+Android preset: `com.dsschiff.frontlinefoundry`, **0.2.0/code2**, arm64-v8a+x86_64,
+official non-Gradle min24/target36 template, no permissions or embedded credentials.
+This builder did not export/install APKs, use ADB, alter SDK/global editor settings,
+push or publish. UID/icon metadata uses an isolated copied portable editor with
+its existing `shutdown_adb_on_exit=false` setting. All art/audio/encounters are
+original. The Top General-to-Top Force creative attribution remains qualified.
+Controls/prices/armor/production/caps are original choices. Ammo carts, medic
+recruits, manual aim/dodge and dragged blueprints were not added.
 
-## Review boundary
-
-The Top Force brief supports the local equipment-to-front sequence; T3's Top
-General end-card attribution remains qualified third-party mapping. Free control,
-prices, automatic fire, accounting, queue cadence, caps, targeting and death
-rules here are original choices, not measured commercial-game rules. All meshes,
-materials, sounds, UI and encounter content are original; no commercial footage
-was downloaded or copied.
-
-Independent coordinator tests and Astra appeal/fidelity review are next. Android
-export/launch/update, native clipboard/Back/IME/lifecycle, safe areas, physical
-Fold7 cover/inner transitions, touch accuracy, sound, measured FPS and human fun
-are open. Desktop window ratios are not physical folding evidence. Campaign
-expansion is paused until the first loop is reviewed. The eventual meaningful
-30–60-minute arc, ending and replay ambition remains: a provisional 12 missions,
-4 roles, 3 support buildings, 6 enemy roles, 3 bosses and seeded skirmishes. Three
-fronts, ammo, medics, carts, manual aim/dodge and dragged blueprints are deferred.
+Independent acceptance, native update/platform tests and physical Fold7 cover/
+inner touch, folding, safe areas, IME, audible sound, FPS and human pacing/fun
+remain separate gates. Historical `CHECKPOINT.*` describes the first playable;
+`CAMPAIGN_CHECKPOINT.*` describes this campaign candidate.

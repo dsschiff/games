@@ -2,9 +2,9 @@ config_version=5
 
 [application]
 config/name="Frontline Foundry"
-config/version="0.1.0"
+config/version="0.2.0"
 config/icon="res://icon.svg"
-run/main_scene="res://main.tscn"
+run/main_scene="res://boot.tscn"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
 
