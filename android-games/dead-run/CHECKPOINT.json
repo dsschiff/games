@@ -1,0 +1,131 @@
+{
+  "game": "Dead Run",
+  "stage": "first-playable-frozen-for-independent-review",
+  "base": "369f9dce162d91ad27eff75f3f52aba2139736e1",
+  "branch": "codex/dead-run",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "executed_file_count": 21,
+  "executed_raw_source_bundle_sha256": "f91084ed04395f44c5eb382ab392c61cd3440460d0f566a50d49904751c3868a",
+  "executed_lf_source_bundle_sha256": "f91084ed04395f44c5eb382ab392c61cd3440460d0f566a50d49904751c3868a",
+  "source_hashes": {
+    "export_presets.cfg": "5026ce4000d614c1afc00cae1903de1547b1f9c4b470ec09e68b317d44ba472b",
+    "icon.svg": "dc7fc1cf18e8d6a5a52d8643184498ea23b2569c5b4286c63ebf80012f89ee4e",
+    "icon.svg.import": "9de5e899d3323aa37fec5bf7cb0e35314530dcbe2809929dc0bcfb9ecc9f00cd",
+    "main.tscn": "576922271b75eeb00ec25953db5efa509f0d9d4c2b7a0bf901336ab28438e200",
+    "project.godot": "961d6df703b54b658ef8b290f72c37431967592e4781e8aafd423d3a14f3105e",
+    "README.md": "3c0bab98384c1e9ac0c5e2e382b5e94389dc1e918dfb5ee8e63a1b5d409d6d8f",
+    "scripts/main.gd": "f8905e597a26ce49db7159fd7ce22bc4a163574c4f3760373ea0f4966fde07c6",
+    "scripts/main.gd.uid": "b406494d69da9bfba6324f52bf8650be5abb9da630dc7f81f5ea82af0cae0c5a",
+    "scripts/rules.gd": "eb3f119c1cecb6e47925db1ba79611725687d7c4d97fc189d4e68015940329f0",
+    "scripts/rules.gd.uid": "e9f74a7ea5170698b290ff06ba523b4768513931cd64607c76f1006cdb2a8ed4",
+    "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+    "scripts/save_files.gd.uid": "dc1d77381e96bee721244fd2c0d44191b128807192785eb44a1df3fa6ecb2bac",
+    "scripts/save_store.gd": "cdd0a07ef25381252af6dc3fd2f4d390bdbd4372a079873b897628f218475316",
+    "scripts/save_store.gd.uid": "d431cc0e3c84918fc1e5136eddd8f13d9e472ea8336a218685e0b2cf3b9162c3",
+    "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+    "tests/fault_files.gd.uid": "6845ad81df88c95a024821ae005a9af425eb850852f7da09f79cdc618c9bf2eb",
+    "tests/playthrough.gd": "aece89ab0beda649a2a4012e3bebec7435bb4a5b7e701c64939bb9c2728bb314",
+    "tests/playthrough.gd.uid": "57e9ee88cfa12b57d7996213426dd88fa385b3d31a531cfc6556a22862ddb7dc",
+    "tests/run_desktop.py": "3e0a2a679db201dde7ae909027616d8c5db68fb121f91711feb97ad9fa1afc67",
+    "tests/run_tests.gd": "fb246dcd538af91a72399ab905fb00d685b56abec20fb00ad8839d592402fac7",
+    "tests/run_tests.gd.uid": "3c30dd48f3117008e8e28f41f7ca9aea1d4667e58032b325c5f41ae53a124abc"
+  },
+  "source_hashes_lf": {
+    "export_presets.cfg": "5026ce4000d614c1afc00cae1903de1547b1f9c4b470ec09e68b317d44ba472b",
+    "icon.svg": "dc7fc1cf18e8d6a5a52d8643184498ea23b2569c5b4286c63ebf80012f89ee4e",
+    "icon.svg.import": "9de5e899d3323aa37fec5bf7cb0e35314530dcbe2809929dc0bcfb9ecc9f00cd",
+    "main.tscn": "576922271b75eeb00ec25953db5efa509f0d9d4c2b7a0bf901336ab28438e200",
+    "project.godot": "961d6df703b54b658ef8b290f72c37431967592e4781e8aafd423d3a14f3105e",
+    "README.md": "3c0bab98384c1e9ac0c5e2e382b5e94389dc1e918dfb5ee8e63a1b5d409d6d8f",
+    "scripts/main.gd": "f8905e597a26ce49db7159fd7ce22bc4a163574c4f3760373ea0f4966fde07c6",
+    "scripts/main.gd.uid": "b406494d69da9bfba6324f52bf8650be5abb9da630dc7f81f5ea82af0cae0c5a",
+    "scripts/rules.gd": "eb3f119c1cecb6e47925db1ba79611725687d7c4d97fc189d4e68015940329f0",
+    "scripts/rules.gd.uid": "e9f74a7ea5170698b290ff06ba523b4768513931cd64607c76f1006cdb2a8ed4",
+    "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+    "scripts/save_files.gd.uid": "dc1d77381e96bee721244fd2c0d44191b128807192785eb44a1df3fa6ecb2bac",
+    "scripts/save_store.gd": "cdd0a07ef25381252af6dc3fd2f4d390bdbd4372a079873b897628f218475316",
+    "scripts/save_store.gd.uid": "d431cc0e3c84918fc1e5136eddd8f13d9e472ea8336a218685e0b2cf3b9162c3",
+    "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+    "tests/fault_files.gd.uid": "6845ad81df88c95a024821ae005a9af425eb850852f7da09f79cdc618c9bf2eb",
+    "tests/playthrough.gd": "aece89ab0beda649a2a4012e3bebec7435bb4a5b7e701c64939bb9c2728bb314",
+    "tests/playthrough.gd.uid": "57e9ee88cfa12b57d7996213426dd88fa385b3d31a531cfc6556a22862ddb7dc",
+    "tests/run_desktop.py": "3e0a2a679db201dde7ae909027616d8c5db68fb121f91711feb97ad9fa1afc67",
+    "tests/run_tests.gd": "fb246dcd538af91a72399ab905fb00d685b56abec20fb00ad8839d592402fac7",
+    "tests/run_tests.gd.uid": "3c30dd48f3117008e8e28f41f7ca9aea1d4667e58032b325c5f41ae53a124abc"
+  },
+  "runs": {
+    "rules": {
+      "path": ".artifacts/freeze-rules-20261018T050204259275Z",
+      "checks": 124,
+      "receipt_sha256": "c9c04d1981a8816da994619f86ce930c05d047822370c571fb0546f9a4a7c663",
+      "fully_decoded_pngs": 0
+    },
+    "headless": {
+      "path": ".artifacts/freeze-headless-20261018T050205476432Z",
+      "checks": 34,
+      "receipt_sha256": "9990053b088ec4f240b3aa9bc1acbe44864338b9abc99097b35932d3fef23ff2",
+      "fully_decoded_pngs": 0
+    },
+    "rendered": {
+      "path": ".artifacts/freeze-rendered-20261018T050220906978Z",
+      "checks": 35,
+      "receipt_sha256": "79dec9173de0813412856fc38ea71292be40edc7d64957df7ea5d6740c36db7d",
+      "fully_decoded_pngs": 15
+    },
+    "movie": {
+      "path": ".artifacts/freeze-movie-20261018T051042189912Z",
+      "checks": 15,
+      "receipt_sha256": "df6e62a90f3dc052a8d95b60d05fe3900dae37b8f4843ee680e580dc09629dd4",
+      "fully_decoded_pngs": 11
+    }
+  },
+  "continuous_movie": {
+    "path": ".artifacts/freeze-movie-20261018T051042189912Z/continuous.mp4",
+    "sha256": "3518fc3f47a0d5a1798b1def7228cf3495abcd6f9cd1dbeda41d98c43f94a237",
+    "bytes": 3988269,
+    "source_avi_sha256": "776f5f45375583ac542b2b597e9a9c569c34b1a19443d3a3c64a575692eb8fc2",
+    "width": 450,
+    "height": 800,
+    "frames": 5234,
+    "fps": "60/1",
+    "duration": "87.233333",
+    "full_decode_passed": true,
+    "scope": "Continuous actual-input original-game loss, Retry, positive/harmful crossings, side/forward tradeoff, crane recruit claim, final objective victory. Re-encoded only; no cuts/speed changes. Fixed simulation/capture fps is not measured device performance."
+  },
+  "failure_history": {
+    "path": ".artifacts/failed-attempt-history.json",
+    "sha256": "d7af7ffc0a1a2308b0dad3c7c8f682cb12addc938159ef72d2970494e2014b98"
+  },
+  "platform": {
+    "desktop_windows_clipboard": "final interactive render copied and pasted exact checked code",
+    "restricted_clipboard": "denied attempt retained separately; not classified as game defect",
+    "android_exported_by_builder": false,
+    "adb_operated_by_builder": false,
+    "phone_tested": false
+  },
+  "preset": {
+    "package": "com.dsschiff.deadrun",
+    "version": "0.1.0",
+    "code": 1,
+    "min_sdk": 24,
+    "target_sdk": 36,
+    "architectures": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "permissions": []
+  },
+  "qualification": "Original deterministic arithmetic; exact source shot/gate/recruit equation and input causality remain unverified. Desktop fixed-step evidence proves this prototype only. New CHECKPOINT.md/json are post-execution reporting files and are excluded from the 21 executed-file bundle.",
+  "next": [
+    "Coordinator independent source/rules/input checks",
+    "Astra full continuous-movie reference review",
+    "Root native Android first-loop/platform checks"
+  ],
+  "unverified": [
+    "Physical Fold7 touch/IME/folding/safe areas",
+    "audible sound",
+    "measured FPS",
+    "human pacing and fun",
+    "full 30-60-minute arc"
+  ]
+}
