@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "full_presentation_first_pair",
+  "status": "frontline_delivered_gear_motion_hearth_CPU",
   "baseline_commit": "6e26b3c2a3938de1828527630f95fb6a219f61b8",
   "reference": {
     "private_path": ".references/graphics-overhaul/user-top-force-44941.jpg",
@@ -83,20 +83,20 @@
   ],
   "active_graphics_sessions": [
     {
-      "slug": "frontline-foundry",
-      "title": "Frontline Foundry graphics overhaul",
-      "thread_id": "01a14ecf-a3f6-7dc0-9276-3457e84da5f3",
-      "branch": "codex/frontline-graphics",
-      "worktree": "C:/projects/active/_worktrees/games-frontline-foundry-20261018",
-      "phase": "full_3D_production"
-    },
-    {
       "slug": "gear-bastion",
       "title": "Gear Bastion graphics and window fit",
       "thread_id": "01a14ecf-ca7d-7ff1-a858-ca1aa9682d76",
       "branch": "codex/gear-graphics",
       "worktree": "C:/projects/active/_worktrees/games-gear-bastion-20261017",
       "phase": "full_3D_production"
+    },
+    {
+      "slug": "hearthguard",
+      "title": "Hearthguard graphics overhaul",
+      "thread_id": "01a14f9d-4b9b-7bd3-abd6-897a1188086d",
+      "branch": "codex/hearthguard-graphics",
+      "worktree": "C:/projects/active/_worktrees/games-hearthguard-20261018",
+      "phase": "full_3D_production_CPU"
     }
   ],
   "review_contract": "android-games/reviews/graphics-quality-contract-astra.md",
@@ -151,6 +151,19 @@
     "native_update": "accepted_conditional_software_candidate",
     "visual_review": "all8rows3_of4_accepted",
     "bundle": "C:\\projects\\active\\games\\.artifacts\\releases\\frontline-foundry-0.3.0-graphics",
-    "closeout": "handoff_prepared_native_archive_pending"
-  }
+    "closeout": "handoff_landed_and_native_archive_verified"
+  },
+  "archived_graphics_sessions": [
+    {
+      "slug": "frontline-foundry",
+      "title": "Frontline Foundry graphics overhaul",
+      "thread_id": "01a14ecf-a3f6-7dc0-9276-3457e84da5f3",
+      "branch": "codex/frontline-graphics",
+      "worktree": "C:/projects/active/_worktrees/games-frontline-foundry-20261018",
+      "phase": "graphics_complete_archived",
+      "archive_status": "native_archived_verified",
+      "handoff": "android-games/handoffs/graphics-frontline-production.md"
+    }
+  ],
+  "scheduling_note": "Use completed Frontline builder slot for Hearthguard CPU while Gear finishes motion; Hook starts after Gear closes; at most2builders."
 }

@@ -84,7 +84,7 @@
     {
       "slug": "frontline-foundry",
       "state": "graphics_reviewed_emulator_validated_conditional_software_candidate",
-      "thread_id": "01a14d1d-c90a-7562-b246-6cd243ad96ed",
+      "thread_id": "01a14ecf-a3f6-7dc0-9276-3457e84da5f3",
       "ready_for_phone_testing": true,
       "physical_phone_tested": false,
       "evidence": "android-games/evidence/frontline-3d-production-candidate.json",

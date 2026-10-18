@@ -119,19 +119,6 @@
   ],
   "games": [
     {
-      "slug": "frontline-foundry",
-      "title": "Frontline Foundry graphics overhaul",
-      "thread_id": "01a14ecf-a3f6-7dc0-9276-3457e84da5f3",
-      "branch": "codex/frontline-graphics",
-      "worktree": "C:/projects/active/_worktrees/games-frontline-foundry-20261018",
-      "phase": "graphics_complete_closeout_ready",
-      "host_id": "local",
-      "model": "gpt-6.1-sol",
-      "ownership": "android-games/frontline-foundry/",
-      "state": "Full production accepted8rows3/4; signedcode3actual2to3/nativewhole-save/control/transfer/resize/cold/Home independently accepted. Private bundle/handoff saved; nativearchivepending. Worktree retained, phone testing deferred.",
-      "handoff": "android-games/handoffs/graphics-frontline-production.md"
-    },
-    {
       "slug": "gear-bastion",
       "title": "Gear Bastion graphics and window fit",
       "thread_id": "01a14ecf-ca7d-7ff1-a858-ca1aa9682d76",
@@ -142,6 +129,34 @@
       "model": "gpt-6.1-sol",
       "ownership": "android-games/gear-bastion/",
       "state": "Three bounded composition findings independently closed onbbb8fe1; full actual opening/heavy/later movies and separate host timings active. Owns GPU. Targetcode8 after8rowmotion review. Rootindependent12071checks/1462inputpass."
+    },
+    {
+      "slug": "hearthguard",
+      "title": "Hearthguard graphics overhaul",
+      "thread_id": "01a14f9d-4b9b-7bd3-abd6-897a1188086d",
+      "branch": "codex/hearthguard-graphics",
+      "worktree": "C:/projects/active/_worktrees/games-hearthguard-20261018",
+      "phase": "full_3D_production_CPU",
+      "host_id": "local",
+      "model": "gpt-6.1-sol",
+      "ownership": "android-games/hearthguard/",
+      "state": "Fresh bounded original medieval3D builder active at c36df6e; CPUonly whileGearownsGPU. Rootowns exports/ADB, oneAstrareviewer; targetcode3. No newphone gate."
+    }
+  ],
+  "archived_graphics_sessions": [
+    {
+      "slug": "frontline-foundry",
+      "title": "Frontline Foundry graphics overhaul",
+      "thread_id": "01a14ecf-a3f6-7dc0-9276-3457e84da5f3",
+      "branch": "codex/frontline-graphics",
+      "worktree": "C:/projects/active/_worktrees/games-frontline-foundry-20261018",
+      "phase": "graphics_complete_archived",
+      "host_id": "local",
+      "model": "gpt-6.1-sol",
+      "ownership": "android-games/frontline-foundry/",
+      "state": "Fullgraphicscode3delivered; clean source and exact artifacts preserved; nativearchived=true verified. Physical/human acceptance deferred.",
+      "handoff": "android-games/handoffs/graphics-frontline-production.md",
+      "archive_status": "native_archived_verified"
     }
   ]
 }
