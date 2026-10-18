@@ -169,6 +169,7 @@ func platform_checks() -> void:
 	check(scene.save_message.is_empty() and not S.read().settings.sound, "next real settings save clears failure only after checked storage")
 	await click("SAVE / TRANSFER")
 	await click("EXPORT / COPY")
+	await dwell(45)
 	var code: String = scene.code_box.text
 	check(S.decode(code).ok, "Export produces checked portable code")
 	check(scene.transfer_status.text in ["Copied checked rescue save.", "Clipboard unavailable. Select and copy the code manually."], "Export gives verified clipboard success or honest unavailable feedback")

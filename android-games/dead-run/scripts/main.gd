@@ -1,6 +1,8 @@
 extends Node3D
 const R = preload("res://scripts/rules.gd")
 const S = preload("res://scripts/save_store.gd")
+const Copy = preload("res://scripts/copy_confirm.gd")
+var copy_service := Copy.new()
 var state := R.fresh()
 var settings := {"sound": true, "reduced_effects": false}
 var paused := false
@@ -263,13 +265,14 @@ func build_ui() -> void:
 	var tcol := Control.new()
 	transfer.add_child(tcol)
 	text(tcol, "PORTABLE RESCUE", 32).set_meta("transfer_row", "title")
-	text(tcol, "Export copies a checked save. Import validates and stores it before replacing this run.", 23).set_meta("transfer_row", "help")
+	text(tcol, "Export copies your journey and parked bridge. Import replaces both only after checked storage.", 23).set_meta("transfer_row", "help")
 	code_box = TextEdit.new()
 	code_box.custom_minimum_size = Vector2(0, 160)
 	code_box.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	code_box.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
 	code_box.virtual_keyboard_enabled = true
 	code_box.add_theme_font_size_override("font_size", 22)
+	code_box.text_changed.connect(func(): copy_service.cancel())
 	tcol.add_child(code_box)
 	button(tcol, "EXPORT / COPY", export_code).set_meta("transfer_row", 0)
 	button(tcol, "PASTE", paste_code).set_meta("transfer_row", 1)
@@ -341,6 +344,7 @@ func open_transfer() -> void:
 	refresh()
 
 func close_transfer() -> void:
+	copy_service.cancel()
 	transfer.visible = false
 	code_box.release_focus()
 	refresh()
@@ -348,13 +352,11 @@ func close_transfer() -> void:
 func export_code() -> void:
 	var code := S.encode(state, settings, int(S.read(S.PATH, files).revision))
 	code_box.text = code
-	if DisplayServer.get_name() == "headless":
-		transfer_status.text = "Clipboard unavailable. Select and copy the code manually."
-		return
-	DisplayServer.clipboard_set(code)
-	transfer_status.text = "Copied checked rescue save." if DisplayServer.clipboard_get() == code else "Clipboard unavailable. Select and copy the code manually."
+	copy_service.begin(code)
+	transfer_status.text = copy_service.feedback
 
 func paste_code() -> void:
+	copy_service.cancel()
 	if DisplayServer.get_name() == "headless":
 		transfer_status.text = "Clipboard is empty or unavailable."
 		return
@@ -362,6 +364,7 @@ func paste_code() -> void:
 	transfer_status.text = "Pasted. Review and Import." if not code_box.text.is_empty() else "Clipboard is empty or unavailable."
 
 func import_code() -> void:
+	copy_service.cancel()
 	var d := S.decode(code_box.text)
 	if not d.ok:
 		transfer_status.text = "Invalid code. Current rescue unchanged."
@@ -423,6 +426,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		R.steer(state, anchor_x + (event.position.x - anchor.x) / v.x * 9.0)
 
 func _physics_process(_delta: float) -> void:
+	if copy_service.poll(_delta) and transfer.visible:
+		transfer_status.text = copy_service.feedback
 	var before: String = state.phase
 	var crossed: bool = state.gates[0].crossed
 	if not paused:
@@ -449,7 +454,7 @@ func refresh() -> void:
 		warning.text = "FINAL BLOCKADE %d • aim centre before it reaches the line" % state.final_hp
 	overlay.visible = paused or state.phase != "playing"
 	overlay_title.text = {"ready": "OPEN THE CANAL BRIDGE", "playing": "RESCUE PAUSED", "victory": "CONVOY EVACUATED", "defeat": "RESCUE LOST"}[state.phase]
-	overlay_body.text = ("One finger drags the crew sideways. Fire is automatic.\nOur original rule: each bullet adds 1 to a gate (max +6); overlapping it applies the signed result ONCE.\nCrane: 120 hits earns 3 riggers, but fire there leaves approaching infected unsuppressed. Clear the final centre barricade and survive 50 seconds.") if state.phase == "ready" else state.notice + "\n" + save_message
+	overlay_body.text = ("One finger drags the crew sideways. Fire is automatic.\nEach bullet adds 1 to a gate (max +6); overlapping it applies the signed result once.\nCrane: 120 hits earns 3 riggers, but fire there leaves approaching infected unsuppressed. Clear the final centre barricade and survive 50 seconds.") if state.phase == "ready" else state.notice + "\n" + save_message
 	start_button.visible = state.phase == "ready"
 	resume_button.visible = paused
 	retry_button.visible = state.phase in ["victory", "defeat"]
@@ -460,8 +465,7 @@ func refresh() -> void:
 		p.visible = i < state.crew
 		if p.visible:
 			var q := R.offset(i, state.crew)
-			var join := clampf(1.0 - float(state.tick - state.gain_tick) / 90.0, 0, 1)
-			p.position = Vector3(state.x + q.x + (join * 1.4 if i > 2 else 0.0), 0.04, q.y)
+			p.position = Vector3(state.x + q.x, 0.04, q.y)
 			if not settings.reduced_effects:
 				p.position.y += absf(sin(state.tick * 0.18 + i)) * 0.045
 	for e in state.enemies:
