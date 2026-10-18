@@ -89,20 +89,24 @@
   ],
   "active_graphics_sessions": [
     {
-      "slug": "gear-bastion",
-      "title": "Gear Bastion graphics and window fit",
-      "thread_id": "01a14ecf-ca7d-7ff1-a858-ca1aa9682d76",
-      "branch": "codex/gear-graphics",
-      "worktree": "C:/projects/active/_worktrees/games-gear-bastion-20261017",
-      "phase": "graphics_native_complete_ready_to_archive_after_landing"
-    },
-    {
       "slug": "hearthguard",
       "title": "Hearthguard graphics overhaul",
       "thread_id": "01a14f9d-4b9b-7bd3-abd6-897a1188086d",
       "branch": "codex/hearthguard-graphics",
       "worktree": "C:/projects/active/_worktrees/games-hearthguard-20261018",
-      "phase": "original_opening_retained_control_fix_verified_full_production_active"
+      "phase": "source_bound_full_production_active",
+      "state": "042d7c2/af59a73 original30models/circularcontrol/labelclearance; root108newUIchecks pass. Genuine shortrestore/UI thenheavy/later/lifecycle/legacy/regions/timing and concretegaps granted. Owns serializedGPU; fullindependentreview/nativecode3pending."
+    },
+    {
+      "slug": "frontline-foundry",
+      "title": "Frontline Foundry graphics overhaul",
+      "thread_id": "01a14ecf-a3f6-7dc0-9276-3457e84da5f3",
+      "branch": "codex/frontline-pooling",
+      "worktree": "C:/projects/active/_worktrees/games-frontline-foundry-20261018",
+      "phase": "bounded_pooling_code4_CPU",
+      "archive_status": "reopened_verified",
+      "handoff": "android-games/handoffs/frontline-pooling-followup.md",
+      "state": "Existingretainedgraphicschat reopened afterGeararchive; cleannewbranch at d3a3684. Narrowactor/effectreuse0.3.1/code4, original47models/rules/saves unchanged; CPUonly whileHearthownsGPU. Rootowns sourceintegration/export/ADB/clipboard/oneAstrareviewer."
     }
   ],
   "review_contract": "android-games/reviews/graphics-quality-contract-astra.md",
@@ -139,7 +143,7 @@
     "evidence": "android-games/evidence/gear-3d-production-candidate.json",
     "worker_commit": "9ccf4a7a878e291afdf1750338e6e26cd6b96ba7",
     "integration_commit": "7eb9e0419f6ae79533719b0c2e21d5907715db00",
-    "status": "graphics_reviewed_native_validated_private_bundle_ready_archive_pending",
+    "status": "graphics_reviewed_native_validated_private_bundle_ready_graphics_chat_archived",
     "graphical_apk": "signed0.4.0_code8_verified_actual7to8_and_private_bundle",
     "worker_evidence": "android-games/gear-bastion/evidence/graphics-composition-cpu.json",
     "independent_checks": 12071,
@@ -164,15 +168,16 @@
   },
   "archived_graphics_sessions": [
     {
-      "slug": "frontline-foundry",
-      "title": "Frontline Foundry graphics overhaul",
-      "thread_id": "01a14ecf-a3f6-7dc0-9276-3457e84da5f3",
-      "branch": "codex/frontline-graphics",
-      "worktree": "C:/projects/active/_worktrees/games-frontline-foundry-20261018",
+      "slug": "gear-bastion",
+      "title": "Gear Bastion graphics and window fit",
+      "thread_id": "01a14ecf-ca7d-7ff1-a858-ca1aa9682d76",
+      "branch": "codex/gear-graphics",
+      "worktree": "C:/projects/active/_worktrees/games-gear-bastion-20261017",
       "phase": "graphics_complete_archived",
       "archive_status": "native_archived_verified",
-      "handoff": "android-games/handoffs/graphics-frontline-production.md"
+      "handoff": "android-games/handoffs/graphics-gear-production.md",
+      "state": "Final0.4.0/code8 visual/nativeconditionalcandidate delivered inprivatebundle; clean9ccf4a7, actual7to8 whole-save retention/nativecontrols/transfer/Back/lifecycle verified; nativearchived=true"
     }
   ],
-  "scheduling_note": "Gear and Hearth only active builders. After Gear final delivery/archive, reopen retained Frontline for bounded pool/code4 update, then archive/start Hook. Later DeadRun and Tower."
+  "scheduling_note": "Hearth exclusive production renderer and Frontline narrowpool/code4 CPU follow-up active, two builders. ArchiveFrontlineafterverifiedhigher-version thenHook; laterDeadRun/Tower. Gearcompletearchived, rootgoalall6active."
 }

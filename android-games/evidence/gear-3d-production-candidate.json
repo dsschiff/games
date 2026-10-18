@@ -3,7 +3,7 @@
   "worker_commit": "01f650afc73edaab01be8e5858b410df20babb3c",
   "integration_commit": "60e0281efba424160af5ba7485a41b8a240d00bf",
   "game_tree": "f5701e4f7233e01ab220b39b174ecca137a39803",
-  "status": "graphics_reviewed_native_validated_private_bundle_ready_archive_pending",
+  "status": "graphics_reviewed_native_validated_private_bundle_ready_graphics_chat_archived",
   "observed_visual_rows": {
     "minimum": 3,
     "maximum": 3,
@@ -32,9 +32,7 @@
     "source_unchanged": true,
     "path": "android-games/gear-bastion/.artifacts/graphics-production/boss-hud-20261018T160529816285Z"
   },
-  "remaining": [
-    "Land durable production handoff and verify native graphics-chat archive"
-  ],
+  "remaining": [],
   "physical_testing": "deferred_by_user",
   "review_preservation": {
     "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\gear-production-01f650a\\review-addendum",
@@ -123,5 +121,10 @@
     },
     "bundle": "C:\\projects\\active\\games\\.artifacts\\releases\\gear-bastion-0.4.0-graphics",
     "bundle_manifest_sha256": "68d9fb2b465d6cdf26c7613cb4f3b1d8076df6e4f3bcba2afaec0aa27edb5b40"
+  },
+  "graphics_thread_archive": {
+    "thread_id": "01a14ecf-ca7d-7ff1-a858-ca1aa9682d76",
+    "native_archived": true,
+    "handoff_landed_commit": "d3a36847ec750b92e0c9a3210dee67b67aad010e"
   }
 }
