@@ -423,3 +423,10 @@
 - Activated the existing Dead Run builder with the complete24-stage candidate evacuation handoff after Astra/native checkpoint. Dead Run and Frontline are the only two active game builders; Gear/Tower/Hook/Hearth candidates remain frozen. Frontline reports complete automated campaign journeys and is recording source-bound review clips; it is not yet root-reviewed or integrated.
 
 - Completed platform packets/helpers/bindings/root qualifiers archived997files/13,210,835bytes, full destination hash readback. ReceiptSHAa5a57610990b32ec900da39e02ab08f7c606bb8c98877d986fd266b66231cc63;260command pairs/88checksummed payloads/248raw-LF source bindings/6installedAPKhash responses/23named plus23rawPNG captures. Aggregate clean platform pass and prior cold-review protocol satisfaction explicitly false. Exact genuine final active body is preserved canonically and hash-bound in the native index.
+
+
+### Dead Run genuine update fixture prepared
+
+- Previous goal turn classified as progress: actual native victory/platform evidence and Astra disposition were preserved and landed in679e2dc, and the existing complete-campaign builder was activated.
+- Prepared the code1 old-version input fixture from the exact genuine revision384/tick103 canonical body. Root re-viewed the actual paused native PNG and confirmed Sound540,862. Two proposed OFF-to-ON-to-OFF taps retain final settings and satisfy the existing updater's real-input requirement. Existing evaluation accepts39exact/3numeric fields and identity display scaling; selected fields are not whole-state preservation proof. No ADB/runtime/input/upgrade action executed.
+- Four preparation artifacts preserved canonically with every destination hash read back, plus a hash-bound tracked action fixture and small evidence index. New campaign schema/mapping/empty-progress expectations await clean frozen source; no WIP assumptions. Frontline remains active after normal-speed clips exposed long empty-field gaps; its earlier test reports are not evidence for the subsequent pacing amendment.

@@ -111,5 +111,6 @@
     "aggregate_clean_platform_pass": false,
     "prior_cold_UI_review_protocol_satisfied": false,
     "originals_unchanged": true
-  }
+  },
+  "prepared_old_upgrade_fixture": "android-games/evidence/dead-run-code2-upgrade-preparation.json"
 }

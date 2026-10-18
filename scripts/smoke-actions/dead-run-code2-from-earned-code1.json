@@ -1,0 +1,112 @@
+{
+  "reference_display": [
+    1080,
+    2400
+  ],
+  "viewport": [
+    720,
+    1280
+  ],
+  "status": "PREPARED_NOT_EXECUTED",
+  "package": "com.dsschiff.deadrun",
+  "old_version_binding": {
+    "version_name": "0.1.0",
+    "version_code": 1,
+    "save_version": 1,
+    "source_sha256": "58f8de780b7a7ecc15bf664286fe1c7b4305ff8cea8f69027755d794541a587d",
+    "original_body_path": "C:\\projects\\active\\games\\.artifacts\\emulator\\com.dsschiff.deadrun\\code1-root-bound-platform-post-cold-resume-20261018T063842830586Z\\final-active-fixture-paused-held-decoded.json",
+    "original_body_sha256": "206b429590c6655c4033acc09b7441b0bd883a3f0fb084c9648f442e28b73a99",
+    "original_revision": 384
+  },
+  "scope": "Genuine app-written code1 active encounter restored paused: tick103, crew3, first gate6hits/value0, shots9. Two real Sound OFF-to-ON-to-OFF taps retain battle and final settings while satisfying the shared updater tap requirement. Proposed only; no actions executed. No reset, imported/injected state or future code2 campaign/schema assumptions. Whole old-state/settings preservation is a separate upgrade assertion, not established by selected observer fields. Revision intentionally excluded because toggles and lifecycle writes advance it. No profile/schema fields are invented for this code1 envelope.",
+  "coordinate_qualification": {
+    "sound_pixels": [
+      540,
+      862
+    ],
+    "root_reported_directly_viewed_png": "C:\\projects\\active\\games\\.artifacts\\emulator\\com.dsschiff.deadrun\\code1-root-bound-platform-post-cold-resume-20261018T063842830586Z\\final-genuine-active-partial-fixture-paused.png",
+    "source": "main.gd build_ui Sound toggles settings.sound, persist(), refresh(); active cold-load sets paused=true. VBox contents determine exact native y, confirmed by root on this actual final PNG.",
+    "native_scope": "Only native1080x2400/no override. Shared scale_action identity checked; other displays require new actual UI confirmation, not generic letterbox inference.",
+    "expanded_source_canvas": [
+      720,
+      1600
+    ],
+    "actual_native_sound_logical": [
+      360,
+      574.6666666666666
+    ]
+  },
+  "actions": [
+    {
+      "type": "wait",
+      "wait_seconds": 0.3
+    },
+    {
+      "type": "tap",
+      "x": 540,
+      "y": 862,
+      "wait_seconds": 0.25
+    },
+    {
+      "type": "tap",
+      "x": 540,
+      "y": 862,
+      "wait_seconds": 0.25
+    }
+  ],
+  "expected_save": {
+    "version": 1,
+    "committed": true,
+    "state.run": "canal-bridge-v1",
+    "state.seed": 61723,
+    "state.phase": "playing",
+    "state.tick": 103,
+    "state.crew": 3,
+    "state.joined": 0,
+    "state.lost": 0,
+    "state.shots": 9,
+    "state.gate_hits": 6,
+    "state.kills": 0,
+    "state.leaks": 0,
+    "state.contact": 0,
+    "state.side_hp": 120,
+    "state.side_hits": 0,
+    "state.side_claimed": false,
+    "state.final_hp": 40,
+    "state.final_hits": 0,
+    "state.x": 0.0,
+    "state.aim": 0.0,
+    "state.gates.0.id": 0,
+    "state.gates.0.hits": 6,
+    "state.gates.0.value": 0,
+    "state.gates.0.crossed": false,
+    "state.gates.0.applied": 0,
+    "state.gates.1.id": 1,
+    "state.gates.1.hits": 0,
+    "state.gates.1.value": -12,
+    "state.gates.1.crossed": false,
+    "state.gates.1.applied": 0,
+    "state.bullets.0.id": 6,
+    "state.bullets.1.id": 7,
+    "state.bullets.2.id": 8,
+    "state.enemies.0.born": 600,
+    "state.enemies.0.hp": 3,
+    "state.enemies.0.resolved": false,
+    "settings.sound": false,
+    "settings.reduced_effects": true
+  },
+  "expected_numeric": {
+    "state.gates.0.z": {
+      "min": 11.2533,
+      "max": 11.2534
+    },
+    "state.gates.1.z": {
+      "min": 25.2533,
+      "max": 25.2534
+    },
+    "state.bullets.0.z": {
+      "min": 5.9499,
+      "max": 5.9501
+    }
+  }
+}

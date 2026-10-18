@@ -1,0 +1,20 @@
+{
+  "stage": "old_version_fixture_prepared_unexecuted",
+  "fixture": "scripts/smoke-actions/dead-run-code2-from-earned-code1.json",
+  "fixture_sha256": "72cf181a9e644f4914a1bdd82735fa1db1fd12de05256a078e7d5c3b1c0a4c94",
+  "genuine_old_fixture_revision": 384,
+  "genuine_old_fixture_tick": 103,
+  "exact_fields": 39,
+  "numeric_fields": 3,
+  "prepared_sound_pair_pixels": [
+    540,
+    862
+  ],
+  "native_actions_executed": false,
+  "actual_upgrade_executed": false,
+  "new_campaign_schema_expectations": "Await clean frozen campaign source; no WIP assumptions. Whole state/settings preservation remains separate.",
+  "preservation_receipt": "C:/projects/active/games/.artifacts/preservation/dead-run-code2-upgrade-fixture-preparation.json",
+  "preservation_receipt_sha256": "acd15ab454f0f69c256ad94aa27debf1dd24b8ae959274d2bb8bb82cda4f1a06",
+  "preserved_files": 4,
+  "preserved_bytes": 9973
+}
