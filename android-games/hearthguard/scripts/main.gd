@@ -46,6 +46,8 @@ var save_io: Variant = null
 var pickup_flash := 0.0
 var last_wallet := 0
 var save_problem := false
+var campaign_profile := preload("res://scripts/campaign_rules.gd").profile()
+var expedition_button: Button
 
 func _ready() -> void:
 	var saved := S.read()
@@ -53,6 +55,7 @@ func _ready() -> void:
 		state = saved.state
 		profile = saved.profile
 		settings = saved.settings
+		campaign_profile = saved.campaign
 		paused = state.phase == "playing"
 	make_world()
 	make_ui()
@@ -63,7 +66,26 @@ func _ready() -> void:
 	refresh()
 	if paused:
 		menu.show()
+	if state.schema == 1:
+		expedition_button = button(menu, "OPEN EXPEDITION • KEEP LEGACY PASS", open_campaign, 22)
+		expedition_button.position = Vector2(24, 650)
+		expedition_button.size = Vector2(572, 96)
+		menu.size.y = 770
 	save_now()
+
+func open_campaign() -> void:
+	var C = preload("res://scripts/campaign_rules.gd")
+	var Cat = preload("res://scripts/campaign_catalog.gd")
+	campaign_profile.legacy_snapshot = state.duplicate(true)
+	var next: Dictionary = campaign_profile.get("parked", {})
+	if next.is_empty():
+		next = C.fresh(Cat.definition(mini(campaign_profile.clears.size(), 9)))
+	if S.write(next, profile, settings, S.PATH, save_io, false, campaign_profile):
+		route_reload()
+
+func route_reload() -> void:
+	if get_parent().has_method("reload_saved"):
+		get_parent().call_deferred("reload_saved")
 
 func mat(color: String, metallic: float = 0.0) -> StandardMaterial3D:
 	var m := StandardMaterial3D.new()
@@ -326,6 +348,8 @@ func layout() -> void:
 			var n := int(child.get_meta("transfer"))
 			child.position = Vector2(22 + (n % 2) * 295, 445 + (n / 2) * 105)
 			child.size = Vector2(281, 96)
+	if expedition_button != null:
+		menu.size.y = 770
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
@@ -444,14 +468,14 @@ func toggle_effects() -> void:
 	refresh()
 
 func save_now() -> bool:
-	var saved := S.write(state, profile, settings, S.PATH, save_io)
+	var saved := S.write(state, profile, settings, S.PATH, save_io, false, campaign_profile)
 	save_problem = not saved
 	return saved
 
 func open_transfer() -> void:
 	stop_move()
 	paused = true
-	code_edit.text = S.encode(state, profile, settings, 0)
+	code_edit.text = S.encode(state, profile, settings, 0, true, campaign_profile)
 	notice.text = "Local code only. Import replaces this save."
 	transfer.show()
 
@@ -487,12 +511,20 @@ func import_code() -> void:
 	if not decoded.ok:
 		notice.text = "Invalid code. Current save kept."
 		return
-	if not S.write(decoded.state, decoded.profile, decoded.settings, S.PATH, save_io, true):
+	if not S.write(decoded.state, decoded.profile, decoded.settings, S.PATH, save_io, true, decoded.campaign):
 		notice.text = "Storage failed. Current save kept."
 		return
+	var changed_mode: bool = state.schema != decoded.state.schema
 	state = decoded.state
 	profile = decoded.profile
 	settings = decoded.settings
+	campaign_profile = decoded.campaign
+	if changed_mode:
+		paused = true
+		set_physics_process(false)
+		set_process_input(false)
+		route_reload()
+		return
 	close_transfer()
 	sync_world(0)
 	refresh()

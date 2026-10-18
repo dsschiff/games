@@ -1,0 +1,434 @@
+{
+  "checkpoint": "hearthguard-complete-campaign-0.2.0-code2",
+  "status": "Scoped software checkpoint for root/Astra and actual native1-to2 review; not release/phone acceptance",
+  "base_commit": "477f812a335e11e4bac15f745d8e860c8a162b96",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "package": "com.dsschiff.hearthguard",
+  "apk_exported_by_builder": false,
+  "executed_project_files": {
+    "CHECKPOINT.json": "958f1ff553df9a92ca0943ce53726ea1cddb64981794762cf683d6ffda75eda4",
+    "CHECKPOINT.md": "e2ab30f503395333125fff4c199a023621effe053019fc9587232b77511fe0cc",
+    "delivery-metadata.json": "61ed7905b4bfe1468b5c15cae7a2a5fd4c66bbda75810638eea89fcd63bed21b",
+    "DELIVERY-METADATA.md": "3557ba2e908018b8c4501622ae47fc83c703ce689f3ee35e8933dd04aba5d88a",
+    "export_presets.cfg": "7461b4c0bfc9dc4a56bbaf43e253cf6b400cb62c201b3878809f61cf7f9389e6",
+    "icon.svg": "1fe2f709f71be5250ecbe223a0e12eb785952e6c13b470a0392d8fb5e70c4b2f",
+    "icon.svg.import": "2ecc2a4e347e48a82b31c3dd497996dba5fe2c318b0f135d9d6e8875fcd5f11f",
+    "legacy.tscn": "24360a50f67b8c2aea5a7fc5fc39e97cd790226647a4ac43732a54df806fe8bc",
+    "main.tscn": "9eadab4e604e34c48c84eb3813b4ccf4d691b97fc0e0736eb4f03a02a1978120",
+    "project.godot": "93e31c1a0e146c5dbaea461f984f2a708a8b57082c5b80fad32b33db4b315269",
+    "README.md": "96675becbbbbb7f8e28310389fcf5f3b240634731311a8eb3871a868275181d5",
+    "scripts/bootstrap.gd": "5df13e78a1da9da0da3b57bfcde2a5015cf9897951196cd42dcdf23e80561555",
+    "scripts/bootstrap.gd.uid": "a9c6edf66f32c03f593735b53157687c9df44672497d3ee6c9e729ee95a7211d",
+    "scripts/campaign_catalog.gd": "e97f1a54e95ccadca2bce77c3ed47d380b79d83318f41fd2585480457e1882ec",
+    "scripts/campaign_catalog.gd.uid": "d31c0c726aa7098bcc4284b38aeeb51b71f1dc40651d2043333b5bcb32f3fa65",
+    "scripts/campaign_main.gd": "d1b31170edeb2adf62c97157bd94ac877b8c36e9437c67b25973336d3cfe8a6d",
+    "scripts/campaign_main.gd.uid": "b94d5b2ab335211c76a6ce77e712b11166df33a62aae288eaef147d389e36c9d",
+    "scripts/campaign_rules.gd": "6b2a2e16113491e4c44c0cbebcd92762cd78ca8dd28c0a8f5ce02f6358b5a01e",
+    "scripts/campaign_rules.gd.uid": "837b9f9df66e27449d9117a4bbd0e88481d5c0d86fc79fb897046d1567d6926c",
+    "scripts/main.gd": "58a2941ff267df35347cddfed5ef29ed1d15ae554a1e8d3c27526fe2223d11a2",
+    "scripts/main.gd.uid": "350af2db92aa9754ab3da2043d5d0f9c2175e2a4655025a65dc54ce0e6b7add3",
+    "scripts/rules.gd": "64ec77aa1e43f3d0ceda2c4404286de74c16dcb530da1427619ecfc5c8f57483",
+    "scripts/rules.gd.uid": "8940d66b4d4cdc6f2b2e288d8d58f437a3e6966b6ca02cbdc995c9d54d40f060",
+    "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+    "scripts/save_files.gd.uid": "c06b0c067af1acb748e472c798741e585fd355b31f690a4fee168a21260123f9",
+    "scripts/save_store.gd": "5fc880d51cce402062f8dfc9bedaa393ce55307165a317ba46dac94514323fb2",
+    "scripts/save_store.gd.uid": "b4f8aa18421f8dd3ae5b3994f5d4acd73faa50e1e213fa81a6aae3c276be4733",
+    "tests/campaign_checks.gd": "cbf34f0109791e405e24de726123f22b76e18787c7ee17c0a7c7a94fdc38d22b",
+    "tests/campaign_checks.gd.uid": "a2f9118185f2877fed185c3dbbda09dc625fd8a6e15f212be37f8497bdcf8a18",
+    "tests/campaign_journey.gd": "7dd4e5731d009d143f5d85f2506dd31745c779cdffb59e083d7192013aec0b2b",
+    "tests/campaign_journey.gd.uid": "6f2ae9a5669fda239a79a5a78543f4bd8c471351702d6ce5d800042ac65c8485",
+    "tests/campaign_policy.gd": "22f372400340d816a3a8810e34e93c93e95871284a4da08452d2dfc761fb790c",
+    "tests/campaign_policy.gd.uid": "31faa899315f45cebfceaffcda594dff9d415127190cde3e06ca117f4e993bf1",
+    "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+    "tests/fault_files.gd.uid": "775f943b4e9e6a6093785332bbcbb2c53260cb66997ededc5cb3ce6e63c0e166",
+    "tests/legacy_compatibility.gd": "f55e4203308e1897cf2c7d117c1621462654c16b33d9e43f03d158fffeccf38e",
+    "tests/legacy_compatibility.gd.uid": "a2266546e4145212752d2d68e3ab4501101ad7d4de631ee74d3bca07bdd05662",
+    "tests/playthrough.gd": "b994e2efcbac4266c28fdc020676538d717b92fd27a86cc519f488723ed4bb33",
+    "tests/playthrough.gd.uid": "952ca44910e0ce8c9657b4645e62cad3b218c3c19d62201ef8ae1466cf5003f2",
+    "tests/run_campaign.py": "3cd169f1142fcebad55979003dec8d1fc5c606e149e7323cae9daaab9a435d95",
+    "tests/run_desktop.py": "e694625de77366140de431ee2226abcb2109caffd90af6c5ef0d2989b371e9a1",
+    "tests/run_tests.gd": "64e7df771f05c35da7cf5ad655542923c10d17fb431d8d4e94daaa99e927321e",
+    "tests/run_tests.gd.uid": "3b5e8eae81237d2d6307e97934c00b4a8bcb6f4054518af22c98f6d7b04290d0"
+  },
+  "source_fingerprint": "68a959779e47b08772954504268ef31662efdf0a04ec6bae658648f34f8d2bc4",
+  "lf_normalized_source_files": {
+    "CHECKPOINT.json": "3f0ffa84d42840ed33fa82d7e19e5427b79297bab9dccf74057c2cc1dad4efb1",
+    "CHECKPOINT.md": "e2ab30f503395333125fff4c199a023621effe053019fc9587232b77511fe0cc",
+    "delivery-metadata.json": "e2acb9c9ed41cf7a36de530d9f781ca19c6f045ac2bbe7753886ad7c1ed1439b",
+    "DELIVERY-METADATA.md": "3557ba2e908018b8c4501622ae47fc83c703ce689f3ee35e8933dd04aba5d88a",
+    "export_presets.cfg": "7461b4c0bfc9dc4a56bbaf43e253cf6b400cb62c201b3878809f61cf7f9389e6",
+    "icon.svg": "1fe2f709f71be5250ecbe223a0e12eb785952e6c13b470a0392d8fb5e70c4b2f",
+    "icon.svg.import": "2ecc2a4e347e48a82b31c3dd497996dba5fe2c318b0f135d9d6e8875fcd5f11f",
+    "legacy.tscn": "24360a50f67b8c2aea5a7fc5fc39e97cd790226647a4ac43732a54df806fe8bc",
+    "main.tscn": "9eadab4e604e34c48c84eb3813b4ccf4d691b97fc0e0736eb4f03a02a1978120",
+    "project.godot": "93e31c1a0e146c5dbaea461f984f2a708a8b57082c5b80fad32b33db4b315269",
+    "README.md": "ac6601656f444ecd5f0b50d722833b1326e7b8c4462646e3df3260defb8db1a2",
+    "scripts/bootstrap.gd": "5df13e78a1da9da0da3b57bfcde2a5015cf9897951196cd42dcdf23e80561555",
+    "scripts/bootstrap.gd.uid": "a9c6edf66f32c03f593735b53157687c9df44672497d3ee6c9e729ee95a7211d",
+    "scripts/campaign_catalog.gd": "e97f1a54e95ccadca2bce77c3ed47d380b79d83318f41fd2585480457e1882ec",
+    "scripts/campaign_catalog.gd.uid": "d31c0c726aa7098bcc4284b38aeeb51b71f1dc40651d2043333b5bcb32f3fa65",
+    "scripts/campaign_main.gd": "d1b31170edeb2adf62c97157bd94ac877b8c36e9437c67b25973336d3cfe8a6d",
+    "scripts/campaign_main.gd.uid": "b94d5b2ab335211c76a6ce77e712b11166df33a62aae288eaef147d389e36c9d",
+    "scripts/campaign_rules.gd": "6b2a2e16113491e4c44c0cbebcd92762cd78ca8dd28c0a8f5ce02f6358b5a01e",
+    "scripts/campaign_rules.gd.uid": "837b9f9df66e27449d9117a4bbd0e88481d5c0d86fc79fb897046d1567d6926c",
+    "scripts/main.gd": "58a2941ff267df35347cddfed5ef29ed1d15ae554a1e8d3c27526fe2223d11a2",
+    "scripts/main.gd.uid": "350af2db92aa9754ab3da2043d5d0f9c2175e2a4655025a65dc54ce0e6b7add3",
+    "scripts/rules.gd": "64ec77aa1e43f3d0ceda2c4404286de74c16dcb530da1427619ecfc5c8f57483",
+    "scripts/rules.gd.uid": "8940d66b4d4cdc6f2b2e288d8d58f437a3e6966b6ca02cbdc995c9d54d40f060",
+    "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+    "scripts/save_files.gd.uid": "c06b0c067af1acb748e472c798741e585fd355b31f690a4fee168a21260123f9",
+    "scripts/save_store.gd": "5fc880d51cce402062f8dfc9bedaa393ce55307165a317ba46dac94514323fb2",
+    "scripts/save_store.gd.uid": "b4f8aa18421f8dd3ae5b3994f5d4acd73faa50e1e213fa81a6aae3c276be4733",
+    "tests/campaign_checks.gd": "cbf34f0109791e405e24de726123f22b76e18787c7ee17c0a7c7a94fdc38d22b",
+    "tests/campaign_checks.gd.uid": "a2f9118185f2877fed185c3dbbda09dc625fd8a6e15f212be37f8497bdcf8a18",
+    "tests/campaign_journey.gd": "7dd4e5731d009d143f5d85f2506dd31745c779cdffb59e083d7192013aec0b2b",
+    "tests/campaign_journey.gd.uid": "6f2ae9a5669fda239a79a5a78543f4bd8c471351702d6ce5d800042ac65c8485",
+    "tests/campaign_policy.gd": "22f372400340d816a3a8810e34e93c93e95871284a4da08452d2dfc761fb790c",
+    "tests/campaign_policy.gd.uid": "31faa899315f45cebfceaffcda594dff9d415127190cde3e06ca117f4e993bf1",
+    "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+    "tests/fault_files.gd.uid": "775f943b4e9e6a6093785332bbcbb2c53260cb66997ededc5cb3ce6e63c0e166",
+    "tests/legacy_compatibility.gd": "f55e4203308e1897cf2c7d117c1621462654c16b33d9e43f03d158fffeccf38e",
+    "tests/legacy_compatibility.gd.uid": "a2266546e4145212752d2d68e3ab4501101ad7d4de631ee74d3bca07bdd05662",
+    "tests/playthrough.gd": "b994e2efcbac4266c28fdc020676538d717b92fd27a86cc519f488723ed4bb33",
+    "tests/playthrough.gd.uid": "952ca44910e0ce8c9657b4645e62cad3b218c3c19d62201ef8ae1466cf5003f2",
+    "tests/run_campaign.py": "3cd169f1142fcebad55979003dec8d1fc5c606e149e7323cae9daaab9a435d95",
+    "tests/run_desktop.py": "e694625de77366140de431ee2226abcb2109caffd90af6c5ef0d2989b371e9a1",
+    "tests/run_tests.gd": "a3ec30b5b0e5f97be649bb131a27b4b6ef035e85b3dfa9cc9192d738188cc3c6",
+    "tests/run_tests.gd.uid": "3b5e8eae81237d2d6307e97934c00b4a8bcb6f4054518af22c98f6d7b04290d0"
+  },
+  "accepted_receipts": [
+    {
+      "path": ".artifacts/release-rules-20261018T045502179651Z/receipt.json",
+      "sha256": "c8a19a3caa4b87dbfdbb1d465e391927377ab40210a2648d13f74975fd2d2632",
+      "godot_exit_code": 0,
+      "runner_passed": true,
+      "source_unchanged": true
+    },
+    {
+      "path": ".artifacts/release-legacy-20261018T045508094423Z/receipt.json",
+      "sha256": "cf81fcedf64df7f792ee4b2b789aeacaad01521c460302d92d62375a64f212a1",
+      "godot_exit_code": 0,
+      "runner_passed": true,
+      "source_unchanged": true
+    },
+    {
+      "path": ".artifacts/release-legacy-rules-20261018T045510750875Z/receipt.json",
+      "sha256": "1bc2a44c2482c16a2a04733af9a0b7eb4f41273b55b0e73e899b738bceec1f3c",
+      "godot_exit_code": 0,
+      "runner_passed": true,
+      "source_unchanged": true
+    },
+    {
+      "path": ".artifacts/release-legacy-headless-20261018T045513413600Z/receipt.json",
+      "sha256": "ecbb4c95a83f0cbb5504a31b7f74d588cace4f15fd2f267eab001201a4df7f9f",
+      "godot_exit_code": 0,
+      "runner_passed": true,
+      "source_unchanged": true
+    },
+    {
+      "path": ".artifacts/release-headless-20261018T045517382023Z/receipt.json",
+      "sha256": "8bbdc7542539133590e0d94a228b61ff3ad5eca30f74e236d01b451076865ac4",
+      "godot_exit_code": 0,
+      "runner_passed": true,
+      "source_unchanged": true
+    },
+    {
+      "path": ".artifacts/final-early-20261018T051417307925Z/receipt.json",
+      "sha256": "36b760ad74c599be080764d6680ae61849ff3e6146e2eebcfd259164ad74b65e",
+      "godot_exit_code": 0,
+      "runner_passed": true,
+      "source_unchanged": true
+    },
+    {
+      "path": ".artifacts/final-middle-20261018T051513910285Z/receipt.json",
+      "sha256": "87588f5717d6a60a059acefd46614793ebba44d4e818e5f2105d753933188022",
+      "godot_exit_code": 0,
+      "runner_passed": true,
+      "source_unchanged": true
+    },
+    {
+      "path": ".artifacts/final-final-20261018T051555360282Z/receipt.json",
+      "sha256": "2a0dd1ada73c2de84fa1bf93553d92f3705e4f37c12182e55d9a45f140eb9837",
+      "godot_exit_code": 0,
+      "runner_passed": true,
+      "source_unchanged": true
+    },
+    {
+      "path": ".artifacts/final-layout-20261018T051635879358Z/receipt.json",
+      "sha256": "42cf60151ad539131c66ff2b404dca6bd1ce38c83f01864e1e7811a5029ffeb8",
+      "godot_exit_code": 0,
+      "runner_passed": true,
+      "source_unchanged": true
+    }
+  ],
+  "failed_rendered_receipts": [
+    {
+      "path": ".artifacts/release-rendered-20261018T045718292478Z/receipt.json",
+      "sha256": "fac2d4fafec12cb8b595f604975d9c96fd57d6227ca24dc1acdde57e930e3488",
+      "godot_exit_code": 0,
+      "runner_passed": false,
+      "source_unchanged": true,
+      "category": "Windows clipboard_get backend access",
+      "functional_checks": 78,
+      "functional_failures": 0,
+      "wrapper_exit_code": 1,
+      "wall_clock_timeout": false,
+      "errors": [
+        "ERROR: Unable to open clipboard."
+      ]
+    },
+    {
+      "path": ".artifacts/release-retry-rendered-20261018T050234188792Z/receipt.json",
+      "sha256": "c91d9a2a4fe2f62e2c2fd713d1b80df763a56c70efc61df7e6146dfea26e097d",
+      "godot_exit_code": 0,
+      "runner_passed": false,
+      "source_unchanged": true,
+      "category": "Windows clipboard_get backend access",
+      "functional_checks": 78,
+      "functional_failures": 0,
+      "wrapper_exit_code": 1,
+      "wall_clock_timeout": false,
+      "errors": [
+        "ERROR: Unable to open clipboard."
+      ]
+    }
+  ],
+  "derived_artifacts": [
+    {
+      "path": ".artifacts/final-early-20261018T051417307925Z/continuous.mp4",
+      "bytes": 1470261,
+      "sha256": "9cffaa4d0bfb5ddf7bd83649d006b0160c12f0ba71c01ef41c6be2fe542d7497"
+    },
+    {
+      "path": ".artifacts/final-early-20261018T051417307925Z/encode.log",
+      "bytes": 4513,
+      "sha256": "914d6139e8f92ba3db0fc19bcd70f38f388046f684cf2482cb864ad1008392c4"
+    },
+    {
+      "path": ".artifacts/final-early-20261018T051417307925Z/movie-probe.json",
+      "bytes": 4685,
+      "sha256": "e37ac994504833785936596208d7e2c7c32e29b3d45a92f9ef0b50f36af1fdcb"
+    },
+    {
+      "path": ".artifacts/final-early-20261018T051417307925Z/full-decode.log",
+      "bytes": 40,
+      "sha256": "0001a4ccebff524a9cacfd655013a82ba578581746256878ab18b97967c67ad7"
+    },
+    {
+      "path": ".artifacts/final-middle-20261018T051513910285Z/continuous.mp4",
+      "bytes": 1982883,
+      "sha256": "06789a93c11847a2d18e7cee570f54dd163e8a3a4a4fae254536855c234765bc"
+    },
+    {
+      "path": ".artifacts/final-middle-20261018T051513910285Z/encode.log",
+      "bytes": 4396,
+      "sha256": "59bf2783f16defed507b7bb432e9f93408a1797ac20ca88235668f8bae430b46"
+    },
+    {
+      "path": ".artifacts/final-middle-20261018T051513910285Z/movie-probe.json",
+      "bytes": 4686,
+      "sha256": "37303105845f4913920f81d6bfe2a6939505fc4a3799246c2d20813eae3ae0d7"
+    },
+    {
+      "path": ".artifacts/final-middle-20261018T051513910285Z/full-decode.log",
+      "bytes": 40,
+      "sha256": "0001a4ccebff524a9cacfd655013a82ba578581746256878ab18b97967c67ad7"
+    },
+    {
+      "path": ".artifacts/final-final-20261018T051555360282Z/continuous.mp4",
+      "bytes": 1772379,
+      "sha256": "db0a797696ab02acb2320a1f9252cd51e27488d96bd468cfcb69443bd1a86d5a"
+    },
+    {
+      "path": ".artifacts/final-final-20261018T051555360282Z/encode.log",
+      "bytes": 4394,
+      "sha256": "a8795f9ae75b08f35c21d33791f79d72390b1cd61040b2ef2b5f9ef51c808094"
+    },
+    {
+      "path": ".artifacts/final-final-20261018T051555360282Z/movie-probe.json",
+      "bytes": 4685,
+      "sha256": "12d3a481c00169e283fa822880f1e753cd1cfc768789b1c2ecb8281511740ff5"
+    },
+    {
+      "path": ".artifacts/final-final-20261018T051555360282Z/full-decode.log",
+      "bytes": 40,
+      "sha256": "0001a4ccebff524a9cacfd655013a82ba578581746256878ab18b97967c67ad7"
+    },
+    {
+      "path": ".artifacts/campaign-media-validation.json",
+      "bytes": 23751,
+      "sha256": "676b290d4d33374dbc0447632f081106f3d5b203512034456b703582e45922ea"
+    },
+    {
+      "path": ".artifacts/campaign-boundary-before.log",
+      "bytes": 157,
+      "sha256": "8d73385af5ffd58ecc18370b3b24bb4b1a7f132d4a673bc109c08b0a37b2eacf"
+    },
+    {
+      "path": ".artifacts/campaign-boundary-probe.gd",
+      "bytes": 616,
+      "sha256": "48a04650a882e5f652bb6a7aa6c6bbc762073bc1cae3abc2dad018710f3863c2"
+    }
+  ],
+  "receipt_bound_unique_files": 991,
+  "historical_code1_bound_files_reverified": 181,
+  "historical_records_unchanged": {
+    "CHECKPOINT.md": "e2ab30f503395333125fff4c199a023621effe053019fc9587232b77511fe0cc",
+    "CHECKPOINT.json": "958f1ff553df9a92ca0943ce53726ea1cddb64981794762cf683d6ffda75eda4",
+    "DELIVERY-METADATA.md": "3557ba2e908018b8c4501622ae47fc83c703ce689f3ee35e8933dd04aba5d88a",
+    "delivery-metadata.json": "61ed7905b4bfe1468b5c15cae7a2a5fd4c66bbda75810638eea89fcd63bed21b"
+  },
+  "legacy_rules_raw_unchanged": true,
+  "results": {
+    "campaign_rule_save_fixture_checks": 123,
+    "legacy_rule_checks": 56,
+    "legacy_actual_input_checks": 44,
+    "genuine_old_desktop_compatibility_checks": 10,
+    "full_headless_input_checks": 76,
+    "full_rendered_functional_checks": 78,
+    "full_rendered_functional_failures": 0,
+    "full_rendered_clean_log_acceptance": false,
+    "active_layout_checks": 14,
+    "campaign_clear_simulated_seconds": 1845.9500000003932,
+    "rule_simulated_seconds": 1845.88333333373,
+    "unique_maps": 10,
+    "regions": 3,
+    "tower_families": 3,
+    "forks_per_family": 2,
+    "enemy_roles": 6,
+    "boss_behaviors": 3,
+    "earned_profile": {
+      "attempts": 15,
+      "wins": 13,
+      "unique_clears": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "no_leak_seals": 10,
+      "ending": true,
+      "endless_best": {
+        "2": 1
+      }
+    },
+    "natural_first_route": [
+      {
+        "stage": 0,
+        "time": 126.016666666661,
+        "leaks": 0,
+        "investments": 8
+      },
+      {
+        "stage": 1,
+        "time": 141.816666666672,
+        "leaks": 0,
+        "investments": 7
+      },
+      {
+        "stage": 2,
+        "time": 157.300000000017,
+        "leaks": 0,
+        "investments": 11
+      },
+      {
+        "stage": 3,
+        "time": 173.10000000003,
+        "leaks": 0,
+        "investments": 11
+      },
+      {
+        "stage": 4,
+        "time": 182.966666666704,
+        "leaks": 0,
+        "investments": 16
+      },
+      {
+        "stage": 5,
+        "time": 191.566666666712,
+        "leaks": 0,
+        "investments": 12
+      },
+      {
+        "stage": 6,
+        "time": 201.850000000053,
+        "leaks": 0,
+        "investments": 15
+      },
+      {
+        "stage": 7,
+        "time": 211.700000000061,
+        "leaks": 0,
+        "investments": 16
+      },
+      {
+        "stage": 8,
+        "time": 221.616666666735,
+        "leaks": 1,
+        "investments": 15
+      },
+      {
+        "stage": 9,
+        "time": 238.016666666748,
+        "leaks": 0,
+        "investments": 16
+      }
+    ],
+    "movies": [
+      {
+        "run": "final-early-20261018T051417307925Z",
+        "duration": 52.25,
+        "frames": 3135,
+        "size": [
+          450,
+          800
+        ],
+        "edited": false
+      },
+      {
+        "run": "final-middle-20261018T051513910285Z",
+        "duration": 36.25,
+        "frames": 2175,
+        "size": [
+          450,
+          800
+        ],
+        "edited": false
+      },
+      {
+        "run": "final-final-20261018T051555360282Z",
+        "duration": 34.7,
+        "frames": 2082,
+        "size": [
+          450,
+          800
+        ],
+        "edited": false
+      }
+    ],
+    "fully_decoded_pngs": 144
+  },
+  "provenance": [
+    "All accepted runs and both clipboard-failed rendered runs execute the exact same43project files listed above.",
+    "The final/layout captures additionally execute their receipt-bound policy.gd; it steers only actual engine input. Final adds three real paid refit transactions.",
+    "Early starts fresh. Middle/final/layout byte-copy the middle-earned.code/final-earned.code app-written by the declared release-headless engine-input journey. Those load boundaries are explicit, not an uninterrupted campaign movie.",
+    "Rule/config/storage/UI-context fixtures are synthetic. Genuine old desktop compatibility is separate from root actual Android code1-to2 fixture.",
+    "No economy/progress injection or forced terminal redraw in engine journeys. Source reads drive policies; app saves provide state evidence.",
+    "Both full rendered journeys reached authoritative Godot exit0 and78/0functional checks; their runner receipts remain FAIL because of an immediate Windows clipboard_get backend error. Neither was a timeout. No further full-route clipboard chase.",
+    "First-clear30.77simulated minutes and fixed60Hz desktop movies do not establish human duration, fun or measured phone FPS.",
+    "This index and CAMPAIGN-CHECKPOINT.md are post-execution metadata outside recursive source binding. Original code1 checkpoint/delivery records and artifacts remain historical and unchanged."
+  ],
+  "limits": [
+    "No builder APK export, direct ADB/emulator/phone, shared records/global editor settings edits, push or public release.",
+    "Root/Astra independent review and signed code2 APK/native actual1-to2 preservation remain pending. Genuine code1 state.schema1/profile/settings must remain legacy meaning with zero invented campaign clears.",
+    "Host clipboard contention/backend access remains separately qualified despite correct full functional outcomes.",
+    "Physical Fold7 identity/Android, touch/IME/folding/safe areas, audible sound, measured FPS and human pacing/fun remain unverified."
+  ],
+  "next": "Root independent/Astra full campaign review and actual native1-to2 update on retained earned code1 fixture."
+}

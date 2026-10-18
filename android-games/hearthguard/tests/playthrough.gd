@@ -30,7 +30,7 @@ func check(okay: bool, message: String) -> void:
 
 func run() -> void:
 	root.size = Vector2i(720, 1280)
-	scene = load("res://main.tscn").instantiate()
+	scene = load("res://legacy.tscn").instantiate()
 	root.add_child(scene)
 	await dwell(4)
 	print("ISOLATED_USER_DATA ", OS.get_user_data_dir())
@@ -214,7 +214,7 @@ func transfer_and_layout() -> void:
 	scene.queue_free()
 	await process_frame
 	await process_frame
-	scene = load("res://main.tscn").instantiate()
+	scene = load("res://legacy.tscn").instantiate()
 	root.add_child(scene)
 	await dwell(4)
 	check(scene.state == saved.state and scene.profile == saved.profile and scene.settings == saved.settings, "ordinary reload preserves complete earned victory/profile/settings")
@@ -248,7 +248,7 @@ func active_pause_and_reload() -> void:
 	scene.queue_free()
 	await process_frame
 	await process_frame
-	scene = load("res://main.tscn").instantiate()
+	scene = load("res://legacy.tscn").instantiate()
 	root.add_child(scene)
 	await dwell(4)
 	check(scene.paused and scene.state == saved.state and scene.profile == saved.profile and scene.settings == saved.settings, "ordinary active reload preserves whole app-written run and starts paused")

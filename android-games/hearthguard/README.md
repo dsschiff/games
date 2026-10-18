@@ -1,83 +1,108 @@
-# Hearthguard — first playable
+# Hearthguard
 
-Original offline angled-overhead 3D road defense, Godot **4.7.2**, GDScript.
-This is the defining-loop review slice, not the complete six-game deliverable.
+Original offline angled-overhead3D road defense, Godot **4.7.2**, GDScript.
+Version **0.2.0/code2** adds ten maps across Copper March, Lantern Fens and
+Glasswind, a conclusive ten-beacon ending, no-leak seals, replay options and
+seeded endless watches. Android/native and physical-phone acceptance are separate.
 
-Move the teal lantern warden with a floating left-thumb stick. Collect the five
-loose gold coins, approach the **5 GOLD** pad and explicitly tap **BUILD BOLT**.
-The tower fires at the advancing ash column. Collect three-gold battle drops
-near the road, then invest **15** in the downstream Heavy tower. Heavy deals two
-damage per shot; Bolt deals one. Prioritize the enemy furthest along the road
-inside each tower's 4.8-unit coverage. Four leaks breach the eight-point refuge.
-Twenty stopped enemies produce a no-leak win. The warden is a collector/builder,
-without attacks, hero damage, dash or mounting in this slice.
+Move the lantern warden with a floating left-thumb stick. Collect nearby gold,
+approach a marked pad and explicitly choose a priced construction or upgrade.
+Real tower damage and local battle rewards finance further investment while
+roads remain under pressure. Crossing a pad never spends. There are no hero
+attacks, hero damage, settlement timers, networking, accounts, ads, purchases,
+energy gates or required resource farming.
 
-Crossing a pad never spends. A fresh battle starts at zero wallet with five
-finite, reachable original supply coins. No kill or coin can reward twice.
-There are no settlement menus, accounts, networking, ads, purchases, energy,
-construction waits or repeated resource farming requirements.
+| Family | Build | Forks | Role |
+| --- | ---: | --- | --- |
+| Bolt | 10 | Pierce30 / Volley32 | Armor penetration / two targets |
+| Mortar | 12 | Siege36 / Scatter34 | Piercing burst / wider group blast |
+| Beacon | 9 | Prism30 / Winter28 | Chained magic / area slow; magic counters shades |
 
-Pause holds the entire battle. Sound and reduced effects are saved locally.
-Back closes transfer first, then returns between the pause log and game;
-Android Back-to-quit is explicitly disabled. Cold loading an active battle
-starts paused. Retry restarts this battle's actors, supply coins, wallet and
-towers while retaining attempts, wins, best stopped count, no-leak seal and
-settings. No wallet is carried between attempts, so Retry cannot farm money.
+Families have distinct silhouettes and firing effects. Forks stay fixed for
+that construction; Sell refunds70% of the total investment and frees the pad
+for a paid refit. Upgraded towers cycle First/Strong/Weak targeting. Full prices,
+fork explanations and refunds appear on contextual controls. Range rings,
+health bars, heal pulses and silence labels explain combat. Reduced effects
+remove pickup bobbing and impact/heal flashes, keeping essential shot/health
+feedback. Sound is locally synthesized and switchable.
 
-Save codes contain version 1, the complete battle/profile/settings, revision
-and a SHA256 checksum over the exact payload. Two alternating slots retain
-the latest checked candidate. Staged ordinary saves are recoverable; staged
-imports are ignored until promotion. Import checks all state before replacing
-anything, then commits storage before changing live memory. Malformed input
-or a failed import write preserves the current complete live state and save.
-Copy/Paste use the platform clipboard; the TextEdit also supports native touch
-focus and editing. A code is a local backup, not a secure proof of achievements.
+Raiders, runners, armor, swarms, menders and shades require different coverage,
+burst, penetration and slowing. The Ram cycles a shield; the Matriarch heals
+its adjacent column; the Ash Regent changes roads and silences nearby towers.
+The HUD forecasts the next role/road and the terminal identifies the last leak.
+Every watch has a finite reachable startup supply and one-time reward ownership.
+Retry resets the selected battle's actors, budget, supply and towers while
+retaining earned results/settings. Wallets do not carry across attempts.
 
-## Desktop verification
+Journey unlocks maps by winning, then offers standard/rich/lean budgets,
+mirrored roads and selectable seeds. Replacing an active watch requires an
+explicit decision; Keep Watch retains it. No-leak records apply under any
+selected options. The final watch unlocks the ten-beacon epilogue and seeded
+endless; endless records are separate from campaign clears. A loss immediately
+retries the same pinned definition without farming or an energy restriction.
 
-Run from the assigned repository root:
+## Saves and the shipped prototype
+
+Envelope2 keeps the original prototype profile beside a separate campaign
+profile. Envelope1/schema1 saves automatically open Legacy Copper Pass on the
+unchanged version1 rules with old actors, drops, wallet, towers, settings and
+results intact. Those results invent no campaign clears. Its pause menu can
+park the old run and open Expedition; Journey can return to that legacy pass.
+Both modes preserve the other mode's parked run.
+
+Campaign schema2 pins full catalog1/generator1/rules2 definitions, map/seed/options,
+pads, enemy roster/stats/times, tower prices/fork stats, spawn progress, wounds,
+status, owned coins, transaction ledger, cooldowns and target priorities.
+Retry uses that exact definition. Keep catalog1/rules2 immutable in future
+updates; add versioned paths instead of retuning shipped saves. Imports reject
+unknown/malformed definitions, missing profiles and invalid accounting.
+
+Two alternating checked slots preserve the newest valid candidate. Ordinary
+staging can recover; unpromoted imported staging cannot become current.
+Validation and storage promotion precede live replacement. Invalid imports
+and failed writes retain the entire current state/save. Versioned bounded
+codes carry SHA256 checksums; they are local backups, not secure achievement
+proofs. Touch TextEdit and Copy/Paste are available. Active cold loads start
+paused. Android Back-to-quit is disabled; Back closes panels first.
+
+## Verification
+
+From the assigned repository root:
 
 ```powershell
-python android-games/hearthguard/tests/run_desktop.py rules --label review
-python android-games/hearthguard/tests/run_desktop.py headless --label review
-python android-games/hearthguard/tests/run_desktop.py rendered --label review
-python android-games/hearthguard/tests/run_desktop.py movie --label review
+python android-games/hearthguard/tests/run_desktop.py rules --label legacy
+python android-games/hearthguard/tests/run_desktop.py headless --label legacy
+python android-games/hearthguard/tests/run_campaign.py rules --label campaign
+python android-games/hearthguard/tests/run_campaign.py headless --label campaign
+python android-games/hearthguard/tests/run_campaign.py rendered --label campaign
+python android-games/hearthguard/tests/run_campaign.py movie --label early --segment early
 ```
 
-Every invocation creates a unique ignored `.artifacts/` directory **inside this
-game folder**, isolates APPDATA/LOCALAPPDATA, freezes executed source bytes,
-records hashes/command/logs and refuses a successful result on script errors,
-missing completion markers or source changes during execution. Rendered
-clipboard tests on Windows require the interactive desktop session; the
-restricted sandbox cannot open its clipboard. No Android tools are invoked.
-The movie route starts fresh and runs continuously through both investments
-and several seconds of combat; it injects only engine touch events. The full
-route proves loss, Retry, natural win, active pause/reload/resize, touch focus,
-real code editing and valid/invalid import. Synthetic storage-fault adapters
-are explicitly confined to separate fault assertions. Rule fixtures never
-stand in for earned playthroughs.
+Runners use unique ignored namespaces, isolated user data, exact source copies
+and hashes, raw input, app-written saves and logs. Rules/storage fixtures are
+synthetic. Engine routes use ScreenTouch/drag/GUI/key input and normal processing
+with read-only steering policies; no earned money/progress injection or forced
+terminal redraw. Early/middle/final movies are separate continuous clips;
+any load of a genuinely earned checkpoint is declared. Scripted simulation
+minutes do not establish human duration or enjoyable pacing.
 
-The portrait logical canvas is 720 pixels wide. Action hit targets are at least
-96 pixels, corresponding to 48dp at 360dp cover width. Desktop profiles exercise
-720×1680 (Fold7 cover ratio) and 1000×1110 (approximate inner ratio) with active
-state retention. These are window proportions, not measured physical safe
-areas, folding, phone performance, audio audibility or human pacing/fun.
+The initial arc targets30–60minutes. Primary targets are at least96 logical
+pixels at720wide (48dp at360dp cover width). Desktop cover/inner resizing does
+not establish physical folding/safe areas. Root owns signed APK export, actual
+code1-to2 update retention, native lifecycle/Back/clipboard and independent
+Astra release review. Fold7 identity/version, IME, touch comfort, audible sound,
+measured phone FPS and human fun remain unverified. No Android tools, shared
+SDK/editor setting changes or public release are performed by this builder.
 
-## Reference boundary and original assets
+## Provenance and checkpoints
 
-The repository's `android-games/references/kingshot.md` and direct-playback
-follow-up in `android-games/reviews/three-action-references-astra.md` select
-K2's **move → nearby coins → priced pad → firing tower → further investment**.
-Third-party Kingshot attribution and exact source pickup/input/debit rules
-remain qualified. Our explicit button, prices, damage, budget, finite supply,
-lantern warden, Copper Pass layout and mesh/tone artwork are original choices.
-All models, materials, UI and synthesized short tones are authored in source.
-No commercial footage, external art, signing material or local saves enter Git.
+K2's selected movement/coins/priced-pads/firing/further-investment activity is
+recorded in the repository reference brief. Third-party Kingshot attribution
+and exact commercial input/debit rules remain qualified. The warden, all mesh
+art, UI, sounds, layouts, prices and rules are original. No commercial footage,
+external art, signing material or local saves enter Git.
 
-The next milestone is independent Astra review of this playable loop and exact
-evidence, then a refined full campaign: a meaningful 30–60-minute initial arc,
-10 maps across 3 regions, three tower families with forks, six enemy roles and
-three bosses, seeded replay and no-leak mastery. Android export/update/offline
-lifecycle and physical Galaxy Z Fold7 checks belong to the coordinator and
-remain separate. Do not expand or substitute this slice for that full game
-before first-loop review approval.
+CHECKPOINT.md/json and DELIVERY-METADATA.md / delivery-metadata.json remain
+unchanged historical code1 records. Campaign evidence uses a new namespace
+and campaign-checkpoint.json. Neither the prototype nor desktop software
+evidence substitutes for the complete campaign or physical-phone acceptance.
