@@ -14,6 +14,7 @@ var native_inventory: Array = []
 var maximum_allies := 0
 var maximum_enemies := 0
 var movie_started := false
+var role_frames := {"alive":0,"attack":0,"hit":0,"defeat":0,"maximum_contact_error":0.0}
 
 func _initialize() -> void:
 	for arg in OS.get_cmdline_user_args():
@@ -66,6 +67,18 @@ func on_frame() -> void:
 	frame_number += 1
 	maximum_allies = maxi(maximum_allies,game.state.units.size())
 	maximum_enemies = maxi(maximum_enemies,game.state.enemies.size())
+	if stage in ["captain","siege","carapace"]:
+		var nodes: Array = game.presentation.actors.values()
+		for corpse in game.presentation.corpses.values(): nodes.append(corpse.node)
+		for actor in nodes:
+			if actor.role != stage: continue
+			role_frames.alive += 1
+			role_frames.attack += 1 if actor.fire_left>0 else 0
+			role_frames.hit += 1 if actor.hit_left>0 else 0
+			role_frames.defeat += 1 if actor.death_time>=0 else 0
+			if actor.fire_left>0:
+				var expected: Vector3=actor.rig.global_transform*actor.rig.get_bone_global_pose(actor.bones.Weapon)*actor.muzzle.position
+				role_frames.maximum_contact_error=maxf(float(role_frames.maximum_contact_error),expected.distance_to(actor.muzzle.global_position))
 	if frame_number % 30 == 0:
 		var roles: Dictionary = {}
 		for unit in game.state.units + game.state.enemies:
@@ -128,6 +141,30 @@ func play_until(seconds: float, stop_at_terminal: bool = true) -> void:
 		budget += .5
 		if budget > seconds+10: break
 
+func prepare_retained_role() -> void:
+	var encounter := "camp_03" if stage=="prepare-captain" else "camp_06" if stage=="prepare-siege" else "iron_trial"
+	if encounter=="iron_trial":
+		await action("practice");await action("trial");await trial_build("C")
+	else:
+		await action("mission2" if encounter=="camp_03" else "mission5")
+		for step in Policy.plan(game.state,"A"):
+			if step.has("move"): continue
+			var allowed := Gear.buy(game.state.board,step.kind,int(step.x),int(step.y),int(game.state.gold),int(game.state.next_id),str(game.state.encounter),game.state.config)
+			if allowed.ok: await purchase(step.kind,int(step.x),int(step.y),int(step.lane))
+	check(game.state.encounter==encounter and game.state.phase=="ready","Earned map access starts the intended focused encounter via real input")
+	await action("begin")
+	await action("speed")
+	check(game.speed==2 and game.paused,"Preparation uses the actual offered2x control, with menu pause")
+	await action("pause")
+	var role := stage.trim_prefix("prepare-")
+	while game.state.phase=="battle" and game.state.time<300:
+		if game.state.enemies.any(func(enemy): return enemy.kind==role) and (role!="carapace" or game.state.time>=36): break
+		await wait_play(.25)
+	await action("pause")
+	await action("speed")
+	check(game.speed==1 and game.paused and game.state.phase=="battle" and game.state.enemies.any(func(enemy): return enemy.kind==role),"Genuine process-loop preparation parks the live target role at normal1x")
+	await capture("genuine-role-start")
+
 func run() -> void:
 	if not rendered or run_directory.is_empty():
 		push_error("Motion evidence requires the coordinator's render slot and isolated runner")
@@ -154,11 +191,18 @@ func run() -> void:
 		if duration >= 125:
 			check(game.state.phase=="victory" and "camp_01" in game.profile.cleared,"Actual fresh input reaches earned First Spark victory")
 		await wait_play(3)
-	elif stage in ["heavy","later","metrics"]:
+	elif stage.begins_with("prepare-"):
+		await prepare_retained_role()
+	elif stage in ["heavy","later","metrics","reuse","captain","siege","carapace"]:
 		await action("resume_run")
 		check(game.paused and game.state.phase=="battle","Authentic active run enters the scene paused")
 		await capture("paused-start")
+		if stage=="carapace":
+			await tap(game.cell_center(1,1));await action("refit")
+			await tap(game.cell_center(3,1));await action("refit")
+			check(game.state.board[Gear.at(game.state.board,1,1)].kind=="ranger" and game.state.board[Gear.at(game.state.board,3,1)].kind=="ranger","Actual live counter repair refits future production while retaining current troops")
 		await action("pause")
+		check(game.speed==1,"Captured encounter runs at ordinary1x game speed")
 		if stage == "metrics":
 			check(fixed_fps==0 and Engine.get_write_movie_path().is_empty(),"Wall-clock measurement has no fixed-rate/movie writer")
 			game.frame_capture.start({"purpose":"separate sustained actual dense encounter","capture":"real-time, no movie writer, no still readback during sampling","fixed_cadence_capture":false,"window":[root.size.x,root.size.y]})
@@ -177,6 +221,13 @@ func run() -> void:
 			check(int(timing.heavy_frames.frames)>60,"Actual dense encounter yields at least sixty eligible heavy wall-clock samples")
 			finish({"real_time_sampler":timing});return
 		await wait_play(3)
+		if stage=="reuse":
+			var pool: Dictionary=game.presentation.pool_snapshot()
+			check(pool.actors_reused>0 and pool.effects_reused>0,"Actual dense process-loop encounter reuses actor and effect instances")
+			check(pool.inactive_actors<=pool.inactive_actor_cap and pool.inactive_effects<=pool.inactive_effect_cap and pool.active_effects<=pool.active_effect_cap,"Actual reserve and visible effect counts remain capped")
+		if stage in ["captain","siege","carapace"]:
+			check(role_frames.alive>0 and role_frames.attack>0 and role_frames.hit>0 and role_frames.defeat>0,"Actual "+stage+" model visibly lives/attacks/takes contact/defeats in the ordinary process loop")
+			check(role_frames.maximum_contact_error<.0001,"Actual "+stage+" attack socket follows its animated weapon contact")
 	elif stage == "reset":
 		await action("resume_run")
 		check(game.state.phase=="victory","Reset passage begins at genuinely earned prior victory")
@@ -235,6 +286,9 @@ func finish(extra: Dictionary) -> void:
 	var slots := save_slots()
 	var report := {"stage":stage,"checks":checks,"failures":failures,"pointer_keyboard_events":events,"fixed_fps":fixed_fps,"movie_writer_path":Engine.get_write_movie_path(),"native_padded_frames":native_frames,"frame_count":frame_number,"observations":observations,"inputs":inputs,"start_context":start_context,"end_context":context(),"maximum_allies":maximum_allies,"maximum_enemies":maximum_enemies,"raw_save_slots":slots,"native_inventory":native_inventory,"limits":"Actual app input/process-loop evidence. Fixed-rate movies are not wall-clock/phone performance."}
 	report.merge(extra)
+	report["pool"] = game.presentation.pool_snapshot()
+	report["watched_role_frames"] = role_frames
+	report["preparation_speed"] = "Actual offered2x menu during unrecorded focused preparation; parked at1x before save" if stage.begins_with("prepare-") else "normal1x captured play"
 	var file := FileAccess.open(run_directory+"/motion-report.json",FileAccess.WRITE)
 	file.store_string(JSON.stringify(report,"\t"));file.close()
 	print("GRAPHICS_MOTION: %s %d checks, %d failures, peak %d allies/%d enemies" % [stage,checks,failures.size(),maximum_allies,maximum_enemies])

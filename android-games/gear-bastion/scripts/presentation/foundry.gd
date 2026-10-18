@@ -28,6 +28,92 @@ var arches: Array[Node3D] = []
 var scenic_nodes: Array[Node3D] = []
 var ghost: Node3D
 var ghost_kind := ""
+const MAX_INACTIVE_ACTORS := 64
+const MAX_INACTIVE_PER_ROLE_SIDE := 12
+const MAX_EFFECTS := 48
+const MAX_INACTIVE_EFFECTS := 48
+var actor_pool: Dictionary = {}
+var effect_pool: Dictionary = {}
+var effect_mesh := BoxMesh.new()
+var pool_stats := {"actors_created":0,"actors_reused":0,"actors_retired":0,"effects_created":0,"effects_reused":0,"effects_retired":0}
+
+func pool_key(role: String, friendly: bool) -> String:
+	return role + (":ally" if friendly else ":enemy")
+
+func inactive_count(pool: Dictionary) -> int:
+	var count := 0
+	for reserve in pool.values():
+		count += reserve.size()
+	return count
+
+func acquire_actor(role: String, friendly: bool, offset: float) -> Node3D:
+	var key := pool_key(role,friendly)
+	var reserve: Array = actor_pool.get(key,[])
+	var actor: Node3D
+	if reserve.is_empty():
+		actor = Actor.new()
+		add_child(actor)
+		actor.configure(role,friendly,offset)
+		pool_stats.actors_created += 1
+	else:
+		actor = reserve.pop_back()
+		assert(actor.role == role and actor.friendly == friendly)
+		actor.reset_for_reuse(offset)
+		pool_stats.actors_reused += 1
+	if reserve.is_empty():
+		actor_pool.erase(key)
+	return actor
+
+func retire_actor(actor: Node3D) -> void:
+	pool_stats.actors_retired += 1
+	var key := pool_key(actor.role,actor.friendly)
+	var reserve: Array = actor_pool.get(key,[])
+	if reserve.size() >= MAX_INACTIVE_PER_ROLE_SIDE or inactive_count(actor_pool) >= MAX_INACTIVE_ACTORS:
+		actor.free()
+		return
+	actor.reset_for_reuse(0)
+	actor.hide()
+	actor.process_mode = Node.PROCESS_MODE_DISABLED
+	reserve.append(actor)
+	actor_pool[key] = reserve
+
+func acquire_effect(kind: String, color: String) -> MeshInstance3D:
+	var reserve: Array = effect_pool.get(kind,[])
+	var node: MeshInstance3D
+	if reserve.is_empty():
+		node = MeshInstance3D.new()
+		node.mesh = effect_mesh
+		add_child(node)
+		pool_stats.effects_created += 1
+	else:
+		node = reserve.pop_back()
+		pool_stats.effects_reused += 1
+	if reserve.is_empty():
+		effect_pool.erase(kind)
+	node.transform = Transform3D.IDENTITY
+	node.material_override = mat(color)
+	node.process_mode = Node.PROCESS_MODE_INHERIT
+	node.show()
+	return node
+
+func retire_effect(effect: Dictionary) -> void:
+	var node: MeshInstance3D = effect.node
+	pool_stats.effects_retired += 1
+	if inactive_count(effect_pool) >= MAX_INACTIVE_EFFECTS:
+		node.free()
+		return
+	node.transform = Transform3D.IDENTITY
+	node.material_override = null
+	node.hide()
+	node.process_mode = Node.PROCESS_MODE_DISABLED
+	var reserve: Array = effect_pool.get(effect.kind,[])
+	reserve.append(node)
+	effect_pool[effect.kind] = reserve
+
+func pool_snapshot() -> Dictionary:
+	var snapshot := pool_stats.duplicate()
+	snapshot.merge({"inactive_actors":inactive_count(actor_pool),"inactive_effects":inactive_count(effect_pool),"active_actors":actors.size(),"corpses":corpses.size(),"active_effects":effects.size(),"inactive_actor_cap":MAX_INACTIVE_ACTORS,"per_role_side_cap":MAX_INACTIVE_PER_ROLE_SIDE,"inactive_effect_cap":MAX_INACTIVE_EFFECTS,"active_effect_cap":MAX_EFFECTS})
+	return snapshot
 
 func build(game_layout: RefCounted, pixels: Vector2) -> void:
 	layout = game_layout
@@ -120,7 +206,7 @@ func fit(game_layout: RefCounted, pixels: Vector2) -> void:
 	for key in corpses:
 		corpses[key].node.position = canvas_to_world(corpses[key].canvas)
 	for effect in effects:
-		effect.node.queue_free()
+		retire_effect(effect)
 	effects.clear()
 
 func rebuild_scenery(act: int) -> void:
@@ -262,13 +348,13 @@ func hydrate(state: Dictionary, held: bool) -> void:
 	adapter.reset(state, held)
 	presentation_time = 0
 	for key in actors:
-		actors[key].free()
+		retire_actor(actors[key])
 	actors.clear()
 	for key in corpses:
-		corpses[key].node.free()
+		retire_actor(corpses[key].node)
 	corpses.clear()
 	for effect in effects:
-		effect.node.free()
+		retire_effect(effect)
 	effects.clear()
 	attacks_seen.clear()
 	attack_order.clear()
@@ -292,9 +378,7 @@ func sync(state: Dictionary, events: Array, interval: float = 1.0/30.0) -> void:
 	for key in adapter.current:
 		var data: Dictionary = adapter.current[key]
 		if not actors.has(key):
-			var actor := Actor.new()
-			add_child(actor)
-			actor.configure(data.role, data.friendly, float(absi(key.hash()) % 100) * .11)
+			var actor := acquire_actor(data.role,data.friendly,float(absi(key.hash()) % 100)*.11)
 			actor.position = point_for(data)
 			actors[key] = actor
 		actors[key].set_health(data.hp, data.max_hp)
@@ -394,17 +478,21 @@ func present_event(event: Dictionary) -> void:
 		pulse(destination,"f5d58c" if event.actor.begins_with("ally:") else "df906a")
 
 func tracer(from: Vector3, to: Vector3, color: String) -> void:
-	if effects.size() >= 48 or from.distance_squared_to(to) < .001:
+	if effects.size() >= MAX_EFFECTS or from.distance_squared_to(to) < .001:
 		return
-	var node := box(self,(from+to)/2,Vector3(.025,.025,from.distance_to(to)),color)
+	var node := acquire_effect("tracer",color)
+	node.position = (from+to)/2
 	node.look_at(to)
-	effects.append({"node":node,"left":.055})
+	node.scale = Vector3(.025,.025,from.distance_to(to))
+	effects.append({"node":node,"left":.055,"kind":"tracer"})
 
 func pulse(point: Vector3, color: String) -> void:
-	if effects.size() >= 48:
+	if effects.size() >= MAX_EFFECTS:
 		return
-	var node := box(self,point,Vector3(.10,.10,.10),color)
-	effects.append({"node":node,"left":.12})
+	var node := acquire_effect("impact",color)
+	node.position = point
+	node.scale = Vector3(.10,.10,.10)
+	effects.append({"node":node,"left":.12,"kind":"impact"})
 
 func step(dt: float, held: bool, calm: bool) -> void:
 	adapter.paused = held
@@ -425,7 +513,7 @@ func step(dt: float, held: bool, calm: bool) -> void:
 		corpses[key].node.pose(dt,Vector3.ZERO,false)
 		corpses[key].left -= dt
 		if corpses[key].left <= 0:
-			corpses[key].node.queue_free()
+			retire_actor(corpses[key].node)
 			corpses.erase(key)
 	for key in gears:
 		if gears[key].powered:
@@ -438,7 +526,7 @@ func step(dt: float, held: bool, calm: bool) -> void:
 	for i in range(effects.size()-1,-1,-1):
 		effects[i].left -= dt
 		if effects[i].left <= 0:
-			effects[i].node.queue_free()
+			retire_effect(effects[i])
 			effects.remove_at(i)
 	wall_hit_left = maxf(0,wall_hit_left-dt)
 	for arch in arches:

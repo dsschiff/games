@@ -531,5 +531,9 @@
     "old_overlap_reproduced": true,
     "receipt_sha256": "05abd9e03d565cffb0863698efa819c0cd9698a09f95ebcd35310067284ce7c8",
     "result_data_sha256": "386f3ed5d11f23896a02aca893036019ab53f4b530b3a663657b9bb94f31f731"
-  }
+  },
+  "status": "historical_source_bound_visual_evidence_before_object_pooling",
+  "historical_worker_commit": "01f650afc73edaab01be8e5858b410df20babb3c",
+  "current_followup": "evidence/graphics-pooling.json",
+  "binding_scope_note": "final_runtime_art_binding describes the historical 01f650a candidate only. The pooling follow-up changes actor/Foundry runtime; all six original movies remain byte-identical."
 }

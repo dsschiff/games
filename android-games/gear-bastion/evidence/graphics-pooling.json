@@ -1,0 +1,559 @@
+{
+  "schema": 1,
+  "generated_utc": "2026-10-18T16:34:37.515019+00:00",
+  "candidate": "0.4.0/code8 undelivered review candidate",
+  "previous_worker_commit": "01f650afc73edaab01be8e5858b410df20babb3c",
+  "requirement": "android-games/GRAPHICS-OVERHAUL.md:93 actual actor/effect pooling",
+  "cpu": {
+    "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\pooling-20261018T161754330963Z",
+    "checks": 456,
+    "receipt_sha256": "01cac3744176e1283907ed9c402b68001577289c3f01fd748e901be551177f5d",
+    "result_sha256": "7af2fed56db93f44098418be0612acda41939e8a80469f7b6f2fdfc72ece4c50",
+    "scope": "CPU fixtures; actual node/model/rig/mesh identities, complete reset/contact, caps and typed-ID/epoch/dedupe invariants; no GPU quality/performance claim"
+  },
+  "caps": {
+    "inactive_actors_total": 64,
+    "inactive_actors_per_role_side": 12,
+    "active_effects": 48,
+    "inactive_effects": 48
+  },
+  "runs": [
+    {
+      "stage": "reuse",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-reuse-20261018T162157634880Z",
+      "receipt_sha256": "e7c394913a514b9229f79bbc09773fe69e830b5d6d355872460947c294405023",
+      "gameplay_sha256": "ecb202c962d40cf94619f4ce2d433a0971d8d035eccffbaf2c6c95d6aa47b2ee",
+      "checks": 12,
+      "input_events": 6,
+      "source_binding": "Unchanged executed source; full source snapshots and hashes retained in run",
+      "starting_save": {
+        "kind": "indexed genuine prior input-suite save",
+        "source": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\campaign-pressure-motion\\middle.json",
+        "sha256": "f6a4d88b4625b89bcbd3eddd63ce1390a950eb386b46c8628f9e55b579b7b111",
+        "index": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\evidence\\decision-pressure-checkpoint.json",
+        "index_sha256": "e3d3dbf50bd3b8a62c11f805c2093684ba13eb824b95c1329ee6604ec8ca7bbe"
+      },
+      "pool": {
+        "active_actors": 120,
+        "active_effect_cap": 48,
+        "active_effects": 0,
+        "actors_created": 124,
+        "actors_retired": 5,
+        "actors_reused": 1,
+        "corpses": 0,
+        "effects_created": 17,
+        "effects_retired": 155,
+        "effects_reused": 138,
+        "inactive_actor_cap": 64,
+        "inactive_actors": 4,
+        "inactive_effect_cap": 48,
+        "inactive_effects": 17,
+        "per_role_side_cap": 12
+      },
+      "start": {
+        "encounter": "camp_05",
+        "time": 36.0000000000005,
+        "clears": 4
+      },
+      "end": {
+        "time": 48.2666666666665,
+        "phase": "battle",
+        "clears": 4
+      },
+      "movie": {
+        "path": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-reuse-20261018T162157634880Z\\continuous.mp4",
+        "sha256": "019a636225e60a857398b5f5f3e2a78c13db590137acc7a0aedf72e71536569c",
+        "seconds": 15.533008,
+        "resolution": [
+          720,
+          1680
+        ],
+        "fps": "30/1",
+        "full_decode": true,
+        "scaling": "none; native1:1 pixels",
+        "simulation_seconds_per_encoded_second_median": 0.9999999999999005
+      },
+      "current_runtime_art_binding": {
+        "files": 126,
+        "equal": true,
+        "changes_after_capture": "Documentation/evidence only"
+      }
+    },
+    {
+      "stage": "prepare-captain",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-prepare-captain-20261018T162415737581Z",
+      "receipt_sha256": "f1e9e0a2d655186c10d6465346ae4c8c4c1620e20fcfb75bf22b134e6d47786c",
+      "gameplay_sha256": "1c7dbd6116eab6ab1c3c03c54d3c0254218869de6b19073ae5353bea4be0b81d",
+      "checks": 11,
+      "input_events": 60,
+      "source_binding": "Unchanged executed source; full source snapshots and hashes retained in run",
+      "starting_save": {
+        "kind": "byte-exact app-written slots from prior passed run",
+        "parent": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-later-20261018T154529066901Z",
+        "parent_receipt_sha256": "4949ced9e69069ee104c12840b30d73f24272de725e2eeeeb40a4157ff3d94e6"
+      },
+      "pool": {
+        "active_actors": 121,
+        "active_effect_cap": 48,
+        "active_effects": 38,
+        "actors_created": 195,
+        "actors_retired": 174,
+        "actors_reused": 101,
+        "corpses": 1,
+        "effects_created": 39,
+        "effects_retired": 3363,
+        "effects_reused": 3362,
+        "inactive_actor_cap": 64,
+        "inactive_actors": 28,
+        "inactive_effect_cap": 48,
+        "inactive_effects": 1,
+        "per_role_side_cap": 12
+      },
+      "start": {
+        "encounter": "camp_09",
+        "time": 261.033333333325,
+        "clears": 9
+      },
+      "end": {
+        "time": 171.06666666666,
+        "phase": "battle",
+        "clears": 9
+      },
+      "speed": "Actual offered2x menu during genuine preparation; parked/saved at1x before movie",
+      "current_runtime_art_binding": {
+        "files": 126,
+        "equal": true,
+        "changes_after_capture": "Documentation/evidence only"
+      }
+    },
+    {
+      "stage": "captain",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-captain-20261018T162610555942Z",
+      "receipt_sha256": "fc8009fd552ffdfc3dace19857a5b369338e0bc1eac46b3a4bd04dc25b323e1c",
+      "gameplay_sha256": "864729eb5ad985d8ceb0235f5c5d5d31bb63fe2ab63196d67dff2639bcd2bdfb",
+      "checks": 12,
+      "input_events": 4,
+      "source_binding": "Unchanged executed source; full source snapshots and hashes retained in run",
+      "starting_save": {
+        "kind": "byte-exact app-written slots from prior passed run",
+        "parent": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-prepare-captain-20261018T162415737581Z",
+        "parent_receipt_sha256": "f1e9e0a2d655186c10d6465346ae4c8c4c1620e20fcfb75bf22b134e6d47786c"
+      },
+      "pool": {
+        "active_actors": 78,
+        "active_effect_cap": 48,
+        "active_effects": 0,
+        "actors_created": 140,
+        "actors_retired": 89,
+        "actors_reused": 27,
+        "corpses": 0,
+        "effects_created": 46,
+        "effects_retired": 1031,
+        "effects_reused": 985,
+        "inactive_actor_cap": 64,
+        "inactive_actors": 31,
+        "inactive_effect_cap": 48,
+        "inactive_effects": 46,
+        "per_role_side_cap": 12
+      },
+      "start": {
+        "encounter": "camp_03",
+        "time": 171.06666666666,
+        "clears": 9
+      },
+      "end": {
+        "time": 180.999999999992,
+        "phase": "victory",
+        "clears": 9
+      },
+      "movie": {
+        "path": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-captain-20261018T162610555942Z\\continuous.mp4",
+        "sha256": "35627aad06c6f936d489fabe8d2425941ed5a27e7d10af64dc148ea21ec249fe",
+        "seconds": 13.466016,
+        "resolution": [
+          720,
+          1680
+        ],
+        "fps": "30/1",
+        "full_decode": true,
+        "scaling": "none; native1:1 pixels",
+        "simulation_seconds_per_encoded_second_median": 1.0
+      },
+      "role_frame_samples": {
+        "alive": 330,
+        "attack": 81,
+        "defeat": 27,
+        "hit": 300,
+        "maximum_contact_error": 0.0
+      },
+      "current_runtime_art_binding": {
+        "files": 126,
+        "equal": true,
+        "changes_after_capture": "Documentation/evidence only"
+      }
+    },
+    {
+      "stage": "prepare-siege",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-prepare-siege-20261018T162713093079Z",
+      "receipt_sha256": "dfb4366698a3ab8f0d40e1fee0fc91102ba1d054046ab8b7071f8d04f5e232e6",
+      "gameplay_sha256": "b37f3766dc379ad2198f42bf966a23a51feda2fdaaf7c797ea2bf5e737ac7533",
+      "checks": 11,
+      "input_events": 68,
+      "source_binding": "Unchanged executed source; full source snapshots and hashes retained in run",
+      "starting_save": {
+        "kind": "byte-exact app-written slots from prior passed run",
+        "parent": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-later-20261018T154529066901Z",
+        "parent_receipt_sha256": "4949ced9e69069ee104c12840b30d73f24272de725e2eeeeb40a4157ff3d94e6"
+      },
+      "pool": {
+        "active_actors": 121,
+        "active_effect_cap": 48,
+        "active_effects": 41,
+        "actors_created": 188,
+        "actors_retired": 169,
+        "actors_reused": 102,
+        "corpses": 0,
+        "effects_created": 49,
+        "effects_retired": 3911,
+        "effects_reused": 3903,
+        "inactive_actor_cap": 64,
+        "inactive_actors": 22,
+        "inactive_effect_cap": 48,
+        "inactive_effects": 8,
+        "per_role_side_cap": 12
+      },
+      "start": {
+        "encounter": "camp_09",
+        "time": 261.033333333325,
+        "clears": 9
+      },
+      "end": {
+        "time": 172.799999999993,
+        "phase": "battle",
+        "clears": 9
+      },
+      "speed": "Actual offered2x menu during genuine preparation; parked/saved at1x before movie",
+      "current_runtime_art_binding": {
+        "files": 126,
+        "equal": true,
+        "changes_after_capture": "Documentation/evidence only"
+      }
+    },
+    {
+      "stage": "siege",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-siege-20261018T162905637745Z",
+      "receipt_sha256": "eb815919f2ba55afa287e853a04bc5194945c258c68bbd09c027b34bc33f9dc6",
+      "gameplay_sha256": "59ff86870f45a54561442181fb3f9100189f7d6ea22df41f979ed12374277731",
+      "checks": 12,
+      "input_events": 4,
+      "source_binding": "Unchanged executed source; full source snapshots and hashes retained in run",
+      "starting_save": {
+        "kind": "byte-exact app-written slots from prior passed run",
+        "parent": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-prepare-siege-20261018T162713093079Z",
+        "parent_receipt_sha256": "dfb4366698a3ab8f0d40e1fee0fc91102ba1d054046ab8b7071f8d04f5e232e6"
+      },
+      "pool": {
+        "active_actors": 120,
+        "active_effect_cap": 48,
+        "active_effects": 0,
+        "actors_created": 143,
+        "actors_retired": 28,
+        "actors_reused": 5,
+        "corpses": 0,
+        "effects_created": 64,
+        "effects_retired": 1705,
+        "effects_reused": 1641,
+        "inactive_actor_cap": 64,
+        "inactive_actors": 23,
+        "inactive_effect_cap": 48,
+        "inactive_effects": 48,
+        "per_role_side_cap": 12
+      },
+      "start": {
+        "encounter": "camp_06",
+        "time": 172.799999999993,
+        "clears": 9
+      },
+      "end": {
+        "time": 185.599999999992,
+        "phase": "victory",
+        "clears": 9
+      },
+      "movie": {
+        "path": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-siege-20261018T162905637745Z\\continuous.mp4",
+        "sha256": "30130034cd52cb25c47967aa5655af16fa16913153879f5caf3d5d03d21709b5",
+        "seconds": 16.133008,
+        "resolution": [
+          720,
+          1680
+        ],
+        "fps": "30/1",
+        "full_decode": true,
+        "scaling": "none; native1:1 pixels",
+        "simulation_seconds_per_encoded_second_median": 1.0
+      },
+      "role_frame_samples": {
+        "alive": 416,
+        "attack": 81,
+        "defeat": 27,
+        "hit": 387,
+        "maximum_contact_error": 0.0
+      },
+      "current_runtime_art_binding": {
+        "files": 126,
+        "equal": true,
+        "changes_after_capture": "Documentation/evidence only"
+      }
+    },
+    {
+      "stage": "prepare-carapace",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-prepare-carapace-20261018T163013459441Z",
+      "receipt_sha256": "7b70b60290459628a5a60cf209f107a3dbce3c6bfda28765ca259b55b4e12bd2",
+      "gameplay_sha256": "e662cb5d6d422b20593b26c35c284ee9ac70ddc41dba17acebb4ec22685ec46e",
+      "checks": 11,
+      "input_events": 50,
+      "source_binding": "Unchanged executed source; full source snapshots and hashes retained in run",
+      "starting_save": {
+        "kind": "byte-exact app-written slots from prior passed run",
+        "parent": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-later-20261018T154529066901Z",
+        "parent_receipt_sha256": "4949ced9e69069ee104c12840b30d73f24272de725e2eeeeb40a4157ff3d94e6"
+      },
+      "pool": {
+        "active_actors": 72,
+        "active_effect_cap": 48,
+        "active_effects": 5,
+        "actors_created": 158,
+        "actors_retired": 142,
+        "actors_reused": 57,
+        "corpses": 1,
+        "effects_created": 12,
+        "effects_retired": 678,
+        "effects_reused": 671,
+        "inactive_actor_cap": 64,
+        "inactive_actors": 36,
+        "inactive_effect_cap": 48,
+        "inactive_effects": 7,
+        "per_role_side_cap": 12
+      },
+      "start": {
+        "encounter": "camp_09",
+        "time": 261.033333333325,
+        "clears": 9
+      },
+      "end": {
+        "time": 36.3000000000005,
+        "phase": "battle",
+        "clears": 9
+      },
+      "speed": "Actual offered2x menu during genuine preparation; parked/saved at1x before movie",
+      "current_runtime_art_binding": {
+        "files": 126,
+        "equal": true,
+        "changes_after_capture": "Documentation/evidence only"
+      }
+    },
+    {
+      "stage": "carapace",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-carapace-20261018T163057617544Z",
+      "receipt_sha256": "fc71f196265fc7d14cd5e8760924e7bbc51b9c11a2d1ccc446af45fbabf5080d",
+      "gameplay_sha256": "788a4dcb1885d5bf57c085e4b52f4163bb18e8a64eae803cd96a175de1f319d0",
+      "checks": 13,
+      "input_events": 14,
+      "source_binding": "Unchanged executed source; full source snapshots and hashes retained in run",
+      "starting_save": {
+        "kind": "byte-exact app-written slots from prior passed run",
+        "parent": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-prepare-carapace-20261018T163013459441Z",
+        "parent_receipt_sha256": "7b70b60290459628a5a60cf209f107a3dbce3c6bfda28765ca259b55b4e12bd2"
+      },
+      "pool": {
+        "active_actors": 28,
+        "active_effect_cap": 48,
+        "active_effects": 1,
+        "actors_created": 103,
+        "actors_retired": 141,
+        "actors_reused": 67,
+        "corpses": 1,
+        "effects_created": 21,
+        "effects_retired": 1065,
+        "effects_reused": 1045,
+        "inactive_actor_cap": 64,
+        "inactive_actors": 19,
+        "inactive_effect_cap": 48,
+        "inactive_effects": 20,
+        "per_role_side_cap": 12
+      },
+      "start": {
+        "encounter": "iron_trial",
+        "time": 36.3000000000005,
+        "clears": 9
+      },
+      "end": {
+        "time": 66.7333333333321,
+        "phase": "battle",
+        "clears": 9
+      },
+      "movie": {
+        "path": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-carapace-20261018T163057617544Z\\continuous.mp4",
+        "sha256": "086d9b1698ee5aa72f4b7faa67a553c6bb69bcdf2a000ce26aff6aa92171d3ab",
+        "seconds": 33.933008,
+        "resolution": [
+          720,
+          1680
+        ],
+        "fps": "30/1",
+        "full_decode": true,
+        "scaling": "none; native1:1 pixels",
+        "simulation_seconds_per_encoded_second_median": 0.9999999999999005
+      },
+      "role_frame_samples": {
+        "alive": 6860,
+        "attack": 1008,
+        "defeat": 553,
+        "hit": 1542,
+        "maximum_contact_error": 0.0
+      },
+      "current_runtime_art_binding": {
+        "files": 126,
+        "equal": true,
+        "changes_after_capture": "Documentation/evidence only"
+      }
+    },
+    {
+      "stage": "metrics",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-metrics-20261018T163237858075Z",
+      "receipt_sha256": "86fca78e26ea394c17b5472064a6ffc8fd732da4e7aa308a26ffda21d950dedc",
+      "gameplay_sha256": "0f44db08379b908111ae007162f6e516a03864005f03b1668dd0add575daebe6",
+      "checks": 12,
+      "input_events": 6,
+      "source_binding": "Unchanged executed source; full source snapshots and hashes retained in run",
+      "starting_save": {
+        "kind": "indexed genuine prior input-suite save",
+        "source": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\campaign-pressure-motion\\middle.json",
+        "sha256": "f6a4d88b4625b89bcbd3eddd63ce1390a950eb386b46c8628f9e55b579b7b111",
+        "index": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\evidence\\decision-pressure-checkpoint.json",
+        "index_sha256": "e3d3dbf50bd3b8a62c11f805c2093684ba13eb824b95c1329ee6604ec8ca7bbe"
+      },
+      "pool": {
+        "active_actors": 122,
+        "active_effect_cap": 48,
+        "active_effects": 2,
+        "actors_created": 132,
+        "actors_retired": 35,
+        "actors_reused": 27,
+        "corpses": 2,
+        "effects_created": 35,
+        "effects_retired": 950,
+        "effects_reused": 917,
+        "inactive_actor_cap": 64,
+        "inactive_actors": 8,
+        "inactive_effect_cap": 48,
+        "inactive_effects": 33,
+        "per_role_side_cap": 12
+      },
+      "start": {
+        "encounter": "camp_05",
+        "time": 36.0000000000005,
+        "clears": 4
+      },
+      "end": {
+        "time": 81.2666666666646,
+        "phase": "battle",
+        "clears": 4
+      },
+      "timing": {
+        "all_frames": {
+          "frames": 2575,
+          "median_ms": 16.67,
+          "over_16_667_ms": 1394,
+          "over_33_333_ms": 9,
+          "p95_ms": 18.056,
+          "p99_ms": 22.272,
+          "seconds": 43.6611510000001
+        },
+        "columns": [
+          "frame_ms",
+          "friendly",
+          "enemies",
+          "encounter",
+          "reduced_effects",
+          "draw_cpu_usec",
+          "draw_calls_3d",
+          "primitives_3d",
+          "nodes_process",
+          "render_size"
+        ],
+        "criteria": {
+          "clock": "Time.get_ticks_usec at RenderingServer.frame_post_draw; render-loop submission intervals, not OS presentation timestamps",
+          "excluded": "menus, explicit pause, loading/ready states and visible modals; gaps reset before resumed samples",
+          "heavy_filter": "friendly + enemy actors >= 120",
+          "max_samples": 30000,
+          "warmup_eligible_seconds": 1.5
+        },
+        "excluded_frames": 0,
+        "heavy_frames": {
+          "frames": 2425,
+          "median_ms": 16.67,
+          "over_16_667_ms": 1323,
+          "over_33_333_ms": 9,
+          "p95_ms": 18.058,
+          "p99_ms": 22.313,
+          "seconds": 41.136943
+        },
+        "metadata": {
+          "capture": "real-time, no movie writer, no still readback during sampling",
+          "capture_fixed_fps": 0,
+          "command_line": [
+            "-s",
+            "tests/graphics_motion.gd"
+          ],
+          "counter_scope": "SubViewport visible 3D draw calls/primitives; shadow passes excluded; node count is process-wide",
+          "device_model": "ROG STRIX X670E-E GAMING WIFI",
+          "draw_cpu_usec_scope": "Main 2D draw callback CPU elapsed only; excludes complete 3D/GPU rendering",
+          "fixed_cadence_capture": false,
+          "godot": "4.7.2-stable (official)",
+          "movie_writer_path": "",
+          "os": "Windows",
+          "os_version": "10.0.26100",
+          "purpose": "separate sustained actual dense encounter",
+          "render_device": "NVIDIA GeForce RTX 5070 Ti",
+          "render_vendor": "NVIDIA",
+          "renderer": "gl_compatibility",
+          "started_unix": 1792341177.349,
+          "window": [
+            720,
+            1680
+          ]
+        },
+        "schema": 2,
+        "heavy_counter_medians": {
+          "visible_3d_draw_calls": 2292,
+          "visible_3d_primitives": 1051937,
+          "process_nodes": 2304
+        },
+        "observed_peak_population": 123
+      },
+      "current_runtime_art_binding": {
+        "files": 126,
+        "equal": true,
+        "changes_after_capture": "Documentation/evidence only"
+      }
+    }
+  ],
+  "role_sample_meaning": "Counts of rendered role-node frames, not unique attacks/deaths. alive includes visible corpse frames; attack/hit are active pose-flag frames. Socket error is current analytic weapon-bone tip vs actual contact marker at frame_post_draw.",
+  "limits": [
+    "Existing six long films remain historical source-bound visual evidence from01f650a; no whole-campaign/long-film replay.",
+    "Captain and siege partly obscured by dense friendly armies; counters do not establish visual readability. Independent motion/model review remains required.",
+    "Preparation uses real UI2x before the target appears; movie cold-loads actual app-written saved state at1x. No fixture state assignment or direct battle ticks in footage.",
+    "Loaded state comparison uses existing decode normalization including cleared transient projectiles and numeric tolerance below1e-9; raw source/slots separately hashed.",
+    "Host render-loop submission intervals and visible3D counters are not OS-present/GPU timestamps or phoneFPS; draw_cpu_usec covers main2D draw callback only.",
+    "No signed export/install/ADB/clipboard/push by this worker. Root owns exact-final-commit rebuild and separate native/physical acceptance.",
+    "Measured timing is a standalone workload result, not a controlled A/B speedup claim. Pooling can still allocate on cold starts/overflow."
+  ],
+  "all_six_historical_movie_hashes_reverified": true,
+  "runtime_implementation_sha256": {
+    "scripts/presentation/actor.gd": "23ce0767f56f2a7f6f20a7f4bc81ecf1e2c6551115195f083d4ac771df7368fa",
+    "scripts/presentation/foundry.gd": "a578e38c823e0429cc5950506cc5d2fccc6e933c2ed63330a7008e02db5ebe58"
+  },
+  "gpu_slot": "released after every owned rendered subprocess exited",
+  "gpu_release_record_utc": "2026-10-18T16:37:27.899311+00:00"
+}

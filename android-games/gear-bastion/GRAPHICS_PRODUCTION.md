@@ -58,3 +58,29 @@ Preserved incidents include the initial parse failure, undersized 450x800 intern
 Source metadata is prepared as **0.4.0/code 8 review candidate** under the coordinator's instruction. Every final capture's runtime/art matches the candidate after normalizing only version metadata; final documentation/evidence and fail-closed CLI updates are nonvisual. Independent eight-category normal-speed motion review and root's signed 7→8 native update checks remain pending. Physical Fold7 touch/fold/sound/performance and human pacing/fun remain deferred/unverified. No worker Android export, ADB, clipboard, push or shared-file edit occurred.
 
 **GPU RELEASED** at 2026-10-18T16:01:20.688169+00:00: every final rendered subprocess returned before this record; no worker renderer remains. Root may acquire the next render/review slot.
+
+
+## Bounded object-pooling and previously missing role follow-up
+
+The coordinator/Astra review correctly identified the explicit pooling requirement at `android-games/GRAPHICS-OVERHAUL.md:93`: stable-ID/material caching and the 48-effect cap were insufficient. This separate follow-up retains actual inactive actor/model/skeleton instances by role and side, capped at 64 total and 12 per key. Reusable tracer/impact MeshInstance nodes share unit box geometry, retain the 48-active-effect cap and cap inactive effects at 48. Overflow is freed. Actors restore root/facing/aim/gait, all authored child transforms/visibility, bones, immediate contact attachment, health geometry, recoil/hit/death and model state before current data is applied. Effects restore transform, material and visibility. Retired nodes are hidden/disabled and remain world children for ordinary teardown. IDs, epochs, dedupe, rules/RNG, snapshots/saves, board/camera/input and all 28 model binaries remain unchanged.
+
+Focused CPU fixture **456/456** compares actual reused actor/model/rig/mesh identities, contaminates and restores every role against fresh instances, checks immediate contact and health, saturates reserves, and verifies corpse/new-ID reuse plus epoch/dedupe/reset. Astra's early source review found no concrete blocker (`gear-pooling-early-source-astra.md` at coordinator); that was CPU/source review, not visual acceptance.
+
+The granted bounded follow-up passes **94 checks / 212 real pointer events across eight runs**. Four native 1x movies cover dense reuse, captain, siege and carapace; all fully decode, match 30 fps simulation cadence, and retain source snapshots/unchanged execution receipts, whole decoded starting contexts and raw app-written slots. The three role preparations use the already earned nine-clear final save, real map/board inputs and the offered 2x menu to reach the target, then park/save at 1x. Movie processes cold-load those successful raw slots and run at 1x. Carapace includes actual ranger refits of future production. No fixture state assignment, direct simulation tick or full campaign replay supplies these clips.
+
+| Stage | Checks | Input events | Cadence | Local run directory under ignored graphics-production |
+| --- | ---: | ---: | --- | --- |
+| reuse | 12 | 6 | 15.53 s at 1x | motion-reuse-20261018T162157634880Z |
+| prepare-captain | 11 | 60 | actual UI 2x preparation, parked 1x | motion-prepare-captain-20261018T162415737581Z |
+| captain | 12 | 4 | 13.47 s at 1x | motion-captain-20261018T162610555942Z |
+| prepare-siege | 11 | 68 | actual UI 2x preparation, parked 1x | motion-prepare-siege-20261018T162713093079Z |
+| siege | 12 | 4 | 16.13 s at 1x | motion-siege-20261018T162905637745Z |
+| prepare-carapace | 11 | 50 | actual UI 2x preparation, parked 1x | motion-prepare-carapace-20261018T163013459441Z |
+| carapace | 13 | 14 | 33.93 s at 1x | motion-carapace-20261018T163057617544Z |
+| metrics | 12 | 6 | unpaced wall clock | motion-metrics-20261018T163237858075Z |
+
+Captain/siege/carapace each have nonzero attack-state, hit-state and defeat-state rendered frame samples, with maximum actual weapon contact error 0.0. These are role-node frame counts, not unique attacks/deaths or a guarantee of readability: dense friendly troops partly obscure the captain and siege. The original six films remain byte-identical historical visual evidence bound to 01f650a; their earlier runtime-binding statements are explicitly historical. All 12 roles now occur across old/new actual clips, but independent normal-speed model/crowd/quality review remains required. See `evidence/graphics-pooling.json` for actual paths, counts, hashes and limits.
+
+The 12-second dense reuse passage records one actor reuse and 138 effect reuses; the separate 45-second unpaced run records 27 actor reuses and 917 effect reuses. The latter retains **2,425 eligible dense samples / 41.14 s** with median/p95/p99 **16.670/18.058/22.313 ms** on the same RTX 5070 Ti host at 720x1680. It uses no fixed-FPS argument/movie writer/texture readback during sampling. This is standalone render-loop timing, not controlled before/after acceleration, OS-present/GPU timing or phone FPS. Reserves can allocate when cold and free overflow; zero allocation is not claimed. Raw rows, visible 3D counters excluding shadow passes, and process-wide node counts remain available; draw_cpu_usec remains only the main 2D draw callback.
+
+**GPU RELEASED**, recorded 2026-10-18T16:37:27.899311+00:00, after every owned new renderer exited; no worker rendering is queued. Version remains 0.4.0/code 8 undelivered review candidate. Root rebuilds the exact final commit after independent review and retains responsibility for the signed 7-to8 native update, Back/transfer/lifecycle and deferred physical acceptance. No worker export/ADB/clipboard/push/shared-file mutation occurred.

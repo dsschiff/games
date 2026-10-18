@@ -16,7 +16,7 @@ def sha(path):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("stage", choices=["opening", "heavy", "later", "reset", "restore", "legacy", "metrics"])
+    parser.add_argument("stage", choices=["opening", "heavy", "later", "reset", "restore", "legacy", "metrics", "reuse", "prepare-captain", "prepare-siege", "prepare-carapace", "captain", "siege", "carapace"])
     parser.add_argument("--seconds", type=float, default=40)
     parser.add_argument("--movie", action="store_true")
     parser.add_argument("--native-frames", action="store_true")
@@ -37,7 +37,7 @@ def main():
     provenance = {"kind": "fresh actual app"}
     expected = None
     slots = []
-    if args.stage in {"heavy", "later", "metrics"}:
+    if args.stage in {"heavy", "later", "metrics", "reuse"}:
         name = "final-boss" if args.stage == "later" else "middle"
         source = PROJECT/".artifacts/campaign-pressure-motion"/(name+".json")
         index = PROJECT/"evidence/decision-pressure-checkpoint.json"
@@ -46,13 +46,14 @@ def main():
         assert sha(source) in allowed, "Starting save is not pinned in the original earned evidence index"
         slots = [(source, "bastion-save.json")]
         provenance = {"kind": "indexed genuine prior input-suite save", "source": str(source), "sha256": sha(source), "index": str(index), "index_sha256": sha(index)}
-    elif args.stage in {"reset", "restore"}:
+    elif args.stage in {"reset", "restore", "prepare-captain", "prepare-siege", "prepare-carapace", "captain", "siege", "carapace"}:
         assert args.resume_from, "Reset/restore require authentic prior motion run"
         parent = args.resume_from.resolve()
         assert parent.is_relative_to((PROJECT/".artifacts/graphics-production").resolve())
         receipt = json.loads((parent/"receipt.json").read_text(encoding="utf-8"))
         report = json.loads((parent/"motion-report.json").read_text(encoding="utf-8"))
         assert receipt["passed"], "Prior motion run failed"
+        assert receipt["gameplay_report_sha256"] == sha(parent/"motion-report.json"), "Prior gameplay report changed"
         for name, digest in report["raw_save_slots"].items():
             source = parent/"slots"/name
             assert sha(source) == digest

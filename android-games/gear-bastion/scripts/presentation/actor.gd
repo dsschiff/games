@@ -16,6 +16,7 @@ var death_time := -1.0
 var aim := Vector3.FORWARD
 var humanoid := true
 var torso_yaw := 0.0
+var rest_nodes: Array[Dictionary] = []
 static var materials: Dictionary = {}
 static var authored_sockets: Dictionary = {}
 
@@ -65,7 +66,15 @@ func configure(kind: String, ally: bool, offset: float) -> void:
 		if foreground:
 			health_fill = n
 	health.hide()
-	pose(0, Vector3.ZERO, false)
+	collect_rest_nodes(model)
+	collect_rest_nodes(health)
+	reset_for_reuse(offset)
+
+func collect_rest_nodes(node: Node3D) -> void:
+	rest_nodes.append({"node":node,"transform":node.transform,"visible":node.visible})
+	for child in node.get_children():
+		if child is Node3D:
+			collect_rest_nodes(child)
 
 static func find_skeleton(node: Node) -> Skeleton3D:
 	if node is Skeleton3D:
@@ -115,15 +124,29 @@ func hit() -> void:
 	hit_left = .20
 
 func reset_transients() -> void:
+	reset_for_reuse(0)
+
+func reset_for_reuse(offset: float) -> void:
+	transform = Transform3D.IDENTITY
+	rotation.y = 0 if friendly else PI
+	aim = Vector3.FORWARD if friendly else Vector3.BACK
+	gait = offset
 	fire_left = 0
 	hit_left = 0
 	travel = 0
 	death_time = -1
-	model.transform = Transform3D.IDENTITY
 	torso_yaw = 0
+	for entry in rest_nodes:
+		entry.node.transform = entry.transform
+		entry.node.visible = entry.visible
 	for i in rig.get_bone_count():
 		rig.reset_bone_pose(i)
 	pose(0, Vector3.ZERO, false)
+	rig.force_update_all_bone_transforms()
+	(muzzle.get_parent() as Node3D).transform = rig.get_bone_global_pose(bones.Weapon)
+	health.hide()
+	process_mode = Node.PROCESS_MODE_INHERIT
+	show()
 
 func bone(name: String, angles: Vector3) -> void:
 	if bones.has(name):

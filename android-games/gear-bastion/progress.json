@@ -5,9 +5,9 @@
   "version_code": 8,
   "save_schema": 4,
   "branch": "codex/gear-graphics",
-  "updated_at": "2026-10-18T16:01:20.688169+00:00",
-  "milestone": "original_3d_source_bound_motion_candidate",
-  "status": "final_motion_captured_independent_review_pending",
+  "updated_at": "2026-10-18T16:37:27.899311+00:00",
+  "milestone": "original_3d_pooled_runtime_and_all_role_motion_candidate",
+  "status": "pooled_source_and_bounded_motion_verified_independent_review_pending",
   "full_v1_complete": false,
   "campaign_expansion": "full_nine_encounter_campaign_implemented_candidate",
   "campaign_checkpoint": {
@@ -46,7 +46,7 @@
     "constrained_budget_counter_trial": true,
     "sole_staged_backup_reused_without_truncation": true
   },
-  "next_action": "Root/Astra reviews source-bound normal-speed movies against all eight categories, then coordinator signs/validates the genuine code7-to8 native update.",
+  "next_action": "Root/Astra reviews the bounded pooling/captain/siege/carapace follow-up, then root rebuilds and validates exact-final-commit signed code7-to8 update.",
   "remaining": [
     "Independent eight-category final motion/source review",
     "Coordinator signed code7-to8 native update/save/Back/lifecycle/clipboard checks",
@@ -336,7 +336,7 @@
     "byte_identical_repeat": true,
     "focused_cpu_checks": 12071,
     "focused_input_checks": 1462,
-    "gpu_phase": "released_final_motion_candidate_pending_independent_review",
+    "gpu_phase": "released_pooling_and_missing_role_followup_pending_review",
     "full_3d_accepted": false,
     "target_freeze": "0.4.0/code8_review_candidate",
     "deck_geometry_checks": 8,
@@ -344,9 +344,19 @@
     "boss_hud_checks": 637,
     "motion_checks": 66,
     "motion_input_events": 146,
-    "actual_heavy_samples": 2433,
-    "actual_heavy_seconds": 41.177079,
-    "actual_peak_population": 123
+    "actual_heavy_samples": 2425,
+    "actual_heavy_seconds": 41.136943,
+    "actual_peak_population": 123,
+    "pooling_evidence": "evidence/graphics-pooling.json",
+    "pooling_cpu_checks": 456,
+    "pooling_followup_checks": 94,
+    "pooling_followup_input_events": 212,
+    "pooling_role_clips": [
+      "reuse",
+      "captain",
+      "siege",
+      "carapace"
+    ]
   },
   "version_status": "review_candidate"
 }
