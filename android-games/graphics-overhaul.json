@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "frontline_delivered_gear_motion_hearth_CPU",
+  "status": "frontline_delivered_pool_followup_gear_hearth_active",
   "baseline_commit": "6e26b3c2a3938de1828527630f95fb6a219f61b8",
   "reference": {
     "private_path": ".references/graphics-overhaul/user-top-force-44941.jpg",
@@ -28,7 +28,12 @@
     "max_builders": 2,
     "max_reviewers": 1,
     "further_phone_testing": "deferred_by_user_not_graphics_blocker",
-    "worker_status_delivery": "Root pulls read_thread and local durable results; builders do not send outbound status messages to coordinator"
+    "worker_status_delivery": "Root pulls read_thread and local durable results; builders do not send outbound status messages to coordinator",
+    "required_performance_followups": {
+      "frontline-foundry": "Bounded pooling higher-version follow-up after Gear archive before Hook starts",
+      "gear-bastion": "Bounded pooling and unseen-role rendered closure before final code8 rebuild/native update",
+      "hearthguard": "Bounded pools and first-inspection composition/capture corrections before longer films"
+    }
   },
   "user_phone_feedback": {
     "game": "gear-bastion",
@@ -89,7 +94,7 @@
       "thread_id": "01a14ecf-ca7d-7ff1-a858-ca1aa9682d76",
       "branch": "codex/gear-graphics",
       "worktree": "C:/projects/active/_worktrees/games-gear-bastion-20261017",
-      "phase": "full_3D_production"
+      "phase": "pooling_and_missing_role_followup"
     },
     {
       "slug": "hearthguard",
@@ -97,7 +102,7 @@
       "thread_id": "01a14f9d-4b9b-7bd3-abd6-897a1188086d",
       "branch": "codex/hearthguard-graphics",
       "worktree": "C:/projects/active/_worktrees/games-hearthguard-20261018",
-      "phase": "full_3D_production_CPU"
+      "phase": "CPU_pooling_and_first_visual_repairs"
     }
   ],
   "review_contract": "android-games/reviews/graphics-quality-contract-astra.md",

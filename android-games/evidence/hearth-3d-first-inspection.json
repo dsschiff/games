@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "worker_commit": "e581026930e55a6ef5626fe2bfb7f3275e784ca0",
+  "integration_commit": "d2bf769",
+  "game_tree": "8172251a39e12773669fe35b54cd0375915ab3ea",
+  "status": "first_visual_inspection_requires_repairs",
+  "models": 30,
+  "reproducible_models": 30,
+  "root_checks": {
+    "checks": 328,
+    "failures": 0,
+    "source_unchanged": true,
+    "path": "android-games/hearthguard/.artifacts/root-independent-checks-20261018T160352428631Z"
+  },
+  "source_reviews": [
+    "android-games/reviews/hearth-early-source-astra.md",
+    "android-games/reviews/hearth-source-boundary-closure-astra.md"
+  ],
+  "first_inspection": {
+    "native_stills": [
+      720,
+      1280
+    ],
+    "original_movie": [
+      450,
+      800
+    ],
+    "retimed": false,
+    "root_path": "android-games/hearthguard/.artifacts/root-first-inspect-20261018T161522767389Z",
+    "combat_coverage": false,
+    "scope": "Opening coin collection, first tower placement and initial composition only"
+  },
+  "preservation": {
+    "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\hearth-cpu-e581026",
+    "files": 25,
+    "bytes": 1727317,
+    "receipt_sha256": "7c4f7333e54b3c294a6e995641fbfb0897b9f59e5fd42555096b18d28044c50b"
+  },
+  "required_repairs": [
+    "Fit full scenery silhouettes inside frame; vary clustered placement",
+    "Reserve crest inset for title and subtitle",
+    "Legible pad price/tower labels",
+    "Balance bright flat ground and prop materials/lighting",
+    "Use native-frame capture for later movies",
+    "Bounded actor/effect reuse pools"
+  ],
+  "visual_accepted": false,
+  "apk_delivered": false,
+  "physical_testing": "deferred_by_user"
+}

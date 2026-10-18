@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "worker_commit": "01f650afc73edaab01be8e5858b410df20babb3c",
+  "integration_commit": "60e0281efba424160af5ba7485a41b8a240d00bf",
+  "game_tree": "f5701e4f7233e01ab220b39b174ecca137a39803",
+  "status": "historical_visual_candidate_pending_pooling_and_three_unseen_roles",
+  "observed_visual_rows": {
+    "minimum": 3,
+    "maximum": 3,
+    "scale": 4,
+    "rows": 8,
+    "scope": "Observed roles and passages only"
+  },
+  "review": "android-games/reviews/gear-production-final-astra.md",
+  "production_accepted": false,
+  "apk_delivered": false,
+  "apk_installed": false,
+  "candidate_build": {
+    "canonical_path": "C:/projects/active/games/.artifacts/gear-bastion/20261018T160603834824Z/gear-bastion.apk",
+    "version": "0.4.0",
+    "code": 8,
+    "sha256": "49a2bdb7f4883e5e4e51aa865223f5ae3bbbabe66d1b401b95fa565d3d7f49d7",
+    "bytes": 60719469,
+    "clean_source": true,
+    "source_unchanged": true,
+    "signature_verified": true,
+    "permissions": [],
+    "rebuild_required_after_pool_followup": true
+  },
+  "preservation": {
+    "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\gear-production-01f650a",
+    "files": 142,
+    "bytes": 143449781,
+    "receipt_sha256": "c982e29188cbefcadabe4e2be7c20c47d331b879710d58a6ca202542adcb8c8c"
+  },
+  "build_preservation": {
+    "packet": "C:\\projects\\active\\games\\.artifacts\\gear-bastion\\20261018T160603834824Z",
+    "files": 7,
+    "bytes": 61214759,
+    "receipt_sha256": "e09789c526a1c01ecef009d92253858f1315a04b70cdd3096537de0c443db62d"
+  },
+  "root_focused_checks": {
+    "checks": 637,
+    "source_unchanged": true,
+    "path": "android-games/gear-bastion/.artifacts/graphics-production/boss-hud-20261018T160529816285Z"
+  },
+  "remaining": [
+    "Bounded actor and effect instance reuse with complete reset/contact/cap checks",
+    "Rendered captain/siege/carapace appearance, attack/contact and removal using earned encounters",
+    "Bounded pooled dense follow-up and separate unpaced timing",
+    "Final reviewed source rebuild, native7to8 update, private bundle and archive"
+  ],
+  "physical_testing": "deferred_by_user",
+  "review_preservation": {
+    "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\gear-production-01f650a\\review-addendum",
+    "receipt_sha256": "243372b0898ee05841dbd30aa400af5b7f60adf565c12bcd6d6e456c0d8b50be",
+    "files": 3
+  }
+}
