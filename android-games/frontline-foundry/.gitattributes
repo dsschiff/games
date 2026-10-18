@@ -1,0 +1,2 @@
+# GLB JSON headers can exceed Git's binary sniffing window. Preserve buffers.
+art/models/*.glb -text

@@ -45,12 +45,12 @@ static func target(enemies: Array, p: Vector2, reach: float) -> int:
 			chosen = i
 	return chosen
 
-static func hit(s: Dictionary, idx: int, p: Vector2, damage: float, owner: String, events: Array) -> float:
+static func hit(s: Dictionary, idx: int, p: Vector2, damage: float, owner: String, events: Array, actor: String = "") -> float:
 	var e: Dictionary = s.enemies[idx]
 	var effective := damage * (0.38 if e.armored and owner != "vehicle" else 1.0)
 	var actual := minf(e.hp, effective)
 	e.hp -= actual
-	events.append({"kind": "shot", "owner": owner, "from": [p.x, p.y], "to": [e.x, e.z], "enemy": e.id, "damage": actual})
+	events.append({"kind": "shot", "owner": owner, "from": [p.x, p.y], "to": [e.x, e.z], "enemy": e.id, "damage": actual, "actor": actor, "attack": "%s:%.9f" % [actor, s.time]})
 	return actual
 
 static func tick(s: Dictionary, movement: Vector2, delta: float) -> Array:
@@ -102,19 +102,19 @@ static func tick(s: Dictionary, movement: Vector2, delta: float) -> Array:
 			r.cooldown = maxf(0, r.cooldown - dt)
 			var idx := target(s.enemies, Vector2(r.x, r.z), 5.7 if station == 1 else 4.7)
 			if idx >= 0 and r.cooldown <= 0:
-				r.damage += hit(s, idx, Vector2(r.x, r.z), 28 if station == 1 else 9, r.role, events)
+				r.damage += hit(s, idx, Vector2(r.x, r.z), 28 if station == 1 else 9, r.role, events, "recruit:" + str(int(r.id)))
 				r.shots += 1
 				r.cooldown = 1.05 if station == 1 else 0.72
 	s.commander_cd = maxf(0, s.commander_cd - dt)
 	var idx := target(s.enemies, p, 3.6)
 	if idx >= 0 and s.commander_cd <= 0:
-		hit(s, idx, p, 6, "commander", events)
+		hit(s, idx, p, 6, "commander", events, "commander")
 		s.commander_shots += 1
 		s.commander_cd = 0.55
 	s.sentry_cd = maxf(0, s.sentry_cd - dt)
 	idx = target(s.enemies, Vector2(0, 0.6), 4.4)
 	if idx >= 0 and s.sentry_cd <= 0:
-		hit(s, idx, Vector2(0, 0.6), 3, "sentry", events)
+		hit(s, idx, Vector2(0, 0.6), 3, "sentry", events, "sentry")
 		s.sentry_shots += 1
 		s.sentry_cd = 0.95
 	for e in s.enemies:
@@ -140,6 +140,7 @@ static func tick(s: Dictionary, movement: Vector2, delta: float) -> Array:
 					victim.hp = maxf(0, victim.hp - damage)
 					if victim.hp <= 0:
 						victim.phase = "fallen"
+				events.append({"kind": "incoming", "owner": "enemy", "from": [e.x, e.z], "to": [s.x, s.z] if commander_near else [victim.x, victim.z], "recipient": -1 if commander_near else int(victim.id), "damage": damage, "actor": "enemy:" + str(int(e.id)), "attack": "enemy:%d:%.9f" % [e.id, s.time]})
 				e.cooldown = 1.2
 		else:
 			e.z += dt * (0.43 if e.armored else 0.53)

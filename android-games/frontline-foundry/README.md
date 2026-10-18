@@ -1,5 +1,10 @@
 # Frontline Foundry — 0.2.0 / code 2
 
+The original rigged stylized 3D benchmark is implemented in this graphics branch.
+See [GRAPHICS_BENCHMARK.md](GRAPHICS_BENCHMARK.md) for reproducible assets,
+source-bound native 720x1280 gameplay captures, checks and open art-review gates.
+This source benchmark has not produced a new APK or received graphics acceptance.
+
 An original offline portrait 3D commander/base defense game. Twelve districts,
 four recruit roles, three support choices, six ordinary enemy roles, three bosses,
 a liberation ending and deterministic seeded skirmishes are implemented.

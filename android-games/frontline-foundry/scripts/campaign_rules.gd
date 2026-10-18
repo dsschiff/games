@@ -80,7 +80,7 @@ static func pick_target(s: Dictionary, p: Vector2, reach: float, role: String) -
 			selected = i
 	return selected
 
-static func hit(s: Dictionary, e: Dictionary, source: Vector2, damage: float, owner: String, events: Array) -> float:
+static func hit(s: Dictionary, e: Dictionary, source: Vector2, damage: float, owner: String, events: Array, actor: String = "") -> float:
 	if e.hp <= 0:
 		return 0
 	var armor: bool = s.definition.enemy[e.role].armor
@@ -95,10 +95,10 @@ static func hit(s: Dictionary, e: Dictionary, source: Vector2, damage: float, ow
 				break
 	var dealt := minf(e.hp, adjusted)
 	e.hp -= dealt
-	events.append({"kind": "shot", "owner": owner, "from": [source.x, source.y], "to": [e.x, e.z], "enemy": e.id, "damage": dealt})
+	events.append({"kind": "shot", "owner": owner, "from": [source.x, source.y], "to": [e.x, e.z], "enemy": e.id, "damage": dealt, "actor": actor, "effect": "projectile", "attack": "%s:projectile:%.9f" % [actor, s.time]})
 	return dealt
 
-static func hurt(s: Dictionary, r: Dictionary, damage: float, source: Vector2, role: String, events: Array) -> void:
+static func hurt(s: Dictionary, r: Dictionary, damage: float, source: Vector2, role: String, events: Array, actor: String = "", effect: String = "projectile") -> void:
 	if r.is_empty():
 		if s.hp <= 0:
 			return
@@ -119,16 +119,16 @@ static func hurt(s: Dictionary, r: Dictionary, damage: float, source: Vector2, r
 			r.phase = "fallen"
 			r.slot = -1
 	s.last_hurt = role
-	events.append({"kind": "incoming", "owner": "enemy", "from": [source.x, source.y], "to": [p.x, p.y], "recipient": -1 if r.is_empty() else int(r.id), "damage": actual})
+	events.append({"kind": "incoming", "owner": "enemy", "from": [source.x, source.y], "to": [p.x, p.y], "recipient": -1 if r.is_empty() else int(r.id), "damage": actual, "actor": actor, "effect": effect, "attack": "%s:%s:%.9f" % [actor, effect, s.time]})
 
-static func hurt_hq(s: Dictionary, damage: float, source: Vector2, role: String, events: Array) -> void:
+static func hurt_hq(s: Dictionary, damage: float, source: Vector2, role: String, events: Array, actor: String = "", effect: String = "projectile") -> void:
 	var reduced: float = damage * (s.definition.support_effects.ward_factor if s.support == "ward" else 1.0)
 	s.prevented += damage - reduced
 	var actual := minf(s.hq, reduced)
 	s.hq -= actual
 	s.hq_taken += actual
 	s.last_hurt = role
-	events.append({"kind": "incoming", "owner": "enemy", "from": [source.x, source.y], "to": [0, 5.4], "recipient": -2, "damage": actual})
+	events.append({"kind": "incoming", "owner": "enemy", "from": [source.x, source.y], "to": [0, 5.4], "recipient": -2, "damage": actual, "actor": actor, "effect": effect, "attack": "%s:%s:%.9f" % [actor, effect, s.time]})
 
 static func tick(s: Dictionary, movement: Vector2, delta: float) -> Array:
 	var events: Array = []
@@ -195,24 +195,24 @@ static func step(s: Dictionary, movement: Vector2, dt: float, events: Array) -> 
 			var target := pick_target(s, rp, unit.range + (d.support_effects.relay_unit_range if s.support == "relay" else 0), r.role)
 			if target >= 0 and r.cooldown == 0 and not jammed:
 				var e: Dictionary = s.enemies[target]
-				r.damage += hit(s, e, rp, unit.damage, r.role, events)
+				r.damage += hit(s, e, rp, unit.damage, r.role, events, "recruit:" + str(int(r.id)))
 				if r.role == "rover":
 					var blast := Vector2(e.x, e.z)
 					for other in s.enemies:
 						if other.id != e.id and blast.distance_to(Vector2(other.x, other.z)) <= 2.2:
-							r.damage += hit(s, other, rp, unit.damage * 0.65, r.role, events)
+							r.damage += hit(s, other, rp, unit.damage * 0.65, r.role, events, "recruit:" + str(int(r.id)))
 				r.shots += 1
 				r.cooldown = unit.interval
 	s.commander_cd = maxf(0, s.commander_cd - dt)
 	var target := pick_target(s, p, d.command_range + (d.support_effects.relay_command_range if s.support == "relay" else 0), "commander")
 	if target >= 0 and s.commander_cd == 0 and s.hp > 0:
-		s.commander_damage += hit(s, s.enemies[target], p, d.command_damage * (d.support_effects.relay_damage_factor if s.support == "relay" else 1), "commander", events)
+		s.commander_damage += hit(s, s.enemies[target], p, d.command_damage * (d.support_effects.relay_damage_factor if s.support == "relay" else 1), "commander", events, "commander")
 		s.commander_shots += 1
 		s.commander_cd = d.command_interval
 	s.sentry_cd = maxf(0, s.sentry_cd - dt)
 	target = pick_target(s, Vector2(0, 0.6), d.sentry.range, "sentry")
 	if target >= 0 and s.sentry_cd == 0:
-		hit(s, s.enemies[target], Vector2(0, 0.6), d.sentry.damage, "sentry", events)
+		hit(s, s.enemies[target], Vector2(0, 0.6), d.sentry.damage, "sentry", events, "sentry")
 		s.sentry_cd = d.sentry.interval
 	# Ground strikes resolve before repair, pickups or success, and cannot revive casualties.
 	for i in range(s.marks.size() - 1, -1, -1):
@@ -221,10 +221,10 @@ static func step(s: Dictionary, movement: Vector2, dt: float, events: Array) -> 
 		if mark.remaining <= 0:
 			var blast := Vector2(mark.x, mark.z)
 			if p.distance_to(blast) < 1.25:
-				hurt(s, {}, 32, blast, "storm", events)
+				hurt(s, {}, 32, blast, "storm", events, "enemy:" + str(int(mark.source)), "ground")
 			for r in s.recruits:
 				if Vector2(r.x, r.z).distance_to(blast) < 1.25:
-					hurt(s, r, 32, blast, "storm", events)
+					hurt(s, r, 32, blast, "storm", events, "enemy:" + str(int(mark.source)), "ground")
 			s.marks.remove_at(i)
 	for e in s.enemies:
 		if e.hp <= 0:
@@ -236,7 +236,7 @@ static func step(s: Dictionary, movement: Vector2, dt: float, events: Array) -> 
 		if e.role == "storm" and e.boss_clock == 0:
 			s.marks.append({"x": p.x, "z": p.y, "remaining": 1.0, "source": e.id})
 			e.boss_clock = 2.7
-			events.append({"kind": "warning", "owner": "enemy", "from": [e.x, e.z], "to": [p.x, p.y]})
+			events.append({"kind": "warning", "owner": "enemy", "from": [e.x, e.z], "to": [p.x, p.y], "actor": "enemy:" + str(int(e.id)), "effect": "ground_warning", "attack": "enemy:%d:warning:%.9f" % [e.id, s.time]})
 		if e.role == "carrier" and e.boss_clock == 0 and e.heal_left > 0:
 			for other in s.enemies:
 				if other.hp > 0 and other.id != e.id and ep.distance_to(Vector2(other.x, other.z)) < 4:
@@ -244,7 +244,7 @@ static func step(s: Dictionary, movement: Vector2, dt: float, events: Array) -> 
 					other.hp += healed
 					e.heal_left -= healed
 					if healed > 0:
-						events.append({"kind": "repair", "owner": "carrier", "from": [e.x, e.z], "to": [other.x, other.z], "healed": healed})
+						events.append({"kind": "repair", "owner": "carrier", "from": [e.x, e.z], "to": [other.x, other.z], "healed": healed, "actor": "enemy:" + str(int(e.id)), "enemy": other.id, "effect": "repair", "attack": "enemy:%d:repair:%.9f" % [e.id, s.time]})
 			e.boss_clock = 4.0
 		if e.role == "drill":
 			if e.telegraph > 0:
@@ -252,14 +252,14 @@ static func step(s: Dictionary, movement: Vector2, dt: float, events: Array) -> 
 				if e.telegraph == 0:
 					e.z += 1.8
 					if p.distance_to(Vector2(e.x, e.z)) < 2:
-						hurt(s, {}, 30, ep, "drill", events)
+						hurt(s, {}, 30, ep, "drill", events, "enemy:" + str(int(e.id)), "contact")
 					for r in s.recruits:
 						if Vector2(r.x, r.z).distance_to(Vector2(e.x, e.z)) < 2:
-							hurt(s, r, 30, ep, "drill", events)
+							hurt(s, r, 30, ep, "drill", events, "enemy:" + str(int(e.id)), "contact")
 			elif e.boss_clock == 0:
 				e.telegraph = 1.2
 				e.boss_clock = 7.0
-				events.append({"kind": "warning", "owner": "enemy", "from": [e.x, e.z], "to": [e.x, e.z + 1.8]})
+				events.append({"kind": "warning", "owner": "enemy", "from": [e.x, e.z], "to": [e.x, e.z + 1.8], "actor": "enemy:" + str(int(e.id)), "effect": "charge_warning", "attack": "enemy:%d:charge:%.9f" % [e.id, s.time]})
 		var victim: Dictionary = {}
 		var nearest: float = spec.range
 		if e.role not in ["runner", "mortar", "sapper", "storm"]:
@@ -271,23 +271,23 @@ static func step(s: Dictionary, movement: Vector2, dt: float, events: Array) -> 
 		var commander_near: bool = ep.distance_to(p) < minf(nearest, spec.range) and e.role not in ["runner", "mortar", "storm"]
 		if e.role in ["mortar", "storm"] and e.z >= -6.75:
 			if e.cooldown == 0:
-				hurt_hq(s, spec.damage, ep, e.role, events)
+				hurt_hq(s, spec.damage, ep, e.role, events, "enemy:" + str(int(e.id)))
 				if e.role == "mortar":
 					var victims := 0
 					for r in s.recruits:
 						if r.phase in ["deploying", "fighting"] and victims < 2:
-							hurt(s, r, 20, ep, "mortar", events)
+							hurt(s, r, 20, ep, "mortar", events, "enemy:" + str(int(e.id)))
 							victims += 1
 				e.cooldown = spec.interval
 		elif e.role == "sapper" and e.z >= -0.5:
-			hurt_hq(s, spec.damage, ep, e.role, events)
+			hurt_hq(s, spec.damage, ep, e.role, events, "enemy:" + str(int(e.id)), "blast")
 			for r in s.recruits:
 				if ep.distance_to(Vector2(r.x, r.z)) < 3:
-					hurt(s, r, 22, ep, e.role, events)
+					hurt(s, r, 22, ep, e.role, events, "enemy:" + str(int(e.id)), "blast")
 			e.z = 2.2
 		elif commander_near or not victim.is_empty():
 			if e.cooldown == 0:
-				hurt(s, {} if commander_near else victim, spec.damage, ep, e.role, events)
+				hurt(s, {} if commander_near else victim, spec.damage, ep, e.role, events, "enemy:" + str(int(e.id)))
 				e.cooldown = spec.interval
 		else:
 			if e.telegraph == 0:
@@ -300,7 +300,7 @@ static func step(s: Dictionary, movement: Vector2, dt: float, events: Array) -> 
 			s.enemies.remove_at(i)
 		elif e.z >= 2.0:
 			s.escaped.append(e.id)
-			hurt_hq(s, d.enemy[e.role].leak, Vector2(e.x, e.z), e.role, events)
+			hurt_hq(s, d.enemy[e.role].leak, Vector2(e.x, e.z), e.role, events, "enemy:" + str(int(e.id)), "breach")
 			s.enemies.remove_at(i)
 	if s.hp > 0 and s.hq > 0:
 		for i in d.relays.size():

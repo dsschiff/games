@@ -1,0 +1,240 @@
+{
+  "schema_version": 1,
+  "authorship": "Original deterministic Frontline geometry; no imported third-party art, textures or paid assets",
+  "blender": "4.5.14 LTS 62c1db4208e8",
+  "portable_archive_sha256": "b9533d2397ac1984db4466fb23a7a4649391cca93f6e84209f9bcc60d071c8b9",
+  "generator": "source/build_assets.py",
+  "generator_sha256": "da3b9e03de34f3a27542f7b98765bb7ffe2ac61b953c2043c0fcacd45b091aa9",
+  "units": "meters; +Y Blender forward exports -Z Godot; right-handed glTF Y-up",
+  "animation": {
+    "source": "scripts/presentation/actor.gd",
+    "method": "Runtime rigid-weight skeleton poses, not baked glTF tracks",
+    "states": [
+      "idle",
+      "run with analytic two-link stance/swing",
+      "equip",
+      "upper-body aim",
+      "fire/recoil",
+      "hit",
+      "fallen",
+      "victory"
+    ],
+    "root_motion": false
+  },
+  "acceptance": "Structural export only; visible quality and frame-time measurement require actual rendered review",
+  "assets": [
+    {
+      "file": "models/cliff.glb",
+      "sha256": "5261a5d21358072b4d39892d91e073ba50ff66b5433cea5af4d9ebd61277627b",
+      "bytes": 15964,
+      "triangles": 376,
+      "mesh_nodes": 2,
+      "materials": [
+        "Rock",
+        "Snow"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/crate.glb",
+      "sha256": "32a7e29ab5d24f1342f8298ae2af7ae168436be442d37450197a4c7f4455ca4a",
+      "bytes": 31204,
+      "triangles": 752,
+      "mesh_nodes": 4,
+      "materials": [
+        "Olive",
+        "Metal",
+        "Roof"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/equipment.glb",
+      "sha256": "167f19e72a856504bf2fb9593351f083b1a992acb9b4c4b1a5f6d6aa2f48f19a",
+      "bytes": 76540,
+      "triangles": 1880,
+      "mesh_nodes": 10,
+      "materials": [
+        "Wood",
+        "Metal",
+        "Olive",
+        "Roof"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/headquarters.glb",
+      "sha256": "7d651034dcaf7779bf097520a5478ab0a16345bf6d2b18e05e34dc6b6ab06fcc",
+      "bytes": 80332,
+      "triangles": 1980,
+      "mesh_nodes": 10,
+      "materials": [
+        "Olive",
+        "Roof",
+        "Metal",
+        "Window",
+        "Signal"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/kit_breaker.glb",
+      "sha256": "88d12613858304822d0728689333a36e3239f3ad79f6263678f2c282ef365f18",
+      "bytes": 28200,
+      "triangles": 564,
+      "mesh_nodes": 3,
+      "materials": [
+        "Gunmetal",
+        "KitBrass",
+        "Uniform"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/kit_bulwark.glb",
+      "sha256": "b629a19e4e4befcd21e276b41e64d6568464cf39064e203ad336346934b2ab55",
+      "bytes": 31044,
+      "triangles": 752,
+      "mesh_nodes": 4,
+      "materials": [
+        "EnemyKit",
+        "Gunmetal",
+        "Rubber"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/kit_carrier.glb",
+      "sha256": "8549afc9033623e4ef001266c6e727ffa288727f25cdea25b7b8b87a157c7c8c",
+      "bytes": 28096,
+      "triangles": 564,
+      "mesh_nodes": 3,
+      "materials": [
+        "Ivory",
+        "KitBrass"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/kit_jammer.glb",
+      "sha256": "9240ff23137247c820f14f24864e2669f60a8c24e857b30cb8e11d6816be4f72",
+      "bytes": 45508,
+      "triangles": 1228,
+      "mesh_nodes": 6,
+      "materials": [
+        "EnemyKit",
+        "Gunmetal",
+        "KitBrass",
+        "Rubber"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/kit_mortar.glb",
+      "sha256": "1118691669eb99911e848db49ca1cd2563ea50445107f7895e3e488b07bf08e9",
+      "bytes": 28144,
+      "triangles": 564,
+      "mesh_nodes": 3,
+      "materials": [
+        "Gunmetal",
+        "KitBrass",
+        "EnemyKit"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/kit_ranger.glb",
+      "sha256": "cd21033564ec5f5d2b596c580a18baa9bb21dfb4759d7fc6c0a7e777977c7a2f",
+      "bytes": 19236,
+      "triangles": 376,
+      "mesh_nodes": 2,
+      "materials": [
+        "Gunmetal",
+        "Rubber"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/kit_sapper.glb",
+      "sha256": "eef90ad637909d0b603be62ab1c94f9be06045c4fe87c053a6f7f4ee39649f08",
+      "bytes": 36872,
+      "triangles": 752,
+      "mesh_nodes": 4,
+      "materials": [
+        "Rubber",
+        "KitBrass"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/kit_storm.glb",
+      "sha256": "d5db17dc1c4c9718cb617f842d82d05623556a7288e1d5cd598ccddc6d791b12",
+      "bytes": 53372,
+      "triangles": 1128,
+      "mesh_nodes": 6,
+      "materials": [
+        "EnemyKit",
+        "Gunmetal"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/rover.glb",
+      "sha256": "75b4603c52a18cdb32474d36969679f0f58a20739de132a62ec234e604235c8d",
+      "bytes": 122416,
+      "triangles": 2632,
+      "mesh_nodes": 14,
+      "materials": [
+        "Uniform",
+        "Gunmetal",
+        "Rubber",
+        "Trim"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/sandbag.glb",
+      "sha256": "1cd42fe3014df8f4f428cf563e7a321b4ce6bab2b35c6a0f375955c29d52c416",
+      "bytes": 17548,
+      "triangles": 376,
+      "mesh_nodes": 2,
+      "materials": [
+        "Sandbag",
+        "Seam"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/sentry.glb",
+      "sha256": "495da2b2aba1dfc19133f721d9dc99e5a16ce057d6bcd37ca2fc635cf1bdccc4",
+      "bytes": 37068,
+      "triangles": 752,
+      "mesh_nodes": 4,
+      "materials": [
+        "Gunmetal",
+        "Uniform",
+        "Trim"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/soldier.glb",
+      "sha256": "caad7dccce2564c44746d2daae95144ce70e8d38032bf1d1753d9d472d25ecf2",
+      "bytes": 541764,
+      "triangles": 9172,
+      "mesh_nodes": 7,
+      "materials": [
+        "Gunmetal",
+        "Rubber",
+        "Skin",
+        "Trim",
+        "Uniform",
+        "Vest",
+        "Visor"
+      ],
+      "skin_joints": [
+        16
+      ]
+    }
+  ]
+}

@@ -47,6 +47,8 @@ var tone_pitch := 0.0
 var save_io: Variant = null
 var save_problem := false
 var event_log: Array = []
+var presentation: Node3D
+const Outpost = preload("res://scripts/presentation/outpost.gd")
 
 func _ready() -> void:
 	var saved := S.read()
@@ -65,130 +67,16 @@ func _ready() -> void:
 	menu.visible = paused
 	save_now()
 
-func mat(color: String) -> StandardMaterial3D:
-	var m := StandardMaterial3D.new()
-	m.albedo_color = Color(color).srgb_to_linear()
-	m.roughness = 0.85
-	return m
-
-func mesh(parent: Node3D, shape: Mesh, pos: Vector3, color: String) -> MeshInstance3D:
-	var n := MeshInstance3D.new()
-	n.mesh = shape
-	n.material_override = mat(color)
-	n.position = pos
-	parent.add_child(n)
-	return n
-
-func box(parent: Node3D, pos: Vector3, size: Vector3, color: String) -> MeshInstance3D:
-	var shape := BoxMesh.new()
-	shape.size = size
-	return mesh(parent, shape, pos, color)
-
-func cylinder(parent: Node3D, pos: Vector3, radius: float, height: float, color: String) -> MeshInstance3D:
-	var shape := CylinderMesh.new()
-	shape.bottom_radius = radius
-	shape.top_radius = radius * 0.9
-	shape.height = height
-	shape.radial_segments = 12
-	return mesh(parent, shape, pos, color)
-
-func label3(parent: Node3D, text: String, pos: Vector3, color: String, size: int = 40) -> Label3D:
-	var l := Label3D.new()
-	l.text = text
-	l.position = pos
-	l.font_size = size
-	l.pixel_size = 0.012
-	l.modulate = Color(color)
-	l.outline_size = 9
-	l.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	l.no_depth_test = true
-	parent.add_child(l)
-	return l
-
-func soldier(parent: Node3D, color: String, commander: bool = false) -> Node3D:
-	var n := Node3D.new()
-	parent.add_child(n)
-	cylinder(n, Vector3(0, 0.45, 0), 0.27, 0.65, color)
-	cylinder(n, Vector3(0, 0.92, 0), 0.23, 0.27, "f5dcac")
-	cylinder(n, Vector3(0, 1.08, 0), 0.31, 0.16, color)
-	box(n, Vector3(-0.16, 0.1, 0), Vector3(0.19, 0.2, 0.3), "223b4b")
-	box(n, Vector3(0.16, 0.1, 0), Vector3(0.19, 0.2, 0.3), "223b4b")
-	var weapon := box(n, Vector3(0.35, 0.6, -0.3), Vector3(0.16, 0.17, 0.85), "e6f7e6")
-	weapon.name = "Weapon"
-	if commander:
-		cylinder(n, Vector3(0, 0.02, 0), 0.48, 0.06, "ffda79")
-		label3(n, "YOU", Vector3(0, 1.75, 0), "ffe9a2", 34)
-	return n
-
 func make_world() -> void:
-	var environment := WorldEnvironment.new()
-	var env := Environment.new()
-	env.background_mode = Environment.BG_COLOR
-	env.background_color = Color("142b3b")
-	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	env.ambient_light_color = Color("e0f5f0")
-	env.ambient_light_energy = 0.25
-	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
-	environment.environment = env
-	add_child(environment)
-	var sun := DirectionalLight3D.new()
-	sun.rotation_degrees = Vector3(-58, -25, 0)
-	sun.light_energy = 0.55
-	sun.shadow_enabled = true
-	add_child(sun)
-	camera = Camera3D.new()
-	add_child(camera)
-	camera.projection = Camera3D.PROJECTION_ORTHOGONAL
-	camera.position = Vector3(0, 18, 15)
-	camera.look_at(Vector3(0, 0, 0.8))
-	camera.current = true
-	box(self, Vector3(0, -0.3, 0), Vector3(10.4, 0.6, 14), "78999b")
-	box(self, Vector3(0, -0.65, 0), Vector3(10.7, 0.3, 14.3), "32495c")
-	box(self, Vector3(0, 0.01, -3.5), Vector3(9.6, 0.04, 6.4), "a8bab2")
-	box(self, Vector3(0, 0.03, 3.2), Vector3(1.3, 0.08, 5.7), "b4c9bc")
-	for side in [-1, 1]:
-		for i in 4:
-			box(self, Vector3(side * (1.6 + i * 0.85), 0.35, -0.35), Vector3(0.8, 0.6, 0.6), "e6d4aa")
-		for i in 6:
-			box(self, Vector3(side * 4.9, 0.3, -5.6 + i * 2.2), Vector3(0.3, 0.6, 0.5), "c3e3d8")
-	box(self, Vector3(0, 0.65, 5.5), Vector3(2.5, 1.3, 1.1), "2c747e")
-	box(self, Vector3(0, 1.4, 5.5), Vector3(2.8, 0.3, 1.4), "45b7a5")
-	label3(self, "FOUNDRY HQ", Vector3(0, 2.1, 5.5), "d5fff2", 30)
-	# Starter sentry protects bootstrap income but cannot defeat the armored siege.
-	cylinder(self, Vector3(0, 0.45, 0.6), 0.35, 0.8, "526778")
-	box(self, Vector3(0, 0.95, 0.25), Vector3(0.18, 0.22, 0.8), "f7d77c")
-	label3(self, "SENTRY", Vector3(0, 1.7, 0.6), "fff0af", 28)
-	for i in 2:
-		var p: Vector2 = R.PADS[i]
-		box(self, Vector3(p.x, 0.07, p.y), Vector3(2.2, 0.14, 1.8), "f1d58b")
-		box(self, Vector3(p.x, 0.17, p.y), Vector3(1.95, 0.10, 1.55), "276d70")
-		pad_labels.append(label3(self, "", Vector3(p.x, 1.55, p.y - 0.5), "ffe8a8", 40))
-		var station := Node3D.new()
-		add_child(station)
-		station.position = Vector3(p.x, 0.2, p.y)
-		box(station, Vector3(0, 0.5, 0), Vector3(1.5, 0.8, 0.7), "36ae9e")
-		box(station, Vector3(0, 0.95, 0), Vector3(1.7, 0.12, 0.9), "f9df91")
-		for j in 3:
-			box(station, Vector3(-0.45 + j * 0.45, 1.15, -0.1), Vector3(0.12, 0.12, 0.6), "e6f7e6")
-		station_nodes.append(station)
-	actors = Node3D.new()
-	add_child(actors)
-	avatar = soldier(actors, "ffc966", true)
-	for i in 4:
-		var n: Node3D
-		if i < 3:
-			n = soldier(actors, "34b5a4")
-		else:
-			n = Node3D.new()
-			actors.add_child(n)
-			box(n, Vector3(0, 0.45, 0), Vector3(1.15, 0.65, 1.6), "38a99a")
-			for x in [-0.65, 0.65]:
-				box(n, Vector3(x, 0.22, 0), Vector3(0.3, 0.4, 1.8), "233a48")
-			var weapon := box(n, Vector3(0, 0.95, -0.5), Vector3(0.2, 0.2, 1.5), "ffe3a3")
-			weapon.name = "Weapon"
-		var l := label3(n, "", Vector3(0, 1.5 if i < 3 else 1.8, 0), "bff9e4", 29)
-		l.name = "Status"
-		recruit_nodes.append(n)
+	if presentation != null:
+		presentation.set_process(false)
+		remove_child(presentation)
+		presentation.queue_free()
+	presentation = Outpost.new()
+	add_child(presentation)
+	presentation.build(state)
+	camera = presentation.camera
+	actors = presentation
 
 func style(bg: String, border: String = "426779", radius: int = 18) -> StyleBoxFlat:
 	var s := StyleBoxFlat.new()
@@ -243,6 +131,7 @@ func make_ui() -> void:
 	pause_button = button(head, "II", toggle_pause)
 	guidance = label(ui, "", Vector2.ZERO, Vector2.ZERO, 27)
 	guidance.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	guidance.add_theme_color_override("font_color", Color("344b3e"))
 	build_button = button(ui, "", build_nearby)
 	start_button = button(ui, "BREAK THE SIEGE", begin)
 	stick = Control.new()
@@ -295,9 +184,13 @@ func layout() -> void:
 	var view := get_viewport().get_visible_rect().size
 	var w := view.x
 	var h := view.y
-	camera.size = maxf(19.8, 12.0 * h / w)
+	presentation.fit(view)
 	head.position = Vector2(18, 18)
-	head.size = Vector2(w - 36, 207)
+	head.size = Vector2(w - 36, 155)
+	head.add_theme_stylebox_override("panel", style("253c35ed", "61765c"))
+	queue_label.hide()
+	wave_label.position.y = 119
+	wave_label.add_theme_font_size_override("font_size", 23)
 	pause_button.position = Vector2(w - 150, 15)
 	pause_button.size = Vector2(96, 96)
 	guidance.position = Vector2(12, h - 295)
@@ -402,6 +295,8 @@ func build_nearby() -> void:
 
 func retry() -> void:
 	state = R.fresh()
+	make_world()
+	layout()
 	state.phase = "playing"
 	paused = false
 	stop_move()
@@ -508,6 +403,8 @@ func import_code() -> void:
 		get_tree().change_scene_to_file("res://boot.tscn")
 		return
 	state = decoded.state
+	make_world()
+	layout()
 	profile = decoded.profile
 	settings = decoded.settings
 	close_transfer()
@@ -517,10 +414,10 @@ func import_code() -> void:
 func _physics_process(delta: float) -> void:
 	if not paused and state.phase == "playing":
 		var events := R.tick(state, input_vector, delta)
+		presentation.queue_events(events)
 		for e in events:
 			event_log.append({"time": state.time, "event": e})
 			if e.kind == "shot":
-				make_bolt(e)
 				tone(170 if e.owner == "vehicle" else 340, 0.04)
 			elif e.kind == "pickup":
 				tone(800, 0.12)
@@ -586,69 +483,9 @@ func refresh() -> void:
 	pause_button.disabled = transfer.visible
 
 func sync_world(dt: float) -> void:
-	avatar.position = Vector3(state.x, 0.1, state.z)
-	avatar.rotation.z = sin(state.time * 12) * 0.06 if input_vector.length() > 0.1 and not settings.reduced_effects and not paused else 0
-	for i in 2:
-		station_nodes[i].visible = state.pads[i]
-		pad_labels[i].text = ("RIFLES" if i == 0 else "ROVER") + ("\nSUPPLIED" if state.pads[i] else "\n" + str(R.COSTS[i]) + " SCRAP")
-	for r in state.recruits:
-		var n: Node3D = recruit_nodes[int(r.id)]
-		n.visible = r.phase != "fallen"
-		n.position = Vector3(r.x, 0.1, r.z)
-		n.get_node("Weapon").visible = r.phase != "waiting"
-		(n.get_node("Status") as Label3D).text = {"waiting": "NEEDS RIFLE" if r.role == "rifle" else "NEEDS CANNON", "equipping": "ARMING!", "deploying": "TO FRONT", "fighting": str(int(r.hp)) + " HP", "fallen": ""}[r.phase]
-	var alive := {}
-	for e in state.enemies:
-		var id := int(e.id)
-		alive[id] = true
-		if not enemy_nodes.has(id):
-			var n := Node3D.new()
-			actors.add_child(n)
-			box(n, Vector3(0, 0.55, 0), Vector3(0.8, 0.8, 0.9) if e.armored else Vector3(0.5, 0.65, 0.5), "a94e50" if not e.armored else "824f73")
-			cylinder(n, Vector3(0, 1.02, 0), 0.3, 0.2, "ef9b73")
-			for x in [-0.3, 0.3]:
-				box(n, Vector3(x, 0.15, 0), Vector3(0.2, 0.3, 0.45), "583a50")
-			var l := label3(n, "", Vector3(0, 1.5, 0), "ffe2c4", 30)
-			l.name = "Health"
-			enemy_nodes[id] = n
-		var n: Node3D = enemy_nodes[id]
-		n.position = Vector3(e.x, 0.1, e.z)
-		(n.get_node("Health") as Label3D).text = ("ARMOR " if e.armored else "") + str(int(ceil(e.hp)))
-	for id in enemy_nodes.keys():
-		if not alive.has(id):
-			enemy_nodes[id].queue_free()
-			enemy_nodes.erase(id)
-	var drops := {}
-	for c in state.coins:
-		var id := int(c.id)
-		drops[id] = true
-		if not coin_nodes.has(id):
-			var n := Node3D.new()
-			actors.add_child(n)
-			var coin := cylinder(n, Vector3(0, 0.4, 0), 0.3, 0.15, "ffd36c")
-			coin.rotation_degrees.x = 70
-			label3(n, "+" + str(int(c.value)), Vector3(0, 1, 0), "ffe594", 35)
-			coin_nodes[id] = n
-		coin_nodes[id].position = Vector3(c.x, 0.12, c.z)
-	for id in coin_nodes.keys():
-		if not drops.has(id):
-			coin_nodes[id].queue_free()
-			coin_nodes.erase(id)
-	for i in range(bolts.size() - 1, -1, -1):
-		bolts[i].life -= dt
-		if bolts[i].life <= 0:
-			bolts[i].node.queue_free()
-			bolts.remove_at(i)
-		else:
-			bolts[i].node.position = bolts[i].from.lerp(bolts[i].to, 1 - bolts[i].life / 0.16)
-
-func make_bolt(e: Dictionary) -> void:
-	var from := Vector3(e.from[0], 0.9, e.from[1])
-	var to := Vector3(e.to[0], 0.8, e.to[1])
-	var bolt := box(actors, from, Vector3(0.18 if e.owner == "vehicle" else 0.1, 0.1, 0.55), "ffe5a0" if e.owner == "commander" else "9bffe2")
-	if not from.is_equal_approx(to):
-		bolt.look_at(to)
-	bolts.append({"node": bolt, "life": 0.16, "from": from, "to": to})
+	if presentation != null:
+		presentation.sync(state, paused, settings.reduced_effects, dt)
+		avatar = presentation.units.get("commander")
 
 func setup_audio() -> void:
 	if DisplayServer.get_name() == "headless":
