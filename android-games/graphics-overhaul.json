@@ -128,12 +128,18 @@
     "android_release": "not_yet_built",
     "production": "authorized_first_pair"
   },
-  "render_slot": "Returned to Frontline full production after Gear first inspection; Gear CPU polish before second bounded slot",
+  "render_slot": "Frontline focused corrected production/legacy/Drill; Gear CPU deck/composition repairs after released second inspection",
   "gear_3d_checkpoint": {
-    "evidence": "android-games/evidence/gear-3d-source-foundation.json",
-    "worker_commit": "f67112c590d0db67ade6814416ec752a1d6a2422",
-    "integration_commit": "39750be290f32511cbf3d753ccc3f5c93d810e97",
-    "status": "source_supported_first_render_requires_polish",
+    "evidence": "android-games/evidence/gear-3d-second-inspection.json",
+    "worker_commit": "129c759c972235fe2affba9c560d2a5b60281f42",
+    "integration_commit": "a7b54fa",
+    "status": "deployment_occlusion_closed_deck_and_environment_followups_open",
     "graphical_apk": "not_yet_built"
+  },
+  "frontline_production_checkpoint": {
+    "worker_commit_reviewed": "998dce3063eeedd2e60954b89b2796a0771ca257",
+    "source_review": "android-games/reviews/frontline-production-early-source-astra.md",
+    "status": "Ranger_tip_and_scenery_clearance_corrections_pending",
+    "graphics_apk": "not_yet_built"
   }
 }

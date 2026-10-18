@@ -1,0 +1,46 @@
+{
+  "scope": "Gear second bounded composition inspection and independently executed CPU polish checks; no visual release acceptance",
+  "worker_commit": "129c759c972235fe2affba9c560d2a5b60281f42",
+  "integration_commit": "a7b54fa",
+  "independent_checks": {
+    "focused": 11975,
+    "input": 1462,
+    "input_events": 194,
+    "source_unchanged": true,
+    "failures": 0
+  },
+  "render": {
+    "run": "inspect-20261018T141111227786Z",
+    "checks": 6,
+    "failures": 0,
+    "source_unchanged": true,
+    "root_viewed_originals": [
+      "05-early-battle.png",
+      "08-resumed-inner.png"
+    ]
+  },
+  "closed_visual_issue": "Opaque utility row no longer hides board-to-corridor-to-arch deployment",
+  "open_visual_issues": [
+    "Horizontal bands on deck require diagnosis and correction",
+    "Ground/paving remains repetitive and workshops are cropped; bounded environment composition pass pending"
+  ],
+  "canonical_packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\gear-second-inspection-129c759",
+  "preservation": {
+    "files": 28,
+    "bytes": 3039607,
+    "receipt_sha256": "17e0b65c1bab31c92dfb6d1dcf2bcaa1de8728e10370c331d0cfd00287ef966c"
+  },
+  "native_baseline_audit": {
+    "packet": ".artifacts/graphics-overhaul/first-pair-installed-baselines-20261018",
+    "files": 7,
+    "bytes": 57800,
+    "receipt_sha256": "b53fc50171a40069eecc837d13b93f141efb6ec73972ca1279e93ab50803278d",
+    "actual_installed_apks_match_preserved": {
+      "frontline_code2": true,
+      "gear_code7": true
+    },
+    "genuine_saves_twice_identical": true,
+    "app_mutations": false
+  },
+  "limits": "No graphics APK, motion acceptance, physical performance or human fun claim. User defers phone testing."
+}
