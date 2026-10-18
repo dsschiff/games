@@ -140,3 +140,41 @@ films and root's final build will share candidate metadata. Original34ce074
 second-scene evidence remains historical and visually identical. Metadata and
 source-index verification are CPU-only; no export/install/render/full-suite run
 was performed for this correction.
+
+## Granted full opening only: complete, renderer released
+
+`.artifacts/production-opening-20261018T172122880462Z/` is the granted fresh
+normal1x opening on0.3.0/code3/runtime576d4af. Seven harness checks pass, zero
+failures/unexpected errors, unchanged137 source files. MP4 is native720x1280,
+1808frames/60.266667s, fully decoded; SHA256
+`b980627353127365eb4591836a3681be01d97dc44613e57202b830b36305ff8c`.
+All1978 receipt artifact rows were hash/size-reverified. Retained raw PNGs total
+726130951bytes; neither raw frames nor source/evidence were cleaned or deleted.
+
+Actual engine-input play ends held at60.166667 simulation seconds:26 stopped,
+zero leaked,16refuge,86 gold spent/0 wallet. Two towers were bought and upgraded
+to Pierce and Scatter; shots30Bolt/7Mortar. This is a live opening checkpoint,
+not a victory or mission-completion claim. Both final app-written raw slots and
+whole context are retained under `slots/final/` with hashes in the report.
+
+Actual projected movie coverage is commander/citizen/defender/raider/runner in
+Copper March. Armor/swarm/mender/shade and all three bosses, plus Fens/Glasswind,
+remain unseen in this opening. `.artifacts/production-coverage-20261018T172621091056Z.json`
+records the missing primary heavy/later stages and role/region denominators.
+Observed lower-bound reuse:21 actor cross-ID bindings and70 effect lifetimes.
+
+Builder inspected original frames300/600/900/1200/1500 directly. Road, clustered
+scenery, readable labels, clear crest and ongoing combat are visible. One visual
+review finding is retained: the actual floating joystick origin110,850 partly
+overlaps the lower-left pad5 price/citizen in frames600/900/1200/1500. Static
+layout-clearance assertions did not cover this floating location. No art/runtime
+or harness fix was made under this opening-only grant; independent assessment
+and normal1x motion review remain required. Checked image hashes and limits are
+in `.artifacts/opening-original-inspection-20261018T172749173756Z.json`.
+
+Godot returned exit0; Get-Process verified zero Godot processes after capture.
+GPU release was explicitly announced before CPU verification finished. A prior
+CIM query lacked permission and was not used as release proof. No heavy/later/
+timing/lifecycle/restore/legacy/tour/gap render was started. Stop rendered work
+until root's next explicit grant; Gear review/native update has priority.
+Fixed30 movie cadence is not FPS, and no phone-performance/human-fun claim is made.
