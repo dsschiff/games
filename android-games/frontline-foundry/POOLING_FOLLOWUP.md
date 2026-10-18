@@ -119,3 +119,18 @@ last focused regression and this handoff from retained files. No rendered execut
 APK export/install, emulator manipulation, clipboard or push occurred in this
 worktree. Astra source review, one short actual reuse film and separate unpaced
 timing remain required before the root-owned signed code4/native update and bundle.
+
+## Timing-only harness correction
+
+The final-source55.4667s movie passes with both real actor/model/rig reuses.
+Its subsequent first timing attempt is failed and retained: actual playback
+paused at26.1333s and hit the90s wall bound. Raw metadata also exposes VSync1,
+so this attempt cannot be described as uncapped. No heavy samples were reached.
+
+Timing mode now explicitly disables VSync and FPS caps, asserts no movie/fixed
+capture, and handles an observed pause through actual GUI Resume, retaining
+each interruption in the report. Game focus/lifecycle handlers are unchanged.
+The sampler retains up to120000 raw rows and reports any dropped rows explicitly.
+These changes affect tests only; the actual app runtime/art and accepted movie
+remain at78cb4bd. A new separate timing receipt is required; the failure is not
+relabeled or overwritten.

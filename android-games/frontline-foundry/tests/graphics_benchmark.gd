@@ -23,6 +23,7 @@ var require_reuse := false
 var actor_leases := {}
 var reuse_observations: Array = []
 var save_boundary := {}
+var measurement_resumes: Array = []
 
 func _initialize() -> void:
 	for arg in OS.get_cmdline_user_args():
@@ -41,6 +42,11 @@ func _initialize() -> void:
 func run() -> void:
 	Engine.time_scale = 1.0
 	root.size = Vector2i(720, 1280)
+	if measure_frames:
+		assert(Engine.get_write_movie_path().is_empty() and not "--fixed-fps" in OS.get_cmdline_args())
+		Engine.max_fps = 0
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+		assert(Engine.max_fps == 0 and DisplayServer.window_get_vsync_mode() == DisplayServer.VSYNC_DISABLED)
 	if not expected_start.is_empty():
 		var expected: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(expected_start))
 		var actual := S.read()
@@ -77,6 +83,15 @@ func run() -> void:
 		if Time.get_ticks_msec() - started > int((duration + 35) * 1000):
 			errors.append("Stopped at wall-clock bound; no time-scale compensation")
 			break
+		if measure_frames and scene.paused:
+			# Focus loss invokes the real game's pause policy. Use its GUI to
+			# resume and retain the interruption; held frames remain excluded.
+			measurement_resumes.append({"simulation": scene.state.time, "wall_msec": Time.get_ticks_msec(), "menu_visible": scene.menu.visible})
+			await release()
+			await click("RESUME")
+			if scene.paused:
+				errors.append("Real Resume input did not clear observed measurement pause")
+				break
 		var choice := P.decide(scene.state)
 		if choice.station >= 0 and C.can_buy(scene.state, choice.station):
 			await release()
@@ -216,6 +231,7 @@ func finish() -> void:
 			sources["art/models/" + file] = FileAccess.get_sha256("res://art/models/" + file)
 	var report := {"scope": "Normal 1x real Godot ScreenTouch/GUI input; read-only policy; no gameplay injection, handler calls, forced save/render state, clipboard or ADB. Structural/headless execution is not visual acceptance.", "renderer": ProjectSettings.get_setting("rendering/renderer/rendering_method"), "engine": Engine.get_version_info(), "display": DisplayServer.get_name(), "viewport": root.size, "time_scale": Engine.time_scale, "sources_sha256": sources, "inputs": inputs, "captures": captures, "observed": observed, "errors": errors, "normal_speed_simulation_seconds": scene.state.time - start_time if scene != null else 0}
 	report["dimensions"] = {"logical_visible_rect": root.get_visible_rect().size, "window_pixels": DisplayServer.window_get_size(), "root_window_size": root.size, "framebuffer_pixels": root.get_texture().get_size() if DisplayServer.get_name() != "headless" else Vector2.ZERO, "startup_window_override": Vector2i(ProjectSettings.get_setting("display/window/size/window_width_override"), ProjectSettings.get_setting("display/window/size/window_height_override")), "movie_encoded_size": "See external ffprobe movie-probe.json; script/root size never establishes encoded dimensions"}
+	report["measurement_gui_resumes"] = measurement_resumes
 	if scene != null:
 		report["pool"] = scene.presentation.pool_snapshot()
 		report["reuse_observations"] = reuse_observations
