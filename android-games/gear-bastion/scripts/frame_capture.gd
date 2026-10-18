@@ -15,6 +15,10 @@ func start(extra: Dictionary = {}) -> void:
 	warm_seconds = 0
 	excluded_frames = 0
 	metadata = {"device_model": OS.get_model_name(), "os": OS.get_name(), "os_version": OS.get_version(), "godot": Engine.get_version_info().string, "renderer": ProjectSettings.get_setting("rendering/renderer/rendering_method"), "started_unix": Time.get_unix_time_from_system()}
+	metadata["render_device"] = RenderingServer.get_video_adapter_name()
+	metadata["render_vendor"] = RenderingServer.get_video_adapter_vendor()
+	metadata["command_line"] = Array(OS.get_cmdline_args())
+	metadata["fixed_cadence_capture"] = "--fixed-fps" in OS.get_cmdline_args() or "--write-movie" in OS.get_cmdline_args()
 	metadata.merge(extra, true)
 	enabled = true
 
@@ -33,7 +37,7 @@ func sample(now_usec: int, eligible: bool, tag: Dictionary, draw_usec: int = 0) 
 	warm_seconds += seconds
 	if warm_seconds <= warmup or rows.size() >= MAX_SAMPLES:
 		return
-	rows.append([seconds * 1000, int(tag.friendly), int(tag.enemies), str(tag.encounter), bool(tag.reduced_effects), draw_usec])
+	rows.append([seconds * 1000, int(tag.friendly), int(tag.enemies), str(tag.encounter), bool(tag.reduced_effects), draw_usec, int(tag.get("draw_calls",0)), int(tag.get("primitives",0)), int(tag.get("nodes",0)), tag.get("render_size",[])])
 
 func summary(samples: Array) -> Dictionary:
 	if samples.is_empty():
@@ -51,4 +55,4 @@ func summary(samples: Array) -> Dictionary:
 
 func stop() -> Dictionary:
 	enabled = false
-	return {"schema": 1, "metadata": metadata, "criteria": {"clock": "Time.get_ticks_usec at RenderingServer.frame_post_draw; render-loop submission intervals, not OS presentation timestamps", "warmup_eligible_seconds": warmup, "excluded": "menus, explicit pause, loading/ready states and visible modals; gaps reset before resumed samples", "heavy_filter": "friendly + enemy actors >= 120", "max_samples": MAX_SAMPLES}, "excluded_frames": excluded_frames, "all_frames": summary(rows), "heavy_frames": summary(rows.filter(func(row): return int(row[1]) + int(row[2]) >= 120)), "columns": ["frame_ms", "friendly", "enemies", "encounter", "reduced_effects", "draw_cpu_usec"], "rows": rows}
+	return {"schema": 2, "metadata": metadata, "criteria": {"clock": "Time.get_ticks_usec at RenderingServer.frame_post_draw; render-loop submission intervals, not OS presentation timestamps", "warmup_eligible_seconds": warmup, "excluded": "menus, explicit pause, loading/ready states and visible modals; gaps reset before resumed samples", "heavy_filter": "friendly + enemy actors >= 120", "max_samples": MAX_SAMPLES}, "excluded_frames": excluded_frames, "all_frames": summary(rows), "heavy_frames": summary(rows.filter(func(row): return int(row[1]) + int(row[2]) >= 120)), "columns": ["frame_ms", "friendly", "enemies", "encounter", "reduced_effects", "draw_cpu_usec", "draw_calls_3d", "primitives_3d", "nodes_process", "render_size"], "rows": rows}

@@ -1,0 +1,659 @@
+{
+  "schema_version": 1,
+  "authorship": "Original Gear Bastion authored brass machinery, automata and insect sculpture; no external art",
+  "blender": "4.5.14 LTS 62c1db4208e8",
+  "portable_archive_sha256": "b9533d2397ac1984db4466fb23a7a4649391cca93f6e84209f9bcc60d071c8b9",
+  "generator_sha256": "b07ec1271cf35c99ae8604f9a3909629ff49447ecf55dd8c90fd5ffac945b483",
+  "mesh_helpers_sha256": "ef6336d19019b76d6d7f81556ac649b50ccffb865bbd2a2da6802197f3b162fb",
+  "units": "meters; Blender +Y forward / Godot -Z forward; glTF Y-up",
+  "animation": {
+    "owner": "scripts/presentation/actor.gd",
+    "method": "rigid-weight skeletal posing, no root motion or rule callbacks",
+    "states": [
+      "idle",
+      "independently phased stance/swing",
+      "aim",
+      "strike",
+      "fire/recoil",
+      "hit",
+      "death",
+      "victory"
+    ]
+  },
+  "status": "CPU export only; visible quality and frame timing await real rendered review",
+  "assets": [
+    {
+      "file": "models/arch.glb",
+      "sha256": "d6457bc5e90c932c256db6a64132783dd42894d1b601c00fcc8098f39fd5d702",
+      "bytes": 115256,
+      "contact_socket_godot": null,
+      "triangles": 3008,
+      "mesh_nodes": 4,
+      "materials": [
+        "FoundryStone",
+        "Brass",
+        "PolishedRim",
+        "Enamel"
+      ],
+      "skin_joints": [],
+      "joints": []
+    },
+    {
+      "file": "models/beetle.glb",
+      "sha256": "728f9ee21f60c766e264b20fab6b117f9961fffc5cfeb988d9cc8e959986f739",
+      "bytes": 419584,
+      "contact_socket_godot": [
+        0,
+        0.25,
+        -0.6255
+      ],
+      "triangles": 7804,
+      "mesh_nodes": 3,
+      "materials": [
+        "Carapace_beetle",
+        "Chitin",
+        "PolishedRim"
+      ],
+      "skin_joints": [
+        16
+      ],
+      "joints": [
+        "Root",
+        "Torso",
+        "Head",
+        "Weapon",
+        "LegL0",
+        "TipL0",
+        "LegL1",
+        "TipL1",
+        "LegL2",
+        "TipL2",
+        "LegR0",
+        "TipR0",
+        "LegR1",
+        "TipR1",
+        "LegR2",
+        "TipR2"
+      ]
+    },
+    {
+      "file": "models/captain.glb",
+      "sha256": "73096bf5a1c42d3cf3d902c0582aa70f2a99433055aad4fea8ce40410023a91d",
+      "bytes": 493896,
+      "contact_socket_godot": [
+        0,
+        0.4,
+        -0.9035
+      ],
+      "triangles": 9232,
+      "mesh_nodes": 3,
+      "materials": [
+        "Carapace_captain",
+        "Chitin",
+        "PolishedRim"
+      ],
+      "skin_joints": [
+        16
+      ],
+      "joints": [
+        "Root",
+        "Torso",
+        "Head",
+        "Weapon",
+        "LegL0",
+        "TipL0",
+        "LegL1",
+        "TipL1",
+        "LegL2",
+        "TipL2",
+        "LegR0",
+        "TipR0",
+        "LegR1",
+        "TipR1",
+        "LegR2",
+        "TipR2"
+      ]
+    },
+    {
+      "file": "models/carapace.glb",
+      "sha256": "6dde02a757b4099c496cef63500feabc6b02b7476ce58d753b9298b1534d293a",
+      "bytes": 495060,
+      "contact_socket_godot": [
+        0,
+        0.25,
+        -0.7645
+      ],
+      "triangles": 9232,
+      "mesh_nodes": 4,
+      "materials": [
+        "Carapace_carapace",
+        "Chitin",
+        "Iron",
+        "PolishedRim"
+      ],
+      "skin_joints": [
+        16
+      ],
+      "joints": [
+        "Root",
+        "Torso",
+        "Head",
+        "Weapon",
+        "LegL0",
+        "TipL0",
+        "LegL1",
+        "TipL1",
+        "LegL2",
+        "TipL2",
+        "LegR0",
+        "TipR0",
+        "LegR1",
+        "TipR1",
+        "LegR2",
+        "TipR2"
+      ]
+    },
+    {
+      "file": "models/core.glb",
+      "sha256": "c19cb9fd0b4c96b95d40d871fb70e23aa421e8ec93216150cde3c2de3e14367a",
+      "bytes": 216580,
+      "contact_socket_godot": null,
+      "triangles": 4888,
+      "mesh_nodes": 4,
+      "materials": [
+        "Brass",
+        "Iron",
+        "PolishedRim",
+        "MintLens"
+      ],
+      "skin_joints": [],
+      "joints": []
+    },
+    {
+      "file": "models/drive.glb",
+      "sha256": "8fe210b3a9ef4c0b8d2be17e2738a3522e1ce6a437f6b5dcaa07eeea57eae9d1",
+      "bytes": 216580,
+      "contact_socket_godot": null,
+      "triangles": 4888,
+      "mesh_nodes": 4,
+      "materials": [
+        "Brass",
+        "Iron",
+        "PolishedRim",
+        "Ivory"
+      ],
+      "skin_joints": [],
+      "joints": []
+    },
+    {
+      "file": "models/generator_guard.glb",
+      "sha256": "234d363dbecca3a8a30e1b1bc34eb4c6c695d6cbcf9f5816c7fb85f952685282",
+      "bytes": 85948,
+      "contact_socket_godot": null,
+      "triangles": 1692,
+      "mesh_nodes": 5,
+      "materials": [
+        "Iron",
+        "Enamel",
+        "Brass",
+        "PolishedRim",
+        "Ivory"
+      ],
+      "skin_joints": [],
+      "joints": []
+    },
+    {
+      "file": "models/generator_mortar.glb",
+      "sha256": "874d36bb5f1a4f4516d7e9be25be1e1f191bbecb43eab6bfaacd3b959e752fcd",
+      "bytes": 88744,
+      "contact_socket_godot": null,
+      "triangles": 1692,
+      "mesh_nodes": 5,
+      "materials": [
+        "Iron",
+        "Enamel",
+        "Brass",
+        "PolishedRim",
+        "Ivory"
+      ],
+      "skin_joints": [],
+      "joints": []
+    },
+    {
+      "file": "models/generator_ranger.glb",
+      "sha256": "37d9aedc375bbba7b5d61de780dfbd9a31357fc5f4b41f8417971a5e90b190ac",
+      "bytes": 95892,
+      "contact_socket_godot": null,
+      "triangles": 1880,
+      "mesh_nodes": 5,
+      "materials": [
+        "Iron",
+        "Enamel",
+        "Brass",
+        "PolishedRim",
+        "Ivory"
+      ],
+      "skin_joints": [],
+      "joints": []
+    },
+    {
+      "file": "models/guard.glb",
+      "sha256": "75ea3544b03e7afc8033257f0526d4792b07deb3d4e1dbc99fb552ce3be32b65",
+      "bytes": 505244,
+      "contact_socket_godot": [
+        0.34,
+        1.28,
+        -0.4
+      ],
+      "triangles": 8144,
+      "mesh_nodes": 6,
+      "materials": [
+        "Brass",
+        "Enamel",
+        "Iron",
+        "Ivory",
+        "MintLens",
+        "PolishedRim"
+      ],
+      "skin_joints": [
+        16
+      ],
+      "joints": [
+        "Root",
+        "Torso",
+        "Head",
+        "UpperArmL",
+        "ForearmL",
+        "HandL",
+        "UpperArmR",
+        "ForearmR",
+        "HandR",
+        "Weapon",
+        "ThighL",
+        "ShinL",
+        "FootL",
+        "ThighR",
+        "ShinR",
+        "FootR"
+      ]
+    },
+    {
+      "file": "models/matriarch.glb",
+      "sha256": "58ec33f3addb78f1ddad1722c5dac8300d8c1f61b3ebb4573e20f088b768272c",
+      "bytes": 511708,
+      "contact_socket_godot": [
+        0,
+        0.4,
+        -1.251
+      ],
+      "triangles": 9808,
+      "mesh_nodes": 4,
+      "materials": [
+        "Carapace_matriarch",
+        "Chitin",
+        "MintLens",
+        "PolishedRim"
+      ],
+      "skin_joints": [
+        18
+      ],
+      "joints": [
+        "Root",
+        "Torso",
+        "Head",
+        "Weapon",
+        "LegL0",
+        "TipL0",
+        "LegL1",
+        "TipL1",
+        "LegL2",
+        "TipL2",
+        "LegR0",
+        "TipR0",
+        "LegR1",
+        "TipR1",
+        "LegR2",
+        "TipR2",
+        "WingL",
+        "WingR"
+      ]
+    },
+    {
+      "file": "models/mortar.glb",
+      "sha256": "646d96875ffa1e35aebb6fc559d4c2d26e0898eb84e45d94f5b207871a6b1b53",
+      "bytes": 497532,
+      "contact_socket_godot": [
+        0.34,
+        1.12,
+        -0.75
+      ],
+      "triangles": 7956,
+      "mesh_nodes": 6,
+      "materials": [
+        "Brass",
+        "Enamel",
+        "Iron",
+        "Ivory",
+        "MintLens",
+        "PolishedRim"
+      ],
+      "skin_joints": [
+        16
+      ],
+      "joints": [
+        "Root",
+        "Torso",
+        "Head",
+        "UpperArmL",
+        "ForearmL",
+        "HandL",
+        "UpperArmR",
+        "ForearmR",
+        "HandR",
+        "Weapon",
+        "ThighL",
+        "ShinL",
+        "FootL",
+        "ThighR",
+        "ShinR",
+        "FootR"
+      ]
+    },
+    {
+      "file": "models/ranger.glb",
+      "sha256": "3d68dd4f04f383a061285e102e7b35e8690477bf24b6e92d33e03716678356ee",
+      "bytes": 510976,
+      "contact_socket_godot": [
+        0.34,
+        0.86,
+        -1.055
+      ],
+      "triangles": 8144,
+      "mesh_nodes": 6,
+      "materials": [
+        "Brass",
+        "Enamel",
+        "Iron",
+        "Ivory",
+        "MintLens",
+        "PolishedRim"
+      ],
+      "skin_joints": [
+        16
+      ],
+      "joints": [
+        "Root",
+        "Torso",
+        "Head",
+        "UpperArmL",
+        "ForearmL",
+        "HandL",
+        "UpperArmR",
+        "ForearmR",
+        "HandR",
+        "Weapon",
+        "ThighL",
+        "ShinL",
+        "FootL",
+        "ThighR",
+        "ShinR",
+        "FootR"
+      ]
+    },
+    {
+      "file": "models/region_1.glb",
+      "sha256": "ed8c7b1430ac0c301b42acebbe2b1d64491055a57d51f0222168ec808e23c7ea",
+      "bytes": 52964,
+      "contact_socket_godot": null,
+      "triangles": 1128,
+      "mesh_nodes": 3,
+      "materials": [
+        "RegionStone1",
+        "Brass",
+        "PolishedRim"
+      ],
+      "skin_joints": [],
+      "joints": []
+    },
+    {
+      "file": "models/region_2.glb",
+      "sha256": "bcd560045429c6ec2e400c5de2b7c97eb9c3f4091053c9a47c3add542366223e",
+      "bytes": 41956,
+      "contact_socket_godot": null,
+      "triangles": 940,
+      "mesh_nodes": 3,
+      "materials": [
+        "RegionStone2",
+        "Iron",
+        "Kiln"
+      ],
+      "skin_joints": [],
+      "joints": []
+    },
+    {
+      "file": "models/region_3.glb",
+      "sha256": "0a9416ec86299194c10715189233f1fbd143db234a951cb313ed006dd88b1ee7",
+      "bytes": 35396,
+      "contact_socket_godot": null,
+      "triangles": 1040,
+      "mesh_nodes": 2,
+      "materials": [
+        "RegionStone3",
+        "MintLens"
+      ],
+      "skin_joints": [],
+      "joints": []
+    },
+    {
+      "file": "models/shell.glb",
+      "sha256": "6bd322de5c3d2b29dd1314589fe75113b453574dc58f2bf09653e021d31177a5",
+      "bytes": 444028,
+      "contact_socket_godot": [
+        0,
+        0.25,
+        -0.6394
+      ],
+      "triangles": 8668,
+      "mesh_nodes": 3,
+      "materials": [
+        "Carapace_shell",
+        "Chitin",
+        "PolishedRim"
+      ],
+      "skin_joints": [
+        16
+      ],
+      "joints": [
+        "Root",
+        "Torso",
+        "Head",
+        "Weapon",
+        "LegL0",
+        "TipL0",
+        "LegL1",
+        "TipL1",
+        "LegL2",
+        "TipL2",
+        "LegR0",
+        "TipR0",
+        "LegR1",
+        "TipR1",
+        "LegR2",
+        "TipR2"
+      ]
+    },
+    {
+      "file": "models/siege.glb",
+      "sha256": "1bb297b0d894ca1e9fe32f6cc2355e4f7c99ad918d84aae125e3142c5287b1f9",
+      "bytes": 467548,
+      "contact_socket_godot": [
+        0,
+        1.0,
+        -1.094
+      ],
+      "triangles": 8368,
+      "mesh_nodes": 5,
+      "materials": [
+        "Brass",
+        "Carapace_siege",
+        "Chitin",
+        "Iron",
+        "PolishedRim"
+      ],
+      "skin_joints": [
+        16
+      ],
+      "joints": [
+        "Root",
+        "Torso",
+        "Head",
+        "Weapon",
+        "LegL0",
+        "TipL0",
+        "LegL1",
+        "TipL1",
+        "LegL2",
+        "TipL2",
+        "LegR0",
+        "TipR0",
+        "LegR1",
+        "TipR1",
+        "LegR2",
+        "TipR2"
+      ]
+    },
+    {
+      "file": "models/skitter.glb",
+      "sha256": "a443d21383d2ef2f93bbdc4b185a0879bda75e5c9e41fcfabbc9643daeaf0802",
+      "bytes": 419576,
+      "contact_socket_godot": [
+        0,
+        0.25,
+        -0.5143
+      ],
+      "triangles": 7804,
+      "mesh_nodes": 3,
+      "materials": [
+        "Carapace_skitter",
+        "Chitin",
+        "PolishedRim"
+      ],
+      "skin_joints": [
+        16
+      ],
+      "joints": [
+        "Root",
+        "Torso",
+        "Head",
+        "Weapon",
+        "LegL0",
+        "TipL0",
+        "LegL1",
+        "TipL1",
+        "LegL2",
+        "TipL2",
+        "LegR0",
+        "TipR0",
+        "LegR1",
+        "TipR1",
+        "LegR2",
+        "TipR2"
+      ]
+    },
+    {
+      "file": "models/spitter.glb",
+      "sha256": "9e9da7957ad18c743ccaefe0c9c2083921d62a2a4d950ba8ec79d5b415048fa4",
+      "bytes": 454872,
+      "contact_socket_godot": [
+        0,
+        0.33999999999999997,
+        -0.644
+      ],
+      "triangles": 8568,
+      "mesh_nodes": 5,
+      "materials": [
+        "Carapace_spitter",
+        "Chitin",
+        "Iron",
+        "MintLens",
+        "PolishedRim"
+      ],
+      "skin_joints": [
+        16
+      ],
+      "joints": [
+        "Root",
+        "Torso",
+        "Head",
+        "Weapon",
+        "LegL0",
+        "TipL0",
+        "LegL1",
+        "TipL1",
+        "LegL2",
+        "TipL2",
+        "LegR0",
+        "TipR0",
+        "LegR1",
+        "TipR1",
+        "LegR2",
+        "TipR2"
+      ]
+    },
+    {
+      "file": "models/swarm.glb",
+      "sha256": "8b66d2f910748ba75103f94ec51e66f23640115673c7cdc0bfa8cb65b13c7132",
+      "bytes": 437344,
+      "contact_socket_godot": [
+        0,
+        0.25,
+        -0.417
+      ],
+      "triangles": 8380,
+      "mesh_nodes": 4,
+      "materials": [
+        "Carapace_swarm",
+        "Chitin",
+        "Ivory",
+        "PolishedRim"
+      ],
+      "skin_joints": [
+        18
+      ],
+      "joints": [
+        "Root",
+        "Torso",
+        "Head",
+        "Weapon",
+        "LegL0",
+        "TipL0",
+        "LegL1",
+        "TipL1",
+        "LegL2",
+        "TipL2",
+        "LegR0",
+        "TipR0",
+        "LegR1",
+        "TipR1",
+        "LegR2",
+        "TipR2",
+        "WingL",
+        "WingR"
+      ]
+    },
+    {
+      "file": "models/wall.glb",
+      "sha256": "4413d8dbd2fd4d86bb200421d043ab751f78f111cfdc116b784c39221cc713b5",
+      "bytes": 30840,
+      "contact_socket_godot": null,
+      "triangles": 752,
+      "mesh_nodes": 2,
+      "materials": [
+        "FoundryStone",
+        "Brass"
+      ],
+      "skin_joints": [],
+      "joints": []
+    }
+  ]
+}

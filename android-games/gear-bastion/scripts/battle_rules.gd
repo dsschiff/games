@@ -104,7 +104,7 @@ static func next_producer(state: Dictionary, rates: Dictionary) -> Dictionary:
 			return p
 	return available[0] if not available.is_empty() else {}
 
-static func tick(state: Dictionary, dt: float) -> void:
+static func tick(state: Dictionary, dt: float, presentation: Variant = null) -> void:
 	if state.phase != "battle":
 		return
 	state.time = float(state.time) + dt
@@ -157,7 +157,7 @@ static func tick(state: Dictionary, dt: float) -> void:
 		state.enemies.append(make_unit(state, kind, lane, false))
 		state.spawned = int(state.spawned) + 1
 	if not config.is_empty() and state.boss_spawned:
-		boss_tick(state, dt)
+		boss_tick(state, dt, presentation)
 	for friendly in [true, false]:
 		var attackers: Array = state.units if friendly else state.enemies
 		var targets: Array = state.enemies if friendly else state.units
@@ -202,6 +202,8 @@ static func tick(state: Dictionary, dt: float) -> void:
 					target.hp = float(target.hp) - damage
 					target.flash = 0.16
 					unit.cooldown = stats.period
+					if presentation != null:
+						presentation.append(impact_event(state, unit, target, friendly, "attack", damage))
 					if unit.kind == "carapace":
 						var splashed := 0
 						for nearby in targets:
@@ -210,6 +212,8 @@ static func tick(state: Dictionary, dt: float) -> void:
 							if Vector2(float(nearby.x) - float(target.x), float(nearby.y) - float(target.y)).length_squared() <= 36 * 36:
 								nearby.hp = float(nearby.hp) - damage * 0.65
 								nearby.flash = 0.16
+								if presentation != null:
+									presentation.append(impact_event(state, unit, nearby, friendly, "splash", damage * 0.65))
 								splashed += 1
 								if splashed >= 4:
 									break
@@ -222,6 +226,8 @@ static func tick(state: Dictionary, dt: float) -> void:
 							if Vector2(float(nearby.x) - float(target.x), float(nearby.y) - float(target.y)).length_squared() <= radius * radius:
 								nearby.hp = float(nearby.hp) - damage * 0.7
 								nearby.flash = 0.16
+								if presentation != null:
+									presentation.append(impact_event(state, unit, nearby, friendly, "splash", damage * 0.7))
 								splash_hits += 1
 								if splash_hits >= 7:
 									break
@@ -247,6 +253,8 @@ static func tick(state: Dictionary, dt: float) -> void:
 				state.wall = maxf(0.0, float(state.wall) - float(stats.damage))
 				state.wall_hits = int(state.wall_hits) + 1
 				unit.cooldown = stats.period
+				if presentation != null:
+					presentation.append({"kind": "wall", "attack": "%d:%.12f" % [int(unit.id), float(state.time)], "actor": "enemy:" + str(int(unit.id)), "role": str(unit.kind), "from": [float(unit.x), float(unit.y)], "to": [116.0 + 184.0 * int(unit.lane), 542.0], "target": "wall", "damage": float(stats.damage)})
 	var dead := 0
 	for enemy in state.enemies:
 		if float(enemy.hp) <= 0:
@@ -303,7 +311,7 @@ static func campaign_spawn(state: Dictionary, wave: Dictionary) -> void:
 		state.enemies.append(unit)
 		state.spawned += 1
 
-static func boss_tick(state: Dictionary, dt: float) -> void:
+static func boss_tick(state: Dictionary, dt: float, presentation: Variant = null) -> void:
 	var boss: Dictionary = {}
 	for enemy in state.enemies:
 		if enemy.kind in ["captain", "siege", "matriarch"]:
@@ -334,3 +342,9 @@ static func boss_tick(state: Dictionary, dt: float) -> void:
 			if not screened or float(state.boss_total) >= 60:
 				state.wall = maxf(0.0, float(state.wall) - (20.0 if float(state.boss_total) >= 60 else 14.0))
 				state.wall_hits += 1
+				if presentation != null:
+					presentation.append({"kind": "volley", "attack": "%d:%.12f:volley" % [int(boss.id), float(state.time)], "actor": "enemy:" + str(int(boss.id)), "role": str(boss.kind), "from": [float(boss.x), float(boss.y)], "to": [300.0, 542.0], "target": "wall", "damage": 20.0 if float(state.boss_total) >= 60 else 14.0})
+
+static func impact_event(state: Dictionary, unit: Dictionary, target: Dictionary, friendly: bool, kind: String, damage: float) -> Dictionary:
+	# Observational metadata only: called after the existing authoritative damage.
+	return {"kind": kind, "attack": "%d:%.12f" % [int(unit.id), float(state.time)], "actor": ("ally:" if friendly else "enemy:") + str(int(unit.id)), "target": ("enemy:" if friendly else "ally:") + str(int(target.id)), "role": str(unit.kind), "from": [float(unit.x), float(unit.y)], "to": [float(target.x), float(target.y)], "damage": damage}

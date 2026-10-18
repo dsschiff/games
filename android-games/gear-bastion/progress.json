@@ -6,8 +6,8 @@
   "save_schema": 4,
   "branch": "codex/gear-graphics",
   "updated_at": "2026-10-18T12:01:25.186469+00:00",
-  "milestone": "responsive_window_fit_before_3d",
-  "status": "desktop_fit_verified_pending_coordinator_android_review",
+  "milestone": "original_3d_cpu_foundation",
+  "status": "cpu_verified_first_render_pending",
   "full_v1_complete": false,
   "campaign_expansion": "full_nine_encounter_campaign_implemented_candidate",
   "campaign_checkpoint": {
@@ -46,7 +46,7 @@
     "constrained_budget_counter_trial": true,
     "sole_staged_backup_reused_without_truncation": true
   },
-  "next_action": "Coordinator reviews the clean fit commit, exports signed code7 and verifies the genuine code6-to-code7 preserved-save update plus native layout/input. Wait for root before full3D.",
+  "next_action": "Use coordinator-granted first bounded GPU inspection slot for actual fresh early play, original actor/gear/deployment composition and resize input; fix visible findings before long source-bound motion review.",
   "remaining": [
     "Coordinator independent code7 review and signed Android update/resize/input checks",
     "Frontline benchmark art-pipeline approval before full3D Gear work",
@@ -328,5 +328,16 @@
     "android_update": "pending_coordinator",
     "phone_testing": "deferred_by_user",
     "full_3d": "not_started_waiting_for_coordinator"
+  },
+  "graphics_production": {
+    "plan": "GRAPHICS_PRODUCTION.md",
+    "cpu_evidence": "evidence/graphics-cpu.json",
+    "models": 22,
+    "byte_identical_repeat": true,
+    "focused_cpu_checks": 6932,
+    "focused_input_checks": 1462,
+    "gpu_phase": "waiting_for_coordinator_first_inspection_slot",
+    "full_3d_accepted": false,
+    "target_freeze": "0.4.0/code8_after_review"
   }
 }

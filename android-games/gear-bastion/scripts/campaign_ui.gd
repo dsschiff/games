@@ -22,7 +22,7 @@ static func buttons(game: Variant) -> Dictionary:
 
 static func draw(game: Variant) -> void:
 	var size: Vector2 = game.layout.size
-	game.draw_rect(Rect2(Vector2.ZERO, size), Color("10212c"))
+	game.draw_rect(Rect2(Vector2.ZERO, size), Color("10212ce8"))
 	game.label_at("GEAR BASTION", Vector2(20, 37), 28, game.GOLD)
 	var ui := buttons(game)
 	for key in ["mute", "effects", "save"]:

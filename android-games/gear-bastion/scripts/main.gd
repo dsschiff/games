@@ -12,6 +12,7 @@ const LocalAudio = preload("res://scripts/local_audio.gd")
 const CampaignView = preload("res://scripts/campaign_view.gd")
 const ActorArt = preload("res://scripts/actor_art.gd")
 const WindowLayout = preload("res://scripts/window_layout.gd")
+const Foundry3D = preload("res://scripts/presentation/foundry.gd")
 const CELL := 80.0
 const INK := Color("172b36")
 const CREAM := Color("f4e7bd")
@@ -63,6 +64,8 @@ var layout := WindowLayout.new()
 var usable := Rect2()
 var safe_area_override := Rect2()
 var dialog_scrolls: Dictionary = {}
+var presentation_view: SubViewport
+var presentation: Node3D
 
 func _ready() -> void:
 	get_tree().quit_on_go_back = false
@@ -108,7 +111,17 @@ func _ready() -> void:
 		dialog.theme = dialog_theme
 	get_viewport().size_changed.connect(refresh_layout)
 	refresh_layout()
-	actor_art.bake(self)
+	presentation_view = SubViewport.new()
+	presentation_view.name = "OriginalFoundry3D"
+	presentation_view.own_world_3d = true
+	presentation_view.render_target_update_mode = SubViewport.UPDATE_DISABLED if DisplayServer.get_name() == "headless" else SubViewport.UPDATE_ALWAYS
+	presentation_view.msaa_3d = Viewport.MSAA_2X
+	add_child(presentation_view)
+	presentation = Foundry3D.new()
+	presentation_view.add_child(presentation)
+	presentation_view.size = render_dimensions()
+	presentation.build(layout,Vector2(presentation_view.size))
+	reset_presentation()
 	queue_redraw()
 
 func _notification(what: int) -> void:
@@ -146,6 +159,11 @@ func _process(delta: float) -> void:
 	fx_sound_clock += delta
 	if not paused and screen == "game":
 		advance(minf(delta, 0.2) * speed)
+	if is_instance_valid(presentation):
+		if paused or screen != "game" or state.phase != "battle":
+			presentation.sync(state,[])
+		presentation.step(delta*speed,paused or screen != "game",bool(settings.reduced_effects))
+		presentation.drag_preview(pointer - Vector2(0,42),selected_piece() if drag_kind == "" else Gear.piece(0,drag_kind,0,0),dragging)
 	save_clock += delta
 	if save_clock >= 5:
 		save_clock = 0
@@ -161,7 +179,11 @@ func advance(seconds: float) -> void:
 		var before: String = state.phase
 		var before_wave: int = state.wave
 		var before_kills: int = state.kills
-		Battle.tick(state, Battle.STEP)
+		var render_events: Array = []
+		Battle.tick(state, Battle.STEP, render_events)
+		if is_instance_valid(presentation):
+			presentation.reduced = bool(settings.reduced_effects)
+			presentation.sync(state,render_events,Battle.STEP)
 		accumulator = maxf(0.0, accumulator - Battle.STEP)
 		if state.wave != before_wave:
 			_tone(580 + int(state.wave) * 30)
@@ -187,6 +209,7 @@ func retry() -> void:
 	selected = 2
 	accumulator = 0
 	message = "Fresh attempt · rearrange freely, then Begin"
+	reset_presentation()
 	persist()
 
 func handle_back() -> void:
@@ -212,7 +235,13 @@ func handle_back() -> void:
 
 func _capture_render_frame() -> void:
 	var eligible: bool = screen == "game" and state.phase == "battle" and not paused and not save_dialog.visible and not abandon_dialog.visible and not help_dialog.visible and not menu_dialog.visible
-	frame_capture.sample(Time.get_ticks_usec(), eligible, {"friendly": state.units.size(), "enemies": state.enemies.size(), "encounter": state.encounter, "reduced_effects": settings.reduced_effects}, draw_microseconds)
+	var tag := {"friendly": state.units.size(), "enemies": state.enemies.size(), "encounter": state.encounter, "reduced_effects": settings.reduced_effects}
+	if frame_capture.enabled and is_instance_valid(presentation_view):
+		tag["draw_calls"] = presentation_view.get_render_info(Viewport.RENDER_INFO_TYPE_VISIBLE,Viewport.RENDER_INFO_DRAW_CALLS_IN_FRAME)
+		tag["primitives"] = presentation_view.get_render_info(Viewport.RENDER_INFO_TYPE_VISIBLE,Viewport.RENDER_INFO_PRIMITIVES_IN_FRAME)
+		tag["nodes"] = int(Performance.get_monitor(Performance.OBJECT_NODE_COUNT))
+		tag["render_size"] = [presentation_view.size.x,presentation_view.size.y]
+	frame_capture.sample(Time.get_ticks_usec(), eligible, tag, draw_microseconds)
 
 func stop_frame_capture() -> void:
 	var report := frame_capture.stop()
@@ -253,6 +282,7 @@ func start_mission(id: String, challenge: int = -1) -> void:
 	drag_kind = ""
 	dragging = false
 	message = state.config.get("decision", "Tutorial · connect your foundry")
+	reset_presentation()
 	persist()
 
 func cell_center(x: int, y: int) -> Vector2:
@@ -339,13 +369,26 @@ func refresh_layout() -> void:
 	position = usable.position
 	scale = Vector2.ONE * factor
 	layout.arrange(usable.size / factor)
+	if is_instance_valid(presentation):
+		presentation_view.size = render_dimensions()
+		presentation.fit(layout,Vector2(presentation_view.size))
+		presentation.sync_board(state,true)
 	cancel_drag()
 	for dialog in [save_dialog, menu_dialog, help_dialog, abandon_dialog]:
 		if is_instance_valid(dialog) and dialog.visible:
 			fit_dialog(dialog)
 	queue_redraw()
 
+func render_dimensions() -> Vector2i:
+	var density := clampf(get_viewport().get_final_transform().get_scale().x * scale.x,1,2)
+	return Vector2i(layout.size * density)
+
+func reset_presentation() -> void:
+	if is_instance_valid(presentation):
+		presentation.hydrate(state,paused or screen != "game")
+
 func show_dialog(dialog: AcceptDialog) -> void:
+	cancel_drag()
 	# A hidden window can retain a position from a previous, wider viewport.
 	fit_dialog(dialog)
 	dialog.popup()
@@ -523,6 +566,7 @@ func act(action: String) -> void:
 			undo_board.clear()
 			selected = 1
 			paused = false
+			reset_presentation()
 			message = "54 brass total · no kill income · refit costs the difference" if action == "trial" else "Tutorial · connect your foundry"
 		"refit":
 			if not state.config.is_empty() and state.config.allowed.size() < 2:
@@ -602,6 +646,7 @@ func _build_save_dialog() -> void:
 						paused = true
 						save_failed = false
 						message = "Imported · Resume when ready"
+						reset_presentation()
 						save_dialog.hide()
 					else:
 						save_failed = true
@@ -673,6 +718,8 @@ func _draw() -> void:
 	draw_microseconds = Time.get_ticks_usec() - started
 
 func _draw_content() -> void:
+	if is_instance_valid(presentation_view):
+		draw_texture_rect(presentation_view.get_texture(),Rect2(Vector2.ZERO,layout.size),false)
 	if screen == "game":
 		CampaignView.draw(self)
 	else:

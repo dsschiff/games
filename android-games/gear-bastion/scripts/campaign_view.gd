@@ -115,8 +115,11 @@ static func draw(game: Variant) -> void:
 	var ui := buttons(game)
 	var config: Dictionary = state.config
 	var allowed: Array = config.get("allowed", ["guard", "ranger"])
-	game.draw_rect(Rect2(Vector2.ZERO, size), Color("25343b"))
-	terrain(game)
+	var dimensional: bool = is_instance_valid(game.presentation)
+	if not dimensional:
+		game.draw_rect(Rect2(Vector2.ZERO, size), Color("25343b"))
+		terrain(game)
+	game.panel(Rect2(0,0,size.x,80),game.INK,Color.TRANSPARENT,0)
 	var waves: Array = Battle.run_waves(state)
 	var wave: Dictionary = waves[maxi(0, int(state.wave) - 1)]
 	var title: String = config.get("name", "Iron Trial" if state.encounter == "iron_trial" else "Practice foundry")
@@ -142,7 +145,7 @@ static func draw(game: Variant) -> void:
 			for key in ["tutorial", "trial"]:
 				game.panel(ui[key], game.INK)
 				game.label_at("Practice" if key == "tutorial" else "Iron Trial", ui[key].get_center() + Vector2(0, 8), 23, game.CREAM, true)
-	else:
+	elif not dimensional:
 		for unit in state.units:
 			if float(unit.get("deploy_left", 0)) <= 0:
 				game.actor_art.draw_unit(game, unit, true, unit_point(game, unit))
@@ -151,12 +154,15 @@ static func draw(game: Variant) -> void:
 		if not game.settings.reduced_effects:
 			for arrow in state.projectiles:
 				game.draw_line(layout.field_point(Vector2(arrow[0], arrow[1])), layout.field_point(Vector2(arrow[2], arrow[3])), game.GOLD if arrow[4] else game.RED, 2)
-	wall(game)
-	game.panel(layout.board.grow(8), Color("1e3038"), Color("516365"))
-	board(game)
-	for unit in state.units:
-		if float(unit.get("deploy_left", 0)) > 0:
-			game.actor_art.draw_unit(game, unit, true, unit_point(game, unit))
+	if dimensional:
+		network_hud(game)
+	else:
+		wall(game)
+		game.panel(layout.board.grow(8), Color("1e3038"), Color("516365"))
+		board(game)
+		for unit in state.units:
+			if float(unit.get("deploy_left", 0)) > 0:
+				game.actor_art.draw_unit(game, unit, true, unit_point(game, unit))
 	var summary: Rect2 = layout.summary
 	game.panel(summary, game.INK, Color.TRANSPARENT, 4)
 	game.label_at("%d brass · %.2f troops/s" % [int(state.gold), Gear.total_rate(state.board, config)], summary.position + Vector2(12, 25), 21, game.GOLD)
@@ -191,7 +197,7 @@ static func draw(game: Variant) -> void:
 					warning = "Volley %ds · %s" % [ceili(12 - float(state.boss_volley)), "ENRAGED" if float(state.boss_total) >= 60 else "enrage %ds" % ceili(60 - float(state.boss_total))]
 				game.label_at("%s · P%d · %d HP · %s" % [str(boss.kind).capitalize(), int(state.boss_phase), ceili(float(boss.hp)), warning], box.get_center() + Vector2(0, 3), 18, game.GOLD, true)
 				game.draw_rect(Rect2(box.position + Vector2(8, 52), Vector2((box.size.x - 16) * float(boss.hp) / float(boss.max_hp), 4)), game.RED)
-	if game.paused or state.phase in ["victory", "defeat"]:
+	if (game.paused and state.phase == "battle") or state.phase in ["victory", "defeat"]:
 		var center: Vector2 = layout.field.get_center()
 		game.panel(Rect2(center - Vector2(230, 100), Vector2(460, 155)), game.INK, game.GOLD)
 		game.label_at("GATE HELD" if state.phase == "victory" else "WALL BREACHED" if state.phase == "defeat" else "PAUSED", center + Vector2(0, -53), 30, game.MINT if state.phase == "victory" else game.RED if state.phase == "defeat" else game.GOLD, true)
@@ -203,7 +209,29 @@ static func draw(game: Variant) -> void:
 	if game.save_failed:
 		game.panel(Rect2(20, 84, size.x - 40, 50), game.INK, game.RED)
 		game.label_at("Save failed · Menu > Save offers export", Vector2(size.x / 2, 116), 19, game.RED, true)
-	if game.dragging:
+	if game.dragging and not dimensional:
 		var piece: Dictionary = game.selected_piece() if game.drag_kind == "" else Gear.piece(0, game.drag_kind, 0, 0)
 		if not piece.is_empty():
 			gear(game, game.pointer - Vector2(0, 42), piece, true, true)
+
+static func network_hud(game: Variant) -> void:
+	var powered := Gear.powered(game.state.board)
+	for piece in game.state.board:
+		var center: Vector2 = game.cell_center(int(piece.x),int(piece.y))
+		if int(piece.id) == game.selected:
+			game.draw_arc(center,37,0,TAU,40,game.GOLD,2,true)
+		if piece.kind in Gear.BASE_RATES:
+			var active: bool = powered.has(int(piece.id))
+			game.panel(Rect2(center+Vector2(-36,20),Vector2(72,24)),game.INK,Color.TRANSPARENT,4)
+			game.label_at("%.2f/s" % Gear.rate(game.state.board,int(piece.id),game.state.config) if active else "OFF",center+Vector2(0,39),17,game.MINT if active else game.RED,true)
+			game.label_at(str(int(piece.lane)+1),center+Vector2(31,8),16,game.GOLD,true)
+		elif piece.kind == "drive":
+			game.label_at(str(int(piece.level)),center+Vector2(0,4),23,game.CREAM,true)
+	for lane in 3:
+		var point := Vector2(game.layout.gate_x(lane),game.layout.wall.position.y+43)
+		game.panel(Rect2(point-Vector2(16,20),Vector2(32,30)),game.INK,Color.TRANSPARENT,6)
+		game.label_at(str(lane+1),point+Vector2(0,3),21,game.MINT,true)
+	if game.dragging:
+		var cell: Vector2i = game.cell_at(game.pointer)
+		if Gear.cell_allowed(cell.x,cell.y,str(game.state.encounter),game.state.config):
+			game.draw_arc(game.cell_center(cell.x,cell.y),38,0,TAU,40,game.MINT,3,true)

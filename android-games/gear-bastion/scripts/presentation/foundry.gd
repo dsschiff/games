@@ -1,0 +1,367 @@
+extends Node3D
+const Adapter = preload("res://scripts/presentation/adapter.gd")
+const Actor = preload("res://scripts/presentation/actor.gd")
+const Gear = preload("res://scripts/gear_rules.gd")
+var adapter := Adapter.new()
+var camera: Camera3D
+var layout: RefCounted
+var canvas_size := Vector2(600, 1066)
+var pixel_size := Vector2(600, 1066)
+var actors: Dictionary = {}
+var corpses: Dictionary = {}
+var gears: Dictionary = {}
+var scenery: Node3D
+var connections: Node3D
+var ground: MeshInstance3D
+var effects: Array = []
+var materials: Dictionary = {}
+var board_key := ""
+var region := 0
+var presentation_time := 0.0
+var reduced := false
+var attacks_seen: Dictionary = {}
+var attack_order: Array[String] = []
+var attacks_emitted := 0
+var impacts_emitted := 0
+var wall_hit_left := 0.0
+var arches: Array[Node3D] = []
+var ghost: Node3D
+var ghost_kind := ""
+
+func build(game_layout: RefCounted, pixels: Vector2) -> void:
+	layout = game_layout
+	var world := WorldEnvironment.new()
+	var env := Environment.new()
+	env.background_mode = Environment.BG_COLOR
+	env.background_color = Color("9ba993")
+	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	env.ambient_light_color = Color("dce3c8")
+	env.ambient_light_energy = .30
+	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
+	env.tonemap_exposure = .9
+	world.environment = env
+	add_child(world)
+	var sun := DirectionalLight3D.new()
+	sun.rotation_degrees = Vector3(-52, -30, 0)
+	sun.light_color = Color("fff1cc")
+	sun.light_energy = .75
+	sun.shadow_enabled = true
+	sun.directional_shadow_max_distance = 100
+	sun.shadow_bias = .20
+	sun.shadow_normal_bias = 2
+	sun.shadow_opacity = .45
+	sun.shadow_blur = 2
+	add_child(sun)
+	var fill := DirectionalLight3D.new()
+	fill.rotation_degrees = Vector3(-35, 145, 0)
+	fill.light_color = Color("b3d4d5")
+	fill.light_energy = .20
+	add_child(fill)
+	camera = Camera3D.new()
+	camera.projection = Camera3D.PROJECTION_ORTHOGONAL
+	camera.keep_aspect = Camera3D.KEEP_HEIGHT
+	camera.near = .1
+	camera.far = 180
+	camera.position = Vector3(0, 42, 42)
+	add_child(camera)
+	camera.look_at(Vector3.ZERO)
+	camera.current = true
+	scenery = Node3D.new()
+	add_child(scenery)
+	connections = Node3D.new()
+	add_child(connections)
+	ground = box(self, Vector3(0, -.25, 0), Vector3(160, .45, 180), "a4ac83")
+	fit(game_layout, pixels)
+
+func mat(color: String) -> StandardMaterial3D:
+	if not materials.has(color):
+		materials[color] = Actor.material(Color(color))
+	return materials[color]
+
+func box(parent: Node3D, point: Vector3, dimensions: Vector3, color: String) -> MeshInstance3D:
+	var mesh := BoxMesh.new()
+	mesh.size = dimensions
+	var node := MeshInstance3D.new()
+	node.mesh = mesh
+	node.material_override = mat(color)
+	node.position = point
+	parent.add_child(node)
+	return node
+
+func asset(id: String, parent: Node3D, point: Vector3) -> Node3D:
+	var node := (load("res://art/models/" + id + ".glb") as PackedScene).instantiate() as Node3D
+	Actor.finish_materials(node)
+	parent.add_child(node)
+	node.position = point
+	return node
+
+func canvas_to_world(point: Vector2, height: float = 0) -> Vector3:
+	var pixel := point * pixel_size / canvas_size
+	var origin := camera.project_ray_origin(pixel)
+	var direction := camera.project_ray_normal(pixel)
+	return origin + direction * ((height - origin.y) / direction.y)
+
+func world_to_canvas(point: Vector3) -> Vector2:
+	return camera.unproject_position(point) * canvas_size / pixel_size
+
+func fit(game_layout: RefCounted, pixels: Vector2) -> void:
+	layout = game_layout
+	canvas_size = layout.size
+	pixel_size = pixels
+	camera.size = canvas_size.y / 40.0
+	if region > 0:
+		rebuild_scenery(region)
+		board_key = ""
+	for key in actors:
+		if adapter.current.has(key):
+			actors[key].position = point_for(adapter.current[key])
+	# Existing corpses/effects remain at their projected positions on a resize.
+	for key in corpses:
+		corpses[key].node.position = canvas_to_world(corpses[key].canvas)
+	for effect in effects:
+		effect.node.queue_free()
+	effects.clear()
+
+func rebuild_scenery(act: int) -> void:
+	for child in scenery.get_children():
+		child.free()
+	arches.clear()
+	region = act
+	ground.material_override = mat(["a4ac83", "ad9983", "9ca8a5"][act-1])
+	var field: Rect2 = layout.field
+	for side in [-1, 1]:
+		var x := 4.0 if side < 0 else canvas_size.x - 4
+		for i in maxi(3, int(field.size.y / 100)):
+			var point := Vector2(x, field.position.y + 55 + i * 102)
+			var prop := asset("region_" + str(act), scenery, canvas_to_world(point))
+			prop.rotation.y = side * .3 + i * .9
+			prop.scale = Vector3.ONE * (.65 + float(i % 3) * .12)
+	# A connected brass deck beneath the power board, with depth and an open route
+	# through all three arches; it is part of the same ground/camera composition.
+	var board: Rect2 = layout.board
+	var a := canvas_to_world(board.position - Vector2(12, 12))
+	var b := canvas_to_world(board.end + Vector2(12, 12))
+	box(scenery, (a+b)/2 - Vector3(0, .11, 0), Vector3(b.x-a.x, .20, b.z-a.z), "4d6865")
+	for lane in 3:
+		var gate_point := Vector2(layout.gate_x(lane), layout.wall.end.y)
+		var arch := asset("arch", scenery, canvas_to_world(gate_point))
+		arches.append(arch)
+		var gate_start: float = layout.gate_x(lane)-48
+		var gate_end: float = layout.gate_x(lane)+48
+		var left: float = 0.0 if lane == 0 else layout.gate_x(lane-1)+48
+		var right: float = canvas_size.x if lane == 2 else gate_end
+		for x in range(int(left), int(gate_start), 38):
+			var wall := asset("wall", scenery, canvas_to_world(Vector2(x+18, layout.wall.end.y)))
+			wall.scale.x = .95
+		if lane == 2:
+			for x in range(int(gate_end), int(right), 38):
+				asset("wall", scenery, canvas_to_world(Vector2(x+18, layout.wall.end.y)))
+	for lane in 3:
+		var p := Vector2(layout.gate_x(lane), field.position.y + 70)
+		var q := Vector2(layout.gate_x(lane), layout.wall.end.y)
+		var from := canvas_to_world(p)
+		var to := canvas_to_world(q)
+		box(scenery, (from+to)/2 + Vector3(0, -.012, 0), Vector3(.85, .012, to.z-from.z), ["b7bb91","b8a68c","b1bab3"][act-1])
+
+func point_for(data: Dictionary) -> Vector3:
+	var canvas: Vector2 = layout.field_point(data.point)
+	if float(data.deploy_left) > 0:
+		var start: Vector2 = layout.board.position + Vector2(data.deploy_x+.5, data.deploy_y+.5) * 80
+		var bend := Vector2(layout.gate_x(int(data.lane)), layout.board.position.y - 12)
+		var gate := Vector2(bend.x, layout.wall.end.y + 6)
+		var progress := clampf(1.0 - data.deploy_left / data.deploy_total, 0, 1)
+		if progress < .4:
+			canvas = start.lerp(bend, progress/.4)
+		elif progress < .65:
+			canvas = bend.lerp(gate, (progress-.4)/.25)
+		else:
+			canvas = gate.lerp(canvas, (progress-.65)/.35)
+	return canvas_to_world(canvas)
+
+func hydrate(state: Dictionary, held: bool) -> void:
+	adapter.reset(state, held)
+	presentation_time = 0
+	for key in actors:
+		actors[key].free()
+	actors.clear()
+	for key in corpses:
+		corpses[key].node.free()
+	corpses.clear()
+	for effect in effects:
+		effect.node.free()
+	effects.clear()
+	attacks_seen.clear()
+	attack_order.clear()
+	wall_hit_left = 0
+	board_key = ""
+	if is_instance_valid(ghost):
+		ghost.hide()
+	sync(state, [])
+
+func sync(state: Dictionary, events: Array, interval: float = 1.0/30.0) -> void:
+	if float(state.time) < adapter.last_time:
+		hydrate(state, adapter.paused)
+		return
+	adapter.ingest(state, interval)
+	var act: int = state.config.get("act", 1)
+	if act != region:
+		rebuild_scenery(act)
+		sync_board(state, true)
+	else:
+		sync_board(state)
+	for key in adapter.current:
+		var data: Dictionary = adapter.current[key]
+		if not actors.has(key):
+			var actor := Actor.new()
+			add_child(actor)
+			actor.configure(data.role, data.friendly, float(absi(key.hash()) % 100) * .11)
+			actor.position = point_for(data)
+			actors[key] = actor
+		actors[key].set_health(data.hp, data.max_hp)
+	for key in actors.keys():
+		if not adapter.current.has(key):
+			var actor: Node3D = actors[key]
+			actor.death_time = 0
+			corpses["%d:%s" % [adapter.epoch,key]] = {"node":actor,"left":.9,"canvas":world_to_canvas(actor.position)}
+			actors.erase(key)
+	for event in events:
+		if adapter.accept(event):
+			present_event(event)
+
+func sync_board(state: Dictionary, force: bool = false) -> void:
+	var signature := JSON.stringify(state.board)
+	if not force and signature == board_key:
+		return
+	board_key = signature
+	for key in gears:
+		gears[key].root.free()
+	gears.clear()
+	for child in connections.get_children():
+		child.free()
+	var powered := Gear.powered(state.board)
+	var ring := TorusMesh.new()
+	ring.inner_radius = .22
+	ring.outer_radius = .29
+	ring.rings = 12
+	ring.ring_segments = 6
+	for y in 4:
+		for x in 5:
+			if not Gear.cell_allowed(x,y,str(state.encounter),state.config):
+				continue
+			var socket := MeshInstance3D.new()
+			socket.mesh = ring
+			socket.material_override = mat("385351")
+			socket.position = canvas_to_world(layout.board.position + Vector2(x+.5,y+.5)*80) + Vector3(0,.012,0)
+			socket.scale.y = .25
+			socket.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+			connections.add_child(socket)
+	for piece in state.board:
+		var center: Vector2 = layout.board.position + Vector2(piece.x+.5,piece.y+.5)*80
+		var root := Node3D.new()
+		add_child(root)
+		root.position = canvas_to_world(center)
+		var rotor := asset("core" if piece.kind == "core" else "drive",root,Vector3.ZERO)
+		if piece.kind in Gear.BASE_RATES:
+			asset("generator_"+str(piece.kind),root,Vector3(0,.26,0))
+		gears[int(piece.id)] = {"root":root,"rotor":rotor,"powered":powered.has(int(piece.id)),"direction":1 if (int(piece.x)+int(piece.y))%2 == 0 else -1,"point":center,"kind":str(piece.kind)}
+	for piece in state.board:
+		for other in state.board:
+			if int(other.id) <= int(piece.id) or not powered.has(int(piece.id)) or not powered.has(int(other.id)) or absi(int(piece.x)-int(other.x))+absi(int(piece.y)-int(other.y)) != 1:
+				continue
+			var a: Vector3 = gears[int(piece.id)].root.position + Vector3(0,.06,0)
+			var b: Vector3 = gears[int(other.id)].root.position + Vector3(0,.06,0)
+			var link := box(connections,(a+b)/2,Vector3(.10,.10,a.distance_to(b)),"76c6a2")
+			link.look_at(b)
+
+func drag_preview(point: Vector2, piece: Dictionary, showing: bool) -> void:
+	if not showing or piece.is_empty():
+		if is_instance_valid(ghost):
+			ghost.hide()
+		return
+	var kind: String = piece.kind
+	if not is_instance_valid(ghost) or ghost_kind != kind:
+		if is_instance_valid(ghost):
+			ghost.free()
+		ghost = Node3D.new()
+		add_child(ghost)
+		ghost_kind = kind
+		asset("core" if kind == "core" else "drive",ghost,Vector3.ZERO)
+		if kind in Gear.BASE_RATES:
+			asset("generator_"+kind,ghost,Vector3(0,.26,0))
+	ghost.show()
+	ghost.position = canvas_to_world(point,.30)
+
+func actor_for(key: String) -> Node3D:
+	if actors.has(key):
+		return actors[key]
+	var dead_key := "%d:%s" % [adapter.epoch,key]
+	return corpses[dead_key].node if corpses.has(dead_key) else null
+
+func present_event(event: Dictionary) -> void:
+	var attack := "%d:%s" % [adapter.epoch,event.attack]
+	var destination := canvas_to_world(layout.field_point(Vector2(event.to[0],event.to[1]))) + Vector3(0,.45,0)
+	var shooter := actor_for(event.actor)
+	if not attacks_seen.has(attack):
+		attacks_seen[attack] = true
+		attack_order.append(attack)
+		if attack_order.size() > 512:
+			attacks_seen.erase(attack_order.pop_front())
+		attacks_emitted += 1
+		if shooter != null:
+			shooter.fire(destination)
+			if event.role in ["ranger","mortar","spitter","siege"]:
+				tracer(shooter.muzzle.global_position,destination,"ffe3a0" if event.actor.begins_with("ally:") else "c5b56c")
+	var victim := actor_for(event.target)
+	if victim != null:
+		victim.hit()
+	if event.target == "wall":
+		wall_hit_left = .25
+	impacts_emitted += 1
+	if not reduced:
+		pulse(destination,"f5d58c" if event.actor.begins_with("ally:") else "df906a")
+
+func tracer(from: Vector3, to: Vector3, color: String) -> void:
+	if effects.size() >= 48 or from.distance_squared_to(to) < .001:
+		return
+	var node := box(self,(from+to)/2,Vector3(.025,.025,from.distance_to(to)),color)
+	node.look_at(to)
+	effects.append({"node":node,"left":.055})
+
+func pulse(point: Vector3, color: String) -> void:
+	if effects.size() >= 48:
+		return
+	var node := box(self,point,Vector3(.10,.10,.10),color)
+	effects.append({"node":node,"left":.12})
+
+func step(dt: float, held: bool, calm: bool) -> void:
+	adapter.paused = held
+	reduced = calm
+	if held:
+		return
+	presentation_time += dt
+	var alpha := adapter.advance(dt)
+	for key in actors:
+		var current: Dictionary = adapter.current[key]
+		var previous: Dictionary = adapter.previous.get(key,current)
+		var from := point_for(previous)
+		var to := point_for(current)
+		var velocity := (to-from)/adapter.interval if adapter.phase == "battle" else Vector3.ZERO
+		actors[key].position = from.lerp(to,alpha)
+		actors[key].pose(dt,velocity,adapter.phase == "victory" and current.friendly)
+	for key in corpses.keys():
+		corpses[key].node.pose(dt,Vector3.ZERO,false)
+		corpses[key].left -= dt
+		if corpses[key].left <= 0:
+			corpses[key].node.queue_free()
+			corpses.erase(key)
+	for key in gears:
+		if gears[key].powered:
+			gears[key].rotor.rotation.y = presentation_time * .55 * int(gears[key].direction)
+	for i in range(effects.size()-1,-1,-1):
+		effects[i].left -= dt
+		if effects[i].left <= 0:
+			effects[i].node.queue_free()
+			effects.remove_at(i)
+	wall_hit_left = maxf(0,wall_hit_left-dt)
+	for arch in arches:
+		arch.rotation.z = sin(PI*wall_hit_left/.25)*.015 if not calm else 0.0
