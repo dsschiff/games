@@ -99,5 +99,21 @@
       "phase": "adaptive_window_fit_code7"
     }
   ],
-  "review_contract": "android-games/reviews/graphics-quality-contract-astra.md"
+  "review_contract": "android-games/reviews/graphics-quality-contract-astra.md",
+  "gear_fit_checkpoint": {
+    "worker_commit": "45baca53cf6b422db98813a92a2be05198aa9f0b",
+    "integration_commit": "33ab8d76eaa74f7a3439350d54cad0fc8511841e",
+    "version": "0.3.3",
+    "version_code": 7,
+    "desktop_review": "android-games/reviews/gear-window-fit-astra.md",
+    "desktop_candidate": "supported_no_new_P1_P2",
+    "build_manifest": ".artifacts/gear-bastion/20261018T120200983836Z/manifest.json",
+    "apk_sha256": "9d090cb7dc1222c873109dae5adc1364dc07d910c7bed93545d773bf995ae472",
+    "apk_bytes": 57272268,
+    "source_raw_sha256": "6056e5fce1104a60ed01d8ae8f7d46465d584b4c0c359e20ba0ffd219a81ada3",
+    "install_over_6_to_7": "both_saved_slots_exact_before_first_launch",
+    "post_launch_native_input_resize": "pending_gpu_slot",
+    "physical_phone": "deferred_by_user",
+    "full_3d": "not_started"
+  }
 }
