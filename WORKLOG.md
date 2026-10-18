@@ -575,3 +575,5 @@
 - Closeout health inspection: C22.9GBfree, memorycommit88.2/96.5GB(91%),23worktrees. Dryrun cleanup candidates are recent/other-session data or on F; nothing deleted. Preserve current game evidence/worktrees, serialize heavy jobs and avoid new full emulator backups.
 
 - Finished Frontline graphics chat01a14ecf-a3f6-7dc0-9276-3457e84da5f3 natively archived=true after c36df6e handoff/delivery landed and canonical readback. Worktree/raw evidence retained. Fresh Hearthguard graphics chat01a14f9d-4b9b-7bd3-abd6-897a1188086d started Solhigh, existing clean worktree switched to newcodex/hearthguard-graphics fromc36df6e, oldbranch retained. Gear+Hearth are the only active builders; HearthCPUonly whileGearownsGPU.
+
+- Automatic approval review blocked Gear worker outbound status messaging to the coordinator for lack of direct human messaging authorization. No retry/bypass or new user approval is needed: both builders instructed to keep results in their game chats/local records; root pulls read_thread/files. Authorized graphics work continues. User informed of the specific blocked action/reason and safe alternative.

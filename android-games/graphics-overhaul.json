@@ -27,7 +27,8 @@
     ],
     "max_builders": 2,
     "max_reviewers": 1,
-    "further_phone_testing": "deferred_by_user_not_graphics_blocker"
+    "further_phone_testing": "deferred_by_user_not_graphics_blocker",
+    "worker_status_delivery": "Root pulls read_thread and local durable results; builders do not send outbound status messages to coordinator"
   },
   "user_phone_feedback": {
     "game": "gear-bastion",
