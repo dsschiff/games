@@ -223,4 +223,6 @@ func run() -> void:
 	print("TOWER INPUT: %d checks; %d failures; %d actual touch taps" % [checks, failures.size(), taps])
 	game.queue_free()
 	await wait_frames(3)
+	if failures.is_empty():
+		print("SUITE_COMPLETE: PASS")
 	quit(0 if failures.is_empty() else 1)

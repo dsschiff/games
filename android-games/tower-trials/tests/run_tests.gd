@@ -72,6 +72,8 @@ func _initialize() -> void:
 	file.store_string(JSON.stringify({"checks": checks, "failures": failures, "solutions": solutions, "claim": "BFS gives shortest successful routes; no uniqueness claim"}, "\t"))
 	file.close()
 	print("TOWER RULES: %d checks; %d failures" % [checks, failures.size()])
+	if failures.is_empty():
+		print("SUITE_COMPLETE: PASS")
 	quit(0 if failures.is_empty() else 1)
 
 func save_checks() -> void:
