@@ -1,0 +1,27 @@
+{
+  "worker_commit": "9ae9938",
+  "integration_commit": "353d50f2d1530c0bc52c441a1c8329f7634465e3",
+  "runtime_freeze": "576d4af9e7a49eefc65b1fa9faa47d185b9415ac",
+  "runtime_art_bindings": 96,
+  "exact_earned_source_envelopes": 11,
+  "independent_cpu_checks": 48,
+  "failures": 0,
+  "source_unchanged": true,
+  "review": "android-games/reviews/hearth-production-harness-early-source-astra.md",
+  "initial_index_portability_failure_preserved": true,
+  "prepared_for_render": true,
+  "rendered_production_acceptance": false,
+  "candidate": {
+    "version_name": "0.3.0",
+    "version_code": 3,
+    "package": "com.dsschiff.hearthguard",
+    "freeze_commit": "576d4af9e7a49eefc65b1fa9faa47d185b9415ac",
+    "scope": "Metadata-only change after supported second inspection; art/rules/save unchanged; no APK export or native update implied"
+  },
+  "preservation": {
+    "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\hearth-production-preparation-9ae9938",
+    "files": 13,
+    "bytes": 164251,
+    "receipt_sha256": "64e05a703ebd6248f265718093616dbe6a5fabd7f5448acac4170e227ab2c33d"
+  }
+}

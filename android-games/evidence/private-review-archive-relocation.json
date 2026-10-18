@@ -1,0 +1,13 @@
+{
+  "scope": "Local fixed-disk relocation of immutable historical private review archives only",
+  "directories": 8,
+  "files": 8370,
+  "bytes": 3558800934.0,
+  "healthy_local_fixed_NTFS_volume": "E:",
+  "archive_root": "E:/codex-artifacts/games-android-portfolio-20261017/old-review-archives",
+  "original_paths_preserved_by_directory_junctions": true,
+  "all_destination_and_original_path_hashes_verified": true,
+  "active_sources_saves_captures_changed": false,
+  "private_detailed_receipt": ".artifacts\\graphics-overhaul\\old-review-archive-relocation.json",
+  "receipt_sha256": "51639297a143594ab0c657b953800ddf4be628f126dc43c970d37605f61d9bbc"
+}
