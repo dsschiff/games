@@ -128,9 +128,9 @@
       "brief": "butcher-hero.md",
       "package_id": "com.multicastgames.butcher",
       "selected_loop": "Observed baseline: move, chained-weapon/proximity combat, earn resources, purchase weapon/power upgrades, reach stronger gated encounter. Hook/reel/consume is conditional original design.",
-      "creative_status": "observed_official_developer_promotion_paid_placement_unverified",
+      "creative_status": "official_developer_promotion_independently_played_in_full_paid_placement_unverified",
       "core_status": "settled_official_promo_combat_currency_pad_power_health_progression_observed_hook_reel_consume_size_growth_unresolved",
-      "prototype_scope": "Source-supported baseline: movement, chained-weapon combat, resource collection, visible weapon/power purchase and stronger gated encounter. Hook/reel/consume remains an explicit original design choice pending visible corroboration or user-confirmed target creative. Manual aim/dodge/grapple and traits deferred.",
+      "prototype_scope": "Movement, visible contextual chained-weapon combat, resource collection, weapon/power purchase and health recovery, stronger gated encounter, win/loss/retry. Hook/reel/consume/manual aim/dodge/traits remain deferred original ideas, not required baseline mechanics.",
       "sources": [
         {
           "id": "B1",
@@ -180,8 +180,8 @@
         ],
         "method": "Paused stepping and separate-call settled screenshots at nominal checkpoints; approximate windows, no certified frame attribution, exhaustive frame coverage or tested input causality. Raw observations retained in butcher-hero.md under Settled official-promo correction and raw observation log.",
         "observed": [
-          "Meat 30 to 5 on 25-cost green pad at approximately 12.6â€“14.7 seconds; power 100 to 200 and health 12 to 100.",
-          "Meat 79 to 4 on 75-cost purple pad at approximately 24.1â€“26.6 seconds; power 200 to 300 and health 26 to 100.",
+          "Meat 30 to 5 on 25-cost green pad at approximately 12.6Ã¢â‚¬â€œ14.7 seconds; power 100 to 200 and health 12 to 100.",
+          "Meat 79 to 4 on 75-cost purple pad at approximately 24.1Ã¢â‚¬â€œ26.6 seconds; power 200 to 300 and health 26 to 100.",
           "Chained purple blade extends from small orange player near 35.2 seconds; close combat and resource rewards throughout."
         ],
         "withdrawn_interpretation": "Final pale giant is not established as enlarged player; permanent body-size growth and direct consumption cannot be claimed from this promo.",
@@ -200,6 +200,23 @@
           ],
           "result": "Movement stick, close contact combat and axe/heart reward UI observed; launch/reel/consume and permanent growth still unresolved."
         }
+      },
+      "independent_direct_followup": {
+        "date": "2026-10-17",
+        "source_id": "B3",
+        "duration_seconds": 35.967,
+        "review": "../reviews/three-action-references-astra.md",
+        "method": "Full direct playback plus consecutive checkpoints and settled replay of final chained-weapon passage; approximate positions, not certified frames",
+        "observed": [
+          "Angled overhead pens/power gates, small orange player and movement stick",
+          "Combat raises currency and reduces health; green and purple weapon-pad upgrades increase power and restore health",
+          "Purple blade visibly extends on a chain near33seconds; final pale giant remains adjacent to smaller player"
+        ],
+        "not_established": [
+          "Distinct enemy reel-in, consumption, absorbed stats or permanent size growth",
+          "Exact pickup/reward/purchase/gate formulas or manual-versus-automatic attack input"
+        ],
+        "verdict": "Corrected chained-weapon/resource-upgrade prototype approved; older hook/pull/consume requirement explicitly superseded; implementation fidelity pending"
       }
     },
     {

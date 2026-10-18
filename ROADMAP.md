@@ -8,7 +8,7 @@ The active portfolio goal is defined in `GOAL.md`. Status reflects evidence, not
 | M1 Android foundation | Emulator verified; physical checks pending | Pinned tooling, reproducible test/build commands, working 2D and 3D Android slices |
 | M2 Gear game | Illustrated nine-encounter campaign and replay independently verified; HUD/balance/Android acceptance in progress | Complete game, progression, replay, presentation and verified APK |
 | M3 Hero puzzle game | Not started | Complete reference-based puzzle game and verified APK |
-| M4 Hook action game | Not started | Complete hook/combat/exploration game and verified APK |
+| M4 Chained-weapon action game | Not started | Complete chained-weapon combat/resource-upgrade/exploration game and verified APK |
 | M5 Settlement defense game | Not started | Complete movement/build/defense game and verified APK |
 | M6 Frontline military game | Not started | Complete reference-based military interaction game and verified APK |
 | M7 Zombie survival game | Not started | Complete reference-based shooting/survival game and verified APK |
