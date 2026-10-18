@@ -3,6 +3,7 @@ extends Node2D
 const Content = preload("res://scripts/content.gd")
 const Rules = preload("res://scripts/rules.gd")
 const Saves = preload("res://scripts/save_store.gd")
+const Challenge = preload("res://scripts/challenge_v1.gd")
 const Audio = preload("res://scripts/local_audio.gd")
 const INK := Color("102c42")
 const SAND := Color("edddbc")
@@ -39,6 +40,12 @@ var sound := Audio.new()
 var player := AudioStreamPlayer.new()
 var editor := TextEdit.new()
 var input_count := 0
+var seed_edit := LineEdit.new()
+var challenge_family := "key"
+var challenge_weave := 0
+var challenge_treasure := true
+var show_hint := false
+var record_page := 0
 
 func _ready() -> void:
 	get_tree().auto_accept_quit = false
@@ -50,6 +57,12 @@ func _ready() -> void:
 	load_run()
 	add_child(player)
 	add_child(editor)
+	add_child(seed_edit)
+	seed_edit.position = Vector2(42, 434)
+	seed_edit.size = Vector2(358, 80)
+	seed_edit.max_length = 10
+	seed_edit.add_theme_font_size_override("font_size", 28)
+	hide_seed()
 	editor.position = Vector2(42, 310)
 	editor.size = Vector2(516, 380)
 	editor.add_theme_font_size_override("font_size", 20)
@@ -65,8 +78,15 @@ func _exit_tree() -> void:
 	sound.cache.clear()
 
 func load_run() -> void:
-	level = Content.by_id(data.level_id, int(data.catalog))
+	level = data.challenge_run.bundle.snapshot if data.kind == "challenge" else Content.by_id(data.level_id, int(data.catalog))
 	state = Saves.replay(data)
+	note = ""
+	show_hint = false
+	if state.status == "lost" and not current_run().actions.is_empty():
+		var prefix: Array = current_run().actions.duplicate()
+		var last: String = prefix.pop_back()
+		var reason := Rules.step(level, Saves.replay_route(level, prefix), last)
+		note = " / ".join(reason.events) + " " + reason.message
 	selected = ""
 	pending = {}
 	beat = 0
@@ -109,7 +129,7 @@ func _process(delta: float) -> void:
 		beat += delta
 		if beat >= 0.9:
 			state = pending.state
-			data.actions.append(pending_room)
+			current_run().actions.append(pending_room)
 			note = "  /  ".join(pending.events)
 			pending = {}
 			if state.status == "won":
@@ -125,8 +145,21 @@ func award() -> void:
 		medals |= 2
 	if state.treasure > 0:
 		medals |= 4
-	if not data.used_undo:
+	if not current_run().used_undo:
 		medals |= 8
+	if data.kind == "challenge":
+		var bundle: Dictionary = data.challenge_run.bundle
+		var key: String = Challenge.validate(bundle).key
+		for record in data.challenge_records:
+			if record.key == key:
+				record.best = mini(int(record.best), int(state.moves))
+				record.medals = int(record.medals) | medals
+				data.challenge_records.erase(record)
+				data.challenge_records.append(record)
+				return
+		data.challenge_records.append({"key": key, "version": bundle.version, "family": bundle.family, "seed": bundle.seed, "options": bundle.options.duplicate(true), "best": int(state.moves), "medals": medals, "fallback": bundle.fallback})
+		if data.challenge_records.size() > Challenge.MAX_RECORDS: data.challenge_records.pop_front()
+		return
 	var prior: Dictionary = data.profile.get(level.id, {"best": 99, "medals": 0})
 	data.profile[level.id] = {"best": mini(int(prior.best), int(state.moves)), "medals": int(prior.medals) | medals}
 
@@ -138,7 +171,19 @@ func buttons() -> Dictionary:
 	if transfer:
 		return {"copy": Rect2(42, 710, 160, 80), "paste": Rect2(220, 710, 160, 80), "import": Rect2(398, 710, 160, 80), "close_transfer": Rect2(42, 804, 516, 80)}
 	if menu:
-		return {"sound": Rect2(58, 282, 484, 80), "effects": Rect2(58, 370, 484, 80), "transfer": Rect2(58, 458, 484, 80), "guide": Rect2(58, 546, 484, 80), "close_menu": Rect2(58, 650, 484, 80)}
+		return {"sound": Rect2(58, 282, 484, 80), "effects": Rect2(58, 370, 484, 80), "transfer": Rect2(58, 458, 484, 80), "guide": Rect2(58, 546, 484, 80), "challenge_select": Rect2(58, 634, 484, 80), "close_menu": Rect2(58, 738, 484, 80)}
+	if screen == "challenge_records":
+		var records := {"record_prev": Rect2(42, 830, 248, 80), "record_next": Rect2(310, 830, 248, 80), "records_back": Rect2(42, 936, 516, 80)}
+		for slot in 5:
+			var index: int = data.challenge_records.size() - 1 - record_page * 5 - slot
+			if index >= 0: records["record_%d" % index] = Rect2(42, 240 + slot * 112, 516, 100)
+		return records
+	if screen == "challenge_select":
+		var choices := {"seed_next": Rect2(414, 434, 144, 80), "weave": Rect2(42, 548, 248, 80), "treasure_option": Rect2(310, 548, 248, 80), "generate": Rect2(42, 654, 516, 80), "back_challenge": Rect2(42, 850, 516, 80)}
+		for i in 4: choices["family_" + Challenge.FAMILIES[i]] = Rect2(42 + (i % 2) * 268, 222 + (i / 2) * 100, 248, 80)
+		if not data.challenge_run.is_empty(): choices["resume_challenge"] = Rect2(42, 752, 248, 80)
+		if not data.challenge_records.is_empty(): choices["records"] = Rect2(310, 752, 248, 80)
+		return choices
 	if screen == "ending":
 		return {"map": Rect2(26, 930, 548, 80), "settings": Rect2(496, 18, 80, 80)}
 	if screen == "map":
@@ -151,6 +196,8 @@ func buttons() -> Dictionary:
 				result["level%d" % (chapter * 9 + i)] = rect
 		return result
 	var result := {"settings": Rect2(496, 18, 80, 80), "undo": Rect2(24, 966, 174, 80), "retry": Rect2(213, 966, 174, 80), "map": Rect2(402, 966, 174, 80)}
+	if data.kind == "challenge":
+		result = {"settings": Rect2(496, 18, 80, 80), "undo": Rect2(24, 966, 126, 80), "retry": Rect2(162, 966, 126, 80), "challenge_new": Rect2(300, 966, 126, 80), "map": Rect2(438, 966, 138, 80)}
 	if state.status == "won":
 		result["next"] = Rect2(38, 862, 524, 80)
 	elif paused:
@@ -158,6 +205,8 @@ func buttons() -> Dictionary:
 	elif selected != "" and pending.is_empty() and Rules.blocked(state, Rules.find_room(level, selected)) == "":
 		result["enter"] = Rect2(38, 866, 524, 80)
 		result["details"] = Rect2(38, 786, 524, 80)
+	if data.kind == "campaign" and state.status == "active" and not paused and selected == "" and pending.is_empty() and Content.index_of(data.level_id) >= 6:
+		result["hint"] = Rect2(38, 794, 524, 140)
 	return result
 
 func room_rect(room: Dictionary) -> Rect2:
@@ -243,20 +292,30 @@ func back() -> void:
 		editor.visible = false
 	elif menu:
 		menu = false
+	elif screen == "challenge_records":
+		screen = "challenge_select"
+	elif screen == "challenge_select":
+		screen = "game"
+		hide_seed()
 	elif screen == "map":
 		screen = "game"
 	elif not paused:
 		paused = true
 	else:
+		data.kind = "campaign"
+		load_run()
 		screen = "map"
+	seed_edit.visible = screen == "challenge_select" and not menu and not guide and not transfer
 	persist()
 	queue_redraw()
 
 func action(key: String) -> void:
 	if key == "settings":
 		menu = true
+		hide_seed()
 	elif key == "close_menu":
 		menu = false
+		seed_edit.visible = screen == "challenge_select"
 	elif key == "guide":
 		guide = true
 		menu = false
@@ -293,6 +352,8 @@ func action(key: String) -> void:
 			transfer = false
 			editor.visible = false
 			menu = false
+			screen = "game"
+			hide_seed()
 			note = "Imported route and earned progress."
 			save_error = ""
 		else:
@@ -301,6 +362,9 @@ func action(key: String) -> void:
 		screen = "game"
 		paused = false
 	elif key == "map":
+		if data.kind == "challenge":
+			data.kind = "campaign"
+			load_run()
 		screen = "map"
 		persist()
 	elif key.begins_with("chapter"):
@@ -322,19 +386,84 @@ func action(key: String) -> void:
 			screen = "game"
 			paused = false
 	elif key == "retry":
-		data.actions = []
-		data.used_undo = false
+		current_run().actions = []
+		current_run().used_undo = false
 		load_run()
 		note = "A fresh route. Earned medals stay."
 		paused = false
 		persist()
 	elif key == "undo" and pending.is_empty():
-		if not data.actions.is_empty():
-			data.actions.pop_back()
-			data.used_undo = true
+		if not current_run().actions.is_empty():
+			current_run().actions.pop_back()
+			current_run().used_undo = true
 			load_run()
 			note = "Undone: power, key, shield and bridges restored."
 			persist()
+	elif key == "next" and state.status == "won" and data.kind == "challenge":
+		current_run().actions = []
+		current_run().used_undo = false
+		load_run()
+		persist()
+	elif key == "records":
+		screen = "challenge_records"
+		hide_seed()
+		record_page = 0
+	elif key == "record_prev":
+		record_page = maxi(0, record_page - 1)
+	elif key == "record_next":
+		record_page = mini(maxi(0, (data.challenge_records.size() - 1) / 5), record_page + 1)
+	elif key == "records_back":
+		screen = "challenge_select"
+		seed_edit.visible = true
+	elif key.begins_with("record_"):
+		var record: Dictionary = data.challenge_records[int(key.trim_prefix("record_"))]
+		var replay := Challenge.generate(record.family, int(record.seed), record.options, 0 if record.fallback else Challenge.MAX_ATTEMPTS)
+		if replay.ok and Challenge.validate(replay.bundle).key == record.key:
+			data.kind = "challenge"
+			data.challenge_run = {"bundle": replay.bundle, "actions": [], "used_undo": false}
+			load_run()
+			screen = "game"
+			paused = false
+			persist()
+		else: note = "Cannot reproduce record; resume the saved watch."
+	elif key == "challenge_select":
+		note = ""
+		menu = false
+		screen = "challenge_select"
+		if not data.challenge_run.is_empty():
+			var bundle: Dictionary = data.challenge_run.bundle
+			challenge_family = bundle.family
+			challenge_weave = int(bundle.options.weave)
+			challenge_treasure = bundle.options.treasure
+			seed_edit.text = str(bundle.seed)
+		else: seed_edit.text = "137"
+		seed_edit.visible = true
+	elif key.begins_with("family_"):
+		challenge_family = key.trim_prefix("family_")
+	elif key == "weave":
+		challenge_weave = (challenge_weave + 1) % 4
+	elif key == "treasure_option":
+		challenge_treasure = not challenge_treasure
+	elif key == "seed_next":
+		seed_edit.text = str((int(seed_edit.text) + 1) % 2147483648)
+	elif key == "generate":
+		if RegEx.create_from_string("^[0-9]{1,10}$").search(seed_edit.text) and int(seed_edit.text) <= 2147483647:
+			start_challenge(challenge_family, int(seed_edit.text), {"weave": challenge_weave, "treasure": challenge_treasure})
+		else: note = "Seed must be a whole number from 0 to 2147483647."
+	elif key == "resume_challenge":
+		data.kind = "challenge"
+		load_run()
+		screen = "game"
+		paused = false
+		hide_seed()
+		persist()
+	elif key == "back_challenge":
+		back()
+	elif key == "challenge_new":
+		var bundle: Dictionary = data.challenge_run.bundle
+		start_challenge(bundle.family, (int(bundle.seed) + 1) % 2147483648, bundle.options)
+	elif key == "hint":
+		show_hint = not show_hint
 	elif key == "next" and state.status == "won":
 		var next_index := Content.index_of(data.level_id) + 1
 		# Inserted tutorials remain real requirements for historic profiles.
@@ -437,9 +566,9 @@ func background() -> void:
 func draw_header() -> void:
 	text_at("TOWER TRIALS", Vector2(26, 58), 29, GOLD)
 	button("settings", "•••")
-	text_at("COAST OF THE LOST CHIMES", Vector2(26, 84), 15, MUTED)
+	text_at("v1 · seed %d · weave %d · treasure %s%s" % [data.challenge_run.bundle.seed, data.challenge_run.bundle.options.weave, "on" if data.challenge_run.bundle.options.treasure else "off", " · backup" if data.challenge_run.bundle.fallback else ""] if data.kind == "challenge" else "COAST OF THE LOST CHIMES", Vector2(26, 84), 15, MUTED)
 	if screen == "game":
-		text_at("%02d / %02d  ·  %s" % [Content.index_of(data.level_id) + 1, Content.levels().size(), level.name], Vector2(26, 126), 23)
+		text_at("Challenge · " + level.name if data.kind == "challenge" else "%02d / %02d  ·  %s" % [Content.index_of(data.level_id) + 1, Content.levels().size(), level.name], Vector2(26, 126), 23)
 		box(Rect2(24, 146, 260, 72), Color("173e53"), 12, Color("347b7d"))
 		text_at("COURIER POWER", Vector2(40, 170), 15, TEAL)
 		text_at(str(state.power), Vector2(40, 205), 34, GOLD)
@@ -531,8 +660,12 @@ func draw_game() -> void:
 	box(Rect2(24, 792, 552, 158), Color("091d32"), 16)
 	if state.status == "won":
 		text_at("KEEPER RESCUED", Vector2(40, 826), 29, TEAL)
-		text_at("Your watch stands %d rooms tall.  Best: %d moves" % [state.claimed.size() + 1, int(data.profile[level.id].best)], Vector2(40, 850), 17, SAND)
-		button("next", "Next watch" if Content.index_of(data.level_id) + 1 < Content.levels().size() else "The ending · all lanterns rise", TEAL)
+		var record := current_challenge_record()
+		var count := 0
+		for bit in [1, 2, 4, 8]:
+			if int(record.get("medals", 0)) & bit: count += 1
+		text_at("Best %d · par %d · medals %d/%d" % [int(record.get("best", 0)), level.par, count, 4 if data.challenge_run.bundle.options.treasure else 3] if data.kind == "challenge" else "Your watch stands %d rooms tall. Par: %d moves" % [state.claimed.size() + 1, int(level.par)], Vector2(40, 850), 17, SAND)
+		button("next", "Replay this exact watch" if data.kind == "challenge" else ("Next watch" if Content.index_of(data.level_id) + 1 < Content.levels().size() else "The ending · all lanterns rise"), TEAL)
 	elif paused:
 		text_at("ROUTE PAUSED", Vector2(40, 829), 27, GOLD)
 		button("resume", "Resume route", TEAL)
@@ -553,11 +686,13 @@ func draw_game() -> void:
 			text_at("Tap forecast for all steps and resources", Vector2(40, 851), 17, SAND)
 		button("enter", "Enter room" if preview.get("win", false) else "Enter anyway · danger", TEAL if preview.get("win", false) else Color("633f4b"))
 	else:
-		text_at("READ THE TOWER", Vector2(40, 825), 22, GOLD)
-		lines(level.lesson, Vector2(40, 858), 510, 21, WHITE, 3)
+		var later: bool = data.kind == "campaign" and Content.index_of(data.level_id) >= 6
+		text_at("OPTIONAL HINT · tap to hide" if show_hint else ("RULES · tap for optional hint" if later else "READ THE TOWER"), Vector2(40, 825), 21, GOLD)
+		lines(level.lesson if not later or show_hint else "Greater power wins. Locks spend keys; shields block traps. Read gifts, sealed routes and ordered enemies.", Vector2(40, 858), 510, 21, WHITE, 3)
 	button("undo", "Undo")
 	button("retry", "Retry")
-	button("map", "Journey")
+	button("map", "Campaign" if data.kind == "challenge" else "Journey")
+	button("challenge_new", "New")
 
 func draw_map() -> void:
 	var titles := ["Lantern Coast", "Salt Archives", "Glass March", "Last Meridian"]
@@ -605,18 +740,21 @@ func _draw() -> void:
 	draw_header()
 	if screen == "game": draw_game()
 	elif screen == "ending": draw_ending()
+	elif screen == "challenge_select": draw_challenge_select()
+	elif screen == "challenge_records": draw_challenge_records()
 	else: draw_map()
 	if save_error != "":
 		box(Rect2(12, 226, 576, 65), Color("6a2838"), 8)
 		lines(save_error, Vector2(24, 250), 550, 19, WHITE, 2)
 	if menu:
 		draw_rect(Rect2(0, 0, 600, 1066), Color(0.01, 0.03, 0.08, 0.85))
-		box(Rect2(30, 180, 540, 580), INK, 20, Color("467a87"))
+		box(Rect2(30, 180, 540, 680), INK, 20, Color("467a87"))
 		text_at("Your lantern", Vector2(58, 242), 32, GOLD)
 		button("sound", "Sound: " + ("on" if data.settings.sound else "off"))
 		button("effects", "Reduced effects: " + ("on" if data.settings.reduced_effects else "off"))
 		button("transfer", "Export / import save")
 		button("guide", "Rules and medals")
+		button("challenge_select", "Seeded Challenges")
 		button("close_menu", "Return", TEAL)
 	if transfer:
 		draw_rect(Rect2(0, 0, 600, 1066), Color(0.01, 0.03, 0.08, 0.95))
@@ -648,3 +786,70 @@ func _draw() -> void:
 			lines(str(event), Vector2(42, y), 516, 23, WHITE, 2)
 			y += 78
 		button("close_details", "Return to room choice", TEAL)
+
+func current_run() -> Dictionary:
+	return data.challenge_run if data.kind == "challenge" else data
+
+func start_challenge(family: String, seed_value: int, options: Dictionary) -> void:
+	var result := Challenge.generate(family, seed_value, options)
+	if not result.ok:
+		note = result.message
+		return
+	data.challenge_run = {"bundle": result.bundle, "actions": [], "used_undo": false}
+	data.kind = "challenge"
+	load_run()
+	screen = "game"
+	paused = false
+	hide_seed()
+	persist()
+
+func draw_challenge_select() -> void:
+	text_at("Seeded Challenges · v1", Vector2(26, 130), 30, GOLD)
+	text_at("Family, seed and options define a repeatable watch.", Vector2(42, 184), 18, SAND)
+	for family in Challenge.FAMILIES:
+		button("family_" + family, {"key": "Keys", "shell": "Shell / sun", "rescue": "Rescue fork", "finale": "Woven finale"}[family], TEAL if family == challenge_family else Color("24485e"))
+	text_at("Seed · 0 to 2147483647", Vector2(42, 420), 21, WHITE)
+	button("seed_next", "+1 seed")
+	button("weave", "Weave %d" % challenge_weave)
+	button("treasure_option", "Treasure " + ("on" if challenge_treasure else "off"))
+	button("generate", "New challenge", TEAL)
+	button("resume_challenge", "Resume saved")
+	button("records", "Records")
+	button("back_challenge", "Return")
+	lines(note if note != "" else "Plan before crossing: a choice can seal your only route. Retry and Resume keep the same watch. Your 256 most recent challenge records stay separate from campaign medals.", Vector2(42, 970), 516, 18, SAND, 4)
+
+func current_challenge_record() -> Dictionary:
+	if data.kind != "challenge": return {}
+	var key: String = Challenge.validate(data.challenge_run.bundle).key
+	for record in data.challenge_records:
+		if record.key == key: return record
+	return {}
+
+func draw_challenge_records() -> void:
+	text_at("Challenge records · v1", Vector2(42, 130), 30, GOLD)
+	text_at("Tap to replay the same version, seed and options.", Vector2(42, 187), 20, SAND)
+	if note != "": lines(note, Vector2(42, 214), 516, 17, RED, 1)
+	var visible_buttons := buttons()
+	for slot in 5:
+		var index: int = data.challenge_records.size() - 1 - record_page * 5 - slot
+		if index < 0: continue
+		var record: Dictionary = data.challenge_records[index]
+		var rect: Rect2 = visible_buttons["record_%d" % index]
+		box(rect, Color("24485e"), 12)
+		text_at("%s · seed %d" % [str(record.family).capitalize(), record.seed], rect.position + Vector2(16, 31), 24, WHITE)
+		text_at("Weave %d · treasure %s · best %d" % [record.options.weave, "on" if record.options.treasure else "off", record.best], rect.position + Vector2(16, 62), 20, SAND)
+		text_at(medal_labels(int(record.medals)) + (" · fallback" if record.fallback else ""), rect.position + Vector2(16, 87), 18, TEAL)
+	button("record_prev", "Newer")
+	button("record_next", "Older")
+	button("records_back", "Return", TEAL)
+
+func hide_seed() -> void:
+	seed_edit.release_focus()
+	seed_edit.visible = false
+	if OS.get_name() == "Android": DisplayServer.virtual_keyboard_hide()
+
+func medal_labels(bits: int) -> String:
+	var names: Array = []
+	for pair in [[1, "Rescue"], [2, "Par"], [4, "Treasure"], [8, "Clean"]]:
+		if bits & int(pair[0]): names.append(pair[1])
+	return " · ".join(names)

@@ -1,0 +1,18 @@
+{
+	"provenance": "Frozen0e4decc actual input-earned18-clear checkpoint, then two actual touches and natural engine frames in the original code2 runtime; no gameplay field injection",
+	"state": {
+		"claimed": [
+			"key"
+		],
+		"collapsed": [],
+		"keys": 1,
+		"last": "key",
+		"level": "glass_01",
+		"moves": 1,
+		"power": 9,
+		"rescued": [],
+		"shields": 0,
+		"status": "active",
+		"treasure": 0
+	}
+}

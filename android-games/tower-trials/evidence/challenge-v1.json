@@ -1,0 +1,2191 @@
+{
+  "schema_version": 1,
+  "milestone": "Seeded Challenge software amendment, independent acceptance pending",
+  "software_version": "0.3.0",
+  "android_version_code": 3,
+  "save_schema": 3,
+  "generator_version": 1,
+  "parent_checkpoint": "0e4decc",
+  "branch": "codex/tower-trials",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "source_binding": {
+    "scope": "All source/assets/configuration/tests/tools/progress metadata, excluding Markdown/evidence/caches/output. Copied unchanged under .artifacts/challenge-v1/source. Raw Windows and LF-normalized hashes; not the shared runner whole-project fingerprint.",
+    "files": 75,
+    "raw_sha256": "7e20960c9de04e380a18566b198d9d2c8470b15fadf99400e2a73b2bfffac0d4",
+    "lf_normalized_sha256": "cac7c723c68db077ece7948a0f73ad4f0eaf5f3b4bba003bc34113c55560745e"
+  },
+  "source_files": [
+    {
+      "path": "design/prepared_cases.gd",
+      "bytes": 3102,
+      "sha256": "d06a857d45adf9e8f04deffa484c2e95497b489cb08ba591b684386ad9bd6867",
+      "sha256_lf_normalized": "d06a857d45adf9e8f04deffa484c2e95497b489cb08ba591b684386ad9bd6867"
+    },
+    {
+      "path": "design/prepared_cases.gd.uid",
+      "bytes": 20,
+      "sha256": "bf2dd28198a064a43d466850aa353bf94aa7debf58c7ed5a352e93d2b3e95ed4",
+      "sha256_lf_normalized": "bf2dd28198a064a43d466850aa353bf94aa7debf58c7ed5a352e93d2b3e95ed4"
+    },
+    {
+      "path": "export_presets.cfg",
+      "bytes": 532,
+      "sha256": "2f1c433db076938b090315fe267e61f95d33bfc38b9f9107532509fd3b87bf4f",
+      "sha256_lf_normalized": "2f1c433db076938b090315fe267e61f95d33bfc38b9f9107532509fd3b87bf4f"
+    },
+    {
+      "path": "icon.svg",
+      "bytes": 394,
+      "sha256": "6bca3ee031a419daa07bd4b2790d6ce481b5686cff75a0ee197ebcc9f7053d1b",
+      "sha256_lf_normalized": "6bca3ee031a419daa07bd4b2790d6ce481b5686cff75a0ee197ebcc9f7053d1b"
+    },
+    {
+      "path": "icon.svg.import",
+      "bytes": 1013,
+      "sha256": "3847de679c56f4fcad0e14fb11b5eb0f45f068b7c59f489254b5c2c75c1b2320",
+      "sha256_lf_normalized": "3847de679c56f4fcad0e14fb11b5eb0f45f068b7c59f489254b5c2c75c1b2320"
+    },
+    {
+      "path": "main.tscn",
+      "bytes": 166,
+      "sha256": "539a74d0621571fab563c8871aad99acdf0158e9202a9453217fb7bf17a4a5df",
+      "sha256_lf_normalized": "539a74d0621571fab563c8871aad99acdf0158e9202a9453217fb7bf17a4a5df"
+    },
+    {
+      "path": "progress.json",
+      "bytes": 2248,
+      "sha256": "8cd90ec5364665a3b547d797cb69e3bfbd5a631422887e0a9228b7410a5de9dd",
+      "sha256_lf_normalized": "8cd90ec5364665a3b547d797cb69e3bfbd5a631422887e0a9228b7410a5de9dd"
+    },
+    {
+      "path": "project.godot",
+      "bytes": 748,
+      "sha256": "462324d1d492e6f19439dd2db7d15218556073f095fc789f1ab06bb735ed35fd",
+      "sha256_lf_normalized": "462324d1d492e6f19439dd2db7d15218556073f095fc789f1ab06bb735ed35fd"
+    },
+    {
+      "path": "scripts/catalog_v1.gd",
+      "bytes": 2934,
+      "sha256": "4369130a59afd53fbe09db68adc6545a301d289d991670b6a2edfdca3dc04f53",
+      "sha256_lf_normalized": "cacac155762576b19d295a4cb98a900bf7f0a4ba418cff35d132b202923eb7e4"
+    },
+    {
+      "path": "scripts/catalog_v1.gd.uid",
+      "bytes": 20,
+      "sha256": "06b7209b6113ae43f26a8a34359abc8d292cd4f2c0fb0382be2cfece5d7f1313",
+      "sha256_lf_normalized": "06b7209b6113ae43f26a8a34359abc8d292cd4f2c0fb0382be2cfece5d7f1313"
+    },
+    {
+      "path": "scripts/catalog_v2.gd",
+      "bytes": 20348,
+      "sha256": "b0550bf10f67f43c0f1d8c998b9074b5192f05155c8939269e57a47614ace7cb",
+      "sha256_lf_normalized": "f9e558d173c64f6a37dfa996efc6075c6279f520b968406cb7234cce614aa9e9"
+    },
+    {
+      "path": "scripts/catalog_v2.gd.uid",
+      "bytes": 20,
+      "sha256": "868ed66e8974a6bdb486191bd9c4a265b09a4409abfff4a09532fa658d7708e6",
+      "sha256_lf_normalized": "868ed66e8974a6bdb486191bd9c4a265b09a4409abfff4a09532fa658d7708e6"
+    },
+    {
+      "path": "scripts/challenge_v1.gd",
+      "bytes": 15593,
+      "sha256": "3706f76799c3eccf8a8739d02bd74a226edd274e6cdbd1358f58f97767812071",
+      "sha256_lf_normalized": "3706f76799c3eccf8a8739d02bd74a226edd274e6cdbd1358f58f97767812071"
+    },
+    {
+      "path": "scripts/challenge_v1.gd.uid",
+      "bytes": 18,
+      "sha256": "f318e9801a652b1e9e5102c13e26a030470a1b2a94e3de1d95ca10b25448f19a",
+      "sha256_lf_normalized": "f318e9801a652b1e9e5102c13e26a030470a1b2a94e3de1d95ca10b25448f19a"
+    },
+    {
+      "path": "scripts/content.gd",
+      "bytes": 1044,
+      "sha256": "18251c7e05c053e9da1697d1ae5a7cfd99f8b4873528ec6abfc6841bfe24c1dc",
+      "sha256_lf_normalized": "a7a15f49be61f36c28e3d5301effa4185cca27871fc7362361ac7b2ba9fae868"
+    },
+    {
+      "path": "scripts/content.gd.uid",
+      "bytes": 19,
+      "sha256": "2090f499c7cdeb2093df29a2ce8448caefcde09d6a6c13d2b2317b109ef2374d",
+      "sha256_lf_normalized": "2090f499c7cdeb2093df29a2ce8448caefcde09d6a6c13d2b2317b109ef2374d"
+    },
+    {
+      "path": "scripts/local_audio.gd",
+      "bytes": 727,
+      "sha256": "62e5b953ef6f18148f279028e454a5546074d5692dc5e378368f12764ac18bf9",
+      "sha256_lf_normalized": "62e5b953ef6f18148f279028e454a5546074d5692dc5e378368f12764ac18bf9"
+    },
+    {
+      "path": "scripts/local_audio.gd.uid",
+      "bytes": 20,
+      "sha256": "a8c0c2c84080c34bac60f9d017e40759cd0f5a47b20b93fce6f75006d05a050e",
+      "sha256_lf_normalized": "a8c0c2c84080c34bac60f9d017e40759cd0f5a47b20b93fce6f75006d05a050e"
+    },
+    {
+      "path": "scripts/main.gd",
+      "bytes": 37664,
+      "sha256": "57331b55aa3e8d78c7542892f9664d4579ee742d139f7b16d77f3608a653ceb0",
+      "sha256_lf_normalized": "57331b55aa3e8d78c7542892f9664d4579ee742d139f7b16d77f3608a653ceb0"
+    },
+    {
+      "path": "scripts/main.gd.uid",
+      "bytes": 19,
+      "sha256": "814681d5bf55ea28a102a3c53c7176d636a272c31f8947c448fb1cf73512f486",
+      "sha256_lf_normalized": "814681d5bf55ea28a102a3c53c7176d636a272c31f8947c448fb1cf73512f486"
+    },
+    {
+      "path": "scripts/rules.gd",
+      "bytes": 6200,
+      "sha256": "5db58d5d73e2a8b584d12548dba71c864be0d6302ac2c9f84ca1ca4ad5b6f8f6",
+      "sha256_lf_normalized": "5db58d5d73e2a8b584d12548dba71c864be0d6302ac2c9f84ca1ca4ad5b6f8f6"
+    },
+    {
+      "path": "scripts/rules.gd.uid",
+      "bytes": 20,
+      "sha256": "0f0da31b6f4b0164d53f22234d2e228b740294f4e9929aa73b6355b36bc710e8",
+      "sha256_lf_normalized": "0f0da31b6f4b0164d53f22234d2e228b740294f4e9929aa73b6355b36bc710e8"
+    },
+    {
+      "path": "scripts/rules_v1.gd",
+      "bytes": 5378,
+      "sha256": "5432339e42e95e02b14d64871cade704ccbb87f89a5c002412deed797291d950",
+      "sha256_lf_normalized": "5432339e42e95e02b14d64871cade704ccbb87f89a5c002412deed797291d950"
+    },
+    {
+      "path": "scripts/rules_v1.gd.uid",
+      "bytes": 19,
+      "sha256": "fe8e014622b836b5a4e92d5db70b2368ef4241702788e144c94431755f99bc70",
+      "sha256_lf_normalized": "fe8e014622b836b5a4e92d5db70b2368ef4241702788e144c94431755f99bc70"
+    },
+    {
+      "path": "scripts/save_files.gd",
+      "bytes": 736,
+      "sha256": "67b532124aab977b2fb103c12d05a9a9152f6d9aee93113b8476796f880859db",
+      "sha256_lf_normalized": "67b532124aab977b2fb103c12d05a9a9152f6d9aee93113b8476796f880859db"
+    },
+    {
+      "path": "scripts/save_files.gd.uid",
+      "bytes": 20,
+      "sha256": "b1be48ebc254694afe695f6332e8f7cd498af14fd3926377cae93d9e861bf37e",
+      "sha256_lf_normalized": "b1be48ebc254694afe695f6332e8f7cd498af14fd3926377cae93d9e861bf37e"
+    },
+    {
+      "path": "scripts/save_store.gd",
+      "bytes": 9366,
+      "sha256": "75fbf10cc8e8276237007593e08ac6b8706fc5a3ce78c4ea3ab30a4f7489080b",
+      "sha256_lf_normalized": "75fbf10cc8e8276237007593e08ac6b8706fc5a3ce78c4ea3ab30a4f7489080b"
+    },
+    {
+      "path": "scripts/save_store.gd.uid",
+      "bytes": 20,
+      "sha256": "6983810b6668e5705d11e88ab7b7d6494086044a9599ef5e929ea98cb4c1a887",
+      "sha256_lf_normalized": "6983810b6668e5705d11e88ab7b7d6494086044a9599ef5e929ea98cb4c1a887"
+    },
+    {
+      "path": "tests/campaign_motion.gd",
+      "bytes": 2233,
+      "sha256": "bee986099fa0acdd451d7f37372c7f4a027792bafee87cb3e0b534b8263c70fb",
+      "sha256_lf_normalized": "bee986099fa0acdd451d7f37372c7f4a027792bafee87cb3e0b534b8263c70fb"
+    },
+    {
+      "path": "tests/campaign_motion.gd.uid",
+      "bytes": 20,
+      "sha256": "36c6d6d964926168c89ab46de1db4f11337324b01b9b51ffdec907c2cc0037db",
+      "sha256_lf_normalized": "36c6d6d964926168c89ab46de1db4f11337324b01b9b51ffdec907c2cc0037db"
+    },
+    {
+      "path": "tests/campaign_playthrough.gd",
+      "bytes": 9017,
+      "sha256": "920a42bc46217e6d345059b171285594da1f5e1935279b4bd1a806921aef56aa",
+      "sha256_lf_normalized": "920a42bc46217e6d345059b171285594da1f5e1935279b4bd1a806921aef56aa"
+    },
+    {
+      "path": "tests/campaign_playthrough.gd.uid",
+      "bytes": 19,
+      "sha256": "82de2bc2822e65bda6e43153a31d5f256d529a141a9172b91a0698f02928e5a1",
+      "sha256_lf_normalized": "82de2bc2822e65bda6e43153a31d5f256d529a141a9172b91a0698f02928e5a1"
+    },
+    {
+      "path": "tests/challenge_cases.gd",
+      "bytes": 8406,
+      "sha256": "c2e07bc7d1d5dfc0a9396fc372b4b05925b6174b5f14bd86238c388cf3ebd028",
+      "sha256_lf_normalized": "c2e07bc7d1d5dfc0a9396fc372b4b05925b6174b5f14bd86238c388cf3ebd028"
+    },
+    {
+      "path": "tests/challenge_cases.gd.uid",
+      "bytes": 20,
+      "sha256": "dc4e443ce541a33d949e6368b3be5f6bafc77a7868332db18cf09cc954dd568f",
+      "sha256_lf_normalized": "dc4e443ce541a33d949e6368b3be5f6bafc77a7868332db18cf09cc954dd568f"
+    },
+    {
+      "path": "tests/challenge_flow.gd",
+      "bytes": 5874,
+      "sha256": "35f15b17291e2357cdde84c842348282582a5a03dc100274d92a09ab4448192e",
+      "sha256_lf_normalized": "35f15b17291e2357cdde84c842348282582a5a03dc100274d92a09ab4448192e"
+    },
+    {
+      "path": "tests/challenge_flow.gd.uid",
+      "bytes": 20,
+      "sha256": "cd57e77d9f59a326971efc8e4c6aa1684ef78848f98e0f602fe9700242120907",
+      "sha256_lf_normalized": "cd57e77d9f59a326971efc8e4c6aa1684ef78848f98e0f602fe9700242120907"
+    },
+    {
+      "path": "tests/challenge_motion.gd",
+      "bytes": 2793,
+      "sha256": "9f5ca0a089ee770dd4002097f0f445117ddcfa0dfaf8e1770e4313182803b79a",
+      "sha256_lf_normalized": "9f5ca0a089ee770dd4002097f0f445117ddcfa0dfaf8e1770e4313182803b79a"
+    },
+    {
+      "path": "tests/challenge_motion.gd.uid",
+      "bytes": 20,
+      "sha256": "6e3cee635e370a65db6c44457e7f8e2dc7a318b0389f86e44525241483eb8cc9",
+      "sha256_lf_normalized": "6e3cee635e370a65db6c44457e7f8e2dc7a318b0389f86e44525241483eb8cc9"
+    },
+    {
+      "path": "tests/challenge_playthrough.gd",
+      "bytes": 1082,
+      "sha256": "8e92d458b4b8fd3c245f1ebe02aa4ab7ba2a6a1c9c6f72cd635ecdeb6b8ee644",
+      "sha256_lf_normalized": "8e92d458b4b8fd3c245f1ebe02aa4ab7ba2a6a1c9c6f72cd635ecdeb6b8ee644"
+    },
+    {
+      "path": "tests/challenge_playthrough.gd.uid",
+      "bytes": 20,
+      "sha256": "dd1385f6b6153e41d166dded3086ce65379e74f410f054332eb0ad3aa7e7ae97",
+      "sha256_lf_normalized": "dd1385f6b6153e41d166dded3086ce65379e74f410f054332eb0ad3aa7e7ae97"
+    },
+    {
+      "path": "tests/challenge_rules.gd",
+      "bytes": 249,
+      "sha256": "4459cfa012d736698872d724702e1dd4a2d4350eaff98b4f51123b1686d5d449",
+      "sha256_lf_normalized": "4459cfa012d736698872d724702e1dd4a2d4350eaff98b4f51123b1686d5d449"
+    },
+    {
+      "path": "tests/challenge_rules.gd.uid",
+      "bytes": 20,
+      "sha256": "1e3ddd486a49a025b5b809b8773762a2655a57e815f65e3d34d314fcf2b2433b",
+      "sha256_lf_normalized": "1e3ddd486a49a025b5b809b8773762a2655a57e815f65e3d34d314fcf2b2433b"
+    },
+    {
+      "path": "tests/create_challenge_fixture.gd",
+      "bytes": 849,
+      "sha256": "3fe92de03787e28421b714f7b2ac2757e967abf9c27c1b3a77da22ea109e9a42",
+      "sha256_lf_normalized": "3fe92de03787e28421b714f7b2ac2757e967abf9c27c1b3a77da22ea109e9a42"
+    },
+    {
+      "path": "tests/create_challenge_fixture.gd.uid",
+      "bytes": 20,
+      "sha256": "4c74672938c570bb4fa7604f03ca537a0ce77fd88dde136fac92d67de7da0c8f",
+      "sha256_lf_normalized": "4c74672938c570bb4fa7604f03ca537a0ce77fd88dde136fac92d67de7da0c8f"
+    },
+    {
+      "path": "tests/create_code2_fixture.gd",
+      "bytes": 1980,
+      "sha256": "2bc6f0988f9b11d2a716d2f4da7afec97f57df0eadf9636c11aa06677d60279b",
+      "sha256_lf_normalized": "2bc6f0988f9b11d2a716d2f4da7afec97f57df0eadf9636c11aa06677d60279b"
+    },
+    {
+      "path": "tests/create_code2_fixture.gd.uid",
+      "bytes": 20,
+      "sha256": "fa6fc48aa19270ff8861f20788a36295cf68184687a7761e43be7494485f0bc0",
+      "sha256_lf_normalized": "fa6fc48aa19270ff8861f20788a36295cf68184687a7761e43be7494485f0bc0"
+    },
+    {
+      "path": "tests/create_legacy_fixture.gd",
+      "bytes": 1807,
+      "sha256": "a6c9f790c09113aa15e6a6dad45ed085842278d2c79753e37c519bccf1ddd46f",
+      "sha256_lf_normalized": "a6c9f790c09113aa15e6a6dad45ed085842278d2c79753e37c519bccf1ddd46f"
+    },
+    {
+      "path": "tests/create_legacy_fixture.gd.uid",
+      "bytes": 20,
+      "sha256": "089c402a963afed06292fb38c044fb607420cde237792912b1dae1b37d538472",
+      "sha256_lf_normalized": "089c402a963afed06292fb38c044fb607420cde237792912b1dae1b37d538472"
+    },
+    {
+      "path": "tests/fault_files.gd",
+      "bytes": 1112,
+      "sha256": "17cbbe3147a916429b8d8da3ee1da29d6c72b068537a188916f3a8ec3dde5d13",
+      "sha256_lf_normalized": "17cbbe3147a916429b8d8da3ee1da29d6c72b068537a188916f3a8ec3dde5d13"
+    },
+    {
+      "path": "tests/fault_files.gd.uid",
+      "bytes": 20,
+      "sha256": "1640215fc56b9294bffa536d71f18cb82fdb1964f71a39e63f3dae1dbb1ed8e1",
+      "sha256_lf_normalized": "1640215fc56b9294bffa536d71f18cb82fdb1964f71a39e63f3dae1dbb1ed8e1"
+    },
+    {
+      "path": "tests/fixtures/challenge-v1-active.json",
+      "bytes": 1965,
+      "sha256": "df6d120859f1c9be9844c6974fa370b3cbe069857ec0c467af82ef7b0e924137",
+      "sha256_lf_normalized": "df6d120859f1c9be9844c6974fa370b3cbe069857ec0c467af82ef7b0e924137"
+    },
+    {
+      "path": "tests/fixtures/challenge-v1-active.provenance.json",
+      "bytes": 407,
+      "sha256": "f2853e49a550b04346561ff4fd2d3f36e19a202ae6a110f972e6a1fccbb69e1e",
+      "sha256_lf_normalized": "3c050990c3675712294c1343f036dccad680a392edd33c65d75cea40bf6a8018"
+    },
+    {
+      "path": "tests/fixtures/challenge-v1-fallback.json",
+      "bytes": 1724,
+      "sha256": "ceff269844c20ae3901cfcd1fceea49515106c0c35aff928f58c595e51021a31",
+      "sha256_lf_normalized": "ceff269844c20ae3901cfcd1fceea49515106c0c35aff928f58c595e51021a31"
+    },
+    {
+      "path": "tests/fixtures/code1-active-route.json",
+      "bytes": 188,
+      "sha256": "7ca9a01904e82629d72c62f91897cdd32be0bb50c6a9c21ad38d890f4cf045d5",
+      "sha256_lf_normalized": "7ca9a01904e82629d72c62f91897cdd32be0bb50c6a9c21ad38d890f4cf045d5"
+    },
+    {
+      "path": "tests/fixtures/code1-active-route.json.expected.json",
+      "bytes": 508,
+      "sha256": "9203621fa9b31bf1d7313e8a1add8732357026ad57a024c3067f73741819fac4",
+      "sha256_lf_normalized": "9203621fa9b31bf1d7313e8a1add8732357026ad57a024c3067f73741819fac4"
+    },
+    {
+      "path": "tests/fixtures/code2-active-route.json",
+      "bytes": 827,
+      "sha256": "b615fa67fcff48789dde24e334b91c6f42fde2feecdc038a8b904a78e2391927",
+      "sha256_lf_normalized": "b615fa67fcff48789dde24e334b91c6f42fde2feecdc038a8b904a78e2391927"
+    },
+    {
+      "path": "tests/fixtures/code2-active-route.json.expected.json",
+      "bytes": 399,
+      "sha256": "21ff85fbfb0eaf234dedcb2357d9fc54fcb73d66d182fbcedec51cfcaa2cbf0f",
+      "sha256_lf_normalized": "21ff85fbfb0eaf234dedcb2357d9fc54fcb73d66d182fbcedec51cfcaa2cbf0f"
+    },
+    {
+      "path": "tests/import_backup_probe.gd",
+      "bytes": 1402,
+      "sha256": "3f3f39a4d7f825db013e4afc1188b347a3a64696d6b8aaf00e248460f0470503",
+      "sha256_lf_normalized": "3f3f39a4d7f825db013e4afc1188b347a3a64696d6b8aaf00e248460f0470503"
+    },
+    {
+      "path": "tests/import_backup_probe.gd.uid",
+      "bytes": 19,
+      "sha256": "cdd978f62c9ffb6afa2b7c25d55e5da2049ab182e7e31feb1478f3629119668a",
+      "sha256_lf_normalized": "cdd978f62c9ffb6afa2b7c25d55e5da2049ab182e7e31feb1478f3629119668a"
+    },
+    {
+      "path": "tests/input_base.gd",
+      "bytes": 3890,
+      "sha256": "842b8c9472c2201032781b05c639bf427a76d1a02a0bab689a3ab008bb8e0029",
+      "sha256_lf_normalized": "86e29715d9de512cbf7a408e2ab74913804b54f2280a4fb344daa0d9ed57be8e"
+    },
+    {
+      "path": "tests/input_base.gd.uid",
+      "bytes": 20,
+      "sha256": "3b7c9adbfd0026fa702238609679dbe1f20fd30b27b2cdf7b86dc4dc2da68ce5",
+      "sha256_lf_normalized": "3b7c9adbfd0026fa702238609679dbe1f20fd30b27b2cdf7b86dc4dc2da68ce5"
+    },
+    {
+      "path": "tests/layout_probe.gd",
+      "bytes": 2418,
+      "sha256": "41b3b1dbdae7cf6221d53ffd3955a0ba6bf6371348160573c4208cc8fe028ecb",
+      "sha256_lf_normalized": "41b3b1dbdae7cf6221d53ffd3955a0ba6bf6371348160573c4208cc8fe028ecb"
+    },
+    {
+      "path": "tests/layout_probe.gd.uid",
+      "bytes": 19,
+      "sha256": "82cd324bd9aa68de42d686d8163e69555dcdc6fd780794f44ffdc7cb9c066f86",
+      "sha256_lf_normalized": "82cd324bd9aa68de42d686d8163e69555dcdc6fd780794f44ffdc7cb9c066f86"
+    },
+    {
+      "path": "tests/legacy_update_input.gd",
+      "bytes": 3596,
+      "sha256": "42ad8c3d2eb451878c6c14c7d667183c613f13e76f2f22ca24e5fb290da46a86",
+      "sha256_lf_normalized": "42ad8c3d2eb451878c6c14c7d667183c613f13e76f2f22ca24e5fb290da46a86"
+    },
+    {
+      "path": "tests/legacy_update_input.gd.uid",
+      "bytes": 20,
+      "sha256": "53119ab6d3cfb9752cd7dc5ed8254f921339612780d51274f2eca462c2a3f1d9",
+      "sha256_lf_normalized": "53119ab6d3cfb9752cd7dc5ed8254f921339612780d51274f2eca462c2a3f1d9"
+    },
+    {
+      "path": "tests/motion.gd",
+      "bytes": 42,
+      "sha256": "3229fced96068a515b4e0a76a81828c537ab942e35cfddc445390e2768db1505",
+      "sha256_lf_normalized": "2a1e9ac2d99449799b1ec4971e25755b38b14ff4977da5412ec77502e3c87141"
+    },
+    {
+      "path": "tests/motion.gd.uid",
+      "bytes": 19,
+      "sha256": "dbf01c19540c458ec75449b46cbc57dcf4bd5ed719a9e92df5870cdb9f0978c6",
+      "sha256_lf_normalized": "dbf01c19540c458ec75449b46cbc57dcf4bd5ed719a9e92df5870cdb9f0978c6"
+    },
+    {
+      "path": "tests/playthrough.gd",
+      "bytes": 47,
+      "sha256": "8f063c07248f3756c907582e512f2bdb8419648f5e07b389d2f1f3f2c4fe471a",
+      "sha256_lf_normalized": "3a85e700145c112b3ba830c66b6729a9c7ff40a75eea39e9b2e2ff8b29684a46"
+    },
+    {
+      "path": "tests/playthrough.gd.uid",
+      "bytes": 20,
+      "sha256": "66b700d6cf0a31a9f810a27c889ef9de8d0f76da2464d19fdaeaddd89094f739",
+      "sha256_lf_normalized": "66b700d6cf0a31a9f810a27c889ef9de8d0f76da2464d19fdaeaddd89094f739"
+    },
+    {
+      "path": "tests/preparation.gd",
+      "bytes": 2980,
+      "sha256": "1248f2740dfea14addeb9500cf51be70689a9ca2477a0c190f9ac75dc88109aa",
+      "sha256_lf_normalized": "1248f2740dfea14addeb9500cf51be70689a9ca2477a0c190f9ac75dc88109aa"
+    },
+    {
+      "path": "tests/preparation.gd.uid",
+      "bytes": 20,
+      "sha256": "3f8a1086c50d128caedeb80fa5d45014d2056d1d42cf24aedbb0160e5a4ee40a",
+      "sha256_lf_normalized": "3f8a1086c50d128caedeb80fa5d45014d2056d1d42cf24aedbb0160e5a4ee40a"
+    },
+    {
+      "path": "tests/run_tests.gd",
+      "bytes": 11069,
+      "sha256": "682b41325f4d3bafd4dca16df43d5ab0353d39cddadd6e04afd883f0364098b9",
+      "sha256_lf_normalized": "682b41325f4d3bafd4dca16df43d5ab0353d39cddadd6e04afd883f0364098b9"
+    },
+    {
+      "path": "tests/run_tests.gd.uid",
+      "bytes": 20,
+      "sha256": "83bcb327fd121e34d059d662a0a9743250335f4e195f75375a466ced854d05fa",
+      "sha256_lf_normalized": "83bcb327fd121e34d059d662a0a9743250335f4e195f75375a466ced854d05fa"
+    },
+    {
+      "path": "tools/capture.py",
+      "bytes": 1889,
+      "sha256": "5a4bc1881b98b7f62927f3cbb1cda287bd006ffad2ff7a2c7833f535599e0fa1",
+      "sha256_lf_normalized": "5a4bc1881b98b7f62927f3cbb1cda287bd006ffad2ff7a2c7833f535599e0fa1"
+    },
+    {
+      "path": "tools/check.py",
+      "bytes": 1652,
+      "sha256": "32881d3bb35437be85caacb6b910b9522188f155ca3865b144b9b9acc26f787b",
+      "sha256_lf_normalized": "32881d3bb35437be85caacb6b910b9522188f155ca3865b144b9b9acc26f787b"
+    }
+  ],
+  "immutable_code2_files": {
+    "scripts/catalog_v1.gd": "cacac155762576b19d295a4cb98a900bf7f0a4ba418cff35d132b202923eb7e4",
+    "scripts/catalog_v2.gd": "f9e558d173c64f6a37dfa996efc6075c6279f520b968406cb7234cce614aa9e9",
+    "scripts/rules.gd": "5db58d5d73e2a8b584d12548dba71c864be0d6302ac2c9f84ca1ca4ad5b6f8f6",
+    "scripts/rules_v1.gd": "5432339e42e95e02b14d64871cade704ccbb87f89a5c002412deed797291d950"
+  },
+  "code2_artifacts_preserved": 171,
+  "reports": {
+    "combined_rules": {
+      "checks": 3503,
+      "failures": []
+    },
+    "challenge_rules": {
+      "checks": 3105,
+      "failures": [],
+      "generated_cases": 512,
+      "structural_signatures": 31
+    },
+    "headless": {
+      "checks": 1173,
+      "failures": [],
+      "actual_touch_taps": 586,
+      "actual_key_events": 27
+    },
+    "rendered": {
+      "checks": 1216,
+      "failures": [],
+      "actual_touch_taps": 586,
+      "actual_key_events": 27
+    },
+    "fresh_challenge_input": {
+      "checks": 175,
+      "failures": [],
+      "actual_touch_taps": 115,
+      "keys": 20
+    },
+    "legacy_headless": {
+      "checks": 27,
+      "failures": [],
+      "actual_touch_taps": 17
+    },
+    "legacy_rendered": {
+      "checks": 30,
+      "failures": [],
+      "actual_touch_taps": 17
+    },
+    "layout_headless": {
+      "checks": 17,
+      "failures": [],
+      "actual_touch_taps": 11
+    },
+    "layout_rendered": {
+      "checks": 20,
+      "failures": [],
+      "actual_touch_taps": 11
+    },
+    "motion": {
+      "checks": 48,
+      "failures": [],
+      "actual_touch_taps": 37,
+      "keys": 5
+    }
+  },
+  "generator": {
+    "families": [
+      "key",
+      "shell",
+      "rescue",
+      "finale"
+    ],
+    "matrix_requests": 512,
+    "matrix": "4families x16seeds x4weaves x2treasure",
+    "structural_signatures_ignoring_strengths_and_layout": 31,
+    "normal_attempts_max": 4,
+    "search_pop_limit": 1024,
+    "search_queue_limit": 4096,
+    "fallback": "Four tested fixed family backups, separately validated and explicitly flagged; fixed backup is not claimed as random diversity",
+    "witnesses": "Shortest successful route, treasure route where offered, combat-safe losing commitment with no winning continuation, terminal loss route",
+    "records": "Separate256most recently completed records; replay checks version/seed/options/fallback/definition digest",
+    "compatibility": "Touch-created code1/code2 and generated fixtures; synthetic fallback fixture differs from normal generation; restore makes zero generate calls; active Undo/Retry/Replay uses full pinned snapshot",
+    "qualification": "Small bounded grammars, not infinitely many unique topologies; no unique-solution or graph-isomorphism claim"
+  },
+  "review_followups": {
+    "cold_restored_loss_explained": true,
+    "later_route_hints_optional": true
+  },
+  "motion": {
+    "path": ".artifacts/challenge-v1/motion/tower-challenge.mp4",
+    "frames": 1206,
+    "fixed_fps": 60,
+    "seconds": 20.1,
+    "provenance": "Fresh game and actual UI seed/family/options, losing commitment/Undo/Retry/win/Replay/New, second family and record book; natural engine updates, no state injection",
+    "qualification": "Fixed capture clock/Dummy audio; not phone FPS/human duration"
+  },
+  "pngs_validated": 56,
+  "artifacts": [
+    {
+      "path": ".artifacts/challenge-v1/authored-rules/result.json",
+      "bytes": 25885,
+      "sha256": "5c5debe95b2c5434d01218e6242312936a41e87c0036ebad6873b8799d97cfb4"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/checkpoints/stage00.json",
+      "bytes": 242,
+      "sha256": "3a3788d1419eb3dd01fb63bf1d14a786b0b0c858f8bebd3db358d6af52417263"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/checkpoints/stage18.json",
+      "bytes": 882,
+      "sha256": "29e284f23b357e013882485887210a6a3652d709aa00bfe2d38912e8c1b95034"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/checkpoints/stage35.json",
+      "bytes": 1485,
+      "sha256": "1dae49e57013677646f165c8c2999468e7826342ca95d07909cf6e1de8070e05"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/00-first-tower.json",
+      "bytes": 646,
+      "sha256": "8a0b4f906c7be358c131fecf27cefee89554060b98e76d7ec27af9ce151309b8"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/00-journey-scrolled.json",
+      "bytes": 650,
+      "sha256": "c0c31c0e2ad874889decd646dccffdf35fae9dd302ad3f07d1c96fe2024349ef"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/01-final-forecast.json",
+      "bytes": 728,
+      "sha256": "b055c7b0d8d9b0ac2e5cdfb4c32c457152b99856e216c680ec7a4d7de185c7c5"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/01-in-flight.json",
+      "bytes": 997,
+      "sha256": "517860ac28f16f9cb44cadfc0ab83be43ba23d996addafe5acf3722a13e4d5e0"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/01-natural-chapter-victory.json",
+      "bytes": 814,
+      "sha256": "08d75660d1c09fc18087411f571a368acacf4fab9dc0f90627a943f6b33a144a"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/09-natural-chapter-victory.json",
+      "bytes": 1254,
+      "sha256": "223194bd3f50f2564c8ffb3e72476c10048cec61d65e11e8fc7f13fa1d7a0fc8"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/18-final-forecast.json",
+      "bytes": 1823,
+      "sha256": "4ad498e94f402f4f81d73dfb0fe7dd6ae9ad459e25f4a510e997320ab797ee5a"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/18-natural-chapter-victory.json",
+      "bytes": 1909,
+      "sha256": "c2d5435d4935075edab8a160e7538c0911851fb0140a30184d381be8b3bd8c57"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/27-final-forecast.json",
+      "bytes": 2257,
+      "sha256": "94f069bfc2c086a42a70cda3c63c0dea6198029903a1a3687ab69ae09a7dff97"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/27-natural-chapter-victory.json",
+      "bytes": 2343,
+      "sha256": "9c3936e1ac0891cc649c3ce01e501c55d5a67794bc84ea46f95b37bcb75c9775"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/36-all-lanterns-ending.json",
+      "bytes": 2943,
+      "sha256": "62498c6331c5ae39a875071564ffee35961f0c9860146966c5fb1d3a57437013"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/36-complete-forecast.json",
+      "bytes": 2767,
+      "sha256": "d0f3acf68b56f0743bead000a43e364871edf420f9ddaf08ef5170e29dd8688c"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/36-final-forecast.json",
+      "bytes": 2856,
+      "sha256": "004cb7ad0f0ddd47edfd21663af81fa6952f422e491aef461c969056f9380796"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/36-natural-chapter-victory.json",
+      "bytes": 2945,
+      "sha256": "c7747a460895049c18f4e4e5c0aece115515a251432057008f8971a53672a142"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/37-earned-map.json",
+      "bytes": 2931,
+      "sha256": "2d4e4d974eee357a012adcb2bca591087f2795bcf1a9040971e046cff408b55e"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/37-treasure-replay.json",
+      "bytes": 2813,
+      "sha256": "736d24f7a5c809e858d8e6f62a6116a8e14c5589fabde331b1abec24ac238b05"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/38-unfolded-candidate.json",
+      "bytes": 2811,
+      "sha256": "5a5ee73c014020273eb82e7f3122d5e71018c82413009fbcdfb0e8eeee5313d5"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/active-pinned-save.json",
+      "bytes": 3274,
+      "sha256": "0e0002c4ef551e4278dfa4461d8cd8ea92ed02f747db399cc8081b478b636e49"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/challenge-active-pinned.json",
+      "bytes": 5816,
+      "sha256": "7034a70f7d452d1afb121a5dce6324dad1032f7071cc41f5569feac36b9a4e0b"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/challenge-cold-loss-reason.json",
+      "bytes": 5847,
+      "sha256": "9267273cb814d9cb83d3b2d752f70c5b0c6f698af5b1a5d1abcac6ae8f781df4"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/challenge-finale-natural-loss.json",
+      "bytes": 7196,
+      "sha256": "01769da891b9ae7bcf50ea2a2ceebccd4a4e1a79c7ad272fbc16a7e9857963a4"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/challenge-finale-natural-win.json",
+      "bytes": 7651,
+      "sha256": "e03fc9c896ae63d092a037f38f4dec3045b5b6217fd37d5ce705957109d9c3de"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/challenge-finale-setup.json",
+      "bytes": 5918,
+      "sha256": "a6521a8dc0e79fa26bf0670a700494ce877c8efb6a61ef270abc497b2462b584"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/challenge-key-natural-loss.json",
+      "bytes": 5854,
+      "sha256": "93abe2d107d4f8e8a30e3703e2b6f176b92228d24bfc4c4abf4f00b941a97a4f"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/challenge-key-natural-win.json",
+      "bytes": 6148,
+      "sha256": "6965a0b59efbf9abfad15012f62a9dea74f4cf88ff24b3a63c699410c4629adb"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/challenge-key-setup.json",
+      "bytes": 2822,
+      "sha256": "82029a4f005696c0b4ad5ad8e055c575e7b52067d4758dd140890c8e6b5bd467"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/challenge-records.json",
+      "bytes": 6178,
+      "sha256": "1ff9acf37e6f79bd24a14d408fd93def68445bb6b3bc9229465a5d720e198bd5"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/challenge-rescue-natural-loss.json",
+      "bytes": 5656,
+      "sha256": "016d8383a1bcee54228260c50c96fe71081bf6e82bd428dba7160887099898d2"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/challenge-rescue-natural-win.json",
+      "bytes": 6011,
+      "sha256": "981498ca9d993159aac271efd598348a395b1d427490dfdd7498478adb46fbb4"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/challenge-rescue-setup.json",
+      "bytes": 6371,
+      "sha256": "6ab4e7e2b0d7f817264a6939ce11b46cfce3376e2bf79112c50709d030e5b6a2"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/challenge-shell-natural-loss.json",
+      "bytes": 6125,
+      "sha256": "a62b2561e708e5c1821ca7290a4426767b130ef3640110fc4cf648a44df8484a"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/challenge-shell-natural-win.json",
+      "bytes": 6463,
+      "sha256": "7cb0804edf7ee695f2f31fdb2087201f3658662f3165616a10f462ab6ed7033b"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/challenge-shell-setup.json",
+      "bytes": 6089,
+      "sha256": "6b9f5e626a3728fc9253f362c212974eebd36c75cc4a90eb2ed9dcb65eeae143"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/cold-campaign-loss-explained.json",
+      "bytes": 671,
+      "sha256": "dfe3b2b5671e4e15ae99277d0ff0ccf920f62e72190015a9a21e8686f56ca182"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/mistake-equality.json",
+      "bytes": 663,
+      "sha256": "effe2bdb3451654aca8598d22b3be85cd5b31b000771675f08d388b3e73cde9c"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/mistake-final-bridge-too-early.json",
+      "bytes": 2708,
+      "sha256": "6fa4ae9e2fc7530b7b5bfb8860830f1630e938de6dabe06935a88904ca0f9a6b"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/mistake-greedy-ferry.json",
+      "bytes": 859,
+      "sha256": "198808452a5687d6b34879da379c4a1c2328eae533eb0b84a475121e61aa59a4"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/mistake-ordered-voices.json",
+      "bytes": 735,
+      "sha256": "0b059add8d302e63766ef8a74d1ce83401808571ec6c03951b3a9ca247841af1"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/mistake-sealed-keeper.json",
+      "bytes": 1107,
+      "sha256": "b6a647e77c0309e91f7a29d28f9e4fd4a9c6a8fbac831ea866a614ec64022012"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/mistake-sun-cannot-replace-shield.json",
+      "bytes": 1759,
+      "sha256": "fd962c12c1ace44e8f4e8feb7ad74a98eaa612e3bd15c0a3b3588154f12f722f"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/mistake-unshielded-glass.json",
+      "bytes": 899,
+      "sha256": "f0f49b632c0ecefda180bed17a89a85c47d83a2c27753003433327f507069650"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/mistake-wasted-key.json",
+      "bytes": 1215,
+      "sha256": "3d598060113b5a0994102431f3178fae8342beeb4a53845102e46b0650e9f17e"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/mistake-wasted-second-shield.json",
+      "bytes": 2223,
+      "sha256": "f7789187716741c20856cd347c4e1d95c163910db4da9e65ebb70b7bfae2d9a6"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/optional-later-hint.json",
+      "bytes": 990,
+      "sha256": "236ee35eb20d06357784911de180a970498f6ec569369d5b22fb5aeb5afc4afb"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/headless/result.json",
+      "bytes": 21020,
+      "sha256": "13240f1e03243f84c97f5797c247f4ee7be10f74e2230725bbd2f15e8ee024f6"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/layout-headless/00-cover-boundaries.json",
+      "bytes": 650,
+      "sha256": "4cfa59a10adf288633b00c3f1d8915bd3db95b1b6681b943f9d92513852db221"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/layout-headless/01-cover-map-footer.json",
+      "bytes": 649,
+      "sha256": "05ebbe28078a4b650c6b716d19708ac78c7e76d8e09abfde923069eefd1da495"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/layout-headless/02-unfolded-input.json",
+      "bytes": 679,
+      "sha256": "595955d91ff600369f76fd092c10373a0e8bf0734a0c8e24e6e36448596d6fb1"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/layout-headless/result.json",
+      "bytes": 182,
+      "sha256": "1ac5875803058dc38ef2a3873cdfb4276297caf755b8aa2c0eacf9f5d5cc0311"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/layout-rendered/00-cover-boundaries.json",
+      "bytes": 650,
+      "sha256": "4cfa59a10adf288633b00c3f1d8915bd3db95b1b6681b943f9d92513852db221"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/layout-rendered/00-cover-boundaries.png",
+      "bytes": 49535,
+      "sha256": "565cdef6b381d98495800f3e33b3d236d72fe0a9e4e7101a3cb2e04c67557ab8",
+      "pixels": [
+        360,
+        800
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/layout-rendered/01-cover-map-footer.json",
+      "bytes": 649,
+      "sha256": "05ebbe28078a4b650c6b716d19708ac78c7e76d8e09abfde923069eefd1da495"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/layout-rendered/01-cover-map-footer.png",
+      "bytes": 78049,
+      "sha256": "6dfd2c330c8aa385852c9d9b4e83fa7242ac0a3029c73dfdc59a40beec78894c",
+      "pixels": [
+        360,
+        800
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/layout-rendered/02-unfolded-input.json",
+      "bytes": 679,
+      "sha256": "595955d91ff600369f76fd092c10373a0e8bf0734a0c8e24e6e36448596d6fb1"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/layout-rendered/02-unfolded-input.png",
+      "bytes": 79923,
+      "sha256": "48bba3c013965343b687ccd0309d90fafcc7864f964ac99b753232515f27789c",
+      "pixels": [
+        900,
+        1000
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/layout-rendered/result.json",
+      "bytes": 182,
+      "sha256": "dfe0c8c2eb17fc87923ab333cc8b09fc9f94f9103cb6f7acbb4a915a4a00a850"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/legacy-headless/00-legacy-restored.json",
+      "bytes": 659,
+      "sha256": "fe0ef9b82bf3ebd464d1e161a17ff32535acd7dda16a787b2b114c7f6c81908b"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/legacy-headless/01-current-after-legacy.json",
+      "bytes": 713,
+      "sha256": "fa72df4b83cf41565b138626bf12993b57fb99563b60cb3e306220ec647d91c3"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/legacy-headless/02-code2-restored-undo.json",
+      "bytes": 1698,
+      "sha256": "9b78b6c2d09fc203951f228cbb0e72f401222350432f8f132ad5e0fb46fddc6f"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/legacy-headless/result.json",
+      "bytes": 165,
+      "sha256": "5caa4a62d73e571c642cdaae29299a959c6b122c9815c8a01781f1089c9e47cf"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/legacy-rendered/00-legacy-restored.json",
+      "bytes": 659,
+      "sha256": "fe0ef9b82bf3ebd464d1e161a17ff32535acd7dda16a787b2b114c7f6c81908b"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/legacy-rendered/00-legacy-restored.png",
+      "bytes": 72315,
+      "sha256": "0bca2cf490f96945b4a31730107dd68a51b7f0ca7866c3fd252f463c9f5b6867",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/legacy-rendered/01-current-after-legacy.json",
+      "bytes": 713,
+      "sha256": "fa72df4b83cf41565b138626bf12993b57fb99563b60cb3e306220ec647d91c3"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/legacy-rendered/01-current-after-legacy.png",
+      "bytes": 76316,
+      "sha256": "38e0caf6f9693b4ad847e4bf087caedab33630676184999a5eb3fd37c64d8158",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/legacy-rendered/02-code2-restored-undo.json",
+      "bytes": 1698,
+      "sha256": "9b78b6c2d09fc203951f228cbb0e72f401222350432f8f132ad5e0fb46fddc6f"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/legacy-rendered/02-code2-restored-undo.png",
+      "bytes": 88575,
+      "sha256": "fd37aba8d9cbd3460eae3b904a75d267ae64aa0e747fbbde897fd68173b5a73c",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/legacy-rendered/result.json",
+      "bytes": 165,
+      "sha256": "c3dfae37affca58e732d82c539a8d3f69628b7f4ad489a0ea398f23a273818e3"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/00-first-tower.json",
+      "bytes": 646,
+      "sha256": "8a0b4f906c7be358c131fecf27cefee89554060b98e76d7ec27af9ce151309b8"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/00-first-tower.png",
+      "bytes": 69751,
+      "sha256": "811d361b67cca47ead1f791e90f148cf98bd0385cf61bc88b114db51b3bca026",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/00-journey-scrolled.json",
+      "bytes": 650,
+      "sha256": "c0c31c0e2ad874889decd646dccffdf35fae9dd302ad3f07d1c96fe2024349ef"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/00-journey-scrolled.png",
+      "bytes": 117447,
+      "sha256": "124b9ae51194e931c341c1e5299ded65e0eaebf8a4bfed6a0f59f0169c0e4983",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/01-final-forecast.json",
+      "bytes": 728,
+      "sha256": "b055c7b0d8d9b0ac2e5cdfb4c32c457152b99856e216c680ec7a4d7de185c7c5"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/01-final-forecast.png",
+      "bytes": 77621,
+      "sha256": "f008136e00ac1095e5373d653c6e025b0ac3c70e94906d3a5387fe7619aaaba2",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/01-in-flight.json",
+      "bytes": 997,
+      "sha256": "517860ac28f16f9cb44cadfc0ab83be43ba23d996addafe5acf3722a13e4d5e0"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/01-in-flight.png",
+      "bytes": 61077,
+      "sha256": "2a5e6c5e4147daf0d83671837dd0ce133417eb42a2f4917a4a65d691174421ac",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/01-natural-chapter-victory.json",
+      "bytes": 814,
+      "sha256": "08d75660d1c09fc18087411f571a368acacf4fab9dc0f90627a943f6b33a144a"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/01-natural-chapter-victory.png",
+      "bytes": 77193,
+      "sha256": "106f22416f98c84cba17895eb532ab223d17d7106718c94edc466fb9c13ad326",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/09-natural-chapter-victory.json",
+      "bytes": 1254,
+      "sha256": "223194bd3f50f2564c8ffb3e72476c10048cec61d65e11e8fc7f13fa1d7a0fc8"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/09-natural-chapter-victory.png",
+      "bytes": 83291,
+      "sha256": "a34d7179ff218067561136bfe507c6e7e72974449208c82b0d74f7e150a14cc8",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/18-final-forecast.json",
+      "bytes": 1823,
+      "sha256": "4ad498e94f402f4f81d73dfb0fe7dd6ae9ad459e25f4a510e997320ab797ee5a"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/18-final-forecast.png",
+      "bytes": 93165,
+      "sha256": "f08d2ff4356723b2a7ba023cb8448ebee59c10a7998775ba11359f2846ccb7fd",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/18-natural-chapter-victory.json",
+      "bytes": 1909,
+      "sha256": "c2d5435d4935075edab8a160e7538c0911851fb0140a30184d381be8b3bd8c57"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/18-natural-chapter-victory.png",
+      "bytes": 94158,
+      "sha256": "82e33c3eeca977ad5034eff32bee0b43b12e129648cd4d3d6e7f7c7c24b5063a",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/27-final-forecast.json",
+      "bytes": 2257,
+      "sha256": "94f069bfc2c086a42a70cda3c63c0dea6198029903a1a3687ab69ae09a7dff97"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/27-final-forecast.png",
+      "bytes": 96188,
+      "sha256": "459163cc5db3af7f4fde1fa845ba50317381b0509a599e7ec4d7665bb8d98850",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/27-natural-chapter-victory.json",
+      "bytes": 2343,
+      "sha256": "9c3936e1ac0891cc649c3ce01e501c55d5a67794bc84ea46f95b37bcb75c9775"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/27-natural-chapter-victory.png",
+      "bytes": 96940,
+      "sha256": "0d4c9028400fcbd56ced946ca2f94cc4aecaabc3a4cd2556067c00afccc624b3",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/36-all-lanterns-ending.json",
+      "bytes": 2943,
+      "sha256": "62498c6331c5ae39a875071564ffee35961f0c9860146966c5fb1d3a57437013"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/36-all-lanterns-ending.png",
+      "bytes": 72048,
+      "sha256": "9de68a05359041c9d05f217df20ec28e1a27ea584acc071d44b773e7c134e43f",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/36-complete-forecast.json",
+      "bytes": 2767,
+      "sha256": "d0f3acf68b56f0743bead000a43e364871edf420f9ddaf08ef5170e29dd8688c"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/36-complete-forecast.png",
+      "bytes": 39613,
+      "sha256": "07da266e12a1d53008cc06cb4360dbe46b73cf5bbcb383b25054fb1f0d2c972c",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/36-final-forecast.json",
+      "bytes": 2856,
+      "sha256": "004cb7ad0f0ddd47edfd21663af81fa6952f422e491aef461c969056f9380796"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/36-final-forecast.png",
+      "bytes": 97581,
+      "sha256": "c353d3cd6d583c85f82c8140d6fbbb91ff9c2293637ca52e259f5b46d2ba589c",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/36-natural-chapter-victory.json",
+      "bytes": 2945,
+      "sha256": "c7747a460895049c18f4e4e5c0aece115515a251432057008f8971a53672a142"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/36-natural-chapter-victory.png",
+      "bytes": 98196,
+      "sha256": "f4f83ede8a1c820a8d912ec826e835840cca80c154ec5e4e5ce97180e855336b",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/37-earned-map.json",
+      "bytes": 2931,
+      "sha256": "2d4e4d974eee357a012adcb2bca591087f2795bcf1a9040971e046cff408b55e"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/37-earned-map.png",
+      "bytes": 110431,
+      "sha256": "d4ba27dbda74f964a5f5b50de16f4f1f885e0b5facf155da20a150149ce12053",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/37-treasure-replay.json",
+      "bytes": 2813,
+      "sha256": "736d24f7a5c809e858d8e6f62a6116a8e14c5589fabde331b1abec24ac238b05"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/37-treasure-replay.png",
+      "bytes": 81177,
+      "sha256": "06c7f802839a3cfbc2bf9b1c4766bcf3ae56138042c5af5697b1624b1db5114a",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/38-unfolded-candidate.json",
+      "bytes": 2811,
+      "sha256": "5a5ee73c014020273eb82e7f3122d5e71018c82413009fbcdfb0e8eeee5313d5"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/38-unfolded-candidate.png",
+      "bytes": 111191,
+      "sha256": "e539bc760377cc2043ac830e4b971d639809e9965e1590a775c44150bca48fbe",
+      "pixels": [
+        900,
+        1000
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/active-pinned-save.json",
+      "bytes": 3274,
+      "sha256": "0e0002c4ef551e4278dfa4461d8cd8ea92ed02f747db399cc8081b478b636e49"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-active-pinned.json",
+      "bytes": 5816,
+      "sha256": "7034a70f7d452d1afb121a5dce6324dad1032f7071cc41f5569feac36b9a4e0b"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-active-pinned.png",
+      "bytes": 70907,
+      "sha256": "41d0e4c795074a73f05bc287b72fd05523dcaa54c33fb2e437891fc4cc44149d",
+      "pixels": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-cold-loss-reason.json",
+      "bytes": 5847,
+      "sha256": "9267273cb814d9cb83d3b2d752f70c5b0c6f698af5b1a5d1abcac6ae8f781df4"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-cold-loss-reason.png",
+      "bytes": 91474,
+      "sha256": "aae1f3b7d05fcaf0ec9c020247d9e549c30fb536a7c028330817f4af4ff60999",
+      "pixels": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-finale-natural-loss.json",
+      "bytes": 7196,
+      "sha256": "01769da891b9ae7bcf50ea2a2ceebccd4a4e1a79c7ad272fbc16a7e9857963a4"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-finale-natural-loss.png",
+      "bytes": 89715,
+      "sha256": "34e5b7b3221744f2d249208a90563de4332dd4b3dbc7979e37182ab251f6a4f5",
+      "pixels": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-finale-natural-win.json",
+      "bytes": 7651,
+      "sha256": "e03fc9c896ae63d092a037f38f4dec3045b5b6217fd37d5ce705957109d9c3de"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-finale-natural-win.png",
+      "bytes": 86575,
+      "sha256": "f1ceea1d6f75b158f053aebfc0cb280545a186ab8ea8e87e21a4fb487a1fec29",
+      "pixels": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-finale-setup.json",
+      "bytes": 5918,
+      "sha256": "a6521a8dc0e79fa26bf0670a700494ce877c8efb6a61ef270abc497b2462b584"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-finale-setup.png",
+      "bytes": 77936,
+      "sha256": "1cdf65db8b66c58cc39a7251cfe5e10117f383ba4d67cde41b8e5f9d2fca6320",
+      "pixels": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-key-natural-loss.json",
+      "bytes": 5854,
+      "sha256": "93abe2d107d4f8e8a30e3703e2b6f176b92228d24bfc4c4abf4f00b941a97a4f"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-key-natural-loss.png",
+      "bytes": 87582,
+      "sha256": "1f33f54d2b134d172b5878efbe2201dcc3b1143a09d05d953a87cb66f25aa675",
+      "pixels": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-key-natural-win.json",
+      "bytes": 6148,
+      "sha256": "6965a0b59efbf9abfad15012f62a9dea74f4cf88ff24b3a63c699410c4629adb"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-key-natural-win.png",
+      "bytes": 84085,
+      "sha256": "735f32b501b397ad4c872599688aeba03459a60e116f81a9a9fe9abac73b4638",
+      "pixels": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-key-setup.json",
+      "bytes": 2822,
+      "sha256": "82029a4f005696c0b4ad5ad8e055c575e7b52067d4758dd140890c8e6b5bd467"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-key-setup.png",
+      "bytes": 73258,
+      "sha256": "1bac7fb283c214ecd33ddeace9df23b75db325a31f6df599cdf97c8e546ae68f",
+      "pixels": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-records.json",
+      "bytes": 6178,
+      "sha256": "1ff9acf37e6f79bd24a14d408fd93def68445bb6b3bc9229465a5d720e198bd5"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-records.png",
+      "bytes": 44961,
+      "sha256": "a605e1eb1da4f0b224606202a159a3bc757d32ec6c7473598866134156ba9c80",
+      "pixels": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-rescue-natural-loss.json",
+      "bytes": 5656,
+      "sha256": "016d8383a1bcee54228260c50c96fe71081bf6e82bd428dba7160887099898d2"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-rescue-natural-loss.png",
+      "bytes": 78043,
+      "sha256": "d4e2fe6cfa9cb705f5b4903fe469c745972a2492cab268176e74063871d3e2b3",
+      "pixels": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-rescue-natural-win.json",
+      "bytes": 6011,
+      "sha256": "981498ca9d993159aac271efd598348a395b1d427490dfdd7498478adb46fbb4"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-rescue-natural-win.png",
+      "bytes": 81720,
+      "sha256": "3c2daa2bff66cd229fdb60dfc0cf218a836ac543b733621e8b49eee71de705ea",
+      "pixels": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-rescue-setup.json",
+      "bytes": 6371,
+      "sha256": "6ab4e7e2b0d7f817264a6939ce11b46cfce3376e2bf79112c50709d030e5b6a2"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-rescue-setup.png",
+      "bytes": 78687,
+      "sha256": "40498bbbd8845b8fd17eccd1e02d74accdfd46d171df10ea07efef9d4bdc81a9",
+      "pixels": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-shell-natural-loss.json",
+      "bytes": 6125,
+      "sha256": "a62b2561e708e5c1821ca7290a4426767b130ef3640110fc4cf648a44df8484a"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-shell-natural-loss.png",
+      "bytes": 77721,
+      "sha256": "15717bc82f4bcc78514629d312204fc67c365d24a4914eade408b8ae9458863d",
+      "pixels": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-shell-natural-win.json",
+      "bytes": 6463,
+      "sha256": "7cb0804edf7ee695f2f31fdb2087201f3658662f3165616a10f462ab6ed7033b"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-shell-natural-win.png",
+      "bytes": 80342,
+      "sha256": "ec8ded863bfd67b757f9864c6a027a50141574c894d9a650a8da2d678826b6b7",
+      "pixels": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-shell-setup.json",
+      "bytes": 6089,
+      "sha256": "6b9f5e626a3728fc9253f362c212974eebd36c75cc4a90eb2ed9dcb65eeae143"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/challenge-shell-setup.png",
+      "bytes": 78515,
+      "sha256": "9ee3703c0a1b53de612ae007450a2915a955dbd37b34eaec239b2750895f4419",
+      "pixels": [
+        600,
+        1066
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/cold-campaign-loss-explained.json",
+      "bytes": 671,
+      "sha256": "dfe3b2b5671e4e15ae99277d0ff0ccf920f62e72190015a9a21e8686f56ca182"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/cold-campaign-loss-explained.png",
+      "bytes": 73668,
+      "sha256": "06726bbfa580f1c48c558060c194e1276ef90eb7be25a4082a6995edcff92209",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/mistake-equality.json",
+      "bytes": 663,
+      "sha256": "effe2bdb3451654aca8598d22b3be85cd5b31b000771675f08d388b3e73cde9c"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/mistake-equality.png",
+      "bytes": 66888,
+      "sha256": "3c7ad2129974f22c92f909d61b7be317ed8979a8ceae2ca9726199a743eb895d",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/mistake-final-bridge-too-early.json",
+      "bytes": 2708,
+      "sha256": "6fa4ae9e2fc7530b7b5bfb8860830f1630e938de6dabe06935a88904ca0f9a6b"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/mistake-final-bridge-too-early.png",
+      "bytes": 105336,
+      "sha256": "8a659d0dc9a34aa34b4340720e6800e3371199e9ac6460b84a99f33fb3f93373",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/mistake-greedy-ferry.json",
+      "bytes": 859,
+      "sha256": "198808452a5687d6b34879da379c4a1c2328eae533eb0b84a475121e61aa59a4"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/mistake-greedy-ferry.png",
+      "bytes": 84565,
+      "sha256": "a5295749cc84d210783ac5bed1ce7788d3dde685af5fbd7c4d1dfd390fef319d",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/mistake-ordered-voices.json",
+      "bytes": 735,
+      "sha256": "0b059add8d302e63766ef8a74d1ce83401808571ec6c03951b3a9ca247841af1"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/mistake-ordered-voices.png",
+      "bytes": 72609,
+      "sha256": "f1b9e004aa653d89ef4168d506fac6b60367c5ebf79fa88687b1136c56d2b074",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/mistake-sealed-keeper.json",
+      "bytes": 1107,
+      "sha256": "b6a647e77c0309e91f7a29d28f9e4fd4a9c6a8fbac831ea866a614ec64022012"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/mistake-sealed-keeper.png",
+      "bytes": 89656,
+      "sha256": "99c18e909706d88e033f4a5b39f884a859b5c20a6505f34f2c9be8b55527868a",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/mistake-sun-cannot-replace-shield.json",
+      "bytes": 1759,
+      "sha256": "fd962c12c1ace44e8f4e8feb7ad74a98eaa612e3bd15c0a3b3588154f12f722f"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/mistake-sun-cannot-replace-shield.png",
+      "bytes": 85713,
+      "sha256": "79585c9cce3c8b3fefcf3871ca7fca84783f698fcee2a0f7c26dcbd7c5f800fd",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/mistake-unshielded-glass.json",
+      "bytes": 899,
+      "sha256": "f0f49b632c0ecefda180bed17a89a85c47d83a2c27753003433327f507069650"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/mistake-unshielded-glass.png",
+      "bytes": 72400,
+      "sha256": "b8bdf14cc4f629c78375acdc6c6119e134ec23f92d0ca04851918ac93deb21db",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/mistake-wasted-key.json",
+      "bytes": 1215,
+      "sha256": "3d598060113b5a0994102431f3178fae8342beeb4a53845102e46b0650e9f17e"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/mistake-wasted-key.png",
+      "bytes": 87938,
+      "sha256": "51a495d54018813119f2fcb3ea4105da57aeb39c88f75a12c4f2609630d31715",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/mistake-wasted-second-shield.json",
+      "bytes": 2223,
+      "sha256": "f7789187716741c20856cd347c4e1d95c163910db4da9e65ebb70b7bfae2d9a6"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/mistake-wasted-second-shield.png",
+      "bytes": 94935,
+      "sha256": "adf5a3208ade84231a238cb7f3806248af06342de4e9452c7c2e6c4a3adb593c",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/optional-later-hint.json",
+      "bytes": 990,
+      "sha256": "236ee35eb20d06357784911de180a970498f6ec569369d5b22fb5aeb5afc4afb"
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/optional-later-hint.png",
+      "bytes": 78155,
+      "sha256": "ef445460a71e5eef8fd48b60ca955ecabcbc0bbd241143b373840337cfb08615",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/campaign/rendered/result.json",
+      "bytes": 21019,
+      "sha256": "45b84736c9b5921766339a7a036d87c7f84f38d85e9ef12795f0204f831cd22c"
+    },
+    {
+      "path": ".artifacts/challenge-v1/import.log",
+      "bytes": 1033,
+      "sha256": "b728de0c23f24d9aa31bc7608b177d7ca13857d7c3aca862a08506d00675123b"
+    },
+    {
+      "path": ".artifacts/challenge-v1/input/headless/active-pinned-save.json",
+      "bytes": 1965,
+      "sha256": "df6d120859f1c9be9844c6974fa370b3cbe069857ec0c467af82ef7b0e924137"
+    },
+    {
+      "path": ".artifacts/challenge-v1/input/headless/challenge-active-pinned.json",
+      "bytes": 3730,
+      "sha256": "0f70a1ddc492879fe734c1c8da66716f10deaf40039261745b90151417265228"
+    },
+    {
+      "path": ".artifacts/challenge-v1/input/headless/challenge-cold-loss-reason.json",
+      "bytes": 3761,
+      "sha256": "1817e08bfcfb91f561b2a7fdb8c4180afd789e3d8ca3f4305617c652ab8c66ef"
+    },
+    {
+      "path": ".artifacts/challenge-v1/input/headless/challenge-finale-natural-loss.json",
+      "bytes": 5111,
+      "sha256": "c2f6a2e1fd60045c33d48515f949fcdae19c2ee6e9ea4f68365a34190adf10df"
+    },
+    {
+      "path": ".artifacts/challenge-v1/input/headless/challenge-finale-natural-win.json",
+      "bytes": 5567,
+      "sha256": "743e824cf35d439a2b33b452d9dc2a0bdad86ceaf71841b702ebb23c280a2b67"
+    },
+    {
+      "path": ".artifacts/challenge-v1/input/headless/challenge-finale-setup.json",
+      "bytes": 3786,
+      "sha256": "6273f2b25dfd874cd5eeb62287fe556e5dc742d7228ee5b160e873b2e26cd0ae"
+    },
+    {
+      "path": ".artifacts/challenge-v1/input/headless/challenge-key-natural-loss.json",
+      "bytes": 3768,
+      "sha256": "ae7f1baeac324e77d79add0bfccc71a5a09d29435619b24a7a63b5c1440554ee"
+    },
+    {
+      "path": ".artifacts/challenge-v1/input/headless/challenge-key-natural-win.json",
+      "bytes": 4062,
+      "sha256": "530adc0f14f4101d49026cc91a3b3890385cf747091de3b6064e77b09c254569"
+    },
+    {
+      "path": ".artifacts/challenge-v1/input/headless/challenge-key-setup.json",
+      "bytes": 693,
+      "sha256": "9c0a57722b0057d94d383488176f54bdc5db734caed5800d803995c21bb555b0"
+    },
+    {
+      "path": ".artifacts/challenge-v1/input/headless/challenge-records.json",
+      "bytes": 4092,
+      "sha256": "e82740715f414752aa9455081338ed7314414b92649169d50f2e047892a20dae"
+    },
+    {
+      "path": ".artifacts/challenge-v1/input/headless/challenge-rescue-natural-loss.json",
+      "bytes": 3571,
+      "sha256": "adb085f77524041c80d89b7d02b16b1744cbb3f1f55306cf779da39d03ca5754"
+    },
+    {
+      "path": ".artifacts/challenge-v1/input/headless/challenge-rescue-natural-win.json",
+      "bytes": 3926,
+      "sha256": "885ec3a44b81b53d5463d356e3d44260d01a51c2bd6b6ec9c20a8a1b913b64d2"
+    },
+    {
+      "path": ".artifacts/challenge-v1/input/headless/challenge-rescue-setup.json",
+      "bytes": 4239,
+      "sha256": "c608222319ead04d0a30f8998e3658bd0616a5ab3662f1736df342fc06f261df"
+    },
+    {
+      "path": ".artifacts/challenge-v1/input/headless/challenge-shell-natural-loss.json",
+      "bytes": 4040,
+      "sha256": "df9a6960580431ea7a49a5b1777b67a488978b537fba909e0fff0d52d5a05f0c"
+    },
+    {
+      "path": ".artifacts/challenge-v1/input/headless/challenge-shell-natural-win.json",
+      "bytes": 4378,
+      "sha256": "116a900e47254ba87bcddf29699ee5e0a74b0531fac000c8abaecbd7478c3653"
+    },
+    {
+      "path": ".artifacts/challenge-v1/input/headless/challenge-shell-setup.json",
+      "bytes": 3957,
+      "sha256": "dd142bc0ec13247d07fda8fa798d41b2b274580fe7b7bcd4f619ba7bcdb1d3e3"
+    },
+    {
+      "path": ".artifacts/challenge-v1/input/headless/result.json",
+      "bytes": 1947,
+      "sha256": "5e5191346c1fd8e263fb3893172b2a53c17a543a5012bf38804377e4f576aa0f"
+    },
+    {
+      "path": ".artifacts/challenge-v1/input.log",
+      "bytes": 172,
+      "sha256": "3c015a3067cd0cbd5c9f66a6a620f7194c1cb01771a70479d9122141867b1691"
+    },
+    {
+      "path": ".artifacts/challenge-v1/layout-headless.log",
+      "bytes": 140,
+      "sha256": "72c023aa40bd124ed682eccb68b695aeb3735ee0e468d9f9dfa11b5eb752e1f3"
+    },
+    {
+      "path": ".artifacts/challenge-v1/legacy-headless.log",
+      "bytes": 140,
+      "sha256": "4898e4f0224b0d995ed08d0444caf22059eb2dfc5ce41c42c30b12f8bb341002"
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/00-seeded-setup.json",
+      "bytes": 659,
+      "sha256": "e7891fcd3318d37354a819a25090c2917073fc06ccb8a2f8e698a5ead1f4bd6b"
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/00-seeded-setup.png",
+      "bytes": 90693,
+      "sha256": "27f7ea36d7c4dc1281e284a5c515205eb16747d0f2aa17fcf38b96c63e8235be",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/01-key-start.json",
+      "bytes": 3662,
+      "sha256": "04683c3ff0d7c0a4e21f9e0b304ddb98af46aed090007758ea0f2d59edbc1ad3"
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/01-key-start.png",
+      "bytes": 86198,
+      "sha256": "43bbc5867b14b708989f1d8ae9e649bd440240a495051e6d997476ef3b3ec67c",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/02-key-loss.json",
+      "bytes": 3740,
+      "sha256": "db45c61b3c3f332c88bec999c498522ae7f98f657e00b4137d0e9a7d7ca48223"
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/02-key-loss.png",
+      "bytes": 94892,
+      "sha256": "90fd2dffe22965bcee32e2e97ed201a4c827f90e0399218638e8cb3ea9400923",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/03-key-victory.json",
+      "bytes": 4038,
+      "sha256": "061e68bf3698062e7b18da09ce64ce6bdad21beaee79fddc4a9e9c8d75325029"
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/03-key-victory.png",
+      "bytes": 89266,
+      "sha256": "f994adb266fb3e02645b9a1257280bb8299153d0ab6bbe0267f266fa85c31f9b",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/04-shell-start.json",
+      "bytes": 3956,
+      "sha256": "4e2bc8ab332a00f892457f442e5a15944af024722854647c9d148302d464374d"
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/04-shell-start.png",
+      "bytes": 89466,
+      "sha256": "ca02a3cbea5cbbffb2009d7592854b8f614d6f3415ef631a292da29d7dc0575b",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/05-shell-victory.json",
+      "bytes": 4353,
+      "sha256": "a2bbb97b10d312bbf6bf09ac2e0794a14c7a40c1d0ce2f2dad3b389ffbb5dfc1"
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/05-shell-victory.png",
+      "bytes": 86812,
+      "sha256": "6b74437e22817b6c79913ff9934f17a04f56a61583b007674bba0b8a7ea67beb",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/06-record-book.json",
+      "bytes": 4364,
+      "sha256": "b2518778261651f52b1bf31a30275874ac2cc3bc266a36899ec96c7eb692e2eb"
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/06-record-book.png",
+      "bytes": 63756,
+      "sha256": "c59794811fe69d7647a049fc3f9bec46f39856aceea5b2418b795b38b45dccf7",
+      "pixels": [
+        480,
+        853
+      ]
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/capture.log",
+      "bytes": 901,
+      "sha256": "e891d38215612945afb953fa529b72fe10b66dffd4bc39c32e6df99329b0fee0"
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/commands.json",
+      "bytes": 1386,
+      "sha256": "4c59d2938e577a021d6abd254f3ca68694d4697dc9059c3bb14bb07afca78c5a"
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/decode-validation.json",
+      "bytes": 101,
+      "sha256": "01a09b3eed5758e40527a60ee1a5661882f6b304c9452be9fba976fcfed9f998"
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/result.json",
+      "bytes": 5854,
+      "sha256": "02ea7b5064c30b31eb427c99a8f3cf6dfcfddadef8670757caa295d2682ec003"
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/tower-challenge.avi",
+      "bytes": 52451260,
+      "sha256": "86153c01cb046794505968f2967e3a7fb65719df22a3ff8bdc73af49c55af229"
+    },
+    {
+      "path": ".artifacts/challenge-v1/motion/tower-challenge.mp4",
+      "bytes": 1089021,
+      "sha256": "396d4a13058f108b82663fc74245f353bad00b43f2a3f399988915540d304ffc"
+    },
+    {
+      "path": ".artifacts/challenge-v1/rendered.log",
+      "bytes": 272,
+      "sha256": "e3170fc93fb1033faa85fed04bbd0538f3fc3fc49d78a2bfd4a0b341b2ea773b"
+    },
+    {
+      "path": ".artifacts/challenge-v1/rules/result.json",
+      "bytes": 1518,
+      "sha256": "9e6a9a6be23209873fd6d31a91f649a1be1028a2f5778ae8bc5fba545c31ffdf"
+    },
+    {
+      "path": ".artifacts/challenge-v1/rules.log",
+      "bytes": 192,
+      "sha256": "2613834009f299150f4362eefa749ab093830bcbab77e99d6d77bc3c2ce64a1b"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/design/prepared_cases.gd",
+      "bytes": 3102,
+      "sha256": "d06a857d45adf9e8f04deffa484c2e95497b489cb08ba591b684386ad9bd6867"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/design/prepared_cases.gd.uid",
+      "bytes": 20,
+      "sha256": "bf2dd28198a064a43d466850aa353bf94aa7debf58c7ed5a352e93d2b3e95ed4"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/export_presets.cfg",
+      "bytes": 532,
+      "sha256": "2f1c433db076938b090315fe267e61f95d33bfc38b9f9107532509fd3b87bf4f"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/icon.svg",
+      "bytes": 394,
+      "sha256": "6bca3ee031a419daa07bd4b2790d6ce481b5686cff75a0ee197ebcc9f7053d1b"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/icon.svg.import",
+      "bytes": 1013,
+      "sha256": "3847de679c56f4fcad0e14fb11b5eb0f45f068b7c59f489254b5c2c75c1b2320"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/main.tscn",
+      "bytes": 166,
+      "sha256": "539a74d0621571fab563c8871aad99acdf0158e9202a9453217fb7bf17a4a5df"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/progress.json",
+      "bytes": 2248,
+      "sha256": "8cd90ec5364665a3b547d797cb69e3bfbd5a631422887e0a9228b7410a5de9dd"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/project.godot",
+      "bytes": 748,
+      "sha256": "462324d1d492e6f19439dd2db7d15218556073f095fc789f1ab06bb735ed35fd"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/catalog_v1.gd",
+      "bytes": 2934,
+      "sha256": "4369130a59afd53fbe09db68adc6545a301d289d991670b6a2edfdca3dc04f53"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/catalog_v1.gd.uid",
+      "bytes": 20,
+      "sha256": "06b7209b6113ae43f26a8a34359abc8d292cd4f2c0fb0382be2cfece5d7f1313"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/catalog_v2.gd",
+      "bytes": 20348,
+      "sha256": "b0550bf10f67f43c0f1d8c998b9074b5192f05155c8939269e57a47614ace7cb"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/catalog_v2.gd.uid",
+      "bytes": 20,
+      "sha256": "868ed66e8974a6bdb486191bd9c4a265b09a4409abfff4a09532fa658d7708e6"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/challenge_v1.gd",
+      "bytes": 15593,
+      "sha256": "3706f76799c3eccf8a8739d02bd74a226edd274e6cdbd1358f58f97767812071"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/challenge_v1.gd.uid",
+      "bytes": 18,
+      "sha256": "f318e9801a652b1e9e5102c13e26a030470a1b2a94e3de1d95ca10b25448f19a"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/content.gd",
+      "bytes": 1044,
+      "sha256": "18251c7e05c053e9da1697d1ae5a7cfd99f8b4873528ec6abfc6841bfe24c1dc"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/content.gd.uid",
+      "bytes": 19,
+      "sha256": "2090f499c7cdeb2093df29a2ce8448caefcde09d6a6c13d2b2317b109ef2374d"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/local_audio.gd",
+      "bytes": 727,
+      "sha256": "62e5b953ef6f18148f279028e454a5546074d5692dc5e378368f12764ac18bf9"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/local_audio.gd.uid",
+      "bytes": 20,
+      "sha256": "a8c0c2c84080c34bac60f9d017e40759cd0f5a47b20b93fce6f75006d05a050e"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/main.gd",
+      "bytes": 37664,
+      "sha256": "57331b55aa3e8d78c7542892f9664d4579ee742d139f7b16d77f3608a653ceb0"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/main.gd.uid",
+      "bytes": 19,
+      "sha256": "814681d5bf55ea28a102a3c53c7176d636a272c31f8947c448fb1cf73512f486"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/rules.gd",
+      "bytes": 6200,
+      "sha256": "5db58d5d73e2a8b584d12548dba71c864be0d6302ac2c9f84ca1ca4ad5b6f8f6"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/rules.gd.uid",
+      "bytes": 20,
+      "sha256": "0f0da31b6f4b0164d53f22234d2e228b740294f4e9929aa73b6355b36bc710e8"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/rules_v1.gd",
+      "bytes": 5378,
+      "sha256": "5432339e42e95e02b14d64871cade704ccbb87f89a5c002412deed797291d950"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/rules_v1.gd.uid",
+      "bytes": 19,
+      "sha256": "fe8e014622b836b5a4e92d5db70b2368ef4241702788e144c94431755f99bc70"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/save_files.gd",
+      "bytes": 736,
+      "sha256": "67b532124aab977b2fb103c12d05a9a9152f6d9aee93113b8476796f880859db"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/save_files.gd.uid",
+      "bytes": 20,
+      "sha256": "b1be48ebc254694afe695f6332e8f7cd498af14fd3926377cae93d9e861bf37e"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/save_store.gd",
+      "bytes": 9366,
+      "sha256": "75fbf10cc8e8276237007593e08ac6b8706fc5a3ce78c4ea3ab30a4f7489080b"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/scripts/save_store.gd.uid",
+      "bytes": 20,
+      "sha256": "6983810b6668e5705d11e88ab7b7d6494086044a9599ef5e929ea98cb4c1a887"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/campaign_motion.gd",
+      "bytes": 2233,
+      "sha256": "bee986099fa0acdd451d7f37372c7f4a027792bafee87cb3e0b534b8263c70fb"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/campaign_motion.gd.uid",
+      "bytes": 20,
+      "sha256": "36c6d6d964926168c89ab46de1db4f11337324b01b9b51ffdec907c2cc0037db"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/campaign_playthrough.gd",
+      "bytes": 9017,
+      "sha256": "920a42bc46217e6d345059b171285594da1f5e1935279b4bd1a806921aef56aa"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/campaign_playthrough.gd.uid",
+      "bytes": 19,
+      "sha256": "82de2bc2822e65bda6e43153a31d5f256d529a141a9172b91a0698f02928e5a1"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/challenge_cases.gd",
+      "bytes": 8406,
+      "sha256": "c2e07bc7d1d5dfc0a9396fc372b4b05925b6174b5f14bd86238c388cf3ebd028"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/challenge_cases.gd.uid",
+      "bytes": 20,
+      "sha256": "dc4e443ce541a33d949e6368b3be5f6bafc77a7868332db18cf09cc954dd568f"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/challenge_flow.gd",
+      "bytes": 5874,
+      "sha256": "35f15b17291e2357cdde84c842348282582a5a03dc100274d92a09ab4448192e"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/challenge_flow.gd.uid",
+      "bytes": 20,
+      "sha256": "cd57e77d9f59a326971efc8e4c6aa1684ef78848f98e0f602fe9700242120907"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/challenge_motion.gd",
+      "bytes": 2793,
+      "sha256": "9f5ca0a089ee770dd4002097f0f445117ddcfa0dfaf8e1770e4313182803b79a"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/challenge_motion.gd.uid",
+      "bytes": 20,
+      "sha256": "6e3cee635e370a65db6c44457e7f8e2dc7a318b0389f86e44525241483eb8cc9"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/challenge_playthrough.gd",
+      "bytes": 1082,
+      "sha256": "8e92d458b4b8fd3c245f1ebe02aa4ab7ba2a6a1c9c6f72cd635ecdeb6b8ee644"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/challenge_playthrough.gd.uid",
+      "bytes": 20,
+      "sha256": "dd1385f6b6153e41d166dded3086ce65379e74f410f054332eb0ad3aa7e7ae97"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/challenge_rules.gd",
+      "bytes": 249,
+      "sha256": "4459cfa012d736698872d724702e1dd4a2d4350eaff98b4f51123b1686d5d449"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/challenge_rules.gd.uid",
+      "bytes": 20,
+      "sha256": "1e3ddd486a49a025b5b809b8773762a2655a57e815f65e3d34d314fcf2b2433b"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/create_challenge_fixture.gd",
+      "bytes": 849,
+      "sha256": "3fe92de03787e28421b714f7b2ac2757e967abf9c27c1b3a77da22ea109e9a42"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/create_challenge_fixture.gd.uid",
+      "bytes": 20,
+      "sha256": "4c74672938c570bb4fa7604f03ca537a0ce77fd88dde136fac92d67de7da0c8f"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/create_code2_fixture.gd",
+      "bytes": 1980,
+      "sha256": "2bc6f0988f9b11d2a716d2f4da7afec97f57df0eadf9636c11aa06677d60279b"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/create_code2_fixture.gd.uid",
+      "bytes": 20,
+      "sha256": "fa6fc48aa19270ff8861f20788a36295cf68184687a7761e43be7494485f0bc0"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/create_legacy_fixture.gd",
+      "bytes": 1807,
+      "sha256": "a6c9f790c09113aa15e6a6dad45ed085842278d2c79753e37c519bccf1ddd46f"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/create_legacy_fixture.gd.uid",
+      "bytes": 20,
+      "sha256": "089c402a963afed06292fb38c044fb607420cde237792912b1dae1b37d538472"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/fault_files.gd",
+      "bytes": 1112,
+      "sha256": "17cbbe3147a916429b8d8da3ee1da29d6c72b068537a188916f3a8ec3dde5d13"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/fault_files.gd.uid",
+      "bytes": 20,
+      "sha256": "1640215fc56b9294bffa536d71f18cb82fdb1964f71a39e63f3dae1dbb1ed8e1"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/fixtures/challenge-v1-active.json",
+      "bytes": 1965,
+      "sha256": "df6d120859f1c9be9844c6974fa370b3cbe069857ec0c467af82ef7b0e924137"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/fixtures/challenge-v1-active.provenance.json",
+      "bytes": 407,
+      "sha256": "f2853e49a550b04346561ff4fd2d3f36e19a202ae6a110f972e6a1fccbb69e1e"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/fixtures/challenge-v1-fallback.json",
+      "bytes": 1724,
+      "sha256": "ceff269844c20ae3901cfcd1fceea49515106c0c35aff928f58c595e51021a31"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/fixtures/code1-active-route.json",
+      "bytes": 188,
+      "sha256": "7ca9a01904e82629d72c62f91897cdd32be0bb50c6a9c21ad38d890f4cf045d5"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/fixtures/code1-active-route.json.expected.json",
+      "bytes": 508,
+      "sha256": "9203621fa9b31bf1d7313e8a1add8732357026ad57a024c3067f73741819fac4"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/fixtures/code2-active-route.json",
+      "bytes": 827,
+      "sha256": "b615fa67fcff48789dde24e334b91c6f42fde2feecdc038a8b904a78e2391927"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/fixtures/code2-active-route.json.expected.json",
+      "bytes": 399,
+      "sha256": "21ff85fbfb0eaf234dedcb2357d9fc54fcb73d66d182fbcedec51cfcaa2cbf0f"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/import_backup_probe.gd",
+      "bytes": 1402,
+      "sha256": "3f3f39a4d7f825db013e4afc1188b347a3a64696d6b8aaf00e248460f0470503"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/import_backup_probe.gd.uid",
+      "bytes": 19,
+      "sha256": "cdd978f62c9ffb6afa2b7c25d55e5da2049ab182e7e31feb1478f3629119668a"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/input_base.gd",
+      "bytes": 3890,
+      "sha256": "842b8c9472c2201032781b05c639bf427a76d1a02a0bab689a3ab008bb8e0029"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/input_base.gd.uid",
+      "bytes": 20,
+      "sha256": "3b7c9adbfd0026fa702238609679dbe1f20fd30b27b2cdf7b86dc4dc2da68ce5"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/layout_probe.gd",
+      "bytes": 2418,
+      "sha256": "41b3b1dbdae7cf6221d53ffd3955a0ba6bf6371348160573c4208cc8fe028ecb"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/layout_probe.gd.uid",
+      "bytes": 19,
+      "sha256": "82cd324bd9aa68de42d686d8163e69555dcdc6fd780794f44ffdc7cb9c066f86"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/legacy_update_input.gd",
+      "bytes": 3596,
+      "sha256": "42ad8c3d2eb451878c6c14c7d667183c613f13e76f2f22ca24e5fb290da46a86"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/legacy_update_input.gd.uid",
+      "bytes": 20,
+      "sha256": "53119ab6d3cfb9752cd7dc5ed8254f921339612780d51274f2eca462c2a3f1d9"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/motion.gd",
+      "bytes": 42,
+      "sha256": "3229fced96068a515b4e0a76a81828c537ab942e35cfddc445390e2768db1505"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/motion.gd.uid",
+      "bytes": 19,
+      "sha256": "dbf01c19540c458ec75449b46cbc57dcf4bd5ed719a9e92df5870cdb9f0978c6"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/playthrough.gd",
+      "bytes": 47,
+      "sha256": "8f063c07248f3756c907582e512f2bdb8419648f5e07b389d2f1f3f2c4fe471a"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/playthrough.gd.uid",
+      "bytes": 20,
+      "sha256": "66b700d6cf0a31a9f810a27c889ef9de8d0f76da2464d19fdaeaddd89094f739"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/preparation.gd",
+      "bytes": 2980,
+      "sha256": "1248f2740dfea14addeb9500cf51be70689a9ca2477a0c190f9ac75dc88109aa"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/preparation.gd.uid",
+      "bytes": 20,
+      "sha256": "3f8a1086c50d128caedeb80fa5d45014d2056d1d42cf24aedbb0160e5a4ee40a"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/run_tests.gd",
+      "bytes": 11069,
+      "sha256": "682b41325f4d3bafd4dca16df43d5ab0353d39cddadd6e04afd883f0364098b9"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tests/run_tests.gd.uid",
+      "bytes": 20,
+      "sha256": "83bcb327fd121e34d059d662a0a9743250335f4e195f75375a466ced854d05fa"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tools/capture.py",
+      "bytes": 1889,
+      "sha256": "5a4bc1881b98b7f62927f3cbb1cda287bd006ffad2ff7a2c7833f535599e0fa1"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source/tools/check.py",
+      "bytes": 1652,
+      "sha256": "32881d3bb35437be85caacb6b910b9522188f155ca3865b144b9b9acc26f787b"
+    },
+    {
+      "path": ".artifacts/challenge-v1/source-bindings.json",
+      "bytes": 18853,
+      "sha256": "95816eb89d4d552007751a5380af117cdc63b4380e1f45bdfcaf0060796b0105"
+    }
+  ],
+  "pending": [
+    "Independent generator/snapshot/import/appeal review",
+    "Coordinator code3 Android export/runtime and genuine update validation",
+    "Physical Fold7 safe areas/folding/audible output/device FPS",
+    "Human authored30-60minute duration/difficulty/fun assessment"
+  ]
+}

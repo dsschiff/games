@@ -1,0 +1,12 @@
+{
+  "provenance": "Unchanged app-written save after actual UI seed/family setup, Generate and first successful touch action in tests/challenge_playthrough.gd. Desktop input evidence, not Android install-r.",
+  "sha256": "df6d120859f1c9be9844c6974fa370b3cbe069857ec0c467af82ef7b0e924137",
+  "family": "key",
+  "seed": 137,
+  "actions": [
+    "landing"
+  ],
+  "campaign_actions": [
+    "bell"
+  ]
+}

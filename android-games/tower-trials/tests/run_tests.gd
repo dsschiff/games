@@ -69,8 +69,11 @@ func _initialize() -> void:
 	wrong.claimed = ["key"]
 	check(not Rules.step(ferry, wrong, "door").ok, "Door checks actual key not only prerequisite")
 	save_checks()
-	DirAccess.make_dir_recursive_absolute("res://.artifacts/campaign/rules")
-	var file := FileAccess.open("res://.artifacts/campaign/rules/result.json", FileAccess.WRITE)
+	var extra := preload("res://tests/challenge_cases.gd").new().run_suite()
+	checks += extra.checks
+	failures.append_array(extra.failures)
+	DirAccess.make_dir_recursive_absolute("res://.artifacts/challenge-v1/authored-rules")
+	var file := FileAccess.open("res://.artifacts/challenge-v1/authored-rules/result.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify({"checks": checks, "failures": failures, "solutions": solutions, "claim": "BFS gives shortest successful routes; no uniqueness claim"}, "\t"))
 	file.close()
 	print("TOWER RULES: %d checks; %d failures" % [checks, failures.size()])
@@ -150,7 +153,7 @@ func save_checks() -> void:
 	for key in ["power", "keys", "shields", "moves", "treasure"]:
 		old_expected.state[key] = int(old_expected.state[key])
 	var old := Saves.decode(old_source)
-	check(old.ok and old.state == old_expected.state and old.data.catalog == 1 and old.data.schema == 2, "Genuine touch-created code1 route keeps exact state while schema migrates")
+	check(old.ok and old.state == old_expected.state and old.data.catalog == 1 and old.data.schema == Saves.VERSION, "Genuine touch-created code1 route keeps exact state while schema migrates")
 	if old.ok:
 		var legacy_level := Content.by_id(old.data.level_id, 1)
 		check(Rules.step(legacy_level, old.state, "rope").state.power == 8, "Updated runtime can naturally continue immutable catalog1 arithmetic")

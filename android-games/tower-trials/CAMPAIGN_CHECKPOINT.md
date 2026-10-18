@@ -1,5 +1,7 @@
 # Tower Trials software candidate 0.2.0 / code2
 
+Historical frozen packet. Current seeded-replay amendment is in `CHALLENGE_CHECKPOINT.md`.
+
 Thirty-six authored puzzles, four chapters/finales, six integrated core-rule tutorials, local progression and a final ending. First-loop expansion was approved by Astra after direct playback of the complete prototype clip. **Full-candidate independent review and Android acceptance are still pending.**
 
 The H1 identity remains room choice → short courier clash → deterministic power transfer → visibly growing/claimed watch. Introductory addition is source-supported; strict-greater/equality-loses, ordered rooms and all resource/route rules are our original design choices. No party RPG or pin puzzle.

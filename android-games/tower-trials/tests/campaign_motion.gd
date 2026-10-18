@@ -4,7 +4,7 @@ const Content = preload("res://scripts/content.gd")
 
 func _initialize() -> void:
 	root.size = Vector2i(600, 1066)
-	folder = "res://.artifacts/campaign/motion"
+	folder = "res://.artifacts/challenge-v1/campaign/motion"
 	rendered = true
 	call_deferred("run")
 
@@ -15,7 +15,7 @@ func run() -> void:
 		test_path = "user://tower-movie-%02d.json" % index
 		for suffix in ["", ".tmp", ".bak", ".bak.tmp"]:
 			DirAccess.remove_absolute(test_path + suffix)
-		var checkpoint_path := "res://.artifacts/campaign/checkpoints/stage%02d.json" % index
+		var checkpoint_path := "res://.artifacts/challenge-v1/campaign/checkpoints/stage%02d.json" % index
 		var file := FileAccess.open(test_path, FileAccess.WRITE)
 		file.store_buffer(FileAccess.get_file_as_bytes(checkpoint_path))
 		file.close()

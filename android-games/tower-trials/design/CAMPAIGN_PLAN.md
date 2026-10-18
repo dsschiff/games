@@ -29,4 +29,4 @@ The coordinator will create a real touch-earned code1 Android active route and i
 
 `prepared_cases.gd` holds six inactive route/rule stress cases for solver and state-space exploration. They are not in the campaign selector. Their purpose is to expose resource/order mistakes before authoring all later watches. No uniqueness claims. Keep this preparation separate from the reviewed runtime.
 
-Optional seeded challenge generation is deferred. If implemented, reject unsolved outputs with a complete-state solver, retain seed/definition/witness and avoid presenting random reskins as authored progression. Campaign replay medals and alternate branches can supply replay value independently.
+Seeded challenge generation is a required replay feature. Generator v1 adds four bounded structural grammar families, complete-state win/medal/loss witnesses, deterministic seed/options, a verified fallback and separately validated saved snapshots. It supplements the authored journey; generation does not substitute for campaign content. Final acceptance requires the generated mode as well as authored replay medals.

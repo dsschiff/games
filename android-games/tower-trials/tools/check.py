@@ -25,7 +25,7 @@ def main():
         command += ["--editor", "--import", "--quit"]
     else:
         command += ["--fixed-fps", "60", "--script", "tests/run_tests.gd" if args.mode == "rules" else "tests/playthrough.gd"]
-    log = ROOT / f".artifacts/campaign/{args.mode}.log"
+    log = ROOT / f".artifacts/challenge-v1/{args.mode}.log"
     log.parent.mkdir(parents=True, exist_ok=True)
     result = subprocess.run(command, env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace", timeout=600)
     log.write_text(result.stdout, encoding="utf-8")

@@ -3,7 +3,7 @@ extends "res://tests/input_base.gd"
 func _initialize() -> void:
 	root.size = Vector2i(360, 800)
 	rendered = DisplayServer.get_name() != "headless"
-	folder = "res://.artifacts/campaign/layout-" + ("rendered" if rendered else "headless")
+	folder = "res://.artifacts/challenge-v1/campaign/layout-" + ("rendered" if rendered else "headless")
 	test_path = "user://tower-layout-input.json"
 	call_deferred("run")
 

@@ -4,7 +4,7 @@ const Content = preload("res://scripts/content.gd")
 func _initialize() -> void:
 	root.size = Vector2i(600, 1066)
 	rendered = DisplayServer.get_name() != "headless"
-	folder = "res://.artifacts/campaign/" + ("rendered" if rendered else "headless")
+	folder = "res://.artifacts/challenge-v1/campaign/" + ("rendered" if rendered else "headless")
 	test_path = "user://tower-campaign-v2.json"
 	call_deferred("run")
 
@@ -13,11 +13,18 @@ func mistake(actions: Array, label: String, undo: bool = false) -> void:
 		await enter(id)
 	check(game.state.status == "lost", "Natural mistake reaches defeat: " + label)
 	await frame("mistake-" + label)
+	if label == "equality":
+		var before: Dictionary = game.state.duplicate(true)
+		game.queue_free()
+		await wait_frames(3)
+		await create_game()
+		check(game.state == before and game.note.contains("Equality loses"), "Cold restored campaign defeat explains its actual last action")
+		await frame("cold-campaign-loss-explained")
 	await action("undo" if undo else "retry")
 	check(game.state.status == "active", "Undo/Retry naturally corrects " + label)
 
 func checkpoint(index: int) -> void:
-	var directory := "res://.artifacts/campaign/checkpoints"
+	var directory := "res://.artifacts/challenge-v1/campaign/checkpoints"
 	DirAccess.make_dir_recursive_absolute(directory)
 	check(game.persist(), "App commits earned movie checkpoint " + str(index))
 	var bytes := FileAccess.get_file_as_bytes(test_path)
@@ -46,6 +53,13 @@ func run() -> void:
 	for i in Content.levels().size():
 		var definition: Dictionary = Content.levels()[i]
 		check(game.data.level_id == definition.id, "Natural journey reached " + definition.id)
+		if i == 6:
+			check(not game.show_hint, "Later route hint is not disclosed automatically")
+			await action("hint")
+			check(game.show_hint, "Explicit input reveals an optional later route hint")
+			await frame("optional-later-hint")
+			await action("hint")
+			check(not game.show_hint, "Optional hint can be hidden again")
 		if i in [0, 18, 35]: await checkpoint(i)
 		if i == 0: await mistake(["rope"], "equality")
 		elif i == 1: await mistake(["reverse"], "ordered-voices", true)
@@ -144,8 +158,11 @@ func run() -> void:
 	await wait_frames(5)
 	check(game.state == before_import, "Unfolded desktop aspect preserves complete route")
 	await frame("38-unfolded-candidate")
+	root.size = Vector2i(600, 1066)
+	await wait_frames(5)
+	var challenges := await preload("res://tests/challenge_flow.gd").run(self)
 	var file := FileAccess.open(folder + "/result.json", FileAccess.WRITE)
-	file.store_string(JSON.stringify({"checks": checks, "failures": failures, "actual_touch_taps": taps, "actual_key_events": keys, "journey": journey, "captures": captures, "renderer": DisplayServer.get_name(), "limitations": ["Desktop engine input, not physical touch", "Fixed frames do not measure human duration or phone FPS", "No Android/device/sound-output claim"]}, "\t"))
+	file.store_string(JSON.stringify({"checks": checks, "failures": failures, "actual_touch_taps": taps, "actual_key_events": keys, "journey": journey, "captures": captures, "challenges": challenges, "renderer": DisplayServer.get_name(), "limitations": ["Desktop engine input, not physical touch", "Fixed frames do not measure human duration or phone FPS", "No Android/device/sound-output claim"]}, "\t"))
 	file.close()
 	print("TOWER CAMPAIGN INPUT: %d checks; %d failures; %d touch taps; %d watches" % [checks, failures.size(), taps, journey.size()])
 	game.queue_free()

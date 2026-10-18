@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "game": "tower-trials",
-  "software_version": "0.2.0",
-  "android_version_code": 2,
+  "software_version": "0.3.0",
+  "android_version_code": 3,
   "implemented": {
     "authored_puzzles": 36,
     "chapters": 4,
@@ -13,29 +13,39 @@
     "replay_medals": true,
     "sound_reduced_effects": true,
     "versioned_save_export_import": true,
-    "legacy_catalog_and_rules_preserved": true
+    "legacy_catalog_and_rules_preserved": true,
+    "seeded_challenge_families": 4,
+    "pinned_generated_snapshots": true,
+    "separate_challenge_medals_and_record_replay": true,
+    "optional_later_route_hints": true,
+    "cold_loss_explanation": true
   },
   "automatically_verified": {
     "solver_witnesses": "36/36",
     "treasure_witnesses": "14/14",
     "greedy_smallest_policy_failures": "18/36",
-    "rules_and_save_checks": 398,
-    "headless_campaign_checks": 994,
+    "rules_and_save_checks": 3503,
+    "headless_campaign_checks": 1173,
     "input_earned_campaign_clears": 36,
-    "headless_touch_taps": 471,
-    "legacy_headless_checks": 19,
-    "legacy_rendered_checks": 21,
+    "headless_touch_taps": 586,
+    "legacy_headless_checks": 27,
+    "legacy_rendered_checks": 30,
     "first_middle_final_motion_checks": 40,
-    "exact_rendered_result": ".artifacts/campaign/rendered/result.json",
-    "rendered_campaign_checks": 1020,
+    "exact_rendered_result": ".artifacts/challenge-v1/campaign/rendered/result.json",
+    "rendered_campaign_checks": 1216,
     "layout_headless_checks": 17,
-    "layout_rendered_checks": 20
+    "layout_rendered_checks": 20,
+    "challenge_checks": 3105,
+    "challenge_matrix_requests": 512,
+    "challenge_structural_signatures": 31,
+    "rendered_touch_taps": 586,
+    "challenge_motion_checks": 48
   },
   "review": {
     "prototype_appeal_expansion": "Astra approved via coordinator after complete movie playback",
     "full_candidate_appeal_fidelity_release": "requested at frozen checkpoint"
   },
-  "android": "coordinator export/runtime/update work pending",
+  "android": "Coordinator code1-to-code2 update passed; code3 export/runtime/update pending",
   "phone_tested": false,
   "human_duration_minutes_target": [
     30,
@@ -44,10 +54,11 @@
   "human_duration_measured": false,
   "limits": [
     "No unique-solution claim",
-    "No random challenge generator",
     "Desktop fixed-rate captures do not measure phone FPS",
     "Physical safe areas, folding, audible output and human fun remain unverified",
-    "Seeded solver-verified challenge replay awaits coordinator assessment after this bounded freeze"
+    "Small versioned grammars; no claim of infinitely many unique topologies"
   ],
-  "next_action": "Coordinator/Astra full-candidate review and shared frozen code2 Android export/update acceptance"
+  "next_action": "Coordinator/Astra Challenge amendment review and shared code3 Android export/update acceptance",
+  "save_schema": 3,
+  "generator_version": 1
 }

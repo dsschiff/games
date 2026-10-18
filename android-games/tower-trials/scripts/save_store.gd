@@ -3,17 +3,23 @@ extends RefCounted
 const Content = preload("res://scripts/content.gd")
 const Rules = preload("res://scripts/rules.gd")
 const Files = preload("res://scripts/save_files.gd")
-const VERSION := 2
+const Challenge = preload("res://scripts/challenge_v1.gd")
+const VERSION := 3
 const PATH := "user://tower-save.json"
 const LIMIT := 200000
 
 static func fresh() -> Dictionary:
-	return {"schema": VERSION, "revision": 0, "recoverable": true, "catalog": Content.VERSION, "level_id": "watch_01", "level": 0, "actions": [], "used_undo": false, "profile": {}, "settings": {"sound": true, "reduced_effects": false}}
+	return {"schema": VERSION, "revision": 0, "recoverable": true, "catalog": Content.VERSION, "level_id": "watch_01", "level": 0, "actions": [], "used_undo": false, "profile": {}, "settings": {"sound": true, "reduced_effects": false}, "kind": "campaign", "challenge_run": {}, "challenge_records": []}
 
 static func replay(data: Dictionary) -> Dictionary:
+	if data.get("kind", "campaign") == "challenge":
+		return replay_route(data.challenge_run.bundle.snapshot, data.challenge_run.actions)
 	var level: Dictionary = Content.by_id(data.level_id, int(data.catalog))
+	return replay_route(level, data.actions)
+
+static func replay_route(level: Dictionary, actions: Array) -> Dictionary:
 	var state := Rules.initial(level)
-	for action in data.actions:
+	for action in actions:
 		var result := Rules.step(level, state, action)
 		if not result.ok:
 			return {}
@@ -35,7 +41,10 @@ static func decode(source: String) -> Dictionary:
 	var data: Dictionary = parsed
 	for key in fresh():
 		if not data.has(key):
-			return {"ok": false, "message": "Incomplete save"}
+			if key in ["kind", "challenge_run", "challenge_records"] and whole(data.get("schema", 0), 1, 2):
+				data[key] = fresh()[key]
+			else:
+				return {"ok": false, "message": "Incomplete save"}
 	if not whole(data.catalog, 1, Content.VERSION) or not data.level_id is String or Content.by_id(data.level_id, int(data.catalog)).is_empty():
 		return {"ok": false, "message": "Unknown saved catalog or puzzle ID"}
 	var saved_levels := Content.levels(int(data.catalog))
@@ -76,11 +85,40 @@ static func decode(source: String) -> Dictionary:
 	data.catalog = int(data.catalog)
 	data.schema = VERSION
 	data.revision = int(data.revision)
-	var state := replay(data)
+	var state := replay_route(Content.by_id(data.level_id, data.catalog), data.actions)
 	if state.is_empty():
 		return {"ok": false, "message": "Impossible route"}
 	if state.status == "won" and not data.profile.has(data.level_id):
 		return {"ok": false, "message": "Completed route is missing its earned clear"}
+	if not data.kind is String or not data.kind in ["campaign", "challenge"] or not data.challenge_run is Dictionary or not data.challenge_records is Array or data.challenge_records.size() > Challenge.MAX_RECORDS:
+		return {"ok": false, "message": "Invalid challenge save structure"}
+	var record_keys: Array = []
+	for record in data.challenge_records:
+		if not record is Dictionary or record.size() != 8: return {"ok": false, "message": "Invalid challenge record"}
+		for field in ["key", "version", "family", "seed", "options", "best", "medals", "fallback"]:
+			if not record.has(field): return {"ok": false, "message": "Incomplete challenge record"}
+		if not record.fallback is bool or not record.key is String or not RegEx.create_from_string("^[a-f0-9]{64}$").search(record.key) or record.key in record_keys or not whole(record.version, 1, 1) or not record.family in Challenge.FAMILIES or not whole(record.seed, 0, 2147483647) or not Challenge.options_valid(record.options) or not whole(record.best, 1, 8) or not whole(record.medals, 1, 15) or int(record.medals) & 1 == 0 or (not record.options.treasure and int(record.medals) & 4 != 0):
+			return {"ok": false, "message": "Invalid challenge medal bounds"}
+		record_keys.append(record.key)
+		for field in ["version", "seed", "best", "medals"]: record[field] = int(record[field])
+		record.options.weave = int(record.options.weave)
+	if not data.challenge_run.is_empty():
+		var run: Dictionary = data.challenge_run
+		if run.size() != 3 or not run.has("bundle") or not run.get("actions") is Array or run.actions.size() > 8 or not run.get("used_undo") is bool:
+			return {"ok": false, "message": "Invalid challenge run"}
+		var valid := Challenge.validate(run.bundle)
+		if not valid.ok: return valid
+		for record in data.challenge_records:
+			if record.key == valid.key and (record.fallback != run.bundle.fallback or record.version != run.bundle.version or record.family != run.bundle.family or record.seed != run.bundle.seed or record.options != run.bundle.options or record.best < int(run.bundle.snapshot.par) or record.best > run.bundle.snapshot.rooms.size() or (int(record.medals) & 2 != 0 and record.best > int(run.bundle.snapshot.par))):
+				return {"ok": false, "message": "Challenge record does not match its pinned snapshot"}
+		for action in run.actions:
+			if not action is String: return {"ok": false, "message": "Invalid challenge action"}
+		var challenge_state := replay_route(run.bundle.snapshot, run.actions)
+		if challenge_state.is_empty() or (challenge_state.status == "won" and not valid.key in record_keys):
+			return {"ok": false, "message": "Invalid challenge history or missing medal"}
+		if data.kind == "challenge": state = challenge_state
+	elif data.kind == "challenge":
+		return {"ok": false, "message": "Missing generated snapshot"}
 	return {"ok": true, "data": data, "state": state}
 
 static func encode(data: Dictionary) -> String:
