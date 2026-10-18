@@ -1,8 +1,10 @@
 # Dead Run first playable handoff
 
 Prepared after the full Last Human L2 observation follow-up. Implementation has
-not started. Open one existing-repo isolated worktree/persistent chat only when
-a builder lane becomes available; retain the two-builder/one-reviewer limit.
+not started. The clean existing-repo worktree is prepared at
+`C:/projects/active/_worktrees/games-dead-run-20261018`, branch`codex/dead-run`,
+initial base`e41cb09cdbe1d78da0a004aa9ef0ea5a73c0dcb9`. Activate its persistent
+chat only when a builder lane becomes available; retain the two-builder/one-reviewer limit.
 Read root instructions/goal/roadmap/recent worklog, the complete
 `references/last-human.md` and its continuous observation addendum. Run portfolio
 status from the assigned worktree. Own only `android-games/dead-run/`; root owns

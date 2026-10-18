@@ -25,6 +25,15 @@
       "state": "active first playable in persistent Frontline Foundry chat after Hook conditional candidate acceptance; owns existing isolated worktree, alongside Hearthguard",
       "activation_base": "d771247958d550e4cd4a345ff7db3c310d9ab677",
       "thread_id": "01a14d1d-c90a-7562-b246-6cd243ad96ed"
+    },
+    {
+      "slug": "dead-run",
+      "worktree": "C:/projects/active/_worktrees/games-dead-run-20261018",
+      "branch": "codex/dead-run",
+      "initial_base": "e41cb09cdbe1d78da0a004aa9ef0ea5a73c0dcb9",
+      "ownership_when_started": "android-games/dead-run/",
+      "handoff": "android-games/handoffs/dead-run-prototype.md",
+      "state": "clean isolated workspace and qualified first-loop handoff prepared; no implementation/chat started; waits for accepted builder handoff to keep two builders"
     }
   ],
   "games": [

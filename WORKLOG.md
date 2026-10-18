@@ -1,5 +1,9 @@
 # Android portfolio worklog
 
+## 2026-10-18 UTC Dead Run workspace prepared without opening a third builder
+
+- Main/root/canonical e41cb09cdbe1d78da0a004aa9ef0ea5a73c0dcb9 is clean and equal to origin/main after native/reference records land; d771247 is an ancestor and docs/ remains unchanged. Prepared C:/projects/active/_worktrees/games-dead-run-20261018 /codex/dead-run from exact e41cb09 after checking no existing path/branch. Its qualified first-loop handoff and thread map record prepared-only status. No sixth persistent chat or implementation started; Hearthguard full campaign and Frontline first prototype remain the two active builders.
+
 ## 2026-10-18 UTC Hearthguard native first loop/platform verified; campaign opened
 
 - Actual code1 native first loop034740608989Z passes11checks: untouched four-leak defeat, real Retry preserving ledger, finite pickups, exact5-gold Bolt, visible firing/rewards, exact15-gold Heavy, natural20-stopped/no-leak victory. Root viewed raw defeat/second investment/victory. Finalrev133/wallet0/spent20/profile2attempts/1win/best20; final15uncollected coin objects total45gold (not earlierpoll42). No save injection or forced terminal redraw.
