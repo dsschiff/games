@@ -28,14 +28,35 @@ var turret: Node3D
 var barrel: Node3D
 var barrel_rest := Vector3.ZERO
 var role_kit: Node3D
+var drill_rotor: Node3D
+var repair_boom: Node3D
+var repair_socket: Marker3D
+var charge_dish: Node3D
+var repair_left := 0.0
+var repair_aim := Vector3.FORWARD
+var warning_left := 0.0
+var jammed := false
+var fire_duration := .19
 static var palette_materials := {}
+static var model_cache := {}
+
+static func instantiate_model(path: String) -> Node3D:
+	if not model_cache.has(path):
+		model_cache[path] = load(path) as PackedScene
+	return model_cache[path].instantiate()
 
 func configure(unit_role: String, faction: String, phase: float) -> void:
 	role = unit_role
 	team = faction
 	gait = phase
 	vehicle = role in ["rover", "vehicle", "drill", "carrier", "storm"]
-	model = (load(VEHICLE if vehicle else MODEL) as PackedScene).instantiate()
+	var path := VEHICLE if vehicle else MODEL
+	if role in ["drill", "carrier", "storm"]:
+		path = "res://art/models/vehicle_" + role + ".glb"
+	elif role in ["runner", "breaker", "ranger", "bulwark", "mortar", "jammer", "sapper"]:
+		path = "res://art/models/soldier_" + role + ".glb"
+	model = instantiate_model(path)
+	fire_duration = .30 if vehicle else (.32 if role == "mortar" else (.25 if role == "breaker" else .19))
 	add_child(model)
 	rig = find_skeleton(model)
 	if rig != null:
@@ -50,25 +71,19 @@ func configure(unit_role: String, faction: String, phase: float) -> void:
 		barrel = model.find_child("Cannon", true, false)
 		if barrel != null:
 			barrel_rest = barrel.position
-		if team == "enemy":
-			model.scale = Vector3(1.25, 1.1, 1.5) if role == "drill" else Vector3(1.45, 1.4, 1.7)
-		if role == "drill":
-			var cone := CylinderMesh.new()
-			cone.top_radius = 0.03
-			cone.bottom_radius = 0.32
-			cone.height = 0.7
-			var drill := MeshInstance3D.new()
-			drill.mesh = cone
-			drill.rotation.x = -PI / 2
-			drill.position = Vector3(0, 0.5, -1.25)
-			drill.material_override = material(Color("bec6b9"))
-			model.add_child(drill)
-	if role in ["bulwark", "mortar", "jammer", "sapper", "breaker", "ranger", "storm", "carrier"]:
-		var kit := (load("res://art/models/kit_" + role + ".glb") as PackedScene).instantiate()
+		drill_rotor = model.find_child("DrillRotor", true, false)
+		repair_boom = model.find_child("RepairBoom", true, false)
+		charge_dish = model.find_child("ChargeDish", true, false)
+		if repair_boom != null:
+			repair_socket = Marker3D.new()
+			repair_boom.add_child(repair_socket)
+			repair_socket.position = Vector3(0, 0, -1.33)
+	if role in ["bulwark", "mortar", "jammer", "sapper", "breaker", "ranger"]:
+		var kit := instantiate_model("res://art/models/kit_" + role + ".glb")
 		finish_materials(kit, {}, "kit")
 		role_kit = kit
 		if rig != null:
-			var joint := "Weapon" if role == "ranger" else ("ForearmL" if role in ["bulwark", "breaker"] else "Torso")
+			var joint := "ForearmL" if role == "bulwark" else "Torso"
 			var attachment := BoneAttachment3D.new()
 			attachment.bone_name = joint
 			rig.add_child(attachment)
@@ -80,11 +95,11 @@ func configure(unit_role: String, faction: String, phase: float) -> void:
 	muzzle.name = "MuzzleSocket"
 	if rig != null:
 		var attachment := BoneAttachment3D.new()
-		attachment.bone_name = "Weapon"
+		attachment.bone_name = "PrimaryMuzzle" if bones.has("PrimaryMuzzle") else "Weapon"
 		rig.add_child(attachment)
 		attachment.add_child(muzzle)
 		# Rest bones point up: local +Y is up and local -Z is forward.
-		muzzle.position = Vector3(0, 0.01, -0.69)
+		muzzle.position = Vector3.ZERO if bones.has("PrimaryMuzzle") else Vector3(0, .01, -.69)
 	elif barrel is MeshInstance3D:
 		barrel.add_child(muzzle)
 		# The authored cannon's local -Y cap points forward. Inherit its turret
@@ -96,7 +111,7 @@ func configure(unit_role: String, faction: String, phase: float) -> void:
 		muzzle.position = Vector3(0, 0.86, -1)
 	status = Label3D.new()
 	status.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	status.position = Vector3(0, 1.65 if not vehicle else 1.8, 0)
+	status.position = Vector3(0, 1.65 if not vehicle else (2.0 if role in ["carrier", "storm"] else 1.8), 0)
 	status.pixel_size = 0.008
 	status.font_size = 26
 	status.outline_size = 4
@@ -121,12 +136,13 @@ static func finish_materials(node: Node, palette: Dictionary = {}, faction: Stri
 		for i in node.mesh.get_surface_count():
 			var source: Material = node.mesh.surface_get_material(i)
 			if source is StandardMaterial3D:
-				var key := faction + ":" + str(source.get_instance_id())
+				var swatch: Color = palette.get(source.resource_name, source.albedo_color)
+				var key := str(source.get_instance_id()) + ":" + swatch.to_html()
 				if not palette_materials.has(key):
 					var m := source.duplicate() as StandardMaterial3D
 					# Compatibility's imported color path needs the same explicit linear
 					# swatch conversion as our runtime materials; verified in play captures.
-					m.albedo_color = (palette.get(source.resource_name, source.albedo_color) as Color).srgb_to_linear()
+					m.albedo_color = swatch.srgb_to_linear()
 					palette_materials[key] = m
 				node.set_surface_override_material(i, palette_materials[key])
 	for child in node.get_children():
@@ -164,6 +180,8 @@ func make_health_bar() -> void:
 
 func set_snapshot(data: Dictionary, hydrate: bool = false) -> void:
 	action = data.phase
+	warning_left = data.get("warning", 0.0)
+	jammed = data.get("jammed", false)
 	equipment_progress = data.get("equip", 1.0)
 	armed = action != "waiting" and (action != "equipping" or equipment_progress >= 0.85)
 	if role_kit != null and role in ["breaker", "ranger"]:
@@ -173,7 +191,7 @@ func set_snapshot(data: Dictionary, hydrate: bool = false) -> void:
 	health_fraction = clampf(data.hp / maxf(data.max_hp, 1), 0, 1)
 	health_fill.scale.x = health_fraction
 	health_root.visible = health_fraction < 0.995 and health_fraction > 0
-	status.text = "• • •" if action == "equipping" else ("+" if action == "waiting" else "")
+	status.text = "• • •" if action == "equipping" else ("!" if action == "waiting" and data.get("request", false) else ("×" if jammed else ""))
 	status.modulate = Color("ffdf78") if action == "equipping" else Color("dae8c4")
 	if action == "fallen":
 		if hydrate:
@@ -188,7 +206,7 @@ func set_snapshot(data: Dictionary, hydrate: bool = false) -> void:
 
 func fire(target: Vector3) -> void:
 	aim = (target - position) * Vector3(1, 0, 1)
-	fire_left = 0.19 if not vehicle else 0.30
+	fire_left = fire_duration
 	torso_yaw = wrapf(atan2(-aim.x, -aim.z) - rotation.y, -PI, PI)
 	if turret != null:
 		turret.rotation.y = torso_yaw
@@ -196,9 +214,14 @@ func fire(target: Vector3) -> void:
 func hit() -> void:
 	hit_left = 0.22
 
+func repair(target: Vector3) -> void:
+	repair_left = .6
+	repair_aim = (target - position) * Vector3(1, 0, 1)
+
 func reset_transients() -> void:
 	fire_left = 0
 	hit_left = 0
+	repair_left = 0
 	travel = 0
 
 func bone(name: String, angles: Vector3) -> void:
@@ -212,13 +235,16 @@ func pose(dt: float, velocity: Vector3, victory: bool) -> void:
 	gait += speed * dt * PI / (2 * step_half)
 	fire_left = maxf(0, fire_left - dt)
 	hit_left = maxf(0, hit_left - dt)
+	repair_left = maxf(0, repair_left - dt)
 	var direction := velocity if speed > .15 else (aim if fire_left > 0 else Vector3.ZERO)
 	if direction.length_squared() > 0.001 and death_time < 0:
 		rotation.y = lerp_angle(rotation.y, atan2(-direction.x, -direction.z), minf(1, dt * 16))
 	if death_time >= 0:
 		death_time += dt
-		model.rotation.x = -minf(death_time / 0.55, 1) * 1.40
-		model.position.y = minf(death_time / 0.55, 1) * 0.13
+		model.rotation.x = -minf(death_time / .55, 1) * (.12 if vehicle else 1.40)
+		model.position.y = minf(death_time / .55, 1) * (-.04 if vehicle else .13)
+		if vehicle and turret != null:
+			turret.rotation.x = minf(death_time / .55, 1) * .18
 		bone("ThighL", Vector3(0.65, 0, -0.22))
 		bone("ThighR", Vector3(-0.2, 0, 0.3))
 		bone("ShinL", Vector3(-1, 0, 0))
@@ -228,7 +254,7 @@ func pose(dt: float, velocity: Vector3, victory: bool) -> void:
 		health_root.hide()
 		return
 	var stride := sin(gait) * 0.63 * travel
-	var kick := sin(PI * clampf(fire_left / 0.19, 0, 1))
+	var kick := sin(PI * clampf(fire_left / fire_duration, 0, 1))
 	var flinch := sin(PI * hit_left / 0.22)
 	if vehicle:
 		for wheel in wheels:
@@ -236,9 +262,18 @@ func pose(dt: float, velocity: Vector3, victory: bool) -> void:
 		if turret != null:
 			var angle := wrapf(atan2(-aim.x, -aim.z) - rotation.y, -PI, PI)
 			turret.rotation.y = lerp_angle(turret.rotation.y, angle, minf(1, dt * 18))
+			turret.rotation.x = -.12 if victory else 0.0
 		if barrel != null:
 			barrel.position = barrel_rest + Vector3(0, 0, kick * .14)
 		model.rotation.z = flinch * 0.04
+		if drill_rotor != null:
+			drill_rotor.rotate_z(dt * (speed * 5 + (8.0 if warning_left > 0 else .6)))
+		if charge_dish != null:
+			charge_dish.rotate_y(dt * (2.0 if warning_left > 0 else .25))
+		if repair_boom != null:
+			repair_boom.rotation.x = -.22 * sin(PI * repair_left / .6)
+			var yaw := atan2(-repair_aim.x, -repair_aim.z) - rotation.y
+			repair_boom.rotation.y = lerp_angle(repair_boom.rotation.y, yaw, minf(1, dt * 8))
 		return
 	# Analytic two-link gait: stance travels backward at root speed, keeping the
 	# planted boot near its world contact; swing clears ground and returns forward.
@@ -254,7 +289,7 @@ func pose(dt: float, velocity: Vector3, victory: bool) -> void:
 	bone("UpperArmR", Vector3(stride * 0.08 + kick * 0.12, 0, 0))
 	bone("ForearmL", Vector3(-equip_lift + kick * 0.05, 0, 0))
 	bone("ForearmR", Vector3(kick * 0.08, 0, 0))
-	bone("Weapon", Vector3(kick * 0.12, 0, 0))
+	bone("Weapon", Vector3(kick * .12 + (.12 if role == "mortar" else 0), 0, 0))
 	if victory:
 		bone("UpperArmL", Vector3(0, 0, -2.5))
 		bone("ForearmL", Vector3(-0.65, 0, 0))

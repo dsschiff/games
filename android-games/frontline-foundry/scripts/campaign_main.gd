@@ -18,6 +18,9 @@ var relay_labels: Array = []
 var mark_nodes: Array = []
 var whole_world: Node3D
 var hq_marker: Node3D
+var brief_forecast: Label
+var brief_rules: Label
+var brief_scroll: ScrollContainer
 
 func _ready() -> void:
 	var saved := S.read()
@@ -61,13 +64,20 @@ func make_ui() -> void:
 	next_button.size = Vector2(572, 96)
 	briefing = panel(ui)
 	label(briefing, "SORTIE BRIEF", Vector2(24, 18), Vector2(560, 45), 32, "ffe1a0")
-	var text := label(briefing, state.definition.forecast, Vector2(24, 75), Vector2(560, 150), 27)
-	text.name = "Forecast"
-	text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	text = label(briefing, "", Vector2(24, 240), Vector2(560, 180), 25)
-	text.name = "Rules"
-	text.add_theme_font_size_override("font_size", 24)
-	text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	brief_scroll = ScrollContainer.new()
+	brief_scroll.position = Vector2(24, 78)
+	brief_scroll.size = Vector2(572, 338)
+	brief_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	briefing.add_child(brief_scroll)
+	var brief_body := VBoxContainer.new()
+	brief_body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	brief_body.add_theme_constant_override("separation", 22)
+	brief_scroll.add_child(brief_body)
+	brief_forecast = label(brief_body, "", Vector2.ZERO, Vector2.ZERO, 25)
+	brief_rules = label(brief_body, "", Vector2.ZERO, Vector2.ZERO, 23)
+	for text in [brief_forecast, brief_rules]:
+		text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	b = button(briefing, "SORTIE KIT / SUPPORT", open_support)
 	b.position = Vector2(24, 440)
 	b.size = Vector2(572, 96)
@@ -79,8 +89,9 @@ func make_ui() -> void:
 		b = button(support_panel, key.to_upper(), choose_support.bind(key))
 		b.position = Vector2(24, 160 + row * 135)
 		b.size = Vector2(572, 96)
-		var l := label(support_panel, D.SUPPORT[key].split(": ")[1], Vector2(24, 258 + row * 135), Vector2(572, 33), 21)
+		var l := label(support_panel, D.SUPPORT[key].split(": ")[1], Vector2(24, 258 + row * 135), Vector2(572, 33), 20)
 		l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		row += 1
 	b = button(support_panel, "CLOSE", close_modals)
 	b.position = Vector2(24, 585)
@@ -115,7 +126,8 @@ func make_ui() -> void:
 		b.position = Vector2(24 + row * 194, 280)
 		b.size = Vector2(184, 96)
 		row += 1
-	label(seed_panel, "Same seed/style pins the full encounter.\nFlank: relays and rushers. Siege: mortar crews.\nRecords stay separate from the campaign.", Vector2(24, 410), Vector2(572, 130), 25)
+	var seed_help := label(seed_panel, "Same seed and style recreate the encounter.\nFlank: relays and rushers. Siege: mortar crews.\nRecords stay separate from the campaign.", Vector2(24, 410), Vector2(572, 130), 24)
+	seed_help.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	b = button(seed_panel, "START SKIRMISH", start_seed)
 	b.position = Vector2(24, 560)
 	b.size = Vector2(572, 96)
@@ -134,6 +146,7 @@ func layout() -> void:
 	menu.size.y = 880
 	terminal.size.y = 515
 	terminal_detail.add_theme_font_size_override("font_size", 24)
+	terminal_detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	for p in [support_panel, journey, seed_panel]:
 		p.position = Vector2((view.x - 620) / 2, 235)
 		p.size = Vector2(620, 710 if p == support_panel else 830)
@@ -328,7 +341,7 @@ func refresh() -> void:
 	var d: Dictionary = state.definition
 	(head.get_child(0) as Label).text = "%02d  %s" % [int(d.index) + 1, d.title.to_upper()] if d.mode == "campaign" else d.title.to_upper()
 	(head.get_child(0) as Label).add_theme_font_size_override("font_size", 25)
-	wallet_label.text = "SCRAP %d    /    KIT %s" % [state.wallet, state.planned_support.to_upper()]
+	wallet_label.text = "SCRAP %d    /    FRONT %d/%d" % [state.wallet, C.active_count(state), d.cap]
 	wallet_label.add_theme_font_size_override("font_size", 27)
 	status_label.text = "YOU %d / %d    •    HQ %d / %d" % [state.hp, d.commander_hp, state.hq, d.hq]
 	status_label.add_theme_font_size_override("font_size", 25)
@@ -341,8 +354,8 @@ func refresh() -> void:
 	effects_button.text = "REDUCED EFFECTS  " + ("ON" if settings.reduced_effects else "OFF")
 	var modal: bool = transfer.visible or journey.visible or support_panel.visible or seed_panel.visible
 	briefing.visible = state.phase == "ready" and not paused and not modal
-	(briefing.get_node("Forecast") as Label).text = d.forecast
-	(briefing.get_node("Rules") as Label).text = "Objective: " + C.objective_text(state) + "\n\nRifle 7: general • Breaker 10: armor\nRanger 10: artillery • Rover 18: groups\nFinite crews. Collect scrap; replace losses."
+	brief_forecast.text = d.forecast
+	brief_rules.text = "Objective: " + C.objective_text(state) + "\n\nRifle 7: general • Breaker 10: armor\nRanger 10: artillery • Rover 18: groups\nFinite crews. Collect scrap; replace losses."
 	start_button.visible = state.phase == "ready" and not paused and not modal
 	start_button.text = "LAUNCH SORTIE"
 	stick.visible = state.phase == "playing" and not paused
@@ -366,7 +379,8 @@ func refresh() -> void:
 	if state.spawned < d.schedule.size():
 		var arrival: Dictionary = d.schedule[int(state.spawned)]
 		next = "Next: %s in %.0fs" % [arrival.role.to_upper(), maxf(0, arrival.at - state.time)]
-	guidance.text = C.objective_text(state).capitalize() + "\n" + next
+	var objective: String = C.objective_text(state)
+	guidance.text = objective.substr(0, 1).to_upper() + objective.substr(1) + "\n" + next
 	guidance.visible = state.phase == "playing" and not paused
 	terminal.visible = state.phase in ["victory", "defeat"] and not paused
 	if terminal.visible:

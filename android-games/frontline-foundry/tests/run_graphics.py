@@ -50,7 +50,7 @@ def import_project(run, env):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=["checks", "capture", "closure"])
+    parser.add_argument("mode", choices=["checks", "capture", "closure", "gallery", "tour", "legacy"])
     parser.add_argument("--render", action="store_true")
     parser.add_argument("--movie", action="store_true")
     parser.add_argument("--seconds", type=float, default=145)
@@ -59,11 +59,14 @@ def main():
     parser.add_argument("--stage", choices=["sideways", "park", "restore", "retry"], default="park")
     parser.add_argument("--native-frames", action="store_true")
     parser.add_argument("--movie-fps", type=int, choices=[30, 60], default=30)
+    parser.add_argument("--measure-frames", action="store_true")
     args = parser.parse_args()
-    if args.movie and (args.mode != "capture" or not args.render):
+    if args.movie and (args.mode not in {"capture", "gallery", "tour", "legacy"} or not args.render):
         parser.error("Movie recording requires capture --render and the coordinator's GPU slot")
     if args.native_frames and (args.mode != "closure" or not args.render or args.movie):
         parser.error("Native frame recording requires closure --render and the coordinator's GPU slot")
+    if args.measure_frames and (args.mode != "capture" or not args.render or args.movie or args.native_frames):
+        parser.error("Frame timing requires real-time capture --render with no movie/fixed-step recording")
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     run = PROJECT / ".artifacts" / f"{args.label}-{args.mode}-{stamp}"
     run.mkdir(parents=True)
@@ -97,13 +100,15 @@ def main():
         expected_start.write_text(json.dumps(max(packets, key=lambda item: item["revision"])))
     command = [str(GODOT), "--path", str(PROJECT)]
     command += ["--resolution", "720x1280", "--position", "0,0"] if args.render else ["--headless"]
-    script = {"checks": "presentation_tests.gd", "capture": "graphics_benchmark.gd", "closure": "graphics_closure.gd"}[args.mode]
+    script = {"checks": "presentation_tests.gd", "capture": "graphics_benchmark.gd", "closure": "graphics_closure.gd", "gallery": "art_gallery.gd", "tour": "graphics_tour.gd", "legacy": "graphics_legacy.gd"}[args.mode]
     command += ["--script", "res://tests/" + script]
     if args.movie:
         command += ["--fixed-fps", str(args.movie_fps), "--write-movie", str(run / "continuous.avi")]
     elif args.mode == "closure":
         command += ["--fixed-fps", str(args.movie_fps)]
     command += ["--", "--capture-dir=" + str(run), "--seconds=" + str(args.seconds)]
+    if args.measure_frames:
+        command += ["--measure-frames"]
     if expected_start:
         command += ["--expected-start=" + str(expected_start)]
     if args.mode == "closure":
@@ -130,7 +135,7 @@ def main():
         if imported["passed"]:
             try:
                 code = subprocess.run(command, env=env, stdout=log, stderr=subprocess.STDOUT,
-                                      timeout=max(180, args.seconds * 4 + 120)).returncode
+                                      timeout=180 if args.mode == "checks" else max(180, args.seconds * 4 + 120)).returncode
             except subprocess.TimeoutExpired:
                 code = 124
         else:

@@ -1,9 +1,11 @@
-# Frontline Foundry — 0.2.0 / code 2
+# Frontline Foundry — 0.3.0 / code 3 candidate
 
-The original rigged stylized 3D benchmark is implemented in this graphics branch.
-See [GRAPHICS_BENCHMARK.md](GRAPHICS_BENCHMARK.md) for reproducible assets,
-source-bound native 720x1280 gameplay captures, checks and open art-review gates.
-This source benchmark has not produced a new APK or received graphics acceptance.
+The accepted rigged stylized 3D benchmark is expanded across the campaign,
+legacy battle and seeded skirmishes. See [GRAPHICS_PRODUCTION.md](GRAPHICS_PRODUCTION.md)
+for the original regional/specialist models, final source-bound captures, desktop
+frame timing and remaining independent/native/phone gates. Historical bounded
+benchmark evidence remains in [GRAPHICS_BENCHMARK.md](GRAPHICS_BENCHMARK.md).
+This builder has not exported or installed a 0.3.0 APK.
 
 An original offline portrait 3D commander/base defense game. Twelve districts,
 four recruit roles, three support choices, six ordinary enemy roles, three bosses,
@@ -109,7 +111,7 @@ sortie-prefixed captures retain original journey, alternatives, failures and
 corrections. Windows clipboard source/fresh-destination checks need an exclusive
 reserved interactive window. Fresh Import validates transfer, not earned play.
 
-Android preset: `com.dsschiff.frontlinefoundry`, **0.2.0/code2**, arm64-v8a+x86_64,
+Android preset: `com.dsschiff.frontlinefoundry`, **0.3.0/code3**, arm64-v8a+x86_64,
 official non-Gradle min24/target36 template, no permissions or embedded credentials.
 This builder did not export/install APKs, use ADB, alter SDK/global editor settings,
 push or publish. UID/icon metadata uses an isolated copied portable editor with

@@ -4,7 +4,11 @@
   "blender": "4.5.14 LTS 62c1db4208e8",
   "portable_archive_sha256": "b9533d2397ac1984db4466fb23a7a4649391cca93f6e84209f9bcc60d071c8b9",
   "generator": "source/build_assets.py",
-  "generator_sha256": "da3b9e03de34f3a27542f7b98765bb7ffe2ac61b953c2043c0fcacd45b091aa9",
+  "generator_sha256": "f1a0ec221d5e6f552073c730c6f9d6d375af5b55b9802e270d76bee1c2caf746",
+  "generator_sources_sha256": {
+    "build_assets.py": "f1a0ec221d5e6f552073c730c6f9d6d375af5b55b9802e270d76bee1c2caf746",
+    "world_kit.py": "2083c830b7844be9fa3b11586f08c681697fd46d62a028a0496f4f7200e03a6e"
+  },
   "units": "meters; +Y Blender forward exports -Z Godot; right-handed glTF Y-up",
   "animation": {
     "source": "scripts/presentation/actor.gd",
@@ -24,8 +28,20 @@
   "acceptance": "Structural export only; visible quality and frame-time measurement require actual rendered review",
   "assets": [
     {
+      "file": "models/bridge_arch.glb",
+      "sha256": "570d3cb0c480af0740f8f7e48e0347dbbf312fdb21140d0152ade7751ba2d3fe",
+      "bytes": 28740,
+      "triangles": 752,
+      "mesh_nodes": 2,
+      "materials": [
+        "WorldIvory",
+        "WorldStone"
+      ],
+      "skin_joints": []
+    },
+    {
       "file": "models/cliff.glb",
-      "sha256": "5261a5d21358072b4d39892d91e073ba50ff66b5433cea5af4d9ebd61277627b",
+      "sha256": "a7640786dfe6e7429c1d97c7245c9bfd7d8d74fe978a16dc9664574bb9515f6a",
       "bytes": 15964,
       "triangles": 376,
       "mesh_nodes": 2,
@@ -37,7 +53,7 @@
     },
     {
       "file": "models/crate.glb",
-      "sha256": "32a7e29ab5d24f1342f8298ae2af7ae168436be442d37450197a4c7f4455ca4a",
+      "sha256": "5e5f6d494ba9dd1cd9c2c3131e1c25e839f11a9bf02419ce8780832ee22356e1",
       "bytes": 31204,
       "triangles": 752,
       "mesh_nodes": 4,
@@ -49,8 +65,20 @@
       "skin_joints": []
     },
     {
+      "file": "models/crystal_spire.glb",
+      "sha256": "150966c7963bb58cc8deb04f5682287d89adf5604a6441917c43824f4f70ad3c",
+      "bytes": 11024,
+      "triangles": 218,
+      "mesh_nodes": 2,
+      "materials": [
+        "WorldGlass",
+        "WorldStone"
+      ],
+      "skin_joints": []
+    },
+    {
       "file": "models/equipment.glb",
-      "sha256": "167f19e72a856504bf2fb9593351f083b1a992acb9b4c4b1a5f6d6aa2f48f19a",
+      "sha256": "36188e6fdf09fd66e4bb2e6bae24243e5fdcd41e8d8d9dd8e0a26808aca5fc3b",
       "bytes": 76540,
       "triangles": 1880,
       "mesh_nodes": 10,
@@ -63,36 +91,64 @@
       "skin_joints": []
     },
     {
-      "file": "models/headquarters.glb",
-      "sha256": "7d651034dcaf7779bf097520a5478ab0a16345bf6d2b18e05e34dc6b6ab06fcc",
-      "bytes": 80332,
-      "triangles": 1980,
-      "mesh_nodes": 10,
+      "file": "models/floodgate.glb",
+      "sha256": "a35d545aafa07d246ab4d89d03e036aa9c98cef3910b7024569a306760b271eb",
+      "bytes": 69156,
+      "triangles": 1692,
+      "mesh_nodes": 4,
       "materials": [
-        "Olive",
-        "Roof",
-        "Metal",
-        "Window",
-        "Signal"
+        "WorldStone",
+        "WorldIvory",
+        "WorldMetal",
+        "WorldBrass"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/foundry_stack.glb",
+      "sha256": "370f4e110135d38ca8b71bf13f485e1fa7ef0e239a36a4af3bb035cddc4cb53c",
+      "bytes": 77680,
+      "triangles": 1692,
+      "mesh_nodes": 3,
+      "materials": [
+        "WorldMetal",
+        "WorldRust",
+        "WorldBrass"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/headquarters.glb",
+      "sha256": "c83f30b56f58f0a176513715be2bc07b45b440cd05291ae3f4a59290a074cb9f",
+      "bytes": 201756,
+      "triangles": 4700,
+      "mesh_nodes": 7,
+      "materials": [
+        "WorldOlive",
+        "WorldIvory",
+        "WorldRoof",
+        "WorldBrass",
+        "WorldGlass",
+        "WorldStone",
+        "WorldMetal"
       ],
       "skin_joints": []
     },
     {
       "file": "models/kit_breaker.glb",
-      "sha256": "88d12613858304822d0728689333a36e3239f3ad79f6263678f2c282ef365f18",
-      "bytes": 28200,
+      "sha256": "47ef03a0dc8733eee0baba3f9177ce9aa21cde656e40d7c81e10fa4a2a6abf97",
+      "bytes": 27776,
       "triangles": 564,
       "mesh_nodes": 3,
       "materials": [
-        "Gunmetal",
-        "KitBrass",
-        "Uniform"
+        "Uniform",
+        "KitBrass"
       ],
       "skin_joints": []
     },
     {
       "file": "models/kit_bulwark.glb",
-      "sha256": "b629a19e4e4befcd21e276b41e64d6568464cf39064e203ad336346934b2ab55",
+      "sha256": "40b1216e081b5ff976b47a4fd1040ce6f4dbf181e3e2fabcf3e6dcd13333b12c",
       "bytes": 31044,
       "triangles": 752,
       "mesh_nodes": 4,
@@ -105,7 +161,7 @@
     },
     {
       "file": "models/kit_carrier.glb",
-      "sha256": "8549afc9033623e4ef001266c6e727ffa288727f25cdea25b7b8b87a157c7c8c",
+      "sha256": "7be66e1b5057401e107d253acdf909f64aa76dd2de634056efd20f9cb28c5394",
       "bytes": 28096,
       "triangles": 564,
       "mesh_nodes": 3,
@@ -117,7 +173,7 @@
     },
     {
       "file": "models/kit_jammer.glb",
-      "sha256": "9240ff23137247c820f14f24864e2669f60a8c24e857b30cb8e11d6816be4f72",
+      "sha256": "a5edaa2b92074acceebe92cb53110fe6f33aff7b404152eaa1ed5c7de7fb22eb",
       "bytes": 45508,
       "triangles": 1228,
       "mesh_nodes": 6,
@@ -131,7 +187,7 @@
     },
     {
       "file": "models/kit_mortar.glb",
-      "sha256": "1118691669eb99911e848db49ca1cd2563ea50445107f7895e3e488b07bf08e9",
+      "sha256": "1714b00983137eca0d0cddf3fe4b37cbba9428504cf052389003c89f47681e44",
       "bytes": 28144,
       "triangles": 564,
       "mesh_nodes": 3,
@@ -144,19 +200,19 @@
     },
     {
       "file": "models/kit_ranger.glb",
-      "sha256": "cd21033564ec5f5d2b596c580a18baa9bb21dfb4759d7fc6c0a7e777977c7a2f",
-      "bytes": 19236,
-      "triangles": 376,
-      "mesh_nodes": 2,
+      "sha256": "3c292c5d7da64d812250bc4c490b639c3f7c5a9f96ccc55f5da13a304240d7f9",
+      "bytes": 28008,
+      "triangles": 564,
+      "mesh_nodes": 3,
       "materials": [
-        "Gunmetal",
+        "Uniform",
         "Rubber"
       ],
       "skin_joints": []
     },
     {
       "file": "models/kit_sapper.glb",
-      "sha256": "eef90ad637909d0b603be62ab1c94f9be06045c4fe87c053a6f7f4ee39649f08",
+      "sha256": "5f467ec1d79279eb5b8f45c6a36643824554aee6afad116a4c92af985e2b041b",
       "bytes": 36872,
       "triangles": 752,
       "mesh_nodes": 4,
@@ -168,7 +224,7 @@
     },
     {
       "file": "models/kit_storm.glb",
-      "sha256": "d5db17dc1c4c9718cb617f842d82d05623556a7288e1d5cd598ccddc6d791b12",
+      "sha256": "9ab9571094b74338ba9baa8b451d1b9c04b17fd634890951c480e5886c0ff552",
       "bytes": 53372,
       "triangles": 1128,
       "mesh_nodes": 6,
@@ -179,8 +235,78 @@
       "skin_joints": []
     },
     {
+      "file": "models/orchard_tree.glb",
+      "sha256": "626626e68d7ef51316ec54c1963c1f64eab5a0bc1532f198b8cf093a6a7e86db",
+      "bytes": 88304,
+      "triangles": 3432,
+      "mesh_nodes": 3,
+      "materials": [
+        "WorldWood",
+        "WorldRoof",
+        "WorldBrass"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/quarry_crane.glb",
+      "sha256": "7cd4f6c22b04fd1efd2f47409c3edb1978c988d7893de47b0b6deb30706d42e6",
+      "bytes": 56280,
+      "triangles": 1316,
+      "mesh_nodes": 3,
+      "materials": [
+        "WorldStone",
+        "WorldMetal",
+        "WorldBrass"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/rail_wagon.glb",
+      "sha256": "b14d18d6c27ee247839bcf0e5901b809c5b52db71186b253cfa147d31aa5e855",
+      "bytes": 114004,
+      "triangles": 2632,
+      "mesh_nodes": 10,
+      "materials": [
+        "WorldMetal",
+        "WorldRust",
+        "Rubber",
+        "Gunmetal"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/relay_mast.glb",
+      "sha256": "aa6d8889e871ea47d83f1b7eb37c8585c484617c051c929f95621503013e1e1b",
+      "bytes": 47652,
+      "triangles": 1228,
+      "mesh_nodes": 4,
+      "materials": [
+        "WorldOlive",
+        "WorldMetal",
+        "WorldBrass",
+        "WorldGlass"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/repair_gantry.glb",
+      "sha256": "99a576713c942963f1be150d943c210535f124b408ff08f0ba1f4527c65f635e",
+      "bytes": 87780,
+      "triangles": 1880,
+      "mesh_nodes": 6,
+      "materials": [
+        "WorldStone",
+        "WorldMetal",
+        "WorldRoof",
+        "WorldBrass",
+        "WorldIvory",
+        "WorldOlive"
+      ],
+      "skin_joints": []
+    },
+    {
       "file": "models/rover.glb",
-      "sha256": "75b4603c52a18cdb32474d36969679f0f58a20739de132a62ec234e604235c8d",
+      "sha256": "e8d0ddec91da5f93d2a4bdd7e6d9893551b6d0d937fa78a975884cb8c7749558",
       "bytes": 122416,
       "triangles": 2632,
       "mesh_nodes": 14,
@@ -194,7 +320,7 @@
     },
     {
       "file": "models/sandbag.glb",
-      "sha256": "1cd42fe3014df8f4f428cf563e7a321b4ce6bab2b35c6a0f375955c29d52c416",
+      "sha256": "43df6c3fbccc5ee159e4cb12eae05660906514e8d216a70eab4f4f885a60c232",
       "bytes": 17548,
       "triangles": 376,
       "mesh_nodes": 2,
@@ -205,8 +331,20 @@
       "skin_joints": []
     },
     {
+      "file": "models/scrap_coin.glb",
+      "sha256": "5c7483820cc2d1777e6a971572ea52dd785deadffe88156d04c9ad5bdb95148d",
+      "bytes": 28996,
+      "triangles": 564,
+      "mesh_nodes": 2,
+      "materials": [
+        "WorldBrass",
+        "WorldIvory"
+      ],
+      "skin_joints": []
+    },
+    {
       "file": "models/sentry.glb",
-      "sha256": "495da2b2aba1dfc19133f721d9dc99e5a16ce057d6bcd37ca2fc635cf1bdccc4",
+      "sha256": "4f3b3fc660442c6f282a7a3fcecd30ae3400a5f4c4ce81e6734daf3bb2655031",
       "bytes": 37068,
       "triangles": 752,
       "mesh_nodes": 4,
@@ -218,9 +356,23 @@
       "skin_joints": []
     },
     {
+      "file": "models/signal_dish.glb",
+      "sha256": "34b3189cdb7eee9617a7f79bf1200136c8b8f9ba24d8bdafab172d85cb9138fc",
+      "bytes": 33976,
+      "triangles": 852,
+      "mesh_nodes": 4,
+      "materials": [
+        "WorldOlive",
+        "WorldMetal",
+        "WorldIvory",
+        "WorldBrass"
+      ],
+      "skin_joints": []
+    },
+    {
       "file": "models/soldier.glb",
-      "sha256": "caad7dccce2564c44746d2daae95144ce70e8d38032bf1d1753d9d472d25ecf2",
-      "bytes": 541764,
+      "sha256": "3bb8168e692fa2f89f561ebb2164eb072dff30525b184149d7770e84a98237f3",
+      "bytes": 541928,
       "triangles": 9172,
       "mesh_nodes": 7,
       "materials": [
@@ -233,8 +385,327 @@
         "Visor"
       ],
       "skin_joints": [
-        16
+        17
       ]
+    },
+    {
+      "file": "models/soldier_breaker.glb",
+      "sha256": "abef1a3eb8a5d87b640e02277f20cd0361473dd334fe2ba79e4647a764964468",
+      "bytes": 543016,
+      "triangles": 9172,
+      "mesh_nodes": 7,
+      "materials": [
+        "Gunmetal",
+        "Rubber",
+        "Skin",
+        "Trim",
+        "Uniform",
+        "Vest",
+        "Visor"
+      ],
+      "skin_joints": [
+        17
+      ]
+    },
+    {
+      "file": "models/soldier_bulwark.glb",
+      "sha256": "7c759259327894769f765858fff41a49aa5901de9740bf0003a4fb1d7fa499aa",
+      "bytes": 564252,
+      "triangles": 9548,
+      "mesh_nodes": 7,
+      "materials": [
+        "Gunmetal",
+        "Rubber",
+        "Skin",
+        "Trim",
+        "Uniform",
+        "Vest",
+        "Visor"
+      ],
+      "skin_joints": [
+        17
+      ]
+    },
+    {
+      "file": "models/soldier_jammer.glb",
+      "sha256": "a2934ce2d8b1326bd8056a5806ba9c198f41184b1fed71b785b7b864bd91189a",
+      "bytes": 505264,
+      "triangles": 8608,
+      "mesh_nodes": 7,
+      "materials": [
+        "Gunmetal",
+        "Rubber",
+        "Skin",
+        "Trim",
+        "Uniform",
+        "Vest",
+        "Visor"
+      ],
+      "skin_joints": [
+        17
+      ]
+    },
+    {
+      "file": "models/soldier_mortar.glb",
+      "sha256": "c3c704ebdc0c1fb44e7fe2c51cf5101866e1d922e247747b835132860b6c2402",
+      "bytes": 520696,
+      "triangles": 8796,
+      "mesh_nodes": 7,
+      "materials": [
+        "Gunmetal",
+        "Rubber",
+        "Skin",
+        "Trim",
+        "Uniform",
+        "Vest",
+        "Visor"
+      ],
+      "skin_joints": [
+        17
+      ]
+    },
+    {
+      "file": "models/soldier_ranger.glb",
+      "sha256": "198855628935eff7ca96d54d43d41da0b8ee8dd256007105df6f0871df62f1dc",
+      "bytes": 541932,
+      "triangles": 9172,
+      "mesh_nodes": 7,
+      "materials": [
+        "Gunmetal",
+        "Rubber",
+        "Skin",
+        "Trim",
+        "Uniform",
+        "Vest",
+        "Visor"
+      ],
+      "skin_joints": [
+        17
+      ]
+    },
+    {
+      "file": "models/soldier_runner.glb",
+      "sha256": "a7356023fa988a630a4e53d53876ade7117bed820c610b6d050f25c01ebccff0",
+      "bytes": 542768,
+      "triangles": 9172,
+      "mesh_nodes": 7,
+      "materials": [
+        "Gunmetal",
+        "Rubber",
+        "Skin",
+        "Trim",
+        "Uniform",
+        "Vest",
+        "Visor"
+      ],
+      "skin_joints": [
+        17
+      ]
+    },
+    {
+      "file": "models/soldier_sapper.glb",
+      "sha256": "4330725d602fc29b2d90dfaa82abf5e7a2e985fde91981b34af065c3c0813f9c",
+      "bytes": 484068,
+      "triangles": 8420,
+      "mesh_nodes": 7,
+      "materials": [
+        "Gunmetal",
+        "Rubber",
+        "Skin",
+        "Trim",
+        "Uniform",
+        "Vest",
+        "Visor"
+      ],
+      "skin_joints": [
+        17
+      ]
+    },
+    {
+      "file": "models/station_breaker.glb",
+      "sha256": "da279e14be914664b6d9dd56c29ea3618154ce0283d11dfda24820b89af6f9f2",
+      "bytes": 98372,
+      "triangles": 2256,
+      "mesh_nodes": 7,
+      "materials": [
+        "WorldWood",
+        "WorldMetal",
+        "WorldBrass",
+        "WorldOlive"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/station_pad.glb",
+      "sha256": "5656be67cc04631c490872029457c9f1e45851c1aa977eafb58b1d564d55ed61",
+      "bytes": 47140,
+      "triangles": 1128,
+      "mesh_nodes": 3,
+      "materials": [
+        "WorldStone",
+        "WorldIvory",
+        "WorldBrass"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/station_ranger.glb",
+      "sha256": "3d29eb53a56d5b99c68b81577f0204bedccea708ee559add4de62f19a47c8dc8",
+      "bytes": 88248,
+      "triangles": 2068,
+      "mesh_nodes": 7,
+      "materials": [
+        "WorldWood",
+        "WorldMetal",
+        "WorldBrass",
+        "Rubber"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/station_recovery.glb",
+      "sha256": "7f0ef9e479f97ed424ea10dbb8be11e6695a0c6e5fdf4040ca155b4d801e54ed",
+      "bytes": 78428,
+      "triangles": 1880,
+      "mesh_nodes": 8,
+      "materials": [
+        "WorldWood",
+        "WorldMetal",
+        "WorldBrass",
+        "WorldIvory",
+        "WorldOlive"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/station_relay.glb",
+      "sha256": "91f63caf7577d8edf701c623f477bd987980939b19280719a77ac95b5ce839dd",
+      "bytes": 92972,
+      "triangles": 2256,
+      "mesh_nodes": 7,
+      "materials": [
+        "WorldWood",
+        "WorldMetal",
+        "WorldBrass",
+        "WorldOlive"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/station_rifle.glb",
+      "sha256": "1ebdc556d43715bdabbf119c578b1097fb178877c1821ddd3ef49854c7b017ae",
+      "bytes": 98060,
+      "triangles": 2444,
+      "mesh_nodes": 7,
+      "materials": [
+        "WorldWood",
+        "WorldMetal",
+        "WorldBrass",
+        "WorldOlive"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/station_rover.glb",
+      "sha256": "9e4f2510abc1b5979e973661009fb22bd137ae0dd85c789203fc4bb69d307d68",
+      "bytes": 95008,
+      "triangles": 2256,
+      "mesh_nodes": 8,
+      "materials": [
+        "WorldWood",
+        "WorldMetal",
+        "WorldBrass",
+        "WorldOlive",
+        "Rubber"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/station_ward.glb",
+      "sha256": "d9bfad5489e388794af7a744336ff8aeda4f990ac2ae05add17d8059f6b220bc",
+      "bytes": 77612,
+      "triangles": 1880,
+      "mesh_nodes": 8,
+      "materials": [
+        "WorldWood",
+        "WorldMetal",
+        "WorldBrass",
+        "WorldOlive",
+        "WorldIvory"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/supply_truck.glb",
+      "sha256": "4a05c0960675ae9c4d2a419f318bf5eece99a22142c856fa30ebe5d44ce71f65",
+      "bytes": 130516,
+      "triangles": 3008,
+      "mesh_nodes": 12,
+      "materials": [
+        "WorldMetal",
+        "WorldOlive",
+        "Rubber",
+        "Gunmetal",
+        "WorldRoof",
+        "WorldGlass"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/vehicle_carrier.glb",
+      "sha256": "b37e91129bb4669405f961d9e5404b2c1e6c0e9be5a3bf72c807969cc21e61c0",
+      "bytes": 262112,
+      "triangles": 5640,
+      "mesh_nodes": 20,
+      "materials": [
+        "Uniform",
+        "Gunmetal",
+        "Rubber",
+        "WorldBrass",
+        "WorldIvory"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/vehicle_drill.glb",
+      "sha256": "1ad609ed173e197c6bd1203dd4244ebd929e911e513814f5dca22f4e66ba6655",
+      "bytes": 187028,
+      "triangles": 4044,
+      "mesh_nodes": 19,
+      "materials": [
+        "Uniform",
+        "Gunmetal",
+        "Rubber",
+        "WorldBrass"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/vehicle_storm.glb",
+      "sha256": "f9aa9b7fd974254c898a44558710f49b577a4ec9ec6c1f456e9494c88a835664",
+      "bytes": 231956,
+      "triangles": 5176,
+      "mesh_nodes": 19,
+      "materials": [
+        "Uniform",
+        "Gunmetal",
+        "Rubber",
+        "WorldBrass"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/watchtower.glb",
+      "sha256": "87722ebdd5359a10a17b953d034b66bc5a30c51216013b8fd65eb05f75672632",
+      "bytes": 118540,
+      "triangles": 2820,
+      "mesh_nodes": 3,
+      "materials": [
+        "WorldRoof",
+        "WorldOlive",
+        "WorldWood"
+      ],
+      "skin_joints": []
     }
   ]
 }

@@ -9,6 +9,7 @@ import math
 import hashlib
 import json
 import struct
+import sys
 from pathlib import Path
 
 import bpy
@@ -84,12 +85,44 @@ def cylinder(name, location, radius, depth, mat, bone=None, rotation=None):
     return finish(obj, name, mat, bone)
 
 
-def export(name):
+def export(name, merge=False):
+    if merge:
+        merge_static_surfaces()
     bpy.ops.object.select_all(action="SELECT")
     bpy.ops.export_scene.gltf(filepath=str(OUT / (name + ".glb")), export_format="GLB",
                               export_yup=True, export_animations=False,
                               export_skins=True, export_extras=True, export_texcoords=False)
     canonicalize(OUT / (name + ".glb"))
+
+
+def merge_static_surfaces():
+    groups = {}
+    for obj in list(bpy.context.scene.objects):
+        if obj.type != "MESH" or len(obj.data.materials) != 1 or obj.name.startswith(("Wheel", "Hub", "Cannon", "SupplyToken")):
+            continue
+        if any(mod.type == "ARMATURE" for mod in obj.modifiers):
+            continue
+        key = (obj.parent.name if obj.parent else "", obj.data.materials[0].name)
+        groups.setdefault(key, []).append(obj)
+    for key, objects in sorted(groups.items()):
+        objects.sort(key=lambda obj: obj.name)
+        bpy.ops.object.select_all(action="DESELECT")
+        for obj in objects:
+            obj.select_set(True)
+        bpy.context.view_layer.objects.active = objects[0]
+        bpy.ops.object.join()
+        objects[0].name = "Surface_" + key[1]
+
+
+def pivot(name, point, children):
+    obj = bpy.data.objects.new(name, None)
+    bpy.context.collection.objects.link(obj)
+    obj.location = point
+    bpy.context.view_layer.update()
+    for child in children:
+        child.parent = obj
+        child.matrix_parent_inverse = obj.matrix_world.inverted()
+    return obj
 
 
 def canonicalize(path):
@@ -180,7 +213,7 @@ def canonicalize(path):
     path.write_bytes(raw)
 
 
-def soldier():
+def soldier(variant="rifle"):
     clear()
     uniform = material("Uniform", (0.94, 0.64, 0.065))
     vest = material("Vest", (0.64, 0.42, 0.045))
@@ -189,18 +222,19 @@ def soldier():
     steel = material("Gunmetal", (0.16, 0.22, 0.23), 0.45, 0.2)
     trim = material("Trim", (0.96, 0.84, 0.39))
     glass = material("Visor", (0.085, 0.19, 0.21), 0.22, 0.12)
-    block("Tunic", (0, 0, .84), (.49, .30, .45), uniform, .09, "Torso")
-    block("ArmoredVest", (0, .14, .86), (.43, .13, .32), vest, .055, "Torso")
+    heft = 1.14 if variant in ["breaker", "bulwark"] else 1.0
+    block("Tunic", (0, 0, .84), (.49 * heft, .30, .45), uniform, .09, "Torso")
+    block("ArmoredVest", (0, .14, .86), (.43 * heft, .13, .32), vest, .055, "Torso")
     block("Belt", (0, .015, .64), (.49, .34, .085), dark, .025, "Torso")
     block("Buckle", (0, .20, .64), (.095, .045, .08), trim, .015, "Torso")
     for side in [-1, 1]:
         block("ChestPocket", (side * .115, .22, .86), (.16, .085, .15), uniform, .025, "Torso")
         block("Webbing", (side * .19, .18, .99), (.045, .05, .20), dark, .01, "Torso")
-    block("Backpack", (0, -.21, .86), (.36, .20, .35), vest, .065, "Torso")
+    block("Backpack", (0, -.21, .86), (.28 if variant == "runner" else .36, .16 if variant == "runner" else .20, .27 if variant == "runner" else .35), vest, .065, "Torso")
     block("PackRoll", (0, -.24, 1.06), (.36, .17, .13), uniform, .055, "Torso")
     oval("Neck", (0, 0, 1.075), (.105, .10, .12), skin, "Head")
     oval("Face", (0, .015, 1.19), (.205, .18, .22), skin, "Head")
-    oval("HelmetDome", (0, -.005, 1.32), (.25, .23, .19), uniform, "Head")
+    oval("HelmetDome", (0, -.005, 1.32), (.225, .215, .125) if variant == "runner" else ((.275, .25, .20) if variant == "bulwark" else (.25, .23, .19)), uniform, "Head")
     block("HelmetRim", (0, .035, 1.285), (.51, .44, .055), uniform, .025, "Head")
     block("Goggles", (0, .183, 1.225), (.34, .075, .10), dark, .035, "Head")
     for side in [-1, 1]:
@@ -214,6 +248,8 @@ def soldier():
         block("Boot" + suffix, (side * .135, .075, .095), (.22, .35, .19), dark, .055, "Foot" + suffix)
         block("Sole" + suffix, (side * .135, .085, .027), (.23, .36, .055), steel, .02, "Foot" + suffix)
         oval("Shoulder" + suffix, (side * .293, 0, .98), (.13, .16, .16), uniform, "UpperArm" + suffix)
+        if heft > 1:
+            block("BallisticShoulder" + suffix, (side * .32, -.015, 1.01), (.24, .28, .19), vest, .065, "UpperArm" + suffix)
         block("UpperSleeve" + suffix, (side * .315, .015, .88), (.19, .23, .25), uniform, .075, "UpperArm" + suffix)
         if suffix == "L":
             forearm = block("SupportForearm", (-.05, .28, .755), (.17, .61, .15), uniform, .06, "ForearmL")
@@ -222,12 +258,31 @@ def soldier():
         else:
             block("TriggerForearm", (.30, .13, .755), (.17, .27, .15), uniform, .06, "ForearmR")
             oval("TriggerGlove", (.27, .26, .75), (.09, .105, .085), dark, "HandR")
-    block("RifleReceiver", (.22, .38, .78), (.14, .43, .14), steel, .025, "Weapon")
-    block("RifleStock", (.22, .09, .78), (.12, .25, .13), dark, .035, "Weapon")
-    block("RifleMagazine", (.22, .34, .68), (.10, .13, .20), dark, .025, "Weapon")
-    cylinder("RifleBarrel", (.22, .72, .79), .041, .35, steel, "Weapon", (math.pi / 2, 0, 0))
-    block("Sight", (.22, .43, .885), (.05, .12, .045), dark, .01, "Weapon")
-    cylinder("Muzzle", (.22, .91, .79), .052, .075, dark, "Weapon", (math.pi / 2, 0, 0))
+    muzzle_tip = (.22, 1.16 if variant == "ranger" else .955, .79)
+    if variant in ["breaker", "mortar"]:
+        cylinder("LauncherBody", (.22, .55, .80), .11 if variant == "breaker" else .13, .78, steel, "Weapon", (math.pi / 2, 0, 0))
+        cylinder("LauncherMuzzle", (.22, .94, .80), .14, .08, dark, "Weapon", (math.pi / 2, 0, 0))
+        block("LauncherGrip", (.22, .31, .68), (.12, .16, .22), dark, .03, "Weapon")
+        block("LauncherSight", (.22, .46, .94), (.06, .17, .05), trim, .01, "Weapon")
+        muzzle_tip = (.22, .995, .80)
+    elif variant == "jammer":
+        block("EmitterHousing", (.22, .43, .80), (.22, .32, .20), steel, .055, "Weapon")
+        cylinder("EmitterCoil", (.22, .69, .82), .11, .12, dark, "Weapon", (math.pi / 2, 0, 0))
+        cylinder("EmitterFace", (.22, .755, .82), .077, .02, glass, "Weapon", (math.pi / 2, 0, 0))
+        muzzle_tip = (.22, .78, .82)
+    elif variant == "sapper":
+        block("Detonator", (.22, .40, .78), (.25, .26, .20), vest, .04, "Weapon")
+        block("DetonatorLever", (.22, .40, .91), (.07, .20, .045), steel, .015, "Weapon")
+        muzzle_tip = (.22, .55, .79)
+    else:
+        block("RifleReceiver", (.22, .38, .78), (.14, .34 if variant == "runner" else .43, .14), steel, .025, "Weapon")
+        block("RifleStock", (.22, .09, .78), (.12, .25, .13), dark, .035, "Weapon")
+        block("RifleMagazine", (.22, .34, .68), (.10, .13, .20), dark, .025, "Weapon")
+        cylinder("RifleBarrel", (.22, .65 if variant == "runner" else .72, .79), .041, .15 if variant == "runner" else .35, steel, "Weapon", (math.pi / 2, 0, 0))
+        block("Sight", (.22, .43, .885), (.05, .12, .045), dark, .01, "Weapon")
+        cylinder("Muzzle", (.22, .75 if variant == "runner" else .91, .79), .052, .05 if variant == "runner" else .075, dark, "Weapon", (math.pi / 2, 0, 0))
+        if variant == "runner":
+            muzzle_tip = (.22, .79, .79)
     positions = {"Root": (0, 0, 0), "Torso": (0, 0, .64), "Head": (0, 0, 1.07)}
     parents = {"Torso": "Root", "Head": "Torso"}
     for side, suffix in [(-1, "L"), (1, "R")]:
@@ -244,6 +299,8 @@ def soldier():
     positions["Weapon"] = (.22, .26, .78)
     positions["HandL"] = (.20, .53, .75)
     parents["Weapon"] = "HandR"
+    positions["PrimaryMuzzle"] = muzzle_tip
+    parents["PrimaryMuzzle"] = "Weapon"
     arm = bpy.data.armatures.new("FoundryRigidRig")
     rig = bpy.data.objects.new("FoundryRig", arm)
     bpy.context.collection.objects.link(rig)
@@ -276,7 +333,7 @@ def soldier():
         objects[0].name = "SoldierSurface_" + mat.name
     rig["provenance"] = "Original deterministic Frontline soldier, no external assets"
     rig["forward"] = "+Y Blender / -Z glTF"
-    export("soldier")
+    export("soldier" if variant == "rifle" else "soldier_" + variant)
 
 
 def props():
@@ -367,12 +424,16 @@ def role_kits():
             block("ShieldRim", (-.33, .43, .68), (.42, .035, .71), steel, .07)
             block("ShieldViewport", (-.33, .46, .89), (.23, .025, .09), dark, .025)
             block("ShieldBadge", (-.33, .46, .59), (.17, .025, .18), red, .04)
-        elif role in ["mortar", "breaker"]:
-            x = 0 if role == "mortar" else -.32
-            y = -.29 if role == "mortar" else .17
+        elif role == "mortar":
+            x = 0
+            y = -.29
             cylinder("LauncherTube", (x, y, .98), .11, .65, steel, rotation=(.35, 0, 0))
             cylinder("LauncherRim", (x, y - .10, 1.29), .135, .08, brass)
             block("LauncherPack", (x, y - .02, .74), (.33, .25, .32), red if role == "mortar" else olive, .06)
+        elif role == "breaker":
+            block("AmmoPack", (0, -.29, .91), (.40, .24, .43), olive, .06)
+            for x in [-.12, .12]:
+                cylinder("SpareRocket", (x, -.30, 1.03), .065, .50, brass)
         elif role == "jammer":
             block("RadioPack", (0, -.29, .91), (.38, .22, .40), red, .07)
             cylinder("Aerial", (.14, -.31, 1.43), .018, .76, steel)
@@ -384,8 +445,9 @@ def role_kits():
             for x in [-.13, 0, .13]:
                 cylinder("Charge", (x, .37, .84), .052, .22, brass)
         elif role == "ranger":
-            block("LongBarrel", (.22, .94, .79), (.055, .42, .055), steel, .015)
-            cylinder("Scope", (.22, .40, .96), .055, .20, dark, rotation=(math.pi / 2, 0, 0))
+            block("SpotterPack", (0, -.29, .92), (.32, .20, .31), olive, .055)
+            for x in [-.09, .09]:
+                cylinder("SpareOptic", (x, -.30, 1.15), .054, .16, dark)
         elif role == "storm":
             for x in [-.36, .36]:
                 block("MissileCradle", (x, -.1, 1.12), (.30, .74, .32), red, .06)
@@ -414,6 +476,7 @@ def manifest():
               "blender": "4.5.14 LTS 62c1db4208e8",
               "portable_archive_sha256": "b9533d2397ac1984db4466fb23a7a4649391cca93f6e84209f9bcc60d071c8b9",
               "generator": "source/build_assets.py", "generator_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+              "generator_sources_sha256": {path.name: hashlib.sha256(path.read_bytes()).hexdigest() for path in sorted(Path(__file__).parent.glob("*.py"))},
               "units": "meters; +Y Blender forward exports -Z Godot; right-handed glTF Y-up",
               "animation": {"source": "scripts/presentation/actor.gd", "method": "Runtime rigid-weight skeleton poses, not baked glTF tracks", "states": ["idle", "run with analytic two-link stance/swing", "equip", "upper-body aim", "fire/recoil", "hit", "fallen", "victory"], "root_motion": False},
               "acceptance": "Structural export only; visible quality and frame-time measurement require actual rendered review",
@@ -422,8 +485,14 @@ def manifest():
 
 
 soldier()
+for variant in ["runner", "breaker", "ranger", "bulwark", "mortar", "jammer", "sapper"]:
+    soldier(variant)
 props()
 rover()
 role_kits()
+sys.dont_write_bytecode = True
+sys.path.insert(0, str(Path(__file__).parent))
+from world_kit import build
+build(globals())
 manifest()
 print("FRONTLINE_ASSET_EXPORT_COMPLETE", OUT)

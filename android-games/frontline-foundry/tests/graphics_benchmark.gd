@@ -17,6 +17,8 @@ var errors: Array = []
 var start_time := 0.0
 var finished := false
 var expected_start := ""
+var measure_frames := false
+var sampler := preload("res://tests/frame_sampler.gd").new()
 
 func _initialize() -> void:
 	for arg in OS.get_cmdline_user_args():
@@ -26,6 +28,8 @@ func _initialize() -> void:
 			duration = clampf(float(arg.trim_prefix("--seconds=")), 1, 180)
 		if arg.begins_with("--expected-start="):
 			expected_start = arg.trim_prefix("--expected-start=")
+		if arg == "--measure-frames":
+			measure_frames = true
 	call_deferred("run")
 
 func run() -> void:
@@ -57,6 +61,9 @@ func run() -> void:
 		await finish()
 		return
 	start_time = scene.state.time
+	if measure_frames:
+		sampler.start(root)
+		RenderingServer.frame_post_draw.connect(sample_frame)
 	var started := Time.get_ticks_msec()
 	var purchase_count: int = scene.state.purchases.size()
 	while scene.state.phase == "playing" and scene.state.time - start_time < duration and not finished:
@@ -79,12 +86,19 @@ func run() -> void:
 			if spec[1] and not observed.has(spec[0]):
 				observed[spec[0]] = scene.state.time
 				await snap(spec[0])
+	if measure_frames:
+		RenderingServer.frame_post_draw.disconnect(sample_frame)
+		var file := FileAccess.open(folder.path_join("frame-timing.json"), FileAccess.WRITE)
+		file.store_string(JSON.stringify(sampler.stop(), "  "))
 	await release()
 	await snap("99-final-untouched-state")
 	await finish()
 
 func origin() -> Vector2:
 	return Vector2(110, root.get_visible_rect().size.y - 115)
+
+func sample_frame() -> void:
+	sampler.sample(scene)
 
 func steer(direction: Vector2) -> void:
 	if not touch_active:
@@ -139,7 +153,7 @@ func click(text: String) -> void:
 
 func snap(name: String) -> void:
 	var row := {"name": name, "frame": Engine.get_physics_frames(), "state": scene.state.duplicate(true), "career": scene.career.duplicate(true), "presentation_epoch": scene.presentation.adapter.epoch, "actors": scene.presentation.units.size(), "effects": scene.presentation.effects.size()}
-	if not folder.is_empty() and DisplayServer.get_name() != "headless":
+	if not folder.is_empty() and DisplayServer.get_name() != "headless" and not sampler.active:
 		await RenderingServer.frame_post_draw
 		var image := root.get_texture().get_image()
 		row["image_pixels"] = [image.get_width(), image.get_height()]

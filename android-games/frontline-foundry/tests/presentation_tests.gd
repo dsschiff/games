@@ -78,7 +78,8 @@ func run() -> void:
 	check(actor.hit_left > 0, "damage has a local reaction timer")
 	actor.pose(.05, Vector3.ZERO, true)
 	check(absf(actor.rig.get_bone_pose_rotation(actor.bones.UpperArmL).get_euler().z) > 1, "victory raises an articulated arm")
-	check(actor.muzzle.position.z < 0, "muzzle socket is on weapon forward axis")
+	actor.rig.force_update_all_bone_transforms()
+	check(actor.muzzle.get_parent() is BoneAttachment3D and actor.muzzle.get_parent().bone_name == "PrimaryMuzzle" and actor.rig.get_bone_global_rest(actor.bones.PrimaryMuzzle).origin.z < -.55, "authored primary muzzle bone follows the actual weapon tip")
 	# Geometry fixture: hull keeps traveling forward while the turret aims sideways.
 	var rover := Actor.new()
 	root.add_child(rover)
@@ -94,6 +95,27 @@ func run() -> void:
 	check(rover.muzzle.get_parent() == rover.barrel and sideways.distance_to(aimed_tip) < .00001 and sideways.x > .9 and absf(sideways.z - .14) < .001 and recoiled.distance_to(rover.barrel.to_global(barrel_tip)) < .00001 and recoiled.x < sideways.x - .05 and absf(rover.rotation.y) < .001, "sideways vehicle socket stays at animated barrel tip through turret aim and recoil while hull faces forward")
 	print("VEHICLE_SOCKET_GEOMETRY ", JSON.stringify({"sideways": [sideways.x, sideways.y, sideways.z], "recoiled": [recoiled.x, recoiled.y, recoiled.z], "hull_yaw": rover.rotation.y}))
 	rover.queue_free()
+	var role_models := {}
+	for role in ["runner", "breaker", "ranger", "bulwark", "mortar", "jammer", "sapper", "drill", "carrier", "storm"]:
+		var specialist := Actor.new()
+		root.add_child(specialist)
+		specialist.configure(role, "enemy", 0)
+		role_models[role] = specialist.model.scene_file_path
+		if specialist.rig != null:
+			specialist.rig.force_update_all_bone_transforms()
+			check(specialist.bones.has("PrimaryMuzzle") and specialist.muzzle.get_parent().bone_name == "PrimaryMuzzle", "specialist " + role + " retains authored articulated weapon tip")
+		else:
+			check(specialist.turret != null and specialist.barrel != null and specialist.wheels.size() == 6, "boss " + role + " imports articulated turret, barrel and six animated wheels")
+		specialist.queue_free()
+	check(role_models.values().size() == 10 and role_models.values().all(func(path): return role_models.values().count(path) == 1), "ten specialists use distinct authored model resources")
+	var landmarks := {}
+	for index in 12:
+		var district := C.fresh(D.mission(index))
+		var before_district := district.duplicate(true)
+		var region: Dictionary = preload("res://scripts/presentation/regions.gd").describe(district)
+		landmarks[region.landmark] = true
+		check(FileAccess.file_exists("res://art/models/" + region.landmark + ".glb") and D.same(district, before_district), "district %d regional art resolves without editing its definition or state" % (index + 1))
+	check(landmarks.size() == 12, "all twelve districts have a distinct authored landmark")
 	var before: String = JSON.stringify(original)
 	for i in 120:
 		view.sync(original, true, true, 0)
@@ -196,6 +218,9 @@ func tap(point: Vector2, index: int = 2) -> void:
 		await process_frame
 
 func input_layout_checks(scene: Node) -> void:
+	await process_frame
+	var support_rect: Rect2 = scene.briefing.get_children().filter(func(node): return node is Button)[0].get_global_rect()
+	check(scene.brief_scroll.get_global_rect().end.y < support_rect.position.y and scene.brief_forecast.autowrap_mode != TextServer.AUTOWRAP_OFF and scene.brief_rules.get_parent() is VBoxContainer, "briefing prose uses a wrapping scroll body separated from fixed support action")
 	await tap(scene.start_button.get_global_rect().get_center())
 	check(scene.state.phase == "playing" and not scene.paused, "real Launch GUI input enters unchanged campaign")
 	await tap(scene.pause_button.get_global_rect().get_center())

@@ -86,7 +86,7 @@ func style(bg: String, border: String = "426779", radius: int = 18) -> StyleBoxF
 	s.set_corner_radius_all(radius)
 	return s
 
-func panel(parent: Node, color: String = "152e43") -> Panel:
+func panel(parent: Node, color: String = "263c35f5") -> Panel:
 	var p := Panel.new()
 	p.add_theme_stylebox_override("panel", style(color))
 	parent.add_child(p)
@@ -107,10 +107,10 @@ func button(parent: Node, text: String, callback: Callable) -> Button:
 	var b := Button.new()
 	b.text = text
 	b.add_theme_font_size_override("font_size", 27)
-	b.add_theme_stylebox_override("normal", style("28656c", "63c8b0"))
-	b.add_theme_stylebox_override("hover", style("347c80", "e6d895"))
+	b.add_theme_stylebox_override("normal", style("4d6448", "98a678"))
+	b.add_theme_stylebox_override("hover", style("647951", "e6d895"))
 	b.add_theme_stylebox_override("pressed", style("a57f47", "ffe09c"))
-	b.add_theme_stylebox_override("disabled", style("304550", "506070"))
+	b.add_theme_stylebox_override("disabled", style("3b493f", "626e58"))
 	b.pressed.connect(callback)
 	parent.add_child(b)
 	return b
@@ -132,6 +132,8 @@ func make_ui() -> void:
 	guidance = label(ui, "", Vector2.ZERO, Vector2.ZERO, 27)
 	guidance.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	guidance.add_theme_color_override("font_color", Color("344b3e"))
+	guidance.add_theme_color_override("font_outline_color", Color("e3e7d3"))
+	guidance.add_theme_constant_override("outline_size", 5)
 	build_button = button(ui, "", build_nearby)
 	start_button = button(ui, "BREAK THE SIEGE", begin)
 	stick = Control.new()
@@ -163,6 +165,7 @@ func make_ui() -> void:
 	terminal = panel(ui)
 	terminal_title = label(terminal, "", Vector2(24, 24), Vector2(570, 55), 36, "ffe1a0")
 	terminal_detail = label(terminal, "", Vector2(24, 85), Vector2(570, 175), 28)
+	terminal_detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	var retry_button := button(terminal, "RETRY SIEGE", retry)
 	retry_button.position = Vector2(24, 285)
 	terminal.hide()
