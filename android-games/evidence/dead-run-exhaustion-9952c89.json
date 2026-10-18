@@ -73,5 +73,13 @@
     "bytes": 2806458,
     "decoded_pngs": 21,
     "scope": "Normal35/0/engine0 with whole-source provenance FAIL; stable finalmetadata focusedGUI17 PASS and exact19runtime byte equivalence, separately qualified."
+  },
+  "disabled_native_preparation_preservation": {
+    "path": "C:/projects/active/games/.artifacts/preservation/dead-run-native-preparation-final-metadata.json",
+    "sha256": "a26ff6eeacc51f508405dc90827567931008ac1daeaa685118c1fef7a6bb7a04",
+    "files": 19,
+    "bytes": 178914,
+    "package_index_sha256": "370dc8b14f327d17862ebe644381106eae1ce42ce41d254ae19c1d87c9dbb5a7",
+    "native_execution_performed": false
   }
 }

@@ -74,10 +74,38 @@
     "attempts": 1,
     "wins": 0,
     "untouched_terminal_viewed": true,
-    "retry_win_platform_pending": true
+    "retry_win_platform_pending": false,
+    "retry_win_verified": true,
+    "platform_pending": true,
+    "victory_simulation_seconds": 126.866666666661,
+    "victory_integrity": 16,
+    "victory_kills": 60,
+    "victory_leaks": 0,
+    "victory_spent": 135,
+    "victory_wallet": 31,
+    "funded_builds_forks": 7,
+    "family_shots": [
+      73,
+      7,
+      43
+    ],
+    "campaign_attempts_after_win": 2,
+    "campaign_wins_after_win": 1,
+    "campaign_clears_after_win": [
+      0
+    ],
+    "untouched_victory_terminal_viewed": true,
+    "instrumented_policy_with_frequent_pauses": true,
+    "preservation": {
+      "path": "C:/projects/active/games/.artifacts/preservation/hearth-code2-native-first-watch.json",
+      "sha256": "d759744d99123aab4f5c6c83e4a6bb80b338985f3007e61ff5671dc399b7b8f3",
+      "files": 2990,
+      "bytes": 72273843,
+      "decoded_pngs": 32
+    }
   },
   "remaining": [
-    "Native first-watch Retry/investment/win and new campaign platform/transfer tests",
+    "New campaign platform/transfer checks with actual active state",
     "Separate native clipboard verification; desktop failure remains explicit",
     "Regent contrast and late-stage human pacing review",
     "Physical Fold7 touch/IME/folding/safe areas/sound/FPS/human fun"
