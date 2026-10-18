@@ -1,0 +1,72 @@
+{
+  "stage": "campaign_review_and_validator_correction_active",
+  "worker_commit": "2b58feea60f668d1010b0b3722e661bfb392f98b",
+  "integration_commit": "163bc7af9933d24aefdf1aa2fe5bd246787e58ca",
+  "root_source_sha256": "846a8b57066c682a9e8cb03875166731d3f799a00e69fe7267caaccc81017b82",
+  "preservation": {
+    "receipt": "C:/projects/active/games/.artifacts/preservation/frontline-campaign-2b58fee-intake.json",
+    "sha256": "6f48242314364d323192cc80c7ee62f74f7801a71457fc9b908115f3470f507a",
+    "files": 5708,
+    "bytes": 1060290100,
+    "all_destination_hashes_read_back": true,
+    "prior_receipts_unchanged": 46,
+    "canonical_same_relative_review_and_verification_paths": true,
+    "helpers": ".artifacts/frontline-foundry/campaign-2b58fee-intake-helpers"
+  },
+  "source_binding": {
+    "tracked_lf_equal_files": 57,
+    "executed_bindings": 52,
+    "raw_root_worker_equal": false,
+    "qualification": "Three raw line-ending differences and two worker-only ignored Python caches are inventoried separately; no raw whole-project identity claim.",
+    "report": ".artifacts/frontline-campaign-2b58fee-integration-bindings.json",
+    "sha256": "6c9ba7f43c9d2bc3b88be0083372ebfaab7e9236eaacd37fc0999bc6b3c8862b"
+  },
+  "independent_headless": {
+    "packet": ".artifacts/verification/frontline-campaign-2b58fee-headless-20261018T071132170849Z",
+    "report_sha256": "3468e1db1124b4073fecdd4d4834d1f6a72519df7019e1cb5a404c112f32d187",
+    "index_sha256": "23f1dc10f7403e2fa7b5732cfeb745657b0177e6f62a17a098f23953915a4061",
+    "result": "passed",
+    "legacy_rules": 69,
+    "campaign_rules": 219,
+    "full_campaign_input": 229,
+    "separate_cold_restore": 16,
+    "genuine_old_desktop_compatibility": 9,
+    "source_unchanged": true,
+    "errors": 0,
+    "warnings": 0,
+    "rendered_journey_repeated_by_root": false
+  },
+  "review_package": {
+    "packet": ".artifacts/reviews/frontline-campaign-2b58fee",
+    "binding_sha256": "e03d738b131eb7a5e64d0fbdd825071e906d16624e469b0cc224ed0c2b3cad74",
+    "accepted_runs": 10,
+    "declared_artifact_hashes_verified": 1155,
+    "historical_records": 53,
+    "historical_raw_failures": 13,
+    "pngs_fully_decoded": 708,
+    "movie_files_fully_decoded": 6,
+    "full_movie_segments": 3,
+    "seconds": [122.65, 76.266667, 70.833333],
+    "strict_boundary_comparison_failure_retained": true,
+    "qualification": "Original middle/finale raw save slots byte-exact; sole fractional position metadata difference about1.1e-18 qualified under existing1e-12 policy, with exact shapes/integers/booleans. Four superseded media files remain hash-verified at worker paths and are not copied in this packet.",
+    "astra_full_playback": "all_three_continuous_clips_viewed_to_end_once",
+    "astra_review": "android-games/reviews/frontline-campaign-2b58fee-astra.md"
+  },
+  "reproduced_p2": {
+    "issue": "Stock reduction occurs before scalar type/bounds validation, producing script errors on malformed checksummed saves.",
+    "packet": ".artifacts/verification/frontline-stock-probe-20261018T071921582924Z",
+    "baseline_valid_and_decode": true,
+    "invalid_resource_cases": 24,
+    "all_invalid_cases_rejected": true,
+    "script_error_lines": 50,
+    "observed_acceptance_or_crash": false,
+    "source_unchanged": true,
+    "status": "closed_in_followup_by_independent_probe_and_astra",
+    "followup": "android-games/evidence/frontline-ledger-08c122e.json"
+  },
+  "campaign_android_apk_built": false,
+  "campaign_android_update_verified": false,
+  "ready_for_phone_testing": false,
+  "physical_phone_tested": false,
+  "human_duration_fun_sound_performance_verified": false
+}

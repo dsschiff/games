@@ -1,0 +1,91 @@
+{
+  "stage": "campaign_reviewed_actual_android_update_verified_native_campaign_pending",
+  "worker_commit": "08c122eb4608d369ff9314110054dd7a812b4047",
+  "integration_commit": "a71acc91eb37deae51ef6665df7a932c9865ec0e",
+  "source_sha256": "9e58d59a34dc7e12028ba4077217a23a4cdfe03d29ce3056723a099102640195",
+  "parent_campaign_evidence": "android-games/evidence/frontline-campaign-2b58fee-intake.json",
+  "preservation": {
+    "receipt": "C:/projects/active/games/.artifacts/preservation/frontline-ledger-08c122e.json",
+    "sha256": "b9d323e3973846f8929bc91bf5890fd6025ac1a895678740dcbbaee4d9789bbb",
+    "files": 729,
+    "bytes": 19106794,
+    "all_destination_hashes_read_back": true,
+    "prior_receipts_unchanged": 47,
+    "archive_observer_list_count_mistake_and_correction_retained": true
+  },
+  "apk": {
+    "path": "C:/projects/active/games/.artifacts/frontline-foundry/20261018T072513236798Z/frontline-foundry.apk",
+    "sha256": "eef7f08a32dbc61245d29f281f5dc8500786c852019c025f07cd39fc7407d45c",
+    "bytes": 57063585,
+    "version": "0.2.0",
+    "version_code": 2,
+    "signed": true,
+    "permissions": [],
+    "source_stable": true,
+    "build_manifest_sha256": "cc55d0af8b428fbcfc9f0f3a904aaa52f99087489700aa465d945bfe2a87d872",
+    "preservation_receipt": "C:/projects/active/games/.artifacts/preservation/frontline-code2-build-08c122e.json",
+    "preservation_sha256": "e63f5dfe1483a9aa81228ec623087bbcdd22c7b7c4d88ddd1c17e76369e56baa"
+  },
+  "source_delta": "Only runtime change is validating all bought/stock/consumed scalars before arithmetic. Tests add malformed correctly checksummed imports and valid whole-number-float coverage; two follow-up metadata files added. Definitions, gameplay, UI, schema and legacy rules unchanged.",
+  "source_bindings": {
+    "path": ".artifacts/frontline-08c122e-integration-bindings.json",
+    "sha256": "d0476c277055c8309658a876ae87c0aba0b8c87faca4ff7012b260cc53f943d2",
+    "tracked_lf_equal": 59,
+    "whole_raw_root_worker_identity_claimed": false
+  },
+  "independent_headless": {
+    "packet": ".artifacts/verification/frontline-campaign-08c122e-headless-20261018T072345340212Z",
+    "report_sha256": "cba2fd39e23e12edb55c80d41471110e140bf17712f16fbc3ccb1153d3d151dd",
+    "index_sha256": "a96a168986443ccb1c59cdc2352fb50c656434bf8ef83ead51cab4fc28110c08",
+    "result": "passed",
+    "legacy_rules": 69,
+    "campaign_rules": 412,
+    "full_campaign_input": 229,
+    "separate_cold_restore": 16,
+    "genuine_legacy_compatibility": 9,
+    "errors": 0,
+    "warnings": 0,
+    "source_unchanged": true
+  },
+  "independent_same_adversarial_probe": {
+    "packet": ".artifacts/verification/frontline-stock-probe-fixed-08c122e-20261018T072343824388Z",
+    "baseline_valid_and_decode": true,
+    "invalid_resource_cases": 24,
+    "all_rejected": true,
+    "script_errors": 0,
+    "source_unchanged": true,
+    "old_failing_probe_retained": true
+  },
+  "builder_sensitivity": {
+    "checkpoint": "android-games/frontline-foundry/tests/ledger-validation-checkpoint.json",
+    "identical_regression_source_old_validator_script_errors": 140,
+    "fixed_validator_script_errors": 0,
+    "omitted_legacy_fixture_setup_failure_retained": true
+  },
+  "old_full_movies_repinning_claimed": false,
+  "astra_fix_closure": "closed_no_remaining_p1_p2_in_reviewed_scope",
+  "astra_review": "android-games/reviews/frontline-campaign-2b58fee-astra.md",
+  "campaign_android_update_verified": true,
+  "actual_android_update": {
+    "assessment": ".artifacts/frontline-code2-upgrade-assessment-20261018T073157873510Z/report.json",
+    "assessment_sha256": "1a3c11c76020b405354e030a356e693cc120309d76326574adc7ad25378f50bc",
+    "result": "passed_scoped_upgrade_and_cold_retention",
+    "from_code": 1,
+    "to_code": 2,
+    "old_apk_reinstalled": false,
+    "data_reset_or_injected": false,
+    "actual_intermediate_sound_on_and_off": true,
+    "whole_preserved": ["state", "profile", "settings", "committed"],
+    "exact_empty_career": true,
+    "cold_retained_whole_packet": true,
+    "final_revision": 217,
+    "initial_cold_black_frame_retained_and_not_approved_for_input": true,
+    "separate_no_input_no_relaunch_settled_menu_viewed": true,
+    "raw_phases_relabelled_as_aggregate_pass": false,
+    "runtime_errors": [],
+    "shader_cache_warnings": 2,
+    "campaign_entered_or_played": false
+  },
+  "ready_for_phone_testing": false,
+  "physical_phone_tested": false
+}

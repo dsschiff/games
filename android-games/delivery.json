@@ -69,11 +69,11 @@
     },
     {
       "slug": "frontline-foundry",
-      "state": "full_campaign_in_development_verified_native_prototype",
+      "state": "campaign_reviewed_actual_update_verified_native_campaign_pending",
       "thread_id": "01a14d1d-c90a-7562-b246-6cd243ad96ed",
       "ready_for_phone_testing": false,
       "physical_phone_tested": false,
-      "evidence": "android-games/evidence/frontline-first-loop.json"
+      "evidence": "android-games/evidence/frontline-ledger-08c122e.json"
     },
     {
       "slug": "dead-run",
