@@ -13,6 +13,7 @@ Reviewed 2026-10-17. Original title: **Frontline Foundry** (`frontline-foundry`)
 | T5 | https://www.youtube.com/watch?v=IRIZ4EB_1rM | KruMobile, “Part 8 - Mission 190 ~ 210,” 15:52.661. Sampled later progression. Channel's visible description links com.project.idle.cd and iOS 6761893238. |
 | T6 | https://www.youtube.com/watch?v=XkBmRhsw9qE | TanJinGames, 23:35.781 opening recording. Sample at 01:00.684 consistent with base/enemy border, but small blurred widescreen framing makes it weaker than T4. |
 | T7 | https://socialpeta.com/en/app-store/6761893238 | Secondary listing history reports July version 3.3.11 description as “Top General” and later versions as Top Force: Commander. Corroboration of naming, not sole proof of T3's advertiser. |
+| T8 | https://apps.apple.com/us/app/top-force-commander/id6761893238 | Official iOS listing rechecked2026-10-18 UTC: Top Force: Commander, Century Games Innovation, frontline-base/soldier-support description. Current version history does not establish the selected creative's advertiser. |
 
 ## Direct observations
 
@@ -59,3 +60,7 @@ Prove **one directly controlled commander → one front → local equipment queu
 ## Remaining evidence
 
 Confirm the T3 alternate-name creative through an official advertiser/ad-library record. Watch continuous T4/T5 segments before asserting exact direct-control equivalence. The chosen playable interpretation may proceed as a prototype; final ad fidelity remains open until an independent reviewer watches the videos and approves the comparison.
+
+## Bounded official-identity follow-up, 2026-10-18 UTC
+
+Rechecked [Google Play's Android listing](https://play.google.com/store/apps/details?id=com.project.idle.cd) and the [official iOS listing](https://apps.apple.com/us/app/top-force-commander/id6761893238). They identify Top Force / Top Force: Commander under Century Games Innovation and describe the same frontline-base, soldier-equipment/support and earned-money expansion theme. This supports the existing product/core-theme mapping, not direct input or the provenance of T3's Top General end card. Apple's visible version history does not name that older title. A bounded official-domain search found no matching rename/creative record; it is not exhaustive proof of absence. T3 attribution stays qualified, and no new gameplay passage was watched or footage downloaded.
