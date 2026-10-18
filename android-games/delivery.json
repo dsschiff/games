@@ -15,7 +15,8 @@
       "evidence": "android-games/evidence/gear-code6-candidate.json",
       "physical_phone_tested": false,
       "sound_verified_on_phone": false,
-      "phone_performance_measured": false
+      "phone_performance_measured": false,
+      "source_text_lf_sha256": "623e4f84b809ccc81f63198fd701705bcb8dc023ffcf49bc7ab597b5e246ebde"
     },
     {
       "slug": "tower-trials",
@@ -30,7 +31,8 @@
       "apk_sha256": "20acf7f90dcee4ff8cfc3956bee2375f9ea84a8e7c8bf52776282238b5ca35d0",
       "source_sha256": "70e61c51a8cda175df9faac89d6dae994e7ff364d31b9bb62c4ba5e76640467b",
       "sound_verified_on_phone": false,
-      "phone_performance_measured": false
+      "phone_performance_measured": false,
+      "source_text_lf_sha256": "70e61c51a8cda175df9faac89d6dae994e7ff364d31b9bb62c4ba5e76640467b"
     },
     {
       "slug": "hook-and-hunger",
@@ -47,7 +49,8 @@
       "sound_verified_on_phone": false,
       "phone_performance_measured": false,
       "phone_ime_verified": false,
-      "phone_ime_gate": "Required: emulator reports hardware keyboard and engine suppresses native IME; eight other native checks pass, raw partial status retained."
+      "phone_ime_gate": "Required: emulator reports hardware keyboard and engine suppresses native IME; eight other native checks pass, raw partial status retained.",
+      "source_text_lf_sha256": "b61b029a6c946a41b014b51332ac94e9503e5ba1fd4285e002c8a5f329fb7233"
     },
     {
       "slug": "hearthguard",
@@ -65,7 +68,8 @@
       "sound_verified_on_phone": false,
       "phone_performance_measured": false,
       "phone_ime_verified": false,
-      "qualification": "Windows host clipboard failures retained; actual native transfer succeeds. Physical IME/phone/performance/fun and Regent contrast/pacing remain open."
+      "qualification": "Windows host clipboard failures retained; actual native transfer succeeds. Physical IME/phone/performance/fun and Regent contrast/pacing remain open.",
+      "source_text_lf_sha256": "53c3569a91f2d9ee43f3dcdcc780b6806ad5e8e00758a9bfbf720b256bdc5ddd"
     },
     {
       "slug": "frontline-foundry",
@@ -81,23 +85,34 @@
       "version_code": 2,
       "source_sha256": "9e58d59a34dc7e12028ba4077217a23a4cdfe03d29ce3056723a099102640195",
       "phone_ime_verified": false,
-      "qualification": "Conditional software candidate; actual update/core outcomes/transfer/native Back/settings/active lifecycle/emulated resize reviewed. Physical IME/touch/folding/audio/FPS/fun remain open; earlier graphics failures retained, later rejected previews qualified as presentation discrepancies."
+      "qualification": "Conditional software candidate; actual update/core outcomes/transfer/native Back/settings/active lifecycle/emulated resize reviewed. Physical IME/touch/folding/audio/FPS/fun remain open; earlier graphics failures retained, later rejected previews qualified as presentation discrepancies.",
+      "package": "com.dsschiff.frontlinefoundry",
+      "source_text_lf_sha256": "9e58d59a34dc7e12028ba4077217a23a4cdfe03d29ce3056723a099102640195"
     },
     {
       "slug": "dead-run",
-      "state": "native_campaign_entry_loss_retry_verified_win_platform_pending",
+      "state": "conditional_software_candidate_ready_for_phone_testing",
       "thread_id": "01a14d53-a3ae-7f61-ab87-0006aaa25dd4",
-      "ready_for_phone_testing": false,
+      "ready_for_phone_testing": true,
       "physical_phone_tested": false,
-      "evidence": "android-games/evidence/dead-run-code2-native-campaign.json",
-      "apk": "C:/projects/active/games/.artifacts/dead-run/20261018T084034281651Z/dead-run.apk",
-      "apk_sha256": "8fa2c577b32aba697e2f3dc8a7da072b2bf105aae22be8b09760a63453b68b75",
-      "version": "0.2.0",
-      "version_code": 2,
-      "source_sha256": "829fdd47ee4c78e0959620af3cab6cd9dfb85597fd674bfd480bc62152a46b64",
-      "emulator_installed_version_code": 2,
-      "qualification": "Actual code1-to2 whole-save migration/cold and campaign entry/natural defeat/Retry verified. Native steered victory/transfer/platform and physical checks remain pending.",
-      "native_update_evidence": "android-games/evidence/dead-run-code2-native-update.json"
+      "evidence": "android-games/evidence/dead-run-code3-candidate.json",
+      "apk": "C:/projects/active/games/.artifacts/dead-run/20261018T105219658505Z/dead-run.apk",
+      "apk_sha256": "ab1a8863fdb92815278924e146092c864b38309baf57fa521e99944b400a415c",
+      "version": "0.2.1",
+      "version_code": 3,
+      "source_sha256": "f99965a125f955478366a4b45912d1e8e6fb4ead488d8d05b49fd2ee7b26214e",
+      "emulator_installed_version_code": 3,
+      "qualification": "Conditional code3 candidate: camera P2 closed by independent source/projection and actual native view/update review. Code2 outcomes/platform carry forward through unchanged rules/save/input. Actual code3 crew5 visible; crew20/extremes are headless geometry coverage. Physical/human acceptance remains pending.",
+      "native_update_evidence": "android-games/evidence/dead-run-code3-candidate.json",
+      "package": "com.dsschiff.deadrun",
+      "source_text_lf_sha256": "f99965a125f955478366a4b45912d1e8e6fb4ead488d8d05b49fd2ee7b26214e"
     }
-  ]
+  ],
+  "source_text_lf_scope": "Same public source inventory as the verified root build; CRLF normalized only for explicit text extensions, binary bytes retained. Raw build fingerprints remain separate.",
+  "local_bundle": "C:/projects/active/games/.artifacts/releases/portfolio-20261018",
+  "final_fidelity_review": {
+    "path": "android-games/reviews/portfolio-final-fidelity-astra.md",
+    "tracked_LF_sha256": "1015b75771a2f3dc8dba9fbf1d4e67536fef34d5e7b9595b527a6bacffbd5f58",
+    "disposition": "All six qualified selected-reference implementations accepted; physical/human acceptance remains open."
+  }
 }

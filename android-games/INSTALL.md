@@ -124,6 +124,44 @@ dense formations and pacing remain playtest limits. Physical touch/IME, folding,
 safe areas, sound and measured frame timing remain required. Evidence:
 `android-games/evidence/frontline-code2-candidate.json`.
 
+## Dead Run 0.2.1 / code 3
+
+This build contains 24 evacuation roads across four districts, three weapons,
+six enemy roles, four bosses, an ending, medals and seeded replay. This
+conditional software candidate is ready for physical-phone testing.
+
+Verified local APK:
+
+`C:/projects/active/games/.artifacts/dead-run/20261018T105219658505Z/dead-run.apk`
+
+SHA-256: `ab1a8863fdb92815278924e146092c864b38309baf57fa521e99944b400a415c`
+
+Drag sideways to steer the squad; fire is automatic. Shooting numbered gates
+changes their signed value. Crossing applies that value, with recruits capped
+at 20; a negative crossing can remove crew. Fit the entire gold footprint
+through gaps, keep infected off the rescue line and choose when to divert fire
+to a roadside rescue. The evacuation map selects unlocked roads and weapons.
+Retry restores the encounter while retaining earned progress. Pause opens
+sound/reduced effects, the map and save transfer. Export/Paste/Import transfers
+the complete save; Android Back closes the active panel or pauses live play.
+
+Install over the existing app using the same signing identity. Actual updates
+retain the complete old encounter, earned profile and settings. Native win,
+loss, Retry, next-road progression, transfer and Back are verified. Code3 fixes
+the camera crop on wider displays, preserving the portrait composition.
+Independent native visual review closes that correction in emulator scope.
+Actual code3 footage shows five crew; crew20 and steering extremes are covered
+by headless geometry. The complete campaign
+was exercised on desktop, with representative Android play. Authored simulation
+duration does not establish a human 30–60-minute session.
+
+Cap-heavy/sparse late-road pacing and small distant threats remain playtest
+limits. Physical touch/IME, folding, safe areas, audible sound and measured
+performance remain required. Current evidence is indexed at
+`android-games/evidence/dead-run-code3-candidate.json`, carrying forward the
+retained code2 outcome/platform checks; the camera delta
+is documented in `android-games/dead-run/CAMERA-CHECKPOINT.md`.
+
 ## Phone checks still required
 
 Galaxy Z Fold7 is the working target from Daniel's description; exact model and Android version await a connected phone. Test cover and unfolded displays, actual folding during battle, touch accuracy and safe areas, audible sound, full-session pacing and heavy-encounter frame timing. The targets are 60 fps and above 30 fps during heavy encounters; neither is a measured phone result yet. Dense formations and lengthy time at the troop cap remain playtest limitations. Automatic route duration is not a measured human session.

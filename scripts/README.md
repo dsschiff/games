@@ -391,3 +391,17 @@ The precondition has been checked against the real archived code1 packet;
 the campaign-APK migration assertions remain unexecuted until that APK is
 frozen. Bounds on the setup clock/location do not relax the separate whole
 saved-state comparison across the update.
+
+
+## Private Android delivery folder
+
+After all six `delivery.json` entries are ready for phone testing, run
+`python -B scripts/package_android.py --output <new-private-folder>`.
+The command checks source text-LF fingerprints and each APK checksum before
+writing, copies the six APKs and install guide, verifies every copied APK, and
+writes a local HTML index, manifest and checksums. It refuses an existing output
+folder and does not install, publish or upload anything. Physical-phone limits
+remain visible in the local index. Build raw fingerprints and packaging-checkout
+raw fingerprints remain distinct; only explicit text extensions allow Git
+CRLF/LF differences, and binary source bytes stay exact. Keep delivery folders under ignored
+`.artifacts/` or another private location.

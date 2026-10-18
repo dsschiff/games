@@ -1,5 +1,5 @@
 {
-  "stage": "native_campaign_entry_loss_retry_verified_win_platform_pending",
+  "stage": "historical_code2_native_evidence_superseded_by_camera_fixed_code3",
   "source_sha256": "829fdd47ee4c78e0959620af3cab6cd9dfb85597fd674bfd480bc62152a46b64",
   "apk_sha256": "8fa2c577b32aba697e2f3dc8a7da072b2bf105aae22be8b09760a63453b68b75",
   "version_code": 2,
@@ -52,17 +52,14 @@
   "independent_review": {
     "path": "android-games/reviews/dead-run-code2-native-entry-loss-retry-astra.md",
     "tracked_LF_sha256": "26444cbef76330dfed04f55b6c380644dc1987449eb5df29180d19809ada1e81",
-    "disposition": "No P1/P2 in bounded entry/natural defeat/Retry scope; native victory/transfer/platform still pending."
+    "disposition": "No P1/P2 in bounded entry/natural defeat/Retry scope. Later win and platform reviews are separate; inner camera P2 blocks code2 promotion."
   },
   "original_false_capture_UI_flags_preserved_with_separate_actual_root_QA_views": true,
   "QA_headers_are_derivatives_not_new_native_captures": true,
   "ready_for_phone_testing": false,
   "physical_phone_tested": false,
   "next": [
-    "Continue actual same-attempt steered road to native terminal",
-    "Campaign transfer/Back/settings/active lifecycle/resize",
-    "Independent native candidate review",
-    "Physical Fold7 acceptance"
+    "Use conditional code3 candidate for physical acceptance; do not reinstall old code2."
   ],
   "first_policy_safe_stop": {
     "classification": "Fixed-layout observer false negative; no game source defect or terminal inferred.",
@@ -84,5 +81,137 @@
       "prior_receipts_unchanged": 64
     },
     "continued_win_or_transfer_accepted_by_this_record": false
-  }
+  },
+  "steered_native_victory": {
+    "revision": 637,
+    "tick": 4500,
+    "simulation_seconds": 75,
+    "crew": 20,
+    "joined": 15,
+    "lost": 0,
+    "kills": 33,
+    "leaks": 0,
+    "contacts": 0,
+    "shots": 3120,
+    "boss_dead": true,
+    "side_target_claimed": true,
+    "side_claim_tick": 771,
+    "side_crew_delta": 3,
+    "gate_values_at_crossing": [
+      5,
+      6,
+      6,
+      6
+    ],
+    "gate_actual_crew_deltas": [
+      5,
+      6,
+      1,
+      0
+    ],
+    "gate_deltas_qualification": "Crew cap20 limits actual recruits; applied signed gate value is distinct from actual crew delta.",
+    "exact_earned_profile": {
+      "clears": [
+        0
+      ],
+      "medals": {
+        "0": {
+          "best_crew": 20,
+          "no_loss": true,
+          "rescues": true
+        }
+      },
+      "replays": [],
+      "ending": false
+    },
+    "whole_legacy_settings_loadout_retained": true,
+    "original_anchor_revision": 435,
+    "same_attempt_continuation_revision": 462,
+    "no_Retry_reset_or_progress_injection": true,
+    "V2_completed_paused_cycles": 69,
+    "V2_swipes": 46,
+    "V2_wall_seconds_including_test_pauses": 393,
+    "root_terminal_view_before_first_terminal_save_read": true,
+    "root_actual_held_QA_view_qualified": true,
+    "QA_derivative_not_new_native_capture": true,
+    "independent_review": {
+      "path": "android-games/reviews/dead-run-code2-native-steered-win-astra.md",
+      "tracked_LF_sha256": "e085cae12b73f181a8f0a55b478376833f67f6189e31f6575fa2936e192567c1"
+    },
+    "receipt": {
+      "path": "C:/projects/active/games/.artifacts/preservation/dead-run-code2-native-steered-win.json",
+      "sha256": "aa89c4253ace72b353e68a7239a0af12a3525c3c53fafbd0b165cfbc752c2de2",
+      "file_count": 3929,
+      "bytes": 86146356,
+      "prior_receipts_unchanged": 65
+    }
+  },
+  "actual_later_progression": {
+    "next_road_revision": 638,
+    "road_index": 1,
+    "road_title": "Split Signal",
+    "phase_beforeStart": "ready",
+    "separately_checked_paused_revision": 640,
+    "tick": 8,
+    "whole_earned_profile_legacy_settings_loadout_retained": true,
+    "independent_native_followup_platform_review_pending": false
+  },
+  "open_findings": {
+    "P2_inner_camera_crop": {
+      "review": {
+        "path": "android-games/reviews/dead-run-code2-inner-framing-astra.md",
+        "tracked_LF_sha256": "95e280a2586d225c90917cb3562108e410272b4f262f6b45f794ec6ab683c60d"
+      },
+      "actual_emulated_inner_dimensions": [
+        1968,
+        2184
+      ],
+      "finding": "Crew cropped by bottom image edge; rescue line and footprint offscreen. Native and cover retain them.",
+      "blocks_code2_candidate_promotion": true,
+      "save_retention_through_resize_passes_separately": true,
+      "camera_only_code3_fix_authorized_to_existing_builder": true,
+      "resolved_by_code3": true,
+      "resolution": "android-games/reviews/dead-run-code3-native-candidate-astra.md"
+    }
+  },
+  "native_platform": {
+    "settings_pairs_restore_original": true,
+    "actual_export_invalid_reject_paste_import": true,
+    "invalid_import_whole_packet_raw_bytes_unchanged": true,
+    "valid_import_revision": 646,
+    "whole_earned_profile_legacy_settings_loadout_retained": true,
+    "Back_transfer_closes_modal": true,
+    "Back_map_closes_map": true,
+    "Back_live_pauses_encounter": true,
+    "native_Back_paused_revision": 649,
+    "native_Back_tick": 51,
+    "cover_resize_context_retained": true,
+    "inner_resize_context_retained_despite_camera_P2": true,
+    "home_cold_context_retained": true,
+    "cold_loaded_revision": 651,
+    "cold_loaded_tick": 51,
+    "root_viewed_loaded_before_first_postCold_save_read": true,
+    "cold_whole_packet_raw_hold": true,
+    "independent_actual_platform_review_pending": false,
+    "qualifications": [
+      "Initial cold-launch splash is retained and is not loaded-state proof. A later screenshot-only loaded capture and separate actual root view precede the first post-launch save read.",
+      "Observers verify checksum/minimum shape and exact protected context; they do not run full Godot ledger validation.",
+      "Transfer uses actual Android clipboard and hardware-key input; physical on-screen IME remains unverified.",
+      "Cover/inner dimensions are emulator geometry, not actual Fold7 folding, safe areas, audio, performance or human fun."
+    ],
+    "additive_prose_erratum": "The type-invalid root review note says lastchecked644; its formal bound decoded/raw baseline is645. All operative comparisons use645. Original note/hashes remain unchanged.",
+    "independent_review": {
+      "path": "android-games/reviews/dead-run-code2-native-platform-astra.md",
+      "tracked_LF_sha256": "3097a7f9d583acf195be201d9614e4614cd920a2e8ab14887d4104b1f092dcbd",
+      "disposition": "No additional P1/P2 in actual13platform+8companion/observer packets. Inner camera P2 remains open; code2 is not promoted."
+    },
+    "receipt": {
+      "path": "C:/projects/active/games/.artifacts/preservation/dead-run-code2-native-platform.json",
+      "sha256": "bd271c790dfef464af66292240fc2a76e1c67bd3a7ee61f2ec58b0fd60260c72",
+      "file_count": 1475,
+      "bytes": 26965684,
+      "prior_receipts_unchanged": 67
+    }
+  },
+  "superseded_by": "android-games/evidence/dead-run-code3-candidate.json"
 }

@@ -1,0 +1,133 @@
+{
+  "stage": "conditional_software_candidate_ready_for_phone_testing",
+  "package": "com.dsschiff.deadrun",
+  "version": "0.2.1",
+  "version_code": 3,
+  "source_sha256": "f99965a125f955478366a4b45912d1e8e6fb4ead488d8d05b49fd2ee7b26214e",
+  "source_scope": "Root build raw fingerprint; all87 tracked LF files equal worker63406d0; canonical raw equality is not claimed.",
+  "apk": "C:/projects/active/games/.artifacts/dead-run/20261018T105219658505Z/dead-run.apk",
+  "apk_sha256": "ab1a8863fdb92815278924e146092c864b38309baf57fa521e99944b400a415c",
+  "apk_bytes": 57154587,
+  "permissions": [],
+  "inherited_outcomes_platform": "android-games/evidence/dead-run-code2-native-campaign.json",
+  "camera_checkpoint": "android-games/dead-run/CAMERA-CHECKPOINT.json",
+  "camera_source_review": "android-games/reviews/dead-run-code3-camera-source-astra.md",
+  "camera_build_receipt": {
+    "path": "C:/projects/active/games/.artifacts/preservation/dead-run-code3-camera-build.json",
+    "sha256": "00fbb47a43ff96b76520881c28a731c6aa8fb9d2a9e496d99dd693b99e6cb245",
+    "file_count": 1540,
+    "bytes": 67067205,
+    "prior_receipts_unchanged": 66
+  },
+  "focused_projection": {
+    "checks": 862,
+    "envelopes": 108,
+    "old_source_inner_assertion_failures": 180,
+    "new_failures": 0,
+    "unchanged_native_cover_envelopes": 72,
+    "synthetic_geometry_not_earned_or_rendered_gameplay": true
+  },
+  "actual_native_update": {
+    "before_revision": 651,
+    "before_tick": 51,
+    "raw_slots_byte_exact_before_first_code3_launch": true,
+    "same_actual_signer_certificates": true,
+    "first_loaded_revision": 652,
+    "whole_earned_context_exact_except_revision_committed": true,
+    "whole_packet_raw_hold": true,
+    "first_splash_retained_not_loaded_proof": true,
+    "separate_actual_loaded_root_view_before_first_postlaunch_read": true
+  },
+  "actual_native_geometry": {
+    "cover": [
+      1080,
+      2520
+    ],
+    "inner": [
+      1968,
+      2184
+    ],
+    "native_restored": [
+      1080,
+      2400
+    ],
+    "whole652_context_and_raw_hold": true,
+    "root_viewed_cover_and_restored_native": true,
+    "paused_inner_overlay_occludes_crew": true,
+    "unobstructed_live_inner_root_viewed": true,
+    "visible_live_inner": "Complete crew5, gold footprint, rescue line/caption, ordinary +5 gate and bullets; no image-edge crop.",
+    "live_actual_Resume_and_native_Back": true,
+    "no_save_reads_while_live": true,
+    "postlive_first_read_after_separate_actual_root_pause_view": true,
+    "postlive_revision": 655,
+    "postlive_tick": 232,
+    "whole_noncampaign_context_exact": true,
+    "postlive_raw_hold": true,
+    "current_x": 0.9166748046875,
+    "actual_native_crew20_and_extreme_x_not_claimed": true
+  },
+  "packet_inventory": [
+    {
+      "path": "C:\\projects\\active\\_worktrees\\games-android-portfolio-20261017\\.artifacts\\dead-run-code2-code3-update-preparation\\runs\\capture-install-20261018T105857709699Z\\phase.json",
+      "sha256": "4249dfda90eb5b4f4d807ddbf922d6b41a93597fb50bb21cf62ea79f0d535d77",
+      "result": "installed_code3_raw_bytes_retained_NO_LAUNCH"
+    },
+    {
+      "path": "C:\\projects\\active\\_worktrees\\games-android-portfolio-20261017\\.artifacts\\dead-run-code2-code3-update-preparation\\runs\\launch-capture-20261018T105919067598Z\\phase.json",
+      "sha256": "47cdb32dc12bcccbacd4f79351eaa4c3672ebe9e00c902f55a864d9fdab3327c",
+      "result": "code3_capture_NO_POSTLAUNCH_SAVE_READ_needs_root_loaded_view"
+    },
+    {
+      "path": "C:\\projects\\active\\_worktrees\\games-android-portfolio-20261017\\.artifacts\\dead-run-code2-code3-update-preparation\\runs\\launch-capture-20261018T105942603916Z\\phase.json",
+      "sha256": "c0c4a82f2f2f073d702057ce76ad209c454f31729a1f9dc2ae93835906e1c95a",
+      "result": "code3_capture_NO_POSTLAUNCH_SAVE_READ_needs_root_loaded_view"
+    },
+    {
+      "path": "C:\\projects\\active\\_worktrees\\games-android-portfolio-20261017\\.artifacts\\dead-run-code2-code3-update-preparation\\runs\\observe-loaded-20261018T105959629630Z\\phase.json",
+      "sha256": "5a9749e4961c73e807aa539b6e6509471e60ee985250ae24947824e21c018a6f",
+      "result": "code3_loaded_whole_context_retained_needs_root_final_view"
+    },
+    {
+      "path": "C:\\projects\\active\\_worktrees\\games-android-portfolio-20261017\\.artifacts\\dead-run-code3-resize-preparation\\runs\\cover-20261018T110347406661Z\\phase.json",
+      "sha256": "e0a43abdd09ef1f0d9749a6f3fddf27417d92e0693de67c5b53e3ed000a74040",
+      "result": "geometry_and_native_restore_checked_needs_root_views"
+    },
+    {
+      "path": "C:\\projects\\active\\_worktrees\\games-android-portfolio-20261017\\.artifacts\\dead-run-code3-resize-preparation\\runs\\inner-20261018T110417653873Z\\phase.json",
+      "sha256": "b8e3cee9045d873003cee2db7edf7d6675d0ad7ffecf6109abaab1b2191e924d",
+      "result": "geometry_and_native_restore_checked_needs_root_views"
+    },
+    {
+      "path": "C:\\projects\\active\\_worktrees\\games-android-portfolio-20261017\\.artifacts\\dead-run-code3-live-inner\\20261018T110608904606Z\\phase.json",
+      "sha256": "bf2035874bcfefa129a164bac8fadd5125db4a701686988f4c524281bd834cb5",
+      "result": "live_inner_capture_NO_POSTRESUME_SAVE_READ_needs_root_pause_view"
+    },
+    {
+      "path": "C:\\projects\\active\\_worktrees\\games-android-portfolio-20261017\\.artifacts\\dead-run-code3-postlive-observer\\20261018T110652024061Z\\phase.json",
+      "sha256": "a823c0f41bb57611ac9062c0af468f42edfbccd95790cc04d6b27ca7a5f5bf1d",
+      "result": "checked_postlive_pause_context_and_raw_hold"
+    }
+  ],
+  "ready_for_phone_testing": true,
+  "physical_phone_tested": false,
+  "limitations": [
+    "Headless projection covers crew20/allweapons/legal steering edges; actual code3 frame uses earned fivecrew at x0.9167.",
+    "Original full campaign clips and native outcomes retain original source bindings; unchanged rules/save/input source carries those reviews forward.",
+    "No physical Fold7 IME/touch/folding/safeareas/audio/FPS or human30\u201360minute pacing/fun acceptance.",
+    "Inherited cap-heavy/sparse late-road pacing and small distant threats remain playtest limits."
+  ],
+  "next": "Physical Fold7 identity/OS, touch/IME/folding/safe areas/audio/performance and human session acceptance.",
+  "independent_native_review": {
+    "path": "android-games/reviews/dead-run-code3-native-candidate-astra.md",
+    "tracked_LF_sha256": "7b7ee31314f17dacabf7878a218ee66fbcd1b985f3270906bcc16ed1bd3e9146",
+    "disposition": "Close inner-camera P2 within software/emulator scope; no remaining P1/P2 in bounded amendment. Conditional phone-test candidate supported."
+  },
+  "native_receipt": {
+    "path": "C:/projects/active/games/.artifacts/preservation/dead-run-code3-native-candidate.json",
+    "sha256": "c1f4dc8205d87a4d28d95c5cc5157d73b9f1bd96b6991ace8257616ae30078d7",
+    "file_count": 595,
+    "bytes": 11565183,
+    "prior_receipts_unchanged": 68
+  },
+  "final_fidelity_review": "android-games/reviews/portfolio-final-fidelity-astra.md"
+}
