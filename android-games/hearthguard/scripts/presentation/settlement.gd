@@ -215,6 +215,17 @@ func _exit_tree() -> void:
 func pad_point(index: int) -> Vector2:
 	return C.pad_point(definition, index) if campaign else L.PADS[index]
 
+func essential_labels() -> Array[Label3D]:
+	var labels: Array[Label3D] = []
+	if adapter.current.is_empty():
+		return labels
+	for i in towers.size():
+		if adapter.current.towers[i].family < 0:
+			labels.append(pad_labels[i])
+		elif towers[i].title != null:
+			labels.append(towers[i].title)
+	return labels
+
 func place(asset: String, at: Vector3, yaw: float, size: float, scenery: bool = false) -> Node3D:
 	var node := Actor.asset(asset)
 	add_child(node)

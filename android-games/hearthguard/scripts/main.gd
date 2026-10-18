@@ -51,6 +51,7 @@ var last_wallet := 0
 var save_problem := false
 var campaign_profile := preload("res://scripts/campaign_rules.gd").profile()
 var expedition_button: Button
+var world_label_clearance := preload("res://scripts/presentation/label_clearance.gd").new()
 
 func _ready() -> void:
 	var saved := S.read()
@@ -195,6 +196,19 @@ func button(parent: Control, text: String, action: Callable, font_size: int = 27
 	parent.add_child(b)
 	return b
 
+func joystick_disk(diameter: int, fill: Color, border: Color, shadow_alpha: float) -> StyleBoxFlat:
+	var style := StyleBoxFlat.new()
+	style.bg_color = fill
+	style.set_corner_radius_all(diameter / 2)
+	style.corner_detail = 16
+	style.anti_aliasing = true
+	style.set_border_width_all(1)
+	style.border_color = border
+	style.shadow_color = Color(0, 0, 0, shadow_alpha)
+	style.shadow_size = 3
+	style.shadow_offset = Vector2(0, 1)
+	return style
+
 func make_ui() -> void:
 	var layer := CanvasLayer.new()
 	add_child(layer)
@@ -230,10 +244,14 @@ func make_ui() -> void:
 	stick = Control.new()
 	stick.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui.add_child(stick)
-	stick_ring = panel(stick, "193b4777")
+	stick_ring = Panel.new()
+	stick.add_child(stick_ring)
+	stick_ring.add_theme_stylebox_override("panel", joystick_disk(160, Color(.08, .12, .14, .055), Color(.90, .96, .92, .18), .045))
 	stick_ring.size = Vector2(160, 160)
 	stick_ring.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	stick_knob = panel(stick, "8bdacaaa")
+	stick_knob = Panel.new()
+	stick.add_child(stick_knob)
+	stick_knob.add_theme_stylebox_override("panel", joystick_disk(64, Color(.88, .95, .90, .50), Color(.95, 1, .97, .45), .08))
 	stick_knob.size = Vector2(64, 64)
 	stick_knob.position = Vector2(48, 48)
 	stick_knob.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -271,6 +289,17 @@ func make_ui() -> void:
 	button(transfer, "IMPORT", import_code).set_meta("transfer", 2)
 	button(transfer, "BACK", close_transfer).set_meta("transfer", 3)
 	transfer.hide()
+
+func _process(_delta: float) -> void:
+	update_control_clearance()
+
+func update_control_clearance() -> void:
+	if presenter == null or stick == null or camera == null:
+		return
+	var obstacle := Rect2()
+	if stick_id != -1 and stick.is_visible_in_tree() and not paused:
+		obstacle = stick_ring.get_global_rect()
+	world_label_clearance.update(presenter.essential_labels(), camera, obstacle, presenter.field_rect)
 
 func usable_rect() -> Rect2:
 	var area := get_viewport().get_visible_rect()
@@ -613,6 +642,7 @@ func fill_audio() -> void:
 		audio_playback.push_frame(Vector2(value, value))
 
 func _exit_tree() -> void:
+	world_label_clearance.reset()
 	if audio != null:
 		audio.stop()
 	audio_playback = null

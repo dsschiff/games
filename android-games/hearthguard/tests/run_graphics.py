@@ -30,7 +30,7 @@ def sources():
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=["checks", "pool-checks", "composition-checks", "inspect", "capture", "closure", "tour", "legacy"])
+    parser.add_argument("mode", choices=["checks", "pool-checks", "composition-checks", "joystick-checks", "inspect", "capture", "closure", "tour", "legacy"])
     parser.add_argument("--render", action="store_true")
     parser.add_argument("--movie", action="store_true")
     parser.add_argument("--native-frames", action="store_true")
@@ -43,7 +43,7 @@ def main():
         parser.error("Use --native-frames; the internal writer recorded 450x800 on this host despite the native 720x1280 window")
     if args.native_frames and (not args.render or args.measure_frames):
         parser.error("Native frame recording requires --render and excludes real-time timing")
-    cpu_modes = {"checks", "pool-checks", "composition-checks"}
+    cpu_modes = {"checks", "pool-checks", "composition-checks", "joystick-checks"}
     if args.render and args.mode in cpu_modes:
         parser.error("Checks are CPU only")
     if not args.render and args.mode not in cpu_modes:
@@ -73,7 +73,7 @@ def main():
     (run / "import-report.json").write_text(json.dumps(preflight, indent=2) + "\n")
     command = [str(GODOT), "--path", str(PROJECT)]
     command += ["--resolution", "720x1280", "--position", "0,0"] if args.render else ["--headless"]
-    script = {"checks": "presentation_tests.gd", "pool-checks": "pool_tests.gd", "composition-checks": "composition_tests.gd"}.get(args.mode, "graphics_passage.gd")
+    script = {"checks": "presentation_tests.gd", "pool-checks": "pool_tests.gd", "composition-checks": "composition_tests.gd", "joystick-checks": "joystick_tests.gd"}.get(args.mode, "graphics_passage.gd")
     command += ["--script", "res://tests/" + script]
     if args.native_frames:
         command += ["--fixed-fps", "30"]
@@ -96,6 +96,9 @@ def main():
         for name in ["rules.gd", "campaign_rules.gd", "campaign_catalog.gd", "save_store.gd", "save_files.gd"]:
             raw = subprocess.check_output(["git", "-C", str(PROJECT), "show", "c36df6e:android-games/hearthguard/scripts/" + name])
             (baseline / name).write_bytes(raw)
+        if args.mode == "joystick-checks":
+            raw = subprocess.check_output(["git", "-C", str(PROJECT), "show", "576d4af:android-games/hearthguard/scripts/main.gd"])
+            (baseline / "controls-main.gd").write_bytes(raw)
         command += ["--baseline-dir=" + str(baseline).replace("\\", "/") + "/"]
     before = sources()
     (run / "source-hashes.json").write_text(json.dumps(before, indent=2) + "\n")

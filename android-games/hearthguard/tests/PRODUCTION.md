@@ -148,3 +148,17 @@ The version freeze predates production films so forthcoming source-bound capture
 and the final root-owned APK build use the same candidate metadata. Historical
 34ce074 second-inspection evidence stays retained; it has identical art/runtime
 behavior but old0.2.0/code2 metadata. No signed0.3.0 APK or update is claimed yet.
+
+The floating-joystick correction has a separate focused CPU check:
+
+```powershell
+python -B tests/run_graphics.py joystick-checks
+```
+
+It checks actual160/64px circular styling, unchanged input/timing/save methods,
+real floating touch/drag origins and projected label glyph clearance across
+seven profiles, complete save immutability and full-state rules equivalence.
+It neither renders nor establishes appearance/readability. The retained60s
+opening belongs to runtime576d4af; short UI closure and future heavy/later films
+must bind the new clean runtime commit. Do not replay the full opening for this
+bounded correction. Rendering still requires the coordinator's explicit grant.

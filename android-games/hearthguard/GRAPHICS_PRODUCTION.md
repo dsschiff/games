@@ -178,3 +178,31 @@ CIM query lacked permission and was not used as release proof. No heavy/later/
 timing/lifecycle/restore/legacy/tour/gap render was started. Stop rendered work
 until root's next explicit grant; Gear review/native update has priority.
 Fixed30 movie cadence is not FPS, and no phone-performance/human-fun claim is made.
+
+## Floating joystick correction: CPU evidence only
+
+The follow-up replaces the heavy rounded-square paint with circular160/64px
+base/knob styles, restrained border/shadow and a near-transparent base. The
+original input hit regions, floating origin/delta calculation, physics handler
+and save handler remain byte-equivalent to runtime576d4af.
+
+Essential pad prices and constructed-tower titles now clear the actual floating
+base, knob extension and shadow using projected billboard glyph geometry.
+Offsets affect only Label3D positions, choose a nearby non-overlapping position
+inside the field, and restore authored anchors on release/pause. Geometry caches
+are bounded by current essential labels and released at scene teardown.
+
+`.artifacts/floating-joystick-final-joystick-checks-20261018T174341220191Z/`
+passes108 focused CPU checks with source unchanged and no unexpected errors:
+seven profiles, actual ScreenTouch/Drag origin110,850 and a forced label origin,
+all label glyphs clear, whole saves unchanged, exact full-state rules ticks,
+release/pause restoration and an unsaved dense eight-pad presentation fixture.
+The retained first attempt failed parsing; the next exposed three comparisons
+against nominal rather than native-coordinate-rounded input. The final test
+checks mapping separately and compares rules with the actual parsed vector.
+
+No rendering accompanied this correction. The old60s opening stays historical
+at runtime576d4af and is not evidence that the changed control looks/readably
+works. A short source-bound original-frame/motion closure and future heavy/later
+captures must bind the new runtime freeze after the separate pin commit. GPU
+remains released; no full opening replay or broad campaign suite was run.
