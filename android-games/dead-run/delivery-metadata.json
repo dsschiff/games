@@ -1,0 +1,187 @@
+{
+  "amendment": "dead-run-standard-template-sdk-overrides",
+  "base_commit": "9952c89a18e72546609b01e503cf8bfdfb5e6ac0",
+  "status": "Static preset/byte-preservation checks pass; root APK export/native verification pending",
+  "preset_change_only": {
+    "gradle_build/min_sdk": {
+      "before": "24",
+      "after": "0"
+    },
+    "gradle_build/target_sdk": {
+      "before": "36",
+      "after": "0"
+    }
+  },
+  "preset_sha256": "25228665e57f56ccd8b239a37408862bb0f3c30db2fc07b3a3444b042da6eeae",
+  "preset_lf_sha256": "25228665e57f56ccd8b239a37408862bb0f3c30db2fc07b3a3444b042da6eeae",
+  "gradle_enabled": false,
+  "custom_template": false,
+  "package": "com.dsschiff.deadrun",
+  "version": "0.1.0",
+  "code": 1,
+  "architectures": [
+    "arm64-v8a",
+    "x86_64"
+  ],
+  "enabled_permissions": [],
+  "official_template_sdk_expectation": {
+    "min_sdk": 24,
+    "target_sdk": 36,
+    "basis": "Existing Hearthguard official-template manifest inspection recorded in android-games/hearthguard/DELIVERY-METADATA.md and delivery-metadata.json; not a newly exported Dead Run APK.",
+    "hearth_record_sha256": "e2acb9c9ed41cf7a36de530d9f781ca19c6f045ac2bbe7753886ad7c1ed1439b"
+  },
+  "runtime_and_tests_byte_identical_to_base": {
+    "scripts/main.gd": "f8905e597a26ce49db7159fd7ce22bc4a163574c4f3760373ea0f4966fde07c6",
+    "scripts/main.gd.uid": "b406494d69da9bfba6324f52bf8650be5abb9da630dc7f81f5ea82af0cae0c5a",
+    "scripts/rules.gd": "7b3b5e45ef81e97aa9d1b1ebce72e751ed8416f82193913a14492ef58130290c",
+    "scripts/rules.gd.uid": "e9f74a7ea5170698b290ff06ba523b4768513931cd64607c76f1006cdb2a8ed4",
+    "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+    "scripts/save_files.gd.uid": "dc1d77381e96bee721244fd2c0d44191b128807192785eb44a1df3fa6ecb2bac",
+    "scripts/save_store.gd": "cdd0a07ef25381252af6dc3fd2f4d390bdbd4372a079873b897628f218475316",
+    "scripts/save_store.gd.uid": "d431cc0e3c84918fc1e5136eddd8f13d9e472ea8336a218685e0b2cf3b9162c3",
+    "tests/exhaustion_fixture.gd": "52c1e982b92e55c1079beda454381132b6059b25b7e00a8403a30fe7dbf910ef",
+    "tests/exhaustion_fixture.gd.uid": "babcd42a929a18d6f8dd7047187b5b0b149a7cd23eef84427344da1477977739",
+    "tests/exhaustion_playthrough.gd": "06cd3fb827e422014bc1a4998190ff0b56354e34df2cc469762a45066705c8fd",
+    "tests/exhaustion_playthrough.gd.uid": "bbdbd1385f300a708efaf5360edb76ee8845ee49ac64e4a6b9de4294d6ca7bb5",
+    "tests/fault_files.gd": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+    "tests/fault_files.gd.uid": "6845ad81df88c95a024821ae005a9af425eb850852f7da09f79cdc618c9bf2eb",
+    "tests/playthrough.gd": "aece89ab0beda649a2a4012e3bebec7435bb4a5b7e701c64939bb9c2728bb314",
+    "tests/playthrough.gd.uid": "57e9ee88cfa12b57d7996213426dd88fa385b3d31a531cfc6556a22862ddb7dc",
+    "tests/run_desktop.py": "163407025f8810aa65312939f0990d18f2e05438ca5a81a94ff853465ba6c5ab",
+    "tests/run_tests.gd": "d8bbedd442669df0c18da25698c18a1327b3402845fc387714f953e45792f04a",
+    "tests/run_tests.gd.uid": "3c30dd48f3117008e8e28f41f7ca9aea1d4667e58032b325c5f41ae53a124abc"
+  },
+  "all_other_preexisting_tracked_files_lf_unchanged": {
+    "AMENDMENT-EXHAUSTION.json": {
+      "raw_sha256": "20cd768f06f8da87e53b7db97d9d4a57fe9bae3c4584d531b39f7e702a6c0880",
+      "committed_lf_sha256": "9082e81313e611a0dda199f06daa72e7862391196af4f5cd1a1a96c10d2df650"
+    },
+    "AMENDMENT-EXHAUSTION.md": {
+      "raw_sha256": "0d03f047be8f56a8a5c734379c2b7937107998380ea1d7e95f8f3a58e72d5703",
+      "committed_lf_sha256": "b92c51a2a30bea08502595777eee3375c00240d868d5af455591c91dee2119e7"
+    },
+    "CHECKPOINT.json": {
+      "raw_sha256": "3dcf35b46c57195da7aa4c8561da47be0600c7747e01ee0a9bfa2bdaae794dbb",
+      "committed_lf_sha256": "0aa9d286bcc5fe51bf98f51b3c23fa9f8cd9fdfa04f3118ddcd0905652156977"
+    },
+    "CHECKPOINT.md": {
+      "raw_sha256": "af3837e100fa3c83a0f5ae6e934a2f338b37798d026ade04692161d10ced56ba",
+      "committed_lf_sha256": "9d90dde161423d88125422f4d4fcd9492092d035b016b5ceabe09be2cdf5e360"
+    },
+    "README.md": {
+      "raw_sha256": "3c0bab98384c1e9ac0c5e2e382b5e94389dc1e918dfb5ee8e63a1b5d409d6d8f",
+      "committed_lf_sha256": "3c0bab98384c1e9ac0c5e2e382b5e94389dc1e918dfb5ee8e63a1b5d409d6d8f"
+    },
+    "icon.svg": {
+      "raw_sha256": "dc7fc1cf18e8d6a5a52d8643184498ea23b2569c5b4286c63ebf80012f89ee4e",
+      "committed_lf_sha256": "dc7fc1cf18e8d6a5a52d8643184498ea23b2569c5b4286c63ebf80012f89ee4e"
+    },
+    "icon.svg.import": {
+      "raw_sha256": "9de5e899d3323aa37fec5bf7cb0e35314530dcbe2809929dc0bcfb9ecc9f00cd",
+      "committed_lf_sha256": "9de5e899d3323aa37fec5bf7cb0e35314530dcbe2809929dc0bcfb9ecc9f00cd"
+    },
+    "main.tscn": {
+      "raw_sha256": "576922271b75eeb00ec25953db5efa509f0d9d4c2b7a0bf901336ab28438e200",
+      "committed_lf_sha256": "576922271b75eeb00ec25953db5efa509f0d9d4c2b7a0bf901336ab28438e200"
+    },
+    "project.godot": {
+      "raw_sha256": "961d6df703b54b658ef8b290f72c37431967592e4781e8aafd423d3a14f3105e",
+      "committed_lf_sha256": "961d6df703b54b658ef8b290f72c37431967592e4781e8aafd423d3a14f3105e"
+    },
+    "scripts/main.gd": {
+      "raw_sha256": "f8905e597a26ce49db7159fd7ce22bc4a163574c4f3760373ea0f4966fde07c6",
+      "committed_lf_sha256": "f8905e597a26ce49db7159fd7ce22bc4a163574c4f3760373ea0f4966fde07c6"
+    },
+    "scripts/main.gd.uid": {
+      "raw_sha256": "b406494d69da9bfba6324f52bf8650be5abb9da630dc7f81f5ea82af0cae0c5a",
+      "committed_lf_sha256": "b406494d69da9bfba6324f52bf8650be5abb9da630dc7f81f5ea82af0cae0c5a"
+    },
+    "scripts/rules.gd": {
+      "raw_sha256": "7b3b5e45ef81e97aa9d1b1ebce72e751ed8416f82193913a14492ef58130290c",
+      "committed_lf_sha256": "7b3b5e45ef81e97aa9d1b1ebce72e751ed8416f82193913a14492ef58130290c"
+    },
+    "scripts/rules.gd.uid": {
+      "raw_sha256": "e9f74a7ea5170698b290ff06ba523b4768513931cd64607c76f1006cdb2a8ed4",
+      "committed_lf_sha256": "e9f74a7ea5170698b290ff06ba523b4768513931cd64607c76f1006cdb2a8ed4"
+    },
+    "scripts/save_files.gd": {
+      "raw_sha256": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+      "committed_lf_sha256": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac"
+    },
+    "scripts/save_files.gd.uid": {
+      "raw_sha256": "dc1d77381e96bee721244fd2c0d44191b128807192785eb44a1df3fa6ecb2bac",
+      "committed_lf_sha256": "dc1d77381e96bee721244fd2c0d44191b128807192785eb44a1df3fa6ecb2bac"
+    },
+    "scripts/save_store.gd": {
+      "raw_sha256": "cdd0a07ef25381252af6dc3fd2f4d390bdbd4372a079873b897628f218475316",
+      "committed_lf_sha256": "cdd0a07ef25381252af6dc3fd2f4d390bdbd4372a079873b897628f218475316"
+    },
+    "scripts/save_store.gd.uid": {
+      "raw_sha256": "d431cc0e3c84918fc1e5136eddd8f13d9e472ea8336a218685e0b2cf3b9162c3",
+      "committed_lf_sha256": "d431cc0e3c84918fc1e5136eddd8f13d9e472ea8336a218685e0b2cf3b9162c3"
+    },
+    "tests/exhaustion_fixture.gd": {
+      "raw_sha256": "52c1e982b92e55c1079beda454381132b6059b25b7e00a8403a30fe7dbf910ef",
+      "committed_lf_sha256": "52c1e982b92e55c1079beda454381132b6059b25b7e00a8403a30fe7dbf910ef"
+    },
+    "tests/exhaustion_fixture.gd.uid": {
+      "raw_sha256": "babcd42a929a18d6f8dd7047187b5b0b149a7cd23eef84427344da1477977739",
+      "committed_lf_sha256": "babcd42a929a18d6f8dd7047187b5b0b149a7cd23eef84427344da1477977739"
+    },
+    "tests/exhaustion_playthrough.gd": {
+      "raw_sha256": "06cd3fb827e422014bc1a4998190ff0b56354e34df2cc469762a45066705c8fd",
+      "committed_lf_sha256": "06cd3fb827e422014bc1a4998190ff0b56354e34df2cc469762a45066705c8fd"
+    },
+    "tests/exhaustion_playthrough.gd.uid": {
+      "raw_sha256": "bbdbd1385f300a708efaf5360edb76ee8845ee49ac64e4a6b9de4294d6ca7bb5",
+      "committed_lf_sha256": "bbdbd1385f300a708efaf5360edb76ee8845ee49ac64e4a6b9de4294d6ca7bb5"
+    },
+    "tests/fault_files.gd": {
+      "raw_sha256": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d",
+      "committed_lf_sha256": "7baf731aeca902e884080e85a368e1039176842350195fdb2df4c6dd66b1781d"
+    },
+    "tests/fault_files.gd.uid": {
+      "raw_sha256": "6845ad81df88c95a024821ae005a9af425eb850852f7da09f79cdc618c9bf2eb",
+      "committed_lf_sha256": "6845ad81df88c95a024821ae005a9af425eb850852f7da09f79cdc618c9bf2eb"
+    },
+    "tests/playthrough.gd": {
+      "raw_sha256": "aece89ab0beda649a2a4012e3bebec7435bb4a5b7e701c64939bb9c2728bb314",
+      "committed_lf_sha256": "aece89ab0beda649a2a4012e3bebec7435bb4a5b7e701c64939bb9c2728bb314"
+    },
+    "tests/playthrough.gd.uid": {
+      "raw_sha256": "57e9ee88cfa12b57d7996213426dd88fa385b3d31a531cfc6556a22862ddb7dc",
+      "committed_lf_sha256": "57e9ee88cfa12b57d7996213426dd88fa385b3d31a531cfc6556a22862ddb7dc"
+    },
+    "tests/run_desktop.py": {
+      "raw_sha256": "163407025f8810aa65312939f0990d18f2e05438ca5a81a94ff853465ba6c5ab",
+      "committed_lf_sha256": "163407025f8810aa65312939f0990d18f2e05438ca5a81a94ff853465ba6c5ab"
+    },
+    "tests/run_tests.gd": {
+      "raw_sha256": "d8bbedd442669df0c18da25698c18a1327b3402845fc387714f953e45792f04a",
+      "committed_lf_sha256": "d8bbedd442669df0c18da25698c18a1327b3402845fc387714f953e45792f04a"
+    },
+    "tests/run_tests.gd.uid": {
+      "raw_sha256": "3c30dd48f3117008e8e28f41f7ca9aea1d4667e58032b325c5f41ae53a124abc",
+      "committed_lf_sha256": "3c30dd48f3117008e8e28f41f7ca9aea1d4667e58032b325c5f41ae53a124abc"
+    }
+  },
+  "retained_failed_root_export": [
+    {
+      "path": ".artifacts/delivery-sdk-override-correction/root-failed-export-console.txt",
+      "sha256": "426adb7f3a929ad6de99dff800290da21c89750c4048cd9c3895e4b6486e1950"
+    },
+    {
+      "path": ".artifacts/delivery-sdk-override-correction/root-failed-export-manifest.json",
+      "sha256": "11dcb79f4ae5cad8a75fdbdbc82a86ead1ad8cc5a5bde6464e150d0c92b21a70"
+    }
+  ],
+  "checks": {
+    "only_two_preset_values_changed": true,
+    "gradle_disabled": true,
+    "runtime_tests_untouched": true,
+    "package_version_abis_permissions_unchanged": true,
+    "game_suites_repeated": false,
+    "builder_engine_build_export_adb_clipboard": false
+  },
+  "next": "Root exports corrected standard-template APK and verifies SDKs/package/ABIs/permissions/signature/native behavior. No campaign activation."
+}
