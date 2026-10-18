@@ -1,0 +1,90 @@
+{
+  "amendment": "hearthguard-android-delivery-metadata-0.1.0-code1",
+  "base_commit": "b6e497063964e9efc92f00112db064aa0c6bf43f",
+  "status": "Metadata and isolated import verified; APK export/native checks pending coordinator",
+  "historical_first_loop_checkpoint_unchanged": true,
+  "original_12_executed_files_raw_unchanged": true,
+  "original_14_tracked_files_raw_unchanged": true,
+  "original_14_tracked_files_lf_unchanged": true,
+  "original_bound_artifacts_reverified": 181,
+  "new_metadata_sha256": {
+    "export_presets.cfg": "239db0d4eef3bc3aa6598578436152320476ebebfb6df750d227ff0cd7df88cb",
+    "icon.svg.import": "2ecc2a4e347e48a82b31c3dd497996dba5fe2c318b0f135d9d6e8875fcd5f11f",
+    "scripts/main.gd.uid": "350af2db92aa9754ab3da2043d5d0f9c2175e2a4655025a65dc54ce0e6b7add3",
+    "scripts/rules.gd.uid": "8940d66b4d4cdc6f2b2e288d8d58f437a3e6966b6ca02cbdc995c9d54d40f060",
+    "scripts/save_files.gd.uid": "c06b0c067af1acb748e472c798741e585fd355b31f690a4fee168a21260123f9",
+    "scripts/save_store.gd.uid": "b4f8aa18421f8dd3ae5b3994f5d4acd73faa50e1e213fa81a6aae3c276be4733",
+    "tests/fault_files.gd.uid": "775f943b4e9e6a6093785332bbcbb2c53260cb66997ededc5cb3ce6e63c0e166",
+    "tests/playthrough.gd.uid": "952ca44910e0ce8c9657b4645e62cad3b218c3c19d62201ef8ae1466cf5003f2",
+    "tests/run_tests.gd.uid": "3b5e8eae81237d2d6307e97934c00b4a8bcb6f4054518af22c98f6d7b04290d0"
+  },
+  "preset": {
+    "name": "Android",
+    "package": "com.dsschiff.hearthguard",
+    "version_name": "0.1.0",
+    "version_code": 1,
+    "gradle": false,
+    "architectures": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "enabled_permissions": [],
+    "custom_permissions": [],
+    "embedded_signing_credentials": false,
+    "authorized_delivery": "local personal debug only"
+  },
+  "official_template": {
+    "engine": "4.7.2.stable.official.ed1daf0bf",
+    "debug_template_sha256": "59e0073f0fa59f552684a861d8f4266b0b34b488a140d6657eac7dd70d1a0a0d",
+    "min_sdk": 24,
+    "target_sdk": 36,
+    "permissions": [],
+    "custom_template": false,
+    "sdk_override": false,
+    "scope": "Read-only inspection of official template, not an exported Hearthguard APK."
+  },
+  "import": {
+    "passes": 2,
+    "errors": 0,
+    "generated_uid_count": 7,
+    "metadata_stable_on_repeat": true,
+    "shared_editor_settings_unchanged": true,
+    "isolated_byte_identical_portable_engine_and_config": true,
+    "shutdown_adb_on_exit": false,
+    "appdata_isolated": true
+  },
+  "artifacts": [
+    {
+      "path": ".artifacts/delivery-import-20261018T033727Z/import.log",
+      "bytes": 2226,
+      "sha256": "d279dbb1272f7e7f61a92574412e8771ffb6728572cd03c231d6612458648867"
+    },
+    {
+      "path": ".artifacts/delivery-import-20261018T033727Z/import-receipt.json",
+      "bytes": 1195,
+      "sha256": "116911593a86b3a1f21227bf628616d1bf0ad208aa357db6286fbf1d9c57b4c9"
+    },
+    {
+      "path": ".artifacts/delivery-import-20261018T033727Z/repeat-import.log",
+      "bytes": 1033,
+      "sha256": "b728de0c23f24d9aa31bc7608b177d7ca13857d7c3aca862a08506d00675123b"
+    },
+    {
+      "path": ".artifacts/delivery-import-20261018T033727Z/official-template-badging.log",
+      "bytes": 5848,
+      "sha256": "45d979120ccd286019839e104ad3f6a6f042073a015b0ae5351bd54cd158be83"
+    },
+    {
+      "path": ".artifacts/delivery-import-20261018T033727Z/verification.json",
+      "bytes": 1343,
+      "sha256": "a1eb68bf6bff70c9eeb097559a902a0f2c36c4a7780d925f61303ccadd02fa6e"
+    }
+  ],
+  "restrictions_preserved": [
+    "No gameplay/source/test/README change",
+    "No APK export or direct ADB/emulator/phone operation",
+    "No shared/global setting edit, signing material or credentials tracked",
+    "No shared records, push, agents or campaign expansion"
+  ],
+  "next": "Root exports debug APK and verifies native behavior; await explicit first-loop review approval before campaign expansion."
+}
