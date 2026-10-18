@@ -1,9 +1,12 @@
 # Frontline Foundry first playable handoff
 
-Prepared while Hook's final input correction is reviewed. Implementation starts
-only when the coordinator opens a builder lane. Create one persistent game chat
-in a clean isolated worktree of the existing games repository; record the exact
-activation base, path, branch and thread before claiming development is active.
+Activated2026-10-18 UTC after Hook's conditional software-candidate acceptance.
+Persistent **Frontline Foundry Android game**, thread
+`01a14d1d-c90a-7562-b246-6cd243ad96ed`, owns the existing isolated worktree
+`C:/projects/active/_worktrees/games-frontline-foundry-20261018`, branch
+`codex/frontline-foundry`, activation base
+`d771247958d550e4cd4a345ff7db3c310d9ab677`. The initial checkpoint remains
+the defining reinforcement loop below; broad campaign expansion awaits review.
 
 Read root `AGENTS.md`, `GOAL.md`, `ROADMAP.md`, recent `WORKLOG.md`,
 `android-games/references/top-force.md` and the continuous Top Force follow-up

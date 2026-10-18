@@ -22,7 +22,9 @@
       "initial_base": "c4eeeb515dc5ed7a179776932797484319c3b51c",
       "ownership_when_started": "android-games/frontline-foundry/",
       "handoff": "android-games/handoffs/frontline-foundry-prototype.md",
-      "state": "clean isolated workspace and first-loop handoff prepared; no implementation/chat started; waiting for Hook software acceptance to open builder lane"
+      "state": "active first playable in persistent Frontline Foundry chat after Hook conditional candidate acceptance; owns existing isolated worktree, alongside Hearthguard",
+      "activation_base": "d771247958d550e4cd4a345ff7db3c310d9ab677",
+      "thread_id": "01a14d1d-c90a-7562-b246-6cd243ad96ed"
     }
   ],
   "games": [
@@ -65,7 +67,18 @@
       "branch": "codex/hearthguard",
       "ownership": "android-games/hearthguard/",
       "activation_base": "1e3bfe7a73b15a3fadce3232a75a2e143f41d8a4",
-      "state": "first prototype b6e4970 frozen/integrated8ad6177; first-loop Astra review and independent route checks active; builder preparing only Android export/UID metadata amendment, campaign expansion on hold"
+      "state": "complete campaign0.2.0/code2 development active after independent56/44/46checks,Astra first-loopGO and actualcode1 native11outcome+14platformchecks; genuineactivelegacyfixture ready for future1-to2 update, phonechecks unverified"
+    },
+    {
+      "slug": "frontline-foundry",
+      "thread_id": "01a14d1d-c90a-7562-b246-6cd243ad96ed",
+      "host_id": "local",
+      "model": "configured_default_no_override",
+      "worktree": "C:/projects/active/_worktrees/games-frontline-foundry-20261018",
+      "branch": "codex/frontline-foundry",
+      "ownership": "android-games/frontline-foundry/",
+      "activation_base": "d771247958d550e4cd4a345ff7db3c310d9ab677",
+      "state": "active first prototype: commander movement/firing/coins \u2192 station investment \u2192 individually equipped recruit \u2192 changed adjacent combat, second investment/vehicle escalation and natural win/loss/Retry; review before campaign expansion"
     }
   ]
 }

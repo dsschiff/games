@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "scope": "Hearth0.1.0/code1 native defining-loop prototype evidence and genuine future-upgrade active save; not a complete campaign/software candidate/phone acceptance.",
+  "frozen_gameplay_commit": "b6e4970",
+  "delivery_metadata_commit": "477f812",
+  "metadata_integration_commit": "f9260e4cdfb5296afa4b249033e21c2af5d1471c",
+  "source_sha256": "86a1787cb4c6a5b7d0ae4b081ebbed95a5991fb4f4707bae4708a6827938bc2d",
+  "source_unchanged": true,
+  "version": "0.1.0",
+  "version_code": 1,
+  "save_envelope": 1,
+  "battle_schema": 1,
+  "build_manifest": "C:/projects/active/games/.artifacts/hearthguard/20261018T034236655848Z/manifest.json",
+  "apk": "C:/projects/active/games/.artifacts/hearthguard/20261018T034236655848Z/hearthguard.apk",
+  "apk_sha256": "97cab872724e7dea781662574e5902c330c1370582784e64ca212e78b721f5f6",
+  "apk_bytes": 57038190,
+  "signed": true,
+  "permissions": [],
+  "initial_observation_manifest": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hearthguard/code1-initial-20261018T034524289980Z/manifest.json",
+  "initial_observation_is_test_pass": false,
+  "native_first_loop_manifest": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hearthguard/code1-first-loop-20261018T034740608989Z/manifest.json",
+  "native_first_loop_checks": {
+    "fresh_real_app_ready_no_earned_fixture": true,
+    "natural_unbuilt_leak_defeat": true,
+    "loss_ledger_saved": true,
+    "actual_retry_restocked_finite_supply": true,
+    "retry_kept_whole_earned_profile": true,
+    "pause_control_holds_whole_gameplay": true,
+    "bolt_explicit_purchase_spent5": true,
+    "heavy_explicit_purchase_spent20": true,
+    "pickup_build_fire_rewards_second_investment_observed": true,
+    "natural_native_defense_victory": true,
+    "loss_then_win_earned_ledger": true
+  },
+  "native_first_loop_check_count": 11,
+  "native_defeat_save": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hearthguard/code1-first-loop-20261018T034740608989Z/unbuilt-loss-poll-014-decoded.json",
+  "native_victory_save": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hearthguard/code1-first-loop-20261018T034740608989Z/two-tower-outcome-poll-010-decoded.json",
+  "native_victory": {
+    "revision": 133,
+    "integrity": 8,
+    "kills": 20,
+    "leaks": 0,
+    "wallet": 0,
+    "spent": 20,
+    "uncollected_coin_objects": 15,
+    "uncollected_gold": 45,
+    "observed_sim_time": 43.6166666666655,
+    "profile": {
+      "attempts": 2.0,
+      "best_kills": 20,
+      "no_leak": true,
+      "wins": 1.0
+    }
+  },
+  "native_first_loop_scope": "Actual fresh-ready\u2192untouched four-leak defeat\u2192actualRetry\u2192finite coin pickup\u2192priced Bolt5\u2192automatic firing/kill rewards\u2192priced Heavy15\u2192untouched natural20kill/no-leak victory. Paused readback/pulses are explicit; no injected progress, game internals or terminal forcing. No further pickup movement after second construction.",
+  "native_platform_manifest": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hearthguard/code1-native-platform-and-active-fixture-20261018T035211273865Z/manifest.json",
+  "native_platform_checks": {
+    "actual_settings_toggles_saved": true,
+    "actual_prior_victory_retained": true,
+    "native_invalid_import_whole_packet_revision_unchanged": true,
+    "native_clipboard_import_fresh_commit": true,
+    "clipboard_whole_gameplay_settings_profile_retained": true,
+    "native_back_does_not_quit": true,
+    "retry_keeps_whole_earned_profile": true,
+    "earned_active_legacy_fixture": true,
+    "cover_resize_keeps_active_whole_gameplay": true,
+    "inner_resize_keeps_active_whole_gameplay": true,
+    "native_resolution_restored": true,
+    "home_cold_restores_active_run_paused": true,
+    "final_active_fixture_settings_profile_retained": true,
+    "no_runtime_errors": true
+  },
+  "native_platform_check_count": 14,
+  "native_platform_scope": "Actual settings, native typed ASCII INVALID/durable rejection, Copy/Paste/fresh Import, Back app-alive, real Retry/profile retention, active cover/inner emulated resize, Home/cold active hold and original1080x2400 reset. No IME visibility/composition or APK upgrade claim.",
+  "invalid_import_observation": {
+    "revision_before": 136,
+    "revision_after": 136,
+    "whole_durable_packet_equal": true,
+    "native_live_memory_independently_observed": false,
+    "scope": "Native screenshot confirms invalid feedback and complete durable packet/revision unchanged. Desktop tests/source cover memory separately; disk equality alone is not a native memory equality proof."
+  },
+  "valid_import_observation": {
+    "revision": 137,
+    "stable_slot_committed_flag": false,
+    "whole_gameplay_profile_settings_equal": true,
+    "meaning": "Intentional imported-save recovery marker: stable successful Import is accepted with committed=false; unpromoted imported.tmp is ignored. It is not a failed promotion. Later ordinary writes/cold save restore committed=true, final164."
+  },
+  "raw_platform_manifest_metadata_qualification": "Unmodified inherited Probe metadata says geometry_changed_by_helper=false/no resizing. Dedicated platform helper/checks/raw wm transcript and PNG dimensions show actual cover/inner/reset. This index uses those observed operations; raw manifest is preserved unchanged.",
+  "desktop_checks_inherited": {
+    "rules": 56,
+    "headless_input": 44,
+    "rendered_input": 46,
+    "scope": "Previously archived frozen-root desktop results, including separately retained first Windows clipboard-get failure and unchanged successful rerun; no new execution during archival."
+  },
+  "review": "android-games/reviews/hearth-prototype-b6e4970-astra.md",
+  "root_viewed_native_captures": [
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hearthguard/code1-first-loop-20261018T034740608989Z/unbuilt-loss-untouched-terminal.png",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hearthguard/code1-first-loop-20261018T034740608989Z/step-025-after-build-1.png",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hearthguard/code1-first-loop-20261018T034740608989Z/two-tower-outcome-untouched-terminal.png",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hearthguard/code1-native-platform-and-active-fixture-20261018T035211273865Z/native-invalid-rejection.png",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hearthguard/code1-native-platform-and-active-fixture-20261018T035211273865Z/inner-active-native.png",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hearthguard/code1-native-platform-and-active-fixture-20261018T035211273865Z/cold-active-legacy-fixture.png"
+  ],
+  "active_future_update_fixture": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hearthguard/code1-native-platform-and-active-fixture-20261018T035211273865Z/final-active-update-ready-decoded.json",
+  "active_future_update_fixture_sha256": "f1c1fca8dd356aec4fec83aa7246ded78d50d931ea5d8b52b9b3d8707b5026e2",
+  "active_fixture_revision": 164,
+  "active_fixture_slot_paths": [
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hearthguard/code1-native-platform-and-active-fixture-20261018T035211273865Z/final-active-update-ready-hearth-save-0.json",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hearthguard/code1-native-platform-and-active-fixture-20261018T035211273865Z/final-active-update-ready-hearth-save-1.json"
+  ],
+  "active_fixture_pause_scope": "Saved phase is playing; no saved paused boolean. Whole version/state/profile/settings held across cover/inner and two cold observations1.2s apart, with coordinator direct paused-menu viewing.",
+  "future_old_version_setup_fixture": "C:/projects/active/games/.artifacts/hearthguard/code1-helpers/hearthguard-code2-from-earned-code1.json",
+  "future_fixture_observer_check": "C:/projects/active/games/.artifacts/hearthguard/code1-helpers/hearth-code1-future-fixture-check.json",
+  "future_fixture_check_scope": "Observer validates20exact/4numeric fields against actual saved active code1 state; not an APK upgrade. Earlier shell aggregate assertion incorrectly included empty failures list; corrected without changing fixture/save.",
+  "future_fixture_expectations": {
+    "exact_fields": 20,
+    "numeric_fields": 4,
+    "all_match_actual_final_save": true,
+    "apk_upgrade_performed": false
+  },
+  "helper_snapshot_scope": "Archive-time helper source; raw command transcripts remain execution observations.",
+  "prior_receipts_reverified": [
+    {
+      "receipt": "C:/projects/active/games/.artifacts/preservation/hearth-code1-build.json",
+      "sha256": "cdf7281c4ab49d562cabc2a58dcc77170332f340b53ed972291e0bd9225204fe",
+      "files_reverified": 7
+    },
+    {
+      "receipt": "C:/projects/active/games/.artifacts/preservation/hearth-delivery-metadata.json",
+      "sha256": "be03d0e2da193a3c9abb40a360bcbe58ff2d7e8b9cc66af27101ac4f21022341",
+      "files_reverified": 5
+    },
+    {
+      "receipt": "C:/projects/active/games/.artifacts/preservation/hearth-first-loop-independent.json",
+      "sha256": "2874a3e8f46f5805df88939eeb543c1b5cbed12b23d68aded0ed4d757e988b44",
+      "files_reverified": 206
+    },
+    {
+      "receipt": "C:/projects/active/games/.artifacts/preservation/hearth-first-loop-review.json",
+      "sha256": "ce293ab426b958a4be25c1191f4165b8edbc044b36f1a8d041d2380e6f0a9b2e",
+      "files_reverified": 197
+    }
+  ],
+  "receipt": "C:/projects/active/games/.artifacts/preservation/hearth-code1-native.json",
+  "receipt_sha256": "159baf414e89eccb2f98b4d46bc17dfc03657031e5df37d3a20b7c9689835164",
+  "preserved_files": 993,
+  "preserved_bytes": 15235313,
+  "decoded_images": 22,
+  "excluded_temporary_files": 0,
+  "ready_for_phone_testing": false,
+  "software_candidate": false,
+  "full_campaign_complete": false,
+  "actual_apk_upgrade_performed": false,
+  "physical_phone_tested": false,
+  "native_ime_verified": false,
+  "native_unicode_verified": false,
+  "limits": [
+    "First defining loop only; full campaign and replay design remain separate work.",
+    "Emulated cover/inner sizes are not physical folding/safe-area/touch acceptance.",
+    "On-screen keyboard/IME composition/dismissal, audible sound, measured phone FPS, human fun/pacing/duration remain required physical gates.",
+    "No worker WIP read/copied and no runtime/Android operation performed during archival."
+  ],
+  "status": "verified_native_prototype_full_campaign_in_development",
+  "active_fixture_scope": "Full app-written payload remains only in ignored canonical packet. Future update compares whole state/profile/settings from that file; tracked setup assertions contain bounded gameplay fields only."
+}

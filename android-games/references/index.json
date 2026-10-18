@@ -180,8 +180,8 @@
         ],
         "method": "Paused stepping and separate-call settled screenshots at nominal checkpoints; approximate windows, no certified frame attribution, exhaustive frame coverage or tested input causality. Raw observations retained in butcher-hero.md under Settled official-promo correction and raw observation log.",
         "observed": [
-          "Meat 30 to 5 on 25-cost green pad at approximately 12.6ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“14.7 seconds; power 100 to 200 and health 12 to 100.",
-          "Meat 79 to 4 on 75-cost purple pad at approximately 24.1ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“26.6 seconds; power 200 to 300 and health 26 to 100.",
+          "Meat 30 to 5 on 25-cost green pad at approximately 12.6\u00c3\u0192\u00c2\u00a2\u00c3\u00a2\u00e2\u20ac\u0161\u00c2\u00ac\u00c3\u00a2\u00e2\u201a\u00ac\u00c5\u201c14.7 seconds; power 100 to 200 and health 12 to 100.",
+          "Meat 79 to 4 on 75-cost purple pad at approximately 24.1\u00c3\u0192\u00c2\u00a2\u00c3\u00a2\u00e2\u20ac\u0161\u00c2\u00ac\u00c3\u00a2\u00e2\u201a\u00ac\u00c5\u201c26.6 seconds; power 200 to 300 and health 26 to 100.",
           "Chained purple blade extends from small orange player near 35.2 seconds; close combat and resource rewards throughout."
         ],
         "withdrawn_interpretation": "Final pale giant is not established as enlarged player; permanent body-size growth and direct consumption cannot be claimed from this promo.",
@@ -354,10 +354,10 @@
       "game_id": "dead-run",
       "brief": "last-human.md",
       "package_id": "com.avenue.zombie.gp",
-      "selected_loop": "Steer forward-shooting squad along a road, shoot numbered threats, recruit strength and defeat a large end threat.",
-      "creative_status": "observed_exact_user_recorded_social_ad_with_last_human_overlay",
+      "selected_loop": "Steer forward-shooting squad through numbered gates, visibly gain/lose recruits, suppress zombies and trade fire against a sustained side target during ordinary road action.",
+      "creative_status": "full_continuous_user_recorded_ad_observed_gain_harmful_crossing_side_target_defeat",
       "core_status": "observed_road_shelter_samples_and_bounded_side_target_harmful_gate_sequence",
-      "prototype_scope": "Lateral steering, forward bullets, changing numbered obstacle/recruit outcome, zombie pressure and final large threat.",
+      "prototype_scope": "Lateral steering, forward bullets, visibly changing signed gate, recruits joining, harmful crossing, horde pressure, sustained side target and original natural win/loss/Retry. Exact arithmetic is an explicit original rule.",
       "comparison_only": {
         "name": "Last Z: Survival Shooter",
         "package_id": "com.readygo.barrel.gp"
@@ -411,10 +411,10 @@
       ],
       "unresolved": [
         "Original social-ad advertiser/library corroboration",
-        "Positive recruit event, exact gate arithmetic and tested steering input",
-        "Exact near-gate numeral obscured by projectile glow",
-        "Giant statue may be ad-only and must not be copied",
-        "Final independent settled-footage review"
+        "Exact final gain-gate numeral, joined count and per-projectile arithmetic",
+        "Played steering/input causality and side-target reward",
+        "Giant target may be ad-only; use original large-target art",
+        "Independent playable implementation/fidelity and physical-phone review"
       ],
       "bounded_sequence": {
         "source_id": "L2",
@@ -423,6 +423,27 @@
           38.2
         ],
         "result": "Left side target counter 5283 to 1600 during attack; squad shifts right, crosses red gate and shrinks to three visible troops. Earlier +1 recruitment interpretation withdrawn."
+      },
+      "continuous_followup": {
+        "date": "2026-10-18 UTC",
+        "source_id": "L2",
+        "full_playback_seconds": 51.581,
+        "additional_normal_replay_approx_seconds": [
+          20,
+          30.7
+        ],
+        "positive_formation_gain_approx_seconds": [
+          21.7,
+          22.2
+        ],
+        "gain_persists_approx_seconds": [
+          25.7,
+          29.6
+        ],
+        "defeat_retry_affordance_approx_seconds": 50.8,
+        "scope": "Continuous playback with sampled visual checkpoints and separate-call settled frame observations; not exhaustive decoded-frame viewing or played game input. No download/install, no L3 follow-up needed; own tab closed.",
+        "result": "Larger formation after near-gate crossing corroborated separately from prior harmful37-38s crossing. Exact gate sign/value, count and +1 equation remain unverified. Side-target counter pauses during forward fire and falls again on return left.",
+        "rule_boundary": "Deterministic one-hit increment and crossing-once signed delta may be adopted as explicit original rules, not certified source equations."
       }
     }
   ],

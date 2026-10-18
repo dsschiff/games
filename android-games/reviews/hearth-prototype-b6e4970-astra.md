@@ -64,3 +64,14 @@ UID/icon metadata. All14original tracked files remain LF-equivalent, including
 the reviewed runtime/tests. Root's signed, permission-free0.1.0/code1 APK builds
 with stable source86a1787c…; native first-loop and later campaign/update checks
 remain pending. The conditional first-loop GO does not accept the full game.
+
+The coordinator subsequently verified the code1 native loop with11named checks
+and native platform/active-save behavior with14scoped checks, then directly
+viewed natural defeat, two towers, natural victory, invalid-import feedback,
+inner resize and cold active-paused images. Exact packets/receipt hashes and
+observer qualifications are in `android-games/evidence/hearth-code1-native.json`.
+These are root executions; Astra did not run Android. The genuine active old
+save is retained for a future1→2 update, which has not occurred. On-screen
+keyboard/IME and physical-phone checks remain unverified. Full campaign work
+is now authorized under the substantive conditions above, with independent
+complete-game review still required.

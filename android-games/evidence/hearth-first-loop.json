@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "first_loop_independent_pass_astra_conditional_go_apk_built_native_pending",
+  "status": "first_loop_reviewed_independent_and_native_verified_full_campaign_in_development",
   "worker_commit": "b6e497063964e9efc92f00112db064aa0c6bf43f",
   "integration_commit": "8ad6177",
   "source_sha256_at_root_checks": "6869a33d6149d49ff64c084b2cd14c3b06463f90e8a9f6a42bce0b2000138f25",
@@ -56,9 +56,8 @@
   "ready_for_phone_testing": false,
   "physical_phone_tested": false,
   "remaining": [
-    "Root native first-loop/lifecycle/export and future campaign update fixture",
-    "Full meaningful30-60minute campaign/ending/replay after loop review",
-    "Independent full-campaign review/tests/update",
+    "Full meaningful30-60minute campaign/ending/replay",
+    "Independent full-campaign review/tests and real1-to2 update using earnedactivecode1fixture",
     "Physical Fold7/IME/folding/safe areas/sound/FPS and human pacing/fun"
   ],
   "review_first_loop_go": true,
@@ -70,5 +69,7 @@
   "apk": "C:/projects/active/games/.artifacts/hearthguard/20261018T034236655848Z/hearthguard.apk",
   "apk_sha256": "97cab872724e7dea781662574e5902c330c1370582784e64ca212e78b721f5f6",
   "build_receipt": "C:/projects/active/games/.artifacts/preservation/hearth-code1-build.json",
-  "build_receipt_sha256": "cdf7281c4ab49d562cabc2a58dcc77170332f340b53ed972291e0bd9225204fe"
+  "build_receipt_sha256": "cdf7281c4ab49d562cabc2a58dcc77170332f340b53ed972291e0bd9225204fe",
+  "native_evidence": "android-games/evidence/hearth-code1-native.json",
+  "campaign_handoff": "android-games/handoffs/hearthguard-campaign.md"
 }

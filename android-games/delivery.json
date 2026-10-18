@@ -51,7 +51,7 @@
     },
     {
       "slug": "hearthguard",
-      "state": "first_prototype_reviewed_apk_built_native_pending",
+      "state": "full_campaign_in_development_verified_native_prototype",
       "thread_id": "01a14cf9-259a-7473-8a90-2a4e341e8219",
       "ready_for_phone_testing": false,
       "physical_phone_tested": false,
@@ -59,7 +59,10 @@
     },
     {
       "slug": "frontline-foundry",
-      "state": "brief_reviewed"
+      "state": "first_prototype_in_development",
+      "thread_id": "01a14d1d-c90a-7562-b246-6cd243ad96ed",
+      "ready_for_phone_testing": false,
+      "physical_phone_tested": false
     },
     {
       "slug": "dead-run",
