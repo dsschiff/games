@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "scope": "Bounded desktop playable 3D benchmark; full Frontline production and Android graphics release remain open",
+  "disposition": "accepted_all_eight_categories_at_least_3",
+  "worker_commit": "3a12e0455e6e1e0f6c49d68c4d35593a50fbc070",
+  "integration_commit": "524e2c2db6715358bb3b9fa0fa48b1742e2c6912",
+  "game_git_tree": "d1f54972068d6b659fa49f0b9206f119f723ceca",
+  "original_review": "android-games/reviews/frontline-3d-benchmark-astra.md",
+  "closure_review": "android-games/reviews/frontline-3d-benchmark-closure-astra.md",
+  "scores": {
+    "original_asset_craft": 3,
+    "locomotion_and_facing": 3,
+    "attacks_and_contact": 3,
+    "lighting_and_materials": 3,
+    "environment_and_composition": 3,
+    "reinforcement_causality": 3,
+    "hud_and_readability": 3,
+    "motion_coherence_and_restraint": 3
+  },
+  "assets": {
+    "original_glbs": 16,
+    "bytes": 1193308,
+    "kit_triangles": 23848,
+    "soldier_joints": 16,
+    "runtime_skeletal_animation": true,
+    "baked_animation_required": false
+  },
+  "root_focused_checks": {
+    "passed": 60,
+    "failed": 0,
+    "receipt": "android-games/frontline-foundry/.artifacts/root-socket-checks-checks-20261018T125734473685Z/receipt.json",
+    "state_equivalence": "Each of 4800 campaign ticks plus 900 legacy ticks against actual old rules"
+  },
+  "opening_and_finale": {
+    "packet": ".artifacts/graphics-overhaul/motion-review/review-packet.json",
+    "playback_audit": ".artifacts/graphics-overhaul/motion-review/astra-visible-playback-audit.json",
+    "source_delta": "Only six runtime lines attaching vehicle socket to animated cannon; evidence helper/tests separately declared"
+  },
+  "focused_closure": {
+    "packet": ".artifacts/graphics-overhaul/frontline-focused-review/review-packet.json",
+    "playback_audit": ".artifacts/graphics-overhaul/frontline-focused-review/astra-visible-playback-audit.json",
+    "checks_per_passage": [
+      5,
+      18,
+      9,
+      6
+    ],
+    "all_four_natural_1x_ended": true,
+    "native_pixel_padding_not_rescaling": true,
+    "silent": true
+  },
+  "canonical_preservation": {
+    "receipt": ".artifacts/graphics-overhaul/frontline-accepted-benchmark-preservation.json",
+    "files": 886,
+    "bytes": 47924965,
+    "every_destination_hash_verified": true,
+    "bulk_raw_frames_and_avis": "Retained original worker paths, not recopied"
+  },
+  "old_android_save": {
+    "version_code": 2,
+    "revisions": [
+      869,
+      870
+    ],
+    "receipt": ".artifacts/graphics-overhaul/frontline-code2-before-graphics/receipt.json",
+    "read_only": true
+  },
+  "closed_findings": [
+    "Vehicle muzzle now follows animated turret/barrel and recoil without changing damage timing",
+    "Actual pause/resume, reduced-effects warning, live resize, genuine cold restore and Retry visual closure"
+  ],
+  "remaining": [
+    "Remaining regional assets and attack combinations, replay and menu polish",
+    "Narrow Retry brief prose fit",
+    "Real-time host performance and final higher-version Android APK with native install-over checks",
+    "Sound and human pacing/fun, physical touch/folding/safe areas/FPS remain deferred or unverified"
+  ],
+  "new_graphical_apk_delivered": false,
+  "phone_testing": "deferred_by_user"
+}

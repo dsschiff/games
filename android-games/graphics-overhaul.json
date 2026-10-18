@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "first_pair_in_progress",
+  "status": "full_presentation_first_pair",
   "baseline_commit": "6e26b3c2a3938de1828527630f95fb6a219f61b8",
   "reference": {
     "private_path": ".references/graphics-overhaul/user-top-force-44941.jpg",
@@ -88,7 +88,7 @@
       "thread_id": "01a14ecf-a3f6-7dc0-9276-3457e84da5f3",
       "branch": "codex/frontline-graphics",
       "worktree": "C:/projects/active/_worktrees/games-frontline-foundry-20261018",
-      "phase": "playable_3D_benchmark"
+      "phase": "full_3D_production"
     },
     {
       "slug": "gear-bastion",
@@ -96,7 +96,7 @@
       "thread_id": "01a14ecf-ca7d-7ff1-a858-ca1aa9682d76",
       "branch": "codex/gear-graphics",
       "worktree": "C:/projects/active/_worktrees/games-gear-bastion-20261017",
-      "phase": "fit_delivered_waiting_frontline_benchmark_before_3D"
+      "phase": "full_3D_production"
     }
   ],
   "review_contract": "android-games/reviews/graphics-quality-contract-astra.md",
@@ -114,9 +114,19 @@
     "install_over_6_to_7": "both_saved_slots_exact_before_first_launch",
     "post_launch_native_input_resize": "passed_bounded_native_cover_inner_landscape_update_and_cold",
     "physical_phone": "deferred_by_user",
-    "full_3d": "not_started",
+    "full_3d": "authorized_active_CPU_asset_work",
     "native_review": "android-games/reviews/gear-window-fit-native-astra.md",
     "disposition": "native_fit_conditional_candidate_no_substantive_blocker",
     "rejected_capture": "20-inner-live-paused transitional old-size buffer retained; settled27 accepted"
-  }
+  },
+  "frontline_benchmark_checkpoint": {
+    "status": "bounded_desktop_benchmark_accepted",
+    "evidence": "android-games/evidence/frontline-3d-benchmark.json",
+    "worker_commit": "3a12e0455e6e1e0f6c49d68c4d35593a50fbc070",
+    "integration_commit": "524e2c2db6715358bb3b9fa0fa48b1742e2c6912",
+    "all_eight_scores": 3,
+    "android_release": "not_yet_built",
+    "production": "authorized_first_pair"
+  },
+  "render_slot": "Frontline full production; Gear CPU only until serialized grant"
 }

@@ -124,11 +124,11 @@
       "thread_id": "01a14ecf-a3f6-7dc0-9276-3457e84da5f3",
       "branch": "codex/frontline-graphics",
       "worktree": "C:/projects/active/_worktrees/games-frontline-foundry-20261018",
-      "phase": "playable_3D_benchmark",
+      "phase": "full_3D_production",
       "host_id": "local",
       "model": "gpt-6.1-sol",
       "ownership": "android-games/frontline-foundry/",
-      "state": "active_graphics_implementation"
+      "state": "Bounded desktop 3D benchmark accepted by Astra; all eight categories score 3/4. Full regions, roles, replay/UI, performance and code 3 Android release active. Owns serialized render slot."
     },
     {
       "slug": "gear-bastion",
@@ -136,11 +136,11 @@
       "thread_id": "01a14ecf-ca7d-7ff1-a858-ca1aa9682d76",
       "branch": "codex/gear-graphics",
       "worktree": "C:/projects/active/_worktrees/games-gear-bastion-20261017",
-      "phase": "adaptive_window_fit_code7",
+      "phase": "full_3D_production",
       "host_id": "local",
       "model": "gpt-6.1-sol",
       "ownership": "android-games/gear-bastion/",
-      "state": "Sizing0.3.3/code7 integrated/exported/actual6to7 retention/nativecoverinnerlandscape/cold verified; Astra conditionalfitcandidate. Waiting Frontlinebenchmark beforefull3D; phone testing deferred."
+      "state": "Code 7 fit delivered and independently native reviewed. Full brass foundry, automata and beetle 3D presentation authorized; CPU assets/headless work while Frontline owns render slot. Target code 8. Phone testing deferred."
     }
   ]
 }

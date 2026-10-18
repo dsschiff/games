@@ -124,5 +124,10 @@
     "path": "android-games/reviews/portfolio-final-fidelity-astra.md",
     "tracked_LF_sha256": "1015b75771a2f3dc8dba9fbf1d4e67536fef34d5e7b9595b527a6bacffbd5f58",
     "disposition": "All six qualified selected-reference implementations accepted; physical/human acceptance remains open."
+  },
+  "graphics_stage": {
+    "status": "first_pair_full_production",
+    "frontline_benchmark": "android-games/evidence/frontline-3d-benchmark.json",
+    "apk_boundary": "Existing APK entries remain exact functional or fit baselines; the new Frontline3D source is not a delivered graphical APK"
   }
 }
