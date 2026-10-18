@@ -85,6 +85,12 @@ func configure(unit_role: String, faction: String, phase: float) -> void:
 		attachment.add_child(muzzle)
 		# Rest bones point up: local +Y is up and local -Z is forward.
 		muzzle.position = Vector3(0, 0.01, -0.69)
+	elif barrel is MeshInstance3D:
+		barrel.add_child(muzzle)
+		# The authored cannon's local -Y cap points forward. Inherit its turret
+		# rotation, model scale and recoil instead of emitting from hull-forward.
+		var bounds := (barrel as MeshInstance3D).mesh.get_aabb()
+		muzzle.position = Vector3(bounds.get_center().x, bounds.position.y - .015, bounds.get_center().z)
 	else:
 		add_child(muzzle)
 		muzzle.position = Vector3(0, 0.86, -1)

@@ -79,6 +79,21 @@ func run() -> void:
 	actor.pose(.05, Vector3.ZERO, true)
 	check(absf(actor.rig.get_bone_pose_rotation(actor.bones.UpperArmL).get_euler().z) > 1, "victory raises an articulated arm")
 	check(actor.muzzle.position.z < 0, "muzzle socket is on weapon forward axis")
+	# Geometry fixture: hull keeps traveling forward while the turret aims sideways.
+	var rover := Actor.new()
+	root.add_child(rover)
+	rover.configure("rover", "ally", 0)
+	var barrel_bounds := (rover.barrel as MeshInstance3D).mesh.get_aabb()
+	var barrel_tip := Vector3(barrel_bounds.get_center().x, barrel_bounds.position.y - .015, barrel_bounds.get_center().z)
+	rover.fire(Vector3(5, 0, 0))
+	rover.pose(0, Vector3.FORWARD, false)
+	var sideways: Vector3 = rover.muzzle.global_position
+	var aimed_tip: Vector3 = rover.barrel.to_global(barrel_tip)
+	rover.pose(.16, Vector3.FORWARD, false)
+	var recoiled: Vector3 = rover.muzzle.global_position
+	check(rover.muzzle.get_parent() == rover.barrel and sideways.distance_to(aimed_tip) < .00001 and sideways.x > .9 and absf(sideways.z - .14) < .001 and recoiled.distance_to(rover.barrel.to_global(barrel_tip)) < .00001 and recoiled.x < sideways.x - .05 and absf(rover.rotation.y) < .001, "sideways vehicle socket stays at animated barrel tip through turret aim and recoil while hull faces forward")
+	print("VEHICLE_SOCKET_GEOMETRY ", JSON.stringify({"sideways": [sideways.x, sideways.y, sideways.z], "recoiled": [recoiled.x, recoiled.y, recoiled.z], "hull_yaw": rover.rotation.y}))
+	rover.queue_free()
 	var before: String = JSON.stringify(original)
 	for i in 120:
 		view.sync(original, true, true, 0)

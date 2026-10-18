@@ -68,6 +68,14 @@ A separate no-cache copy with an intentionally invalid soldier GLB emits three
 import errors despite Godot exiting 0; the runner rejects it and records
 `command_executed=false`. `verification-summary.json` indexes both receipts.
 
+A later focused review fix parents vehicle muzzle sockets to the animated
+barrel and locates them just beyond its forward cap. The added geometry control
+keeps the hull facing forward while aiming sideways and recoiling; the socket
+must stay at the transformed barrel tip throughout. This changes `actor.gd` and
+`presentation_tests.gd`, not rules, damage timing or GLB assets. Those changes
+postdate the historical final clips above; refreshed captures are deliberately
+held until the independent visual report identifies any other material fixes.
+
 ```powershell
 python -B android-games/frontline-foundry/tests/run_graphics.py checks
 # A coordinator-granted serialized GPU slot is required for either capture:
