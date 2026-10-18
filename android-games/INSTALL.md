@@ -97,6 +97,33 @@ actual folding, touch/safe areas, audible sound, measured FPS and human fun rema
 required. Regent contrast and late-game pacing are known playtest/polish limits.
 Evidence: `android-games/evidence/hearth-code2-candidate.json`.
 
+## Frontline Foundry 0.2.0 / code 2
+
+This conditional software candidate contains twelve missions, four unit roles,
+three support choices, six enemy roles, three bosses, an ending and seeded
+replays. Drag to move the commander, recruit explicitly priced squads and use
+their different ranges and roles to protect headquarters. Mission selection
+shows the briefing and budget before Launch. Retry restores the mission while
+keeping earned career progress. Pause opens settings and save transfer.
+
+Verified local APK:
+
+`C:/projects/active/games/.artifacts/frontline-foundry/20261018T072513236798Z/frontline-foundry.apk`
+
+SHA-256: `eef7f08a32dbc61245d29f281f5dc8500786c852019c025f07cd39fc7407d45c`
+
+Install over the existing app with the same signing identity. The actual code1-to2
+update retains the entire old encounter. Native funded victory, separate natural
+defeat/Retry, settings, invalid-code rejection, real Export/Paste/Import, Android
+Back, active paused cover/inner resize and Home/cold restoration are verified.
+The full campaign was exercised on desktop; representative Android play does
+not establish a complete phone campaign or human session duration.
+
+The opening mission also permits an untouched victory. Later currency surplus,
+dense formations and pacing remain playtest limits. Physical touch/IME, folding,
+safe areas, sound and measured frame timing remain required. Evidence:
+`android-games/evidence/frontline-code2-candidate.json`.
+
 ## Phone checks still required
 
 Galaxy Z Fold7 is the working target from Daniel's description; exact model and Android version await a connected phone. Test cover and unfolded displays, actual folding during battle, touch accuracy and safe areas, audible sound, full-session pacing and heavy-encounter frame timing. The targets are 60 fps and above 30 fps during heavy encounters; neither is a measured phone result yet. Dense formations and lengthy time at the troop cap remain playtest limitations. Automatic route duration is not a measured human session.

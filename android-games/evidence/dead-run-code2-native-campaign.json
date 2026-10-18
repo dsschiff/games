@@ -1,0 +1,88 @@
+{
+  "stage": "native_campaign_entry_loss_retry_verified_win_platform_pending",
+  "source_sha256": "829fdd47ee4c78e0959620af3cab6cd9dfb85597fd674bfd480bc62152a46b64",
+  "apk_sha256": "8fa2c577b32aba697e2f3dc8a7da072b2bf105aae22be8b09760a63453b68b75",
+  "version_code": 2,
+  "package": "com.dsschiff.deadrun",
+  "source_hash_scope": "Root build checkout raw fingerprint; canonical tracked LF identity checked separately.",
+  "native_update_evidence": "android-games/evidence/dead-run-code2-native-update.json",
+  "source_validation": "android-games/evidence/dead-run-validation-f9609eb.json",
+  "receipt": {
+    "path": "C:/projects/active/games/.artifacts/preservation/dead-run-code2-native-entry-loss-retry.json",
+    "sha256": "5cc5bd38005ef7efc45e9040c5e5349287fcd0e43492bf50eaf27b77573cd445",
+    "file_count": 1551,
+    "bytes": 16121647,
+    "prior_receipts_unchanged": 63
+  },
+  "actual_first_campaign_checkpoint": {
+    "revision": 399,
+    "tick": 8,
+    "road": 0,
+    "weapon": "rivet",
+    "crew": 5
+  },
+  "natural_untouched_defeat": {
+    "revision": 433,
+    "tick": 3879,
+    "simulation_seconds": 64.65,
+    "crew": 0,
+    "kills": 9,
+    "leaks": 16,
+    "joined": 11,
+    "lost": 16,
+    "shots": 1176,
+    "positive_gate_deltas": [
+      5,
+      6
+    ],
+    "negative_gates_avoided": true,
+    "side_target_claimed": false,
+    "cause": "Rescue-line leaks depleted crew; not negative-gate failure.",
+    "active_save_reads": 0,
+    "profile_unchanged": true,
+    "whole_legacy_settings_loadout_retained": true
+  },
+  "actual_Retry": {
+    "revision": 435,
+    "tick": 8,
+    "whole_context_exactly_equals_initial399": true,
+    "no_postRetry_save_read_until_separate_root_paused_UI_view": true,
+    "whole_packet_raw_hold": true
+  },
+  "independent_review": {
+    "path": "android-games/reviews/dead-run-code2-native-entry-loss-retry-astra.md",
+    "tracked_LF_sha256": "26444cbef76330dfed04f55b6c380644dc1987449eb5df29180d19809ada1e81",
+    "disposition": "No P1/P2 in bounded entry/natural defeat/Retry scope; native victory/transfer/platform still pending."
+  },
+  "original_false_capture_UI_flags_preserved_with_separate_actual_root_QA_views": true,
+  "QA_headers_are_derivatives_not_new_native_captures": true,
+  "ready_for_phone_testing": false,
+  "physical_phone_tested": false,
+  "next": [
+    "Continue actual same-attempt steered road to native terminal",
+    "Campaign transfer/Back/settings/active lifecycle/resize",
+    "Independent native candidate review",
+    "Physical Fold7 acceptance"
+  ],
+  "first_policy_safe_stop": {
+    "classification": "Fixed-layout observer false negative; no game source defect or terminal inferred.",
+    "last_checked_revision": 460,
+    "last_checked_tick": 430,
+    "actual_separate_paused_observation_revision": 462,
+    "actual_separate_paused_observation_tick": 469,
+    "crew": 10,
+    "gate_delta": 5,
+    "gate_hits": 85,
+    "same_attempt_no_Retry_reset_restart": true,
+    "no_postMismatch_save_read_until_separate_actual_root_paused_view": true,
+    "whole_legacy_settings_profile_loadout_retained": true,
+    "receipt": {
+      "path": "C:/projects/active/games/.artifacts/preservation/dead-run-code2-native-policy-layout-stop.json",
+      "sha256": "871bcf3919ed67c6b73d61a08ca5bd762ca2568c32d0c462e6b68b9346543bf2",
+      "file_count": 731,
+      "bytes": 15278391,
+      "prior_receipts_unchanged": 64
+    },
+    "continued_win_or_transfer_accepted_by_this_record": false
+  }
+}

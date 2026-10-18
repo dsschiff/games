@@ -11,7 +11,7 @@ The active portfolio goal is defined in `GOAL.md`. Status reflects evidence, not
 | M4 Chained-weapon action game | Conditional software candidate ready for phone testing; native transfer/update verified; physical IME gate explicit | Complete chained-weapon combat/resource-upgrade/exploration game and verified APK |
 | M5 Settlement defense game | Conditional software candidate ready for phone testing; ten-map campaign reviewed, actual1-to2/native outcomes/transfer/active lifecycle verified | Complete movement/build/defense game and verified APK |
 | M6 Frontline military game | Conditional software candidate ready for phone testing; twelve missions reviewed, actual update/core outcomes/transfer/Back/active lifecycle/resize verified | Complete reference-based military interaction game and verified APK |
-| M7 Zombie survival game | 24-road campaign reviewed; two P2s closed; actual code1-to2 whole-save migration/cold verified; native campaign gates pending | Complete reference-based shooting/survival game and verified APK |
+| M7 Zombie survival game | 24-road campaign reviewed; actual whole-save migration/cold and native entry/defeat/Retry verified; steered victory/platform pending | Complete reference-based shooting/survival game and verified APK |
 | M8 Portfolio acceptance | Five software candidates; sixth native acceptance and physical portfolio checks pending | Six independent reviews resolved, update compatibility, physical-phone checks and delivery index |
 
 ## Current next actions

@@ -85,18 +85,19 @@
     },
     {
       "slug": "dead-run",
-      "state": "actual_code1_to2_update_verified_native_campaign_pending",
+      "state": "native_campaign_entry_loss_retry_verified_win_platform_pending",
       "thread_id": "01a14d53-a3ae-7f61-ab87-0006aaa25dd4",
       "ready_for_phone_testing": false,
       "physical_phone_tested": false,
-      "evidence": "android-games/evidence/dead-run-code2-native-update.json",
+      "evidence": "android-games/evidence/dead-run-code2-native-campaign.json",
       "apk": "C:/projects/active/games/.artifacts/dead-run/20261018T084034281651Z/dead-run.apk",
       "apk_sha256": "8fa2c577b32aba697e2f3dc8a7da072b2bf105aae22be8b09760a63453b68b75",
       "version": "0.2.0",
       "version_code": 2,
       "source_sha256": "829fdd47ee4c78e0959620af3cab6cd9dfb85597fd674bfd480bc62152a46b64",
       "emulator_installed_version_code": 2,
-      "qualification": "Actual code1-to2 install retains raw old saves before launch; full migrated context survives cold. Native campaign outcomes/transfer/platform and physical checks remain pending."
+      "qualification": "Actual code1-to2 whole-save migration/cold and campaign entry/natural defeat/Retry verified. Native steered victory/transfer/platform and physical checks remain pending.",
+      "native_update_evidence": "android-games/evidence/dead-run-code2-native-update.json"
     }
   ]
 }

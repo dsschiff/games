@@ -8,12 +8,12 @@ Six standalone Godot games are being developed here under the staged goal in the
 | `tower-trials` | Tower Trials | Hero Wars | Software candidate ready for phone testing; authored/generated campaign, save updates and corrected native Back/clipboard/resize checks verified |
 | `hook-and-hunger` | Hook and Hunger | Butcher Hero | Conditional software candidate ready for phone testing; update/native transfer verified; phone IME gate explicit |
 | `hearthguard` | Hearthguard | Kingshot | Conditional code2 software candidate ready for phone testing; full campaign reviewed, native update/outcomes/transfer/lifecycle verified |
-| `frontline-foundry` | Frontline Foundry | Top Force | Twelve-mission full campaign in development after verified native prototype; advertiser mapping qualified |
-| `dead-run` | Dead Run | Last Human: Final Stand | Complete evacuation campaign in development after actual native road/gate/side-target victory and Astra approval; platform caveats retained |
+| `frontline-foundry` | Frontline Foundry | Top Force | Conditional code2 software candidate ready for phone testing; twelve-mission campaign reviewed, native update/outcomes/transfer/Back/lifecycle verified |
+| `dead-run` | Dead Run | Last Human: Final Stand | 24-road campaign reviewed; actual code1-to2 migration and native defeat/Retry verified; campaign victory and platform acceptance in progress |
 
 Each app is offline and has independent saves. APKs and signing materials are local artifacts, excluded from Git. The existing public website is not changed by these builds.
 
-See [local builds](delivery.json) and [installation and phone checks](INSTALL.md) for the current Gear Bastion, Tower Trials, conditional Hook and Hunger, and conditional Hearthguard candidates.
+See [local builds](delivery.json) and [installation and phone checks](INSTALL.md) for the five current phone-test candidates and Dead Run's build status.
 
 The working phone target is Galaxy Z Fold7, based on Daniel's description. Exact device identity, Android version and physical performance remain unconfirmed. See [device targets](device-target.json), [current milestones](../ROADMAP.md) and [verification records](evidence/).
 
