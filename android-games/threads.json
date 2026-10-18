@@ -119,18 +119,18 @@
   ],
   "games": [
     {
-      "slug": "frontline-foundry",
-      "title": "Frontline Foundry graphics overhaul",
-      "thread_id": "01a14ecf-a3f6-7dc0-9276-3457e84da5f3",
-      "branch": "codex/frontline-pooling",
-      "worktree": "C:/projects/active/_worktrees/games-frontline-foundry-20261018",
-      "phase": "coordinator_pooling_render_native_followup",
+      "slug": "hook-and-hunger",
+      "title": "Hook and Hunger graphics overhaul",
+      "thread_id": "01a15073-a371-7b91-8841-e43ae79777ac",
       "host_id": "local",
-      "model": "gpt-6.1-sol",
-      "ownership": "android-games/frontline-foundry/",
-      "state": "Builderinterrupted/notLoaded; cleanworker78cb4bd completedbyroot/integrated8b306da.93pool+103presentation checks/sourcepins verified andAstraCPUclear. Rootgenuine55smovie passes; separateuncappedtimingactive. Rootownsremainingcode4native/bundle/archive; no newthreadpromptdelivered.",
-      "handoff": "android-games/handoffs/frontline-pooling-followup.md",
-      "archive_status": "reopened_verified"
+      "model": "configured_default_no_override",
+      "branch": "codex/hook-graphics",
+      "worktree": "C:/projects/active/_worktrees/games-hook-and-hunger-20261018",
+      "ownership": "android-games/hook-and-hunger/",
+      "activation_base": "29653752fce58fd9b8eeea841ae43187e7e4a938",
+      "phase": "CPU_graphics_implementation",
+      "state": "Freshboundedgraphicschat created oncleanretainedworktree; originaltropicalfourisland/twelvepassage overhaul; CPUonly/noComputerUse/browser/render/ADB/export/clipboard/outboundmessages. Rootowns pendingFrontlinereview/native andoneAstrareviewer.",
+      "handoff": "android-games/handoffs/graphics-hook-and-hunger.md"
     }
   ],
   "archived_graphics_sessions": [
@@ -161,6 +161,20 @@
       "state": "Final0.3.0/code3 reviewed/nativevalidated/privatebundle delivered; clean1e117a6 source/handoff integrated; nativearchived=true; raw evidence retained.",
       "archive_status": "native_archived_verified",
       "handoff": "android-games/handoffs/graphics-hearth-production.md"
+    },
+    {
+      "slug": "frontline-foundry",
+      "title": "Frontline Foundry graphics overhaul",
+      "thread_id": "01a14ecf-a3f6-7dc0-9276-3457e84da5f3",
+      "branch": "codex/frontline-pooling",
+      "worktree": "C:/projects/active/_worktrees/games-frontline-foundry-20261018",
+      "phase": "builder_archived_root_review_native_pending",
+      "host_id": "local",
+      "model": "gpt-6.1-sol",
+      "ownership": "android-games/frontline-foundry/",
+      "state": "Clean78cb4bd/f8a9c7b source and handoff landed2965375; buildernativelyarchived=true. Root owns finalactual55smotionreview stoppedbeforePlaybyEscape, signedcode4actual3to4/native/bundle. Oldcode3delivery remainsretained.",
+      "handoff": "android-games/handoffs/frontline-pooling-followup.md",
+      "archive_status": "native_archived_verified"
     }
   ]
 }

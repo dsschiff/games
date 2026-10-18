@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "frontline_delivered_pool_followup_gear_hearth_active",
+  "status": "gear_hearth_complete_frontline_pool_final_review_pending_hook_CPU_active",
   "baseline_commit": "6e26b3c2a3938de1828527630f95fb6a219f61b8",
   "reference": {
     "private_path": ".references/graphics-overhaul/user-top-force-44941.jpg",
@@ -89,15 +89,15 @@
   ],
   "active_graphics_sessions": [
     {
-      "slug": "frontline-foundry",
-      "title": "Frontline Foundry graphics overhaul",
-      "thread_id": "01a14ecf-a3f6-7dc0-9276-3457e84da5f3",
-      "branch": "codex/frontline-pooling",
-      "worktree": "C:/projects/active/_worktrees/games-frontline-foundry-20261018",
-      "phase": "coordinator_pooling_render_native_followup",
-      "archive_status": "reopened_verified",
-      "handoff": "android-games/handoffs/frontline-pooling-followup.md",
-      "state": "Builderinterrupted/notLoaded; cleanworker78cb4bd completedbyroot/integrated8b306da.93pool+103presentation checks/sourcepins verified andAstraCPUclear. Rootgenuine55smovie passes; separateuncappedtimingactive. Rootownsremainingcode4native/bundle/archive; no newthreadpromptdelivered."
+      "slug": "hook-and-hunger",
+      "title": "Hook and Hunger graphics overhaul",
+      "thread_id": "01a15073-a371-7b91-8841-e43ae79777ac",
+      "branch": "codex/hook-graphics",
+      "worktree": "C:/projects/active/_worktrees/games-hook-and-hunger-20261018",
+      "activation_base": "29653752fce58fd9b8eeea841ae43187e7e4a938",
+      "phase": "CPU_graphics_implementation",
+      "state": "Freshboundedgraphicschat created oncleanretainedworktree; originaltropicalfourisland/twelvepassage overhaul; CPUonly/noComputerUse/browser/render/ADB/export/clipboard/outboundmessages. Rootowns pendingFrontlinereview/native andoneAstrareviewer.",
+      "handoff": "android-games/handoffs/graphics-hook-and-hunger.md"
     }
   ],
   "review_contract": "android-games/reviews/graphics-quality-contract-astra.md",
@@ -129,7 +129,7 @@
     "android_release": "not_yet_built",
     "production": "authorized_first_pair"
   },
-  "render_slot": "Astra Frontline final55sactualreuse normal1xreview58655; rootheadlessexportonly",
+  "render_slot": "NoactiveGPUjob. ComputerUsestoppedbyphysicalEscape beforeFrontlinePlay;reviewserver/tabretained forlaterauthorizedcontinuation. HookCPUonly.",
   "gear_3d_checkpoint": {
     "evidence": "android-games/evidence/gear-3d-production-candidate.json",
     "worker_commit": "9ccf4a7a878e291afdf1750338e6e26cd6b96ba7",
@@ -179,6 +179,17 @@
       "state": "Final0.3.0/code3 reviewed/nativevalidated/privatebundle delivered; clean1e117a6 source/handoff integrated; nativearchived=true; raw evidence retained.",
       "archive_status": "native_archived_verified",
       "handoff": "android-games/handoffs/graphics-hearth-production.md"
+    },
+    {
+      "slug": "frontline-foundry",
+      "title": "Frontline Foundry graphics overhaul",
+      "thread_id": "01a14ecf-a3f6-7dc0-9276-3457e84da5f3",
+      "branch": "codex/frontline-pooling",
+      "worktree": "C:/projects/active/_worktrees/games-frontline-foundry-20261018",
+      "phase": "builder_archived_root_review_native_pending",
+      "archive_status": "native_archived_verified",
+      "handoff": "android-games/handoffs/frontline-pooling-followup.md",
+      "state": "Clean78cb4bd/f8a9c7b source and handoff landed2965375; buildernativelyarchived=true. Root owns finalactual55smotionreview stoppedbeforePlaybyEscape, signedcode4actual3to4/native/bundle. Oldcode3delivery remainsretained."
     }
   ],
   "scheduling_note": "Hearth exclusive production renderer and Frontline narrowpool/code4 CPU follow-up active, two builders. ArchiveFrontlineafterverifiedhigher-version thenHook; laterDeadRun/Tower. Gearcompletearchived, rootgoalall6active.",
@@ -191,5 +202,10 @@
     "builder_archived": true,
     "native_evidence": "android-games/evidence/hearth-graphics-native.json",
     "bundle": "C:\\projects\\active\\games\\.artifacts\\releases\\hearthguard-0.3.0-graphics"
+  },
+  "frontline_pooling_checkpoint": {
+    "evidence": "android-games/evidence/frontline-pooling-candidate.json",
+    "status": "source_cpu_movie_timing_pass_signedcode4built_finalmotion_native_pending",
+    "builder_archived": true
   }
 }
