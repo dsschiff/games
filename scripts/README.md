@@ -414,3 +414,7 @@ remain visible in the local index. Build raw fingerprints and packaging-checkout
 raw fingerprints remain distinct; only explicit text extensions allow Git
 CRLF/LF differences, and binary source bytes stay exact. Keep delivery folders under ignored
 `.artifacts/` or another private location.
+
+## Authored GLB structural inventory
+
+`python -B scripts/inspect_glb.py <model.glb> [<other.glb>] --output .artifacts/glb-inventory.json` records exact file hashes, mesh triangle counts, material names, skeleton joint counts and exported animation channels/durations. It accepts GLB2 containers and rejects truncated or inconsistent headers/chunks. This is structural evidence only: original source/provenance and actual rendered locomotion, contact, lighting and gameplay must still be reviewed. Articulated runtime animation may exist without exported animation clips; the report does not infer its presence or quality.
