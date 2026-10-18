@@ -1,0 +1,37 @@
+{
+  "stage": "actual_code1_to2_update_verified_native_campaign_pending",
+  "source_sha256": "829fdd47ee4c78e0959620af3cab6cd9dfb85597fd674bfd480bc62152a46b64",
+  "apk_sha256": "8fa2c577b32aba697e2f3dc8a7da072b2bf105aae22be8b09760a63453b68b75",
+  "version": "0.2.0",
+  "version_code": 2,
+  "package": "com.dsschiff.deadrun",
+  "source_hash_scope": "Raw fingerprint of the root build checkout; canonical tracked LF identity is checked separately, raw canonical identity is not claimed.",
+  "source_validation": "android-games/evidence/dead-run-validation-f9609eb.json",
+  "receipt": {
+    "path": "C:\\projects\\active\\games\\.artifacts\\preservation\\dead-run-code2-native-update.json",
+    "sha256": "d8378377faed093dba5042816dd9ca03227cc3f48f9243a71faf12dce09b41fc",
+    "file_count": 831,
+    "bytes": 8178853
+  },
+  "actual_old_launch_and_capture_revision": 388,
+  "actual_install_only_revision": 388,
+  "install_retains_both_old_raw_slots_byte_exact_before_first_new_launch": true,
+  "actual_new_migration_revision": 391,
+  "actual_cold_revision": 394,
+  "whole_old_state_and_settings_preserved_in_context": true,
+  "fresh_exact_campaign_empty_profile": true,
+  "whole_migrated_context_retained_through_cold": true,
+  "legacy_tick_held": 103,
+  "optional_old_Sound_toggle_pair_executed": false,
+  "old_APK_reinstall_reset_or_progress_injection": false,
+  "root_loaded_old_new_and_cold_UI_views_qualified": true,
+  "preview_qualification": "Repeated direct previews appeared background-only despite byte-identical nonuniform originals. Labelled CPU QA sheet derived from unchanged originals visibly confirms loaded new/cold menus; capture checks and actual view records remain separate.",
+  "ready_for_phone_testing": false,
+  "physical_phone_tested": false,
+  "next": [
+    "Actual code2 campaign entry and natural native win/loss/Retry",
+    "Native campaign transfer/Back/settings/active lifecycle/resize",
+    "Independent native acceptance review",
+    "Physical Fold7 acceptance"
+  ]
+}

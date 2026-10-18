@@ -1,0 +1,79 @@
+{
+  "stage": "conditional_software_candidate_ready_for_phone_testing",
+  "source_sha256": "9e58d59a34dc7e12028ba4077217a23a4cdfe03d29ce3056723a099102640195",
+  "apk_sha256": "eef7f08a32dbc61245d29f281f5dc8500786c852019c025f07cd39fc7407d45c",
+  "version": "0.2.0",
+  "version_code": 2,
+  "package": "com.dsschiff.frontlinefoundry",
+  "core_evidence": "android-games/evidence/frontline-code2-native-core.json",
+  "source_and_full_clip_review": "android-games/reviews/frontline-campaign-2b58fee-astra.md",
+  "native_review": "android-games/reviews/frontline-code2-native-astra.md",
+  "native_review_sha256_root_raw": "9e593f6179bef280fd0ed38d306238b7428fd109e0081772d8bdf384bc9bd464",
+  "native_review_sha256_tracked_lf": "9e593f6179bef280fd0ed38d306238b7428fd109e0081772d8bdf384bc9bd464",
+  "source_hash_scope": "Raw fingerprint of the root build checkout; canonical tracked LF identity is checked separately, raw canonical identity is not claimed.",
+  "remaining_reviewed_P1_P2": 0,
+  "transfer": {
+    "receipt": {
+      "path": "C:\\projects\\active\\games\\.artifacts\\preservation\\frontline-code2-native-transfer.json",
+      "sha256": "3738691a482ec368eff74b64d80d7431f3e9b82901b3e04004334c0d60b5aa11",
+      "file_count": 1685,
+      "bytes": 29725512
+    },
+    "terminal_packets": 14,
+    "raw_command_rows": 324,
+    "recorded_input_events": 12,
+    "invalid_rejection_entire_packet_raw_slot_set_and_bytes_unchanged": true,
+    "actual_Export_Paste_Import_entire_career_profile_settings_legacy_and_state_preserved": true,
+    "import_revision": 849,
+    "import_committed": false,
+    "later_normal_Back_revision": 850,
+    "native_Back_closes_transfer_before_resuming_parent": true,
+    "zero_input_observer_KeyError_retained": true,
+    "two_rejected_export_previews_and_identical_nonuniform_saved_PNGs_qualified": true
+  },
+  "platform": {
+    "receipt": {
+      "path": "C:\\projects\\active\\games\\.artifacts\\preservation\\frontline-code2-native-platform.json",
+      "sha256": "e3d69814e9adce268f5aedabb00f87f5be725c95d2ace8cda2d9bd16b2494b5f",
+      "file_count": 1162,
+      "bytes": 26103137
+    },
+    "six_completed_phases": [
+      "settings_pairs",
+      "imported_READY_Start_Pause",
+      "Resume_nativeBack",
+      "cover_resize_restore",
+      "inner_resize_restore",
+      "Home_cold_retention"
+    ],
+    "root_separately_viewed_saved_images": 8,
+    "whole_career_profile_settings_legacy_retained": true,
+    "only_paused_save_reads": true,
+    "quiescent_revision_and_body_holds": true,
+    "cover_dimensions": [
+      1080,
+      2520
+    ],
+    "inner_dimensions": [
+      1968,
+      2184
+    ],
+    "native_dimensions_restored": [
+      1080,
+      2400
+    ],
+    "fresh_ACTIVE_import_then_movement_phase_executed": false,
+    "qualification": "READY import then actual Start/Pause and Resume/nativeBack are verified; earlier paid movement is separate. Paused geometry checks do not prove real folding or touch at those sizes. Limited epoch log windows are not exhaustive runtime proof."
+  },
+  "ready_for_phone_testing": true,
+  "physical_phone_tested": false,
+  "phone_IME_verified": false,
+  "phone_audio_verified": false,
+  "phone_FPS_measured": false,
+  "limits": [
+    "Physical touch/IME/folding/safe areas/audio/FPS and human pacing/fun remain required",
+    "Existing P3 perfect idle opening, later currency surplus and shared geometry remain",
+    "Earlier actual host-black video and failed software GPU shader tests retained; no permanent cure or phone performance claim",
+    "All12 missions not played natively; complete authored campaign has separate source/desktop/full-clip review"
+  ]
+}

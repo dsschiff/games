@@ -69,31 +69,34 @@
     },
     {
       "slug": "frontline-foundry",
-      "state": "native_campaign_core_win_loss_Retry_verified_platform_pending",
+      "state": "conditional_software_candidate_ready_for_phone_testing",
       "thread_id": "01a14d1d-c90a-7562-b246-6cd243ad96ed",
-      "ready_for_phone_testing": false,
+      "ready_for_phone_testing": true,
       "physical_phone_tested": false,
-      "evidence": "android-games/evidence/frontline-code2-native-core.json",
+      "evidence": "android-games/evidence/frontline-code2-candidate.json",
       "renderer_evidence": "android-games/evidence/frontline-retry-graphics.json",
       "apk": "C:/projects/active/games/.artifacts/frontline-foundry/20261018T072513236798Z/frontline-foundry.apk",
       "apk_sha256": "eef7f08a32dbc61245d29f281f5dc8500786c852019c025f07cd39fc7407d45c",
       "version": "0.2.0",
       "version_code": 2,
-      "source_sha256": "9e58d59a34dc7e12028ba4077217a23a4cdfe03d29ce3056723a099102640195"
+      "source_sha256": "9e58d59a34dc7e12028ba4077217a23a4cdfe03d29ce3056723a099102640195",
+      "phone_ime_verified": false,
+      "qualification": "Conditional software candidate; actual update/core outcomes/transfer/native Back/settings/active lifecycle/emulated resize reviewed. Physical IME/touch/folding/audio/FPS/fun remain open; earlier graphics failures retained, later rejected previews qualified as presentation discrepancies."
     },
     {
       "slug": "dead-run",
-      "state": "campaign_reviewed_validation_P2_closed_code2_built_native_update_pending",
+      "state": "actual_code1_to2_update_verified_native_campaign_pending",
       "thread_id": "01a14d53-a3ae-7f61-ab87-0006aaa25dd4",
       "ready_for_phone_testing": false,
       "physical_phone_tested": false,
-      "evidence": "android-games/evidence/dead-run-validation-f9609eb.json",
+      "evidence": "android-games/evidence/dead-run-code2-native-update.json",
       "apk": "C:/projects/active/games/.artifacts/dead-run/20261018T084034281651Z/dead-run.apk",
       "apk_sha256": "8fa2c577b32aba697e2f3dc8a7da072b2bf105aae22be8b09760a63453b68b75",
       "version": "0.2.0",
       "version_code": 2,
       "source_sha256": "829fdd47ee4c78e0959620af3cab6cd9dfb85597fd674bfd480bc62152a46b64",
-      "emulator_installed_version_code": 1
+      "emulator_installed_version_code": 2,
+      "qualification": "Actual code1-to2 install retains raw old saves before launch; full migrated context survives cold. Native campaign outcomes/transfer/platform and physical checks remain pending."
     }
   ]
 }

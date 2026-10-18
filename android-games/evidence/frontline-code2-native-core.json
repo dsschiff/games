@@ -1,5 +1,5 @@
 {
-  "stage": "native_campaign_core_win_loss_Retry_verified_platform_pending",
+  "stage": "native_campaign_core_verified_see_conditional_candidate",
   "source_sha256": "9e58d59a34dc7e12028ba4077217a23a4cdfe03d29ce3056723a099102640195",
   "apk_sha256": "eef7f08a32dbc61245d29f281f5dc8500786c852019c025f07cd39fc7407d45c",
   "parent": "android-games/evidence/frontline-ledger-08c122e.json",
@@ -55,7 +55,6 @@
     "whole_prior_records_and_legacy_retained": true,
     "one_separate_real_Retry_root_viewed_READY": true,
     "fresh_same_definition_hash_resources_and_caches_restored": true,
-    "current_ready_revision": 847,
     "no_followup_Launch": true,
     "assessment_sha256": "9cb5a1823117315041f9f9f13dc6713db88166c5a0ef88df2219f9ebae8c5850",
     "receipt": "C:/projects/active/games/.artifacts/preservation/frontline-code2-natural-loss-Retry.json",
@@ -66,22 +65,25 @@
     "checked_save_envelopes": 16,
     "raw_command_rows": 121,
     "actual_touches": 3,
-    "prior_receipts_unchanged": 59
+    "prior_receipts_unchanged": 59,
+    "Retry_ready_revision": 847
   },
   "renderer_qualification": {
     "earlier_black_and_software_shader_failures": "android-games/evidence/frontline-retry-graphics.json",
     "restored_host_bounded_video_139_frames_zero_nearblack": true,
-    "new_two_uniform_background_terminal_captures_unapproved": true,
     "new_no_input_diagnostic_loaded_terminal_zero_runtime_errors": true,
     "strict_pixel_guard_passed_before_one_actual_loss_Retry": true,
-    "permanent_cure_root_cause_or_phone_FPS_claimed": false
+    "permanent_cure_root_cause_or_phone_FPS_claimed": false,
+    "new_two_rejected_tool_preview_presentations_saved_PNGs_identical_nonuniform": true,
+    "PNG_presentation_correction_audit_sha256": "c4ae63459cfbd0f05ccb7a2cec794fdee1415414a018d358fae5ee963bdf1a7c",
+    "later_diagnostic_not_evidence_of_renderer_recovery": true,
+    "earlier_actual_host_black_video_and_software_shader_failures_retained": true
   },
   "next": [
-    "Native code2 transfer/import/rejection/Back",
-    "Active Home/cold/cover-inner resize retention",
-    "Independent native evidence review",
-    "Physical Fold7 touch/IME/folding/safe areas/audio/performance and human pacing/fun"
+    "Physical Fold7 touch/IME/folding/safe areas/audio/performance",
+    "Human pacing/fun and existing P3 balance review"
   ],
-  "ready_for_phone_testing": false,
-  "physical_phone_tested": false
+  "ready_for_phone_testing": true,
+  "physical_phone_tested": false,
+  "candidate": "android-games/evidence/frontline-code2-candidate.json"
 }
