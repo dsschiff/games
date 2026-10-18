@@ -1,0 +1,13 @@
+# Tower code4 Android Back policy review
+
+2026-10-18 UTC. GPT-6 Astra High reviewed frozen worker `18dde713656c068bcc5f2d6be7fefacddc412ae1`, integrated `082a5eb`. **Bounded source-policy clearance; no new finding.** Native Android dispatch/update and physical gesture behavior remain separate gates.
+
+Both startup configuration and `_ready()` explicitly disable SceneTree's default Back-to-quit policy. Existing modal → pause → map navigation remains unchanged. The two-line runtime amendment leaves schemas, generator, catalogs/rules, active snapshots and gameplay unchanged; version0.3.1/code4 keeps update codes increasing. The immutable package binds six declared delta files, all88tracked LF files,26new artifacts/four decoded PNGs and279unchanged prior code3 artifacts. The prior450-file review package remains unchanged.
+
+Focused tests cover Settings, transfer, guide, forecast, campaign pause/map and returning to/resuming the exact pinned Challenge. They compare whole active state and campaign history/profile/settings. Astra inspected all four PNGs: modal closure/paused states remain legible and preserve displayed progress. Frozen code3 fails both policy assertions and exits before suite completion despite process exit0; this is appropriate defect sensitivity, not an old-version suite pass.
+
+Code4's67headless/71rendered checks cover16simulated Back requests per run; the four-count delta is PNG assertions. They emit the Window signal and explicitly propagate the notification on desktop, rather than deliver Android KEYCODE_BACK or a physical predictive gesture. Astra did not execute tests or Android. Independent reruns separately report both suites complete/error-free with unchanged coordinator source `70e61c51a8cda175df9faac89d6dae994e7ff364d31b9bb62c4ba5e76640467b`. Actual code3→4 whole-save preservation, native modal Back and physical-phone checks remain coordinator work.
+
+## Coordinator native completion
+
+Root subsequently passed24actual code3→4update checks preserving every old save field exceptrevision, including the complete earned generated snapshot/record and separate campaign. Sixteen native platform checks pass: Android Back closes the requested panels before pause/map, exact saved Challenge resumes, clipboard transfer writes freshly, Home/cold retains all gameplay, and emulated cover/inner resizing preserves progress with the original emulator size restored. Root inspected raw modal and inner-layout captures. This closes the Android Back execution gate; physical gestures/folding/touch/safe areas, audible sound, FPS and human fun/duration remain open. Candidate evidence: `../evidence/tower-code4-candidate.json`.

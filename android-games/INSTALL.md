@@ -16,11 +16,25 @@ Transfer that file to the phone using USB or a private file-transfer route. Open
 
 With an authorized USB-debugging connection, the equivalent PC command is `adb -s <confirmed-phone-serial> install -r <apk-path>`. Identify the actual phone before selecting its serial; the development emulator is a different device. Do not run a data-clear or uninstall as an update step.
 
-## Play and preserve progress
+## Gear Bastion controls and progress
 
 Choose the first gate on the journey map. Drag gears from the tray into sockets; connect troop generators to the gold core. Adjacent drives increase production. Begin defense, then move/refit gears and choose exits as threats change. Retry resets the encounter while keeping earned campaign progress. Clearing a gate unlocks the next. The in-game guide explains roles and power links.
 
 Menu contains speed, mute, calm effects and save/export. Copy the portable save code to a private text file before changing devices. Paste it into the save dialog and choose Import to restore. Keep the complete code. Invalid codes leave the current game intact. Active battles restore paused.
+
+## Tower Trials 0.3.1 / code 4
+
+This software candidate is ready for phone testing. It contains 36 authored coastal puzzles, an ending, optional treasure/medals and four seeded Challenge families with separate records. Generated runs retain their exact puzzle snapshot across saves, Undo, Retry and Replay. Both original catalogs remain available to existing saves.
+
+Verified local APK:
+
+`C:/projects/active/games/.artifacts/tower-trials/20261018T024941903573Z/tower-trials.apk`
+
+SHA-256: `20acf7f90dcee4ff8cfc3956bee2375f9ea84a8e7c8bf52776282238b5ca35d0`
+
+Install over the existing Tower Trials app with the same signing identity. Tap a room to read its full forecast, then Enter. Enemy strength must be strictly below courier power. Keys, shields, traps, ordered enemies and collapsing routes can make a tempting choice irreversible. Undo/Retry restore the route; Settings opens rules, save transfer and seeded Challenges. Copy/Paste/Import handles portable saves; campaign progress and generated records stay separate. Android Back closes the active panel, then pauses or returns to the campaign map.
+
+Independent rules, authored/generated input and focused Back checks pass. Actual Android updates preserve both old campaign routes and an active generated snapshot/record. Native generated loss/Undo/Retry/victory/Replay, clipboard transfer, Back, Home/cold and emulated cover/inner resize are verified. The candidate still needs physical Fold7 touch/folding/safe areas, audible sound, measured performance and human pacing/fun review. No complete 36-puzzle Android playthrough or measured 30–60-minute human duration is claimed. Evidence: `android-games/evidence/tower-code4-candidate.json`.
 
 ## Phone checks still required
 

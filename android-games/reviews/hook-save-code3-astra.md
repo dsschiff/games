@@ -1,0 +1,15 @@
+# Hook code3 save amendment review
+
+2026-10-18 UTC. GPT-6 Astra High reviewed frozen worker `bde8994c8fd55369dd9588035c4c3c3c7d3fda03`, integrated as `26cb96e`. **Both original P2 findings are closed in this bounded source/evidence review; no new blocker found.** Independent execution and native Android update remain coordinator gates.
+
+The immutable package binds49raw/LF source records,68new artifacts,88unchanged prior code2 artifacts and all58tracked normalized files. Coordinator whole-project source is `67bf789a10b2fc1a29c9e248ff5fe36b8ddd090e1fb6679d17b674c16599749f`; raw worker differences are recorded checkout line endings. Runtime changes are limited to campaign validation; definitions, gameplay step, controls and envelope2/schemas1/2 remain unchanged.
+
+Heavy cooldown now uses the selected pinned weapon period plus1e-6. The regression captures a real0.95strike through arena GUI selection/movement, then checks autosave, export, filesystem readback, application-pause-handler saving and cold restore. Excessive cooldown and using the heavy bound on Storm remain rejected. A completed-voyage setup fixture enables the controls; it is explicitly synthetic. Arming the save clock/freezing physics targets the narrow validation window. The pause test invokes the real application notification handler, not Android OS background delivery.
+
+Nonvictory states now require a living current-wave opponent. The exact synthetic stranded-wave fixture changes from accepted under code2 to rejected under code3. Actual GUI Import checks retain whole state/profile/settings in memory and disk; a coherent exhausted final victory remains valid. Inspected frozen reports show20/31failures before and31/31passing headless/rendered after. These are inspected execution artifacts, not tests performed by Astra. The reviewer directly viewed both amendment PNGs.
+
+The three frozen old decoder helpers match code2 after only preload-path/newline normalization. Thirty-six raw earned exports and120-step comparisons provide finite compatibility evidence; they do not establish universal save compatibility or replace actual different-APK testing. Prior complete visual review remains applicable. Physical-phone touch/folding, audible sound, FPS, human pacing/fun and crowded-label readability remain open. No test, commercial app or Android execution was performed by this reviewer.
+
+## Coordinator Android follow-up
+
+Actual code2→3 install/cold verification subsequently passed24checks preserving whole state/profile/settings/committed, and native first-passage play reached natural loss/Retry/victory. Native clipboard testing exposed another platform P2: `pointing/emulate_mouse_from_touch=false` prevents the text editor from gaining normal touch focus/editing. Two retained attempts left the valid export unchanged, then reimported it; they do not establish invalid-input rejection or clipboard success. Root assigned a code4 touch-routing/export-to-clipboard correction. The original two persistence findings remain closed, while overall candidate acceptance stays open. See `../evidence/hook-save-code3.json`.

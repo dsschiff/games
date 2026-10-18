@@ -1,0 +1,22 @@
+{
+  "scope": "Touch/export amendment keeps envelope2/schema2 and the entire genuine code3 passage victory/profile/settings. Whole-path comparison is stricter than these fields.",
+  "expected_save": {
+    "version": 2,
+    "committed": true,
+    "state.schema": 2,
+    "state.definition.version": 1,
+    "state.definition.stage": 0,
+    "state.phase": "victory",
+    "state.wave": 3,
+    "state.tier": 1,
+    "state.hp": 56,
+    "state.wallet": 261,
+    "state.hits": 33,
+    "state.deaths": 5,
+    "profile.stage": 0,
+    "profile.clears": [-1, 0],
+    "profile.completed": false,
+    "settings.sound": false,
+    "settings.reduced_effects": true
+  }
+}

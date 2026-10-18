@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "scope": "Both original persistence P2s closed; actual Android touch/export interaction P2 requires code4 before software-candidate acceptance",
+  "worker_commit": "bde8994c8fd55369dd9588035c4c3c3c7d3fda03",
+  "integration_commit": "26cb96ef6d61183fb963c85faf2ee93623b1044f",
+  "version": "0.2.1",
+  "version_code": 3,
+  "save_envelope": 2,
+  "active_schemas": [
+    1,
+    2
+  ],
+  "source_sha256": "67bf789a10b2fc1a29c9e248ff5fe36b8ddd090e1fb6679d17b674c16599749f",
+  "binding_counts": {
+    "declared_sources": 49,
+    "tracked_files": 58,
+    "new_artifacts": 68,
+    "unchanged_code2_artifacts": 88
+  },
+  "review": "android-games/reviews/hook-save-code3-astra.md",
+  "review_package": "C:/projects/active/games/.artifacts/reviews/hook-amendment-bde8994/review-package.json",
+  "independent_summary": "C:/projects/active/games/.artifacts/verification/hook-amendment-bde8994-20261018T024134674093Z/verification-summary.json",
+  "raw_execution_manifest": "C:/projects/active/games/.artifacts/verification/hook-amendment-bde8994-20261018T024134674093Z/manifest.json",
+  "raw_manifest_result": "failed_expected_old_diagnostics_unclassified",
+  "classification": "Raw runner marked expected legacy push_error assertion diagnostics as unexpected ERROR. This posthoc evaluation permits only exact archived failure-message multisets/order/counts with expected failing exits and FAIL markers. All raw logs and original report are unchanged; no rerun or relaxed current-code suite criteria.",
+  "fixed_checks": {
+    "headless": 31,
+    "rendered": 31,
+    "legacy": 57,
+    "campaign": 81,
+    "prior_import": 8
+  },
+  "old_defect_sensitivity": [
+    {
+      "checks": 21,
+      "expected_failures": 11
+    },
+    {
+      "checks": 31,
+      "expected_failures": 20
+    }
+  ],
+  "historical_snapshot_cases": 36,
+  "continuation_steps_each": 120,
+  "compatibility_scope": "Finite historical exported snapshots, full decoded state/profile/settings/revision/committed equality; schema2 fixed120step movement continuation. Does not test all possible saves, every intermediate save validation, or Android install-over.",
+  "full174route_rerun": false,
+  "fixture_scope": "Completed-voyage unlock setup is synthetic and labelled; heavy selection/movement/strike/autosave/filesystem/cold load use real scene. Exhausted-wave Import payload is deliberately synthetic and staged through actual Import UI. Notification is direct game handler dispatch, not Android OS background.",
+  "source_unchanged": true,
+  "build_manifest": "C:/projects/active/games/.artifacts/hook-and-hunger/20261018T024315549684Z/manifest.json",
+  "apk": "C:/projects/active/games/.artifacts/hook-and-hunger/20261018T024315549684Z/hook-and-hunger.apk",
+  "apk_sha256": "3e9c698741e477561e8695427e811447980880d53f9a0e9544a9da430e8c7179",
+  "signed": true,
+  "permissions": [],
+  "android_update_manifest": "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.hookandhunger/20261018T024434826210Z/manifest.json",
+  "android_update_checks": 24,
+  "android_update_revisions": [
+    238,
+    238,
+    240,
+    242
+  ],
+  "android_preserved_paths": [
+    "state",
+    "profile",
+    "settings",
+    "committed"
+  ],
+  "native_first_passage_manifest": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code3-native-first-passage-20261018T024658759073Z/manifest.json",
+  "native_first_passage_result": {
+    "phase": "victory",
+    "hp": 56,
+    "wallet": 261,
+    "kills": 26,
+    "time": 103.683333333329,
+    "recoveries_in_this_policy_run": 4
+  },
+  "native_scope": "Actual native drag, Pause/Resume and Retry; root viewed raw natural code3 defeat/victory. Bounded first passage; no injected progress or full campaign Android claim. Coarse policy timing/recoveries are not human pacing or balance acceptance.",
+  "root_viewed_native_captures": [
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code3-native-first-passage-20261018T024658759073Z/natural-campaign-defeat-0.png",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code3-native-first-passage-20261018T024658759073Z/natural-campaign-victory.png"
+  ],
+  "failed_native_clipboard_packets": [
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code3-native-platform-20261018T025115851761Z/transcript.json",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code3-native-platform-20261018T025240426726Z/transcript.json"
+  ],
+  "open_finding": "pointing/emulate_mouse_from_touch=false prevents touch focus/edit in TextEdit. Native typing did not replace the exported string; subsequent Import reimported valid text. No invalid-import or clipboard acceptance inferred. Assigned code4 touch routing and direct EXPORT-to-clipboard correction.",
+  "ready_for_phone_testing": false,
+  "physical_phone_tested": false,
+  "receipt": "C:/projects/active/games/.artifacts/preservation/hook-save-code3.json",
+  "receipt_sha256": "9c00cd80cc2b6e9a3d597643ac4bf43e29d01890a351f74b4ecdd4e94fb31cb0",
+  "preserved_files": 917,
+  "preserved_bytes": 653234732,
+  "decoded_images": 47,
+  "remaining": [
+    "Code4 touch/text/clipboard amendment, independent regression and actual3-to4 preservation/native editing/export checks",
+    "Corrected candidate Back/cover-inner/Home/cold checks",
+    "Human pacing/fun/readability, physical Fold7 touch/folding/safe areas, audible sound and measured frame timing"
+  ]
+}

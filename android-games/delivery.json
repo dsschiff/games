@@ -19,15 +19,23 @@
     },
     {
       "slug": "tower-trials",
-      "state": "seeded_challenge_verified_native_outcomes_pass_android_back_fix_in_progress",
-      "evidence": "android-games/evidence/tower-challenge-code3.json",
-      "ready_for_phone_testing": false,
-      "physical_phone_tested": false
+      "state": "software_candidate_ready_for_phone_testing",
+      "evidence": "android-games/evidence/tower-code4-candidate.json",
+      "ready_for_phone_testing": true,
+      "physical_phone_tested": false,
+      "version": "0.3.1",
+      "version_code": 4,
+      "package": "com.dsschiff.towertrials",
+      "apk": "C:/projects/active/games/.artifacts/tower-trials/20261018T024941903573Z/tower-trials.apk",
+      "apk_sha256": "20acf7f90dcee4ff8cfc3956bee2375f9ea84a8e7c8bf52776282238b5ca35d0",
+      "source_sha256": "70e61c51a8cda175df9faac89d6dae994e7ff364d31b9bb62c4ba5e76640467b",
+      "sound_verified_on_phone": false,
+      "phone_performance_measured": false
     },
     {
       "slug": "hook-and-hunger",
-      "state": "full_campaign_verified_two_persistence_fixes_frozen_for_independent_recheck_and_android_update",
-      "evidence": "android-games/evidence/hook-campaign-code2.json",
+      "state": "save_fixes_verified_android_victory_pass_touch_export_correction_in_progress",
+      "evidence": "android-games/evidence/hook-save-code3.json",
       "ready_for_phone_testing": false,
       "physical_phone_tested": false
     },

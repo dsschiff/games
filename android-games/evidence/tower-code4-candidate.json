@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "scope": "Tower0.3.1/code4 SOFTWARE candidate; bounded Android amendment coverage plus preserved prior campaign/Challenge evidence.",
+  "worker_commit": "18dde713656c068bcc5f2d6be7fefacddc412ae1",
+  "integration_commit": "082a5ebc0e1f627fbcd48f64dc902d08e6250c29",
+  "source_sha256": "70e61c51a8cda175df9faac89d6dae994e7ff364d31b9bb62c4ba5e76640467b",
+  "version": "0.3.1",
+  "version_code": 4,
+  "save_schema": 3,
+  "generator_version": 1,
+  "review_package": "C:/projects/active/games/.artifacts/reviews/tower-back-18dde71/review-package.json",
+  "binding_counts": {
+    "delta": 6,
+    "all_tracked_lf": 88,
+    "new_declared_artifacts": 26,
+    "preserved_code3_artifacts": 279
+  },
+  "verification_manifest": "C:/projects/active/games/.artifacts/verification/tower-back-18dde71-20261018T024831326537Z/manifest.json",
+  "desktop_back_checks": {
+    "headless": 67,
+    "rendered": 71,
+    "injected_touch_taps_each": 27,
+    "desktop_window_requests_each": 16,
+    "rendered_delta": "Four PNG save assertions only; desktop Window signal/notification is not Android OS input"
+  },
+  "old_code3_sensitivity": "Exactly two expected policy assertions, default quit exit0 before completion; reproduced sensitivity, not old-suite pass.",
+  "build_manifest": "C:/projects/active/games/.artifacts/tower-trials/20261018T024941903573Z/manifest.json",
+  "apk": "C:/projects/active/games/.artifacts/tower-trials/20261018T024941903573Z/tower-trials.apk",
+  "apk_sha256": "20acf7f90dcee4ff8cfc3956bee2375f9ea84a8e7c8bf52776282238b5ca35d0",
+  "apk_bytes": 57092364,
+  "signed": true,
+  "permissions": [],
+  "upgrade_manifest": "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.towertrials/20261018T025531593013Z/manifest.json",
+  "upgrade_checks": {
+    "from_archive_unchanged": true,
+    "to_archive_unchanged": true,
+    "different_apk_bytes": true,
+    "valid_signed_offline_increasing_version_pair": true,
+    "emulator_booted": true,
+    "old_code_installed": true,
+    "offline_radios_disabled": true,
+    "old_process_alive": true,
+    "old_input_assertions": true,
+    "old_critical_paths_exist": true,
+    "new_code_installed": true,
+    "installer_preserved_critical_paths": true,
+    "new-after-launch_process_alive": true,
+    "new_app_wrote_save_after_launch": true,
+    "migration_preserved_critical_paths": true,
+    "new_after_launch_assertions": true,
+    "new-cold-relaunch_process_alive": true,
+    "new_app_wrote_save_after_cold_relaunch": true,
+    "relaunch_critical_paths_stable": true,
+    "relaunch_retained_old_critical_paths": true,
+    "new_cold_relaunch_assertions": true,
+    "from_input_and_archive_remained_unchanged": true,
+    "to_input_and_archive_remained_unchanged": true,
+    "no_runtime_errors": true
+  },
+  "upgrade_revisions": {
+    "old-before-upgrade": 113,
+    "new-installed-before-launch": 113,
+    "new-after-launch": 115,
+    "new-cold-relaunch": 117
+  },
+  "upgrade_preserved_all_old_fields_except": [
+    "revision"
+  ],
+  "upgrade_preserved_keys": [
+    "actions",
+    "catalog",
+    "challenge_records",
+    "challenge_run",
+    "kind",
+    "level",
+    "level_id",
+    "profile",
+    "recoverable",
+    "schema",
+    "settings",
+    "used_undo"
+  ],
+  "upgrade_save_file_metadata": {
+    "old-before-upgrade": {
+      "modified_epoch_seconds": 1792292142,
+      "inode": 573835,
+      "bytes": 2254
+    },
+    "new-installed-before-launch": {
+      "modified_epoch_seconds": 1792292142,
+      "inode": 573835,
+      "bytes": 2254
+    },
+    "new-after-launch": {
+      "modified_epoch_seconds": 1792292152,
+      "inode": 573832,
+      "bytes": 2254
+    },
+    "new-cold-relaunch": {
+      "modified_epoch_seconds": 1792292161,
+      "inode": 573834,
+      "bytes": 2254
+    }
+  },
+  "upgrade_scope": "Actual code3 generated Challenge snapshot/earned record and independent campaign context, install-r without clear/uninstall/reset across boundary, real new write and cold relaunch; all12 old semantic fields preserved exactly.",
+  "native_manifest": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.towertrials/code4-native-platform-20261018T025702734590Z/manifest.json",
+  "native_checks": {
+    "native_copy_paste_import_fresh_commit_and_whole_gameplay": true,
+    "cold_keeps_whole_imported_snapshot": true,
+    "settings-back-closes-modal_alive_and_whole_save_retained": true,
+    "transfer-back-closes-field_alive_and_whole_save_retained": true,
+    "transfer-parent-back_alive_and_whole_save_retained": true,
+    "guide-back_alive_and_whole_save_retained": true,
+    "guide-parent-back_alive_and_whole_save_retained": true,
+    "forecast-back_alive_and_whole_save_retained": true,
+    "gameplay-back-pauses_alive_and_whole_save_retained": true,
+    "second-back-opens-campaign-map_alive_and_whole_save_retained": true,
+    "actual_resume_saved_returns_exact_generated_context": true,
+    "cover_resize_retains_snapshot_records_campaign_settings": true,
+    "inner_resize_retains_snapshot_records_campaign_settings": true,
+    "original_emulator_resolution_restored": true,
+    "home_cold_full_generated_and_campaign_retention": true,
+    "no_runtime_errors": true
+  },
+  "native_scope": "Actual Android KEYCODE_BACK from native touch-opened Settings/transfer/guide/forecast and pause/map, exact saved Challenge return, clipboard Copy/Paste/Import fresh write, cover/inner emulated resize, original size restore and Home/cold retained state. Modal screenshots require direct root review. No physical gestures/folding/safe areas, sound, FPS or human fun/duration acceptance.",
+  "prior_code3_index": "android-games/evidence/tower-challenge-code3.json",
+  "prior_code3_receipt": "C:/projects/active/games/.artifacts/preservation/tower-challenge-code3.json",
+  "prior_code3_receipt_sha256": "dc5cdbb248638d4a33fe58dbdb87d30ea1fb4f7c1076fb9fbb8767c580d35b14",
+  "prior_code3_archive_files_reverified": 784,
+  "receipt": "C:/projects/active/games/.artifacts/preservation/tower-code4-candidate.json",
+  "receipt_sha256": "cd630cedc19bc57b43aac9b4826f5c758e30aa44f88fd5557f353c6b474fdf46",
+  "preserved_files": 651,
+  "preserved_bytes": 236410744,
+  "decoded_images": 79,
+  "excluded_temporary_files": 22,
+  "physical_phone_tested": false,
+  "emulator_resize_is_physical_fold_test": false,
+  "full36_android_journey_claimed": false,
+  "limits": [
+    "Software candidate evidence does not establish physical Fold7 folding, gestures, safe areas, FPS, audible sound, human fun or duration.",
+    "No full36-stage Android journey claimed; prior whole-campaign desktop and genuine generated Android win/loss evidence remain separately archived.",
+    "No new runtime/Android operations performed during archival."
+  ],
+  "status": "software_candidate_ready_for_phone_testing",
+  "ready_for_phone_testing": true,
+  "package": "com.dsschiff.towertrials",
+  "sound_verified_on_phone": false,
+  "phone_performance_measured": false,
+  "prior_campaign_index": "android-games/evidence/tower-campaign-code2.json",
+  "prior_generated_index": "android-games/evidence/tower-challenge-code3.json",
+  "review": "android-games/reviews/tower-back-code4-astra.md",
+  "prior_reviews": [
+    "android-games/reviews/tower-campaign-code2-astra.md",
+    "android-games/reviews/tower-challenge-code3-astra.md"
+  ],
+  "inherited_unchanged_gameplay_checks": {
+    "authored_puzzles": 36,
+    "rules_save": 3503,
+    "headless_input": 1173,
+    "rendered_input": 1216,
+    "fresh_challenge_input": 175,
+    "source_version": "0.3.0/code3; only Back policy/version/evidence change in code4"
+  },
+  "root_viewed_native_captures": [
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.towertrials/code4-native-platform-20261018T025702734590Z/settings-back-closes-modal.png",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.towertrials/code4-native-platform-20261018T025702734590Z/transfer-back-closes-field.png",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.towertrials/code4-native-platform-20261018T025702734590Z/inner-native.png"
+  ]
+}
