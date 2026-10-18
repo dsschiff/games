@@ -1,6 +1,6 @@
 # Hearthguard graphics production
 
-Current stage: CPU follow-ups ready for a second short rendered inspection.
+Current stage: CPU production harness frozen for review; rendered batch awaits grant.
 Only `android-games/hearthguard/` changes. Version stays0.2.0/code2; root owns
 integration, reviewed freeze/version bump, Android exports and native updates.
 The builder has performed no rendered execution, browser playback, ADB,
@@ -54,31 +54,60 @@ The initial `composition-first` report used billboard culling bounds to estimate
 text height; `composition-glyphs` supersedes that measurement using actual text
 mesh faces. Original failed parse/input/projection/export runs remain retained.
 
-## Capture correction and next step
+## Supported bounded inspection and prepared production
 
-Root's first rendered still is native720x1280. Its internal writer movie is
-actually450x800 despite the CLI/root window size: retain that original as a
-low-resolution inspection, with no sustained combat or native-movie claim.
-Future `--movie` use is rejected. Following Gear's existing capture pattern,
-`--native-frames` records frame_post_draw pixels at1:1, then encodes at ordinary
-fixed30 cadence with no scaling/retiming. Ordinary clips reject any actual source
-frame other than720x1280. Resize passages use declared padding and retain every
-native dimension/offset. Encoding checks canvas/count and fully decodes. This
-new capture path has passed CPU parsing only; root must verify it while rendered.
+Root integrated the two follow-ups asb560c09/3b58962 and independently passed
+49 pooling,328 pooled integration and192 composition checks. Its second native
+inspection at ROOT `.artifacts/root-second-inspect-20261018T163818136591Z/` is
+720x1280/488frames/16.267s, fully decoded with unchanged sources. Actual input
+bought Bolt+Mortar and stopped4 with16refuge. Root directly viewed full scenery,
+readable labels, clear crest and visible road; Astra supports closure of all five
+bounded findings in `android-games/reviews/hearth-second-inspection-astra.md`.
+This supports that inspection, not the full eight-area production milestone.
 
-After explicit GPU grant, request one bounded second inspection before long clips:
+New source in `tests/` prepares normal1x opening/heavy/later clips, focused real
+Retry/lifecycle/reduced-effects/paused resize/new-process restore/legacy/tour,
+and separate uncapped heavy timing. Runtime/art remains byte-equivalent to
+34ce074; no game script/art/source/version/save change accompanies this harness.
+`tests/PRODUCTION.md` has exact commands and limits. `tests/production-plan.json`
+pins eleven accepted genuine app-written sources; startup checks complete state,
+both profiles, settings, parked legacy, revision/committed/version before boot
+can write, then confirms complete meaning after normal boot. Every new process
+has isolated userdata and post-import executed-source bindings. Each run retains
+raw inputs, whole boundaries and readback-verified app-written raw slots.
 
-```powershell
-python -B tests/run_graphics.py inspect --render --native-frames --seconds 16 --label graphics-second
-```
+Provenance correction: earlier notes pointed to `campaign-final-headless-...044447`,
+whose receipt says passed=true but source_unchanged=false. It is preserved and
+excluded. Production uses the later accepted `release-headless-20261018T045517382023Z`
+and `release-legacy-20261018T045508094423Z`, both indexed in the baseline checkpoint
+and verified unchanged. No old run is reclassified or overwritten.
 
-Sixteen fresh simulation seconds should reach the first incoming combat rather
-than repeating only the first8s; inspect the actual result before claiming that.
-Correct concrete original-image findings before longer opening/heavy/later1x
-passages, reset/resize/legacy passages and separate real-time timing. Reuse genuine
-`middle-earned.code`, `final-earned.code` and `earned-epilogue-saves.json` in
-`.artifacts/campaign-final-headless-20261018T044447829884Z/`; do not fabricate
-unlocks or replay unchanged campaigns. Full independent eight-area review,
-root's signed2-to3 emulator update and final delivery remain outstanding.
-Physical-phone testing is deferred and never blocks this graphics work; no phone
-FPS or human-fun claim is made.
+Prepared frame coverage records projected live modeled roles/stable IDs, retiring
+actors, regions and observed pool reuse. The inventory flags absent or less than
+half-second contiguous live-ID exposure; it cannot approve motion or pixels.
+Primary saved windows schedule all minor roles and Matriarch/Regent across the
+three regions; Ram is the prospective gap. Queue only actual coverage gaps from
+bounded earned encounters. A Ram gap can advance45s of ordinary unrecorded
+input from the accepted map3 time80 checkpoint and record32 contiguous seconds;
+the lead-in and resulting app-written boundary are retained, never accelerated.
+
+Native capture now proven by root rejects the internal450x800 writer. Production
+requires native1:1 frames, checks native dimensions/counts, and fully decodes.
+Fixed30 cadence is never FPS. Timing uses the completed Frontline frame_post_draw
+method, actual disabled VSync/FPS cap,1.5s eligible warmup, explicit exclusions,
+no framebuffer readback during sampling, hardware/AA/settings metadata, complete
+raw intervals/counters, worst25/last120 tails, percentiles and scoped pool reuse.
+
+`.artifacts/production-checks-20261018T170706152256Z/` passes48 narrow CPU harness checks with136 source pins,
+zero unexpected errors and unchanged sources; all96 frozen runtime/art files
+match34ce074. It validates genuine decodes, percentile arithmetic, actual-input
+Retry/raw-slot retention, held/scene-reload whole context and timing eligibility.
+It does not render, measure performance, prove new-process cold behavior or replay
+a full campaign. Initial failed harness parse is retained at
+`.artifacts/production-checks-20261018T165926489311Z/`.
+
+No production movies/timing have run yet. Keep GPU ownership with Astra/Gear until
+root explicitly grants the batch. Root owns export/ADB/clipboard/shared writes
+and actual code2-to3 native update; its installed code2 revisions479/478 backup
+and native helper preparation are coordinator evidence, not builder execution.
+Physical-phone testing remains deferred with no phone FPS or human-fun claim.

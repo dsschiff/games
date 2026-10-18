@@ -1,0 +1,402 @@
+{
+  "schema": 1,
+  "runtime_freeze": "34ce0743afeabfee303146b7ab0ec0303147b561",
+  "acceptance_index": "campaign-checkpoint.json",
+  "acceptance_index_sha256": "273a622c8dce459d7c236a4367d58b27211a638578f648dd3374840450b95ae2",
+  "earned_sources": {
+    "middle": {
+      "path": ".artifacts/release-headless-20261018T045517382023Z/middle-earned.code",
+      "sha256": "075b678b9bc069b2edba78e256d7eb2fef037ef76ce0ce445f63a2998d6c4d57",
+      "receipt": ".artifacts/release-headless-20261018T045517382023Z/receipt.json",
+      "receipt_sha256": "8bbdc7542539133590e0d94a228b61ff3ad5eca30f74e236d01b451076865ac4",
+      "slot_key": null,
+      "selected_envelope_sha256": "075b678b9bc069b2edba78e256d7eb2fef037ef76ce0ce445f63a2998d6c4d57",
+      "revision": 586,
+      "inventory": {
+        "schema": 2,
+        "stage": 5,
+        "region": 1,
+        "phase": "playing",
+        "simulation_seconds": 157.03333333335,
+        "live_roles": [],
+        "live_enemies": 0,
+        "next_window_seconds": 40,
+        "scheduled_roles_in_next_window": [
+          "armor",
+          "matriarch",
+          "mender",
+          "raider",
+          "runner",
+          "shade",
+          "swarm"
+        ],
+        "clears": 5,
+        "limits": "Source inventory and scheduled roles, not observed new rendered motion or review acceptance"
+      }
+    },
+    "final": {
+      "path": ".artifacts/release-headless-20261018T045517382023Z/final-earned.code",
+      "sha256": "a8d5862e34214c1e762ea945951d172724ee6efd8e75fcc3a2dded590ce185cb",
+      "receipt": ".artifacts/release-headless-20261018T045517382023Z/receipt.json",
+      "receipt_sha256": "8bbdc7542539133590e0d94a228b61ff3ad5eca30f74e236d01b451076865ac4",
+      "slot_key": null,
+      "selected_envelope_sha256": "a8d5862e34214c1e762ea945951d172724ee6efd8e75fcc3a2dded590ce185cb",
+      "revision": 1100,
+      "inventory": {
+        "schema": 2,
+        "stage": 9,
+        "region": 2,
+        "phase": "playing",
+        "simulation_seconds": 205.033333333389,
+        "live_roles": [
+          "shade"
+        ],
+        "live_enemies": 1,
+        "next_window_seconds": 40,
+        "scheduled_roles_in_next_window": [
+          "armor",
+          "mender",
+          "raider",
+          "regent",
+          "runner",
+          "shade",
+          "swarm"
+        ],
+        "clears": 9,
+        "limits": "Source inventory and scheduled roles, not observed new rendered motion or review acceptance"
+      }
+    },
+    "dense": {
+      "path": ".artifacts/release-headless-20261018T045517382023Z/map10-invest03-saves.json",
+      "sha256": "fba48b36b7a5ab0266cff3fade685e175a87d81a8ada92d29513aeaa7b1d4ac5",
+      "receipt": ".artifacts/release-headless-20261018T045517382023Z/receipt.json",
+      "receipt_sha256": "8bbdc7542539133590e0d94a228b61ff3ad5eca30f74e236d01b451076865ac4",
+      "slot_key": "user://hearth-save-0",
+      "selected_envelope_sha256": "a1e4f80638a2a017d807b293f4daa746638c4ea5a03b738c354121c2a24aba38",
+      "revision": 1371,
+      "inventory": {
+        "schema": 2,
+        "stage": 9,
+        "region": 2,
+        "phase": "playing",
+        "simulation_seconds": 43.5666666666655,
+        "live_roles": [
+          "armor",
+          "raider",
+          "shade"
+        ],
+        "live_enemies": 7,
+        "next_window_seconds": 40,
+        "scheduled_roles_in_next_window": [
+          "armor",
+          "mender",
+          "raider",
+          "runner",
+          "shade",
+          "swarm"
+        ],
+        "clears": 10,
+        "limits": "Source inventory and scheduled roles, not observed new rendered motion or review acceptance"
+      }
+    },
+    "ram-approach": {
+      "path": ".artifacts/release-headless-20261018T045517382023Z/map03-invest06-saves.json",
+      "sha256": "f7bb2967f86af51a28b463598048f7712e7289fe9831317c6984bc1a34513cb8",
+      "receipt": ".artifacts/release-headless-20261018T045517382023Z/receipt.json",
+      "receipt_sha256": "8bbdc7542539133590e0d94a228b61ff3ad5eca30f74e236d01b451076865ac4",
+      "slot_key": "user://hearth-save-1",
+      "selected_envelope_sha256": "db142f65ac4483afdbff0172fcabfa8c90cbecb09907a375afe114441f54bbf3",
+      "revision": 220,
+      "inventory": {
+        "schema": 2,
+        "stage": 2,
+        "region": 0,
+        "phase": "playing",
+        "simulation_seconds": 79.9666666666634,
+        "live_roles": [
+          "armor",
+          "raider",
+          "swarm"
+        ],
+        "live_enemies": 4,
+        "next_window_seconds": 40,
+        "scheduled_roles_in_next_window": [
+          "armor",
+          "raider",
+          "runner",
+          "swarm"
+        ],
+        "clears": 2,
+        "limits": "Source inventory and scheduled roles, not observed new rendered motion or review acceptance"
+      }
+    },
+    "loss": {
+      "path": ".artifacts/release-headless-20261018T045517382023Z/opening-natural-loss-saves.json",
+      "sha256": "ca60219a09c824e11facfeb044f0a2056be75eb9605da155da53b4021ca51453",
+      "receipt": ".artifacts/release-headless-20261018T045517382023Z/receipt.json",
+      "receipt_sha256": "8bbdc7542539133590e0d94a228b61ff3ad5eca30f74e236d01b451076865ac4",
+      "slot_key": "user://hearth-save-0",
+      "selected_envelope_sha256": "0ec311377be414a7f8a887befc80e7552a6342c8c1d35f889dadf01d9a27b732",
+      "revision": 19,
+      "inventory": {
+        "schema": 2,
+        "stage": 0,
+        "region": 0,
+        "phase": "defeat",
+        "simulation_seconds": 33.4666666666661,
+        "live_roles": [
+          "raider",
+          "runner"
+        ],
+        "live_enemies": 6,
+        "next_window_seconds": 40,
+        "scheduled_roles_in_next_window": [
+          "raider",
+          "runner"
+        ],
+        "clears": 0,
+        "limits": "Source inventory and scheduled roles, not observed new rendered motion or review acceptance"
+      }
+    },
+    "win": {
+      "path": ".artifacts/release-headless-20261018T045517382023Z/map01-natural-win-saves.json",
+      "sha256": "049dfd2390a9ce3433dd77d72f8a991d3672e653cd599c19bf4922694af6ad22",
+      "receipt": ".artifacts/release-headless-20261018T045517382023Z/receipt.json",
+      "receipt_sha256": "8bbdc7542539133590e0d94a228b61ff3ad5eca30f74e236d01b451076865ac4",
+      "slot_key": "user://hearth-save-1",
+      "selected_envelope_sha256": "4c8048c9309331a0a19b6b4401f4dfc17fc3273c79b28ffe0ff7846e2d051e5a",
+      "revision": 92,
+      "inventory": {
+        "schema": 2,
+        "stage": 0,
+        "region": 0,
+        "phase": "victory",
+        "simulation_seconds": 126.016666666661,
+        "live_roles": [],
+        "live_enemies": 0,
+        "next_window_seconds": 40,
+        "scheduled_roles_in_next_window": [],
+        "clears": 1,
+        "limits": "Source inventory and scheduled roles, not observed new rendered motion or review acceptance"
+      }
+    },
+    "epilogue": {
+      "path": ".artifacts/release-headless-20261018T045517382023Z/earned-epilogue-saves.json",
+      "sha256": "0b9b03fcfb44899f80f7eef44d69d8f1443fec1c62ac775b13251f33a1d23095",
+      "receipt": ".artifacts/release-headless-20261018T045517382023Z/receipt.json",
+      "receipt_sha256": "8bbdc7542539133590e0d94a228b61ff3ad5eca30f74e236d01b451076865ac4",
+      "slot_key": "user://hearth-save-0",
+      "selected_envelope_sha256": "4e269faaf9804d8df4984b6b747b9193a7c07d56624f929c94a8592b604a1112",
+      "revision": 1119,
+      "inventory": {
+        "schema": 2,
+        "stage": 9,
+        "region": 2,
+        "phase": "victory",
+        "simulation_seconds": 238.016666666748,
+        "live_roles": [],
+        "live_enemies": 0,
+        "next_window_seconds": 40,
+        "scheduled_roles_in_next_window": [],
+        "clears": 10,
+        "limits": "Source inventory and scheduled roles, not observed new rendered motion or review acceptance"
+      }
+    },
+    "legacy": {
+      "path": ".artifacts/release-legacy-20261018T045508094423Z/loaded-old-save.json",
+      "sha256": "45bc8d140f38e5d29a648c7ae48fbf5300164dc75932d7c4c630d235a0e068d8",
+      "receipt": ".artifacts/release-legacy-20261018T045508094423Z/receipt.json",
+      "receipt_sha256": "cf81fcedf64df7f792ee4b2b789aeacaad01521c460302d92d62375a64f212a1",
+      "slot_key": "user://hearth-save-1",
+      "selected_envelope_sha256": "7cb1f43a4c8fe227e57b3caab6dd7d4cc7a7fb1c4409005fc2ce4759f48484df",
+      "revision": 60,
+      "inventory": {
+        "schema": 1.0,
+        "stage": null,
+        "region": null,
+        "phase": "playing",
+        "simulation_seconds": 18.2000000000003,
+        "live_roles": [
+          "raider"
+        ],
+        "live_enemies": 4,
+        "next_window_seconds": 40,
+        "scheduled_roles_in_next_window": [],
+        "clears": 0,
+        "limits": "Source inventory and scheduled roles, not observed new rendered motion or review acceptance"
+      }
+    },
+    "mender-active": {
+      "path": ".artifacts/release-headless-20261018T045517382023Z/map05-invest06-saves.json",
+      "sha256": "618af15561cb867641673c59b0bed16cdeba679641b7952b4df6fb53f3d39ad8",
+      "receipt": ".artifacts/release-headless-20261018T045517382023Z/receipt.json",
+      "receipt_sha256": "8bbdc7542539133590e0d94a228b61ff3ad5eca30f74e236d01b451076865ac4",
+      "slot_key": "user://hearth-save-1",
+      "selected_envelope_sha256": "6edead13c5af9a91fdaf111424c5b62526f74e01c691daaa9e677ceeb8d68cd4",
+      "revision": 420,
+      "inventory": {
+        "schema": 2,
+        "stage": 4,
+        "region": 1,
+        "phase": "playing",
+        "simulation_seconds": 58.7166666666646,
+        "live_roles": [
+          "armor",
+          "mender",
+          "raider"
+        ],
+        "live_enemies": 4,
+        "next_window_seconds": 40,
+        "scheduled_roles_in_next_window": [
+          "armor",
+          "mender",
+          "runner",
+          "shade",
+          "swarm"
+        ],
+        "clears": 4,
+        "limits": "Source inventory and scheduled roles, not observed new rendered motion or review acceptance"
+      }
+    },
+    "swarm-active": {
+      "path": ".artifacts/release-headless-20261018T045517382023Z/map02-invest06-saves.json",
+      "sha256": "0dbeb274ef0aa5503796da114ca43da05042d718cea7c69d0395ec7d99bf1b0b",
+      "receipt": ".artifacts/release-headless-20261018T045517382023Z/receipt.json",
+      "receipt_sha256": "8bbdc7542539133590e0d94a228b61ff3ad5eca30f74e236d01b451076865ac4",
+      "slot_key": "user://hearth-save-1",
+      "selected_envelope_sha256": "5345437e5c4d7e463901f86702f672546eb15f1a6d870ccd0e6a3b27733e7af6",
+      "revision": 144,
+      "inventory": {
+        "schema": 2,
+        "stage": 1,
+        "region": 0,
+        "phase": "playing",
+        "simulation_seconds": 89.1666666666629,
+        "live_roles": [
+          "raider",
+          "swarm"
+        ],
+        "live_enemies": 2,
+        "next_window_seconds": 40,
+        "scheduled_roles_in_next_window": [
+          "raider",
+          "runner",
+          "swarm"
+        ],
+        "clears": 1,
+        "limits": "Source inventory and scheduled roles, not observed new rendered motion or review acceptance"
+      }
+    },
+    "runner-active": {
+      "path": ".artifacts/release-headless-20261018T045517382023Z/map01-invest03-saves.json",
+      "sha256": "920cb08aaa71ae3ef26056a9c5dc5a58641277cb5a8fbe3a0c8816165f516eae",
+      "receipt": ".artifacts/release-headless-20261018T045517382023Z/receipt.json",
+      "receipt_sha256": "8bbdc7542539133590e0d94a228b61ff3ad5eca30f74e236d01b451076865ac4",
+      "slot_key": "user://hearth-save-0",
+      "selected_envelope_sha256": "cfea4366d70b1fada9220479059699067d9dbd24df3562a9434f774b7f51abc0",
+      "revision": 39,
+      "inventory": {
+        "schema": 2,
+        "stage": 0,
+        "region": 0,
+        "phase": "playing",
+        "simulation_seconds": 32.9999999999994,
+        "live_roles": [
+          "runner"
+        ],
+        "live_enemies": 1,
+        "next_window_seconds": 40,
+        "scheduled_roles_in_next_window": [
+          "raider",
+          "runner"
+        ],
+        "clears": 0,
+        "limits": "Source inventory and scheduled roles, not observed new rendered motion or review acceptance"
+      }
+    }
+  },
+  "stages": {
+    "opening": {
+      "fresh": true,
+      "seconds": 60
+    },
+    "heavy": {
+      "earned": "middle",
+      "seconds": 36
+    },
+    "later": {
+      "earned": "final",
+      "seconds": 34
+    },
+    "timing": {
+      "earned": "dense",
+      "seconds": 40,
+      "uncapped": true,
+      "warmup_eligible_seconds": 1.5
+    },
+    "retry": {
+      "earned": "loss",
+      "seconds": 3
+    },
+    "lifecycle": {
+      "earned": "middle",
+      "purpose": "paused resize/reduced effects with actual app-written raw endpoint"
+    },
+    "legacy": {
+      "earned": "legacy",
+      "seconds": 6
+    },
+    "tour": {
+      "earned": "epilogue"
+    },
+    "ram-gap": {
+      "earned": "ram-approach",
+      "lead_in_seconds": 45,
+      "seconds": 32,
+      "conditional": "Only if actual primary clip coverage leaves Ram unseen"
+    },
+    "restore": {
+      "resume_from": "passed production lifecycle final raw slots",
+      "seconds": 2,
+      "new_process": true
+    },
+    "gap": {
+      "requires": "explicit missing role + pinned earned source after actual primary coverage inventory",
+      "seconds": 8
+    }
+  },
+  "coverage_plan": {
+    "expected_primary_roles": [
+      "commander",
+      "citizen",
+      "defender",
+      "raider",
+      "runner",
+      "armor",
+      "swarm",
+      "mender",
+      "shade",
+      "matriarch",
+      "regent"
+    ],
+    "expected_primary_regions": [
+      0,
+      1,
+      2
+    ],
+    "substantive_likely_gap": [
+      "ram"
+    ],
+    "policy": "Scheduled source roles are prospective, not observed. Inventory actual onscreen model frames after primary clips and cover only concrete gaps with bounded genuine encounters. No complete campaign replay or fabricated unlocks."
+  },
+  "excluded_historical_source": {
+    "path": ".artifacts/campaign-final-headless-20261018T044447829884Z",
+    "reason": "Receipt passed=true but source_unchanged=false; use accepted later release-headless source instead, preserve original limit."
+  },
+  "limits": [
+    "Prepared only; rendered execution requires coordinator GPU grant",
+    "Fixed30 movies are not FPS",
+    "First internal450x800 writer retained and rejected for future production",
+    "Accepted receipt, artifact hash and complete state equality required before first input"
+  ]
+}
