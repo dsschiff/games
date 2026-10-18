@@ -128,6 +128,11 @@
   "graphics_stage": {
     "status": "first_pair_full_production",
     "frontline_benchmark": "android-games/evidence/frontline-3d-benchmark.json",
-    "apk_boundary": "Existing APK entries remain exact functional or fit baselines; the new Frontline3D source is not a delivered graphical APK"
+    "apk_boundary": "Existing APK entries remain exact functional or fit baselines; the new Frontline3D source is not a delivered graphical APK",
+    "preview": {
+      "index": "C:\\projects\\active\\games\\.artifacts\\releases\\graphics-benchmark-20261018\\index.html",
+      "evidence": "android-games/evidence/graphics-benchmark-preview.json",
+      "scope": "First accepted benchmark comparison; final six-game previews pending"
+    }
   }
 }

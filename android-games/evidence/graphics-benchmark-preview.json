@@ -1,0 +1,29 @@
+{
+  "scope": "Private before/after gameplay previews of the accepted Frontline benchmark; full six-game overhaul remains active",
+  "index": "C:\\projects\\active\\games\\.artifacts\\releases\\graphics-benchmark-20261018\\index.html",
+  "manifest": "C:\\projects\\active\\games\\.artifacts\\releases\\graphics-benchmark-20261018\\manifest.json",
+  "manifest_sha256": "5d0de49c8a315e0cc43236aa7644e4282a1790f81738f8865a5a0cbb4d654394",
+  "video_count": 4,
+  "media_bytes": 14077866,
+  "source_and_destination_media_hashes_verified": true,
+  "same_input_or_resolution_claim": false,
+  "media_modified": false,
+  "page_qa": {
+    "browser": "Temporary hidden IAB tab1, closed; no other tabs touched",
+    "viewport_width": 1280,
+    "document_width": 1265,
+    "card_right_edges": [
+      622.4,
+      1192.4
+    ],
+    "full_page_visually_inspected": true,
+    "all_four_videos_ready": 4,
+    "all_four_video_errors": null,
+    "benchmark_playback_advanced_seconds": 9.824347,
+    "all_players_paused_before_close": true,
+    "scope": "Layout, original initial frames and brief native playback only; no repeat of full independent clip reviews",
+    "local_server": "53927 stopped; no listener verified"
+  },
+  "published": false,
+  "graphical_apk_delivered": false
+}
