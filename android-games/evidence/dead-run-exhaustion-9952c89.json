@@ -84,7 +84,7 @@
   },
   "android_native_tests_started": true,
   "android_native_first_loop_accepted": false,
-  "native_current_stage": "Signed code1 installed without reset; source-bound natural no-input loss verified; same-loss steering Retry attempt active. No campaign/phone claim.",
+  "native_current_stage": "Original no-input loss verified; first real steering Retry naturally failed at harmful gate. Adaptive native input policy is being prepared after recorded timing diagnosis; no native win/campaign/phone acceptance.",
   "native_initial_setup_failure": "First helper cold-relaunched after reviewed screen and sent Start while Android splash remained visible. Bounded timeout retained; app stayed ready/tick0, so no gameplay/loss was replayed. Corrected observer retains the current reviewed loaded context before phase input.",
   "native_original_loss": {
     "phase": "defeat",
@@ -98,5 +98,43 @@
       712
     ],
     "counters_are_not_full_campaign": true
+  },
+  "native_first_steering_retry": {
+    "status": "failed_natural_defeat_not_passed",
+    "source_unchanged": true,
+    "phase": "defeat",
+    "tick": 1050,
+    "crew": 0,
+    "side_hp": 20,
+    "kills": 2,
+    "leaks": 0,
+    "gate1_hits": 2,
+    "gate1_applied": -10,
+    "root_viewed_gain_sidefire_and_untouched_defeat": true,
+    "diagnosis": "Native travel plus raw capture/read overhead delayed right-gate fire; desktop wall-time schedule yielded only two gate hits before crossing. Prepare measured event/deadline policy; do not blindly repeat.",
+    "next": "One separately reviewed adaptive Retry experiment from current genuine loss; preserve previous failed source-bound packet.",
+    "source_or_balance_changed": false,
+    "assertion_result": "Raw manifest has five true checks and one failed counter-chain assertion. Victory assertions were not reached because that assertion raised. Natural outcome is defeat.",
+    "preservation": {
+      "path": "C:/projects/active/games/.artifacts/preservation/dead-run-native-first-retry-failure.json",
+      "sha256": "9bfb76b20b274aea613adb84c6d19e7eed5a492587d9b7b7f2df7ecb417753ef",
+      "files": 559,
+      "bytes": 3126239,
+      "raw_command_pairs": 192,
+      "checked_payload_checksums": 88,
+      "named_pngs_decoded": 5,
+      "raw_binary_captures_decoded": 5
+    }
+  },
+  "native_initial_loss_preservation": {
+    "path": "C:/projects/active/games/.artifacts/preservation/dead-run-native-initial-and-loss.json",
+    "sha256": "43f635b1c3a3de1f14f13cc50e2274726e93b4da645b70068f453cddff1dfaec",
+    "files": 1890,
+    "bytes": 7781324,
+    "raw_command_pairs_verified": 601,
+    "app_written_envelope_checksums": 378,
+    "named_pngs_decoded": 5,
+    "raw_capture_bins_decoded": 5,
+    "scope": "Initial install, failed splash/click/ready timeout, reviewed loaded-ready diagnostic and corrected actual first no-input loss. Later steering failure preserved separately."
   }
 }
