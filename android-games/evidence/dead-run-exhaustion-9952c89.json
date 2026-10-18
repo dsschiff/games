@@ -1,5 +1,5 @@
 {
-  "stage": "prototype_exhaustion_P2_closed_native_delivery_pending",
+  "stage": "prototype_exhaustion_P2_closed_native_loop_accepted_campaign_active",
   "runtime_worker": "9952c89a18e72546609b01e503cf8bfdfb5e6ac0",
   "runtime_integration": "3d7e4d6",
   "runtime_fingerprint_before_delivery_metadata": "a80da4d70fce227a74264c45cd9be2af7fb91832bb56ae89e6ecf080b80c657d",
@@ -35,10 +35,10 @@
     "index_sha256": "4c073d36667833d1a121b7d195cf49789ee26bd0d0977788b001489a2ab5c486"
   },
   "original_movie_scope": "87.233-second original movie remains attributed to old8d7187e; amendment normal inputs and focused PNGs are separately bound.",
-  "delivery_status": "Final omission correction worker8fe7b04 integrated8c66b45; third actual export signed/offline and source unchanged. Initial and string-zero failed exports retained. Native install and outcomes pending.",
+  "delivery_status": "Signed code1 installed and actual outcomes recorded; current index has native checkpoint and retained failure qualifiers.",
   "rendered_status": "Normal35/0/engine0/errorfree but full-source provenance FAIL retained due coordinator metadata integration. Exact19runtime/testbytes match captured source separately. Fresh stable finalmetadata focusedGUI17 passes17/0/exit0,6PNG/noerrors or warnings/source58f8unchanged. No automatic normal-route repetition.",
   "campaign_handoff": "android-games/handoffs/dead-run-campaign.md",
-  "campaign_activation": "Queued until explicit root activation after native prototype checks.",
+  "campaign_activation": "Activated existing Dead Run builder after actual native checkpoint and Astra review; full campaign and phone acceptance pending.",
   "software_candidate": false,
   "android_native_tested": true,
   "physical_phone_tested": false,
@@ -83,8 +83,8 @@
     "native_execution_performed": false
   },
   "android_native_tests_started": true,
-  "android_native_first_loop_accepted": false,
-  "native_current_stage": "Original no-input loss verified; first real steering Retry naturally failed at harmful gate. Adaptive native input policy is being prepared after recorded timing diagnosis; no native win/campaign/phone acceptance.",
+  "android_native_first_loop_accepted": true,
+  "native_current_stage": "Actual adaptive native victory and scoped platform behavior captured; raw observer/protocol failures retained separately. Complete campaign activated after Astra defining-loop approval.",
   "native_initial_setup_failure": "First helper cold-relaunched after reviewed screen and sent Start while Android splash remained visible. Bounded timeout retained; app stayed ready/tick0, so no gameplay/loss was replayed. Corrected observer retains the current reviewed loaded context before phase input.",
   "native_original_loss": {
     "phase": "defeat",
@@ -136,5 +136,6 @@
     "named_pngs_decoded": 5,
     "raw_capture_bins_decoded": 5,
     "scope": "Initial install, failed splash/click/ready timeout, reviewed loaded-ready diagnostic and corrected actual first no-input loss. Later steering failure preserved separately."
-  }
+  },
+  "current_native_evidence": "android-games/evidence/dead-run-code1-native.json"
 }

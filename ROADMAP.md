@@ -11,7 +11,7 @@ The active portfolio goal is defined in `GOAL.md`. Status reflects evidence, not
 | M4 Chained-weapon action game | Conditional software candidate ready for phone testing; native transfer/update verified; physical IME gate explicit | Complete chained-weapon combat/resource-upgrade/exploration game and verified APK |
 | M5 Settlement defense game | Conditional software candidate ready for phone testing; ten-map campaign reviewed, actual1-to2/native outcomes/transfer/active lifecycle verified | Complete movement/build/defense game and verified APK |
 | M6 Frontline military game | Twelve-mission full campaign development active; first-loop independent/Astra/native verified | Complete reference-based military interaction game and verified APK |
-| M7 Zombie survival game | Prototype save P2 closed; signed APK exported; native prototype checks pending | Complete reference-based shooting/survival game and verified APK |
+| M7 Zombie survival game | Complete evacuation campaign development active; native prototype defining loop accepted; observer/platform caveats retained | Complete reference-based shooting/survival game and verified APK |
 | M8 Portfolio acceptance | Not started | Six independent reviews resolved, update compatibility, physical-phone checks and delivery index |
 
 ## Current next actions
@@ -22,6 +22,6 @@ The active portfolio goal is defined in `GOAL.md`. Status reflects evidence, not
 4. Keep Tower's accepted code4 software candidate frozen for phone testing. Required seeded Challenge and prior authored/full-rule checks remain verified; Back correction passes independent67/71checks and review. Actual3→4 preserves every prior save field exceptrevision, including generated snapshot/record and separate campaign. Native modal Back/clipboard/Home/cold/cover-inner emulated resize pass. Human pacing/fun and physical Fold7 touch/folding/safe areas/sound/performance remain open.
 5. Keep Hook's conditional code4 candidate frozen. Actual update and native typing/rejection/transfer/lifecycle checks pass; physical on-screen IME and other phone checks remain required.
 6. Keep Hearthguard code2 conditional candidate frozen for phone testing. Independent full campaign headless/Astra and actual1-to2/native loss/Retry/win/transfer/active resize/cold pass. Windows clipboard failures remain separate; native clipboard success does not erase them. Physical IME/touch/folding/safe areas/sound/FPS and human pacing/fun remain required.
-7. Continue Frontline's twelve-mission full campaign. Complete Dead Run's native first-loop delivery from its signed corrected APK after the independently closed exhaustion P2; activate its queued full campaign only after the native checkpoint.
+7. Continue Frontline's twelve-mission campaign and Dead Run's complete evacuation campaign in the two existing builder chats. Dead Run's actual native win and Astra defining-loop approval support expansion; preserve its clipboard-feedback and native observer/protocol caveats. Four phone candidates remain frozen.
 8. Thread/worktree mapping is in `android-games/threads.json`; executable evidence is indexed under `android-games/evidence/`.
 

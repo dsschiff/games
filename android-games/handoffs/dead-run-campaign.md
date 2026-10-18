@@ -1,8 +1,8 @@
 # Dead Run complete campaign handoff
 
 Prepared after prototype `8d7187e`, exhaustion amendment `9952c89` and its
-independent/Astra closure. This is a queued milestone: wait for explicit root
-activation after native prototype checks. Use the existing Dead Run chat and
+independent/Astra closure. Root activated this milestone after the actual native prototype win and
+Astra defining-loop approval; native observer/protocol caveats stay recorded. Use the existing Dead Run chat and
 worktree; own only `android-games/dead-run/`. Root owns shared records, integration,
 Android export/install, physical testing and release decisions.
 
@@ -73,6 +73,13 @@ later stages require numerical grinding. Immediate Retry keeps the selected
 definition/options; loss recaps explain contact, harmful gate or defended-line
 failure. Settings, portable Copy/Paste/Import and separate campaign/legacy
 progress must survive lifecycle and future updates.
+
+The native code1 Export callback immediately read the clipboard and displayed
+"Clipboard unavailable" even though subsequent app Paste and fresh Import
+succeeded. Correct that feedback with bounded asynchronous confirmation or
+honest unconfirmed-copy wording, including protection against stale results from
+an older Export. Preserve actual failure feedback and verify eventual success
+and real failure paths. Do not change save semantics to hide this UI issue.
 
 ## Evidence and stop boundary
 

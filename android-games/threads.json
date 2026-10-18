@@ -33,9 +33,10 @@
       "initial_base": "e41cb09cdbe1d78da0a004aa9ef0ea5a73c0dcb9",
       "ownership_when_started": "android-games/dead-run/",
       "handoff": "android-games/handoffs/dead-run-prototype.md",
-      "state": "Frozen final prototype8fe7b04 with P2 closed and signed code1 installed. Actual noinputloss2072 verified; first steeringRetry loses at harmfulgate1050 because native timing policy is late. Failure retained; bounded adaptive input helper preparation active, no production source change. Native win/platform and fullcampaign activation pending.",
+      "state": "Complete evacuation campaign development active after actual native prototype loss/Retry/victory and scoped platform observations. Source58f8 prototype remains frozen in coordinator; worker owns only Dead Run folder. Clipboard feedback/camera/arrival cues carried to campaign; observer/protocol failures retained, physical checks pending.",
       "activation_base": "369f9dce162d91ad27eff75f3f52aba2139736e1",
-      "thread_id": "01a14d53-a3ae-7f61-ab87-0006aaa25dd4"
+      "thread_id": "01a14d53-a3ae-7f61-ab87-0006aaa25dd4",
+      "campaign_handoff": "android-games/handoffs/dead-run-campaign.md"
     }
   ],
   "games": [
@@ -100,7 +101,8 @@
       "branch": "codex/dead-run",
       "ownership": "android-games/dead-run/",
       "activation_base": "369f9dce162d91ad27eff75f3f52aba2139736e1",
-      "state": "Frozen final prototype8fe7b04 with P2 closed and signed code1 installed. Actual noinputloss2072 verified; first steeringRetry loses at harmfulgate1050 because native timing policy is late. Failure retained; bounded adaptive input helper preparation active, no production source change. Native win/platform and fullcampaign activation pending."
+      "state": "Complete evacuation campaign development active after actual native prototype loss/Retry/victory and scoped platform observations. Source58f8 prototype remains frozen in coordinator; worker owns only Dead Run folder. Clipboard feedback/camera/arrival cues carried to campaign; observer/protocol failures retained, physical checks pending.",
+      "campaign_handoff": "android-games/handoffs/dead-run-campaign.md"
     }
   ]
 }

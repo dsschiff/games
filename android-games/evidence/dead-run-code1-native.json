@@ -1,0 +1,115 @@
+{
+  "stage": "native_prototype_observed_full_campaign_active",
+  "source_sha256": "58f8de780b7a7ecc15bf664286fe1c7b4305ff8cea8f69027755d794541a587d",
+  "android_native_first_loop_accepted": true,
+  "full_campaign_development_active": true,
+  "ready_for_phone_testing": false,
+  "physical_phone_tested": false,
+  "IME_verified": false,
+  "complete_game_gate": false,
+  "apk": {
+    "version": "0.1.0",
+    "version_code": 1,
+    "sha256": "a553c601a1238cf2e8f1e1d1ba9437ff949e69bdc8b6aaef760f22ee53a6c240",
+    "signed": true,
+    "permissions": []
+  },
+  "review": "android-games/reviews/dead-run-prototype-8d7187e-astra.md",
+  "campaign_handoff": "android-games/handoffs/dead-run-campaign.md",
+  "campaign_thread": "01a14d53-a3ae-7f61-ab87-0006aaa25dd4",
+  "natural_win": {
+    "tick": 3000,
+    "crew": 10,
+    "kills": 24,
+    "leaks": 0,
+    "side_hp": 0,
+    "final_hp": 0,
+    "gate_applications": [
+      6,
+      -2
+    ],
+    "counter_coverage_entries": 8,
+    "missing_counter_coverage": [],
+    "raw_true_assertions": 137,
+    "repeated_paused_hold_guards": 133,
+    "source_unchanged": true,
+    "root_viewed_untouched_terminal_and_six_active_milestones": true,
+    "instrumented_pauses_not_continuous_human_play": true,
+    "native_observer_not_full_Godot_validator_rerun": true,
+    "preservation": {
+      "path": "C:/projects/active/games/.artifacts/preservation/dead-run-code1-adaptive-retry-victory.json",
+      "sha256": "6ab64c9c823d2334badfb9659c1e6684d441d49697a8c805fe45006ca4bcb01a",
+      "files": 3242,
+      "bytes": 23613813,
+      "decoded_pngs": 41
+    }
+  },
+  "retained_earlier_attempts": [
+    "Original no-input natural loss2072",
+    "First steered Retry natural loss1050/gate-10",
+    "Initial splash-screen Start timing timeout without gameplay"
+  ],
+  "platform": {
+    "whole_durable_packet_unchanged_on_actual_ASCII_INVALID": true,
+    "actual_Paste_and_fresh_Import_whole_meaning_retained": true,
+    "native_Back_from_Transfer_retained_won_run": true,
+    "settings_false_true_and_whole_won_state_retained": true,
+    "actual_cover_inner_whole_active_retention": true,
+    "Home_cold_whole_active_retention": true,
+    "recorded_loaded_pre_input_menu_and_Resume_advance": true,
+    "raw_true_checks_by_phase": {
+      "transfer": 10,
+      "settings": 8,
+      "active_fixture": 14,
+      "failed_geometry_phase": 9,
+      "cold_only_continuation": 11,
+      "post_cold_resume": 8
+    },
+    "aggregate_clean_PASS_claimed": false,
+    "qualifiers": [
+      "Export falsely reported unavailable despite subsequent real Paste/Import success; confirmed campaign UX correction.",
+      "Geometry phase remains rawFAIL: reset reported native but first PNG still inner. Fresh no-input native capture verified same active73/380; Home/cold resumed separately without resizing again.",
+      "Root batched cold view and dependent input before seeing its splash PNG. Prior-root-review metadata overstated review. Later actual pre-input PNG was fully loaded; actual Resume73-to103 and final hold are recorded. Behavioral proof is separate from protocol compliance. No replay.",
+      "ASCII injection is not on-screen IME/composition proof. Durable rejection equality alone is not live-memory proof.",
+      "Emulator geometry changes are not physical folding/safe-area validation."
+    ]
+  },
+  "genuine_active_fixture": {
+    "revision": 384,
+    "tick": 103,
+    "phase": "playing",
+    "crew": 3,
+    "shots": 9,
+    "first_gate_hits": 6,
+    "first_gate_value": 0,
+    "neither_gate_crossed": true,
+    "settings": {
+      "sound": false,
+      "reduced_effects": true
+    },
+    "full_body": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.deadrun/code1-root-bound-platform-post-cold-resume-20261018T063842830586Z/final-active-fixture-paused-held-decoded.json",
+    "full_body_sha256": "206b429590c6655c4033acc09b7441b0bd883a3f0fb084c9648f442e28b73a99"
+  },
+  "disabled_preparations_preservation": {
+    "path": "C:/projects/active/games/.artifacts/preservation/dead-run-native-helper-preparations.json",
+    "sha256": "c3ef2b50a45a5481bc2ed2e53fa82950f66ffaa944329cbd26409da44b290f7b",
+    "files": 10,
+    "bytes": 63941
+  },
+  "platform_preservation": {
+    "path": "C:/projects/active/games/.artifacts/preservation/dead-run-native-platform.json",
+    "sha256": "a5a57610990b32ec900da39e02ab08f7c606bb8c98877d986fd266b66231cc63",
+    "files": 997,
+    "bytes": 13210835,
+    "terminal_packets": 8,
+    "raw_command_pairs": 260,
+    "app_written_envelope_checksums": 88,
+    "raw_lf_source_capture_bindings": 248,
+    "installed_APK_hash_responses": 6,
+    "named_PNGs_decoded": 23,
+    "raw_binary_PNGs_decoded": 23,
+    "aggregate_clean_platform_pass": false,
+    "prior_cold_UI_review_protocol_satisfied": false,
+    "originals_unchanged": true
+  }
+}

@@ -9,7 +9,7 @@ Six standalone Godot games are being developed here under the staged goal in the
 | `hook-and-hunger` | Hook and Hunger | Butcher Hero | Conditional software candidate ready for phone testing; update/native transfer verified; phone IME gate explicit |
 | `hearthguard` | Hearthguard | Kingshot | Conditional code2 software candidate ready for phone testing; full campaign reviewed, native update/outcomes/transfer/lifecycle verified |
 | `frontline-foundry` | Frontline Foundry | Top Force | Twelve-mission full campaign in development after verified native prototype; advertiser mapping qualified |
-| `dead-run` | Dead Run | Last Human: Final Stand | Road/gate/side-target prototype reviewed; save P2 closed; signed APK exported; native checks pending |
+| `dead-run` | Dead Run | Last Human: Final Stand | Complete evacuation campaign in development after actual native road/gate/side-target victory and Astra approval; platform caveats retained |
 
 Each app is offline and has independent saves. APKs and signing materials are local artifacts, excluded from Git. The existing public website is not changed by these builds.
 

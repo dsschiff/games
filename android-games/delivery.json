@@ -77,11 +77,11 @@
     },
     {
       "slug": "dead-run",
-      "state": "prototype_save_defect_closed_signed_apk_native_checks_pending",
+      "state": "native_prototype_observed_complete_campaign_active",
       "thread_id": "01a14d53-a3ae-7f61-ab87-0006aaa25dd4",
       "ready_for_phone_testing": false,
       "physical_phone_tested": false,
-      "evidence": "android-games/evidence/dead-run-exhaustion-9952c89.json"
+      "evidence": "android-games/evidence/dead-run-code1-native.json"
     }
   ]
 }
