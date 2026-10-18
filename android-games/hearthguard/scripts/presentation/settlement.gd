@@ -1,0 +1,500 @@
+extends Node3D
+const Adapter = preload("res://scripts/presentation/adapter.gd")
+const Actor = preload("res://scripts/presentation/actor.gd")
+const Regions = preload("res://scripts/presentation/regions.gd")
+const C = preload("res://scripts/campaign_rules.gd")
+const Cat = preload("res://scripts/campaign_catalog.gd")
+const L = preload("res://scripts/rules.gd")
+var adapter := Adapter.new()
+var camera: Camera3D
+var units := {}
+var corpses: Array = []
+var civilians: Array = []
+var towers: Array = []
+var pads: Array[Node3D] = []
+var pad_labels: Array[Label3D] = []
+var pickups := {}
+var effects: Array = []
+var pending: Array = []
+var bounds_records: Array = []
+var region := {}
+var definition := {}
+var campaign := true
+var reduced := false
+var presented := false
+var range_ring: MeshInstance3D
+var field_rect := Rect2()
+var effects_emitted := 0
+var attacks_emitted := 0
+var decor_time := 0.0
+var target_phase := "ready"
+var gate: Node3D
+var gate_hit := 0.0
+var previous_integrity := -1
+var manifest := {}
+var scenic_bounds: Array = []
+
+func build(state: Dictionary) -> void:
+	campaign = state.schema == 2
+	definition = state.definition.duplicate(true) if campaign else {}
+	region = Regions.describe(state)
+	manifest = JSON.parse_string(FileAccess.get_file_as_string("res://art/manifest.json"))
+	for spec in manifest.models:
+		var lo: Array = spec.bounds_blender.min
+		var hi: Array = spec.bounds_blender.max
+		manifest[spec.name] = AABB(Vector3(lo[0], lo[2], -hi[1]), Vector3(hi[0] - lo[0], hi[2] - lo[2], hi[1] - lo[1]))
+	var environment := WorldEnvironment.new()
+	var env := Environment.new()
+	env.background_mode = Environment.BG_COLOR
+	env.background_color = Color(region.sky).srgb_to_linear()
+	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	env.ambient_light_color = Color("dce6de").srgb_to_linear()
+	env.ambient_light_energy = .36
+	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
+	env.tonemap_exposure = .95
+	environment.environment = env
+	add_child(environment)
+	var sun := DirectionalLight3D.new()
+	sun.rotation_degrees = Vector3(-57, -29, 0)
+	sun.light_color = Color("fff0cf")
+	sun.light_energy = .95
+	sun.shadow_enabled = true
+	sun.shadow_opacity = .40
+	sun.shadow_blur = 2
+	sun.shadow_normal_bias = .6
+	sun.directional_shadow_max_distance = 60
+	add_child(sun)
+	var fill := DirectionalLight3D.new()
+	fill.rotation_degrees = Vector3(-35, 140, 0)
+	fill.light_color = Color("bfdde4")
+	fill.light_energy = .24
+	add_child(fill)
+	camera = Camera3D.new()
+	camera.projection = Camera3D.PROJECTION_ORTHOGONAL
+	camera.near = .5
+	camera.far = 100
+	camera.position = Vector3(0, 24, 17)
+	add_child(camera)
+	camera.look_at(Vector3(0, 0, -.5))
+	camera.current = true
+	# Continuous ground; road strips sit above it with no coplanar deck faces.
+	box(Vector3(0, -.24, 0), Vector3(80, .45, 80), region.ground)
+	if region.region == 1:
+		box(Vector3(-7.4, -.03, -2), Vector3(2.7, .018, 21), region.water)
+		box(Vector3(7.6, -.03, -1), Vector3(2.3, .018, 21), region.water)
+	for lane in (int(definition.lanes) if campaign else 1):
+		road(lane)
+	for side in [-1, 1]:
+		for j in 15:
+			place("wall", Vector3(side * 5.55, 0, -8.7 + j * 1.15), 0, .85, true)
+		for j in 5:
+			place(region.tree, Vector3(side * (7.3 + (j % 2) * .45), 0, -8.2 + j * 3.0 + region.grove * .28), j * .73, 1.0 + (j % 2) * .15, true)
+		for j in 3:
+			place(region.house, Vector3(side * 6.65, 0, -6.8 + j * 5.7), side * .10, .82, true)
+			place(region.props[j], Vector3(side * 6.30, 0, -4.6 + j * 4.5), side * .25, .72, true)
+			place("lantern", Vector3(side * 5.70, 0, -7.9 + j * 6.0), 0, .70, true)
+	# Gate piers sit beyond the complete traversable/body rectangle.
+	gate = Node3D.new()
+	add_child(gate)
+	var keep := place(region.house, Vector3(0, 0, 9.8), 0, .85, true)
+	keep.set_meta("gate", true)
+	for x in [-1.7, 1.7]:
+		place("banner", Vector3(x, 0, 9.6), 0, .85, true)
+	for x in [-1.8, -.6, .6, 1.8]:
+		var wall := place("wall", Vector3(x, 0, 9.1), PI / 2, 1, true)
+		wall.reparent(gate)
+	label("HEARTH REFUGE", Vector3(0, 1.5, 9.1), "fff0c4", 30)
+	label(region.landmark.to_upper(), Vector3(0, .18, -10.5), "fff0c4", 28)
+	var count: int = definition.pads.size() if campaign else 2
+	for i in count:
+		var p := pad_point(i)
+		var pad := Node3D.new()
+		pad.position = Vector3(p.x, .015, p.y)
+		add_child(pad)
+		pads.append(pad)
+		var outer := cylinder(Vector3(p.x, .04, p.y), .70, .08, "e4b75e")
+		outer.name = "PadRim%d" % i
+		cylinder(Vector3(p.x, .09, p.y), .61, .045, "576e68")
+		for j in 4:
+			var a := j * TAU / 4
+			var mark := box(Vector3(p.x + sin(a) * .57, .13, p.y + cos(a) * .57), Vector3(.15, .035, .07), "f7dfa0")
+			mark.rotation.y = a
+		pad_labels.append(label("", Vector3(p.x, .58, p.y), "ffe1a0", 28))
+		towers.append({"family": -1, "fork": -1, "node": null, "operator": null, "turret": null, "tip": null, "recoil": 0.0, "construction": 1.0, "aim": Vector3.FORWARD})
+	var ring := TorusMesh.new()
+	ring.inner_radius = 4.96
+	ring.outer_radius = 5
+	ring.rings = 64
+	ring.ring_segments = 6
+	range_ring = MeshInstance3D.new()
+	range_ring.mesh = ring
+	range_ring.material_override = Actor.material("e2d595")
+	add_child(range_ring)
+	range_ring.hide()
+	for i in 6:
+		var citizen := Actor.new()
+		add_child(citizen)
+		citizen.configure("citizen" if i % 3 != 0 else "defender", i * 1.7)
+		var side := -1 if i % 2 == 0 else 1
+		citizen.position = Vector3(side * 6.20, .02, -5.2 + (i / 2) * 5.6)
+		civilians.append({"actor": citizen, "home": citizen.position, "last": citizen.position})
+	adapter.reset(state, false)
+	synchronize(state, false, 0)
+
+func pad_point(index: int) -> Vector2:
+	return C.pad_point(definition, index) if campaign else L.PADS[index]
+
+func place(asset: String, at: Vector3, yaw: float, size: float, scenery: bool = false) -> Node3D:
+	var node := Actor.asset(asset)
+	add_child(node)
+	node.position = at
+	node.rotation.y = yaw
+	node.scale = Vector3.ONE * size
+	Actor.finish_materials(node)
+	if scenery:
+		# Transform all eight corners, not just model origin or unrotated half extents.
+		var complete: AABB = node.transform * (manifest[asset] as AABB)
+		bounds_records.append({"asset": asset, "bounds": complete, "node": node})
+	return node
+
+func road(lane: int) -> void:
+	var verts := PackedVector3Array()
+	var normals := PackedVector3Array()
+	var indices := PackedInt32Array()
+	for i in 97:
+		var z := -11.0 + i * 22.0 / 96
+		var x := Cat.road_x(definition, lane, z) if campaign else L.road_x(z)
+		var width := .62 if campaign and definition.lanes == 2 else .80
+		for side in [-1, 1]:
+			verts.append(Vector3(x + side * width, .012, z))
+			normals.append(Vector3.UP)
+		if i > 0:
+			var n := i * 2
+			indices.append_array(PackedInt32Array([n - 2, n, n - 1, n - 1, n, n + 1]))
+	var arrays := []
+	arrays.resize(Mesh.ARRAY_MAX)
+	arrays[Mesh.ARRAY_VERTEX] = verts
+	arrays[Mesh.ARRAY_NORMAL] = normals
+	arrays[Mesh.ARRAY_INDEX] = indices
+	var mesh := ArrayMesh.new()
+	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+	var n := MeshInstance3D.new()
+	n.mesh = mesh
+	n.material_override = Actor.material(region.road)
+	add_child(n)
+	# Sparse inset pavers stay below the actor soles, away from raised deck faces.
+	for i in 14:
+		var z := -9.5 + i * 1.35
+		var x := Cat.road_x(definition, lane, z) if campaign else L.road_x(z)
+		var paver := box(Vector3(x, .025, z), Vector3(.50, .025, .24), "baa47e" if region.region == 0 else "aebbb1")
+		paver.rotation.y = sin(i * .7) * .18
+
+func box(at: Vector3, size: Vector3, color: String) -> MeshInstance3D:
+	var node := MeshInstance3D.new()
+	var mesh := BoxMesh.new()
+	mesh.size = size
+	node.mesh = mesh
+	node.position = at
+	node.material_override = Actor.material(color)
+	add_child(node)
+	return node
+
+func cylinder(at: Vector3, radius: float, height: float, color: String) -> MeshInstance3D:
+	var node := MeshInstance3D.new()
+	var mesh := CylinderMesh.new()
+	mesh.top_radius = radius
+	mesh.bottom_radius = radius
+	mesh.height = height
+	mesh.radial_segments = 24
+	node.mesh = mesh
+	node.position = at
+	node.material_override = Actor.material(color)
+	add_child(node)
+	return node
+
+func label(text: String, at: Vector3, color: String, size: int) -> Label3D:
+	var node := Label3D.new()
+	node.text = text
+	node.position = at
+	node.font_size = size
+	node.pixel_size = .007
+	node.outline_size = 5
+	node.modulate = Color(color)
+	node.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	add_child(node)
+	return node
+
+func queue_events(events: Array, observed_time: float) -> void:
+	for e in events:
+		pending.append({"event": e.duplicate(true), "time": observed_time})
+
+func synchronize(state: Dictionary, held: bool, dt: float, reduced_effects: bool = false) -> void:
+	reduced = reduced_effects
+	var hydrated := adapter.ingest(state, held, dt)
+	if hydrated:
+		for e in effects:
+			e.node.queue_free()
+		effects.clear()
+		for corpse in corpses:
+			corpse.node.queue_free()
+		corpses.clear()
+		for actor in units.values():
+			actor.reset_transients()
+		for t in towers:
+			if t.family >= 0:
+				t.recoil = 0.0
+				t.construction = 1.0
+				t.operator.reset_transients()
+		# Rules may already have advanced the first Resume tick. Retain observations
+		# stamped by that exact tick while discarding pre-boundary stale batches.
+		pending = pending.filter(func(batch: Dictionary) -> bool: return not held and batch.time == state.time)
+	var snap: Dictionary = adapter.current
+	target_phase = snap.phase
+	for key in snap.actors:
+		var data: Dictionary = snap.actors[key]
+		var fresh := not units.has(key)
+		if fresh:
+			var actor := Actor.new()
+			add_child(actor)
+			actor.configure(data.role, float(key.hash() % 100) * .13)
+			actor.position = data.position
+			actor.rotation.y = PI if key != "commander" else 0
+			units[key] = actor
+		units[key].update_health(data.hp, data.max_hp, hydrated or fresh)
+	for key in units.keys():
+		if not snap.actors.has(key):
+			var actor: Node3D = units[key]
+			var id := int(str(key).trim_prefix("enemy:"))
+			if not hydrated and snap.killed.has(id):
+				actor.fall()
+				corpses.append({"node": actor, "left": .85})
+			elif not hydrated and snap.leaked.has(id):
+				actor.fire(Vector3(actor.position.x, .6, 9.1))
+				corpses.append({"node": actor, "left": .40})
+			else:
+				actor.queue_free()
+			units.erase(key)
+	for i in snap.towers.size():
+		var spec: Dictionary = snap.towers[i]
+		var t: Dictionary = towers[i]
+		if t.family != spec.family or t.fork != spec.fork:
+			rebuild_tower(i, spec, hydrated or not presented)
+		pad_labels[i].visible = spec.family < 0
+		pad_labels[i].text = "PAD %d\nFROM %d GOLD" % [i + 1, int(definition.families[2].price)] if campaign else "%d GOLD" % L.COSTS[i]
+		if t.family >= 0:
+			var title: Label3D = t.title
+			title.text = "SILENCED" if spec.jam > 0 else (Cat.FAMILIES[int(spec.family)] if spec.fork == 0 else Cat.FORKS[int(spec.family)][int(spec.fork) - 1])
+			if not campaign:
+				title.text = "BOLT" if i == 0 else "HEAVY"
+			title.modulate = Color("ff927b" if spec.jam > 0 else ["ffe2a0", "ffbf91", "c4fff0"][int(spec.family)])
+	var near := C.nearby(state) if campaign else L.nearby_pad(state)
+	range_ring.visible = campaign and near >= 0 and snap.towers[near].family >= 0 and not held
+	if range_ring.visible:
+		var stats: Dictionary = definition.families[int(snap.towers[near].family)].stats[int(snap.towers[near].fork)]
+		range_ring.scale = Vector3.ONE * float(stats.range) / 5
+		var p := pad_point(near)
+		range_ring.position = Vector3(p.x, .10, p.y)
+	var drops := {}
+	for coin in snap.coins:
+		var key := str(int(coin.id))
+		drops[key] = true
+		if not pickups.has(key):
+			var node := place("coin", Vector3(coin.x, .35, coin.z), 0, 1)
+			var value := label(str(int(coin.value)), Vector3(coin.x, .80, coin.z), "ffe1a0", 25)
+			pickups[key] = {"node": node, "label": value, "at": node.position, "phase": float(coin.id) * .7}
+	for key in pickups.keys():
+		if not drops.has(key):
+			if not hydrated and not reduced:
+				var coin: Node3D = pickups[key].node
+				effects.append({"node": coin, "from": coin.position, "to": units.commander.position + Vector3(0, .9, 0), "left": .17, "duration": .17, "family": 4})
+			else:
+				pickups[key].node.queue_free()
+			pickups[key].label.queue_free()
+			pickups.erase(key)
+	if previous_integrity >= 0 and snap.integrity < previous_integrity and not hydrated:
+		gate_hit = .35
+	previous_integrity = snap.integrity
+	for batch in pending:
+		if adapter.accept(batch.event):
+			observe(batch.event)
+	pending.clear()
+	presented = true
+	if hydrated:
+		present(0)
+
+func rebuild_tower(index: int, spec: Dictionary, hydrated: bool) -> void:
+	var t: Dictionary = towers[index]
+	for key in ["node", "operator", "title"]:
+		if t.get(key) != null:
+			t[key].queue_free()
+			t[key] = null
+	t.family = spec.family
+	t.fork = spec.fork
+	t.recoil = 0.0
+	t.construction = 1.0 if hydrated else 0.0
+	if spec.family < 0:
+		return
+	var p := pad_point(index)
+	t.node = place("tower_" + ["bolt", "mortar", "beacon"][int(spec.family)], Vector3(p.x, .015, p.y), 0, 1)
+	t.turret = t.node.find_child("Turret", true, false)
+	t.tip = t.node.find_child("AuthoredWeaponTip", true, false)
+	t.rest = t.turret.position
+	t.operator = Actor.new()
+	add_child(t.operator)
+	t.operator.configure("defender")
+	t.operator.mounted = true
+	t.operator.scale = Vector3.ONE * .67
+	t.operator.position = Vector3(p.x - .20, 1.21, p.y + .17)
+	t.title = label("", Vector3(p.x, 2.66, p.y), "ffe2a0", 23)
+	if spec.fork > 0:
+		for side in [-1, 1]:
+			var plate := place("banner", Vector3(p.x + side * .44, .10, p.y + .20), 0, .40)
+			plate.reparent(t.node)
+	if not hydrated:
+		units.commander.work_left = .6
+		pulse(Vector3(p.x, .12, p.y), .75, "e9d18b", .35)
+
+func observe(event: Dictionary) -> void:
+	if event.kind == "shot":
+		var index := int(event.pad)
+		var t: Dictionary = towers[index]
+		if t.family < 0:
+			return
+		var target := Vector3(event.get("x", L.road_x(event.z)), .72, event.z)
+		var p := pad_point(index)
+		t.aim = target - Vector3(p.x, 0, p.y)
+		t.turret.rotation.y = atan2(-t.aim.x, -t.aim.z)
+		t.recoil = .28
+		t.operator.fire(target)
+		# The visible weapon belongs to the authored turret, not a generic pad origin.
+		var origin: Vector3 = t.tip.global_position
+		var bolt := box(origin, Vector3(.055, .055, .35 if t.family == 0 else .10), ["ffe3a0", "e8ae73", "a3ebe1"][int(t.family)])
+		if not origin.is_equal_approx(target):
+			bolt.look_at(target)
+		effects.append({"node": bolt, "from": origin, "to": target, "left": .22, "duration": .22, "family": int(t.family)})
+		attacks_emitted += 1
+		if event.get("area", 0) > 0 and not reduced:
+			pulse(target * Vector3(1, 0, 1) + Vector3(0, .10, 0), minf(event.area, 1.6), "dcb991" if t.family == 1 else "96dcd0", .24)
+	elif event.kind == "heal":
+		for key in units:
+			if units[key].role in ["mender", "matriarch"] and units[key].position.distance_to(Vector3(event.x, 0, event.z)) < .25:
+				units[key].fire(units[key].position + Vector3.FORWARD)
+		if not reduced:
+			pulse(Vector3(event.x, .10, event.z), 1, "b4d788", .4)
+	elif event.kind == "leak":
+		var key := "enemy:" + str(int(event.id))
+		# Contact response is observational. Integrity was already changed by rules.
+		gate_hit = .35
+		if not reduced:
+			pulse(Vector3(0, .12, 8.3), .9, "df9b78", .25)
+
+func pulse(at: Vector3, radius: float, color: String, duration: float) -> void:
+	if reduced:
+		return
+	var shape := TorusMesh.new()
+	shape.inner_radius = maxf(.02, radius - .055)
+	shape.outer_radius = radius
+	shape.rings = 32
+	shape.ring_segments = 5
+	var node := MeshInstance3D.new()
+	node.mesh = shape
+	node.material_override = Actor.material(color)
+	node.position = at
+	add_child(node)
+	effects.append({"node": node, "from": at, "to": at, "left": duration, "duration": duration, "family": 3})
+	effects_emitted += 1
+
+func _process(dt: float) -> void:
+	present(dt)
+
+func present(dt: float) -> void:
+	if adapter.current.is_empty():
+		return
+	var alpha := adapter.advance(dt)
+	var step := 0.0 if adapter.paused else dt
+	var snap: Dictionary = adapter.current
+	for key in snap.actors:
+		var to: Dictionary = snap.actors[key]
+		var from: Dictionary = adapter.previous.actors.get(key, to)
+		var node: Node3D = units[key]
+		node.position = (from.position as Vector3).lerp(to.position, alpha) + Vector3(0, .03, 0)
+		var velocity: Vector3 = (to.position - from.position) / adapter.interval if not adapter.paused and target_phase == "playing" else Vector3.ZERO
+		node.pose(step, velocity, target_phase)
+	for i in range(corpses.size() - 1, -1, -1):
+		var corpse: Dictionary = corpses[i]
+		corpse.left -= step
+		corpse.node.pose(step, Vector3.ZERO, target_phase)
+		if corpse.left <= 0:
+			corpse.node.queue_free()
+			corpses.remove_at(i)
+	decor_time += step
+	for i in civilians.size():
+		var c: Dictionary = civilians[i]
+		var at: Vector3 = c.home
+		# Citizens remain outside the traversable/body rectangle and keep their own
+		# deterministic local clock, without consuming the game's seeded RNG.
+		if i % 3 != 0 and target_phase == "playing":
+			at.z += sin(decor_time * .45 + i) * .55
+		var v: Vector3 = (at - c.last) / maxf(step, .001)
+		c.actor.position = at
+		c.actor.pose(step, v, target_phase)
+		c.last = at
+		if i % 3 != 0 and target_phase == "playing" and fmod(decor_time + i, 4.2) < step:
+			c.actor.work_left = .6
+	for t in towers:
+		if t.family < 0:
+			continue
+		t.construction = minf(1, t.construction + step * 3.2)
+		t.node.scale = Vector3.ONE * lerpf(.82, 1, smoothstep(0, 1, t.construction))
+		t.node.position.y = .015 - (1 - t.construction) * .15
+		t.recoil = maxf(0, t.recoil - step)
+		var recoil := sin(PI * t.recoil / .28) * .10
+		t.turret.position = t.rest + Vector3(sin(t.turret.rotation.y), 0, cos(t.turret.rotation.y)) * recoil
+		t.operator.pose(step, Vector3.ZERO, target_phase)
+	for coin in pickups.values():
+		coin.node.rotation.y = decor_time * 1.3 + coin.phase
+		coin.node.position.y = coin.at.y + (.035 * sin(decor_time * 3 + coin.phase) if not reduced else 0.0)
+	for i in range(effects.size() - 1, -1, -1):
+		var e: Dictionary = effects[i]
+		e.left -= step
+		if e.left <= 0:
+			e.node.queue_free()
+			effects.remove_at(i)
+		else:
+			var f: float = 1 - e.left / e.duration
+			e.node.position = (e.from as Vector3).lerp(e.to, f)
+			if e.family == 1:
+				e.node.position.y += sin(f * PI) * 1.3
+			elif e.family == 3:
+				e.node.scale = Vector3.ONE * lerpf(.8, 1.1, f)
+	gate_hit = maxf(0, gate_hit - step)
+	gate.rotation.z = .015 * sin(gate_hit * 60) if not reduced else 0.0
+
+func framing_points() -> Array[Vector3]:
+	var points: Array[Vector3] = []
+	for x in [-5.1, 5.1]:
+		for z in [-9.7, 8.4]:
+			for y in [0.0, 2.7]:
+				points.append(Vector3(x, y, z))
+	return points
+
+func fit(rect: Rect2) -> void:
+	field_rect = rect
+	camera.size = 24
+	camera.h_offset = 0
+	camera.v_offset = 0
+	var projected := projected_bounds(framing_points())
+	var factor := minf(rect.size.x / projected.size.x, rect.size.y / projected.size.y)
+	camera.size /= factor
+	projected = projected_bounds(framing_points())
+	var center := projected.get_center()
+	var ppm := camera.unproject_position(Vector3.ZERO).distance_to(camera.unproject_position(camera.global_basis.x))
+	camera.h_offset = (center.x - rect.get_center().x) / ppm
+	camera.v_offset = -(center.y - rect.get_center().y) / ppm
+
+func projected_bounds(points: Array[Vector3]) -> Rect2:
+	var first := camera.unproject_position(points[0])
+	var rect := Rect2(first, Vector2.ZERO)
+	for p in points:
+		rect = rect.expand(camera.unproject_position(p))
+	return rect

@@ -8,6 +8,9 @@ var paused := false
 var input_vector := Vector2.ZERO
 var stick_id := -1
 var stick_origin := Vector2.ZERO
+var world: Node3D
+var presenter: Node3D
+var safe_rect := Rect2()
 var avatar: Node3D
 var camera: Camera3D
 var actors: Node3D
@@ -71,6 +74,7 @@ func _ready() -> void:
 		expedition_button.position = Vector2(24, 650)
 		expedition_button.size = Vector2(572, 96)
 		menu.size.y = 770
+		layout()
 	save_now()
 
 func open_campaign() -> void:
@@ -129,81 +133,23 @@ func label3(parent: Node3D, text: String, pos: Vector3, color: String, size: int
 	return l
 
 func make_world() -> void:
-	var environment := WorldEnvironment.new()
-	var env := Environment.new()
-	env.background_mode = Environment.BG_COLOR
-	env.background_color = Color("152b38")
-	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	env.ambient_light_color = Color("b5e4e3")
-	env.ambient_light_energy = 0.4
-	env.tonemap_mode = Environment.TONE_MAPPER_LINEAR
-	environment.environment = env
-	add_child(environment)
-	var sun := DirectionalLight3D.new()
-	sun.rotation_degrees = Vector3(-58, -35, 0)
-	sun.light_color = Color("ffe1a0")
-	sun.light_energy = 0.75
-	sun.shadow_enabled = true
-	add_child(sun)
-	camera = Camera3D.new()
-	add_child(camera)
-	camera.projection = Camera3D.PROJECTION_ORTHOGONAL
-	camera.size = 23
-	camera.position = Vector3(0, 19, 17)
-	camera.look_at(Vector3(0, 0, -0.4))
-	camera.current = true
-	box(self, Vector3(0, -0.42, 0), Vector3(11, 0.8, 22), "557768")
-	box(self, Vector3(0, -0.86, 0), Vector3(11.4, 0.4, 22.3), "263e40")
-	# Overlapping low-poly road segments create an original winding ridge route.
-	for i in 51:
-		var z := -10.0 + i * 0.4
-		cylinder(self, Vector3(R.road_x(z), 0.03, z), 0.87, 0.1, "ae976e")
-	for side in [-1, 1]:
-		for i in 13:
-			var z := -9.5 + i * 1.6
-			var x: float = side * (4.9 + sin(i * 1.7) * 0.2)
-			box(self, Vector3(x, 0.12, z), Vector3(0.8, 0.5 + (i % 3) * 0.13, 1.15), "a8c6bd")
-			if i % 3 == 0:
-				cylinder(self, Vector3(x, 1.0, z), 0.6, 1.8, "244e46", 0.03)
-	for i in R.PADS.size():
-		var p: Vector2 = R.PADS[i]
-		var pad := Node3D.new()
-		add_child(pad)
-		pad.position = Vector3(p.x, 0, p.y)
-		cylinder(pad, Vector3(0, 0.08, 0), 0.95, 0.16, "f0cb71")
-		cylinder(pad, Vector3(0, 0.18, 0), 0.82, 0.10, "294c51")
-		for j in 8:
-			var angle := j * TAU / 8
-			box(pad, Vector3(sin(angle) * 0.88, 0.25, cos(angle) * 0.88), Vector3(0.12, 0.13, 0.12), "ffe7aa")
-		label3(pad, str(R.COSTS[i]) + " GOLD", Vector3(0, 0.7, 0), "ffdf8b", 52)
-		pad_nodes.append(pad)
-		var tower := Node3D.new()
-		pad.add_child(tower)
-		cylinder(tower, Vector3(0, 0.6, 0), 0.54, 1.0, "b48055", 0.42)
-		box(tower, Vector3(0, 1.22, 0), Vector3(1.05, 0.23, 0.95), "eee0b1")
-		box(tower, Vector3(0, 1.55, 0), Vector3(1.38, 0.16, 0.18), "2c4247")
-		box(tower, Vector3(0, 1.55, -0.25), Vector3(0.14, 0.16, 1.0), "e0b96a")
-		label3(tower, "BOLT" if i == 0 else "HEAVY", Vector3(0, 2.05, 0), "b7f8e4", 40)
-		tower_nodes.append(tower)
-	# Refuge gate: the road terminates here, with integrity also in the fixed HUD.
-	for x in [-2.1, 2.1]:
-		box(self, Vector3(x, 0.85, 8.5), Vector3(1.2, 1.7, 1.1), "c49b63")
-		cylinder(self, Vector3(x, 2.0, 8.5), 0.84, 0.8, "34666b", 0.05)
-	box(self, Vector3(0, 1.0, 8.65), Vector3(3.1, 1.8, 0.5), "496f6d")
-	label3(self, "HEARTH REFUGE", Vector3(0, 2.6, 8.5), "fff0c4", 45)
-	label3(self, "ASH COLUMN", Vector3(0, 0.4, -9.8), "ffd0b1", 42)
-	avatar = Node3D.new()
-	add_child(avatar)
-	cylinder(avatar, Vector3(0, 0.44, 0), 0.34, 0.75, "37b5b1", 0.20)
-	cylinder(avatar, Vector3(0, 0.95, 0), 0.24, 0.32, "f6d5a0")
-	box(avatar, Vector3(0, 1.14, 0), Vector3(0.55, 0.12, 0.4), "e4c377")
-	for x in [-0.23, 0.23]:
-		box(avatar, Vector3(x, 1.31, 0), Vector3(0.09, 0.3, 0.10), "e4c377")
-	box(avatar, Vector3(0.38, 0.6, -0.1), Vector3(0.13, 0.65, 0.13), "eacb75")
-	cylinder(avatar, Vector3(0.38, 0.95, -0.1), 0.13, 0.23, "fff2ae")
-	label3(avatar, "WARDEN", Vector3(0, 1.8, 0), "c3fff2", 34)
-	actors = Node3D.new()
-	add_child(actors)
+	if world != null:
+		remove_child(world)
+		world.queue_free()
+	world = preload("res://scripts/presentation/settlement.gd").new()
+	add_child(world)
+	presenter = world
+	presenter.build(state)
+	camera = presenter.camera
+	avatar = presenter.units.commander
+	actors = world
+	enemy_nodes.clear()
+	coin_nodes.clear()
+	pad_nodes.clear()
+	tower_nodes.clear()
+	bolts.clear()
+	if ui != null:
+		layout()
 
 func panel(parent: Control, color: String) -> Panel:
 	var p := Panel.new()
@@ -212,6 +158,9 @@ func panel(parent: Control, color: String) -> Panel:
 	style.set_corner_radius_all(22)
 	style.border_color = Color("52746f")
 	style.set_border_width_all(2)
+	style.shadow_color = Color("10212a66")
+	style.shadow_size = 12
+	style.shadow_offset = Vector2(0, 6)
 	p.add_theme_stylebox_override("panel", style)
 	parent.add_child(p)
 	return p
@@ -231,12 +180,15 @@ func button(parent: Control, text: String, action: Callable, font_size: int = 27
 	b.add_theme_font_size_override("font_size", font_size)
 	for key in ["normal", "hover", "pressed", "disabled"]:
 		var style := StyleBoxFlat.new()
-		style.bg_color = Color("32675f" if key != "disabled" else "34454b")
+		style.bg_color = Color("427c6b" if key == "hover" else ("32675f" if key != "disabled" else "34454b"))
 		if key == "pressed":
 			style.bg_color = Color("b08446")
 		style.set_corner_radius_all(16)
 		style.set_border_width_all(2)
 		style.border_color = Color("b6b68b")
+		style.shadow_color = Color("0d202544")
+		style.shadow_size = 4
+		style.shadow_offset = Vector2(0, 3)
 		b.add_theme_stylebox_override(key, style)
 	b.add_theme_color_override("font_disabled_color", Color("a5b1a9"))
 	b.pressed.connect(action)
@@ -254,6 +206,12 @@ func make_ui() -> void:
 	header.name = "Header"
 	text_label(header, "HEARTHGUARD", 38).position = Vector2(20, 10)
 	text_label(header, "01 / THE COPPER PASS", 20, "86b7af").position = Vector2(22, 60)
+	var crest := TextureRect.new()
+	crest.texture = preload("res://art/hearth-crest.svg")
+	crest.position = Vector2(21, 10)
+	crest.size = Vector2(40, 40)
+	crest.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	header.add_child(crest)
 	wallet_label = text_label(header, "GOLD  0", 31, "ffda7e")
 	wallet_label.position = Vector2(22, 103)
 	integrity_label = text_label(header, "REFUGE  8 / 8", 27)
@@ -312,28 +270,45 @@ func make_ui() -> void:
 	button(transfer, "BACK", close_transfer).set_meta("transfer", 3)
 	transfer.hide()
 
+func usable_rect() -> Rect2:
+	var area := get_viewport().get_visible_rect()
+	if OS.get_name() == "Android":
+		var native := DisplayServer.get_display_safe_area()
+		if native.size.x > 0 and native.size.y > 0:
+			area = get_viewport().get_final_transform().affine_inverse() * Rect2(native)
+	return area.grow(-18)
+
 func layout() -> void:
 	if ui == null:
 		return
-	var size := get_viewport().get_visible_rect().size
-	# At a 360dp-wide display the 720 logical canvas has 96px minimum controls.
-	var w := size.x
-	var h := size.y
+	stop_move()
+	safe_rect = usable_rect()
+	var w := safe_rect.size.x
+	var h := safe_rect.size.y
+	var origin := safe_rect.position
 	var head := ui.get_node("Header") as Panel
-	head.position = Vector2(18, 22)
-	head.size = Vector2(w - 36, 207)
-	pause_button.position = Vector2(w - 144, 15)
+	head.position = origin
+	head.size = Vector2(w, 184)
+	(head.get_child(0) as Label).add_theme_font_size_override("font_size", 32)
+	(head.get_child(0) as Label).position = Vector2(72, 8)
+	(head.get_child(1) as Label).position = Vector2(22, 50)
+	wallet_label.position = Vector2(22, 88)
+	wallet_label.add_theme_font_size_override("font_size", 27)
+	integrity_label.position = Vector2(245, 92)
+	integrity_label.add_theme_font_size_override("font_size", 25)
+	wave_label.position = Vector2(22, 143)
+	pause_button.position = Vector2(w - 110, 12)
 	pause_button.size = Vector2(96, 96)
-	guidance.position = Vector2(12, h - 326)
-	guidance.size = Vector2(w - 24, 76)
-	stick.position = Vector2(42, h - 205)
-	build_button.position = Vector2(w - 435, h - 204)
+	guidance.position = origin + Vector2(0, h - 232)
+	guidance.size = Vector2(w, 90)
+	stick.position = origin + Vector2(20, h - 360)
+	build_button.position = origin + Vector2(w - 405, h - 120)
 	build_button.size = Vector2(405, 112)
-	start_button.position = Vector2(70, h - 202)
-	start_button.size = Vector2(w - 140, 112)
+	start_button.position = origin + Vector2(40, h - 120)
+	start_button.size = Vector2(w - 80, 112)
 	for p in [menu, terminal, transfer]:
-		p.position = Vector2((w - 620) / 2, 270 if p != terminal else h * 0.34)
 		p.size = Vector2(620, 660 if p != terminal else 466)
+		p.position = origin + Vector2((w - p.size.x) / 2, (h - p.size.y) / 2)
 	for child in menu.get_children():
 		if child.has_meta("row"):
 			child.position = Vector2(24, 126 + int(child.get_meta("row")) * 105)
@@ -350,6 +325,11 @@ func layout() -> void:
 			child.size = Vector2(281, 96)
 	if expedition_button != null:
 		menu.size.y = 770
+		menu.position.y = origin.y + (h - menu.size.y) / 2
+		(expedition_button as Button).position = Vector2(24, 650)
+		(expedition_button as Button).size = Vector2(572, 96)
+	if presenter != null:
+		presenter.fit(Rect2(origin + Vector2(10, 210), Vector2(w - 20, h - 480)))
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
@@ -381,7 +361,7 @@ func _input(event: InputEvent) -> void:
 	else:
 		return
 	var size := get_viewport().get_visible_rect().size
-	if pressed and stick_id == -1 and point.x < size.x * 0.48 and point.y > 250:
+	if pressed and stick_id == -1 and point.x < size.x * 0.48 and point.y > safe_rect.position.y + 200 and point.y < safe_rect.end.y - 135:
 		stick_id = pointer
 		stick_origin = point
 		stick.position = point - Vector2(80, 80)
@@ -398,7 +378,7 @@ func stop_move() -> void:
 	if stick != null:
 		stick_knob.position = Vector2(48, 48)
 		var h := get_viewport().get_visible_rect().size.y
-		stick.position = Vector2(42, h - 205)
+		stick.position = Vector2(safe_rect.position.x + 20, h - 378)
 
 func begin() -> void:
 	state.phase = "playing"
@@ -526,6 +506,7 @@ func import_code() -> void:
 		route_reload()
 		return
 	close_transfer()
+	make_world()
 	sync_world(0)
 	refresh()
 
@@ -533,9 +514,9 @@ func _physics_process(delta: float) -> void:
 	if not paused and state.phase == "playing":
 		var before: String = state.phase
 		var events := R.tick(state, input_vector, delta)
+		presenter.queue_events(events, state.time)
 		for e in events:
 			if e.kind == "shot":
-				make_bolt(e.pad, e.z)
 				if settings.sound:
 					tone(165 + e.pad * 70, 0.04)
 			elif e.kind == "pickup":
@@ -597,67 +578,9 @@ func refresh() -> void:
 	pause_button.disabled = transfer.visible
 
 func sync_world(dt: float) -> void:
-	avatar.position = Vector3(state.x, 0.15, state.z)
-	if not settings.reduced_effects and input_vector.length() > 0.1 and not paused:
-		avatar.rotation.z = sin(state.time * 13) * 0.07
-	else:
-		avatar.rotation.z = 0
-	for i in 2:
-		tower_nodes[i].visible = state.pads[i] == 1
-		(pad_nodes[i].get_child(10) as Label3D).visible = state.pads[i] == 0
-	var alive := {}
-	for e in state.enemies:
-		var id := int(e.id)
-		alive[id] = true
-		if not enemy_nodes.has(id):
-			var n := Node3D.new()
-			actors.add_child(n)
-			cylinder(n, Vector3(0, 0.36, 0), 0.27, 0.65, "d47051" if id < 10 else "7c788a", 0.18)
-			cylinder(n, Vector3(0, 0.79, 0), 0.22, 0.28, "e6ac83")
-			cylinder(n, Vector3(0, 0.98, 0), 0.32, 0.2, "653b48", 0.08)
-			var hp := label3(n, "", Vector3(0, 1.35, 0), "ffd8a7", 32)
-			hp.name = "Health"
-			enemy_nodes[id] = n
-		var n: Node3D = enemy_nodes[id]
-		n.position = Vector3(R.road_x(e.z), 0.14, e.z)
-		(n.get_node("Health") as Label3D).text = str(int(e.hp))
-	for id in enemy_nodes.keys():
-		if not alive.has(id):
-			enemy_nodes[id].queue_free()
-			enemy_nodes.erase(id)
-	var drops := {}
-	for c in state.coins:
-		var id := int(c.id)
-		drops[id] = true
-		if not coin_nodes.has(id):
-			var n := Node3D.new()
-			actors.add_child(n)
-			var coin := cylinder(n, Vector3(0, 0.45, 0), 0.26, 0.10, "ffce55")
-			coin.rotation_degrees.x = 75
-			label3(n, str(int(c.value)), Vector3(0, 1, 0), "ffe092", 35)
-			coin_nodes[id] = n
-		var n: Node3D = coin_nodes[id]
-		n.position = Vector3(c.x, 0.18 + (0.08 * sin(state.time * 4 + id) if not settings.reduced_effects else 0.0), c.z)
-	for id in coin_nodes.keys():
-		if not drops.has(id):
-			coin_nodes[id].queue_free()
-			coin_nodes.erase(id)
-	for i in range(bolts.size() - 1, -1, -1):
-		bolts[i].life -= dt
-		if bolts[i].life <= 0:
-			bolts[i].node.queue_free()
-			bolts.remove_at(i)
-		else:
-			bolts[i].node.position = bolts[i].from.lerp(bolts[i].to, 1 - bolts[i].life / 0.18)
+	if presenter != null:
+		presenter.synchronize(state, paused, dt, settings.reduced_effects)
 	pickup_flash = maxf(0, pickup_flash - dt)
-
-func make_bolt(pad: int, z: float) -> void:
-	var p: Vector2 = R.PADS[pad]
-	var from := Vector3(p.x, 1.6, p.y)
-	var to := Vector3(R.road_x(z), 0.8, z)
-	var bolt := box(actors, from, Vector3(0.13, 0.13, 0.65), "fff1af")
-	bolt.look_at(to)
-	bolts.append({"node": bolt, "life": 0.18, "from": from, "to": to})
 
 func setup_audio() -> void:
 	if DisplayServer.get_name() == "headless":

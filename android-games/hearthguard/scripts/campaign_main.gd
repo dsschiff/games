@@ -1,7 +1,6 @@
 extends "res://scripts/main.gd"
 const C = preload("res://scripts/campaign_rules.gd")
 const Cat = preload("res://scripts/campaign_catalog.gd")
-var world: Node3D
 var action_buttons: Array = []
 var journey: Panel
 var journey_scroll: ScrollContainer
@@ -47,114 +46,7 @@ func _ready() -> void:
 	save_now()
 
 func make_world() -> void:
-	if world != null:
-		remove_child(world)
-		world.queue_free()
-	enemy_nodes.clear()
-	coin_nodes.clear()
-	pad_nodes.clear()
-	tower_nodes.clear()
-	bolts.clear()
-	built_signature = ""
-	world = Node3D.new()
-	add_child(world)
-	var d: Dictionary = state.definition
-	var palettes := [["63775a", "cfa76c", "b4c7a5"], ["416d68", "92ac91", "6d938e"], ["59747e", "bbc2b0", "d2dfda"]]
-	var colors: Array = palettes[int(d.region)]
-	var environment := WorldEnvironment.new()
-	var env := Environment.new()
-	env.background_mode = Environment.BG_COLOR
-	env.background_color = Color("142b38")
-	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	env.ambient_light_color = Color("badbdc")
-	env.ambient_light_energy = 0.4
-	environment.environment = env
-	world.add_child(environment)
-	var sun := DirectionalLight3D.new()
-	sun.rotation_degrees = Vector3(-58, -35, 0)
-	sun.light_energy = 0.75
-	sun.shadow_enabled = true
-	world.add_child(sun)
-	camera = Camera3D.new()
-	world.add_child(camera)
-	camera.projection = Camera3D.PROJECTION_ORTHOGONAL
-	camera.size = 23
-	camera.position = Vector3(0, 19, 17)
-	camera.look_at(Vector3(0, 0, -0.4))
-	camera.current = true
-	box(world, Vector3(0, -0.42, 0), Vector3(11.2, 0.8, 22), colors[0])
-	box(world, Vector3(0, -0.88, 0), Vector3(11.5, 0.4, 22.4), "243c43")
-	for lane in int(d.lanes):
-		for i in 51:
-			var z := -10 + i * 0.4
-			cylinder(world, Vector3(Cat.road_x(d, lane, z), 0.03, z), 0.62 if d.lanes == 2 else 0.8, 0.1, colors[1])
-	for side in [-1, 1]:
-		for i in 13:
-			var z := -9.5 + i * 1.6
-			box(world, Vector3(side * 5.0, 0.1, z), Vector3(0.6, 0.5, 1.05), colors[2])
-			if i % 3 == 0:
-				cylinder(world, Vector3(side * 5.0, 0.9, z), 0.6, 1.5, "264f4c" if d.region < 2 else "a5c5cc", 0.02)
-	for i in d.pads.size():
-		var p := C.pad_point(d, i)
-		var pad := Node3D.new()
-		world.add_child(pad)
-		pad.position = Vector3(p.x, 0, p.y)
-		cylinder(pad, Vector3(0, 0.12, 0), 0.73, 0.22, "dbbd7b")
-		cylinder(pad, Vector3(0, 0.25, 0), 0.62, 0.1, "29494e")
-		var price := label3(pad, "%d / 9+" % (i + 1), Vector3(0, 0.75, 0), "ffe292", 36)
-		price.name = "Price"
-		pad_nodes.append(pad)
-		var tower := Node3D.new()
-		pad.add_child(tower)
-		tower_nodes.append(tower)
-	for x in [-2.4, 2.4]:
-		box(world, Vector3(x, 0.75, 8.6), Vector3(1, 1.5, 0.9), "b8935f")
-		cylinder(world, Vector3(x, 1.85, 8.6), 0.72, 0.8, "33727a", 0.02)
-	box(world, Vector3(0, 0.8, 8.6), Vector3(3.8, 1.5, 0.5), "51746e")
-	label3(world, "HEARTH REFUGE", Vector3(0, 2.3, 8.6), "ffe4ad", 36)
-	avatar = Node3D.new()
-	world.add_child(avatar)
-	cylinder(avatar, Vector3(0, 0.4, 0), 0.27, 0.7, "28bdba", 0.18)
-	cylinder(avatar, Vector3(0, 0.88, 0), 0.2, 0.28, "f6c798")
-	box(avatar, Vector3(0, 1.08, 0), Vector3(0.46, 0.12, 0.35), "e4bc6c")
-	for x in [-0.2, 0.2]:
-		box(avatar, Vector3(x, 1.2, 0), Vector3(0.07, 0.24, 0.09), "e4bc6c")
-	cylinder(avatar, Vector3(0.32, 0.8, 0), 0.12, 0.25, "fff5b6")
-	actors = Node3D.new()
-	world.add_child(actors)
-	var ring := TorusMesh.new()
-	ring.inner_radius = 4.9
-	ring.outer_radius = 5.0
-	ring.rings = 40
-	ring.ring_segments = 5
-	range_ring = mesh(world, ring, Vector3.ZERO, "96dfcd")
-	range_ring.visible = false
-
-func draw_tower(node: Node3D, t: Dictionary) -> void:
-	for child in node.get_children():
-		node.remove_child(child)
-		child.queue_free()
-	if t.family < 0:
-		return
-	var accent: String = ["efcd74", "df8c58", "78e4e4"][int(t.family)]
-	cylinder(node, Vector3(0, 0.65, 0), 0.4, 0.9, "a87b55", 0.32)
-	if t.family == 0:
-		box(node, Vector3(0, 1.25, 0), Vector3(1.18, 0.15, 0.16), accent)
-		box(node, Vector3(0, 1.25, -0.15), Vector3(0.13, 0.15, 0.8), "253b44")
-	elif t.family == 1:
-		cylinder(node, Vector3(0, 0.65, 0), 0.55, 0.85, "384d57")
-		var barrel := cylinder(node, Vector3(0, 1.1, -0.15), 0.34, 0.8, accent)
-		barrel.rotation_degrees.x = -35
-		cylinder(node, Vector3(0, 1.4, -0.35), 0.25, 0.04, "202d36")
-	else:
-		cylinder(node, Vector3(0, 1.2, 0), 0.4, 1.05, accent, 0.03)
-		for x in [-0.45, 0.45]:
-			cylinder(node, Vector3(x, 0.9, 0), 0.15, 0.7, "b5f2e7", 0.02)
-	if t.fork > 0:
-		for x in [-0.42, 0.42]:
-			box(node, Vector3(x, 0.5, 0.4), Vector3(0.15, 0.35, 0.15), accent)
-	var name: String = Cat.FAMILIES[int(t.family)] if t.fork == 0 else Cat.FORKS[int(t.family)][int(t.fork) - 1]
-	label3(node, name, Vector3(0, 1.9, 0), accent, 29).name = "TowerName"
+	super.make_world()
 
 func make_ui() -> void:
 	super.make_ui()
@@ -207,23 +99,24 @@ func layout() -> void:
 	super.layout()
 	if journey == null:
 		return
-	var size := get_viewport().get_visible_rect().size
-	var w := size.x
-	var h := size.y
+	var w := safe_rect.size.x
+	var h := safe_rect.size.y
+	var origin := safe_rect.position
 	for i in 3:
-		action_buttons[i].position = Vector2(18 + i * (w - 42) / 3, h - 160)
-		action_buttons[i].size = Vector2((w - 60) / 3, 112)
-	guidance.position = Vector2(10, h - 280)
-	guidance.size = Vector2(w - 20, 90)
-	stick.position = Vector2(30, h - 460)
+		action_buttons[i].position = origin + Vector2(i * (w + 6) / 3, h - 120)
+		action_buttons[i].size = Vector2((w - 12) / 3, 112)
+	guidance.position = origin + Vector2(0, h - 232)
+	guidance.size = Vector2(w, 90)
+	stick.position = origin + Vector2(20, h - 360)
 	terminal.size.y = 575
+	terminal.position.y = origin.y + (h - terminal.size.y) / 2
 	next_button.position = Vector2(24, 336)
 	next_button.size = Vector2(572, 96)
 	for child in terminal.get_children():
 		if child is Button and child.text == "PAUSE / LOG":
 			child.position.y = 444
-	journey.position = Vector2((w - 660) / 2, 245)
-	journey.size = Vector2(660, minf(920, h - 270))
+	journey.size = Vector2(660, minf(920, h - 60))
+	journey.position = origin + Vector2((w - 660) / 2, (h - journey.size.y) / 2)
 	journey_scroll.position = Vector2(20, 76)
 	journey_scroll.size = Vector2(620, journey.size.y - 320)
 	seed_button.position = Vector2(20, journey.size.y - 225)
@@ -236,13 +129,13 @@ func layout() -> void:
 		if child.has_meta("journey_back"):
 			child.position = Vector2(338, journey.size.y - 116)
 			child.size = Vector2(300, 96)
-	confirm_panel.position = Vector2((w - 620) / 2, 400)
 	confirm_panel.size = Vector2(620, 430)
+	confirm_panel.position = origin + Vector2((w - 620) / 2, (h - 430) / 2)
 	for child in confirm_panel.get_children():
 		if child is Button:
 			child.size = Vector2(576, 96)
-	ending_panel.position = Vector2((w - 640) / 2, 280)
 	ending_panel.size = Vector2(640, 650)
+	ending_panel.position = origin + Vector2((w - 640) / 2, (h - 650) / 2)
 	for child in ending_panel.get_children():
 		if child is Button:
 			child.size = Vector2(588, 96)
@@ -354,7 +247,7 @@ func arm_action(choice: int) -> void:
 func stop_move() -> void:
 	super.stop_move()
 	if stick != null:
-		stick.position = Vector2(30, get_viewport().get_visible_rect().size.y - 460)
+		stick.position = safe_rect.position + Vector2(20, safe_rect.size.y - 360)
 
 func begin() -> void:
 	state.phase = "playing"
@@ -495,12 +388,10 @@ func _physics_process(delta: float) -> void:
 		return
 	if not paused and state.phase == "playing":
 		var events := C.tick(state, input_vector, delta)
+		presenter.queue_events(events, state.time)
 		for e in events:
 			if e.kind == "shot":
-				campaign_bolt(e)
 				tone([180, 105, 430][int(e.family)], 0.025)
-			elif e.kind == "heal" and not settings.reduced_effects:
-				impact(Vector3(e.x, 0.1, e.z), 1.0, "9fde9e")
 			elif e.kind == "pickup":
 				tone(700, 0.05)
 			elif e.kind == "leak":
@@ -518,118 +409,4 @@ func _physics_process(delta: float) -> void:
 	fill_audio()
 
 func sync_world(dt: float) -> void:
-	avatar.position = Vector3(state.x, 0.15, state.z)
-	var signature := ""
-	for t in state.towers:
-		signature += "%d:%d;" % [t.family, t.fork]
-	if signature != built_signature:
-		built_signature = signature
-		for i in state.towers.size():
-			draw_tower(tower_nodes[i], state.towers[i])
-			(pad_nodes[i].get_node("Price") as Label3D).visible = state.towers[i].family < 0
-	for i in state.towers.size():
-		var t: Dictionary = state.towers[i]
-		if t.family >= 0:
-			var title := tower_nodes[i].get_node("TowerName") as Label3D
-			title.text = "SILENCED" if t.jam > 0 else (Cat.FAMILIES[int(t.family)] if t.fork == 0 else Cat.FORKS[int(t.family)][int(t.fork) - 1])
-			title.modulate = Color("ff8c79" if t.jam > 0 else ["efcd74", "df8c58", "78e4e4"][int(t.family)])
-	var near := C.nearby(state)
-	range_ring.visible = near >= 0 and state.towers[near].family >= 0 and not paused
-	if range_ring.visible:
-		var r: float = state.definition.families[int(state.towers[near].family)].stats[int(state.towers[near].fork)].range
-		range_ring.scale = Vector3.ONE * r / 5
-		var p := C.pad_point(state.definition, near)
-		range_ring.position = Vector3(p.x, 0.17, p.y)
-	var alive := {}
-	for e in state.enemies:
-		var id := int(e.id)
-		alive[id] = true
-		var spec: Dictionary = state.definition.roster[id]
-		if not enemy_nodes.has(id):
-			var n := Node3D.new()
-			actors.add_child(n)
-			var role: String = spec.role
-			var color: String = {"raider": "cd704e", "runner": "e6b452", "armor": "7f8197", "swarm": "b67a98", "mender": "8ebf72", "shade": "9875c0", "ram": "b58b60", "matriarch": "a56c9c", "regent": "c7dce0"}[role]
-			cylinder(n, Vector3(0, 0.33, 0), 0.22, 0.6, color, 0.12)
-			cylinder(n, Vector3(0, 0.73, 0), 0.19, 0.25, color)
-			if role == "armor":
-				box(n, Vector3(0, 0.5, 0.12), Vector3(0.55, 0.5, 0.23), "b4b7c7")
-			elif role == "runner":
-				cylinder(n, Vector3(0, 0.94, 0), 0.25, 0.3, color, 0.01)
-			elif role == "mender":
-				box(n, Vector3(0.3, 0.6, 0), Vector3(0.1, 1, 0.1), "c8f098")
-			elif role == "swarm":
-				n.scale = Vector3.ONE * 0.72
-			elif role in ["ram", "matriarch", "regent"]:
-				n.scale = Vector3.ONE * 1.7
-				if role == "ram":
-					box(n, Vector3(0, 0.5, 0.25), Vector3(0.9, 0.7, 0.4), color)
-				elif role == "matriarch":
-					for x in [-0.5, 0.5]:
-						cylinder(n, Vector3(x, 0.4, 0), 0.35, 0.6, color, 0)
-				else:
-					for x in [-0.3, 0, 0.3]:
-						cylinder(n, Vector3(x, 1.1, 0), 0.12, 0.6, "b9f6f1", 0)
-				label3(n, role.to_upper(), Vector3(0, 1.75, 0), "ffdc9d", 26)
-			var health := box(n, Vector3(0, 1.18, 0), Vector3(0.55, 0.07, 0.1), "ffe2a4")
-			health.name = "Health"
-			enemy_nodes[id] = n
-		var n: Node3D = enemy_nodes[id]
-		var p := C.point(state.definition, e)
-		n.position = Vector3(p.x, 0.15, p.y)
-		n.get_node("Health").scale.x = maxf(0.05, e.hp / spec.hp)
-		n.get_node("Health").material_override.albedo_color = Color("81dfe4" if e.slow > 0 else "ffe2a4")
-	for id in enemy_nodes.keys():
-		if not alive.has(id):
-			enemy_nodes[id].queue_free()
-			enemy_nodes.erase(id)
-	var groups := {}
-	for c in state.coins:
-		var key := "%d:%d" % [roundi(c.x), roundi(c.z)]
-		if not groups.has(key):
-			groups[key] = {"x": c.x, "z": c.z, "value": 0}
-		groups[key].value += c.value
-	for key in groups:
-		if not coin_nodes.has(key):
-			var n := Node3D.new()
-			actors.add_child(n)
-			var coin := cylinder(n, Vector3(0, 0.35, 0), 0.23, 0.1, "ffce55")
-			coin.rotation_degrees.x = 72
-			var value := label3(n, "", Vector3(0, 0.85, 0), "ffdc85", 29)
-			value.name = "Value"
-			coin_nodes[key] = n
-		var n: Node3D = coin_nodes[key]
-		n.position = Vector3(groups[key].x, 0.1 + (0.06 * sin(state.time * 4 + groups[key].z) if not settings.reduced_effects else 0.0), groups[key].z)
-		(n.get_node("Value") as Label3D).text = str(int(groups[key].value))
-	for key in coin_nodes.keys():
-		if not groups.has(key):
-			coin_nodes[key].queue_free()
-			coin_nodes.erase(key)
-	for i in range(bolts.size() - 1, -1, -1):
-		bolts[i].life -= dt
-		if bolts[i].life <= 0:
-			bolts[i].node.queue_free()
-			bolts.remove_at(i)
-		else:
-			var fraction: float = 1 - bolts[i].life / 0.25
-			bolts[i].node.position = bolts[i].from.lerp(bolts[i].to, fraction)
-			if bolts[i].family == 1:
-				bolts[i].node.position.y += sin(fraction * PI) * 1.5
-
-func campaign_bolt(e: Dictionary) -> void:
-	var p := C.pad_point(state.definition, int(e.pad))
-	var from := Vector3(p.x, 1.3, p.y)
-	var to := Vector3(e.x, 0.7, e.z)
-	var node := box(actors, from, Vector3(0.12, 0.12, 0.5), ["ffdf8b", "f09e64", "8df6f1"][int(e.family)])
-	if not from.is_equal_approx(to):
-		node.look_at(to)
-	bolts.append({"node": node, "life": 0.25, "from": from, "to": to, "family": e.family})
-	if e.area > 0 and not settings.reduced_effects:
-		impact(Vector3(e.x, 0.12, e.z), e.area, "e3ba86" if e.family == 1 else "87e7dd")
-
-func impact(at: Vector3, radius: float, color: String) -> void:
-	var node := cylinder(actors, at, radius, 0.025, color)
-	var material: StandardMaterial3D = node.material_override
-	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	material.albedo_color.a = 0.25
-	bolts.append({"node": node, "life": 0.25, "from": at, "to": at, "family": 3})
+	super.sync_world(dt)
