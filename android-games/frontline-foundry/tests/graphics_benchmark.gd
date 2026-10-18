@@ -19,6 +19,10 @@ var finished := false
 var expected_start := ""
 var measure_frames := false
 var sampler := preload("res://tests/frame_sampler.gd").new()
+var require_reuse := false
+var actor_leases := {}
+var reuse_observations: Array = []
+var save_boundary := {}
 
 func _initialize() -> void:
 	for arg in OS.get_cmdline_user_args():
@@ -30,6 +34,8 @@ func _initialize() -> void:
 			expected_start = arg.trim_prefix("--expected-start=")
 		if arg == "--measure-frames":
 			measure_frames = true
+		if arg == "--require-reuse":
+			require_reuse = true
 	call_deferred("run")
 
 func run() -> void:
@@ -61,6 +67,7 @@ func run() -> void:
 		await finish()
 		return
 	start_time = scene.state.time
+	observe_reuse()
 	if measure_frames:
 		sampler.start(root)
 		RenderingServer.frame_post_draw.connect(sample_frame)
@@ -82,6 +89,7 @@ func run() -> void:
 		else:
 			steer((choice.goal - C.position(scene.state)).limit_length())
 			await physics_frame
+		observe_reuse()
 		for spec in [["equipping", scene.state.recruits.any(func(r): return r.phase == "equipping")], ["deployment", scene.state.recruits.any(func(r): return r.phase == "deploying" and r.waypoint == 1)], ["recruit-fire", scene.state.recruits.any(func(r): return r.shots > 0)], ["vehicle", scene.state.recruits.any(func(r): return r.role == "rover" and r.phase == "fighting")], ["collected", not scene.state.collected.is_empty()], ["first-casualty", not scene.state.killed.is_empty()], ["hostile-contact", scene.state.commander_taken + scene.state.hq_taken > 0]]:
 			if spec[1] and not observed.has(spec[0]):
 				observed[spec[0]] = scene.state.time
@@ -92,7 +100,46 @@ func run() -> void:
 		file.store_string(JSON.stringify(sampler.stop(), "  "))
 	await release()
 	await snap("99-final-untouched-state")
+	if require_reuse:
+		var pool: Dictionary = scene.presentation.pool_snapshot()
+		if pool.actors_reused <= 0 or pool.effects_reused <= 0 or reuse_observations.is_empty():
+			errors.append("Authentic passage did not observe actual actor/model/rig plus effect-node reuse")
+		if pool.inactive_actors > pool.inactive_actor_cap or pool.inactive_effects > pool.inactive_effect_cap or pool.active_effects > pool.active_effect_cap:
+			errors.append("Actual reserve/effect cap exceeded")
+		if scene.state.phase == "playing" and not scene.paused:
+			await click("II")
+		await retain_app_written_boundary()
+		await snap("genuine-paused-save-boundary")
 	await finish()
+
+func observe_reuse() -> void:
+	if not require_reuse:
+		return
+	for key in scene.presentation.units:
+		var actor: Node3D = scene.presentation.units[key]
+		var id := actor.get_instance_id()
+		if actor_leases.has(id) and actor_leases[id] != key:
+			reuse_observations.append({"simulation": scene.state.time, "instance": id, "old_key": actor_leases[id], "new_key": key, "role": actor.role, "team": actor.team, "model_instance": actor.model.get_instance_id(), "rig_instance": actor.rig.get_instance_id() if actor.rig != null else 0, "death_time": actor.death_time, "epoch": scene.presentation.adapter.epoch})
+		actor_leases[id] = key
+
+func retain_app_written_boundary() -> void:
+	var actual := S.read()
+	if not actual.ok or not D.same(actual.state, scene.state) or not D.same(actual.profile, scene.profile) or not D.same(actual.settings, scene.settings) or not D.same(actual.career, scene.career):
+		errors.append("Actual GUI pause did not preserve complete current state/profile/settings/career on disk")
+		return
+	var destination := folder.path_join("reuse-save")
+	DirAccess.make_dir_recursive_absolute(destination)
+	var hashes := {}
+	for slot in 2:
+		var path: String = S.PATH + str(slot)
+		if FileAccess.file_exists(path):
+			var file := FileAccess.open(destination.path_join("frontline-save-" + str(slot)), FileAccess.WRITE)
+			file.store_buffer(FileAccess.get_file_as_bytes(path))
+			file.close()
+			hashes[str(slot)] = FileAccess.get_sha256(path)
+	save_boundary = {"method": "Exact raw app-written slots after real GUI pause; no packet edits or forced save handler", "slot_sha256": hashes, "state": actual.state, "profile": actual.profile, "settings": actual.settings, "career": actual.career, "revision": actual.revision}
+	var file := FileAccess.open(destination.path_join("provenance.json"), FileAccess.WRITE)
+	file.store_string(JSON.stringify(save_boundary, "  "))
 
 func origin() -> Vector2:
 	return Vector2(110, root.get_visible_rect().size.y - 115)
@@ -152,7 +199,7 @@ func click(text: String) -> void:
 		await process_frame
 
 func snap(name: String) -> void:
-	var row := {"name": name, "frame": Engine.get_physics_frames(), "state": scene.state.duplicate(true), "career": scene.career.duplicate(true), "presentation_epoch": scene.presentation.adapter.epoch, "actors": scene.presentation.units.size(), "effects": scene.presentation.effects.size()}
+	var row := {"name": name, "frame": Engine.get_physics_frames(), "state": scene.state.duplicate(true), "career": scene.career.duplicate(true), "profile": scene.profile.duplicate(true), "settings": scene.settings.duplicate(true), "presentation_epoch": scene.presentation.adapter.epoch, "actors": scene.presentation.units.size(), "effects": scene.presentation.effects.size(), "pool": scene.presentation.pool_snapshot()}
 	if not folder.is_empty() and DisplayServer.get_name() != "headless" and not sampler.active:
 		await RenderingServer.frame_post_draw
 		var image := root.get_texture().get_image()
@@ -169,6 +216,10 @@ func finish() -> void:
 			sources["art/models/" + file] = FileAccess.get_sha256("res://art/models/" + file)
 	var report := {"scope": "Normal 1x real Godot ScreenTouch/GUI input; read-only policy; no gameplay injection, handler calls, forced save/render state, clipboard or ADB. Structural/headless execution is not visual acceptance.", "renderer": ProjectSettings.get_setting("rendering/renderer/rendering_method"), "engine": Engine.get_version_info(), "display": DisplayServer.get_name(), "viewport": root.size, "time_scale": Engine.time_scale, "sources_sha256": sources, "inputs": inputs, "captures": captures, "observed": observed, "errors": errors, "normal_speed_simulation_seconds": scene.state.time - start_time if scene != null else 0}
 	report["dimensions"] = {"logical_visible_rect": root.get_visible_rect().size, "window_pixels": DisplayServer.window_get_size(), "root_window_size": root.size, "framebuffer_pixels": root.get_texture().get_size() if DisplayServer.get_name() != "headless" else Vector2.ZERO, "startup_window_override": Vector2i(ProjectSettings.get_setting("display/window/size/window_width_override"), ProjectSettings.get_setting("display/window/size/window_height_override")), "movie_encoded_size": "See external ffprobe movie-probe.json; script/root size never establishes encoded dimensions"}
+	if scene != null:
+		report["pool"] = scene.presentation.pool_snapshot()
+		report["reuse_observations"] = reuse_observations
+		report["save_boundary"] = save_boundary
 	if not folder.is_empty():
 		var file := FileAccess.open(folder.path_join("benchmark-report.json"), FileAccess.WRITE)
 		file.store_string(JSON.stringify(report, "  "))

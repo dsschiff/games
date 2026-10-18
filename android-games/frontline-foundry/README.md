@@ -1,4 +1,8 @@
-# Frontline Foundry — 0.3.0 / code 3 candidate
+# Frontline Foundry — 0.3.1 / code 4 candidate
+
+The bounded [pooling follow-up](POOLING_FOLLOWUP.md) adds scene-owned inactive
+actor/effect reuse to the accepted 0.3.0 graphics. Art, rules and saves are retained.
+This higher-version source candidate has not been exported or installed by its builder.
 
 The accepted rigged stylized 3D benchmark is expanded across the campaign,
 legacy battle and seeded skirmishes. See [GRAPHICS_PRODUCTION.md](GRAPHICS_PRODUCTION.md)
@@ -111,7 +115,7 @@ sortie-prefixed captures retain original journey, alternatives, failures and
 corrections. Windows clipboard source/fresh-destination checks need an exclusive
 reserved interactive window. Fresh Import validates transfer, not earned play.
 
-Android preset: `com.dsschiff.frontlinefoundry`, **0.3.0/code3**, arm64-v8a+x86_64,
+Android preset: `com.dsschiff.frontlinefoundry`, **0.3.1/code4**, arm64-v8a+x86_64,
 official non-Gradle min24/target36 template, no permissions or embedded credentials.
 This builder did not export/install APKs, use ADB, alter SDK/global editor settings,
 push or publish. UID/icon metadata uses an isolated copied portable editor with

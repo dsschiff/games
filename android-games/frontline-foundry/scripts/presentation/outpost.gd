@@ -33,6 +33,118 @@ var region := {}
 var relay_rings: Array[MeshInstance3D] = []
 var visual_steps: Array = []
 var hq_socket: Marker3D
+const MAX_INACTIVE_ACTORS := 24
+const MAX_INACTIVE_PER_ROLE_SIDE := 4
+const MAX_EFFECTS := 36
+const MAX_INACTIVE_EFFECTS := 36
+const MAX_INACTIVE_PER_EFFECT := 18
+var actor_pool := {}
+var effect_pool := {}
+var model_resources := {}
+var palette_materials := {}
+var pool_stats := {"actors_created": 0, "actors_reused": 0, "actors_retired": 0, "actors_discarded": 0, "effects_created": 0, "effects_reused": 0, "effects_retired": 0, "effects_discarded": 0}
+
+func _exit_tree() -> void:
+	# Every reserve node remains a child and dies with this owner. Resource
+	# dictionaries are owner-local, including when the viewport itself survives.
+	actor_pool.clear()
+	effect_pool.clear()
+	model_resources.clear()
+	palette_materials.clear()
+	materials.clear()
+
+func pool_key(role: String, team: String) -> String:
+	# Role includes the authored primary weapon and attached loadout. Team fixes
+	# the material/health-bar palette; authoritative IDs never enter this key.
+	return role + ":" + team
+
+func inactive_count(pool: Dictionary) -> int:
+	var count := 0
+	for reserve in pool.values():
+		count += reserve.size()
+	return count
+
+func acquire_actor(role: String, team: String, phase: float) -> Node3D:
+	var key := pool_key(role, team)
+	var reserve: Array = actor_pool.get(key, [])
+	var actor: Node3D
+	if reserve.is_empty():
+		actor = Actor.new()
+		add_child(actor)
+		actor.configure(role, team, phase, model_resources, palette_materials)
+		pool_stats.actors_created += 1
+	else:
+		actor = reserve.pop_back()
+		assert(actor.role == role and actor.team == team)
+		actor.reset_for_reuse(phase)
+		pool_stats.actors_reused += 1
+	if reserve.is_empty():
+		actor_pool.erase(key)
+	return actor
+
+func retire_actor(actor: Node3D) -> void:
+	pool_stats.actors_retired += 1
+	var key := pool_key(actor.role, actor.team)
+	var reserve: Array = actor_pool.get(key, [])
+	if reserve.size() >= MAX_INACTIVE_PER_ROLE_SIDE or inactive_count(actor_pool) >= MAX_INACTIVE_ACTORS:
+		pool_stats.actors_discarded += 1
+		actor.free()
+		return
+	actor.reset_for_reuse(0)
+	actor.hide()
+	actor.process_mode = Node.PROCESS_MODE_DISABLED
+	reserve.append(actor)
+	actor_pool[key] = reserve
+
+func acquire_effect(kind: String, point: Vector3, color: String) -> MeshInstance3D:
+	var reserve: Array = effect_pool.get(kind, [])
+	var node: MeshInstance3D
+	if reserve.is_empty():
+		node = MeshInstance3D.new()
+		node.mesh = BoxMesh.new() if kind == "tracer" else TorusMesh.new()
+		add_child(node)
+		pool_stats.effects_created += 1
+	else:
+		node = reserve.pop_back()
+		pool_stats.effects_reused += 1
+	if reserve.is_empty():
+		effect_pool.erase(kind)
+	node.transform = Transform3D.IDENTITY
+	node.position = point
+	node.material_override = mat(color)
+	node.material_overlay = null
+	node.transparency = 0
+	node.layers = 1
+	node.process_mode = Node.PROCESS_MODE_INHERIT
+	node.set_meta("effect_kind", kind)
+	if kind != "tracer":
+		var ring := node.mesh as TorusMesh
+		ring.rings = 32 if kind == "warning_drill" else (24 if kind == "warning_storm" else 16)
+		ring.ring_segments = 6 if kind == "pulse" else 8
+		ring.inner_radius = 1.90 if kind == "warning_drill" else 1.14
+		ring.outer_radius = 2.0 if kind == "warning_drill" else 1.25
+	node.show()
+	return node
+
+func retire_effect(node: MeshInstance3D, kind: String) -> void:
+	pool_stats.effects_retired += 1
+	var reserve: Array = effect_pool.get(kind, [])
+	if reserve.size() >= MAX_INACTIVE_PER_EFFECT or inactive_count(effect_pool) >= MAX_INACTIVE_EFFECTS:
+		pool_stats.effects_discarded += 1
+		node.free()
+		return
+	node.transform = Transform3D.IDENTITY
+	node.material_override = null
+	node.material_overlay = null
+	node.hide()
+	node.process_mode = Node.PROCESS_MODE_DISABLED
+	reserve.append(node)
+	effect_pool[kind] = reserve
+
+func pool_snapshot() -> Dictionary:
+	var result := pool_stats.duplicate()
+	result.merge({"inactive_actors": inactive_count(actor_pool), "inactive_effects": inactive_count(effect_pool), "active_actors": units.size(), "corpses": corpses.size(), "active_effects": effects.size(), "essential_warnings": warnings.size(), "inactive_actor_cap": MAX_INACTIVE_ACTORS, "per_role_side_cap": MAX_INACTIVE_PER_ROLE_SIDE, "inactive_effect_cap": MAX_INACTIVE_EFFECTS, "per_effect_cap": MAX_INACTIVE_PER_EFFECT, "active_effect_cap": MAX_EFFECTS, "model_resources": model_resources.size(), "palette_materials": palette_materials.size()})
+	return result
 
 func build(state: Dictionary) -> void:
 	campaign = int(state.catalog) == 2
@@ -243,8 +355,8 @@ func cylinder(point: Vector3, radius: float, height: float, color: String) -> Me
 	return mesh(shape, point, color)
 
 func asset(id: String, point: Vector3) -> Node3D:
-	var n := Actor.instantiate_model("res://art/models/" + id + ".glb")
-	Actor.finish_materials(n, {"Rock": Color(region.rock), "Snow": Color(region.cap), "WorldStone": Color(region.rock)})
+	var n := Actor.instantiate_model("res://art/models/" + id + ".glb", model_resources)
+	Actor.finish_materials(n, {"Rock": Color(region.rock), "Snow": Color(region.cap), "WorldStone": Color(region.rock)}, "prop", palette_materials)
 	add_child(n)
 	n.position = point
 	return n
@@ -269,6 +381,7 @@ func fit(view: Vector2) -> void:
 func sync(state: Dictionary, is_paused: bool, reduced_effects: bool, dt: float) -> void:
 	reduced = reduced_effects
 	var was_paused: bool = adapter.paused
+	var old_time: float = adapter.last_time
 	var reset := adapter.ingest(state, is_paused, dt)
 	if reset:
 		# Production order is tick -> queue -> sync. Preserve only the newly earned
@@ -277,23 +390,8 @@ func sync(state: Dictionary, is_paused: bool, reduced_effects: bool, dt: float) 
 		clear_transients()
 		pending = earned_resume
 		for key in corpses:
-			corpses[key].node.queue_free()
+			retire_actor(corpses[key].node)
 		corpses.clear()
-	for key in adapter.current:
-		var data: Dictionary = adapter.current[key]
-		var created := false
-		if not units.has(key):
-			var unit := Actor.new()
-			add_child(unit)
-			unit.configure(data.role, data.team, float(key.hash() % 100) * .15)
-			units[key] = unit
-			unit.position = data.position
-			created = true
-		units[key].set_snapshot(data, reset or created)
-		if reset or created:
-			units[key].position = data.position
-			units[key].position.y = ground_height(units[key].position)
-		units[key].visible = data.team != "ally" or data.role in available
 	for key in units.keys():
 		if not adapter.current.has(key):
 			var n: Node3D = units[key]
@@ -302,8 +400,26 @@ func sync(state: Dictionary, is_paused: bool, reduced_effects: bool, dt: float) 
 				n.death_time = 0
 				corpses[str(adapter.epoch) + ":" + key] = {"node": n, "left": .85}
 			else:
-				n.queue_free()
+				retire_actor(n)
 			units.erase(key)
+	for key in adapter.current:
+		var data: Dictionary = adapter.current[key]
+		var created := false
+		if units.has(key) and (units[key].role != data.role or units[key].team != data.team):
+			retire_actor(units[key])
+			units.erase(key)
+		if not units.has(key):
+			var unit := acquire_actor(data.role, data.team, float(key.hash() % 100) * .15)
+			units[key] = unit
+			unit.position = data.position
+			created = true
+		elif reset and (state.time < old_time or (units[key].death_time >= 0 and data.phase != "fallen")):
+			units[key].reset_for_reuse(float(key.hash() % 100) * .15)
+		units[key].set_snapshot(data, reset or created)
+		if reset or created:
+			units[key].position = data.position
+			units[key].position.y = ground_height(units[key].position)
+		units[key].visible = data.team != "ally" or data.role in available
 	for i in stations.size():
 		var bought: bool = state.support != "none" if campaign and i == 4 else (state.bought[i] > 0 if campaign else state.pads[i])
 		stations[i].visible = bought
@@ -350,28 +466,18 @@ func sync_warnings(state: Dictionary) -> void:
 		var key := "%s:%.4f:%.4f" % [mark.source, mark.x, mark.z]
 		live[key] = true
 		if not warnings.has(key):
-			var ring := TorusMesh.new()
-			ring.inner_radius = 1.14
-			ring.outer_radius = 1.25
-			ring.rings = 24
-			ring.ring_segments = 8
-			warnings[key] = mesh(ring, Vector3(mark.x, .07, mark.z), "e44d39")
+			warnings[key] = acquire_effect("warning_storm", Vector3(mark.x, .07, mark.z), "e44d39")
 		warnings[key].scale.y = .30
 	for enemy in state.enemies:
 		if enemy.get("role", "") == "drill" and enemy.get("telegraph", 0) > 0:
 			var key := "drill:" + str(int(enemy.id))
 			live[key] = true
 			if not warnings.has(key):
-				var ring := TorusMesh.new()
-				ring.inner_radius = 1.90
-				ring.outer_radius = 2.0
-				ring.rings = 32
-				ring.ring_segments = 8
-				warnings[key] = mesh(ring, Vector3(enemy.x, .08, enemy.z + 1.8), "e44d39")
+				warnings[key] = acquire_effect("warning_drill", Vector3(enemy.x, .08, enemy.z + 1.8), "e44d39")
 			warnings[key].scale.y = .25
 	for key in warnings.keys():
 		if not live.has(key):
-			warnings[key].queue_free()
+			retire_effect(warnings[key], warnings[key].get_meta("effect_kind"))
 			warnings.erase(key)
 
 func queue_events(events: Array) -> void:
@@ -426,26 +532,24 @@ func present_event(event: Dictionary) -> void:
 		corpses[corpse_key].node.hit()
 
 func pulse(point: Vector3, color: String, radius: float) -> void:
-	if effects.size() >= 36:
+	if effects.size() >= MAX_EFFECTS:
 		return
-	var ring := TorusMesh.new()
+	var n := acquire_effect("pulse", point, color)
+	var ring := n.mesh as TorusMesh
 	ring.inner_radius = radius * .75
 	ring.outer_radius = radius
-	ring.rings = 16
-	ring.ring_segments = 6
-	var n := mesh(ring, point, color)
 	n.scale.y = .25
-	effects.append({"node": n, "left": .18})
+	effects.append({"node": n, "left": .18, "kind": "pulse"})
 	effects_emitted += 1
 
 func tracer(from: Vector3, to: Vector3, color: String) -> void:
-	if effects.size() >= 36 or from.distance_squared_to(to) < .01:
+	if effects.size() >= MAX_EFFECTS or from.distance_squared_to(to) < .01:
 		return
-	var shape := BoxMesh.new()
+	var n := acquire_effect("tracer", (from + to) * .5, color)
+	var shape := n.mesh as BoxMesh
 	shape.size = Vector3(.025, .025, from.distance_to(to))
-	var n := mesh(shape, (from + to) * .5, color)
 	n.look_at(to)
-	effects.append({"node": n, "left": .055})
+	effects.append({"node": n, "left": .055, "kind": "tracer"})
 	effects_emitted += 1
 
 func clear_transients() -> void:
@@ -454,7 +558,7 @@ func clear_transients() -> void:
 	hq_hit_left = 0
 	hq.rotation.z = 0
 	for effect in effects:
-		effect.node.queue_free()
+		retire_effect(effect.node, effect.kind)
 	effects.clear()
 	for key in units:
 		units[key].reset_transients()
@@ -480,12 +584,12 @@ func _process(dt: float) -> void:
 		corpses[key].node.pose(dt, Vector3.ZERO, false)
 		corpses[key].left -= dt
 		if corpses[key].left <= 0:
-			corpses[key].node.queue_free()
+			retire_actor(corpses[key].node)
 			corpses.erase(key)
 	for i in range(effects.size() - 1, -1, -1):
 		effects[i].left -= dt
 		if effects[i].left <= 0:
-			effects[i].node.queue_free()
+			retire_effect(effects[i].node, effects[i].kind)
 			effects.remove_at(i)
 
 func ground_height(point: Vector3) -> float:

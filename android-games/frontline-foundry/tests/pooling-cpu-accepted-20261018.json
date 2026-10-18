@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "state": "CPU_frozen_visual_and_native_followup_pending",
+  "final_pool_checks": 93,
+  "final_presentation_regression_checks": 103,
+  "accepted_final_runtime_runs": [
+    {
+      "run": "C:\\projects\\active\\_worktrees\\games-frontline-foundry-20261018\\android-games\\frontline-foundry\\.artifacts\\pooling-freeze-cpu-pooling-20261018T183003087975Z",
+      "receipt_sha256": "702c208bac4d2dd3286a87223889e529c5fdbb45baee2ef5bfac668c0c86853b",
+      "artifact_rows_reverified": 186,
+      "all_current_source_hashes_match": true
+    },
+    {
+      "run": "C:\\projects\\active\\_worktrees\\games-frontline-foundry-20261018\\android-games\\frontline-foundry\\.artifacts\\root-final-pooling-regression-checks-20261018T185415123053Z",
+      "receipt_sha256": "7ef8ed5486951e5998d3981f62919080dedbfea3539c127a4a538c3efa8a2efc",
+      "artifact_rows_reverified": 187,
+      "all_current_source_hashes_match": true
+    }
+  ],
+  "historical_genuine_cpu": {
+    "run": "C:\\projects\\active\\_worktrees\\games-frontline-foundry-20261018\\android-games\\frontline-foundry\\.artifacts\\pooling-genuine-pinned-cpu-capture-20261018T182559311270Z",
+    "receipt_sha256": "ced9dcdeead54ac2682cd7dd3337f8992214a81a27f9746e86a12848dc36f494",
+    "actor_reuses": [
+      {
+        "death_time": -1.0,
+        "epoch": 3,
+        "instance": 85798685180,
+        "model_instance": 86234893171,
+        "new_key": "enemy:22",
+        "old_key": "enemy:20",
+        "rig_instance": 86268447604,
+        "role": "mortar",
+        "simulation": 163.700000000012,
+        "team": "enemy"
+      },
+      {
+        "death_time": -1.0,
+        "epoch": 3,
+        "instance": 218506464255,
+        "model_instance": 218942671873,
+        "new_key": "enemy:26",
+        "old_key": "enemy:23",
+        "rig_instance": 218976226231,
+        "role": "sapper",
+        "simulation": 193.666666666702,
+        "team": "enemy"
+      }
+    ],
+    "effect_reuses": 103,
+    "qualification": "Precedes final actor.gd default-cache ownership correction and synthetic test additions; retained as historical proof. Final source must independently pass genuine rendered reuse passage."
+  },
+  "art_files_unchanged": 97,
+  "glb_models_unchanged": 47,
+  "remaining": [
+    "Astra CPU source review",
+    "One genuine55s rendered reuse passage on final clean source",
+    "Separate uncapped host timing passage",
+    "Root signed0.3.1/code4 actual3to4 update and privatebundle"
+  ],
+  "physical_testing": "deferred_by_user",
+  "interrupted_builder": "Coordinator finished verification and freeze directly after task status notLoaded/interrupted; no new separate user-visible prompt delivered."
+}
