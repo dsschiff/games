@@ -187,7 +187,9 @@ def main():
     report = json.loads(report_path.read_text()) if report_path.exists() else {}
     passed &= bool(report) and report.get("failures", 1) == 0
     media = {}
-    if args.native_frames and (run / "frames/000000.png").exists():
+    # A failed/timed-out passage may leave PNGs without its final inventory.
+    # Keep a failed receipt instead of crashing while trying to encode it.
+    if args.native_frames and report and (run / "native-frame-inventory.json").exists() and (run / "frames/000000.png").exists():
         movie = run / "continuous.mp4"
         encoding, _ = execute(["ffmpeg", "-v", "error", "-framerate", "30", "-i", str(run / "frames/%06d.png"), "-an", "-c:v", "libx264", "-preset", "fast", "-crf", "18", "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(movie)], run, env, "encode", 240)
         decoding, _ = execute(["ffmpeg", "-v", "error", "-i", str(movie), "-f", "null", "-"], run, env, "decode", 180) if encoding["passed"] else ({"passed": False}, "")

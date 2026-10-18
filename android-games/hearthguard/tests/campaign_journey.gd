@@ -289,7 +289,7 @@ func click(text: String) -> void:
 	for b in scene.find_children("*", "Button", true, false):
 		if b.text == text and b.is_visible_in_tree():
 			target = b
-	if target != null and scene.journey_list.is_ancestor_of(target):
+	if scene.state.schema == 2 and target != null and scene.journey_list.is_ancestor_of(target):
 		for attempt in 40:
 			var area: Rect2 = scene.journey_scroll.get_global_rect()
 			if area.encloses(target.get_global_rect()):
