@@ -24,3 +24,16 @@ Track implemented, automatically verified, ready for phone testing, and phone te
 
 One active coordinating goal; durable milestone records instead of nested goals. Introduce one persistent development chat per game as its work begins. Sol builds; Astra reviews architecture, reference interpretation, difficult defects and release evidence. Each builder has an isolated worktree and exclusive game-directory ownership; the coordinator owns integration/shared tooling. Every iteration advances a named milestone and records changes, actual checks, artifacts, blockers and next action. No store/public release, paid assets or services.
 
+
+
+## Approved graphics stage, 2026-10-18
+
+Daniel rejected the current presentation quality and chose stylized3D for all six
+games using his Top Force screenshot as the standard. Implement
+`android-games/GRAPHICS-OVERHAUL.md`: archive six old game chats after durable
+handoffs, establish Frontline's playable benchmark while fixing Gear's window
+fill, then complete all six graphical overhauls. Gear installation/play on his
+phone is user-reported, with unknown installed version. Further phone testing is
+explicitly deferred and does not block graphics development or delivery of
+graphics-reviewed/emulator-validated candidates. Physical/human acceptance stays
+unverified where not established; the functional baseline is preserved.

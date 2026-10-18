@@ -14,7 +14,7 @@ The active portfolio goal is defined in `GOAL.md`. Status reflects evidence, not
 | M7 Zombie survival game | Conditional code3 software candidate ready for phone testing; native outcomes/platform, camera correction and whole-earned-save update independently verified | Complete reference-based shooting/survival game and verified APK |
 | M8 Portfolio acceptance | Six software candidates; physical portfolio checks pending | Six independent reviews resolved, update compatibility, physical-phone checks and delivery index |
 
-## Current next actions
+## Functional baseline next actions (superseded by graphics stage below)
 
 1. Final selected-reference implementation fidelity is accepted for all six in `android-games/reviews/portfolio-final-fidelity-astra.md`. Exact commercial equations, advertiser provenance and human pacing remain qualified; physical acceptance remains separate.
 2. Keep verified foundation/prototype evidence landed. Physical Samsung checks remain separate from emulator evidence.
@@ -25,3 +25,18 @@ The active portfolio goal is defined in `GOAL.md`. Status reflects evidence, not
 7. Keep Frontline code2 conditional software candidate frozen for physical testing. Actual update, paid victory, separate natural loss/Retry, real clipboard import/rejection, native Back, settings, active Home/cold and cover-inner resize pass bounded review. Later rejected previews have identical clear nonuniform PNGs; earlier actual graphics failures remain separately retained. Keep Dead Run code3 frozen: camera P2 closed, real2-to3 whole-earned-save retention and unfolded live field verified. Inherited code2 win/loss/Retry/progression/transfer/Back remain retained. Six phone-test candidates are frozen.
 8. Thread/worktree mapping is in `android-games/threads.json`; executable evidence is indexed under `android-games/evidence/`.
 
+
+## Active graphics stage
+
+| Milestone | Current state | Exit condition |
+| --- | --- | --- |
+| G0 Closeout | Handoffs prepared; native archive pending | Six old chats archived; source/saves/evidence retained |
+| G1 First pair | Frontline benchmark and Gear full-window fix starting | Actual playable 3D quality reviewed; save-compatible Gear sizing update |
+| G2 Full presentation | Queued | Complete Frontline+Gear, Hearthguard+Hook, DeadRun+Tower with original modeled actors/environment and real animation |
+| G3 Graphics delivery | Queued | Six reviewed higher-version APKs, genuine update retention, emulator/layout checks and before-after clips |
+
+The current work is `android-games/GRAPHICS-OVERHAUL.md`; status/ownership is in
+`android-games/graphics-overhaul.json`. Additional phone testing is deferred by
+the user and cannot block G0–G3. Existing baseline approvals do not establish the
+new visual standard. Keep screenshots, normal-speed motion review and measured
+frame timing distinct from headless correctness and physical/human acceptance.

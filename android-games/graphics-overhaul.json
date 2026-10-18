@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "status": "approved_implementation_starting",
+  "baseline_commit": "6e26b3c2a3938de1828527630f95fb6a219f61b8",
+  "reference": {
+    "private_path": ".references/graphics-overhaul/user-top-force-44941.jpg",
+    "sha256": "e68fba12343bc0a2410d2d66cd02192652eb908b364fe5e7ad57337c1085ca8c",
+    "user_supplied": true,
+    "purpose": "Visual quality reference, not copied art or motion evidence"
+  },
+  "decisions": {
+    "all_six_stylized_3D": true,
+    "first_pair": [
+      "frontline-foundry",
+      "gear-bastion"
+    ],
+    "gear_sizing_before_full_3D": true,
+    "later_pairs": [
+      [
+        "hearthguard",
+        "hook-and-hunger"
+      ],
+      [
+        "dead-run",
+        "tower-trials"
+      ]
+    ],
+    "max_builders": 2,
+    "max_reviewers": 1,
+    "further_phone_testing": "deferred_by_user_not_graphics_blocker"
+  },
+  "user_phone_feedback": {
+    "game": "gear-bastion",
+    "installed_version": "unknown",
+    "installed_and_played": "user_reported",
+    "visual_quality": "insufficient",
+    "window_fill": "insufficient",
+    "physical_acceptance_complete": false
+  },
+  "old_sessions": [
+    {
+      "slug": "gear-bastion",
+      "title": "Gear Bastion Android game",
+      "thread_id": "01a14b9d-90d7-73c1-9fd4-9b74cbda3fa9",
+      "handoff": "android-games/handoffs/graphics-gear-bastion.md",
+      "archive_status": "pending_native_action"
+    },
+    {
+      "slug": "tower-trials",
+      "title": "Tower Trials Android game",
+      "thread_id": "01a14c6a-7df5-7001-a1a2-b833cd66c2a4",
+      "handoff": "android-games/handoffs/graphics-tower-trials.md",
+      "archive_status": "pending_native_action"
+    },
+    {
+      "slug": "hook-and-hunger",
+      "title": "Hook and Hunger Android game",
+      "thread_id": "01a14c6d-ed39-77a3-ba23-93b5210f38b1",
+      "handoff": "android-games/handoffs/graphics-hook-and-hunger.md",
+      "archive_status": "pending_native_action"
+    },
+    {
+      "slug": "hearthguard",
+      "title": "Hearthguard Android game",
+      "thread_id": "01a14cf9-259a-7473-8a90-2a4e341e8219",
+      "handoff": "android-games/handoffs/graphics-hearthguard.md",
+      "archive_status": "pending_native_action"
+    },
+    {
+      "slug": "frontline-foundry",
+      "title": "Frontline Foundry Android game",
+      "thread_id": "01a14d1d-c90a-7562-b246-6cd243ad96ed",
+      "handoff": "android-games/handoffs/graphics-frontline-foundry.md",
+      "archive_status": "pending_native_action"
+    },
+    {
+      "slug": "dead-run",
+      "title": "Dead Run Android game",
+      "thread_id": "01a14d53-a3ae-7f61-ab87-0006aaa25dd4",
+      "handoff": "android-games/handoffs/graphics-dead-run.md",
+      "archive_status": "pending_native_action"
+    }
+  ],
+  "active_graphics_sessions": []
+}

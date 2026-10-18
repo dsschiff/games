@@ -525,3 +525,9 @@
 
 - Final Astra matrix accepts M0 selected-reference implementation fidelity for all six, using prior complete clip reviews, corrected Butcher chain/resource and Last Human gain observations, new full Gear playback and code3 native camera closure. No new P1/P2. Third-party Kingshot/Top Force attribution, exact commercial arithmetic and sampled source boundaries remain explicit. The overall goal remains unfinished for physical and human acceptance.
 - Final-fidelity canonical preservation7files/91,392bytes/every destination hash read back/69prior receipts unchanged, receiptSHA4b9e6ee07c9a057657672b986d49fd3db40d217d2f42bac0cd248f1fa325d4cd. Six-file local delivery creation and final origin/main/canonical ancestry/source/APK proof remain the last software handoff steps.
+
+
+### Approved graphics overhaul and old-session closeout
+
+- User reports installing/playing Gear on his phone (version unknown), rejects graphical quality and reports unused window space. Chosen direction: genuine stylized3D across all six; Frontline benchmark+Gear adaptive fit first. Additional phone testing is deferred, not a graphics blocker. Screenshot privately copied unchanged with SHA256 to root/canonical references.
+- All six worker worktrees are clean; all six canonical APK hashes reverified; owned source tracked LF equals landed6e26b3c (Gear94/Tower88/Hook62/Hearth45/Frontline59/Dead87files). Exact per-game graphics handoffs and approved contract prepared before archiving. Worktrees/artifacts/saves/signing remain retained. Dev doctor reports only20worktrees warning, no critical memory problem; recent retained game worktrees are not pruned.
