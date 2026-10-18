@@ -2,15 +2,15 @@
 
 These are local debug-signed APKs for Daniel's own use. They are excluded from Git and have no store release. Current build paths and hashes are in `delivery.json`.
 
-## Gear Bastion 0.3.2 / code 6
+## Gear Bastion 0.3.3 / code 7
 
-The software candidate is ready for phone testing. It contains nine campaign encounters, three seeded replays, medals, an ending, versioned local saves, portable save codes, sound and reduced-effects settings. Its original brass foundry produces troops that march through three arches and defend against beetle raiders.
+This sizing update expands the battlefield and rearranges controls for cover, unfolded and landscape windows. It preserves existing saves; actual emulator code6-to7 install-over, input, resize and cold launch pass independent review. Further phone testing is deferred. The full 3D overhaul is still in progress. It contains nine campaign encounters, three seeded replays, medals, an ending, versioned local saves, portable save codes, sound and reduced-effects settings. Its original brass foundry produces troops that march through three arches and defend against beetle raiders.
 
 On the build PC, the verified APK is:
 
-`C:/projects/active/games/.artifacts/gear-bastion/20261018T002003656002Z/gear-bastion.apk`
+`C:/projects/active/games/.artifacts/gear-bastion/20261018T120200983836Z/gear-bastion.apk`
 
-SHA-256: `bb009b600b24c3498363889b0099d361f19ce1bd4fee24a8b704eb3906e3f72b`
+SHA-256: `9d090cb7dc1222c873109dae5adc1364dc07d910c7bed93545d773bf995ae472`
 
 Transfer that file to the phone using USB or a private file-transfer route. Open it from Files and allow that specific app to install it if Android requests permission. Keep the existing installation when updating: install over it rather than uninstalling, so local saves remain available. Updates must use the same signing identity. The build has no requested Android permissions and works offline.
 

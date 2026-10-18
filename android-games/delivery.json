@@ -1,22 +1,32 @@
 {
   "schema_version": 1,
-  "scope": "Local personal APK delivery; physical-phone acceptance remains pending",
+  "scope": "Local personal APK delivery; further phone testing deferred during graphics overhaul",
   "install_guide": "android-games/INSTALL.md",
   "games": [
     {
       "slug": "gear-bastion",
-      "version": "0.3.2",
-      "version_code": 6,
+      "version": "0.3.3",
+      "version_code": 7,
       "package": "com.dsschiff.gearbastion",
-      "state": "software_candidate_ready_for_phone_testing",
-      "apk": "C:/projects/active/games/.artifacts/gear-bastion/20261018T002003656002Z/gear-bastion.apk",
-      "apk_sha256": "bb009b600b24c3498363889b0099d361f19ce1bd4fee24a8b704eb3906e3f72b",
-      "source_sha256": "623e4f84b809ccc81f63198fd701705bcb8dc023ffcf49bc7ab597b5e246ebde",
-      "evidence": "android-games/evidence/gear-code6-candidate.json",
+      "state": "native_window_fit_conditional_candidate_3D_pending",
+      "apk": "C:/projects/active/games/.artifacts/gear-bastion/20261018T120200983836Z/gear-bastion.apk",
+      "apk_sha256": "9d090cb7dc1222c873109dae5adc1364dc07d910c7bed93545d773bf995ae472",
+      "source_sha256": "6056e5fce1104a60ed01d8ae8f7d46465d584b4c0c359e20ba0ffd219a81ada3",
+      "evidence": "android-games/evidence/gear-code7-window-fit.json",
       "physical_phone_tested": false,
       "sound_verified_on_phone": false,
       "phone_performance_measured": false,
-      "source_text_lf_sha256": "623e4f84b809ccc81f63198fd701705bcb8dc023ffcf49bc7ab597b5e246ebde"
+      "source_text_lf_sha256": "6056e5fce1104a60ed01d8ae8f7d46465d584b4c0c359e20ba0ffd219a81ada3",
+      "historical_baseline": {
+        "version": "0.3.2",
+        "version_code": 6,
+        "apk": "C:/projects/active/games/.artifacts/gear-bastion/20261018T002003656002Z/gear-bastion.apk",
+        "apk_sha256": "bb009b600b24c3498363889b0099d361f19ce1bd4fee24a8b704eb3906e3f72b",
+        "source_sha256": "623e4f84b809ccc81f63198fd701705bcb8dc023ffcf49bc7ab597b5e246ebde",
+        "evidence": "android-games/evidence/gear-code6-candidate.json"
+      },
+      "user_reported_phone_play": "unknown_installed_version",
+      "additional_phone_testing": "deferred_by_user"
     },
     {
       "slug": "tower-trials",
