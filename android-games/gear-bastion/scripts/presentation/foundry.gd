@@ -36,6 +36,14 @@ var actor_pool: Dictionary = {}
 var effect_pool: Dictionary = {}
 var effect_mesh := BoxMesh.new()
 var pool_stats := {"actors_created":0,"actors_reused":0,"actors_retired":0,"effects_created":0,"effects_reused":0,"effects_retired":0}
+var occlusion_viewport_id := 0
+
+func _enter_tree() -> void:
+	occlusion_viewport_id = get_viewport().get_instance_id()
+
+func _exit_tree() -> void:
+	Actor.release_occlusion_viewport(occlusion_viewport_id)
+	occlusion_viewport_id = 0
 
 func pool_key(role: String, friendly: bool) -> String:
 	return role + (":ally" if friendly else ":enemy")

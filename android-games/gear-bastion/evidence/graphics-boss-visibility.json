@@ -409,5 +409,7 @@
       "file": "000420.png",
       "sha256": "1ec182dff8d4ac95243989ac01d96dcfbbabf66d991487c03d4777b4bb631f70"
     }
-  ]
+  ],
+  "lifecycle_followup": "evidence/graphics-cache-lifecycle.json",
+  "binding_scope_note": "Runtime pins describe the e536 visual candidate. Later owner teardown releases static viewport-specific occlusion entries; visible loop, shader, geometry and captured films remain unchanged."
 }

@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "generated_utc": "2026-10-18T17:31:58.494650+00:00",
+  "base_worker_commit": "e5368ce5d548fe5d1c0a92f1bf9f7cca5cdc9b52",
+  "candidate": "0.4.0/code8 undelivered",
+  "scope": "Only static occlusion cache lifetime: owning Foundry records its viewport on enter and releases only that viewport cache on exit. No visible loop/shader/art/rule/save/package change.",
+  "cpu": {
+    "mode": "cache-lifecycle",
+    "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\cache-lifecycle-20261018T172911571363Z",
+    "checks": 12,
+    "receipt_sha256": "32837f8e5ddf209cab57418bb21a651b043c8a73f2bb16e9413e126d8470c853",
+    "result_sha256": "02ec55450c9efc80829362bc8f77eac80b3042bcabbfcb0f65227afea6ccae3e",
+    "source_unchanged": true,
+    "runtime_sha256": {
+      "scripts/presentation/actor.gd": "81d5531dbf40ba7913b2f3e251db94e6b0dd0e0ce04874d64c07f68f9176e807",
+      "scripts/presentation/foundry.gd": "e93f6162c1e6268895e1c8fee93bcea7824eb21b8fe3e055d15b664791f1297c"
+    }
+  },
+  "actual_assertions": [
+    "Two separate live viewports populate actual ShaderMaterial/region caches.",
+    "Freeing the first viewport removes its entries and weak references confirm its ShaderMaterials are released.",
+    "Other live viewport preserves exact material instance IDs, shader uniform values and region.",
+    "Repeated release is harmless to the surviving viewport.",
+    "Freeing the owning Foundry removes its entries/resources while the viewport remains live.",
+    "A replacement Foundry in that viewport initializes fresh ShaderMaterials and region; final viewport destruction releases those too."
+  ],
+  "visual_evidence": "Existing e536 source-bound captain/siege films retained; only teardown ownership differs. No rerender or broad check rerun.",
+  "gpu": "remains released; CPU-only import/test",
+  "limits": [
+    "Focused weak-resource lifetime assertions, not a general GPU memory census.",
+    "Independent final source/visual closure and coordinator exact-source native rebuild/update remain separate.",
+    "No export/install/ADB/clipboard/push/shared-file edits by this worker."
+  ]
+}

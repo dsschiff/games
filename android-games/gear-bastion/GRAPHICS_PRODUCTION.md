@@ -111,3 +111,10 @@ Worker directly viewed captain fall frame 315 and siege fall/removal frames 400/
 The separate unpaced run loads the exact genuine dense siege start and stops naturally at victory: **614 heavy samples / 11.180s**, median/p95/p99 **17.292/21.517/25.063ms**. There is no fixed-FPS engine flag, movie writer or eligible-interval texture readback. This is the changed shader's bounded host workload, not 45 s steady state, GPU/OS-present timing, controlled speedup or phone FPS. Raw rows, visible 3D counters (shadow passes excluded) and process-wide node counts remain retained.
 
 **GPU RELEASED**, recorded 2026-10-18T17:23:15.116402+00:00, after all affected renders/timing returned; no rendering is queued. Code 0.4.0/8 remains an undelivered review candidate for root's exact-final-source rebuild, independent natural playback/source closure and native 7-to8 checks. No export/install/ADB/clipboard/push or shared-file edits by this worker.
+
+
+## Occlusion-cache owner teardown
+
+Astra identified a narrow lifetime gap after e536: static viewport-keyed ShaderMaterials/regions survived actual viewport replacement. Foundry now remembers its viewport identity on tree entry and releases only that viewport's static occlusion entries on exit. Other live viewport entries remain intact. This adds no visible-loop, shader, art, camera, rules/RNG/save or package change.
+
+The dedicated headless `cache-lifecycle` mode passes **12 assertions**, using actual viewport/Foundry creation and destruction, ShaderMaterial weak references, exact other-live-viewport material/uniform/region snapshots, idempotent release and replacement-owner creation. Receipt and retained result hashes are in `evidence/graphics-cache-lifecycle.json`; execution sources are unchanged. This is a focused resource-lifetime test, not a general GPU-memory census. No films, broad tests or rendered work were repeated. GPU remains released. Code 8 is still an undelivered candidate for root's exact patched-source rebuild and final independent closure.

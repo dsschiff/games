@@ -119,6 +119,12 @@ static func set_occlusion_region(viewport_id: int, region: Rect2) -> void:
 	for entry in occlusion_materials.values():
 		if entry.viewport==viewport_id: apply_occlusion_region(entry.material,region)
 
+static func release_occlusion_viewport(viewport_id: int) -> void:
+	occlusion_regions.erase(viewport_id)
+	for key in occlusion_materials.keys():
+		if occlusion_materials[key].viewport == viewport_id:
+			occlusion_materials.erase(key)
+
 static func find_skeleton(node: Node) -> Skeleton3D:
 	if node is Skeleton3D:
 		return node
