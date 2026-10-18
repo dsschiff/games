@@ -68,8 +68,37 @@ verify touch opens the on-screen keyboard, type through that keyboard, dismiss
 it and repeat save transfer. This is an explicit required phone check. Evidence:
 `android-games/evidence/hook-code4-candidate.json`.
 
+## Hearthguard 0.2.0 / code 2
+
+This conditional software candidate contains ten defense maps across three regions,
+three tower families with upgrade forks, six enemy roles, three bosses, an ending
+and seeded endless/replay options. Move with the left thumb, collect nearby gold,
+approach a pad and choose an explicitly priced tower or upgrade. Bolt, Mortar and
+Beacon solve different threats. Selling returns part of the investment. Journey
+contains map selection, seeds, budgets, mirrored roads and the ending. Existing
+prototype battles remain accessible through Open Expedition / Return to Legacy Pass.
+
+Verified local APK:
+
+`C:/projects/active/games/.artifacts/hearthguard/20261018T053956831230Z/hearthguard.apk`
+
+SHA-256: `928bb45d102df9d2a55e0ee3e1c51b8b7df0af5ea945d185edbf51e64484676b`
+
+Install over the existing app with the same signing identity. The actual code1-to2
+update preserves the entire old battle, results and settings. A natural Android
+loss, Retry, funded construction and first-map no-leak victory are verified.
+Native settings, invalid-code rejection, clipboard/fresh import, Back, active
+emulated cover/inner resize and cold paused restoration also pass. The complete
+campaign was exercised on desktop; representative Android play is not all ten maps.
+
+Windows rendered clipboard runs remain failed on host clipboard access; successful
+Android clipboard transfer is separate evidence. Physical on-screen keyboard/IME,
+actual folding, touch/safe areas, audible sound, measured FPS and human fun remain
+required. Regent contrast and late-game pacing are known playtest/polish limits.
+Evidence: `android-games/evidence/hearth-code2-candidate.json`.
+
 ## Phone checks still required
 
 Galaxy Z Fold7 is the working target from Daniel's description; exact model and Android version await a connected phone. Test cover and unfolded displays, actual folding during battle, touch accuracy and safe areas, audible sound, full-session pacing and heavy-encounter frame timing. The targets are 60 fps and above 30 fps during heavy encounters; neither is a measured phone result yet. Dense formations and lengthy time at the troop cap remain playtest limitations. Automatic route duration is not a measured human session.
 
-The emulator verified actual offline play, natural victory/defeat screens, Retry, save-preserving updates and lifecycle behavior. Source rules, full nine-encounter input routes and replay checks also passed independently. These establish a software candidate, not physical-phone acceptance or a judgment that the full game is fun.
+Each game evidence index separates full desktop routes from representative Android play, actual updates, unresolved results and physical-phone checks. Software-candidate status does not establish physical-phone acceptance or human fun.

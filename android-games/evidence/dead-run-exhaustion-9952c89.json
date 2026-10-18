@@ -40,7 +40,7 @@
   "campaign_handoff": "android-games/handoffs/dead-run-campaign.md",
   "campaign_activation": "Queued until explicit root activation after native prototype checks.",
   "software_candidate": false,
-  "android_native_tested": false,
+  "android_native_tested": true,
   "physical_phone_tested": false,
   "complete_game_gate": false,
   "delivery_source_sha256": "58f8de780b7a7ecc15bf664286fe1c7b4305ff8cea8f69027755d794541a587d",
@@ -81,5 +81,22 @@
     "bytes": 178914,
     "package_index_sha256": "370dc8b14f327d17862ebe644381106eae1ce42ce41d254ae19c1d87c9dbb5a7",
     "native_execution_performed": false
+  },
+  "android_native_tests_started": true,
+  "android_native_first_loop_accepted": false,
+  "native_current_stage": "Signed code1 installed without reset; source-bound natural no-input loss verified; same-loss steering Retry attempt active. No campaign/phone claim.",
+  "native_initial_setup_failure": "First helper cold-relaunched after reviewed screen and sent Start while Android splash remained visible. Bounded timeout retained; app stayed ready/tick0, so no gameplay/loss was replayed. Corrected observer retains the current reviewed loaded context before phase input.",
+  "native_original_loss": {
+    "phase": "defeat",
+    "tick": 2072,
+    "crew": 0,
+    "leaks": 9,
+    "source_unchanged": true,
+    "actual_root_terminal_viewed": true,
+    "retry_pixels_confirmed": [
+      540,
+      712
+    ],
+    "counters_are_not_full_campaign": true
   }
 }

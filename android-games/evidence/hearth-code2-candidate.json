@@ -1,0 +1,167 @@
+{
+  "stage": "conditional_software_candidate_ready_for_phone_testing",
+  "worker_commit": "6c0b0ef5ae3b273ceca18fa0ccf8f7211fd45699",
+  "integration_commit": "11a3f93aa6c422b2c9fec0d5028260a11b1546e2",
+  "source_sha256": "53c3569a91f2d9ee43f3dcdcc780b6806ad5e8e00758a9bfbf720b256bdc5ddd",
+  "preservation": {
+    "receipt": "C:\\projects\\active\\games\\.artifacts\\preservation\\hearth-dead-run-review-upgrade-20261018.json",
+    "sha256": "e41cdbe5f08886042c45f4b1a00f215c14f82e92cc88cb76ee4612f67fb2c9b8",
+    "files": 3110,
+    "bytes": 845225986,
+    "decoded_pngs": 286,
+    "prior_receipts": 31,
+    "prior_files": 9891
+  },
+  "review": "android-games/reviews/hearth-campaign-6c0b0ef-astra.md",
+  "independent_headless": {
+    "campaign_rules": 123,
+    "legacy_rules": 56,
+    "legacy_input": 44,
+    "genuine_archived_desktop_compatibility": 10,
+    "campaign_input": 76,
+    "result": "passed",
+    "warning": "One input event reused in the same frame; exact raw warning retained."
+  },
+  "independent_rendered": {
+    "checks": 78,
+    "assertion_failures": 1,
+    "engine_exit": 1,
+    "result": "failed",
+    "cause": "Windows clipboard Unable to open clipboard plus exact clipboard export assertion. No whole-route retry.",
+    "manifest_sha256": "490fa6b8e1d75e99f8137da1fab224caad6f579009a1b9f8f7ab80570928aeb8"
+  },
+  "builder_rendered": "Both raw failed host-clipboard receipts remain failed; each has 78 functional checks/zero assertion failures/exit0.",
+  "apk": {
+    "path": "C:/projects/active/games/.artifacts/hearthguard/20261018T053956831230Z/hearthguard.apk",
+    "sha256": "928bb45d102df9d2a55e0ee3e1c51b8b7df0af5ea945d185edbf51e64484676b",
+    "bytes": 57092281,
+    "version": "0.2.0",
+    "version_code": 2,
+    "signed": true,
+    "permissions": []
+  },
+  "actual_upgrade": {
+    "packet": "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.hearthguard/20261018T054516733425Z",
+    "result": "passed",
+    "checks": 24,
+    "from_code": 1,
+    "to_code": 2,
+    "preserved_entire": [
+      "state",
+      "profile",
+      "settings",
+      "committed"
+    ],
+    "campaign_starts_empty": true,
+    "cold_relaunch_retained": true,
+    "runtime_errors": false,
+    "warnings": "Three shader-cache recompilation warnings retained."
+  },
+  "native_bridge": {
+    "whole_old_state_parked_and_restored": true,
+    "whole_new_ready_state_parked_and_reopened": true,
+    "legacy_profile_settings_retained": true,
+    "no_invented_clears": true,
+    "route": "Real Open Expedition, Journey, visible scrollbar drag, Return Legacy, Open Expedition. Initial list-body swipe left the list unchanged; retained."
+  },
+  "native_first_watch": {
+    "natural_no_investment_defeat": true,
+    "simulation_seconds": 33.4666666666661,
+    "integrity": 0,
+    "leaks": 8,
+    "kills": 0,
+    "spent": 0,
+    "attempts": 1,
+    "wins": 0,
+    "untouched_terminal_viewed": true,
+    "retry_win_platform_pending": false,
+    "retry_win_verified": true,
+    "platform_pending": false,
+    "victory_simulation_seconds": 126.866666666661,
+    "victory_integrity": 16,
+    "victory_kills": 60,
+    "victory_leaks": 0,
+    "victory_spent": 135,
+    "victory_wallet": 31,
+    "funded_builds_forks": 7,
+    "family_shots": [
+      73,
+      7,
+      43
+    ],
+    "campaign_attempts_after_win": 2,
+    "campaign_wins_after_win": 1,
+    "campaign_clears_after_win": [
+      0
+    ],
+    "untouched_victory_terminal_viewed": true,
+    "instrumented_policy_with_frequent_pauses": true,
+    "preservation": {
+      "path": "C:/projects/active/games/.artifacts/preservation/hearth-code2-native-first-watch.json",
+      "sha256": "d759744d99123aab4f5c6c83e4a6bb80b338985f3007e61ff5671dc399b7b8f3",
+      "files": 2990,
+      "bytes": 72273843,
+      "decoded_pngs": 32
+    }
+  },
+  "remaining": [
+    "Independent Windows rendered78/1/exit1 and two builder host-clipboard failures remain failed; successful native clipboard is separate.",
+    "Required physical Fold7 touch, on-screen keyboard/IME, actual folding/safe areas, audible sound and measured heavy-wave performance.",
+    "Human full-session duration/fun, Regent contrast and shared-layout/late-surplus pacing concerns.",
+    "Representative native first watch is not a complete ten-map Android playthrough."
+  ],
+  "software_candidate": true,
+  "ready_for_phone_testing": true,
+  "physical_phone_tested": false,
+  "complete_game_gate": false,
+  "native_platform": {
+    "packet": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hearthguard/code2-native-platform-from-earned-first-watch-20261018T060453891915Z",
+    "raw_result": "captured_scoped_platform_checks_pending_root_visual_review",
+    "root_visual_review": "Completed after generation; original raw status remains unchanged",
+    "raw_assertions_true": 30,
+    "includes_repeated_active_loop_guards": 7,
+    "not_30_distinct_features": true,
+    "source_unchanged": true,
+    "settings_pair": true,
+    "typed_ascii_INVALID_rejected": true,
+    "invalid_import_exact_raw_slots_and_revision_unchanged": true,
+    "durable_rejection_scope": "Unchanged disk does not alone establish unchanged live memory; source/tests, visible rejection feedback and later valid whole-state Import are separate evidence.",
+    "real_clipboard_fresh_import_whole_meaning_retained": true,
+    "import_committed_false_intentional": true,
+    "native_Back_levels": true,
+    "genuine_active_earned_fixture": {
+      "revision": 479,
+      "phase": "playing",
+      "time": 6.08333333333332,
+      "spent": 10,
+      "wallet": 2,
+      "collected": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "built_Bolt_pad": 5,
+      "campaign_attempts": 2,
+      "campaign_wins": 1,
+      "campaign_clears": [
+        0
+      ]
+    },
+    "active_cover_inner_geometry_retention": true,
+    "actual_geometry_commands": 3,
+    "final_native_geometry": "1080x2400/no override",
+    "Home_cold_paused_hold": true,
+    "Resume_advances_same_run": true,
+    "runtime_errors": false,
+    "ime_verified": false,
+    "preservation": {
+      "path": "C:/projects/active/games/.artifacts/preservation/hearth-code2-native-platform.json",
+      "sha256": "d3ebe4e649f4c2d7d6da941c024ea52c4185a7013964729c7a508b441d1d3023",
+      "files": 439,
+      "bytes": 14751035,
+      "fully_decoded_pngs": 15
+    }
+  },
+  "Astra_final_disposition": "Conditional software candidate ready for physical-phone testing; no new P1/P2; native gates support delivery without erasing Windows failure."
+}

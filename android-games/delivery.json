@@ -51,11 +51,21 @@
     },
     {
       "slug": "hearthguard",
-      "state": "campaign_native_upgrade_verified_outcomes_platform_pending",
+      "state": "conditional_software_candidate_ready_for_phone_testing",
       "thread_id": "01a14cf9-259a-7473-8a90-2a4e341e8219",
-      "ready_for_phone_testing": false,
+      "ready_for_phone_testing": true,
       "physical_phone_tested": false,
-      "evidence": "android-games/evidence/hearth-campaign-code2-progress.json"
+      "evidence": "android-games/evidence/hearth-code2-candidate.json",
+      "version": "0.2.0",
+      "version_code": 2,
+      "package": "com.dsschiff.hearthguard",
+      "apk": "C:/projects/active/games/.artifacts/hearthguard/20261018T053956831230Z/hearthguard.apk",
+      "apk_sha256": "928bb45d102df9d2a55e0ee3e1c51b8b7df0af5ea945d185edbf51e64484676b",
+      "source_sha256": "53c3569a91f2d9ee43f3dcdcc780b6806ad5e8e00758a9bfbf720b256bdc5ddd",
+      "sound_verified_on_phone": false,
+      "phone_performance_measured": false,
+      "phone_ime_verified": false,
+      "qualification": "Windows host clipboard failures retained; actual native transfer succeeds. Physical IME/phone/performance/fun and Regent contrast/pacing remain open."
     },
     {
       "slug": "frontline-foundry",

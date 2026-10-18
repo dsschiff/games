@@ -13,7 +13,7 @@
       "thread_id": "01a14cf9-259a-7473-8a90-2a4e341e8219",
       "ownership_when_started": "android-games/hearthguard/",
       "handoff": "android-games/handoffs/hearthguard-prototype.md",
-      "state": "Frozen full campaign6c0b0ef: independent123/56/44/10/76 headless pass; Astra conditional go. Independent rendered78 fails clipboard. Actual signed code1-to2 update24 checks, legacy/campaign parking and native first-watch natural loss pass. Retry/win/platform and phone gates pending; builder idle."
+      "state": "Frozen6c0b0ef/code2 conditional software candidate ready for phone testing. Independent full campaign headless/Astra, actual1-to2 whole old-save preservation, native bridge/loss/Retry/win/transfer/active resize/cold pass. Windows rendered clipboard FAIL retained; physical IME/sound/FPS/folding/human gates open; builder idle."
     },
     {
       "slug": "frontline-foundry",
@@ -78,7 +78,7 @@
       "branch": "codex/hearthguard",
       "ownership": "android-games/hearthguard/",
       "activation_base": "1e3bfe7a73b15a3fadce3232a75a2e143f41d8a4",
-      "state": "Frozen full campaign6c0b0ef: independent123/56/44/10/76 headless pass; Astra conditional go. Independent rendered78 fails clipboard. Actual signed code1-to2 update24 checks, legacy/campaign parking and native first-watch natural loss pass. Retry/win/platform and phone gates pending; builder idle."
+      "state": "Frozen6c0b0ef/code2 conditional software candidate ready for phone testing. Independent full campaign headless/Astra, actual1-to2 whole old-save preservation, native bridge/loss/Retry/win/transfer/active resize/cold pass. Windows rendered clipboard FAIL retained; physical IME/sound/FPS/folding/human gates open; builder idle."
     },
     {
       "slug": "frontline-foundry",
