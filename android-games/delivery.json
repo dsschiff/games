@@ -19,8 +19,8 @@
     },
     {
       "slug": "tower-trials",
-      "state": "full_campaign_in_development",
-      "evidence": "android-games/evidence/tower-prototype-code1.json",
+      "state": "authored_campaign_verified_seeded_replay_in_development",
+      "evidence": "android-games/evidence/tower-campaign-code2.json",
       "ready_for_phone_testing": false,
       "physical_phone_tested": false
     },

@@ -1,0 +1,24 @@
+{
+  "reference_display": [1080, 2400],
+  "viewport": [600, 1066],
+  "scope": "Resume the separately touch-created code1 key-ferry route and open/close settings. This fixture does not fabricate the earned clears or route; preparation is archived in the code1 evidence index.",
+  "actions": [
+    {"type": "wait", "wait_seconds": 5},
+    {"type": "tap", "x": 968, "y": 345, "wait_seconds": 0.3},
+    {"type": "tap", "x": 540, "y": 1321, "wait_seconds": 0.3}
+  ],
+  "expected_save": {
+    "schema": 1,
+    "catalog": 1,
+    "level_id": "watch_03",
+    "level": 2,
+    "actions": ["key"],
+    "used_undo": true,
+    "settings.sound": false,
+    "settings.reduced_effects": true,
+    "profile.watch_01.best": 4,
+    "profile.watch_01.medals": 11,
+    "profile.watch_02.best": 3,
+    "profile.watch_02.medals": 11
+  }
+}

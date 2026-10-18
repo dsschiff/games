@@ -1,0 +1,17 @@
+{
+  "scope": "Require preserved code1 catalog/route/earned clears/settings after actual code2 APK migration and cold relaunch.",
+  "expected_save": {
+    "schema": 2,
+    "catalog": 1,
+    "level_id": "watch_03",
+    "level": 2,
+    "actions": ["key"],
+    "used_undo": true,
+    "settings.sound": false,
+    "settings.reduced_effects": true,
+    "profile.watch_01.best": 4,
+    "profile.watch_01.medals": 11,
+    "profile.watch_02.best": 3,
+    "profile.watch_02.medals": 11
+  }
+}

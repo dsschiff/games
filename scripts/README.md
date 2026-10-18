@@ -356,3 +356,21 @@ nearby combat earned two kills/salvage14, hull6, seven hits and approximately
 eight simulation seconds. Actual controls set sound off/reduced effects on;
 Home retained the whole state/settings. This is an old-version fixture from
 the original pre-import-fix APK, not a full-game or update acceptance result.
+
+Tower's tested code1→2 fixture is
+`tower-trials-code2-from-prepared-code1.json`, with
+`tower-trials-code2-upgrade-expectations.json` as `--new-expectations`.
+Use `--schema-path schema --expected-version 2` and preserve every old saved
+field except schema/revision: actions, catalog, level, level_id, profile,
+settings, used_undo and recoverable. This resumes the separately prepared real
+key-ferry route, not a synthetic save. The actual update preserves catalog1.
+
+Run `tower-trials-code2-continue-legacy-key-route.json` from that migrated route
+to spend the key and rescue the ferry keeper. Its untouched terminal capture
+must show power44/Keys0/KEEPER RESCUED. Then
+`tower-trials-code2-natural-campaign-defeat.json` selects catalog2's first watch
+through Journey and loses to equality. Follow with
+`tower-trials-code2-natural-campaign-retry-win.json`; require pre-Home
+LANTERN EXTINGUISHED and KEEPER RESCUED captures, respectively. All three
+fixtures preserve the two earlier clears plus the newly earned ferry clear.
+These bounded Android outcomes do not establish a full36-puzzle Android run.
