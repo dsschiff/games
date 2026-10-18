@@ -31,8 +31,8 @@
     "worker_status_delivery": "Root pulls read_thread and local durable results; builders do not send outbound status messages to coordinator",
     "required_performance_followups": {
       "frontline-foundry": "Bounded pooling higher-version follow-up after Gear archive before Hook starts",
-      "gear-bastion": "Bounded pooling and unseen-role rendered closure before final code8 rebuild/native update",
-      "hearthguard": "Bounded pools and first-inspection composition/capture corrections before longer films"
+      "gear-bastion": "Pool source/runtime and carapace closed; captain/siege dense readability2/4 requires correction before final rebuild/native",
+      "hearthguard": "Pools and bounded first-scene repairs closed; full production evidence pending"
     }
   },
   "user_phone_feedback": {
@@ -94,7 +94,7 @@
       "thread_id": "01a14ecf-ca7d-7ff1-a858-ca1aa9682d76",
       "branch": "codex/gear-graphics",
       "worktree": "C:/projects/active/_worktrees/games-gear-bastion-20261017",
-      "phase": "pooling_and_missing_role_followup"
+      "phase": "captain_siege_dense_visibility_correction"
     },
     {
       "slug": "hearthguard",
@@ -102,7 +102,7 @@
       "thread_id": "01a14f9d-4b9b-7bd3-abd6-897a1188086d",
       "branch": "codex/hearthguard-graphics",
       "worktree": "C:/projects/active/_worktrees/games-hearthguard-20261018",
-      "phase": "CPU_pooling_and_first_visual_repairs"
+      "phase": "bounded_inspection_accepted_CPU_production_preparation"
     }
   ],
   "review_contract": "android-games/reviews/graphics-quality-contract-astra.md",
@@ -134,17 +134,18 @@
     "android_release": "not_yet_built",
     "production": "authorized_first_pair"
   },
-  "render_slot": "Gear source-bound opening/heavy/later full motion; root Frontline native app parked",
+  "render_slot": "Gear exclusive bounded captain/siege dense-fight visibility correction; Hearth CPU production preparation",
   "gear_3d_checkpoint": {
     "evidence": "android-games/evidence/gear-3d-second-inspection.json",
     "worker_commit": "bbb8fe1af6d8eea7071e955bcb840d5a72235dc9",
     "integration_commit": "820e049",
-    "status": "third_composition_closed_full_motion_active",
-    "graphical_apk": "not_yet_built",
+    "status": "pooling_closed_captain_siege_dense_visibility_blocked",
+    "graphical_apk": "two_undelivered_historical_code8_builds_final_rebuild_required",
     "worker_evidence": "android-games/gear-bastion/evidence/graphics-composition-cpu.json",
     "independent_checks": 12071,
     "independent_input_checks": 1462,
-    "composition_review": "android-games/reviews/gear-third-inspection-astra.md"
+    "composition_review": "android-games/reviews/gear-third-inspection-astra.md",
+    "additive_review": "android-games/reviews/gear-pooling-role-closure-astra.md"
   },
   "frontline_production_checkpoint": {
     "worker_commit_reviewed": "998dce3063eeedd2e60954b89b2796a0771ca257",
@@ -171,5 +172,5 @@
       "handoff": "android-games/handoffs/graphics-frontline-production.md"
     }
   ],
-  "scheduling_note": "Use completed Frontline builder slot for Hearthguard CPU while Gear finishes motion; Hook starts after Gear closes; at most2builders."
+  "scheduling_note": "Gear and Hearth only active builders. After Gear final delivery/archive, reopen retained Frontline for bounded pool/code4 update, then archive/start Hook. Later DeadRun and Tower."
 }

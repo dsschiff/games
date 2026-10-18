@@ -3,7 +3,7 @@
   "worker_commit": "01f650afc73edaab01be8e5858b410df20babb3c",
   "integration_commit": "60e0281efba424160af5ba7485a41b8a240d00bf",
   "game_tree": "f5701e4f7233e01ab220b39b174ecca137a39803",
-  "status": "historical_visual_candidate_pending_pooling_and_three_unseen_roles",
+  "status": "pooling_and_carapace_closed_captain_siege_visibility_blocked",
   "observed_visual_rows": {
     "minimum": 3,
     "maximum": 3,
@@ -25,7 +25,8 @@
     "source_unchanged": true,
     "signature_verified": true,
     "permissions": [],
-    "rebuild_required_after_pool_followup": true
+    "rebuild_required_after_pool_followup": true,
+    "historical": true
   },
   "preservation": {
     "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\gear-production-01f650a",
@@ -45,15 +46,43 @@
     "path": "android-games/gear-bastion/.artifacts/graphics-production/boss-hud-20261018T160529816285Z"
   },
   "remaining": [
-    "Bounded actor and effect instance reuse with complete reset/contact/cap checks",
-    "Rendered captain/siege/carapace appearance, attack/contact and removal using earned encounters",
-    "Bounded pooled dense follow-up and separate unpaced timing",
-    "Final reviewed source rebuild, native7to8 update, private bundle and archive"
+    "Readable modeled captain/siege attack/contact and fall in actual dense fights",
+    "Independent additive source and normal-speed corrected-role review",
+    "Final reviewed source rebuild, native7to8 whole-save update, private bundle and archive"
   ],
   "physical_testing": "deferred_by_user",
   "review_preservation": {
     "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\gear-production-01f650a\\review-addendum",
     "receipt_sha256": "243372b0898ee05841dbd30aa400af5b7f60adf565c12bcd6d6e456c0d8b50be",
     "files": 3
+  },
+  "pooling_worker_commit": "cfff7013bfb1ce3e41a11721b84aa8c602d34c7f",
+  "pooling_integration_commit": "f33b557",
+  "pooling_cpu_checks": 456,
+  "additive_review": "android-games/reviews/gear-pooling-role-closure-astra.md",
+  "blocked_role_scores": {
+    "captain": 2,
+    "siege": 2,
+    "scale": 4
+  },
+  "review_addendum_preservation": {
+    "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\pooled-review-addendum",
+    "files": 3,
+    "bytes": 36875,
+    "receipt_sha256": "0e3641278f31448f7b6ceb7ff03034ac30efbe2d57242c3c20c14bb078874d04"
+  },
+  "pooled_preservation": {
+    "packet": "C:/projects/active/games/.artifacts/graphics-overhaul/gear-pooled-cfff701",
+    "files": 127,
+    "bytes": 41096805,
+    "receipt_sha256": "1fa499ef5b7d0acc0ba1111bbe23bb905d9710160fe0221d3468bcc802e774c9"
+  },
+  "pooled_candidate_build": {
+    "sha256": "c6d4d5a6c4190af6fbe8b800a5433b8c5f5ff44175a904fb998fbeb73b671f6a",
+    "bytes": 60727744,
+    "code": 8,
+    "installed": false,
+    "delivered": false,
+    "rebuild_required_after_visibility_fix": true
   }
 }

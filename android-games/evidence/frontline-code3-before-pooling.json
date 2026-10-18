@@ -1,0 +1,11 @@
+{
+  "scope": "Read-only actual code3 package/save baseline before queued bounded pooling update; no fresh APK binary pull",
+  "preservation_packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\frontline-code3-before-pooling",
+  "preservation_receipt_sha256": "ed84d43631f28cca744316963ee45d4d2b939af7926fd4730a409f63c5edd2ed",
+  "files": 8,
+  "bytes": 51190,
+  "genuine_save_reads_twice_identical": true,
+  "actual_installed_code": 3,
+  "next_candidate_code": 4,
+  "physical_testing": "deferred"
+}

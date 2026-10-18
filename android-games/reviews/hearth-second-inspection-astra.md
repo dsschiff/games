@@ -1,0 +1,19 @@
+# Hearthguard second bounded composition inspection
+
+2026-10-18. **The requested first-scene composition/capture corrections are supported; proceed to the planned production evidence.** This is not final eight-area, all-region, all-role or Android acceptance.
+
+Reviewed frozen worker `34ce074`, equivalent coordinator `3b58962d942a1522b763b6c0f73f2658b7742df4`, including the previously source-cleared pool change. Scoped commit comparison is empty. All 124 retained source pins match the coordinator game. All eight files listed in root `gear-pooling-review/hearth-second/review-packet.json` match their packet hashes. Actual root run is `android-games/hearthguard/.artifacts/root-second-inspect-20261018T163818136591Z`; its receipt passes with unchanged source, and passage report has two checks / zero failures. Parent's separate 192 composition-check result is supporting context, not a replacement for the visual inspection.
+
+I played the original 720×1280 / 16.267s film naturally from the visible 1× start control through ended in the same owned Brave tab used for Gear. Film SHA `3c24313579635c05d36850b200dd1bfd41d3b2e63f28a26cd988e1b17240583b`. Read the visible playback audit; retained it as `hearth_second` in `../graphics-overhaul/gear-pooling-review/astra-playback-audit.json`. No post-start seek or rate change. Directly viewed both full-resolution originals: `opening.png` (`2b83a290cd5ca460206b90a0e9a11a15158a200c6ec13d87ed21a8df8d0d2b9c`) and `passage-end.png` (`194de9c9d6c65f523056959d936016114ff158e8f5647f60423bbcf02e65fbbe`). Sampling limits apply; I did not inspect every movie frame individually.
+
+| Earlier bounded issue | Observation and disposition |
+|---|---|
+| Clipped/repetitive edge scenery | The shown scene now uses three separated settlement clusters at different vertical positions, rather than a continuous repeated border. Houses, trees, citizens and wall ends remain inside the native frame. The lower refuge is also intact. Closed for the inspected scene; unseen regional layouts are not certified. |
+| Crest/subtitle overlap | Native opening/end show the crest alongside HEARTHGUARD, with Copper March / Copper Pass on a distinct line below. No collision or clipping. Closed. |
+| Tiny price/type labels | Native images clearly read PAD / FROM 9 GOLD and BOLT / MORTAR. The endpoint's large 2D choice buttons show SIEGE 36 GOLD, SCATTER 34 GOLD and SELL TOWER +8 GOLD, with nearby selected-tower context. The whole UI supplies the decision cue; small redundant landmark names are not being used as the sole price channel. Closed. |
+| Bright flat ground / invisible road | Darker olive ground separates the ochre winding road from the field; the route is continuously visible from Copper Market to Hearth Refuge. Red raiders and turquoise defenders stand apart from both surfaces. Ground remains intentionally simple, but the earlier route/brightness problem is corrected. Closed for this sample. |
+| Wrong capture resolution | The supplied movie and original stills are native 720×1280, with 488 retained native frames reported by the packet; no stretching of an old 450×800 buffer is presented as this run. Hash binding is intact. Closed. |
+
+Actual visible movement at about 10.566s shows the commander away from the first built Bolt tower and a red raider column following the road. Original passage-end shows Bolt and Mortar, readable rings, active contact near the front raiders, and the header's 4 / 60 stopped count; the movie ends at a coherent pause menu at 16.267s. This supports the bounded scene inspection, not completion of the watch or campaign.
+
+The owned tab `413128857` was closed, existing user tabs left untouched, and the browser/GPU slot explicitly released. No new render, Godot process, ADB action or suite was started. Full opening/heavy/later motion, regional/role and replay coverage, runtime metrics and native release evidence remain pending under the established production plan.

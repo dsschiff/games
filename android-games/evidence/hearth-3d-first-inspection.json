@@ -3,7 +3,7 @@
   "worker_commit": "e581026930e55a6ef5626fe2bfb7f3275e784ca0",
   "integration_commit": "d2bf769",
   "game_tree": "8172251a39e12773669fe35b54cd0375915ab3ea",
-  "status": "first_visual_inspection_requires_repairs",
+  "status": "bounded_composition_capture_and_pool_source_closed_full_production_pending",
   "models": 30,
   "reproducible_models": 30,
   "root_checks": {
@@ -36,15 +36,48 @@
     "bytes": 1727317,
     "receipt_sha256": "7c4f7333e54b3c294a6e995641fbfb0897b9f59e5fd42555096b18d28044c50b"
   },
-  "required_repairs": [
-    "Fit full scenery silhouettes inside frame; vary clustered placement",
-    "Reserve crest inset for title and subtitle",
-    "Legible pad price/tower labels",
-    "Balance bright flat ground and prop materials/lighting",
-    "Use native-frame capture for later movies",
-    "Bounded actor/effect reuse pools"
-  ],
+  "required_repairs": [],
   "visual_accepted": false,
   "apk_delivered": false,
-  "physical_testing": "deferred_by_user"
+  "physical_testing": "deferred_by_user",
+  "repaired_worker_commit": "34ce0743afeabfee303146b7ab0ec0303147b561",
+  "repaired_integration_commit": "3b58962d942a1522b763b6c0f73f2658b7742df4",
+  "pooling_worker_commit": "2ca853c042fe20437e5ac315e4b0217c757b2ec7",
+  "root_additive_checks": {
+    "pool": 49,
+    "pooled_integration": 328,
+    "composition": 192,
+    "failures": 0,
+    "source_unchanged": true
+  },
+  "second_inspection": {
+    "path": "android-games/hearthguard/.artifacts/root-second-inspect-20261018T163818136591Z",
+    "native_movie": [
+      720,
+      1280
+    ],
+    "frames": 488,
+    "seconds": 16.266667,
+    "movie_sha256": "3c24313579635c05d36850b200dd1bfd41d3b2e63f28a26cd988e1b17240583b",
+    "review": "android-games/reviews/hearth-second-inspection-astra.md",
+    "scope": "First scene only; Bolt and Mortar built, four enemies stopped, refuge16; no full-watch acceptance"
+  },
+  "production_remaining": [
+    "Normal-speed opening/heavy/later footage",
+    "Observed regional and role coverage, bounded concrete gap closure",
+    "Separate unpaced timing, reset/resize/cold/legacy evidence",
+    "Independent full presentation review and native2to3 whole-save update"
+  ],
+  "second_preservation": {
+    "packet": "C:/projects/active/games/.artifacts/graphics-overhaul/hearth-second-34ce074",
+    "files": 38,
+    "bytes": 2761800,
+    "receipt_sha256": "299a1760da4ddc6de24fc11f361699ddf2b8301c3a75bb046a24de8c7c58406f"
+  },
+  "review_addendum_preservation": {
+    "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\pooled-review-addendum",
+    "files": 3,
+    "bytes": 36875,
+    "receipt_sha256": "0e3641278f31448f7b6ceb7ff03034ac30efbe2d57242c3c20c14bb078874d04"
+  }
 }

@@ -1,0 +1,16 @@
+{
+  "scope": "Read-only actual code2 package/save baseline before graphics update; no fresh APK binary pull",
+  "preservation": {
+    "packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\hearth-code2-before-graphics",
+    "files": 8,
+    "bytes": 94858,
+    "receipt_sha256": "996bc96f2637f8a9fa05d6d578b7cd891709661cfb0e6d624f007bd9a7b40924"
+  },
+  "genuine_save_reads_twice_identical": true,
+  "actual_installed_code": 2,
+  "next_candidate_code": 3,
+  "app_launch": false,
+  "data_mutated": false,
+  "whole_packet_includes_parked_campaign_legacy": true,
+  "physical_testing": "deferred"
+}
