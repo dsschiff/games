@@ -149,12 +149,42 @@ def require_expectation_spec(spec: dict, label: str) -> None:
         raise ValueError(f"{label} saved-state assertions are required")
 
 
+def decode_enveloped_slot(raw: bytes) -> dict:
+    """Verify a stable-slot envelope before observing its decoded fields."""
+    if len(raw) > 600000:
+        raise ValueError("Save envelope exceeds the supported limit")
+    envelope = json.loads(raw)
+    if (not isinstance(envelope, dict) or not isinstance(envelope.get("payload"), str)
+            or not isinstance(envelope.get("sha256"), str)
+            or hashlib.sha256(envelope["payload"].encode("utf-8")).hexdigest() != envelope["sha256"]):
+        raise ValueError("Save envelope checksum or structure is invalid")
+    packet = json.loads(envelope["payload"])
+    if not isinstance(packet, dict):
+        raise ValueError("Save payload must be an object")
+    revision = packet.get("revision")
+    if (isinstance(revision, bool) or not isinstance(revision, (int, float))
+            or not math.isfinite(revision) or revision != int(revision) or not 0 <= revision <= 100000000
+            or not isinstance(packet.get("committed"), bool)):
+        raise ValueError("Save payload revision/commit flag is invalid")
+    return packet
+
+
+def select_enveloped_slot(candidates: list[tuple[str, bytes]]) -> tuple[str, dict]:
+    """Fail closed on corrupt stable slots; do not silently certify game recovery."""
+    if not candidates:
+        raise ValueError("No stable save slots found")
+    decoded = [(name, decode_enveloped_slot(raw)) for name, raw in candidates]
+    return max(decoded, key=lambda item: item[1]["revision"])
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--from-apk", required=True, type=Path)
     parser.add_argument("--to-apk", required=True, type=Path)
     parser.add_argument("--package", required=True)
     parser.add_argument("--save", required=True, help="Relative app-data JSON path, e.g. files/bastion-save.json")
+    parser.add_argument("--alternating-envelope", action="store_true",
+                        help="Observe checksum-wrapped stable slots SAVE0/SAVE1; all present slots must validate. Does not test interrupted-save recovery")
     parser.add_argument("--actions", required=True, type=Path, help="Old-version input fixture with saved-state assertions")
     parser.add_argument("--preserve-path", action="append", default=[], help="Repeat for unchanged critical dot paths; arrays use numeric indices")
     parser.add_argument("--preserve-map", action="append", default=[], metavar="OLD=NEW",
@@ -185,6 +215,8 @@ def main(argv=None) -> int:
               "reset_test_data_authorized": args.reset_test_data, "preserve_paths": args.preserve_path,
               "numeric_comparison_policy": NUMERIC_COMPARISON,
               "runner_sha256": sha256(Path(__file__))}
+    report["save_observation"] = ("checksum payload from highest-revision stable slot0/slot1; no staged recovery claim"
+                                  if args.alternating_envelope else "single JSON file")
     transcript = []
     adb_started = False
     adb, env = None, None
@@ -214,6 +246,25 @@ def main(argv=None) -> int:
         (output / f"{label}.png").write_bytes(run("exec-out", "screencap", "-p", binary=True))
 
     def snapshot(label):
+        if args.alternating_envelope:
+            base = Path(args.save)
+            names = run("exec-out", "run-as", args.package, "ls", "-1", base.parent.as_posix()).splitlines()
+            candidates = []
+            for slot in range(2):
+                name = args.save + str(slot)
+                if base.name + str(slot) not in names:
+                    continue
+                raw = run("exec-out", "run-as", args.package, "cat", name, binary=True)
+                (output / f"{label}-slot{slot}.json").write_bytes(raw)
+                candidates.append((name, raw))
+            selected, data = select_enveloped_slot(candidates)
+            (output / f"{label}-save.json").write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+            report.setdefault("selected_slots", {})[label] = selected
+            report.setdefault("save_hashes", {})[label] = {
+                name: hashlib.sha256(raw).hexdigest() for name, raw in candidates}
+            report.setdefault("save_file_metadata", {})[label] = save_file_metadata(
+                run("exec-out", "run-as", args.package, "stat", "-c", "%Y:%i:%s", selected))
+            return data
         raw = run("exec-out", "run-as", args.package, "cat", args.save, binary=True)
         (output / f"{label}-save.json").write_bytes(raw)
         report.setdefault("save_hashes", {})[label] = hashlib.sha256(raw).hexdigest()

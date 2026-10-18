@@ -2,6 +2,7 @@ import contextlib
 import copy
 import importlib.util
 import io
+import hashlib
 import json
 from pathlib import Path
 import sys
@@ -17,6 +18,48 @@ spec.loader.exec_module(upgrade)
 
 
 class UpgradeEvidenceTests(unittest.TestCase):
+    @staticmethod
+    def envelope(packet):
+        payload = json.dumps(packet, ensure_ascii=False)
+        return json.dumps({"payload": payload, "sha256": hashlib.sha256(payload.encode()).hexdigest()}).encode()
+
+    def test_single_first_write_slot_and_newest_alternating_slot(self):
+        first = self.envelope({"revision": 1, "committed": True, "state": {"wallet": 14}})
+        imported = self.envelope({"revision": 2, "committed": False, "state": {"wallet": 14}})
+        # A completed rename makes an imported stable file readable even if its
+        # payload was marked uncommitted while it still had the .tmp suffix.
+        self.assertEqual(upgrade.select_enveloped_slot([("save0", first)])[0], "save0")
+        selected, packet = upgrade.select_enveloped_slot([("save0", first), ("save1", imported)])
+        self.assertEqual(selected, "save1")
+        self.assertEqual(packet["state"], {"wallet": 14})
+        self.assertFalse(packet["committed"])
+        with self.assertRaises(ValueError):
+            upgrade.select_enveloped_slot([])
+
+    def test_envelope_checksum_structure_and_revision_are_not_trusted(self):
+        valid = {"revision": 12, "committed": True, "state": {"name": "côte", "hp": 6}}
+        self.assertEqual(upgrade.decode_enveloped_slot(self.envelope(valid)), valid)
+        broken = json.loads(self.envelope(valid))
+        broken["payload"] = broken["payload"].replace('6', '100')
+        with self.assertRaises(ValueError):
+            upgrade.decode_enveloped_slot(json.dumps(broken).encode())
+        for revision in [True, -1, 1.5, float("nan"), float("inf"), 100000001, "12", None]:
+            with self.subTest(revision=revision), self.assertRaises(ValueError):
+                upgrade.decode_enveloped_slot(self.envelope(dict(valid, revision=revision)))
+        for malformed in [[], {"payload": {}, "sha256": ""}, {"payload": "{}", "sha256": "bad"}]:
+            with self.subTest(malformed=malformed), self.assertRaises(ValueError):
+                upgrade.decode_enveloped_slot(json.dumps(malformed).encode())
+        for malformed in [[], dict(valid, committed=1), {"committed": True}]:
+            with self.subTest(payload=malformed), self.assertRaises(ValueError):
+                upgrade.decode_enveloped_slot(self.envelope(malformed))
+        with self.assertRaises(ValueError):
+            upgrade.decode_enveloped_slot(b" " * 600001)
+
+    def test_corrupt_present_slot_cannot_be_silently_ignored_as_recovery(self):
+        valid = self.envelope({"revision": 1, "committed": True})
+        with self.assertRaises(ValueError):
+            upgrade.select_enveloped_slot([("save0", valid), ("save1", b"not JSON")])
+
     def setUp(self):
         self.old = {"version": 2, "state": {"board": [{"id": 2, "x": 1, "y": 2}], "produced": 8}}
         self.metadata = {"package": "com.example.game", "version_code": "1", "version_name": "0.1",

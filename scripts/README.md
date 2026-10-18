@@ -340,3 +340,19 @@ The final fixture leaves catalog1/watch_03/actions `["key"]`, power14/Keys1,
 two earned clears, sound off, reduced effects on and used_undo true. These
 are actual tap-created saves for the future install-r update check; do not
 inject the expected JSON or count the old four-puzzle APK as a full campaign.
+
+Hook and Hunger uses checksum-wrapped alternating slots rather than one plain
+save file. For its update check, pass `--save files/hook-save
+--alternating-envelope` to `android_upgrade.py`. The runner archives each
+present stable slot, checks its payload checksum/revision, selects the newest,
+and compares the decoded `state` and `settings` fields. A normal first write
+can have only slot0. Any corrupt present slot fails the observation; this mode
+does not silently treat corruption or a staged `.tmp` as accepted recovery.
+Game-level validation and interrupted-save recovery remain separate checks.
+
+The prepared code1 Android packet is indexed in
+`android-games/evidence/hook-prototype-code1.json`: actual upward drag and
+nearby combat earned two kills/salvage14, hull6, seven hits and approximately
+eight simulation seconds. Actual controls set sound off/reduced effects on;
+Home retained the whole state/settings. This is an old-version fixture from
+the original pre-import-fix APK, not a full-game or update acceptance result.
