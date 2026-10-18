@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "scope": "Frozen code6 software candidate; independent Android/physical phone acceptance separate",
+  "scope": "Frozen code6 software candidate with independent source, review and actual Android checks; physical phone pending",
   "worker_commit": "b6ee0b8",
   "integration_commit": "57690f1df66da79b4cec26c5daf2e677b4ebf52b",
   "build_git_revision": "08d9fe2acaec60662a8a8a0e0d51b8a9af6b7a99",
@@ -33,19 +33,31 @@
   "motion_package": "C:\\projects\\active\\games\\.artifacts\\reviews\\gear-pressure-code6\\review-package.json",
   "normalized_review_source_bindings_verified": 84,
   "boss_hud_p2": "closed by Astra direct motion review",
-  "natural_terminal_p2": "fixed and independently desktop-render verified; actual Android check pending",
-  "android_acceptance": "in progress on exact APK; no result claimed yet",
-  "ready_for_phone_testing": false,
+  "natural_terminal_p2": "closed by independent desktop regression and root/Astra direct untouched Android victory/defeat captures",
+  "android_acceptance": "software candidate passed: real code5-to-6 whole-state update, fresh natural win/loss, actual Retry, clipboard controls and Home/resume",
+  "ready_for_phone_testing": true,
   "physical_phone_tested": false,
   "receipt": "C:\\projects\\active\\games\\.artifacts\\preservation\\gear-code6-candidate.json",
   "receipt_sha256": "8d387425deb9acc55a8e77a31bafdd31bfe5985e30ad5c259cd52a044e5665e3",
   "preserved_files": 174,
   "preserved_bytes": 70429224,
   "limits": [
-    "Source/test/build independently verified; Android update/natural terminal behavior remains a separate gate",
+    "Software candidate verified; physical-phone touch/folding/safe areas/sound/performance and human pacing remain pending",
     "54 nearby/12 delayed wins are builder policy evidence reviewed by Astra, not separately rerun here",
     "All nine unchanged-gate/banked-salvage controls win; spending necessity and elimination of passive victory are not established",
     "Dense crowds and cap-heavy pacing remain human/phone playtest limitations",
-    "Simulated route time is not a measured human session; desktop Dummy audio is not audible-sound or phone-performance acceptance"
-  ]
+    "Simulated route time is not a measured human session; desktop Dummy audio is not audible-sound or phone-performance acceptance",
+    "Full nine-encounter routes ran independently on desktop/headless; Android evidence is the bounded campaign win/loss/update/Retry/clipboard/lifecycle sample",
+    "Invalid old tar stream and strict fractional serialization equality failure are preserved as failed history; separately validated JSON archive and unchanged fractional-only semantic policy pass"
+  ],
+  "android_report": "C:\\projects\\active\\games\\.artifacts\\gear-bastion\\presentation-code6-57690f1\\verification.json",
+  "android_coordinator_verification": "C:\\projects\\active\\games\\.artifacts\\gear-bastion\\presentation-code6-57690f1\\coordinator-verification.json",
+  "android_artifact_index": "C:\\projects\\active\\games\\.artifacts\\gear-bastion\\presentation-code6-57690f1\\artifact-index.json",
+  "android_receipt": "C:\\projects\\active\\games\\.artifacts\\preservation\\gear-code6-android.json",
+  "android_receipt_sha256": "d0a5ccd5c3272a93b4ca7e8c33853d414f956b57b6e06b23cce386ad8dda3970",
+  "android_preserved_files": 107,
+  "android_preserved_bytes": 124858334,
+  "android_natural_victory_packet": "C:\\projects\\active\\games\\.artifacts\\emulator\\com.dsschiff.gearbastion\\20261018T002235002514Z",
+  "android_natural_defeat_packet": "C:\\projects\\active\\games\\.artifacts\\emulator\\com.dsschiff.gearbastion\\20261018T002635672484Z",
+  "android_update_packet": "C:\\projects\\active\\games\\.artifacts\\upgrades\\com.dsschiff.gearbastion\\20261018T002115098721Z"
 }

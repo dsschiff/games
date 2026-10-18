@@ -19,3 +19,11 @@ Reviewed clip SHA256 values:
 | final-boss | `dca13dbf2188eea5599beba8b3f632df84f39f2bdbc0db3728ca0e7502d6718b` |
 
 No fresh game execution, measured phone FPS, human fun, complete preparation/Retry UI or full-release acceptance is implied. Approximate playback positions are not certified frames. The reviewer closed its own browser tab; coordinator stopped the local review server.
+
+## Final Android evidence follow-up
+
+Astra subsequently inspected the unchanged code6 APK's bounded Android evidence and directly viewed both raw untouched terminal PNGs. Victory visibly shows GATE HELD / Next gate and defeat shows WALL BREACHED / Retry. The transcripts place the screenshot after Begin and before HOME, with no intervening input. Packets are `.artifacts/emulator/com.dsschiff.gearbastion/20261018T002235002514Z` and `20261018T002635672484Z`; both identify APK SHA256 `bb009b600b24c3498363889b0099d361f19ce1bd4fee24a8b704eb3906e3f72b`.
+
+Retry saves show defeat-to-ready, wall0-to-220, empty actors, an unchanged earned profile and revision694-to-696. The real code5-to-6 upgrade's 24-check manifest and coordinator verification preserve the whole active run, profile and settings, including legacy definition1/deployment2 and revisions604-to-604-to-605-to-607. Fresh runs use definition2. Upgrade packet: `.artifacts/upgrades/com.dsschiff.gearbastion/20261018T002115098721Z`.
+
+Verdict: both prior natural-terminal and boss-HUD findings are closed within the reviewed scope. No new blocker emerged; Gear code6 can advance to physical-phone testing and next-game work. Root's committed-source equivalence and independently executed suites supplement this review. Astra performed no new build or gameplay execution. Physical-phone touch, sound, frame pacing, human enjoyment, cap-heavy/passive-control pacing and all nine encounters on Android remain unaccepted. The later optional clipboard/lifecycle checks are outside this review verdict.

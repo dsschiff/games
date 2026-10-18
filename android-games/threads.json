@@ -12,7 +12,27 @@
       "worktree": "C:/projects/active/_worktrees/games-gear-bastion-20261017",
       "branch": "codex/gear-bastion",
       "ownership": "android-games/gear-bastion/",
-      "state": "frozen code6 candidate independently verified for rules, full route/decisions/replays, atlas and natural terminal rendering; signed APK built, final Android acceptance in progress"
+      "state": "frozen code6 software candidate ready for phone testing; independently verified campaign/replay/source review and actual Android update/natural win/loss/Retry"
+    },
+    {
+      "slug": "tower-trials",
+      "thread_id": "01a14c6a-7df5-7001-a1a2-b833cd66c2a4",
+      "host_id": "local",
+      "model": "gpt-6.1-sol",
+      "worktree": "C:/projects/active/_worktrees/games-tower-trials-20261018",
+      "branch": "codex/tower-trials",
+      "ownership": "android-games/tower-trials/",
+      "state": "building first playable numbered-room puzzle sequence; visible tower growth and meaningful route choices before campaign expansion"
+    },
+    {
+      "slug": "hook-and-hunger",
+      "thread_id": "01a14c6d-ed39-77a3-ba23-93b5210f38b1",
+      "host_id": "local",
+      "model": "gpt-6.1-sol",
+      "worktree": "C:/projects/active/_worktrees/games-hook-and-hunger-20261018",
+      "branch": "codex/hook-and-hunger",
+      "ownership": "android-games/hook-and-hunger/",
+      "state": "building first movement/chained-weapon/resource/purchase loop; corrected baseline excludes unverified mandatory reel/consume/body growth"
     }
   ]
 }

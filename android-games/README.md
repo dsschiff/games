@@ -4,14 +4,16 @@ Six standalone Godot games are being developed here under the staged goal in the
 
 | Directory | Working original title | Reference | Current state |
 | --- | --- | --- | --- |
-| `gear-bastion` | Gear Bastion | Gear Defenders | Illustrated nine-encounter campaign/replay independently verified; HUD, balance and Android acceptance in progress |
-| `tower-trials` | Tower Trials | Hero Wars | Prototype brief reviewed; implementation not started |
-| `hook-and-hunger` | Hook and Hunger | Butcher Hero | Combat/resources/weapon purchases observed; hook/reel/consume unresolved; implementation not started |
+| `gear-bastion` | Gear Bastion | Gear Defenders | Software candidate ready for phone testing; independent campaign/replay, source review and Android update/natural outcomes verified |
+| `tower-trials` | Tower Trials | Hero Wars | Prototype development started in isolated persistent chat |
+| `hook-and-hunger` | Hook and Hunger | Butcher Hero | Combat/resource/purchase prototype development started; hook/reel/consume/body growth remain unverified/deferred |
 | `hearthguard` | Hearthguard | Kingshot | Movement/build-pad/defense creative observed; attribution qualified; implementation not started |
 | `frontline-foundry` | Frontline Foundry | Top Force | Bounded prototype direction reviewed; advertiser mapping qualified |
 | `dead-run` | Dead Run | Last Human: Final Stand | Bounded prototype direction reviewed; exact gate arithmetic pending |
 
 Each app is offline and has independent saves. APKs and signing materials are local artifacts, excluded from Git. The existing public website is not changed by these builds.
+
+See [local builds](delivery.json) and [installation and phone checks](INSTALL.md) for the current Gear Bastion candidate.
 
 The working phone target is Galaxy Z Fold7, based on Daniel's description. Exact device identity, Android version and physical performance remain unconfirmed. See [device targets](device-target.json), [current milestones](../ROADMAP.md) and [verification records](evidence/).
 

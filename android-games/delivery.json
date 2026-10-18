@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "scope": "Local personal APK delivery; physical-phone acceptance remains pending",
+  "install_guide": "android-games/INSTALL.md",
+  "games": [
+    {
+      "slug": "gear-bastion",
+      "version": "0.3.2",
+      "version_code": 6,
+      "package": "com.dsschiff.gearbastion",
+      "state": "software_candidate_ready_for_phone_testing",
+      "apk": "C:/projects/active/games/.artifacts/gear-bastion/20261018T002003656002Z/gear-bastion.apk",
+      "apk_sha256": "bb009b600b24c3498363889b0099d361f19ce1bd4fee24a8b704eb3906e3f72b",
+      "source_sha256": "623e4f84b809ccc81f63198fd701705bcb8dc023ffcf49bc7ab597b5e246ebde",
+      "evidence": "android-games/evidence/gear-code6-candidate.json",
+      "physical_phone_tested": false,
+      "sound_verified_on_phone": false,
+      "phone_performance_measured": false
+    },
+    {
+      "slug": "tower-trials",
+      "state": "prototype_in_development"
+    },
+    {
+      "slug": "hook-and-hunger",
+      "state": "prototype_in_development"
+    },
+    {
+      "slug": "hearthguard",
+      "state": "brief_reviewed"
+    },
+    {
+      "slug": "frontline-foundry",
+      "state": "brief_reviewed"
+    },
+    {
+      "slug": "dead-run",
+      "state": "brief_reviewed"
+    }
+  ]
+}
