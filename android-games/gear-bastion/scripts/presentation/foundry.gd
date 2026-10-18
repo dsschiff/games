@@ -115,6 +115,29 @@ func pool_snapshot() -> Dictionary:
 	snapshot.merge({"inactive_actors":inactive_count(actor_pool),"inactive_effects":inactive_count(effect_pool),"active_actors":actors.size(),"corpses":corpses.size(),"active_effects":effects.size(),"inactive_actor_cap":MAX_INACTIVE_ACTORS,"per_role_side_cap":MAX_INACTIVE_PER_ROLE_SIDE,"inactive_effect_cap":MAX_INACTIVE_EFFECTS,"active_effect_cap":MAX_EFFECTS})
 	return snapshot
 
+func update_boss_occlusion() -> void:
+	var visible: Array = actors.values()
+	for corpse in corpses.values(): visible.append(corpse.node)
+	var bosses: Array[Rect2] = []
+	for actor in visible:
+		if actor.role in ["captain","siege"]:
+			bosses.append(projected_bounds(actor.model).grow(8))
+	if not bosses.is_empty():
+		var region: Rect2=bosses[0]
+		for boss in bosses: region=region.merge(boss)
+		Actor.set_occlusion_region(get_viewport().get_instance_id(),Rect2(region.position/canvas_size,region.size/canvas_size))
+	for actor in visible:
+		if not actor.friendly: continue
+		var foot := world_to_canvas(actor.global_position)
+		var body := Rect2(foot-Vector2(24,56),Vector2(48,61))
+		var overlaps := false
+		var covers_equipment := false
+		for boss in bosses:
+			overlaps = overlaps or body.intersects(boss)
+			covers_equipment = covers_equipment or boss.has_point(world_to_canvas(actor.health.global_position))
+		actor.set_boss_occluded(overlaps)
+		actor.set_health_occluded(covers_equipment)
+
 func build(game_layout: RefCounted, pixels: Vector2) -> void:
 	layout = game_layout
 	var world := WorldEnvironment.new()
@@ -208,6 +231,7 @@ func fit(game_layout: RefCounted, pixels: Vector2) -> void:
 	for effect in effects:
 		retire_effect(effect)
 	effects.clear()
+	update_boss_occlusion()
 
 func rebuild_scenery(act: int) -> void:
 	for child in scenery.get_children():
@@ -391,6 +415,7 @@ func sync(state: Dictionary, events: Array, interval: float = 1.0/30.0) -> void:
 	for event in events:
 		if adapter.accept(event):
 			present_event(event)
+	update_boss_occlusion()
 
 func sync_board(state: Dictionary, force: bool = false) -> void:
 	var signature := JSON.stringify(state.board)
@@ -531,3 +556,4 @@ func step(dt: float, held: bool, calm: bool) -> void:
 	wall_hit_left = maxf(0,wall_hit_left-dt)
 	for arch in arches:
 		arch.rotation.z = sin(PI*wall_hit_left/.25)*.015 if not calm else 0.0
+	update_boss_occlusion()

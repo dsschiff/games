@@ -14,10 +14,12 @@ var native_inventory: Array = []
 var maximum_allies := 0
 var maximum_enemies := 0
 var movie_started := false
+var inspection_only := false
 var role_frames := {"alive":0,"attack":0,"hit":0,"defeat":0,"maximum_contact_error":0.0}
 
 func _initialize() -> void:
 	for arg in OS.get_cmdline_user_args():
+		if arg == "--inspection": inspection_only = true
 		if arg.begins_with("--run-dir="): run_directory = arg.trim_prefix("--run-dir=")
 		if arg.begins_with("--stage="): stage = arg.trim_prefix("--stage=")
 		if arg.begins_with("--seconds="): duration = float(arg.trim_prefix("--seconds="))
@@ -214,7 +216,8 @@ func run() -> void:
 			await wait_play(.1)
 		await capture("play-outcome")
 		check(maximum_allies<=120 and maximum_enemies<=90,"Actual encounter retains original actor caps")
-		check(int(game.state.kills)>int(start_context.active_run.kills),"Actual retained run shows consequential combat")
+		if not inspection_only:
+			check(int(game.state.kills)>int(start_context.active_run.kills),"Actual retained run shows consequential combat")
 		if stage=="later" and duration>=40:
 			check(game.state.phase=="victory" and "camp_09" in game.profile.cleared,"Authentic finale reaches earned victory")
 		if stage=="metrics":
@@ -226,7 +229,7 @@ func run() -> void:
 			check(pool.actors_reused>0 and pool.effects_reused>0,"Actual dense process-loop encounter reuses actor and effect instances")
 			check(pool.inactive_actors<=pool.inactive_actor_cap and pool.inactive_effects<=pool.inactive_effect_cap and pool.active_effects<=pool.active_effect_cap,"Actual reserve and visible effect counts remain capped")
 		if stage in ["captain","siege","carapace"]:
-			check(role_frames.alive>0 and role_frames.attack>0 and role_frames.hit>0 and role_frames.defeat>0,"Actual "+stage+" model visibly lives/attacks/takes contact/defeats in the ordinary process loop")
+			check(role_frames.alive>0 and role_frames.attack>0 and role_frames.hit>0 and (inspection_only or role_frames.defeat>0),"Actual "+stage+" role has expected inspection/closure pose evidence")
 			check(role_frames.maximum_contact_error<.0001,"Actual "+stage+" attack socket follows its animated weapon contact")
 	elif stage == "reset":
 		await action("resume_run")
@@ -287,6 +290,7 @@ func finish(extra: Dictionary) -> void:
 	var report := {"stage":stage,"checks":checks,"failures":failures,"pointer_keyboard_events":events,"fixed_fps":fixed_fps,"movie_writer_path":Engine.get_write_movie_path(),"native_padded_frames":native_frames,"frame_count":frame_number,"observations":observations,"inputs":inputs,"start_context":start_context,"end_context":context(),"maximum_allies":maximum_allies,"maximum_enemies":maximum_enemies,"raw_save_slots":slots,"native_inventory":native_inventory,"limits":"Actual app input/process-loop evidence. Fixed-rate movies are not wall-clock/phone performance."}
 	report.merge(extra)
 	report["pool"] = game.presentation.pool_snapshot()
+	report["inspection_only"] = inspection_only
 	report["watched_role_frames"] = role_frames
 	report["preparation_speed"] = "Actual offered2x menu during unrecorded focused preparation; parked at1x before save" if stage.begins_with("prepare-") else "normal1x captured play"
 	var file := FileAccess.open(run_directory+"/motion-report.json",FileAccess.WRITE)

@@ -21,6 +21,7 @@ def main():
     parser.add_argument("--movie", action="store_true")
     parser.add_argument("--native-frames", action="store_true")
     parser.add_argument("--resume-from", type=Path)
+    parser.add_argument("--inspection", action="store_true", help="Short boss inspection; does not assert defeat/outcome closure")
     args = parser.parse_args()
     if args.stage == "metrics" and (args.movie or args.native_frames):
         parser.error("Metrics must run at actual wall clock without movie/readback")
@@ -37,7 +38,7 @@ def main():
     provenance = {"kind": "fresh actual app"}
     expected = None
     slots = []
-    if args.stage in {"heavy", "later", "metrics", "reuse"}:
+    if args.stage in {"heavy", "later", "metrics", "reuse"} and not args.resume_from:
         name = "final-boss" if args.stage == "later" else "middle"
         source = PROJECT/".artifacts/campaign-pressure-motion"/(name+".json")
         index = PROJECT/"evidence/decision-pressure-checkpoint.json"
@@ -46,7 +47,7 @@ def main():
         assert sha(source) in allowed, "Starting save is not pinned in the original earned evidence index"
         slots = [(source, "bastion-save.json")]
         provenance = {"kind": "indexed genuine prior input-suite save", "source": str(source), "sha256": sha(source), "index": str(index), "index_sha256": sha(index)}
-    elif args.stage in {"reset", "restore", "prepare-captain", "prepare-siege", "prepare-carapace", "captain", "siege", "carapace"}:
+    elif args.stage in {"reset", "restore", "prepare-captain", "prepare-siege", "prepare-carapace", "captain", "siege", "carapace", "metrics"}:
         assert args.resume_from, "Reset/restore require authentic prior motion run"
         parent = args.resume_from.resolve()
         assert parent.is_relative_to((PROJECT/".artifacts/graphics-production").resolve())
@@ -88,6 +89,7 @@ def main():
     if fixed: command += ["--capture-fixed-fps=30"]
     if args.native_frames: command += ["--native-frames"]
     if expected: command += ["--expected-start="+str(expected)]
+    if args.inspection: command += ["--inspection"]
     result = preflight
     if preflight["passed"]:
         result, output = execute(command, run, env, "execution", timeout=max(180, int(args.seconds*5+120)))

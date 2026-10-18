@@ -1,0 +1,413 @@
+{
+  "schema": 1,
+  "generated_utc": "2026-10-18T17:20:16.916222+00:00",
+  "candidate": "0.4.0/code8 undelivered",
+  "previous_worker_commit": "cfff7013bfb1ce3e41a11721b84aa8c602d34c7f",
+  "change": "Camera-projected boss cutaway on intersecting friendly body fragments, with only crossing friendly health bars suppressed. Boss/friendly root positions, authored geometry, weapon contacts and other scene geometry unchanged.",
+  "cpu": [
+    {
+      "mode": "pooling",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\pooling-20261018T171156408500Z",
+      "checks": 468,
+      "receipt_sha256": "cb17540e8d35309aee8f8e86606659dbef5f9f947858b5a0964ab76cdfc4f10b",
+      "data_sha256": "93b64f96c1efbfe604987b54476d51490a658233b2d8fcb9efe5ffd24d1badb4"
+    },
+    {
+      "mode": "boss-occlusion",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\boss-occlusion-20261018T171221432955Z",
+      "checks": 1098,
+      "receipt_sha256": "7913f22d7efc1ea7b4fa7075042bb810097605c479bfe8d22ebf824be92602ef",
+      "data_sha256": "4e83fc19ae9d38091b586e9e2d9818f2b1f5abc89c0009a09a851bf296f0a82f"
+    }
+  ],
+  "runs": [
+    {
+      "stage": "inspection-captain",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-captain-20261018T171304936753Z",
+      "receipt_sha256": "403935ea2a79d73ad5c1b6882fffe4158938aafacb7fb6719398e21f6c6af2d0",
+      "gameplay_sha256": "0a16e7a217431eaa65a374166a2f646f9edaf28f5ace698fdd0aa5ff17fc2dd8",
+      "checks": 11,
+      "input_events": 6,
+      "inspection_only": true,
+      "runtime_art_files_equal_to_final": 128,
+      "starting_save": {
+        "kind": "byte-exact app-written slots from prior passed run",
+        "parent": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-prepare-captain-20261018T162415737581Z",
+        "parent_receipt_sha256": "f1e9e0a2d655186c10d6465346ae4c8c4c1620e20fcfb75bf22b134e6d47786c"
+      },
+      "pool": {
+        "active_actors": 104,
+        "active_effect_cap": 48,
+        "active_effects": 37,
+        "actors_created": 133,
+        "actors_retired": 24,
+        "actors_reused": 10,
+        "corpses": 15,
+        "effects_created": 45,
+        "effects_retired": 373,
+        "effects_reused": 365,
+        "inactive_actor_cap": 64,
+        "inactive_actors": 11,
+        "inactive_effect_cap": 48,
+        "inactive_effects": 8,
+        "per_role_side_cap": 12
+      },
+      "role_frames": {
+        "alive": 226,
+        "attack": 36,
+        "defeat": 0,
+        "hit": 217,
+        "maximum_contact_error": 0.0
+      },
+      "movie": {
+        "path": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-captain-20261018T171304936753Z\\continuous.mp4",
+        "sha256": "cda66e39080c28b172d2f08d00dbb13652e1295d46a0b9291682e7b14f87e5b5",
+        "seconds": 7.533008,
+        "resolution": [
+          720,
+          1680
+        ],
+        "normal1x": true,
+        "fully_decoded": true,
+        "scaling": "none"
+      }
+    },
+    {
+      "stage": "inspection-siege",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-siege-20261018T171357167275Z",
+      "receipt_sha256": "2c67eacfbdf63c91c1273888c12403dd463f2a5b278b2620eca179ec0e850f82",
+      "gameplay_sha256": "d22cd02c33bbc84143a7ef861c5816c82ceb97c3d4628751af0ca345f2d2f869",
+      "checks": 11,
+      "input_events": 6,
+      "inspection_only": true,
+      "runtime_art_files_equal_to_final": 128,
+      "starting_save": {
+        "kind": "byte-exact app-written slots from prior passed run",
+        "parent": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-prepare-siege-20261018T162713093079Z",
+        "parent_receipt_sha256": "dfb4366698a3ab8f0d40e1fee0fc91102ba1d054046ab8b7071f8d04f5e232e6"
+      },
+      "pool": {
+        "active_actors": 121,
+        "active_effect_cap": 48,
+        "active_effects": 43,
+        "actors_created": 123,
+        "actors_retired": 3,
+        "actors_reused": 1,
+        "corpses": 0,
+        "effects_created": 52,
+        "effects_retired": 334,
+        "effects_reused": 325,
+        "inactive_actor_cap": 64,
+        "inactive_actors": 2,
+        "inactive_effect_cap": 48,
+        "inactive_effects": 7,
+        "per_role_side_cap": 12
+      },
+      "role_frames": {
+        "alive": 226,
+        "attack": 27,
+        "defeat": 0,
+        "hit": 218,
+        "maximum_contact_error": 0.0
+      },
+      "movie": {
+        "path": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-siege-20261018T171357167275Z\\continuous.mp4",
+        "sha256": "bf9ebff19d4e95e26368f739f52138fefcdb390313a2c548d1b477685f090819",
+        "seconds": 7.533008,
+        "resolution": [
+          720,
+          1680
+        ],
+        "normal1x": true,
+        "fully_decoded": true,
+        "scaling": "none"
+      }
+    },
+    {
+      "stage": "captain",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-captain-20261018T171547205821Z",
+      "receipt_sha256": "4381184f8199454ec75ee2e09a78b1a2b0cc9df1cc1158cebc19b56d8e02f01d",
+      "gameplay_sha256": "ae5b557b33475d2522f66812a8d9870bc2710c64fab445b8545e22b1b7a622a5",
+      "checks": 12,
+      "input_events": 4,
+      "inspection_only": false,
+      "runtime_art_files_equal_to_final": 128,
+      "starting_save": {
+        "kind": "byte-exact app-written slots from prior passed run",
+        "parent": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-prepare-captain-20261018T162415737581Z",
+        "parent_receipt_sha256": "f1e9e0a2d655186c10d6465346ae4c8c4c1620e20fcfb75bf22b134e6d47786c"
+      },
+      "pool": {
+        "active_actors": 78,
+        "active_effect_cap": 48,
+        "active_effects": 0,
+        "actors_created": 140,
+        "actors_retired": 89,
+        "actors_reused": 27,
+        "corpses": 0,
+        "effects_created": 46,
+        "effects_retired": 1031,
+        "effects_reused": 985,
+        "inactive_actor_cap": 64,
+        "inactive_actors": 31,
+        "inactive_effect_cap": 48,
+        "inactive_effects": 46,
+        "per_role_side_cap": 12
+      },
+      "role_frames": {
+        "alive": 330,
+        "attack": 81,
+        "defeat": 27,
+        "hit": 300,
+        "maximum_contact_error": 0.0
+      },
+      "movie": {
+        "path": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-captain-20261018T171547205821Z\\continuous.mp4",
+        "sha256": "3e29533290864393329dd658320049cc61eaa907acfde2be66119ba6f27cc09c",
+        "seconds": 13.466016,
+        "resolution": [
+          720,
+          1680
+        ],
+        "normal1x": true,
+        "fully_decoded": true,
+        "scaling": "none"
+      },
+      "whole_start_end_context_equal_to_rejected_cfff_clip": true,
+      "numeric_tolerance": 1e-09,
+      "end_phase": "victory"
+    },
+    {
+      "stage": "siege",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-siege-20261018T171659832030Z",
+      "receipt_sha256": "26f2606b4b9bb5b0fabc5424423c1c3f7337ed8150d425e8c27f920b25014075",
+      "gameplay_sha256": "cc2e77838f30297f42395b17af21b5fa61f028360eafb7283329a0828885ae85",
+      "checks": 12,
+      "input_events": 4,
+      "inspection_only": false,
+      "runtime_art_files_equal_to_final": 128,
+      "starting_save": {
+        "kind": "byte-exact app-written slots from prior passed run",
+        "parent": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-prepare-siege-20261018T162713093079Z",
+        "parent_receipt_sha256": "dfb4366698a3ab8f0d40e1fee0fc91102ba1d054046ab8b7071f8d04f5e232e6"
+      },
+      "pool": {
+        "active_actors": 120,
+        "active_effect_cap": 48,
+        "active_effects": 0,
+        "actors_created": 143,
+        "actors_retired": 28,
+        "actors_reused": 5,
+        "corpses": 0,
+        "effects_created": 64,
+        "effects_retired": 1705,
+        "effects_reused": 1641,
+        "inactive_actor_cap": 64,
+        "inactive_actors": 23,
+        "inactive_effect_cap": 48,
+        "inactive_effects": 48,
+        "per_role_side_cap": 12
+      },
+      "role_frames": {
+        "alive": 416,
+        "attack": 81,
+        "defeat": 27,
+        "hit": 387,
+        "maximum_contact_error": 0.0
+      },
+      "movie": {
+        "path": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-siege-20261018T171659832030Z\\continuous.mp4",
+        "sha256": "85f263dc50a7d3fb04b22a1baf708ad192020ef6a9fd77ff5502c4c16ea5b09f",
+        "seconds": 16.133008,
+        "resolution": [
+          720,
+          1680
+        ],
+        "normal1x": true,
+        "fully_decoded": true,
+        "scaling": "none"
+      },
+      "whole_start_end_context_equal_to_rejected_cfff_clip": true,
+      "numeric_tolerance": 1e-09,
+      "end_phase": "victory"
+    },
+    {
+      "stage": "metrics",
+      "run": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-metrics-20261018T171817485968Z",
+      "receipt_sha256": "99bba52239813d30819f15fb5ef71739e19838e771ec39936dd8eceb6bbe5ae9",
+      "gameplay_sha256": "d414eb29df5e63be02f7c29104f02d6a24a1575db3150494be6b6a51c4c8de0c",
+      "checks": 12,
+      "input_events": 4,
+      "inspection_only": false,
+      "runtime_art_files_equal_to_final": 128,
+      "starting_save": {
+        "kind": "byte-exact app-written slots from prior passed run",
+        "parent": "C:\\projects\\active\\_worktrees\\games-gear-bastion-20261017\\android-games\\gear-bastion\\.artifacts\\graphics-production\\motion-prepare-siege-20261018T162713093079Z",
+        "parent_receipt_sha256": "dfb4366698a3ab8f0d40e1fee0fc91102ba1d054046ab8b7071f8d04f5e232e6"
+      },
+      "pool": {
+        "active_actors": 120,
+        "active_effect_cap": 48,
+        "active_effects": 0,
+        "actors_created": 143,
+        "actors_retired": 26,
+        "actors_reused": 5,
+        "corpses": 2,
+        "effects_created": 70,
+        "effects_retired": 1703,
+        "effects_reused": 1633,
+        "inactive_actor_cap": 64,
+        "inactive_actors": 21,
+        "inactive_effect_cap": 48,
+        "inactive_effects": 48,
+        "per_role_side_cap": 12
+      },
+      "role_frames": {
+        "alive": 0,
+        "attack": 0,
+        "defeat": 0,
+        "hit": 0,
+        "maximum_contact_error": 0.0
+      },
+      "timing": {
+        "all_frames": {
+          "frames": 614,
+          "median_ms": 17.292,
+          "over_16_667_ms": 491,
+          "over_33_333_ms": 4,
+          "p95_ms": 21.517,
+          "p99_ms": 25.063,
+          "seconds": 11.179644
+        },
+        "columns": [
+          "frame_ms",
+          "friendly",
+          "enemies",
+          "encounter",
+          "reduced_effects",
+          "draw_cpu_usec",
+          "draw_calls_3d",
+          "primitives_3d",
+          "nodes_process",
+          "render_size"
+        ],
+        "criteria": {
+          "clock": "Time.get_ticks_usec at RenderingServer.frame_post_draw; render-loop submission intervals, not OS presentation timestamps",
+          "excluded": "menus, explicit pause, loading/ready states and visible modals; gaps reset before resumed samples",
+          "heavy_filter": "friendly + enemy actors >= 120",
+          "max_samples": 30000,
+          "warmup_eligible_seconds": 1.5
+        },
+        "excluded_frames": 0,
+        "heavy_frames": {
+          "frames": 614,
+          "median_ms": 17.292,
+          "over_16_667_ms": 491,
+          "over_33_333_ms": 4,
+          "p95_ms": 21.517,
+          "p99_ms": 25.063,
+          "seconds": 11.179644
+        },
+        "metadata": {
+          "capture": "real-time, no movie writer, no still readback during sampling",
+          "capture_fixed_fps": 0,
+          "command_line": [
+            "-s",
+            "tests/graphics_motion.gd"
+          ],
+          "counter_scope": "SubViewport visible 3D draw calls/primitives; shadow passes excluded; node count is process-wide",
+          "device_model": "ROG STRIX X670E-E GAMING WIFI",
+          "draw_cpu_usec_scope": "Main 2D draw callback CPU elapsed only; excludes complete 3D/GPU rendering",
+          "fixed_cadence_capture": false,
+          "godot": "4.7.2-stable (official)",
+          "movie_writer_path": "",
+          "os": "Windows",
+          "os_version": "10.0.26100",
+          "purpose": "separate sustained actual dense encounter",
+          "render_device": "NVIDIA GeForce RTX 5070 Ti",
+          "render_vendor": "NVIDIA",
+          "renderer": "gl_compatibility",
+          "started_unix": 1792343919.47,
+          "window": [
+            720,
+            1680
+          ]
+        },
+        "schema": 2,
+        "heavy_counter_medians": {
+          "visible3d_draw_calls": 2485.0,
+          "visible3d_primitives": 1059913.0,
+          "process_nodes": 2480.0
+        },
+        "observed_peak_population": 133
+      }
+    }
+  ],
+  "preserved_unsuccessful_inspections": [
+    {
+      "runs": [
+        "motion-captain-20261018T165957713257Z",
+        "motion-siege-20261018T170051698293Z"
+      ],
+      "finding": "Whole-body18percent alpha accumulated into an obscuring mass. Worker/root viewed originals and rejected visible closure."
+    },
+    {
+      "runs": [
+        "motion-captain-20261018T170529090544Z",
+        "motion-siege-20261018T170617779605Z"
+      ],
+      "finding": "First shader mask used the older lower-left fragment convention; pinned4.7 fragment coordinates are upper-left. No cutaway appeared. Preserved failed native calibration."
+    },
+    {
+      "runs": [
+        "motion-captain-20261018T170756007766Z",
+        "motion-siege-20261018T170849926291Z"
+      ],
+      "finding": "Calibrated cutaway revealed bodies, but friendly health bars still obscured siege equipment. Superseded by localized bar suppression."
+    }
+  ],
+  "visual_scope": "Worker and root directly viewed final short native originals before longer affected-role closure. Independent natural1x motion/model/source review remains pending. No score is awarded by CPU/counters.",
+  "shader_reference": "https://docs.godotengine.org/en/4.6/tutorials/shaders/shader_reference/spatial_shader.html",
+  "limits": [
+    "Only captain/siege receive cutaway. Friend body fragments outside reveal remain opaque; overlapping fragments have alpha floor0.015. Health data is retained/current and bars restore when no longer crossing or after removal.",
+    "Same-call socket, unchanged authored scale/grounding, HUD/scenic clearance and material/health reset verified.",
+    "Old cfff pooling/carpace/reuse evidence and six historical films retained. Rejected captain/siege films remain source-bound rejected visual evidence.",
+    "Unpaced timing uses the exact genuine siege start and stops at terminal, with actual duration reported. No45s steady-state or causal speedup claim.",
+    "Render-loop intervals, visible3D counters excluding shadows and process-wide nodes are not phone/GPU/OS-present timing.",
+    "No worker export/install/ADB/clipboard/push/shared-file edits. Root owns exact-source rebuild and native/physical gates."
+  ],
+  "gpu_slot": "released after final affected-role movies and unpaced metric process exited",
+  "gpu_release_record_utc": "2026-10-18T17:23:15.116402+00:00",
+  "runtime_sha256": {
+    "scripts/presentation/actor.gd": "35a459a3ad25fb10a041b5f8e9a8e2162ee9e29bd23aead2e0f92925e4504d15",
+    "scripts/presentation/foundry.gd": "c5db64598a1118e7a2034af1188c82860fe48f21f838b690571ffe0b1f30ca1f",
+    "scripts/presentation/boss_occluder.gdshader": "4287045841e788c6049039708c4e55c73a890feb87cdbf4e69907d116367af91"
+  },
+  "worker_original_frames_viewed": [
+    {
+      "run": "inspection-captain",
+      "file": "000090.png",
+      "sha256": "bf8d136f9c277e9dd4853dce6525f3a32318a811bf7a32c0201b78f975d6386f"
+    },
+    {
+      "run": "inspection-siege",
+      "file": "000090.png",
+      "sha256": "3b3109ef7e43867d3b2c4c0c7596b24e4f3909e43d3ba1d8e822d54d1cd2eaa4"
+    },
+    {
+      "run": "captain",
+      "file": "000315.png",
+      "sha256": "14f343a95d0cb94debc2f5641d7b46d430f152cb5684c52ac27c31803453d1f8"
+    },
+    {
+      "run": "siege",
+      "file": "000400.png",
+      "sha256": "8795c52b86fcf7b93fe3e3ae1af0924cabb6bd83e63d3d79ec8c4be7edb8a8c9"
+    },
+    {
+      "run": "siege",
+      "file": "000420.png",
+      "sha256": "1ec182dff8d4ac95243989ac01d96dcfbbabf66d991487c03d4777b4bb631f70"
+    }
+  ]
+}

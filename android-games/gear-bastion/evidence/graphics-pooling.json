@@ -555,5 +555,8 @@
     "scripts/presentation/foundry.gd": "a578e38c823e0429cc5950506cc5d2fccc6e933c2ed63330a7008e02db5ebe58"
   },
   "gpu_slot": "released after every owned rendered subprocess exited",
-  "gpu_release_record_utc": "2026-10-18T16:37:27.899311+00:00"
+  "gpu_release_record_utc": "2026-10-18T16:37:27.899311+00:00",
+  "status": "historical_pooling_and_carapace_passed_captain_siege_visibility_rejected",
+  "independent_review": "Astra closed pooling and carapace; cfff captain/siege visibility withheld at2/4. Original captures remain unchanged.",
+  "visibility_followup": "evidence/graphics-boss-visibility.json"
 }

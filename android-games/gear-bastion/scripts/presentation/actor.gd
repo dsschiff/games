@@ -17,7 +17,14 @@ var aim := Vector3.FORWARD
 var humanoid := true
 var torso_yaw := 0.0
 var rest_nodes: Array[Dictionary] = []
+var body_surfaces: Array[Dictionary] = []
+var boss_occluded := false
+var health_occluded := false
+var health_requested_visible := false
 static var materials: Dictionary = {}
+static var occlusion_materials: Dictionary = {}
+static var occlusion_regions: Dictionary = {}
+const OCCLUSION_SHADER = preload("res://scripts/presentation/boss_occluder.gdshader")
 static var authored_sockets: Dictionary = {}
 
 func configure(kind: String, ally: bool, offset: float) -> void:
@@ -28,6 +35,7 @@ func configure(kind: String, ally: bool, offset: float) -> void:
 	model = (load("res://art/models/" + role + ".glb") as PackedScene).instantiate()
 	add_child(model)
 	finish_materials(model)
+	collect_body_surfaces(model)
 	rig = find_skeleton(model)
 	assert(rig != null, "Every actor must retain its authored skeletal rig")
 	for i in rig.get_bone_count():
@@ -76,6 +84,41 @@ func collect_rest_nodes(node: Node3D) -> void:
 		if child is Node3D:
 			collect_rest_nodes(child)
 
+func collect_body_surfaces(node: Node3D) -> void:
+	if node is MeshInstance3D:
+		for surface in node.mesh.get_surface_count():
+			body_surfaces.append({"node":node,"surface":surface,"material":node.get_surface_override_material(surface)})
+	for child in node.get_children():
+		if child is Node3D: collect_body_surfaces(child)
+
+func set_boss_occluded(occluded: bool, force: bool = false) -> void:
+	if boss_occluded == occluded and not force: return
+	boss_occluded = occluded
+	for entry in body_surfaces:
+		var normal: StandardMaterial3D = entry.material
+		var viewport_id := get_viewport().get_instance_id()
+		var key := "%d:%d" % [viewport_id,normal.get_instance_id()]
+		if occluded and not occlusion_materials.has(key):
+			var translucent := ShaderMaterial.new()
+			translucent.shader = OCCLUSION_SHADER
+			translucent.set_shader_parameter("body_color",normal.albedo_color)
+			translucent.set_shader_parameter("body_roughness",normal.roughness)
+			translucent.set_shader_parameter("body_metallic",normal.metallic)
+			translucent.set_shader_parameter("body_specular",normal.metallic_specular)
+			occlusion_materials[key] = {"material":translucent,"viewport":viewport_id}
+			apply_occlusion_region(translucent,occlusion_regions.get(viewport_id,Rect2()))
+		entry.node.set_surface_override_material(entry.surface,occlusion_materials[key].material if occluded else normal)
+
+static func apply_occlusion_region(material: ShaderMaterial, region: Rect2) -> void:
+	material.set_shader_parameter("boss_center",region.get_center())
+	material.set_shader_parameter("boss_radius",region.size*.675)
+
+static func set_occlusion_region(viewport_id: int, region: Rect2) -> void:
+	if occlusion_regions.has(viewport_id) and occlusion_regions[viewport_id].is_equal_approx(region): return
+	occlusion_regions[viewport_id] = region
+	for entry in occlusion_materials.values():
+		if entry.viewport==viewport_id: apply_occlusion_region(entry.material,region)
+
 static func find_skeleton(node: Node) -> Skeleton3D:
 	if node is Skeleton3D:
 		return node
@@ -108,7 +151,12 @@ static func finish_materials(node: Node) -> void:
 func set_health(hp: float, max_hp: float) -> void:
 	var fraction := clampf(hp / maxf(1, max_hp), 0, 1)
 	health_fill.scale.x = fraction
-	health.visible = fraction > 0 and fraction < .995
+	health_requested_visible = fraction > 0 and fraction < .995
+	set_health_occluded(health_occluded)
+
+func set_health_occluded(occluded: bool) -> void:
+	health_occluded = occluded
+	health.visible = health_requested_visible and not health_occluded and death_time < 0
 
 func fire(destination: Vector3) -> void:
 	aim = (destination - global_position) * Vector3(1, 0, 1)
@@ -127,6 +175,9 @@ func reset_transients() -> void:
 	reset_for_reuse(0)
 
 func reset_for_reuse(offset: float) -> void:
+	set_boss_occluded(false,true)
+	health_occluded = false
+	health_requested_visible = false
 	transform = Transform3D.IDENTITY
 	rotation.y = 0 if friendly else PI
 	aim = Vector3.FORWARD if friendly else Vector3.BACK

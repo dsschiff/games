@@ -40,7 +40,7 @@ def execute(command, run, env, name, timeout=180):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=["checks", "input", "deck", "boss-hud", "pooling", "inspect", "fresh-import"])
+    parser.add_argument("mode", choices=["checks", "input", "deck", "boss-hud", "pooling", "boss-occlusion", "inspect", "fresh-import"])
     parser.add_argument("--render", action="store_true")
     args = parser.parse_args()
     if args.mode == "inspect" and not args.render:
@@ -64,7 +64,7 @@ def main():
         baseline = subprocess.check_output(["git", "show", BASELINE+":android-games/gear-bastion/scripts/battle_rules.gd"], cwd=PROJECT)
         baseline = baseline.replace(b"class_name BattleRules\n", b"")
         (PROJECT/".artifacts/graphics-production/baseline_battle.gd").write_bytes(baseline)
-        script = {"checks": "presentation_tests.gd", "input": "graphics_input.gd", "deck": "deck_geometry.gd", "boss-hud": "boss_hud.gd", "pooling": "pooling.gd", "inspect": "graphics_inspect.gd"}[args.mode]
+        script = {"checks": "presentation_tests.gd", "input": "graphics_input.gd", "deck": "deck_geometry.gd", "boss-hud": "boss_hud.gd", "pooling": "pooling.gd", "boss-occlusion": "boss_occlusion.gd", "inspect": "graphics_inspect.gd"}[args.mode]
         command = [str(GODOT), "--path", str(PROJECT), "--audio-driver", "Dummy", "--quit-after", "12000"]
         command += ["--resolution", "720x1680", "--position", "0,0"] if args.render else ["--headless"]
         command += ["-s", "tests/"+script, "--", "--run-dir="+str(run)]
@@ -79,8 +79,10 @@ def main():
         data_path = run/"hud-data.json"
     if args.mode == "pooling":
         data_path = run/"pool-data.json"
+    if args.mode == "boss-occlusion":
+        data_path = run/"occlusion-data.json"
     retained_data = None
-    if args.mode in {"checks", "input", "deck", "boss-hud", "pooling"} and data_path.exists():
+    if args.mode in {"checks", "input", "deck", "boss-hud", "pooling", "boss-occlusion"} and data_path.exists():
         retained_data = run/"result-data.json"
         shutil.copyfile(data_path, retained_data)
     receipt = {"mode": args.mode, "rendered": args.render, "source_before": before, "source_after": after,

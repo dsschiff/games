@@ -48,6 +48,8 @@ func run() -> void:
 		actor.position=Vector3(11,3,-7);actor.scale=Vector3.ONE*2
 		actor.model.hide();actor.rig.hide();actor.muzzle.transform=Transform3D(Basis.IDENTITY.scaled(Vector3.ONE*3),Vector3(9,9,9))
 		actor.health.position=Vector3(10,10,10);actor.health_fill.scale=Vector3(.1,2,3);actor.health.show()
+		actor.set_boss_occluded(true)
+		actor.set_health_occluded(true)
 		world.retire_actor(actor)
 		check(not actor.visible and actor.process_mode==Node.PROCESS_MODE_DISABLED,"Retired "+role+" is inactive and hidden")
 		actor=world.acquire_actor(role,friendly,.81)
@@ -55,6 +57,10 @@ func run() -> void:
 		var fresh := Actor.new()
 		world.add_child(fresh);fresh.configure(role,friendly,.81)
 		check(actor.transform.is_equal_approx(fresh.transform) and actor.aim==fresh.aim and actor.gait==fresh.gait and actor.travel==0 and actor.fire_left==0 and actor.hit_left==0 and actor.death_time<0 and actor.torso_yaw==0,"Reused "+role+" resets world transform/facing/gait/contact/death/hit state")
+		var opaque: bool = not actor.boss_occluded and not actor.health_occluded and not actor.health_requested_visible
+		for entry in actor.body_surfaces:
+			opaque = opaque and entry.node.get_surface_override_material(entry.surface)==entry.material
+		check(opaque,"Reused "+role+" restores opaque authored materials")
 		for i in actor.rest_nodes.size():
 			var reused_node: Node3D=actor.rest_nodes[i].node
 			var fresh_node: Node3D=fresh.rest_nodes[i].node
