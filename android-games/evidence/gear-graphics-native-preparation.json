@@ -1,0 +1,52 @@
+{
+  "scope": "Read-only code7/save baseline and prepared helper, no graphics upgrade performed",
+  "canonical_private_packet": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\gear-graphics-native",
+  "files": [
+    {
+      "file": "00-old-code7-read1-bastion-save.json",
+      "bytes": 8516,
+      "sha256": "3da6ed1e744b1597bf1a5bd324914a6027cf9423b3ec083966262d69fdba8daa"
+    },
+    {
+      "file": "00-old-code7-read1-bastion-save.json.bak",
+      "bytes": 8516,
+      "sha256": "2063d30d9e03e896b30526e298a9e4a2842e4e2ef111ca792809ebc719d53800"
+    },
+    {
+      "file": "00-old-code7-read1-snapshot.json",
+      "bytes": 647,
+      "sha256": "d2ca30d849c5e6b7c69106ae8e39fee000bf1162889744a7eddb91bad298179f"
+    },
+    {
+      "file": "00-old-code7-read2-bastion-save.json",
+      "bytes": 8516,
+      "sha256": "3da6ed1e744b1597bf1a5bd324914a6027cf9423b3ec083966262d69fdba8daa"
+    },
+    {
+      "file": "00-old-code7-read2-bastion-save.json.bak",
+      "bytes": 8516,
+      "sha256": "2063d30d9e03e896b30526e298a9e4a2842e4e2ef111ca792809ebc719d53800"
+    },
+    {
+      "file": "00-old-code7-read2-snapshot.json",
+      "bytes": 647,
+      "sha256": "d2ca30d849c5e6b7c69106ae8e39fee000bf1162889744a7eddb91bad298179f"
+    },
+    {
+      "file": "baseline-report.json",
+      "bytes": 908,
+      "sha256": "caade13c8832f5eeda5ac3023b9cb04c8d9a183db520f4fb3cd47b411e37f4b1"
+    },
+    {
+      "file": "commands.jsonl",
+      "bytes": 7972,
+      "sha256": "adb9f15c628f7da2075161c1b44eebf074ca6677c9676c4bb2fea32e96738a21"
+    },
+    {
+      "file": "device.py",
+      "bytes": 6488,
+      "sha256": "f0d19a3db2bd9324de029944d731a5d11a7098a81d6b5fc226df7ecb360d32f7"
+    }
+  ],
+  "all_destination_hashes_verified": true
+}
