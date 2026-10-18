@@ -162,3 +162,7 @@ It neither renders nor establishes appearance/readability. The retained60s
 opening belongs to runtime576d4af; short UI closure and future heavy/later films
 must bind the new clean runtime commit. Do not replay the full opening for this
 bounded correction. Rendering still requires the coordinator's explicit grant.
+
+Current production-plan runtime_freeze is042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0,
+the separate clean circular-control/label-clearance commit. Candidate metadata
+continues to be0.3.0/code3; no later render has yet validated the changed UI.

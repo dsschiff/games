@@ -206,3 +206,9 @@ at runtime576d4af and is not evidence that the changed control looks/readably
 works. A short source-bound original-frame/motion closure and future heavy/later
 captures must bind the new runtime freeze after the separate pin commit. GPU
 remains released; no full opening replay or broad campaign suite was run.
+
+The clean runtime/UI commit is042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0.
+The following metadata-only pin binds production-plan.json.runtime_freeze to
+that commit; it leaves config/version0.3.0 and export version0.3.0/code3 intact.
+The old opening receipt is immutable historical evidence. Future heavy/later
+and short UI closure must validate the042d7c2 runtime before execution.
