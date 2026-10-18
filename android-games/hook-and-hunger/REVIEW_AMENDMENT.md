@@ -1,0 +1,16 @@
+# Code3 save-validation amendment
+
+Version 0.2.1/code3, frozen for independent amendment verification and coordinator export/update. The complete Astra verdict landed in coordinator commit `cdf4c5ade340b7f0d079636784c91ba5d2e1a953`, at `android-games/reviews/hook-campaign-code2-astra.md`: visual direction clears; the two reported P2s are its only candidate findings. This amendment implements both and requests their independent recheck. Parent frozen candidate: `f0dfbc99720d0ba492461b8c25e6ee71fe24415e`. Its 88 artifacts and original evidence index remain unchanged.
+
+Two reported P2s are fixed in `campaign_rules.gd` validation only:
+
+- Cooldown uses the selected weapon's period from its pinned active definition, plus1e-6 numeric tolerance. The heavy arena refit's ordinary0.95second post-strike state now validates and saves; cooldown beyond that selected period still rejects.
+- Playing/defeat states require at least one living current-wave opponent. A naturally exhausted wave advances synchronously in `_strike`; imported states that skip this transition cannot strand play. Coherent fully exhausted final victories remain valid.
+
+`tests/review_save_regressions.gd` uses a labelled completed-voyage setup fixture to select heavy replay through actual GUI controls and move until the first real strike. It arms the normal autosave timer, captures the greater-than0.9 window, verifies validation/export/readback/real filesystem write, dispatches the native application-pause notification handler and cold-loads the saved strike. This is the actual game handler, not a claim of Android OS background dispatch. Pure boundary cases accept the exact selected period and tiny tolerance, reject overflow/negative values and reject a heavy cooldown under a shorter selected weapon.
+
+Its labelled synthetic import exhausts the first wave with exact rewards/ID accounting but leaves wave0/playing. Actual GUI Import must reject it while retaining the entire in-memory and persisted state, profile and settings. Defeat/all-waves-exhausted-playing and legitimate-victory controls are included.
+
+Sensitivity before fixes: the heavy-only suite fails11 of21checks, and the combined suite fails20 of31checks on frozen code2. Fixed headless and rendered suites pass31/31. Legacy57, campaign/migration81 and prior import8 also pass; the full174-check actual-input voyage/replay/settings/reload passes.36 prior code2 actual-input checkpoint exports decode identically under frozen code2 and code3, then follow identical120-step continuations. Shipped rules, encounter/weapon definitions, gameplay step, save envelope2 and active schemas1/2 are unchanged.
+
+New evidence namespace: `.artifacts/review-amendment-code3/`; final bindings and hashes are in `evidence/review-amendment-code3.json`. Baseline failures, exact baseline test copies, fixed reports/PNGs, frozen decoder helpers, compatibility cases and preservation receipts are kept there. The coordinator separately reports the genuine code1→code2 APK install-over update passing 24 checks, followed by actual old-route victory, Set Sail, natural schema2 defeat and progression-preserving Retry. Its real code2 campaign is backgrounded at the safe dock for the root-owned code2→code3 update fixture. Amendment Android acceptance and physical-phone checks remain pending; this builder did not perform device operations.

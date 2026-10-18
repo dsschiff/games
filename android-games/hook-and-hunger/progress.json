@@ -1,12 +1,12 @@
 {
   "game": "hook-and-hunger",
-  "milestone": "four-island-software-candidate",
-  "version": "0.2.0/code2",
+  "milestone": "save-validation-review-amendment",
+  "version": "0.2.1/code3",
   "implemented": "Pinned schema1 prologue, twelve passages/four islands/four beacon bosses/six enemy roles, three power purchases, conclusive ending, arena seeds/refits/efficiency, progression-preserving Retry, settings and versioned local save recovery/export/import",
-  "automatically_verified": "57 legacy rules/faults;81 campaign/migration checks;8 import regressions;174 full actual-input checks;9 tactical/replay pure controls;rendered motion/layout indexed separately",
-  "independent_appeal_review": "first-loop-approved;full-candidate-review-requested",
+  "automatically_verified": "Code3:31 headless+31 rendered save regressions;57 legacy/81 campaign/8 prior import/174 full actual-input checks;36 exact code2 snapshots and120-step continuations match;code2 artifacts preserved",
+  "independent_appeal_review": "full-code2-visual-direction-cleared;two-P2-fixes-implemented-awaiting-independent-recheck",
   "full_campaign": "implemented-and-automated-route-verified;human-pacing-fun-pending",
-  "android": "coordinator-old-code1-fixture-created;new-export-update-and-acceptance-pending",
+  "android": "coordinator reports realcode1-to2update24checks and earned campaign fixture;code3 export/update/acceptance pending",
   "phone_tested": false,
-  "runtime_source": "frozen-for-full-candidate-review"
+  "runtime_source": "frozen-for-code3-amendment-recheck-and-export"
 }

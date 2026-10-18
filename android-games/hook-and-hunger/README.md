@@ -1,6 +1,8 @@
 # Hook and Hunger
 
-An original offline portrait 3D salvage-diver game, built with pinned Godot 4.7.2/GDScript. Software candidate 0.2.0/code2: opening purchase cycle, four islands/twelve campaign passages, four distinct beacon bosses, six enemy roles, three power purchases, a conclusive harbor ending and seeded arena replay. No third-party assets, ads, accounts, services, purchases or requested network permission.
+An original offline portrait 3D salvage-diver game, built with pinned Godot 4.7.2/GDScript. Software candidate 0.2.1/code3: opening purchase cycle, four islands/twelve campaign passages, four distinct beacon bosses, six enemy roles, three power purchases, a conclusive harbor ending and seeded arena replay. No third-party assets, ads, accounts, services, purchases or requested network permission.
+
+The full code2 Astra review clears the visual direction and identified two save-validation P2s. Code3 corrects the heavy arena refit's post-strike cooldown bound and rejects exhausted-current-wave imports that cannot advance. New regressions reproduce both old failures and verify immediate saving/lifecycle handling plus whole-state/profile/settings retention on GUI import rejection. See `REVIEW_AMENDMENT.md` and `evidence/review-amendment-code3.json`. Code2's original packet is retained unchanged; code3 requests independent amendment recheck and the coordinator's real APK update/Android acceptance.
 
 ## Play
 
@@ -34,6 +36,7 @@ $env:APPDATA = "$game/.artifacts/manual-test-userdata"
 & $godot --headless --path $game --script tests/run_tests.gd
 & $godot --headless --path $game --script tests/campaign_checks.gd
 & $godot --headless --fixed-fps 60 --path $game --script tests/import_regression.gd
+& $godot --headless --fixed-fps 60 --path $game --script tests/review_save_regressions.gd
 & $godot --headless --fixed-fps 60 --path $game --script tests/playthrough.gd
 & $godot --headless --fixed-fps 60 --path $game --script tests/full_journey.gd
 & $godot --headless --path $game --script tests/counterfactuals.gd
@@ -43,4 +46,4 @@ The full actual-input route has 174 checks, all 12 campaign clears, natural loss
 
 `-- --capture-dir=<existing absolute directory>` preserves input events and earned checkpoints. `tests/motion.gd -- --checkpoint=<earned checkpoint> --seconds=24 --capture-dir=<directory>` continues a checked actual-input checkpoint through ordinary loading and new touch/GUI events. Add `--write-movie <ignored path.avi> --fixed-fps 60` for motion. Fixed-rate NVIDIA desktop movies are not measured phone FPS or audible-output evidence.
 
-The original first loop was independently approved; the full candidate now requests Astra review. Exact source/artifact hashes are in `evidence/campaign-checkpoint.json`; the earlier appeal index remains historical. Coordinator owns APK export, real old-code1 install-over update, Android lifecycle/navigation and final integration. Physical Fold7 touch/folding/sound/performance, human pacing/fun and independent full-candidate acceptance remain outstanding. Runtime is frozen at this review checkpoint; no push or shared-file changes were made.
+The original first loop and full-candidate visual direction were independently cleared. Exact code2 source/artifact hashes remain in `evidence/campaign-checkpoint.json`; code3's fix evidence and final source bindings are in `evidence/review-amendment-code3.json`. Coordinator owns APK export, real code2→code3 install-over update, Android lifecycle/navigation and final integration. Physical Fold7 touch/folding/sound/performance, human pacing/fun and independent amendment acceptance remain outstanding. Runtime is frozen at this review checkpoint; no push or shared-file changes were made.

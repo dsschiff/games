@@ -1,6 +1,7 @@
 extends RefCounted
 const Data = preload("res://scripts/campaign_data.gd")
 const PAD := Vector2(0, 6.8)
+const SAVE_NUMERIC_EPSILON := 0.000001
 
 static func profile() -> Dictionary:
 	return {"version": 1, "stage": -1, "clears": [], "medals": {}, "time": 0.0, "hits": 0, "rescues": 0, "completed": false, "arena_seed": 1701, "arena_weapon": 3, "arena_scores": {}, "ending": {}}
@@ -317,7 +318,7 @@ static func valid(v: Variant) -> bool:
 	for key in ["time", "notice_left", "cooldown", "strike", "blocked"]:
 		if not Data.number(v[key], 0, 10000000):
 			return false
-	if v.cooldown > 0.9 or v.strike > 0.361 or not v.phase in ["playing", "victory", "defeat"] or not v.contact is bool or not v.notice is String or v.notice.length() > 200 or not Data.number(v.strike_id, -1, v.definition.roster.size() - 1, true) or not Data.number(v.strike_x, -7, 7) or not Data.number(v.strike_z, -13, 9):
+	if v.cooldown > float(weapon(v).period) + SAVE_NUMERIC_EPSILON or v.strike > 0.361 or not v.phase in ["playing", "victory", "defeat"] or not v.contact is bool or not v.notice is String or v.notice.length() > 200 or not Data.number(v.strike_id, -1, v.definition.roster.size() - 1, true) or not Data.number(v.strike_x, -7, 7) or not Data.number(v.strike_z, -13, 9):
 		return false
 	if (v.hp == 0) != (v.phase == "defeat") or not v.wave_times is Array or v.wave_times.size() != int(v.wave) + (1 if v.phase == "victory" else 0):
 		return false
@@ -337,6 +338,7 @@ static func valid(v: Variant) -> bool:
 		else:
 			collected = seen
 	var ids := []
+	var current_wave_living := 0
 	if not v.enemies is Array or v.enemies.size() > 100 or not v.drops is Array or v.drops.size() > 100 or not v.projectiles is Array or v.projectiles.size() > 200:
 		return false
 	for e in v.enemies:
@@ -357,7 +359,13 @@ static func valid(v: Variant) -> bool:
 		if not Data.number(e.get("tx"), -1.001, 1.001) or not Data.number(e.get("tz"), -1.001, 1.001) or not Data.number(e.get("facing"), -TAU, TAU) or not Data.number(e.get("heal_to"), -1, v.definition.roster.size() - 1, true):
 			return false
 		ids.append(id)
+		if int(v.definition.roster[id].wave) == int(v.wave):
+			current_wave_living += 1
 	if ids.size() + dead.size() != v.definition.roster.size() or (v.phase == "victory" and not ids.is_empty()):
+		return false
+	# Natural last-kill transitions advance the wave synchronously in _strike.
+	# An active/Retry state without current opponents cannot make that transition.
+	if v.phase != "victory" and current_wave_living == 0:
 		return false
 	for spec in v.definition.roster:
 		if int(spec.wave) < int(v.wave) and not int(spec.id) in dead or int(spec.wave) > int(v.wave) and int(spec.id) in dead:
