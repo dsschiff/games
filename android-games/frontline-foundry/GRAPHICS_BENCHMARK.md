@@ -48,6 +48,26 @@ The game-local runner creates those directories and archives exact executed
 sources, source hashes, commands and outputs. It does not touch ADB, clipboard,
 Android export, signing, shared tools or global configuration.
 
+Every invocation first runs pinned Godot with `--headless --editor --import --quit`
+under the same isolated environment. This creates the GLB PackedScene cache needed
+on a fresh checkout. `import.log` and `import-report.json` record the exact command,
+exit code, error diagnostics and source hashes before/after import. Nonzero exit,
+timeout or import error diagnostics stop the runner before any test/capture
+process starts; `receipt.json` records `command_executed=false`. The executed
+source archive and test/capture hashes are taken after a successful import.
+
+This prerequisite was added after candidate `e58a4fd`; it changes only
+`tests/run_graphics.py` and this document. Existing final clips retain their
+original helper hash and source archives. Runtime GDScript, project configuration,
+assets, rules and saved-state validation remain exactly at the captured candidate;
+no footage is recaptured for this helper-only difference.
+
+Verification is retained in `.artifacts/import-helper-verification/`: a copied
+checkout with no `.godot` cache imports cleanly and passes all 59 focused checks.
+A separate no-cache copy with an intentionally invalid soldier GLB emits three
+import errors despite Godot exiting 0; the runner rejects it and records
+`command_executed=false`. `verification-summary.json` indexes both receipts.
+
 ```powershell
 python -B android-games/frontline-foundry/tests/run_graphics.py checks
 # A coordinator-granted serialized GPU slot is required for either capture:

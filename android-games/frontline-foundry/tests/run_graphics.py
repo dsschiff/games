@@ -29,6 +29,25 @@ def sources():
             and not any(part.startswith(".") or part == "__pycache__" for part in p.relative_to(PROJECT).parts)}
 
 
+def import_project(run, env):
+    command = [str(GODOT), "--headless", "--editor", "--import", "--quit", "--path", str(PROJECT)]
+    before = sources()
+    with (run / "import.log").open("w", encoding="utf-8") as log:
+        try:
+            code = subprocess.run(command, env=env, stdout=log, stderr=subprocess.STDOUT, timeout=180).returncode
+        except subprocess.TimeoutExpired:
+            code = 124
+    output = (run / "import.log").read_text(encoding="utf-8", errors="replace")
+    errors = [line for line in output.splitlines()
+              if any(marker in line for marker in ["ERROR:", "SCRIPT ERROR:", "Parse Error:"])]
+    after = sources()
+    result = {"command": command, "exit_code": code, "passed": code == 0 and not errors,
+              "errors": errors, "source_before_sha256": before, "source_after_sha256": after,
+              "source_unchanged": before == after, "log": "import.log"}
+    (run / "import-report.json").write_text(json.dumps(result, indent=2) + "\n")
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("mode", choices=["checks", "capture"])
@@ -86,6 +105,9 @@ def main():
             raw = subprocess.check_output(["git", "-C", str(PROJECT), "show", "501f6dc:android-games/frontline-foundry/scripts/" + name])
             (baseline / name).write_bytes(raw)
         command += ["--baseline-dir=" + str(baseline).replace("\\", "/") + "/"]
+    # A fresh checkout has .import sidecars but no imported PackedScene cache.
+    # Complete/verify the CPU-only import before binding the executed sources.
+    imported = import_project(run, env)
     before = sources()
     (run / "source-hashes.json").write_text(json.dumps(before, indent=2) + "\n")
     for name in before:
@@ -93,14 +115,18 @@ def main():
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(PROJECT / name, target)
     with (run / "godot.log").open("w", encoding="utf-8") as log:
-        try:
-            code = subprocess.run(command, env=env, stdout=log, stderr=subprocess.STDOUT,
-                                  timeout=max(180, args.seconds * 4 + 120)).returncode
-        except subprocess.TimeoutExpired:
-            code = 124
+        if imported["passed"]:
+            try:
+                code = subprocess.run(command, env=env, stdout=log, stderr=subprocess.STDOUT,
+                                      timeout=max(180, args.seconds * 4 + 120)).returncode
+            except subprocess.TimeoutExpired:
+                code = 124
+        else:
+            code = 126
+            log.write("NOT EXECUTED: headless import preflight failed; see import.log and import-report.json.\n")
     output = (run / "godot.log").read_text(encoding="utf-8", errors="replace")
     report = json.loads((run / "benchmark-report.json").read_text()) if (run / "benchmark-report.json").exists() else None
-    passed = code == 0 and not any(x in output for x in ["ERROR:", "SCRIPT ERROR:", "Parse Error:"])
+    passed = imported["passed"] and code == 0 and not any(x in output for x in ["ERROR:", "SCRIPT ERROR:", "Parse Error:"])
     passed &= ("SUITE_COMPLETE: PASS" in output) if args.mode == "checks" else (report is not None and not report["errors"])
     probe = None
     if args.movie and (run / "continuous.avi").exists():
@@ -111,6 +137,7 @@ def main():
         (run / "movie-probe.json").write_text(json.dumps(probe, indent=2) + "\n")
         passed &= probe["meets_native_720x1280"] and probe["full_decode_passed"]
     receipt = {"mode": args.mode, "command": command, "exit_code": code, "passed": passed,
+               "command_executed": imported["passed"], "import_preflight": imported,
                "source_unchanged": before == sources(), "resume_from": str(args.resume_from) if args.resume_from else None,
                "resume_slot_sha256": resume, "engine": str(GODOT),
                "encoded_movie_dimensions": ({key: next(stream for stream in probe["streams"] if stream["codec_type"] == "video")[key] for key in ["width", "height", "r_frame_rate"]} if probe else None),
