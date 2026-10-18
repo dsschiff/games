@@ -83,21 +83,35 @@
     },
     {
       "slug": "frontline-foundry",
-      "state": "conditional_software_candidate_ready_for_phone_testing",
+      "state": "graphics_reviewed_emulator_validated_conditional_software_candidate",
       "thread_id": "01a14d1d-c90a-7562-b246-6cd243ad96ed",
       "ready_for_phone_testing": true,
       "physical_phone_tested": false,
-      "evidence": "android-games/evidence/frontline-code2-candidate.json",
-      "renderer_evidence": "android-games/evidence/frontline-retry-graphics.json",
-      "apk": "C:/projects/active/games/.artifacts/frontline-foundry/20261018T072513236798Z/frontline-foundry.apk",
-      "apk_sha256": "eef7f08a32dbc61245d29f281f5dc8500786c852019c025f07cd39fc7407d45c",
-      "version": "0.2.0",
-      "version_code": 2,
-      "source_sha256": "9e58d59a34dc7e12028ba4077217a23a4cdfe03d29ce3056723a099102640195",
+      "evidence": "android-games/evidence/frontline-3d-production-candidate.json",
+      "renderer_evidence": "android-games/reviews/frontline-production-final-astra.md",
+      "apk": "C:\\projects\\active\\games\\.artifacts\\frontline-foundry\\20261018T142221129070Z\\frontline-foundry.apk",
+      "apk_sha256": "3629f4c9d60413c7f89a43fc1495ad2ecaa71a17d5626f89a634855ad11a6e72",
+      "version": "0.3.0",
+      "version_code": 3,
+      "source_sha256": "620153b8fd4aecc1d0297e9e752119bb6d1ad3226e425b34c58081be3dece65e",
       "phone_ime_verified": false,
-      "qualification": "Conditional software candidate; actual update/core outcomes/transfer/native Back/settings/active lifecycle/emulated resize reviewed. Physical IME/touch/folding/audio/FPS/fun remain open; earlier graphics failures retained, later rejected previews qualified as presentation discrepancies.",
+      "qualification": "Graphics reviewed and emulator validated; physical/human acceptance deferred. Existing portrait activity; native landscape unproved. Rejected transient reads/frames and superseded helper comparison remain retained.",
       "package": "com.dsschiff.frontlinefoundry",
-      "source_text_lf_sha256": "9e58d59a34dc7e12028ba4077217a23a4cdfe03d29ce3056723a099102640195"
+      "source_text_lf_sha256": "0261ab31940ce87ffd02bf9862e929b244ab255a3bb3f9895adf772e5ce04ddc",
+      "historical_baseline": {
+        "version": "0.2.0",
+        "version_code": 2,
+        "apk": "C:/projects/active/games/.artifacts/frontline-foundry/20261018T072513236798Z/frontline-foundry.apk",
+        "apk_sha256": "eef7f08a32dbc61245d29f281f5dc8500786c852019c025f07cd39fc7407d45c",
+        "source_sha256": "9e58d59a34dc7e12028ba4077217a23a4cdfe03d29ce3056723a099102640195",
+        "source_text_lf_sha256": "9e58d59a34dc7e12028ba4077217a23a4cdfe03d29ce3056723a099102640195",
+        "evidence": "android-games/evidence/frontline-code2-candidate.json"
+      },
+      "source_text_lf_qualification": "Only GRAPHICS_PRODUCTION.md advanced after the clean build; runtime/art exact",
+      "native_update_evidence": "android-games/reviews/frontline-graphics-native-astra.md",
+      "emulator_installed_version_code": 3,
+      "graphics_bundle": "C:\\projects\\active\\games\\.artifacts\\releases\\frontline-foundry-0.3.0-graphics",
+      "additional_phone_testing": "deferred_by_user"
     },
     {
       "slug": "dead-run",
@@ -126,13 +140,14 @@
     "disposition": "All six qualified selected-reference implementations accepted; physical/human acceptance remains open."
   },
   "graphics_stage": {
-    "status": "first_pair_full_production",
+    "status": "frontline_delivered_gear_motion_active",
     "frontline_benchmark": "android-games/evidence/frontline-3d-benchmark.json",
-    "apk_boundary": "Existing APK entries remain exact functional or fit baselines; the new Frontline3D source is not a delivered graphical APK",
+    "apk_boundary": "Frontline0.3.0/code3 is the first graphics-reviewed/emulator-validated update; Gear code7 is fit-only, other entries remain functional baselines.",
     "preview": {
       "index": "C:\\projects\\active\\games\\.artifacts\\releases\\graphics-benchmark-20261018\\index.html",
       "evidence": "android-games/evidence/graphics-benchmark-preview.json",
       "scope": "First accepted benchmark comparison; final six-game previews pending"
-    }
+    },
+    "frontline_bundle": "C:\\projects\\active\\games\\.artifacts\\releases\\frontline-foundry-0.3.0-graphics"
   }
 }

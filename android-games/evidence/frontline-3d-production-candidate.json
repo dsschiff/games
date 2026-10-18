@@ -1,5 +1,5 @@
 {
-  "status": "built_candidate_source_supported_visual_and_native_review_pending",
+  "status": "graphics_reviewed_emulator_validated_conditional_software_candidate",
   "worker_runtime_art_commit": "dca06bf7b31a6c113e969133562adb1776826c4f",
   "worker_production_commit": "998dce3063eeedd2e60954b89b2796a0771ca257",
   "integration_runtime_commit": "e5aeb5ea6c5bb96309f3e57ba4dce2868fd1c24c",
@@ -40,6 +40,19 @@
   },
   "visual_review_packet": ".artifacts/graphics-overhaul/frontline-production-review/review-packet.json",
   "visual_status": "Astra normal1x playback active; no final score or release disposition yet",
-  "native_status": "Not installed; actual code2 binary and genuine saves preserved, update/Back/transfer/resize/cold pending",
-  "physical_human_acceptance": "Deferred by user; not established"
+  "native_status": "actual2to3_rawslots_exact_wholemeaning_input_Back_transfer_cover_inner_cold_Home_verified",
+  "physical_human_acceptance": "Deferred by user; not established",
+  "graphics_review": "android-games/reviews/frontline-production-final-astra.md",
+  "all_eight_quality_scores": 3,
+  "native_review": "android-games/reviews/frontline-graphics-native-astra.md",
+  "native_landscape_surface": "not_proved_existing_portrait_activity",
+  "bundle": "C:\\projects\\active\\games\\.artifacts\\releases\\frontline-foundry-0.3.0-graphics",
+  "canonical_packet": {
+    "path": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\frontline-production-dca06bf",
+    "files": 264,
+    "bytes": 81194185,
+    "receipt_sha256": "7a3c7d7cff00366d46ebbf28d314796dea986fb1b3f67031f8483dc506ea9178",
+    "primary_native_report": "native-addendum-v2/report-v2.json",
+    "addendum_receipt_sha256": "d584efefe4215b4116c530a6034e789bda0211f7072581af7cc4ee4e4c18fa59"
+  }
 }

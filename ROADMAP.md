@@ -32,8 +32,8 @@ The active portfolio goal is defined in `GOAL.md`. Status reflects evidence, not
 | --- | --- | --- |
 | G0 Closeout | Complete: six old chats archived, handoffs retained | Six old chats archived; source/saves/evidence retained |
 | G1 First pair | Complete: Gear 0.3.3 fit delivered; bounded Frontline 3D benchmark accepted in all eight categories | Actual playable 3D quality reviewed; save-compatible Gear sizing update |
-| G2 Full presentation | Frontline+Gear active; later pairs queued | Complete Frontline+Gear, Hearthguard+Hook, DeadRun+Tower with original modeled actors/environment and real animation |
-| G3 Graphics delivery | Queued | Six reviewed higher-version APKs, genuine update retention, emulator/layout checks and before-after clips |
+| G2 Full presentation | Frontline complete; Gear motion review active; Hearthguard takes the freed CPU builder slot | Complete Frontline+Gear, Hearthguard+Hook, DeadRun+Tower with original modeled actors/environment and real animation |
+| G3 Graphics delivery | Frontline0.3.0 delivered; five graphical APKs remain | Six reviewed higher-version APKs, genuine update retention, emulator/layout checks and before-after clips |
 
 The current work is `android-games/GRAPHICS-OVERHAUL.md`; status/ownership is in
 `android-games/graphics-overhaul.json`. Additional phone testing is deferred by
