@@ -1,0 +1,22 @@
+{
+  "scope": "Corrected APK must preserve the entire real active code2 campaign snapshot, profile, settings and committed flag. Envelope2/schema2 remain pinned; whole-path comparison in android_upgrade is stricter than these fixture fields.",
+  "expected_save": {
+    "version": 2,
+    "committed": true,
+    "state.schema": 2,
+    "state.definition.version": 1,
+    "state.definition.stage": 0,
+    "state.phase": "playing",
+    "state.hp": 100,
+    "state.wallet": 81,
+    "state.tier": 1,
+    "state.dead": [2, 0, 4],
+    "state.collected": [2, 0, 4],
+    "state.deaths": 1,
+    "profile.stage": 0,
+    "profile.clears": [-1],
+    "profile.completed": false,
+    "settings.sound": false,
+    "settings.reduced_effects": true
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "scope": "Verified full-campaign checkpoint with two open save/import P2 review findings; not a software candidate",
+  "worker_commit": "f0dfbc99720d0ba492461b8c25e6ee71fe24415e",
+  "integration_commit": "2e96f61",
+  "source_sha256": "99718cd0434936e92f43538eb248c2e41a4ae1ad480790c6d5db85b0b2719af9",
+  "source_unchanged": true,
+  "worker_raw_fingerprint": "61ea92e15b29755cc7bcc602f4faa8afbda14344da804ff7cc7c373def1bc236",
+  "source_binding_qualification": "47 raw/LF source bindings,88 artifact hashes,all54 tracked LF bindings verified; raw fingerprint differences are recorded checkout line endings.",
+  "version": "0.2.0",
+  "version_code": 2,
+  "save_envelope": 2,
+  "campaign_schema": 2,
+  "definition_version": 1,
+  "passages": 12,
+  "islands": 4,
+  "beacon_bosses": 4,
+  "enemy_roles": 6,
+  "power_purchases": 3,
+  "independent_checks": {
+    "legacy_rules": 57,
+    "campaign_rules": 81,
+    "import_gui": 8,
+    "pure_controls": 9,
+    "full_journey_input": 174,
+    "rendered_opening": 18,
+    "rendered_layout": 10,
+    "rendered_middle": 3
+  },
+  "input_campaign_clears": 12,
+  "input_arena_victories": 3,
+  "input_ending_and_profile_reload": true,
+  "controls_scope": "Three unchanged nearest/outer-reach policies lose first waves; positioned policy clears with permitted Retry. Three refits clear fixed seed1701 with distinct time/hit/recovery rows. Bounded tactical observations, not universal balance or fun.",
+  "headless_manifest": "C:/projects/active/games/.artifacts/hook-and-hunger/campaign-code2-headless-20261018T020149771735Z/manifest.json",
+  "rendered_manifest": "C:/projects/active/games/.artifacts/hook-and-hunger/rendered-code2-20261018T020550382472Z/manifest.json",
+  "failed_harness_manifest": "C:/projects/active/games/.artifacts/hook-and-hunger/campaign-code2-headless-20261018T015105012736Z/manifest.json",
+  "failed_harness_reason": "Root omitted captures.mkdir; route reached ending/arena but null output-file writes prevented completion/report. Corrected ignored harness passed unchanged source in a new namespace; failed history retained.",
+  "review": "android-games/reviews/hook-campaign-code2-astra.md",
+  "review_package": "C:/projects/active/games/.artifacts/reviews/hook-campaign-f0dfbc9/review-package.json",
+  "open_findings": [
+    "Heavy arena refit0.95 cooldown exceeds validator0.9, rejecting ordinary immediate post-strike saves",
+    "Malformed empty-current-wave nonterminal import accepted and permanently stranded"
+  ],
+  "apk": "C:/projects/active/games/.artifacts/hook-and-hunger/20261018T020451725309Z/hook-and-hunger.apk",
+  "apk_sha256": "8d70df934c01a042977bac792e12eb107b03cb86b15b597f91d37ff252b57686",
+  "signed": true,
+  "permissions": [],
+  "build_manifest": "C:/projects/active/games/.artifacts/hook-and-hunger/20261018T020451725309Z/manifest.json",
+  "android_update_manifest": "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.hookandhunger/20261018T020553607903Z/manifest.json",
+  "android_update_checks": 24,
+  "android_update_revisions": [
+    41,
+    41,
+    43,
+    45
+  ],
+  "android_preserved_paths": [
+    "state",
+    "settings",
+    "committed"
+  ],
+  "android_legacy_actual_input": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code2-native-legacy-route-20261018T021124067314Z/transcript.json",
+  "android_legacy_result": {
+    "phase": "victory",
+    "hp": 36,
+    "wallet": 63,
+    "kills": 8,
+    "tier": 1,
+    "scope": "Actual native drag and visible forge purchase; no injected saves"
+  },
+  "android_fresh_campaign_entry": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code2-first-campaign-entry-20261018T021513259606Z/after-input-decoded.json",
+  "android_fresh_campaign_natural_defeat": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code2-natural-campaign-pressure-20261018T021549284019Z/after-input-decoded.json",
+  "android_actual_retry_update_ready": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code2-campaign-retry-update-ready-20261018T021653415694Z/after-input-decoded.json",
+  "android_retry_preserved": [
+    "definition",
+    "dead",
+    "collected",
+    "wallet",
+    "tier",
+    "spent",
+    "profile",
+    "settings"
+  ],
+  "android_update_ready_state": {
+    "revision": 234,
+    "schema": 2,
+    "stage": 0,
+    "hp": 100,
+    "wallet": 81,
+    "tier": 1,
+    "dead": [
+      2,
+      0,
+      4
+    ],
+    "deaths": 1,
+    "time": 13.2333333333336
+  },
+  "root_viewed_native_captures": [
+    "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.hookandhunger/20261018T020553607903Z/new-cold-relaunch-foreground.png",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code2-native-legacy-route-20261018T021124067314Z/natural-victory.png",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code2-first-campaign-entry-20261018T021513259606Z/native-after-input.png",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code2-natural-campaign-pressure-20261018T021549284019Z/native-after-input.png"
+  ],
+  "receipt": "C:/projects/active/games/.artifacts/preservation/hook-campaign-code2.json",
+  "receipt_sha256": "c0b394bffffc854576a6a19ad11e07847cef23cfcf64b7eceddefb73240325ad",
+  "preserved_files": 517,
+  "preserved_bytes": 651750691,
+  "decoded_images": 61,
+  "ready_for_phone_testing": false,
+  "physical_phone_tested": false,
+  "remaining": [
+    "Fix and independently close both P2 findings, preserve code2 active campaign across corrected APK update",
+    "Fresh campaign victory/Retry and actual Android export/import/Back/cover-inner/interrupted-save checks on corrected candidate",
+    "Human pacing/fun/readability and physical Fold7 touch/folding/safe areas, sound and measured performance",
+    "No full campaign Android journey claim; fixed capture fps does not measure phone FPS"
+  ]
+}

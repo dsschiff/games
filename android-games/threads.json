@@ -33,7 +33,7 @@
       "worktree": "C:/projects/active/_worktrees/games-tower-trials-20261018",
       "branch": "codex/tower-trials",
       "ownership": "android-games/tower-trials/",
-      "state": "frozen code2 authored36-puzzle checkpoint independently verified and reviewed; actual code1-to2 Android preservation/continuation/natural outcomes pass; building required seeded challenges and presentation follow-ups in new evidence namespace"
+      "state": "code2 authored36-puzzle checkpoint independently verified/reviewed with actual Android update/outcomes; worker0feb135 freezes code3 seeded Challenge and presentation fixes, awaiting independent source/input review and Android validation"
     },
     {
       "slug": "hook-and-hunger",
@@ -43,7 +43,7 @@
       "worktree": "C:/projects/active/_worktrees/games-hook-and-hunger-20261018",
       "branch": "codex/hook-and-hunger",
       "ownership": "android-games/hook-and-hunger/",
-      "state": "two-pen movement/combat/purchase loop approved by Astra, import P2 independently closed; building full campaign with pinned v1 rules"
+      "state": "workerf0dfbc9 full twelve-passage campaign independently exercised; actual code1-to2 Android whole-state preservation and legacy victory pass; fixing Astra heavy-arena cooldown and empty-active-wave import P2 findings in a new amendment"
     }
   ]
 }

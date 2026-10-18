@@ -1,0 +1,38 @@
+{
+  "reference_display": [1080, 2400],
+  "viewport": [720, 1280],
+  "scope": "Real code2 first-campaign save earned from the preserved code1 route through native movement, visible forge, legacy victory, Set Sail, natural campaign defeat and actual Retry. Cold code2 launch pauses; use visible Resume then Pause at the safe dock. No save injection, reset or synthetic progress.",
+  "actions": [
+    {"type": "tap", "x": 540, "y": 820, "wait_seconds": 0.2},
+    {"type": "tap", "x": 913, "y": 145, "wait_seconds": 0.2}
+  ],
+  "expected_save": {
+    "version": 2,
+    "committed": true,
+    "state.schema": 2,
+    "state.definition.version": 1,
+    "state.definition.stage": 0,
+    "state.definition.arena": false,
+    "state.phase": "playing",
+    "state.wave": 0,
+    "state.wave_times": [],
+    "state.tier": 1,
+    "state.hp": 100,
+    "state.wallet": 81,
+    "state.dead": [2, 0, 4],
+    "state.collected": [2, 0, 4],
+    "state.deaths": 1,
+    "state.spent": 0,
+    "state.starting_wallet": 63,
+    "state.x": 0,
+    "profile.stage": 0,
+    "profile.clears": [-1],
+    "profile.completed": false,
+    "settings.sound": false,
+    "settings.reduced_effects": true
+  },
+  "expected_numeric": {
+    "state.time": {"min": 13.2, "max": 20},
+    "state.z": {"min": 6.79, "max": 6.81}
+  }
+}
