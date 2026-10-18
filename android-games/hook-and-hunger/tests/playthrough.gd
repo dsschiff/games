@@ -14,6 +14,7 @@ var saw_contact := false
 var chain_frame := false
 var hit_frame := false
 var gate_frame := false
+var quit_after_run := true
 
 func _initialize() -> void:
 	for arg in OS.get_cmdline_user_args():
@@ -139,7 +140,7 @@ func run() -> void:
 	root.size = Vector2i(1000, 1110)
 	await process_frame
 	await snap("12-unfolded-victory")
-	check(scene.buy_button.get_global_rect().end.x <= root.size.x and scene.menu_button.get_global_rect().end.x <= root.size.x, "unfolded resize retains buttons within viewport")
+	check((root.get_final_transform() * scene.buy_button.get_global_rect().end).x <= root.size.x + 1 and (root.get_final_transform() * scene.menu_button.get_global_rect().end).x <= root.size.x + 1, "unfolded resize retains buttons within physical viewport")
 	if not capture_dir.is_empty():
 		var f := FileAccess.open(capture_dir.path_join("input-report.json"), FileAccess.WRITE)
 		f.store_string(JSON.stringify({"checks": checks, "failures": failures, "checks_detail": report, "state": scene.state, "snapshots": snapshots, "scope": "Godot fixed 60Hz actual Input.parse_input_event touch and GUI mouse; no phone timing claim"}, "  "))
@@ -149,10 +150,11 @@ func run() -> void:
 		f.close()
 	print("HOOK_INPUT: ", checks, " checks; failures=", failures)
 	print("SUITE_COMPLETE: ", "PASS" if failures == 0 else "FAIL")
-	scene.queue_free()
-	await process_frame
-	await process_frame
-	quit(0 if failures == 0 else 1)
+	if quit_after_run:
+		scene.queue_free()
+		await process_frame
+		await process_frame
+		quit(0 if failures == 0 else 1)
 
 func dwell(frames: int) -> void:
 	for frame in frames:
@@ -199,14 +201,14 @@ func steer(direction: Vector2) -> void:
 	if not scene.dragging:
 		var press := InputEventScreenTouch.new()
 		press.index = 0
-		press.position = Vector2(120, 900)
+		press.position = root.get_final_transform() * Vector2(120, 900)
 		press.pressed = true
 		Input.parse_input_event(press)
 		events.append({"time": scene.state.time, "kind": "touch_press", "position": [press.position.x, press.position.y]})
 		await process_frame
 	var drag := InputEventScreenDrag.new()
 	drag.index = 0
-	drag.position = Vector2(120, 900) + direction * 75
+	drag.position = root.get_final_transform() * (Vector2(120, 900) + direction * 75)
 	drag.relative = direction * 75
 	Input.parse_input_event(drag)
 	events.append({"time": scene.state.time, "kind": "touch_drag", "position": [drag.position.x, drag.position.y]})
@@ -214,13 +216,15 @@ func steer(direction: Vector2) -> void:
 func release() -> void:
 	var event := InputEventScreenTouch.new()
 	event.index = 0
-	event.position = Vector2(120, 900)
+	event.position = root.get_final_transform() * Vector2(120, 900)
 	event.pressed = false
 	Input.parse_input_event(event)
 	events.append({"time": scene.state.time, "kind": "touch_release", "position": [event.position.x, event.position.y]})
 	await process_frame
 
 func click(text: String) -> void:
+	await process_frame
+	await process_frame
 	var target: Button
 	for b in scene.find_children("*", "Button", true, false):
 		if b.text == text and b.is_visible_in_tree():
@@ -228,11 +232,19 @@ func click(text: String) -> void:
 	if target == null:
 		check(false, "visible button missing: " + text)
 		return
+	await reveal(target)
+	await process_frame
+	var motion := InputEventMouseMotion.new()
+	motion.position = root.get_final_transform() * target.get_global_rect().get_center()
+	Input.parse_input_event(motion)
+	events.append({"time": scene.state.time, "kind": "mouse_motion", "position": [motion.position.x, motion.position.y]})
+	await process_frame
 	for pressed in [true, false]:
 		var event := InputEventMouseButton.new()
 		event.button_index = MOUSE_BUTTON_LEFT
-		event.position = target.get_global_rect().get_center()
+		event.position = root.get_final_transform() * target.get_global_rect().get_center()
 		event.pressed = pressed
+		event.button_mask = MOUSE_BUTTON_MASK_LEFT if pressed else 0
 		Input.parse_input_event(event)
 		events.append({"time": scene.state.time, "kind": "mouse_press" if pressed else "mouse_release", "button": text, "position": [event.position.x, event.position.y]})
 		await process_frame
@@ -251,3 +263,24 @@ func check(okay: bool, message: String) -> void:
 	if not okay:
 		failures += 1
 		push_error(message)
+
+func reveal(button: Button) -> void:
+	if not scene.menu.is_ancestor_of(button):
+		return
+	var scroll = scene.menu.find_children("*", "ScrollContainer", true, false)[0]
+	for attempt in 20:
+		var point := button.get_global_rect().get_center()
+		var area: Rect2 = scroll.get_global_rect()
+		if area.encloses(button.get_global_rect()):
+			return
+		var wheel := InputEventMouseButton.new()
+		wheel.position = root.get_final_transform() * area.get_center()
+		wheel.button_index = MOUSE_BUTTON_WHEEL_DOWN if point.y > area.end.y else MOUSE_BUTTON_WHEEL_UP
+		wheel.pressed = true
+		Input.parse_input_event(wheel)
+		events.append({"time": scene.state.time, "kind": "wheel_down" if wheel.button_index == MOUSE_BUTTON_WHEEL_DOWN else "wheel_up", "pressed": true, "position": [wheel.position.x, wheel.position.y]})
+		await process_frame
+		wheel.pressed = false
+		Input.parse_input_event(wheel)
+		events.append({"time": scene.state.time, "kind": "wheel_release", "position": [wheel.position.x, wheel.position.y]})
+		await process_frame

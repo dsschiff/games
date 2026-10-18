@@ -1,0 +1,1036 @@
+{
+  "schema_version": 1,
+  "game": "hook-and-hunger",
+  "milestone": "four-island-software-candidate",
+  "version": "0.2.0",
+  "version_code": 2,
+  "branch": "codex/hook-and-hunger",
+  "base_commit": "790f722bdb2731c1ea82a5ae6b0b92e275a4e061",
+  "prior_checkpoint": "31431bf6f373fcca05a14d201ccde0da3721968c",
+  "required_p2_fix_commit": "0eb36797a238f6c213a8e0927f90e0e180f1e515",
+  "created_utc": "2026-10-18T01:47:50.738422+00:00",
+  "godot": "4.7.2.stable.official.ed1daf0bf",
+  "source_record_sha256": "e48ce3238a135027a4fe75e2fdc642f26b1a1591f103dcc877fde3ef8ea4be7f",
+  "source_unchanged_during_checks_and_capture": true,
+  "source_files": [
+    {
+      "path": "export_presets.cfg",
+      "sha256": "0f6cf07def623a1c77ba1089259078ca8835e6fda5f8dec173e80622c829dfb1",
+      "lf_sha256": "0f6cf07def623a1c77ba1089259078ca8835e6fda5f8dec173e80622c829dfb1"
+    },
+    {
+      "path": "icon.svg",
+      "sha256": "b59972edf091c65c1176192b21cf655106e9f4a56ea0636c8ec7bdebff79c034",
+      "lf_sha256": "b59972edf091c65c1176192b21cf655106e9f4a56ea0636c8ec7bdebff79c034"
+    },
+    {
+      "path": "icon.svg.import",
+      "sha256": "0704f19cbe370da4ae0adc41e214c5e172bee5a7eeefebc5cefc4c5d06d47b75",
+      "lf_sha256": "0704f19cbe370da4ae0adc41e214c5e172bee5a7eeefebc5cefc4c5d06d47b75"
+    },
+    {
+      "path": "main.tscn",
+      "sha256": "f292ddda8d1ef52f9de3d096dafbf6e07aaff69ce89cfeedb2d7846063fccb11",
+      "lf_sha256": "f292ddda8d1ef52f9de3d096dafbf6e07aaff69ce89cfeedb2d7846063fccb11"
+    },
+    {
+      "path": "project.godot",
+      "sha256": "fabbb288e07d7196c55e512be3b19009595918be765f43d4c60a4f081ace0500",
+      "lf_sha256": "fabbb288e07d7196c55e512be3b19009595918be765f43d4c60a4f081ace0500"
+    },
+    {
+      "path": "scripts/art.gd",
+      "sha256": "a60e907e27a3d8ec66ea08165b7145c6d04540a3926405ef95ca0f668ca3aba1",
+      "lf_sha256": "a60e907e27a3d8ec66ea08165b7145c6d04540a3926405ef95ca0f668ca3aba1"
+    },
+    {
+      "path": "scripts/art.gd.uid",
+      "sha256": "6ec2f05a598251944972e523db5d4c8207a2026fedff3c6645bfa54f752f785e",
+      "lf_sha256": "6ec2f05a598251944972e523db5d4c8207a2026fedff3c6645bfa54f752f785e"
+    },
+    {
+      "path": "scripts/campaign_data.gd",
+      "sha256": "eb73e677adcf8e5e7c66f52cb2d2de901b30b963dd3f2b6c7d5e81a15437ccb5",
+      "lf_sha256": "eb73e677adcf8e5e7c66f52cb2d2de901b30b963dd3f2b6c7d5e81a15437ccb5"
+    },
+    {
+      "path": "scripts/campaign_data.gd.uid",
+      "sha256": "419df17abebbf68bf30da4a8bd04d7f8b913fecfce62fff4d81818e68bba6567",
+      "lf_sha256": "419df17abebbf68bf30da4a8bd04d7f8b913fecfce62fff4d81818e68bba6567"
+    },
+    {
+      "path": "scripts/campaign_rules.gd",
+      "sha256": "dcc0ace7154e9a81f298b0b21cac77e9f0da3638ffd044d27c70689eab9a6b5d",
+      "lf_sha256": "dcc0ace7154e9a81f298b0b21cac77e9f0da3638ffd044d27c70689eab9a6b5d"
+    },
+    {
+      "path": "scripts/campaign_rules.gd.uid",
+      "sha256": "ba28191419e86257abe73f3cae6a2593d2038ae30f215399d4c40a511e9f22b3",
+      "lf_sha256": "ba28191419e86257abe73f3cae6a2593d2038ae30f215399d4c40a511e9f22b3"
+    },
+    {
+      "path": "scripts/campaign_world.gd",
+      "sha256": "86950be1bf2db0b986d8cfe0d1f1029e56b6b2ab99ec35be7d471c7e84d0a141",
+      "lf_sha256": "86950be1bf2db0b986d8cfe0d1f1029e56b6b2ab99ec35be7d471c7e84d0a141"
+    },
+    {
+      "path": "scripts/campaign_world.gd.uid",
+      "sha256": "02b63b883610819bdbd373c3216253b7c66f9bc97e085731150005fd86344586",
+      "lf_sha256": "02b63b883610819bdbd373c3216253b7c66f9bc97e085731150005fd86344586"
+    },
+    {
+      "path": "scripts/engine.gd",
+      "sha256": "afce6acc3217797633ad5c3c0f56f9751fbf75a1f5dc3163848b72c4fb832f5f",
+      "lf_sha256": "afce6acc3217797633ad5c3c0f56f9751fbf75a1f5dc3163848b72c4fb832f5f"
+    },
+    {
+      "path": "scripts/engine.gd.uid",
+      "sha256": "129203b141adec1ce14e99b793a686a656fb5eaa907a0259ba8ecb145a33001c",
+      "lf_sha256": "129203b141adec1ce14e99b793a686a656fb5eaa907a0259ba8ecb145a33001c"
+    },
+    {
+      "path": "scripts/main.gd",
+      "sha256": "d959f397c78aaeb00b9e882ab5d3c97a657d900ad795c713a976d3c8f35565de",
+      "lf_sha256": "63fd1139443d465a5317b49bed8681105275c645db3d091b7194c53666925ba5"
+    },
+    {
+      "path": "scripts/main.gd.uid",
+      "sha256": "eb31d1e55d02f62c62b3b95183e688ac37be72a3ef4f63aa8be42b44b60ebf50",
+      "lf_sha256": "eb31d1e55d02f62c62b3b95183e688ac37be72a3ef4f63aa8be42b44b60ebf50"
+    },
+    {
+      "path": "scripts/rules.gd",
+      "sha256": "f8d440b8dbb82fb8bc526cf80b50b219edbe6d5a6e7bc3b58037b45433aa78c0",
+      "lf_sha256": "f8d440b8dbb82fb8bc526cf80b50b219edbe6d5a6e7bc3b58037b45433aa78c0"
+    },
+    {
+      "path": "scripts/rules.gd.uid",
+      "sha256": "e7c20b049e53f54af4b2e9bb72ded10ba4b4cb665fcd01a21dda535b864c5efd",
+      "lf_sha256": "e7c20b049e53f54af4b2e9bb72ded10ba4b4cb665fcd01a21dda535b864c5efd"
+    },
+    {
+      "path": "scripts/save_files.gd",
+      "sha256": "56cefd9b2f5113f7c77fb5149dedc066953d4216cfacd7255d49e206cdce8215",
+      "lf_sha256": "56cefd9b2f5113f7c77fb5149dedc066953d4216cfacd7255d49e206cdce8215"
+    },
+    {
+      "path": "scripts/save_files.gd.uid",
+      "sha256": "c4f7f54218ff262fdcd88ab704783ca9ca8e42599b4e1bbcd8e74bfee8f36afd",
+      "lf_sha256": "c4f7f54218ff262fdcd88ab704783ca9ca8e42599b4e1bbcd8e74bfee8f36afd"
+    },
+    {
+      "path": "scripts/save_store.gd",
+      "sha256": "7fb0018f3f7e89675f12b2672cd60b9f1a03f885897646a69fb9919ab4d74fb6",
+      "lf_sha256": "7fb0018f3f7e89675f12b2672cd60b9f1a03f885897646a69fb9919ab4d74fb6"
+    },
+    {
+      "path": "scripts/save_store.gd.uid",
+      "sha256": "82b908d6446554591cccf68c0637ecb02db057288b17df29fff2b46f15e32279",
+      "lf_sha256": "82b908d6446554591cccf68c0637ecb02db057288b17df29fff2b46f15e32279"
+    },
+    {
+      "path": "scripts/stick.gd",
+      "sha256": "d2593ce7cb8267e6adb46e7a40287872d22a529698771ff3e057ec15db7989ee",
+      "lf_sha256": "d2593ce7cb8267e6adb46e7a40287872d22a529698771ff3e057ec15db7989ee"
+    },
+    {
+      "path": "scripts/stick.gd.uid",
+      "sha256": "ded97ec939ada93bebcca78d33239f764298b3e6448e95771b74e7c44ef1d9b1",
+      "lf_sha256": "ded97ec939ada93bebcca78d33239f764298b3e6448e95771b74e7c44ef1d9b1"
+    },
+    {
+      "path": "tests/campaign_checks.gd",
+      "sha256": "54bd905a31b736010101abae9daa26a158bb77aeb89024dfd95a7ff0ebcd59e6",
+      "lf_sha256": "54bd905a31b736010101abae9daa26a158bb77aeb89024dfd95a7ff0ebcd59e6"
+    },
+    {
+      "path": "tests/campaign_checks.gd.uid",
+      "sha256": "17ea2ed3ba0b60f336a4c102859cd0cf7e2017968de1e838b26f547e60f27cfb",
+      "lf_sha256": "17ea2ed3ba0b60f336a4c102859cd0cf7e2017968de1e838b26f547e60f27cfb"
+    },
+    {
+      "path": "tests/campaign_policy.gd",
+      "sha256": "86b265c0649accac8ae399902313c01df246102bf89e13e4f02adc871fb28ccb",
+      "lf_sha256": "86b265c0649accac8ae399902313c01df246102bf89e13e4f02adc871fb28ccb"
+    },
+    {
+      "path": "tests/campaign_policy.gd.uid",
+      "sha256": "9a2efca6f26129b3153259d1b4f209a8a7705d6bbd9c24dfde557ba0eeddc37b",
+      "lf_sha256": "9a2efca6f26129b3153259d1b4f209a8a7705d6bbd9c24dfde557ba0eeddc37b"
+    },
+    {
+      "path": "tests/campaign_probe.gd",
+      "sha256": "774e8f7de7916736bce6682cc2464ecd8533a5f3a1bf7e09f68fd322d81f5384",
+      "lf_sha256": "774e8f7de7916736bce6682cc2464ecd8533a5f3a1bf7e09f68fd322d81f5384"
+    },
+    {
+      "path": "tests/campaign_probe.gd.uid",
+      "sha256": "7f992dad370e6815d000344b74620c957f0dee2150e4bcf62cfd6d8b6a110378",
+      "lf_sha256": "7f992dad370e6815d000344b74620c957f0dee2150e4bcf62cfd6d8b6a110378"
+    },
+    {
+      "path": "tests/counterfactuals.gd",
+      "sha256": "bc651251310999fa081880a34f31ee4345ab608a75b17bb8490c82941c74bb61",
+      "lf_sha256": "bc651251310999fa081880a34f31ee4345ab608a75b17bb8490c82941c74bb61"
+    },
+    {
+      "path": "tests/counterfactuals.gd.uid",
+      "sha256": "0020615a2a0a204008089b2139f886944d6b404dc90190f97e0bf38a31e6db31",
+      "lf_sha256": "0020615a2a0a204008089b2139f886944d6b404dc90190f97e0bf38a31e6db31"
+    },
+    {
+      "path": "tests/fault_files.gd",
+      "sha256": "e9f04fd6c5149fbf2b598776522ee811de41208b1375a8d91bb1a1bdf8991b6f",
+      "lf_sha256": "e9f04fd6c5149fbf2b598776522ee811de41208b1375a8d91bb1a1bdf8991b6f"
+    },
+    {
+      "path": "tests/fault_files.gd.uid",
+      "sha256": "2c5a6bd1bde714520474f8f23c5168df285979bd6199b65bb7d1dc6b17dcaa5a",
+      "lf_sha256": "2c5a6bd1bde714520474f8f23c5168df285979bd6199b65bb7d1dc6b17dcaa5a"
+    },
+    {
+      "path": "tests/full_journey.gd",
+      "sha256": "f611558c1ddc7ef8b66e89f88a3d04533c78e838555992716695259a259b26bc",
+      "lf_sha256": "f611558c1ddc7ef8b66e89f88a3d04533c78e838555992716695259a259b26bc"
+    },
+    {
+      "path": "tests/full_journey.gd.uid",
+      "sha256": "db55203b25f841def4fb48c87f5c5ec54ce2bd0d6efdb0dc6f9dda5b9b70e4c6",
+      "lf_sha256": "db55203b25f841def4fb48c87f5c5ec54ce2bd0d6efdb0dc6f9dda5b9b70e4c6"
+    },
+    {
+      "path": "tests/import_regression.gd",
+      "sha256": "8c5df320a9eaadeff37269a6934f1b1693d18f557c41516adfc45c31ee3408f5",
+      "lf_sha256": "065e544867effc766969d7ff4ff224040ff3840405e5ba00fead19ec90d5d4dc"
+    },
+    {
+      "path": "tests/import_regression.gd.uid",
+      "sha256": "315766b337126a89d47b4ef7a3a64520a20bec07f8b26545b0ebd71f60476ae8",
+      "lf_sha256": "315766b337126a89d47b4ef7a3a64520a20bec07f8b26545b0ebd71f60476ae8"
+    },
+    {
+      "path": "tests/layout_probe.gd",
+      "sha256": "46eea4538ac9040093ae86c3f248861ace5088a80acea25282e5c15f1daae312",
+      "lf_sha256": "46eea4538ac9040093ae86c3f248861ace5088a80acea25282e5c15f1daae312"
+    },
+    {
+      "path": "tests/layout_probe.gd.uid",
+      "sha256": "09efeedddbb776184159ddabda41f1d1bb23d7cc3162bd0a472129de5f32beee",
+      "lf_sha256": "09efeedddbb776184159ddabda41f1d1bb23d7cc3162bd0a472129de5f32beee"
+    },
+    {
+      "path": "tests/motion.gd",
+      "sha256": "a393d498b93987b3a7f4d840d2ede6c12463607e93cc000e85e28f0051ec7396",
+      "lf_sha256": "a393d498b93987b3a7f4d840d2ede6c12463607e93cc000e85e28f0051ec7396"
+    },
+    {
+      "path": "tests/motion.gd.uid",
+      "sha256": "48a431721f610863f2d37e67a798c8b5644cff4f976803d4c514cabf566097c1",
+      "lf_sha256": "48a431721f610863f2d37e67a798c8b5644cff4f976803d4c514cabf566097c1"
+    },
+    {
+      "path": "tests/playthrough.gd",
+      "sha256": "37827ebe4a8c97aaf17244ba8a8e8c0bec71c3404d2d80b6d32f3ef1d0889bb1",
+      "lf_sha256": "d9f66843b19be11000aef1d1cf9c43ccb1ae815785fc5d85ae04e0fe29740c6d"
+    },
+    {
+      "path": "tests/playthrough.gd.uid",
+      "sha256": "663f4fa6abca438fe1d4542924cca652866745002222b78e75f865565dc66553",
+      "lf_sha256": "663f4fa6abca438fe1d4542924cca652866745002222b78e75f865565dc66553"
+    },
+    {
+      "path": "tests/run_tests.gd",
+      "sha256": "22708c49d5c5d33d74d56058de31a1c3700f2c767c8254e5a318aaf8eaf18bfb",
+      "lf_sha256": "84ff39bce5fda672b194e87396fb3e39e087a5456c3bebf0be9a953b7fe04067"
+    },
+    {
+      "path": "tests/run_tests.gd.uid",
+      "sha256": "1193a783c33e2cb8d7fecc877528780facd598ca29bf15120d4423c5152e3d6a",
+      "lf_sha256": "1193a783c33e2cb8d7fecc877528780facd598ca29bf15120d4423c5152e3d6a"
+    }
+  ],
+  "tests": {
+    "legacy_rules_faults": 57,
+    "campaign_migration_import_bounds": 81,
+    "rejected_import_real_input": 8,
+    "full_journey_real_input": 174,
+    "rendered_opening_real_input": 18,
+    "rendered_layout": 10,
+    "rendered_middle": 3,
+    "rendered_final_natural_ending": 4,
+    "pure_tactical_and_replay_cases": 9,
+    "failures": 0,
+    "counts_overlap": "Full journey includes18 opening checks; do not sum as unique coverage."
+  },
+  "journey": {
+    "campaign_seconds": 2019.8666666670417,
+    "prologue_plus_campaign_seconds": 2064.90000000038,
+    "campaign_recoveries": 4,
+    "including_prologue_recoveries": 5,
+    "raw_input_events": 149966,
+    "campaign": [
+      {
+        "hits": 1,
+        "rescues": 0,
+        "stage": 0,
+        "time": 68.3333333333307,
+        "title": "Buoy Channel",
+        "wallet": 261,
+        "wave_times": [
+          12.1833333333335,
+          29.4333333333329,
+          52.9166666666649,
+          68.3333333333307
+        ]
+      },
+      {
+        "hits": 8,
+        "rescues": 0,
+        "stage": 1,
+        "time": 114.199999999995,
+        "title": "Broken Causeway",
+        "wallet": 645,
+        "wave_times": [
+          15.766666666667,
+          32.9499999999994,
+          54.9166666666648,
+          69.166666666664,
+          93.3666666666627,
+          114.199999999995
+        ]
+      },
+      {
+        "hits": 4,
+        "rescues": 0,
+        "stage": 2,
+        "time": 158.750000000018,
+        "title": "Saltglass Beacon",
+        "wallet": 1049,
+        "wave_times": [
+          17.2833333333336,
+          55.4666666666648,
+          73.9333333333304,
+          94.9499999999959,
+          111.633333333328,
+          158.750000000018
+        ]
+      },
+      {
+        "hits": 7,
+        "rescues": 1,
+        "stage": 3,
+        "time": 154.816666666682,
+        "title": "Kiln Landing",
+        "wallet": 1322,
+        "wave_times": [
+          24.6166666666666,
+          47.7333333333319,
+          79.4499999999968,
+          102.416666666662,
+          124.733333333328,
+          154.816666666682
+        ]
+      },
+      {
+        "hits": 5,
+        "rescues": 0,
+        "stage": 4,
+        "time": 155.683333333349,
+        "title": "Crabworks",
+        "wallet": 1727,
+        "wave_times": [
+          28.5499999999997,
+          54.6666666666648,
+          81.3166666666633,
+          103.733333333329,
+          126.483333333327,
+          155.683333333349
+        ]
+      },
+      {
+        "hits": 9,
+        "rescues": 1,
+        "stage": 5,
+        "time": 199.083333333384,
+        "title": "Cinder Beacon",
+        "wallet": 2146,
+        "wave_times": [
+          24.3833333333332,
+          54.6833333333315,
+          83.4166666666632,
+          105.933333333329,
+          133.183333333331,
+          199.083333333384
+        ]
+      },
+      {
+        "hits": 6,
+        "rescues": 0,
+        "stage": 6,
+        "time": 175.933333333365,
+        "title": "Lantern Sound",
+        "wallet": 2359,
+        "wave_times": [
+          25.8333333333331,
+          47.4999999999986,
+          74.9333333333304,
+          99.483333333329,
+          141.533333333338,
+          175.933333333365
+        ]
+      },
+      {
+        "hits": 9,
+        "rescues": 1,
+        "stage": 7,
+        "time": 228.883333333408,
+        "title": "Split Hulls",
+        "wallet": 2821,
+        "wave_times": [
+          56.4666666666647,
+          92.6166666666627,
+          126.866666666661,
+          154.433333333348,
+          187.333333333375,
+          228.883333333408
+        ]
+      },
+      {
+        "hits": 4,
+        "rescues": 0,
+        "stage": 8,
+        "time": 206.78333333339,
+        "title": "Wreck Beacon",
+        "wallet": 3320,
+        "wave_times": [
+          23.1166666666666,
+          51.0833333333317,
+          81.4999999999967,
+          108.049999999995,
+          142.433333333339,
+          206.78333333339
+        ]
+      },
+      {
+        "hits": 8,
+        "rescues": 1,
+        "stage": 9,
+        "time": 169.816666666694,
+        "title": "Crown Approach",
+        "wallet": 3779,
+        "wave_times": [
+          26.6166666666664,
+          55.2499999999981,
+          82.8166666666633,
+          109.883333333328,
+          139.600000000003,
+          169.816666666694
+        ]
+      },
+      {
+        "hits": 5,
+        "rescues": 0,
+        "stage": 10,
+        "time": 171.533333333362,
+        "title": "Crystal Choir",
+        "wallet": 4247,
+        "wave_times": [
+          31.0499999999995,
+          57.5333333333313,
+          79.0666666666635,
+          102.233333333329,
+          144.100000000007,
+          171.533333333362
+        ]
+      },
+      {
+        "hits": 3,
+        "rescues": 0,
+        "stage": 11,
+        "time": 216.050000000064,
+        "title": "Glasswater Crown",
+        "wallet": 4726,
+        "wave_times": [
+          33.4666666666661,
+          55.6333333333315,
+          84.1999999999965,
+          108.033333333328,
+          146.933333333342,
+          216.050000000064
+        ]
+      }
+    ],
+    "actual_arena_runs": [
+      {
+        "hits": 12,
+        "rescues": 2,
+        "seed": 1701,
+        "time": 205.033333333389,
+        "weapon": 1
+      },
+      {
+        "hits": 3,
+        "rescues": 0,
+        "seed": 1701,
+        "time": 119.533333333328,
+        "weapon": 3
+      },
+      {
+        "hits": 4,
+        "rescues": 0,
+        "seed": 1702,
+        "time": 110.083333333328,
+        "weapon": 3
+      }
+    ],
+    "duration_limit": "Fixed60Hz automated policy route, not human playtime/fun/FPS. Pure controls and actual route timings differ with reaction/frame phase."
+  },
+  "motion": {
+    "method": "Godot --write-movie --fixed-fps60, actual engine input; source AVIs60fps, review MP4s30fps without acceleration/interpolation. NVIDIA Compatibility; Dummy audio.",
+    "checkpoint_provenance": "Middle and final use normal isolated local-save loading of exact checked checkpoints exported by the same-source full actual-input route. No active state edits during playback.",
+    "final_controller": ".artifacts/campaign-code2-final/final_win_motion.gd",
+    "final_controller_scope": "Small ignored capture controller reuses tracked full_journey drive_encounter; exact helper bytes are included among artifact hashes.",
+    "clips": [
+      {
+        "name": "first",
+        "path": ".artifacts/campaign-code2-final/first-motion/review.mp4",
+        "edit": "Unretimed concatenation of nominal full AVI intervals [3,20] and [37,49.4] seconds; declared cut edit.",
+        "metadata": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 450,
+              "height": 800,
+              "r_frame_rate": "30/1"
+            },
+            {
+              "codec_type": "audio",
+              "r_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "duration": "29.466667",
+            "size": "2794585"
+          }
+        }
+      },
+      {
+        "name": "middle",
+        "path": ".artifacts/campaign-code2-final/middle-motion/review.mp4",
+        "edit": "Continuous complete nominal26.2667second movie including deliberate forge reading dwell.",
+        "metadata": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 450,
+              "height": 800,
+              "r_frame_rate": "30/1"
+            },
+            {
+              "codec_type": "audio",
+              "r_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "duration": "26.333333",
+            "size": "5846586"
+          }
+        }
+      },
+      {
+        "name": "final",
+        "path": ".artifacts/campaign-code2-final/final-motion/review.mp4",
+        "edit": "Continuous nominal last28seconds selected with ffmpeg -sseof -28; actual output duration is recorded.",
+        "metadata": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_type": "video",
+              "width": 450,
+              "height": 800,
+              "r_frame_rate": "30/1"
+            },
+            {
+              "codec_type": "audio",
+              "r_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "duration": "28.066667",
+            "size": "3058215"
+          }
+        }
+      }
+    ],
+    "pngs_verified": 24,
+    "visual_inspection": "Builder inspected purchase, chain contact, middle combat, final pattern strips, natural ending and cover/unfolded frames; independent full-candidate playback/review remains requested."
+  },
+  "migration": {
+    "old_envelope": 1,
+    "new_envelope": 2,
+    "old_active_state_schema_retained": 1,
+    "new_campaign_state_schema": 2,
+    "meaning": "Schema1 uses unchanged shipped roster/reward/weapon/step functions. New metadata lives beside whole old state. New active definitions are pinned immutable definition1 snapshots.",
+    "cold_launch": "Active saves open paused until Resume.",
+    "android_status": "Coordinator prepared genuine old-code1 fixture through actual input. Builder has not run APK export/install-over/lifecycle or device operations."
+  },
+  "artifacts": [
+    {
+      "path": ".artifacts/campaign-code2-final/arena-1-start.json",
+      "bytes": 30657,
+      "sha256": "5cea707ddca523c247f5246ae51ee1d0a25b3c9805b05a74b7510f70ae5ea76c"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/arena-3-start.json",
+      "bytes": 30721,
+      "sha256": "7d7dc04dbc044025ead9cc8fd8ea022a2bf46700a084aa848e8a52545ee992fe"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/campaign-rules.log",
+      "bytes": 137,
+      "sha256": "1ed01f1baac080cf7c5739fe1f89aeeac70c887fc5a58b7ab830bd99b921f7dc"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/controls.log",
+      "bytes": 1312,
+      "sha256": "6ded3e2796b7f3c594d1b701bcee0692553e580ef6684e877dc1233439790cba"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/counterfactuals.json",
+      "bytes": 2072,
+      "sha256": "f81e21afca197aa681febaadeecca3791f1b6e1ad2b719f635c2d5566dac2a74"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/final-motion/contact-sheet.png",
+      "bytes": 448808,
+      "sha256": "7ae3e39265a874c313e1fb7acfeccbfafe4be2784910a4ffbdb6798fba63aa64"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/final-motion/final-input-report.json",
+      "bytes": 686459,
+      "sha256": "9a759770057195d1d54cf0855b7d4ae9fd885752d3be0cffe3725f568879a7d6"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/final-motion/final-start.png",
+      "bytes": 304294,
+      "sha256": "d59ebfec3f97a88ba49b23714a663ad55ebe945b66cf31a97d55ddc3632d0971"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/final-motion/full.avi",
+      "bytes": 210326596,
+      "sha256": "f429ea6664a9c91ce88daae829823ffdee0adeb4d708956d170e30917eae8108"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/final-motion/motion.log",
+      "bytes": 1468,
+      "sha256": "94f88dcc912f8c6ca8b2433593e24c12f5efceb6f871b81063f8aba460abd709"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/final-motion/natural-ending.png",
+      "bytes": 150607,
+      "sha256": "1b9208cb22b6f6b173d176d278b70c7e6c248f1c5d5b6a00d795013948ec6d04"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/final-motion/review.mp4",
+      "bytes": 3058215,
+      "sha256": "21162ad0856d4b59934d7ba70636ddcd7ac5e10b665632f6e6ce49d681305b7e"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/final-motion/stage-11-wave-5.json",
+      "bytes": 18442,
+      "sha256": "45cea6b5684505560ee6000b7c6e2b1f9842f73c99808f59b87ce1e46063a18e"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/final_win_motion.gd",
+      "bytes": 2016,
+      "sha256": "0b35ea29a7f03c503a4a7d345133f0ab148615ece069d87b9b98ea5ccb521c0c"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/first-motion/01-dock.png",
+      "bytes": 155030,
+      "sha256": "14aa52e135398aa32af18882a02b71955aefbb17942647480c43afe3da1b8b79"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/first-motion/02-wounded-shoal.png",
+      "bytes": 191055,
+      "sha256": "511c25ba0abf1cb5007df5fa6b9ad0990c491515e2a76d143a7d542172a9d96c"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/first-motion/04-chain-extension.png",
+      "bytes": 190827,
+      "sha256": "96146ed163fffec63b9842aa5b7a6f0bb991652ae328f3e46380e2b7c0e7460a"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/first-motion/05-salvage-drop.png",
+      "bytes": 247952,
+      "sha256": "f0a420da25cba959741537f44752c1b0e3c22c545dfa86e0311d22b3848f4e17"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/first-motion/06-before-purchase.png",
+      "bytes": 132437,
+      "sha256": "31445720f141b70aeda4792d504ef470e00afae3346e8380d49725003cd286e4"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/first-motion/07-upgrade-payoff.png",
+      "bytes": 130003,
+      "sha256": "8f92a6d3c608cc331d45a4e1090d81f464eb6ddf167c8860c20d1c298fbeaa87"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/first-motion/08-natural-defeat.png",
+      "bytes": 102756,
+      "sha256": "a7fed22ab31e1b2282eb33961fbbc523f6c4244d6ea8398679f60dbddffbb2c8"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/first-motion/09-retry-upgraded.png",
+      "bytes": 142987,
+      "sha256": "7bae7afac599a9cdadacacd839edd566ee2259773054a526798ab0dab5096006"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/first-motion/10-stronger-pen.png",
+      "bytes": 144654,
+      "sha256": "c917eb1fbc964c4619c76c1624743b670d0ab56d14d2ab1cad69039962209e72"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/first-motion/11-natural-victory.png",
+      "bytes": 99033,
+      "sha256": "3579c90a5390aedc3a509818f58610a7adc9e8e9ce6cb455411a11be53ec7df7"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/first-motion/12-unfolded-victory.png",
+      "bytes": 237719,
+      "sha256": "39538e18611cd4e98ca1bf7aa41d5189370058b465275e88386da23f07f83f23"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/first-motion/full.avi",
+      "bytes": 123132046,
+      "sha256": "89a44f4d2bf795cde7c82e33cc08c276fcba784d1e83ae1c2f844d14415ead1c"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/first-motion/input-report.json",
+      "bytes": 23075,
+      "sha256": "b31a4cf5afbcae9586f8a17e38c87058e7c882a795bb69a7df4f22227009ad01"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/first-motion/motion.log",
+      "bytes": 1866,
+      "sha256": "df550945b135c98dfb3b3c86be95f8e880aeeb834f127a013167519eb6694c59"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/first-motion/raw-input-events.json",
+      "bytes": 208649,
+      "sha256": "aa58290a934c574ec184653c7fb067b4501da7dfabf0221497973cc2fed2e25e"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/first-motion/review.mp4",
+      "bytes": 2794585,
+      "sha256": "8c54a4083a93c3a64d2681a082a27dd91bbaa99b410c0dc8dbd05c26a9f8f3bc"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/full-journey-input.json",
+      "bytes": 12966345,
+      "sha256": "6db68a6f1a15677136b57f94eec43c726cfcfc50420283e757a05f3ad13ec8d4"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/full-journey-report.json",
+      "bytes": 21302,
+      "sha256": "969e02dd7dbe520026bbc500fb0619b9fe1e9557bcadd2093d1e0201e3280636"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/full-route.log",
+      "bytes": 6913,
+      "sha256": "274561f878f65930af806b8d5154b2c4d555ca40d852d47f98dc852e4bc5ba4d"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/import-regression.log",
+      "bytes": 143,
+      "sha256": "34fa9be2fc9231b5804e7b37cd61e7d5fe807b0b80f30eb0b69ab0cf546093b4"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/input-report.json",
+      "bytes": 23076,
+      "sha256": "8fc1d49fbd4854cfee90da4a0250eb4a2b8689e71c3c9cde472b4f05448ea052"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/layout/active-tall-cover.png",
+      "bytes": 216418,
+      "sha256": "aabc8e01c1ef5660030e9e57ebd3e614da08dd68f8aea88dbc1512e06cca2e57"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/layout/active-unfolded.png",
+      "bytes": 245437,
+      "sha256": "699b8bd1b96b36b44242f743018b4f55a210b73aae00f09132a558660ca147f4"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/layout/arena-menu-cover.png",
+      "bytes": 132837,
+      "sha256": "a63bdc4044044dc276ec34b0ad6f9eaa8c18f5a6f84e94eff0fbb9e1e9de5713"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/layout/layout.log",
+      "bytes": 856,
+      "sha256": "4f776d0071377a890d23b2dcd896c4d78992c0b6d359cb6f785d892210be2fe6"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/layout/menu-unfolded.png",
+      "bytes": 244873,
+      "sha256": "d944b6ca52002c4fe74e85d44dc4cfb52a9ed0e53f131b93fc141a762a12a11a"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/legacy-rules.log",
+      "bytes": 132,
+      "sha256": "5ca0d8aa422e4a1f8366f036e38678b3dcb7fe7800db7aa35560c0137450f690"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/middle-motion/after.png",
+      "bytes": 244486,
+      "sha256": "23057882f35b07e0b827072be80d9cb03d51baa79a1587d2de1d2a5f8a0cd2a3"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/middle-motion/before.png",
+      "bytes": 216949,
+      "sha256": "f8d95cb4c246f8b935fb5bedb77ba1d06bfa7291906b8321026e1032cbfa2df6"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/middle-motion/full.avi",
+      "bytes": 79205850,
+      "sha256": "81784b9d682e8d902889a4f2df72fd762e6a9104c882537056a1a4d38018ca1c"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/middle-motion/motion-1100.png",
+      "bytes": 201013,
+      "sha256": "ca7706c36be5606446922fa871f03ef691620ba1bf0af8a13e3c8bc554b3d112"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/middle-motion/motion-180.png",
+      "bytes": 256943,
+      "sha256": "fe3bb4b69ff16b2a8c2dd12a8c5e5161986908f0ed9422687cdc4ee595c47fb7"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/middle-motion/motion-600.png",
+      "bytes": 256789,
+      "sha256": "21f06dd9dd8c12afc50a3c533284c1b2a768c17609180e0d819c0c89ded85792"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/middle-motion/motion-report.json",
+      "bytes": 539904,
+      "sha256": "10be4dd549fb921233b81ba7cb696872736443c0ff23537807926c6eb057f210"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/middle-motion/motion.log",
+      "bytes": 1458,
+      "sha256": "1759978b40bcb7a38f0822668e394cf00b6fe3bc64fd9116ecc6029610c764db"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/middle-motion/purchased.png",
+      "bytes": 177063,
+      "sha256": "4c101bcda07e43f2333759450a786aa324ac2b3a9fd6f3e4d72a4ef8a7b3bcad"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/middle-motion/review.mp4",
+      "bytes": 5846586,
+      "sha256": "548b7687f207dbf6c239ea369f3a9b1fdc05f987916de80244fa12c156661b57"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/raw-input-events.json",
+      "bytes": 208546,
+      "sha256": "e0686cb81fc59c1bfd012843dee459af46482a45f4eb5e365a932f44a2c1827e"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/source-before.json",
+      "bytes": 10224,
+      "sha256": "ddc72626aedd34c23f808bf47f080ebdf0f9a5e7f03f9a0f00aa8fcb1bbcbcad"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/source-binding.json",
+      "bytes": 11037,
+      "sha256": "112364dab5ddd8f24d0b4738dee9521d76dfea12bd9ef761a2f07904127166bd"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-00-clear.json",
+      "bytes": 7773,
+      "sha256": "f6e2db89562c2a18358ac92f3670937c44047c398294ce5a83aa7a19a730a2d9"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-00-start.json",
+      "bytes": 15426,
+      "sha256": "e662e515986ef11a7b49f35077ecd2ecaeaf8c0cf6883d9d1b66f6879aa0d96e"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-00-wave-0.json",
+      "bytes": 15426,
+      "sha256": "e662e515986ef11a7b49f35077ecd2ecaeaf8c0cf6883d9d1b66f6879aa0d96e"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-00-wave-2.json",
+      "bytes": 11679,
+      "sha256": "f9943c385dbf35dc697e8896f5cc9bf813e040f550bf9935e027eb43f8994f3b"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-01-clear.json",
+      "bytes": 12734,
+      "sha256": "f40e4a3c03346bb506df03d0d5aea25da68d2e07b7f411c50a9f3aca63e3af0d"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-01-start.json",
+      "bytes": 26956,
+      "sha256": "d9209cec010e69cfde41b16e05a5c388e282b38ed5e72393b540903f9dccaee9"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-02-clear.json",
+      "bytes": 13028,
+      "sha256": "ba149a82a05a1529d08570c333157538ae91f2a5b75c0678a110052ee3b85bad"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-02-start.json",
+      "bytes": 27512,
+      "sha256": "daf48a8705a3c9404aea92babe860845870b34bdb3fa7ed8712fb70bb76636ca"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-03-clear.json",
+      "bytes": 12797,
+      "sha256": "9707eac6beacaf852474faa92d9654d160d7698a31f13a54acbd1e47e6498e92"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-03-purchased.json",
+      "bytes": 27051,
+      "sha256": "96861dd78b35f104a4c62ecf309ced23efcec7f65d56daef35f72e58dbec8932"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-03-start.json",
+      "bytes": 27057,
+      "sha256": "a5828cd2d5a9980366c2398e3789f03448fd9072a4a5c7680070da6500d4e805"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-04-clear.json",
+      "bytes": 12802,
+      "sha256": "22802a606a1370c2fd57f925fd4f04aa97ee2a5310ac46bedce9fb81ca5755de"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-04-start.json",
+      "bytes": 27079,
+      "sha256": "aa8c94e834ec9c840cb454b6efeef790239414f5a9f3a599f5f7e7dc3ef57818"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-05-clear.json",
+      "bytes": 13101,
+      "sha256": "9c71ac9320d82edba68affd500ff1fac2c9d3c6077022f3c8f405aa452b8c18f"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-05-start.json",
+      "bytes": 27638,
+      "sha256": "0e36712aad4c740e8cc579fa663616030b67c60d0cf40ac468f9b54c3804c7c5"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-06-clear.json",
+      "bytes": 14610,
+      "sha256": "831c69082c86fec9c714d6071d3126ccd29ffa4bc224d29b7bcacecf38020118"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-06-purchased.json",
+      "bytes": 30204,
+      "sha256": "9a5c2537a4c24c9570aba4584aeae113d75afc0867979c8ecd9885faa125a60a"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-06-start.json",
+      "bytes": 30202,
+      "sha256": "c1a8817076c654d3faed5d7f5286933d8935c42d0c9fc264750fceff9b02ab18"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-06-wave-0.json",
+      "bytes": 30204,
+      "sha256": "9a5c2537a4c24c9570aba4584aeae113d75afc0867979c8ecd9885faa125a60a"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-06-wave-2.json",
+      "bytes": 25747,
+      "sha256": "7e57192542ae8129be43fc47d427baa888bf1c441641249fe7e1986a2cf16b2b"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-06-wave-5.json",
+      "bytes": 17697,
+      "sha256": "2599f5e41ce0b19701a67debc31e2d3782a28ea4d84250e6d08cc4979f92c313"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-07-clear.json",
+      "bytes": 14149,
+      "sha256": "cc798373a7b5e3608570ef10b96c7f34a5d4e02ca8b3487588471c4d9b8882b3"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-07-start.json",
+      "bytes": 30183,
+      "sha256": "b47f89681494884848b1a436ccd5cf3dbd625a141c908b253649268e914e2723"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-08-clear.json",
+      "bytes": 14673,
+      "sha256": "0e5f60d1e2efc491df6b5bf6e2bba0d884a6b2bd424721146f0c31fc94fb4a88"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-08-start.json",
+      "bytes": 31289,
+      "sha256": "aaf34fff0938c1c00f6140802a13032096055ba7b118496c991d2f04ce8b2e37"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-09-clear.json",
+      "bytes": 14179,
+      "sha256": "cb0c0ed6427348eee06bceeeb9e27bb804673405ed622d584cb9c9420bf26521"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-09-start.json",
+      "bytes": 30242,
+      "sha256": "7cba0cedfadd512a981782f32765f099821c13948835589fbf59e83208a45188"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-10-clear.json",
+      "bytes": 14166,
+      "sha256": "12312da96ee242541aa6ed790b93610376b8da8409440269706d4a120981fee3"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-10-start.json",
+      "bytes": 30185,
+      "sha256": "3803bf78344d3769310caf99f48ba909a69b355f7a0930ac6f779fc1394e458c"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-11-clear.json",
+      "bytes": 14498,
+      "sha256": "3f6d1418ff7699d23623837cf3eb9e599e6c5394c50900e52b3394c7bb91fda5"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-11-start.json",
+      "bytes": 30826,
+      "sha256": "107781673323d5d13e5c487c78561d62014ea078bdd4acdb5994d6c117f9d659"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-11-wave-0.json",
+      "bytes": 30826,
+      "sha256": "107781673323d5d13e5c487c78561d62014ea078bdd4acdb5994d6c117f9d659"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-11-wave-2.json",
+      "bytes": 25910,
+      "sha256": "e126047963c47886bda88d4a354d9c888ba6732e6bd63e34ffb2b8e0fc80c38f"
+    },
+    {
+      "path": ".artifacts/campaign-code2-final/stage-11-wave-5.json",
+      "bytes": 17911,
+      "sha256": "ac6cc58f220e66bbeadd56d46cfa27eb7b6af65c22b131fc6267411c933b1980"
+    }
+  ],
+  "outstanding": [
+    "Independent Astra full-candidate appeal/fidelity and release review",
+    "Coordinator code2 APK build/signature/permissions and genuine old-code1 install-over update",
+    "Android offline/input/Back/background-resume/interrupted-save/export-import acceptance",
+    "Physical Fold7 actual touch, cover/inner safe areas, fold lifecycle, sound and measured FPS",
+    "Human pacing/fun and dense-crowd readability; all selectable arena seeds are not exhaustively input-tested"
+  ],
+  "scope_guards": [
+    "Only android-games/hook-and-hunger changed",
+    "No shared scripts/root records/canonical game edits",
+    "No ADB/emulator/push/new chats/nested goals/nested agents/public release"
+  ]
+}

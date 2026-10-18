@@ -1,11 +1,12 @@
 {
   "game": "hook-and-hunger",
-  "milestone": "first-playable-purchase-cycle",
-  "implemented": "Two-pen original 3D slice: chain contact, salvage, power purchase/full heal, gate, boss, natural win/loss/Retry, settings and checked local saves/export/import",
-  "automatically_verified": "57 rules/fault checks and 18 actual-input checks; rendered evidence indexed separately",
-  "independent_appeal_review": "requested-at-scoped-checkpoint",
-  "full_campaign": "not-yet-expanded",
-  "android": "coordinator-export-pending",
+  "milestone": "four-island-software-candidate",
+  "version": "0.2.0/code2",
+  "implemented": "Pinned schema1 prologue, twelve passages/four islands/four beacon bosses/six enemy roles, three power purchases, conclusive ending, arena seeds/refits/efficiency, progression-preserving Retry, settings and versioned local save recovery/export/import",
+  "automatically_verified": "57 legacy rules/faults;81 campaign/migration checks;8 import regressions;174 full actual-input checks;9 tactical/replay pure controls;rendered motion/layout indexed separately",
+  "independent_appeal_review": "first-loop-approved;full-candidate-review-requested",
+  "full_campaign": "implemented-and-automated-route-verified;human-pacing-fun-pending",
+  "android": "coordinator-old-code1-fixture-created;new-export-update-and-acceptance-pending",
   "phone_tested": false,
-  "runtime_source": "frozen-for-first-appeal-review"
+  "runtime_source": "frozen-for-full-candidate-review"
 }

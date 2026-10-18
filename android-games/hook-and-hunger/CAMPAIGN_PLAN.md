@@ -1,5 +1,7 @@
 # Campaign candidate after the first appeal checkpoint
 
+**Implementation status:** the coordinator relayed Astra's first-loop approval and authorized this expansion. Candidate0.2.0 now implements the four-island/twelve-passage arc, four distinct beacon bosses, six enemy roles, three purchases, ending and arena refits/seeds. The original planning notes below are retained as provenance. Final actual-input route:34.415simulated minutes including the prologue, with four campaign recoveries. This is an automated route measurement, not human pacing or fun acceptance. See `evidence/campaign-checkpoint.json` for current source/evidence and review limits.
+
 This is independent content/economy preparation, not approval to expand an unreviewed prototype. Review first: original diver/crystal appeal, chain reach/contact clarity, purchase power payoff, overhead composition and usable touch controls. The existing two-pen slice proves a purchase cycle; its automated route takes under a minute of simulated time and does **not** establish a 30–60 minute human journey.
 
 Candidate arc: restore four harbor beacons, then sail home. Each compact island has a readable safe dock/forge, two positional encounter problems and a distinct boss. Twelve encounters/four bosses remain provisional; trim or revise them if appeal/playtesting supports a better arc. No repeated resource grind or inflated-HP substitute for useful decisions.

@@ -64,6 +64,7 @@ func run() -> void:
 func click(text: String) -> void:
 	for b in scene.find_children("*", "Button", true, false):
 		if b.text == text and b.is_visible_in_tree():
+			await reveal(b)
 			for pressed in [true, false]:
 				var e := InputEventMouseButton.new()
 				e.position = b.get_global_rect().get_center()
@@ -79,3 +80,19 @@ func check(okay: bool, text: String) -> void:
 	if not okay:
 		failures += 1
 		push_error(text)
+
+func reveal(button: Button) -> void:
+	if not scene.menu.is_ancestor_of(button):
+		return
+	var scroll = scene.menu.find_children("*", "ScrollContainer", true, false)[0]
+	for attempt in 20:
+		var point := button.get_global_rect().get_center()
+		var area: Rect2 = scroll.get_global_rect()
+		if area.has_point(point):
+			return
+		var wheel := InputEventMouseButton.new()
+		wheel.position = area.get_center()
+		wheel.button_index = MOUSE_BUTTON_WHEEL_DOWN if point.y > area.end.y else MOUSE_BUTTON_WHEEL_UP
+		wheel.pressed = true
+		Input.parse_input_event(wheel)
+		await process_frame

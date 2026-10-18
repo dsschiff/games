@@ -4,9 +4,15 @@ func exists(path: String) -> bool:
 	return FileAccess.file_exists(path)
 
 func read_text(path: String) -> String:
-	if FileAccess.get_file_as_bytes(path).size() > 60000:
+	var file := FileAccess.open(path, FileAccess.READ)
+	if file == null:
 		return ""
-	return FileAccess.get_file_as_string(path)
+	if file.get_length() > 600000:
+		file.close()
+		return ""
+	var text := file.get_as_text()
+	file.close()
+	return text
 
 func write_text(path: String, text: String) -> bool:
 	var file := FileAccess.open(path, FileAccess.WRITE)
