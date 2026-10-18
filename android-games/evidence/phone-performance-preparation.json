@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "status": "prepared_offline_device_unvalidated_unpromoted",
+  "scope": "Future physical-device performance capture preparation, not measured current performance.",
+  "canonical_proposal_notes": "C:/projects/active/games/.artifacts/phone-performance-preparation-v2/README.md",
+  "canonical_helper": "C:/projects/active/games/.artifacts/phone-performance-preparation-v2/surfaceview_capture.py",
+  "helper_sha256": "e17f8b82fbcb46404bb6fdfc3834ec37853943833bd18633930557fc839744be",
+  "proposal_index_sha256": "462ca24fbc84ce51f2fa5eb6b0837758d272cb07352fdcc13195ed4d47445242",
+  "root_review": "C:/projects/active/games/.artifacts/phone-performance-root-review.json",
+  "root_review_sha256": "814eb1170d487f68eca88295e3516d8720013cb60f7cd654d805ed8307231f8a",
+  "independent_offline_tests": 29,
+  "synthetic_timing_tests": 8,
+  "original_parser_guard_tests": 21,
+  "historical_parser": "C:/projects/active/games/.artifacts/phone-performance-historical-parser-review.json",
+  "historical_parser_scope": "Old unoptimized Gear0.2.1 dump-format coverage only; no currentcandidate/emulator/phone performance claim.",
+  "receipt": "C:/projects/active/games/.artifacts/preservation/phone-performance-preparation-v2.json",
+  "receipt_sha256": "af14757d4b3a10324eae124cbb95d2b88f011ecc50e7a1c64ba655d7c14d2919",
+  "preserved_files": 46,
+  "preserved_bytes": 134157,
+  "prior_v1_index_sha256": "0d18fa6b96c2138c5ae9f9b1c1031d5866afe5f4563423616ddd6932a8c6aa0e",
+  "prior_v1_preserved": true,
+  "device_commands_executed": false,
+  "actual_capture_branch_validated": false,
+  "current_candidate_performance_measured": false,
+  "physical_phone_tested": false,
+  "promoted_shared_tooling": false,
+  "profiling_scope": "Explicit future invocation clears global SurfaceFlinger counters, samples unique foreground game SurfaceView, dumps/attempts disable in finally; previous counter history/enabled state cannot be restored. No app input/install/save/config/geometry operations.",
+  "limitations": [
+    "Unknown Samsung command/format/hash support until actual device validation.",
+    "Foreground sampled, layer checked at boundaries; scenario/actor count need separate actual-game evidence.",
+    "Reported average and quantized interval percentiles describe a bounded window; no guaranteed minimumFPS or thermal endurance.",
+    "Disconnect/host death can prevent cleanup; failure/partial state must remain explicit.",
+    "Physical folding/touch/safe areas/IME/sound/human fun and pacing remain separate gates."
+  ],
+  "sources": [
+    "https://developer.android.com/games/optimize/framerate",
+    "https://perfetto.dev/docs/data-sources/frametimeline",
+    "https://developer.android.com/google/play/vitals/render"
+  ]
+}
