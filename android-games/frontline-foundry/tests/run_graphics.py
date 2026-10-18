@@ -50,7 +50,7 @@ def import_project(run, env):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=["checks", "capture", "closure", "gallery", "tour", "legacy"])
+    parser.add_argument("mode", choices=["checks", "pooling", "capture", "closure", "gallery", "tour", "legacy"])
     parser.add_argument("--render", action="store_true")
     parser.add_argument("--movie", action="store_true")
     parser.add_argument("--seconds", type=float, default=145)
@@ -60,13 +60,18 @@ def main():
     parser.add_argument("--native-frames", action="store_true")
     parser.add_argument("--movie-fps", type=int, choices=[30, 60], default=30)
     parser.add_argument("--measure-frames", action="store_true")
+    parser.add_argument("--require-reuse", action="store_true")
     args = parser.parse_args()
+    if args.mode == "pooling" and args.render:
+        parser.error("Pooling fixtures are CPU-only; use authentic capture mode for rendered evidence")
     if args.movie and (args.mode not in {"capture", "gallery", "tour", "legacy"} or not args.render):
         parser.error("Movie recording requires capture --render and the coordinator's GPU slot")
     if args.native_frames and (args.mode != "closure" or not args.render or args.movie):
         parser.error("Native frame recording requires closure --render and the coordinator's GPU slot")
     if args.measure_frames and (args.mode != "capture" or not args.render or args.movie or args.native_frames):
         parser.error("Frame timing requires real-time capture --render with no movie/fixed-step recording")
+    if args.require_reuse and (args.mode != "capture" or not args.resume_from):
+        parser.error("Reuse passage requires capture mode and an authentic earned resume boundary")
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     run = PROJECT / ".artifacts" / f"{args.label}-{args.mode}-{stamp}"
     run.mkdir(parents=True)
@@ -76,11 +81,27 @@ def main():
         path.mkdir()
         env[name] = str(path)
     resume = {}
+    earned_chain = None
     expected_start = None
     if args.resume_from:
         source = args.resume_from.resolve()
         if not source.is_relative_to((PROJECT / ".artifacts").resolve()):
             parser.error("resume source must be retained inside this game's isolated artifacts")
+        if args.require_reuse:
+            manifest = PROJECT / "tests/pooling-source.json"
+            chain = json.loads(manifest.read_text())
+            parent = PROJECT / chain["parent_receipt"]
+            if source != (PROJECT / chain["source_dir"]).resolve() or sha(parent) != chain["parent_receipt_sha256"]:
+                parser.error("reuse passage requires the exact pinned earned source and original parent receipt; no fallback")
+            parent_report = json.loads(parent.read_text())
+            if not parent_report["passed"] or not parent_report["source_unchanged"]:
+                parser.error("original earned source receipt did not pass unchanged")
+            original = {row["path"]: row["sha256"] for row in parent_report["artifacts"]}
+            for name, expected in chain["slot_sha256"].items():
+                path = source / name
+                if sha(path) != expected or original[path.relative_to(parent.parent).as_posix()] != expected:
+                    parser.error("genuine raw slot differs from pinned original actual-input receipt")
+            earned_chain = {"manifest_sha256": sha(manifest), "parent_receipt_sha256": sha(parent), "source_dir": chain["source_dir"], "slot_sha256": chain["slot_sha256"]}
         target = Path(env["APPDATA"]) / "Godot/app_userdata/Frontline Foundry"
         target.mkdir(parents=True)
         for path in sorted(source.glob("frontline-save-*")):
@@ -100,7 +121,9 @@ def main():
         expected_start.write_text(json.dumps(max(packets, key=lambda item: item["revision"])))
     command = [str(GODOT), "--path", str(PROJECT)]
     command += ["--resolution", "720x1280", "--position", "0,0"] if args.render else ["--headless"]
-    script = {"checks": "presentation_tests.gd", "capture": "graphics_benchmark.gd", "closure": "graphics_closure.gd", "gallery": "art_gallery.gd", "tour": "graphics_tour.gd", "legacy": "graphics_legacy.gd"}[args.mode]
+    if args.mode == "capture" and not args.render:
+        command += ["--max-fps", "60"]  # CPU harness cadence only; never a timing sample.
+    script = {"checks": "presentation_tests.gd", "pooling": "pooling_tests.gd", "capture": "graphics_benchmark.gd", "closure": "graphics_closure.gd", "gallery": "art_gallery.gd", "tour": "graphics_tour.gd", "legacy": "graphics_legacy.gd"}[args.mode]
     command += ["--script", "res://tests/" + script]
     if args.movie:
         command += ["--fixed-fps", str(args.movie_fps), "--write-movie", str(run / "continuous.avi")]
@@ -109,6 +132,8 @@ def main():
     command += ["--", "--capture-dir=" + str(run), "--seconds=" + str(args.seconds)]
     if args.measure_frames:
         command += ["--measure-frames"]
+    if args.require_reuse:
+        command += ["--require-reuse"]
     if expected_start:
         command += ["--expected-start=" + str(expected_start)]
     if args.mode == "closure":
@@ -135,7 +160,7 @@ def main():
         if imported["passed"]:
             try:
                 code = subprocess.run(command, env=env, stdout=log, stderr=subprocess.STDOUT,
-                                      timeout=180 if args.mode == "checks" else max(180, args.seconds * 4 + 120)).returncode
+                                      timeout=180 if args.mode in {"checks", "pooling"} else max(180, args.seconds * 4 + 120)).returncode
             except subprocess.TimeoutExpired:
                 code = 124
         else:
@@ -144,7 +169,7 @@ def main():
     output = (run / "godot.log").read_text(encoding="utf-8", errors="replace")
     report = json.loads((run / "benchmark-report.json").read_text()) if (run / "benchmark-report.json").exists() else None
     passed = imported["passed"] and code == 0 and not any(x in output for x in ["ERROR:", "SCRIPT ERROR:", "Parse Error:"])
-    passed &= ("SUITE_COMPLETE: PASS" in output) if args.mode == "checks" else (report is not None and not report["errors"])
+    passed &= ("SUITE_COMPLETE: PASS" in output) if args.mode in {"checks", "pooling"} else (report is not None and not report["errors"])
     frame_encoding = None
     if args.native_frames and (run / "frames/000000.png").exists():
         encode = ["ffmpeg", "-v", "error", "-framerate", str(args.movie_fps), "-i", str(run / "frames/%06d.png"),
@@ -169,6 +194,7 @@ def main():
                "command_executed": imported["passed"], "import_preflight": imported,
                "native_frame_encoding": frame_encoding,
                "source_unchanged": before == sources(), "resume_from": str(args.resume_from) if args.resume_from else None,
+               "earned_source_chain": earned_chain,
                "resume_slot_sha256": resume, "engine": str(GODOT),
                "encoded_movie_dimensions": ({key: next(stream for stream in probe["streams"] if stream["codec_type"] == "video")[key] for key in ["width", "height", "r_frame_rate"]} if probe else None),
                "limits": ["Headless checks do not establish visual quality", "Movie statistics include fixed-step recording/encoding and are not real-time or phone performance", "A capture is not independent graphics acceptance"], "artifacts": []}

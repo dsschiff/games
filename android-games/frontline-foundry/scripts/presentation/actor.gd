@@ -37,15 +37,20 @@ var repair_aim := Vector3.FORWARD
 var warning_left := 0.0
 var jammed := false
 var fire_duration := .19
-static var palette_materials := {}
-static var model_cache := {}
+var palette_materials := {}
+var model_cache := {}
+var rest_nodes: Array[Dictionary] = []
 
-static func instantiate_model(path: String) -> Node3D:
-	if not model_cache.has(path):
-		model_cache[path] = load(path) as PackedScene
-	return model_cache[path].instantiate()
+static func instantiate_model(path: String, cache: Variant = null) -> Node3D:
+	if cache == null:
+		return (load(path) as PackedScene).instantiate()
+	if not cache.has(path):
+		cache[path] = load(path) as PackedScene
+	return cache[path].instantiate()
 
-func configure(unit_role: String, faction: String, phase: float) -> void:
+func configure(unit_role: String, faction: String, phase: float, models: Variant = null, palettes: Variant = null) -> void:
+	model_cache = {} if models == null else models
+	palette_materials = {} if palettes == null else palettes
 	role = unit_role
 	team = faction
 	gait = phase
@@ -55,7 +60,7 @@ func configure(unit_role: String, faction: String, phase: float) -> void:
 		path = "res://art/models/vehicle_" + role + ".glb"
 	elif role in ["runner", "breaker", "ranger", "bulwark", "mortar", "jammer", "sapper"]:
 		path = "res://art/models/soldier_" + role + ".glb"
-	model = instantiate_model(path)
+	model = instantiate_model(path, model_cache)
 	fire_duration = .30 if vehicle else (.32 if role == "mortar" else (.25 if role == "breaker" else .19))
 	add_child(model)
 	rig = find_skeleton(model)
@@ -79,8 +84,8 @@ func configure(unit_role: String, faction: String, phase: float) -> void:
 			repair_boom.add_child(repair_socket)
 			repair_socket.position = Vector3(0, 0, -1.33)
 	if role in ["bulwark", "mortar", "jammer", "sapper", "breaker", "ranger"]:
-		var kit := instantiate_model("res://art/models/kit_" + role + ".glb")
-		finish_materials(kit, {}, "kit")
+		var kit := instantiate_model("res://art/models/kit_" + role + ".glb", model_cache)
+		finish_materials(kit, {}, "kit", palette_materials)
 		role_kit = kit
 		if rig != null:
 			var joint := "ForearmL" if role == "bulwark" else "Torso"
@@ -117,7 +122,81 @@ func configure(unit_role: String, faction: String, phase: float) -> void:
 	status.outline_size = 4
 	add_child(status)
 	make_health_bar()
+	for child in get_children():
+		if child is Node3D:
+			collect_rest_nodes(child)
+	reset_for_reuse(phase)
+
+func collect_rest_nodes(node: Node3D) -> void:
+	var entry := {"node": node, "transform": node.transform, "visible": node.visible}
+	if node is GeometryInstance3D:
+		entry["material_override"] = node.material_override
+		entry["material_overlay"] = node.material_overlay
+		entry["transparency"] = node.transparency
+		entry["layers"] = node.layers
+	if node is MeshInstance3D:
+		entry["surfaces"] = []
+		for surface in node.mesh.get_surface_count():
+			entry.surfaces.append(node.get_surface_override_material(surface))
+	if node is Label3D:
+		entry["modulate"] = node.modulate
+		entry["font_size"] = node.font_size
+		entry["pixel_size"] = node.pixel_size
+		entry["outline_size"] = node.outline_size
+	for child in node.get_children():
+		if child is Node3D:
+			collect_rest_nodes(child)
+	rest_nodes.append(entry)
+
+func reset_for_reuse(phase: float) -> void:
+	transform = Transform3D.IDENTITY
+	gait = phase
+	travel = 0
+	fire_left = 0
+	hit_left = 0
+	death_time = -1
+	armed = true
+	action = "idle"
+	aim = Vector3.FORWARD
+	equipment_progress = 1
+	health_fraction = 1
+	torso_yaw = 0
+	repair_left = 0
+	repair_aim = Vector3.FORWARD
+	warning_left = 0
+	jammed = false
+	for entry in rest_nodes:
+		var node: Node3D = entry.node
+		node.transform = entry.transform
+		node.visible = entry.visible
+		if node is GeometryInstance3D:
+			node.material_override = entry.material_override
+			node.material_overlay = entry.material_overlay
+			node.transparency = entry.transparency
+			node.layers = entry.layers
+		if node is MeshInstance3D:
+			for surface in entry.surfaces.size():
+				node.set_surface_override_material(surface, entry.surfaces[surface])
+		if node is Label3D:
+			node.modulate = entry.modulate
+			node.font_size = entry.font_size
+			node.pixel_size = entry.pixel_size
+			node.outline_size = entry.outline_size
+	if rig != null:
+		for index in rig.get_bone_count():
+			rig.reset_bone_pose(index)
 	pose(0, Vector3.ZERO, false)
+	if rig != null:
+		rig.force_update_all_bone_transforms()
+		for entry in rest_nodes:
+			if entry.node is BoneAttachment3D:
+				var attachment: BoneAttachment3D = entry.node
+				attachment.transform = rig.get_bone_global_pose(bones[attachment.bone_name])
+				attachment.force_update_transform()
+	status.text = ""
+	health_root.hide()
+	process_mode = Node.PROCESS_MODE_INHERIT
+	show()
 
 func find_skeleton(node: Node) -> Skeleton3D:
 	if node is Skeleton3D:
@@ -129,24 +208,25 @@ func find_skeleton(node: Node) -> Skeleton3D:
 	return null
 
 func paint(node: Node, uniform: Color, vest: Color) -> void:
-	finish_materials(node, {"Uniform": uniform, "Vest": vest}, team)
+	finish_materials(node, {"Uniform": uniform, "Vest": vest}, team, palette_materials)
 
-static func finish_materials(node: Node, palette: Dictionary = {}, faction: String = "prop") -> void:
+static func finish_materials(node: Node, palette: Dictionary = {}, faction: String = "prop", shared: Variant = null) -> void:
+	var cache: Dictionary = {} if shared == null else shared
 	if node is MeshInstance3D:
 		for i in node.mesh.get_surface_count():
 			var source: Material = node.mesh.surface_get_material(i)
 			if source is StandardMaterial3D:
 				var swatch: Color = palette.get(source.resource_name, source.albedo_color)
 				var key := str(source.get_instance_id()) + ":" + swatch.to_html()
-				if not palette_materials.has(key):
+				if not cache.has(key):
 					var m := source.duplicate() as StandardMaterial3D
 					# Compatibility's imported color path needs the same explicit linear
 					# swatch conversion as our runtime materials; verified in play captures.
 					m.albedo_color = swatch.srgb_to_linear()
-					palette_materials[key] = m
-				node.set_surface_override_material(i, palette_materials[key])
+					cache[key] = m
+				node.set_surface_override_material(i, cache[key])
 	for child in node.get_children():
-		finish_materials(child, palette, faction)
+		finish_materials(child, palette, faction, cache)
 
 func collect_wheels(node: Node) -> void:
 	if node is Node3D and node.name.begins_with("Wheel"):

@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "source_dir": ".artifacts/paced-rendered-20261018T064825390242Z/earned-final",
+  "parent_receipt": ".artifacts/paced-rendered-20261018T064825390242Z/receipt.json",
+  "parent_receipt_sha256": "303a56b13d0715cca05f03e8d9d6bd22ee1af5442b0770735b5c10ead7244694",
+  "slot_sha256": {
+    "frontline-save-0": "088008dd29a1f685182b5f268e364ef763df1953d947e67d96bc2b7004fcc6ac",
+    "frontline-save-1": "6a206c5ffe16f319ec4fe66a46d10019f40cb0855d89588ec282c966f83387b1"
+  },
+  "scope": "Exact app-written final-mission boundary from passed original actual-input campaign capture; separate from native code3 baseline. No edited packets, synthetic progress or handlers. Old rejected accepted-rendered boundary is not a fallback."
+}
