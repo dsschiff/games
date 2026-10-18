@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "actual_native_checks_pass_independent_review_pending",
+  "status": "native_reviewed_conditional_software_candidate",
   "actual_apk_sha256": "d2cadff5f81074bccfc88954799e23eeb39546e6c873e1bcf5e9891e1a088455",
   "version": "0.3.0",
   "version_code": 3,
@@ -27,5 +27,12 @@
   "orientation": "Requestedlandscape2184x1968 actuallycaptures1968x2184 underunchangedportraitactivitypolicy; native landscapeunproved, desktoplandscapeseparate.",
   "startup": "02isGodotsplash;03settledportrait.25notcountedsettled;26visibleunfoldedcoldUI.",
   "final": "AppHome+forceStopped, wmreset1080x2400; savedtime16.7833333333337 revisions499/500 retained",
-  "phone_testing": "deferred_by_user"
+  "phone_testing": "deferred_by_user",
+  "review": "android-games/reviews/hearth-graphics-native-astra.md",
+  "review_sha256": "ba0a26687833fda6d9ce305d7cdede344fe7cfa314cea52c4cc8e38a06f8e173",
+  "review_addendum": {
+    "path": "C:/projects/active/games/.artifacts/graphics-overhaul/hearth-native-code3-review-addendum",
+    "qualification": "19rotationtransitionexcludedfromsettledfit;rawretentiononly.18intermediate/26innercoldsettledfitpass."
+  },
+  "bundle": "C:\\projects\\active\\games\\.artifacts\\releases\\hearthguard-0.3.0-graphics"
 }

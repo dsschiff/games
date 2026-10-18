@@ -154,12 +154,13 @@
       "thread_id": "01a14f9d-4b9b-7bd3-abd6-897a1188086d",
       "branch": "codex/hearthguard-graphics",
       "worktree": "C:/projects/active/_worktrees/games-hearthguard-20261018",
-      "phase": "builder_archived_root_review_native_pending",
+      "phase": "graphics_complete_archived",
       "host_id": "local",
       "model": "gpt-6.1-sol",
       "ownership": "android-games/hearthguard/",
-      "state": "Clean1e117a6 integrated and landed9ea3679; nativearchived=true at user request. Root owns remaining Astra fullfilm/nativecode3/privatebundle. Worktree/rawsaves/evidence retained.",
-      "archive_status": "native_archived_verified"
+      "state": "Final0.3.0/code3 reviewed/nativevalidated/privatebundle delivered; clean1e117a6 source/handoff integrated; nativearchived=true; raw evidence retained.",
+      "archive_status": "native_archived_verified",
+      "handoff": "android-games/handoffs/graphics-hearth-production.md"
     }
   ]
 }

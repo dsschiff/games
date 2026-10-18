@@ -32,7 +32,7 @@
     "required_performance_followups": {
       "frontline-foundry": "Bounded pooling higher-version follow-up after Gear archive before Hook starts",
       "gear-bastion": "Closed: pools, all role coverage, dense boss visibility, cache teardown, host timing and actual signed native update",
-      "hearthguard": "Completeproductionbatch/timing/pools; Astra actual fullfilms + rootnativecode3 stillpending"
+      "hearthguard": "Closed: fullproductionallroles/regions, boundedpools, hosttiming, signednative2to3, independentreviews/privatebundle/archive"
     }
   },
   "user_phone_feedback": {
@@ -129,7 +129,7 @@
     "android_release": "not_yet_built",
     "production": "authorized_first_pair"
   },
-  "render_slot": "Coordinator Frontline separate55suncapped timing; Hearthstopped/nativereviewCPUonly",
+  "render_slot": "Astra Frontline final55sactualreuse normal1xreview58655; rootheadlessexportonly",
   "gear_3d_checkpoint": {
     "evidence": "android-games/evidence/gear-3d-production-candidate.json",
     "worker_commit": "9ccf4a7a878e291afdf1750338e6e26cd6b96ba7",
@@ -175,19 +175,21 @@
       "thread_id": "01a14f9d-4b9b-7bd3-abd6-897a1188086d",
       "branch": "codex/hearthguard-graphics",
       "worktree": "C:/projects/active/_worktrees/games-hearthguard-20261018",
-      "phase": "builder_archived_root_review_native_pending",
-      "state": "Clean1e117a6 integrated and landed9ea3679; nativearchived=true at user request. Root owns remaining Astra fullfilm/nativecode3/privatebundle. Worktree/rawsaves/evidence retained.",
-      "archive_status": "native_archived_verified"
+      "phase": "graphics_complete_archived",
+      "state": "Final0.3.0/code3 reviewed/nativevalidated/privatebundle delivered; clean1e117a6 source/handoff integrated; nativearchived=true; raw evidence retained.",
+      "archive_status": "native_archived_verified",
+      "handoff": "android-games/handoffs/graphics-hearth-production.md"
     }
   ],
   "scheduling_note": "Hearth exclusive production renderer and Frontline narrowpool/code4 CPU follow-up active, two builders. ArchiveFrontlineafterverifiedhigher-version thenHook; laterDeadRun/Tower. Gearcompletearchived, rootgoalall6active.",
   "hearth_production_checkpoint": {
     "evidence": "android-games/evidence/hearth-3d-production-candidate.json",
-    "status": "graphics_reviewed_actual_native_checks_complete_final_native_review_bundle_pending",
+    "status": "graphics_reviewed_native_validated_private_bundle_ready_graphics_chat_archived",
     "worker_commit": "1e117a62d170915710a2bf6a7a42b762d2c694b6",
     "runtime_freeze": "042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0",
     "candidate_apk_sha256": "d2cadff5f81074bccfc88954799e23eeb39546e6c873e1bcf5e9891e1a088455",
     "builder_archived": true,
-    "native_evidence": "android-games/evidence/hearth-graphics-native.json"
+    "native_evidence": "android-games/evidence/hearth-graphics-native.json",
+    "bundle": "C:\\projects\\active\\games\\.artifacts\\releases\\hearthguard-0.3.0-graphics"
   }
 }

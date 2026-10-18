@@ -2,7 +2,7 @@
   "schema": 1,
   "worker_commit": "78cb4bd",
   "integration_commit": "8b306da",
-  "status": "CPU_source_review_clear_bounded_render_timing_native_pending",
+  "status": "CPU_reviewed_movie_and_corrected_timing_verified_visual_review_stopped_before_playback",
   "checks": {
     "pooling": 93,
     "presentation_regression": 103
@@ -16,9 +16,66 @@
   "actual_genuine_reuse": "Earlierpassed CPU passage historicalbeforefinalcachedefaultfix; finalclean rendered55s andseparatetimingpending",
   "art": "47GLBs unchanged; final originalproductionvisualreviewretained subjectto boundedpoolingvisualclosure",
   "remaining": [
-    "Genuine bounded actualreusefilm andseparatetiming",
-    "Signed0.3.1/code4 actual3to4/native/privatebundle"
+    "Actual fullnormal1x finalpoolmovie review after authorized ComputerUse continuation",
+    "Signedactual3to4 install-over/native checks/privatebundle/archive"
   ],
   "physical_testing": "deferred_by_user",
-  "source_review": "android-games/reviews/frontline-pooling-early-source-astra.md"
+  "source_review": "android-games/reviews/frontline-pooling-early-source-astra.md",
+  "runtime_worker_commit": "78cb4bd",
+  "timing_helper_worker_commit": "f8a9c7b2533a838df30827c1adf756a842285591",
+  "timing_helper_integration_commit": "71614a107be352fc55c03968e662e11604619818",
+  "movie_and_timing_packet": {
+    "path": "C:\\projects\\active\\games\\.artifacts\\graphics-overhaul\\frontline-pooling-production-78cb4bd",
+    "files": 54,
+    "bytes": 17635460,
+    "receipt_sha256": "017a1a6df59985d57bca1cae6ef7ef0163133de83d5c51a64a54a3a6530f2e27"
+  },
+  "review_packet": "C:/projects/active/_worktrees/games-android-portfolio-20261017/.artifacts/graphics-overhaul/frontline-pooling-review/review-packet.json",
+  "movie": {
+    "seconds": 55.466667,
+    "frames": 1664,
+    "width": 720,
+    "height": 1280,
+    "sha256": "3e5f8cf9ae2cc41d0d9806fa38ec0913cc0d748499df6eb3e6445aeaa3762912",
+    "passed": true,
+    "source_unchanged": true,
+    "actual_actor_reuses": 2,
+    "effect_reuses": 104
+  },
+  "corrected_timing": {
+    "passed": true,
+    "source_unchanged": true,
+    "vsync": 0,
+    "max_fps": 0,
+    "eligible_samples": 24361,
+    "eligible_seconds": 53.564309,
+    "heavy_boss_samples": 6088,
+    "heavy_boss_seconds": 13.505954,
+    "median_ms": 1.984,
+    "p95_ms": 3.257,
+    "p99_ms": 4.167,
+    "heavy_median_ms": 2.03,
+    "heavy_p95_ms": 3.209,
+    "heavy_p99_ms": 3.884,
+    "dropped_rows": 0,
+    "excluded_frames": 0,
+    "actual_GUI_resumes": 0,
+    "limits": "Host render-loop submission intervals only;notOSpresent/GPUtimestamps/phoneFPS;not45sheavy."
+  },
+  "first_timing": "FAILED retained: observedpause/walltimeout at26.1333simulationseconds,vsync1,noheavysamples;notusedaspass",
+  "candidate_build": {
+    "canonical_path": "C:\\projects\\active\\games\\.artifacts\\frontline-foundry\\20261018T191430499566Z\\frontline-foundry.apk",
+    "version": "0.3.1",
+    "code": "4",
+    "sha256": "52b372a1addf510e17c47884d8d4a936f2eacc1b8c2ddf141454adaa21e744eb",
+    "bytes": 60416446,
+    "git_revision": "71614a107be352fc55c03968e662e11604619818",
+    "clean_source": true,
+    "source_unchanged": true,
+    "signature_verified": true,
+    "permissions": [],
+    "installed": false,
+    "delivered": false
+  },
+  "motion_review": "UserEscape stoppedComputerUse beforePlay;ownedBravewindow1184414at0s/pausedtrue/endedfalse,noauditcompletion. No furtherComputerUsecalls thisturn; no finalclearance."
 }

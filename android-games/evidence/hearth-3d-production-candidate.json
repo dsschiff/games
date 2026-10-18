@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "graphics_reviewed_signed_code3_actual2to3_retention_pass_native_checks_active",
+  "status": "graphics_reviewed_native_validated_private_bundle_ready_graphics_chat_archived",
   "worker_commit": "1e117a62d170915710a2bf6a7a42b762d2c694b6",
   "production_index_commit": "2b54d75e2325b0a4493e12a56c7bdbce3acd35e1",
   "runtime_freeze": "042d7c2e1abd2bcf3be300e715bdfa1375f6c8a0",
@@ -29,13 +29,10 @@
     "permissions": [],
     "build_preservation_sha256": "c97ff536d6917afa284468808095466d4a54bae9254930fa1f07854efe48fefe",
     "installed": true,
-    "delivered": false
+    "delivered": true
   },
-  "native_status": "Actual2to3 install-over succeeded, bothrawslotsbyteexactbeforelaunch; settledrestoredfullcontextpasses. Realmovement/Back/cover+innerresize/invalidrejection/copy-paste-import/settings restore pass; remaininglayout/lifecycle/nativefilm/review inprogress.",
-  "remaining": [
-    "Native remainingwindow/lifecycle/cold and actualfilm evidence/review",
-    "Private deliverybundle"
-  ],
+  "native_status": "Completeactualsigned2to3/save-controls-transfer-Back-lifecycle-resize/cold; independentnativeclearance.19midrotationexcludedfromfit;nativeportraitpolicy/phonebounds explicit.",
+  "remaining": [],
   "physical_testing": "deferred_by_user",
   "review": "android-games/reviews/hearth-production-final-astra.md",
   "quality_rows": {
@@ -49,5 +46,16 @@
     "review_sha256": "9cf9ba309fef1bc73c3087a92cb86feb9e27c5d0f83db48d3680720743bc5b06",
     "audit_sha256": "7e22382ef1a64f1bf0341d04a4fae8a284e2bb1caf18f49bd54cd06569e43f0b",
     "audit_scope": "Partial recovered observed natural-ended rows, original fullDOMlogs lost duringrefresh; explicitoldtabcloseunverified"
+  },
+  "apk_delivered": true,
+  "production_accepted": true,
+  "native_review": "android-games/reviews/hearth-graphics-native-astra.md",
+  "native_evidence": "android-games/evidence/hearth-graphics-native.json",
+  "bundle": {
+    "path": "C:\\projects\\active\\games\\.artifacts\\releases\\hearthguard-0.3.0-graphics",
+    "manifest_sha256": "e4de89a6db605bfd493655fb086d26067e67654989021392d2b80a6993cc84f2",
+    "files": 14,
+    "all_asset_hashes_and_page_links_verified": true,
+    "browser_page_qa": "not_performed;simplelocalpage"
   }
 }

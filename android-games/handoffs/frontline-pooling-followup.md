@@ -53,3 +53,32 @@ Known current code3 APK SHA256:
 Its original build and actual native install proof are already preserved. The new
 read-only baseline rechecks installed version/save bytes, not a fresh binary pull.
 Physical-phone testing remains deferred; no physical performance/fun claim.
+
+## Coordinator closeout of the interrupted builder
+
+Root completed the retained dirty implementation directly after the builder
+was reported interrupted/notLoaded. Clean runtime commit78cb4bd integrates as
+8b306da; tests-only timing correctionf8a9c7b integrates as71614a1. The final
+93 pooling and103 presentation checks pass with source/artifact hashes verified.
+All47GLBs and rules/saves remain unchanged. Both bounded source reviews clear.
+
+The actual final-runtime55.466667s movie passes,1664 native720x1280frames,
+two cross-ID actor/model/rig reuses and104 effect reuses. Corrected separate
+uncapped timing passes:24,361eligible samples/53.564309s,6,088heavy-boss samples/
+13.505954s, no dropped/excluded rows or GUI resumes. Median/p95/p99 all intervals
+1.984/3.257/4.167ms; heavy2.030/3.209/3.884ms. These are host submission intervals,
+not phone FPS or45seconds of heavy exposure. The first timing run remains failed
+(VSync1,26.1333simseconds, observedpause/walltimeout).
+
+Signed0.3.1/code4 candidate52b372a1addf510e17c47884d8d4a936f2eacc1b8c2ddf141454adaa21e744eb
+(60,416,446bytes) is preserved privately, clean unchanged source, no permissions.
+It has not been installed or delivered. The real installed baseline stayscode3.
+
+Final motion review was stopped by user Escape before Play. No motion acceptance
+was issued. Owned review tab/window1184414 remains at0s at
+http://127.0.0.1:58655/reuse.html; serverexec66420 is retained for an authorized
+later continuation. No further Computer Use calls are allowed in this turn.
+Root owns the remaining exact footage review, actual3to4 native retention/checks,
+privatebundle and release record. Keep all source, genuine saves, rawAVI and
+failed/successful run evidence. The builder chat can be archived after clean
+source/handoff landing while those coordinator tasks remain explicitly pending.
