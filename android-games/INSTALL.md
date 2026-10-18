@@ -36,6 +36,38 @@ Install over the existing Tower Trials app with the same signing identity. Tap a
 
 Independent rules, authored/generated input and focused Back checks pass. Actual Android updates preserve both old campaign routes and an active generated snapshot/record. Native generated loss/Undo/Retry/victory/Replay, clipboard transfer, Back, Home/cold and emulated cover/inner resize are verified. The candidate still needs physical Fold7 touch/folding/safe areas, audible sound, measured performance and human pacing/fun review. No complete 36-puzzle Android playthrough or measured 30–60-minute human duration is claimed. Evidence: `android-games/evidence/tower-code4-candidate.json`.
 
+## Hook and Hunger 0.2.2 / code 4
+
+This conditional software candidate is ready for phone testing. It contains a
+legacy prologue, twelve passages across four islands, weapon/power purchases,
+an ending and seeded harbor arenas. Drag to move; nearby chained-weapon attacks
+are automatic. Watch enemy telegraphs, use cover and return to the dock for
+upgrades or repairs. Retry preserves coherent earned progress. Pause opens
+sound/reduced effects and portable save transfer. Export copies the complete
+code; Paste and Import restore it. Invalid codes retain the current save.
+
+Verified local APK:
+
+`C:/projects/active/games/.artifacts/hook-and-hunger/20261018T031647711677Z/hook-and-hunger.apk`
+
+SHA-256: `2391343d79096cf766f2e68daf7db19c84053aca489d0b3e29b2d9a834241c77`
+
+Install over the existing app using the same signing identity. Independent
+campaign/input/save checks and real code1→2→3→4 updates retain earned progress.
+Native Android first-passage loss/Retry/victory, corrected text editing, invalid
+Import, clipboard/fresh valid Import, Back, Home/cold and emulated resize are
+verified. The full campaign was exercised on desktop; a complete Android
+campaign playthrough and human session duration are not established.
+
+The native platform report remains **partial_ime_unresolved: eight checks pass,
+soft-keyboard display unverified**. This emulator reports a visible hardware
+keyboard; the pinned Godot engine suppresses its on-screen keyboard in that
+configuration. Actual injected native typing edits the focused field and the
+Export/Paste/Import buttons work. On a Fold7 without a hardware keyboard, still
+verify touch opens the on-screen keyboard, type through that keyboard, dismiss
+it and repeat save transfer. This is an explicit required phone check. Evidence:
+`android-games/evidence/hook-code4-candidate.json`.
+
 ## Phone checks still required
 
 Galaxy Z Fold7 is the working target from Daniel's description; exact model and Android version await a connected phone. Test cover and unfolded displays, actual folding during battle, touch accuracy and safe areas, audible sound, full-session pacing and heavy-encounter frame timing. The targets are 60 fps and above 30 fps during heavy encounters; neither is a measured phone result yet. Dense formations and lengthy time at the troop cap remain playtest limitations. Automatic route duration is not a measured human session.

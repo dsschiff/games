@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "scope": "Hook0.2.2/code4 CONDITIONAL SOFTWARE candidate: eight native checks pass, soft-keyboard visibility unresolved; physical phone IME gate required.",
+  "worker_commit": "283522ea2a5cc77ffdbdd0ee753143fd1674b334",
+  "integration_commit": "36693755a40e2e8c47f75c0db7ab3e7328880cd9",
+  "source_sha256": "b61b029a6c946a41b014b51332ac94e9503e5ba1fd4285e002c8a5f329fb7233",
+  "source_unchanged": true,
+  "version": "0.2.2",
+  "version_code": 4,
+  "save_envelope": 2,
+  "active_schemas": [
+    1,
+    2
+  ],
+  "review": "android-games/reviews/hook-input-code4-astra.md",
+  "review_package": "C:/projects/active/games/.artifacts/reviews/hook-input-283522e/review-package.json",
+  "binding_counts": {
+    "declared_sources": 51,
+    "all_tracked_lf": 62,
+    "new_artifacts": 36,
+    "prior_code3_artifacts": 68,
+    "prior_code2_artifacts": 88,
+    "unchanged_code3_source_bindings": 46
+  },
+  "independent_summary": "C:/projects/active/games/.artifacts/verification/hook-input-283522e-20261018T031559499395Z/verification-summary.json",
+  "raw_execution_manifest": "C:/projects/active/games/.artifacts/verification/hook-input-283522e-20261018T031559499395Z/manifest.json",
+  "fixed_checks": {
+    "headless_native_transfer": 32,
+    "interactive_windows_native_transfer": 36,
+    "prior_save": 31,
+    "legacy": 57,
+    "campaign_migration": 81,
+    "prior_import": 8,
+    "opening_input": 18
+  },
+  "rendered_count_delta_scope": "32headless substitutes native typing for unsupported clipboard.36interactive-rendered includes4extra actual Windows clipboard assertions, not screenshot assertions.",
+  "old_code3_sensitivity": {
+    "old_test_suite_passed": false,
+    "sensitivity_reproduced": true,
+    "checks": 36,
+    "expected_failures": 13,
+    "actual_failures": 13,
+    "exit_code": 1,
+    "terminal_marker": "SUITE_COMPLETE: FAIL",
+    "exact_expected_messages_only": true,
+    "unexpected_errors": [],
+    "provenance": "Exact old bde8994 Git project plus byte-identical current native_transfer.gd test driver; no old source patched."
+  },
+  "restricted_rendered_attempt": {
+    "accepted_clipboard_evidence": false,
+    "exit_code": 1,
+    "failed_checks": 7,
+    "clipboard_backend_errors_retained": true,
+    "path": "native-rendered-restricted.log",
+    "classification": "Restricted Windows process could not open clipboard; raw failed attempt retained, never relabelled as passing."
+  },
+  "direct_desktop_visual_review": [
+    {
+      "path": "captures/native-rendered-interactive/typed-unicode-invalid.png",
+      "sha256": "85c8421979f1c81b4e388a7581097dc943f99cfb954bb8929c60c47f60877e6a",
+      "directly_viewed": true,
+      "observation": "TextEdit visibly contains INVALID followed by Omega, Han character and smiley."
+    },
+    {
+      "path": "captures/native-rendered-interactive/native-invalid-rejected.png",
+      "sha256": "3b6f87e30da759d51a8c5d7c54e443d19886ecf0fe430511650db61a6334c853",
+      "directly_viewed": true,
+      "observation": "Typed invalid Unicode remains visible and status says Invalid save. Current progress retained."
+    },
+    {
+      "path": "captures/native-rendered-interactive/native-valid-imported.png",
+      "sha256": "9d7e157538498cdd0c149f58220646010fd7b40b441e12b5985f74dba13a63d2",
+      "directly_viewed": true,
+      "observation": "TextEdit contains an exported payload and status says Imported. Resume when ready."
+    }
+  ],
+  "build_manifest": "C:/projects/active/games/.artifacts/hook-and-hunger/20261018T031647711677Z/manifest.json",
+  "apk": "C:/projects/active/games/.artifacts/hook-and-hunger/20261018T031647711677Z/hook-and-hunger.apk",
+  "apk_sha256": "2391343d79096cf766f2e68daf7db19c84053aca489d0b3e29b2d9a834241c77",
+  "apk_bytes": 57116934,
+  "signed": true,
+  "permissions": [],
+  "android_update_manifest": "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.hookandhunger/20261018T031739728048Z/manifest.json",
+  "android_update_checks": {
+    "from_archive_unchanged": true,
+    "to_archive_unchanged": true,
+    "different_apk_bytes": true,
+    "valid_signed_offline_increasing_version_pair": true,
+    "emulator_booted": true,
+    "old_code_installed": true,
+    "offline_radios_disabled": true,
+    "old_process_alive": true,
+    "old_input_assertions": true,
+    "old_critical_paths_exist": true,
+    "new_code_installed": true,
+    "installer_preserved_critical_paths": true,
+    "new-after-launch_process_alive": true,
+    "new_app_wrote_save_after_launch": true,
+    "migration_preserved_critical_paths": true,
+    "new_after_launch_assertions": true,
+    "new-cold-relaunch_process_alive": true,
+    "new_app_wrote_save_after_cold_relaunch": true,
+    "relaunch_critical_paths_stable": true,
+    "relaunch_retained_old_critical_paths": true,
+    "new_cold_relaunch_assertions": true,
+    "from_input_and_archive_remained_unchanged": true,
+    "to_input_and_archive_remained_unchanged": true,
+    "no_runtime_errors": true
+  },
+  "android_update_revisions": [
+    553,
+    553,
+    557,
+    561
+  ],
+  "android_preserved_paths": [
+    "state",
+    "profile",
+    "settings",
+    "committed"
+  ],
+  "numeric_comparison_policy": {
+    "integer_valued_numbers": "exact",
+    "fractional_floats": "math.isclose",
+    "relative_tolerance": 1e-12,
+    "absolute_tolerance": 1e-12,
+    "booleans": "exact type and value",
+    "nonfinite_numbers": "rejected"
+  },
+  "android_update_scope": "Actual old earned first-passage victory/profile/settings/committed retained through install-r without reset/clear/uninstall across boundary; new app writes and cold relaunch verified.",
+  "code3_preflight": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code3-before-touch-upgrade-20261018T031315191410Z",
+  "native_manifest": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code4-native-platform-20261018T033114199591Z/manifest.json",
+  "native_checks": {
+    "native_field_touch_shows_soft_keyboard": false,
+    "invalid_typed_import_preserves_whole_packet_and_revision": true,
+    "native_export_clipboard_paste_import_fresh_write_keeps_gameplay": true,
+    "native_system_back_keeps_app_alive": true,
+    "cover_resize_keeps_whole_gameplay": true,
+    "inner_resize_keeps_whole_gameplay": true,
+    "emulator_original_size_restored": true,
+    "home_cold_reload_keeps_whole_gameplay": true,
+    "no_runtime_errors": true
+  },
+  "native_scope": "Actual emulator focused-field ASCII INVALID rejection preserves exact durable packet/revision; Export/clipboard/Paste/Import freshly commits whole gameplay; Back alive, Home/cold, cover/inner emulated resize/original-size restore and no runtime errors. No virtual keyboard display or native Unicode/IME composition established.",
+  "inherited_campaign": {
+    "index": "android-games/evidence/hook-campaign-code2.json",
+    "review": "android-games/reviews/hook-campaign-code2-astra.md",
+    "checks": {
+      "legacy_rules": 57,
+      "campaign_rules": 81,
+      "import_gui": 8,
+      "pure_controls": 9,
+      "full_journey_input": 174,
+      "rendered_opening": 18,
+      "rendered_layout": 10,
+      "rendered_middle": 3
+    },
+    "campaign_clears": 12,
+    "arena_victories": 3,
+    "scope": "Historical full174desktop journey,12passages/3arenas and rendered subsets, not repeated for input-only amendment.46unchanged code3 source files independently bound; current narrow input/save regressions pass. No full campaign Android journey claim."
+  },
+  "inherited_save_fixes": {
+    "index": "android-games/evidence/hook-save-code3.json",
+    "review": "android-games/reviews/hook-save-code3-astra.md",
+    "historical_snapshot_cases": 36,
+    "steps_each": 120,
+    "scope": "Historical finite save snapshot compatibility and strict old-defect sensitivity; not all possible saves or native OS interruption faults."
+  },
+  "prior_receipts_reverified": [
+    {
+      "receipt": "C:/projects/active/games/.artifacts/preservation/hook-campaign-code2.json",
+      "sha256": "c0b394bffffc854576a6a19ad11e07847cef23cfcf64b7eceddefb73240325ad",
+      "files_reverified": 517
+    },
+    {
+      "receipt": "C:/projects/active/games/.artifacts/preservation/hook-code1-old-android.json",
+      "sha256": "263d23c1ea347e97239da28ac43d4f10bd5f1b8070f891f7e2d8cb9953373814",
+      "files_reverified": 31
+    },
+    {
+      "receipt": "C:/projects/active/games/.artifacts/preservation/hook-code1-retry-android.json",
+      "sha256": "31425f40d3a4d120b41edb34861e358860747d864ffc09bce3674c0aeb5f035b",
+      "files_reverified": 28
+    },
+    {
+      "receipt": "C:/projects/active/games/.artifacts/preservation/hook-save-code3.json",
+      "sha256": "9c00cd80cc2b6e9a3d597643ac4bf43e29d01890a351f74b4ecdd4e94fb31cb0",
+      "files_reverified": 917
+    }
+  ],
+  "receipt": "C:/projects/active/games/.artifacts/preservation/hook-code4-candidate.json",
+  "receipt_sha256": "69130bbaaf17f53845c57523567494e7fe00e889f76238bc6da0725307666281",
+  "preserved_files": 594,
+  "preserved_bytes": 658543350,
+  "decoded_images": 89,
+  "excluded_temporary_files": 55,
+  "physical_phone_tested": false,
+  "native_unicode_verified": false,
+  "emulator_resize_is_physical_fold_test": false,
+  "full_campaign_android_journey_claimed": false,
+  "limits": [
+    "Desktop Unicode event handling is verified; native Android Unicode/IME composition is not established by ASCII INVALID input.",
+    "Emulated cover/inner resize does not establish physical folding/gestures/safe areas/FPS/audible sound or human fun/duration.",
+    "No Android/runtime operations were performed during archival.",
+    "Raw native result remains partial_ime_unresolved: exactly eight true checks and one IME false check; never relabelled PASS or nine passes."
+  ],
+  "software_candidate_status": "conditional_ready_for_physical_phone_testing",
+  "ready_for_phone_testing": true,
+  "raw_native_result": "partial_ime_unresolved",
+  "raw_native_manifest_sha256": "105eea4b995813a0f9be06c54d620d03eee45ab204d95fc56dc2eff0d8b936c5",
+  "accepted_native_checks": {
+    "invalid_typed_import_preserves_whole_packet_and_revision": true,
+    "native_export_clipboard_paste_import_fresh_write_keeps_gameplay": true,
+    "native_system_back_keeps_app_alive": true,
+    "cover_resize_keeps_whole_gameplay": true,
+    "inner_resize_keeps_whole_gameplay": true,
+    "emulator_original_size_restored": true,
+    "home_cold_reload_keeps_whole_gameplay": true,
+    "no_runtime_errors": true
+  },
+  "accepted_native_check_count": 8,
+  "unresolved_native_check": {
+    "native_field_touch_shows_soft_keyboard": false
+  },
+  "raw_native_scope": "Actual emulator touch focus and soft-keyboard visibility, typed ASCII INVALID rejection with identical durable packet/revision, Export direct clipboard and Paste/Import fresh commit, Back, Home/cold, emulated cover/inner resize and original size restore. No save injection. Native Unicode and physical phone touch/folding/safe areas/FPS/audible sound/human pacing are not established.",
+  "native_transfer_revisions": [
+    585,
+    585,
+    587,
+    594
+  ],
+  "diagnostic_packets_preserved": [
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code4-empty-field-ime-diagnostic-20261018T032522115359Z",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code4-hardware-keyboard-inventory-20261018T032959069158Z",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code4-ime-log-diagnostic-20261018T032435598087Z",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code4-input-observer-diagnosis-20261018T032051982603Z",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code4-keyboard-second-touch-20261018T032121588549Z",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code4-native-platform-20261018T031851451266Z",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code4-native-platform-20261018T031941728544Z",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code4-native-platform-20261018T032626184418Z",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code4-native-platform-20261018T033114199591Z"
+  ],
+  "native_assessment": "C:/projects/active/games/.artifacts/hook-and-hunger/code4-helpers/hook-code4-native-assessment.json",
+  "native_assessment_sha256": "3b5f5775253cc4ab5d2e2c8f8a533f0311136926227542fe9875f341d662d207",
+  "keyboard_inventory": "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code4-hardware-keyboard-inventory-20261018T032959069158Z",
+  "keyboard_suppression_proof": "C:/projects/active/games/.artifacts/hook-and-hunger/code4-engine-keyboard-proof/provenance.json",
+  "keyboard_suppression_qualification": "Exact pinned engine hardware-keyboard guard and saved activity qwerty/v/v plus internal AT keyboard inventory support suppression inference. No instrumented branch trace and no phone IME proof.",
+  "root_viewed_native_captures": [
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code4-native-platform-20261018T033114199591Z/invalid-feedback-native.png",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code4-native-platform-20261018T033114199591Z/imported-feedback-native.png",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code4-native-platform-20261018T032626184418Z/typed-invalid-field.png",
+    "C:/projects/active/games/.artifacts/emulator/com.dsschiff.hookandhunger/code4-native-platform-20261018T032626184418Z/inner-native.png"
+  ],
+  "required_phone_ime_check": "Hardware-keyboard-free Fold7: actual touch opens visible native keyboard, type one character through on-screen keyboard, then verify clipboard/invalid import/valid import with IME hiding and no gameplay loss. Also folding/safe areas/sound/FPS/human pacing remain unverified.",
+  "status": "conditional_software_candidate_ready_for_phone_testing",
+  "package": "com.dsschiff.hookandhunger",
+  "sound_verified_on_phone": false,
+  "phone_performance_measured": false,
+  "phone_ime_verified": false,
+  "prior_reviews": [
+    "android-games/reviews/hook-campaign-code2-astra.md",
+    "android-games/reviews/hook-save-code3-astra.md"
+  ],
+  "remaining_required": [
+    "Hardware-keyboard-free physical Fold7 visible on-screen keyboard, actual IME text/dismissal and transfer usability",
+    "Physical touch/folding/safe areas/audible sound/measured performance",
+    "Human full-session pacing/readability/fun; no full campaign Android journey established"
+  ]
+}

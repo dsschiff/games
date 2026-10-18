@@ -14,6 +14,15 @@
       "ownership_when_started": "android-games/hearthguard/",
       "handoff": "android-games/handoffs/hearthguard-prototype.md",
       "state": "activated after Tower code4 acceptance; persistent Hearthguard builder owns first prototype in this existing worktree alongside Hook amendment, maintaining two builders"
+    },
+    {
+      "slug": "frontline-foundry",
+      "worktree": "C:/projects/active/_worktrees/games-frontline-foundry-20261018",
+      "branch": "codex/frontline-foundry",
+      "initial_base": "c4eeeb515dc5ed7a179776932797484319c3b51c",
+      "ownership_when_started": "android-games/frontline-foundry/",
+      "handoff": "android-games/handoffs/frontline-foundry-prototype.md",
+      "state": "clean isolated workspace and first-loop handoff prepared; no implementation/chat started; waiting for Hook software acceptance to open builder lane"
     }
   ],
   "games": [
@@ -45,7 +54,7 @@
       "worktree": "C:/projects/active/_worktrees/games-hook-and-hunger-20261018",
       "branch": "codex/hook-and-hunger",
       "ownership": "android-games/hook-and-hunger/",
-      "state": "workerbde8994/code3 save findings independently closed; actual2-to3 whole-state/profile preservation and native first-passage loss/Retry/victory pass; fixing native TextEdit touch focus/export interaction in code4 with old artifacts preserved"
+      "state": "frozen worker283522e/code4 conditional software candidate ready for physical-phone testing; independent input/clipboard, real3-to4 whole-save retention and eight native platform checks pass; engine/emulator hardware-keyboard suppression leaves physical IME gate explicit"
     },
     {
       "slug": "hearthguard",
@@ -56,7 +65,7 @@
       "branch": "codex/hearthguard",
       "ownership": "android-games/hearthguard/",
       "activation_base": "1e3bfe7a73b15a3fadce3232a75a2e143f41d8a4",
-      "state": "active first-prototype implementation: moving avatar, nearby coins, priced build pads, firing defenses, second investment and natural leak-loss/Retry/win; awaiting committed first-loop review checkpoint before campaign expansion"
+      "state": "first prototype b6e4970 frozen/integrated8ad6177; first-loop Astra review and independent route checks active; builder preparing only Android export/UID metadata amendment, campaign expansion on hold"
     }
   ]
 }

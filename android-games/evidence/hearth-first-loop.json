@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "status": "first_loop_independent_pass_astra_conditional_go_apk_built_native_pending",
+  "worker_commit": "b6e497063964e9efc92f00112db064aa0c6bf43f",
+  "integration_commit": "8ad6177",
+  "source_sha256_at_root_checks": "6869a33d6149d49ff64c084b2cd14c3b06463f90e8a9f6a42bce0b2000138f25",
+  "binding": {
+    "executed_sources": 12,
+    "tracked_lf_files": 14,
+    "artifacts": 181,
+    "decoded_pngs": 31
+  },
+  "review_package": "C:/projects/active/games/.artifacts/reviews/hearth-prototype-b6e4970/review-package.json",
+  "continuous_movie_sha256": "4ee4c52bdb7564a926b0c0f2ab9ec70f34c09e7684df0db18ae4a68a45f6f92e",
+  "continuous_movie_seconds": 24.033333,
+  "independent_checks": {
+    "rules": 56,
+    "headless_input": 44,
+    "rendered_input": 46
+  },
+  "independent_receipts": [
+    {
+      "path": "C:/projects/active/games/android-games/hearthguard/.artifacts/independent-root-clipboard-retry-rendered-20261018T033914227621Z/receipt.json",
+      "passed": true,
+      "source_unchanged": true
+    },
+    {
+      "path": "C:/projects/active/games/android-games/hearthguard/.artifacts/independent-root-headless-20261018T033626189096Z/receipt.json",
+      "passed": true,
+      "source_unchanged": true
+    },
+    {
+      "path": "C:/projects/active/games/android-games/hearthguard/.artifacts/independent-root-rendered-20261018T033629685256Z/receipt.json",
+      "passed": false,
+      "source_unchanged": true
+    },
+    {
+      "path": "C:/projects/active/games/android-games/hearthguard/.artifacts/independent-root-rules-20261018T033624818643Z/receipt.json",
+      "passed": true,
+      "source_unchanged": true
+    }
+  ],
+  "failed_rendered_scope": "First full route reached natural loss/Retry/two-build victory; immediate Windows clipboard_get backend access failed one assertion. Raw failure retained. Same source rerun has46checks/zero failures/no backend errors.",
+  "review": "android-games/reviews/hearth-prototype-b6e4970-astra.md",
+  "natural_outcomes": {
+    "defeat_leaks": 4,
+    "retry": true,
+    "victory_kills": 20,
+    "victory_integrity": 8,
+    "victory_sim_seconds": 43.6166666666655
+  },
+  "receipt": "C:/projects/active/games/.artifacts/preservation/hearth-first-loop-independent.json",
+  "receipt_sha256": "2874a3e8f46f5805df88939eeb543c1b5cbed12b23d68aded0ed4d757e988b44",
+  "preserved_files": 206,
+  "decoded_images": 42,
+  "ready_for_phone_testing": false,
+  "physical_phone_tested": false,
+  "remaining": [
+    "Root native first-loop/lifecycle/export and future campaign update fixture",
+    "Full meaningful30-60minute campaign/ending/replay after loop review",
+    "Independent full-campaign review/tests/update",
+    "Physical Fold7/IME/folding/safe areas/sound/FPS and human pacing/fun"
+  ],
+  "review_first_loop_go": true,
+  "metadata_worker_commit": "477f812a335e11e4bac15f745d8e860c8a162b96",
+  "metadata_integration_commit": "f9260e4",
+  "metadata_receipt": "C:/projects/active/games/.artifacts/preservation/hearth-delivery-metadata.json",
+  "source_sha256_after_metadata": "86a1787cb4c6a5b7d0ae4b081ebbed95a5991fb4f4707bae4708a6827938bc2d",
+  "build_manifest": "C:/projects/active/games/.artifacts/hearthguard/20261018T034236655848Z/manifest.json",
+  "apk": "C:/projects/active/games/.artifacts/hearthguard/20261018T034236655848Z/hearthguard.apk",
+  "apk_sha256": "97cab872724e7dea781662574e5902c330c1370582784e64ca212e78b721f5f6",
+  "build_receipt": "C:/projects/active/games/.artifacts/preservation/hearth-code1-build.json",
+  "build_receipt_sha256": "cdf7281c4ab49d562cabc2a58dcc77170332f340b53ed972291e0bd9225204fe"
+}

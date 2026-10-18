@@ -34,17 +34,28 @@
     },
     {
       "slug": "hook-and-hunger",
-      "state": "save_fixes_verified_android_victory_pass_touch_export_correction_in_progress",
-      "evidence": "android-games/evidence/hook-save-code3.json",
-      "ready_for_phone_testing": false,
-      "physical_phone_tested": false
+      "state": "conditional_software_candidate_ready_for_phone_testing",
+      "evidence": "android-games/evidence/hook-code4-candidate.json",
+      "ready_for_phone_testing": true,
+      "physical_phone_tested": false,
+      "version": "0.2.2",
+      "version_code": 4,
+      "package": "com.dsschiff.hookandhunger",
+      "apk": "C:/projects/active/games/.artifacts/hook-and-hunger/20261018T031647711677Z/hook-and-hunger.apk",
+      "apk_sha256": "2391343d79096cf766f2e68daf7db19c84053aca489d0b3e29b2d9a834241c77",
+      "source_sha256": "b61b029a6c946a41b014b51332ac94e9503e5ba1fd4285e002c8a5f329fb7233",
+      "sound_verified_on_phone": false,
+      "phone_performance_measured": false,
+      "phone_ime_verified": false,
+      "phone_ime_gate": "Required: emulator reports hardware keyboard and engine suppresses native IME; eight other native checks pass, raw partial status retained."
     },
     {
       "slug": "hearthguard",
-      "state": "first_prototype_in_development",
+      "state": "first_prototype_reviewed_apk_built_native_pending",
       "thread_id": "01a14cf9-259a-7473-8a90-2a4e341e8219",
       "ready_for_phone_testing": false,
-      "physical_phone_tested": false
+      "physical_phone_tested": false,
+      "evidence": "android-games/evidence/hearth-first-loop.json"
     },
     {
       "slug": "frontline-foundry",
