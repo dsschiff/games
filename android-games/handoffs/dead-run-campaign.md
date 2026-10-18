@@ -105,3 +105,9 @@ across isolated app-data folders. No repeated whole-journey retries just to eras
 a host clipboard failure. Physical Fold7 touch, IME, folding/safe areas, audible
 sound, measured heavy-crowd performance and human pacing/fun remain separate
 required gates. A passing automated campaign alone does not finish this goal.
+
+For an exclusive Windows clipboard window, state the request in ordinary progress
+in this game chat and wait for the coordinator to reserve it. The coordinator
+reads this thread directly and sends the reservation here; a separate message to
+the parent chat is unnecessary. Report completion and clipboard release here.
+Keep other work moving while the clipboard belongs to another game.

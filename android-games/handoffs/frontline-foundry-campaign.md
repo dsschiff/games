@@ -95,3 +95,9 @@ platform tests and delivery. No ADB, APK builds, shared/global setting edits,
 pushes, nested agents/goals/chats or phone-acceptance claims by the builder.
 Physical Fold7 touch, cover/inner folding/safe areas, IME, audible sound,
 measured FPS and human pacing/fun remain separate required gates.
+
+For an exclusive Windows clipboard window, state the request in ordinary progress
+in this game chat and wait for the coordinator to reserve it. The coordinator
+reads this thread directly and sends the reservation here; a separate message to
+the parent chat is unnecessary. Report completion and clipboard release here.
+Keep other work moving while the clipboard belongs to another game.
