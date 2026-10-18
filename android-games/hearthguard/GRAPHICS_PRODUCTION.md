@@ -93,3 +93,22 @@ real-time host timing with raw tails/draw counters, full Astra visual review,
 root integration/export and genuine2-to3 emulator update remain outstanding.
 Physical-phone testing is deferred and does not block those steps; no phone FPS
 or human-fun claim is made.
+
+## Bounded pooling follow-up
+
+CPU-only follow-up adds scene-owned inactive reserves: maximum4 per actor role,
+24 actors total,16 per compatible effect kind and64 effects total. Active
+combatants/effects are never capped. Corpses and contact actors share the role
+pool; projectiles, pulses, coins and coin labels reuse actual nodes. All pose,
+gait, bone scale/position, mounted mode, health, socket and effect transforms
+reset before reuse. Scene teardown clears reserves and frees retained instances.
+
+`.artifacts/pool-first-pool-checks-20261018T161803413384Z/` passes49 focused
+checks with unchanged sources: actual instance/mesh/material reuse, reserve caps,
+overflow release, reset equivalence to fresh actors, Retry/load, contact/pause,
+Resume/dedupe, terminal gait, complete save retention and teardown.
+`.artifacts/pool-preserved-art.json` verifies every original art file unchanged
+frome581026. No broad campaign repeat or rendered run was used. Root's first
+inspection separately found composition/crest/label/lighting problems and a
+450x800 internal movie; those findings are the next scoped correction. Gear
+retains the render slot, so a second inspection awaits explicit grant.

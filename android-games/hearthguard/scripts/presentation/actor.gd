@@ -18,6 +18,9 @@ var hp := 1.0
 var max_hp := 1.0
 var torso_yaw := 0.0
 var mounted := false
+var model_rest := Transform3D.IDENTITY
+var health_rest := Transform3D.IDENTITY
+var health_root_rest := Transform3D.IDENTITY
 static var cache := {}
 
 static func asset(name: String) -> Node3D:
@@ -96,6 +99,9 @@ func configure(kind: String, phase: float = 0) -> void:
 	health.position = Vector3(0, .0, .02)
 	health_root.add_child(health)
 	health_root.hide()
+	model_rest = model.transform
+	health_rest = health.transform
+	health_root_rest = health_root.transform
 	pose(0, Vector3.ZERO, "ready")
 
 func bone(joint: String, angles: Vector3) -> void:
@@ -124,6 +130,7 @@ func socket_position() -> Vector3:
 	return muzzle.global_position
 
 func reset_transients() -> void:
+	gait = 0
 	shot_left = 0
 	hit_left = 0
 	work_left = 0
@@ -131,9 +138,24 @@ func reset_transients() -> void:
 	torso_yaw = 0
 	aim = Vector3.FORWARD
 	death_time = -1
-	model.rotation = Vector3.ZERO
-	model.position = Vector3.ZERO
+	model.transform = model_rest
+	rig.reset_bone_poses()
 	pose(0, Vector3.ZERO, "ready")
+	socket_position()
+
+func reset_for_reuse(phase: float = 0, as_mounted: bool = false) -> void:
+	transform = Transform3D.IDENTITY
+	mounted = as_mounted
+	reset_transients()
+	gait = phase
+	hp = 1
+	max_hp = 1
+	health_root.transform = health_root_rest
+	health_root.hide()
+	health.transform = health_rest
+	muzzle.transform = Transform3D.IDENTITY
+	pose(0, Vector3.ZERO, "ready")
+	socket_position()
 
 func fall() -> void:
 	death_time = 0

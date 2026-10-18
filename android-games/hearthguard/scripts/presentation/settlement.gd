@@ -5,6 +5,13 @@ const Regions = preload("res://scripts/presentation/regions.gd")
 const C = preload("res://scripts/campaign_rules.gd")
 const Cat = preload("res://scripts/campaign_catalog.gd")
 const L = preload("res://scripts/rules.gd")
+const NodePool = preload("res://scripts/presentation/node_pool.gd")
+const ACTOR_ROLE_RESERVE := 4
+const ACTOR_TOTAL_RESERVE := 24
+const EFFECT_KIND_RESERVE := 16
+const EFFECT_TOTAL_RESERVE := 64
+var actor_pool: RefCounted
+var effect_pool: RefCounted
 var adapter := Adapter.new()
 var camera: Camera3D
 var units := {}
@@ -35,6 +42,8 @@ var manifest := {}
 var scenic_bounds: Array = []
 
 func build(state: Dictionary) -> void:
+	actor_pool = NodePool.new(self, "InactiveActors", ACTOR_ROLE_RESERVE, ACTOR_TOTAL_RESERVE)
+	effect_pool = NodePool.new(self, "InactiveEffects", EFFECT_KIND_RESERVE, EFFECT_TOTAL_RESERVE)
 	campaign = state.schema == 2
 	definition = state.definition.duplicate(true) if campaign else {}
 	region = Regions.describe(state)
@@ -132,14 +141,69 @@ func build(state: Dictionary) -> void:
 	add_child(range_ring)
 	range_ring.hide()
 	for i in 6:
-		var citizen := Actor.new()
-		add_child(citizen)
-		citizen.configure("citizen" if i % 3 != 0 else "defender", i * 1.7)
+		var citizen := take_actor("citizen" if i % 3 != 0 else "defender", i * 1.7)
 		var side := -1 if i % 2 == 0 else 1
 		citizen.position = Vector3(side * 6.20, .02, -5.2 + (i / 2) * 5.6)
 		civilians.append({"actor": citizen, "home": citizen.position, "last": citizen.position})
 	adapter.reset(state, false)
 	synchronize(state, false, 0)
+
+func take_actor(role: String, phase: float = 0, mounted: bool = false) -> Node3D:
+	var actor: Node3D = actor_pool.take(role)
+	if actor == null:
+		actor = Actor.new()
+		add_child(actor)
+		actor.configure(role, phase)
+	actor.reset_for_reuse(phase, mounted)
+	return actor
+
+func return_actor(actor: Node3D) -> void:
+	actor.reset_for_reuse()
+	actor_pool.put(actor.role, actor)
+
+func take_effect(key: String) -> Node3D:
+	var node: Node3D = effect_pool.take(key)
+	if node == null:
+		if key == "coin":
+			node = Actor.asset("coin")
+			add_child(node)
+			Actor.finish_materials(node)
+		elif key == "coin_label":
+			node = label("", Vector3.ZERO, "ffe1a0", 25)
+		else:
+			var mesh := MeshInstance3D.new()
+			if key == "projectile":
+				mesh.mesh = BoxMesh.new()
+			else:
+				var torus := TorusMesh.new()
+				torus.rings = 32
+				torus.ring_segments = 5
+				mesh.mesh = torus
+			mesh.material_override = Actor.material("ffffff")
+			node = mesh
+			add_child(node)
+	node.set_meta("effect_pool_key", key)
+	return node
+
+func return_effect(node: Node3D) -> void:
+	var key: String = node.get_meta("effect_pool_key")
+	if node is Label3D:
+		node.text = ""
+		node.modulate = Color.WHITE
+	elif node is MeshInstance3D:
+		(node.material_override as StandardMaterial3D).albedo_color = Color.WHITE
+		if node.mesh is BoxMesh:
+			node.mesh.size = Vector3.ONE
+		elif node.mesh is TorusMesh:
+			node.mesh.inner_radius = .95
+			node.mesh.outer_radius = 1
+	effect_pool.put(key, node)
+
+func _exit_tree() -> void:
+	if actor_pool != null:
+		actor_pool.clear()
+	if effect_pool != null:
+		effect_pool.clear()
 
 func pad_point(index: int) -> Vector2:
 	return C.pad_point(definition, index) if campaign else L.PADS[index]
@@ -233,10 +297,10 @@ func synchronize(state: Dictionary, held: bool, dt: float, reduced_effects: bool
 	var hydrated := adapter.ingest(state, held, dt)
 	if hydrated:
 		for e in effects:
-			e.node.queue_free()
+			return_effect(e.node)
 		effects.clear()
 		for corpse in corpses:
-			corpse.node.queue_free()
+			return_actor(corpse.node)
 		corpses.clear()
 		for actor in units.values():
 			actor.reset_transients()
@@ -252,11 +316,12 @@ func synchronize(state: Dictionary, held: bool, dt: float, reduced_effects: bool
 	target_phase = snap.phase
 	for key in snap.actors:
 		var data: Dictionary = snap.actors[key]
+		if units.has(key) and units[key].role != data.role:
+			return_actor(units[key])
+			units.erase(key)
 		var fresh := not units.has(key)
 		if fresh:
-			var actor := Actor.new()
-			add_child(actor)
-			actor.configure(data.role, float(key.hash() % 100) * .13)
+			var actor := take_actor(data.role, float(key.hash() % 100) * .13)
 			actor.position = data.position
 			actor.rotation.y = PI if key != "commander" else 0
 			units[key] = actor
@@ -272,7 +337,7 @@ func synchronize(state: Dictionary, held: bool, dt: float, reduced_effects: bool
 				actor.fire(Vector3(actor.position.x, .6, 9.1))
 				corpses.append({"node": actor, "left": .40})
 			else:
-				actor.queue_free()
+				return_actor(actor)
 			units.erase(key)
 	for i in snap.towers.size():
 		var spec: Dictionary = snap.towers[i]
@@ -299,8 +364,12 @@ func synchronize(state: Dictionary, held: bool, dt: float, reduced_effects: bool
 		var key := str(int(coin.id))
 		drops[key] = true
 		if not pickups.has(key):
-			var node := place("coin", Vector3(coin.x, .35, coin.z), 0, 1)
-			var value := label(str(int(coin.value)), Vector3(coin.x, .80, coin.z), "ffe1a0", 25)
+			var node := take_effect("coin")
+			node.position = Vector3(coin.x, .35, coin.z)
+			var value := take_effect("coin_label") as Label3D
+			value.text = str(int(coin.value))
+			value.modulate = Color("ffe1a0")
+			value.position = Vector3(coin.x, .80, coin.z)
 			pickups[key] = {"node": node, "label": value, "at": node.position, "phase": float(coin.id) * .7}
 	for key in pickups.keys():
 		if not drops.has(key):
@@ -308,8 +377,8 @@ func synchronize(state: Dictionary, held: bool, dt: float, reduced_effects: bool
 				var coin: Node3D = pickups[key].node
 				effects.append({"node": coin, "from": coin.position, "to": units.commander.position + Vector3(0, .9, 0), "left": .17, "duration": .17, "family": 4})
 			else:
-				pickups[key].node.queue_free()
-			pickups[key].label.queue_free()
+				return_effect(pickups[key].node)
+			return_effect(pickups[key].label)
 			pickups.erase(key)
 	if previous_integrity >= 0 and snap.integrity < previous_integrity and not hydrated:
 		gate_hit = .35
@@ -326,7 +395,10 @@ func rebuild_tower(index: int, spec: Dictionary, hydrated: bool) -> void:
 	var t: Dictionary = towers[index]
 	for key in ["node", "operator", "title"]:
 		if t.get(key) != null:
-			t[key].queue_free()
+			if key == "operator":
+				return_actor(t[key])
+			else:
+				t[key].queue_free()
 			t[key] = null
 	t.family = spec.family
 	t.fork = spec.fork
@@ -339,10 +411,7 @@ func rebuild_tower(index: int, spec: Dictionary, hydrated: bool) -> void:
 	t.turret = t.node.find_child("Turret", true, false)
 	t.tip = t.node.find_child("AuthoredWeaponTip", true, false)
 	t.rest = t.turret.position
-	t.operator = Actor.new()
-	add_child(t.operator)
-	t.operator.configure("defender")
-	t.operator.mounted = true
+	t.operator = take_actor("defender", 0, true)
 	t.operator.scale = Vector3.ONE * .67
 	t.operator.position = Vector3(p.x - .20, 1.21, p.y + .17)
 	t.title = label("", Vector3(p.x, 2.66, p.y), "ffe2a0", 23)
@@ -368,7 +437,10 @@ func observe(event: Dictionary) -> void:
 		t.operator.fire(target)
 		# The visible weapon belongs to the authored turret, not a generic pad origin.
 		var origin: Vector3 = t.tip.global_position
-		var bolt := box(origin, Vector3(.055, .055, .35 if t.family == 0 else .10), ["ffe3a0", "e8ae73", "a3ebe1"][int(t.family)])
+		var bolt := take_effect("projectile") as MeshInstance3D
+		(bolt.mesh as BoxMesh).size = Vector3(.055, .055, .35 if t.family == 0 else .10)
+		(bolt.material_override as StandardMaterial3D).albedo_color = Color(["ffe3a0", "e8ae73", "a3ebe1"][int(t.family)]).srgb_to_linear()
+		bolt.position = origin
 		if not origin.is_equal_approx(target):
 			bolt.look_at(target)
 		effects.append({"node": bolt, "from": origin, "to": target, "left": .22, "duration": .22, "family": int(t.family)})
@@ -391,16 +463,12 @@ func observe(event: Dictionary) -> void:
 func pulse(at: Vector3, radius: float, color: String, duration: float) -> void:
 	if reduced:
 		return
-	var shape := TorusMesh.new()
+	var node := take_effect("pulse") as MeshInstance3D
+	var shape := node.mesh as TorusMesh
 	shape.inner_radius = maxf(.02, radius - .055)
 	shape.outer_radius = radius
-	shape.rings = 32
-	shape.ring_segments = 5
-	var node := MeshInstance3D.new()
-	node.mesh = shape
-	node.material_override = Actor.material(color)
+	(node.material_override as StandardMaterial3D).albedo_color = Color(color).srgb_to_linear()
 	node.position = at
-	add_child(node)
 	effects.append({"node": node, "from": at, "to": at, "left": duration, "duration": duration, "family": 3})
 	effects_emitted += 1
 
@@ -425,7 +493,7 @@ func present(dt: float) -> void:
 		corpse.left -= step
 		corpse.node.pose(step, Vector3.ZERO, target_phase)
 		if corpse.left <= 0:
-			corpse.node.queue_free()
+			return_actor(corpse.node)
 			corpses.remove_at(i)
 	decor_time += step
 	for i in civilians.size():
@@ -458,7 +526,7 @@ func present(dt: float) -> void:
 		var e: Dictionary = effects[i]
 		e.left -= step
 		if e.left <= 0:
-			e.node.queue_free()
+			return_effect(e.node)
 			effects.remove_at(i)
 		else:
 			var f: float = 1 - e.left / e.duration

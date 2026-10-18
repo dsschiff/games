@@ -30,7 +30,7 @@ def sources():
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=["checks", "inspect", "capture", "closure", "tour", "legacy"])
+    parser.add_argument("mode", choices=["checks", "pool-checks", "inspect", "capture", "closure", "tour", "legacy"])
     parser.add_argument("--render", action="store_true")
     parser.add_argument("--movie", action="store_true")
     parser.add_argument("--seconds", type=float, default=8)
@@ -40,9 +40,10 @@ def main():
     args = parser.parse_args()
     if args.movie and (not args.render or args.measure_frames):
         parser.error("Movies require --render; real-time timing excludes fixed-cadence recording")
-    if args.render and args.mode == "checks":
+    cpu_modes = {"checks", "pool-checks"}
+    if args.render and args.mode in cpu_modes:
         parser.error("Checks are CPU only")
-    if not args.render and args.mode != "checks":
+    if not args.render and args.mode not in cpu_modes:
         parser.error("Rendered passages require explicit --render and coordinator's GPU grant")
     run = PROJECT / ".artifacts" / f"{args.label}-{args.mode}-{datetime.now(timezone.utc):%Y%m%dT%H%M%S%fZ}"
     run.mkdir(parents=True)
@@ -69,7 +70,7 @@ def main():
     (run / "import-report.json").write_text(json.dumps(preflight, indent=2) + "\n")
     command = [str(GODOT), "--path", str(PROJECT)]
     command += ["--resolution", "720x1280", "--position", "0,0"] if args.render else ["--headless"]
-    script = "presentation_tests.gd" if args.mode == "checks" else "graphics_passage.gd"
+    script = {"checks": "presentation_tests.gd", "pool-checks": "pool_tests.gd"}.get(args.mode, "graphics_passage.gd")
     command += ["--script", "res://tests/" + script]
     if args.movie:
         command += ["--fixed-fps", "30", "--write-movie", str(run / "continuous.avi")]
@@ -84,7 +85,7 @@ def main():
         shutil.copy2(source, frozen)
         assert sha(source) == sha(frozen)
         command += ["--checkpoint=" + str(frozen)]
-    if args.mode == "checks":
+    if args.mode in cpu_modes:
         baseline = run / "baseline"
         baseline.mkdir()
         for name in ["rules.gd", "campaign_rules.gd", "campaign_catalog.gd", "save_store.gd", "save_files.gd"]:
@@ -101,7 +102,7 @@ def main():
         if preflight["passed"]:
             try:
                 code = subprocess.run(command, env=env, stdout=log, stderr=subprocess.STDOUT,
-                                      timeout=300 if args.mode == "checks" else max(180, args.seconds * 5 + 90)).returncode
+                                      timeout=300 if args.mode in cpu_modes else max(180, args.seconds * 5 + 90)).returncode
             except subprocess.TimeoutExpired:
                 code = 124
         else:
