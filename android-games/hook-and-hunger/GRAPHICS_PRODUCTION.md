@@ -157,3 +157,22 @@ current metadata become **0.3.0/code5**. Project/export/progress still identify 
 retained **0.2.2/code4 functional baseline**; do not export this CPU review checkpoint
 as a new release. Additional physical-phone testing remains user-deferred and
 does not block continued graphics work. Do not mark release ready from this file.
+
+## First rendered pass (2026-10-21)
+
+The first render was blown out to white. Cause: in the Compatibility renderer a
+shadow-casting DirectionalLight3D is drawn in a second additive pass whose result
+is summed after sRGB encoding/tonemapping. Measured on a bare test scene: ambient
+alone 0.518, sun alone 0.424, shadows off 0.651 (correct linear sum), shadows on
+0.941 (the encoded values added). With ambient 0.64, sun 1.05 and Filmic, every
+lit surface clipped. The GLB materials were correct (no vertex colours, no emission).
+
+Fix (presentation only): linear tonemap, ambient 0.40 and sun 0.30 calibrated for
+that display-space sum, orthogonal sun shadows. `kit.gd` grades the neutral GLB
+materials by name into a warm tropical palette, with a distinct hue per creature
+role and the diver as the only saffron. `island.gd` adds turquoise sea, shallows,
+shoreline foam, sand tone patches, shells and dune grass as three MultiMeshes. The
+camera is now a perspective follow tilted 50 degrees, with full weapon reach always
+inside the narrow axis. Telegraphs, the reach ring and impact bursts are unshaded
+translucent decals, and world labels use the HUD face and colours at 3x resolution.
+GLBs, manifest and generator are unchanged.

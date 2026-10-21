@@ -309,9 +309,13 @@ func _process(delta: float) -> void:
 func _sync() -> void:
 	var p := Rules.position(state)
 	var viewport := get_viewport().get_visible_rect().size
-	camera.size = maxf(18.3, 2.0 * (float(Rules.weapon(state).reach) + 1.05) / maxf(.3, viewport.x / viewport.y))
-	camera.position = Vector3(p.x, 23, p.y + 17)
-	camera.look_at(Vector3(p.x, 0, p.y - 3.0))
+	# Close tilted follow: the full weapon reach always fits across the narrow
+	# axis at the diver's depth; otherwise the camera stays near and heroic.
+	var half_wide := atan(tan(deg_to_rad(camera.fov * .5)) * maxf(.3, viewport.x / viewport.y))
+	var distance := maxf(20.5, (float(Rules.weapon(state).reach) + .45) / tan(half_wide))
+	var focus := Vector3(p.x, 0, p.y - 2.2)
+	camera.position = focus + Vector3(0, sin(deg_to_rad(50.0)), cos(deg_to_rad(50.0))) * distance
+	camera.look_at(focus)
 	presentation.reduced = settings.reduced_effects
 	presentation.set_paused(paused, state)
 	presentation.capture(state)
@@ -581,8 +585,8 @@ func _layout() -> void:
 	# Dock signs have a fixed modeled anchor, but their screen labels clear both
 	# the rest stick and the actual floating control, including resized canvases.
 	var sign: Label3D = presentation.island.dock_label
-	sign.position = Vector3(-3.4, .65, 7.5)
+	sign.position = Vector3(0, 2.55, 6.8)
 	var origin: Vector2 = drag_start if dragging else stick.rest_origin
 	var projected := camera.unproject_position(sign.global_position)
 	if projected.distance_to(origin) < 170:
-		sign.position.x = 3.2
+		sign.position.x = 2.6

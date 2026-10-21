@@ -11,6 +11,15 @@ static func material(color: Color, glow: bool = false) -> StandardMaterial3D:
 		m.emission_energy_multiplier = 0.5
 	return m
 
+## Flat ground marking: unshaded, translucent and never casting a shadow.
+static func decal(node: GeometryInstance3D, color: Color) -> void:
+	var m := StandardMaterial3D.new()
+	m.albedo_color = color
+	m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	node.material_override = m
+	node.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+
 static func mesh(shape: Mesh, color: Color) -> MeshInstance3D:
 	var n := MeshInstance3D.new()
 	n.mesh = shape
@@ -52,13 +61,37 @@ static func ring(radius: float, color: Color) -> MeshInstance3D:
 	shape.ring_segments = 6
 	return mesh(shape, color)
 
+## Pooled impact burst: flat ring plus upward-tilted shards, all unshaded so
+## the hit flash stays bright under the compatibility lighting sum.
+static func impact(radius: float, color: Color) -> Node3D:
+	var root := Node3D.new()
+	var r := ring(radius, color)
+	decal(r, Color(color, .9))
+	root.add_child(r)
+	for i in 7:
+		var a := float(i) * TAU / 7.0
+		var shard := box(Vector3(.07, .07, radius * .9), color)
+		decal(shard, Color(color.lightened(.35), .95))
+		shard.position = Vector3(sin(a), .35, cos(a)) * radius * .8
+		shard.rotation = Vector3(-.5, a, 0)
+		root.add_child(shard)
+	var flash := sphere(radius * .45, color)
+	decal(flash, Color(1, .97, .85, .75))
+	flash.position.y = .45
+	root.add_child(flash)
+	return root
+
 static func label(text: String, at: Vector3, size: int = 42) -> Label3D:
 	var l := Label3D.new()
 	l.text = text
-	l.font_size = size
-	l.pixel_size = 0.013
-	l.outline_size = 8
-	l.modulate = Color("fff1d7")
+	# Same default UI face and ink as the HUD, rendered at high resolution so
+	# it never reads as a pixel font; navy outline matches the HUD panels.
+	l.font_size = size * 3
+	l.pixel_size = 0.013 / 3.0
+	l.outline_size = 18
+	l.outline_modulate = Color("102d40")
+	l.modulate = Color("fff0d5")
+	l.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 	l.position = at
 	l.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	l.no_depth_test = true
@@ -73,20 +106,27 @@ static func warning() -> Node3D:
 			n = Node3D.new()
 			n.add_child(outline)
 			var fill := cylinder(3.2, .012, Color("dc816d"))
-			var m := material(Color(.77, .38, .29, .16))
+			var m := material(Color(.93, .35, .25, .22))
 			m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 			m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 			fill.material_override = m
+			fill.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 			n.add_child(fill)
+		if key != "Solid":
+			decal(n, Color(.93, .30, .22, .85))
+		else:
+			decal(n.get_child(0), Color(.93, .30, .22, .85))
 		n.name = key
 		root.add_child(n)
 	var line := box(Vector3(1.15, 0.035, 8.5), Color("e48e79"), Vector3(0, 0, 4.25))
 	line.name = "Line"
+	decal(line, Color(.93, .33, .25, .45))
 	root.add_child(line)
 	for side in [-1, 1]:
 		var angle: float = side * 0.32
 		var branch := box(Vector3(0.5, 0.03, 8.5), Color("e48e79"), Vector3(sin(angle) * 4.25, 0, cos(angle) * 4.25))
 		branch.name = "Left" if side < 0 else "Right"
 		branch.rotation.y = angle
+		decal(branch, Color(.93, .33, .25, .45))
 		root.add_child(branch)
 	return root

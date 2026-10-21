@@ -51,6 +51,7 @@ func build(state: Dictionary) -> void:
 		link.hide()
 		links.append(link)
 	reach = Art.ring(float(Rules.weapon(state).reach), Color("728f87"))
+	Art.decal(reach, Color(1, .98, .9, .42))
 	add_child(reach)
 	hydrate(state)
 
@@ -113,7 +114,7 @@ func observe(kind: String, payload: Dictionary) -> void:
 	if not reduced and kind in ["contact", "purchase", "hurt"]:
 		var effect: Node3D = pool.take("effect:" + kind)
 		if effect == null:
-			effect = Art.ring(.35 if kind == "contact" else .65, Color("e9c591") if kind != "hurt" else Color("d18c7a"))
+			effect = Art.impact(.45 if kind == "contact" else .7, Color("ffd36b") if kind == "contact" else (Color("7fe3c8") if kind == "purchase" else Color("ff6a4f")))
 			add_child(effect)
 		effect.set_meta("pool_key", "effect:" + kind)
 		effect.set_meta("life", .20)
