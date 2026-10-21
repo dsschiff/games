@@ -120,13 +120,13 @@ static func warning() -> Node3D:
 		root.add_child(n)
 	var line := box(Vector3(1.15, 0.035, 8.5), Color("e48e79"), Vector3(0, 0, 4.25))
 	line.name = "Line"
-	decal(line, Color(.93, .33, .25, .45))
+	decal(line, Color(.95, .38, .28, .26))
 	root.add_child(line)
 	for side in [-1, 1]:
 		var angle: float = side * 0.32
 		var branch := box(Vector3(0.5, 0.03, 8.5), Color("e48e79"), Vector3(sin(angle) * 4.25, 0, cos(angle) * 4.25))
 		branch.name = "Left" if side < 0 else "Right"
 		branch.rotation.y = angle
-		decal(branch, Color(.93, .33, .25, .45))
+		decal(branch, Color(.95, .38, .28, .22))
 		root.add_child(branch)
 	return root
