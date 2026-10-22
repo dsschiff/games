@@ -41,6 +41,17 @@ interaction cues. Preserve distinct themes rather than reskinning one game six t
   Every new delivered APK has a higher version code. No paid services/assets,
   ads, accounts, purchases, timers or public website/store release.
 
+## Reuse for 2D-board ports
+
+Tower Trials put a 3D world behind an unchanged 2D board and its hit boxes.
+Before porting another 2D-board game, read the alignment paragraph in
+[tower-trials/GRAPHICS_PRODUCTION.md](tower-trials/GRAPHICS_PRODUCTION.md)
+(room fronts on the plane facing a perpendicular camera) and copy the guards in
+[tower-trials/tests/graphics_view.gd](tower-trials/tests/graphics_view.gd):
+the "room fronts align with 2D labels" check, the "3D presentation is attached"
+check that fails when the 3D view is missing, and the rendered frame sample of
+lit chamber interiors.
+
 ## Sequence and ownership
 
 1. Preserve six functional baselines and exact handoffs, then archive the six old
