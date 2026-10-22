@@ -99,6 +99,20 @@ with an identical state. Rendered runs also save frames under
 `.artifacts/graphics/rendered/` and require open room fronts to be lit plaster
 in the actual frame.
 
+Ending screen (2026-10-22, software candidate, not independently reviewed,
+not phone tested): the twelve watches and the courier are now GLB models
+(`home_floor`, `home_roof`, a `moon` lantern per watch, `courier`) placed by
+`tower_view.gd` `_ending()` on the old 2D slots; the 2D boxes, roofs, lantern
+circles and 2D courier were removed from `draw_ending()`. Title, text and the
+Explore button are unchanged. Lit lanterns follow `main.ending_lit()`
+(rescued profile entries / 3, capped at 12; 36 rescued lights all twelve);
+unlit watches are dimmed. `graphics_view.gd` `ending()` checks twelve
+watch models with floor/roof/lantern, lit count equal to `ending_lit()`,
+courier and one roof within 1.5 px of their 2D anchors, presentation lit
+counts 12 and 5, and that leaving restores the board with identical state.
+Rendered frames: `.artifacts/graphics/rendered/ending.png` (fresh profile,
+all dark) and `ending-lit.png` (lit=12).
+
 `graphics_check.py clip` writes a 60-fixed-fps `--write-movie` capture of the
 existing touch-only `tests/challenge_motion.gd` to
 `.artifacts/graphics/motion/tower-graphics-challenge.mp4` (480x854, 60 fps,
@@ -110,8 +124,9 @@ measurement.
 - Independent visual review; Daniel's visual acceptance.
 - Android export, emulator update from code 4 via `scripts/android_upgrade.py`,
   Fold7 install (Daniel).
-- Ending, Journey and Challenge screens keep their 2D content over the new 3D
-  coast; the ending's watches and courier are still 2D drawings.
+- Journey and Challenge screens keep their 2D content over the new 3D coast.
+  The ending's watches and courier are 3D (above) but that change is not
+  independently reviewed or phone tested, and Daniel has not accepted it.
 - No measured frame time on device.
 - Animated courier encounters (`GRAPHICS-OVERHAUL.md:20,77`) are not
   delivered. The courier is one rigid model that leans during flight and
