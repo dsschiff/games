@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "gear_hearth_complete_frontline_code4_hook_code5_dead_run_code4_emulator_verified_review_pending_tower_trials_remaining",
+  "status": "all_six_games_have_graphics_candidates_gear_hearth_complete_frontline_code4_hook_code5_dead_run_code4_tower_code5_emulator_verified_review_pending",
   "baseline_commit": "6e26b3c2a3938de1828527630f95fb6a219f61b8",
   "reference": {
     "private_path": ".references/graphics-overhaul/user-top-force-44941.jpg",
@@ -253,11 +253,21 @@
       "Physical phone testing deferred by user"
     ]
   },
-  "remaining_games": {
-    "tower-trials": {
-      "status": "graphics_overhaul_not_started",
-      "queued_for": "later session",
-      "note": "Tower Trials is the one remaining game of the six; its accepted code4 functional candidate stays frozen until then."
-    }
+  "tower_graphics_checkpoint": {
+    "candidate_evidence": "android-games/evidence/tower-graphics-candidate.json",
+    "status": "signed_code5_built_genuine_code4_to5_emulator_update_passed_android_lighting_matches_desktop_tap_enter_move_and_courier_fight_confirmed_private_bundle_ready",
+    "source_commit": "6ef2a07ad30ade22e35f81f7268639efbf6fbcbe",
+    "branch": "claude/tower-polish",
+    "version": "0.4.0",
+    "version_code": 5,
+    "apk_sha256": "3473c3ad47a5a920bc5b2c502d68383202bd37a427f3a11ac28ae57570f0dd1f",
+    "upgrade_manifest": ".artifacts/upgrades/com.dsschiff.towertrials/20261022T114127402869Z/manifest.json",
+    "native_packet": ".artifacts/emulator/graphics-20261021/tower-native/run/report.json",
+    "bundle": ".artifacts/releases/graphics-20261021",
+    "open": [
+      "Independent visual/motion review and before/after clips",
+      "First launch after install shows the Godot splash for about 37 s on the emulator (code4 the same); phone first-launch time unmeasured",
+      "Physical phone testing deferred by user"
+    ]
   }
 }

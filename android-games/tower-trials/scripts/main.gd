@@ -13,6 +13,9 @@ const GOLD := Color("ffd17d")
 const RED := Color("fa8b7c")
 const WHITE := Color("f4eee3")
 const MUTED := Color("a5bcc9")
+## Chapter names as shown on the Journey tabs; challenge families as on the select screen.
+const CHAPTER_NAMES := ["Lantern Coast", "Salt Archives", "Glass March", "Last Meridian"]
+const FAMILY_NAMES := {"key": "Keys", "shell": "Shell / sun", "rescue": "Rescue fork", "finale": "Woven finale"}
 
 var save_path := Saves.PATH
 var data := Saves.fresh()
@@ -47,6 +50,7 @@ var challenge_weave := 0
 var challenge_treasure := true
 var show_hint := false
 var record_page := 0
+var claimed_gain := -1
 var view: Node3D = TowerView.new()
 
 func _ready() -> void:
@@ -92,6 +96,7 @@ func load_run() -> void:
 		var reason := Rules.step(level, Saves.replay_route(level, prefix), last)
 		note = " / ".join(reason.events) + " " + reason.message
 	selected = ""
+	claimed_gain = -1
 	pending = {}
 	beat = 0
 	chapter = maxi(0, Content.index_of(data.level_id)) / 9
@@ -111,16 +116,12 @@ func sync_view() -> void:
 	for room in level.rooms:
 		rects[room.id] = room_rect(room)
 		blocked[room.id] = Rules.blocked(state, room)
-	view.sync({"screen": screen, "level": level, "state": state, "selected": selected, "rects": rects, "blocked": blocked, "home_stride": home_stride(), "courier": courier_point(), "flight": clampf(beat / 0.9, 0, 1) if not pending.is_empty() else 0.0, "reduced": bool(data.settings.reduced_effects), "frozen": paused or menu or transfer or guide or details})
+	view.sync({"screen": screen, "level": level, "state": state, "selected": selected, "rects": rects, "blocked": blocked, "home_stride": home_stride(), "courier": courier_point(), "flight": clampf(beat / 0.9, 0, 1) if not pending.is_empty() else 0.0, "pending_room": pending_room if not pending.is_empty() else "", "pending_win": bool(pending.get("win", false)), "chapter": Challenge.FAMILIES.find(data.challenge_run.bundle.family) if data.kind == "challenge" else int(level.get("chapter", 0)), "reduced": bool(data.settings.reduced_effects), "frozen": paused or menu or transfer or guide or details})
 
+## The courier's resting anchor on the watch roof. The 3D view animates the
+## encounter itself from main's rule-timed beat (see tower_view.gd).
 func courier_point() -> Vector2:
-	var hero := home_point()
-	if not pending.is_empty() and not data.settings.reduced_effects:
-		var target := room_rect(Rules.find_room(level, pending_room)).get_center()
-		var fraction := clampf(beat / 0.9, 0, 1)
-		hero = home_point().lerp(target, sin(fraction * PI))
-		hero.y -= sin(fraction * PI) * 50
-	return hero
+	return home_point()
 
 ## Draws a connector between two room centres only outside both room fronts,
 ## so it never paints over the 3D blocks.
@@ -174,7 +175,11 @@ func _process(delta: float) -> void:
 	if not pending.is_empty():
 		beat += delta
 		if beat >= 0.9:
+			claimed_gain = int(pending.state.power) - int(state.power) if pending_room in pending.state.claimed else -1
 			state = pending.state
+			# The claimed room cannot be entered again; return to a neutral read.
+			if pending_room in state.claimed:
+				selected = ""
 			current_run().actions.append(pending_room)
 			note = "  /  ".join(pending.events)
 			pending = {}
@@ -322,6 +327,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		for room in level.rooms:
 			if room_rect(room).has_point(point):
 				selected = room.id
+				claimed_gain = -1
 				tone(420)
 				queue_redraw()
 				get_viewport().set_input_as_handled()
@@ -574,6 +580,20 @@ func button(key: String, label: String, color: Color = Color("24485e")) -> void:
 		box(buttons()[key], color, 12)
 		centered(label, buttons()[key], 23, INK if color == TEAL or color == GOLD else WHITE)
 
+## Enemy strength badge: dark plate, gold rim, outlined white numeral.
+func badge(value: String, center: Vector2, size: int, active: bool) -> void:
+	var width := maxf(40.0, font.get_string_size(value, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x + 18)
+	var rect := Rect2(center - Vector2(width * 0.5, size * 0.6), Vector2(width, size * 1.2))
+	box(rect, Color("5e1f33", .94) if active else Color("2a3a4a", .9), 9, GOLD if active else Color("6e8494"))
+	var text_pos := Vector2(center.x - (width - 18) * 0.5, center.y + size * 0.36)
+	draw_string_outline(font, text_pos, value, HORIZONTAL_ALIGNMENT_LEFT, -1, size, 6, Color("1a0710"))
+	draw_string(font, text_pos, value, HORIZONTAL_ALIGNMENT_LEFT, -1, size, WHITE if active else MUTED)
+
+func pill(value: String, center: Vector2, size: int, fill: Color, ink: Color) -> void:
+	var width := font.get_string_size(value, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x + 16
+	box(Rect2(center - Vector2(width * 0.5, size * 0.7), Vector2(width, size * 1.4)), fill, 8)
+	text_at(value, Vector2(center.x - width * 0.5 + 8, center.y + size * 0.36), size, ink)
+
 func courier(at: Vector2, factor: float = 1.0) -> void:
 	draw_colored_polygon(PackedVector2Array([at + Vector2(-14, -2) * factor, at + Vector2(-23, 29) * factor, at + Vector2(15, 22) * factor, at + Vector2(11, -7) * factor]), Color("32baa2"))
 	draw_line(at + Vector2(-6, 18) * factor, at + Vector2(-7, 32) * factor, SAND, 6 * factor)
@@ -614,7 +634,7 @@ func background() -> void:
 func draw_header() -> void:
 	text_at("TOWER TRIALS", Vector2(26, 58), 29, GOLD)
 	button("settings", "•••")
-	text_at("v1 · seed %d · weave %d · treasure %s%s" % [data.challenge_run.bundle.seed, data.challenge_run.bundle.options.weave, "on" if data.challenge_run.bundle.options.treasure else "off", " · backup" if data.challenge_run.bundle.fallback else ""] if data.kind == "challenge" else "COAST OF THE LOST CHIMES", Vector2(26, 84), 15, MUTED)
+	text_at(FAMILY_NAMES.get(data.challenge_run.bundle.family, "Challenge").to_upper() + " · v1 · seed %d · weave %d · treasure %s%s" % [data.challenge_run.bundle.seed, data.challenge_run.bundle.options.weave, "on" if data.challenge_run.bundle.options.treasure else "off", " · backup" if data.challenge_run.bundle.fallback else ""] if data.kind == "challenge" else (CHAPTER_NAMES[clampi(int(level.get("chapter", 0)), 0, 3)].to_upper() if screen == "game" else "COAST OF THE LOST CHIMES"), Vector2(26, 84), 15, MUTED)
 	if screen == "game":
 		text_at("Challenge · " + level.name if data.kind == "challenge" else "%02d / %02d  ·  %s" % [Content.index_of(data.level_id) + 1, Content.levels().size(), level.name], Vector2(26, 126), 23)
 		box(Rect2(24, 146, 260, 72), Color("173e53"), 12, Color("347b7d"))
@@ -671,20 +691,22 @@ func draw_board() -> void:
 		if collapsed:
 			fill = Color("263c50")
 		box(rect, fill if view == null else Color.TRANSPARENT, 5, GOLD if selected == room.id else Color("75949a"))
-		draw_rect(Rect2(rect.position + Vector2(0, rect.size.y - 24), Vector2(180, 24)), Color("274859"))
+		if selected == room.id and view != null:
+			box(rect.grow(3), Color.TRANSPARENT, 7, GOLD)
+		draw_rect(Rect2(rect.position + Vector2(0, rect.size.y - 24), Vector2(180, 24)), Color("1d3a4c"))
+		draw_rect(Rect2(rect.position + Vector2(0, rect.size.y - 24), Vector2(180, 2)), Color("c9a24e"))
 		centered(room.name, Rect2(rect.position + Vector2(0, rect.size.y - 24), Vector2(180, 24)), 16, WHITE)
 		if collapsed:
 			centered("COLLAPSED", Rect2(rect.position, Vector2(180, 90)), 18, MUTED)
 		elif claimed:
-			centered("CLAIMED  +", Rect2(rect.position, Vector2(180, 70)), 21, TEAL)
-			centered("Power sent home", Rect2(rect.position + Vector2(0, 57), Vector2(180, 25)), 14, SAND)
+			pill("CLAIMED", Vector2(rect.get_center().x, rect.position.y + 20), 15, Color("15584f"), TEAL)
 		else:
 			for i in room.enemies.size():
 				var enemy_x: float = (i + 1) * 180.0 / (room.enemies.size() + 1)
 				var compact: bool = rect.size.y < 120
 				if view == null:
 					spirit(rect.position + Vector2(enemy_x, 67 if compact else 77), blocked == "", compact)
-				centered(str(room.enemies[i]), Rect2(rect.position + Vector2(enemy_x - 42, 22), Vector2(84, 34)), 32, INK if blocked == "" else GOLD)
+				badge(str(room.enemies[i]), rect.position + Vector2(enemy_x, 26 if compact else 28), 24 if compact or room.enemies.size() > 2 else 27, blocked == "")
 			var tags: Array = []
 			if room.key_cost > 0: tags.append("LOCK %d" % room.key_cost)
 			if room.keys > 0: tags.append("+%d KEY" % int(room.keys))
@@ -694,15 +716,10 @@ func draw_board() -> void:
 			if room.treasure: tags.append("CHEST")
 			if room.rescue: tags.append("RESCUE")
 			if room.get("keeper", false): tags.append("KEEPER")
-			centered("  ".join(tags), Rect2(rect.position + Vector2(0, 2), Vector2(180, 20)), 13, INK if blocked == "" else GOLD)
-	var hero := courier_point()
-	if not pending.is_empty() and not data.settings.reduced_effects:
-		var fraction := clampf(beat / 0.9, 0, 1)
-		draw_arc(hero, 34, phase * 5, phase * 5 + 3.8, 20, GOLD, 4)
-		if fraction > 0.5:
-			text_at("+POWER" if pending.win else "CLASH", hero + Vector2(-44, -48), 20, GOLD)
+			if not tags.is_empty():
+				pill("  ".join(tags), Vector2(rect.get_center().x, rect.position.y + 4), 12, Color("102c42", .94), GOLD)
 	if view == null:
-		courier(hero)
+		courier(courier_point())
 
 func draw_game() -> void:
 	draw_board()
@@ -736,7 +753,10 @@ func draw_game() -> void:
 		button("enter", "Enter room" if preview.get("win", false) else "Enter anyway · danger", TEAL if preview.get("win", false) else Color("633f4b"))
 	else:
 		var later: bool = data.kind == "campaign" and Content.index_of(data.level_id) >= 6
-		text_at("OPTIONAL HINT · tap to hide" if show_hint else ("RULES · tap for optional hint" if later else "READ THE TOWER"), Vector2(40, 825), 21, GOLD)
+		if claimed_gain >= 0 and not show_hint:
+			text_at("+%d CLAIMED · PICK THE NEXT ROOM" % claimed_gain, Vector2(40, 825), 21, TEAL)
+		else:
+			text_at("OPTIONAL HINT · tap to hide" if show_hint else ("RULES · tap for optional hint" if later else "READ THE TOWER"), Vector2(40, 825), 21, GOLD)
 		lines(level.lesson if not later or show_hint else "Greater power wins. Locks spend keys; shields block traps. Read gifts, sealed routes and ordered enemies.", Vector2(40, 858), 510, 21, WHITE, 3)
 	button("undo", "Undo")
 	button("retry", "Retry")
@@ -744,8 +764,7 @@ func draw_game() -> void:
 	button("challenge_new", "New")
 
 func draw_map() -> void:
-	var titles := ["Lantern Coast", "Salt Archives", "Glass March", "Last Meridian"]
-	text_at(titles[chapter], Vector2(26, 130), 32)
+	text_at(CHAPTER_NAMES[chapter], Vector2(26, 130), 32)
 	for i in 4:
 		button("chapter%d" % i, ["Coast", "Archive", "Glass", "Meridian"][i], TEAL if chapter == i else Color("24485e"))
 	var all := Content.levels()
@@ -772,13 +791,14 @@ func draw_map() -> void:
 func draw_ending() -> void:
 	text_at("ALL LANTERNS RISE", Vector2(26, 180), 36, GOLD)
 	lines("The last chime crosses the sea. Every watch answers. You brought the lost keepers home.", Vector2(28, 234), 530, 27, WHITE, 4)
-	for i in 12:
-		var x := 34 + (i % 6) * 93
-		var y := 488 + (i / 6) * 168
-		box(Rect2(x, y, 68, 104), Color("397781"), 5, TEAL)
-		draw_colored_polygon(PackedVector2Array([Vector2(x - 5, y), Vector2(x + 34, y - 36), Vector2(x + 73, y)]), TEAL)
-		draw_circle(Vector2(x + 34, y + 44), 10, GOLD)
-	courier(Vector2(300, 750), 1.6)
+	if view == null:
+		for i in 12:
+			var x := 34 + (i % 6) * 93
+			var y := 488 + (i / 6) * 168
+			box(Rect2(x, y, 68, 104), Color("397781"), 5, TEAL)
+			draw_colored_polygon(PackedVector2Array([Vector2(x - 5, y), Vector2(x + 34, y - 36), Vector2(x + 73, y)]), TEAL)
+			draw_circle(Vector2(x + 34, y + 44), 10, GOLD)
+		courier(Vector2(300, 750), 1.6)
 	lines("36 authored watches. Return for unclaimed treasure, par routes, clean runs and alternate branches.", Vector2(28, 836), 530, 22, SAND, 3)
 	button("map", "Explore your journey", TEAL)
 
@@ -858,7 +878,7 @@ func draw_challenge_select() -> void:
 	text_at("Seeded Challenges · v1", Vector2(26, 130), 30, GOLD)
 	text_at("Family, seed and options define a repeatable watch.", Vector2(42, 184), 18, SAND)
 	for family in Challenge.FAMILIES:
-		button("family_" + family, {"key": "Keys", "shell": "Shell / sun", "rescue": "Rescue fork", "finale": "Woven finale"}[family], TEAL if family == challenge_family else Color("24485e"))
+		button("family_" + family, FAMILY_NAMES[family], TEAL if family == challenge_family else Color("24485e"))
 	text_at("Seed · 0 to 2147483647", Vector2(42, 420), 21, WHITE)
 	button("seed_next", "+1 seed")
 	button("weave", "Weave %d" % challenge_weave)

@@ -1,0 +1,41 @@
+{
+  "reference_display": [1080, 2400],
+  "viewport": [600, 1066],
+  "scope": "Use android_upgrade with --schema-path schema. Genuine app-written code4 save already on the emulator from the code3-to-4 update and code4 native checks: active seed137 key-family Challenge snapshot with Landing claimed, its touch-earned record (best 4, medals 11), campaign catalog2 watch_03 key route with three earned clears and medals, sound off, reduced effects on. One real tap selects the claimed Landing without changing history. No reset, injected or imported save. Entire old save except revision must survive the code4-to-5 graphics update.",
+  "coordinate_qualification": {
+    "landing_pixels": [850, 829],
+    "source": "Actual code4 cold-launch screenshot .artifacts/emulator/graphics-20261021/tower-native/00-code4-launch.png on native 1080x2400 (claimed Landing room)."
+  },
+  "actions": [
+    {"type": "tap", "x": 850, "y": 829, "wait_seconds": 0.5}
+  ],
+  "expected_save": {
+    "schema": 3,
+    "recoverable": true,
+    "kind": "challenge",
+    "challenge_run.actions": ["landing"],
+    "challenge_run.used_undo": false,
+    "challenge_run.bundle.family": "key",
+    "challenge_run.bundle.seed": 137,
+    "challenge_run.bundle.version": 1,
+    "challenge_run.bundle.options.weave": 0,
+    "challenge_run.bundle.options.treasure": true,
+    "challenge_records.0.family": "key",
+    "challenge_records.0.seed": 137,
+    "challenge_records.0.best": 4,
+    "challenge_records.0.medals": 11,
+    "catalog": 2,
+    "level_id": "watch_03",
+    "level": 3,
+    "actions": ["key"],
+    "used_undo": false,
+    "settings.sound": false,
+    "settings.reduced_effects": true,
+    "profile.watch_01.best": 4,
+    "profile.watch_01.medals": 11,
+    "profile.watch_02.best": 3,
+    "profile.watch_02.medals": 11,
+    "profile.watch_03.best": 3,
+    "profile.watch_03.medals": 3
+  }
+}
