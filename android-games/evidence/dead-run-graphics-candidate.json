@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "game": "dead-run",
+  "date": "2026-10-21",
+  "status": "emulator_upgrade_verified_graphics_candidate_physical_phone_deferred",
+  "source_branch": "claude/dead-run-graphics",
+  "source_commit": "8fb2a5bc144bda5562d27b5285d7753c6b85a096",
+  "graphics_head_before_freeze": "e653cd9",
+  "version": "0.3.0",
+  "version_code": 4,
+  "version_transition": {
+    "from": "0.2.1/code3 (delivered, portfolio-20261018 bundle, sha256 ab1a8863fdb92815278924e146092c864b38309baf57fa521e99944b400a415c)",
+    "to": "0.3.0/code4"
+  },
+  "delivery_metadata_note": "android-games/dead-run/delivery-metadata.json and DELIVERY-METADATA.md are the historical code1 SDK-override amendment record; left unchanged, as Hook's freeze changed only export preset, project.godot and status files.",
+  "apk": {
+    "build_manifest": "C:/projects/active/_worktrees/games-dead-run-20261018/.artifacts/dead-run/20261022T010836213149Z/manifest.json",
+    "delivery_copy": "C:/projects/active/games/.artifacts/releases/graphics-20261021/Dead-Run-0.3.0-Android.apk",
+    "sha256": "9462932e7974d640a965a1257eb298e2d25e8631a8d59f128de2de047ba52411",
+    "bytes": 58941865,
+    "package": "com.dsschiff.deadrun",
+    "permissions": [],
+    "internet_permission": false,
+    "signature_verified": true,
+    "signer_cert_sha256": "90e5a27df8d0c427da5bb822477d31796ff7f1d20d95ef915246cde6e2a9c55b",
+    "same_signer_as_delivered_code3": true,
+    "source_clean_and_unchanged": true
+  },
+  "tests": {
+    "manifest": "C:/projects/active/_worktrees/games-dead-run-20261018/.artifacts/dead-run/20261022T010737006066Z/manifest.json",
+    "rules_checks": 139,
+    "input_playthrough_checks": 34,
+    "presentation_checks": 22,
+    "presentation_run": "C:/projects/active/_worktrees/games-dead-run-20261018/android-games/dead-run/.artifacts/graphics/release-presentation-20261022T010753Z",
+    "failures": 0,
+    "known_quirk": "First run on the clean tree failed only the source-drift guard because the legacy playthrough wrote 18 *-slots.json/report files into the project folder (manifest 20261022T010704260230Z); the immediate rerun passed. Strays deleted before the build, never committed."
+  },
+  "upgrade": {
+    "manifest": "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.deadrun/20261022T011052656705Z/manifest.json",
+    "console": "C:/projects/active/games/.artifacts/emulator/graphics-20261021/deadrun-upgrade-console.txt",
+    "result": "passed",
+    "checks_passed": 24,
+    "checks_total": 24,
+    "old_save": "Genuine app-written code3 save already on the emulator from the code2-to-3 update and native checks (road 02 active at tick 232, crew 5, x 0.9167; road 01 cleared with medal; sound off, reduced effects on). Two real Sound taps OFF-ON-OFF; no reset, injected or imported save.",
+    "preserved_whole_paths": [
+      "context",
+      "committed"
+    ],
+    "save_envelope_version": 2,
+    "fixture": "scripts/smoke-actions/dead-run-code4-from-earned-code3.json",
+    "expectations": "scripts/smoke-actions/dead-run-code4-upgrade-expectations.json",
+    "runtime_errors": false,
+    "note": "The new-after-launch foreground capture at the 6 s settle still showed the Godot splash (first-launch import/shader compile); the save had already been rewritten and the cold-relaunch capture shows the restored paused road."
+  },
+  "native_checks": {
+    "packet": "C:/projects/active/games/.artifacts/emulator/graphics-20261021/deadrun-native/report.json",
+    "script": "C:/projects/active/games/.artifacts/emulator/graphics-20261021/deadrun_native.py",
+    "resume": "real tap on RESUME; road 02 live",
+    "drag_movement": "confirmed: frames 02a/02b/02c show the squad right of centre, then in the far-left lane after an adb swipe 760->200 px, then back right of centre after 300->900 px, where it crossed the +5 gate (crew 5 to 10). Saved x moved 0.9167 -> 1.3889 and tick 232 -> 476.",
+    "android_back": "opens RESCUE PAUSED; process alive",
+    "cover_1080x2520": "alive; full HUD, pause panel and crew visible",
+    "inner_1968x2184": "alive; wider street shown at sides, panel centred, no crop",
+    "home_then_cold_relaunch": "process alive; both checksum slots valid and committed; restored paused at tick 476 crew 10",
+    "script_errors": 0,
+    "wm_size_restored": "1080x2400"
+  },
+  "lighting_check": {
+    "desktop_reference": "C:/tmp/games-review-20261021/deadrun/sheet-after-districts-bosses.png",
+    "result": "Android matches desktop: blue sky with clouds, canal water, orange cranes and blue containers, lit grey road with yellow edge lines and visible soft shadows, blue-uniformed crew. Not white or blown out, not black. Matches the gl_compatibility sun-pass tuning on the emulator host GPU (-gpu host); a real phone GPU is unverified.",
+    "minor_observation": "The first post-update cold-relaunch frame (upgrade packet) has a one-off full-width white band at native y 2310-2350 near the bottom edge; it is absent from every later live, resized and cold frame. Not reproduced; noted for the visual reviewer."
+  },
+  "screenshots": [
+    "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.deadrun/20261022T011052656705Z/new-cold-relaunch-foreground.png",
+    "C:/projects/active/games/.artifacts/emulator/graphics-20261021/deadrun-native/02a-live-before-drag.png",
+    "C:/projects/active/games/.artifacts/emulator/graphics-20261021/deadrun-native/02b-live-after-drag-left.png",
+    "C:/projects/active/games/.artifacts/emulator/graphics-20261021/deadrun-native/02c-live-after-drag-right.png",
+    "C:/projects/active/games/.artifacts/emulator/graphics-20261021/deadrun-native/04-cover.png",
+    "C:/projects/active/games/.artifacts/emulator/graphics-20261021/deadrun-native/05-inner.png",
+    "C:/projects/active/games/.artifacts/emulator/graphics-20261021/deadrun-native/07-cold.png"
+  ],
+  "limits": "Emulator only. Physical Fold7 touch/folding/IME, sound, phone FPS and human fun not established. Independent visual/motion review and private before/after clips still owed per GRAPHICS_PRODUCTION.md."
+}

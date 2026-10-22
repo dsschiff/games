@@ -3,6 +3,9 @@ const C = preload("res://scripts/campaign_rules.gd")
 const Data = preload("res://scripts/campaign_data.gd")
 const Store = preload("res://scripts/campaign_store.gd")
 const LegacyView = preload("res://scripts/legacy_view.gd")
+const Adapter = preload("res://scripts/presentation/adapter.gd")
+var presentation: RefCounted
+var hud_back: Panel
 var ctx := Store.fresh()
 var world: Node3D
 var journey: PanelContainer
@@ -47,7 +50,9 @@ func button(parent: Node, value: String, action: Callable) -> Button:
 	return b
 
 func camera_base_fov() -> float:
-	return 46.0
+	# 51 (was 46): the lower chase camera keeps the whole near road and the
+	# widest footprint inside the side margins.
+	return 51.0
 
 func build_world() -> void:
 	if is_instance_valid(world):
@@ -63,112 +68,26 @@ func build_world() -> void:
 	hazard_nodes.clear()
 	camera = Camera3D.new()
 	world.add_child(camera)
-	camera.position = Vector3(0, 12, 8)
-	camera.look_at(Vector3(0, 0, -12))
+	# Lower elevated chase view: the full road width near the squad stays in
+	# frame while the road recedes into fog toward a visible horizon.
+	camera.position = Vector3(0, 9.5, 8.5)
+	camera.look_at(Vector3(0, 0, -14))
 	camera.current = true
 	frame_camera()
-	var light := DirectionalLight3D.new()
-	world.add_child(light)
-	light.rotation_degrees = Vector3(-45, -25, 0)
-	light.light_energy = 1.3
-	var env := WorldEnvironment.new()
-	env.environment = Environment.new()
-	env.environment.background_mode = Environment.BG_COLOR
-	env.environment.background_color = [Color("284450"), Color("3b354c"), Color("193d49"), Color("3c3a4c")][state.definition.district]
-	env.environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	env.environment.ambient_light_color = Color("b5d4d9")
-	env.environment.ambient_light_energy = 0.75
-	world.add_child(env)
-	var road_color: Color = [Color("637c7c"), Color("726576"), Color("426e79"), Color("626a80")][state.definition.district]
-	box(world, Vector3(0, -0.3, -26), Vector3(9.3, 0.5, 76), road_color)
-	for x in [-4.85, 4.85]:
-		box(world, Vector3(x, 0.05, -26), Vector3(0.30, 0.5, 76), Color("b2aa91"))
-		box(world, Vector3(x, 1.0, -26), Vector3(0.10, 0.10, 76), Color("f0c581"))
-		for i in 27:
-			box(world, Vector3(x, 0.65, -i * 2.7), Vector3(0.08, 1.25, 0.12), Color("9baba5"))
-		for i in 9:
-			var building := box(world, Vector3(x * 2 + (i % 2), 2.0, -i * 8 - 12), Vector3(3, 4 + i % 3, 4), road_color.darkened(0.25))
-			building.rotation_degrees.y = (i % 2) * 12
-			box(world, building.position + Vector3(0, 1, 2.03), Vector3(2, 0.5, 0.04), Color("dda878"))
-	for i in 28:
-		actors["mark" + str(i)] = box(world, Vector3(0, -0.035, -i * 2.5), Vector3(0.10, 0.04, 0.85), Color("f3d092"))
-	box(world, Vector3(0, -0.01, 0.85), Vector3(8.7, 0.035, 0.10), Color("ffe6a0"))
-	label3(world, "RESCUE LINE", Vector3(0, 0.05, 1.5), 25)
-	for i in 20:
-		var p := person()
-		if state.weapon == "lance": box(p, Vector3(0.15, 0.58, -0.49), Vector3(0.11, 0.11, 0.65), Color("a1bce2"))
-		if state.weapon == "fan":
-			for x in [0.04, 0.23]: box(p, Vector3(x, 0.58, -0.37), Vector3(0.10, 0.10, 0.45), Color("e8b17b"))
-		var ring := MeshInstance3D.new()
-		ring.name = "JoinRing"
-		var ring_mesh := TorusMesh.new()
-		ring_mesh.inner_radius = 0.18
-		ring_mesh.outer_radius = 0.23
-		ring_mesh.rings = 12
-		ring_mesh.ring_segments = 6
-		ring.mesh = ring_mesh
-		ring.material_override = material(Color("ffe6a0"), true)
-		p.add_child(ring)
-		ring.position.y = 0.025
-		world.add_child(p)
-		actors["crew" + str(i)] = p
-	for i in state.enemies.size():
-		var ed: Dictionary = state.definition.enemies[i]
-		var p := person(true)
-		if ed.role in ["plated", "bulwark"]:
-			box(p, Vector3(0, 0.55, 0.29), Vector3(0.55, 0.62, 0.12), Color("6a8da4"))
-		if ed.role == "runner": p.scale = Vector3(0.8, 1.05, 0.8)
-		if ed.role == "cluster": p.scale = Vector3(0.72, 0.8, 0.72)
-		if ed.role == "bulwark": p.scale = Vector3(1.35, 1.4, 1.25)
-		if ed.role == "spitter": ball(p, Vector3(0, 0.55, -0.3), 0.3, Color("e9ba59"))
-		world.add_child(p)
-		actors["enemy" + str(i)] = p
-		enemy_bars.append(box(p, Vector3(0, 1.3, 0), Vector3(0.5, 0.06, 0.10), Color("ffc57a")))
-	for g in state.definition.gates:
-		var p := Node3D.new()
-		world.add_child(p)
-		for x in [-g.width, g.width]: box(p, Vector3(x, 0.85, 0), Vector3(0.13, 1.7, 0.15), Color("ffc884"))
-		box(p, Vector3(0, 1.65, 0), Vector3(g.width * 2 + 0.13, 0.12, 0.15), Color("ffc884"))
-		box(p, Vector3(0, 0.04, 0), Vector3(g.width * 2, 0.06, 0.25), Color("eabd78"))
-		gate_labels.append(label3(p, "", Vector3(0, 2.0, 0), 78))
-		actors["gate" + str(g.id)] = p
-	for t in state.definition.sides:
-		var p := Node3D.new()
-		world.add_child(p)
-		box(p, Vector3(0, 0.35, 0), Vector3(1.7, 0.7, 1.6), Color("b98052"))
-		box(p, Vector3(-0.65, 1.8, 0), Vector3(0.20, 3, 0.25), Color("d5a35d"))
-		box(p, Vector3(0, 3.1, 0), Vector3(1.8, 0.22, 0.25), Color("d5a35d"))
-		ball(p, Vector3(0.18, 1.9, 0), 0.75, Color("7baca8") if t.kind == "pump" else Color("aa759e"))
-		for x in [-0.5, 0.5]: ball(p, Vector3(x, 2.5, 0), 0.23, Color("c9d47a"))
-		side_labels.append(label3(p, "", Vector3(0, 3.8, 0), 36))
-		actors["side" + str(t.id)] = p
-	for o in state.definition.obstacles:
-		var p := Node3D.new()
-		world.add_child(p)
-		box(p, Vector3(0, 0.6, 0), Vector3(o.width * 2, 1.2, 1.5), Color("ce855e"))
-		label3(p, "CART\n−3", Vector3(0, 1.7, 0), 36)
-		actors["obstacle" + str(o.id)] = p
-	var boss := Node3D.new()
-	world.add_child(boss)
-	var kind: int = state.definition.boss.kind
-	box(boss, Vector3(0, 0.8, 0), Vector3(2.4, 1.6, 1.7), Color("a66b89") if kind else Color("ce8059"))
-	for x in [-0.9, 0.0, 0.9]: ball(boss, Vector3(x, 1.7, 0), 0.46, Color("c2ce78"))
-	if kind == 1: box(boss, Vector3(0, 2.4, 0), Vector3(3.0, 0.18, 0.25), Color("d6a56a"))
-	if kind == 2: box(boss, Vector3(0, 1, 1), Vector3(1.2, 2.0, 0.16), Color("79a0b7"))
-	if kind == 3: ball(boss, Vector3(0, 2.7, 0), 0.85, Color("c096b9"))
-	if kind == 4:
-		for i in 2:
-			var arm := box(world, Vector3.ZERO, Vector3(1.6, 2.1, 1.5), Color("bd8972"))
-			actors["arm" + str(i)] = arm
-	boss_label = label3(boss, "", Vector3(0, 3.9 if kind else 2.6, 0), 36)
-	actors.boss = boss
-	footprint = box(world, Vector3.ZERO, Vector3.ONE, Color(1.0, 0.85, 0.3, 0.34))
-	for i in 220:
-		var p := box(world, Vector3.ZERO, Vector3(0.055, 0.055, 0.46), Color("a1fff1"))
-		p.material_override = material(Color("a1fff1"), true)
-		bullet_nodes.append(p)
-	for i in 40:
-		hazard_nodes.append(box(world, Vector3.ZERO, Vector3.ONE, Color(1, 0.42, 0.17, 0.43)))
+	# Presentation is rebuilt with the world: a fresh adapter on every load,
+	# Retry, import and road change clears all transient effects and pools.
+	presentation = Adapter.new()
+	presentation.build(self, world, actors, state)
+	boss_label = presentation.boss_label
+	var line := box(world, Vector3(0, .02, 0.85), Vector3(8.7, 0.035, 0.10), Color("ffe6a0"))
+	line.material_override = material(Color("ffe6a0"), true)
+	line.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	var caption := label3(world, "RESCUE LINE", Vector3(0, 0.05, 1.25), 25)
+	caption.modulate = Color("ffe6a0")
+	caption.outline_modulate = Color("2a1d08")
+	footprint = box(world, Vector3.ZERO, Vector3.ONE, Color(1.0, 0.85, 0.3, 0.20))
+	footprint.material_override = material(Color(1.0, 0.85, 0.3, 0.20), true)
+	footprint.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	if not is_instance_valid(tone):
 		tone = AudioStreamPlayer.new()
 		add_child(tone)
@@ -183,6 +102,24 @@ func build_world() -> void:
 
 func build_ui() -> void:
 	super.build_ui()
+	# Restrained HUD: a translucent strip behind the status text and outlines
+	# keep it readable over sky and road without hiding the action.
+	hud_back = Panel.new()
+	var strip := StyleBoxFlat.new()
+	strip.bg_color = Color(0.04, 0.09, 0.13, 0.58)
+	strip.set_corner_radius_all(22)
+	hud_back.add_theme_stylebox_override("panel", strip)
+	hud_back.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	hud.add_child(hud_back)
+	hud.move_child(hud_back, 0)
+	for l in [title, info, warning, notice]:
+		l.add_theme_constant_override("outline_size", 9)
+		l.add_theme_color_override("font_outline_color", Color(0.03, 0.07, 0.10, 0.9))
+	warning.modulate = Color("ffd77a")
+	for state_name in ["normal", "hover", "pressed", "focus"]:
+		var pause_style := strip.duplicate()
+		pause_style.bg_color = Color(0.04, 0.09, 0.13, 0.72 if state_name == "pressed" else 0.58)
+		pause_button.add_theme_stylebox_override(state_name, pause_style)
 	var col := resume_button.get_parent()
 	next_button = button(col, "NEXT ROAD", next_road)
 	col.move_child(next_button, 3)
@@ -223,6 +160,10 @@ func build_ui() -> void:
 
 func layout() -> void:
 	super.layout()
+	if is_instance_valid(hud_back):
+		var v := get_viewport().get_visible_rect().size
+		hud_back.position = Vector2(10, 12)
+		hud_back.size = Vector2(v.x - 132, 170)
 	if is_instance_valid(journey):
 		var size := get_viewport().get_visible_rect().size
 		journey.position = Vector2(maxf(16, (size.x - 680) / 2), 180)
@@ -421,55 +362,10 @@ func refresh() -> void:
 		stage_buttons[i].disabled = i > ctx.profile.clears.size()
 	replay_button.disabled = not ctx.profile.ending
 	seed_input.editable = ctx.profile.ending
-	for i in 20:
-		var p: Node3D = actors["crew" + str(i)]
-		p.visible = i < state.crew
-		if p.visible:
-			var q := C.offset(i, state.crew)
-			p.position = Vector3(state.x + q.x, 0.04 + (absf(sin(state.tick * 0.18 + i)) * 0.04 if not settings.reduced_effects else 0.0), q.y)
-			p.get_node("JoinRing").visible = state.tick - state.gain_tick < 60 and not settings.reduced_effects
-	for i in state.enemies.size():
-		var e: Dictionary = state.enemies[i]
-		var p: Node3D = actors["enemy" + str(i)]
-		p.visible = state.tick >= d.enemies[i].born and not e.resolved
-		if p.visible:
-			p.position = Vector3(d.enemies[i].x, 0.04, -e.z)
-			enemy_bars[i].scale.x = float(e.hp + e.armor) / (d.enemies[i].hp + d.enemies[i].armor)
-	for i in state.gates.size():
-		var g: Dictionary = state.gates[i]
-		var p: Node3D = actors["gate" + str(i)]
-		p.visible = state.tick >= d.gates[i].born and not g.crossed
-		p.position = Vector3(d.gates[i].x, 0, -g.z)
-		gate_labels[i].text = "%+d" % g.value
-		gate_labels[i].modulate = Color("8affe0") if g.value >= 0 else Color("ffaaa1")
-	for i in state.sides.size():
-		var t: Dictionary = d.sides[i]
-		var p: Node3D = actors["side" + str(i)]
-		p.visible = state.tick >= t.born and state.tick <= t.until and not state.sides[i].claimed
-		p.position = Vector3(t.x, 0, -t.z)
-		side_labels[i].text = ("FLOOD PUMP" if t.kind == "pump" else "RIGGING CRANE") + "\n%d / %d\n+3 CREW" % [state.sides[i].hp, t.hp]
-	for i in state.obstacles.size():
-		var o: Dictionary = state.obstacles[i]
-		var p: Node3D = actors["obstacle" + str(i)]
-		p.visible = state.tick >= d.obstacles[i].born and not o.crossed
-		p.position = Vector3(d.obstacles[i].x, 0, -o.z)
-	actors.boss.visible = state.tick >= d.boss.born and not state.boss.dead
-	actors.boss.position = Vector3(state.boss.x, 0, -state.boss.z)
-	boss_label.text = "%s\n%d / %d" % [d.boss.title.to_upper(), state.boss.hp, d.boss.hp]
-	if d.boss.kind == 4:
-		for i in 2:
-			actors["arm" + str(i)].visible = state.tick >= d.boss.born and state.boss.arms[i] > 0
-			actors["arm" + str(i)].position = Vector3(-2.3 if i == 0 else 2.3, 1.05, -state.boss.z)
+	presentation.sync(state, settings)
 	footprint.position = Vector3(state.x, 0.025, 0.6)
 	footprint.scale = Vector3(C.half_width(state.crew) * 2, 0.04, 1.9)
-	for i in bullet_nodes.size():
-		bullet_nodes[i].visible = i < state.bullets.size()
-		if i < state.bullets.size(): bullet_nodes[i].position = Vector3(state.bullets[i].x, 0.62, -state.bullets[i].z)
-	var active: Array = state.hazards.filter(func(h): return not h.resolved or (not h.cancelled and state.tick >= h.fire and state.tick - h.fire < 15))
-	for i in hazard_nodes.size():
-		hazard_nodes[i].visible = i < active.size()
-		if i < active.size():
-			hazard_nodes[i].position = Vector3(active[i].x, 0.05, 0)
-			hazard_nodes[i].scale = Vector3(active[i].width * 2, 0.05, 3.5)
-			(hazard_nodes[i].material_override as StandardMaterial3D).albedo_color = Color(1, 0.15, 0.10, 0.65) if state.tick >= active[i].fire else Color(1, 0.60, 0.15, 0.43)
-	for i in 28: actors["mark" + str(i)].position.z = -fposmod(i * 2.5 - state.tick / 60.0 * d.speed, 70)
+
+func _process(delta: float) -> void:
+	if presentation == null: return
+	presentation.frame(delta, paused or journey_visible or transfer.visible or ctx.mode == "legacy" or is_instance_valid(legacy_view))

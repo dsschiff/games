@@ -1,0 +1,64 @@
+{
+  "reference_display": [
+    1080,
+    2400
+  ],
+  "viewport": [
+    720,
+    1280
+  ],
+  "scope": "Genuine app-written code3 campaign save carried through the real code2-to-3 update and later code3 native checks: road 02 Split Signal active at tick 232 (crew 5, x 0.9167, Rivet), road 01 cleared with medal (best crew 20, no loss, rescues), sound off, reduced effects on. Cold load restores it paused. Two real Sound OFF-to-ON-to-OFF taps on the pause panel satisfy the updater's input requirement and leave settings unchanged. Preserve whole context and committed across the graphics code3-to-4 update; no reset, injected or imported save.",
+  "coordinate_qualification": {
+    "sound_pixels": [
+      540,
+      936
+    ],
+    "source": "Actual code3 cold-launch screenshot .artifacts/emulator/graphics-20261021/deadrun-session/code3-launch.png on native 1080x2400 (RESCUE PAUSED panel, SOUND: OFF row)."
+  },
+  "actions": [
+    {
+      "type": "wait",
+      "wait_seconds": 0.3
+    },
+    {
+      "type": "tap",
+      "x": 540,
+      "y": 936,
+      "wait_seconds": 0.4
+    },
+    {
+      "type": "tap",
+      "x": 540,
+      "y": 936,
+      "wait_seconds": 0.4
+    }
+  ],
+  "expected_save": {
+    "version": 2,
+    "committed": true,
+    "context.mode": "campaign",
+    "context.loadout": "rivet",
+    "context.campaign.phase": "playing",
+    "context.campaign.tick": 232,
+    "context.campaign.crew": 5,
+    "context.campaign.weapon": "rivet",
+    "context.campaign.rewarded": false,
+    "context.campaign.definition.index": 1,
+    "context.campaign.definition.replay": false,
+    "context.profile.clears": [
+      0
+    ],
+    "context.profile.ending": false,
+    "context.profile.medals.0.best_crew": 20,
+    "context.profile.medals.0.no_loss": true,
+    "context.profile.medals.0.rescues": true,
+    "context.settings.sound": false,
+    "context.settings.reduced_effects": true
+  },
+  "expected_numeric": {
+    "context.campaign.x": {
+      "min": 0.9166,
+      "max": 0.9167
+    }
+  }
+}
