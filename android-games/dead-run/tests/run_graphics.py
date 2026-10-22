@@ -30,6 +30,7 @@ def main():
     parser.add_argument("--label", default="run")
     parser.add_argument("--scenario", default="all")
     parser.add_argument("--headless", action="store_true")
+    parser.add_argument("--movie", action="store_true", help="also write a fixed-60fps AVI via Godot's movie writer")
     args = parser.parse_args()
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     run = PROJECT / ".artifacts" / "graphics" / f"{args.label}-{args.mode}-{stamp}"
@@ -43,7 +44,10 @@ def main():
         command += ["--headless", "--editor", "--import"]
     else:
         command += ["--headless"] if args.headless else ["--resolution", "720x1280", "--position", "0,0"]
-        command += ["--fixed-fps", "60", "--script", SCRIPTS[args.mode], "--",
+        command += ["--fixed-fps", "60", "--script", SCRIPTS[args.mode]]
+        if args.movie:
+            command += ["--write-movie", str(run / "clip.avi")]
+        command += ["--",
                     "--capture-dir=" + str(run), "--scenario=" + args.scenario]
     before = lf_hashes()
     (run / "source-hashes-lf.json").write_text(json.dumps(before, indent=2))

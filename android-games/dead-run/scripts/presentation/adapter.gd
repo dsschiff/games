@@ -309,6 +309,9 @@ func _build_boss(d: Dictionary) -> void:
 	else:
 		boss_visual = kit.asset(BOSS_KEYS[kind])
 		boss_visual.scale = Vector3.ONE * scale
+		if kind == 4:
+			# Narrow the body so both rule-owned arms at x = +-2.3 stay visible.
+			boss_visual.scale = Vector3(scale * .68, scale, scale)
 		boss_visual.rotation.y = PI
 		boss.add_child(boss_visual)
 		if kind == 0:
@@ -352,8 +355,9 @@ func _build_boss(d: Dictionary) -> void:
 	if kind == 4:
 		for i in 2:
 			var arm: Node3D = kit.asset("boss_ferry_arm")
-			arm.scale = Vector3.ONE * 1.35
+			arm.scale = Vector3.ONE * 1.7
 			arm.rotation.y = PI
+			arm.position.x = -.25 if i == 0 else .25
 			var holder := Node3D.new()
 			holder.name = "FerryArm%d" % i
 			holder.add_child(arm)
@@ -468,9 +472,9 @@ func _sync_enemies(s: Dictionary, d: Dictionary, hydrate: bool) -> void:
 				v.flinch()
 				var hit_at: Vector3 = anchor.position + Vector3(0, .85 * ROLE_SCALE[ed.role], .2)
 				if int(e.armor) < int(v.get_meta("armor", ed.armor)):
-					fx.burst(hit_at, Color("fff2c0"), 4, 2.6, .6)
+					fx.burst(hit_at, Color("fff2c0"), 6, 2.8, .8)
 				else:
-					fx.burst(hit_at, ROLE_BLOOD[ed.role], 4, 1.8, .7)
+					fx.burst(hit_at, ROLE_BLOOD[ed.role], 6, 2.0, .95)
 			v.set_meta("armor", e.armor)
 			v.set_meta("tough", toughness)
 			var health: Node3D = v.get_node("Health")
@@ -490,7 +494,8 @@ func _sync_enemies(s: Dictionary, d: Dictionary, hydrate: bool) -> void:
 				v.position = at
 				v.die()
 				dying.append({"node": v, "role": ed.role, "life": 0.0})
-				fx.burst(at + Vector3(0, .5, 0), ROLE_BLOOD[ed.role], 12, 2.6, 1.1)
+				fx.burst(at + Vector3(0, .6, 0), ROLE_BLOOD[ed.role], 16, 3.0, 1.5)
+				fx.pop(at + Vector3(0, .7, 0), ROLE_BLOOD[ed.role], 1.3 if ed.role != "bulwark" else 1.9)
 				fx.splat(at, ROLE_BLOOD[ed.role].darkened(.35), .55 if ed.role != "bulwark" else .9)
 			else:
 				if not hydrate:
@@ -549,6 +554,7 @@ func _sync_boss(s: Dictionary, d: Dictionary, hydrate: bool) -> void:
 		if boss_visual.has_method("flinch") and fmod(clock, .3) < .1: boss_visual.flinch()
 	if not hydrate and b.dead and not bool(last.get("boss_dead", b.dead)):
 		fx.burst(boss.position + Vector3(0, 1.5, 0), Color("ffb070"), 40, 4.0, 1.6)
+		fx.pop(boss.position + Vector3(0, 2.0, 0), Color("ffb070"), 4.5)
 		fx.kick_shake(.8)
 	last["boss_hp"] = b.hp
 	last["boss_dead"] = b.dead

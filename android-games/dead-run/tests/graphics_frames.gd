@@ -5,7 +5,8 @@ extends "res://tests/campaign_input.gd"
 ## the read-only policy through real touch-drag events; Start uses the real UI.
 const SCENARIOS := {
 	"early": [0, "rivet", [420, 900, 1500]],
-	"dense": [10, "fan", [1500, 2600, 3500]],
+	"dense": [10, "fan", [1500, 2210, 2600, 3500]],
+	"cluster": [4, "fan", [1300, 1904, 2500]],
 	"reservoir": [14, "rivet", [1700, 3300]],
 	"matron": [5, "rivet", ["boss+120", "boss+600"]],
 	"ram": [11, "rivet", ["boss+60", "boss+400"]],

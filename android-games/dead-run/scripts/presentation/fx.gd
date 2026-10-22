@@ -19,6 +19,7 @@ var flash_life: Array[float] = []
 var floats: Array[Label3D] = []
 var float_life: Array[float] = []
 var globs: Array = []
+var pops: Array = []
 var shake := 0.0
 var reduced := false
 
@@ -100,6 +101,14 @@ func build(owner: Node3D, weapon: String) -> void:
 		host.add_child(l)
 		floats.append(l)
 		float_life.append(0.0)
+	for i in 10:
+		var ring := MeshInstance3D.new()
+		ring.mesh = flash_mesh
+		ring.material_override = _glow(Color.WHITE, .85)
+		ring.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		ring.visible = false
+		host.add_child(ring)
+		pops.append({"node": ring, "life": 0.0, "size": 1.0})
 	var glob_mesh := SphereMesh.new()
 	glob_mesh.radius = .16
 	glob_mesh.height = .32
@@ -138,6 +147,9 @@ func clear() -> void:
 	for g in globs:
 		g.node.visible = false
 		g.life = 0
+	for p in pops:
+		p.node.visible = false
+		p.life = 0
 	shake = 0
 
 ## Rule bullets drawn as streaks at their exact rule positions.
@@ -168,6 +180,18 @@ func burst(at: Vector3, color: Color, count: int, power: float = 2.2, size: floa
 		var a := float(i) / count * TAU + float(parts.size()) * .37
 		var up := .6 + fmod(float(i) * .618, 1.0) * 1.4
 		parts.append({"p": at, "v": Vector3(cos(a) * power, up * power, sin(a) * power * .6), "life": .38, "max": .38, "c": color, "s": size * (.7 + fmod(float(i) * .41, .6))})
+
+## Kill pop: a brief additive bloom at the defeated actor.
+func pop(at: Vector3, color: Color, size: float) -> void:
+	if reduced: return
+	var best: Dictionary = pops[0]
+	for p in pops:
+		if p.life < best.life: best = p
+	best.node.position = at
+	(best.node.material_override as StandardMaterial3D).albedo_color = Color(color.lerp(Color.WHITE, .5), .85)
+	best.life = .22
+	best.size = size
+	best.node.visible = true
 
 func splat(at: Vector3, color: Color, radius: float) -> void:
 	if reduced: return
@@ -241,6 +265,13 @@ func update(dt: float, ground: float) -> void:
 			floats[i].modulate.a = clampf(float_life[i] / .4, 0, 1)
 			floats[i].outline_modulate.a = floats[i].modulate.a
 			floats[i].visible = float_life[i] > 0
+	for p in pops:
+		if p.life > 0:
+			p.life -= dt
+			var t: float = 1.0 - clampf(p.life / .22, 0, 1)
+			p.node.scale = Vector3.ONE * p.size * (.35 + t * .9)
+			(p.node.material_override as StandardMaterial3D).albedo_color.a = .85 * (1.0 - t)
+			p.node.visible = p.life > 0
 	for g in globs:
 		if g.life > 0:
 			g.life -= dt
