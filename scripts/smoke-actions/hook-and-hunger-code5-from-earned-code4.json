@@ -1,0 +1,47 @@
+{
+  "reference_display": [
+    1080,
+    2400
+  ],
+  "viewport": [
+    720,
+    1280
+  ],
+  "scope": "Genuine earned first-passage victory carried through the actual code3-to-4 update and native code4 input checks (hull 56, wallet 261, sound off, reduced effects on). Real tap opens the pause menu without changing progress. Preserve whole state/profile/settings/committed across the graphics code4-to-5 update; no injected save or reset.",
+  "actions": [
+    {
+      "type": "tap",
+      "x": 913,
+      "y": 145,
+      "wait_seconds": 0.3
+    }
+  ],
+  "expected_save": {
+    "version": 2,
+    "committed": true,
+    "state.schema": 2,
+    "state.definition.version": 1,
+    "state.definition.stage": 0,
+    "state.phase": "victory",
+    "state.wave": 3,
+    "state.tier": 1,
+    "state.hp": 56,
+    "state.wallet": 261,
+    "state.hits": 33,
+    "state.deaths": 5,
+    "profile.stage": 0,
+    "profile.clears": [
+      -1,
+      0
+    ],
+    "profile.completed": false,
+    "settings.sound": false,
+    "settings.reduced_effects": true
+  },
+  "expected_numeric": {
+    "state.time": {
+      "min": 103.68,
+      "max": 103.69
+    }
+  }
+}

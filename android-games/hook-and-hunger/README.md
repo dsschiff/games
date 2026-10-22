@@ -1,3 +1,5 @@
+> Graphics work: see [GRAPHICS_PRODUCTION.md](GRAPHICS_PRODUCTION.md). Graphics candidate frozen as 0.3.0/code5 (original 3D presentation, rendered lighting fix). Status 2026-10-21: signed APK built, rules 57/input 18 pass, genuine emulator code4-to-5 update keeps the whole save, and Android lighting matches desktop frames. Evidence: `android-games/evidence/hook-graphics-candidate.json`. Functional 0.2.2/code4 records below remain retained.
+
 # Hook and Hunger
 
 An original offline portrait 3D salvage-diver game, built with pinned Godot 4.7.2/GDScript. Software candidate 0.2.2/code4: opening purchase cycle, four islands/twelve campaign passages, four distinct beacon bosses, six enemy roles, three power purchases, a conclusive harbor ending and seeded arena replay. No third-party assets, ads, accounts, services, purchases or requested network permission.

@@ -1,0 +1,297 @@
+extends Node3D
+## Read-only snapshots and transient observations. Never owns rule state or RNG.
+const Rules = preload("res://scripts/engine.gd")
+const Art = preload("res://scripts/art.gd")
+const Actor = preload("res://scripts/presentation/actor.gd")
+const Pool = preload("res://scripts/presentation/pool.gd")
+const Kit = preload("res://scripts/presentation/kit.gd")
+const Island = preload("res://scripts/presentation/island.gd")
+var kit := Kit.new()
+var pool: RefCounted
+var island := Island.new()
+var player: Node3D
+var actors := {}
+var dying := {}
+var drops := {}
+var projectiles := {}
+var effects: Array[Node3D] = []
+var weapons: Array[Node3D] = []
+var links: Array[Node3D] = []
+var weapon_eyes: Array[Node3D] = []
+var weapon_tips: Array[Node3D] = []
+var reach: MeshInstance3D
+var snapshot := {}
+var epoch := 0
+var serial := 0
+var events: Array[Dictionary] = []
+var event_counts := {}
+var frozen := false
+var reduced := false
+var visual_strike := 0.0
+var render_age := 0.0
+var last_tier := -1
+var sync_count := 0
+
+func build(state: Dictionary) -> void:
+	pool = Pool.new(self)
+	island.build(self, kit, state)
+	player = Actor.new()
+	add_child(player)
+	player.configure("diver", kit)
+	for tier in 4:
+		var weapon := kit.asset("weapon_" + str(tier))
+		add_child(weapon)
+		weapon.hide()
+		weapons.append(weapon)
+		weapon_eyes.append(weapon.find_child("ChainEye", true, false))
+		weapon_tips.append(weapon.find_child("ContactTip", true, false))
+	for i in 22:
+		var link := kit.asset("chain_link")
+		add_child(link)
+		link.hide()
+		links.append(link)
+	reach = Art.ring(float(Rules.weapon(state).reach), Color("728f87"))
+	Art.decal(reach, Color(1, .98, .9, .42))
+	add_child(reach)
+	hydrate(state)
+
+func _actor(key: String, role: String) -> Node3D:
+	var node: Node3D = pool.take(key)
+	if node == null:
+		node = Actor.new()
+		add_child(node)
+		node.configure(role, kit)
+	node.reset_for_reuse()
+	node.set_meta("pool_key", key)
+	return node
+
+func _object(key: String, asset: String) -> Node3D:
+	var node: Node3D = pool.take(key)
+	if node == null:
+		node = kit.asset(asset) if not asset.is_empty() else Art.sphere(.18, Color("eda67d"))
+		add_child(node)
+	node.transform = Transform3D.IDENTITY
+	node.set_meta("pool_key", key)
+	return node
+
+func _release(node: Node3D) -> void:
+	pool.put(str(node.get_meta("pool_key")), node)
+
+func hydrate(state: Dictionary) -> void:
+	epoch += 1
+	serial = 0
+	events.clear()
+	event_counts.clear()
+	for group in [actors, dying, drops, projectiles]:
+		for node in group.values():
+			_release(node)
+		group.clear()
+	for node in effects:
+		_release(node)
+	effects.clear()
+	player.reset_for_reuse()
+	island.reset_transients()
+	snapshot = {}
+	visual_strike = 0
+	render_age = 0
+	for node in links:
+		node.transform = Transform3D.IDENTITY
+		node.hide()
+	for node in weapons:
+		node.transform = Transform3D.IDENTITY
+		node.hide()
+	last_tier = -1
+	capture(state, true)
+	present(0)
+
+func observe(kind: String, payload: Dictionary) -> void:
+	serial += 1
+	var event := {"epoch": epoch, "serial": serial, "kind": kind, "data": payload.duplicate(true)}
+	events.append(event)
+	if events.size() > 128:
+		events.pop_front()
+	event_counts[kind] = int(event_counts.get(kind, 0)) + 1
+	if not reduced and kind in ["contact", "purchase", "hurt"]:
+		var effect: Node3D = pool.take("effect:" + kind)
+		if effect == null:
+			effect = Art.impact(.45 if kind == "contact" else .7, Color("ffd36b") if kind == "contact" else (Color("7fe3c8") if kind == "purchase" else Color("ff6a4f")))
+			add_child(effect)
+		effect.set_meta("pool_key", "effect:" + kind)
+		effect.set_meta("life", .20)
+		effect.position = Vector3(payload.get("x", snapshot.get("x", 0)), .08, payload.get("z", snapshot.get("z", 0)))
+		effect.scale = Vector3.ONE
+		effects.append(effect)
+
+func capture(state: Dictionary, reset: bool = false) -> void:
+	var dt := float(state.time) - float(snapshot.get("time", state.time))
+	if not reset and dt == 0 and not snapshot.is_empty() and state.phase == snapshot.phase and state.tier == snapshot.tier and state.hp == snapshot.hp:
+		return
+	var old := snapshot
+	snapshot = state.duplicate(true)
+	visual_strike = float(state.strike)
+	render_age = 0
+	sync_count += 1
+	if not reset and not old.is_empty():
+		if not old.contact and state.contact:
+			observe("contact", {"target": state.strike_id, "x": state.strike_x, "z": state.strike_z, "dead": state.dead.duplicate(), "blocked": state.get("blocked", 0)})
+		if state.strike > old.strike:
+			observe("swing", {"target": state.strike_id})
+		if state.tier != old.tier:
+			observe("purchase", {"tier": state.tier, "x": state.x, "z": state.z})
+		if state.hp < old.hp:
+			observe("hurt", {"x": state.x, "z": state.z})
+		if state.phase != old.phase:
+			observe(state.phase, {})
+	var pd := {"x": state.x, "z": state.z, "hp": state.hp}
+	player.capture(pd, {"hp": 100}, reset, dt)
+	var live := {}
+	for data in Rules.active(state):
+		var id := int(data.id)
+		var definition: Dictionary = Rules.roster(state)[id]
+		var key := "enemy:" + str(definition.role) + ":original"
+		live[id] = true
+		if not actors.has(id):
+			actors[id] = _actor(key, str(definition.role))
+			actors[id].identity = str(epoch) + ":" + str(id)
+			actors[id].capture(data, definition, true, 0)
+		var actor: Node3D = actors[id]
+		var posed: Dictionary = data.duplicate(true)
+		posed.facing = float(data.facing) + PI if state.schema == 2 else atan2(state.x - data.x, state.z - data.z) + PI
+		actor.capture(posed, definition, reset, dt)
+		_telegraph(actor, data, definition, state.schema == 1)
+	for id in actors.keys():
+		if not live.has(id):
+			var actor: Node3D = actors[id]
+			actors.erase(id)
+			if not reset and id in state.dead:
+				actor.fall()
+				dying[id] = actor
+				observe("fall", {"id": id})
+			else:
+				_release(actor)
+	var drop_ids := {}
+	for data in state.drops:
+		var id := int(data.id)
+		drop_ids[id] = true
+		if not drops.has(id):
+			drops[id] = _object("drop:salvage", "salvage")
+		drops[id].position = Vector3(data.x, .035, data.z)
+	for id in drops.keys():
+		if not drop_ids.has(id):
+			_release(drops[id])
+			drops.erase(id)
+	var shot_ids := {}
+	for shot in state.get("projectiles", []):
+		var id := int(shot.id)
+		shot_ids[id] = true
+		if not projectiles.has(id):
+			projectiles[id] = _object("projectile:pearl", "")
+		projectiles[id].position = Vector3(shot.x, .65, shot.z)
+	for id in projectiles.keys():
+		if not shot_ids.has(id):
+			_release(projectiles[id])
+			projectiles.erase(id)
+	if last_tier != int(state.tier):
+		last_tier = int(state.tier)
+		for tier in weapons.size():
+			weapons[tier].visible = tier == last_tier
+		var shape := TorusMesh.new()
+		shape.inner_radius = float(Rules.weapon(state).reach) - .018
+		shape.outer_radius = float(Rules.weapon(state).reach) + .018
+		shape.rings = 64
+		shape.ring_segments = 6
+		reach.mesh = shape
+	reach.position = Vector3(state.x, .025, state.z)
+	island.update(state, 0, reduced)
+
+func _telegraph(actor: Node3D, data: Dictionary, definition: Dictionary, legacy: bool) -> void:
+	var warning: Node3D = actor.warning
+	warning.visible = data.mode == "wind"
+	warning.global_position = Vector3(data.ax, .04, data.az)
+	warning.global_rotation.y = atan2(float(data.get("tx", 0)), float(data.get("tz", 1)))
+	var attack := "slam" if legacy else str(data.attack)
+	for key in ["Solid", "Outer", "Inner", "Line", "Left", "Right"]:
+		warning.get_node(key).hide()
+	if attack == "slam":
+		var solid := warning.get_node("Solid") as Node3D
+		solid.show()
+		var radius := float(definition.range) + .35 if legacy or not definition.get("boss", false) else 3.55
+		solid.scale = Vector3(radius / 3.2, 1, radius / 3.2)
+	elif attack == "ring":
+		warning.get_node("Outer").show()
+		warning.get_node("Inner").show()
+	else:
+		var length := 8.5 if definition.get("boss", false) else 5.3
+		if attack == "charge":
+			length = 6.8
+		for key in ["Line", "Left", "Right"]:
+			var line := warning.get_node(key) as Node3D
+			line.visible = key == "Line" or attack == "burst" or definition.get("boss", false) and attack == "shot"
+			line.scale.z = length / 8.5
+			var angle := -.32 if key == "Left" else (.32 if key == "Right" else 0.0)
+			line.position = Vector3(sin(angle) * length * .5, .01, cos(angle) * length * .5)
+
+func set_paused(value: bool, state: Dictionary) -> void:
+	if frozen != value:
+		frozen = value
+		hydrate(state)
+
+func present(delta: float) -> void:
+	if snapshot.is_empty():
+		return
+	var dt := 0.0 if frozen else delta
+	visual_strike = maxf(0, float(snapshot.strike) - render_age)
+	render_age += dt
+	var aim := Vector3(snapshot.strike_x, 0, snapshot.strike_z)
+	player.pose(dt, str(snapshot.phase), visual_strike, aim)
+	for actor in actors.values():
+		actor.pose(dt, str(snapshot.phase))
+		actor.health_root.global_position = actor.position + Vector3(0, 2.03 * actor.scale_factor, 0)
+		actor.health_root.global_rotation = island.camera.global_rotation
+	for id in dying.keys():
+		var actor: Node3D = dying[id]
+		actor.pose(dt, str(snapshot.phase))
+		if actor.fall_time >= .64:
+			_release(actor)
+			dying.erase(id)
+	for node in effects.duplicate():
+		var life := float(node.get_meta("life")) - dt
+		node.set_meta("life", life)
+		node.scale = Vector3.ONE * (1 + (.20 - life) * 3)
+		if life <= 0 or reduced:
+			_release(node)
+			effects.erase(node)
+	var hand: Vector3 = player.sync_socket()
+	var end := hand + Vector3(.25, -.20, .20).rotated(Vector3.UP, player.rotation.y)
+	if visual_strike > 0:
+		var t := clampf((.36 - visual_strike) / .36, 0, 1)
+		var extend := sin(t * PI)
+		var destination := Vector3(snapshot.strike_x, .80, snapshot.strike_z)
+		end = hand.lerp(destination, extend)
+		# Sweep reaches the actual contact point at t=.5; no animation damage.
+		var lateral := (destination - hand).cross(Vector3.UP).normalized()
+		end += lateral * sin(t * TAU) * .32
+	for i in weapons.size():
+		weapons[i].visible = i == last_tier
+		if i == last_tier:
+			weapons[i].rotation.y = atan2(-(end.x - hand.x), -(end.z - hand.z))
+			weapons[i].position = end - weapons[i].basis * weapon_tips[i].position
+	var eye: Vector3 = weapon_eyes[last_tier].global_position
+	for i in links.size():
+		var alpha := float(i) / (links.size() - 1)
+		links[i].visible = true
+		links[i].position = hand.lerp(eye, alpha)
+		links[i].position.y -= sin(alpha * PI) * (.055 if visual_strike > 0 else .12)
+		links[i].rotation = Vector3(PI / 2, float(i % 2) * PI / 2, 0)
+	island.update(snapshot, dt, reduced)
+
+func _exit_tree() -> void:
+	actors.clear()
+	dying.clear()
+	drops.clear()
+	projectiles.clear()
+	effects.clear()
+	events.clear()
+	if pool != null:
+		pool.clear()
+	kit.clear()

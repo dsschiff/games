@@ -3,7 +3,10 @@ const Rules = preload("res://scripts/engine.gd")
 const Campaign = preload("res://scripts/campaign_rules.gd")
 const Data = preload("res://scripts/campaign_data.gd")
 const Store = preload("res://scripts/save_store.gd")
-const Art = preload("res://scripts/art.gd")
+const Presentation = preload("res://scripts/presentation/adapter.gd")
+var presentation: Node3D
+var ui_root: Control
+var top_panel: PanelContainer
 
 var state := Rules.fresh()
 var profile := Campaign.profile()
@@ -24,7 +27,6 @@ var pad_ring: MeshInstance3D
 var reach_ring: MeshInstance3D
 var actors := {}
 var drops := {}
-var chain: Array[MeshInstance3D] = []
 var shown_tier := -1
 var last_dead := 0
 var last_hp := 100.0
@@ -71,74 +73,18 @@ func _ready() -> void:
 	_sync()
 
 func _world() -> void:
-	if state.schema == 2:
-		_campaign_world()
-		return
-	var environment := WorldEnvironment.new()
-	environment.environment = Environment.new()
-	environment.environment.background_mode = Environment.BG_COLOR
-	environment.environment.background_color = Color("0b293b")
-	environment.environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	environment.environment.ambient_light_color = Color("badbdc")
-	environment.environment.ambient_light_energy = 0.4
-	add_child(environment)
-	var sun := DirectionalLight3D.new()
-	sun.rotation_degrees = Vector3(-60, -30, -10)
-	sun.light_energy = 0.75
-	sun.shadow_enabled = true
-	add_child(sun)
-	camera = Camera3D.new()
-	camera.projection = Camera3D.PROJECTION_ORTHOGONAL
-	camera.size = 16.5
-	add_child(camera)
-	add_child(Art.box(Vector3(150, 0.2, 160), Color("165064"), Vector3(0, -1.2, -10)))
-	for pen in 2:
-		var center_z := 1.2 if pen == 0 else -13.5
-		add_child(Art.box(Vector3(12.7, 1.2, 15.2 if pen == 0 else 13), Color("204453"), Vector3(0, -0.6, center_z)))
-		add_child(Art.box(Vector3(12.3, 0.25, 14.8 if pen == 0 else 12.6), Color("7d9690") if pen == 0 else Color("69878b"), Vector3(0, 0, center_z)))
-		for side in [-1, 1]:
-			for z in range(-6 if pen == 0 else -20, 9 if pen == 0 else -6, 2):
-				add_child(Art.box(Vector3(0.22, 0.8, 0.22), Color("466979"), Vector3(side * 6.1, 0.4, z)))
-			add_child(Art.box(Vector3(0.12, 0.12, 14.4 if pen == 0 else 12.4), Color("7e9697"), Vector3(side * 6.1, 0.7, center_z)))
-	for side in [-1, 1]:
-		add_child(Art.box(Vector3(4.2, 0.6, 0.3), Color("456e7b"), Vector3(side * 4.0, 0.4, -6.5)))
-	gate = Node3D.new()
-	gate.position = Vector3(0, 0, -6.5)
-	add_child(gate)
-	for x in [-1.3, 0, 1.3]:
-		gate.add_child(Art.box(Vector3(0.2, 1.9, 0.2), Color("efaa78"), Vector3(x, 1, 0)))
-	gate.add_child(Art.box(Vector3(3.4, 0.2, 0.2), Color("efaa78"), Vector3(0, 1.75, 0)))
-	gate.add_child(Art.label("POWER 200", Vector3(0, 2.5, 0), 44))
-	for obstacle in Rules.obstacles(state):
-		var rock := Art.cylinder(obstacle.z, 0.9, Color("4c7b82"), Vector3(obstacle.x, 0.45, obstacle.y), obstacle.z * 0.65)
-		add_child(rock)
-		var crystal := Art.cylinder(0.3, 1.4, Color("7cddd2"), Vector3(obstacle.x, 1.1, obstacle.y), 0)
-		crystal.rotation.z = 0.24
-		add_child(crystal)
-	for i in 38:
-		var side := -1 if i % 2 == 0 else 1
-		var z := -23.0 + i * 0.9
-		var tuft := Art.cylinder(0.24, 0.5 + (i % 3) * 0.2, Color("28797d"), Vector3(side * (7.0 + (i % 4) * 0.6), -0.6, z), 0.05)
-		add_child(tuft)
-	pad_ring = Art.ring(1.55, Color("80eed1"))
-	pad_ring.position = Vector3(0, 0.18, 6.8)
-	add_child(pad_ring)
-	add_child(Art.cylinder(0.8, 0.35, Color("365a65"), Vector3(0, 0.18, 6.8)))
-	preview = Art.blade(1)
-	preview.position = Vector3(0, 1.1, 6.8)
-	preview.rotation_degrees.x = 60
-	add_child(preview)
-	add_child(Art.label("FORGE\n36 SALVAGE", Vector3(-2.9, 1.4, 7.0), 25))
-	player = Art.diver()
-	add_child(player)
-	reach_ring = Art.ring(2.5, Color("faf0d6"))
-	reach_ring.position.y = 0.16
-	add_child(reach_ring)
-	for i in 14:
-		var link := Art.ring(0.095, Color("263f54"))
-		link.rotation_degrees.x = 90
-		add_child(link)
-		chain.append(link)
+	presentation = Presentation.new()
+	add_child(presentation)
+	presentation.build(state)
+	camera = presentation.island.camera
+	player = presentation.player
+	preview = presentation.island.preview
+	gate = presentation.island.gate
+	pad_ring = presentation.island.pad
+	reach_ring = presentation.reach
+	actors = presentation.actors
+	drops = presentation.drops
+	projectiles = presentation.projectiles
 	audio = AudioStreamPlayer.new()
 	add_child(audio)
 
@@ -184,6 +130,7 @@ func _ui() -> void:
 	var layer := CanvasLayer.new()
 	add_child(layer)
 	var root := Control.new()
+	ui_root = root
 	root.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	layer.add_child(root)
@@ -192,6 +139,7 @@ func _ui() -> void:
 	stick.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(stick)
 	var top := PanelContainer.new()
+	top_panel = top
 	top.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
 	top.offset_left = 24
 	top.offset_right = -24
@@ -305,6 +253,16 @@ func _ui() -> void:
 	options.add_child(transfer_status)
 	menu.visible = false
 
+func _input(event: InputEvent) -> void:
+	# A tracked finger can finish over a GUI panel. Releases must reach movement
+	# ownership before the GUI consumes them; new presses still use unhandled input.
+	if event is InputEventScreenTouch and not event.pressed and event.index == finger:
+		_stop()
+	elif event is InputEventScreenDrag and event.index == finger and dragging and not paused:
+		movement = (event.position - drag_start) / 75.0
+	elif event is InputEventMouseButton and event.device != InputEvent.DEVICE_ID_EMULATION and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed and finger == -1 and dragging:
+		_stop()
+
 func _unhandled_input(event: InputEvent) -> void:
 	# Native text controls need touch-to-mouse emulation; world movement owns
 	# the original finger events and must not process their mouse copies.
@@ -345,111 +303,24 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	world_clock += delta
-	if not settings.reduced_effects:
-		preview.rotation.y += delta * 0.7
+	presentation.present(delta)
+	_layout()
 
 func _sync() -> void:
 	var p := Rules.position(state)
 	var viewport := get_viewport().get_visible_rect().size
-	camera.size = maxf(16.5 if state.schema == 1 else 17.7, 2.0 * (float(Rules.weapon(state).reach) + 1.0) / maxf(0.3, viewport.x / viewport.y))
-	player.position = Vector3(p.x, 0.15, p.y)
-	if movement.length() > 0.1:
-		player.rotation.y = lerp_angle(player.rotation.y, atan2(movement.x, movement.y), 0.2)
-	camera.position = Vector3(p.x, 23, p.y + 17)
-	camera.look_at(Vector3(p.x, 0, p.y - 3.0))
-	if shown_tier != int(state.tier):
-		shown_tier = int(state.tier)
-		if weapon_node != null:
-			weapon_node.queue_free()
-		weapon_node = Art.blade(shown_tier)
-		add_child(weapon_node)
-		var circle := TorusMesh.new()
-		circle.inner_radius = float(Rules.weapon(state).reach) - 0.025
-		circle.outer_radius = float(Rules.weapon(state).reach) + 0.025
-		circle.rings = 48
-		circle.ring_segments = 6
-		reach_ring.mesh = circle
-		reach_ring.material_override = Art.material(Color("a9c6b4"))
-	preview.visible = state.tier == 0 if state.schema == 1 else Rules.cost(state) > 0
-	gate.visible = state.tier == 0 if state.schema == 1 else int(state.tier) < int(state.definition.required_tier)
-	pad_ring.visible = true
-	reach_ring.position = Vector3(p.x, 0.16, p.y)
-	var hand := Vector3(p.x + 0.35, 1.05, p.y + 0.15)
-	var end := hand + Vector3(0.65, -0.1, 0.4)
-	if state.strike > 0:
-		var t: float = (0.36 - float(state.strike)) / 0.36
-		var extension := sin(t * PI)
-		end = hand.lerp(Vector3(state.strike_x, 0.8, state.strike_z), extension)
-	weapon_node.position = end
-	weapon_node.rotation.y = atan2(end.x - hand.x, end.z - hand.z) + PI / 2
-	for i in chain.size():
-		chain[i].visible = state.strike > 0
-		chain[i].position = hand.lerp(end, float(i) / (chain.size() - 1))
-		chain[i].rotation.y = float(i % 2) * PI / 2
-	var alive := {}
-	for e in Rules.active(state):
-		var id := int(e.id)
-		alive[id] = true
-		var spec: Dictionary = Rules.roster(state)[id]
-		if not actors.has(id):
-			var n := Art.creature(str(spec.role))
-			add_child(n)
-			var warning: Node3D = Art.ring(float(spec.range), Color("f77764")) if state.schema == 1 else Art.warning()
-			warning.name = "Warning"
-			warning.position.y = 0.18
-			n.add_child(warning)
-			var boss: bool = (id == 7) if state.schema == 1 else bool(spec.boss)
-			var label := Art.label("", Vector3(0, 3.1 if boss else 2.1, 0), 28 if boss else 25)
-			label.name = "Health"
-			n.add_child(label)
-			actors[id] = n
-		var actor: Node3D = actors[id]
-		actor.position = Vector3(e.x, 0.15, e.z)
-		actor.rotation.y = atan2(p.x - e.x, p.y - e.z) if state.schema == 1 else float(e.facing)
-		actor.scale = Vector3.ONE * (1.06 if e.flash > 0 and not settings.reduced_effects else 1.0)
-		actor.get_node("Warning").visible = e.mode == "wind"
-		actor.get_node("Health").text = (("BELLKEEPER " if id == 7 else "") if state.schema == 1 else (str(spec.role).replace("_", " ").to_upper() + " ")) + str(int(e.hp))
-		if state.schema == 2:
-			var warning := actor.get_node("Warning")
-			warning.get_node("Solid").visible = e.attack == "slam"
-			warning.get_node("Outer").visible = e.attack == "ring"
-			warning.get_node("Inner").visible = e.attack == "ring"
-			warning.get_node("Line").visible = e.attack in ["line", "charge", "shot", "burst"]
-			warning.get_node("Left").visible = e.attack == "burst" or bool(spec.boss) and e.attack == "shot"
-			warning.get_node("Right").visible = warning.get_node("Left").visible
-	for id in actors.keys():
-		if not alive.has(id):
-			actors[id].queue_free()
-			actors.erase(id)
-	var drop_ids := {}
-	for drop in state.drops:
-		var id := int(drop.id)
-		drop_ids[id] = true
-		if not drops.has(id):
-			var n := Art.cylinder(0.28, 0.65, Color("ffe09b"), Vector3.ZERO, 0)
-			add_child(n)
-			n.add_child(Art.label("+" + str(Rules.roster(state)[id].reward), Vector3(0, 0.8, 0), 28))
-			drops[id] = n
-		drops[id].position = Vector3(drop.x, 0.4, drop.z)
-		drops[id].rotation.y = world_clock
-	for id in drops.keys():
-		if not drop_ids.has(id):
-			drops[id].queue_free()
-			drops.erase(id)
-	if state.schema == 2:
-		var ids := {}
-		for shot in state.projectiles:
-			var id := int(shot.id)
-			ids[id] = true
-			if not projectiles.has(id):
-				var ball := Art.sphere(0.21, Color("ffb181"))
-				add_child(ball)
-				projectiles[id] = ball
-			projectiles[id].position = Vector3(shot.x, 0.65, shot.z)
-		for id in projectiles.keys():
-			if not ids.has(id):
-				projectiles[id].queue_free()
-				projectiles.erase(id)
+	# Close tilted follow: the full weapon reach always fits across the narrow
+	# axis at the diver's depth; otherwise the camera stays near and heroic.
+	var half_wide := atan(tan(deg_to_rad(camera.fov * .5)) * maxf(.3, viewport.x / viewport.y))
+	var distance := maxf(20.5, (float(Rules.weapon(state).reach) + .45) / tan(half_wide))
+	var focus := Vector3(p.x, 0, p.y - 2.2)
+	camera.position = focus + Vector3(0, sin(deg_to_rad(50.0)), cos(deg_to_rad(50.0))) * distance
+	camera.look_at(focus)
+	presentation.reduced = settings.reduced_effects
+	presentation.set_paused(paused, state)
+	presentation.capture(state)
+	shown_tier = int(state.tier)
+	weapon_node = presentation.weapons[shown_tier]
 	status.text = "HULL %d  •  POWER %d  •  SALVAGE %d" % [ceili(state.hp), int(Rules.weapon(state).power), int(state.wallet)]
 	health.value = state.hp
 	if state.schema == 1:
@@ -518,18 +389,6 @@ func _campaign_ui(p: Vector2) -> void:
 		objective.text = "ARENA %d • %s • WAVE %d/%d" % [d.seed, Rules.weapon(state).name, int(state.wave) + 1, d.waves]
 		continue_button.text = "RETURN TO HARBOR"
 
-func _campaign_world() -> void:
-	var nodes := preload("res://scripts/campaign_world.gd").build(self, state)
-	camera = nodes.camera
-	player = nodes.player
-	preview = nodes.preview
-	gate = nodes.gate
-	pad_ring = nodes.pad
-	reach_ring = nodes.reach
-	chain = nodes.chain
-	audio = AudioStreamPlayer.new()
-	add_child(audio)
-
 func _rebuild() -> void:
 	_stop()
 	for child in get_children():
@@ -541,7 +400,6 @@ func _rebuild() -> void:
 	actors.clear()
 	drops.clear()
 	projectiles.clear()
-	chain.clear()
 	weapon_node = null
 	shown_tier = -1
 	phase_seen = ""
@@ -600,6 +458,7 @@ func _buy() -> void:
 
 func _retry() -> void:
 	if Rules.retry(state):
+		presentation.hydrate(state)
 		_stop()
 		_save()
 	_sync()
@@ -680,3 +539,54 @@ func _notification(what: int) -> void:
 		_save()
 		if what == NOTIFICATION_WM_CLOSE_REQUEST:
 			get_tree().quit()
+
+func _layout() -> void:
+	if not is_instance_valid(ui_root):
+		return
+	var extent := get_viewport().get_visible_rect().size
+	var safe := Rect2(Vector2.ZERO, extent)
+	if DisplayServer.get_name() != "headless" and OS.get_name() == "Android":
+		var physical := Rect2(DisplayServer.get_display_safe_area())
+		var inverse := get_viewport().get_screen_transform().affine_inverse()
+		if physical.size.x > 0 and physical.size.y > 0:
+			safe = Rect2(inverse * physical.position, physical.size / get_viewport().get_screen_transform().get_scale()).intersection(safe)
+	var left := maxf(24, safe.position.x + 18)
+	var right := maxf(24, extent.x - safe.end.x + 18)
+	var upper := maxf(24, safe.position.y + 16)
+	var lower := maxf(24, extent.y - safe.end.y + 16)
+	top_panel.offset_left = left
+	top_panel.offset_right = -right
+	top_panel.offset_top = upper
+	bottom_panel.offset_left = left
+	bottom_panel.offset_right = -right
+	bottom_panel.offset_bottom = -lower
+	var dock := buy_button.visible
+	bottom_panel.offset_top = -lower - (194 if dock else 90)
+	var width := minf(680, safe.size.x - 48)
+	var height := minf(820, safe.size.y - 64)
+	menu.offset_left = safe.get_center().x - extent.x * .5 - width * .5
+	menu.offset_right = menu.offset_left + width
+	menu.offset_top = safe.get_center().y - extent.y * .5 - height * .5
+	menu.offset_bottom = menu.offset_top + height
+	terminal.offset_left = safe.get_center().x - extent.x * .5 - minf(640, safe.size.x - 48) * .5
+	terminal.offset_right = terminal.offset_left + minf(640, safe.size.x - 48)
+	terminal.offset_top = -minf(540, safe.size.y - 64) * .5
+	terminal.offset_bottom = -terminal.offset_top
+	var base_y := bottom_panel.get_rect().position.y
+	notice.offset_left = maxf(220, left)
+	notice.offset_right = -right
+	notice.offset_top = base_y - extent.y - 136
+	notice.offset_bottom = base_y - extent.y - 12
+	stick.active = dragging
+	stick.origin = drag_start
+	stick.direction = movement
+	stick.rest_origin = Vector2(left + 86, base_y - 82)
+	stick.queue_redraw()
+	# Dock signs have a fixed modeled anchor, but their screen labels clear both
+	# the rest stick and the actual floating control, including resized canvases.
+	var sign: Label3D = presentation.island.dock_label
+	sign.position = Vector3(0, 2.55, 6.8)
+	var origin: Vector2 = drag_start if dragging else stick.rest_origin
+	var projected := camera.unproject_position(sign.global_position)
+	if projected.distance_to(origin) < 170:
+		sign.position.x = 2.6

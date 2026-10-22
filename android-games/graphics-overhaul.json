@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "gear_hearth_complete_frontline_code4_emulator_verified_hook_freeze_in_progress",
+  "status": "gear_hearth_complete_frontline_code4_and_hook_code5_emulator_verified_review_pending",
   "baseline_commit": "6e26b3c2a3938de1828527630f95fb6a219f61b8",
   "reference": {
     "private_path": ".references/graphics-overhaul/user-top-force-44941.jpg",
@@ -95,7 +95,7 @@
       "branch": "codex/hook-graphics",
       "worktree": "C:/projects/active/_worktrees/games-hook-and-hunger-20261018",
       "activation_base": "29653752fce58fd9b8eeea841ae43187e7e4a938",
-      "phase": "CPU_graphics_implementation",
+      "phase": "candidate_frozen_0.3.0_code5_emulator_update_verified",
       "state": "Freshboundedgraphicschat created oncleanretainedworktree; originaltropicalfourisland/twelvepassage overhaul; CPUonly/noComputerUse/browser/render/ADB/export/clipboard/outboundmessages. Rootowns pendingFrontlinereview/native andoneAstrareviewer.",
       "handoff": "android-games/handoffs/graphics-hook-and-hunger.md"
     }
@@ -217,6 +217,22 @@
     "superseded_build": "20261018T191430499566Z pre-art code4, never delivered",
     "open": [
       "Independent Astra review of the art-direction pass on Android frames",
+      "Physical phone testing deferred by user"
+    ]
+  },
+  "hook_graphics_checkpoint": {
+    "candidate_evidence": "android-games/evidence/hook-graphics-candidate.json",
+    "status": "signed_code5_built_genuine_code4_to5_emulator_update_passed_android_lighting_matches_desktop_private_bundle_ready",
+    "source_commit": "cbecd6f1e057febd63426dcd714d9e5caf091d22",
+    "version": "0.3.0",
+    "version_code": 5,
+    "apk_sha256": "b62aa877cf5fe8a005ca90f833b8210fec93d26d3ccac34ae7104f532683a1ea",
+    "upgrade_manifest": ".artifacts/upgrades/com.dsschiff.hookandhunger/20261022T002033749867Z/manifest.json",
+    "bundle": ".artifacts/releases/graphics-20261021",
+    "open": [
+      "Independent Astra motion review and before/after clips",
+      "Native joystick movement not shown in this pass",
+      "Inner-resize pause panel slightly overlaps HUD (cosmetic)",
       "Physical phone testing deferred by user"
     ]
   }

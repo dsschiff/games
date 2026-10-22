@@ -1,12 +1,12 @@
 {
   "game": "hook-and-hunger",
-  "milestone": "native-input-clipboard-amendment",
-  "version": "0.2.2/code4",
+  "milestone": "graphics-candidate-freeze",
+  "version": "0.3.0/code5",
   "implemented": "Pinned schema1 prologue, twelve passages/four islands/four beacon bosses/six enemy roles, three power purchases, conclusive ending, arena seeds/refits/efficiency, progression-preserving Retry, settings and versioned local save recovery/export/import",
   "automatically_verified": "Code4:36 rendered native-focus/Unicode/import/OS-clipboard/Paste/movement checks;32 headless;31 prior-save/57 legacy/81 campaign/8 import/18 opening-input;editor import;68 code3 and88 code2 artifacts preserved. Historical code3 full174 route unchanged;not repeated for input-only amendment.",
   "independent_appeal_review": "full-code2-visual-direction-cleared;coordinator-reports-both-code3-P2s-independently-closed",
   "full_campaign": "implemented-and-automated-route-verified;human-pacing-fun-pending",
   "android": "coordinator reports realcode2-to3update24checks and earned native first-passage victory;code3-to4update and native keyboard/clipboard verification pending",
   "phone_tested": false,
-  "runtime_source": "frozen-for-code4-export-and-Android-input-update-verification"
+  "runtime_source": "frozen-for-code5-graphics-export-and-Android-update-verification"
 }
