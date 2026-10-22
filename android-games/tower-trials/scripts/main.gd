@@ -5,6 +5,7 @@ const Rules = preload("res://scripts/rules.gd")
 const Saves = preload("res://scripts/save_store.gd")
 const Challenge = preload("res://scripts/challenge_v1.gd")
 const Audio = preload("res://scripts/local_audio.gd")
+const TowerView = preload("res://scripts/presentation/tower_view.gd")
 const INK := Color("102c42")
 const SAND := Color("edddbc")
 const TEAL := Color("63e0bf")
@@ -46,6 +47,7 @@ var challenge_weave := 0
 var challenge_treasure := true
 var show_hint := false
 var record_page := 0
+var view: Node3D = TowerView.new()
 
 func _ready() -> void:
 	get_tree().auto_accept_quit = false
@@ -56,6 +58,7 @@ func _ready() -> void:
 	elif FileAccess.file_exists(save_path):
 		save_error = "Save damaged; no valid recovery. Import a saved route."
 	load_run()
+	add_child(view)
 	add_child(player)
 	add_child(editor)
 	add_child(seed_edit)
@@ -98,7 +101,49 @@ func layout() -> void:
 	var factor := minf(area.x / 600.0, area.y / 1066.0)
 	scale = Vector2.ONE * factor
 	position = (area - Vector2(600, 1066) * factor) * 0.5
+	view.frame(area)
 	queue_redraw()
+
+## Read-only snapshot for the 3D presentation; rules and saves are untouched.
+func sync_view() -> void:
+	var rects := {}
+	var blocked := {}
+	for room in level.rooms:
+		rects[room.id] = room_rect(room)
+		blocked[room.id] = Rules.blocked(state, room)
+	view.sync({"screen": screen, "level": level, "state": state, "selected": selected, "rects": rects, "blocked": blocked, "home_stride": home_stride(), "courier": courier_point(), "flight": clampf(beat / 0.9, 0, 1) if not pending.is_empty() else 0.0, "reduced": bool(data.settings.reduced_effects), "frozen": paused or menu or transfer or guide or details})
+
+func courier_point() -> Vector2:
+	var hero := home_point()
+	if not pending.is_empty() and not data.settings.reduced_effects:
+		var target := room_rect(Rules.find_room(level, pending_room)).get_center()
+		var fraction := clampf(beat / 0.9, 0, 1)
+		hero = home_point().lerp(target, sin(fraction * PI))
+		hero.y -= sin(fraction * PI) * 50
+	return hero
+
+## Draws a connector between two room centres only outside both room fronts,
+## so it never paints over the 3D blocks.
+func connector(a: Rect2, b: Rect2, color: Color, dashed: bool) -> void:
+	var from := a.get_center()
+	var to := b.get_center()
+	var span := to - from
+	if span.length() < 1.0:
+		return
+	var exit_a := _exit(a, span)
+	var exit_b := 1.0 - _exit(b, -span)
+	if exit_b <= exit_a:
+		return
+	if dashed:
+		draw_dashed_line(from + span * exit_a, from + span * exit_b, color, 2, 8)
+	else:
+		draw_line(from + span * exit_a, from + span * exit_b, color, 3)
+
+func _exit(rect: Rect2, span: Vector2) -> float:
+	var half := rect.size * 0.5
+	var tx := INF if is_zero_approx(span.x) else half.x / absf(span.x)
+	var ty := INF if is_zero_approx(span.y) else half.y / absf(span.y)
+	return minf(tx, ty)
 
 func _notification(what: int) -> void:
 	if what in [NOTIFICATION_APPLICATION_PAUSED, NOTIFICATION_APPLICATION_FOCUS_OUT]:
@@ -550,6 +595,8 @@ func spirit(at: Vector2, active: bool = true, compact: bool = false) -> void:
 	draw_set_transform(Vector2.ZERO)
 
 func background() -> void:
+	if view != null:
+		return
 	for y in 54:
 		draw_rect(Rect2(0, y * 20, 600, 20), Color("0a182e").lerp(Color("285264"), float(y) / 54.0))
 	for i in 18:
@@ -588,28 +635,30 @@ func draw_board() -> void:
 			var x: int = 182 + (column - 1) * 200
 			var highest_room: Dictionary = level.rooms.filter(func(item): return int(item.column) == column and int(item.floor) == highest)[0]
 			var y: int = int(room_rect(highest_room).position.y)
-			draw_rect(Rect2(x + 6, y + 5, 168, 742 - y), Color("345566"))
-			draw_colored_polygon(PackedVector2Array([Vector2(x - 7, y), Vector2(x + 90, y - 50), Vector2(x + 187, y)]), Color("5f7e89"))
+			if view == null:
+				draw_rect(Rect2(x + 6, y + 5, 168, 742 - y), Color("345566"))
+				draw_colored_polygon(PackedVector2Array([Vector2(x - 7, y), Vector2(x + 90, y - 50), Vector2(x + 187, y)]), Color("5f7e89"))
 	for room in level.rooms:
 		for prerequisite in room.requires:
 			var other := Rules.find_room(level, prerequisite)
 			if not other.is_empty():
-				draw_line(room_rect(other).get_center(), room_rect(room).get_center(), Color("74b9ab"), 3)
+				connector(room_rect(other), room_rect(room), Color("74b9ab"), false)
 		if not room.collapse.is_empty():
 			var other := Rules.find_room(level, room.collapse[0])
 			if not other.is_empty():
-				draw_dashed_line(room_rect(room).get_center(), room_rect(other).get_center(), GOLD, 2, 8)
+				connector(room_rect(room), room_rect(other), GOLD, true)
 	var floors: int = state.claimed.size() + 1
-	for i in floors:
-		var rect := Rect2(31, 692 - i * home_stride(), 116, home_stride() - 2)
-		box(rect, Color("397781") if i > 0 else Color("345566"), 4, Color("64bea9"))
-		draw_rect(Rect2(72, rect.position.y + 19, 29, minf(32, home_stride() - 22)), INK)
-		if i > 0:
-			draw_circle(rect.position + Vector2(100, 12), 4, GOLD)
-	var top: float = 692 - (floors - 1) * home_stride()
-	draw_colored_polygon(PackedVector2Array([Vector2(23, top), Vector2(89, top - 42), Vector2(156, top)]), TEAL)
-	draw_line(Vector2(89, top - 42), Vector2(89, top - 69), GOLD, 3)
-	draw_colored_polygon(PackedVector2Array([Vector2(90, top - 69), Vector2(116, top - 61), Vector2(90, top - 52)]), GOLD)
+	if view == null:
+		for i in floors:
+			var rect := Rect2(31, 692 - i * home_stride(), 116, home_stride() - 2)
+			box(rect, Color("397781") if i > 0 else Color("345566"), 4, Color("64bea9"))
+			draw_rect(Rect2(72, rect.position.y + 19, 29, minf(32, home_stride() - 22)), INK)
+			if i > 0:
+				draw_circle(rect.position + Vector2(100, 12), 4, GOLD)
+		var top: float = 692 - (floors - 1) * home_stride()
+		draw_colored_polygon(PackedVector2Array([Vector2(23, top), Vector2(89, top - 42), Vector2(156, top)]), TEAL)
+		draw_line(Vector2(89, top - 42), Vector2(89, top - 69), GOLD, 3)
+		draw_colored_polygon(PackedVector2Array([Vector2(90, top - 69), Vector2(116, top - 61), Vector2(90, top - 52)]), GOLD)
 	text_at("YOUR WATCH", Vector2(25, 778), 16, TEAL)
 	for room in level.rooms:
 		var rect := room_rect(room)
@@ -621,7 +670,7 @@ func draw_board() -> void:
 			fill = Color("397781")
 		if collapsed:
 			fill = Color("263c50")
-		box(rect, fill, 5, GOLD if selected == room.id else Color("75949a"))
+		box(rect, fill if view == null else Color.TRANSPARENT, 5, GOLD if selected == room.id else Color("75949a"))
 		draw_rect(Rect2(rect.position + Vector2(0, rect.size.y - 24), Vector2(180, 24)), Color("274859"))
 		centered(room.name, Rect2(rect.position + Vector2(0, rect.size.y - 24), Vector2(180, 24)), 16, WHITE)
 		if collapsed:
@@ -633,7 +682,8 @@ func draw_board() -> void:
 			for i in room.enemies.size():
 				var enemy_x: float = (i + 1) * 180.0 / (room.enemies.size() + 1)
 				var compact: bool = rect.size.y < 120
-				spirit(rect.position + Vector2(enemy_x, 67 if compact else 77), blocked == "", compact)
+				if view == null:
+					spirit(rect.position + Vector2(enemy_x, 67 if compact else 77), blocked == "", compact)
 				centered(str(room.enemies[i]), Rect2(rect.position + Vector2(enemy_x - 42, 22), Vector2(84, 34)), 32, INK if blocked == "" else GOLD)
 			var tags: Array = []
 			if room.key_cost > 0: tags.append("LOCK %d" % room.key_cost)
@@ -645,16 +695,14 @@ func draw_board() -> void:
 			if room.rescue: tags.append("RESCUE")
 			if room.get("keeper", false): tags.append("KEEPER")
 			centered("  ".join(tags), Rect2(rect.position + Vector2(0, 2), Vector2(180, 20)), 13, INK if blocked == "" else GOLD)
-	var hero := home_point()
+	var hero := courier_point()
 	if not pending.is_empty() and not data.settings.reduced_effects:
-		var target := room_rect(Rules.find_room(level, pending_room)).get_center()
 		var fraction := clampf(beat / 0.9, 0, 1)
-		hero = home_point().lerp(target, sin(fraction * PI))
-		hero.y -= sin(fraction * PI) * 50
 		draw_arc(hero, 34, phase * 5, phase * 5 + 3.8, 20, GOLD, 4)
 		if fraction > 0.5:
 			text_at("+POWER" if pending.win else "CLASH", hero + Vector2(-44, -48), 20, GOLD)
-	courier(hero)
+	if view == null:
+		courier(hero)
 
 func draw_game() -> void:
 	draw_board()
@@ -737,6 +785,8 @@ func draw_ending() -> void:
 func _draw() -> void:
 	if state == null:
 		return
+	if view != null and view.is_inside_tree():
+		sync_view()
 	background()
 	draw_header()
 	if screen == "game": draw_game()
