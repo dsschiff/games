@@ -1,4 +1,4 @@
-> Graphics work: see [GRAPHICS_PRODUCTION.md](GRAPHICS_PRODUCTION.md). The original 3D CPU checkpoint awaits its first rendered inspection; it is not a new release. Functional 0.2.2/code4 records below remain retained.
+> Graphics work: see [GRAPHICS_PRODUCTION.md](GRAPHICS_PRODUCTION.md). Graphics candidate frozen as 0.3.0/code5 (original 3D presentation, rendered lighting fix). Functional 0.2.2/code4 records below remain retained.
 
 # Hook and Hunger
 
