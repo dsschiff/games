@@ -35,6 +35,7 @@ CHECKPOINT_SLUGS = {
     "dead_run_graphics_checkpoint": "dead-run",
     "tower_graphics_checkpoint": "tower-trials",
     "dead_run_horde_checkpoint": "dead-run",
+    "gear_3d_checkpoint": "gear-bastion",
 }
 
 
@@ -169,24 +170,39 @@ class ToolingGateConsistencyTests(unittest.TestCase):
         self.assertEqual(problems, [])
 
     def test_graphics_checkpoints_never_older_than_delivery(self):
+        """The newest checkpoint per game must cover the delivered source line.
+
+        A release-signed rebuild bumps only the version code; ``source_version_code`` names
+        the content line it rebuilds, which is what checkpoints describe. Older historical
+        checkpoints for the same game may legitimately trail the delivery.
+        """
         delivered = {g["slug"]: g for g in self.delivery["games"]}
-        problems = []
-        seen = 0
+        newest = {}
         for slug, key, version, code in self._checkpoints():
-            game = delivered.get(slug)
-            self.assertIsNotNone(game, f"{key} names unknown game {slug}")
-            seen += 1
+            self.assertIsNotNone(delivered.get(slug), f"{key} names unknown game {slug}")
+            rank = (_version_key(version), code)
+            if slug not in newest or rank > newest[slug][0]:
+                newest[slug] = (rank, key, version, code)
+        self.assertGreater(len(newest), 0)
+        problems = []
+        for slug, (_, key, version, code) in newest.items():
+            game = delivered[slug]
+            delivered_code = game.get("source_version_code", game["version_code"])
             if _version_key(version) < _version_key(game["version"]):
                 problems.append(f"{key}: version {version} < delivery {game['version']}")
-            if code < game["version_code"]:
-                problems.append(f"{key}: code {code} < delivery {game['version_code']}")
+            if code < delivered_code:
+                problems.append(f"{key}: code {code} < delivered source code {delivered_code}")
             # version and code must move together
-            if (_version_key(version) > _version_key(game["version"])) != (code > game["version_code"]):
+            if (_version_key(version) > _version_key(game["version"])) != (code > delivered_code):
                 problems.append(f"{key}: version/code disagree on direction vs delivery")
-        self.assertGreater(seen, 0)
         problems = [p for p in problems if p not in KNOWN_NON_MONOTONIC]
         self.assertEqual(problems, [])
 
+    def test_release_rebuild_bumps_code_by_one(self):
+        for game in self.delivery["games"]:
+            if "source_version_code" in game:
+                self.assertEqual(game["version_code"], game["source_version_code"] + 1, game["slug"])
+                self.assertTrue(game["apk"].endswith("/" + game["release_tag"] + ".apk"), game["slug"])
 
 if __name__ == "__main__":
     unittest.main()

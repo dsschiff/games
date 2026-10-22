@@ -135,6 +135,8 @@
     "worker_commit": "9ccf4a7a878e291afdf1750338e6e26cd6b96ba7",
     "integration_commit": "7eb9e0419f6ae79533719b0c2e21d5907715db00",
     "status": "graphics_reviewed_native_validated_private_bundle_ready_graphics_chat_archived",
+    "version": "0.4.0",
+    "version_code": 8,
     "graphical_apk": "signed0.4.0_code8_verified_actual7to8_and_private_bundle",
     "worker_evidence": "android-games/gear-bastion/evidence/graphics-composition-cpu.json",
     "independent_checks": 12071,

@@ -1,4 +1,4 @@
-"""Reproducible local Godot tests and debug APK builds (Python stdlib only)."""
+"""Reproducible local Godot tests and debug or release-signed APK builds (Python stdlib only)."""
 from __future__ import annotations
 
 import argparse
@@ -123,21 +123,57 @@ def parse_apk_metadata(badging: str) -> dict:
             "permissions": permissions, "internet_permission": "android.permission.INTERNET" in permissions}
 
 
+RELEASE_SIGNING_KEYS = {
+    "ANDROID_RELEASE_KEYSTORE": "GODOT_ANDROID_KEYSTORE_RELEASE_PATH",
+    "ANDROID_RELEASE_KEY_ALIAS": "GODOT_ANDROID_KEYSTORE_RELEASE_USER",
+    "ANDROID_RELEASE_KEYSTORE_PASSWORD": "GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD",
+}
+
+
+def read_signing_env(path: Path) -> dict[str, str]:
+    """Map a private KEY=VALUE signing file to Godot's release-keystore variables.
+
+    The file lives outside Git (see android-games/RELEASE.md). Values are only placed in the
+    child-process environment; they are never written to manifests or logs.
+    """
+    values = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        values[key.strip()] = value.strip()
+    missing = [key for key in RELEASE_SIGNING_KEYS if not values.get(key)]
+    if missing:
+        raise ValueError("Release signing file lacks: " + ", ".join(missing))
+    if not Path(values["ANDROID_RELEASE_KEYSTORE"]).is_file():
+        raise ValueError("Release keystore file is missing")
+    return {godot: values[key] for key, godot in RELEASE_SIGNING_KEYS.items()}
+
+
+def parse_signer_digest(output: str) -> str | None:
+    match = re.search(r"Signer #1 certificate SHA-256 digest: ([0-9a-fA-F]+)", output)
+    return match[1].lower() if match else None
+
+
 def inspect_apk(apk: Path, config: dict, env: dict, run_dir: Path) -> dict:
     tools = Path(config["android_sdk"]) / "build-tools" / config["android_build_tools"]
     with zipfile.ZipFile(apk) as archive:
         if "AndroidManifest.xml" not in archive.namelist() or "classes.dex" not in archive.namelist():
             raise ValueError("APK lacks Android manifest or executable classes")
-    code = run_command([str(tools / "apksigner.bat"), "verify", "--verbose", str(apk)],
+    code = run_command([str(tools / "apksigner.bat"), "verify", "--verbose", "--print-certs", str(apk)],
                        run_dir / "signature.log", env)
     if code:
         raise ValueError("APK signature verification failed")
+    signer_digest = parse_signer_digest((run_dir / "signature.log").read_text(encoding="utf-8"))
     code = run_command([str(tools / "aapt.exe"), "dump", "badging", str(apk)],
                        run_dir / "apk-inspection.log", env)
     if code:
         raise ValueError("APK metadata inspection failed")
     metadata = parse_apk_metadata((run_dir / "apk-inspection.log").read_text(encoding="utf-8"))
     metadata["signature_verified"] = True
+    metadata["signer_certificate_sha256"] = signer_digest
+    metadata["debuggable"] = "application-debuggable" in (run_dir / "apk-inspection.log").read_text(encoding="utf-8")
     if metadata["internet_permission"]:
         raise ValueError("Offline portfolio APK unexpectedly requests INTERNET permission")
     return metadata
@@ -208,6 +244,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--config")
     parser.add_argument("--godot")
     parser.add_argument("--timeout", type=int, default=300)
+    parser.add_argument("--release", action="store_true",
+                        help="build: export a release APK signed with the private release key")
+    parser.add_argument("--signing-env", type=Path,
+                        default=os.environ.get("ANDROID_RELEASE_SIGNING_ENV"),
+                        help="private KEY=VALUE file with ANDROID_RELEASE_* entries (or ANDROID_RELEASE_SIGNING_ENV)")
+    parser.add_argument("--expect-signer-sha256",
+                        help="release: fail unless the APK signer certificate SHA-256 matches")
     args = parser.parse_args(argv)
     root = args.root.expanduser().resolve()
     try:
@@ -227,6 +270,13 @@ def main(argv: list[str] | None = None) -> int:
         if not selected:
             print("SKIPPED: no project.godot files exist; no tests/builds ran.")
             return 2
+        if args.release and args.command != "build":
+            raise ValueError("--release applies only to build")
+        signing = {}
+        if args.release:
+            if not args.signing_env:
+                raise ValueError("--release needs --signing-env or ANDROID_RELEASE_SIGNING_ENV")
+            signing = read_signing_env(Path(args.signing_env).expanduser())
         godot = resolve_godot(config, args.godot, root)
         env = tool_environment(config)
         version = subprocess.run([godot, "--version"], capture_output=True, text=True,
@@ -246,9 +296,11 @@ def main(argv: list[str] | None = None) -> int:
             if args.command == "test":
                 run_env["APPDATA"] = str(run_dir / "userdata")
                 Path(run_env["APPDATA"]).mkdir()
+            run_env.update(signing)
             manifest = {"schema_version": 1, "game": slug, "command": args.command,
                         "godot_version": version, "started_utc": stamp,
-                        "git_revision": git_revision(root), "project": project.relative_to(root).as_posix()}
+                        "git_revision": git_revision(root), "project": project.relative_to(root).as_posix(),
+                        "build_type": ("release" if args.release else "debug") if args.command == "build" else None}
             manifest["pipeline_sha256"] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
             manifest["toolchain_config_sha256"] = hashlib.sha256(
                 json.dumps(config, sort_keys=True).encode("utf-8")).hexdigest()
@@ -267,7 +319,8 @@ def main(argv: list[str] | None = None) -> int:
                     if args.command == "test":
                         command += ["-s", "tests/run_tests.gd"]
                     else:
-                        command += ["--export-debug", config["export_preset"], str(run_dir / f"{slug}.apk")]
+                        export = "--export-release" if args.release else "--export-debug"
+                        command += [export, config["export_preset"], str(run_dir / f"{slug}.apk")]
                     runner = suite_command if args.command == "test" else run_command
                     code = runner(command, run_dir / f"{args.command}.log", run_env, args.timeout)
                     if args.command == "test":
@@ -288,7 +341,13 @@ def main(argv: list[str] | None = None) -> int:
                 if args.command == "build" and code == 0:
                     try:
                         manifest["artifact"] = artifact_record(run_dir / f"{slug}.apk", root)
-                        manifest["apk_inspection"] = inspect_apk(run_dir / f"{slug}.apk", config, run_env, run_dir)
+                        inspection = inspect_apk(run_dir / f"{slug}.apk", config, run_env, run_dir)
+                        manifest["apk_inspection"] = inspection
+                        if args.release and inspection["debuggable"]:
+                            raise ValueError("Release APK is unexpectedly debuggable")
+                        expected = (args.expect_signer_sha256 or "").replace(":", "").lower()
+                        if expected and inspection["signer_certificate_sha256"] != expected:
+                            raise ValueError("Release APK signer certificate does not match --expect-signer-sha256")
                         manifest["result"] = "built"
                     except ValueError as error:
                         print(error)
