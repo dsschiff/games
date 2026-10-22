@@ -85,6 +85,17 @@ static func aim(s: Dictionary, priority: String = "rescue") -> float:
 					target = side.x
 					chosen = true
 					break
+	# A worthwhile gate about to cross is taken even inside a fight: the crew
+	# it adds outweighs a moment of uncovered lane.
+	if s.gates[0].crossed:
+		for i in s.gates.size():
+			var g: Dictionary = s.gates[i]
+			var gd: Dictionary = d.gates[i]
+			if s.tick < gd.born or g.crossed or g.z > 3.2: continue
+			var mul: bool = gd.get("kind", "add") == "mul"
+			if ((g.value > 1) if mul else (g.value > 0)) and not (mul and s.crew >= d.cap) and absf(target - gd.x) > hw + gd.width - 0.2:
+				target = gd.x
+				break
 	# One explicitly labelled demonstration crosses a negative gate at the footprint
 	# edge while aiming fire elsewhere. This is an intentional route choice, not an
 	# injected counter or a mandatory tutorial failure.

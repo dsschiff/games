@@ -57,7 +57,7 @@ static func stage(index: int, seed: int = 0) -> Dictionary:
 		# Ordinary packs grow through the road. A surge floods every lane in
 		# the 14 seconds before the finale or blockade appears.
 		var surge := tick >= boss_born - 840 and tick < boss_born
-		var count := 2 + district + int(progress * 6.0) + (1 if wave % 2 == 0 else 0)
+		var count := 2 + mini(district, 2) + int(progress * 6.0) + (1 if wave % 2 == 0 else 0)
 		if index == 0: count = mini(count, 2 + int(progress * 4.0))
 		if surge: count += 4 + district * 2 + (3 if boss else 0)
 		if boss and tick >= boss_born: count = maxi(2, count - 2)
@@ -93,12 +93,12 @@ static func stage(index: int, seed: int = 0) -> Dictionary:
 		# The opening road keeps a harmful third gate and multiplies at its fourth.
 		var multiply := (i % 2 == 0 and i > 0) if index > 0 else i == 3
 		if multiply:
-			gates.append({"id": i, "born": born, "x": LANES[lane] * flip, "z": 22.0, "kind": "mul", "initial": 1, "cap": 2 if district < 2 else 3, "step": 40 + district * 15, "width": 0.85})
+			gates.append({"id": i, "born": born, "x": LANES[lane] * flip, "z": 22.0, "kind": "mul", "initial": 1, "cap": 2 if district < 2 else 3, "step": 40 + district * 10, "width": 0.85})
 		else:
 			var initial := -3 if i == 0 else -(8 + district * 3) - (4 if index == 0 and i == 2 else 0)
 			gates.append({"id": i, "born": born, "x": LANES[lane] * flip, "z": 14.0 if i == 0 else 22.0, "kind": "add", "initial": initial, "cap": 8 if i == 0 else 10 + district * 2, "step": 1, "width": 0.85})
 		if pattern % 6 == 1 and i in [1, 3]:
-			gates.append({"id": gates.size(), "born": born, "x": -LANES[lane] * flip if lane != 1 else -2.65 * flip, "z": 22.0, "kind": "mul", "initial": 1, "cap": 2, "step": 50 + district * 15, "width": 0.85})
+			gates.append({"id": gates.size(), "born": born, "x": -LANES[lane] * flip if lane != 1 else -2.65 * flip, "z": 22.0, "kind": "mul", "initial": 1, "cap": 2, "step": 50 + district * 10, "width": 0.85})
 	# IDs are independent of optional paired-gate count.
 	for i in gates.size(): gates[i].id = i
 	var sides: Array = [{"id": 0, "born": 300, "until": duration - 540, "x": -2.65 * flip, "z": 13.5, "hp": 160 + district * 40, "reward": 6 + district, "kind": "pump" if district == 2 else "rig", "disables": 0 if district == 2 else -1}]
@@ -116,8 +116,8 @@ static func stage(index: int, seed: int = 0) -> Dictionary:
 		"hint": row[3], "duration": duration, "speed": 1.9, "initial_crew": 5, "cap": CAP, "spit_loss": 3, "boss_loss": 4 + district,
 		"weapons": WEAPONS.duplicate(true), "roles": ROLES.duplicate(true),
 		"enemies": enemies, "gates": gates, "sides": sides, "obstacles": obstacles, "floods": floods,
-		"boss": {"kind": district + 1 if boss else 0, "title": row[0] if boss else "EVAC BLOCKADE", "born": boss_born, "hp": [520, 640, 720, 760][district] if boss else 300,
-			"arms": 180 if index == 23 else 0, "x": 0.0, "z": 23.0}}
+		"boss": {"kind": district + 1 if boss else 0, "title": row[0] if boss else "EVAC BLOCKADE", "born": boss_born, "hp": [520, 640, 720, 680][district] if boss else 300,
+			"arms": 160 if index == 23 else 0, "x": 0.0, "z": 23.0}}
 
 static func same(a: Variant, b: Variant) -> bool:
 	return Catalog1.same(a, b)

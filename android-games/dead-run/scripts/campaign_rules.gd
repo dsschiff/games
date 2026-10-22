@@ -33,10 +33,14 @@ static func fresh(index: int = 0, weapon: String = "rivet", seed: int = 0) -> Di
 	s["boss"] = {"hp": b.hp, "arms": [b.arms, b.arms], "x": 0.0, "z": b.z, "dead": false, "next_attack": b.born + 210, "phase": 0}
 	return s
 
-# Up to 25 members this is exactly the catalog1 five-column formation.
+# Up to 25 members this is exactly the catalog1 five-column formation. Only
+# x is a rule input (shots leave at s.x + x); y is the drawn row depth. Bigger
+# blobs pack rows tighter and start two rows ahead so the rows nearest the
+# camera stay on screen at the road edges.
 static func offset(index: int, count: int) -> Vector2:
 	var columns := mini(COLUMNS, ceili(sqrt(count)))
-	return Vector2((index % columns - (columns - 1) * 0.5) * 0.46, floori(float(index) / columns) * 0.43)
+	var row := floori(float(index) / columns)
+	return Vector2((index % columns - (columns - 1) * 0.5) * 0.46, row * 0.43 if count <= 25 else (row - 2) * 0.36)
 
 static func half_width(count: int) -> float:
 	return maxf(0.24, (mini(COLUMNS, ceili(sqrt(count))) - 1) * 0.23 + 0.24)

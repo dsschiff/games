@@ -39,6 +39,10 @@ func play(index: int, weapon: String, priority: String, seed: int = 0) -> Dictio
 					if s.tick >= def.born and not s.enemies[i].resolved and s.enemies[i].z / def.speed < eta:
 						eta = s.enemies[i].z / def.speed
 						R.steer(s, def.x)
+		elif priority == "lag":
+			# Real drag input lags: steer from a 20-tick-old reading every 30 ticks.
+			if s.tick % 30 == 20: s["_lag"] = P.aim(s, "rescue")
+			if s.tick % 30 == 0 and s.has("_lag"): R.steer(s, s._lag)
 		elif priority != "idle" and s.tick % 15 == 0: R.steer(s, P.aim(s, priority))
 		var t0 := Time.get_ticks_usec()
 		R.step(s)
@@ -54,7 +58,7 @@ func play(index: int, weapon: String, priority: String, seed: int = 0) -> Dictio
 	live.sort()
 	return {"phase": s.phase, "tick": s.tick, "crew": s.crew, "peak": peak, "lost": s.lost, "joined": s.joined, "kills": s.kills, "leaks": s.leaks, "boss": s.boss.hp,
 		"live_med": live[live.size() / 2] if live.size() else 0, "live_p90": live[live.size() * 9 / 10] if live.size() else 0, "live_max": live[-1] if live.size() else 0,
-		"enemies": s.enemies.size(), "us_tick": cost / maxi(1, s.tick), "us_worst": worst, "sides": s.sides.map(func(x): return x.claimed), "boss_tick": boss_tick, "window": s.definition.duration - s.definition.boss.born, "save": save, "notice": s.notice.substr(0, 60)}
+		"enemies": s.enemies.size(), "us_tick": cost / maxi(1, s.tick), "us_worst": worst, "sides": s.sides.map(func(x): return x.claimed), "boss_tick": boss_tick, "window": s.definition.duration - s.definition.boss.born, "save": save, "notice": s.notice.substr(0, 60), "gates": s.gates.map(func(g): return [g.value, g.applied, g.delta])}
 
 func _initialize() -> void:
 	var only: Array = []
@@ -72,7 +76,7 @@ func _initialize() -> void:
 				var r := play(index, weapon, priority)
 				total += 1
 				wins += int(r.phase == "victory")
-				print("ROAD %02d %-6s %-6s %-7s crew=%2d peak=%2d lost=%3d join=%3d kill=%3d leak=%3d en=%3d live med=%2d p90=%2d max=%2d boss=%d us/tick=%d worst=%d boss@%d/%d %s %s %s" % [index + 1, weapon, priority, r.phase, r.crew, r.peak, r.lost, r.joined, r.kills, r.leaks, r.enemies, r.live_med, r.live_p90, r.live_max, r.boss, r.us_tick, r.us_worst, r.boss_tick, r.window, str(r.sides), str(r.save) if r.save else "", r.notice if r.phase != "victory" else ""])
+				print("ROAD %02d %-6s %-6s %-7s crew=%2d peak=%2d lost=%3d join=%3d kill=%3d leak=%3d en=%3d live med=%2d p90=%2d max=%2d boss=%d us/tick=%d worst=%d boss@%d/%d %s %s %s" % [index + 1, weapon, priority, r.phase, r.crew, r.peak, r.lost, r.joined, r.kills, r.leaks, r.enemies, r.live_med, r.live_p90, r.live_max, r.boss, r.us_tick, r.us_worst, r.boss_tick, r.window, str(r.sides), str(r.save) if r.save else "", (r.notice + str(r.gates)) if r.phase != "victory" else ""])
 		var idle := play(index, "rivet", "idle")
 		print("IDLE %02d %s crew=%d tick=%d %s" % [index + 1, idle.phase, idle.crew, idle.tick, idle.notice])
 	print("WINS ", wins, "/", total)
