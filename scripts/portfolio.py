@@ -98,15 +98,20 @@ def run_command(command: list[str], log: Path, env: dict | None = None,
     return code
 
 
-def artifact_record(path: Path, root: Path) -> dict:
-    if not path.is_file() or path.stat().st_size == 0:
-        raise ValueError(f"Artifact absent or empty: {path}")
+def file_sha256(path: Path) -> str:
+    """Stream a file through SHA-256 in 1 MiB blocks and return the hex digest."""
     digest = hashlib.sha256()
     with path.open("rb") as stream:
         for block in iter(lambda: stream.read(1024 * 1024), b""):
             digest.update(block)
+    return digest.hexdigest()
+
+
+def artifact_record(path: Path, root: Path) -> dict:
+    if not path.is_file() or path.stat().st_size == 0:
+        raise ValueError(f"Artifact absent or empty: {path}")
     return {"path": path.resolve().relative_to(root.resolve()).as_posix(),
-            "bytes": path.stat().st_size, "sha256": digest.hexdigest()}
+            "bytes": path.stat().st_size, "sha256": file_sha256(path)}
 
 
 def parse_apk_metadata(badging: str) -> dict:
