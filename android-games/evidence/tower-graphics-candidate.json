@@ -1,0 +1,87 @@
+{
+  "schema": 1,
+  "game": "tower-trials",
+  "date": "2026-10-22",
+  "status": "emulator_upgrade_verified_graphics_candidate_physical_phone_deferred",
+  "source_branch": "claude/tower-polish",
+  "source_commit": "6ef2a07ad30ade22e35f81f7268639efbf6fbcbe",
+  "version": "0.4.0",
+  "version_code": 5,
+  "version_transition": {
+    "from": "0.3.1/code4 (delivered, portfolio-20261018 bundle tower-trials-0.3.1.apk, sha256 20acf7f90dcee4ff8cfc3956bee2375f9ea84a8e7c8bf52776282238b5ca35d0; same bytes as build 20261018T024941903573Z and aapt reports versionCode 4)",
+    "to": "0.4.0/code5"
+  },
+  "apk": {
+    "build_manifest": "C:/projects/active/_worktrees/games-tower-trials-20261018/.artifacts/tower-trials/20261022T111558358195Z/manifest.json",
+    "delivery_copy": "C:/projects/active/games/.artifacts/releases/graphics-20261021/Tower-Trials-0.4.0-Android.apk",
+    "sha256": "3473c3ad47a5a920bc5b2c502d68383202bd37a427f3a11ac28ae57570f0dd1f",
+    "bytes": 57776995,
+    "package": "com.dsschiff.towertrials",
+    "permissions": [],
+    "internet_permission": false,
+    "signature_verified": true,
+    "signer_cert_sha256": "90e5a27df8d0c427da5bb822477d31796ff7f1d20d95ef915246cde6e2a9c55b",
+    "same_signer_as_delivered_code4": true,
+    "source_clean_and_unchanged": true
+  },
+  "tests": {
+    "rules": "TOWER RULES 3503 checks + CHALLENGE RULES 3105 checks, 0 failures (check.py rules at 6ef2a07)",
+    "input": "TOWER CAMPAIGN INPUT 1363 checks, 587 touch taps, 36 watches, 0 failures (check.py input at 6ef2a07)",
+    "rendered": "run green by the builder at 6ef2a07; not repeated in this release pass",
+    "failures": 0
+  },
+  "upgrade": {
+    "manifest": "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.towertrials/20261022T114127402869Z/manifest.json",
+    "console": "C:/projects/active/games/.artifacts/emulator/graphics-20261021/tower-upgrade-console.txt",
+    "result": "passed",
+    "checks_passed": 24,
+    "checks_total": 24,
+    "old_save": "Genuine app-written code4 save already on the emulator from the code3-to-4 update and code4 native checks: active seed137 key-family Challenge snapshot with Landing claimed, its touch-earned record (best 4, medals 11), campaign catalog2 watch_03 key route with clears/medals on watch_01-03, sound off, reduced effects on. One real tap selects the claimed Landing (ROUTE CLOSED / Already claimed); no reset, injected or imported save.",
+    "revisions": {"old-before-upgrade": 147, "new-installed-before-launch": 147, "new-after-launch": 149, "new-cold-relaunch": 151},
+    "preserved_whole_paths": ["schema", "recoverable", "catalog", "level_id", "level", "actions", "used_undo", "profile", "settings", "kind", "challenge_run", "challenge_records"],
+    "save_schema": 3,
+    "settle_seconds": 50,
+    "fixture": "scripts/smoke-actions/tower-trials-code5-from-earned-code4.json",
+    "expectations": "scripts/smoke-actions/tower-trials-code5-upgrade-expectations.json",
+    "runtime_errors": false,
+    "failed_packets_retained": [
+      "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.towertrials/20261022T112138816093Z/manifest.json (old-input screencap timed out at 45 s while the emulator was still busy after boot/install; old code4 only)",
+      "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.towertrials/20261022T112645743125Z/manifest.json (6 s settle: code5 still on a black frame, no new save write yet)",
+      "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.towertrials/20261022T112917841290Z/manifest.json (20 s settle: Godot splash still showing; code5 wrote the save only after backgrounding)",
+      "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.towertrials/20261022T113643489307Z/manifest.json (install of old APK timed out at 90 s; nothing else ran)"
+    ],
+    "retry_setup": "Between attempts the delivered code4 APK was reinstalled over code5 with adb install -r -d (debuggable downgrade, data kept, no clear or uninstall). Before the first downgrade the save was byte-identical to the code4-written save (code5 had not persisted). Logs: .artifacts/emulator/graphics-20261021/tower-native/01-downgrade-install.txt and 02-downgrade-install.txt. In the passing run the old code4 app launched, took the real tap and wrote rev147 itself before the install-over.",
+    "tooling_change": "scripts/android_upgrade.py --settle-seconds cap raised from 30 to 90; first launch after install showed the Godot splash for more than 20 s on this emulator."
+  },
+  "launch_timing_emulator": {
+    "first_launch_after_install_seconds_to_title": "about 37 for both code4 (launch_timer after downgrade) and code5; GL translator shader recompilation ('Failed to load cached shader') on this host",
+    "later_cold_launches_code5_seconds_to_title": [11.2, 10.4],
+    "note": "Emulator only. Not a code5 regression; a phone first-launch time is unmeasured."
+  },
+  "native_checks": {
+    "packet": "C:/projects/active/games/.artifacts/emulator/graphics-20261021/tower-native/run/report.json",
+    "script": "C:/projects/active/games/.artifacts/emulator/graphics-20261021/tower_native.py",
+    "tap_and_enter_move": "confirmed twice: Key room tap opened FORECAST CLAIM 33 to 51, Enter room played it (power 51, Keys 1, Moves 2, Key CLAIMED, home watch grew); with reduced effects off, Door tap + Enter shows the courier leaping into the room and fighting both guards (+30, +12, sparks), settling at power 93, key spent",
+    "android_back": "closes the Settings modal; during play opens ROUTE PAUSED; a second Back opens the Journey map; process alive throughout",
+    "cover_1080x2520": "alive; full scene, HUD and pause panel visible",
+    "inner_1968x2184": "alive; wider coast with houses at the sides, centred HUD and panel, no crop",
+    "home_then_cold_relaunch": "Home save rev159 keeps challenge actions landing/key/door, record, campaign profile and settings; cold relaunch draws the title in 10.4 s and restores the campaign key route (power 14, Keys 1)",
+    "script_errors": 0,
+    "wm_size_restored": "1080x2400",
+    "emulator_state_changes": "Reduced effects turned off by a real Settings tap. An operator tap meant for the map's Return button hit Retry on the restored campaign route; Retry reset only the legacy watch_03 route actions ['key'] -> [] and kept profile, challenge run/records and settings exactly."
+  },
+  "lighting_check": {
+    "desktop_reference": "C:/projects/active/games/.artifacts/releases/graphics-20261021/previews/tower-after.png",
+    "result": "Android matches desktop: night-blue sky with stars and moon, grey cliffs and coastal houses, lit cream room interiors with blue windows and lamps, teal home roof, modelled courier, guards and caged keeper, readable gold and teal HUD. Not white or blown out, not black. Matches the gl_compatibility sun-pass tuning on the emulator host GPU (-gpu host); a real phone GPU is unverified."
+  },
+  "screenshots": [
+    "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.towertrials/20261022T114127402869Z/new-cold-relaunch-foreground.png",
+    "C:/projects/active/games/.artifacts/emulator/graphics-20261021/tower-native/run/03_enter-settled.png",
+    "C:/projects/active/games/.artifacts/emulator/graphics-20261021/tower-native/run/10_enter-5.png",
+    "C:/projects/active/games/.artifacts/emulator/graphics-20261021/tower-native/run/11_back.png",
+    "C:/projects/active/games/.artifacts/emulator/graphics-20261021/tower-native/run/12_resize-cover.png",
+    "C:/projects/active/games/.artifacts/emulator/graphics-20261021/tower-native/run/12_resize-inner.png",
+    "C:/projects/active/games/.artifacts/emulator/graphics-20261021/tower-native/run/17_cold.png"
+  ],
+  "limits": "Emulator only. Physical Fold7 touch/folding/IME, sound, phone FPS, first-launch time and human fun not established. Independent visual/motion review and private before/after clips still owed per GRAPHICS_PRODUCTION.md."
+}
