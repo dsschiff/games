@@ -273,7 +273,7 @@ func synthetic_boundary_imports() -> void:
 		await click("RESUME")
 		await dwell(3)
 		if survives:
-			check(scene.state.phase == "playing" and scene.state.crew == 4 and scene.state.sides[0].claimed, "ordinary campaign processing grants only surviving boundary payout")
+			check(scene.state.phase == "playing" and scene.state.crew == 7 and scene.state.sides[0].claimed, "ordinary campaign processing grants only surviving boundary payout")
 			await click("II")
 		else: check(scene.state.phase == "defeat" and scene.state.crew == 0 and not scene.state.sides[0].claimed, "ordinary campaign exhaustion precedes queued payout")
 		check(Store.read().ok and Data.same(Store.read().context.campaign, scene.state), "boundary remains app-written/save-valid after normal processing")

@@ -81,6 +81,8 @@ static func aim(s: Dictionary, priority: String = "rescue") -> float:
 			if not rescue: indices.reverse()
 			for i in indices:
 				var side: Dictionary = d.sides[i]
+				# Line-first play leaves roadside work until the opening has passed.
+				if not rescue and s.tick < 1500: continue
 				if not s.sides[i].claimed and s.tick >= side.born and s.tick < side.until - 120:
 					target = side.x
 					chosen = true
