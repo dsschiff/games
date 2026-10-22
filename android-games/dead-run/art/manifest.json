@@ -1,0 +1,957 @@
+{
+  "generator": "source/build_assets.py",
+  "generator_sha256": "27ed826ea8b4f07f60324fa724148d2963cb9074581ffedd5080a80a46b99ea4",
+  "generator_lf_sha256": "8923656cfd0fecf86cbcf49e983756b8cbc0306a525605f2ab81ca486e736450",
+  "blender": "4.5.14 LTS",
+  "rendered": false,
+  "original": true,
+  "coordinates": "Blender +Y forward +Z up; glTF -Z forward +Y up",
+  "assets": [
+    {
+      "name": "actor_crew",
+      "sha256": "788f873da2ce2420bca4b9d9217b28967b5ce93053c369260e2e47d4d94444f7",
+      "bytes": 408628,
+      "meshes": 1,
+      "skins": 1,
+      "animations": 1,
+      "joints": 19,
+      "triangles": 4128,
+      "bounds_blender": {
+        "min": [
+          -0.295,
+          -0.28727,
+          -0.01
+        ],
+        "max": [
+          0.295,
+          0.85018,
+          1.48962
+        ]
+      }
+    },
+    {
+      "name": "actor_drifter",
+      "sha256": "246d6abfb49327ce1074165cbde75d7fca959a089020610112536ea09444fe65",
+      "bytes": 224292,
+      "meshes": 2,
+      "skins": 1,
+      "animations": 1,
+      "joints": 19,
+      "triangles": 3192,
+      "bounds_blender": {
+        "min": [
+          -0.335,
+          -0.19971,
+          -0.01
+        ],
+        "max": [
+          0.335,
+          0.56615,
+          1.35942
+        ]
+      }
+    },
+    {
+      "name": "actor_runner",
+      "sha256": "4e0fc64913046041d04c349d4bb495cd761f7febd3fcbcd66942e097ec9f6064",
+      "bytes": 233892,
+      "meshes": 2,
+      "skins": 1,
+      "animations": 1,
+      "joints": 19,
+      "triangles": 3132,
+      "bounds_blender": {
+        "min": [
+          -0.32375,
+          -0.17782,
+          -0.01
+        ],
+        "max": [
+          0.32375,
+          0.30243,
+          1.39968
+        ]
+      }
+    },
+    {
+      "name": "actor_plated",
+      "sha256": "44735a07d33a6cb9a2cdd3f86ae630982cf628434bfd2d0a9023a4e4846759c3",
+      "bytes": 311064,
+      "meshes": 2,
+      "skins": 1,
+      "animations": 1,
+      "joints": 19,
+      "triangles": 3672,
+      "bounds_blender": {
+        "min": [
+          -0.39075,
+          -0.2219,
+          -0.01
+        ],
+        "max": [
+          0.39075,
+          0.51742,
+          1.41994
+        ]
+      }
+    },
+    {
+      "name": "actor_spitter",
+      "sha256": "666e615e7b46a406ec22bf43f5c75d3c9207c83b3327b3203d0ecd2a9ca3ca11",
+      "bytes": 226296,
+      "meshes": 2,
+      "skins": 1,
+      "animations": 1,
+      "joints": 19,
+      "triangles": 3588,
+      "bounds_blender": {
+        "min": [
+          -0.3825,
+          -0.2227,
+          -0.01
+        ],
+        "max": [
+          0.3825,
+          0.42181,
+          1.33882
+        ]
+      }
+    },
+    {
+      "name": "actor_cluster",
+      "sha256": "c4f679b2572ec60582890a53f2843e7b025a503db215830afd6c36ab60e3b379",
+      "bytes": 243972,
+      "meshes": 2,
+      "skins": 1,
+      "animations": 1,
+      "joints": 19,
+      "triangles": 3932,
+      "bounds_blender": {
+        "min": [
+          -0.27775,
+          -0.17512,
+          -0.01
+        ],
+        "max": [
+          0.27775,
+          0.39842,
+          1.03657
+        ]
+      }
+    },
+    {
+      "name": "actor_bulwark",
+      "sha256": "0355a1842ceafa2baf5f41657a5f1b3354c1e6f4d965a743472bf507f81a4255",
+      "bytes": 269504,
+      "meshes": 2,
+      "skins": 1,
+      "animations": 1,
+      "joints": 19,
+      "triangles": 3562,
+      "bounds_blender": {
+        "min": [
+          -0.52275,
+          -0.36393,
+          -0.01
+        ],
+        "max": [
+          0.52275,
+          0.62478,
+          1.48733
+        ]
+      }
+    },
+    {
+      "name": "boss_matron",
+      "sha256": "c5ceacc46005976d72cd8b8ea53e28f2ed51696017e4b62191fdc066f94d8c88",
+      "bytes": 272480,
+      "meshes": 2,
+      "skins": 1,
+      "animations": 1,
+      "joints": 19,
+      "triangles": 4376,
+      "bounds_blender": {
+        "min": [
+          -0.7175,
+          -0.3045,
+          -0.01
+        ],
+        "max": [
+          0.7175,
+          0.53656,
+          4.80376
+        ]
+      }
+    },
+    {
+      "name": "boss_ram",
+      "sha256": "01f0a4487fa8ef7bfec4a42cec4efbdc4385bc44861abe4e2c03a877ef1f3cd3",
+      "bytes": 315952,
+      "meshes": 2,
+      "skins": 1,
+      "animations": 1,
+      "joints": 19,
+      "triangles": 3744,
+      "bounds_blender": {
+        "min": [
+          -0.61661,
+          -0.4436,
+          -0.01
+        ],
+        "max": [
+          0.61661,
+          0.78245,
+          1.49928
+        ]
+      }
+    },
+    {
+      "name": "boss_bell",
+      "sha256": "4435baa298691c61cfcf917fafae2b0f655b46299f593eb0c52ea4f98542b77f",
+      "bytes": 69460,
+      "meshes": 2,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 2420,
+      "bounds_blender": {
+        "min": [
+          -1.12,
+          -1.10298,
+          0.09526
+        ],
+        "max": [
+          1.12,
+          1.10298,
+          5.20401
+        ]
+      }
+    },
+    {
+      "name": "boss_ferry",
+      "sha256": "ea17befcd5589cd2435c2b3963a9cafc5cea47c8ebfeec076d336781eeb4a0b4",
+      "bytes": 64768,
+      "meshes": 2,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 2020,
+      "bounds_blender": {
+        "min": [
+          -1.55,
+          -0.96392,
+          0.05
+        ],
+        "max": [
+          1.55,
+          1.25,
+          3.54544
+        ]
+      }
+    },
+    {
+      "name": "boss_ferry_arm",
+      "sha256": "aa735288048905b5a43b718306b9f23446a00f43b99efde12eaa34db579dcc3a",
+      "bytes": 34716,
+      "meshes": 2,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 1248,
+      "bounds_blender": {
+        "min": [
+          -0.42,
+          -0.42,
+          0.038
+        ],
+        "max": [
+          0.42,
+          2.01508,
+          1.904
+        ]
+      }
+    },
+    {
+      "name": "boss_blockade",
+      "sha256": "13558c6ff166b54edb4374e6228d18b84bd03045a7070a33d3339f17bd43ce4a",
+      "bytes": 120676,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 1400,
+      "bounds_blender": {
+        "min": [
+          -1.5,
+          -0.55,
+          0.05
+        ],
+        "max": [
+          1.5,
+          0.6356,
+          1.61431
+        ]
+      }
+    },
+    {
+      "name": "road_tile",
+      "sha256": "996934f46dbdc2423434e05d594e277fc296627359f956396535d77de1183f41",
+      "bytes": 131000,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 1476,
+      "bounds_blender": {
+        "min": [
+          -7.9005,
+          -5.0,
+          -0.3
+        ],
+        "max": [
+          7.9005,
+          5.0,
+          0.11
+        ]
+      }
+    },
+    {
+      "name": "road_cross",
+      "sha256": "6ed1389e3de37e213fae01ad767c404a597d3de510b1599db46d37b99eda4a07",
+      "bytes": 177516,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 1836,
+      "bounds_blender": {
+        "min": [
+          -7.9005,
+          -5.0,
+          -0.3
+        ],
+        "max": [
+          7.9005,
+          5.0,
+          0.11
+        ]
+      }
+    },
+    {
+      "name": "road_mark",
+      "sha256": "aaa44166efd4d99dee4d3087a2ff6e3d82294600aa553b11965783d10a4c8238",
+      "bytes": 143096,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 1584,
+      "bounds_blender": {
+        "min": [
+          -7.9005,
+          -5.0,
+          -0.3
+        ],
+        "max": [
+          7.9005,
+          5.0,
+          0.11
+        ]
+      }
+    },
+    {
+      "name": "streetlight",
+      "sha256": "53e31a314ba5f12bce8382ed19dd5716ff49cf3b914108f59c178806b6ab978d",
+      "bytes": 28424,
+      "meshes": 2,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 340,
+      "bounds_blender": {
+        "min": [
+          -0.14,
+          -0.14,
+          0.0
+        ],
+        "max": [
+          1.26,
+          0.14,
+          4.08914
+        ]
+      }
+    },
+    {
+      "name": "palm",
+      "sha256": "428bdce02f3a75ebbea3e7d6ffe00a941aae8079694edbc6b1fefacc7c85a22c",
+      "bytes": 50092,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 1776,
+      "bounds_blender": {
+        "min": [
+          -1.3031,
+          -1.8531,
+          0.02
+        ],
+        "max": [
+          2.4031,
+          1.8531,
+          3.56958
+        ]
+      }
+    },
+    {
+      "name": "car",
+      "sha256": "cb77b2eeb89b1381cfb55d3f1bc3536afcfd11bd6a5f27ed75b662e6acda81e4",
+      "bytes": 82544,
+      "meshes": 2,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 964,
+      "bounds_blender": {
+        "min": [
+          -0.98,
+          -2.01,
+          0.00802
+        ],
+        "max": [
+          0.98,
+          2.01,
+          1.16
+        ]
+      }
+    },
+    {
+      "name": "van",
+      "sha256": "9ae16c78a3b2503ac3d4df684549f4bdfff32bb2fc67b7b28be8a3619ccf9088",
+      "bytes": 40952,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 532,
+      "bounds_blender": {
+        "min": [
+          -1.08,
+          -2.3,
+          0.00878
+        ],
+        "max": [
+          1.08,
+          2.3,
+          1.775
+        ]
+      }
+    },
+    {
+      "name": "barrier",
+      "sha256": "498af53f09b3b41f55b4ba464c0d4755150df048cb86741e0c224723ef241f74",
+      "bytes": 62120,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 648,
+      "bounds_blender": {
+        "min": [
+          -1.1,
+          -0.31,
+          0.0
+        ],
+        "max": [
+          1.1,
+          0.31,
+          0.83
+        ]
+      }
+    },
+    {
+      "name": "sandbags",
+      "sha256": "e1a427aed282287fc75df2794e619599c84a5d6119fbaf44dc08cbd3e8ff8702",
+      "bytes": 38160,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 1512,
+      "bounds_blender": {
+        "min": [
+          -1.16,
+          -0.2,
+          0.01
+        ],
+        "max": [
+          1.16,
+          0.22,
+          0.57
+        ]
+      }
+    },
+    {
+      "name": "container",
+      "sha256": "44dc7dfc9b3c1abb8558e1e3f734605c2706d7f98ad48e60a6b8cc8c19649550",
+      "bytes": 204240,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 2160,
+      "bounds_blender": {
+        "min": [
+          -1.28,
+          -3.0,
+          0.0
+        ],
+        "max": [
+          1.28,
+          3.05,
+          2.6
+        ]
+      }
+    },
+    {
+      "name": "crates",
+      "sha256": "26f38449c8d786e2d47435a113b109da5307ccfdc9693939a3cb20613d73830d",
+      "bytes": 38836,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 584,
+      "bounds_blender": {
+        "min": [
+          -0.955,
+          -0.32,
+          0.0
+        ],
+        "max": [
+          0.98,
+          0.50037,
+          1.09
+        ]
+      }
+    },
+    {
+      "name": "warehouse",
+      "sha256": "3be273b5c82ebbfd4772266c5a40b58fcd5956bd913c109588c3180f01ad9e43",
+      "bytes": 102732,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 1080,
+      "bounds_blender": {
+        "min": [
+          -3.2,
+          -4.2,
+          0.0
+        ],
+        "max": [
+          3.2,
+          4.2,
+          5.225
+        ]
+      }
+    },
+    {
+      "name": "apartment",
+      "sha256": "558094079b29dca677224fdbd3843bc09b278b4b411eac69bc73babe3128ee21",
+      "bytes": 277736,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 2916,
+      "bounds_blender": {
+        "min": [
+          -3.15,
+          -3.65,
+          0.0
+        ],
+        "max": [
+          3.85,
+          3.65,
+          8.3
+        ]
+      }
+    },
+    {
+      "name": "market_stall",
+      "sha256": "a0657cb5b744b601f875ca37794ad4f4f0b5db2cc5545add5da1825ad7712f7a",
+      "bytes": 83740,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 1328,
+      "bounds_blender": {
+        "min": [
+          -1.0,
+          -0.89083,
+          0.0
+        ],
+        "max": [
+          1.0,
+          0.89083,
+          2.45674
+        ]
+      }
+    },
+    {
+      "name": "viaduct_pier",
+      "sha256": "064b004ce93cfa77dbfe1b270d69be74de630db8f56c93e10f2073f7924150a5",
+      "bytes": 21400,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 216,
+      "bounds_blender": {
+        "min": [
+          -1.5,
+          -1.0,
+          -6.0
+        ],
+        "max": [
+          1.5,
+          1.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "guardrail",
+      "sha256": "6569fe457fcfce52376e78a4b1a2c17211e3047f8eeb42c463ebc67baa1ff178",
+      "bytes": 27508,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 348,
+      "bounds_blender": {
+        "min": [
+          -0.06,
+          -2.5,
+          0.0
+        ],
+        "max": [
+          0.06,
+          2.5,
+          0.92
+        ]
+      }
+    },
+    {
+      "name": "seawall",
+      "sha256": "8c7b508fdac09e05b95c16f1e07c0b65f644b313d0650c45ff98975b4b4f3d70",
+      "bytes": 43004,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 996,
+      "bounds_blender": {
+        "min": [
+          -0.8,
+          -5.0,
+          -1.5
+        ],
+        "max": [
+          0.8,
+          5.0,
+          0.875
+        ]
+      }
+    },
+    {
+      "name": "tank",
+      "sha256": "5c7ba91c8053ef846f06530d0faf90f2adab2f78e127ae8f56dbdee508339cbd",
+      "bytes": 36424,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 976,
+      "bounds_blender": {
+        "min": [
+          -3.1,
+          -3.1,
+          0.0
+        ],
+        "max": [
+          3.45,
+          3.1,
+          4.9
+        ]
+      }
+    },
+    {
+      "name": "pipes",
+      "sha256": "f2671f701570cac8b9b583b4c8d3f45ef9f5a0727cc5370f34242dff9a93e674",
+      "bytes": 51868,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 1076,
+      "bounds_blender": {
+        "min": [
+          -0.4,
+          -4.8,
+          -0.05
+        ],
+        "max": [
+          0.4,
+          4.8,
+          1.21
+        ]
+      }
+    },
+    {
+      "name": "ferry",
+      "sha256": "7f4665b3111b3050cd8321fec3649e2517f77329d6a00e8ff9512359b31102d1",
+      "bytes": 209064,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 2896,
+      "bounds_blender": {
+        "min": [
+          -3.025,
+          -9.0,
+          0.0
+        ],
+        "max": [
+          3.025,
+          9.0,
+          6.675
+        ]
+      }
+    },
+    {
+      "name": "gate",
+      "sha256": "11e5f82a29865e69e30d5ba60209b6a6b546976292001c10d04273446efd90d4",
+      "bytes": 71388,
+      "meshes": 2,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 984,
+      "bounds_blender": {
+        "min": [
+          -1.2,
+          -0.25,
+          0.0
+        ],
+        "max": [
+          1.2,
+          0.25,
+          2.26
+        ]
+      }
+    },
+    {
+      "name": "rig_truck",
+      "sha256": "d07554cb0724c562f2ffd4b7e9b77650c2b8dfaf429ae1987a74ef2b148617fc",
+      "bytes": 147016,
+      "meshes": 2,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 2672,
+      "bounds_blender": {
+        "min": [
+          -0.89,
+          -1.8,
+          0.47
+        ],
+        "max": [
+          3.875,
+          2.845,
+          3.26852
+        ]
+      }
+    },
+    {
+      "name": "pump_truck",
+      "sha256": "1644090717f738a504c07c26cd80773288991b45671b484501c29115f62e5d32",
+      "bytes": 109968,
+      "meshes": 2,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 2020,
+      "bounds_blender": {
+        "min": [
+          -0.89,
+          -1.8,
+          0.47
+        ],
+        "max": [
+          3.84,
+          2.845,
+          2.6587
+        ]
+      }
+    },
+    {
+      "name": "cart",
+      "sha256": "feca7a87b39a2dd289c033a680bbf3440c7ef1d52e43324c5eaa4d50dc293267",
+      "bytes": 108500,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 1196,
+      "bounds_blender": {
+        "min": [
+          -1.0,
+          -1.41404,
+          0.46
+        ],
+        "max": [
+          1.0,
+          0.68,
+          1.625
+        ]
+      }
+    },
+    {
+      "name": "wheel",
+      "sha256": "5d5b994022e4c46254cdaad876cced6851181a8e41c5825914972bb26dc0f2fe",
+      "bytes": 15632,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 204,
+      "bounds_blender": {
+        "min": [
+          -0.15,
+          -0.4,
+          -0.4
+        ],
+        "max": [
+          0.195,
+          0.4,
+          0.4
+        ]
+      }
+    },
+    {
+      "name": "terminal",
+      "sha256": "23169bc00d748f421b8e6d071a948456edc8727ea79f5fc3ff40431dd73e0cd6",
+      "bytes": 72268,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 756,
+      "bounds_blender": {
+        "min": [
+          -4.3,
+          -3.3,
+          0.0
+        ],
+        "max": [
+          4.3,
+          3.3,
+          4.85
+        ]
+      }
+    },
+    {
+      "name": "lifebuoy",
+      "sha256": "142dd6c6f362596fd7fa4447d8eae437c1c4b922e033bab675a42c5a014ed25a",
+      "bytes": 18532,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 368,
+      "bounds_blender": {
+        "min": [
+          -0.38,
+          -0.1,
+          0.0
+        ],
+        "max": [
+          0.38,
+          0.14928,
+          1.9
+        ]
+      }
+    },
+    {
+      "name": "cone",
+      "sha256": "ba43783d3bb4f6ed0a750bb387631e39a5395d2c81d6f38c781039c29c6e060a",
+      "bytes": 18468,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 368,
+      "bounds_blender": {
+        "min": [
+          -0.25,
+          -0.25,
+          0.0
+        ],
+        "max": [
+          0.25,
+          0.25,
+          0.7
+        ]
+      }
+    },
+    {
+      "name": "shrub",
+      "sha256": "194e94e6444c95ae82643bb420cd00b228205f4bb7fc14f2ae59c4f3af85c5b2",
+      "bytes": 17636,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 672,
+      "bounds_blender": {
+        "min": [
+          -0.78,
+          -0.74,
+          -0.02
+        ],
+        "max": [
+          0.78,
+          0.74,
+          0.97
+        ]
+      }
+    },
+    {
+      "name": "dock_crane",
+      "sha256": "198fa977e5080aa30da4a6c37f6299906c00cee09be211ab62b0102fc4ac9d14",
+      "bytes": 73916,
+      "meshes": 1,
+      "skins": 0,
+      "animations": 0,
+      "joints": 0,
+      "triangles": 792,
+      "bounds_blender": {
+        "min": [
+          -14.0,
+          -2.0,
+          0.0
+        ],
+        "max": [
+          2.6,
+          2.0,
+          10.0
+        ]
+      }
+    }
+  ]
+}

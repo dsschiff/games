@@ -74,7 +74,8 @@ func test_scene(scene: Node, kind: String) -> void:
 	scene.set_physics_process(false)
 	scene.paused = true
 	var original: Dictionary = scene.state.duplicate(true)
-	var authored := 46.0 if kind == "campaign" else 58.0
+	# Campaign authored FOV changed 46 -> 51 with the graphics chase camera.
+	var authored := 51.0 if kind == "campaign" else 58.0
 	var portrait_projections := {}
 	var camera_pose: Transform3D = scene.camera.global_transform
 	var counts := [5, 20] if kind == "campaign" else [3, 5, 12]
