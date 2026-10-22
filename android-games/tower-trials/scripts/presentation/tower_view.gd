@@ -41,6 +41,8 @@ var finale := Node3D.new()
 var finale_watches: Array = []
 var finale_key := -1
 const TINT_DARK_WATCH := Color("5b7282")
+## home_floor spans ~180 px at scale 1; the ending slot is 68 px wide.
+const ENDING_WIDTH := 68.0 / 180.0
 
 func _ready() -> void:
 	camera.fov = FOV
@@ -287,8 +289,8 @@ func _ending(view: Dictionary) -> void:
 		finale_watches.clear()
 		for i in 12:
 			var slot := ending_slot(i)
-			var floor_node := _place("home_floor", at(Vector2(slot.get_center().x, slot.end.y), .05), Vector3(1, slot.size.y / 98.0, 1), finale)
-			var roof := _place("home_roof", at(Vector2(slot.get_center().x, slot.position.y), .05), Vector3.ONE, finale)
+			var floor_node := _place("home_floor", at(Vector2(slot.get_center().x, slot.end.y), .05), Vector3(ENDING_WIDTH, slot.size.y / 98.0, ENDING_WIDTH), finale)
+			var roof := _place("home_roof", at(Vector2(slot.get_center().x, slot.position.y), .05), Vector3(ENDING_WIDTH, 1, ENDING_WIDTH), finale)
 			var lantern := _place("moon", at(slot.position + Vector2(34, 44), .15), Vector3.ONE * .2, finale)
 			finale_watches.append({"floor": floor_node, "roof": roof, "lantern": lantern, "lit": null})
 		finale_key = key

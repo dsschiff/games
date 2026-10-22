@@ -123,6 +123,14 @@ func ending() -> void:
 	check(screen_of(view.finale_watches[7].roof.global_position).distance_to(expected(Vector2(slot.get_center().x, slot.position.y))) <= 1.5, "ending: watch roof aligns with its 2D slot")
 	if rendered:
 		await sample("ending")
+	# Presentation-only: feed the view a full-profile lit count directly
+	# (the real ending is reached with 36 rescued), never main's data.
+	for lit in [12, 5]:
+		view.sync({"screen": "ending", "lit": lit, "reduced": true, "frozen": false})
+		check(view.lit_watches() == lit, "ending: %d lit lanterns shown for lit=%d" % [view.lit_watches(), lit])
+	view.sync({"screen": "ending", "lit": 12, "reduced": true, "frozen": false})
+	if rendered:
+		await sample("ending-lit")
 	game.screen = previous
 	game.queue_redraw()
 	await wait_frames(3)
