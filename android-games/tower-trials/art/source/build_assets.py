@@ -153,7 +153,7 @@ def room():
         block("Pilaster", (side * .84, -.03, 0), (.1, .08, .92), "Mortar", .02)
         cyl("Bracket", (side * .7, -.07, -.43), .04, .1, "Iron", verts=8, rot=(math.pi / 2, 0, 0))
     for i in range(5):
-        block("Course", (0, .2, -.5 + i * .25), (1.82, .5, .02), "Mortar", .005)
+        block("Course", (0, .36, -.5 + i * .25), (1.82, .62, .02), "Mortar", .005)
 
 
 def tower_column():

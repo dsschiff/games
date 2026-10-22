@@ -14,8 +14,8 @@ const NIGHT_TOP := Color("0a182e")
 const NIGHT_HORIZON := Color("3d6f80")
 const TINT_OPEN := Color.WHITE
 const TINT_BLOCKED := Color("8aa0aa")
-const TINT_CLAIMED := Color("8fe0cf")
-const TINT_COLLAPSED := Color("50606e")
+const TINT_CLAIMED := Color("3e8696")
+const TINT_COLLAPSED := Color("2c4256")
 const TINT_SELECTED := Color("fff2cf")
 
 var camera := Camera3D.new()
@@ -57,7 +57,14 @@ func frame(area: Vector2) -> void:
 	camera.rotation = Vector3.ZERO
 
 func at(point: Vector2, z: float = 0.0) -> Vector3:
-	return Vector3(point.x * U, -point.y * U, z)
+	var flat := Vector3(point.x * U, -point.y * U, 0.0)
+	if is_zero_approx(z):
+		return flat
+	# Pull a raised point toward the camera axis so it projects onto the same
+	# board pixel as the 2D anchor despite perspective parallax.
+	var eye := camera.position
+	var k := (eye.z - z) / eye.z
+	return Vector3(eye.x + (flat.x - eye.x) * k, eye.y + (flat.y - eye.y) * k, z)
 
 # ------------------------------------------------------------------ kit
 func asset(key: String) -> Node3D:
@@ -109,7 +116,7 @@ func _environment() -> void:
 	env.tonemap_mode = Environment.TONE_MAPPER_LINEAR
 	env.fog_enabled = true
 	env.fog_light_color = Color("23475a")
-	env.fog_density = .012
+	env.fog_density = .0045
 	holder.environment = env
 	add_child(holder)
 	var moonlight := DirectionalLight3D.new()
@@ -176,7 +183,7 @@ func sync(view: Dictionary) -> void:
 		return
 	var level: Dictionary = view.level
 	var state: Dictionary = view.state
-	var key := hash([level.get("id", ""), level.rooms, view.rects])
+	var key := hash([level.get("id", ""), level.rooms, view.rects, camera.position])
 	if key != board_key:
 		_rebuild(view)
 		board_key = key

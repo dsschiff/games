@@ -1,6 +1,6 @@
 {
   "generator": "source/build_assets.py",
-  "generator_lf_sha256": "1eea42fc889a4c33923e41e8832dfc02bd4abfc48447b07dcdc5ccf25010d3db",
+  "generator_lf_sha256": "c26c3516f6b30492b73d60b8c367dc4ff338cec07400e7376299cd31347d0e95",
   "blender": "4.5.14 LTS",
   "rendered": false,
   "original": true,
@@ -8,7 +8,7 @@
   "assets": [
     {
       "name": "room",
-      "sha256": "8b2ab9546aaf5d9e8ea94670c4f2c269c77ff58c087716a5cf5ebc512094c3be",
+      "sha256": "f58b1347fac62b1d6838666bf53314ffdf4f86ac39af3fe2beab63004b06ea76",
       "bytes": 115532,
       "meshes": 1,
       "triangles": 1244,
