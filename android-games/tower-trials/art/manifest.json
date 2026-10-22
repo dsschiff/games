@@ -1,0 +1,219 @@
+{
+  "generator": "source/build_assets.py",
+  "generator_lf_sha256": "1eea42fc889a4c33923e41e8832dfc02bd4abfc48447b07dcdc5ccf25010d3db",
+  "blender": "4.5.14 LTS",
+  "rendered": false,
+  "original": true,
+  "coordinates": "Blender -Y toward viewer +Z up; glTF +Z toward viewer +Y up; 1 unit = 100 design px",
+  "assets": [
+    {
+      "name": "room",
+      "sha256": "8b2ab9546aaf5d9e8ea94670c4f2c269c77ff58c087716a5cf5ebc512094c3be",
+      "bytes": 115532,
+      "meshes": 1,
+      "triangles": 1244,
+      "bounds_blender": {
+        "min": [
+          -0.93,
+          -0.12,
+          -0.51
+        ],
+        "max": [
+          0.93,
+          0.68,
+          0.51
+        ]
+      }
+    },
+    {
+      "name": "tower_column",
+      "sha256": "8074330af8ab6fee509c671abf69d3ed82eeb115781bdb2e1787c6e8cda301b9",
+      "bytes": 112864,
+      "meshes": 1,
+      "triangles": 1188,
+      "bounds_blender": {
+        "min": [
+          -0.95,
+          0.02,
+          0.0
+        ],
+        "max": [
+          0.95,
+          0.95,
+          1.0
+        ]
+      }
+    },
+    {
+      "name": "tower_roof",
+      "sha256": "1f3945680638a21988763bb352571cc4ce22cc376c55fbe6d1939cb026a26dce",
+      "bytes": 15344,
+      "meshes": 1,
+      "triangles": 224,
+      "bounds_blender": {
+        "min": [
+          -1.01,
+          -0.07,
+          -0.03
+        ],
+        "max": [
+          1.01,
+          1.07,
+          0.94
+        ]
+      }
+    },
+    {
+      "name": "home_floor",
+      "sha256": "a5e4179822ecb37b25baf96e42516b3a20e01a9727dd54bd17d888095c4ca331",
+      "bytes": 75300,
+      "meshes": 2,
+      "triangles": 836,
+      "bounds_blender": {
+        "min": [
+          -0.6,
+          -0.1,
+          -0.005
+        ],
+        "max": [
+          0.6,
+          0.6,
+          0.99
+        ]
+      }
+    },
+    {
+      "name": "home_roof",
+      "sha256": "1f879ef87e102c6148a5477f7a2be9edfc05f5ad0b77febcfdfdcac74f509d02",
+      "bytes": 17644,
+      "meshes": 2,
+      "triangles": 252,
+      "bounds_blender": {
+        "min": [
+          -0.68,
+          -0.07,
+          -0.025
+        ],
+        "max": [
+          0.68,
+          0.67,
+          0.85
+        ]
+      }
+    },
+    {
+      "name": "courier",
+      "sha256": "1edc4973f1f9adecb078d15c80cdbb6a1174c5dd6eb938d33d244c8b39b6e9aa",
+      "bytes": 54716,
+      "meshes": 2,
+      "triangles": 816,
+      "bounds_blender": {
+        "min": [
+          -0.16574,
+          -0.17,
+          -0.005
+        ],
+        "max": [
+          0.24755,
+          0.17,
+          0.68
+        ]
+      }
+    },
+    {
+      "name": "spirit",
+      "sha256": "c31334bd7b332e5363f81b803850989224f1e1b1ee516f58cc05c78ec0f920f6",
+      "bytes": 16956,
+      "meshes": 2,
+      "triangles": 512,
+      "bounds_blender": {
+        "min": [
+          -0.18745,
+          -0.15,
+          -0.07
+        ],
+        "max": [
+          0.18745,
+          0.15,
+          0.36
+        ]
+      }
+    },
+    {
+      "name": "cliff",
+      "sha256": "164e75785107d62360512e33e4334e0e08b8424e6ebb1bca304fb1f375752b96",
+      "bytes": 72300,
+      "meshes": 1,
+      "triangles": 756,
+      "bounds_blender": {
+        "min": [
+          -3.2,
+          -0.06,
+          0.0
+        ],
+        "max": [
+          3.6,
+          0.86,
+          2.64
+        ]
+      }
+    },
+    {
+      "name": "lighthouse",
+      "sha256": "8d7537c671523b7a69b757eb94ab287c2f3634bcdc61f5f22cc04b2237d7b98d",
+      "bytes": 22160,
+      "meshes": 2,
+      "triangles": 448,
+      "bounds_blender": {
+        "min": [
+          -0.42,
+          -0.42,
+          0.0
+        ],
+        "max": [
+          0.42,
+          0.42,
+          2.66
+        ]
+      }
+    },
+    {
+      "name": "cottage",
+      "sha256": "d30f5b5b634089d5a4e9441a6f86c827f1b44ee9252e2bc3af7fcc79fc070fec",
+      "bytes": 33392,
+      "meshes": 2,
+      "triangles": 332,
+      "bounds_blender": {
+        "min": [
+          -0.52,
+          -0.04,
+          0.0
+        ],
+        "max": [
+          0.52,
+          0.74,
+          1.2
+        ]
+      }
+    },
+    {
+      "name": "moon",
+      "sha256": "dee7663da6d86ec2fde007ccb1ae674dfb4b18e53ae36185a2668bb3defef626",
+      "bytes": 9012,
+      "meshes": 1,
+      "triangles": 324,
+      "bounds_blender": {
+        "min": [
+          -0.35453,
+          -0.1,
+          -0.36
+        ],
+        "max": [
+          0.35453,
+          0.1,
+          0.36
+        ]
+      }
+    }
+  ]
+}
