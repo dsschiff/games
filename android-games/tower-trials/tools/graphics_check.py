@@ -2,6 +2,8 @@
 
     python android-games/tower-trials/tools/graphics_check.py view    # headless + rendered graphics_view.gd
     python android-games/tower-trials/tools/graphics_check.py clip    # 60 fps movie of tests/challenge_motion.gd
+    python android-games/tower-trials/tools/graphics_check.py tour [--label after] [--size 720x1280]
+                                                                     # rendered review frames (tests/graphics_tour.gd)
 
 Everything is written under this game's ignored .artifacts/graphics/.
 The movie clock is 60 fixed engine fps, so playback at 60 fps is normal
@@ -64,7 +66,16 @@ def clip():
     return 0
 
 
+def tour(label, size):
+    _, code = godot(["--resolution", size, "--script", "tests/graphics_tour.gd", "--", "--label=" + label, "--size=" + size],
+                    OUT / "tour" / label / "tour.log")
+    return code
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=["view", "clip"])
-    sys.exit(view() if parser.parse_args().mode == "view" else clip())
+    parser.add_argument("mode", choices=["view", "clip", "tour"])
+    parser.add_argument("--label", default="current")
+    parser.add_argument("--size", default="720x1280")
+    args = parser.parse_args()
+    sys.exit(view() if args.mode == "view" else clip() if args.mode == "clip" else tour(args.label, args.size))

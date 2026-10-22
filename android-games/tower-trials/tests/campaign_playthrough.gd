@@ -21,6 +21,7 @@ func mistake(actions: Array, label: String, undo: bool = false) -> void:
 		check(game.state == before and game.note.contains("Equality loses"), "Cold restored campaign defeat explains its actual last action")
 		await frame("cold-campaign-loss-explained")
 	await action("undo" if undo else "retry")
+	check(game.selected == "" and game.claimed_gain == -1, "Undo/Retry clears the selection after " + label)
 	check(game.state.status == "active", "Undo/Retry naturally corrects " + label)
 
 func checkpoint(index: int) -> void:
@@ -98,11 +99,17 @@ func run() -> void:
 				await action("resume")
 				await wait_frames(65)
 			check(game.state.status != "lost", "Touch route succeeds " + definition.id + ":" + id)
+			if id in game.state.claimed:
+				check(game.selected == "" and game.claimed_gain >= 0, "Resolved claim clears the selection " + definition.id + ":" + id)
+			if i == 0 and step_index == 0:
+				await tap(game.room_rect(Rules.find_room(game.level, id)).get_center())
+				check(game.selected == id and Rules.step(game.level, game.state, id).message == "Already claimed" and not game.buttons().has("enter"), "Tapping a claimed room still reports it already claimed")
 			check(not game.buttons().has("enter"), "Claimed room never offers Enter " + definition.id)
 			if i in [0, 9, 18, 27] and step_index == 0:
 				var after: Dictionary = game.state.duplicate(true)
 				await action("undo")
 				check(game.state == before, "Input Undo restores every field at " + definition.id)
+				check(game.selected == "" and game.claimed_gain == -1, "Undo returns to a neutral selection " + definition.id)
 				await enter(id)
 				check(game.state == after, "Replay after Undo is deterministic " + definition.id)
 			if i == 13 and step_index == 0:

@@ -1,6 +1,6 @@
 {
   "generator": "source/build_assets.py",
-  "generator_lf_sha256": "ab192515d8a3ab4160a890a14569ea73d6134e0a63e43dd93cf996e3507d5527",
+  "generator_lf_sha256": "9847b374fad8709b2bf178c3033238df92af557eb75b7328c6528904c6af57e9",
   "blender": "4.5.14 LTS",
   "rendered": false,
   "original": true,
@@ -8,72 +8,91 @@
   "assets": [
     {
       "name": "room",
-      "sha256": "f58b1347fac62b1d6838666bf53314ffdf4f86ac39af3fe2beab63004b06ea76",
-      "bytes": 115532,
-      "meshes": 1,
-      "triangles": 1244,
+      "sha256": "f325ed710a72f1b29d2b135aef43f46a09cda35667090a28bf516ee1ce637183",
+      "bytes": 367264,
+      "meshes": 2,
+      "triangles": 4100,
       "bounds_blender": {
         "min": [
-          -0.93,
-          -0.12,
-          -0.51
+          -0.935,
+          -0.08,
+          -0.59
         ],
         "max": [
-          0.93,
-          0.68,
-          0.51
+          0.935,
+          0.79,
+          0.57
         ]
       }
     },
     {
       "name": "tower_column",
-      "sha256": "8074330af8ab6fee509c671abf69d3ed82eeb115781bdb2e1787c6e8cda301b9",
+      "sha256": "71ce7763451b06d8b9c6d4c2d392751961abc17f957ceacec7dd2e6147a377ef",
       "bytes": 112864,
       "meshes": 1,
       "triangles": 1188,
       "bounds_blender": {
         "min": [
-          -0.95,
-          0.02,
+          -1.05,
+          0.2,
           0.0
         ],
         "max": [
-          0.95,
-          0.95,
+          1.05,
+          1.15,
           1.0
         ]
       }
     },
     {
-      "name": "tower_roof",
-      "sha256": "1f3945680638a21988763bb352571cc4ce22cc376c55fbe6d1939cb026a26dce",
-      "bytes": 15344,
-      "meshes": 1,
-      "triangles": 224,
+      "name": "tower_segment",
+      "sha256": "3e163d7075f6f9f3f2c93f0898a0c1a7e8553134ffdf73eedcdeaa6d0a4d2dad",
+      "bytes": 205260,
+      "meshes": 2,
+      "triangles": 2160,
       "bounds_blender": {
         "min": [
-          -1.01,
-          -0.07,
-          -0.03
+          -0.9,
+          -0.05,
+          0.0
         ],
         "max": [
-          1.01,
-          1.07,
-          0.94
+          0.9,
+          0.4,
+          0.5
+        ]
+      }
+    },
+    {
+      "name": "tower_roof",
+      "sha256": "e71a8a2b4fd6c1b6bca6c25ec9fef8a1cbe2aef46dbe4ffd4f4f900042393c6d",
+      "bytes": 17432,
+      "meshes": 1,
+      "triangles": 248,
+      "bounds_blender": {
+        "min": [
+          -1.05,
+          -0.12,
+          0.005
+        ],
+        "max": [
+          1.05,
+          1.12,
+          1.03
         ]
       }
     },
     {
       "name": "home_floor",
-      "sha256": "a5e4179822ecb37b25baf96e42516b3a20e01a9727dd54bd17d888095c4ca331",
-      "bytes": 75300,
+      "sha256": "b00122d415cec651d2818092b5431e285a7c1ede30dcb22699d7d826ecc8dca0",
+      "bytes": 115896,
       "meshes": 2,
-      "triangles": 836,
+      "triangles": 1268,
       "bounds_blender": {
         "min": [
           -0.6,
           -0.1,
-          -0.005
+          0.0
         ],
         "max": [
           0.6,
@@ -84,58 +103,191 @@
     },
     {
       "name": "home_roof",
-      "sha256": "1f879ef87e102c6148a5477f7a2be9edfc05f5ad0b77febcfdfdcac74f509d02",
-      "bytes": 17644,
+      "sha256": "52eeac2c808d3b0819e15a931a0833b0ed6c7c3fee4d78986644308754a5d38b",
+      "bytes": 27652,
       "meshes": 2,
-      "triangles": 252,
+      "triangles": 360,
       "bounds_blender": {
         "min": [
-          -0.68,
-          -0.07,
+          -0.71,
+          -0.11,
           -0.025
         ],
         "max": [
-          0.68,
-          0.67,
-          0.85
+          0.71,
+          0.69,
+          1.12
         ]
       }
     },
     {
-      "name": "courier",
-      "sha256": "1edc4973f1f9adecb078d15c80cdbb6a1174c5dd6eb938d33d244c8b39b6e9aa",
-      "bytes": 54716,
+      "name": "courier_body",
+      "sha256": "70bc1b3b4c9a78bfbe6dfef40b7918a4b7381927ccfdc0a15033367a848e269f",
+      "bytes": 61624,
       "meshes": 2,
-      "triangles": 816,
+      "triangles": 1052,
       "bounds_blender": {
         "min": [
-          -0.16574,
-          -0.17,
-          -0.005
+          -0.15,
+          -0.121,
+          -0.06
         ],
         "max": [
-          0.24755,
-          0.17,
-          0.68
+          0.12364,
+          0.18,
+          0.46
+        ]
+      }
+    },
+    {
+      "name": "courier_leg",
+      "sha256": "21b1b997c175148aff6a71a229ecee607cb3558e90744d95bc6abd1856ac2b02",
+      "bytes": 14020,
+      "meshes": 1,
+      "triangles": 164,
+      "bounds_blender": {
+        "min": [
+          -0.035,
+          -0.08,
+          -0.2125
+        ],
+        "max": [
+          0.035,
+          0.035,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "courier_arm",
+      "sha256": "5bb55506ecf968bd803c57d18984b663c4f40bc4ee416f5f3da712a5eeb9b0aa",
+      "bytes": 20092,
+      "meshes": 2,
+      "triangles": 356,
+      "bounds_blender": {
+        "min": [
+          -0.04755,
+          -0.08,
+          -0.31
+        ],
+        "max": [
+          0.04755,
+          0.03,
+          0.33
         ]
       }
     },
     {
       "name": "spirit",
-      "sha256": "c31334bd7b332e5363f81b803850989224f1e1b1ee516f58cc05c78ec0f920f6",
-      "bytes": 16956,
+      "sha256": "a32b4743d73871ee13bac332ac281add74611c51af190e19f306d056d1648e5c",
+      "bytes": 29076,
       "meshes": 2,
-      "triangles": 512,
+      "triangles": 660,
       "bounds_blender": {
         "min": [
-          -0.18745,
-          -0.15,
-          -0.07
+          -0.22346,
+          -0.165,
+          -0.06
         ],
         "max": [
-          0.18745,
-          0.15,
-          0.36
+          0.22346,
+          0.165,
+          0.43819
+        ]
+      }
+    },
+    {
+      "name": "spirit_knight",
+      "sha256": "0fb4cc4b7fa79f9ef5888670fecd648ab130883702a37b6afda231887172fdc4",
+      "bytes": 67472,
+      "meshes": 2,
+      "triangles": 1020,
+      "bounds_blender": {
+        "min": [
+          -0.24,
+          -0.17,
+          -0.005
+        ],
+        "max": [
+          0.24,
+          0.17,
+          0.53
+        ]
+      }
+    },
+    {
+      "name": "spirit_golem",
+      "sha256": "6799785ea22024bd85e4e9e74a39c257ee188d06ad8546a2b394ebf8fbab0233",
+      "bytes": 32960,
+      "meshes": 2,
+      "triangles": 764,
+      "bounds_blender": {
+        "min": [
+          -0.38,
+          -0.18,
+          0.0
+        ],
+        "max": [
+          0.38,
+          0.18,
+          0.59
+        ]
+      }
+    },
+    {
+      "name": "banner",
+      "sha256": "109c9b6500f39ae7e3f3041d171cf03be36dec7c2eb6658741acd37363b0eafb",
+      "bytes": 24932,
+      "meshes": 2,
+      "triangles": 296,
+      "bounds_blender": {
+        "min": [
+          -0.25,
+          -0.015,
+          -0.34
+        ],
+        "max": [
+          0.25,
+          0.0175,
+          0.01299
+        ]
+      }
+    },
+    {
+      "name": "keeper",
+      "sha256": "ebfdc9ff5b81ea0195f27959e5dcef3eff8ac576c2998aea8c4b7c15bc7b5f7f",
+      "bytes": 23336,
+      "meshes": 2,
+      "triangles": 460,
+      "bounds_blender": {
+        "min": [
+          -0.14,
+          -0.165,
+          0.0
+        ],
+        "max": [
+          0.205,
+          0.14,
+          0.49
+        ]
+      }
+    },
+    {
+      "name": "cage",
+      "sha256": "956b7928d55e6e8947c05cc1a71315b342c113612a712202dbd17b8d01cfc7b1",
+      "bytes": 15368,
+      "meshes": 1,
+      "triangles": 292,
+      "bounds_blender": {
+        "min": [
+          -0.22423,
+          -0.23,
+          0.0
+        ],
+        "max": [
+          0.22423,
+          0.23,
+          0.73
         ]
       }
     },
@@ -193,6 +345,63 @@
           0.52,
           0.74,
           1.2
+        ]
+      }
+    },
+    {
+      "name": "archive",
+      "sha256": "9da52298e9995d7ba28fcdea2acaa53dcabbfe3c7c65c60f386c1f38b28a6d4e",
+      "bytes": 180060,
+      "meshes": 2,
+      "triangles": 2024,
+      "bounds_blender": {
+        "min": [
+          -0.84,
+          -0.03,
+          0.0
+        ],
+        "max": [
+          0.84,
+          0.83,
+          2.85
+        ]
+      }
+    },
+    {
+      "name": "crystal",
+      "sha256": "69265cd86eba3f8a321e9d3c8f0584f04dd167e0387c1f4505b0e77bfeacd85b",
+      "bytes": 14408,
+      "meshes": 2,
+      "triangles": 324,
+      "bounds_blender": {
+        "min": [
+          -0.57063,
+          -0.38042,
+          -0.06
+        ],
+        "max": [
+          0.7118,
+          0.38042,
+          1.65
+        ]
+      }
+    },
+    {
+      "name": "meridian",
+      "sha256": "c8c345e0b2ffb7b2f98049191865f08440a9d2a09a01e7d0b2e6fd81e75bc996",
+      "bytes": 207604,
+      "meshes": 2,
+      "triangles": 2360,
+      "bounds_blender": {
+        "min": [
+          -1.08,
+          -0.35,
+          0.0
+        ],
+        "max": [
+          1.08,
+          0.35,
+          2.38
         ]
       }
     },

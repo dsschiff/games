@@ -196,7 +196,7 @@ def main(argv=None) -> int:
     parser.add_argument("--serial", default="emulator-5554")
     parser.add_argument("--root", type=Path, default=REPO_ROOT)
     parser.add_argument("--config")
-    parser.add_argument("--settle-seconds", type=float, default=6.0, help="Foreground settle before background/persist; default 6 seconds covers a 5-second autosave")
+    parser.add_argument("--settle-seconds", type=float, default=6.0, help="Foreground settle before background/persist; default 6 seconds covers a 5-second autosave; up to 90 for slow first-launch shader compilation")
     args = parser.parse_args(argv)
     if not re.fullmatch(r"emulator-[0-9]+", args.serial):
         parser.error("Only an explicit emulator serial is supported; physical devices are refused")
@@ -204,8 +204,8 @@ def main(argv=None) -> int:
         parser.error("A valid Android package is required")
     if not re.fullmatch(r"[a-zA-Z0-9_./-]+", args.save) or ".." in args.save or args.save.startswith("/"):
         parser.error("Save must be a safe relative app-data path")
-    if args.expected_version < 1 or not 1 <= args.settle_seconds <= 30:
-        parser.error("Expected save version must be positive and settle time must be 1-30 seconds")
+    if args.expected_version < 1 or not 1 <= args.settle_seconds <= 90:
+        parser.error("Expected save version must be positive and settle time must be 1-90 seconds")
     root = args.root.resolve()
     output = root / ".artifacts/upgrades" / args.package / datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     output.mkdir(parents=True)

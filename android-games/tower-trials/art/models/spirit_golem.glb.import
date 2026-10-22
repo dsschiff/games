@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://sgatiwd00q4g"
-path="res://.godot/imported/courier.glb-574f7b39dd5c608347e539383f24da32.scn"
+uid="uid://bblocyp4jbcqp"
+path="res://.godot/imported/spirit_golem.glb-d4a19990571f2031a18df3a36a882840.scn"
 
 [deps]
 
-source_file="res://art/models/courier.glb"
-dest_files=["res://.godot/imported/courier.glb-574f7b39dd5c608347e539383f24da32.scn"]
+source_file="res://art/models/spirit_golem.glb"
+dest_files=["res://.godot/imported/spirit_golem.glb-d4a19990571f2031a18df3a36a882840.scn"]
 
 [params]
 

@@ -33,6 +33,7 @@ CHECKPOINT_SLUGS = {
     "frontline_pooling_checkpoint": "frontline-foundry",
     "hook_graphics_checkpoint": "hook-and-hunger",
     "dead_run_graphics_checkpoint": "dead-run",
+    "tower_graphics_checkpoint": "tower-trials",
 }
 
 
