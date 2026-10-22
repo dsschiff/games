@@ -58,10 +58,12 @@ bounds. One Blender unit is 100 design pixels of the 600x1066 board.
 ## Presentation architecture
 
 `scripts/presentation/tower_view.gd` is a `Node3D` child of `main`.
-`main.sync_view()` runs at the start of every `_draw()` and passes a read-only
+`main.sync_view()` runs at the start of every `_draw()` and passes a fresh
 dictionary (screen, level, state, selection, room rects, blocked reasons,
-home stride, courier point, flight fraction, reduced, frozen). The view never
-writes back. Its board is rebuilt only when the level, rects or camera change.
+home stride, courier point, flight fraction, reduced, frozen). It is not a
+copy of the game state: `level` and `state` are passed by reference
+(`main.gd:114`), and `tower_view.gd` only reads them; it never writes to them
+or to the save. Its board is rebuilt only when the level, rects or camera change.
 
 Alignment: a perspective camera (vertical FOV 38, keep height) looks straight
 down -Z at the z = 0 plane from the board centre, at the distance that makes
@@ -111,6 +113,18 @@ measurement.
 - Ending, Journey and Challenge screens keep their 2D content over the new 3D
   coast; the ending's watches and courier are still 2D drawings.
 - No measured frame time on device.
+- Animated courier encounters (`GRAPHICS-OVERHAUL.md:20,77`) are not
+  delivered. The courier is one rigid model that leans during flight and
+  bobs while idle (`tower_view.gd:217,272`); it has no rig, poses or
+  encounter animation, which the overhaul says bobbing alone does not satisfy.
+- The required window shapes cover 1080x2520, inner 1968x2184 and native
+  1080x2400 (`GRAPHICS-OVERHAUL.md:86`) are not in `graphics_view.gd:8`
+  (which tests 600x1066, 480x1040, 960x900, 1600x900). They belong to the
+  root emulator stage.
+
+Code note (no change made): the `view == null` 2D fallback branches in
+`main.gd` (lines 638-704) are unreachable, because `main` always creates the
+3D view.
 
 ## Rule and save files unchanged
 
