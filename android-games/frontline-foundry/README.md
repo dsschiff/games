@@ -2,7 +2,10 @@
 
 The bounded [pooling follow-up](POOLING_FOLLOWUP.md) adds scene-owned inactive
 actor/effect reuse to the accepted 0.3.0 graphics. Art, rules and saves are retained.
-This higher-version source candidate has not been exported or installed by its builder.
+Status 2026-10-21: signed 0.3.1/code4 built from d7eb746 (pooling plus art-direction pass),
+rules 69 and input 40 checks pass, and a genuine emulator code3-to-4 install-over keeps the
+whole career/battle/settings. Evidence: `android-games/evidence/frontline-graphics-candidate.json`.
+Physical-phone testing remains deferred.
 
 The accepted rigged stylized 3D benchmark is expanded across the campaign,
 legacy battle and seeded skirmishes. See [GRAPHICS_PRODUCTION.md](GRAPHICS_PRODUCTION.md)

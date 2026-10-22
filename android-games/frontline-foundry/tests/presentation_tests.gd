@@ -247,10 +247,71 @@ func run() -> void:
 			await input_layout_checks(boot.session)
 		boot.queue_free()
 		await process_frame
+	await camera_checks()
 	baseline_replay()
 	print("FRONTLINE_PRESENTATION checks=", checks, " failures=", failures)
 	print("SUITE_COMPLETE: ", "PASS" if failures == 0 else "FAIL")
 	quit(0 if failures == 0 else 1)
+
+func camera_checks() -> void:
+	# Follow camera keeps the commander inside the usable play region on every
+	# fold profile (logical sizes after canvas_items/expand stretch), and wider
+	# windows reveal more world width instead of stretching the art.
+	var s := C.fresh(D.mission(11))
+	s.phase = "playing"
+	var world := V.new()
+	root.add_child(world)
+	world.build(s)
+	world.set_process(false)
+	var widths := {}
+	var framed := true
+	var original_size := root.size
+	for logical in [Vector2(720, 1680), Vector2(1153, 1280), Vector2(720, 1600), Vector2(720, 1280)]:
+		root.size = Vector2i(logical)
+		await process_frame
+		world.fit(root.get_visible_rect().size)
+		widths[logical] = world.visible_half_width()
+		for corner in [Vector2(-4.7, -6.2), Vector2(4.7, -6.2), Vector2(-4.7, 5.9), Vector2(4.7, 5.9), Vector2(0, 1.5)]:
+			world.units.commander.position = Vector3(corner.x, 0, corner.y)
+			world.update_camera(0, true)
+			var screen: Vector2 = world.camera.unproject_position(world.units.commander.position + Vector3(0, .7, 0))
+			var inside: bool = screen.x > 0 and screen.x < logical.x and screen.y > world.safe_top and screen.y < logical.y - world.safe_bottom + 60
+			if not inside:
+				print("CAMERA_FRAMING_MISS ", logical, " ", corner, " ", screen)
+			framed = framed and inside
+	check(framed, "follow camera keeps the commander inside the usable play region on cover, inner, native and baseline profiles")
+	check(widths[Vector2(1153, 1280)] > widths[Vector2(720, 1280)] * 1.5 and is_equal_approx(widths[Vector2(720, 1680)], widths[Vector2(720, 1280)]), "inner fold reveals wider world; tall cover keeps baseline world width")
+	root.size = original_size
+	await process_frame
+	world.fit(root.get_visible_rect().size)
+	var threat := s.duplicate(true)
+	threat.x = 1.0
+	threat.z = -6.0
+	threat.time = 1.0
+	threat.spawned = 2
+	threat.enemies.append({"id": 0, "role": "sapper", "hp": 40, "x": 2.0, "z": 5.6, "telegraph": 0.0})
+	threat.enemies.append({"id": 1, "role": "runner", "hp": 40, "x": 0.5, "z": -5.4, "telegraph": 0.0})
+	world.sync(threat, false, true, 0)
+	world.update_camera(0, true)
+	world.update_cues()
+	var below := 0
+	for mark in world.cues.marks:
+		if mark.direction.y > .5 and mark.point.y >= root.get_visible_rect().size.y - world.safe_bottom - 19:
+			below += 1
+	check(world.cues.marks.size() == 1 and below == 1, "off-screen sapper behind the controls gets one edge cue; on-screen runner gets none")
+	check(world.cues.marks[0].color.a == 1.0, "reduced effects holds edge cues steady without pulsing")
+	world.sync(threat, true, true, 0)
+	world.update_cues()
+	check(world.cues.marks.is_empty(), "paused presentation draws no edge cues")
+	var perimeter := 0
+	var clear := true
+	for node in world.scenery:
+		perimeter += 1
+		var bounds := V.geometry_bounds(node)
+		clear = clear and node.has_meta("regional_placement") and (bounds.position.x >= 4.975 or bounds.end.x <= -4.975 or bounds.end.z <= -6.475)
+	check(perimeter >= 40 and clear, "%d perimeter boulders, trees and barriers frame the field outside commander bounds" % perimeter)
+	world.queue_free()
+	await process_frame
 
 func find_meshes(node: Node) -> Array:
 	var result: Array = [node] if node is MeshInstance3D else []

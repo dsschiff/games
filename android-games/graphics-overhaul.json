@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "gear_hearth_complete_frontline_pool_final_review_pending_hook_CPU_active",
+  "status": "gear_hearth_complete_frontline_code4_emulator_verified_hook_freeze_in_progress",
   "baseline_commit": "6e26b3c2a3938de1828527630f95fb6a219f61b8",
   "reference": {
     "private_path": ".references/graphics-overhaul/user-top-force-44941.jpg",
@@ -205,7 +205,19 @@
   },
   "frontline_pooling_checkpoint": {
     "evidence": "android-games/evidence/frontline-pooling-candidate.json",
-    "status": "source_cpu_movie_timing_pass_signedcode4built_finalmotion_native_pending",
-    "builder_archived": true
+    "status": "signed_code4_from_art_direction_head_built_genuine_code3_to4_emulator_update_passed_private_bundle_ready",
+    "builder_archived": true,
+    "candidate_evidence": "android-games/evidence/frontline-graphics-candidate.json",
+    "source_commit": "d7eb7467a65e50fda8cabe5548e619180b9bd7d0",
+    "version": "0.3.1",
+    "version_code": 4,
+    "apk_sha256": "47f986206b031da52ab8865a2c217ee011b7ed3c491fa49ef810f2ff01887df1",
+    "upgrade_manifest": ".artifacts/upgrades/com.dsschiff.frontlinefoundry/20261022T001511369806Z/manifest.json",
+    "bundle": ".artifacts/releases/graphics-20261021",
+    "superseded_build": "20261018T191430499566Z pre-art code4, never delivered",
+    "open": [
+      "Independent Astra review of the art-direction pass on Android frames",
+      "Physical phone testing deferred by user"
+    ]
   }
 }

@@ -1,0 +1,20 @@
+{
+  "scope": "Pooling/art-direction code4 keeps save envelope version 2 and the entire genuine code3 career, legacy profile, paused Switchyard battle and settings. Whole-path preservation is stricter than these fields.",
+  "expected_save": {
+    "committed": true,
+    "career.attempts": 3,
+    "career.victories": 2,
+    "career.clears.ash_gate": 3,
+    "state.catalog": 2,
+    "state.phase": "playing",
+    "state.wallet": 22,
+    "state.hp": 120,
+    "state.hq": 210,
+    "state.commander_shots": 8,
+    "settings.sound": false,
+    "settings.reduced_effects": true
+  },
+  "expected_numeric": {
+    "state.time": {"min": 28.5499, "max": 28.5501}
+  }
+}

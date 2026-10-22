@@ -28,6 +28,8 @@ var attacks_seen := {}
 var scene_hash := ""
 var sentry: Node3D
 var hq_hit_left := 0.0
+# Longer-lived than the shake so an off-screen HQ hit can still be pointed at.
+var hq_alert_left := 0.0
 var routed := {"projectile": 0, "ground": 0, "contact": 0, "blast": 0, "breach": 0, "repair": 0, "hq": 0}
 var region := {}
 var relay_rings: Array[MeshInstance3D] = []
@@ -43,6 +45,50 @@ var effect_pool := {}
 var model_resources := {}
 var palette_materials := {}
 var pool_stats := {"actors_created": 0, "actors_reused": 0, "actors_retired": 0, "actors_discarded": 0, "effects_created": 0, "effects_reused": 0, "effects_retired": 0, "effects_discarded": 0}
+# Follow camera: a tilted perspective view that frames the commander and leads
+# toward the front. Presentation only; rules own every coordinate.
+const PITCH_DEGREES := 50.0
+const DISTANCE := 16.0
+const VIEW_WIDTH := 11.4
+const REFERENCE_ASPECT := 720.0 / 1280.0
+const PLAY_HALF_WIDTH := 5.4
+var view_size := Vector2(720, 1280)
+var camera_focus := Vector3(0, 0, 0)
+var camera_focus_ready := false
+var commander_ring: MeshInstance3D
+var cue_layer: CanvasLayer
+var cues: Control
+var scenery: Array[Node3D] = []
+# Logical HUD insets: threats hidden under the header or behind controls are cued.
+var safe_top := 186.0
+var safe_bottom := 300.0
+# Linear albedo scale so the open sand sits at a mid-light value under the sun.
+const GROUND_TONE := .86
+const GROUND_SHADER := preload("res://scripts/presentation/ground.gdshader")
+
+class EdgeCues extends Control:
+	## Off-screen threat chevrons drawn at the edge of the usable play region.
+	var marks: Array = []
+
+	func _draw() -> void:
+		for mark in marks:
+			var point: Vector2 = mark.point
+			var direction: Vector2 = mark.direction
+			var color: Color = mark.color
+			var size: float = mark.size
+			var side := Vector2(-direction.y, direction.x)
+			# Arrowhead with a notched back so the pointing direction is unambiguous.
+			var tip := point + direction * size
+			var wing := point - direction * size * .9
+			var notch := point - direction * size * .45
+			var arrow := PackedVector2Array([tip, wing + side * size * .52, notch, wing - side * size * .52])
+			var halo := PackedVector2Array([tip + direction * 4, wing + side * (size * .52 + 4) - direction * 2, notch - direction * 3, wing - side * (size * .52 + 4) - direction * 2])
+			draw_colored_polygon(halo, Color(.12, .10, .08, .6 * color.a))
+			draw_colored_polygon(arrow, color)
+			if mark.count > 1:
+				var badge := point - direction * size * 1.25
+				draw_circle(badge, size * .5, Color(.12, .10, .08, .65 * color.a))
+				draw_string(ThemeDB.fallback_font, badge + Vector2(-size * .5, size * .24), str(mark.count), HORIZONTAL_ALIGNMENT_CENTER, size, int(size * .7), Color(1, .94, .86, color.a))
 
 func _exit_tree() -> void:
 	# Every reserve node remains a child and dies with this owner. Resource
@@ -150,80 +196,98 @@ func build(state: Dictionary) -> void:
 	campaign = int(state.catalog) == 2
 	region = Regions.describe(state)
 	adapter.reset(state, false)
+	var night: bool = region.terrain == "night"
+	var haze := Color(region.haze)
 	var environment := WorldEnvironment.new()
 	var env := Environment.new()
 	env.background_mode = Environment.BG_COLOR
-	env.background_color = Color("c5d1cf")
+	env.background_color = haze
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
-	env.ambient_light_color = Color("dbe7e4")
-	env.ambient_light_energy = .38 if region.terrain == "night" else .30
+	env.ambient_light_color = Color("c9d4e2") if night else Color("eef0f0")
+	env.ambient_light_energy = .34 if night else .30
 	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
-	env.tonemap_exposure = 0.85
+	env.tonemap_exposure = .74
+	# Soft distance haze: the clearing stays crisp, the perimeter recedes.
+	env.fog_enabled = true
+	env.fog_mode = Environment.FOG_MODE_DEPTH
+	env.fog_light_color = haze
+	env.fog_density = .38
+	env.fog_depth_begin = DISTANCE + 1.0
+	env.fog_depth_end = DISTANCE + 15.0
+	env.fog_depth_curve = 1.2
+	env.fog_sky_affect = 1.0
 	environment.environment = env
 	add_child(environment)
 	var sun := DirectionalLight3D.new()
-	sun.rotation_degrees = Vector3(-53, -32, 0)
-	sun.light_color = Color("fffbf0")
-	sun.light_energy = 0.72
+	sun.rotation_degrees = Vector3(-56, -38, 0)
+	sun.light_color = Color("dfe6ff") if night else Color("fff8ee")
+	sun.light_energy = .66 if night else .74
 	sun.shadow_enabled = true
-	sun.directional_shadow_max_distance = 50
-	sun.shadow_bias = 0.08
-	sun.shadow_normal_bias = .65
-	sun.shadow_opacity = .48
-	sun.shadow_blur = 2.0
+	sun.directional_shadow_mode = DirectionalLight3D.SHADOW_ORTHOGONAL
+	sun.directional_shadow_max_distance = 42
+	sun.shadow_bias = 0.06
+	sun.shadow_normal_bias = .7
+	sun.shadow_opacity = .52
+	sun.shadow_blur = 2.4
 	add_child(sun)
 	var fill := DirectionalLight3D.new()
 	fill.rotation_degrees = Vector3(-38, 145, 0)
-	fill.light_color = Color("a9c5dd") if region.terrain == "night" else Color("cad9e0")
-	fill.light_energy = .22
+	fill.light_color = Color("a9c5dd") if night else Color("d6e2ea")
+	fill.light_energy = .20
 	fill.shadow_enabled = false
 	add_child(fill)
 	camera = Camera3D.new()
-	camera.projection = Camera3D.PROJECTION_ORTHOGONAL
-	camera.near = 1.0
-	camera.far = 80.0
-	camera.position = Vector3(0, 20, 17)
+	camera.projection = Camera3D.PROJECTION_PERSPECTIVE
+	camera.keep_aspect = Camera3D.KEEP_HEIGHT
+	camera.near = 2.0
+	camera.far = 90.0
 	add_child(camera)
-	camera.look_at(Vector3(0, 0, .35))
 	camera.current = true
-	# Continuous terrain beyond the authored rules rectangle; no floating board.
-	box(Vector3(0, -.42, 0), Vector3(90, .8, 90), region.ground)
-	for spec in [[-3.5, -5.8, 1.6], [3.1, -3.8, 1.3], [0.8, -7.7, 1.1], [-4.0, 1.5, .9]]:
-		var patch := cylinder(Vector3(spec[0], -.009, spec[1]), spec[2], .012, Color(region.ground).darkened(.045).to_html(false))
-		patch.scale.z = .55
-		patch.rotation.y = spec[1] * .3
-	box(Vector3(0, .001, 3.1), Vector3(1.5, .012, 6.0), region.path)
+	camera_focus_ready = false
+	# One continuous warm ground: soft clearing, gentle value drift, painted
+	# gate-to-HQ track. Shader only colors; it adds no collision or height.
+	var ground := PlaneMesh.new()
+	ground.size = Vector2(140, 140)
+	var ground_node := MeshInstance3D.new()
+	ground_node.name = "Ground"
+	ground_node.mesh = ground
+	ground_node.position.y = -.004
+	ground_node.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	var ground_material := ShaderMaterial.new()
+	ground_material.shader = GROUND_SHADER
+	ground_material.set_shader_parameter("sand", Color(region.ground).srgb_to_linear() * GROUND_TONE)
+	ground_material.set_shader_parameter("clearing", Color(region.clearing).srgb_to_linear() * GROUND_TONE)
+	ground_material.set_shader_parameter("rim", Color(region.rim).srgb_to_linear() * GROUND_TONE)
+	ground_material.set_shader_parameter("track", Color(region.path).srgb_to_linear() * GROUND_TONE)
+	ground_node.material_override = ground_material
+	add_child(ground_node)
 	build_region()
+	frame_playfield()
 	for side in [-1, 1]:
-		for i in 3:
-			var stone := asset("cliff", Vector3(side * 5.45, .03, -7.5 + i * 2.3))
-			stone.scale = Vector3(.33, .40, .36)
-			stone.rotation.y = i * 1.7
-		for i in 8:
-			var cliff := asset("cliff", Vector3(side * (6.7 + sin(i * 2.1) * .45), .45, -11.0 + i * 2.55))
-			cliff.rotation.y = i * .57
-			cliff.scale = Vector3(1.1 + (i % 3) * .2, 1.5 + (i % 2) * .6, 1.3)
 		for i in 5:
 			var bag := asset("sandbag", Vector3(side * (1.35 + i * .84), 0, -.30 + i * .10))
 			bag.rotation.y = side * -.10
 			if i % 2 == 0:
 				asset("sandbag", bag.position + Vector3(.15 * side, .32, 0))
 			visual_steps.append({"point": Vector2(bag.position.x, bag.position.z), "height": .72 if i % 2 == 0 else .40, "extent": Vector2(.44, .24)})
-		for i in 4:
-			var crate := asset("crate", Vector3(side * 5.35, 0, 1.2 + i * 1.1))
-			crate.rotation.y = i * .35
-		for i in (4 if region.terrain in ["snow", "ridge", "night"] else 0):
-			var tree := Node3D.new()
-			add_child(tree)
-			tree.position = Vector3(side * (8.2 + (i % 2) * 1.5), 0, -10 + i * 4.3)
-			cylinder(tree.position + Vector3(0, .5, 0), .13, 1.0, "6c6e62")
-			for tier in 3:
-				var pine := CylinderMesh.new()
-				pine.top_radius = 0.05
-				pine.bottom_radius = 1.0 - tier * .22
-				pine.height = 1.15
-				var n := mesh(pine, tree.position + Vector3(0, 1.0 + tier * .7, 0), "a6b9b7" if tier < 2 else "d9e2de")
-				n.rotation.y = i
+	commander_ring = MeshInstance3D.new()
+	var ring_shape := TorusMesh.new()
+	ring_shape.inner_radius = .46
+	ring_shape.outer_radius = .53
+	ring_shape.rings = 32
+	ring_shape.ring_segments = 4
+	commander_ring.mesh = ring_shape
+	commander_ring.scale.y = .12
+	commander_ring.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	commander_ring.material_override = mat("f3d564")
+	add_child(commander_ring)
+	cue_layer = CanvasLayer.new()
+	cue_layer.layer = 0
+	add_child(cue_layer)
+	cues = EdgeCues.new()
+	cues.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	cues.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	cue_layer.add_child(cues)
 	hq = asset("headquarters", Vector3(0, 0, 7.2))
 	hq.rotation.y = PI
 	hq_socket = Marker3D.new()
@@ -261,6 +325,67 @@ func build(state: Dictionary) -> void:
 	available = state.definition.available if campaign else ["rifle", "vehicle"]
 	scene_hash = state.get("definition_hash", "legacy")
 	sync(state, false, false, 0)
+	update_camera(0, true)
+
+func frame_playfield() -> void:
+	# Perimeter dressing sits outside the commander rectangle (+/-4.7 plus body
+	# radius) and behind the enemy spawn edge; place_landmark enforces bounds.
+	var snowy: bool = region.terrain in ["snow", "ridge", "night", "glass"]
+	var wooded: bool = region.terrain in ["snow", "ridge", "night", "glass", "bridge", "rail"]
+	var rock_kind := "snow_rock" if snowy else "boulder_large"
+	var tall_kind := "snow_rock_tall" if snowy else "boulder_small"
+	var tree_kind := "pine" if snowy else "pine_bare"
+	for side: int in [-1, 1]:
+		var phase := 0 if side < 0 else 1
+		# Inner edge: low barriers and sawhorses read as the outpost boundary.
+		for i in 3:
+			var z := -3.6 + i * 4.4 + phase * .8
+			var kind := "barrier" if (i + phase) % 2 == 0 else "sawhorse"
+			perimeter(kind, Vector3(side * 5.3, 0, z), PI * .5 + side * .12 * (i % 2), 1.0, side)
+		# Main rock wall: large soft boulders hugging the edge between barriers.
+		for i in 9:
+			var z := -14.2 + i * 3.1 + phase * 1.2
+			var kind := rock_kind if (i + phase) % 3 != 1 else "rock_outcrop"
+			var size := .95 + .15 * float((i * 7 + phase * 3) % 4)
+			perimeter(kind, Vector3(side * (5.9 + float((i * 5 + phase) % 3) * .5), 0, z), float(i) * 1.37 + phase, size, side)
+			perimeter("boulder_small" if i % 2 == phase else tall_kind, Vector3(side * 8.6, 0, z + 1.5), float(i) * .9, .9 + .1 * float(i % 3), side)
+		# Outer band: trees and tall rocks fade into the haze.
+		for i in 8:
+			var z := -17.0 + i * 3.7 + phase * 1.6
+			var x := side * (9.6 + float((i * 3 + phase) % 4) * .9)
+			if wooded:
+				perimeter("pine_tall" if (i + phase) % 3 == 0 else tree_kind, Vector3(x, 0, z), float(i), 1.0 + .12 * float(i % 3), side)
+				perimeter(tree_kind, Vector3(x + side * 2.2, 0, z + 1.6), float(i) * 2.1, 1.1, side)
+			else:
+				perimeter(tall_kind, Vector3(x, 0, z), float(i) * 1.1, 1.2 + .15 * float(i % 3), side)
+		perimeter("fuel_drum", Vector3(side * 5.5, 0, 6.6 + phase * .5), 0, 1.0, side)
+		# Stacked supply crates beside the base apron.
+		for j in 3:
+			var crate := perimeter("crate", Vector3(side * 5.45, 0, 3.6 + float(j % 2) * .62 + phase * .3), float(j) * .4 + side * .2, 1.0, side)
+			if j == 2:
+				crate.position += Vector3(0, .56, -.3)
+	# Far side beyond the enemy spawn edge: a broken ridge of rock and trees.
+	for i in 8:
+		var x := -10.5 + i * 3.0 + float(i % 2) * .7
+		var z := -10.4 - float((i * 3) % 4) * .9
+		var kind := "boulder_small" if i % 3 == 1 else (rock_kind if i % 2 == 0 else "rock_outcrop")
+		perimeter(kind, Vector3(x, 0, z), float(i) * 1.9, .9 + .12 * float(i % 3), 0)
+		if wooded:
+			perimeter(tree_kind if i % 2 == 0 else "pine_tall", Vector3(x + 1.3, 0, z - 2.4), float(i), 1.1, 0)
+	# Foreground corners frame the base without crossing the HQ apron.
+	for side: int in [-1, 1]:
+		perimeter(rock_kind, Vector3(side * 7.4, 0, 10.6), side * .8, 1.45, side)
+		perimeter("rock_outcrop", Vector3(side * 6.4, 0, 13.6), side * 2.0, 1.3, side)
+
+func perimeter(id: String, point: Vector3, yaw: float, scale_factor: float, side: int) -> Node3D:
+	var node := place_landmark(id, point, yaw, scale_factor, side)
+	node.set_meta("perimeter", true)
+	# Distant dressing does not need to cast into the shadow map.
+	var far := absf(node.position.x) > 9.0 or node.position.z < -10.0 or node.position.z > 11.0
+	for child in node.find_children("*", "GeometryInstance3D", true, false):
+		(child as GeometryInstance3D).cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF if far else GeometryInstance3D.SHADOW_CASTING_SETTING_ON
+	scenery.append(node)
+	return node
 
 func build_region() -> void:
 	# All opaque landmarks stay outside the existing playable rectangle. Low
@@ -356,7 +481,7 @@ func cylinder(point: Vector3, radius: float, height: float, color: String) -> Me
 
 func asset(id: String, point: Vector3) -> Node3D:
 	var n := Actor.instantiate_model("res://art/models/" + id + ".glb", model_resources)
-	Actor.finish_materials(n, {"Rock": Color(region.rock), "Snow": Color(region.cap), "WorldStone": Color(region.rock)}, "prop", palette_materials)
+	Actor.finish_materials(n, {"Rock": Color(region.rock), "Snow": Color(region.cap), "WorldStone": Color(region.rock), "Sandbag": Color("98a777"), "Seam": Color("7d8a5f"), "WorldIvory": Color("d2cab6")}, "prop", palette_materials)
 	add_child(n)
 	n.position = point
 	return n
@@ -374,9 +499,95 @@ func label3(text: String, point: Vector3, size: int) -> Label3D:
 	return l
 
 func fit(view: Vector2) -> void:
-	# Camera KEEP_HEIGHT preserves vertical composition; width expands on Fold.
+	# Portrait phones keep a fixed world width; wider Fold/landscape windows keep
+	# the reference height and reveal more of the surrounding world instead.
+	view_size = view
+	var aspect := view.x / maxf(1.0, view.y)
+	var half := VIEW_WIDTH * .5 / DISTANCE
 	camera.keep_aspect = Camera3D.KEEP_HEIGHT
-	camera.size = maxf(20.2, 11.9 * view.y / view.x)
+	camera.fov = rad_to_deg(2.0 * atan(half / minf(aspect, REFERENCE_ASPECT)))
+	update_camera(0, true)
+
+func visible_half_width() -> float:
+	var aspect := view_size.x / maxf(1.0, view_size.y)
+	return tan(deg_to_rad(camera.fov) * .5) * aspect * DISTANCE
+
+func update_camera(dt: float, snap: bool) -> void:
+	if camera == null:
+		return
+	var anchor := Vector3(0, 0, 1.5)
+	if units.has("commander"):
+		anchor = units.commander.position
+	elif adapter.current.has("commander"):
+		anchor = adapter.current.commander.position
+	var margin := maxf(0.0, PLAY_HALF_WIDTH - visible_half_width())
+	# Lead toward the front: the view sits ahead of the commander so arriving
+	# enemies, relays and the gate stay in frame while the base remains near.
+	var target := Vector3(clampf(anchor.x * .6, -margin, margin), 0, clampf(anchor.z * .55 - .9, -3.4, 1.8))
+	# Near the base the commander is closer to the lens, where the view is
+	# narrower: keep the whole body inside the frustum at its own depth.
+	var pitch := deg_to_rad(PITCH_DEGREES)
+	var depth := DISTANCE - (anchor.z - target.z) * cos(pitch)
+	var reach := maxf(0.0, visible_half_width() * depth / DISTANCE - .75)
+	target.x = clampf(target.x, anchor.x - reach, anchor.x + reach)
+	if snap or not camera_focus_ready:
+		camera_focus = target
+		camera_focus_ready = true
+	else:
+		camera_focus = camera_focus.lerp(target, 1.0 - exp(-dt * 3.0))
+	camera.position = camera_focus + Vector3(0, sin(pitch), cos(pitch)) * DISTANCE
+	camera.look_at(camera_focus)
+
+func update_cues() -> void:
+	if cues == null:
+		return
+	var marks: Array = []
+	if not adapter.paused and adapter.phase == "playing" and camera != null:
+		var top := safe_top + 26.0
+		var bottom := view_size.y - safe_bottom - 18.0
+		var rect := Rect2(Vector2(26, top), Vector2(view_size.x - 52, maxf(10.0, bottom - top)))
+		var center := rect.get_center()
+		for key in adapter.current:
+			var data: Dictionary = adapter.current[key]
+			if data.team != "enemy":
+				continue
+			var point: Vector3 = data.position + Vector3(0, .6, 0)
+			var screen := camera.unproject_position(point)
+			if camera.is_position_behind(point) or rect.has_point(screen):
+				continue
+			var boss: bool = data.role in ["drill", "carrier", "storm"]
+			var urgent: bool = float(data.get("warning", 0.0)) > 0
+			# Clamp along the ray from the play center so the chevron points at the threat.
+			var direction := (screen - center).normalized()
+			var edge := clamp_to_rect(center, direction, rect)
+			var merged := false
+			for existing in marks:
+				if existing.point.distance_to(edge) < 46.0:
+					existing.count += 1
+					existing.size = maxf(existing.size, 30.0 if boss else 22.0)
+					merged = true
+					break
+			if merged:
+				continue
+			var color := Color("ff6a4d") if urgent else (Color("ff7b3a") if boss else Color("e8573f"))
+			if not reduced:
+				color.a = .8 + .2 * sin(Time.get_ticks_msec() * .008)
+			marks.append({"point": edge, "direction": direction, "color": color, "size": 30.0 if boss else 22.0, "count": 1})
+		if hq_alert_left > 0 and hq_socket != null:
+			var hq_screen := camera.unproject_position(hq_socket.global_position)
+			if not rect.has_point(hq_screen):
+				var toward := (hq_screen - center).normalized()
+				marks.append({"point": clamp_to_rect(center, toward, rect), "direction": toward, "color": Color("f2b44c"), "size": 28.0, "count": 1})
+	cues.marks = marks
+	cues.queue_redraw()
+
+static func clamp_to_rect(origin: Vector2, direction: Vector2, rect: Rect2) -> Vector2:
+	var t := INF
+	if absf(direction.x) > .0001:
+		t = minf(t, ((rect.end.x if direction.x > 0 else rect.position.x) - origin.x) / direction.x)
+	if absf(direction.y) > .0001:
+		t = minf(t, ((rect.end.y if direction.y > 0 else rect.position.y) - origin.y) / direction.y)
+	return origin + direction * (0.0 if t == INF else t)
 
 func sync(state: Dictionary, is_paused: bool, reduced_effects: bool, dt: float) -> void:
 	reduced = reduced_effects
@@ -439,6 +650,12 @@ func sync(state: Dictionary, is_paused: bool, reduced_effects: bool, dt: float) 
 		relay_labels[i].text = "%d%%" % int(100 * state.captures[i] / state.definition.capture_seconds)
 		relay_labels[i].visible = Vector2(state.x, state.z).distance_to(Vector2(state.definition.relays[i][0], state.definition.relays[i][1])) < 1.4
 		relay_rings[i].material_override = mat("95bb71" if state.captures[i] >= state.definition.capture_seconds else region.accent)
+	if units.has("commander") and commander_ring != null:
+		commander_ring.visible = adapter.current.commander.phase != "fallen"
+		if reset:
+			commander_ring.position = units.commander.position + Vector3(0, .025, 0)
+	if reset:
+		update_camera(0, true)
 	sync_pickups(state)
 	sync_warnings(state)
 	if not is_paused:
@@ -520,6 +737,7 @@ func present_event(event: Dictionary) -> void:
 			pulse(Vector3(event.to[0], .10, event.to[1]), "e06e43", .28)
 	if event.kind == "incoming" and int(event.recipient) == -2:
 		hq_hit_left = .22
+		hq_alert_left = 1.4
 		routed.hq += 1
 		pulse(hq_socket.global_position, "e7a556", .3)
 		return
@@ -556,6 +774,7 @@ func clear_transients() -> void:
 	pending.clear()
 	attacks_seen.clear()
 	hq_hit_left = 0
+	hq_alert_left = 0
 	hq.rotation.z = 0
 	for effect in effects:
 		retire_effect(effect.node, effect.kind)
@@ -566,8 +785,10 @@ func clear_transients() -> void:
 func _process(dt: float) -> void:
 	var alpha := adapter.advance(dt)
 	if adapter.paused:
+		update_cues()
 		return
 	hq_hit_left = maxf(0, hq_hit_left - dt)
+	hq_alert_left = maxf(0, hq_alert_left - dt)
 	hq.rotation.z = sin(hq_hit_left / .22 * PI) * .025
 	for key in units:
 		if not adapter.current.has(key):
@@ -580,6 +801,11 @@ func _process(dt: float) -> void:
 		units[key].position = previous.position.lerp(current.position, alpha)
 		units[key].position.y = ground_height(units[key].position)
 		units[key].pose(dt, velocity, adapter.phase == "victory" and current.team != "enemy")
+	if units.has("commander"):
+		commander_ring.visible = adapter.current.commander.phase != "fallen"
+		commander_ring.position = units.commander.position + Vector3(0, .025, 0)
+	update_camera(dt, false)
+	update_cues()
 	for key in corpses.keys():
 		corpses[key].node.pose(dt, Vector3.ZERO, false)
 		corpses[key].left -= dt
