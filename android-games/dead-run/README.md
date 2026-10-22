@@ -1,5 +1,18 @@
 > Graphics work: see [GRAPHICS_PRODUCTION.md](GRAPHICS_PRODUCTION.md). Graphics candidate frozen as 0.3.0/code4 (original stylized 3D presentation). Status 2026-10-21: signed APK built, rules 139/input 34/presentation 22 pass, genuine emulator code3-to-4 update keeps the whole save, drag steering confirmed on the emulator, and Android lighting matches desktop frames. Evidence: `android-games/evidence/dead-run-graphics-candidate.json`. Functional 0.2.1/code3 records below remain retained.
 
+> **0.4.0/code5 horde pass (2026-10-22).** Rule3/catalog2 replaces thin waves with dense
+> packs and pre-boss surges (13,039 infected across the campaign versus 1,896; 9-37 live
+> at the median, up to 177 at peak), raises the crew cap from 20 to 49, adds multiply gates
+> (x2, x3 from Reservoir Ring), weapon range (15-18 m) and piercing Fan pellets. A code4 road
+> in progress keeps replaying under the frozen catalog1 rules (`scripts/catalog1_*.gd`); an
+> unstarted code4 road opens under rule3; Retry starts the rule3 road. Clears, medals, best
+> crew, settings and the legacy bridge are preserved. Numbers, save policy, host timing and
+> limits: [GRAPHICS_PRODUCTION.md](GRAPHICS_PRODUCTION.md#horde-pass-rule3-040code5). The
+> catalog1 arithmetic described below still applies to code4 roads; rule3 numbers are in that
+> section. Extra checks: `run_desktop.py code4-headless` (genuine code4 mid-road save),
+> `run_graphics.py timing` (opt-in host timing), `tests/horde_balance.gd` (balance sweep,
+> development tool). Every automated run uses `--audio-driver Dummy`.
+
 # Dead Run — evacuation campaign (0.2.1/code3)
 
 An original offline portrait road shooter for pinned Godot4.7.2/GDScript. Restore

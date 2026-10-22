@@ -7,6 +7,167 @@ presets, project/version metadata and delivery metadata are byte-identical in
 normalized LF form (proof below). Root still owns review, integration, export,
 signing, emulator/native checks and delivery. Not a release candidate.
 
+## Horde pass: rule3, 0.4.0/code5
+
+Branch `claude/dead-run-hordes` from `bb6a589`. Daniel approved a gameplay
+change: the 0.3.0 presentation showed 3 to 10 live infected, far from the
+ads' floods. This pass changes rules, so it adds a new catalog and keeps the
+old one replaying.
+
+### What changed in play
+
+| | catalog1 (code2-code4) | catalog2 / rule3 (code5) |
+| --- | --- | --- |
+| Infected per campaign | 1,896 | 13,039 (6.9x) |
+| Live infected, median per road | about 3-10 | 9-24 (Canal), 18-31 (Market), 24-34 (Reservoir), 25-37 (Ferry) |
+| Live infected, 90th percentile | - | 30-64, 58-78, 68-94, 82-109 |
+| Peak on screen (surges) | - | 80, 119, 145, 177 |
+| Crew cap | 20 (5 columns) | 49 (7 columns, a 7x7 blob) |
+| Fodder HP | drifter 3, runner 2, cluster 1 | drifter 2, runner 1, cluster 1 |
+| Tough roles | plated 5+2 armour, spitter 4, bulwark 9+3 | plated 6+3, spitter 5, bulwark 16+5 |
+| Weapons | Rivet 24t, Lance 42t pierce 3, Fan 36t 2 pellets | Rivet 20t range 16; Lance 40t, 2 dmg, pierce 4, range 18; Fan 34t, 2 pellets each piercing 2, spread .034, range 15 |
+| Gates | +1 per hit, cap +5/+6 | add gates -3 to -(8+3d), cap +8 to +16; multiply gates x1 to x2 (x3 from Reservoir), one step per 40+10d hits, grant crew x (value-1) |
+| Roadside rescue | +3 | +6 to +9, HP 160-280 |
+| Boss HP | 140/170/190/220, blockade 36, arms 45 | 520/640/720/680, blockade 300, arms 160 |
+| Hazard losses | spit 2, boss 2-3, flood 2, cart 3 | spit 3, boss 4-7, flood 5-6, cart 4-7 |
+
+Waves are now packs: rows of three that fan out across most of a lane, led by
+the role the catalog1 wave grammar would have spawned (plated, spitter,
+bulwark), with flanking packs in the other lanes once a road is 18% through.
+Pack size grows through each road (2 + district, up to +6 by the end). In the
+14 seconds before every blockade or district boss a surge floods all three
+lanes; the HUD says "HORDE SURGE". Weapon range is new: rounds fade at 15 to
+18 m, so a horde visibly closes in before it falls, and every weapon still
+reaches the bosses at 14 m. Road durations, the 24-road arc (2,260 s active
+simulation), deadlines, medals, Retry and seeded replay are unchanged in
+shape. The opening road keeps its harmful third gate.
+
+The read-only solver policy (`tests/campaign_policy.gd`) now aims at the lane
+position whose fire covers the most urgent pressure and takes worthwhile gates
+before they cross. Sweep over all 24 roads x 3 weapons
+(`tests/horde_balance.gd`, a development tool, rule fixture only):
+
+| Policy | Wins |
+| --- | --- |
+| rescue (the fixture used by the tests) | 72/72 |
+| line (rescue-last variant: no roadside work before tick 1500) | 71/72; the Last Ferry with Lance loses its opening |
+| lagged (steers every 30 ticks from a 10-tick-old reading) | 72/72 |
+| sloppy (chases the nearest infected once a second, ignores gates, rescues, marks) | 40/72; loses most roads from Market Viaduct on |
+| idle (no steering) | 0/24 |
+
+District bosses fall 10.5 to 22.8 s into their 30 s window under the solver.
+End crews range 33-49 with 0-40 lost per road; the bigger losses sit in
+Reservoir Ring and Ferry Approach.
+
+### Saves and versioning
+
+- `scripts/catalog1_data.gd` is byte-identical to code4's `campaign_data.gd`
+  (git blob `56b2364`). `scripts/catalog1_rules.gd` is code4's
+  `campaign_rules.gd` with only its data preload path and a header comment
+  changed.
+- `campaign_rules.gd` hands any state whose pinned definition says
+  `catalog: 1` to the frozen module for every rule entry point (steer,
+  adjust, targets, strike, step, valid). A code4 road in progress therefore
+  continues under its original rules, never re-simulated under rule3.
+- `Store.upgrade` (called on startup and on Import) is the one explicit
+  migration: a catalog1 road still in `ready` (loaded, never started) becomes
+  the same road, weapon and seed under rule3. Roads in progress and finished
+  roads stay catalog1. Retry after a catalog1 road starts the rule3 version of
+  that road; that is the one place Retry does not keep the old definition.
+- Clears, medals, best crew (now bounded 1-49), replays, settings, loadout and
+  the parked legacy canal bridge are untouched. The envelope schema stays 2.
+- Regression fixture: `tests/fixtures/code4-midroad/` holds two genuine
+  app-written code4 slot files (road 7, Lance, paused at tick 1500, crew 13),
+  produced by the unmodified `bb6a589` project with
+  `make_code4_fixture.gd.txt`, plus code4's own continuation of that road to
+  victory (recorded steering and final state). Its profile clears are a
+  labelled fixture. `campaign-rules` checks decode, preservation, no silent
+  upgrade, and a tick-for-tick match with code4's final state;
+  `code4-headless` does the same through the real scene (install-over on
+  desktop, not Android), then checks that Retry yields rule3 and survives a
+  cold restart.
+- Formation: up to 25 members the rule3 formation equals catalog1's
+  (checked for every count). Larger blobs pack their drawn rows tighter; only
+  the lateral offset is a rule input.
+
+### Performance
+
+- Rules: targets are z-sorted each tick and each round binary-searches its
+  swept interval. Same choice as catalog1 (nearest target, earliest listed on
+  ties), cheaper with 100+ live infected. Rule step at the heaviest surge:
+  median 0.8-0.9 ms, p95 1.1-1.8 ms on the host.
+- Presentation: far fodder (more than 15.5 m out) is drawn as one MultiMesh per
+  role in rest pose with a bob, and swaps to a pooled skinned actor when it
+  reaches the fighting band or dies. Pools hold up to 48 per role and are
+  warmed at road build. Infected beyond 12.5 m pose on alternate frames. Only
+  the live window of the enemy list is walked each refresh. Fodder and crew
+  beyond 24 skip the shadow pass. The first four kills and six hits of a
+  refresh get full bursts, the rest small chips; bodies fade sooner during
+  big sweeps. Muzzle flashes are spread over at most 20 shooters. Tracers get
+  a small per-shooter spread so a big crew reads as a wall of fire.
+- Saves: a heavy road's checked save is about 250-300 KB (encode about 15 ms,
+  each checked decode 30-60 ms on the host). In-road autosaves now run every
+  10 s on a worker thread from a private snapshot (about 2 ms to copy);
+  pause, Back, backgrounding, road changes and every terminal phase still save
+  synchronously, after waiting for any pending autosave.
+
+Host timing, opt-in (`python -B tests/run_graphics.py timing`): real
+720x1280 window, Compatibility renderer, RTX 5070 Ti, vsync off, unpaced
+render frames, 60 warm-up frames excluded, 720 rule ticks from 12 s before
+the Convoy Column blockade (road 23), crew 49, 129-130 live infected at peak.
+
+| Run | Live peak | Frame median | p95 | p99 | Frames >16.7 ms | Frames >33.3 ms | Rule step median / p95 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Road 1 opening, Rivet (light baseline) | 8 | 1.8 ms | 3.3 ms | 4.4 ms | 2 of 5,789 | 1 | 0.09 / 0.12 ms |
+| Road 23 surge, Fan, full effects | 128 | 6.0 ms | 11.1 ms | 18.9 ms | 36 of 1,712 | 0 | 0.76 / 0.96 ms |
+| Road 23 surge, Fan, Reduced Effects | 128 | 4.8 ms | 8.9 ms | 17.2 ms | 23 of 2,079 | 0 | 0.75 / 1.02 ms |
+| Road 23 surge, Lance, full effects | 122 | 4.6 ms | 8.8 ms | 16.0 ms | 13 of 2,234 | 0 | 0.70 / 0.87 ms |
+
+Earlier runs of the same capture while other work loaded the machine gave
+7-11 ms medians and p95 12-19 ms. Before the far-crowd LOD and the 10 s
+autosave the surge measured 12-16 ms median.
+
+These are host desktop numbers on a fast GPU with other agents' work on the
+machine; they are not phone FPS. The surge is CPU-bound (GPU about 13%
+busy), dominated by skinned-actor posing, scene sync and per-actor draw
+submission.
+
+### Presentation
+
+- Gates: add gates as before (blue/red with signed number); multiply gates show
+  "x1 SHOOT x2" on a grey panel until shooting turns them gold "x2 CREW".
+- Threat rings: one MultiMesh of ground rings marks plated (pale gold),
+  spitters (acid green) and bulwarks (red, larger) inside a horde. Only tough
+  roles carry health bars.
+- Reduced Effects: unchanged meaning; it still drops bursts, pops, splats,
+  pulses, join rings and shake, keeps tracers, telegraphs, labels, bars, rings.
+- Frames: `C:/projects/active/games/.artifacts/releases/graphics-20261021/previews/deadrun-hordes-*.png`
+  (early road 1, mid road 9, surge road 11 Fan, surge road 13 Lance, Cable
+  Matron, Ferry Eater), rendered at 720x1280 with policy touch-drag input on
+  labelled visual-fixture profiles.
+
+### Limits
+
+- Phone frame rate is unmeasured. Host surges run at about 5-11 ms median per
+  frame (load-dependent) against 2 ms on the opening road; a phone will be several times
+  slower, so 60 fps in Ferry Approach surges is doubtful without further
+  work (fewer skinned crew, GPU skinning checks, lower shadow cost).
+- The solver policy is strong and reacts every 15 ticks; human difficulty is
+  untested. The sloppy and lagged sweeps are the only proxies.
+- Crew hits the 49 cap on most roads under the solver; late gates then mainly
+  refill losses.
+- Bosses at 14 m sit just inside Fan's 15 m range; Fan's boss damage comes
+  from its last metre of flight.
+- Saves are about 5x larger than code4's; a checked synchronous save on the
+  heaviest road costs over 100 ms on the host, so pausing can hitch.
+- Godot 4.7 GDScript on a worker thread still slows the main thread during an
+  autosave (measured: about 3 ms on the median frame at a surge).
+
+## 0.3.0/code4 graphics pass (presentation only)
+
+The sections below describe the earlier presentation-only pass. Its "byte-identical rules" and
+"3 to 10 live infected" statements describe code4; rule3 above supersedes them.
+
 ## What changed on screen
 
 - **Camera.** Lower elevated chase view (`(0, 9.5, 8.5)` looking at
