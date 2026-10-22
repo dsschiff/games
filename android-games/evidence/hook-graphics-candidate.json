@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "game": "hook-and-hunger",
+  "date": "2026-10-21",
+  "status": "emulator_upgrade_verified_graphics_candidate_physical_phone_deferred",
+  "source_branch": "codex/hook-graphics",
+  "source_commit": "cbecd6f1e057febd63426dcd714d9e5caf091d22",
+  "graphics_head_before_freeze": "746139e",
+  "version": "0.3.0",
+  "version_code": 5,
+  "version_transition": {
+    "from": "0.2.2/code4 (delivered)",
+    "to": "0.3.0/code5"
+  },
+  "apk": {
+    "build_manifest": "C:/projects/active/_worktrees/games-hook-and-hunger-20261018/.artifacts/hook-and-hunger/20261022T001940328083Z/manifest.json",
+    "delivery_copy": "C:/projects/active/games/.artifacts/releases/graphics-20261021/Hook-and-Hunger-0.3.0-Android.apk",
+    "sha256": "b62aa877cf5fe8a005ca90f833b8210fec93d26d3ccac34ae7104f532683a1ea",
+    "bytes": 58361797,
+    "package": "com.dsschiff.hookandhunger",
+    "permissions": [],
+    "internet_permission": false,
+    "signature_verified": true,
+    "signer_cert_sha256": "90e5a27df8d0c427da5bb822477d31796ff7f1d20d95ef915246cde6e2a9c55b",
+    "same_signer_as_delivered_code4": true,
+    "source_clean_and_unchanged": true
+  },
+  "tests": {
+    "manifest": "C:/projects/active/_worktrees/games-hook-and-hunger-20261018/.artifacts/hook-and-hunger/20261022T001923036404Z/manifest.json",
+    "rules_checks": 57,
+    "input_playthrough_checks": 18,
+    "failures": 0
+  },
+  "upgrade": {
+    "manifest": "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.hookandhunger/20261022T002033749867Z/manifest.json",
+    "result": "passed",
+    "checks_passed": 24,
+    "checks_total": 24,
+    "old_save": "Genuine earned first-passage victory carried through the real code3-to-4 update; real pause tap; no reset or injected save",
+    "preserved_whole_paths": [
+      "state",
+      "profile",
+      "settings",
+      "committed"
+    ],
+    "save_envelope_version": 2,
+    "fixture": "scripts/smoke-actions/hook-and-hunger-code5-from-earned-code4.json",
+    "expectations": "scripts/smoke-actions/hook-and-hunger-code5-upgrade-expectations.json",
+    "runtime_errors": false
+  },
+  "native_checks": {
+    "packet": "C:/projects/active/games/.artifacts/emulator/graphics-20261021/hook-native/report.json",
+    "set_sail_to_passage_2": "real tap; Broken Causeway live with enemies and diver at dock",
+    "joystick_swipe": "sent ~1s after Set Sail; diver did not visibly move in the frame, so movement is not proven here",
+    "android_back": "opens Dock Log pause; process alive",
+    "cover_1080x2520": "alive",
+    "inner_1968x2184": "alive; pause panel top slightly overlaps HUD bar (cosmetic)",
+    "home_then_cold_relaunch": "process alive; both checksum slots valid and committed",
+    "script_errors": 0
+  },
+  "lighting_check": {
+    "desktop_reference": "C:/tmp/games-review-20261021/hook/after-stage00-f120.png",
+    "result": "Android matches desktop: warm sand, saturated role colours, saffron diver, visible shadows; not white or blown out, not black. The gl_compatibility additive sun pass behaves the same on the emulator's host GPU (GLES via -gpu host); a real phone GPU is unverified."
+  },
+  "screenshots": [
+    "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.hookandhunger/20261022T002033749867Z/new-cold-relaunch-foreground.png",
+    "C:/projects/active/games/.artifacts/emulator/graphics-20261021/hook-native/02-live.png",
+    "C:/projects/active/games/.artifacts/emulator/graphics-20261021/hook-native/03-after-back.png",
+    "C:/projects/active/games/.artifacts/emulator/graphics-20261021/hook-native/05-inner.png"
+  ],
+  "limits": "Emulator only. Physical Fold7 touch/folding/IME, sound, phone FPS and human fun not established. Independent Astra motion review and private before/after clips still owed per GRAPHICS_PRODUCTION.md."
+}

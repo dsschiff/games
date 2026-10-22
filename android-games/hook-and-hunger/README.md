@@ -1,4 +1,4 @@
-> Graphics work: see [GRAPHICS_PRODUCTION.md](GRAPHICS_PRODUCTION.md). Graphics candidate frozen as 0.3.0/code5 (original 3D presentation, rendered lighting fix). Functional 0.2.2/code4 records below remain retained.
+> Graphics work: see [GRAPHICS_PRODUCTION.md](GRAPHICS_PRODUCTION.md). Graphics candidate frozen as 0.3.0/code5 (original 3D presentation, rendered lighting fix). Status 2026-10-21: signed APK built, rules 57/input 18 pass, genuine emulator code4-to-5 update keeps the whole save, and Android lighting matches desktop frames. Evidence: `android-games/evidence/hook-graphics-candidate.json`. Functional 0.2.2/code4 records below remain retained.
 
 # Hook and Hunger
 
