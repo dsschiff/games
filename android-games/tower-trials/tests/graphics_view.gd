@@ -3,9 +3,10 @@ extends "res://tests/input_base.gd"
 ## alignment at several window shapes, selection and flight tint/motion,
 ## native Back (pause, map, resume) and resize while paused. Uses actual
 ## touch input and the same Back request path as back_policy.gd.
-## Rendered runs also save frames and sample room-front pixels.
+## Rendered runs also save frames and sample lit chamber interiors.
 const TowerView = preload("res://scripts/presentation/tower_view.gd")
-const SIZES := [Vector2i(600, 1066), Vector2i(480, 1040), Vector2i(960, 900), Vector2i(1600, 900), Vector2i(600, 1066)]
+## Includes the overhaul's cover 1080x2520, inner 1968x2184 and native 1080x2400.
+const SIZES := [Vector2i(600, 1066), Vector2i(480, 1040), Vector2i(1080, 2520), Vector2i(1968, 2184), Vector2i(1080, 2400), Vector2i(960, 900), Vector2i(1600, 900), Vector2i(600, 1066)]
 var back_requests := 0
 
 func _initialize() -> void:
@@ -38,7 +39,14 @@ func aligned(label: String) -> void:
 	var roof: Vector2 = screen_of(view.home_roof.global_position)
 	var top := Vector2(89, 692.0 - game.state.claimed.size() * game.home_stride())
 	check(roof.distance_to(expected(top)) <= 1.5, label + ": home roof sits on the 2D watch top")
-	check(screen_of(view.courier_base).distance_to(expected(game.courier_point() + Vector2(0, 32))) <= 1.5, label + ": courier feet follow the rule-driven courier point")
+	check(screen_of(view.courier_base).distance_to(expected(game.courier_point() + Vector2(0, 32))) <= 1.5, label + ": courier rest anchor sits on the 2D watch")
+	if not game.pending.is_empty() and not game.data.settings.reduced_effects and game.beat > 0.9 * view.TRAVEL:
+		var room_rect: Rect2 = game.room_rect(Rules.find_room(game.level, game.pending_room))
+		var feet: Vector2 = screen_of(view.courier.global_position)
+		var box := Rect2(expected(room_rect.position), expected(room_rect.end) - expected(room_rect.position))
+		check(box.has_point(feet), label + ": courier fights inside the chosen chamber")
+	elif game.pending.is_empty() and view.settled():
+		check(screen_of(view.courier.global_position).distance_to(expected(game.courier_point() + Vector2(0, 32))) <= 1.5, label + ": settled courier stands on the watch anchor")
 
 func correspondence(label: String) -> void:
 	var view: Node3D = game.view
@@ -83,11 +91,21 @@ func sample(label: String) -> void:
 		if room.id in game.state.claimed or room.id in game.state.collapsed or Rules.blocked(game.state, room) != "":
 			continue
 		var rect: Rect2 = game.room_rect(room)
-		var pixel := Vector2i(stretch * expected(rect.position + Vector2(18, rect.size.y * 0.5)))
-		pixel = pixel.clamp(Vector2i.ZERO, image.get_size() - Vector2i.ONE)
+		# Open chambers are lit interiors: at least a quarter of a 7x5 probe
+		# grid across the interior (between badges and name plaque) must read
+		# as lit plaster or window light, not dark or blown-out flat white.
+		var lit := 0
+		var white := 0
+		for gx in 7:
+			for gy in 5:
+				var local := rect.position + Vector2(24 + gx * 22, 44 + gy * (rect.size.y - 74) / 4.0)
+				var pixel := Vector2i(stretch * expected(local)).clamp(Vector2i.ZERO, image.get_size() - Vector2i.ONE)
+				var color := image.get_pixelv(pixel)
+				if color.get_luminance() > 0.45: lit += 1
+				if color.r > .97 and color.g > .97 and color.b > .97: white += 1
 		total += 1
-		if image.get_pixelv(pixel).get_luminance() > 0.45: bright += 1
-	check(total == 0 or bright == total, "%s: open room fronts are rendered plaster, %d/%d" % [label, bright, total])
+		if lit >= 9 and white <= 3: bright += 1
+	check(total == 0 or bright == total, "%s: open chambers render as lit, unclipped interiors, %d/%d" % [label, bright, total])
 
 func shapes(prefix: String) -> void:
 	for size in SIZES:
@@ -115,12 +133,17 @@ func run() -> void:
 	await wait_frames(27)
 	check(not game.pending.is_empty(), "Courier flight is pending mid-move")
 	if not game.data.settings.reduced_effects:
-		check(game.view.courier_base.distance_to(game.view.at(game.home_point() + Vector2(0, 32), .3)) > 0.3, "3D courier leaves the home watch during flight")
+		check(game.view.courier.position.distance_to(game.view.at(game.home_point() + Vector2(0, 32), .3)) > 0.3, "3D courier leaves the home watch during flight")
 	aligned("flight")
 	if rendered:
 		await sample("flight")
 	await wait_frames(40)
 	check(game.pending.is_empty() and game.state.power != power_before, "Rule resolved the move through natural updates")
+	check(game.buttons().has("undo"), "Undo is available immediately while the return animation plays")
+	for i in 90:
+		if game.view.settled(): break
+		await wait_frames(1)
+	check(game.view.settled(), "Post-move presentation settles within 1.5 s")
 	correspondence("after-move")
 	aligned("after-move")
 	var before: Dictionary = game.state.duplicate(true)
