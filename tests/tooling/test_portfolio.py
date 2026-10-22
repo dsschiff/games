@@ -189,5 +189,33 @@ class PortfolioTests(unittest.TestCase):
         self.assertEqual(metadata["permissions"], [])
 
 
+    def test_release_signing_file_maps_to_godot_variables(self):
+        keystore = self.root / "release.jks"
+        keystore.write_bytes(b"not a real keystore")
+        signing = self.root / "signing.env"
+        signing.write_text("# comment\nANDROID_RELEASE_KEYSTORE=" + keystore.as_posix() +
+                           "\nANDROID_RELEASE_KEY_ALIAS=alias\nANDROID_RELEASE_KEYSTORE_PASSWORD=pw=1\n")
+        values = portfolio.read_signing_env(signing)
+        self.assertEqual(values["GODOT_ANDROID_KEYSTORE_RELEASE_PATH"], keystore.as_posix())
+        self.assertEqual(values["GODOT_ANDROID_KEYSTORE_RELEASE_USER"], "alias")
+        self.assertEqual(values["GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD"], "pw=1")
+
+    def test_release_signing_file_rejects_missing_values(self):
+        signing = self.root / "signing.env"
+        signing.write_text("ANDROID_RELEASE_KEY_ALIAS=alias\n")
+        with self.assertRaises(ValueError):
+            portfolio.read_signing_env(signing)
+
+    def test_release_flag_is_build_only(self):
+        self.project()
+        with contextlib.redirect_stderr(io.StringIO()):
+            self.assertEqual(portfolio.main(["test", "--release", "--root", str(self.root)]), 1)
+
+    def test_signer_digest_parsed_from_apksigner(self):
+        output = "Verifies\nSigner #1 certificate SHA-256 digest: 2527B2AB\nSigner #1 certificate SHA-1 digest: 00\n"
+        self.assertEqual(portfolio.parse_signer_digest(output), "2527b2ab")
+        self.assertIsNone(portfolio.parse_signer_digest("Verifies\n"))
+
+
 if __name__ == "__main__":
     unittest.main()
