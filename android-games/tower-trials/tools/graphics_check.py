@@ -42,7 +42,20 @@ def godot(arguments, log):
     return command, result.returncode or int(bad)
 
 
+IMPORT_ARGUMENTS = ["--headless", "--editor", "--import", "--quit"]
+
+
+def needs_import(project):
+    """True when the project has no imported resources yet (fresh worktree: .godot/imported absent or empty)."""
+    imported = Path(project) / ".godot/imported"
+    return not (imported.is_dir() and any(imported.iterdir()))
+
+
 def view():
+    if needs_import(ROOT):
+        _, imported = godot(IMPORT_ARGUMENTS, OUT / "import.log")
+        if imported:
+            return imported
     _, headless = godot(["--headless", "--script", "tests/graphics_view.gd"], OUT / "view-headless.log")
     _, rendered = godot(["--script", "tests/graphics_view.gd"], OUT / "view-rendered.log")
     return headless or rendered
