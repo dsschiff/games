@@ -66,7 +66,8 @@ def main():
             if p.suffix != ".tmp":
                 (dest / p.name).write_bytes(p.read_bytes())
                 inputs.append({"kind": "earned-app-written-checkpoint-load", "source": str(p), "sha256": hashlib.sha256(p.read_bytes()).hexdigest()})
-    command = [str(GODOT), "--path", str(PROJECT)]
+    # Sound stays off in every automated run (Daniel works at this computer).
+    command = [str(GODOT), "--path", str(PROJECT), "--audio-driver", "Dummy"]
     if args.mode in ["rules", "headless", "exhaustion-headless", "campaign-smoke", "validation-headless", "camera-headless", "campaign-rules", "campaign-headless", "clipboard-headless", "migration-headless", "platform-headless", "late-priority-headless", "code4-headless"]:
         command += ["--headless"]
     else:

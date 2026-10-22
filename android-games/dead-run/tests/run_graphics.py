@@ -15,7 +15,7 @@ from datetime import datetime, timezone
 PROJECT = Path(__file__).resolve().parents[1]
 GODOT = Path("C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe")
 SCRIPTS = {"lineup": "res://tests/art_lineup.gd", "frames": "res://tests/graphics_frames.gd",
-           "presentation": "res://tests/presentation_tests.gd"}
+           "presentation": "res://tests/presentation_tests.gd", "timing": "res://tests/horde_timing.gd"}
 
 
 def lf_hashes():
@@ -39,12 +39,14 @@ def main():
     for key in ("APPDATA", "LOCALAPPDATA", "TEMP", "TMP"):
         env[key] = str(run / key.lower())
         Path(env[key]).mkdir()
-    command = [str(GODOT), "--path", str(PROJECT)]
+    # Sound stays off in every automated run (Daniel works at this computer).
+    command = [str(GODOT), "--path", str(PROJECT), "--audio-driver", "Dummy"]
     if args.mode == "import":
         command += ["--headless", "--editor", "--import"]
     else:
         command += ["--headless"] if args.headless else ["--resolution", "720x1280", "--position", "0,0"]
-        command += ["--fixed-fps", "60", "--script", SCRIPTS[args.mode]]
+        # timing: unpaced render frames (opt-in host capture, DEVELOPMENT.md).
+        command += ([] if args.mode == "timing" else ["--fixed-fps", "60"]) + ["--script", SCRIPTS[args.mode]]
         if args.movie:
             command += ["--write-movie", str(run / "clip.avi")]
         command += ["--",

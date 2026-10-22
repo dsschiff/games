@@ -53,7 +53,7 @@ func run() -> void:
 		var live := 0
 		for i in scene.state.enemies.size():
 			if scene.state.tick >= scene.state.definition.enemies[i].born and not scene.state.enemies[i].resolved: live += 1
-		check(p.visuals.size() == live, "road %d: one visual per live infected (%d)" % [road, live])
+		check(p.visuals.size() + p.far.size() == live, "road %d: one skinned visual or far crowd instance per live infected (%d)" % [road, live])
 	# Pause freezes transient effects.
 	var p2: RefCounted = scene.presentation
 	p2.fx.burst(Vector3.ZERO, Color.WHITE, 10)

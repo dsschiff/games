@@ -49,6 +49,13 @@ func configure(asset: String, kit: RefCounted, size: float, blob: Mesh = null, b
 		add_child(shadow)
 	reset_for_reuse()
 
+func cast_shadows(on: bool) -> void:
+	var stack: Array = [model]
+	while not stack.is_empty():
+		var n: Node = stack.pop_back()
+		if n is GeometryInstance3D: n.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON if on else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		stack.append_array(n.get_children())
+
 func reset_for_reuse() -> void:
 	model.transform = Transform3D(Basis.IDENTITY.scaled(Vector3.ONE * scale_factor), Vector3.ZERO)
 	rig.reset_bone_poses()

@@ -9,9 +9,9 @@ const GENERATOR := 2
 const CAP := 49
 const LANES := [-2.65, 0.0, 2.65]
 const WEAPONS := {
-	"rivet": {"title": "RIVET", "period": 20, "damage": 1, "pierce": 1, "pellets": 1, "spread": 0.0, "range": 19.0, "hint": "Focused stream. Fastest gate conversion and boss damage; chase split packs."},
-	"lance": {"title": "LANCE", "period": 40, "damage": 2, "pierce": 4, "pellets": 1, "spread": 0.0, "range": 21.0, "hint": "Bolts pierce four infected and ignore armor. Mows whole columns; slower gate conversion."},
-	"fan": {"title": "FAN", "period": 34, "damage": 1, "pierce": 2, "pellets": 2, "spread": 0.034, "range": 16.0, "hint": "Twin spreading pellets each pass through two infected. Sweeps the whole road at range."}}
+	"rivet": {"title": "RIVET", "period": 20, "damage": 1, "pierce": 1, "pellets": 1, "spread": 0.0, "range": 16.0, "hint": "Focused stream. Fastest gate conversion and boss damage; chase split packs."},
+	"lance": {"title": "LANCE", "period": 40, "damage": 2, "pierce": 4, "pellets": 1, "spread": 0.0, "range": 18.0, "hint": "Bolts pierce four infected and ignore armor. Mows whole columns; slower gate conversion."},
+	"fan": {"title": "FAN", "period": 34, "damage": 1, "pierce": 2, "pellets": 2, "spread": 0.034, "range": 15.0, "hint": "Twin spreading pellets each pass through two infected. Sweeps the whole road at range."}}
 # Range: rounds fade past it, so a horde visibly closes in before it falls.
 # Fodder dies in one or two hits; the tough roles stay rarer and readable.
 const ROLES := {
@@ -57,7 +57,7 @@ static func stage(index: int, seed: int = 0) -> Dictionary:
 		# Ordinary packs grow through the road. A surge floods every lane in
 		# the 14 seconds before the finale or blockade appears.
 		var surge := tick >= boss_born - 840 and tick < boss_born
-		var count := 3 + district + int(progress * 5.0) + (1 if wave % 2 == 0 else 0)
+		var count := 2 + district + int(progress * 6.0) + (1 if wave % 2 == 0 else 0)
 		if index == 0: count = mini(count, 2 + int(progress * 4.0))
 		if surge: count += 4 + district * 2 + (3 if boss else 0)
 		if boss and tick >= boss_born: count = maxi(2, count - 2)
@@ -77,7 +77,8 @@ static func stage(index: int, seed: int = 0) -> Dictionary:
 			pack(enemies, tick + 20, x, fodder, count - 1)
 		else:
 			pack(enemies, tick, x, fodder, count)
-		if index >= 2 and wave % 2 == 1:
+		# Flanking packs start once the first gate has had time to grow the crew.
+		if index >= 2 and wave % 2 == 1 and progress > 0.18:
 			var other: float = -x if absf(x) > 1 else LANES[(lane + 1) % 3] * flip
 			pack(enemies, tick + 24, other, "runner" if pattern % 2 else "drifter", 2 + count / 2)
 		if surge:

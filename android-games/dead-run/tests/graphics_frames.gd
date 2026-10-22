@@ -12,6 +12,10 @@ const SCENARIOS := {
 	"ram": [11, "rivet", ["boss+60", "boss+400"]],
 	"bell": [17, "rivet", ["boss+90", "boss+500"]],
 	"ferry": [23, "rivet", ["boss+60", "boss+700", "victory"]],
+	# Horde rule3: surges flood every lane before the blockade or finale.
+	"surge": [10, "fan", [4200, 4520]],
+	"surge-lance": [12, "lance", [3700, 3980]],
+	"mid": [8, "rivet", [2000, 2900]],
 }
 var scenario := "all"
 
@@ -48,11 +52,11 @@ func play_scenario(name: String, spec: Array) -> void:
 	for frame in 9000:
 		if marks.is_empty(): break
 		if scene.state.phase != "playing":
-			if marks[0] == "victory" and scene.state.phase == "victory":
+			if str(marks[0]) == "victory" and scene.state.phase == "victory":
 				await dwell(240)
 				await snap("%s-victory" % name)
 			else:
-				check(marks[0] == "victory", name + " reached planned capture before terminal phase " + scene.state.phase)
+				check(str(marks[0]) == "victory", name + " reached planned capture before terminal phase " + scene.state.phase + " at " + str(scene.state.tick) + " " + scene.state.notice)
 			break
 		if frame % 12 == 0:
 			var target := Policy.aim(scene.state, "rescue")

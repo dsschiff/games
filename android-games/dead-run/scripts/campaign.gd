@@ -359,7 +359,9 @@ func _physics_process(delta: float) -> void:
 	if state.phase == "victory": Store.award(ctx)
 	finish_autosave(false)
 	if state.phase != before: persist()
-	elif state.phase == "playing" and not paused and state.tick % 120 == 0: autosave()
+	# Every 10 s: the worker still competes with the frame, and pause, Back,
+	# backgrounding, road changes and every terminal phase save synchronously.
+	elif state.phase == "playing" and not paused and state.tick % 600 == 0: autosave()
 	if settings.sound and not paused and state.phase == "playing" and state.tick % state.definition.weapons[state.weapon].period == 0: tone.play()
 	refresh()
 
@@ -371,6 +373,7 @@ func refresh() -> void:
 	info.text = "CREW %d / %d   ·   %s   ·   %d%%\n%s  ·  %d / 24 roads restored" % [state.crew, d.cap, Data.WEAPONS[state.weapon].title, state.tick * 100 / d.duration, Data.DISTRICTS[d.district], ctx.profile.clears.size()]
 	notice.text = save_message if not save_message.is_empty() else state.notice
 	warning.text = "Drag sideways · fit the whole gold footprint through gaps"
+	if not C.catalog1(state) and state.tick >= d.boss.born - 840 and state.tick < d.boss.born: warning.text = "HORDE SURGE · sweep every lane before the " + ("finale" if d.boss.kind > 0 else "blockade")
 	for i in state.gates.size():
 		if state.tick >= d.gates[i].born and not state.gates[i].crossed and state.gates[i].z < 6:
 			if d.gates[i].get("kind", "add") == "mul": warning.text = "GATE ×%d in %.1fs · shoot it to multiply the crew" % [state.gates[i].value, state.gates[i].z / d.speed]

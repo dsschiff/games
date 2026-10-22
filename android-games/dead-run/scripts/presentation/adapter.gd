@@ -69,6 +69,20 @@ var threat_rings: MultiMeshInstance3D
 var frame_index := 0
 var kills_this_sync := 0
 var hits_this_sync := 0
+# Enemies before scan_lo are resolved and already handed back; enemies born
+# more than SCAN_AHEAD ticks after now are still hidden. A horde road has
+# ~1000 infected, so only the live window is walked each refresh.
+var scan_lo := 0
+var scan_tick := -1
+const SCAN_AHEAD := 600
+# Far LOD: fodder beyond CROWD_Z metres (outside every weapon's reach except
+# Lance's last metres) draws as one MultiMesh per role in its rest pose with
+# a cheap bob, instead of a skinned actor. It switches to a pooled skinned
+# actor as it walks into the fighting band, or at the moment it dies.
+const CROWD_Z := 15.5
+const CROWD_MAX := 160
+var crowd := {}
+var far := {}
 
 func build(owner: Node3D, parent: Node3D, registry: Dictionary, s: Dictionary) -> void:
 	host = owner
@@ -101,6 +115,7 @@ func build(owner: Node3D, parent: Node3D, registry: Dictionary, s: Dictionary) -
 	_build_carts(d)
 	_build_boss(d)
 	_build_threat_rings()
+	_build_crowd()
 	var hz_mesh := BoxMesh.new()
 	hz_mesh.size = Vector3.ONE
 	var holder := Node3D.new()
@@ -181,6 +196,7 @@ func _build_crew() -> void:
 		a.phase_seed = float(i) * .9
 		world.add_child(a)
 		a.configure("actor_crew", kit, CREW_SCALE)
+		if i >= 24: a.cast_shadows(false)
 		var ring := MeshInstance3D.new()
 		ring.name = "JoinRing"
 		ring.mesh = ring_mesh
@@ -239,6 +255,8 @@ func _take(role: String) -> Node3D:
 		return a
 	var fresh := Actor.new()
 	fresh.configure("actor_" + role, kit, ROLE_SCALE[role])
+	# Horde fodder skips the shadow pass; tough roles keep theirs.
+	if not TOUGH.has(role): fresh.cast_shadows(false)
 	var hp := bar(fresh, Vector3(0, 1.62 * ROLE_SCALE[role], 0), .62, Color("ffb35c"))
 	hp.get_parent().name = "Health"
 	return fresh
@@ -390,6 +408,50 @@ func _build_boss(d: Dictionary) -> void:
 			boss_arms.append({"node": holder, "model": arm, "fill": fill})
 			actors["arm" + str(i)] = holder
 
+func _build_crowd() -> void:
+	for role in Data.FODDER:
+		var layers: Array = []
+		var model: Node3D = kit.asset("actor_" + role)
+		var pending: Array[Node] = [model]
+		while not pending.is_empty():
+			var current: Node = pending.pop_back()
+			if current is MeshInstance3D:
+				var xf := Transform3D.IDENTITY
+				var walk: Node = current
+				while walk != model:
+					xf = (walk as Node3D).transform * xf
+					walk = walk.get_parent()
+				var mmi := MultiMeshInstance3D.new()
+				mmi.name = "Crowd_" + role
+				var mm := MultiMesh.new()
+				mm.transform_format = MultiMesh.TRANSFORM_3D
+				mm.mesh = current.mesh
+				mm.instance_count = CROWD_MAX
+				mm.visible_instance_count = 0
+				mmi.multimesh = mm
+				mmi.material_override = current.get_surface_override_material(0)
+				mmi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+				root.add_child(mmi)
+				layers.append({"mm": mm, "xf": xf})
+			pending.append_array(current.get_children())
+		model.free()
+		crowd[role] = layers
+
+func _draw_crowd(playing: bool) -> void:
+	var counts := {}
+	var d: Dictionary = state.definition
+	for i in far:
+		var role: String = d.enemies[i].role
+		var n: int = counts.get(role, 0)
+		if n >= CROWD_MAX: continue
+		counts[role] = n + 1
+		var bob := absf(sin(clock * (9.0 if role == "runner" else 6.0) + i * 1.7)) * .06 if playing else 0.0
+		var sway := sin(clock * 2.3 + i) * .12
+		var base := Transform3D(Basis(Vector3.UP, PI + sway).scaled(Vector3.ONE * ROLE_SCALE[role]), anchors[i].position + Vector3(0, bob, 0))
+		for layer in crowd[role]: layer.mm.set_instance_transform(n, base * layer.xf)
+	for role in crowd:
+		for layer in crowd[role]: layer.mm.visible_instance_count = counts.get(role, 0)
+
 ## One MultiMesh of flat ground rings marks the infected that matter inside
 ## a horde: plated (pale gold), spitters (acid green), bulwarks (red).
 func _build_threat_rings() -> void:
@@ -498,22 +560,40 @@ func _sync_enemies(s: Dictionary, d: Dictionary, hydrate: bool) -> void:
 	# Bounded by both sizes: a synthetic caller may restore a state for a
 	# different road without rebuilding; extra nodes simply stay hidden.
 	for i in range(s.enemies.size(), anchors.size()): anchors[i].visible = false
-	for i in mini(s.enemies.size(), anchors.size()):
+	if hydrate or int(s.tick) < scan_tick: scan_lo = 0
+	scan_tick = int(s.tick)
+	var advancing := true
+	for i in range(scan_lo, mini(s.enemies.size(), anchors.size())):
 		var e: Dictionary = s.enemies[i]
 		var ed: Dictionary = d.enemies[i]
+		if int(ed.born) > int(s.tick) + SCAN_AHEAD: break
 		var anchor: Node3D = anchors[i]
 		var live: bool = s.tick >= ed.born and not e.resolved
+		if advancing:
+			if e.resolved and not visuals.has(i) and not far.has(i) and not hydrate:
+				anchor.visible = false
+				scan_lo = i + 1
+				continue
+			advancing = false
 		anchor.visible = live
 		anchor.position = Vector3(ed.x, 0, -e.z)
 		var v = visuals.get(i)
 		var toughness := int(e.hp) + int(e.armor)
-		if live and v == null:
+		var was_far: bool = far.has(i)
+		if live and v == null and float(e.z) > CROWD_Z and ed.role in Data.FODDER:
+			if was_far and toughness < int(far[i]) and not hydrate:
+				hits_this_sync += 1
+				fx.burst(anchor.position + Vector3(0, .85, .2), ROLE_BLOOD[ed.role], 6 if hits_this_sync <= FULL_HITS else 2, 2.0, .95)
+			far[i] = toughness
+			continue
+		far.erase(i)
+		if (live or (was_far and e.dead)) and v == null:
 			v = _take(ed.role)
 			v.phase_seed = float(i) * 1.73
 			v.reset_for_reuse()
 			v.rotation.y = PI
 			anchor.add_child(v)
-			if not hydrate: v.spawn()
+			if not hydrate and not was_far: v.spawn()
 			v.set_meta("tough", toughness)
 			v.set_meta("spit", e.next_spit)
 			visuals[i] = v
@@ -548,7 +628,8 @@ func _sync_enemies(s: Dictionary, d: Dictionary, hydrate: bool) -> void:
 				root.add_child(v)
 				v.position = at
 				v.die()
-				dying.append({"node": v, "role": ed.role, "life": 0.0})
+				# In a big sweep, bodies fade sooner so the road stays readable.
+				dying.append({"node": v, "role": ed.role, "life": 0.0 if dying.size() < 16 else 0.6})
 				kills_this_sync += 1
 				var big: bool = kills_this_sync <= FULL_KILLS or TOUGH.has(ed.role)
 				fx.burst(at + Vector3(0, .6, 0), ROLE_BLOOD[ed.role], 16 if big else 5, 3.0, 1.5 if big else 1.1)
@@ -559,6 +640,9 @@ func _sync_enemies(s: Dictionary, d: Dictionary, hydrate: bool) -> void:
 					fx.burst(Vector3(ed.x, .4, .6), Color("ff4a3a"), 10, 2.2)
 					fx.kick_shake(.4)
 				_put(ed.role, v)
+	if far.size() > 0:
+		for i in far.keys():
+			if i >= s.enemies.size() or s.enemies[i].resolved: far.erase(i)
 	_sync_threat_rings(d)
 
 func _sync_threat_rings(d: Dictionary) -> void:
@@ -691,6 +775,7 @@ func frame(delta: float, frozen: bool) -> void:
 		if ring.visible: ring.scale = Vector3.ONE * (1.0 + (.9 - life) * 1.4)
 	var d: Dictionary = state.definition
 	frame_index += 1
+	_draw_crowd(playing)
 	for i in visuals:
 		var v = visuals[i]
 		if i >= d.enemies.size(): continue

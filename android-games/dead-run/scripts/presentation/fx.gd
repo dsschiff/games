@@ -30,7 +30,7 @@ func build(owner: Node3D, weapon: String) -> void:
 	mm.transform_format = MultiMesh.TRANSFORM_3D
 	var streak := BoxMesh.new()
 	var lance := weapon == "lance"
-	streak.size = Vector3(.10 if lance else .075, .10 if lance else .075, 1.5 if lance else 1.1)
+	streak.size = Vector3(.11 if lance else .085, .11 if lance else .085, 1.6 if lance else 1.25)
 	mm.mesh = streak
 	mm.instance_count = MAX_TRACERS
 	mm.visible_instance_count = 0
@@ -163,7 +163,13 @@ func draw_tracers(bullets: Array) -> void:
 		var dir := Vector3(b.dx, .02, -.48).normalized()
 		var basis := Basis.looking_at(dir, Vector3.UP)
 		var y := lerpf(.75, 1.15, clampf((float(b.z) - 3.0) / 10.0, 0, 1))
-		mm.set_instance_transform(i, Transform3D(basis, Vector3(b.x, y, -b.z + .3)))
+		# A big crew fires several rounds down each rule column; a small
+		# per-shooter spread (inside every infected hit width) and height
+		# lets them read as a wall of tracers instead of one stacked streak.
+		var owner := float(b.get("owner", 0))
+		var spread := (fmod(owner * .618, 1.0) - .5) * .16
+		y += (fmod(owner * .377, 1.0) - .5) * .30
+		mm.set_instance_transform(i, Transform3D(basis, Vector3(b.x + spread, y, -b.z + .3)))
 	mm.visible_instance_count = n
 
 func muzzle(slot: int, at: Vector3) -> void:
