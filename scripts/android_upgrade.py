@@ -17,7 +17,7 @@ import subprocess
 import time
 
 from android_smoke import evaluate_expectations, lookup_path, scale_action
-from portfolio import REPO_ROOT, artifact_record, inspect_apk, read_config, tool_environment
+from portfolio import REPO_ROOT, artifact_record, file_sha256, inspect_apk, read_config, tool_environment
 
 NUMERIC_COMPARISON = {"integer_valued_numbers": "exact", "fractional_floats": "math.isclose",
                       "relative_tolerance": 1e-12, "absolute_tolerance": 1e-12,
@@ -25,11 +25,7 @@ NUMERIC_COMPARISON = {"integer_valued_numbers": "exact", "fractional_floats": "m
 
 
 def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as stream:
-        for block in iter(lambda: stream.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
+    return file_sha256(path)
 
 
 def validate_apk_pair(old: dict, new: dict, package: str) -> dict:

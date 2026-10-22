@@ -9,15 +9,11 @@ import json
 from pathlib import Path
 import shutil
 
-from portfolio import REPO_ROOT, source_fingerprint
+from portfolio import REPO_ROOT, file_sha256, source_fingerprint
 
 
 def checksum(path: Path) -> str:
-    digest = hashlib.sha256()
-    with path.open("rb") as stream:
-        for block in iter(lambda: stream.read(1024 * 1024), b""):
-            digest.update(block)
-    return digest.hexdigest()
+    return file_sha256(path)
 
 
 def source_text_lf_fingerprint(project: Path) -> str:
