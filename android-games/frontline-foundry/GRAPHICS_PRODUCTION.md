@@ -237,3 +237,33 @@ Builder visual inspection covers sampled native still frames. Independent normal
 1x motion review and native code2-to-code3 update validation remain coordinator-owned.
 No builder APK export/install, ADB, clipboard use, push, publication or phone test
 was performed. All builder rendering is stopped and the shared render slot released.
+
+## 2026-10-21 presentation pass: follow camera, warm ground, framed perimeter
+
+Presentation only; rules, saves, definitions, main/campaign scripts, project and
+export settings are byte-identical (LF-normalized) to `f8a9c7b`.
+
+- **Camera.** Perspective follow camera (50° pitch, 16 m) that leads toward the
+  front. Portrait keeps a fixed ~11.4 m world width; wider Fold/landscape windows
+  keep height and reveal more world. The frame tracks the commander so the body
+  stays inside the frustum at its own depth, including at the base corners.
+- **Off-screen cues.** Red arrowheads at the edge of the usable play region (below
+  the HUD, above the controls) point at hidden enemies; nearby ones merge with a
+  count. An amber arrow points at the HQ for 1.4 s after an off-screen hit. Cues
+  hide while paused and stop pulsing under Reduced Effects.
+- **Ground.** `scripts/presentation/ground.gdshader`: a warm sand clearing with
+  low-frequency value drift, a worn gate-to-HQ track and a cooler hazy rim, plus
+  depth fog. Regional palettes in `regions.gd` were rebalanced to light warm sand.
+- **Perimeter kit.** `art/source/scenery_kit.py` (deterministic Blender) adds soft
+  beveled boulders, snow-shouldered rocks, an outcrop cluster, three pines, a
+  striped barrier, sawhorse and fuel drum. Existing GLBs re-export byte-identical.
+  About 70 placements per district go through `place_landmark`, so the existing
+  bounds test covers them. The stacked pale cliff cubes are gone.
+- **Tests.** `presentation_tests.gd` adds camera framing on cover/inner/native/
+  baseline profiles, wider-world-on-Fold, edge cues (one cue for a sapper behind the
+  controls, none for an on-screen runner, steady under Reduced Effects, none while
+  paused) and perimeter clearance.
+
+Headless note: the dummy renderer logs `Parameter "material" is null` when two
+outposts coexist and one holds a single instance of an imported GLB. The perimeter
+crate stacks keep crate instances plural, so this no longer appears.

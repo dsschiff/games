@@ -4,9 +4,10 @@
   "blender": "4.5.14 LTS 62c1db4208e8",
   "portable_archive_sha256": "b9533d2397ac1984db4466fb23a7a4649391cca93f6e84209f9bcc60d071c8b9",
   "generator": "source/build_assets.py",
-  "generator_sha256": "277c53eaf3ad5ee66990c44db1892ea3b8b8b630b6de0f8810aa023bb7a80473",
+  "generator_sha256": "8bcc554a14c47d7d27b0cdfe782db677e6a750f3b56701e8787624513680efa2",
   "generator_sources_sha256": {
-    "build_assets.py": "277c53eaf3ad5ee66990c44db1892ea3b8b8b630b6de0f8810aa023bb7a80473",
+    "build_assets.py": "8bcc554a14c47d7d27b0cdfe782db677e6a750f3b56701e8787624513680efa2",
+    "scenery_kit.py": "3b76bd30f52fa8d2308bcd6bc68d1aa831c614564ac3063d7bb843500152c8ce",
     "world_kit.py": "2083c830b7844be9fa3b11586f08c681697fd46d62a028a0496f4f7200e03a6e"
   },
   "units": "meters; +Y Blender forward exports -Z Godot; right-handed glTF Y-up",
@@ -27,6 +28,40 @@
   },
   "acceptance": "Structural export only; visible quality and frame-time measurement require actual rendered review",
   "assets": [
+    {
+      "file": "models/barrier.glb",
+      "sha256": "f61c42f4455d56ed1aec60b9c7abd63f020bc3d2c835e3e68ca0521ef1c847b0",
+      "bytes": 75456,
+      "triangles": 1880,
+      "mesh_nodes": 2,
+      "materials": [
+        "Concrete",
+        "Stripe"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/boulder_large.glb",
+      "sha256": "a9c9c069037e0d3c9c16954c089d49b1111ffc1aa8f96ffd0b570b843d197def",
+      "bytes": 9368,
+      "triangles": 456,
+      "mesh_nodes": 1,
+      "materials": [
+        "Rock"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/boulder_small.glb",
+      "sha256": "3536f1c24ce5a6f09637db4f1be5f84633bb497ced60b601c1dbf23e6909b69e",
+      "bytes": 10120,
+      "triangles": 496,
+      "mesh_nodes": 1,
+      "materials": [
+        "Rock"
+      ],
+      "skin_joints": []
+    },
     {
       "file": "models/bridge_arch.glb",
       "sha256": "570d3cb0c480af0740f8f7e48e0347dbbf312fdb21140d0152ade7751ba2d3fe",
@@ -114,6 +149,18 @@
         "WorldMetal",
         "WorldRust",
         "WorldBrass"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/fuel_drum.glb",
+      "sha256": "11569d5d4ef9050dc188efe112c8e1f49a0d7a85262a24d1e401e143802fb659",
+      "bytes": 40380,
+      "triangles": 752,
+      "mesh_nodes": 2,
+      "materials": [
+        "WorldRust",
+        "WorldMetal"
       ],
       "skin_joints": []
     },
@@ -248,6 +295,44 @@
       "skin_joints": []
     },
     {
+      "file": "models/pine.glb",
+      "sha256": "3a8729d47f5a31c8d78ea2a2d075b5e5eac4a7db09f920c8d94c02054e4f86bc",
+      "bytes": 75728,
+      "triangles": 1380,
+      "mesh_nodes": 3,
+      "materials": [
+        "Bark",
+        "PineNeedle",
+        "Snow"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/pine_bare.glb",
+      "sha256": "ce7759bbd1c83967e68810de886bc4d96bbd45bb32d99d4c57414fde6fa32248",
+      "bytes": 46680,
+      "triangles": 848,
+      "mesh_nodes": 2,
+      "materials": [
+        "Bark",
+        "PineNeedle"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/pine_tall.glb",
+      "sha256": "81c08f1e6bc939de37919198b4a0b268bf7d10109a215beda771b5adb0765081",
+      "bytes": 75740,
+      "triangles": 1380,
+      "mesh_nodes": 3,
+      "materials": [
+        "Bark",
+        "PineNeedle",
+        "Snow"
+      ],
+      "skin_joints": []
+    },
+    {
       "file": "models/quarry_crane.glb",
       "sha256": "7cd4f6c22b04fd1efd2f47409c3edb1978c988d7893de47b0b6deb30706d42e6",
       "bytes": 56280,
@@ -305,6 +390,18 @@
       "skin_joints": []
     },
     {
+      "file": "models/rock_outcrop.glb",
+      "sha256": "c31f5fd01136f7edd72a62cf3f16db0094bc6204b6236515c6178bd0086f7d2c",
+      "bytes": 31460,
+      "triangles": 1430,
+      "mesh_nodes": 3,
+      "materials": [
+        "Rock",
+        "Snow"
+      ],
+      "skin_joints": []
+    },
+    {
       "file": "models/rover.glb",
       "sha256": "eb26790c3bdaf31e9022fb6fad820fd9062434b70c814612b4e6568e4ceddbe4",
       "bytes": 122416,
@@ -327,6 +424,18 @@
       "materials": [
         "Sandbag",
         "Seam"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/sawhorse.glb",
+      "sha256": "cc117657a89c6d843d2f124b2e6ccc884ad48ee2a4eab0fe8132a161c663e7c1",
+      "bytes": 66056,
+      "triangles": 1692,
+      "mesh_nodes": 2,
+      "materials": [
+        "StripeWhite",
+        "Stripe"
       ],
       "skin_joints": []
     },
@@ -366,6 +475,30 @@
         "WorldMetal",
         "WorldIvory",
         "WorldBrass"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/snow_rock.glb",
+      "sha256": "b1cb4d7cd00b08555d082b28c3582352ff59d34d122899e9bae8d1d791ef1da3",
+      "bytes": 10340,
+      "triangles": 434,
+      "mesh_nodes": 1,
+      "materials": [
+        "Rock",
+        "Snow"
+      ],
+      "skin_joints": []
+    },
+    {
+      "file": "models/snow_rock_tall.glb",
+      "sha256": "ac9e800508f138f093d1b565b0cf753423650058931542507cdab5b8baa84664",
+      "bytes": 9396,
+      "triangles": 380,
+      "mesh_nodes": 1,
+      "materials": [
+        "Rock",
+        "Snow"
       ],
       "skin_joints": []
     },

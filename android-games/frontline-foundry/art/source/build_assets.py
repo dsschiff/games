@@ -504,5 +504,7 @@ sys.dont_write_bytecode = True
 sys.path.insert(0, str(Path(__file__).parent))
 from world_kit import build
 build(globals())
+from scenery_kit import build as build_scenery
+build_scenery(globals())
 manifest()
 print("FRONTLINE_ASSET_EXPORT_COMPLETE", OUT)
