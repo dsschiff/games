@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "all_six_games_have_graphics_candidates_gear_hearth_complete_frontline_code4_hook_code5_dead_run_code4_tower_code5_emulator_verified_review_pending",
+  "status": "all_six_games_have_graphics_candidates_gear_hearth_complete_frontline_code4_hook_code5_dead_run_code5_hordes_tower_code5_emulator_verified_review_pending",
   "baseline_commit": "6e26b3c2a3938de1828527630f95fb6a219f61b8",
   "reference": {
     "private_path": ".references/graphics-overhaul/user-top-force-44941.jpg",
@@ -267,6 +267,27 @@
     "open": [
       "Independent visual/motion review and before/after clips",
       "First launch after install shows the Godot splash for about 37 s on the emulator (code4 the same); phone first-launch time unmeasured",
+      "Physical phone testing deferred by user"
+    ]
+  },
+  "dead_run_horde_checkpoint": {
+    "candidate_evidence": "android-games/evidence/dead-run-hordes-candidate.json",
+    "status": "signed_code5_built_genuine_code4_to5_emulator_update_passed_inprogress_road_stays_catalog1_retry_starts_rule3_code3_to5_ready_road_migrates_drag_through_surge_confirmed_private_bundle_ready",
+    "source_commit": "cfe6ff4fff89550b5e3daf705097f45679b2b35f",
+    "branch": "claude/dead-run-hordes",
+    "version": "0.4.0",
+    "version_code": 5,
+    "apk_sha256": "21c28eec121e142fc7f73657468dcd7cb460f995a662e4fc3f938a80a1d29e26",
+    "upgrade_manifest": ".artifacts/upgrades/com.dsschiff.deadrun/20261022T140703223882Z/manifest.json",
+    "upgrade_manifest_from_code3": ".artifacts/upgrades/com.dsschiff.deadrun/20261022T141717631175Z/manifest.json",
+    "native_packet": ".artifacts/emulator/hordes-20261022/deadrun-native/report.json",
+    "bundle": ".artifacts/releases/graphics-20261021",
+    "open": [
+      "Independent visual/motion review and before/after clips",
+      "Phone frame rate in surges unmeasured (host surge median 5-11 ms per frame)",
+      "Previous code4 emulator save was found as two 0-byte slots after a hard emulator shutdown; saves are not forced to disk",
+      "Cosmetic: extra RESUME on a finished road after Home; crew drawn inside the blockade on the rule3 defeat panel",
+      "Windowed presentation run reports exit-time GL texture leaks (headless run clean)",
       "Physical phone testing deferred by user"
     ]
   }

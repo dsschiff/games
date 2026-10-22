@@ -34,6 +34,7 @@ CHECKPOINT_SLUGS = {
     "hook_graphics_checkpoint": "hook-and-hunger",
     "dead_run_graphics_checkpoint": "dead-run",
     "tower_graphics_checkpoint": "tower-trials",
+    "dead_run_horde_checkpoint": "dead-run",
 }
 
 
