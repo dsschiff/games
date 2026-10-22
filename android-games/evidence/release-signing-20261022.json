@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-22",
+  "scope": "First release-signed line, published privately for Obtainium",
+  "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
+  "key": "RSA 4096, PKCS12, valid 2026-10-22 to 2126-09-28; stored outside Git (agentic-workflow docs/CREDENTIALS-MAP.md)",
+  "headless_tests": {
+    "command": "python scripts/portfolio.py test <six games>",
+    "result": "All six rule and playthrough suites printed SUITE_COMPLETE: PASS and exited 0, on the uncommitted bump and again at commit 280bc6e. Dead Run's runner result is 'failed' only because its playthrough writes report JSON files into android-games/dead-run/ (source-drift guard); the files were deleted and are not in the build."
+  },
+  "emulator": {
+    "device": "portfolio-api35 emulator, -no-audio, Wi-Fi off",
+    "checks": "install, launch (process alive, game screen in foreground, screenshot), Home and resume (same process), force-stop and cold relaunch (process alive, screenshot), no FATAL/ANR in logcat",
+    "signature_change": "Installing a debug-signed APK over the release-signed install fails with INSTALL_FAILED_UPDATE_INCOMPATIBLE (signatures do not match); the release line needs one uninstall of the debug builds.",
+    "not_run": "The existing save-reading emulator fixtures (android_smoke.py/android_upgrade.py) use run-as, which release (non-debuggable) APKs refuse; gameplay/save/update fixtures were not rerun on the release APKs. Game logic is unchanged from the debug candidates those fixtures verified; only the version code and signing changed.",
+    "obtainium_import": "Obtainium 1.7.1 (x86_64) on the emulator imported all seven entries from the obtainium://apps link and matched them to the installed packages by id. Without a token the private repo is not readable, so download/update through Obtainium is unverified."
+  },
+  "games": [
+    {
+      "slug": "gear-bastion",
+      "package": "com.dsschiff.gearbastion",
+      "version": "0.4.0",
+      "version_code": 9,
+      "release_tag": "gear-bastion-v0.4.0",
+      "apk_sha256": "674409c10b9b746bb3ffbce26ccc306510aabedf6a7921405d8cd638b0c0aebb",
+      "apk_bytes": 56062199,
+      "uploaded_asset_digest_matches": true,
+      "build": {
+        "git_revision": "280bc6e628bccf4b5ab35939bb964f2fc7617505",
+        "project_dirty": false,
+        "build_type": "release",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "permissions": [],
+        "debuggable": false,
+        "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
+        "project_source_sha256": "f60040f4942c80aea4b64f94d01eb28c1a34499fa1bbc46bcc540a6340988ea2"
+      },
+      "headless_suites": "rules + playthrough SUITE_COMPLETE: PASS, exit 0",
+      "emulator_smoke": "gear-bastion | before: versionCode=8 minSdk=24 targetSdk=36 | install -r over debug:  | fresh: Success | after: versionCode=9 minSdk=24 targetSdk=36 | pid launch=4173 home-resume=4173 cold=4449 | fatal/ANR lines=0"
+    },
+    {
+      "slug": "tower-trials",
+      "package": "com.dsschiff.towertrials",
+      "version": "0.4.0",
+      "version_code": 6,
+      "release_tag": "tower-trials-v0.4.0",
+      "apk_sha256": "21c1072fbd9f88345280678b2f4793afd56a98f7c224b96e443bc0b33b69f2a2",
+      "apk_bytes": 53102980,
+      "uploaded_asset_digest_matches": true,
+      "build": {
+        "git_revision": "280bc6e628bccf4b5ab35939bb964f2fc7617505",
+        "project_dirty": false,
+        "build_type": "release",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "permissions": [],
+        "debuggable": false,
+        "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
+        "project_source_sha256": "caf07394ceb9e97c03ea18c569de465bd50dee6fb416dd0a60d56751aae4003b"
+      },
+      "headless_suites": "rules + playthrough SUITE_COMPLETE: PASS, exit 0",
+      "emulator_smoke": "tower-trials | before: versionCode=5 minSdk=24 targetSdk=36 | install -r over debug:  | fresh: Success | after: versionCode=6 minSdk=24 targetSdk=36 | pid launch=5147 home-resume=5147 cold=5242 | fatal/ANR lines=0"
+    },
+    {
+      "slug": "hook-and-hunger",
+      "package": "com.dsschiff.hookandhunger",
+      "version": "0.3.0",
+      "version_code": 6,
+      "release_tag": "hook-and-hunger-v0.3.0",
+      "apk_sha256": "f53f49d101f7b37d50ce45594e87925e2a694623dcbd9a2e4bddd5773cba392f",
+      "apk_bytes": 53687782,
+      "uploaded_asset_digest_matches": true,
+      "build": {
+        "git_revision": "280bc6e628bccf4b5ab35939bb964f2fc7617505",
+        "project_dirty": false,
+        "build_type": "release",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "permissions": [],
+        "debuggable": false,
+        "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
+        "project_source_sha256": "ca7577c2b202abcea2dab719a6f03f6c99780efe322abd2fa00f53fb70d7422f"
+      },
+      "headless_suites": "rules + playthrough SUITE_COMPLETE: PASS, exit 0",
+      "emulator_smoke": "hook-and-hunger | before: versionCode=5 minSdk=24 targetSdk=36 | install -r over debug:  | fresh: Success | after: versionCode=6 minSdk=24 targetSdk=36 | pid launch=4899 home-resume=4899 cold=4983 | fatal/ANR lines=0"
+    },
+    {
+      "slug": "hearthguard",
+      "package": "com.dsschiff.hearthguard",
+      "version": "0.3.0",
+      "version_code": 4,
+      "release_tag": "hearthguard-v0.3.0",
+      "apk_sha256": "d69d91a75fc1cd63028d883d1424d251462791775a1a33ad2e53d0f9c1fd7b16",
+      "apk_bytes": 54399979,
+      "uploaded_asset_digest_matches": true,
+      "build": {
+        "git_revision": "280bc6e628bccf4b5ab35939bb964f2fc7617505",
+        "project_dirty": false,
+        "build_type": "release",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "permissions": [],
+        "debuggable": false,
+        "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
+        "project_source_sha256": "46c1876337e155a1e734db0e694407efe62e398d27457104c7d08ba789f2f9f5"
+      },
+      "headless_suites": "rules + playthrough SUITE_COMPLETE: PASS, exit 0",
+      "emulator_smoke": "hearthguard | before: versionCode=3 minSdk=24 targetSdk=36 | install -r over debug:  | fresh: Success | after: versionCode=4 minSdk=24 targetSdk=36 | pid launch=4652 home-resume=4652 cold=4738 | fatal/ANR lines=0"
+    },
+    {
+      "slug": "frontline-foundry",
+      "package": "com.dsschiff.frontlinefoundry",
+      "version": "0.3.1",
+      "version_code": 5,
+      "release_tag": "frontline-foundry-v0.3.1",
+      "apk_sha256": "0fc1705e39c8222279e40b4a9097dd224367b099f17d4f79c479cb700789001f",
+      "apk_bytes": 56092929,
+      "uploaded_asset_digest_matches": true,
+      "build": {
+        "git_revision": "280bc6e628bccf4b5ab35939bb964f2fc7617505",
+        "project_dirty": false,
+        "build_type": "release",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "permissions": [],
+        "debuggable": false,
+        "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
+        "project_source_sha256": "b4a5ba9dfc5f1015de45aa89e4d7bf283a98e4473d7148a99e184c69b8040b35"
+      },
+      "headless_suites": "rules + playthrough SUITE_COMPLETE: PASS, exit 0",
+      "emulator_smoke": "frontline-foundry | before: versionCode=4 minSdk=24 targetSdk=36 | install -r over debug:  | fresh: Success | after: versionCode=5 minSdk=24 targetSdk=36 | pid launch=3795 home-resume=3795 cold=3949 | fatal/ANR lines=0"
+    },
+    {
+      "slug": "dead-run",
+      "package": "com.dsschiff.deadrun",
+      "version": "0.4.0",
+      "version_code": 6,
+      "release_tag": "dead-run-v0.4.0",
+      "apk_sha256": "baf2a0bf8afcbf56da4e77820526460a039d3f8012dbae2d635f4fd4a0b4884b",
+      "apk_bytes": 54300942,
+      "uploaded_asset_digest_matches": true,
+      "build": {
+        "git_revision": "280bc6e628bccf4b5ab35939bb964f2fc7617505",
+        "project_dirty": false,
+        "build_type": "release",
+        "godot": "4.7.2.stable.official.ed1daf0bf",
+        "permissions": [],
+        "debuggable": false,
+        "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
+        "project_source_sha256": "ec27dce61ae475e2d4befdde6a3d66b28ef43bc2b07c6dc570b30784f1504e6e"
+      },
+      "headless_suites": "rules + playthrough SUITE_COMPLETE: PASS, exit 0",
+      "emulator_smoke": "dead-run | before: versionCode=5 minSdk=24 targetSdk=36 | install -r over debug:  | fresh: Success | after: versionCode=6 minSdk=24 targetSdk=36 | pid launch=3299 home-resume=3299 cold=3590 | fatal/ANR lines=0"
+    }
+  ],
+  "planetfall": {
+    "package": "com.dsschiff.planetfall",
+    "version": "1.0.0",
+    "version_code": 1,
+    "release_tag": "planetfall-v1.0.0",
+    "apk_sha256": "928290ee052a1d9403f10b43efda4a584869bc8559436c36a495a563253e0839",
+    "source": "dsschiff/planetfall PR #65, merge d537fdf",
+    "emulator": "launch offline, three pulses (Cycle 0 to 3), force-stop and relaunch restores the save; install -r keeps it"
+  },
+  "physical_phone_tested": false
+}
