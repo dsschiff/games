@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "game": "frontline-foundry",
+  "date": "2026-10-21",
+  "status": "emulator_upgrade_verified_graphics_candidate_physical_phone_deferred",
+  "source_branch": "codex/frontline-pooling",
+  "source_commit": "d7eb7467a65e50fda8cabe5548e619180b9bd7d0",
+  "version": "0.3.1",
+  "version_code": 4,
+  "version_transition": {
+    "from": "0.3.0/code3 (delivered)",
+    "to": "0.3.1/code4",
+    "code4_previously_delivered": false,
+    "superseded_code4_build": "C:/projects/active/games/.artifacts/frontline-foundry/20261018T191430499566Z/frontline-foundry.apk (pre-art 71614a1, never installed or delivered)"
+  },
+  "apk": {
+    "build_manifest": "C:/projects/active/_worktrees/games-frontline-foundry-20261018/.artifacts/frontline-foundry/20261022T001245187529Z/manifest.json",
+    "delivery_copy": "C:/projects/active/games/.artifacts/releases/graphics-20261021/Frontline-Foundry-0.3.1-Android.apk",
+    "sha256": "47f986206b031da52ab8865a2c217ee011b7ed3c491fa49ef810f2ff01887df1",
+    "bytes": 60771040,
+    "package": "com.dsschiff.frontlinefoundry",
+    "permissions": [],
+    "internet_permission": false,
+    "signature_verified": true,
+    "signer_cert_sha256": "90e5a27df8d0c427da5bb822477d31796ff7f1d20d95ef915246cde6e2a9c55b",
+    "same_signer_as_delivered_code3": true,
+    "source_clean_and_unchanged": true
+  },
+  "tests": {
+    "manifest": "C:/projects/active/_worktrees/games-frontline-foundry-20261018/.artifacts/frontline-foundry/20261022T001037635262Z/manifest.json",
+    "rules_checks": 69,
+    "input_playthrough_checks": 40,
+    "failures": 0
+  },
+  "upgrade": {
+    "manifest": "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.frontlinefoundry/20261022T001511369806Z/manifest.json",
+    "result": "passed",
+    "checks_passed": 24,
+    "checks_total": 24,
+    "old_save": "Genuine code3 Switchyard battle and career from the earlier native code2-to3 session; real Sound taps; no reset or injected save",
+    "preserved_whole_paths": [
+      "state",
+      "profile",
+      "settings",
+      "career",
+      "committed"
+    ],
+    "save_envelope_version": 2,
+    "fixture": "scripts/smoke-actions/frontline-foundry-code4-from-earned-code3.json",
+    "expectations": "scripts/smoke-actions/frontline-foundry-code4-upgrade-expectations.json",
+    "runtime_errors": false,
+    "warnings": "shader cache recompilation only"
+  },
+  "native_checks": {
+    "packet": "C:/projects/active/games/.artifacts/emulator/graphics-20261021/frontline-native/report.json",
+    "resume_and_joystick_swipe": "live 3D Switchyard rendered with crews, enemies, perimeter kit and warm ground",
+    "android_back": "pauses live battle; process alive",
+    "cover_1080x2520": "alive, legible",
+    "inner_1968x2184": "alive, pause panel fitted, scene fills width",
+    "home_then_cold_relaunch": "restores paused battle; both checksum slots valid and committed",
+    "script_errors": 0
+  },
+  "screenshots": [
+    "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.frontlinefoundry/20261022T001511369806Z/new-cold-relaunch-foreground.png",
+    "C:/projects/active/games/.artifacts/emulator/graphics-20261021/frontline-native/02-live.png",
+    "C:/projects/active/games/.artifacts/emulator/graphics-20261021/frontline-native/05-inner.png"
+  ],
+  "visual_finding": "Android frames render correctly: lit, not white or black; matches the art-direction follow camera.",
+  "limits": "Emulator only. Physical Fold7 touch/folding, sound, phone FPS and human fun not established. Back/resize/cold checks are bounded agent checks, not an independent Astra review."
+}

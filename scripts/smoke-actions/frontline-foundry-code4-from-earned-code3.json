@@ -1,0 +1,34 @@
+{
+  "reference_display": [1080, 2400],
+  "viewport": [720, 1280],
+  "scope": "Genuine code3 Switchyard battle left by the actual code2-to3 native session (career 2 victories/3 attempts, Ash Gate cleared, native-moved commander, sound off, reduced effects on). Cold launch restores it paused. Actual taps toggle Sound ON then OFF at the 1080x2400 pause-menu Sound row (540,772), leaving settings and battle unchanged. No injected save or reset.",
+  "actions": [
+    {"type": "wait", "wait_seconds": 0.3},
+    {"type": "tap", "x": 540, "y": 772, "wait_seconds": 0.3},
+    {"type": "tap", "x": 540, "y": 772, "wait_seconds": 0.3}
+  ],
+  "expected_save": {
+    "version": 2,
+    "committed": true,
+    "career.attempts": 3,
+    "career.victories": 2,
+    "career.clears.ash_gate": 3,
+    "career.ending": false,
+    "state.catalog": 2,
+    "state.phase": "playing",
+    "state.wallet": 22,
+    "state.hp": 120,
+    "state.hq": 210,
+    "state.spawned": 3,
+    "state.commander_shots": 8,
+    "state.planned_support": "ward",
+    "profile.wins": 1,
+    "settings.sound": false,
+    "settings.reduced_effects": true
+  },
+  "expected_numeric": {
+    "state.time": {"min": 28.5499, "max": 28.5501},
+    "state.x": {"min": 0.9522, "max": 0.9524},
+    "state.z": {"min": 0.6837, "max": 0.6838}
+  }
+}
