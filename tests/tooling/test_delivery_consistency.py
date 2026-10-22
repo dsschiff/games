@@ -3,7 +3,9 @@
 Evidence-path rule: a repo-relative path string (starting with ``android-games/``) must be
 tracked by git. Neither JSON file has an explicit artifact-only marker, so by convention
 (AGENTS.md: build/evidence outputs live in ignored ``.artifacts/``) paths under ``.artifacts/``
-or ``.references/`` and absolute paths (``C:/...``) are artifact-only and are not required in git.
+or ``.references/`` and absolute paths containing ``/.artifacts/`` or ``/_worktrees/`` are
+artifact-only and are not required in git. Any other absolute path is flagged as
+``absolute-untracked`` and fails the test.
 The tests never require ``.artifacts`` to exist.
 """
 import json
@@ -17,6 +19,7 @@ DELIVERY = ROOT / "android-games/delivery.json"
 GRAPHICS = ROOT / "android-games/graphics-overhaul.json"
 
 ARTIFACT_PREFIXES = (".artifacts/", ".references/")
+ABSOLUTE_ARTIFACT_MARKERS = ("/.artifacts/", "/_worktrees/")
 TRACKED_PREFIX = "android-games/"
 
 # Known exceptions on main. Each entry is a finding reported in the track checkpoint; keep
@@ -49,9 +52,13 @@ def _walk(node, where=""):
 
 
 def _classify(value):
-    """Return 'tracked', 'artifact' or None (not a path) for a string value."""
+    """Return 'tracked', 'artifact', 'absolute-untracked' or None (not a path) for a string value."""
     text = value.replace("\\", "/")
-    if re.match(r"^[A-Za-z]:/", text) or text.startswith(ARTIFACT_PREFIXES):
+    if re.match(r"^[A-Za-z]:/", text):
+        if any(marker in text for marker in ABSOLUTE_ARTIFACT_MARKERS):
+            return "artifact"
+        return "absolute-untracked"
+    if text.startswith(ARTIFACT_PREFIXES):
         return "artifact"
     if text.startswith(TRACKED_PREFIX) and " " not in text:
         return "tracked"
@@ -95,6 +102,32 @@ class ToolingGateConsistencyTests(unittest.TestCase):
                     missing.append(f"{label}:{where} -> {path}")
         self.assertGreater(checked, 10, "path walker found suspiciously few evidence paths")
         self.assertEqual(missing, [], "evidence paths not in git ls-files")
+
+    def test_no_absolute_paths_outside_artifact_dirs(self):
+        bad = [
+            f"{label}:{where} -> {value}"
+            for label, data in (("delivery", self.delivery), ("graphics", self.graphics))
+            for where, value in _walk(data)
+            if _classify(value) == "absolute-untracked"
+        ]
+        self.assertEqual(bad, [], "absolute paths must be under .artifacts/ or _worktrees/")
+
+    def test_classifier_flags_absolute_non_artifact_path(self):
+        self.assertEqual(
+            _classify("C:/projects/active/games/android-games/evidence/gone.json"),
+            "absolute-untracked",
+        )
+        self.assertEqual(
+            _classify("C:\\projects\\active\\games\\android-games\\evidence\\gone.json"),
+            "absolute-untracked",
+        )
+        self.assertEqual(
+            _classify("C:\\projects\\active\\games\\.artifacts\\x\\m.json"), "artifact"
+        )
+        self.assertEqual(_classify("C:/projects/active/_worktrees/games-x/a.json"), "artifact")
+        self.assertEqual(_classify(".artifacts/x/m.json"), "artifact")
+        self.assertEqual(_classify("android-games/evidence/a.json"), "tracked")
+        self.assertIsNone(_classify("codex/gear-graphics"))
 
     def test_artifact_only_paths_are_not_required_in_git(self):
         # Documents the convention: these are allowed to be absent from git and from disk.
