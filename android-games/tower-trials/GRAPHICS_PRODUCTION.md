@@ -114,6 +114,19 @@ tour 50/0. Before/after contact sheets:
 and `tower-after.png` (opening, strike, absorb, claim pop, mid-chapter
 Salt Archives, late Last Meridian, tall watch before the final rescue, ending).
 
+Follow-up (coordinator decisions): once a move resolves with a claim, main
+clears the selection, so the panel reads "+N CLAIMED · PICK THE NEXT ROOM"
+above the usual lesson instead of "ROUTE CLOSED / Already claimed"; tapping a
+claimed room still reports "Already claimed" with no Enter. Undo and Retry
+return to an empty selection (load_run already did this). The header subtitle
+now names the current chapter (Lantern Coast, Salt Archives, Glass March,
+Last Meridian: the Journey tab names; the catalog stores only chapter
+numbers) and, in Seeded Challenges, the family (Keys, Shell / sun, Rescue
+fork, Woven finale) ahead of the seed line. The campaign test asserts the
+cleared selection after every claim, the claimed-room tap, and the neutral
+selection after Undo/Retry. Re-run: rules 3503/0, input 1363/0, rendered
+1407/0, graphics view 252/0 and 289/0.
+
 ## Kit
 
 `art/source/build_assets.py` is the complete original generator (helpers and
@@ -209,9 +222,6 @@ measurement.
   phone size it reads as running, striking and recoiling, but there is no
   squash or cloth. Fights with four or five steps get about 0.1 s per strike
   because the existing 0.9 s rule beat was deliberately not lengthened.
-- After a move the selected room stays selected, so the forecast panel reads
-  "ROUTE CLOSED / Already claimed" until the next tap. That is existing main
-  input behaviour, left unchanged here; worth a separate input decision.
 - Landscape/emulator validation of the new shapes on a device remains with
   the root emulator stage.
 

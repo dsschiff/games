@@ -13,6 +13,9 @@ const GOLD := Color("ffd17d")
 const RED := Color("fa8b7c")
 const WHITE := Color("f4eee3")
 const MUTED := Color("a5bcc9")
+## Chapter names as shown on the Journey tabs; challenge families as on the select screen.
+const CHAPTER_NAMES := ["Lantern Coast", "Salt Archives", "Glass March", "Last Meridian"]
+const FAMILY_NAMES := {"key": "Keys", "shell": "Shell / sun", "rescue": "Rescue fork", "finale": "Woven finale"}
 
 var save_path := Saves.PATH
 var data := Saves.fresh()
@@ -47,6 +50,7 @@ var challenge_weave := 0
 var challenge_treasure := true
 var show_hint := false
 var record_page := 0
+var claimed_gain := -1
 var view: Node3D = TowerView.new()
 
 func _ready() -> void:
@@ -92,6 +96,7 @@ func load_run() -> void:
 		var reason := Rules.step(level, Saves.replay_route(level, prefix), last)
 		note = " / ".join(reason.events) + " " + reason.message
 	selected = ""
+	claimed_gain = -1
 	pending = {}
 	beat = 0
 	chapter = maxi(0, Content.index_of(data.level_id)) / 9
@@ -170,7 +175,11 @@ func _process(delta: float) -> void:
 	if not pending.is_empty():
 		beat += delta
 		if beat >= 0.9:
+			claimed_gain = int(pending.state.power) - int(state.power) if pending_room in pending.state.claimed else -1
 			state = pending.state
+			# The claimed room cannot be entered again; return to a neutral read.
+			if pending_room in state.claimed:
+				selected = ""
 			current_run().actions.append(pending_room)
 			note = "  /  ".join(pending.events)
 			pending = {}
@@ -318,6 +327,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		for room in level.rooms:
 			if room_rect(room).has_point(point):
 				selected = room.id
+				claimed_gain = -1
 				tone(420)
 				queue_redraw()
 				get_viewport().set_input_as_handled()
@@ -624,7 +634,7 @@ func background() -> void:
 func draw_header() -> void:
 	text_at("TOWER TRIALS", Vector2(26, 58), 29, GOLD)
 	button("settings", "•••")
-	text_at("v1 · seed %d · weave %d · treasure %s%s" % [data.challenge_run.bundle.seed, data.challenge_run.bundle.options.weave, "on" if data.challenge_run.bundle.options.treasure else "off", " · backup" if data.challenge_run.bundle.fallback else ""] if data.kind == "challenge" else "COAST OF THE LOST CHIMES", Vector2(26, 84), 15, MUTED)
+	text_at(FAMILY_NAMES.get(data.challenge_run.bundle.family, "Challenge").to_upper() + " · v1 · seed %d · weave %d · treasure %s%s" % [data.challenge_run.bundle.seed, data.challenge_run.bundle.options.weave, "on" if data.challenge_run.bundle.options.treasure else "off", " · backup" if data.challenge_run.bundle.fallback else ""] if data.kind == "challenge" else (CHAPTER_NAMES[clampi(int(level.get("chapter", 0)), 0, 3)].to_upper() if screen == "game" else "COAST OF THE LOST CHIMES"), Vector2(26, 84), 15, MUTED)
 	if screen == "game":
 		text_at("Challenge · " + level.name if data.kind == "challenge" else "%02d / %02d  ·  %s" % [Content.index_of(data.level_id) + 1, Content.levels().size(), level.name], Vector2(26, 126), 23)
 		box(Rect2(24, 146, 260, 72), Color("173e53"), 12, Color("347b7d"))
@@ -743,7 +753,10 @@ func draw_game() -> void:
 		button("enter", "Enter room" if preview.get("win", false) else "Enter anyway · danger", TEAL if preview.get("win", false) else Color("633f4b"))
 	else:
 		var later: bool = data.kind == "campaign" and Content.index_of(data.level_id) >= 6
-		text_at("OPTIONAL HINT · tap to hide" if show_hint else ("RULES · tap for optional hint" if later else "READ THE TOWER"), Vector2(40, 825), 21, GOLD)
+		if claimed_gain >= 0 and not show_hint:
+			text_at("+%d CLAIMED · PICK THE NEXT ROOM" % claimed_gain, Vector2(40, 825), 21, TEAL)
+		else:
+			text_at("OPTIONAL HINT · tap to hide" if show_hint else ("RULES · tap for optional hint" if later else "READ THE TOWER"), Vector2(40, 825), 21, GOLD)
 		lines(level.lesson if not later or show_hint else "Greater power wins. Locks spend keys; shields block traps. Read gifts, sealed routes and ordered enemies.", Vector2(40, 858), 510, 21, WHITE, 3)
 	button("undo", "Undo")
 	button("retry", "Retry")
@@ -751,8 +764,7 @@ func draw_game() -> void:
 	button("challenge_new", "New")
 
 func draw_map() -> void:
-	var titles := ["Lantern Coast", "Salt Archives", "Glass March", "Last Meridian"]
-	text_at(titles[chapter], Vector2(26, 130), 32)
+	text_at(CHAPTER_NAMES[chapter], Vector2(26, 130), 32)
 	for i in 4:
 		button("chapter%d" % i, ["Coast", "Archive", "Glass", "Meridian"][i], TEAL if chapter == i else Color("24485e"))
 	var all := Content.levels()
@@ -866,7 +878,7 @@ func draw_challenge_select() -> void:
 	text_at("Seeded Challenges · v1", Vector2(26, 130), 30, GOLD)
 	text_at("Family, seed and options define a repeatable watch.", Vector2(42, 184), 18, SAND)
 	for family in Challenge.FAMILIES:
-		button("family_" + family, {"key": "Keys", "shell": "Shell / sun", "rescue": "Rescue fork", "finale": "Woven finale"}[family], TEAL if family == challenge_family else Color("24485e"))
+		button("family_" + family, FAMILY_NAMES[family], TEAL if family == challenge_family else Color("24485e"))
 	text_at("Seed · 0 to 2147483647", Vector2(42, 420), 21, WHITE)
 	button("seed_next", "+1 seed")
 	button("weave", "Weave %d" % challenge_weave)
