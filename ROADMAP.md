@@ -40,3 +40,17 @@ The current work is `android-games/GRAPHICS-OVERHAUL.md`; status/ownership is in
 the user and cannot block G0–G3. Existing baseline approvals do not establish the
 new visual standard. Keep screenshots, normal-speed motion review and measured
 frame timing distinct from headless correctness and physical/human acceptance.
+
+### Next actions (2026-10-22)
+
+1. Save durability, all six games: saves are not flushed to disk, and on the
+   emulator Dead Run lost both slots to a shutdown seconds after saving (see
+   `android-games/evidence/dead-run-hordes-candidate.json`). Flush/fsync each slot
+   write and add a kill-after-save emulator check.
+2. Independent visual/motion review and before/after clips for Frontline 0.3.1,
+   Hook 0.3.0, Dead Run 0.4.0 and Tower 0.4.0 (G2/G3 exit condition).
+3. Small fixes: Dead Run extra Resume button after Home on a finished road and crew
+   drawn inside the blockade on defeat; Hook dock-label outline and Android joystick
+   movement evidence; Frontline HQ partly behind bottom controls; Tower overlapping
+   pops in busy rooms; Dead Run windowed presentation run leaks textures at exit.
+4. Deferred by Daniel: Fold7 phone testing, phone surge frame rate, human difficulty.
