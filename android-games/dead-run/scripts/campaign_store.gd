@@ -6,6 +6,8 @@ const D = preload("res://scripts/campaign_data.gd")
 const Files = preload("res://scripts/save_files.gd")
 const PATH := Old.PATH
 const LIMIT := 2000000
+# Best-crew records accept the largest cap any catalog has used.
+const MAX_CREW := D.CAP
 
 static func profile() -> Dictionary:
 	return {"clears": [], "medals": {}, "replays": [], "ending": false}
@@ -24,10 +26,10 @@ static func valid(ctx: Variant) -> bool:
 	for id in p.medals:
 		if not id is String or not id.is_valid_int() or id != str(int(id)) or int(id) < 0 or int(id) >= p.clears.size() or not p.medals[id] is Dictionary: return false
 		var m: Dictionary = p.medals[id]
-		if not m.get("rescues") is bool or not m.get("no_loss") is bool or not Legacy.number(m.get("best_crew"), 1, 20, true): return false
+		if not m.get("rescues") is bool or not m.get("no_loss") is bool or not Legacy.number(m.get("best_crew"), 1, MAX_CREW, true): return false
 	var seen := {}
 	for rec in p.replays:
-		if not rec is Dictionary or not Legacy.number(rec.get("seed"), 1, 999999, true) or seen.has(rec.seed) or not Legacy.number(rec.get("crew"), 1, 20, true) or not D.WEAPONS.has(rec.get("weapon")): return false
+		if not rec is Dictionary or not Legacy.number(rec.get("seed"), 1, 999999, true) or seen.has(rec.seed) or not Legacy.number(rec.get("crew"), 1, MAX_CREW, true) or not D.WEAPONS.has(rec.get("weapon")): return false
 		seen[rec.seed] = true
 	if not p.ending and not p.replays.is_empty(): return false
 	var s: Dictionary = ctx.campaign
@@ -38,6 +40,19 @@ static func valid(ctx: Variant) -> bool:
 	if s.phase == "victory" and s.rewarded:
 		if not s.definition.replay and s.definition.index not in p.clears: return false
 		if s.definition.replay and not seen.has(s.definition.seed): return false
+	return true
+
+## Explicit code5 upgrade of a code2-code4 (catalog1/rule2) campaign road.
+## A road in progress, and a finished road showing its result, keep their
+## pinned catalog1 definition and replay under the frozen catalog1 rules.
+## A road that was loaded but never started has nothing to preserve, so it
+## becomes the same road, weapon and seed under the current horde rules.
+## Clears, medals, best crew, replays, settings, loadout and the parked legacy
+## canal bridge are never touched. Returns true when the context changed.
+static func upgrade(ctx: Dictionary) -> bool:
+	var s: Dictionary = ctx.campaign
+	if not R.catalog1(s) or s.phase != "ready": return false
+	ctx.campaign = R.fresh(int(s.definition.index), String(s.weapon), int(s.definition.seed))
 	return true
 
 static func award(ctx: Dictionary) -> void:

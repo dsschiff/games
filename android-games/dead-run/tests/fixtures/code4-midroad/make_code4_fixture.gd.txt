@@ -1,0 +1,65 @@
+extends SceneTree
+## Runs INSIDE an unmodified code4 (0.3.0, bb6a589) Dead Run project copy.
+## Produces a genuine code4 app-written save with a road in progress, plus a
+## recorded continuation (steering ticks and the final code4 state) so code5
+## can prove it continues that road exactly as code4 would.
+## Profile clears are a LABELLED FIXTURE (not earned): roads 1-6 marked clear
+## so road 7 can be opened. The road itself is simulated by code4's own
+## campaign scene/rules; steering is the code4 read-only policy via C.steer.
+const C = preload("res://scripts/campaign_rules.gd")
+const Store = preload("res://scripts/campaign_store.gd")
+const Policy = preload("res://tests/campaign_policy.gd")
+var out := ""
+
+func _initialize() -> void:
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--out="): out = arg.trim_prefix("--out=")
+	call_deferred("run")
+
+func save_slots(dest: String) -> void:
+	DirAccess.make_dir_recursive_absolute(dest)
+	for i in 2:
+		var path := Store.PATH + str(i)
+		if FileAccess.file_exists(path):
+			var f := FileAccess.open(dest.path_join("dead-run-save-" + str(i)), FileAccess.WRITE)
+			f.store_buffer(FileAccess.get_file_as_bytes(path))
+			f.close()
+
+func run() -> void:
+	root.size = Vector2i(720, 1280)
+	var scene: Node = load("res://campaign.tscn").instantiate()
+	root.add_child(scene)
+	for i in 4: await physics_frame
+	var p: Dictionary = scene.ctx.profile
+	p.clears = [0, 1, 2, 3, 4, 5]
+	p.medals = {}
+	for i in 6: p.medals[str(i)] = {"rescues": i % 2 == 0, "no_loss": i == 1, "best_crew": 8 + i}
+	scene.settings.sound = false
+	scene.settings.reduced_effects = true
+	scene.ctx.loadout = "lance"
+	scene.load_road(6)
+	scene.start_run()
+	while scene.state.tick < 1500:
+		if scene.state.tick % 15 == 0: C.steer(scene.state, Policy.aim(scene.state, "rescue"))
+		await physics_frame
+	scene.toggle_pause()
+	for i in 3: await physics_frame
+	var saved := Store.read()
+	assert(saved.ok and saved.context.campaign.phase == "playing" and scene.paused)
+	save_slots(out.path_join("midroad"))
+	# Continue under code4 and record exactly when steering changed.
+	var s: Dictionary = saved.context.campaign.duplicate(true)
+	var steers: Array = []
+	while s.phase == "playing":
+		if s.tick % 15 == 0:
+			var target := Policy.aim(s, "rescue")
+			steers.append([s.tick, target])
+			C.steer(s, target)
+		C.step(s)
+	var f := FileAccess.open(out.path_join("continuation.json"), FileAccess.WRITE)
+	f.store_string(JSON.stringify({"scope": "code4 rules continuing the saved road from its paused tick with the code4 policy; steers are [tick, aim] applied before that tick's step.",
+		"start_tick": saved.context.campaign.tick, "steers": steers, "final": s}, "", true, true))
+	f.close()
+	print("CODE4_FIXTURE tick=", saved.context.campaign.tick, " crew=", saved.context.campaign.crew, " final=", s.phase, " crew=", s.crew, " tick=", s.tick)
+	print("SUITE_COMPLETE: PASS")
+	quit()

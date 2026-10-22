@@ -7,6 +7,7 @@ extends RefCounted
 ## back into the simulation. A new adapter is created on every build_world
 ## (load, Retry, import, road change), which clears every transient.
 const C = preload("res://scripts/campaign_rules.gd")
+const Data = preload("res://scripts/campaign_data.gd")
 const Kit = preload("res://scripts/presentation/kit.gd")
 const Actor = preload("res://scripts/presentation/actor.gd")
 const Street = preload("res://scripts/presentation/street.gd")
@@ -16,6 +17,17 @@ const ROLE_BLOOD := {"drifter": Color("9bd16a"), "runner": Color("e0704f"), "pla
 const CREW_SCALE := .84
 const BOSS_KEYS := ["boss_blockade", "boss_matron", "boss_ram", "boss_bell", "boss_ferry"]
 const BOSS_SCALE := [1.25, 2.3, 2.25, 1.6, 1.7]
+# Hordes: enough pooled reserves per role that a surge never instantiates
+# a fresh skinned actor mid-road after warm-up.
+const RESERVE := 48
+const TOUGH := {"plated": Color("ffe39a"), "spitter": Color("c8ff4a"), "bulwark": Color("ff6a4a")}
+# Per refresh, only the first few kills/hits get the full burst; the rest of
+# a sweep gets small chips so a mowed wave stays readable, not a white-out.
+const FULL_KILLS := 4
+const FULL_HITS := 6
+# Infected further than this pose on alternate frames (gait integrates the
+# skipped time), halving bone work for the far half of a horde.
+const FAR_Z := 12.5
 
 var host: Node3D
 var world: Node3D
@@ -53,6 +65,10 @@ var ending_clock := -1.0
 var footprint_glow: MeshInstance3D
 var state: Dictionary
 var label_font: Font
+var threat_rings: MultiMeshInstance3D
+var frame_index := 0
+var kills_this_sync := 0
+var hits_this_sync := 0
 
 func build(owner: Node3D, parent: Node3D, registry: Dictionary, s: Dictionary) -> void:
 	host = owner
@@ -84,6 +100,7 @@ func build(owner: Node3D, parent: Node3D, registry: Dictionary, s: Dictionary) -
 	_build_sides(d)
 	_build_carts(d)
 	_build_boss(d)
+	_build_threat_rings()
 	var hz_mesh := BoxMesh.new()
 	hz_mesh.size = Vector3.ONE
 	var holder := Node3D.new()
@@ -158,7 +175,7 @@ func _build_crew() -> void:
 	ring_mesh.rings = 16
 	ring_mesh.ring_segments = 6
 	var ring_material := flat(Color("ffe08a"), .8)
-	for i in 20:
+	for i in Data.CAP:
 		var a := Actor.new()
 		a.name = "Crew%d" % i
 		a.phase_seed = float(i) * .9
@@ -191,6 +208,13 @@ func _build_enemies(d: Dictionary) -> void:
 		var mesh := BoxMesh.new()
 		mesh.size = box.size
 		bounds[role] = {"mesh": mesh, "center": box.get_center()}
+	# Warm the pools to the road's own peak need so surges reuse actors.
+	var need := {}
+	for e in d.enemies: need[e.role] = mini(RESERVE, int(need.get(e.role, 0)) + 1)
+	for role in need:
+		var warm: Array = []
+		for k in mini(need[role], RESERVE / 2 if role in ["drifter", "runner", "cluster"] else 6): warm.append(_take(role))
+		for a in warm: _put(role, a)
 	for i in d.enemies.size():
 		var role: String = d.enemies[i].role
 		var anchor := Node3D.new()
@@ -225,7 +249,7 @@ func _put(role: String, a: Node3D) -> void:
 	a.transform = Transform3D.IDENTITY
 	a.hide()
 	if not pool.has(role): pool[role] = []
-	if pool[role].size() >= 16:
+	if pool[role].size() >= RESERVE:
 		a.queue_free()
 		return
 	inactive.add_child(a)
@@ -366,6 +390,30 @@ func _build_boss(d: Dictionary) -> void:
 			boss_arms.append({"node": holder, "model": arm, "fill": fill})
 			actors["arm" + str(i)] = holder
 
+## One MultiMesh of flat ground rings marks the infected that matter inside
+## a horde: plated (pale gold), spitters (acid green), bulwarks (red).
+func _build_threat_rings() -> void:
+	threat_rings = MultiMeshInstance3D.new()
+	threat_rings.name = "ThreatRings"
+	var mm := MultiMesh.new()
+	mm.transform_format = MultiMesh.TRANSFORM_3D
+	mm.use_colors = true
+	var ring := TorusMesh.new()
+	ring.inner_radius = .36
+	ring.outer_radius = .46
+	ring.rings = 18
+	ring.ring_segments = 4
+	mm.mesh = ring
+	mm.instance_count = 64
+	mm.visible_instance_count = 0
+	threat_rings.multimesh = mm
+	var m := StandardMaterial3D.new()
+	m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	m.vertex_color_use_as_albedo = true
+	threat_rings.material_override = m
+	threat_rings.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	root.add_child(threat_rings)
+
 # ---------------------------------------------------------------- per tick
 func sync(s: Dictionary, settings: Dictionary) -> void:
 	state = s
@@ -378,6 +426,8 @@ func sync(s: Dictionary, settings: Dictionary) -> void:
 	street.scroll(float(s.tick) / 60.0 * ground_speed)
 	if ticked: lateral = (float(s.x) - float(last.get("x", s.x))) * 60.0
 	elif hydrate: lateral = 0.0
+	kills_this_sync = 0
+	hits_this_sync = 0
 	_sync_crew(s, d, hydrate, ticked)
 	_sync_enemies(s, d, hydrate)
 	_sync_gates(s, d, hydrate)
@@ -398,7 +448,7 @@ func sync(s: Dictionary, settings: Dictionary) -> void:
 
 func _sync_crew(s: Dictionary, d: Dictionary, hydrate: bool, ticked: bool) -> void:
 	var before := int(last.get("crew", s.crew))
-	for i in 20:
+	for i in crew.size():
 		var a = crew[i]
 		var live: bool = i < s.crew
 		if live:
@@ -422,7 +472,7 @@ func _sync_crew(s: Dictionary, d: Dictionary, hydrate: bool, ticked: bool) -> vo
 		a.visible = live
 	if hydrate: return
 	if s.crew < before:
-		for i in range(s.crew, mini(before, 20)):
+		for i in range(s.crew, mini(before, crew.size())):
 			var fallen: Node3D = _take("crew_fallen") if pool.has("crew_fallen") and not pool["crew_fallen"].is_empty() else null
 			if fallen == null:
 				fallen = Actor.new()
@@ -431,16 +481,18 @@ func _sync_crew(s: Dictionary, d: Dictionary, hydrate: bool, ticked: bool) -> vo
 			fallen.position = crew[i].position
 			fallen.die()
 			dying.append({"node": fallen, "role": "crew_fallen", "life": 0.0})
-			fx.burst(crew[i].position + Vector3(0, .55, 0), Color("ff6a55"), 8, 2.0)
+			fx.burst(crew[i].position + Vector3(0, .55, 0), Color("ff6a55"), 8 if i - s.crew < 6 else 2, 2.0)
 		fx.pop_text(Vector3(s.x, 1.9, .2), "%d" % (s.crew - before), Color("ff8a7a"))
 		fx.kick_shake(.6)
 	elif s.crew > before:
 		fx.pop_text(Vector3(s.x, 1.9, .2), "+%d" % (s.crew - before), Color("9fe2ff"))
 		fx.burst(Vector3(s.x, .3, .4), Color("8fd8ff"), 14, 2.4)
 	if ticked and s.phase == "playing" and int(s.tick) % int(d.weapons[s.weapon].period) == 0:
-		for i in mini(s.crew, 20):
+		# Every member recoils; flashes go to an even spread of at most 20.
+		var every := maxi(1, ceili(float(s.crew) / 20.0))
+		for i in mini(s.crew, crew.size()):
 			crew[i].kick()
-			fx.muzzle(i, crew[i].muzzle())
+			if i % every == 0: fx.muzzle(i / every, crew[i].muzzle())
 
 func _sync_enemies(s: Dictionary, d: Dictionary, hydrate: bool) -> void:
 	# Bounded by both sizes: a synthetic caller may restore a state for a
@@ -470,15 +522,18 @@ func _sync_enemies(s: Dictionary, d: Dictionary, hydrate: bool) -> void:
 			var prior: int = v.get_meta("tough")
 			if toughness < prior and not hydrate:
 				v.flinch()
+				hits_this_sync += 1
 				var hit_at: Vector3 = anchor.position + Vector3(0, .85 * ROLE_SCALE[ed.role], .2)
+				var chips := 6 if hits_this_sync <= FULL_HITS else 2
 				if int(e.armor) < int(v.get_meta("armor", ed.armor)):
-					fx.burst(hit_at, Color("fff2c0"), 6, 2.8, .8)
+					fx.burst(hit_at, Color("fff2c0"), chips, 2.8, .8)
 				else:
-					fx.burst(hit_at, ROLE_BLOOD[ed.role], 6, 2.0, .95)
+					fx.burst(hit_at, ROLE_BLOOD[ed.role], chips, 2.0, .95)
 			v.set_meta("armor", e.armor)
 			v.set_meta("tough", toughness)
 			var health: Node3D = v.get_node("Health")
-			health.visible = toughness < int(ed.hp) + int(ed.armor)
+			# Fodder dies in a hit or two; only tough roles carry a bar.
+			health.visible = toughness < int(ed.hp) + int(ed.armor) and int(ed.hp) + int(ed.armor) > 2
 			set_fill(health.get_child(1), float(toughness) / (int(ed.hp) + int(ed.armor)))
 			if int(e.next_spit) != int(v.get_meta("spit")) and not hydrate:
 				v.windup = 1.0
@@ -494,14 +549,31 @@ func _sync_enemies(s: Dictionary, d: Dictionary, hydrate: bool) -> void:
 				v.position = at
 				v.die()
 				dying.append({"node": v, "role": ed.role, "life": 0.0})
-				fx.burst(at + Vector3(0, .6, 0), ROLE_BLOOD[ed.role], 16, 3.0, 1.5)
-				fx.pop(at + Vector3(0, .7, 0), ROLE_BLOOD[ed.role], 1.3 if ed.role != "bulwark" else 1.9)
-				fx.splat(at, ROLE_BLOOD[ed.role].darkened(.35), .55 if ed.role != "bulwark" else .9)
+				kills_this_sync += 1
+				var big: bool = kills_this_sync <= FULL_KILLS or TOUGH.has(ed.role)
+				fx.burst(at + Vector3(0, .6, 0), ROLE_BLOOD[ed.role], 16 if big else 5, 3.0, 1.5 if big else 1.1)
+				if big: fx.pop(at + Vector3(0, .7, 0), ROLE_BLOOD[ed.role], 1.3 if ed.role != "bulwark" else 1.9)
+				if big or kills_this_sync % 3 == 0: fx.splat(at, ROLE_BLOOD[ed.role].darkened(.35), .55 if ed.role != "bulwark" else .9)
 			else:
 				if not hydrate:
 					fx.burst(Vector3(ed.x, .4, .6), Color("ff4a3a"), 10, 2.2)
 					fx.kick_shake(.4)
 				_put(ed.role, v)
+	_sync_threat_rings(d)
+
+func _sync_threat_rings(d: Dictionary) -> void:
+	var mm := threat_rings.multimesh
+	var n := 0
+	for i in visuals:
+		if n >= mm.instance_count: break
+		if i >= d.enemies.size(): continue
+		var role: String = d.enemies[i].role
+		if not TOUGH.has(role): continue
+		var size := 1.45 if role == "bulwark" else 1.0
+		mm.set_instance_transform(n, Transform3D(Basis.IDENTITY.scaled(Vector3(size, .5, size)), anchors[i].position + Vector3(0, .04, 0)))
+		mm.set_instance_color(n, TOUGH[role])
+		n += 1
+	mm.visible_instance_count = n
 
 func _sync_gates(s: Dictionary, d: Dictionary, hydrate: bool) -> void:
 	for i in range(s.gates.size(), gates.size()): gates[i].node.visible = false
@@ -512,15 +584,24 @@ func _sync_gates(s: Dictionary, d: Dictionary, hydrate: bool) -> void:
 		node.visible = s.tick >= d.gates[i].born and not g.crossed
 		node.position = Vector3(d.gates[i].x, 0, -g.z)
 		var positive: bool = g.value >= 0
-		info.number.text = "%+d" % g.value if g.value != 0 else "0"
-		info.number.outline_modulate = Color("0b3d8a") if positive else Color("7a1010")
-		info.caption.text = "CREW"
+		if d.gates[i].get("kind", "add") == "mul":
+			# Multipliers turn gold once shooting has made them worth crossing.
+			var live_mul: bool = g.value > 1
+			info.number.text = "×%d" % g.value
+			info.number.outline_modulate = Color("6a4a00") if live_mul else Color("33475a")
+			info.caption.text = "CREW" if live_mul or g.value >= d.gates[i].cap else "SHOOT ×%d" % (int(g.value) + 1)
+			(info.panel.material_override as StandardMaterial3D).albedo_color = Color(Color("ffc23a") if live_mul else Color("9ab4c8"), .46)
+		else:
+			info.number.text = "%+d" % g.value if g.value != 0 else "0"
+			info.number.outline_modulate = Color("0b3d8a") if positive else Color("7a1010")
+			info.caption.text = "CREW"
+			(info.panel.material_override as StandardMaterial3D).albedo_color = Color(Color("3aa0ff") if positive else Color("ff4a3a"), .42)
 		info.caption.outline_modulate = info.number.outline_modulate
-		(info.panel.material_override as StandardMaterial3D).albedo_color = Color(Color("3aa0ff") if positive else Color("ff4a3a"), .42)
-		if not hydrate and int(g.hits) > int(info.get("hits", g.hits)):
+		if not hydrate and int(g.hits) > int(info.get("hits", g.hits)) and int(g.value) != int(info.get("value", g.value)):
 			info.pulse = .16
 			fx.burst(node.position + Vector3(0, 1.1, .1), Color("bfe8ff") if positive else Color("ffc0b0"), 3, 1.4, .5)
 		info.hits = g.hits
+		info.value = g.value
 
 func _sync_sides(s: Dictionary, d: Dictionary, hydrate: bool) -> void:
 	for i in range(s.sides.size(), sides.size()): sides[i].node.visible = false
@@ -609,12 +690,20 @@ func frame(delta: float, frozen: bool) -> void:
 		ring.visible = life > 0 and not reduced
 		if ring.visible: ring.scale = Vector3.ONE * (1.0 + (.9 - life) * 1.4)
 	var d: Dictionary = state.definition
+	frame_index += 1
 	for i in visuals:
 		var v = visuals[i]
 		if i >= d.enemies.size(): continue
 		var ed: Dictionary = d.enemies[i]
 		v.windup = maxf(0, v.windup - dt * 2.2)
-		v.pose_infected(dt, (float(ed.speed) - ground_speed) if playing else 0.0, ed.role, clock)
+		var step := dt
+		if anchors[i].position.z < -FAR_Z and v.hit_left <= 0 and v.spawn_left <= 0:
+			if (frame_index + i) % 2 == 1:
+				v.set_meta("skipped", float(v.get_meta("skipped", 0.0)) + dt)
+				continue
+			step += float(v.get_meta("skipped", 0.0))
+		v.set_meta("skipped", 0.0)
+		v.pose_infected(step, (float(ed.speed) - ground_speed) if playing else 0.0, ed.role, clock)
 	var kept: Array = []
 	for item in dying:
 		item.life += dt

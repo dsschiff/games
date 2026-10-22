@@ -77,7 +77,7 @@ func boss_fixture() -> Dictionary:
 	s.boss.dead = true
 	s.boss.z = 14.0
 	s.boss.next_attack = s.definition.boss.born + 570
-	R.hazard(s, -1, 0.0, 0.85, 3, 180, "Cable sweep")
+	R.hazard(s, -1, 0.0, 0.85, s.definition.boss_loss, 180, "Cable sweep")
 	s.hazards[0].resolved = true
 	s.hazards[0].cancelled = true
 	return ctx

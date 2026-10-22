@@ -78,7 +78,7 @@ func test_scene(scene: Node, kind: String) -> void:
 	var authored := 51.0 if kind == "campaign" else 58.0
 	var portrait_projections := {}
 	var camera_pose: Transform3D = scene.camera.global_transform
-	var counts := [5, 20] if kind == "campaign" else [3, 5, 12]
+	var counts := [5, 20, 49] if kind == "campaign" else [3, 5, 12]
 	var weapons := ["rivet", "lance", "fan"] if kind == "campaign" else ["legacy"]
 	for weapon in weapons:
 		if kind == "campaign":

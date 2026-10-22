@@ -26,12 +26,20 @@ var enemy_bars: Array[MeshInstance3D] = []
 var hazard_nodes: Array[MeshInstance3D] = []
 var boss_label: Label3D
 var legacy_view: Node
+# Periodic in-road autosaves run on a worker thread: a horde road's checked
+# save (encode, write, read back, decode twice) costs tens of milliseconds.
+# Every other save stays synchronous and first waits for a pending autosave.
+var autosave_task := -1
+var autosave_ok := true
 
 func _ready() -> void:
 	get_tree().auto_accept_quit = false
 	get_tree().quit_on_go_back = false
 	var saved := Store.read(Store.PATH, files)
 	if saved.ok: ctx = saved.context
+	# A code4 road that was never started opens under the current rules; a
+	# road in progress keeps its own pinned catalog1 rules (Store.upgrade).
+	Store.upgrade(ctx)
 	state = ctx.campaign
 	settings = ctx.settings
 	paused = state.phase == "playing"
@@ -221,11 +229,43 @@ func next_road() -> void:
 		load_road(state.definition.index + 1)
 
 func persist() -> bool:
+	finish_autosave(true)
 	ctx.campaign = state
 	if ctx.mode == "campaign": ctx.settings = settings
 	var okay := Store.write(ctx, Store.PATH, files)
 	save_message = "" if okay else "SAVE FAILED — progress is only in memory. Free storage, then retry Save."
 	return okay
+
+## A private copy of the context for the worker. The pinned definition is
+## never mutated after creation, so it is shared rather than copied.
+func autosave_snapshot() -> Dictionary:
+	var copy := {}
+	for key in ctx:
+		if key != "campaign": copy[key] = ctx[key].duplicate(true) if ctx[key] is Dictionary or ctx[key] is Array else ctx[key]
+	var road := {}
+	for key in state:
+		var value: Variant = state[key]
+		road[key] = value if key == "definition" or not (value is Dictionary or value is Array) else value.duplicate(true)
+	copy["campaign"] = road
+	if ctx.mode == "campaign": copy["settings"] = settings.duplicate(true)
+	return copy
+
+func autosave() -> void:
+	if autosave_task >= 0 and not WorkerThreadPool.is_task_completed(autosave_task): return
+	finish_autosave(false)
+	var snapshot := autosave_snapshot()
+	var io: Variant = files
+	autosave_task = WorkerThreadPool.add_task(func() -> void: autosave_ok = Store.write(snapshot, Store.PATH, io))
+
+func finish_autosave(wait: bool) -> void:
+	if autosave_task < 0: return
+	if not wait and not WorkerThreadPool.is_task_completed(autosave_task): return
+	WorkerThreadPool.wait_for_task_completion(autosave_task)
+	autosave_task = -1
+	save_message = "" if autosave_ok else "SAVE FAILED — progress is only in memory. Free storage, then retry Save."
+
+func _exit_tree() -> void:
+	finish_autosave(true)
 
 func enter_legacy() -> void:
 	if is_instance_valid(legacy_view): return
@@ -264,6 +304,7 @@ func import_code() -> void:
 	if not saved.ok:
 		transfer_status.text = "Invalid code. Journey unchanged."
 		return
+	Store.upgrade(saved.context)
 	if not Store.write(saved.context, Store.PATH, files, true):
 		transfer_status.text = "Import could not be stored. Journey unchanged."
 		return
@@ -316,7 +357,9 @@ func _physics_process(delta: float) -> void:
 	var before: String = state.phase
 	if not paused and not journey_visible: C.step(state)
 	if state.phase == "victory": Store.award(ctx)
-	if state.phase != before or (state.phase == "playing" and not paused and state.tick % 120 == 0): persist()
+	finish_autosave(false)
+	if state.phase != before: persist()
+	elif state.phase == "playing" and not paused and state.tick % 120 == 0: autosave()
 	if settings.sound and not paused and state.phase == "playing" and state.tick % state.definition.weapons[state.weapon].period == 0: tone.play()
 	refresh()
 
@@ -325,12 +368,13 @@ func refresh() -> void:
 	var d: Dictionary = state.definition
 	title.text = "%02d  %s" % [d.index + 1, d.title.to_upper()]
 	title.add_theme_font_size_override("font_size", 27)
-	info.text = "CREW %d / 20   ·   %s   ·   %d%%\n%s  ·  %d / 24 roads restored" % [state.crew, Data.WEAPONS[state.weapon].title, state.tick * 100 / d.duration, Data.DISTRICTS[d.district], ctx.profile.clears.size()]
+	info.text = "CREW %d / %d   ·   %s   ·   %d%%\n%s  ·  %d / 24 roads restored" % [state.crew, d.cap, Data.WEAPONS[state.weapon].title, state.tick * 100 / d.duration, Data.DISTRICTS[d.district], ctx.profile.clears.size()]
 	notice.text = save_message if not save_message.is_empty() else state.notice
 	warning.text = "Drag sideways · fit the whole gold footprint through gaps"
 	for i in state.gates.size():
 		if state.tick >= d.gates[i].born and not state.gates[i].crossed and state.gates[i].z < 6:
-			warning.text = "GATE %+d in %.1fs · overlap applies its sign once" % [state.gates[i].value, state.gates[i].z / d.speed]
+			if d.gates[i].get("kind", "add") == "mul": warning.text = "GATE ×%d in %.1fs · shoot it to multiply the crew" % [state.gates[i].value, state.gates[i].z / d.speed]
+			else: warning.text = "GATE %+d in %.1fs · overlap applies its sign once" % [state.gates[i].value, state.gates[i].z / d.speed]
 	for i in state.obstacles.size():
 		if state.tick >= d.obstacles[i].born and not state.obstacles[i].crossed and state.obstacles[i].z < 7: warning.text = "CART AHEAD · leave room for the whole crew"
 	for h in state.hazards:
@@ -340,7 +384,7 @@ func refresh() -> void:
 		elif d.boss.kind == 2: warning.text = "TOLL RAM %d · flanks or Lance bypass its shield" % state.boss.hp
 	overlay.visible = (paused or state.phase != "playing") and not journey_visible
 	overlay_title.text = ("LAST FERRY AWAY" if ctx.profile.ending and d.index == 23 and state.phase == "victory" and not d.replay else {"ready": "PREPARE THE ROAD", "playing": "RESCUE PAUSED", "victory": "ROAD RESTORED", "defeat": "RESCUE LOST"}[state.phase])
-	overlay_body.text = (d.hint + "\nDrag sideways. Fire is automatic. Shoot gates to improve their number; cross once to gain or lose crew. " + Data.WEAPONS[state.weapon].hint) if state.phase == "ready" else state.notice + "\n" + save_message
+	overlay_body.text = (d.hint + "\nDrag sideways. Fire is automatic. Shoot gates to improve their number; cross once to gain or lose crew, or to multiply it. " + Data.WEAPONS[state.weapon].hint) if state.phase == "ready" else state.notice + "\n" + save_message
 	if ctx.profile.ending and d.index == 23 and state.phase == "victory" and not d.replay:
 		overlay_body.text = "The canal, market and reservoirs are clear. Your crew holds the last pier as the final ferry departs. All 24 evacuation roads are restored. Replay any road, rescue every rigger, or choose a seeded ferry run."
 	start_button.visible = state.phase == "ready"

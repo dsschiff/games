@@ -1,1 +1,2 @@
 *.glb binary
+tests/fixtures/code4-midroad/dead-run-save-* binary

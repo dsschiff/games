@@ -22,7 +22,7 @@ def sources():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=["rules", "headless", "rendered", "movie", "exhaustion-headless", "exhaustion-rendered", "campaign-smoke", "campaign-visual", "validation-headless", "camera-headless", "campaign-rules", "campaign-headless", "campaign-rendered", "late-priority-headless", "platform-headless", "platform-rendered", "clipboard-headless", "clipboard-rendered", "clipboard-locked", "migration-headless", "migration-rendered", "campaign-movie-early", "campaign-movie-middle", "campaign-movie-final"])
+    parser.add_argument("mode", choices=["rules", "headless", "rendered", "movie", "exhaustion-headless", "exhaustion-rendered", "campaign-smoke", "campaign-visual", "validation-headless", "camera-headless", "campaign-rules", "campaign-headless", "campaign-rendered", "late-priority-headless", "platform-headless", "platform-rendered", "clipboard-headless", "clipboard-rendered", "clipboard-locked", "migration-headless", "migration-rendered", "campaign-movie-early", "campaign-movie-middle", "campaign-movie-final", "code4-headless"])
     parser.add_argument("--label", default="run")
     parser.add_argument("--earned-checkpoint", type=Path)
     parser.add_argument("--opening-only", action="store_true")
@@ -50,6 +50,14 @@ def main():
                 original = legacy.with_name(f"final-active-fixture-paused-held-dead-run-save-{slot}.json")
                 (dest / f"dead-run-save-{slot}").write_bytes(original.read_bytes())
                 inputs.append({"kind": "actual-native-code1-startup-slot", "source": str(original), "sha256": hashlib.sha256(original.read_bytes()).hexdigest()})
+    if args.mode == "code4-headless":
+        # Genuine code4 app-written slots (see tests/fixtures/code4-midroad).
+        dest = Path(env["APPDATA"]) / "Godot/app_userdata/Dead Run"
+        dest.mkdir(parents=True)
+        for slot in range(2):
+            original = PROJECT / "tests/fixtures/code4-midroad" / f"dead-run-save-{slot}"
+            (dest / original.name).write_bytes(original.read_bytes())
+            inputs.append({"kind": "genuine-code4-app-written-slot", "source": str(original), "sha256": hashlib.sha256(original.read_bytes()).hexdigest()})
     if args.earned_checkpoint:
         assert args.mode.startswith("campaign-movie-") or args.mode == "late-priority-headless", "Earned loads only belong to explicit separate scenario boundaries"
         dest = Path(env["APPDATA"]) / "Godot/app_userdata/Dead Run"
@@ -59,11 +67,12 @@ def main():
                 (dest / p.name).write_bytes(p.read_bytes())
                 inputs.append({"kind": "earned-app-written-checkpoint-load", "source": str(p), "sha256": hashlib.sha256(p.read_bytes()).hexdigest()})
     command = [str(GODOT), "--path", str(PROJECT)]
-    if args.mode in ["rules", "headless", "exhaustion-headless", "campaign-smoke", "validation-headless", "camera-headless", "campaign-rules", "campaign-headless", "clipboard-headless", "migration-headless", "platform-headless", "late-priority-headless"]:
+    if args.mode in ["rules", "headless", "exhaustion-headless", "campaign-smoke", "validation-headless", "camera-headless", "campaign-rules", "campaign-headless", "clipboard-headless", "migration-headless", "platform-headless", "late-priority-headless", "code4-headless"]:
         command += ["--headless"]
     else:
         command += ["--resolution", "720x1280", "--position", "0,0"]
     script = ("res://tests/camera_projection.gd" if args.mode == "camera-headless" else
+              "res://tests/code4_upgrade.gd" if args.mode == "code4-headless" else
               "res://tests/validation_tests.gd" if args.mode == "validation-headless" else
               "res://tests/campaign_smoke.gd" if args.mode == "campaign-smoke" else
               "res://tests/campaign_visual.gd" if args.mode == "campaign-visual" else

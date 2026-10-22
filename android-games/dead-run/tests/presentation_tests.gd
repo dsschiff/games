@@ -49,7 +49,7 @@ func run() -> void:
 			peak_particles = maxi(peak_particles, p.fx.parts.size())
 		check(JSON.stringify(control) == JSON.stringify(scene.state), "road %d: presented state equals control after %d ticks" % [road, control.tick])
 		check(C.valid(scene.state), "road %d: presented state valid" % road)
-		check(peak_pool <= 16 and peak_particles <= 320, "road %d: pools bounded (%d reserve, %d particles)" % [road, peak_pool, peak_particles])
+		check(peak_pool <= p.RESERVE and peak_particles <= 320, "road %d: pools bounded (%d reserve, %d particles)" % [road, peak_pool, peak_particles])
 		var live := 0
 		for i in scene.state.enemies.size():
 			if scene.state.tick >= scene.state.definition.enemies[i].born and not scene.state.enemies[i].resolved: live += 1
