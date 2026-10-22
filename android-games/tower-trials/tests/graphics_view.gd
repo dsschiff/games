@@ -100,6 +100,34 @@ func shapes(prefix: String) -> void:
 		if rendered:
 			await sample(label)
 
+## Ending screen: presentation-only switch (no rule or save call), then
+## models present, lit lanterns equal main's rescued-derived count, courier
+## shown at the 2D courier anchor, and the route board hidden.
+func ending() -> void:
+	var before: Dictionary = game.state.duplicate(true)
+	var previous: String = game.screen
+	game.screen = "ending"
+	game.queue_redraw()
+	await wait_frames(3)
+	var view: Node3D = game.view
+	check(view.finale.visible and not view.board.visible, "ending: 3D watches shown, route board hidden")
+	check(view.finale_watches.size() == 12, "ending: twelve watch models")
+	var complete := 0
+	for entry in view.finale_watches:
+		if entry.floor.is_inside_tree() and entry.roof.is_inside_tree() and entry.lantern.is_inside_tree(): complete += 1
+	check(complete == 12, "ending: each watch has floor, roof and lantern models")
+	check(view.lit_watches() == game.ending_lit(), "ending: lit lanterns %d equal rescued-derived count %d" % [view.lit_watches(), game.ending_lit()])
+	check(view.courier.visible, "ending: 3D courier shown")
+	check(screen_of(view.courier_base).distance_to(expected(Vector2(300, 750 + 32 * 1.6))) <= 1.5, "ending: courier sits on the former 2D courier anchor")
+	var slot: Rect2 = view.ending_slot(7)
+	check(screen_of(view.finale_watches[7].roof.global_position).distance_to(expected(Vector2(slot.get_center().x, slot.position.y))) <= 1.5, "ending: watch roof aligns with its 2D slot")
+	if rendered:
+		await sample("ending")
+	game.screen = previous
+	game.queue_redraw()
+	await wait_frames(3)
+	check(view.board.visible and not view.finale.visible and game.state == before, "ending: leaving restores board; state untouched")
+
 func run() -> void:
 	DirAccess.make_dir_recursive_absolute(folder)
 	for suffix in ["", ".tmp", ".bak", ".bak.tmp"]: DirAccess.remove_absolute(test_path + suffix)
@@ -140,6 +168,7 @@ func run() -> void:
 	check(game.screen == "game" and game.view.board.visible and game.state == before, "Resume restores board and identical state")
 	correspondence("resumed")
 	await shapes("resumed")
+	await ending()
 	var file := FileAccess.open(folder + "/result.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify({"checks": checks, "failures": failures, "touch_taps": taps, "back_requests": back_requests, "captures": captures, "sizes": SIZES.map(func(s): return [s.x, s.y]), "scope": "Desktop Godot window; Back via go_back_requested + WM_GO_BACK_REQUEST; not Android hardware/gesture evidence"}, "\t"))
 	file.close()

@@ -111,7 +111,11 @@ func sync_view() -> void:
 	for room in level.rooms:
 		rects[room.id] = room_rect(room)
 		blocked[room.id] = Rules.blocked(state, room)
-	view.sync({"screen": screen, "level": level, "state": state, "selected": selected, "rects": rects, "blocked": blocked, "home_stride": home_stride(), "courier": courier_point(), "flight": clampf(beat / 0.9, 0, 1) if not pending.is_empty() else 0.0, "reduced": bool(data.settings.reduced_effects), "frozen": paused or menu or transfer or guide or details})
+	view.sync({"screen": screen, "level": level, "state": state, "selected": selected, "rects": rects, "blocked": blocked, "home_stride": home_stride(), "lit": ending_lit(), "courier": courier_point(), "flight": clampf(beat / 0.9, 0, 1) if not pending.is_empty() else 0.0, "reduced": bool(data.settings.reduced_effects), "frozen": paused or menu or transfer or guide or details})
+
+## Ending lanterns: one per three rescued watches (36 rescued -> all 12 lit).
+func ending_lit() -> int:
+	return clampi(data.profile.size() / 3, 0, 12)
 
 func courier_point() -> Vector2:
 	var hero := home_point()
@@ -772,13 +776,7 @@ func draw_map() -> void:
 func draw_ending() -> void:
 	text_at("ALL LANTERNS RISE", Vector2(26, 180), 36, GOLD)
 	lines("The last chime crosses the sea. Every watch answers. You brought the lost keepers home.", Vector2(28, 234), 530, 27, WHITE, 4)
-	for i in 12:
-		var x := 34 + (i % 6) * 93
-		var y := 488 + (i / 6) * 168
-		box(Rect2(x, y, 68, 104), Color("397781"), 5, TEAL)
-		draw_colored_polygon(PackedVector2Array([Vector2(x - 5, y), Vector2(x + 34, y - 36), Vector2(x + 73, y)]), TEAL)
-		draw_circle(Vector2(x + 34, y + 44), 10, GOLD)
-	courier(Vector2(300, 750), 1.6)
+	# The twelve lit watches and the courier are 3D models (tower_view._ending).
 	lines("36 authored watches. Return for unclaimed treasure, par routes, clean runs and alternate branches.", Vector2(28, 836), 530, 22, SAND, 3)
 	button("map", "Explore your journey", TEAL)
 

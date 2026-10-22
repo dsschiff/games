@@ -35,6 +35,12 @@ var reduced := false
 var flight := 0.0
 var courier_base := Vector3.ZERO
 var synced := 0
+## Ending screen: twelve watches (floor + roof) with a lantern each; lit
+## lanterns follow the `lit` count main derives from the rescued profile.
+var finale := Node3D.new()
+var finale_watches: Array = []
+var finale_key := -1
+const TINT_DARK_WATCH := Color("5b7282")
 
 func _ready() -> void:
 	camera.fov = FOV
@@ -46,6 +52,7 @@ func _ready() -> void:
 	_environment()
 	_backdrop()
 	add_child(board)
+	add_child(finale)
 	courier = asset("courier")
 	add_child(courier)
 
@@ -178,7 +185,11 @@ func sync(view: Dictionary) -> void:
 	reduced = bool(view.reduced)
 	frozen = bool(view.frozen)
 	board.visible = view.screen == "game"
-	courier.visible = board.visible
+	finale.visible = view.screen == "ending"
+	courier.visible = board.visible or finale.visible
+	if finale.visible:
+		_ending(view)
+		return
 	if not board.visible:
 		return
 	var level: Dictionary = view.level
@@ -214,6 +225,7 @@ func sync(view: Dictionary) -> void:
 	courier_base = at(hero + Vector2(0, 32), .3)
 	flight = float(view.flight)
 	courier.position = courier_base
+	courier.scale = Vector3.ONE
 	courier.rotation = Vector3(0, deg_to_rad(18), sin(flight * PI) * -.35)
 
 func _rebuild(view: Dictionary) -> void:
@@ -262,8 +274,48 @@ func _home(view: Dictionary) -> void:
 			node.scale = Vector3(1, (stride - 2.0) / 98.0, 1)
 	home_roof.position = at(Vector2(89, 692.0 - (floors - 1) * stride), .05)
 
+## Same 2D anchors the ending used before: 6 x 2 grid of 68x104 watches.
+func ending_slot(i: int) -> Rect2:
+	return Rect2(34 + (i % 6) * 93, 488 + (i / 6) * 168, 68, 104)
+
+func _ending(view: Dictionary) -> void:
+	var key := hash([camera.position])
+	if key != finale_key or finale_watches.is_empty():
+		for child in finale.get_children():
+			child.queue_free()
+			finale.remove_child(child)
+		finale_watches.clear()
+		for i in 12:
+			var slot := ending_slot(i)
+			var floor_node := _place("home_floor", at(Vector2(slot.get_center().x, slot.end.y), .05), Vector3(1, slot.size.y / 98.0, 1), finale)
+			var roof := _place("home_roof", at(Vector2(slot.get_center().x, slot.position.y), .05), Vector3.ONE, finale)
+			var lantern := _place("moon", at(slot.position + Vector2(34, 44), .15), Vector3.ONE * .2, finale)
+			finale_watches.append({"floor": floor_node, "roof": roof, "lantern": lantern, "lit": null})
+		finale_key = key
+	var lit: int = clampi(int(view.get("lit", 12)), 0, 12)
+	for i in finale_watches.size():
+		var entry: Dictionary = finale_watches[i]
+		var on := i < lit
+		entry.lantern.visible = on
+		if entry.lit != on:
+			var tint := Color.WHITE if on else TINT_DARK_WATCH
+			_finish(entry.floor, tint)
+			_finish(entry.roof, tint)
+			entry.lit = on
+	courier_base = at(Vector2(300, 750) + Vector2(0, 32 * 1.6), .3)
+	flight = 0.0
+	courier.position = courier_base
+	courier.scale = Vector3.ONE * 1.6
+	courier.rotation = Vector3(0, deg_to_rad(18), 0)
+
+func lit_watches() -> int:
+	var count := 0
+	for entry in finale_watches:
+		if entry.lantern.visible: count += 1
+	return count
+
 func _process(delta: float) -> void:
-	if frozen or reduced or not board.visible:
+	if frozen or reduced or not (board.visible or finale.visible):
 		return
 	clock += delta
 	for record in spirits:
