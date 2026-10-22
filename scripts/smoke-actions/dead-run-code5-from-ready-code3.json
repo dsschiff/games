@@ -1,0 +1,63 @@
+{
+  "reference_display": [
+    1080,
+    2400
+  ],
+  "viewport": [
+    720,
+    1280
+  ],
+  "scope": "Genuine app-written code3 save created on 2026-10-22 through real input on the delivered 0.2.1/code3 APK (portfolio-20261018 bundle), installed over the emulator data with adb install -r -d: code3 could not read the newer code5 save and started a fresh profile; road 01 First Riggers was then opened from the map (phase ready, never started, catalog1) and Sound tapped OFF. Cold load restores the ready panel. Two real Sound OFF-to-ON-to-OFF taps satisfy the updater's input requirement and leave settings unchanged. Across the code3-to-5 update Store.upgrade must migrate the unstarted catalog1 road to the same road, weapon and seed under rule3 (catalog2), while profile, settings, mode, loadout and committed stay whole.",
+  "coordinate_qualification": {
+    "sound_pixels": [
+      533,
+      1108
+    ],
+    "source": "Actual code3 cold-launch screenshot .artifacts/emulator/hordes-20261022/code3-session/05-code3-cold.png on native 1080x2400 (PREPARE THE ROAD panel, SOUND: OFF row)."
+  },
+  "actions": [
+    {
+      "type": "wait",
+      "wait_seconds": 0.3
+    },
+    {
+      "type": "tap",
+      "x": 533,
+      "y": 1108,
+      "wait_seconds": 0.4
+    },
+    {
+      "type": "tap",
+      "x": 533,
+      "y": 1108,
+      "wait_seconds": 0.4
+    }
+  ],
+  "expected_save": {
+    "version": 2,
+    "committed": true,
+    "context.mode": "campaign",
+    "context.loadout": "rivet",
+    "context.campaign.phase": "ready",
+    "context.campaign.tick": 0,
+    "context.campaign.crew": 5,
+    "context.campaign.weapon": "rivet",
+    "context.campaign.rewarded": false,
+    "context.campaign.definition.index": 0,
+    "context.campaign.definition.replay": false,
+    "context.profile.clears": [],
+    "context.profile.ending": false,
+    "context.settings.sound": false,
+    "context.settings.reduced_effects": false,
+    "context.campaign.definition.catalog": 1,
+    "context.campaign.definition.seed": 0,
+    "context.campaign.definition.rule_version": 2,
+    "context.campaign.definition.cap": 20
+  },
+  "expected_numeric": {
+    "context.campaign.x": {
+      "min": 0.0,
+      "max": 0.0
+    }
+  }
+}

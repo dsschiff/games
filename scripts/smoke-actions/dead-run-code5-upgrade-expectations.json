@@ -1,0 +1,27 @@
+{
+  "scope": "Horde 0.4.0/code5 keeps save envelope version 2 and the entire genuine code4 campaign context: road 01 in progress stays catalog1 (Store.upgrade migrates only unstarted 'ready' roads), settings unchanged. Whole-path comparison of context and committed is stricter than these fields.",
+  "expected_save": {
+    "version": 2,
+    "committed": true,
+    "context.mode": "campaign",
+    "context.loadout": "rivet",
+    "context.campaign.phase": "playing",
+    "context.campaign.tick": 1725,
+    "context.campaign.crew": 8,
+    "context.campaign.weapon": "rivet",
+    "context.campaign.rewarded": false,
+    "context.campaign.definition.catalog": 1,
+    "context.campaign.definition.index": 0,
+    "context.campaign.definition.replay": false,
+    "context.profile.clears": [],
+    "context.profile.ending": false,
+    "context.settings.sound": false,
+    "context.settings.reduced_effects": false
+  },
+  "expected_numeric": {
+    "context.campaign.x": {
+      "min": 0.3542,
+      "max": 0.3543
+    }
+  }
+}

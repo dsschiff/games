@@ -1,0 +1,30 @@
+{
+  "scope": "Horde 0.4.0/code5 migrates an unstarted (ready) catalog1 road to the same road, weapon and seed under rule3: catalog 2, rule_version 3, crew cap 49, still ready at tick 0. Envelope version 2; profile, settings, mode, loadout and committed preserved whole.",
+  "expected_save": {
+    "version": 2,
+    "committed": true,
+    "context.mode": "campaign",
+    "context.loadout": "rivet",
+    "context.campaign.phase": "ready",
+    "context.campaign.tick": 0,
+    "context.campaign.crew": 5,
+    "context.campaign.weapon": "rivet",
+    "context.campaign.rewarded": false,
+    "context.campaign.definition.index": 0,
+    "context.campaign.definition.replay": false,
+    "context.profile.clears": [],
+    "context.profile.ending": false,
+    "context.settings.sound": false,
+    "context.settings.reduced_effects": false,
+    "context.campaign.definition.catalog": 2,
+    "context.campaign.definition.rule_version": 3,
+    "context.campaign.definition.cap": 49,
+    "context.campaign.definition.seed": 0
+  },
+  "expected_numeric": {
+    "context.campaign.x": {
+      "min": 0.0,
+      "max": 0.0
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "game": "dead-run",
+  "date": "2026-10-22",
+  "status": "emulator_upgrade_verified_horde_candidate_physical_phone_deferred",
+  "source_branch": "claude/dead-run-hordes",
+  "source_commit": "cfe6ff4fff89550b5e3daf705097f45679b2b35f",
+  "base_commit": "bb6a5898413e3a66700cf360da059472bf0c212d",
+  "version": "0.4.0",
+  "version_code": 5,
+  "rule_version": 3,
+  "catalog": 2,
+  "version_transition": {
+    "from": "0.3.0/code4 (graphics-20261021 bundle, sha256 9462932e7974d640a965a1257eb298e2d25e8631a8d59f128de2de047ba52411)",
+    "to": "0.4.0/code5",
+    "also_verified_from": "0.2.1/code3 (portfolio-20261018 bundle, sha256 ab1a8863fdb92815278924e146092c864b38309baf57fa521e99944b400a415c)"
+  },
+  "apk": {
+    "build_manifest": "C:/projects/active/_worktrees/games-dead-run-20261018/.artifacts/dead-run/20261022T140037638307Z/manifest.json",
+    "delivery_copy": "C:/projects/active/games/.artifacts/releases/graphics-20261021/Dead-Run-0.4.0-Android.apk",
+    "sha256": "21c28eec121e142fc7f73657468dcd7cb460f995a662e4fc3f938a80a1d29e26",
+    "bytes": 58974957,
+    "package": "com.dsschiff.deadrun",
+    "permissions": [],
+    "internet_permission": false,
+    "signature_verified": true,
+    "signer_cert_sha256": "90e5a27df8d0c427da5bb822477d31796ff7f1d20d95ef915246cde6e2a9c55b",
+    "same_signer_as_code4_and_code3": true,
+    "source_clean_and_unchanged": true
+  },
+  "tests": {
+    "manifest": "C:/projects/active/_worktrees/games-dead-run-20261018/.artifacts/dead-run/20261022T134011681399Z/manifest.json",
+    "rules_checks": 139,
+    "input_playthrough_checks": 34,
+    "campaign_rules_checks": 293,
+    "campaign_rules_run": "C:/projects/active/_worktrees/games-dead-run-20261018/android-games/dead-run/.artifacts/release-campaign-rules-20261022-campaign-rules-20261022T134042399585Z",
+    "code4_headless_checks": 10,
+    "code4_headless_run": "C:/projects/active/_worktrees/games-dead-run-20261018/android-games/dead-run/.artifacts/release-code4-headless-20261022-code4-headless-20261022T134441024278Z",
+    "presentation_checks": 22,
+    "presentation_run": "C:/projects/active/_worktrees/games-dead-run-20261018/android-games/dead-run/.artifacts/graphics/release-presentation-20261022-presentation-20261022T135731Z",
+    "failures": 0,
+    "audio": "Godot runs used the Dummy audio driver (runner flag, or a temporary uncommitted override.cfg for portfolio.py test, deleted before the build).",
+    "known_quirk": "The drift guard failed twice (manifests 20261022T133924009230Z and 20261022T133951417671Z): the legacy playthrough writes 18 *-slots.json/report files into the project folder, so a run that starts without them sees the source fingerprint change. The third run, with the files already present, passed. Strays deleted before the build, never committed.",
+    "presentation_windowed_note": "Run windowed (without --headless) the same 22 presentation checks pass, but Godot prints 12 exit-time 'Texture ... leaked 349524 bytes' errors and the runner marks the run FAIL (3 of 3 runs). The 0.3.0 release and the builder's runs used --headless, which passes cleanly. Exit-time GL teardown leak, not a gameplay failure; reported, no source change."
+  },
+  "upgrade_a_code4_to_code5": {
+    "manifest": "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.deadrun/20261022T140703223882Z/manifest.json",
+    "console": "C:/projects/active/games/.artifacts/emulator/hordes-20261022/deadrun-upgrade-a-console.txt",
+    "result": "passed",
+    "checks_passed": 24,
+    "checks_total": 24,
+    "old_save": "Genuine app-written code4 save made through real input on the delivered code4 APK: road 01 First Riggers started from the map, Sound tapped OFF, real drags, paused at tick 1725 (38%, crew 8/20, x 0.3542, Rivet, catalog1). Two real Sound taps OFF-ON-OFF; no reset, injected or imported save.",
+    "why_new_code4_save": "The code4 save left by the 0.3.0 release run was found as two 0-byte slot files (modified 2026-10-21 21:12:47 and 21:12:55, the final cold-relaunch writes) after that session's emulator shutdown; stat in .artifacts/emulator/hordes-20261022/preflight/code4-slots-found-empty-stat.txt. The host copies of those slots were not pushed back, since that would be an injected save.",
+    "preserved_whole_paths": [
+      "context",
+      "committed"
+    ],
+    "save_envelope_version": 2,
+    "catalog_after_update": 1,
+    "fixture": "scripts/smoke-actions/dead-run-code5-from-earned-code4.json",
+    "expectations": "scripts/smoke-actions/dead-run-code5-upgrade-expectations.json",
+    "settle_seconds": 12,
+    "runtime_errors": false
+  },
+  "upgrade_b_code3_to_code5": {
+    "manifest": "C:/projects/active/games/.artifacts/upgrades/com.dsschiff.deadrun/20261022T141717631175Z/manifest.json",
+    "console": "C:/projects/active/games/.artifacts/emulator/hordes-20261022/deadrun-upgrade-b-console.txt",
+    "result": "passed",
+    "checks_passed": 24,
+    "checks_total": 24,
+    "old_save": "Delivered code3 installed over the emulator data with adb install -r -d after Upgrade A's evidence was captured. Code3 could not read the newer code5 save and started a fresh profile (expected for an unsupported downgrade). Road 01 opened from the map with real taps and left unstarted (phase ready, catalog1), Sound tapped OFF; cold load restored it.",
+    "verified": "Store.upgrade migrated the unstarted catalog1 road to the same road, weapon and seed under rule3 (catalog 2, rule_version 3, cap 49, still ready at tick 0); profile, settings, mode, loadout and committed preserved whole; HUD shows CREW 5/49 and the rule3 road hint.",
+    "preserved_whole_paths": [
+      "context.profile",
+      "context.settings",
+      "context.mode",
+      "context.loadout",
+      "committed"
+    ],
+    "fixture": "scripts/smoke-actions/dead-run-code5-from-ready-code3.json",
+    "expectations": "scripts/smoke-actions/dead-run-code5-ready-migration-expectations.json"
+  },
+  "catalog1_resume_and_retry": {
+    "resume": "Real RESUME tap; the code4 road plays on under catalog1: HUD CREW 8/20, thin waves of 2-4 infected, -14 add gate, evac blockade 36 HP. Played to victory with real drags (tick 4500, crew 4, road 01 cleared with medal).",
+    "retry": "Real RETRY ROAD tap on the catalog1 victory panel starts road 01 under rule3: catalog 2, rule_version 3, CREW 5/49, +8/+10 add gates, a x2 multiply gate (+19 crew), packs of infected, HORDE SURGE banner from about 60% to 75%, roughly 30-40 infected on screen, evac blockade 300 HP. The rule3 attempt was lost at the blockade (crew 6); the clear and medal from the catalog1 win were kept; the defeat state restored after a cold relaunch.",
+    "save_files": "C:/projects/active/games/.artifacts/emulator/hordes-20261022/retry-flow/",
+    "screenshots": [
+      "C:/projects/active/games/.artifacts/emulator/hordes-20261022/deadrun-native/02b-live-after-drag-left.png",
+      "C:/projects/active/games/.artifacts/emulator/hordes-20261022/retry-flow/c1-04-033.0s.png",
+      "C:/projects/active/games/.artifacts/emulator/hordes-20261022/retry-flow/c1-08-end.png",
+      "C:/projects/active/games/.artifacts/emulator/hordes-20261022/retry-flow/r3-00-after-retry.png",
+      "C:/projects/active/games/.artifacts/emulator/hordes-20261022/retry-flow/r3-08-042.2s.png",
+      "C:/projects/active/games/.artifacts/emulator/hordes-20261022/retry-flow/r3-09-047.6s.png",
+      "C:/projects/active/games/.artifacts/emulator/hordes-20261022/retry-flow/r3-10-052.6s.png",
+      "C:/projects/active/games/.artifacts/emulator/hordes-20261022/retry-flow/r3-sheet.png"
+    ]
+  },
+  "native_checks": {
+    "packet": "C:/projects/active/games/.artifacts/emulator/hordes-20261022/deadrun-native/report.json",
+    "script": "C:/projects/active/games/.artifacts/emulator/hordes-20261022/deadrun_native.py",
+    "play_driver": "C:/projects/active/games/.artifacts/emulator/hordes-20261022/play.py",
+    "drag_movement": "Confirmed on catalog1: saved x 0.3542 -> -3.1458 after an adb swipe 760->200 px, then 1.3000 after 300->900 px (frames 02a/02b/02c). Confirmed on rule3 during the surge: r3-09 shows the 32-member blob in the far-left lane under HORDE SURGE, r3-10 right of centre at the blockade.",
+    "android_back": "opens RESCUE PAUSED; process alive",
+    "cover_1080x2520": "alive; HUD, pause panel and crew visible",
+    "inner_1968x2184": "alive; wider street at the sides, panel centred, no crop",
+    "home_then_cold_relaunch": "process alive; both checksum slots valid and committed; restored paused at tick 1906 crew 8, still catalog1",
+    "script_errors": 0,
+    "wm_size_restored": "1080x2400"
+  },
+  "launch_timing": {
+    "first_launch_after_update": "Upgrade A and B new-after-launch captures at the 12 s settle both show the restored game, not the splash.",
+    "cold_start_polled": "With screencap polling every ~0.5 s: Godot splash from about 4.7 s to 18.3 s, restored paused road first at 18.9 s after am start. Polling loads the emulator, so treat this as an upper bound. Every launch logs 'Failed to load cached shader, recompiling'.",
+    "timeline": "C:/projects/active/games/.artifacts/emulator/hordes-20261022/deadrun-native/report.json"
+  },
+  "lighting_check": {
+    "desktop_reference": "C:/projects/active/games/.artifacts/releases/graphics-20261021/previews/deadrun-hordes-early-road01.png",
+    "result": "Android matches the desktop horde previews: same sky, canal, cranes, lit road, blue crew blob and green/purple packs; not washed out or dark."
+  },
+  "observations": [
+    "Durability: both code4 save slots were 0 bytes after the previous emulator shutdown although the app had written and read back valid slots seconds earlier. Both slots were rewritten within 8 s and nothing forced them to disk, so a hard power-off or emulator kill shortly after a save can lose the whole save. This session ran 'adb shell sync' before shutdown. Not reproduced on a phone.",
+    "After Home on a finished catalog1 victory panel, returning shows an extra RESUME button above RETRY ROAD (retry-flow/c1-back-from-home.png). Cosmetic.",
+    "On the rule3 defeat panel the surviving crew are drawn inside the evac blockade model (retry-flow/r3-cold-relaunch.png). Cosmetic."
+  ],
+  "limits": "Emulator only. Physical Fold7 touch/folding/IME, sound, phone frame rate in surges and human difficulty not established. Independent visual/motion review still owed per GRAPHICS_PRODUCTION.md."
+}
