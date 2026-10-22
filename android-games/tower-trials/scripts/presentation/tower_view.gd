@@ -161,8 +161,8 @@ func _backdrop() -> void:
 	add_child(quay)
 	# Far headland, lighthouse and village (fixed authored placements).
 	_place("cliff", Vector3(-6, SEA_Y, -30), Vector3(2.4, 2.4, 2.4))
-	_place("cliff", Vector3(14, SEA_Y, -36), Vector3(-2.8, 2.0, 2.4))
-	beacon = _place("lighthouse", Vector3(10.5, SEA_Y + 3.8, -34), Vector3(2.2, 2.2, 2.2))
+	_place("cliff", Vector3(14, SEA_Y, -36), Vector3(2.8, 2.0, 2.4))
+	beacon = _place("lighthouse", Vector3(7.3, SEA_Y + 2.8, -36), Vector3(2.2, 2.2, 2.2))
 	for i in 7:
 		_place("cottage", Vector3(-1.8 + i * 1.25, SEA_Y + .02, -6 - (i % 3) * 1.4), Vector3.ONE * (1.0 + (i % 2) * .15))
 	_place("moon", Vector3(14, 6, -60), Vector3(6, 6, 6))

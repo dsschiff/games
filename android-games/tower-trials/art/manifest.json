@@ -1,6 +1,6 @@
 {
   "generator": "source/build_assets.py",
-  "generator_lf_sha256": "c26c3516f6b30492b73d60b8c367dc4ff338cec07400e7376299cd31347d0e95",
+  "generator_lf_sha256": "ab192515d8a3ab4160a890a14569ea73d6134e0a63e43dd93cf996e3507d5527",
   "blender": "4.5.14 LTS",
   "rendered": false,
   "original": true,
@@ -141,20 +141,20 @@
     },
     {
       "name": "cliff",
-      "sha256": "164e75785107d62360512e33e4334e0e08b8424e6ebb1bca304fb1f375752b96",
-      "bytes": 72300,
+      "sha256": "e31721f64d81cc7b63e53aecb65510ef4c6a02703b2cda164dad5f8bccf87c87",
+      "bytes": 221744,
       "meshes": 1,
-      "triangles": 756,
+      "triangles": 2704,
       "bounds_blender": {
         "min": [
-          -3.2,
-          -0.06,
-          0.0
+          -3.29145,
+          -0.34021,
+          -0.09
         ],
         "max": [
-          3.6,
-          0.86,
-          2.64
+          3.67697,
+          1.0,
+          2.56
         ]
       }
     },

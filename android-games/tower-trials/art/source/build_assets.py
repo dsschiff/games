@@ -218,10 +218,18 @@ def spirit():
 
 def cliff():
     # Backdrop headland, about 6 wide and 2.6 tall.
-    for i, (x, w, h) in enumerate([(-2.4, 1.6, 1.6), (-1.1, 1.8, 2.3), (.4, 2.0, 2.6), (1.9, 1.6, 1.9), (3.0, 1.2, 1.1)]):
-        block("Rock%d" % i, (x, .4, h / 2), (w, .9, h), "Rock" if i % 2 else "Rock dark", .12)
-    block("Turf", (.0, .4, 2.6), (2.0, .92, .08), "Moss", .03)
-    block("Turf2", (-1.1, .4, 2.3), (1.8, .92, .07), "Moss", .03)
+    # Stacked, tapering, slightly turned strata read as weathered rock.
+    for i, (x, w, h) in enumerate([(-2.4, 1.6, 1.4), (-1.1, 1.8, 2.1), (.4, 2.0, 2.5), (1.9, 1.6, 1.8), (3.0, 1.2, 1.0)]):
+        layers = 4
+        for k in range(layers):
+            lw = w * (1.0 - .13 * k) + ((i * 7 + k * 3) % 5) * .04
+            lh = h / layers
+            twist = (((i * 5 + k * 11) % 7) - 3) * .035
+            block("Rock%d_%d" % (i, k), (x + (((i + k) % 3) - 1) * .07, .4, lh * (k + .5)), (lw, .9 - k * .08, lh * 1.04),
+                  "Rock" if (i + k) % 2 else "Rock dark", .1, rot=(0, twist, twist * .5))
+        cyl("Cap%d" % i, (x, .4, h + .02), w * .3, .08, "Moss", top=w * .22, verts=9)
+    for i in range(6):
+        oval("Boulder%d" % i, (-2.8 + i * 1.15, -.15, .1), (.22 + (i % 3) * .06, .2, .14 + (i % 2) * .05), "Rock dark", 8, 5)
 
 
 def lighthouse():
