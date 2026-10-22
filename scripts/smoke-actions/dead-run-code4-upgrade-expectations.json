@@ -1,0 +1,31 @@
+{
+  "scope": "Graphics 0.3.0/code4 keeps save envelope version 2 and the entire genuine code3 campaign context (active road 02, earned road 01 profile/medal, settings). Whole-path comparison of context and committed is stricter than these fields.",
+  "expected_save": {
+    "version": 2,
+    "committed": true,
+    "context.mode": "campaign",
+    "context.loadout": "rivet",
+    "context.campaign.phase": "playing",
+    "context.campaign.tick": 232,
+    "context.campaign.crew": 5,
+    "context.campaign.weapon": "rivet",
+    "context.campaign.rewarded": false,
+    "context.campaign.definition.index": 1,
+    "context.campaign.definition.replay": false,
+    "context.profile.clears": [
+      0
+    ],
+    "context.profile.ending": false,
+    "context.profile.medals.0.best_crew": 20,
+    "context.profile.medals.0.no_loss": true,
+    "context.profile.medals.0.rescues": true,
+    "context.settings.sound": false,
+    "context.settings.reduced_effects": true
+  },
+  "expected_numeric": {
+    "context.campaign.x": {
+      "min": 0.9166,
+      "max": 0.9167
+    }
+  }
+}

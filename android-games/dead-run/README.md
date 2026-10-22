@@ -1,3 +1,5 @@
+> Graphics work: see [GRAPHICS_PRODUCTION.md](GRAPHICS_PRODUCTION.md). Graphics candidate frozen as 0.3.0/code4 (original stylized 3D presentation). Status 2026-10-21: signed APK built, rules 139/input 34/presentation 22 pass, genuine emulator code3-to-4 update keeps the whole save, drag steering confirmed on the emulator, and Android lighting matches desktop frames. Evidence: `android-games/evidence/dead-run-graphics-candidate.json`. Functional 0.2.1/code3 records below remain retained.
+
 # Dead Run — evacuation campaign (0.2.1/code3)
 
 An original offline portrait road shooter for pinned Godot4.7.2/GDScript. Restore
