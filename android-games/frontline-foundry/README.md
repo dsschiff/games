@@ -1,3 +1,10 @@
+> **Design candidate 0.3.2 / code6 (2026-10-23).** Individual recruit feedback follows
+> Equip, arming, gate deployment and actual combat contribution; HQ integrity and
+> role guidance stay readable above resting controls. Completed-save destination
+> bytes are verified before success. Rules, pinned runs and earned progress are
+> unchanged. See `REINFORCEMENT_CHECKPOINT.md`; signed/native delivery is tracked
+> separately in the portfolio records.
+
 # Frontline Foundry — 0.3.1 / code 4 candidate
 
 The unreleased [reinforcement feedback increment](REINFORCEMENT_CHECKPOINT.md)
