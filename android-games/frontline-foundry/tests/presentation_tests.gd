@@ -299,6 +299,13 @@ func camera_checks() -> void:
 		if mark.direction.y > .5 and mark.point.y >= root.get_visible_rect().size.y - world.safe_bottom - 19:
 			below += 1
 	check(world.cues.marks.size() == 1 and below == 1, "off-screen sapper behind the controls gets one edge cue; on-screen runner gets none")
+	# Synthetic projected geometry: campaign layout reserves both HQ and guidance.
+	world.safe_bottom = 430.0
+	world.update_cues()
+	var lower_clear: bool = not world.cues.marks.is_empty()
+	for mark in world.cues.marks:
+		lower_clear = lower_clear and mark.point.y + float(mark.size) * 1.75 + 4 < root.get_visible_rect().size.y - 390.0
+	check(lower_clear, "actual lower-edge cue triangle, halo and merged badge bounds clear clamped HQ and guidance")
 	check(world.cues.marks[0].color.a == 1.0, "reduced effects holds edge cues steady without pulsing")
 	world.sync(threat, true, true, 0)
 	world.update_cues()

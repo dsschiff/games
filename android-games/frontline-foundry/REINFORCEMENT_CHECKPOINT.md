@@ -81,3 +81,18 @@ update result is established here. All renderer processes exited and the slot wa
 returned. Necessary bound evidence stays for coordinator review; the disposable HQ
 probe was removed. Follow-up: inspect recap at phone scale and observe actual
 recruit purchases during the next native candidate run.
+
+## Review follow-up after ece03c9
+
+The campaign lower-edge cue inset now derives from the objective text boundary
+plus90px, reserving430 logical pixels at the bottom. A synthetic off-screen
+sapper passes the actual projected cue/halo/merged-badge bound check above the
+clamped HQ marker and guidance. CPU presentation110/0 and actual headless
+focused input51/0 pass on unchanged source. The focused route includes two held
+anchors at(90,h-140) and(180,h-140) in its final landscape profile; it does not
+prove all possible floating joystick placements. Arbitrary high left-side anchors
+can cover HUD by design. Earlier47-check rendered evidence tested rested controls
+and predates this final cue-inset-only change. No additional rendered or Android
+claim is made. One initial follow-up test failed parsing an inferred bool; its
+corrected110-check receipt is separate. Root independently viewed the earned
+Rifle1/10-damage result. Required leftovers scan finished: no recent files>=1GB.

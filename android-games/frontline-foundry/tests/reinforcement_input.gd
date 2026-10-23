@@ -51,6 +51,16 @@ func run() -> void:
     check(not scene.queue_label.get_global_rect().intersects(scene.stick.get_global_rect()) and not scene.queue_label.get_global_rect().intersects(scene.build_button.get_global_rect()), "footer clears stick and equipment action " + str(dimensions))
     check(scene.queue_label.get_minimum_size().x <= scene.queue_label.size.x, "individual feedback fits profile " + str(dimensions))
    await snap("profile-%s-at-%s" % [str(dimensions),str(goal)])
+ if before.is_empty():
+  var view: Vector2 = root.get_visible_rect().size
+  for anchor in [Vector2(90, view.y - 140), Vector2(180, view.y - 140)]:
+   origin = anchor
+   await steer(Vector2.UP)
+   await physics_frame
+   check(scene.stick_id == 0 and scene.input_vector.length() > .9, "actual held stick is active at " + str(anchor))
+   check(not scene.stick.get_global_rect().intersects(scene.guidance.get_global_rect()) and not scene.stick.get_global_rect().intersects(scene.hq_indicator.get_global_rect()) and not scene.stick.get_global_rect().intersects(scene.queue_label.get_global_rect()), "representative held anchor clears guidance/HQ/footer " + str(anchor))
+   await snap("held-stick-" + str(anchor))
+   await release()
  root.size = original
  await release()
  write_report()

@@ -153,6 +153,8 @@ func layout() -> void:
 	build_button.position.y = view.y - 165
 	guidance.position.y = view.y - 340
 	guidance.size.y = 110
+	# Edge cues clear the clamped HQ marker as well as the objective text.
+	presentation.safe_bottom = view.y - guidance.position.y + 90.0
 	guidance.add_theme_font_size_override("font_size", 23)
 	if queue_label.get_parent() != ui:
 		queue_label.reparent(ui)
