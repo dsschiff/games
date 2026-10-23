@@ -1,3 +1,8 @@
+> **Design candidate 0.4.1 / code10 (2026-10-23).** Begin starts combat after
+> ready-state Menu, Guide, Save, Home and Pause flows. Returning to an active
+> battle still requires Resume. Existing rules, layouts and full earned progress
+> are preserved. See `DESIGN_INCREMENT.md`; signed/native delivery is separate.
+
 # Gear Bastion
 
 An original offline Godot 4.7.2 defense game: connect a powered foundry while brass automata emerge from generators, march through three wall arches and fight beetle raiders. Source 0.4.0 / code 8 is an original 3D review candidate that retains nine encounters across three foundries, a mortar role, bosses, medals, an ending and three seeded replays. The [3D production record](GRAPHICS_PRODUCTION.md), [historical motion index](evidence/graphics-motion.json), [pooling/role follow-up](evidence/graphics-pooling.json), and [dense-boss correction](evidence/graphics-boss-visibility.json) cover the original articulated actors, foundry scenery, responsive controls and genuine-save captures. Independent eight-category motion review, the coordinator’s signed update checks and physical-phone acceptance remain open. Earlier [decision-pressure evidence](DECISION_PRESSURE_CHECKPOINT.md) is retained separately.

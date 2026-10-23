@@ -40,7 +40,7 @@ def execute(command, run, env, name, timeout=180):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=["checks", "input", "deck", "boss-hud", "pooling", "boss-occlusion", "cache-lifecycle", "inspect", "fresh-import"])
+    parser.add_argument("mode", choices=["checks", "input", "deck", "boss-hud", "pooling", "boss-occlusion", "cache-lifecycle", "phase-input", "rules", "inspect", "fresh-import"])
     parser.add_argument("--render", action="store_true")
     args = parser.parse_args()
     if args.mode == "inspect" and not args.render:
@@ -64,15 +64,19 @@ def main():
         baseline = subprocess.check_output(["git", "show", BASELINE+":android-games/gear-bastion/scripts/battle_rules.gd"], cwd=PROJECT)
         baseline = baseline.replace(b"class_name BattleRules\n", b"")
         (PROJECT/".artifacts/graphics-production/baseline_battle.gd").write_bytes(baseline)
-        script = {"checks": "presentation_tests.gd", "input": "graphics_input.gd", "deck": "deck_geometry.gd", "boss-hud": "boss_hud.gd", "pooling": "pooling.gd", "boss-occlusion": "boss_occlusion.gd", "cache-lifecycle": "cache_lifecycle.gd", "inspect": "graphics_inspect.gd"}[args.mode]
-        command = [str(GODOT), "--path", str(PROJECT), "--audio-driver", "Dummy", "--quit-after", "12000"]
+        script = {"checks": "presentation_tests.gd", "input": "graphics_input.gd", "deck": "deck_geometry.gd", "boss-hud": "boss_hud.gd", "pooling": "pooling.gd", "boss-occlusion": "boss_occlusion.gd", "cache-lifecycle": "cache_lifecycle.gd", "inspect": "graphics_inspect.gd", "phase-input": "ready_phase_input.gd", "rules": "run_tests.gd"}[args.mode]
+        command = [str(GODOT), "--path", str(PROJECT), "--audio-driver", "Dummy", "--quit-after", "30000" if args.mode == "phase-input" else "12000"]
         command += ["--resolution", "720x1680", "--position", "0,0"] if args.render else ["--headless"]
+        if args.mode == "phase-input":
+            command += ["--fixed-fps", "60"]
         command += ["-s", "tests/"+script, "--", "--run-dir="+str(run)]
         result, output = execute(command, run, env, args.mode)
         result["passed"] = result["passed"] and "SUITE_COMPLETE: PASS" in output
     after = sources(target)
     result["passed"] = result["passed"] and before == after
     data_path = run/"checks-data.json" if args.mode == "checks" else run/"input/report.json"
+    if args.mode == "phase-input":
+        data_path = run/"phase-data.json"
     if args.mode == "deck":
         data_path = run/"deck-data.json"
     if args.mode == "boss-hud":
@@ -84,7 +88,7 @@ def main():
     if args.mode == "cache-lifecycle":
         data_path = run/"cache-data.json"
     retained_data = None
-    if args.mode in {"checks", "input", "deck", "boss-hud", "pooling", "boss-occlusion", "cache-lifecycle"} and data_path.exists():
+    if args.mode in {"checks", "input", "deck", "boss-hud", "pooling", "boss-occlusion", "cache-lifecycle", "phase-input"} and data_path.exists():
         retained_data = run/"result-data.json"
         shutil.copyfile(data_path, retained_data)
     receipt = {"mode": args.mode, "rendered": args.render, "source_before": before, "source_after": after,

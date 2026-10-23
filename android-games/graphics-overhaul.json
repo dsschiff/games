@@ -292,5 +292,17 @@
       "Windowed presentation run reports exit-time GL texture leaks (headless run clean)",
       "Physical phone testing deferred by user"
     ]
+  },
+  "frontline_design_checkpoint": {
+    "version": "0.3.2",
+    "version_code": 6,
+    "source_commit": "c66ee90de5c58257ea124cc05ddfdd3b3e17bc21",
+    "status": "bounded_design_update_privately_published_original_graphics_lineage_retained",
+    "candidate_evidence": "android-games/evidence/design-cycle-20261023.json",
+    "apk_sha256": "ff3e2487907062ea9ef523ef7e88f0c8a965697de88710cd87d4962c351125e2",
+    "open": [
+      "Physical phone testing deferred",
+      "Full historical art-direction motion review remains separate; this pass reviews feedback/HQ layout"
+    ]
   }
 }

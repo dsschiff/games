@@ -168,23 +168,25 @@ func terminal_case(label: String) -> void:
 		check(game.state.phase == "ready" and game.state.time == 0, label + " terminal Retry is reachable for " + outcome)
 
 func transfer_case() -> void:
-	game.state = Battle.initial(1701, "camp_02")
-	game.screen = "game"
-	await action("save")
-	await settle()
-	var exported: String = game.save_text.text
-	var before = JSON.parse_string(Saves.encode(game.state, game.settings, 0, true, game.profile))
-	var import_button: Button
-	for candidate in game.save_dialog.find_children("*", "Button", true, false):
-		if candidate.text == "Import":
-			import_button = candidate
-	check(import_button != null, "Transfer exposes Import button")
-	game.save_text.text = "invalid fixture text"
-	await tap(game.to_local(Vector2(game.save_dialog.position) + import_button.get_global_rect().get_center()))
-	check(game.save_dialog.visible and before == JSON.parse_string(Saves.encode(game.state, game.settings, 0, true, game.profile)), "Invalid Import button retains entire run/settings/profile")
-	game.save_text.text = exported
-	await tap(game.to_local(Vector2(game.save_dialog.position) + import_button.get_global_rect().get_center()))
-	check(not game.save_dialog.visible and game.paused and before == JSON.parse_string(Saves.encode(game.state, game.settings, 0, true, game.profile)), "App-produced export imports through actual button and retains whole context")
+	for phase in ["ready", "battle"]:
+		game.state = Battle.initial(1701, "camp_02")
+		if phase == "battle": Battle.start(game.state)
+		game.screen = "game"
+		await action("save")
+		await settle()
+		var exported: String = game.save_text.text
+		var before = JSON.parse_string(Saves.encode(game.state, game.settings, 0, true, game.profile))
+		var import_button: Button
+		for candidate in game.save_dialog.find_children("*", "Button", true, false):
+			if candidate.text == "Import":
+				import_button = candidate
+		check(import_button != null, "Transfer exposes Import button")
+		game.save_text.text = "invalid fixture text"
+		await tap(game.to_local(Vector2(game.save_dialog.position) + import_button.get_global_rect().get_center()))
+		check(game.save_dialog.visible and before == JSON.parse_string(Saves.encode(game.state, game.settings, 0, true, game.profile)), "Invalid Import button retains entire run/settings/profile")
+		game.save_text.text = exported
+		await tap(game.to_local(Vector2(game.save_dialog.position) + import_button.get_global_rect().get_center()))
+		check(not game.save_dialog.visible and game.paused == (phase == "battle") and before == JSON.parse_string(Saves.encode(game.state, game.settings, 0, true, game.profile)), "App-produced " + phase + " export retains whole context and phase-aware pause through actual Import button")
 
 func run() -> void:
 	DirAccess.make_dir_recursive_absolute(evidence)

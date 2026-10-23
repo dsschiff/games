@@ -183,7 +183,7 @@ func choose_weapon(weapon: String) -> void:
 	refresh()
 
 func open_journey() -> void:
-	paused = true
+	suspend_run()
 	drag_index = -1
 	journey_visible = true
 	pending_road = -1
@@ -269,7 +269,7 @@ func _exit_tree() -> void:
 
 func enter_legacy() -> void:
 	if is_instance_valid(legacy_view): return
-	paused = true
+	suspend_run()
 	ctx.mode = "legacy"
 	persist()
 	hud.hide()
@@ -284,7 +284,7 @@ func leave_legacy() -> void:
 		legacy_view.queue_free()
 	ctx.mode = "campaign"
 	settings = ctx.settings
-	paused = true
+	suspend_run()
 	journey_visible = true
 	hud.show()
 	world.show()
@@ -311,10 +311,10 @@ func import_code() -> void:
 	ctx = saved.context
 	state = ctx.campaign
 	settings = ctx.settings
-	paused = true
+	suspend_run()
 	journey_visible = false
 	build_world()
-	transfer_status.text = "Imported and stored. Close, then Resume."
+	transfer_status.text = imported_feedback()
 	save_message = ""
 	refresh()
 
@@ -365,6 +365,36 @@ func _physics_process(delta: float) -> void:
 	if settings.sound and not paused and state.phase == "playing" and state.tick % state.definition.weapons[state.weapon].period == 0: tone.play()
 	refresh()
 
+func road_warning() -> String:
+	var d: Dictionary = state.definition
+	# Array order and boss health must not hide an active lane countdown.
+	var next_hazard: Dictionary = {}
+	for h in state.hazards:
+		if not h.resolved and h.loss > 0 and (next_hazard.is_empty() or h.fire < next_hazard.fire): next_hazard = h
+	if not next_hazard.is_empty():
+		return "%s in %.1fs - leave the orange lane" % [next_hazard.label.to_upper(), maxf(0, next_hazard.fire - state.tick) / 60.0]
+	var upcoming := ""
+	var soonest := INF
+	for i in state.gates.size():
+		var g: Dictionary = state.gates[i]
+		var eta: float = g.z / d.speed
+		if state.tick >= d.gates[i].born and not g.crossed and g.z < 6 and eta < soonest:
+			soonest = eta
+			upcoming = "GATE ×%d in %.1fs - shoot it to multiply the crew" % [g.value, eta] if d.gates[i].get("kind", "add") == "mul" else "GATE %+d in %.1fs - overlap applies its sign once" % [g.value, eta]
+	for i in state.obstacles.size():
+		var o: Dictionary = state.obstacles[i]
+		var eta: float = o.z / d.speed
+		if state.tick >= d.obstacles[i].born and not o.crossed and o.z < 7 and eta < soonest:
+			soonest = eta
+			upcoming = "CART in %.1fs - leave room for the whole crew" % eta
+	if not upcoming.is_empty(): return upcoming
+	if state.tick >= d.boss.born and not state.boss.dead:
+		if d.boss.kind == 4: return "FERRY EATER - clear both arms, then the core"
+		if d.boss.kind == 2: return "TOLL RAM - flanks or Lance bypass its shield"
+	if not C.catalog1(state) and state.tick >= d.boss.born - 840 and state.tick < d.boss.born:
+		return "HORDE SURGE - sweep every lane before the " + ("finale" if d.boss.kind > 0 else "blockade")
+	return "Drag sideways - fit the whole gold footprint through gaps"
+
 func refresh() -> void:
 	if hud == null: return
 	var d: Dictionary = state.definition
@@ -372,26 +402,17 @@ func refresh() -> void:
 	title.add_theme_font_size_override("font_size", 27)
 	info.text = "CREW %d / %d   ·   %s   ·   %d%%\n%s  ·  %d / 24 roads restored" % [state.crew, d.cap, Data.WEAPONS[state.weapon].title, state.tick * 100 / d.duration, Data.DISTRICTS[d.district], ctx.profile.clears.size()]
 	notice.text = save_message if not save_message.is_empty() else state.notice
-	warning.text = "Drag sideways · fit the whole gold footprint through gaps"
-	if not C.catalog1(state) and state.tick >= d.boss.born - 840 and state.tick < d.boss.born: warning.text = "HORDE SURGE · sweep every lane before the " + ("finale" if d.boss.kind > 0 else "blockade")
-	for i in state.gates.size():
-		if state.tick >= d.gates[i].born and not state.gates[i].crossed and state.gates[i].z < 6:
-			if d.gates[i].get("kind", "add") == "mul": warning.text = "GATE ×%d in %.1fs · shoot it to multiply the crew" % [state.gates[i].value, state.gates[i].z / d.speed]
-			else: warning.text = "GATE %+d in %.1fs · overlap applies its sign once" % [state.gates[i].value, state.gates[i].z / d.speed]
-	for i in state.obstacles.size():
-		if state.tick >= d.obstacles[i].born and not state.obstacles[i].crossed and state.obstacles[i].z < 7: warning.text = "CART AHEAD · leave room for the whole crew"
-	for h in state.hazards:
-		if not h.resolved: warning.text = "%s in %.1fs · leave the orange lane" % [h.label.to_upper(), maxf(0, h.fire - state.tick) / 60.0]
-	if state.tick >= d.boss.born and not state.boss.dead:
-		if d.boss.kind == 4: warning.text = "FERRY EATER · arms %d / %d · core %d" % [state.boss.arms[0], state.boss.arms[1], state.boss.hp]
-		elif d.boss.kind == 2: warning.text = "TOLL RAM %d · flanks or Lance bypass its shield" % state.boss.hp
+	warning.text = road_warning()
 	overlay.visible = (paused or state.phase != "playing") and not journey_visible
 	overlay_title.text = ("LAST FERRY AWAY" if ctx.profile.ending and d.index == 23 and state.phase == "victory" and not d.replay else {"ready": "PREPARE THE ROAD", "playing": "RESCUE PAUSED", "victory": "ROAD RESTORED", "defeat": "RESCUE LOST"}[state.phase])
 	overlay_body.text = (d.hint + "\nDrag sideways. Fire is automatic. Shoot gates to improve their number; cross once to gain or lose crew, or to multiply it. " + Data.WEAPONS[state.weapon].hint) if state.phase == "ready" else state.notice + "\n" + save_message
+	if state.phase in ["victory", "defeat"]:
+		overlay_body.text = state.notice + "\n%d crew joined; %d lost; %d infected stopped.\nRetry starts this road with 5 crew. Restored roads stay unlocked." % [state.joined, state.lost, state.kills] + ("\n" + save_message if not save_message.is_empty() else "")
 	if ctx.profile.ending and d.index == 23 and state.phase == "victory" and not d.replay:
 		overlay_body.text = "The canal, market and reservoirs are clear. Your crew holds the last pier as the final ferry departs. All 24 evacuation roads are restored. Replay any road, rescue every rigger, or choose a seeded ferry run."
 	start_button.visible = state.phase == "ready"
-	resume_button.visible = paused
+	pause_button.visible = state.phase == "playing" and not journey_visible
+	resume_button.visible = paused and state.phase == "playing"
 	retry_button.text = "RETRY ROAD"
 	retry_button.visible = state.phase in ["victory", "defeat"]
 	next_button.visible = state.phase == "victory" and d.index < 23 and not d.replay

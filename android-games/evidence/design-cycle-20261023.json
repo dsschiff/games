@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-23",
+  "goal": "first six-game design-and-polish cycle; active",
+  "frontline": {
+    "version": "0.3.2",
+    "version_code": 6,
+    "state": "private_release_delivered",
+    "build_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\frontline-foundry\\20261023T232227527818Z\\manifest.json",
+    "build": {
+      "schema_version": 1,
+      "game": "frontline-foundry",
+      "command": "build",
+      "godot_version": "4.7.2.stable.official.ed1daf0bf",
+      "started_utc": "20261023T232227527818Z",
+      "git_revision": "c66ee90de5c58257ea124cc05ddfdd3b3e17bc21",
+      "project": "android-games/frontline-foundry",
+      "build_type": "release",
+      "pipeline_sha256": "3a473050bd36928c58f959ae99e67b3d22f533d425426b62e058090cace63033",
+      "toolchain_config_sha256": "2c5788e6e8a2b963cb8cd512f4c192b84e78915e05403ed7d267ab8aec34a502",
+      "import_exit_code": 0,
+      "argv": [
+        "C:\\projects\\active\\.game-toolchain\\godot\\4.7.2\\Godot_v4.7.2-stable_win64_console.exe",
+        "--headless",
+        "--path",
+        "F:\\games-workspaces\\design-cycle-20261023\\android-games\\frontline-foundry",
+        "--export-release",
+        "Android",
+        "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\frontline-foundry\\20261023T232227527818Z\\frontline-foundry.apk"
+      ],
+      "exit_code": 0,
+      "result": "built",
+      "artifact": {
+        "path": ".artifacts/frontline-foundry/20261023T232227527818Z/frontline-foundry.apk",
+        "bytes": 56101382,
+        "sha256": "ff3e2487907062ea9ef523ef7e88f0c8a965697de88710cd87d4962c351125e2"
+      },
+      "apk_inspection": {
+        "package": "com.dsschiff.frontlinefoundry",
+        "version_code": "6",
+        "version_name": "0.3.2",
+        "permissions": [],
+        "internet_permission": false,
+        "signature_verified": true,
+        "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
+        "debuggable": false
+      },
+      "project_source_sha256": "5ef874a54100b4726acca0909a23e7f7a33bc982419c9b8e770a3b16a1b03a0a",
+      "project_source_sha256_after": "5ef874a54100b4726acca0909a23e7f7a33bc982419c9b8e770a3b16a1b03a0a",
+      "source_unchanged": true,
+      "project_git_status": [],
+      "project_dirty": false
+    },
+    "published": {
+      "release": "https://github.com/dsschiff/android-games-releases/releases/tag/frontline-foundry-v0.3.2",
+      "tag": "frontline-foundry-v0.3.2",
+      "asset": "frontline-foundry-v0.3.2.apk",
+      "asset_url": "https://github.com/dsschiff/android-games-releases/releases/download/frontline-foundry-v0.3.2/frontline-foundry-v0.3.2.apk",
+      "sha256": "ff3e2487907062ea9ef523ef7e88f0c8a965697de88710cd87d4962c351125e2",
+      "bytes": 56101382,
+      "release_id": 422396544,
+      "asset_id": 670715535,
+      "private": true,
+      "notes_readback_verified": true
+    },
+    "native_report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\release-updates\\com.dsschiff.frontlinefoundry\\20261023T233139Z\\report.json",
+    "native_report_sha256": "0706e5870fd420f1b2276cbab5e823faef288c77cd40c142c80a76dd57b09d41",
+    "native_scope": "signed in-place release update and process lifecycle; visual review required; no raw save readback",
+    "native_automated_checks_passed": true,
+    "visual_review": "Root inspected native before/after/cold sortie brief and actual launched sortie; no new crop/overlap observed in these bounded views",
+    "independent_input_regression": {
+      "checks": 51,
+      "failures": 0,
+      "receipt": "F:\\games-workspaces\\design-cycle-20261023\\android-games\\frontline-foundry\\.artifacts\\feedback-after-20261023T232342183068Z\\receipt.json"
+    },
+    "phone_acceptance": false,
+    "raw_android_whole_save_comparison": false
+  },
+  "dead_run": {
+    "state": "source fixes integrated locally; strict full-render release gate remains failed with four texture leaks",
+    "commit": "7532385"
+  },
+  "cloud": {
+    "state": "independently reviewed compiled native transport and codec; gameUI/liveGoogleverification pending",
+    "not_in_current_apks": true,
+    "native_jvm_tests": 21,
+    "native_jvm_failures": 0,
+    "codec_real_decoder_checks": 27,
+    "codec_failures": 0,
+    "native_receipt": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\cloud-native\\receipt.json",
+    "native_receipt_sha256": "9de1f3d169171ab43bd530a6621c92938304701734cd4623ceff882e07917524",
+    "native_aar_sha256": "414f1d90bca0147524e586f6d9cf0e0fa808b373d77cb49b04821f9d5e7c1a01"
+  },
+  "next": [
+    "Gear ready-phase Begin/input fix",
+    "Hearthguard save commit/readback and failed mode-switch handling",
+    "Close Dead Run strict renderer teardown failure",
+    "Finish cloud review then offline-safe opt-in game integration"
+  ]
+}

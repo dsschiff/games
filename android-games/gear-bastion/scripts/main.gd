@@ -124,6 +124,9 @@ func _ready() -> void:
 	reset_presentation()
 	queue_redraw()
 
+func suspend_battle() -> void:
+	paused = state.phase == "battle"
+
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		handle_back()
@@ -133,10 +136,10 @@ func _notification(what: int) -> void:
 		dragging = false
 		active_touch = -1
 		persist()
-		paused = true
+		suspend_battle()
 		queue_redraw()
 	if what == NOTIFICATION_APPLICATION_RESUMED and state.phase == "battle":
-		paused = true
+		suspend_battle()
 		message = "Welcome back · Resume when ready"
 		queue_redraw()
 
@@ -222,10 +225,10 @@ func handle_back() -> void:
 	elif is_instance_valid(abandon_dialog) and abandon_dialog.visible:
 		abandon_dialog.hide()
 	elif screen == "game" and state.phase == "battle" and not paused:
-		paused = true
+		suspend_battle()
 		message = "Paused and saved · Back again opens the journey"
 	elif screen == "game":
-		paused = true
+		suspend_battle()
 		screen = "map"
 	else:
 		screen = "map"
@@ -500,10 +503,10 @@ func act(action: String) -> void:
 		return
 	match action:
 		"map", "journey":
-			paused = true
+			suspend_battle()
 			screen = "map"
 		"menu":
-			paused = true
+			suspend_battle()
 			menu_dialog.find_child("Action_speed", true, false).text = "Speed: %d×" % speed
 			menu_dialog.find_child("Action_mute", true, false).text = "Sound: off" if settings.muted else "Sound: on"
 			menu_dialog.find_child("Action_effects", true, false).text = "Calm FX: on" if settings.reduced_effects else "Calm FX: off"
@@ -528,11 +531,11 @@ func act(action: String) -> void:
 			state.rally = not state.rally
 			message = "Next formations arriving faster" if state.rally else "Normal formation pace"
 		"help":
-			paused = true
+			suspend_battle()
 			help_dialog.find_child("GuideText", true, false).text = str(state.config.get("decision", "Connect gears to the brass core; balance guards and rangers.")) + "\n\nMint joints show power carried by touching gears from the gold core. Drives add 25% per level to adjacent troop gears, up to 3x. A stopped gear reads OFF.\n\nGuards absorb fire. Rangers give strong single-target damage. Mortars hit packed enemies, with lower single-target damage.\n\nTap a troop gear to choose its exit. Refit shows the next role and price difference. Equal drives merge by dragging; Undo restores a move or merge.\n\nBosses call escorts as they weaken. Rangers pierce their armor. Keep troops near siege engines to interrupt volleys. After 60 seconds a surviving boss attacks the wall.\n\nMedals: clear, wall intact, and efficiency (save 6 brass and finish under par). Rally sends formations faster when ready."
 			show_dialog(help_dialog)
 		"pause":
-			paused = not paused
+			paused = state.phase == "battle" and not paused
 		"speed":
 			speed = 2 if speed == 1 else 1
 		"mute":
@@ -542,7 +545,7 @@ func act(action: String) -> void:
 		"effects":
 			settings.reduced_effects = not settings.reduced_effects
 		"save":
-			paused = true
+			suspend_battle()
 			if not persist():
 				save_dialog.title = "Save failed · export current progress below"
 			else:
@@ -553,6 +556,7 @@ func act(action: String) -> void:
 			if state.phase in ["defeat", "victory"]:
 				retry()
 			elif state.phase == "ready":
+				paused = false
 				Battle.start(state)
 				message = "Battle live · rearrange to balance your army"
 				_tone(740)
@@ -643,9 +647,9 @@ func _build_save_dialog() -> void:
 						profile = result.profile
 						undo_board.clear()
 						accumulator = 0
-						paused = true
+						suspend_battle()
 						save_failed = false
-						message = "Imported · Resume when ready"
+						message = "Imported · Resume when ready" if paused else "Imported · Begin when ready" if state.phase == "ready" else "Imported · result restored"
 						reset_presentation()
 						save_dialog.hide()
 					else:

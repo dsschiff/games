@@ -47,6 +47,7 @@ var sides: Array = []
 var carts: Array = []
 var hazards: Array = []
 var boss: Node3D
+var blockade_backoff := 0.0
 var boss_visual: Node3D
 var boss_arms: Array = []
 var boss_wheels: Array = []
@@ -390,6 +391,12 @@ func _build_boss(d: Dictionary) -> void:
 			foam.position.y = .12
 			foam.scale = Vector3(1.9, .4, .9)
 			boss.add_child(foam)
+	if kind == 0:
+		# A frozen defeat composition keeps the surviving formation outside
+		# the modeled vehicle. Active combat retains its original placement
+		# so projectile contact and target alignment never change.
+		var front := C.offset(0, Data.CAP).y + Kit.bounds(crew[0].model, crew[0]).position.z
+		blockade_backoff = maxf(0, Kit.bounds(boss, boss).end.z - front + .25)
 	var top: float = [2.6, 5.4, 4.0, 5.6, 6.4][kind]
 	boss_label = label(boss, "", Vector3(0, top + .55, 0), 54, Color("ffe1c4"), Color("3a0d12"))
 	boss_bar = bar(boss, Vector3(0, top, 0), 2.6 if kind else 1.8, Color("ff5a4a"))
@@ -712,6 +719,8 @@ func _sync_boss(s: Dictionary, d: Dictionary, hydrate: bool) -> void:
 	var live: bool = s.tick >= bd.born and not b.dead
 	boss.visible = live
 	boss.position = Vector3(b.x, 0, -b.z)
+	if s.phase == "defeat" and bd.kind == 0:
+		boss.position.z = minf(boss.position.z, -blockade_backoff)
 	boss_label.text = "%s\n%d / %d" % [String(bd.title).to_upper(), b.hp, bd.hp]
 	set_fill(boss_bar, float(b.hp) / maxf(1, bd.hp))
 	if not hydrate and int(b.hp) < int(last.get("boss_hp", b.hp)):

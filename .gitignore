@@ -17,3 +17,9 @@ __pycache__/
 *.pyc
 .pytest_cache/
 
+
+# Native cloud plugin outputs and local Gradle state
+**/.gradle/
+**/build/
+*.aar
+local.properties
