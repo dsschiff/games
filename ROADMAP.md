@@ -43,10 +43,11 @@ frame timing distinct from headless correctness and physical/human acceptance.
 
 ### Next actions (2026-10-22)
 
-1. Save durability, all six games: saves are not flushed to disk, and on the
-   emulator Dead Run lost both slots to a shutdown seconds after saving (see
-   `android-games/evidence/dead-run-hordes-candidate.json`). Flush/fsync each slot
-   write and add a kill-after-save emulator check.
+1. Historical save-durability finding: Dead Run lost both slots after an emulator
+   shutdown. Current main now calls `FileAccess.flush()` in all six writers; that
+   source change is not hard-power-loss evidence. Verify current interrupted-write
+   recovery and kill-after-save behavior before claiming closure. See
+   `android-games/evidence/dead-run-hordes-candidate.json`.
 2. Independent visual/motion review and before/after clips for Frontline 0.3.1,
    Hook 0.3.0, Dead Run 0.4.0 and Tower 0.4.0 (G2/G3 exit condition).
 3. Small fixes: Dead Run extra Resume button after Home on a finished road and crew
@@ -54,3 +55,19 @@ frame timing distinct from headless correctness and physical/human acceptance.
    movement evidence; Frontline HQ partly behind bottom controls; Tower overlapping
    pops in busy rooms; Dead Run windowed presentation run leaks textures at exit.
 4. Deferred by Daniel: Fold7 phone testing, phone surge frame rate, human difficulty.
+
+
+## Active continuous design cycle (2026-10-23)
+
+Authoritative priorities and acceptance: `android-games/DESIGN-CYCLE.md`.
+
+| Milestone | Current state | Exit condition |
+| --- | --- | --- |
+| D0 Baseline | Current origin/main 4552e7b inspected; six release-signed APKs exist; old status records lag current source | Current baseline and explicit unresolved gates recorded |
+| D1 Leading pair | Dead Run terminal-state correction and Frontline agency diagnosis active in isolated worktrees | Actual input and independent review support one meaningful private update per game |
+| D2 Portfolio | Gear, Hearthguard, Hook, Tower queued | One meaningful verified design-and-polish release per game |
+| D3 Cloud recovery | Shared integration preparation; no live account approval | Offline-safe optional cloud path and genuine account/device sync verified; external blockers explicit |
+| D4 Delivery | Existing private Obtainium path retained; Play account identity/phone pending as of live 2026-10-23 check | Higher-version signed private updates retain real progress; Daniel-only Play testing when available |
+
+Physical/human acceptance remains separate. Development continues while account
+verification, independent visual review or phone feedback waits.

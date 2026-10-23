@@ -607,3 +607,13 @@
 - Frontline timing-only harness correction f8a9c7b integrated71614a1; Astra source clearance retained. The first run remains failed (pause/walltimeout, VSync1/no heavy samples). Corrected actual55.1833simulation-second run passes with zero exclusions/drops/resume events; all24,361 and heavy6,088 raw intervals independently recomputed. Actual55.466667s reuse movie remains valid at unchanged78cb4bd runtime. Final browser review stopped by user Escape before Play; no new motion acceptance. Signed code4 candidate52b372a built clean/source unchanged/no permissions, privately preserved and not installed/delivered. Root owns pending review/native/bundle; source handoff durable.
 
 - After source/handoff2965375 landed and canonical clean fast-forward/ancestry verified, archived the stopped Frontline builder chat natively (true). Remaining final visual/native tasks stay with root; no new acceptance is inferred. Reused the retained clean Hook worktree on new codex/hook-graphics at2965375, preserving functional branch/evidence, and created only the next bounded Hook graphics session01a15073-a371-7b91-8841-e43ae79777ac in the saved active project. Its explicit CPU-only assignment forbids Computer Use/browser/render/ADB/export/clipboard/nested agents/goals/outbound messages; it implements original tropical art across all four islands/twelve passages with unchanged rules/saves. The Escape stop is honored while independent implementation proceeds.
+
+
+### Continuous design cycle, 2026-10-23
+
+Daniel approved the six-game design-and-polish plan, Dead Run/Frontline first,
+optional Google cloud saves, offline retained, Planetfall separate. Created the
+active coordinating goal and three isolated worktrees under F:/games-workspaces/.
+Two scoped builders and one independent reviewer started. Updated charter and
+roadmap, preserving historical reviews and correcting the stale no-flush premise.
+Current base is origin/main4552e7b. No new release or cloud/device acceptance yet.
