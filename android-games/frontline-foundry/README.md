@@ -1,5 +1,11 @@
 # Frontline Foundry — 0.3.1 / code 4 candidate
 
+The unreleased [reinforcement feedback increment](REINFORCEMENT_CHECKPOINT.md)
+(2026-10-23) follows each paid weapon into its individual crew and reports actual
+crew contribution, adds counter guidance and an HQ marker above touch controls,
+and verifies save destination bytes after rename. Rules and pinned saves remain
+unchanged; current CPU/input and focused renderer evidence are in that checkpoint.
+
 The bounded [pooling follow-up](POOLING_FOLLOWUP.md) adds scene-owned inactive
 actor/effect reuse to the accepted 0.3.0 graphics. Art, rules and saves are retained.
 Status 2026-10-21: signed 0.3.1/code4 built from d7eb746 (pooling plus art-direction pass),

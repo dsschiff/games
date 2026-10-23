@@ -1,6 +1,7 @@
 extends "res://scripts/main.gd"
 const C = preload("res://scripts/campaign_rules.gd")
 const D = preload("res://scripts/definitions.gd")
+const F = preload("res://scripts/reinforcement_feedback.gd")
 var career := C.career()
 var support_panel: Panel
 var journey: Panel
@@ -20,6 +21,7 @@ var whole_world: Node3D
 var hq_marker: Node3D
 var brief_forecast: Label
 var brief_rules: Label
+var hq_indicator: Label
 var brief_scroll: ScrollContainer
 
 func _ready() -> void:
@@ -47,6 +49,10 @@ func make_world() -> void:
 
 func make_ui() -> void:
 	super.make_ui()
+	hq_indicator = label(ui, "", Vector2.ZERO, Vector2(230, 34), 23, "ffe1a0")
+	hq_indicator.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hq_indicator.add_theme_color_override("font_outline_color", Color("253c35"))
+	hq_indicator.add_theme_constant_override("outline_size", 6)
 	for child in menu.get_children():
 		if child is Button and child.text == "BEGIN CAMPAIGN":
 			child.free()
@@ -142,9 +148,29 @@ func layout() -> void:
 	super.layout()
 	var view := get_viewport().get_visible_rect().size
 	presentation.fit(view)
+	# Footer links the last paid weapon to its individual recruit without hiding HQ.
+	stick.position.y = view.y - 220
+	build_button.position.y = view.y - 165
+	guidance.position.y = view.y - 340
+	guidance.size.y = 110
+	guidance.add_theme_font_size_override("font_size", 23)
+	if queue_label.get_parent() != ui:
+		queue_label.reparent(ui)
+	queue_label.position = Vector2(18, view.y - 48)
+	queue_label.size = Vector2(view.x - 36, 36)
+	queue_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	queue_label.add_theme_font_size_override("font_size", 22)
+	queue_label.add_theme_color_override("font_color", Color("253c35"))
+	queue_label.add_theme_color_override("font_outline_color", Color("e3e7d3"))
+	queue_label.add_theme_constant_override("outline_size", 4)
 	menu.position.y = 235
 	menu.size.y = 880
-	terminal.size.y = 515
+	terminal.size.y = 555
+	terminal_detail.size.y = 230
+	for child in terminal.get_children():
+		if child is Button and child != next_button:
+			child.position.y = 325
+	next_button.position.y = 435
 	terminal_detail.add_theme_font_size_override("font_size", 24)
 	terminal_detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	for p in [support_panel, journey, seed_panel]:
@@ -152,6 +178,11 @@ func layout() -> void:
 		p.size = Vector2(620, 710 if p == support_panel else 830)
 	briefing.position = Vector2((view.x - 620) / 2, 300)
 	briefing.size = Vector2(620, 560)
+
+func stop_move() -> void:
+	super.stop_move()
+	if stick != null:
+		stick.position.y = get_viewport().get_visible_rect().size.y - 220
 
 func begin() -> void:
 	state.phase = "playing"
@@ -348,7 +379,9 @@ func refresh() -> void:
 	wave_label.text = "%d/%d STOPPED  •  %d ESCAPED  •  %.0fs" % [state.killed.size(), d.schedule.size(), state.escaped.size(), state.time]
 	if save_problem:
 		wave_label.text = "SAVE FAILED • Pause and export a local code"
-	queue_label.text = "FRONT %d/%d   •   EQUIPPED %d   •   %s" % [C.active_count(state), d.cap, state.consumed.reduce(func(a, b): return a + b, 0), state.support.to_upper()]
+	queue_label.text = F.crew_line(state)
+	queue_label.visible = state.phase == "playing" and not paused
+	update_hq_indicator()
 	journal.text = "%d / 12 districts  •  %d wins / %d sorties" % [career.clears.size(), career.victories, career.attempts]
 	sound_button.text = "SOUND  " + ("ON" if settings.sound else "OFF")
 	effects_button.text = "REDUCED EFFECTS  " + ("ON" if settings.reduced_effects else "OFF")
@@ -381,16 +414,28 @@ func refresh() -> void:
 		next = "Next: %s in %.0fs" % [arrival.role.to_upper(), maxf(0, arrival.at - state.time)]
 	var objective: String = C.objective_text(state)
 	guidance.text = objective.substr(0, 1).to_upper() + objective.substr(1) + "\n" + next
+	var advice := F.advice(state, station)
+	if not advice.is_empty():
+		guidance.text += "\n" + advice
 	guidance.visible = state.phase == "playing" and not paused
 	terminal.visible = state.phase in ["victory", "defeat"] and not paused
 	if terminal.visible:
 		terminal_title.text = "FOUNDRY LIBERATED" if career.ending and d.id == "foundry_liberation" and state.phase == "victory" else ("DISTRICT SECURED" if state.phase == "victory" else "SORTIE LOST")
 		terminal_title.add_theme_font_size_override("font_size", 31)
-		terminal_detail.text = "%s\n%d stopped / %d escaped • %.0fs\nScrap spent %d • crews equipped %d\n%s" % [state.cause, state.killed.size(), state.escaped.size(), state.time, state.spent, state.consumed.reduce(func(a, b): return a + b, 0), "Mortars/Storm: Rangers, Breakers and Ward help." if state.last_hurt in ["mortar", "storm"] else "Retry restocks crews. Refit support before Launch."]
+		terminal_detail.text = ("%s\n%d stopped / %d escaped • %.0fs\nScrap spent %d • crews equipped %d\n" + F.contribution(state) + "\n%s") % [state.cause, state.killed.size(), state.escaped.size(), state.time, state.spent, state.consumed.reduce(func(a, b): return a + b, 0), "Mortars/Storm: Rangers, Breakers and Ward help." if state.last_hurt in ["mortar", "storm"] else "Retry restocks crews. Refit support before Launch."]
 		next_button.visible = state.phase == "victory"
 		next_button.text = "LIBERATION JOURNAL" if d.id == "foundry_liberation" else ("NEXT MISSION" if d.mode == "campaign" else "JOURNEY / RECORDS")
 	pause_button.disabled = modal
 	guidance.visible = guidance.visible and not terminal.visible
+
+func update_hq_indicator() -> void:
+	var point: Vector2 = camera.unproject_position(presentation.hq_socket.global_position)
+	var view := get_viewport().get_visible_rect().size
+	var bottom := view.y - 390.0
+	var clipped := camera.is_position_behind(presentation.hq_socket.global_position) or point.y > bottom
+	hq_indicator.position = Vector2(clampf(point.x - 115, 18, view.x - 248), clampf(point.y - 52, 190, bottom))
+	hq_indicator.text = ("↓ " if clipped else "") + "HQ %d / %d" % [state.hq, state.definition.hq]
+	hq_indicator.visible = state.phase == "playing" and not paused
 
 func sync_world(dt: float) -> void:
 	super.sync_world(dt)

@@ -79,4 +79,7 @@ static func write(s: Dictionary, p: Dictionary, settings: Dictionary, path: Stri
 	var text := encode(s, p, settings, int(best.revision) + 1, not imported, saved_career)
 	if not decode(text).ok or not io.write_text(file + ".tmp", text) or io.read_text(file + ".tmp") != text:
 		return false
-	return io.rename(file + ".tmp", file)
+	if not io.rename(file + ".tmp", file):
+		return false
+	# A successful rename is only a command receipt; verify the committed bytes.
+	return io.exists(file) and io.read_text(file) == text and decode(io.read_text(file)).ok
