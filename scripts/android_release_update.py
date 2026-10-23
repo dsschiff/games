@@ -8,6 +8,7 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -39,7 +40,8 @@ def main():
     commands = []
     def call(*parts, binary=False):
         command = [str(adb), "-s", args.serial, *parts]
-        result = subprocess.run(command, env=env, capture_output=True, timeout=150, check=True)
+        result = subprocess.run(command, env=env, capture_output=True, timeout=150, check=True,
+                                creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
         commands.append({"args": list(parts), "exit": result.returncode})
         return result.stdout if binary else result.stdout.decode("utf-8", errors="replace").strip()
     if call("get-serialno") != args.serial or call("shell", "getprop", "sys.boot_completed") != "1":
