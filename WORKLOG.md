@@ -617,3 +617,10 @@ active coordinating goal and three isolated worktrees under F:/games-workspaces/
 Two scoped builders and one independent reviewer started. Updated charter and
 roadmap, preserving historical reviews and correcting the stale no-flush premise.
 Current base is origin/main4552e7b. No new release or cloud/device acceptance yet.
+
+- Frontline design0.3.2/code6 landed via PR9/6d3ecf9 and delivered to the existing
+  private Obtainium repo. APKff3e2487907062ea9ef523ef7e88f0c8a965697de88710cd87d4962c351125e2
+  has the existing signer, no permissions, stable clean sourcec66ee90. Independent
+  coordinator51/0 input checks pass; real emulator signed5-to6/offline/Home/cold
+  process smoke and bounded native screen inspection pass. Raw Android whole-save
+  comparison and physical/human acceptance remain separate. Public website unchanged.

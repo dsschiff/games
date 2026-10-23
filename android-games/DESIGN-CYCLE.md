@@ -27,7 +27,7 @@ and Tower. Preserve each selected ad loop with original assets.
 | Game | Design question and initial task | Status |
 | --- | --- | --- |
 | Dead Run | Does Retry/return flow make sense after an ending, and is the growing crew readable under pressure? Correct phase-blind Resume and verify terminal controls. | Builder active |
-| Frontline | Does equipping an individual recruit materially change the adjacent battle? Reproduce current idle/commander/funded policies before changing balance. | Builder active |
+| Frontline | Tested solo8/12 vs funded12/12, tutorial-only idle win; delivered actual recruit feedback, HQ marker and committed-save verification as signed0.3.2/code6. | Private update delivered; physical acceptance deferred |
 | Gear | Do board, role and exit choices remain consequential and visibly connected to the army? | Queued |
 | Hearthguard | Does gathering versus investing stay meaningful through distinct later maps? | Queued |
 | Hook | Do chained hits, recovery and enemy telegraphs reward positioning? | Queued |
@@ -64,3 +64,11 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
 - 2026-10-23: active coordinating goal created; isolated F: coordinator, Dead Run
   and Frontline worktrees prepared from 4552e7b. Two builders and one independent
   reviewer active. No new gameplay release or cloud/device acceptance claimed.
+
+- 2026-10-23: Frontline0.3.2/code6 delivered privately after PR9 landed. Root51/0
+  actual-input regression, signature/unchanged-source checks and real emulator
+  signed5-to6/offline/Home/cold process smoke pass. Native raw whole-save and
+  physical/human acceptance remain unclaimed. Evidence: `evidence/design-cycle-20261023.json`.
+- Dead Run source fixes integrated locally; full focused rendered route passes51
+  assertions but fails strict shutdown gate on four leaked texture allocations.
+  Keep release gate open. Gear ready-phase Begin defect independently reproduced.
