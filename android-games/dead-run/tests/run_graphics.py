@@ -14,7 +14,8 @@ from datetime import datetime, timezone
 
 PROJECT = Path(__file__).resolve().parents[1]
 GODOT = Path("C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe")
-SCRIPTS = {"lineup": "res://tests/art_lineup.gd", "frames": "res://tests/graphics_frames.gd",
+SCRIPTS = {"rules": "res://tests/run_tests.gd", "campaign-rules": "res://tests/campaign_tests.gd",
+           "platform": "res://tests/platform_input.gd", "code4": "res://tests/code4_upgrade.gd", "design": "res://tests/terminal_design.gd", "lineup": "res://tests/art_lineup.gd", "frames": "res://tests/graphics_frames.gd",
            "presentation": "res://tests/presentation_tests.gd", "timing": "res://tests/horde_timing.gd"}
 
 
@@ -39,6 +40,14 @@ def main():
     for key in ("APPDATA", "LOCALAPPDATA", "TEMP", "TMP"):
         env[key] = str(run / key.lower())
         Path(env[key]).mkdir()
+    inputs = []
+    if args.mode == "code4":
+        destination = Path(env["APPDATA"]) / "Godot/app_userdata/Dead Run"
+        destination.mkdir(parents=True)
+        for original in sorted((PROJECT / "tests/fixtures/code4-midroad").glob("dead-run-save-*")):
+            (destination / original.name).write_bytes(original.read_bytes())
+            inputs.append({"kind": "genuine-code4-app-written-slot", "source": str(original),
+                           "sha256": hashlib.sha256(original.read_bytes()).hexdigest()})
     # Sound stays off in every automated run (Daniel works at this computer).
     command = [str(GODOT), "--path", str(PROJECT), "--audio-driver", "Dummy"]
     if args.mode == "import":
@@ -50,7 +59,7 @@ def main():
         if args.movie:
             command += ["--write-movie", str(run / "clip.avi")]
         command += ["--",
-                    "--capture-dir=" + str(run), "--scenario=" + args.scenario]
+                    "--capture-dir=" + str(run), "--scenario=" + args.scenario, "--report=" + str(run / "rules-report.json")]
     before = lf_hashes()
     (run / "source-hashes-lf.json").write_text(json.dumps(before, indent=2))
     with (run / "godot.log").open("w", encoding="utf-8") as log:
@@ -62,7 +71,9 @@ def main():
     receipt = {"command": command, "exit_code": code, "passed": okay, "errors": errors[:40],
                "source_unchanged": {k: v for k, v in before.items() if not k.startswith("art/models/") or k.endswith(".glb")} ==
                                    {k: v for k, v in after.items() if not k.startswith("art/models/") or k.endswith(".glb")},
-               "pngs": sorted(p.name for p in run.glob("*.png"))}
+               "inputs": inputs, "pngs": sorted(p.name for p in run.glob("*.png"))}
+    okay = okay and receipt["source_unchanged"]
+    receipt["passed"] = okay
     (run / "receipt.json").write_text(json.dumps(receipt, indent=2))
     print(output[-6000:])
     print(run)

@@ -1,0 +1,584 @@
+{
+  "base_commit": "4552e7b",
+  "scope": "First continuous-design increment: terminal action clarity, warning priority, defeated blockade clearance",
+  "phase": "CPU verified and 51 rendered assertions pass; strict full render FAIL on four leaked GL textures at shutdown; native/update/phone acceptance pending",
+  "authoritative_rules_catalogs_save_stores_and_export_preset": "unchanged from base",
+  "runtime_sha256_lf": {
+    "scripts/main.gd": "0cf96866f7852583aa008993cec57f437555e116445dcd4b9db8a2bf246018ce",
+    "scripts/campaign.gd": "795205b70a32dd9e9533993f99847be5ea2985911e1ef302c29a000114fabc87",
+    "scripts/legacy_view.gd": "5fd36ce33fb1946cc1237009ed65e1737e9576fd11119352070be0672247aea1",
+    "scripts/presentation/adapter.gd": "94c14e440a355b737148f1d86c1b95c110fc8e7a8587ee23b340ddc74b73d18d"
+  },
+  "evidence": [
+    {
+      "role": "original_defect_reproduction",
+      "directory": ".artifacts/graphics/before-terminal-fix-design-20261023T230158Z",
+      "passed": false,
+      "source_unchanged": true,
+      "files": {
+        ".artifacts/graphics/before-terminal-fix-design-20261023T230158Z/earned-checkpoints.json": {
+          "bytes": 2,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        ".artifacts/graphics/before-terminal-fix-design-20261023T230158Z/godot.log": {
+          "bytes": 1063,
+          "sha256": "8fad93f9351b77992d27827f109802d83e0e87966ee8c0a1192c9f354ff070a7"
+        },
+        ".artifacts/graphics/before-terminal-fix-design-20261023T230158Z/input-report.json": {
+          "bytes": 2855,
+          "sha256": "8e40e4558087faa3c9456cd463e1db777f3225c30ab600d84bd9ae5ea0abe1fc"
+        },
+        ".artifacts/graphics/before-terminal-fix-design-20261023T230158Z/raw-input-events.json": {
+          "bytes": 16236,
+          "sha256": "6f4eb266d373e8d1fad3db069ab593069cc23f0b9bb7ba6e91fab26d3b62aab9"
+        },
+        ".artifacts/graphics/before-terminal-fix-design-20261023T230158Z/receipt.json": {
+          "bytes": 656,
+          "sha256": "00993bf58a61b7203268237a3b1525ae870c8e293f335feeb111a5bad044d44f"
+        },
+        ".artifacts/graphics/before-terminal-fix-design-20261023T230158Z/source-hashes-lf.json": {
+          "bytes": 21067,
+          "sha256": "ce9d89848b3d3a54b9bfb4237fbea464869185865b62551ddddd1a71fff5f5d3"
+        }
+      }
+    },
+    {
+      "role": "final_engine_input",
+      "directory": ".artifacts/graphics/design-final-design-20261023T231121Z",
+      "passed": true,
+      "source_unchanged": true,
+      "files": {
+        ".artifacts/graphics/design-final-design-20261023T231121Z/earned-checkpoints.json": {
+          "bytes": 2,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        ".artifacts/graphics/design-final-design-20261023T231121Z/godot.log": {
+          "bytes": 448,
+          "sha256": "8b7d6edc976f3e8c80e8b27a7b1c910a078ba8e56241c3fe47d0e573b1022269"
+        },
+        ".artifacts/graphics/design-final-design-20261023T231121Z/input-report.json": {
+          "bytes": 5463,
+          "sha256": "361cedb8e9a36adffec5186f3af6239f79acf75474cd4bc2db9dfa32502825f0"
+        },
+        ".artifacts/graphics/design-final-design-20261023T231121Z/raw-input-events.json": {
+          "bytes": 19449,
+          "sha256": "14b36db864bb985b974b3f57b3507ee30cb6e7f2e881e01d30cb3cb4633c087c"
+        },
+        ".artifacts/graphics/design-final-design-20261023T231121Z/receipt.json": {
+          "bytes": 833,
+          "sha256": "37510e7f43b9e4e5a757467c5f168b4e70b27f58c05aad0459cc3f1a82480ed9"
+        },
+        ".artifacts/graphics/design-final-design-20261023T231121Z/source-hashes-lf.json": {
+          "bytes": 21067,
+          "sha256": "1552c17e09905c6795a0f01505bc1a882e685fd4af4fa10ab8e928b25fcc40f1"
+        }
+      }
+    },
+    {
+      "role": "final_platform",
+      "directory": ".artifacts/graphics/design-final-platform-platform-20261023T231141Z",
+      "passed": true,
+      "source_unchanged": true,
+      "files": {
+        ".artifacts/graphics/design-final-platform-platform-20261023T231141Z/earned-checkpoints.json": {
+          "bytes": 2,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        ".artifacts/graphics/design-final-platform-platform-20261023T231141Z/godot.log": {
+          "bytes": 225,
+          "sha256": "fd68726aa7e53c46d6f0a3f81f75738d44e53a0bf73b79aa8589870481ed3a98"
+        },
+        ".artifacts/graphics/design-final-platform-platform-20261023T231141Z/input-report.json": {
+          "bytes": 252580,
+          "sha256": "d8ef9ab23c2eebb8ae6f92f36547d382dc2256054a29f600959b8db37562b8b2"
+        },
+        ".artifacts/graphics/design-final-platform-platform-20261023T231141Z/platform-notification-paused-legacy-slots.json": {
+          "bytes": 139412,
+          "sha256": "d3b009cf5dcf2f74eb017f7f19b9161cc5b381eb28d6550e271e7f985065e6b7"
+        },
+        ".artifacts/graphics/design-final-platform-platform-20261023T231141Z/raw-input-events.json": {
+          "bytes": 3091,
+          "sha256": "44653580c1d9a18dd4bb24c0267d0a111833870ea02cbd2120eb6311e5aa7358"
+        },
+        ".artifacts/graphics/design-final-platform-platform-20261023T231141Z/receipt.json": {
+          "bytes": 854,
+          "sha256": "eb3591dac17fd1ea2fb1d3a13bed78f9417d74fc9d209f726d70be936c7593a0"
+        },
+        ".artifacts/graphics/design-final-platform-platform-20261023T231141Z/source-hashes-lf.json": {
+          "bytes": 21067,
+          "sha256": "1552c17e09905c6795a0f01505bc1a882e685fd4af4fa10ab8e928b25fcc40f1"
+        }
+      }
+    },
+    {
+      "role": "final_presentation",
+      "directory": ".artifacts/graphics/design-final-presentation-presentation-20261023T231144Z",
+      "passed": true,
+      "source_unchanged": true,
+      "files": {
+        ".artifacts/graphics/design-final-presentation-presentation-20261023T231144Z/godot.log": {
+          "bytes": 125,
+          "sha256": "f75d75fa7a114b4a4cc72908d80c76249ab44249040e430ad3f7a5eaaa5c94d9"
+        },
+        ".artifacts/graphics/design-final-presentation-presentation-20261023T231144Z/receipt.json": {
+          "bytes": 874,
+          "sha256": "37d0136cf6e9892a0d9c7712eb527a888ac84e5e00d3c857d08831b0dff230f0"
+        },
+        ".artifacts/graphics/design-final-presentation-presentation-20261023T231144Z/source-hashes-lf.json": {
+          "bytes": 21067,
+          "sha256": "1552c17e09905c6795a0f01505bc1a882e685fd4af4fa10ab8e928b25fcc40f1"
+        }
+      }
+    },
+    {
+      "role": "code4_continuation",
+      "directory": ".artifacts/graphics/design-code4-code4-20261023T230655Z",
+      "passed": true,
+      "source_unchanged": true,
+      "files": {
+        ".artifacts/graphics/design-code4-code4-20261023T230655Z/code4-midroad-restored-slots.json": {
+          "bytes": 52922,
+          "sha256": "e4a5ea9781f21f3a03e70e1eab3703c6601cb6134cd229d54d7e10b88369cf26"
+        },
+        ".artifacts/graphics/design-code4-code4-20261023T230655Z/code4-road-finished-slots.json": {
+          "bytes": 61022,
+          "sha256": "bdf44cdc725a89f390e4ebf4b565534795b99ec22773b6adf161cbb7c7b77957"
+        },
+        ".artifacts/graphics/design-code4-code4-20261023T230655Z/code4-upgraded-restored-slots.json": {
+          "bytes": 293067,
+          "sha256": "6bf9bb70e67568da08babc506a0ddb560078741b631d06021b4eb0b021c77ef0"
+        },
+        ".artifacts/graphics/design-code4-code4-20261023T230655Z/godot.log": {
+          "bytes": 363,
+          "sha256": "7eb8ed0b112c7305440adea3ff7b41f125826635920247d527ae83080730aa83"
+        },
+        ".artifacts/graphics/design-code4-code4-20261023T230655Z/input-report.json": {
+          "bytes": 738434,
+          "sha256": "9054fe8b1a5767a137064b9df361e65d062df6ffaa1fa895897e290e81f04700"
+        },
+        ".artifacts/graphics/design-code4-code4-20261023T230655Z/receipt.json": {
+          "bytes": 1410,
+          "sha256": "77e5c907bd732ebcde3bcdaed4465a2277daa7f165f39950650c8d822e8104b2"
+        },
+        ".artifacts/graphics/design-code4-code4-20261023T230655Z/source-hashes-lf.json": {
+          "bytes": 21067,
+          "sha256": "7786be3daf73f2bbb9fc40fe72883b9dbee43e05a20f398d9d13be0af444c58a"
+        }
+      }
+    },
+    {
+      "role": "legacy_rules",
+      "directory": ".artifacts/graphics/design-legacy-rules-rules-20261023T230700Z",
+      "passed": true,
+      "source_unchanged": true,
+      "files": {
+        ".artifacts/graphics/design-legacy-rules-rules-20261023T230700Z/godot.log": {
+          "bytes": 128,
+          "sha256": "170d5791b0cd13febfade9ed65dbb41c024718a8e6d728437fda1ff99bfba96c"
+        },
+        ".artifacts/graphics/design-legacy-rules-rules-20261023T230700Z/receipt.json": {
+          "bytes": 839,
+          "sha256": "dda1f6f99bb4576c62758d3adfbb3c3967dddfa75d09ac949568d29e4ae5f20c"
+        },
+        ".artifacts/graphics/design-legacy-rules-rules-20261023T230700Z/rules-report.json": {
+          "bytes": 12226,
+          "sha256": "57b45a946ccd725d9833f0564480f25705266359b6aa18e1cbc56a8e9e8ca0fc"
+        },
+        ".artifacts/graphics/design-legacy-rules-rules-20261023T230700Z/source-hashes-lf.json": {
+          "bytes": 21067,
+          "sha256": "7786be3daf73f2bbb9fc40fe72883b9dbee43e05a20f398d9d13be0af444c58a"
+        }
+      }
+    },
+    {
+      "role": "campaign_rules_storage",
+      "directory": ".artifacts/graphics/design-campaign-rules-campaign-rules-20261023T230701Z",
+      "passed": true,
+      "source_unchanged": true,
+      "files": {
+        ".artifacts/graphics/design-campaign-rules-campaign-rules-20261023T230701Z/godot.log": {
+          "bytes": 128,
+          "sha256": "4f967ef01859bfab61b1f71b2d37f3fb985c1c9317af39e2dc8ea336a0b3defc"
+        },
+        ".artifacts/graphics/design-campaign-rules-campaign-rules-20261023T230701Z/receipt.json": {
+          "bytes": 866,
+          "sha256": "e4b861f41aad3bcfbb48c4709697fe62658da53f7f0de1ad7271cc600abea5fe"
+        },
+        ".artifacts/graphics/design-campaign-rules-campaign-rules-20261023T230701Z/rules-report.json": {
+          "bytes": 32848,
+          "sha256": "d4d755de690264c1275e52785642cf2303ac0dd64b424bb408280908b2c7dfab"
+        },
+        ".artifacts/graphics/design-campaign-rules-campaign-rules-20261023T230701Z/source-hashes-lf.json": {
+          "bytes": 21067,
+          "sha256": "7786be3daf73f2bbb9fc40fe72883b9dbee43e05a20f398d9d13be0af444c58a"
+        }
+      }
+    },
+    {
+      "role": "first_strict_render_failure",
+      "directory": ".artifacts/graphics/design-rendered-review-design-20261023T231550Z",
+      "passed": false,
+      "source_unchanged": true,
+      "fully_decoded_pngs": [
+        {
+          "name": "actual-retry-playing.png",
+          "size": [
+            720,
+            1280
+          ]
+        },
+        {
+          "name": "earned-depleted-defeat-cover.png",
+          "size": [
+            720,
+            1680
+          ]
+        },
+        {
+          "name": "earned-depleted-defeat.png",
+          "size": [
+            720,
+            1280
+          ]
+        },
+        {
+          "name": "earned-first-victory-inner.png",
+          "size": [
+            1000,
+            1110
+          ]
+        },
+        {
+          "name": "earned-first-victory.png",
+          "size": [
+            720,
+            1280
+          ]
+        },
+        {
+          "name": "fixture-49-crew-terminal-clearance.png",
+          "size": [
+            720,
+            1280
+          ]
+        },
+        {
+          "name": "fixture-road-12-warning-1000x1110.png",
+          "size": [
+            1000,
+            1110
+          ]
+        },
+        {
+          "name": "fixture-road-12-warning-720x1680.png",
+          "size": [
+            720,
+            1680
+          ]
+        },
+        {
+          "name": "fixture-road-24-warning-1000x1110.png",
+          "size": [
+            1000,
+            1110
+          ]
+        },
+        {
+          "name": "fixture-road-24-warning-720x1680.png",
+          "size": [
+            720,
+            1680
+          ]
+        }
+      ],
+      "files": {
+        ".artifacts/graphics/design-rendered-review-design-20261023T231550Z/actual-retry-playing.png": {
+          "bytes": 498482,
+          "sha256": "d4d75921ffac930507f25950da3e6302eadf9eaf860a0d2ab68bbf4fcc38513c"
+        },
+        ".artifacts/graphics/design-rendered-review-design-20261023T231550Z/earned-checkpoints.json": {
+          "bytes": 2,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        ".artifacts/graphics/design-rendered-review-design-20261023T231550Z/earned-depleted-defeat-cover.png": {
+          "bytes": 380107,
+          "sha256": "74ba0f400fe829def8b63c6514f5e002185d793119be1182eb6e58cbf6124c5c"
+        },
+        ".artifacts/graphics/design-rendered-review-design-20261023T231550Z/earned-depleted-defeat.png": {
+          "bytes": 280453,
+          "sha256": "48d41a9858b2669dee38ff82a5d906b657304a441c748503a4e7c14119d63bfd"
+        },
+        ".artifacts/graphics/design-rendered-review-design-20261023T231550Z/earned-first-victory-inner.png": {
+          "bytes": 521528,
+          "sha256": "2570b8ed3bec83d64d697cfe064ef7e2e6a44f825d9280ce91431b3b143ed2cc"
+        },
+        ".artifacts/graphics/design-rendered-review-design-20261023T231550Z/earned-first-victory.png": {
+          "bytes": 282580,
+          "sha256": "79fd3ea014673eb5fa3a7c00ed82ad48578c4a51c5bb8b5f06d1af5bc07fc8ab"
+        },
+        ".artifacts/graphics/design-rendered-review-design-20261023T231550Z/fixture-49-crew-terminal-clearance.png": {
+          "bytes": 288830,
+          "sha256": "30e658bb35741e95280e37c6f8a275d1d2e45c4d9bde2c501d5e28948df9adfa"
+        },
+        ".artifacts/graphics/design-rendered-review-design-20261023T231550Z/fixture-road-12-warning-1000x1110.png": {
+          "bytes": 703925,
+          "sha256": "07a736c57058072d2c7af98a3472b14aaa62015c14605289eff018d3a1739123"
+        },
+        ".artifacts/graphics/design-rendered-review-design-20261023T231550Z/fixture-road-12-warning-720x1680.png": {
+          "bytes": 584101,
+          "sha256": "70ed343befc5fe7948ed852d1c5fcc91db7b6e4ba3439155fb7fc9b8d2f82526"
+        },
+        ".artifacts/graphics/design-rendered-review-design-20261023T231550Z/fixture-road-24-warning-1000x1110.png": {
+          "bytes": 669638,
+          "sha256": "e7bf440197aad546e9cdc24f00bb7cd9e24ac0b5f4850a86ab0cdce5edb34ec1"
+        },
+        ".artifacts/graphics/design-rendered-review-design-20261023T231550Z/fixture-road-24-warning-720x1680.png": {
+          "bytes": 601170,
+          "sha256": "4dd297a9aa6f12c8cba876d3b530c0d176162d2f587864c1d36cb37b484a0b8e"
+        },
+        ".artifacts/graphics/design-rendered-review-design-20261023T231550Z/godot.log": {
+          "bytes": 1438,
+          "sha256": "c1f7bb68ba3279ccf5d62cfffc0e0f3b870097fead564754d43f64a70c660d77"
+        },
+        ".artifacts/graphics/design-rendered-review-design-20261023T231550Z/input-report.json": {
+          "bytes": 5697,
+          "sha256": "b27270fa768e06650fbebfd0c716875f2af437b78f9274cd83b66508e17098ac"
+        },
+        ".artifacts/graphics/design-rendered-review-design-20261023T231550Z/raw-input-events.json": {
+          "bytes": 19449,
+          "sha256": "8aac5cacdbe03e89b1c731d72d3d40d56082e0ff4b7f3698f39fef0eb3543ed7"
+        },
+        ".artifacts/graphics/design-rendered-review-design-20261023T231550Z/receipt.json": {
+          "bytes": 1568,
+          "sha256": "5ed3ed1f93acbc99ad06f314186929133a0b4fca49b120ee02ee4aef2eaff9b2"
+        },
+        ".artifacts/graphics/design-rendered-review-design-20261023T231550Z/source-hashes-lf.json": {
+          "bytes": 21257,
+          "sha256": "fe192e3f1edecca5e77208a76ec2ebc630fa868c98ef4e812a7e66079b111321"
+        }
+      }
+    },
+    {
+      "role": "strict_render_closure_still_failed",
+      "directory": ".artifacts/graphics/design-rendered-closure-design-20261023T232251Z",
+      "passed": false,
+      "source_unchanged": true,
+      "fully_decoded_pngs": [
+        {
+          "name": "actual-retry-playing.png",
+          "size": [
+            720,
+            1280
+          ]
+        },
+        {
+          "name": "earned-depleted-defeat-cover.png",
+          "size": [
+            720,
+            1680
+          ]
+        },
+        {
+          "name": "earned-depleted-defeat.png",
+          "size": [
+            720,
+            1280
+          ]
+        },
+        {
+          "name": "earned-first-victory-inner.png",
+          "size": [
+            1000,
+            1110
+          ]
+        },
+        {
+          "name": "earned-first-victory.png",
+          "size": [
+            720,
+            1280
+          ]
+        },
+        {
+          "name": "fixture-49-crew-terminal-clearance.png",
+          "size": [
+            720,
+            1280
+          ]
+        },
+        {
+          "name": "fixture-road-12-warning-1000x1110.png",
+          "size": [
+            1000,
+            1110
+          ]
+        },
+        {
+          "name": "fixture-road-12-warning-720x1680.png",
+          "size": [
+            720,
+            1680
+          ]
+        },
+        {
+          "name": "fixture-road-24-warning-1000x1110.png",
+          "size": [
+            1000,
+            1110
+          ]
+        },
+        {
+          "name": "fixture-road-24-warning-720x1680.png",
+          "size": [
+            720,
+            1680
+          ]
+        }
+      ],
+      "files": {
+        ".artifacts/graphics/design-rendered-closure-design-20261023T232251Z/actual-retry-playing.png": {
+          "bytes": 498482,
+          "sha256": "d4d75921ffac930507f25950da3e6302eadf9eaf860a0d2ab68bbf4fcc38513c"
+        },
+        ".artifacts/graphics/design-rendered-closure-design-20261023T232251Z/earned-checkpoints.json": {
+          "bytes": 2,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        ".artifacts/graphics/design-rendered-closure-design-20261023T232251Z/earned-depleted-defeat-cover.png": {
+          "bytes": 380107,
+          "sha256": "74ba0f400fe829def8b63c6514f5e002185d793119be1182eb6e58cbf6124c5c"
+        },
+        ".artifacts/graphics/design-rendered-closure-design-20261023T232251Z/earned-depleted-defeat.png": {
+          "bytes": 280453,
+          "sha256": "48d41a9858b2669dee38ff82a5d906b657304a441c748503a4e7c14119d63bfd"
+        },
+        ".artifacts/graphics/design-rendered-closure-design-20261023T232251Z/earned-first-victory-inner.png": {
+          "bytes": 521528,
+          "sha256": "2570b8ed3bec83d64d697cfe064ef7e2e6a44f825d9280ce91431b3b143ed2cc"
+        },
+        ".artifacts/graphics/design-rendered-closure-design-20261023T232251Z/earned-first-victory.png": {
+          "bytes": 282580,
+          "sha256": "79fd3ea014673eb5fa3a7c00ed82ad48578c4a51c5bb8b5f06d1af5bc07fc8ab"
+        },
+        ".artifacts/graphics/design-rendered-closure-design-20261023T232251Z/fixture-49-crew-terminal-clearance.png": {
+          "bytes": 550413,
+          "sha256": "d3d87afbafca2649986a762cb508d1605b0ce58e86100a4d7eb936e7f1a7f67c"
+        },
+        ".artifacts/graphics/design-rendered-closure-design-20261023T232251Z/fixture-road-12-warning-1000x1110.png": {
+          "bytes": 728845,
+          "sha256": "805bec135ce92a326254607cf2e570f6b200158e528ff2711d0d406a7df229c4"
+        },
+        ".artifacts/graphics/design-rendered-closure-design-20261023T232251Z/fixture-road-12-warning-720x1680.png": {
+          "bytes": 650893,
+          "sha256": "ababe481e9b7080a7477a6e93ab1ef72375a2600ef19f26065efac31b234760a"
+        },
+        ".artifacts/graphics/design-rendered-closure-design-20261023T232251Z/fixture-road-24-warning-1000x1110.png": {
+          "bytes": 705937,
+          "sha256": "af4d30d4428275ac2c85f15021d5bda55291682b87ed0f91399bb5f0a42d2196"
+        },
+        ".artifacts/graphics/design-rendered-closure-design-20261023T232251Z/fixture-road-24-warning-720x1680.png": {
+          "bytes": 654670,
+          "sha256": "b907854a463d090d14ad5cb89273327da723c853b42ba1d1b7958421f9665841"
+        },
+        ".artifacts/graphics/design-rendered-closure-design-20261023T232251Z/godot.log": {
+          "bytes": 1438,
+          "sha256": "c1f7bb68ba3279ccf5d62cfffc0e0f3b870097fead564754d43f64a70c660d77"
+        },
+        ".artifacts/graphics/design-rendered-closure-design-20261023T232251Z/input-report.json": {
+          "bytes": 5697,
+          "sha256": "b27270fa768e06650fbebfd0c716875f2af437b78f9274cd83b66508e17098ac"
+        },
+        ".artifacts/graphics/design-rendered-closure-design-20261023T232251Z/raw-input-events.json": {
+          "bytes": 19449,
+          "sha256": "8aac5cacdbe03e89b1c731d72d3d40d56082e0ff4b7f3698f39fef0eb3543ed7"
+        },
+        ".artifacts/graphics/design-rendered-closure-design-20261023T232251Z/receipt.json": {
+          "bytes": 1570,
+          "sha256": "757fcbf4beeae94cdc34c1c795f77435fa1369c1d8488311a221d97947982a7c"
+        },
+        ".artifacts/graphics/design-rendered-closure-design-20261023T232251Z/source-hashes-lf.json": {
+          "bytes": 21257,
+          "sha256": "e3841736eea9678b07edf10913727cbe2cba7b6ad46a24ec4e0603415627d9af"
+        }
+      }
+    },
+    {
+      "role": "boss_active_warning_fixture",
+      "directory": ".artifacts/graphics/design-boss-warning-design-20261023T232011Z",
+      "passed": true,
+      "source_unchanged": true,
+      "fully_decoded_pngs": [
+        {
+          "name": "fixture-road-12-warning-1000x1110.png",
+          "size": [
+            1000,
+            1110
+          ]
+        },
+        {
+          "name": "fixture-road-12-warning-720x1680.png",
+          "size": [
+            720,
+            1680
+          ]
+        },
+        {
+          "name": "fixture-road-24-warning-1000x1110.png",
+          "size": [
+            1000,
+            1110
+          ]
+        },
+        {
+          "name": "fixture-road-24-warning-720x1680.png",
+          "size": [
+            720,
+            1680
+          ]
+        }
+      ],
+      "files": {
+        ".artifacts/graphics/design-boss-warning-design-20261023T232011Z/earned-checkpoints.json": {
+          "bytes": 2,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        ".artifacts/graphics/design-boss-warning-design-20261023T232011Z/fixture-road-12-warning-1000x1110.png": {
+          "bytes": 729732,
+          "sha256": "3f55341f9c890c277e20175a83c237b5d31d6dc67de7b32e11012d735afdee46"
+        },
+        ".artifacts/graphics/design-boss-warning-design-20261023T232011Z/fixture-road-12-warning-720x1680.png": {
+          "bytes": 651260,
+          "sha256": "959065a86c4177958fd16c77e3918cddf188abb511953cc4dcb7ca03d6525483"
+        },
+        ".artifacts/graphics/design-boss-warning-design-20261023T232011Z/fixture-road-24-warning-1000x1110.png": {
+          "bytes": 706342,
+          "sha256": "a9c83cbc6178dd27116bc806c2e391b158ffcc6a00c145aa03041fc9d9411cff"
+        },
+        ".artifacts/graphics/design-boss-warning-design-20261023T232011Z/fixture-road-24-warning-720x1680.png": {
+          "bytes": 655244,
+          "sha256": "1f464a4c202276517c18405651c4a37345a2041398cc002f8d7b9de8d85baa61"
+        },
+        ".artifacts/graphics/design-boss-warning-design-20261023T232011Z/godot.log": {
+          "bytes": 417,
+          "sha256": "01c0e61556cc575959dc13681631586defea419e2c0c7fa0018763f234a8029b"
+        },
+        ".artifacts/graphics/design-boss-warning-design-20261023T232011Z/input-report.json": {
+          "bytes": 464,
+          "sha256": "d3ef39b52ba5ea459cb208487b4bacdc2b04525dcf9bea67e8e0235ccd6a083f"
+        },
+        ".artifacts/graphics/design-boss-warning-design-20261023T232011Z/raw-input-events.json": {
+          "bytes": 2,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        ".artifacts/graphics/design-boss-warning-design-20261023T232011Z/receipt.json": {
+          "bytes": 1087,
+          "sha256": "43b648ba4af8d73e7a8af8f596a4ff37077bbd63d611b9009226a338fedd51f1"
+        },
+        ".artifacts/graphics/design-boss-warning-design-20261023T232011Z/source-hashes-lf.json": {
+          "bytes": 21257,
+          "sha256": "c536e8ab19a44c86174131963652c2b252d54614e4898b09da581363f17617e0"
+        }
+      }
+    }
+  ]
+}

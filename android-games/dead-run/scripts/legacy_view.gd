@@ -44,13 +44,13 @@ func import_code() -> void:
 	host.settings = host.ctx.settings
 	state = host.ctx.legacy.duplicate(true)
 	settings = host.ctx.settings.duplicate(true)
-	paused = true
-	host.paused = true
+	suspend_run()
+	host.suspend_run()
 	host.build_world()
 	host.world.hide()
 	host.hud.hide()
 	camera.current = true
-	transfer_status.text = "Imported and stored. Close, then Resume."
+	transfer_status.text = imported_feedback()
 	save_message = ""
 	refresh()
 

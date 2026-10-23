@@ -342,7 +342,19 @@ func persist() -> bool:
 	save_message = "" if okay else "SAVE FAILED — progress is only in memory. Free storage and retry Save."
 	return okay
 
+func suspend_run() -> void:
+	paused = state.phase == "playing"
+	drag_index = -1
+	mouse_drag = false
+
+func imported_feedback() -> String:
+	return "Imported and stored. Close, then " + {"ready": "Start.", "playing": "Resume.", "victory": "choose your next road or Retry.", "defeat": "Retry."}[state.phase]
+
 func toggle_pause() -> void:
+	if state.phase != "playing":
+		suspend_run()
+		refresh()
+		return
 	paused = not paused
 	drag_index = -1
 	mouse_drag = false
@@ -350,8 +362,7 @@ func toggle_pause() -> void:
 	refresh()
 
 func open_transfer() -> void:
-	paused = true
-	drag_index = -1
+	suspend_run()
 	transfer.visible = true
 	transfer_status.text = ""
 	persist()
@@ -388,8 +399,8 @@ func import_code() -> void:
 		return
 	state = d.state
 	settings = d.settings
-	paused = true
-	transfer_status.text = "Imported and stored. Close, then Resume."
+	suspend_run()
+	transfer_status.text = imported_feedback()
 	save_message = ""
 	refresh()
 
@@ -399,12 +410,11 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		back()
 	if what == NOTIFICATION_APPLICATION_PAUSED:
-		paused = true
-		drag_index = -1
+		suspend_run()
 		persist()
 		refresh()
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		paused = true
+		suspend_run()
 		persist()
 		refresh()
 
@@ -470,7 +480,8 @@ func refresh() -> void:
 	overlay_title.text = {"ready": "OPEN THE CANAL BRIDGE", "playing": "RESCUE PAUSED", "victory": "CONVOY EVACUATED", "defeat": "RESCUE LOST"}[state.phase]
 	overlay_body.text = ("One finger drags the crew sideways. Fire is automatic.\nEach bullet adds 1 to a gate (max +6); overlapping it applies the signed result once.\nCrane: 120 hits earns 3 riggers, but fire there leaves approaching infected unsuppressed. Clear the final centre barricade and survive 50 seconds.") if state.phase == "ready" else state.notice + "\n" + save_message
 	start_button.visible = state.phase == "ready"
-	resume_button.visible = paused
+	pause_button.visible = state.phase == "playing"
+	resume_button.visible = paused and state.phase == "playing"
 	retry_button.visible = state.phase in ["victory", "defeat"]
 	sound_button.text = "SOUND: " + ("ON" if settings.sound else "OFF")
 	effects_button.text = "REDUCED EFFECTS: " + ("ON" if settings.reduced_effects else "OFF")

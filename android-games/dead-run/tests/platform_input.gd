@@ -35,6 +35,8 @@ func run() -> void:
 	await click("EVACUATION MAP")
 	await click("LEGACY CANAL BRIDGE")
 	await dwell(5)
+	await click("START RESCUE")
+	check(scene.legacy_view.state.phase == "playing" and not scene.legacy_view.paused, "actual Start makes legacy Back test exercise an active bridge")
 	before = scene.ctx.campaign.duplicate(true)
 	rev = Store.read().revision
 	notify(Node.NOTIFICATION_WM_GO_BACK_REQUEST, true)
