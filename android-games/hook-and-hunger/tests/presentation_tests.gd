@@ -154,6 +154,8 @@ func event_pool_checks() -> void:
 	s.strike_x = 0
 	s.strike_z = 3.0
 	s.contact = true
+	s.enemies[0].hp -= 1
+	s.enemies[0].flash = .16
 	s.time += .18
 	view.capture(s)
 	view.present(0)

@@ -5,7 +5,6 @@ import hashlib
 import json
 import os
 from pathlib import Path
-import shutil
 import subprocess
 
 PROJECT = Path(__file__).resolve().parents[1]
@@ -47,22 +46,19 @@ def main():
                 code = -99
         output = (run / (label + ".log")).read_text(encoding="utf-8", errors="replace")
         errors = [line for line in output.splitlines() if any(s in line for s in ("ERROR:", "SCRIPT ERROR:", "Parse Error:"))]
-        return {"command": command, "exit_code": code, "errors": errors, "passed": code == 0 and not errors}
+        return {"command": command, "exit_code": code, "errors": errors, "passed": code == 0 and not errors, "suite_complete": "SUITE_COMPLETE: PASS" in output}
 
     report["import"] = invoke([str(GODOT), "--headless", "--editor", "--import", "--quit", "--path", str(PROJECT)], "import")
     if report["import"]["passed"]:
         frozen = sources()
-        for name in frozen:
-            target = run / "executed-source" / name
-            target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(PROJECT / name, target)
         (run / "source-before.json").write_text(json.dumps(frozen, indent=2) + "\n")
         for name in args.suites:
             if sources() != frozen:
                 report["drift_before_suite"] = name
                 break
-            result = invoke([str(GODOT), "--headless", "--fixed-fps", "60", "--path", str(PROJECT), "--script", "res://tests/" + name + ".gd",
+            result = invoke([str(GODOT), "--headless", "--audio-driver", "Dummy", "--fixed-fps", "60", "--path", str(PROJECT), "--script", "res://tests/" + name + ".gd",
                              "--", "--capture-dir=" + str(run)], name, timeout=360)
+            result["passed"] = result["passed"] and result["suite_complete"]
             result["suite"] = name
             report["suites"].append(result)
             if not result["passed"]:

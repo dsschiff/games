@@ -1,0 +1,186 @@
+{
+  "base_commit": "688d97f",
+  "status": "CPU verified; independent visual/native review pending",
+  "runtime_sha256_lf": {
+    "scripts/presentation/adapter.gd": "24ca3e2a7462815d4a8b18837f076d4df7cb81d2c42b10c671aa1466f23f49df"
+  },
+  "unchanged": "all combat/economy rules, definitions, saves, art assets, Android code6/preset and signing",
+  "evidence": [
+    {
+      "role": "original_defects",
+      "directory": ".artifacts/graphics-cpu-20261023T234534590055Z",
+      "passed": false,
+      "source_unchanged": true,
+      "files": {
+        ".artifacts/graphics-cpu-20261023T234534590055Z/contact-feedback-report.json": {
+          "bytes": 9675,
+          "sha256": "89ed7c432f66c8ab2831516379334a847e88e2eacd23a9f9d8cb2f14f8963077"
+        },
+        ".artifacts/graphics-cpu-20261023T234534590055Z/contact_feedback.log": {
+          "bytes": 2025,
+          "sha256": "f872fadd8bd65e8eb4b23e86b44e87bd680bdff71b69101663abda52e51f7997"
+        },
+        ".artifacts/graphics-cpu-20261023T234534590055Z/import.log": {
+          "bytes": 21756,
+          "sha256": "593d996df69c7b1fab5b7882ab64cde83ade5bbcedb6df8cc0cd4e27061247af"
+        },
+        ".artifacts/graphics-cpu-20261023T234534590055Z/report.json": {
+          "bytes": 1757,
+          "sha256": "82210caabb1afde099163d56cbf9cf8625b252dbd3cdfad46274d9ea219e68db"
+        },
+        ".artifacts/graphics-cpu-20261023T234534590055Z/source-after.json": {
+          "bytes": 14615,
+          "sha256": "feaef5438905e9cbb400b47d4420e4f9101b201609e4116be63eb769cad6d6bc"
+        },
+        ".artifacts/graphics-cpu-20261023T234534590055Z/source-before.json": {
+          "bytes": 14615,
+          "sha256": "feaef5438905e9cbb400b47d4420e4f9101b201609e4116be63eb769cad6d6bc"
+        }
+      }
+    },
+    {
+      "role": "broad_input_rules_save",
+      "directory": ".artifacts/graphics-cpu-20261023T234746282847Z",
+      "passed": true,
+      "source_unchanged": true,
+      "files": {
+        ".artifacts/graphics-cpu-20261023T234746282847Z/campaign_checks.log": {
+          "bytes": 137,
+          "sha256": "1ed01f1baac080cf7c5739fe1f89aeeac70c887fc5a58b7ab830bd99b921f7dc"
+        },
+        ".artifacts/graphics-cpu-20261023T234746282847Z/graphics-input-report.json": {
+          "bytes": 23288,
+          "sha256": "801999d4326c3ae2e0645ac6a5f7031929d3db6ec44b1b2011cee7c63ff012a2"
+        },
+        ".artifacts/graphics-cpu-20261023T234746282847Z/graphics_input.log": {
+          "bytes": 1753,
+          "sha256": "366fd7de11b5d6c646eeae2f167274a878e5fa1d5aa7a41772ea9ce9c239d5ba"
+        },
+        ".artifacts/graphics-cpu-20261023T234746282847Z/import.log": {
+          "bytes": 1033,
+          "sha256": "b728de0c23f24d9aa31bc7608b177d7ca13857d7c3aca862a08506d00675123b"
+        },
+        ".artifacts/graphics-cpu-20261023T234746282847Z/import_regression.log": {
+          "bytes": 143,
+          "sha256": "34fa9be2fc9231b5804e7b37cd61e7d5fe807b0b80f30eb0b69ab0cf546093b4"
+        },
+        ".artifacts/graphics-cpu-20261023T234746282847Z/input-report.json": {
+          "bytes": 23076,
+          "sha256": "8fc1d49fbd4854cfee90da4a0250eb4a2b8689e71c3c9cde472b4f05448ea052"
+        },
+        ".artifacts/graphics-cpu-20261023T234746282847Z/playthrough.log": {
+          "bytes": 1093,
+          "sha256": "8491d02a7e82fbc55ca8ce3918165a2dfb04e73471a137f85fa06da1b313b4a2"
+        },
+        ".artifacts/graphics-cpu-20261023T234746282847Z/presentation-report.json": {
+          "bytes": 19746,
+          "sha256": "b882bfb5616921575c244f1c89eb17884ef58c84c79a257c11dd6da7208772ea"
+        },
+        ".artifacts/graphics-cpu-20261023T234746282847Z/presentation_tests.log": {
+          "bytes": 134,
+          "sha256": "aae018d8129b1bc5e7901a716f5b520d895d3a9bdf7b185e91094eaac024ee9e"
+        },
+        ".artifacts/graphics-cpu-20261023T234746282847Z/raw-input-events.json": {
+          "bytes": 202226,
+          "sha256": "3119f01f8bd238edab5c9e8be674cee6d527e4700e11cf242989141532ce97ee"
+        },
+        ".artifacts/graphics-cpu-20261023T234746282847Z/report.json": {
+          "bytes": 5697,
+          "sha256": "9d2a7e097e0aff98451a0fe8f56ecc7d6ff791c3cde028d124aca312baeb6298"
+        },
+        ".artifacts/graphics-cpu-20261023T234746282847Z/review_save_regressions.log": {
+          "bytes": 303,
+          "sha256": "2ccd022ea5b865c8774974229605c14fe53e422e92905a677eba9246a7dd9bd4"
+        },
+        ".artifacts/graphics-cpu-20261023T234746282847Z/run_tests.log": {
+          "bytes": 132,
+          "sha256": "5ca0d8aa422e4a1f8366f036e38678b3dcb7fe7800db7aa35560c0137450f690"
+        },
+        ".artifacts/graphics-cpu-20261023T234746282847Z/save-regressions.json": {
+          "bytes": 139311,
+          "sha256": "a8079017c54e9b3af0639943b2d4bd746d60c456bbdbb1e4ed538e8c426032a3"
+        },
+        ".artifacts/graphics-cpu-20261023T234746282847Z/source-after.json": {
+          "bytes": 14615,
+          "sha256": "c08fe3c242054d9a176f1c7703095872e42ec45db1c162eb61d53905c9359a16"
+        },
+        ".artifacts/graphics-cpu-20261023T234746282847Z/source-before.json": {
+          "bytes": 14615,
+          "sha256": "c08fe3c242054d9a176f1c7703095872e42ec45db1c162eb61d53905c9359a16"
+        }
+      }
+    },
+    {
+      "role": "final_runtime_presentation",
+      "directory": ".artifacts/graphics-cpu-20261023T234934454475Z",
+      "passed": true,
+      "source_unchanged": true,
+      "files": {
+        ".artifacts/graphics-cpu-20261023T234934454475Z/contact-feedback-report.json": {
+          "bytes": 12882,
+          "sha256": "ede3434f5531ebaa54594cecb54a8f640d6be437a718c267b011b855b2a8e8c2"
+        },
+        ".artifacts/graphics-cpu-20261023T234934454475Z/contact_feedback.log": {
+          "bytes": 129,
+          "sha256": "196217517e608beae689bdef037bde813e380cd2ea23c4ed3d7c12d8c2de5a5c"
+        },
+        ".artifacts/graphics-cpu-20261023T234934454475Z/import.log": {
+          "bytes": 1315,
+          "sha256": "97d3a98b638bde96129f72c0aa2c73756b531bcc790e7a75a73508fdf8f980e1"
+        },
+        ".artifacts/graphics-cpu-20261023T234934454475Z/presentation-report.json": {
+          "bytes": 19746,
+          "sha256": "b882bfb5616921575c244f1c89eb17884ef58c84c79a257c11dd6da7208772ea"
+        },
+        ".artifacts/graphics-cpu-20261023T234934454475Z/presentation_tests.log": {
+          "bytes": 134,
+          "sha256": "aae018d8129b1bc5e7901a716f5b520d895d3a9bdf7b185e91094eaac024ee9e"
+        },
+        ".artifacts/graphics-cpu-20261023T234934454475Z/report.json": {
+          "bytes": 2096,
+          "sha256": "b398a3e5521f777cd22bd347f1503f78df1325e53d4128881ec2bd0911d0c228"
+        },
+        ".artifacts/graphics-cpu-20261023T234934454475Z/source-after.json": {
+          "bytes": 14615,
+          "sha256": "bf319b490ec695a38ee65941f8107d571566a9bca04acf44a8a7f56096d17192"
+        },
+        ".artifacts/graphics-cpu-20261023T234934454475Z/source-before.json": {
+          "bytes": 14615,
+          "sha256": "bf319b490ec695a38ee65941f8107d571566a9bca04acf44a8a7f56096d17192"
+        }
+      }
+    },
+    {
+      "role": "final_focused_feedback",
+      "directory": ".artifacts/graphics-cpu-20261023T235008532207Z",
+      "passed": true,
+      "source_unchanged": true,
+      "files": {
+        ".artifacts/graphics-cpu-20261023T235008532207Z/contact-feedback-report.json": {
+          "bytes": 14986,
+          "sha256": "8f054166cf3ac048a61373ada31d3c566eefe5e69463154832da2fe3200dca3b"
+        },
+        ".artifacts/graphics-cpu-20261023T235008532207Z/contact_feedback.log": {
+          "bytes": 129,
+          "sha256": "fd1e8041346dcc10d87913ea03b012c19a658005d21934fc528ae9de0942bd03"
+        },
+        ".artifacts/graphics-cpu-20261023T235008532207Z/import.log": {
+          "bytes": 1033,
+          "sha256": "b728de0c23f24d9aa31bc7608b177d7ca13857d7c3aca862a08506d00675123b"
+        },
+        ".artifacts/graphics-cpu-20261023T235008532207Z/report.json": {
+          "bytes": 1369,
+          "sha256": "d9b6bf2709ff8009465f55bcbe6faf7e9181bfc37af686c91f8fa89245ae0fc2"
+        },
+        ".artifacts/graphics-cpu-20261023T235008532207Z/source-after.json": {
+          "bytes": 14615,
+          "sha256": "caa811429892580bc423c93cdfee64e70a815b1b92a00433b736e9dc7404e191"
+        },
+        ".artifacts/graphics-cpu-20261023T235008532207Z/source-before.json": {
+          "bytes": 14615,
+          "sha256": "caa811429892580bc423c93cdfee64e70a815b1b92a00433b736e9dc7404e191"
+        }
+      }
+    }
+  ]
+}

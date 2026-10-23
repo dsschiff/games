@@ -111,16 +111,35 @@ func observe(kind: String, payload: Dictionary) -> void:
 	if events.size() > 128:
 		events.pop_front()
 	event_counts[kind] = int(event_counts.get(kind, 0)) + 1
-	if not reduced and kind in ["contact", "purchase", "hurt"]:
+	if not reduced and kind in ["contact", "blocked", "purchase", "hurt"]:
 		var effect: Node3D = pool.take("effect:" + kind)
 		if effect == null:
-			effect = Art.impact(.45 if kind == "contact" else .7, Color("ffd36b") if kind == "contact" else (Color("7fe3c8") if kind == "purchase" else Color("ff6a4f")))
+			effect = Art.impact(.45 if kind == "contact" else .7, Color("ffd36b") if kind == "contact" else Color("b7d2e8") if kind == "blocked" else (Color("7fe3c8") if kind == "purchase" else Color("ff6a4f")))
 			add_child(effect)
 		effect.set_meta("pool_key", "effect:" + kind)
 		effect.set_meta("life", .20)
 		effect.position = Vector3(payload.get("x", snapshot.get("x", 0)), .08, payload.get("z", snapshot.get("z", 0)))
 		effect.scale = Vector3.ONE
 		effects.append(effect)
+
+func _resolve_feedback(before: Dictionary, current: Dictionary) -> void:
+	# contact is the rule's resolution deadline, including misses. Only real
+	# hull loss/death (or a hit flash followed by healing) earns a hit burst.
+	var previous := {}
+	for enemy in before.enemies: previous[int(enemy.id)] = enemy
+	var hits: Array = []
+	for enemy in current.enemies:
+		var old: Dictionary = previous.get(int(enemy.id), {})
+		if not old.is_empty() and (enemy.hp < old.hp or enemy.flash > old.flash): hits.append(enemy)
+	for id in current.dead:
+		if not id in before.dead and previous.has(int(id)): hits.append(previous[int(id)])
+	var blocked: bool = float(current.get("blocked", 0)) > float(before.get("blocked", 0))
+	if not hits.is_empty():
+		observe("contact", {"target": hits[0].id, "x": hits[0].x, "z": hits[0].z, "hit_ids": hits.map(func(enemy): return int(enemy.id))})
+	if blocked:
+		observe("blocked", {"target": current.strike_id, "x": current.strike_x, "z": current.strike_z})
+	elif hits.is_empty():
+		observe("miss", {"target": current.strike_id})
 
 func capture(state: Dictionary, reset: bool = false) -> void:
 	var dt := float(state.time) - float(snapshot.get("time", state.time))
@@ -133,7 +152,7 @@ func capture(state: Dictionary, reset: bool = false) -> void:
 	sync_count += 1
 	if not reset and not old.is_empty():
 		if not old.contact and state.contact:
-			observe("contact", {"target": state.strike_id, "x": state.strike_x, "z": state.strike_z, "dead": state.dead.duplicate(), "blocked": state.get("blocked", 0)})
+			_resolve_feedback(old, state)
 		if state.strike > old.strike:
 			observe("swing", {"target": state.strike_id})
 		if state.tier != old.tier:
@@ -227,7 +246,13 @@ func _telegraph(actor: Node3D, data: Dictionary, definition: Dictionary, legacy:
 		for key in ["Line", "Left", "Right"]:
 			var line := warning.get_node(key) as Node3D
 			line.visible = key == "Line" or attack == "burst" or definition.get("boss", false) and attack == "shot"
-			line.scale.z = length / 8.5
+			# Rules test the diver centre against these widths; do not add the
+			# body radius a second time or paint a falsely safe outside strip.
+			var half_width := .8 if attack == "line" else .9 if attack == "charge" else .5
+			line.scale.x = 2.0 * half_width / (line as MeshInstance3D).mesh.size.x
+			# Segment collision includes round end caps. A conservative rectangle
+			# covers them too, rather than ending before the damaging footprint.
+			line.scale.z = (length + 2.0 * half_width) / 8.5
 			var angle := -.32 if key == "Left" else (.32 if key == "Right" else 0.0)
 			line.position = Vector3(sin(angle) * length * .5, .01, cos(angle) * length * .5)
 
