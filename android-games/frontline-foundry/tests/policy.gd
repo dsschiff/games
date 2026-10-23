@@ -17,7 +17,7 @@ static func decide(s: Dictionary, variant: String = "A") -> Dictionary:
 			result.goal = p + (p - Vector2(e.x, e.z)).normalized() * 2
 			return result
 	var desired := -1
-	if variant != "mistake" and C.active_count(s) + s.stock.reduce(func(a, b): return a + b, 0) < s.definition.cap:
+	if variant not in ["mistake", "commander"] and C.active_count(s) + s.stock.reduce(func(a, b): return a + b, 0) < s.definition.cap:
 		var order: Array = ["rifle", "ranger", "breaker", "rover", "ranger", "breaker", "rifle", "rover", "rifle", "ranger", "breaker", "rover"] if variant in ["A", "idle"] else ["rover", "breaker", "ranger", "rifle", "breaker", "ranger", "rifle", "rover", "ranger", "breaker", "rifle", "rover"]
 		var counts := [0, 0, 0, 0]
 		for role in order:
@@ -29,7 +29,7 @@ static func decide(s: Dictionary, variant: String = "A") -> Dictionary:
 				break
 	if variant == "mistake" and s.bought[0] < 3 and s.wallet >= 7:
 		desired = 0
-	if s.support == "none" and s.wallet >= 14 and s.purchases.size() >= 3 and variant != "mistake":
+	if s.support == "none" and s.wallet >= 14 and s.purchases.size() >= 3 and variant not in ["mistake", "commander"]:
 		desired = 4
 	if desired >= 0:
 		return {"goal": D.pad(s.definition, desired), "station": desired}

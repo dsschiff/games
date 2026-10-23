@@ -288,7 +288,7 @@ func run() -> void:
 	var io := Faults.new()
 	check(S.write(last, p, settings, "fault-", io, false, arc), "whole campaign atomic first write")
 	var stable := S.read("fault-", io)
-	for fault in ["fail_write", "fail_rename", "corrupt_readback"]:
+	for fault in ["fail_write", "fail_rename", "corrupt_readback", "missing_destination", "corrupt_destination"]:
 		io.set(fault, true)
 		check(not S.write(C.fresh(D.mission(0)), p, settings, "fault-", io, true, C.career()), "import reports storage failure " + fault)
 		var held := S.read("fault-", io)

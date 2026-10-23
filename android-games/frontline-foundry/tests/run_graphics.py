@@ -119,7 +119,7 @@ def main():
                 packets.append(packet)
         expected_start = run / "expected-start.json"
         expected_start.write_text(json.dumps(max(packets, key=lambda item: item["revision"])))
-    command = [str(GODOT), "--path", str(PROJECT)]
+    command = [str(GODOT), "--audio-driver", "Dummy", "--path", str(PROJECT)]
     command += ["--resolution", "720x1280", "--position", "0,0"] if args.render else ["--headless"]
     if args.mode == "capture" and not args.render:
         command += ["--max-fps", "60"]  # CPU harness cadence only; never a timing sample.

@@ -1,0 +1,113 @@
+{
+  "base": "4552e7b",
+  "scope": "Frontline reinforcement feedback and save destination verification; unreleased source increment",
+  "receipts": {
+    "rules": {
+      "path": ".artifacts/frontline-frozen-rules-20261023T231333105619Z/receipt.json",
+      "sha256": "1a3c1cf0e3016c6a89e3aeab63a32e0146990353e3f9d55d49947c88c19c477b",
+      "passed": true,
+      "source_unchanged": true
+    },
+    "presentation": {
+      "path": ".artifacts/frontline-frozen-checks-20261023T231337414793Z/receipt.json",
+      "sha256": "0dd81c0c056bca4548b9112eacd445dada537f2b0273255c6bb8aacb3aaaf906",
+      "passed": true,
+      "source_unchanged": true
+    },
+    "decisions": {
+      "path": ".artifacts/frontline-frozen-decisions-20261023T231355678392Z/receipt.json",
+      "sha256": "52215548d16c48828d13a4a42ff23ab3f8db68b6ee1bdcb6eb800edb1c82cab1",
+      "passed": true,
+      "source_unchanged": true
+    },
+    "input": {
+      "path": ".artifacts/frontline-frozen-input-20261023T231246939291Z/receipt.json",
+      "sha256": "8c3448ef4a0f6826366268c83674eafa1a4b2dac1b43f6ecda3fd69fb41788c7",
+      "passed": true,
+      "source_unchanged": true
+    },
+    "cold": {
+      "path": ".artifacts/frontline-frozen-cold-20261023T231547810175Z/receipt.json",
+      "sha256": "bc4a1d364b1c96801ddb0fd0aac9736cd4dde307b8301d21eb6204b94b20cb6c",
+      "passed": true,
+      "source_unchanged": true
+    },
+    "rendered": {
+      "path": ".artifacts/feedback-after-20261023T231233761949Z/receipt.json",
+      "sha256": "0fbedf554765853fe44b3c0d1a03cc166f3a62224b06fd0c311cc7bffabe1690",
+      "passed": true,
+      "source_unchanged": true
+    },
+    "cue_presentation": {
+      "path": ".artifacts/frontline-cue-followup-checks-20261023T231955636888Z/receipt.json",
+      "sha256": "8a3dcc15195ab912396f05addae348ef7b401c4c3053d16b7193162c6c4fd222",
+      "passed": true,
+      "source_unchanged": true
+    },
+    "cue_held_input": {
+      "path": ".artifacts/feedback-after-20261023T232013741103Z/receipt.json",
+      "sha256": "2ecec7b59af09c8d038c9af568c7fdd6355767f8dc8aa94d61f9a3494791d472",
+      "passed": true,
+      "source_unchanged": true
+    }
+  },
+  "policy_summary": {
+    "untouched_wins": [
+      1
+    ],
+    "no_equipment_active_policy_wins": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      10,
+      11
+    ],
+    "funded_A_wins": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "funded_B_wins": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "rifle_retreat_wins": [
+      1
+    ]
+  },
+  "limits": [
+    "Policy comparison is not optimal-player proof or human difficulty/fun measurement",
+    "Rendered comparison covers first recruit and nine profile/commander positions, not a full rendered campaign",
+    "No Android build, install-over, cloud implementation or physical testing in this increment",
+    "Final cue inset430 is CPU-geometry/input verified; rendered47-check evidence predates that inset. Two representative held-stick anchors tested on landscape only; arbitrary floating anchors can cover HUD."
+  ],
+  "retained_failures": [
+    ".artifacts/feedback-comparison/after: 5 HQ/guidance overlap assertions fail before correction",
+    ".artifacts/frontline-feedback-input-20261023T230622634806Z: 276 functional checks pass but source_unchanged false",
+    ".artifacts/frontline-final-input-20261023T231100582900Z: 276 functional checks pass but source_unchanged false",
+    ".artifacts/frontline-cue-followup-checks-20261023T231911371291Z: added test lacked explicit bool type; corrected suite110 passes"
+  ],
+  "followup_base": "ece03c949bedfa89163f94e3f71a75276fa01a4c"
+}

@@ -3,6 +3,7 @@ const S = preload("res://scripts/save_store.gd")
 const C = preload("res://scripts/campaign_rules.gd")
 const D = preload("res://scripts/definitions.gd")
 const P = preload("res://tests/policy.gd")
+const F = preload("res://scripts/reinforcement_feedback.gd")
 var app: Node
 var scene: Node
 var folder := ""
@@ -127,12 +128,15 @@ func play_sortie(variant: String, save_boundaries: bool) -> void:
 			await physics_frame
 		if not equipped and s.consumed.reduce(func(a, b): return a + b, 0) > 0:
 			equipped = true
+			check(scene.queue_label.visible and scene.queue_label.text == F.crew_line(s) and "ARMING" in scene.queue_label.text, "paid equipment names its actual arming recruit " + str(index + 1))
 			await snap("m%02d-arming" % [index + 1])
 		if not deployed and s.recruits.any(func(r): return r.phase == "deploying" and r.waypoint == 1):
 			deployed = true
+			check(scene.queue_label.text == F.crew_line(s), "gate feedback follows saved individual phase " + str(index + 1))
 			await snap("m%02d-through-gate" % [index + 1])
 		if not attacked and s.recruits.any(func(r): return r.shots > 0 and r.damage > 0):
 			attacked = true
+			check(F.contribution(s).contains("led with"), "real crew attack earns ledger-based contribution " + str(index + 1))
 			await snap("m%02d-recruit-attacks" % [index + 1])
 		if not incoming and s.hq_taken + s.commander_taken + s.recruits.reduce(func(a, r): return a + r.taken, 0.0) > 0:
 			incoming = true

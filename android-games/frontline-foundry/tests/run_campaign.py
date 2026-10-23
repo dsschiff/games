@@ -21,7 +21,7 @@ def sources():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=["rules", "balance", "input", "rendered", "movie", "cold", "legacy", "clipboard"])
+    parser.add_argument("mode", choices=["rules", "balance", "input", "rendered", "movie", "cold", "legacy", "clipboard", "decisions"])
     parser.add_argument("--label", default="campaign")
     parser.add_argument("--resume-from", type=Path)
     parser.add_argument("--clip", choices=["early", "middle", "final"], default="early")
@@ -46,10 +46,10 @@ def main():
             target.mkdir(parents=True)
             for p in previous.glob("frontline-save-*"):
                 shutil.copy2(p, target / p.name)
-    command = [str(GODOT), "--path", str(PROJECT)]
+    command = [str(GODOT), "--audio-driver", "Dummy", "--path", str(PROJECT)]
     command += ["--resolution", "720x1280", "--position", "0,0"] if args.mode in {"rendered", "movie", "clipboard"} else ["--headless"]
-    script = {"rules": "campaign_tests", "balance": "campaign_balance", "cold": "campaign_cold", "legacy": "campaign_legacy", "clipboard": "campaign_clipboard"}.get(args.mode, "campaign_input")
-    command += ["--fixed-fps", "60", "--script", f"res://tests/{script}.gd", "--quit-after", "2" if args.mode in {"rules", "balance"} else "100000"]
+    script = {"rules": "campaign_tests", "balance": "campaign_balance", "decisions": "decision_probe", "cold": "campaign_cold", "legacy": "campaign_legacy", "clipboard": "campaign_clipboard"}.get(args.mode, "campaign_input")
+    command += ["--fixed-fps", "60", "--script", f"res://tests/{script}.gd", "--quit-after", "2" if args.mode in {"rules", "balance", "decisions"} else "100000"]
     if args.mode == "movie":
         command += ["--write-movie", str(run / "continuous.avi")]
     command += ["--", "--capture-dir=" + str(run), "--report=" + str(run / "rules-report.json")]
