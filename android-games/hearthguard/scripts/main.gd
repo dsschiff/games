@@ -51,6 +51,7 @@ var last_wallet := 0
 var save_problem := false
 var campaign_profile := preload("res://scripts/campaign_rules.gd").profile()
 var expedition_button: Button
+var resume_button: Button
 var world_label_clearance := preload("res://scripts/presentation/label_clearance.gd").new()
 
 func _ready() -> void:
@@ -81,12 +82,17 @@ func _ready() -> void:
 func open_campaign() -> void:
 	var C = preload("res://scripts/campaign_rules.gd")
 	var Cat = preload("res://scripts/campaign_catalog.gd")
-	campaign_profile.legacy_snapshot = state.duplicate(true)
-	var next: Dictionary = campaign_profile.get("parked", {})
+	var staged := campaign_profile.duplicate(true)
+	staged.legacy_snapshot = state.duplicate(true)
+	var next: Dictionary = staged.get("parked", {})
 	if next.is_empty():
 		next = C.fresh(Cat.definition(mini(campaign_profile.clears.size(), 9)))
-	if S.write(next, profile, settings, S.PATH, save_io, false, campaign_profile):
+	# Mode changes require promotion; failed staging must not become cold progress.
+	save_problem = not S.write(next, profile, settings, S.PATH, save_io, true, staged)
+	if not save_problem:
+		campaign_profile = staged
 		route_reload()
+	refresh()
 
 func route_reload() -> void:
 	if get_parent().has_method("reload_saved"):
@@ -260,7 +266,8 @@ func make_ui() -> void:
 	text_label(menu, "PASS WATCH / PAUSED", 33).position = Vector2(24, 20)
 	journal = text_label(menu, "", 24, "c1ded0")
 	journal.position = Vector2(24, 77)
-	button(menu, "RESUME", toggle_pause).set_meta("row", 0)
+	resume_button = button(menu, "RESUME", toggle_pause)
+	resume_button.set_meta("row", 0)
 	sound_button = button(menu, "", toggle_sound)
 	sound_button.set_meta("row", 1)
 	effects_button = button(menu, "", toggle_effects)
@@ -458,9 +465,10 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		back()
 	elif what in [NOTIFICATION_APPLICATION_PAUSED, NOTIFICATION_APPLICATION_FOCUS_OUT, NOTIFICATION_WM_CLOSE_REQUEST]:
-		paused = true
+		if state.phase == "playing":
+			paused = true
+			menu.show()
 		stop_move()
-		menu.show()
 		save_now()
 		refresh()
 		if what == NOTIFICATION_WM_CLOSE_REQUEST:
@@ -523,8 +531,11 @@ func import_code() -> void:
 		notice.text = "Invalid code. Current save kept."
 		return
 	if not S.write(decoded.state, decoded.profile, decoded.settings, S.PATH, save_io, true, decoded.campaign):
+		save_problem = true
 		notice.text = "Storage failed. Current save kept."
+		refresh()
 		return
+	save_problem = false
 	var changed_mode: bool = state.schema != decoded.state.schema
 	state = decoded.state
 	profile = decoded.profile
@@ -567,9 +578,14 @@ func _physics_process(delta: float) -> void:
 	refresh()
 	fill_audio()
 
+func refresh_resume_action() -> void:
+	if resume_button != null:
+		resume_button.text = "RESUME" if state.phase == "playing" else ("BACK TO BRIEF" if state.phase == "ready" else "BACK TO RESULT")
+
 func refresh() -> void:
 	if wallet_label == null:
 		return
+	refresh_resume_action()
 	wallet_label.text = "GOLD  " + str(int(state.wallet)) + ("  +" if pickup_flash > 0 else "")
 	integrity_label.text = "REFUGE  " + str(int(state.integrity)) + " / 8"
 	var remaining: int = R.TOTAL - state.killed.size() - state.leaked.size()

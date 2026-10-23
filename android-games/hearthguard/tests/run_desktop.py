@@ -30,7 +30,7 @@ def main():
     env["LOCALAPPDATA"] = str(run / "localappdata")
     Path(env["APPDATA"]).mkdir()
     Path(env["LOCALAPPDATA"]).mkdir()
-    command = [str(GODOT), "--path", str(PROJECT)]
+    command = [str(GODOT), "--audio-driver", "Dummy", "--path", str(PROJECT)]
     if args.mode in ["rules", "headless"]:
         command += ["--headless"]
     else:

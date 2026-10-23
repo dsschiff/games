@@ -41,6 +41,12 @@ selected options. The final watch unlocks the ten-beacon epilogue and seeded
 endless; endless records are separate from campaign clears. A loss immediately
 retries the same pinned definition without farming or an energy restriction.
 
+The unreleased [save and return-flow increment](SAVE_RETURN_CHECKPOINT.md)
+(2026-10-23) verifies destination bytes after promotion, keeps both parked watches
+unchanged on failed mode switches, and preserves brief/result screens after Home.
+Rules and save formats remain unchanged; CPU/input and fault evidence are in the
+checkpoint. Android update/lifecycle verification remains separate.
+
 ## Saves and the shipped prototype
 
 Envelope2 keeps the original prototype profile beside a separate campaign

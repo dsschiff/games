@@ -143,6 +143,7 @@ func layout() -> void:
 func refresh() -> void:
 	if action_buttons.is_empty():
 		return
+	refresh_resume_action()
 	var d: Dictionary = state.definition
 	var head := ui.get_node("Header")
 	(head.get_child(1) as Label).text = "%02d / %s • %s" % [int(d.stage) + 1, Cat.REGIONS[int(d.region)], str(d.title).to_upper()]
@@ -348,9 +349,13 @@ func close_ending() -> void:
 func return_legacy() -> void:
 	if campaign_profile.legacy_snapshot.is_empty():
 		return
-	campaign_profile.parked = state.duplicate(true)
-	if S.write(campaign_profile.legacy_snapshot, profile, settings, S.PATH, save_io, false, campaign_profile):
+	var staged := campaign_profile.duplicate(true)
+	staged.parked = state.duplicate(true)
+	save_problem = not S.write(staged.legacy_snapshot, profile, settings, S.PATH, save_io, true, staged)
+	if not save_problem:
+		campaign_profile = staged
 		route_reload()
+	refresh()
 
 func back() -> void:
 	if confirm_panel.visible:
@@ -368,8 +373,11 @@ func import_code() -> void:
 		notice.text = "Invalid code. Current save kept."
 		return
 	if not S.write(decoded.state, decoded.profile, decoded.settings, S.PATH, save_io, true, decoded.campaign):
+		save_problem = true
 		notice.text = "Storage failed. Current save kept."
+		refresh()
 		return
+	save_problem = false
 	if decoded.state.schema == 1:
 		route_reload()
 		return

@@ -1,0 +1,76 @@
+{
+  "base": "7532385",
+  "scope": "Unreleased exact-destination commit, transactional legacy/campaign return and phase-aware Home/return controls",
+  "receipts": {
+    "reliability": {
+      "path": ".artifacts/save-final-bound-reliability-20261023T235058534773Z/receipt.json",
+      "sha256": "f59254497afdf153a0394c3aed504374aa98ab4945bd7d1000559e2dd5e95a0a",
+      "passed": true,
+      "source_unchanged": true
+    },
+    "campaign_rules": {
+      "path": ".artifacts/save-frozen-rules-20261023T234750237204Z/receipt.json",
+      "sha256": "6e8c9490c9e4810c2f0e77a9f5e026c6d657e31fa3c670f989ca999894bdeab9",
+      "passed": true,
+      "source_unchanged": true
+    },
+    "legacy_rules": {
+      "path": ".artifacts/save-final-rules-20261023T234550831273Z/receipt.json",
+      "sha256": "1046263eb3d34a4137225e87476847af66129f4e47933dfc53371b548e368613",
+      "passed": true,
+      "source_unchanged": true
+    },
+    "legacy_input": {
+      "path": ".artifacts/save-frozen-headless-20261023T234831347119Z/receipt.json",
+      "sha256": "cc3c87237e4df389e9c2b90e14020115b9834f9cdf9e62fbde735ebf3affd4aa",
+      "passed": true,
+      "source_unchanged": true
+    },
+    "cpu_presentation": {
+      "path": ".artifacts/save-final-checks-20261023T234959010189Z/receipt.json",
+      "sha256": "285c01c8bbfcc7c70a4ab39a9542c69ee106bd47bcd007fdad81290fe2efe112",
+      "passed": true,
+      "source_unchanged": true
+    }
+  },
+  "runtime_files": [
+    "scripts/save_store.gd",
+    "scripts/main.gd",
+    "scripts/campaign_main.gd"
+  ],
+  "unchanged": [
+    "rules.gd",
+    "campaign_rules.gd",
+    "campaign_catalog.gd",
+    "save_files.gd",
+    "project.godot",
+    "export_presets.cfg"
+  ],
+  "baseline": {
+    "path": ".artifacts/save-before-corrected-reliability-20261023T234332632461Z",
+    "checks": 107,
+    "failures": 30,
+    "scope": "Actual engine GUI over synthetic rule-derived fixtures and fault backend; unchanged writer/mode handlers"
+  },
+  "retained_failures": [
+    {
+      "path": ".artifacts/save-before-reliability-20261023T234223690723Z",
+      "checks": 107,
+      "failures": 32,
+      "qualification": "Two failures were an overstrict paused assertion for successful cross-mode terminal imports; corrected before baseline above."
+    },
+    {
+      "path": ".artifacts/save-frozen-checks-20261023T234757291357Z",
+      "checks": 328,
+      "failures": 1,
+      "qualification": "Graphics-era whole save_store source pin intentionally failed; corrected pin retains exact envelope/decoder/read source while allowing authorized writer hardening."
+    }
+  ],
+  "limits": [
+    "Save/context fixtures are synthetic rule-derived, separate from actual input-earned legacy journey",
+    "Home is a synthetic notification dispatch; no Android Home/kill/update claim",
+    "No rendering, GPU, ADB, browser or OS clipboard used",
+    "No rule/schema/catalog/content/version change; no cloud linkage",
+    "Root owns independent review, landing, exports and native/physical acceptance"
+  ]
+}

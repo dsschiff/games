@@ -31,8 +31,11 @@ func check(okay: bool, message: String) -> void:
 
 func run() -> void:
 	print("ISOLATED_USER_DATA ", OS.get_user_data_dir())
-	for name in ["rules.gd", "campaign_rules.gd", "campaign_catalog.gd", "save_store.gd", "save_files.gd"]:
+	for name in ["rules.gd", "campaign_rules.gd", "campaign_catalog.gd", "save_files.gd"]:
 		check(FileAccess.get_file_as_string("res://scripts/" + name).replace("\r\n", "\n") == FileAccess.get_file_as_string(baseline + name).replace("\r\n", "\n"), "functional baseline exact source preserved: " + name)
+	var current_store := FileAccess.get_file_as_string("res://scripts/save_store.gd").replace("\r\n", "\n")
+	var old_store := FileAccess.get_file_as_string(baseline + "save_store.gd").replace("\r\n", "\n")
+	check(current_store.get_slice("static func write(", 0) == old_store.get_slice("static func write(", 0), "save format/decoder/read baseline source preserved; destination transaction intentionally hardened")
 	var state := C.fresh(Cat.definition(0))
 	var adapter := A.new()
 	adapter.reset(state, false)

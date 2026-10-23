@@ -11,7 +11,7 @@ from run_desktop import PROJECT, GODOT, sources
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=["rules", "headless", "rendered", "movie", "legacy"])
+    parser.add_argument("mode", choices=["rules", "headless", "rendered", "movie", "legacy", "reliability"])
     parser.add_argument("--label", default="campaign")
     parser.add_argument("--segment", choices=["early", "middle", "final"])
     parser.add_argument("--checkpoint")
@@ -22,12 +22,14 @@ def main():
     for key in ["APPDATA", "LOCALAPPDATA"]:
         env[key] = str(run / key.lower())
         Path(env[key]).mkdir()
-    command = [str(GODOT), "--path", str(PROJECT), "--fixed-fps", "60"]
-    if args.mode in ["rules", "headless", "legacy"]:
+    command = [str(GODOT), "--audio-driver", "Dummy", "--path", str(PROJECT), "--fixed-fps", "60"]
+    if args.mode in ["rules", "headless", "legacy", "reliability"]:
         command += ["--headless"]
     else:
         command += ["--disable-vsync", "--max-fps", "0", "--position", "0,0"]
     script = "res://tests/campaign_checks.gd" if args.mode == "rules" else ("res://tests/legacy_compatibility.gd" if args.mode == "legacy" else "res://tests/campaign_journey.gd")
+    if args.mode == "reliability":
+        script = "res://tests/save_reliability.gd"
     command += ["--script", script]
     if args.mode == "movie":
         command += ["--write-movie", str(run / "continuous.avi")]

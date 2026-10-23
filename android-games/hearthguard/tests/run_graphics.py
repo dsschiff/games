@@ -55,13 +55,13 @@ def main():
         path = run / key.lower()
         path.mkdir()
         env[key] = str(path)
-    command_import = [str(GODOT), "--headless", "--editor", "--import", "--quit", "--path", str(PROJECT)]
+    command_import = [str(GODOT), "--audio-driver", "Dummy", "--headless", "--editor", "--import", "--quit", "--path", str(PROJECT)]
     with (run / "import.log").open("w", encoding="utf-8") as log:
         imported = subprocess.run(command_import, env=env, stdout=log, stderr=subprocess.STDOUT, timeout=180)
     import_output = (run / "import.log").read_text(encoding="utf-8", errors="replace")
     errors = [line for line in import_output.splitlines()
               if any(marker in line for marker in ["ERROR:", "SCRIPT ERROR:", "Parse Error:"])]
-    parse_command = [str(GODOT), "--headless", "--path", str(PROJECT), "--check-only", "--script", "res://tests/graphics_passage.gd"]
+    parse_command = [str(GODOT), "--audio-driver", "Dummy", "--headless", "--path", str(PROJECT), "--check-only", "--script", "res://tests/graphics_passage.gd"]
     with (run / "passage-parse.log").open("w", encoding="utf-8") as log:
         parsed = subprocess.run(parse_command, env=env, stdout=log, stderr=subprocess.STDOUT, timeout=60)
     parse_output = (run / "passage-parse.log").read_text(encoding="utf-8", errors="replace")
@@ -71,7 +71,7 @@ def main():
                  "passage_parse_command": parse_command, "passage_parse_exit": parsed.returncode,
                  "passed": imported.returncode == 0 and parsed.returncode == 0 and not errors, "errors": errors}
     (run / "import-report.json").write_text(json.dumps(preflight, indent=2) + "\n")
-    command = [str(GODOT), "--path", str(PROJECT)]
+    command = [str(GODOT), "--audio-driver", "Dummy", "--path", str(PROJECT)]
     command += ["--resolution", "720x1280", "--position", "0,0"] if args.render else ["--headless"]
     script = {"checks": "presentation_tests.gd", "pool-checks": "pool_tests.gd", "composition-checks": "composition_tests.gd", "joystick-checks": "joystick_tests.gd"}.get(args.mode, "graphics_passage.gd")
     command += ["--script", "res://tests/" + script]

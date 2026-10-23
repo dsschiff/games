@@ -177,7 +177,7 @@ func run() -> void:
 	var io := Faults.new()
 	check(S.write(final, legacy, settings, "campaign", io, false, profile), "campaign durable baseline")
 	var good := S.read("campaign", io)
-	for fault in ["fail_write", "corrupt_readback", "fail_rename"]:
+	for fault in ["fail_write", "corrupt_readback", "fail_rename", "missing_destination", "corrupt_destination"]:
 		io.set(fault, true)
 		check(not S.write(lost, legacy, settings, "campaign", io, true, lost_profile), "failed import transaction: " + fault)
 		var kept := S.read("campaign", io)
