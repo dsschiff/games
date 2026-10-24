@@ -52,7 +52,7 @@
       "sha256": "b67079b66e9dfcbc445f23172ecf64d2286cd6a0f061fe9b1f369273f92b457a"
     }
   ],
-  "design_review": "Astra approved bounded thin-interior/inset-edge/actual-seconds treatment direction. Final source disposition pending.",
+  "design_review": "Astra independently source-cleared 72be7b for a bounded matched visual trial, not visual/release acceptance. Verified both runtime LF pins and all five failed/current run receipt pins; no geometry/rule/hit change found. Early low-alpha and overlap salience remain open for rendered judgement.",
   "visual_status": "Not rendered this increment; root grant required after source freeze and source clear. CPU alpha arithmetic is not perceived readability.",
   "historical_warning": {
     "preserved": true,
@@ -64,5 +64,6 @@
     "full existing strip caps/widths/ring safehole/conservative stepped envelope",
     "save schema/profile/catalog/version/export/signing",
     "no warning in initial idle state; no HUD safe-route recommendation"
-  ]
+  ],
+  "source_commit": "72be7b77ddc42992767bc2df29c03489e2fa6c0a"
 }
