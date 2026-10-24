@@ -1,3 +1,10 @@
+> **Local recovery candidate 0.4.2 / code8 (2026-10-24).** Import keeps complete
+> campaign and parked legacy rescues, bullets, progress, settings and loadout
+> together. Uncertain writes pause play for an explicit verified Retry/Keep choice;
+> direct code-copy actions preserve the pending saves. Source/CPU review passes;
+> signed candidate and native update/clipboard verification remain separate.
+> See [recovery](RECOVERY_AMENDMENT.md) and [copy controls](RECOVERY_COPY_AMENDMENT.md).
+
 > Graphics work: see [GRAPHICS_PRODUCTION.md](GRAPHICS_PRODUCTION.md). Horde candidate frozen as 0.4.0/code5. Status 2026-10-22: signed APK built (same signer, no INTERNET), rules 139/input 34/campaign-rules 293/code4-headless 10/presentation 22 pass; genuine emulator code4-to-5 update keeps a code4 road in progress whole and it plays on under catalog1, Retry then starts the rule3 horde road; genuine code3-to-5 update migrates an unstarted road to rule3; drag steering through a horde surge confirmed on the emulator. Evidence: `android-games/evidence/dead-run-hordes-candidate.json`. The 0.3.0/code4 graphics record (`dead-run-graphics-candidate.json`) and functional 0.2.1/code3 records below remain retained.
 
 > **0.4.0/code5 horde pass (2026-10-22).** Rule3/catalog2 replaces thin waves with dense

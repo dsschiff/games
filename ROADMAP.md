@@ -117,3 +117,8 @@ verification, independent visual review or phone feedback waits.
   and7 cleared markers,2 exact whole-code clipboard copies. Retry-marker source
   root437/0 clear. Shader warning still fails strict log gate; rendering, real
   storage interruption, physical/cloud and exact private transfer remain open.
+
+- Dead direct retained-code Copy controls now independently source/CPU reviewed,
+  root434/0 actual-touch checks pass. Signed0.4.2/code8 packaging/source clear;
+  actual native7to8/full-context/Copy and transfer gates remain open. Existing
+  private0.4.1/code7 stays available; no newer upload.

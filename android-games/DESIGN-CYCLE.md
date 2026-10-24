@@ -148,3 +148,9 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
   Android-emulator clipboard reads. All355 packet+8 update pins reviewed.
   Shader warning remains failed; no blanket rendering/physical/cloud acceptance
   or new upload. Earlier code11 and failed driver/native packets are preserved.
+
+- Dead0.4.2/code8 local signed candidate includes reviewed complete recovery and
+  direct retained-code Copy controls. Root434/0 strict headless input and Astra
+  APK/source/signer/raw-log audit pass. Native update/exact clipboard checks
+  await host resources; code7 baseline and its existing warning are retained.
+  No new upload or native/phone/cloud acceptance.
