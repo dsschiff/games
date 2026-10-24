@@ -1,6 +1,12 @@
 extends "res://tests/input_base.gd"
 const Content = preload("res://scripts/content.gd")
 var samples: Array = []
+var measuring: Dictionary = {}
+var measured_frames := 0
+var max_stack_height := 0.0
+var max_pop_count := 0
+var all_clipped := 0
+var all_overlaps := 0
 
 func _initialize() -> void:
     root.size = Vector2i(600, 1066)
@@ -31,33 +37,77 @@ func painted() -> Array:
         result.append({"text": pop.text, "bounds": Rect2(where - Vector2(outline, game.view.font.get_ascent(size) + outline), Vector2(width + outline * 2, game.view.font.get_height(size) + outline * 2))})
     return result
 
-func observe_move(id: String, label: String, duration: int = 150, minimum: int = 2) -> void:
+# Measure every engine frame, including room selection/entry input frames.
+func measure_frame() -> void:
+    if not is_instance_valid(game): return
+    measured_frames += 1
+    var items := painted()
+    var height := maxf(0.0, (items.size() - 1) * 8.0)
+    for item in items: height += item.bounds.size.y
+    max_stack_height = maxf(max_stack_height, height)
+    max_pop_count = maxi(max_pop_count, items.size())
+    for i in items.size():
+        if not Rect2(0, 224, 600, 520).encloses(items[i].bounds): all_clipped += 1
+        for j in range(i):
+            if items[i].bounds.intersects(items[j].bounds): all_overlaps += 1
+    if measuring.is_empty(): return
+    measuring.frames += 1
+    measuring.peak = maxi(measuring.peak, items.size())
+    measuring.stack_height = maxf(measuring.stack_height, height)
+    for i in items.size():
+        if not measuring.texts.has(items[i].text): measuring.texts.append(items[i].text)
+        if not Rect2(0, 224, 600, 520).encloses(items[i].bounds):
+            measuring.clipped_frames += 1
+            if measuring.first_clipped.is_empty():
+                measuring.first_clipped = {"text": items[i].text, "bounds": str(items[i].bounds), "pop_count": items.size(), "stack_height": height}
+        for j in range(i):
+            if items[i].bounds.intersects(items[j].bounds): measuring.overlap_frames += 1
+
+# A press/release is dispatched through the engine's real input path. Sending
+# selection and Enter in one frame avoids the helper's extra wait frames.
+func tap_now(point: Vector2) -> void:
+    var event := InputEventScreenTouch.new()
+    event.index = 0
+    event.position = root.get_final_transform() * game.to_global(point)
+    event.pressed = true
+    Input.parse_input_event(event)
+    Input.flush_buffered_events()
+    event = event.duplicate()
+    event.pressed = false
+    Input.parse_input_event(event)
+    Input.flush_buffered_events()
+    taps += 1
+
+func observe_move(id: String, label: String, drain: bool = true, minimum: int = 2) -> void:
     var expected: Dictionary = Rules.step(game.level, game.state, id).state
-    await choose(id)
-    await action("enter")
-    var overlaps := 0
-    var clipped := 0
-    var peak := 0
-    var texts: Array = []
-    for frame_index in duration:
+    measuring = {"label": label, "overlap_frames": 0, "clipped_frames": 0, "peak": 0, "texts": [], "frames": 0, "stack_height": 0.0, "first_clipped": {}}
+    check(game.pending.is_empty(), label + ": dispatch begins at legal unlocked state")
+    tap_now(game.room_rect(Rules.find_room(game.level, id)).get_center())
+    check(game.selected == id and game.buttons().has("enter"), label + ": earliest selection exposes Enter")
+    tap_now(game.buttons()["enter"].get_center())
+    check(not game.pending.is_empty(), label + ": same-frame actual input starts encounter")
+    var frames := 0
+    while not game.pending.is_empty() and frames < 70:
         await process_frame
-        var items := painted()
-        peak = maxi(peak, items.size())
-        for i in items.size():
-            if not texts.has(items[i].text): texts.append(items[i].text)
-            if not Rect2(0, 224, 600, 520).encloses(items[i].bounds): clipped += 1
-            for j in range(i):
-                if items[i].bounds.intersects(items[j].bounds): overlaps += 1
-    samples.append({"label": label, "overlap_frames": overlaps, "clipped_frames": clipped, "peak": peak, "texts": texts})
-    check(peak >= minimum, label + ": naturally concurrent feedback was exercised")
-    check(overlaps == 0, label + ": painted text including outline never overlaps (%d intersections)" % overlaps)
-    check(clipped == 0, label + ": feedback stays inside board feedback area")
+        frames += 1
+    # Normal route chaining returns at the very first pending-empty frame.
+    # The two introductory captures also drain all effects for full lifetimes.
+    if drain:
+        await wait_frames(150 - frames)
+    samples.append(measuring.duplicate(true))
+    check(measuring.peak >= minimum, label + ": naturally concurrent feedback was exercised")
+    check(measuring.overlap_frames == 0, label + ": painted text including outline never overlaps (%d intersections)" % measuring.overlap_frames)
+    check(measuring.clipped_frames == 0, label + ": feedback stays inside board feedback area")
     check(game.state == expected and game.pending.is_empty(), label + ": natural resolution equals authoritative rules")
+    if not drain:
+        check(frames <= 56, label + ": input does not wait for visual effects after 0.9 second rule unlock (%d frames)" % frames)
+    measuring = {}
 
 func run() -> void:
     DirAccess.make_dir_recursive_absolute(folder)
     for suffix in ["", ".tmp", ".bak", ".bak.tmp"]: DirAccess.remove_absolute(test_path + suffix)
     await create_game()
+    process_frame.connect(measure_frame)
     for id in ["bell", "rope", "clock", "light"]: await enter(id)
     check(game.state.status == "won" and game.data.profile.has("watch_01"), "First tower earned by touch and natural engine updates")
     await wait_frames(120)
@@ -76,7 +126,7 @@ func run() -> void:
     for index in range(1, Content.levels().size()):
         check(game.level.id == Content.levels()[index].id, "Earned tower " + game.level.id)
         for id in Rules.solve(game.level, game.state).route:
-            await observe_move(id, game.level.id + "/" + id, 65)
+            await observe_move(id, game.level.id + "/" + id, false)
         check(game.state.status == "won", "Natural route completes " + game.level.id)
         if index < Content.levels().size() - 1: await action("next")
     check(samples.any(func(s): return s.texts.has("SHIELD")), "Authored shield feedback exercised")
@@ -86,7 +136,7 @@ func run() -> void:
     game.data.settings.reduced_effects = true
     game.sync_view()
     for id in Rules.solve(game.level, game.state).route:
-        await observe_move(id, "reduced/" + id, 65, 1)
+        await observe_move(id, "reduced/" + id, false, 1)
     check(game.state.status == "won", "Reduced effects retain complete route arithmetic")
     var before: Dictionary = game.state.duplicate(true)
     var data_before: Dictionary = game.data.duplicate(true)
@@ -98,10 +148,14 @@ func run() -> void:
             var physical := Rect2(game.view.fx.to_global(item.bounds.position), item.bounds.size * game.view.fx.scale)
             check(Rect2(Vector2.ZERO, Vector2(size)).encloses(physical), "Feedback fits uniformly scaled viewport " + str(size))
     check(game.state == before and game.data == data_before, "Layout queries and resize never mutate rules or saves")
+    check(all_overlaps == 0, "Every sampled frame, including input and transition frames, remains separated")
+    check(all_clipped == 0, "Every sampled frame, including input and transition frames, stays in bounds")
+    check(max_stack_height <= 520.0, "Authored earliest-input peak stack fits fallback area (%0.1f/520 px)" % max_stack_height)
     var file := FileAccess.open(folder + "/feedback-result.json", FileAccess.WRITE)
-    file.store_string(JSON.stringify({"checks": checks, "failures": failures, "touch_taps": taps, "samples": samples, "scope": "Headless engine input and actual font/outline geometry; no rendered or device claim"}, "\t"))
+    file.store_string(JSON.stringify({"checks": checks, "failures": failures, "touch_taps": taps, "samples": samples, "measured_frames": measured_frames, "max_pop_count": max_pop_count, "max_stack_height": max_stack_height, "all_clipped": all_clipped, "all_overlaps": all_overlaps, "timing": "Actual selection and Enter press/releases in the first pending-empty frame; next input waits for no presentation settle delay", "scope": "Headless engine input and actual font/outline geometry; no rendered or device claim"}, "\t"))
     file.close()
     print("TOWER FEEDBACK: %d checks; %d failures; %d taps" % [checks, failures.size(), taps])
+    process_frame.disconnect(measure_frame)
     game.queue_free()
     await wait_frames(4)
     if failures.is_empty(): print("SUITE_COMPLETE: PASS")

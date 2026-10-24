@@ -36,7 +36,8 @@ inputs only.
 Source-pinned run `.artifacts/design-cpu-20261024T000211317275Z` passes:
 
 - Focused geometry/input: 1,232 checks, 412 touch taps, all 36 authored towers
-  earned through touch and natural processing. Checks rapid room chaining,
+  earned through touch and natural processing (the earliest-input follow-up below
+  strengthens the original fixed wait). Checks 65-frame room chaining,
   individual and total values, loss, Undo, shield, large late arithmetic, final
   celebration, reduced effects, and cover/inner/wide viewport bounds. Font and
   outline bounds are independently reconstructed from the actual draw baseline.
@@ -59,3 +60,23 @@ CPU geometry proves separation and bounds; rendered qualitative readability and
 popup motion have not been reviewed. Native Android update/save checks, physical
 device performance, sound and human puzzle pacing/fun are not claimed. No release
 version, export/signing identity, save format, active snapshot or catalog changed.
+
+## Review follow-up: earliest legal input
+
+Astra identified that the fixed 65-frame interval did not test the actual
+0.9-second unlock. The focused test now dispatches selection and Enter through
+real screen-touch press/releases in the first frame with an empty pending move,
+without awaiting helper input frames or visual settling. Every subsequent move
+resolves in 54 frames at the fixed 60 Hz engine clock. The original implementation
+commit `558a54a` remains unchanged.
+
+Run `.artifacts/design-cpu-20261024T001051090609Z` passes 1,603 checks and 412 touch
+taps across the earned campaign and final reduced-effects route. It continuously
+measures all 10,550 engine frames, including input/transition frames. Peak live
+popups remain five; maximum sum of their font/outline heights plus eight-pixel
+gaps is 465 of the available 520 pixels (`glass_02/pair`). Every painted bound
+stays inside the feedback area, and no pair intersects. The final test checks
+both each encounter and aggregate frame counters; no real overflow reproduced.
+No presentation/rule/timing change is justified by this result. The capacity
+assertion applies to exercised authored routes, not arbitrary synthetic popup
+injections or future content. Rendered/native/human limits above still apply.

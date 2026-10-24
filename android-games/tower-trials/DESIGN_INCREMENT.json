@@ -33,6 +33,16 @@
         "challenge_playthrough.log": "9acd885eedc6c0cc8c6a501a74c6d392f078d7d5ecbe97193b00dfb42cf1b83a",
         "graphics_view.log": "b90b2420e0c9cab7195ff3dd09574e79455f241b54901d98fbf6f1c98dd7e116"
       }
+    },
+    {
+      "path": ".artifacts/design-cpu-20261024T001051090609Z",
+      "passed": true,
+      "files": {
+        "report.json": "8be8f1c7a4898c0fd6beb58599f5b22259c6cf1bef1fe30a0b9acd13d46d3d81",
+        "source-before.json": "df15881a7d6865b15833896992963303a14d1b1001fcdd05d6d6c1a8a550d05c",
+        "feedback_readability.log": "07d748ccb24f51eed623ce29de22b0b44bd7bbe800efafb20a48650fc9db192a",
+        "feedback-result.json": "e4ea3b0d3bb27319d84897c3c673b50bceff779a04d655e7e5bb210af92348ae"
+      }
     }
   ],
   "limits": [
@@ -51,5 +61,17 @@
     "scripts/rules_v1.gd": "5432339e42e95e02b14d64871cade704ccbb87f89a5c002412deed797291d950",
     "scripts/save_files.gd": "67b532124aab977b2fb103c12d05a9a9152f6d9aee93113b8476796f880859db",
     "scripts/save_store.gd": "75fbf10cc8e8276237007593e08ac6b8706fc5a3ce78c4ea3ab30a4f7489080b"
+  },
+  "earliest_input_followup": {
+    "all_clipped": 0,
+    "all_overlaps": 0,
+    "checks": 1603,
+    "failures": [],
+    "max_pop_count": 5,
+    "max_stack_height": 465.0,
+    "measured_frames": 10550,
+    "scope": "Headless engine input and actual font/outline geometry; no rendered or device claim",
+    "timing": "Actual selection and Enter press/releases in the first pending-empty frame; next input waits for no presentation settle delay",
+    "touch_taps": 412
   }
 }
