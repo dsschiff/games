@@ -1,0 +1,114 @@
+{
+  "base": "226db6e",
+  "canonical_uid_only_cherry_pick": "3cfe6a1",
+  "scope": "Frontline game-only optional native-port UI/explicit backup and restore/local-copy export; no configured native/account delivery",
+  "source_lf_sha256": {
+    "CLOUD_ADAPTER.md": "ab26e92939e4a2c8babdb397fe97ce5716d580777dc02bcb6943870c9a058163",
+    "README.md": "a8c75955b38e879eba046d6320038d4b17bdea6fca66d9f065e8bfa113757cee",
+    "scripts/campaign_main.gd": "884318caa5cd7e08bb468b27fd03dbf335dc8764d11c779eed37a34af3f9d417",
+    "scripts/cloud/copies.gd": "02236083911fcbff58e998bb10dfe32cc627367df28ed8a0cd3d21678d53ebde",
+    "scripts/cloud/port.gd": "acc339af8f76b5d28eacbdc80d01573a938b2a64efdc5d035d7a57dda8bd0b4e",
+    "scripts/main.gd": "6c2b1c43c80e48facc87879a84cad0539d7020e57fe28451c5146547c5126c7c",
+    "scripts/save_files.gd": "e367871b25a2328b9f628756bd66c84d638069b8605b21bd05b4e62e1e40beee",
+    "CLOUD_UI_AMENDMENT.md": "94f2236a0f5374934d892fdd8fd83044afe095f81b210b606ae47b28142b0436",
+    "scripts/cloud/cloud_panel.gd": "49644b89ccdbfc6eba6dd71d007be0fa59fa8dc0f2b558283d17af59104aee85",
+    "scripts/cloud/cloud_panel.gd.uid": "2aebca451dd86d8a7b8ec4ff42927f2bb78c1dd8619dad0e8fe9bdb2aa0cdb51",
+    "scripts/cloud/game_flow.gd": "33d9826f8a3ffb189c8a03e4c95b715b3cee610f8f9ff5c01983d6b9e0df17b6",
+    "scripts/cloud/game_flow.gd.uid": "a973712f152dfeb4626b7bd74545fa6f43cecbdb895973914a23b412cb6419d2",
+    "scripts/cloud/native_port.gd": "cbb243d574b206458da137d883f34173f57c6b80aab56389e783e821d7a13ae6",
+    "scripts/cloud/native_port.gd.uid": "9906dd7dd31f3ec15e08e133b257425c3cddc02d75aeed159e3822f0666b570a",
+    "tests/cloud_ui.gd": "69a87fff30dffc2fbbfcff736b0577cc648d617c3176614d0beffab45eef24f4",
+    "tests/cloud_ui.gd.uid": "e31f17433c6076d6387133b2e8e6882d72c6dcdc57b2c1d2d81d77b6fa689d9b",
+    "tests/run_cloud_ui.py": "474cf0abc36eed1b2754d1e0642daaf80324eb56e3251c2957db9c82c1d7a133"
+  },
+  "unchanged_lf_sha256": {
+    "scripts/rules.gd": "284c88908f6d1946ba3483a330b4bd5cac14936cf0a94684dc46ef28c6544190",
+    "scripts/campaign_rules.gd": "eb2a03da120c1731b9ae3a1c37d990a3b919261398bffd32bceb694eb6dfc8e4",
+    "scripts/definitions.gd": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+    "scripts/save_store.gd": "eb77a40c48ea44ffd542ce4a9ce0400946c04971e2710012b43c78f1e8d7641b",
+    "scripts/import_recovery.gd": "67ade2d56acc86d025579a92c0d326f816fdb1bfbc050132563e20f14c7a507e",
+    "scripts/cloud/codec.gd": "a2fa77e5066fe226b441dcaa199cb4ed9c45b365adc2470959cea6d1e24d5b43",
+    "project.godot": "0d66726cc249e331e24296d923c084771dbcf83fd4b5855b3d3b80121d86356f",
+    "export_presets.cfg": "1be86bd34d907ed479705a9350063e69abd210fb06dbc1284513c4faf16b67d4",
+    "boot.tscn": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06"
+  },
+  "final_receipts": {
+    "focused_ui": {
+      "path": ".artifacts/cloud-ui-cpu-20261024T031754249150Z/receipt.json",
+      "sha256": "589514af0e8328c84a7d2248d96b2c947ed80786dea7d3c668c78f63cceeb8b7"
+    },
+    "local_import": {
+      "path": ".artifacts/import-cpu-20261024T031820241983Z/receipt.json",
+      "sha256": "a7a24c6b3252937e60137b709de7b984bbb278b9a1d0b76434e2b8d64199fc3d"
+    },
+    "opaque_adapter": {
+      "path": ".artifacts/cloud-cpu-20261024T031819877099Z/receipt.json",
+      "sha256": "8c3d87c9d8f80a612f27447e9e8909fc60f58e6242ba62e4496ce3bb6993137c"
+    },
+    "campaign_rules": {
+      "path": ".artifacts/cloud-ui-final-rules-20261024T031818056854Z/receipt.json",
+      "sha256": "4cd1bc25d00a2d25ad672d2a6fd6cbd15dd724b2668e92a47e1da8392f06b031"
+    },
+    "campaign_input": {
+      "path": ".artifacts/cloud-ui-final-input-20261024T031819517122Z/receipt.json",
+      "sha256": "5d57fc56a92850a271681463615bd91363c0dbf370875778bbcfa95e08fda0f7"
+    }
+  },
+  "retained_failures": {
+    "invalid_synthetic_fixture": {
+      "path": ".artifacts/cloud-ui-cpu-20261024T025906684967Z/receipt.json",
+      "sha256": "635e833b82d32f4e83289748dc4030d94965549f8021b7d25ebb437008e95b43"
+    },
+    "duplicate_teardown": {
+      "path": ".artifacts/cloud-ui-cpu-20261024T030017376784Z/receipt.json",
+      "sha256": "13a76eccc6d08e7f2fa702192176dfc7b731670007d841ba83a585819bea1ca5"
+    },
+    "missing_resource_import": {
+      "path": ".artifacts/cloud-ui-cpu-20261024T030141319639Z/receipt.json",
+      "sha256": "a7e36fde4f976d5d90a963e4e3ee4e1d502e7cd6645338e177480d4e3c859509"
+    },
+    "fault_armed_before_expected_write": {
+      "path": ".artifacts/cloud-ui-cpu-20261024T030235259848Z/receipt.json",
+      "sha256": "27824e2ed15afb6f026d1f3b341578610887e7fcae955ebd15c2447551e7e258"
+    },
+    "harness_variable_shadow": {
+      "path": ".artifacts/cloud-ui-cpu-20261024T031429762807Z/receipt.json",
+      "sha256": "e9e87de4dff856831312d2c81ffc55120443c3ea856a0937d5858230e40a1d54"
+    },
+    "offline_always_trap": {
+      "path": ".artifacts/cloud-ui-cpu-20261024T031450487836Z/receipt.json",
+      "sha256": "b6c0ce776722598f37970b0a9e18d3e4fdd6e6a56c8f89fa0bc92cadc0602882"
+    }
+  },
+  "validation": {
+    "focused_ui": 151,
+    "focused_touch_press_release_events": 132,
+    "focused_synthetic_native_and_account": true,
+    "local_import": 870,
+    "opaque_adapter": 989,
+    "campaign_rules": 416,
+    "fresh_campaign_input": 276,
+    "campaign_input_taps": 177,
+    "campaign_time_scale": 8,
+    "strict_errors_warnings_leaks": 0
+  },
+  "review": "design_review final frozen source CLEAR for scoped CPU commit: independently verified17 changedLF/9 unchangedLF pins and all five final proof source/output/artifact pins; no remaining actionable P1/P2 found. Configured native/live sync and rendered panel usability remain separate gates.",
+  "limits": [
+    "No GPU/render/emulator/ADB/browser/clipboard/network/account/auth/upload/dependency download/APK/version/export/push/publication",
+    "Actual ScreenTouch events use explicitly synthetic complete codes and controllable native/SDK-response fakes",
+    "Pure config and acknowledged cancel API both required before actual singleton binding is configured",
+    "Native plugin packaging, Play IDs/signed OAuth client/testers/Saved Games/privacy declarations remain coordinator and actual-account dependencies",
+    "Submitted may be cached; no server durability/two-device sync/atomic server CAS claim",
+    "Existing signed local Import0.3.3 native acceptance does not establish this new summary/copy UI acceptance",
+    "Historical failed attempts retained; Windows default-encoding audit repaired original UTF-8 presentation strings before final source proofs",
+    "Scoped leftovers scan returned empty; no global cleanup claim"
+  ],
+  "packaging_preflight": {
+    "path": ".artifacts/cloud-ui-preflight-20261024T032637607179Z/receipt.json",
+    "sha256": "dc4eafd185b343170aead1dcea3d99777214468418b25c44fe717c9e64707ea0",
+    "passed": true,
+    "new_sources": [],
+    "changed_sources": [],
+    "limits": "Headless editor import/Dummy only; no APK or configured native acceptance"
+  }
+}

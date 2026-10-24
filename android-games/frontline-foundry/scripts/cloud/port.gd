@@ -11,3 +11,6 @@ func request(request_id: String, _operation: String, _arguments: Dictionary) -> 
 
 func abandon() -> void:
 	pass
+
+func cleanup_required() -> bool:
+	return false
