@@ -730,3 +730,12 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   remains an older exact candidate. New build/native/render acceptance pending.
   Explicit arena Continue float-key defect remains next. See
   android-games/evidence/hook-local-recovery-20261024.json.
+
+
+- Hook arena identity: reviewed ced3366 retains canonical and historical alias
+  scores without deleting or renaming keys, keeps alias-only capacity, and uses
+  unchanged hits/time best-score ordering. Worker188/0 arena plus871/12/444/81
+  strict regressions pass; root independent188/0 passes with unchanged source.
+  Astra source/checkpoint audit clear. No UI, combat, decoder/schema, version,
+  build or native acceptance change. Prior65/6 failure is retained in
+  android-games/hook-and-hunger/ARENA_SCORE_KEY_CHECKPOINT.json.

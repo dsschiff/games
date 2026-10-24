@@ -1,0 +1,87 @@
+{
+  "base_commit": "c91e8d96a48c2b75aa5ffe24a78fa09dab768cf7",
+  "scope": "Arena score identity/old-key compatibility only. Runtime changes only scripts/campaign_rules.gd. No UI, combat/balance, save decoder/schema, version/export/signing/native/build/upload/push.",
+  "before": {
+    "report": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T052223817164Z\\report.json",
+    "report_sha256": "725b8f9fb03074277bd212d58335312916e0d9b3e26e1145fff3be960f70d51a",
+    "whole_profile_input_report": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T052223817164Z\\arena-score-key.json",
+    "whole_profile_input_sha256": "58bf908e602c4466cd3768c1879b92dddf65dbaa2a1a91cdfcb2da61fe9a2472",
+    "checks": 65,
+    "failures": 6,
+    "cases": 5,
+    "scope": "Synthetic valid complete arena-victory profiles, normal materialized JSON cold restore, actual Return to Harbor touch; whole before/expected/actual/saved profiles and parked finale retained."
+  },
+  "intermediate_failure": {
+    "report": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T052610330889Z\\report.json",
+    "sha256": "d24a80acabc1ced54c71d3ec0951e6a1d750bd47711c7cb4324da5b0f19cd1f0",
+    "checks": 183,
+    "failures": 10,
+    "cause": "Cold reentry assertion compared raw freshly generated definition doubles with saved/restored JSON values; final separately asserts raw live exact state then entire unchanged owning-codec round trip. No masks or runtime/decoder changes repaired this test."
+  },
+  "final": {
+    "report": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T052806688085Z\\report.json",
+    "report_sha256": "61c3fe0b0237f4a051d39da00d048f0f08e40f6b09f861c688b4a2dcf877ace2",
+    "source_map_sha256": "23ea7aa3f353ea1baffb7e923535dcae34beaaf70fb905eefca2eff6b177ae84",
+    "all_current_source_pins": 168,
+    "before_after_current_pins_equal": true,
+    "files": {
+      "arena-score-key.json": "9ab6fdff89ebacf5cf198ac775d4a17161b69a9f9b4e577d170b4d5530cb818a",
+      "arena_score_key.log": "e3049086c0dbff44a4a6050058a08604a25ed2ecc35b771abe44fdbf6705b603",
+      "campaign_checks.log": "1ed01f1baac080cf7c5739fe1f89aeeac70c887fc5a58b7ab830bd99b921f7dc",
+      "import-recovery.json": "48d3ad70f408caec9ea890389d90ca96938605122dd0a69a61d0a9e66a7fab75",
+      "import_recovery.log": "bc031a481b4f979dceeafb21d9e7076aed38acff3ce3dee00a6cdeec447dbc39",
+      "report.json": "61c3fe0b0237f4a051d39da00d048f0f08e40f6b09f861c688b4a2dcf877ace2",
+      "save-commit-report.json": "a6b098887f6e94ec66301fa1ab9427ea3fd32636b2faa2b88db0cc0fd4219ea2",
+      "save_commit.log": "8db282f462d1db6ccf28b0446b249513cd590b332d65aa0e1c49223de2094fe0",
+      "source-after.json": "23ea7aa3f353ea1baffb7e923535dcae34beaaf70fb905eefca2eff6b177ae84",
+      "source-before.json": "23ea7aa3f353ea1baffb7e923535dcae34beaaf70fb905eefca2eff6b177ae84",
+      "terminal-commit.json": "bbc68227bf00f596f2d3ac0bcb21a3048dec4681272b44e743a2a6be920f9949",
+      "terminal_commit.log": "99038ebe268b35675adc9f08bf7a6011e06a6bb686bf1c020a75adc6c1f3a081"
+    },
+    "checks": {
+      "arena_score_key": 188,
+      "import_recovery": 871,
+      "terminal_commit": 12,
+      "save_commit": 444,
+      "campaign_checks": 81
+    },
+    "failures_each": 0,
+    "raw_errors_warnings_objectdb": [],
+    "original65_assertions_retained": true,
+    "editor_import": "Explicitly skipped; existing cache; Dummy/headless only."
+  },
+  "runtime_lf_sha256": "9d1029c4b51b04a9a8f7bdb157270ab202ba88dd082e8aa79b4af7c3b2380fef",
+  "unchanged_combat_validation_profile_prefix_sha256": "cbf5fa8c9deb2dd9a23be8158f3dcb35521e1e91dc3a5dabd32e194e805d400f",
+  "unchanged_nonarena_record_suffix_sha256": "453a628cc78dc93be34e943ec22dc318088660f330f2fc1cc19bf355622d098a",
+  "unchanged_lf_sha256": {
+    "scripts/main.gd": "5e663c70a7a7ef725e85af4619b390c3839ed1ee7382d8de5b2ed961aa2c2811",
+    "scripts/save_store.gd": "326b6743331b1cdf6f21e420e2ce192d363245c93ce75c39f2561ec8bf49c00e",
+    "scripts/save_files.gd": "67bcaa62474ed0c3458e83174d0eba53cfed7d1ec629e228b51ea29da37a6dd8",
+    "scripts/engine.gd": "afce6acc3217797633ad5c3c0f56f9751fbf75a1f5dc3163848b72c4fb832f5f",
+    "scripts/rules.gd": "f8d440b8dbb82fb8bc526cf80b50b219edbe6d5a6e7bc3b58037b45433aa78c0",
+    "scripts/campaign_data.gd": "eb73e677adcf8e5e7c66f52cb2d2de901b30b963dd3f2b6c7d5e81a15437ccb5",
+    "scripts/import_recovery.gd": "668c5dba5d02e6671a4c3848a3d3472a449c3cd5c02318cf9dbc0854bbd3f3b0",
+    "scripts/recovery_copies.gd": "6a9674422cc24d5441e8b5c5de062a3b0d03724f063808c04116fa03eff66066",
+    "scripts/art.gd": "ddac90ead100a9e377cffc984bdc62c46885c2f34a48ca8f28617cb1abb7f726",
+    "scripts/presentation/adapter.gd": "ef96ae308b1612e946482c800c7160fc8ef16c00d5672a4efac740210fe36c2c",
+    "project.godot": "4e50aa1e1aeb2e9d0a33d425e4ba24be0ccb344c2d504ad39bf179144a91196e",
+    "export_presets.cfg": "aa8e8ba32e8071d39823f3bc75605c7bbe47d8186bd0e93a2221f32c620e49cd"
+  },
+  "compatibility": [
+    "Canonical numeric seed:tier for new identities.",
+    "Compare canonical and exact historically emitted float-seed alias using unchanged fewer-hits then faster-time ranking.",
+    "Explicit found flag preserves zero-hit/zero-time records; getter returns full copied score.",
+    "Equal-ranked divergent entries choose canonical deterministically; rescues is preserved data, not a newly invented tie breaker.",
+    "No old key deleted/renamed. Alias-only records stay in their existing slot; better runs replace that one best-score value, preserving all other entries.",
+    "If both keys exist, only a run better than their combined best updates canonical; equal/worse leaves the complete profile unchanged.",
+    "Full100-entry existing alias identity improves without key growth. No eviction or new capacity policy for genuinely new identities at the existing limit.",
+    "Current UI has seed/loadout controls and no score readout. No UI expansion; lookup is used by the record writer."
+  ],
+  "review": "Astra independently source-cleared frozen23-line runtime diff,168 current raw source pins and final188/871/12/444/81 strict logs; final checkpoint artifact/source/unchanged-code hash audit CLEAR, no P1/P2.",
+  "limits": [
+    "Synthetic complete progression fixtures and actual engine UI actions; not freshly earned arena wins, Android, physical phone, GPU/render, clipboard, sound/FPS or cloud acceptance.",
+    "Existing0.3.2/code8 binary is unchanged and does not include this future correction.",
+    "All historical recovery/finale failures remain separately preserved."
+  ],
+  "checkpoint_sha256_before_review_status_update": "bae5d7ac1c2489db7cb9406eea0a1cb1b0cb7bd4fd9689456308a09df486c588"
+}
