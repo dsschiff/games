@@ -1,0 +1,104 @@
+{
+  "scope": "Local offline AAB only; no upload, Play account/SDK, installed Android or cloud sync acceptance.",
+  "status": "Independently reviewed local signed AAB; no upload performed.",
+  "build_manifest": {
+    "path": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\aab-pipeline-20261024T0448Z\\manifest.json",
+    "sha256": "2be4a408cf10d92b46530599e0e17e8052b290cca4f6151e8071d3a322cbb56f",
+    "bytes": 113220
+  },
+  "artifact": {
+    "path": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\aab-pipeline-20261024T0448Z\\tower-trials.aab",
+    "bytes": 53091312,
+    "sha256": "5a2f5930ce0c30c84d848a39bf1ca57325ccb05e9be856d9048c0d949453ba4a"
+  },
+  "source_revision": "d6cb28b62253b1879446484a00be7a1e271ace68",
+  "pipeline_sha256": "94fb6d40aadc6717922cabff78549f71c0cab289f1ce2915cefa2d3febb2b75e",
+  "helper_sha256": {
+    "scripts\\portfolio.py": "3a473050bd36928c58f959ae99e67b3d22f533d425426b62e058090cace63033",
+    "scripts\\install_toolchain.py": "f8a2a15d8690f037d443f45d6a0df05c7b4ffab0550f5683a231c9ecdeb75c02",
+    "scripts\\owned_process.py": "ca0d5215fd9845c9ddf9e22c0d79ebfeee87b26ec9469bbb21d43fe6a50a6961",
+    "toolchain.json": "fa8a97e81f3fa3eb3d98fd0171b9e58842afc571c40114eb519e18ec7a51879c"
+  },
+  "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
+  "bundle_inspection": {
+    "package": "com.dsschiff.towertrials",
+    "version_code": 8,
+    "version_name": "0.4.2",
+    "min_sdk": 24,
+    "target_sdk": 36,
+    "debuggable": false,
+    "permissions": [],
+    "abis": [
+      "arm64-v8a",
+      "x86_64"
+    ]
+  },
+  "source_checks": {
+    "canonical_before_export_final_equal": true,
+    "staged_before_export_final_equal": true
+  },
+  "commands": [
+    {
+      "label": "engine-version",
+      "exit_code": 0,
+      "process_tree_stopped": true
+    },
+    {
+      "label": "import",
+      "exit_code": 0,
+      "process_tree_stopped": true
+    },
+    {
+      "label": "bundle",
+      "exit_code": 0,
+      "process_tree_stopped": true
+    },
+    {
+      "label": "sign",
+      "exit_code": 0,
+      "process_tree_stopped": true
+    },
+    {
+      "label": "signature",
+      "exit_code": 0,
+      "process_tree_stopped": true
+    },
+    {
+      "label": "certificate",
+      "exit_code": 0,
+      "process_tree_stopped": true
+    },
+    {
+      "label": "validate",
+      "exit_code": 0,
+      "process_tree_stopped": true
+    },
+    {
+      "label": "manifest",
+      "exit_code": 0,
+      "process_tree_stopped": true
+    }
+  ],
+  "cleanup": {
+    "path": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\aab-pipeline-20261024T0448Z\\staged-project",
+    "bytes_removed": 1322127002,
+    "removed": true
+  },
+  "tooling": {
+    "path": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\aab-pipeline-tooling-final-receipt.json",
+    "sha256": "7b1f52d852fc2181d581bc574f6fbba389e168f2cda3272f5458d67347484d57",
+    "bytes": 879
+  },
+  "review": "Astra independently checked all18 file pins, source/helper pins, raw logs, ZIP CRC/uniqueness/signature block, manifest/cert/ABIs and stage/intermediate absence. No P1/P2 findings.",
+  "failed_prior_trial": {
+    "manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\aab-pipeline-20261024T0440Z\\manifest.json",
+    "reason": "Merged Java stderr notice preceded XML; all commands exited0 but final XML qualification failed. Failed source did not retain the later pre-key source gate. Kept failed without reclassification."
+  },
+  "remaining": [
+    "Play developer identity and phone verification; last live check2026-10-24T04:01:37Z still action required",
+    "Play App Signing/PEPK and separate upload-key setup",
+    "App/client/tester/privacy configuration and genuine Play upload acceptance",
+    "Configured Google SDK packaging and genuine account/device cloud sync; offline command intentionally has no permissions",
+    "Physical Fold7 and human gameplay acceptance remain separate"
+  ]
+}

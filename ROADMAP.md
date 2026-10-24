@@ -73,3 +73,8 @@ Physical/human acceptance remains separate. Development continues while account
 verification, independent visual review or phone feedback waits.
 
 - Qualified unpublished refinements: Frontline0.3.4/code8 and Hook0.3.2/code8 signed7to8,19 whole-context comparisons and264 pins clear. Tower0.4.2/code8 earned7to8/claim/cold plus bounded native1x association clear. Optional cloud remains unconfigured; Gear local Import durability prerequisite active. See cycle evidence for exact manifests and fixture limits.
+
+- Play preparation follow-up: reusable locally signed AAB pipeline qualified on
+  Tower0.4.2/code8 with101/0 tooling checks and independent raw-artifact review.
+  Existing signing identity retained. Account verification, separate upload-key/
+  Play App Signing setup and genuine Play acceptance remain open; no upload.
