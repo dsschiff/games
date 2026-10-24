@@ -10,6 +10,7 @@ var briefing: Panel
 var next_button: Button
 var support_button: Button
 var ending_label: Label
+var record_criteria: Label
 var journey_list: VBoxContainer
 var seed_label: Label
 var seed_value := 137
@@ -106,9 +107,10 @@ func make_ui() -> void:
 	journey = panel(ui)
 	ending_label = label(journey, "", Vector2(24, 20), Vector2(572, 105), 27, "ffe1a0")
 	ending_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	record_criteria = label(journey, F.criteria(), Vector2(24, 132), Vector2(572, 86), 20)
 	var scroll := ScrollContainer.new()
-	scroll.position = Vector2(24, 135)
-	scroll.size = Vector2(572, 555)
+	scroll.position = Vector2(24, 226)
+	scroll.size = Vector2(572, 464)
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	journey.add_child(scroll)
 	journey_list = VBoxContainer.new()
@@ -224,12 +226,17 @@ func enter_campaign() -> void:
 		child.free()
 	ending_label.text = "THE FOUNDRY IS FREE\nTwelve districts liberated. Replay for medals or skirmish." if career.ending else "JOURNEY  %d / 12\nSelecting resets this sortie; earned records stay." % career.clears.size()
 	for i in 12:
-		var id: String = D.IDS[i]
-		var medal := int(career.clears.get(id, 0))
-		var b := button(journey_list, "%02d  %s   %s" % [i + 1, D.TITLES[i], "*".repeat(medal)], select_mission.bind(i))
+		var b := button(journey_list, F.campaign_row(i, career), select_mission.bind(i))
 		b.add_theme_font_size_override("font_size", 24)
 		b.custom_minimum_size = Vector2(560, 96)
 		b.disabled = i > career.clears.size()
+	if not career.skirmishes.is_empty():
+		var heading := Label.new(); heading.text = "Skirmish results: latest clear per seed/style"
+		heading.add_theme_font_size_override("font_size", 20); journey_list.add_child(heading)
+		for key in career.skirmishes:
+			var entry := Label.new(); entry.text = F.skirmish_row(key, career.skirmishes[key])
+			entry.custom_minimum_size = Vector2(560, 48); entry.add_theme_font_size_override("font_size", 22)
+			journey_list.add_child(entry)
 	journey.show()
 	refresh()
 
@@ -430,7 +437,7 @@ func refresh() -> void:
 	if terminal.visible:
 		terminal_title.text = "FOUNDRY LIBERATED" if career.ending and d.id == "foundry_liberation" and state.phase == "victory" else ("DISTRICT SECURED" if state.phase == "victory" else "SORTIE LOST")
 		terminal_title.add_theme_font_size_override("font_size", 31)
-		terminal_detail.text = ("%s\n%d stopped / %d escaped • %.0fs\nScrap spent %d • crews equipped %d\n" + F.contribution(state) + "\n%s") % [state.cause, state.killed.size(), state.escaped.size(), state.time, state.spent, state.consumed.reduce(func(a, b): return a + b, 0), "Mortars/Storm: Rangers, Breakers and Ward help." if state.last_hurt in ["mortar", "storm"] else "Retry restocks crews. Refit support before Launch."]
+		terminal_detail.text = F.recap(state, career)
 		next_button.visible = state.phase == "victory"
 		next_button.text = "LIBERATION JOURNAL" if d.id == "foundry_liberation" else ("NEXT MISSION" if d.mode == "campaign" else "JOURNEY / RECORDS")
 	pause_button.disabled = modal
