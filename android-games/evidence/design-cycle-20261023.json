@@ -817,5 +817,19 @@
     "new_apk": false,
     "physical_acceptance": false,
     "cloud_acceptance": false
+  },
+  "tower_normal_copy": {
+    "state": "Source-reviewed truthful normalCopy confirmation; contract42/owner638 root checks pass; higher-version signed/native candidate open",
+    "evidence": "android-games/evidence/tower-copy-confirm-20261024.json",
+    "worker_source": "e87a02291bf6245ecedd512f5b7b8ac3f5a7c6a7",
+    "root_source": "abd7a30",
+    "root_checks": [
+      42,
+      638
+    ],
+    "failures": 0,
+    "pending_protocol_unchanged": true,
+    "new_apk": false,
+    "native_protocol_accepted": false
   }
 }

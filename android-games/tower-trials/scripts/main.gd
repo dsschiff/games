@@ -4,6 +4,8 @@ const Content = preload("res://scripts/content.gd")
 const Rules = preload("res://scripts/rules.gd")
 const Saves = preload("res://scripts/save_store.gd")
 const Challenge = preload("res://scripts/challenge_v1.gd")
+const CopyConfirm = preload("res://scripts/copy_confirm.gd")
+const ClipboardBackend = preload("res://scripts/clipboard_backend.gd")
 const Audio = preload("res://scripts/local_audio.gd")
 const Recovery = preload("res://scripts/import_recovery.gd")
 const TowerView = preload("res://scripts/presentation/tower_view.gd")
@@ -32,6 +34,9 @@ var recovery_code: TextEdit
 var recovery_scroll: ScrollContainer
 var recovery_buttons := {}
 var recovery_copy_backend: Variant = null
+var clipboard_backend: RefCounted = ClipboardBackend.new()
+var normal_copy := CopyConfirm.new(clipboard_backend)
+var normal_copy_ticket := -1
 var data := Saves.fresh()
 var level: Dictionary
 var state: Dictionary
@@ -92,6 +97,7 @@ func _ready() -> void:
 	editor.add_theme_font_size_override("font_size", 20)
 	editor.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
 	editor.visible = false
+	editor.text_changed.connect(cancel_normal_copy)
 	build_recovery_ui()
 	get_viewport().size_changed.connect(layout)
 	layout()
@@ -99,6 +105,7 @@ func _ready() -> void:
 	queue_redraw()
 
 func _exit_tree() -> void:
+	cancel_normal_copy()
 	player.stop()
 	player.stream = null
 	sound.cache.clear()
@@ -171,6 +178,7 @@ func _exit(rect: Rect2, span: Vector2) -> float:
 	return minf(tx, ty)
 
 func _notification(what: int) -> void:
+	if what in [NOTIFICATION_APPLICATION_PAUSED, NOTIFICATION_APPLICATION_FOCUS_OUT, NOTIFICATION_WM_GO_BACK_REQUEST, NOTIFICATION_WM_CLOSE_REQUEST]: cancel_normal_copy()
 	if what in [NOTIFICATION_APPLICATION_PAUSED, NOTIFICATION_APPLICATION_FOCUS_OUT]:
 		paused = true
 		if is_node_ready():
@@ -195,6 +203,7 @@ func tone(hz: float) -> void:
 		player.play()
 
 func _process(delta: float) -> void:
+	poll_normal_copy(delta)
 	if import_pending: return
 	if paused or menu or transfer or guide or details or screen != "game":
 		return
@@ -364,6 +373,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func back() -> void:
 	if import_pending: return
+	cancel_normal_copy()
 	if details:
 		details = false
 	elif guide:
@@ -393,6 +403,7 @@ func back() -> void:
 
 func action(key: String) -> void:
 	if import_pending: return
+	cancel_normal_copy()
 	if key == "settings":
 		menu = true
 		hide_seed()
@@ -423,10 +434,9 @@ func action(key: String) -> void:
 		transfer = false
 		editor.visible = false
 	elif key == "copy":
-		DisplayServer.clipboard_set(editor.text)
-		note = "Save text copied. Store it somewhere private."
+		start_normal_copy()
 	elif key == "paste":
-		editor.text = DisplayServer.clipboard_get()
+		paste_normal_code()
 	elif key == "import":
 		begin_import(editor.text)
 	elif key == "resume":
@@ -982,7 +992,44 @@ func show_recovery() -> void:
 	var known:=not import_recovery.record.is_empty()
 	for id in recovery_buttons: recovery_buttons[id].visible=(id=="read") if not known else id!="read"
 	recovery_summary.text="PREVIOUS COMPLETE SAVE\n"+Recovery.describe(import_recovery.original)+"\n\nIMPORTED COMPLETE SAVE\n"+Recovery.describe(import_recovery.incoming) if known else "Play and local saving are paused. No default route will be saved."
+func cancel_normal_copy() -> void:
+	if normal_copy.pending: note="Copy not confirmed. Select the save text to copy manually."
+	normal_copy.cancel(); normal_copy_ticket=-1
+	if is_inside_tree(): queue_redraw()
+func normal_transfer_valid(editor_id: int,generation: int) -> bool:
+	return is_inside_tree() and not is_queued_for_deletion() and not import_pending and transfer and is_instance_valid(editor) and editor.visible and editor.get_instance_id()==editor_id and normal_copy.generation==generation
+func normal_copy_valid() -> bool:
+	if not is_instance_valid(editor): return false
+	return normal_transfer_valid(editor.get_instance_id(),normal_copy_ticket) and normal_copy.target=="normal:"+str(editor.get_instance_id()) and editor.text==normal_copy.expected
+func start_normal_copy() -> void:
+	if import_pending or not transfer or not is_instance_valid(editor) or not editor.visible: return
+	editor.select_all(); normal_copy.backend=clipboard_backend
+	var ticket:=normal_copy.begin(editor.text,"normal:"+str(editor.get_instance_id()),"Select the save text to copy manually.")
+	if not is_instance_valid(self) or ticket!=normal_copy.generation: return
+	normal_copy_ticket=ticket
+	if normal_copy_valid(): note=normal_copy.feedback; queue_redraw()
+func poll_normal_copy(delta: float) -> void:
+	if not normal_copy.pending: return
+	if not normal_copy_valid(): cancel_normal_copy(); return
+	var ticket:=normal_copy.generation
+	var changed:=normal_copy.poll(delta)
+	if ticket!=normal_copy.generation: return
+	if not normal_copy_valid():
+		note="Copy not confirmed. Select the save text to copy manually."
+		cancel_normal_copy(); return
+	if changed: note=normal_copy.feedback; queue_redraw()
+func paste_normal_code() -> void:
+	cancel_normal_copy()
+	if not is_instance_valid(editor): return
+	var generation:=normal_copy.generation; var editor_id:=editor.get_instance_id(); var backend:=clipboard_backend; var previous_text:=editor.text
+	var supported: bool=backend.available()
+	if not normal_transfer_valid(editor_id,generation) or editor.text!=previous_text: return
+	if not supported: note="Clipboard unavailable. Enter a save code in the text field."; queue_redraw(); return
+	var text: String=backend.get_text()
+	if normal_transfer_valid(editor_id,generation) and editor.text==previous_text: editor.text=text
+
 func begin_import(text: String) -> void:
+	cancel_normal_copy()
 	if import_pending: return
 	var decoded:=Saves.decode(text)
 	if not decoded.ok: note=decoded.get("message","Invalid save"); return

@@ -1,0 +1,134 @@
+{
+  "scope": "Normal local transfer Copy/Paste confirmation only; source integrated, no new signed candidate or native protocol acceptance.",
+  "worker_source": "e87a02291bf6245ecedd512f5b7b8ac3f5a7c6a7",
+  "integrated_source": "abd7a30",
+  "base": "65bf6521992bf76d7da724c09c634ec80305b1f8",
+  "checkpoint": {
+    "path": "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\COPY_CONFIRM.json",
+    "bytes": 105776,
+    "sha256": "442c70b805b3de79a3e450ef088b6dbe6e4ea5a5152a7ddd6b301308e7e0da0f"
+  },
+  "independent_review": "Astra final source/evidence CLEAR:184 current raw/LF,176 base/current,80 artifacts; editor-only free/replacement counterexample corrected and covered.",
+  "behavior": "Single write, exact frame-polled readback around80ms through640ms; truthful copied/unavailable/unconfirmed; selected visible manual text remains. Generation/owner/editor/text/target/lifecycle guards discard stale results and preserve reentrant newer requests. Paste revalidates after external available/get. Pending recovery synchronous protocol unchanged.",
+  "root": {
+    "report": {
+      "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-normal-copy-root-20261024T113104663999Z\\report.json",
+      "bytes": 1611,
+      "sha256": "c7ce2fc4a0a44b3353a2c8fdf522da7597f32b7479ebb3a6120223c82ddae064"
+    },
+    "contract_checks": 42,
+    "actual_owner_input_checks": 638,
+    "failures": 0,
+    "source_unchanged": true,
+    "raw_tracked_source_files": 187,
+    "touch_taps": 186,
+    "typed_key_events": 4,
+    "artifacts": {
+      "report.json": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-normal-copy-root-20261024T113104663999Z\\report.json",
+        "bytes": 1611,
+        "sha256": "c7ce2fc4a0a44b3353a2c8fdf522da7597f32b7479ebb3a6120223c82ddae064"
+      },
+      "source-after.json": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-normal-copy-root-20261024T113104663999Z\\source-after.json",
+        "bytes": 31595,
+        "sha256": "8d4bb0e8eb8a34e1fc54f4cb4e7b3dc65169fa73f08655d658e41de26937e380"
+      },
+      "source-before.json": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-normal-copy-root-20261024T113104663999Z\\source-before.json",
+        "bytes": 31595,
+        "sha256": "8d4bb0e8eb8a34e1fc54f4cb4e7b3dc65169fa73f08655d658e41de26937e380"
+      },
+      "copy_confirm\\copy-confirm.json": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-normal-copy-root-20261024T113104663999Z\\copy_confirm\\copy-confirm.json",
+        "bytes": 13876,
+        "sha256": "b39b06bc618173e166609765723d3f9ee1fc242f57bc7d1be2db95b4d0deacdb"
+      },
+      "copy_confirm\\raw.log": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-normal-copy-root-20261024T113104663999Z\\copy_confirm\\raw.log",
+        "bytes": 125,
+        "sha256": "d89a7b6bd58d1ee3a914972dac6200473f9457eac75f0f2df47d1ec8db417fc4"
+      },
+      "copy_confirm\\appdata\\Godot\\app_userdata\\Tower Trials\\tower-recovery-copy-03ced521fc7c4b04150b8fa6f123a344d6b3af617f1a3c63af7fc48771dff1f2": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-normal-copy-root-20261024T113104663999Z\\copy_confirm\\appdata\\Godot\\app_userdata\\Tower Trials\\tower-recovery-copy-03ced521fc7c4b04150b8fa6f123a344d6b3af617f1a3c63af7fc48771dff1f2",
+        "bytes": 2256,
+        "sha256": "03ced521fc7c4b04150b8fa6f123a344d6b3af617f1a3c63af7fc48771dff1f2"
+      },
+      "copy_confirm\\appdata\\Godot\\app_userdata\\Tower Trials\\tower-recovery-copy-8cb1419e1b656c418ef9b307d5343d8ab369e7bbf4ecf97ed2b30a747e5f55b8": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-normal-copy-root-20261024T113104663999Z\\copy_confirm\\appdata\\Godot\\app_userdata\\Tower Trials\\tower-recovery-copy-8cb1419e1b656c418ef9b307d5343d8ab369e7bbf4ecf97ed2b30a747e5f55b8",
+        "bytes": 2257,
+        "sha256": "8cb1419e1b656c418ef9b307d5343d8ab369e7bbf4ecf97ed2b30a747e5f55b8"
+      },
+      "copy_confirm\\appdata\\Godot\\app_userdata\\Tower Trials\\tower-recovery-copy-da6a9166e6eef183a74dc6b1cf4a4763a039a9bf623e3a71184afb72a44d95f4": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-normal-copy-root-20261024T113104663999Z\\copy_confirm\\appdata\\Godot\\app_userdata\\Tower Trials\\tower-recovery-copy-da6a9166e6eef183a74dc6b1cf4a4763a039a9bf623e3a71184afb72a44d95f4",
+        "bytes": 2256,
+        "sha256": "da6a9166e6eef183a74dc6b1cf4a4763a039a9bf623e3a71184afb72a44d95f4"
+      },
+      "copy_confirm\\appdata\\Godot\\app_userdata\\Tower Trials\\tower-recovery-copy-ec06ba0496c7331b0eaf4abbcd8cd32b8879afa2e269b8f13448c643f0a0e3db": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-normal-copy-root-20261024T113104663999Z\\copy_confirm\\appdata\\Godot\\app_userdata\\Tower Trials\\tower-recovery-copy-ec06ba0496c7331b0eaf4abbcd8cd32b8879afa2e269b8f13448c643f0a0e3db",
+        "bytes": 2256,
+        "sha256": "ec06ba0496c7331b0eaf4abbcd8cd32b8879afa2e269b8f13448c643f0a0e3db"
+      },
+      "copy_confirm\\appdata\\Godot\\app_userdata\\Tower Trials\\tower-recovery-copy-f9ab37f80946ecbb97ddeab2bdeb59d1a50ff55527c0d316c528692e5f566b8c": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-normal-copy-root-20261024T113104663999Z\\copy_confirm\\appdata\\Godot\\app_userdata\\Tower Trials\\tower-recovery-copy-f9ab37f80946ecbb97ddeab2bdeb59d1a50ff55527c0d316c528692e5f566b8c",
+        "bytes": 2256,
+        "sha256": "f9ab37f80946ecbb97ddeab2bdeb59d1a50ff55527c0d316c528692e5f566b8c"
+      },
+      "copy_confirm\\appdata\\Godot\\app_userdata\\Tower Trials\\tower-save.json": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-normal-copy-root-20261024T113104663999Z\\copy_confirm\\appdata\\Godot\\app_userdata\\Tower Trials\\tower-save.json",
+        "bytes": 2258,
+        "sha256": "bb7a4ae359b8f4f1c45f652cbfd261d908bb9aacae8114538f813c9c899377f3"
+      },
+      "copy_confirm\\appdata\\Godot\\app_userdata\\Tower Trials\\tower-save.json.bak": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-normal-copy-root-20261024T113104663999Z\\copy_confirm\\appdata\\Godot\\app_userdata\\Tower Trials\\tower-save.json.bak",
+        "bytes": 2256,
+        "sha256": "7d41eab346c2e8be6129814c2e5cab14f4898233700f52f65642be16ad9c3d04"
+      },
+      "copy_confirm\\appdata\\Godot\\app_userdata\\Tower Trials\\logs\\godot.log": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-normal-copy-root-20261024T113104663999Z\\copy_confirm\\appdata\\Godot\\app_userdata\\Tower Trials\\logs\\godot.log",
+        "bytes": 121,
+        "sha256": "cc4a5c2c92aa43fb3dddeff7958a1285b7b23c008bc8637adbb2b1779fa1167d"
+      },
+      "copy_contract\\copy-contract.json": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-normal-copy-root-20261024T113104663999Z\\copy_contract\\copy-contract.json",
+        "bytes": 355,
+        "sha256": "87207197770eacfb6c5a4d715f2e3c33da5ec79c8ead1e24ba0705464b095321"
+      },
+      "copy_contract\\raw.log": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-normal-copy-root-20261024T113104663999Z\\copy_contract\\raw.log",
+        "bytes": 125,
+        "sha256": "92937064473d38cc8404c33d71870ba234523110172b5a1b9c3879b2d56ed0e3"
+      },
+      "copy_contract\\appdata\\Godot\\app_userdata\\Tower Trials\\logs\\godot.log": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-normal-copy-root-20261024T113104663999Z\\copy_contract\\appdata\\Godot\\app_userdata\\Tower Trials\\logs\\godot.log",
+        "bytes": 121,
+        "sha256": "233e197232ccceff55f31d83c2e5a6a9fd2362b266c3f931f30ab9a40d4057a2"
+      }
+    },
+    "event_counts": {
+      "all_events": 376,
+      "touch_events": 372,
+      "touch_presses": 186,
+      "key_events": 4
+    }
+  },
+  "worker_regressions": {
+    "copy_contract": 42,
+    "copy_confirm": 638,
+    "layout": 235,
+    "whole_recovery": 608,
+    "medal_feedback": 793,
+    "failures_each": 0,
+    "strict_clean_each": true
+  },
+  "preserved": "Full actions/Undo/campaign/profile/settings/activeChallenge/parkedChallenge and four raw slots. Store/rules/catalog/schema/version/export unchanged; no OS clipboard during CPU verification.",
+  "retained_failures": "Baseline56/16 and precondition rerun56/16; stale-code-during-get590/1. Editor-lifetime failure was source-review counterexample with new positive regressions, not a claimed prior executed failing test.",
+  "existing_apk": "Signed0.4.4/code10 predates this protocol; its exact observed normalCopy readback does not clear this source.",
+  "remaining": [
+    "Higher-version signed build and in-place native update",
+    "Actual first-tap/delayed/unavailable/unconfirmed/IME/manual selection behavior where reachable on platform",
+    "Rendered transfer layout and physical Fold7/folding/sound/FPS/human fun",
+    "Configured optional cloud recovery and specific private transfer approval"
+  ],
+  "no_new_upload": true
+}
