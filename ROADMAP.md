@@ -19,7 +19,7 @@ The active portfolio goal is defined in `GOAL.md`. Status reflects evidence, not
 1. Final selected-reference implementation fidelity is accepted for all six in `android-games/reviews/portfolio-final-fidelity-astra.md`. Exact commercial equations, advertiser provenance and human pacing remain qualified; physical acceptance remains separate.
 2. Keep verified foundation/prototype evidence landed. Physical Samsung checks remain separate from emulator evidence.
 3. Keep Gear's verified code6 software candidate frozen for physical-phone testing. Dense/cap-heavy formations, human fun, audible sound and measured physical-phone performance remain explicit limits.
-4. Keep Tower's accepted code4 software candidate frozen for phone testing. Required seeded Challenge and prior authored/full-rule checks remain verified; Back correction passes independent67/71checks and review. Actual3Ã¢â€ â€™4 preserves every prior save field exceptrevision, including generated snapshot/record and separate campaign. Native modal Back/clipboard/Home/cold/cover-inner emulated resize pass. Human pacing/fun and physical Fold7 touch/folding/safe areas/sound/performance remain open.
+4. Keep Tower's accepted code4 software candidate frozen for phone testing. Required seeded Challenge and prior authored/full-rule checks remain verified; Back correction passes independent67/71checks and review. Actual3â†’4 preserves every prior save field exceptrevision, including generated snapshot/record and separate campaign. Native modal Back/clipboard/Home/cold/cover-inner emulated resize pass. Human pacing/fun and physical Fold7 touch/folding/safe areas/sound/performance remain open.
 5. Keep Hook's conditional code4 candidate frozen. Actual update and native typing/rejection/transfer/lifecycle checks pass; physical on-screen IME and other phone checks remain required.
 6. Keep Hearthguard code2 conditional candidate frozen for phone testing. Independent full campaign headless/Astra and actual1-to2/native loss/Retry/win/transfer/active resize/cold pass. Windows clipboard failures remain separate; native clipboard success does not erase them. Physical IME/touch/folding/safe areas/sound/FPS and human pacing/fun remain required.
 7. Keep Frontline code2 conditional software candidate frozen for physical testing. Actual update, paid victory, separate natural loss/Retry, real clipboard import/rejection, native Back, settings, active Home/cold and cover-inner resize pass bounded review. Later rejected previews have identical clear nonuniform PNGs; earlier actual graphics failures remain separately retained. Keep Dead Run code3 frozen: camera P2 closed, real2-to3 whole-earned-save retention and unfolded live field verified. Inherited code2 win/loss/Retry/progression/transfer/Back remain retained. Six phone-test candidates are frozen.
@@ -37,7 +37,7 @@ The active portfolio goal is defined in `GOAL.md`. Status reflects evidence, not
 
 The current work is `android-games/GRAPHICS-OVERHAUL.md`; status/ownership is in
 `android-games/graphics-overhaul.json`. Additional phone testing is deferred by
-the user and cannot block G0Ã¢â‚¬â€œG3. Existing baseline approvals do not establish the
+the user and cannot block G0â€“G3. Existing baseline approvals do not establish the
 new visual standard. Keep screenshots, normal-speed motion review and measured
 frame timing distinct from headless correctness and physical/human acceptance.
 
