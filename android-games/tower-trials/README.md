@@ -1,3 +1,5 @@
+> Current local candidate source: **0.4.3 / Android code9** combines reviewed floor association, whole local Import recovery and named medal feedback. Source/CPU checks pass; this version awaits signed packaging, native update/recovery/clipboard and rendered readability checks. No new private upload or phone acceptance. The code5 notes below describe the historical graphics milestone.
+
 > Graphics work: see [GRAPHICS_PRODUCTION.md](GRAPHICS_PRODUCTION.md). Graphics candidate frozen as 0.4.0/code5 (original stylized 3D presentation). Status 2026-10-22: signed APK built, rules 3503+3105 and input 1363 checks pass, genuine emulator code4-to-5 update keeps the whole save, a real room tap plus Enter plays the move and shows the courier fight on the emulator, and Android lighting matches desktop frames. Not phone tested. Evidence: `android-games/evidence/tower-graphics-candidate.json`.
 
 # Tower Trials
