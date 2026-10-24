@@ -11,7 +11,7 @@
       "bytes": 1804
     },
     "artifact": {
-      "path": ".artifacts/gear-bastion/20261024T044913920381Z/gear-bastion.apk",
+      "path": "F:/games-workspaces/gear-recovery-20261024/.artifacts/gear-bastion/20261024T044913920381Z/gear-bastion.apk",
       "bytes": 56083160,
       "sha256": "185a7d1ab5a4ab2be4d1e838a57a501f8c1b22a760f6c6f75971a851db0d378d"
     },
@@ -27,7 +27,7 @@
     },
     "clean_source": true,
     "source_unchanged": true,
-    "status": "Local signed candidate. Native update/recovery pending; not uploaded."
+    "status": "Local signed code11 functional packet audited with strict log-clean failure. New retry-marker fault sequence is outside prior packet coverage; future builds held for regression/fix. Not uploaded."
   },
   "worker_checkpoint": {
     "path": "F:\\games-workspaces\\gear-recovery-20261024\\android-games\\gear-bastion\\RECOVERY_CHECKPOINT.json",
@@ -69,6 +69,43 @@
   ],
   "independent_review": "Astra source and CPU checkpoint clear; signed candidate APK/hash/size/signer/raw engine logs/manifest/source fingerprint independently verified. Runtime unchanged from f34d77e; candidate changes only version metadata and README.",
   "native": {
+    "status": "Independently audited bounded functional evidence; strict engine log-clean FAILED. No upload or blanket release/render clearance.",
+    "report": {
+      "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\native-gear-recovery-20261024T0522Z\\report.json",
+      "sha256": "c353795ec209cebab5d78da2b0eafe544808337e999e07bf1e347cbe1ea881d4",
+      "bytes": 45161
+    },
+    "packet_files": 212,
+    "update_files": 8,
+    "complete_owning_context_comparisons": 16,
+    "failures": 0,
+    "pending_complete_context_validations": 7,
+    "resolved_journal_absence_checks": 8,
+    "scope": "Actual signed10to11, offline/Home/cold process checks passed; process screenshots alone were black/splash and do not establish visual acceptance. Later settled screens show working game/pending UI. Actual native Paste/Import from genuine ready to genuine battle context in First Spark, complete active run/settings/profile verified; subsequent Home/cold stays at12.9333333333333s and paused.",
+    "pending_fixture": "Journal metadata explicitly materialized referencing exact archives genuinely created by normal native Import. Previous ready vs incoming battle in same first mission; no native I/O fault or power loss induced. Earlier typed-old-practice folder name was an incorrect initial assumption corrected by owning decode.",
+    "pending_controls": "Summary-first native panel readable; Back/Home/app-process cold launch retain exact first-fixture file bytes; read-only code view and explicit Retry Import/Keep Previous verified. Copy export controls absent in code11 and being added separately.",
+    "restore": "Original pre-update complete battle context restored through actual Paste/Import and owning Store verified before shutdown.",
+    "equality_limit": "Complete production owning-decoder state/settings/profile equality, without extra masks. Independent raw JSON comparison finds four update-related unit-x 1-ULP serialization changes (103.10927135131051 to 103.10927135131053); do not claim raw-value or byte equality for those comparisons.",
+    "profile_limit": "Earned campaign/medal/challenge profile is empty. This packet proves exact preservation of that profile, not native earned-profile coverage.",
+    "strict_engine_log_clean": false,
+    "warning": "First and later warm cold app logs retain WARNING Failed to load cached shader, recompiling. Warm log-clean assertion failed, not reclassified. Godot source shows cached OpenGL binary link failure triggers recompilation; cause of incompatibility here remains unproven. No blanket cache disabling or warning filtering.",
+    "engine_source": "https://raw.githubusercontent.com/godotengine/godot/4.7.2-stable/drivers/gles3/shader_gles3.cpp",
+    "independent_review": "Astra verified all212 packet pins,8 updater pins,APK/build,17 decoder bindings,16 owning-context comparisons,7 exact archive/marker validations,8 journal absences and settled summary/read-only/Keep Previous cold stills. No native fault/power-loss or physical acceptance.",
+    "shutdown": {
+      "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\native-gear-recovery-20261024T0522Z-cleanup.json",
+      "sha256": "253db25fb760dfd5fd605df8678b974f51bbbf0450a9cc57dff215a47e686d6f",
+      "bytes": 216
+    }
+  },
+  "remaining": [
+    "Equivalent retry-marker fault regression/fix and independent source review",
+    "Higher-version build and actual Android copy export/readback",
+    "Repeated shader warning root cause and rendering/performance qualification",
+    "Real native interrupted-storage/power-loss evidence",
+    "Physical Fold7 touch/folding/sound/FPS and human fun",
+    "Configured optional Google account/cloud sync"
+  ],
+  "native_initial_attempt": {
     "status": "Not qualified. Owned emulator boot/app launch returned successfully; raw-save capture shell then timed out before update.",
     "evidence": [
       {
@@ -106,10 +143,26 @@
       "Keep fixture/bootstrap checks separate from native I/O failure, OS interruption and power-loss claims"
     ]
   },
-  "remaining": [
-    "Native/rendered recovery and clipboard behavior",
-    "Real interrupted-storage/power-loss evidence",
-    "Physical Fold7 touch/folding/sound/FPS and human fun",
-    "Optional Google account/cloud integration remains external and separate"
-  ]
+  "copy_controls": {
+    "source_commit": "531744a2b231302f1689da0774fb9f6f98599230",
+    "checkpoint": {
+      "path": "android-games\\gear-bastion\\RECOVERY_COPY_CHECKPOINT.json",
+      "sha256": "09aae85e6da8bd45bed225ddb90dff0c0ad551933d6fd308b0874762906b11a9",
+      "bytes": 30492
+    },
+    "worker_checks": 386,
+    "root_receipt": {
+      "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\copy-controls-cpu-20261024T060623268067Z\\receipt.json",
+      "sha256": "23781315ff6ba41f1503459ae33bc8477f846e1bca74228e8bcb0bd0a4b6d3f4",
+      "bytes": 71848
+    },
+    "root_checks": 386,
+    "failures": 0,
+    "scope": "Actual touch input in headless/Dummy, complete context/files unchanged; unsupported clipboard branch only. Native export success remains unverified. Source-only; no version/build change."
+  },
+  "retry_marker_followup": {
+    "status": "OPEN; new APK build held",
+    "observed": "Dead Run reproduced29 checks/10 failures after verified active write, failed marker cleanup, explicit later choice and false-success marker promotion consuming the sole surviving valid marker. Gear, Hook and Frontline share the persist retry structure; equivalent regressions pending, no unexecuted game failure claimed.",
+    "next": "Require non-destructive admission of the exact intended existing marker, preserve unreadable/conflicting markers, verify every archived context, both choices and fresh bootstrap before new build."
+  }
 }

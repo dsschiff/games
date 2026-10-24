@@ -1,0 +1,17 @@
+# Pending recovery archive copy controls
+
+The recovery panel previously hid its normal Copy action together with unsafe Paste/Import. Players could view complete archived codes but had to select thousands of characters manually. Two touch-sized, vertically stacked **Copy Previous** and **Copy Imported** controls now sit among the safe recovery choices, after the summaries. They select the retained archive strings directly, independently of the displayed TextEdit. The original recovery explanation remains visible; clipboard feedback is separate.
+
+A copy reports success only when the platform advertises clipboard support and immediate exact clipboard readback matches the entire chosen code. Unsupported platforms report unavailable and retain the existing read-only View fallback. A mismatch reports unverified. These statuses describe clipboard acceptance only. Unknown recovery hides the controls; an unavailable individual archive disables its copy. Copy never resolves recovery, writes a slot/journal/copy, changes the whole live context or resumes play.
+
+## Evidence
+
+`RECOVERY_COPY_CHECKPOINT.json` binds retained raw logs, complete test reports, source pins and unchanged base files. The baseline actual-input reproduction failed **24 of 50** checks because both controls were absent. The final cached CPU/headless/Dummy run passes **386/0**, with **168 actual ScreenTouch events**, **214 unchanged source pins**, exit zero and no raw errors/warnings. Ready, battle and terminal complete records run at cover, inner, landscape and 800×450 sizes. Every recovery choice remains touch-sized and scroll-reachable after the longer unsupported feedback; both View fallbacks preserve exact full codes. Full live raw state, decoded profile/settings, retained code strings/journal record, every backend file and timestamp, and write/rename counts remain unchanged by copying. Explicit Retry/Keep actions still adopt the selected whole context afterward and clear only UI copy feedback.
+
+The retained test-only parse failure was a missing dictionary type annotation. A later six-failure test packet dispatched recovery choice input before container relayout after deliberately changing the synthetic marker from unknown back to known. Adding the ordinary frame wait before input resolved the harness issue; no runtime rule or timing changed. Those failures remain failures. Two superseded successful probe packets were disposable and removed after the final verified result.
+
+Rerun from the worktree root with `python android-games/gear-bastion/tests/run_recovery_copy.py`. This runner uses a fresh root `.artifacts/copy-controls-cpu-*` folder, isolated APPDATA/TEMP, and the existing imported cache; it never runs editor/import, renderer, native or OS clipboard calls. The worktree's existing native evidence and caches were not modified.
+
+## Remaining gate
+
+Astra independently cleared source/CPU evidence and all final checkpoint pins: 11 artifacts, four runtime/test LF pins, 210 unchanged current/base files, and all 214 executed source pins. Coordinator must build a higher version and verify both actual Android buttons against complete archived clipboard codes before claiming native copy success. This increment does not change rules, decoder, schema, store, versions, export, signing, or the installed Gear0.4.2/code11 binary. Physical Fold7 touch/readability and clipboard persistence remain separate.

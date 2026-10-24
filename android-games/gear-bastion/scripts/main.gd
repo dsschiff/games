@@ -53,6 +53,7 @@ var recovery: ImportRecovery
 var recovery_status := {}
 var recovery_code_visible := false
 var recovery_summary: Label
+var recovery_copy_feedback: Label
 var recovery_choices: VBoxContainer
 var recovery_buttons := {}
 var save_explanation: Label
@@ -651,8 +652,10 @@ func _build_save_dialog() -> void:
 	content.add_child(save_explanation)
 	recovery_summary=Label.new(); recovery_summary.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 	recovery_summary.size_flags_horizontal=Control.SIZE_EXPAND_FILL; content.add_child(recovery_summary); recovery_summary.hide()
+	recovery_copy_feedback=Label.new(); recovery_copy_feedback.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+	recovery_copy_feedback.size_flags_horizontal=Control.SIZE_EXPAND_FILL; content.add_child(recovery_copy_feedback); recovery_copy_feedback.hide()
 	recovery_choices=VBoxContainer.new(); content.add_child(recovery_choices); recovery_choices.hide()
-	for item in [["retry","Retry Import",finish_import.bind(true)],["previous","Keep previous whole save",finish_import.bind(false)],["read","Retry recovery read",retry_recovery_read],["view_previous","View previous code",show_recovery_code.bind(false)],["view_incoming","View imported code",show_recovery_code.bind(true)]]:
+	for item in [["retry","Retry Import",finish_import.bind(true)],["previous","Keep previous whole save",finish_import.bind(false)],["read","Retry recovery read",retry_recovery_read],["copy_previous","Copy Previous",copy_recovery_code.bind(false)],["copy_incoming","Copy Imported",copy_recovery_code.bind(true)],["view_previous","View previous code",show_recovery_code.bind(false)],["view_incoming","View imported code",show_recovery_code.bind(true)]]:
 		var recovery_button:=Button.new(); recovery_button.text=item[1]; recovery_button.custom_minimum_size=Vector2(180,80)
 		recovery_button.pressed.connect(item[2]); recovery_choices.add_child(recovery_button); recovery_buttons[item[0]]=recovery_button
 	save_text = TextEdit.new()
@@ -764,7 +767,7 @@ func begin_import(code: String) -> void:
 	if not recovery_pending:
 		save_dialog.title=recovery.message
 		return
-	recovery_code_visible=false; save_failed=true; show_recovery()
+	recovery_code_visible=false; recovery_copy_feedback.text=""; save_failed=true; show_recovery()
 	if recovery_status.ok: finish_import(true)
 
 func show_recovery() -> void:
@@ -772,11 +775,13 @@ func show_recovery() -> void:
 	paused=true; cancel_drag()
 	save_dialog.title="Whole save recovery · play paused"
 	save_explanation.hide(); save_action_row.hide(); save_timing_row.hide(); save_dialog.get_ok_button().hide()
-	recovery_summary.show(); recovery_choices.show(); save_text.editable=false
+	recovery_summary.show(); recovery_copy_feedback.show(); recovery_choices.show(); save_text.editable=false
 	save_text.custom_minimum_size.y=220; save_text.visible=recovery_code_visible
 	var known:=not recovery.record.is_empty()
 	for key in recovery_buttons:
 		recovery_buttons[key].visible=(key=="read") if not known else key!="read"
+	recovery_buttons.copy_previous.disabled=recovery.original_code.is_empty()
+	recovery_buttons.copy_incoming.disabled=recovery.incoming_code.is_empty()
 	recovery_summary.text=recovery.message
 	if known:
 		recovery_summary.text+="\n\nPREVIOUS WHOLE SAVE\n"+ImportRecovery.describe(recovery.original)+"\n\nIMPORTED WHOLE SAVE\n"+ImportRecovery.describe(recovery.incoming)+"\n\nThe active run, all campaign records and settings move together. Complete copies stay on this device."
@@ -784,6 +789,21 @@ func show_recovery() -> void:
 		recovery_summary.text+="\nNo default game will be saved while recovery is blocked."
 	if not save_dialog.visible: show_dialog(save_dialog)
 	fit_dialog(save_dialog); queue_redraw()
+
+func copy_recovery_code(use_import: bool) -> void:
+	if not recovery_pending or recovery.record.is_empty(): return
+	# Export the verified archive verbatim; viewing/editing text is not the source.
+	var code: String=recovery.incoming_code if use_import else recovery.original_code
+	var source_name: String="Imported" if use_import else "Previous"
+	if code.is_empty():
+		recovery_copy_feedback.text=source_name+" code unavailable · recovery stays paused."
+	elif not DisplayServer.has_feature(DisplayServer.FEATURE_CLIPBOARD):
+		recovery_copy_feedback.text="Clipboard unavailable · use View "+source_name.to_lower()+" code to export manually. Recovery stays paused."
+	else:
+		DisplayServer.clipboard_set(code)
+		recovery_copy_feedback.text=(source_name+" code copied · clipboard readback verified. Keep it somewhere safe.") if DisplayServer.clipboard_get()==code else "Copy not verified · use View "+source_name.to_lower()+" code or try again. Recovery stays paused."
+	show_recovery()
+	save_dialog.title=(source_name+" code copied" if recovery_copy_feedback.text.begins_with(source_name+" code copied") else "Copy unavailable or unverified")+" · play paused"
 
 func show_recovery_code(use_import: bool) -> void:
 	if not recovery_pending or recovery.record.is_empty(): return
@@ -809,7 +829,7 @@ func finish_import(use_import: bool) -> void:
 	state=result.decoded.state.duplicate(true); settings=result.decoded.settings.duplicate(true); profile=result.decoded.profile.duplicate(true)
 	paused=true; screen="game"; speed=1; accumulator=0; undo_board.clear(); cancel_drag()
 	recovery_pending=false; save_failed=false; recovery_code_visible=false
-	recovery_summary.hide(); recovery_choices.hide(); save_explanation.show(); save_action_row.show(); save_timing_row.show(); save_dialog.get_ok_button().show()
+	recovery_summary.hide(); recovery_copy_feedback.hide(); recovery_copy_feedback.text=""; recovery_choices.hide(); save_explanation.show(); save_action_row.show(); save_timing_row.show(); save_dialog.get_ok_button().show()
 	save_text.editable=true; save_text.show(); save_text.custom_minimum_size.y=320
 	save_dialog.hide(); reset_presentation(); queue_redraw()
 	var next_step: String="Retry when ready" if state.phase in ["victory","defeat"] else ("Begin when ready" if state.phase=="ready" else "Resume when ready")
