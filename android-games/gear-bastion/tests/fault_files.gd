@@ -6,11 +6,21 @@ var fail_suffix := ""
 var fail_mode := ""
 var write_count := 0
 var rename_count := 0
+var bad_destination_suffix := ""
+var bad_destination_mode := ""
+var unreadable_destination_suffix := ""
+var unreadable_after := 0
+var promoted := ""
+var destination_reads := 0
+var stale_destination := ""
 
 func exists(path: String) -> bool:
 	return files.has(path)
 
 func read_text(path: String) -> String:
+	if path==promoted and unreadable_after>0:
+		destination_reads+=1
+		if destination_reads>=unreadable_after: return "unreadable"
 	return str(files.get(path, ""))
 
 func modified(path: String) -> int:
@@ -40,4 +50,12 @@ func rename(from: String, to: String) -> bool:
 	times[to] = times.get(from, write_count)
 	files.erase(from)
 	times.erase(from)
+	if not bad_destination_suffix.is_empty() and to.ends_with(bad_destination_suffix):
+		if bad_destination_mode=="missing": files.erase(to); times.erase(to)
+		elif bad_destination_mode=="corrupt": files[to]="torn destination"
+		elif bad_destination_mode=="stale": files[to]=stale_destination
+	if not unreadable_destination_suffix.is_empty() and to.ends_with(unreadable_destination_suffix): promoted=to; destination_reads=0
 	return true
+
+func remove(path: String) -> bool:
+	files.erase(path); times.erase(path); return true

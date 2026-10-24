@@ -690,3 +690,32 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
 
 - Reviewed followups integrated: Frontline optional cloud/local-copy UI ab73aa0 and Hook finale clarity6f467a9/1073af8/00cc9ce. Root focused151/0 and88/0, source equal reviewed runtime;80 tooling tests pass. Versioned same-signer source-clean candidates Frontline0.3.4/code8 e893c7e1 (56,160,515bytes),Hook0.3.2/code8 690fcd75 (53,700,381bytes); both signed7to8/offline/Home/cold and19 complete owning-decoder comparisons pass. Astra verifies264 pins and readable unavailable/pending/recovery-copy screens. Local-copy restore uses already-active ready context; journal pending is explicitly materialized metadata referencing genuine archives. No configured SDK/cloud/fault/powerloss/phone claim. Original262pin Frontline0.3.3/Tower0.4.2 packet independently clear; Tower movie actual1x reviewed. Exact taskremotevideo removed after hashmatch; initial rm error retained. New candidates remain unpublished before source landing/private release readback.
 - Live Play Console rechecked read-only2026-10-24T04:01:37Z: ShifTech official identity upload still Action required; phone waits approval; Create your first app. Owned tab closed. Gear source audit identifies rename-only destination verification and unjournaled Import as next local-save prerequisite; isolated CPU-only fix active, no runtime fix or cloud claim yet.
+
+
+- Local signed AAB pipeline: scoped staging, pinned official templates/bundletool,
+  owned Windows process trees, raw separate stdout/stderr, pre-signing and final
+  source gates, strict existing-keystore verification and exact manifest policy.
+  Final101/0 tooling checks and genuine Tower0.4.2/code8 signed bundle qualify;
+  Astra independently verified all18 file pins and unchanged source. Generated
+  1,322,127,002-byte project and unsigned intermediate removed. Earlier XML trial
+  stays failed. No upload, Play App Signing/account, installed-device or cloud
+  acceptance. See evidence/signed-bundle-pipeline-20261024.json.
+
+
+- Gear local Import recovery: reviewed f34d77e runtime plus version-only0.4.2/code11
+  candidate ce8a88f. Root353/0 journal and65/0 destination checks independently
+  pass with unchanged source; worker whole-context transfer/rules/lifecycle
+  checks retained. Existing-signer APK185a7d1a…d378d (56,083,160 bytes) is clean
+  and independently verified. Native raw-save capture shell stalled after boot/app launch; no update;
+  observed low host memory, graceful console kill timed out, exact owned test
+  processes stopped and verified absent. No app reset/update/upload; native
+  recovery remains pending. See android-games/evidence/gear-local-recovery-20261024.json.
+
+
+- Frontline source-only confirmation correction: local archive restores now
+  explain whole-save replacement, paused verified Import and offline operation;
+  cloud-action warnings remain on cloud actions. One-file panel diff reviewed
+  by Astra; controls/flow/rules/version unchanged. Existing UI attempt could not
+  boot without imported resources and remains failed (worker receipt
+  a8e6cc4996dc307fd7cb8790940ca43504630db8248b768ea1f408bb328681fd).
+  No new test/build/native acceptance or changed APK delivery claimed.

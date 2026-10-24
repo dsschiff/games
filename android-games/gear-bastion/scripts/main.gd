@@ -4,6 +4,7 @@ extends Node2D
 const Gear = preload("res://scripts/gear_rules.gd")
 const Battle = preload("res://scripts/battle_rules.gd")
 const Saves = preload("res://scripts/save_store.gd")
+const ImportRecovery = preload("res://scripts/import_recovery.gd")
 const Content = preload("res://scripts/campaign_data.gd")
 const Profile = preload("res://scripts/campaign_profile.gd")
 const CampaignUI = preload("res://scripts/campaign_ui.gd")
@@ -47,6 +48,16 @@ var save_text: TextEdit
 var save_path := Saves.PATH
 var save_backend: Variant = null
 var save_failed := false
+var recovery_pending := false
+var recovery: ImportRecovery
+var recovery_status := {}
+var recovery_code_visible := false
+var recovery_summary: Label
+var recovery_choices: VBoxContainer
+var recovery_buttons := {}
+var save_explanation: Label
+var save_action_row: HBoxContainer
+var save_timing_row: HBoxContainer
 var profile: Dictionary = Profile.fresh()
 var screen := "map"
 var start_on_map := true
@@ -69,15 +80,20 @@ var presentation: Node3D
 
 func _ready() -> void:
 	get_tree().quit_on_go_back = false
-	var loaded := Saves.read(save_path, save_backend)
+	recovery=ImportRecovery.new(save_backend,save_path)
+	recovery_status=recovery.read()
+	recovery_pending=recovery_status.pending
+	# One startup decision supplies the complete owner context; no second read.
+	var loaded: Dictionary=recovery_status.original if recovery_status.ok else (Saves.read(save_path,save_backend) if not recovery_pending else {"ok":false})
 	if loaded.ok:
 		state = loaded.state
 		settings = loaded.settings
 		profile = loaded.profile
-		paused = state.phase == "battle"
+		paused = recovery_pending or state.phase == "battle"
 		message = "Resumed safely · tap Resume when ready" if paused else "Saved foundry restored"
-	elif start_on_map:
+	elif start_on_map and not recovery_pending:
 		state = Battle.initial(1701, "camp_01")
+	if recovery_pending: paused=true
 	if not start_on_map:
 		screen = "game"
 	audio = AudioStreamPlayer.new()
@@ -123,8 +139,10 @@ func _ready() -> void:
 	presentation.build(layout,Vector2(presentation_view.size))
 	reset_presentation()
 	queue_redraw()
+	if recovery_pending: show_recovery()
 
 func suspend_battle() -> void:
+	if recovery_pending: paused=true; return
 	paused = state.phase == "battle"
 
 func _notification(what: int) -> void:
@@ -148,6 +166,7 @@ func _exit_tree() -> void:
 		audio.stop()
 
 func persist() -> bool:
+	if recovery_pending: return false
 	# Every caller is covered by the persistent warning, including autosave and
 	# lifecycle notifications. Only confirmed success clears a prior failure.
 	var success := Saves.write(state, settings, save_path, save_backend, true, profile)
@@ -158,6 +177,9 @@ func persist() -> bool:
 
 func _process(delta: float) -> void:
 	refresh_layout()
+	if recovery_pending:
+		if not save_dialog.visible: show_recovery()
+		return
 	clock += delta
 	fx_sound_clock += delta
 	if not paused and screen == "game":
@@ -175,7 +197,7 @@ func _process(delta: float) -> void:
 		queue_redraw()
 
 func advance(seconds: float) -> void:
-	if paused:
+	if paused or recovery_pending:
 		return
 	accumulator += seconds
 	while accumulator + 0.000000001 >= Battle.STEP:
@@ -202,6 +224,7 @@ func advance(seconds: float) -> void:
 			queue_redraw()
 
 func retry() -> void:
+	if recovery_pending: return
 	var snapshot: Dictionary = state.config.duplicate(true)
 	state = Battle.from_snapshot(snapshot, int(state.seed)) if not snapshot.is_empty() else Battle.initial(int(state.seed), str(state.encounter))
 	paused = false
@@ -216,6 +239,7 @@ func retry() -> void:
 	persist()
 
 func handle_back() -> void:
+	if recovery_pending: return
 	if is_instance_valid(save_dialog) and save_dialog.visible:
 		save_dialog.hide()
 	elif is_instance_valid(help_dialog) and help_dialog.visible:
@@ -258,6 +282,7 @@ func stop_frame_capture() -> void:
 	save_dialog.title = "Local frame timing report · copy to export"
 
 func request_mission(id: String, challenge: int = -1) -> void:
+	if recovery_pending: return
 	if id != "tutorial" and not Profile.accessible(profile, id):
 		message = "Defend the previous foundry first"
 		return
@@ -269,6 +294,7 @@ func request_mission(id: String, challenge: int = -1) -> void:
 		start_mission(id, challenge)
 
 func start_mission(id: String, challenge: int = -1) -> void:
+	if recovery_pending: return
 	state = Battle.initial(1701 if challenge < 0 else 1729 + challenge, id)
 	if challenge >= 0:
 		state.config.challenge = true
@@ -298,6 +324,7 @@ func cell_at(point: Vector2) -> Vector2i:
 	return Vector2i(floori((point.x - board_origin().x) / CELL), floori((point.y - board_origin().y) / CELL))
 
 func _unhandled_input(event: InputEvent) -> void:
+	if recovery_pending: return
 	if event is InputEventScreenTouch:
 		if event.pressed:
 			if active_touch >= 0:
@@ -422,6 +449,7 @@ func scroll_content(dialog: AcceptDialog, content: Control) -> void:
 	dialog_scrolls[dialog] = scroll
 
 func press(point: Vector2) -> void:
+	if recovery_pending: return
 	queue_redraw()
 	pointer = point
 	drag_start = point
@@ -444,6 +472,7 @@ func press(point: Vector2) -> void:
 		drag_kind = ""
 
 func release(point: Vector2) -> void:
+	if recovery_pending: return
 	queue_redraw()
 	pointer = point
 	if screen != "game":
@@ -494,6 +523,7 @@ func release(point: Vector2) -> void:
 			return
 
 func act(action: String) -> void:
+	if recovery_pending: return
 	if action.begins_with("mission"):
 		request_mission(Content.IDS[int(action.trim_prefix("mission"))])
 		return
@@ -615,23 +645,29 @@ func _build_save_dialog() -> void:
 	var content := VBoxContainer.new()
 	content.custom_minimum_size = Vector2(280, 540)
 	scroll_content(save_dialog, content)
-	var explanation := Label.new()
-	explanation.text = "Copy the save code to export. Paste a code, then Import.\nYour local save resumes the battle paused."
-	explanation.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	content.add_child(explanation)
+	save_explanation = Label.new()
+	save_explanation.text = "Copy the save code to export. Paste a code, then Import.\nYour local save resumes the battle paused."
+	save_explanation.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	content.add_child(save_explanation)
+	recovery_summary=Label.new(); recovery_summary.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+	recovery_summary.size_flags_horizontal=Control.SIZE_EXPAND_FILL; content.add_child(recovery_summary); recovery_summary.hide()
+	recovery_choices=VBoxContainer.new(); content.add_child(recovery_choices); recovery_choices.hide()
+	for item in [["retry","Retry Import",finish_import.bind(true)],["previous","Keep previous whole save",finish_import.bind(false)],["read","Retry recovery read",retry_recovery_read],["view_previous","View previous code",show_recovery_code.bind(false)],["view_incoming","View imported code",show_recovery_code.bind(true)]]:
+		var recovery_button:=Button.new(); recovery_button.text=item[1]; recovery_button.custom_minimum_size=Vector2(180,80)
+		recovery_button.pressed.connect(item[2]); recovery_choices.add_child(recovery_button); recovery_buttons[item[0]]=recovery_button
 	save_text = TextEdit.new()
 	save_text.custom_minimum_size = Vector2(280, 320)
 	save_text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	save_text.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
 	content.add_child(save_text)
-	var row := HBoxContainer.new()
-	content.add_child(row)
+	save_action_row = HBoxContainer.new()
+	content.add_child(save_action_row)
 	for label in ["Copy save", "Paste", "Import"]:
 		var button := Button.new()
 		button.text = label
 		button.custom_minimum_size = Vector2(80, 80)
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		row.add_child(button)
+		save_action_row.add_child(button)
 		button.pressed.connect(func():
 			if label == "Copy save":
 				DisplayServer.clipboard_set(save_text.text)
@@ -639,33 +675,16 @@ func _build_save_dialog() -> void:
 			elif label == "Paste":
 				save_text.text = DisplayServer.clipboard_get()
 			else:
-				var result := Saves.decode(save_text.text)
-				if result.ok:
-					if Saves.write(result.state, result.settings, save_path, save_backend, false, result.profile):
-						state = result.state
-						settings = result.settings
-						profile = result.profile
-						undo_board.clear()
-						accumulator = 0
-						suspend_battle()
-						save_failed = false
-						message = "Imported · Resume when ready" if paused else "Imported · Begin when ready" if state.phase == "ready" else "Imported · result restored"
-						reset_presentation()
-						save_dialog.hide()
-					else:
-						save_failed = true
-						save_dialog.title = "Save failed · current game retained"
-				else:
-					save_dialog.title = "Invalid save · current game retained"
+				begin_import(save_text.text)
 		)
-	var timing_row := HBoxContainer.new()
-	content.add_child(timing_row)
+	save_timing_row = HBoxContainer.new()
+	content.add_child(save_timing_row)
 	for caption in ["Start timings", "Stop + export"]:
 		var button := Button.new()
 		button.text = caption
 		button.custom_minimum_size = Vector2(110, 80)
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		timing_row.add_child(button)
+		save_timing_row.add_child(button)
 		button.pressed.connect(func():
 			if caption == "Start timings":
 				frame_capture.start()
@@ -722,9 +741,76 @@ func _draw() -> void:
 	draw_microseconds = Time.get_ticks_usec() - started
 
 func _draw_content() -> void:
+	if recovery_pending and not recovery_status.get("ok",false):
+		label_at("Import recovery must be read before play.",Vector2(24,60),24)
+		return
 	if is_instance_valid(presentation_view):
 		draw_texture_rect(presentation_view.get_texture(),Rect2(Vector2.ZERO,layout.size),false)
 	if screen == "game":
 		CampaignView.draw(self)
 	else:
 		CampaignUI.draw(self)
+
+func begin_import(code: String) -> void:
+	if recovery_pending: return
+	var incoming:=Saves.decode(code)
+	if not incoming.ok:
+		save_dialog.title="Invalid save · current game retained"
+		return
+	paused=true; cancel_drag()
+	recovery=ImportRecovery.new(save_backend,save_path)
+	recovery_status=recovery.begin(Saves.encode(state,settings,0,true,profile),code)
+	recovery_pending=recovery_status.pending
+	if not recovery_pending:
+		save_dialog.title=recovery.message
+		return
+	recovery_code_visible=false; save_failed=true; show_recovery()
+	if recovery_status.ok: finish_import(true)
+
+func show_recovery() -> void:
+	if not recovery_pending: return
+	paused=true; cancel_drag()
+	save_dialog.title="Whole save recovery · play paused"
+	save_explanation.hide(); save_action_row.hide(); save_timing_row.hide(); save_dialog.get_ok_button().hide()
+	recovery_summary.show(); recovery_choices.show(); save_text.editable=false
+	save_text.custom_minimum_size.y=220; save_text.visible=recovery_code_visible
+	var known:=not recovery.record.is_empty()
+	for key in recovery_buttons:
+		recovery_buttons[key].visible=(key=="read") if not known else key!="read"
+	recovery_summary.text=recovery.message
+	if known:
+		recovery_summary.text+="\n\nPREVIOUS WHOLE SAVE\n"+ImportRecovery.describe(recovery.original)+"\n\nIMPORTED WHOLE SAVE\n"+ImportRecovery.describe(recovery.incoming)+"\n\nThe active run, all campaign records and settings move together. Complete copies stay on this device."
+	else:
+		recovery_summary.text+="\nNo default game will be saved while recovery is blocked."
+	if not save_dialog.visible: show_dialog(save_dialog)
+	fit_dialog(save_dialog); queue_redraw()
+
+func show_recovery_code(use_import: bool) -> void:
+	if not recovery_pending or recovery.record.is_empty(): return
+	recovery_code_visible=true; save_text.text=recovery.incoming_code if use_import else recovery.original_code
+	show_recovery()
+
+func retry_recovery_read() -> void:
+	if not recovery_pending: return
+	recovery_status=recovery.read()
+	if recovery_status.ok:
+		state=recovery_status.original.state.duplicate(true); settings=recovery_status.original.settings.duplicate(true); profile=recovery_status.original.profile.duplicate(true)
+		paused=true; accumulator=0; screen="game"; reset_presentation()
+	elif not recovery_status.pending:
+		recovery.message="Recovery marker is unavailable. Local copies are retained; play and saves stay paused. Keep the app installed for recovery."
+	show_recovery()
+
+func finish_import(use_import: bool) -> void:
+	if not recovery_pending: return
+	var result:=recovery.resolve(use_import)
+	if not result.ok:
+		show_recovery(); return
+	# Synchronous whole-context adoption, from the same verified disk decision.
+	state=result.decoded.state.duplicate(true); settings=result.decoded.settings.duplicate(true); profile=result.decoded.profile.duplicate(true)
+	paused=true; screen="game"; speed=1; accumulator=0; undo_board.clear(); cancel_drag()
+	recovery_pending=false; save_failed=false; recovery_code_visible=false
+	recovery_summary.hide(); recovery_choices.hide(); save_explanation.show(); save_action_row.show(); save_timing_row.show(); save_dialog.get_ok_button().show()
+	save_text.editable=true; save_text.show(); save_text.custom_minimum_size.y=320
+	save_dialog.hide(); reset_presentation(); queue_redraw()
+	var next_step: String="Retry when ready" if state.phase in ["victory","defeat"] else ("Begin when ready" if state.phase=="ready" else "Resume when ready")
+	message=("Imported whole save verified · " if use_import else "Previous whole save verified · ")+next_step

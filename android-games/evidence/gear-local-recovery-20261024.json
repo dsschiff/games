@@ -1,0 +1,115 @@
+{
+  "scope": "Gear-local exact save destination verification and whole-context Import recovery. Offline; no rules/schema/account/cloud change.",
+  "reviewed_runtime_commit": "f34d77eae1491f0e1040ac6478a4e716cebcff28",
+  "candidate_revision": "ce8a88f79b7dfb87cdb72f3586e7b0626863e856",
+  "candidate": {
+    "version": "0.4.2",
+    "version_code": 11,
+    "manifest": {
+      "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\gear-bastion\\20261024T044913920381Z\\manifest.json",
+      "sha256": "9a86f8adfa42aae7af0cf808d5f670f66a36037a11c081afd5e7b63b9fa7b10d",
+      "bytes": 1804
+    },
+    "artifact": {
+      "path": ".artifacts/gear-bastion/20261024T044913920381Z/gear-bastion.apk",
+      "bytes": 56083160,
+      "sha256": "185a7d1ab5a4ab2be4d1e838a57a501f8c1b22a760f6c6f75971a851db0d378d"
+    },
+    "inspection": {
+      "package": "com.dsschiff.gearbastion",
+      "version_code": "11",
+      "version_name": "0.4.2",
+      "permissions": [],
+      "internet_permission": false,
+      "signature_verified": true,
+      "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
+      "debuggable": false
+    },
+    "clean_source": true,
+    "source_unchanged": true,
+    "status": "Local signed candidate. Native update/recovery pending; not uploaded."
+  },
+  "worker_checkpoint": {
+    "path": "F:\\games-workspaces\\gear-recovery-20261024\\android-games\\gear-bastion\\RECOVERY_CHECKPOINT.json",
+    "sha256": "8dbf6e17e20befc49e29c5c82e016b6c3b4237d7752557f023b2a3d69c542437",
+    "bytes": 14349
+  },
+  "worker_checks": {
+    "destination": 65,
+    "journal": 353,
+    "transfer_input": 1466,
+    "rules": 164,
+    "phase_lifecycle": 39,
+    "failures": 0,
+    "scope": "Headless/Dummy; synthetic storage faults, actual GUI touch events and fresh owners over materialized files in one process. Prior164/39 packets differ only by final recovery wording/receipt changes as checkpoint lists."
+  },
+  "independent_reruns": [
+    {
+      "receipt": {
+        "path": "F:\\games-workspaces\\gear-recovery-20261024\\android-games\\gear-bastion\\.artifacts\\recovery-cpu-20261024T044337543401Z\\receipt.json",
+        "sha256": "a524b7490e2cd6f607c91b14ca35716d0dba566ad294fb2cbc3dd6f4d1120187",
+        "bytes": 108496
+      },
+      "checks": 353,
+      "failures": 0,
+      "source_unchanged": true,
+      "preparation_source_unchanged": true
+    },
+    {
+      "receipt": {
+        "path": "F:\\games-workspaces\\gear-recovery-20261024\\android-games\\gear-bastion\\.artifacts\\recovery-cpu-20261024T044652503383Z\\receipt.json",
+        "sha256": "61c4448f8fffe076002474555b5a4981ed9bd8176379ea08611db29b1bf039a1",
+        "bytes": 51824
+      },
+      "checks": 65,
+      "failures": 0,
+      "source_unchanged": true,
+      "preparation_source_unchanged": null
+    }
+  ],
+  "independent_review": "Astra source and CPU checkpoint clear; signed candidate APK/hash/size/signer/raw engine logs/manifest/source fingerprint independently verified. Runtime unchanged from f34d77e; candidate changes only version metadata and README.",
+  "native": {
+    "status": "Not qualified. Owned emulator boot/app launch returned successfully; raw-save capture shell then timed out before update.",
+    "evidence": [
+      {
+        "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\native-gear-recovery-20261024\\emulator.json",
+        "sha256": "627eba153a3649dadd7619c6b228ef97d6e5bf9606a0109bca0032367e616566",
+        "bytes": 308
+      },
+      {
+        "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\native-gear-recovery-20261024\\emulator.log",
+        "sha256": "e81edd20bfdfb7e39a05b98301baa8d92329b8cff5150f13f6ceff1ef89ec09c",
+        "bytes": 8939
+      },
+      {
+        "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\native-gear-recovery-20261024\\actions.json",
+        "sha256": "96e04d21e5d0e13915fa728d82f71b7b2c89a7d3fb053d71c6847725feda04f7",
+        "bytes": 978
+      },
+      {
+        "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\native-gear-recovery-20261024\\startup-recovery.json",
+        "sha256": "b32b27fc00a09aaec56ca30875c92c99c503146d584b57abfc672c81a35bf3f3",
+        "bytes": 278
+      },
+      {
+        "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\native-gear-recovery-20261024\\owned-stop.json",
+        "sha256": "35775a19202ca6baad2d81b86f016e1f080f43cc6aa9c78ee196e921181d6b2c",
+        "bytes": 486
+      }
+    ],
+    "cause": "Host pressure observed:1,230,392KiB physical and2,073,408KiB virtual free; association with stall is an inference, not proven emulator root cause.",
+    "failure": "First raw-save capture shell/getprop timed out120s after boot/app launch. Graceful console kill timed out20s. Exact owned parent/child IDs+creation times checked, then stopped; both absent. No update or app-data reset performed.",
+    "next": [
+      "Relaunch silent emulator without boot snapshot after host memory permits, preserving app data",
+      "Verify actual signed10to11 update using complete production decoder comparisons",
+      "Actual normal Import must stay paused; labeled pending fixture summary/Back/Home/cold/both choices preserve complete run/profile/settings",
+      "Keep fixture/bootstrap checks separate from native I/O failure, OS interruption and power-loss claims"
+    ]
+  },
+  "remaining": [
+    "Native/rendered recovery and clipboard behavior",
+    "Real interrupted-storage/power-loss evidence",
+    "Physical Fold7 touch/folding/sound/FPS and human fun",
+    "Optional Google account/cloud integration remains external and separate"
+  ]
+}

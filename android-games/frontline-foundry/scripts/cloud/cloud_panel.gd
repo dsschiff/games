@@ -64,7 +64,11 @@ func rebuild() -> void:
 		else:
 			text("This device: "+Flow.describe(Store.decode(flow.local_code))+"\nSHA256 "+flow.local_code.sha256_text())
 			if flow.choices.size()==1: text("Cloud record to replace: "+Flow.describe(flow.choices[0].decoded)+"\nSHA256 "+flow.choices[0].save.sha256_text())
-		text("Whole context includes profile, settings, campaign and parked legacy progress. Another device may change the cloud save during this check. A submitted backup can be cached offline.")
+		text("Whole context includes profile, settings, campaign and parked legacy progress.")
+		if flow._action=="restore" and not flow._restore_account:
+			text("This replaces your whole save on this device. Play stays paused until the local Import is verified. This copy works offline; no cloud connection or upload is needed.")
+		else:
+			text("Another device may change the cloud save during this check. A submitted backup can be cached offline.")
 		action("CONFIRM "+{"restore":"LOCAL IMPORT","backup":"BACKUP SUBMISSION","resolve":"CLOUD CHOICE"}.get(flow._action,"CHOICE"),flow.confirm)
 		action("BACK WITHOUT CHANGES",flow.decline)
 	else:
