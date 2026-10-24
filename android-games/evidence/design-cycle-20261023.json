@@ -801,5 +801,21 @@
     "original_restored": true,
     "physical_acceptance": false,
     "cloud_acceptance": false
+  },
+  "hearth_normal1x_preview": {
+    "state": "Source-reviewed preview with four strict-clean rendered passages and qualified sampled1x visualreview; higher-version native candidate stillopen",
+    "evidence": "android-games/evidence/hearth-normal1x-preview-20261024.json",
+    "game_runtime": "d27f03c8354f855da694965d41448ce811f09ff9",
+    "harness_cleanup": "1c657cfc15a6aa4a1645a4ba073f7dd68b5a25b8",
+    "packet_sha256": "8feb509c3e0de97957eda1a54e94b77f8612996e86e98ab91d5eebce2b081217",
+    "render_checks": [
+      21,
+      21,
+      26,
+      26
+    ],
+    "new_apk": false,
+    "physical_acceptance": false,
+    "cloud_acceptance": false
   }
 }

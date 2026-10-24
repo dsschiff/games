@@ -195,7 +195,7 @@ def main():
         preflight = {"passed": True, "skipped": True, "reason": "Explicit preview --cached; no editor/import", "cache_files": {str(p.relative_to(PROJECT)): sha(p) for p in sorted(cache.iterdir()) if p.is_file()}}
     else:
         preflight, _ = execute([str(GODOT), "--headless", "--editor", "--import", "--quit", "--path", str(PROJECT)], run, env, "import", 180)
-    parsed, _ = execute([str(GODOT), "--headless", "--path", str(PROJECT), "--check-only", "--script", "res://tests/production_passage.gd"] + (["--audio-driver", "Dummy"] if preview else []), run, env, "parse", 60, strict=preview)
+    parsed, _ = execute([str(GODOT), "--headless", "--path", str(PROJECT), "--check-only", "--script", "res://tests/production_passage.gd"] + (["--audio-driver", "Dummy", "--verbose"] if preview else []), run, env, "parse", 60, strict=preview)
     before = sources()
     (run / "source-hashes.json").write_text(json.dumps(before, indent=2) + "\n")
     for name in before:
@@ -204,7 +204,7 @@ def main():
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(PROJECT / name, target)
         assert sha(target) == before[name]
-    command = [str(GODOT), "--path", str(PROJECT)] + (["--audio-driver", "Dummy"] if preview else [])
+    command = [str(GODOT), "--path", str(PROJECT)] + (["--audio-driver", "Dummy", "--verbose"] if preview else [])
     command += ["--headless"] if args.stage == "checks" or args.cpu else ["--resolution", "720x1280", "--position", "0,0"]
     if args.native_frames or args.cpu:
         command += ["--fixed-fps", "30"]
