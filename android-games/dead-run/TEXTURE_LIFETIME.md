@@ -101,3 +101,21 @@ CPU-ready smaller reductions preserve the unmodified runtime: `geometry-only`
 the 49-crew capture/yield and the warning tail. Their headless success only
 validates setup/teardown; warning_pixels does not execute its rendered branch
 headlessly. No further rendered result is claimed for these prepared cases.
+
+## Repeated fixture rebuild discriminator
+
+The coordinator granted only two quick reductions, both now completed:
+
+- `render-geometry-only-lifetime-20261024T010657Z`: the 5/25/49 geometry sequence,
+  with the 49-crew capture and no warnings, passes 23 assertions but remains a
+  strict FAIL (four 349,524-byte textures, IDs 25-28).
+- `render-single49-before-warning-lifetime-20261024T010719Z`: only the 49-crew
+  geometry plus the full warning capture sequence strictly PASSES 21 assertions.
+
+Warnings and actual gameplay are unnecessary. The distinguishing tested sequence
+is repeated geometry world rebuilds before the first awaited render/capture.
+This does not identify the exact texture owner or establish a runtime/font/engine
+fault. The disproven p=null intervention remains reverted. GPU was returned
+immediately after these two results; no further probe was run. A possible future
+matched comparison is normal frame/render draining between fixture rebuilds,
+which has not been implemented or tested here.

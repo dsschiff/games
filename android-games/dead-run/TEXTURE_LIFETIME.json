@@ -1,5 +1,5 @@
 {
-  "status": "Strict leak isolated to synthetic geometry-before-warning fixture tail; actual earned victory/cold reload strictly passes; exact owner unresolved",
+  "status": "Repeated5/25/49 geometry fixture rebuilds before first awaited render reproduce strict leak; single49 plus warnings and real victory/reload controls strictly pass. Exact owner/fix unresolved.",
   "runtime_changes": false,
   "runs": [
     {
@@ -646,6 +646,57 @@
         "godot.log": "a13e56e8992df5544cdf32bd40fe5f840598ea19551e1cb81a5339039a722540",
         "source-hashes-lf.json": "ad1174ae2ae358bc11779b2457a717df7a209b7f581f9bf7ec0669d5ce7019d6",
         "texture-lifetime.json": "e8634aababc5e94fb3a268f5eaeda579772cc9cfb2334a69e14b937ff6a9c79a"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-geometry-only-lifetime-20261024T010657Z",
+      "strict_passed": false,
+      "errors": [
+        "ERROR: Texture with GL ID of 25: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 26: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 27: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 28: leaked 349524 bytes."
+      ],
+      "scenario": "geometry-only",
+      "headless": false,
+      "checks": 23,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "95674f76c90047a4f3456bd52b6733098641209f26bec2d8d575f16369a1040e",
+        "godot.log": "b3acc93f7160ae856ff170b3891754c6039f10ecaced95af2d1aed8f33deed5a",
+        "source-hashes-lf.json": "967eead69734867568ac7d48e89195d0a0493d9aee5faa406a37cfa1db3d8815",
+        "texture-lifetime.json": "ac19df866ca91abad65523b94bbd4e89f4189c0155f55f3d751ea40d893d8491"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-single49-before-warning-lifetime-20261024T010719Z",
+      "strict_passed": true,
+      "errors": [],
+      "scenario": "single49-before-warning",
+      "headless": false,
+      "checks": 21,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "c6c1041fa3bbb29a577015ed2d369bb62475de877a0b050d9eb830627e7f8024",
+        "godot.log": "9aff04de55c39cf46b9c7b5a98a1f87794fc5ae6850b01769e97053b5d219e74",
+        "source-hashes-lf.json": "967eead69734867568ac7d48e89195d0a0493d9aee5faa406a37cfa1db3d8815",
+        "texture-lifetime.json": "22621b4f2ce8d93acf3e1c57555d7aef9add4c102f442fee80cace845853b9c8"
       }
     }
   ],
