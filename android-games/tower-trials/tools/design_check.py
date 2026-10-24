@@ -14,7 +14,7 @@ def sources():
     return {str(p.relative_to(ROOT)).replace(chr(92), "/"): hashlib.sha256(p.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
             for p in sorted(ROOT.rglob("*")) if p.is_file()
             and not any(x.startswith(".") or x == "__pycache__" for x in p.relative_to(ROOT).parts)
-            and p.suffix in {".gd", ".tscn", ".godot", ".glb", ".svg", ".cfg", ".py", ".uid", ".import"}}
+            and (p.suffix in {".gd", ".tscn", ".godot", ".glb", ".svg", ".cfg", ".py", ".uid", ".import"} or (p.suffix == ".json" and "fixtures" in p.relative_to(ROOT).parts))}
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)

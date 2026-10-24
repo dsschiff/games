@@ -1,5 +1,5 @@
 {
-  "status": "Source verified; refined rendered usefulness and verbose finale shutdown check pending",
+  "status": "Source and final refined strict captures verified; independent rendered usefulness review pending; historical coarse2ObjectDB warning unexplained and preserved",
   "base_runtime": "6f1b9816c39c44e0c7db85e3d8957bf1525508e3",
   "adapter_lf_sha256": "00b6d5376c4f03dfc112c0455e7701433689f59b6a0faad96e274c83ce1037bb",
   "rules_unchanged": [
@@ -79,6 +79,33 @@
       "role": "refined headless earned finale strict sidestep5/0",
       "path": ".artifacts/feedback-motion-20261024T002513396217Z/receipt.json",
       "sha256": "426cc576c16b693f841d96048b43ad5047d80ca20543874e382bae30ff92037c"
+    },
+    {
+      "role": "final refined labelled fixture plus real opening hit/miss; strict16/0",
+      "path": ".artifacts/feedback-motion-20261024T004033301720Z/receipt.json",
+      "sha256": "67ee7eab3454e3e144b22f980a558c779dc8f4181e6f1d2caaa487af42f03851",
+      "clip_sha256": "1250c870f28e5a511138febaf27583e1dd3096286972eace4c396ad4ac63c291",
+      "clip_bytes": 2026884,
+      "duration_seconds": "8.566667",
+      "frames": 514
+    },
+    {
+      "role": "final refined actual earned09 continuation; strict6/0",
+      "path": ".artifacts/feedback-motion-20261024T004104204583Z/receipt.json",
+      "sha256": "93980bd148d2301a298aada353fe3f6f0832c10695edd0c6fc29c82ebd78ea0d",
+      "clip_sha256": "e998451f52b8541c6b4bc014f068880dcaaa01fce46865eb85428ecbce167e89",
+      "clip_bytes": 7427159,
+      "duration_seconds": "12.016667",
+      "frames": 721
+    },
+    {
+      "role": "final refined verbose actual earnedfinale; strict6/0; historical leak not reproduced",
+      "path": ".artifacts/feedback-motion-20261024T004147777153Z/receipt.json",
+      "sha256": "be731807dd137791d1e979b68b7700479784dff7ff580bfabf5ef825b423f2c0",
+      "clip_sha256": "08eca0ee80c03487330f3487af2511d4e09c28c8b9723f25383aaefc39ae8c69",
+      "clip_bytes": 7622155,
+      "duration_seconds": "10.850000",
+      "frames": 651
     }
   ]
 }

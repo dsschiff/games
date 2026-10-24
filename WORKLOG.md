@@ -645,3 +645,12 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   Homecommit37 exactly match the prior full result. Original early captures remain
   excluded; settled report9a539ae3 is separate. Hook conservative charge refinement
   source cleared/integrated;0.3.1/code7 built, final motion/strictshutdown pending.
+
+- Independent bounded1x motion review clears Hook and Tower increments; dense
+  Hook finale and Tower room-association caveats retained in review record.
+  Actual savedestinationfaults reproduce in Hook444/63 and Tower18falsecommits
+  with30failedassertions; minimal verifieddestination fixes pass444/0 and70/0,
+  independently source-cleared. Rebuild held code7 candidates before native
+  update/delivery. Shared cloudopaque tests now60/0 across6realdecoders; native
+  plugin/UI/auth/live sync still unimplemented in games. Dead minimal geometry
+  tail reproduces4textures; all tested realplay/reloadprefixes remain clean.

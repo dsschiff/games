@@ -2,6 +2,10 @@ extends RefCounted
 var files := {}
 var fail_write := false
 var fail_rename := false
+var missing_destination := false
+var corrupt_destination := false
+var wrong_destination := false
+var replacement_text := ""
 
 func exists(path: String) -> bool:
 	return files.has(path)
@@ -16,6 +20,9 @@ func write_text(path: String, source: String) -> bool:
 func rename(from: String, to: String) -> bool:
 	if fail_rename:
 		return false
-	files[to] = files[from]
+	var source: String = files[from]
 	files.erase(from)
+	files.erase(to)
+	if not missing_destination:
+		files[to] = "torn destination" if corrupt_destination else replacement_text if wrong_destination else source
 	return true

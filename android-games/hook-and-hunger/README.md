@@ -1,4 +1,6 @@
-> Current charge feedback follow-up: [CHARGE_WARNING_AMENDMENT.md](CHARGE_WARNING_AMENDMENT.md). Source and CPU coverage are independently verified; refined rendered usefulness and a rendered finale shutdown warning remain open. No new APK or release is implied.
+> Save reliability follow-up: [SAVE_COMMIT_AMENDMENT.md](SAVE_COMMIT_AMENDMENT.md). Failed promotion no longer reports a successful import. CPU fault/context regressions pass; root owns combined-candidate rebuild and native acceptance.
+
+> Current charge feedback follow-up: [CHARGE_WARNING_AMENDMENT.md](CHARGE_WARNING_AMENDMENT.md). Source/CPU coverage and final strict captures pass; independent rendered usefulness review remains open. The historical coarse finale shutdown warning is preserved and did not recur in the final verbose capture. No new APK or release is implied.
 
 > Graphics work: see [GRAPHICS_PRODUCTION.md](GRAPHICS_PRODUCTION.md). Graphics candidate frozen as 0.3.0/code5 (original 3D presentation, rendered lighting fix). Status 2026-10-21: signed APK built, rules 57/input 18 pass, genuine emulator code4-to-5 update keeps the whole save, and Android lighting matches desktop frames. Evidence: `android-games/evidence/hook-graphics-candidate.json`. Functional 0.2.2/code4 records below remain retained.
 

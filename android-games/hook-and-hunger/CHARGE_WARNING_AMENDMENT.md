@@ -1,7 +1,8 @@
 # Charge warning follow-up
 
-Current state: independently source verified; final refined-warning motion usefulness and the
-rendered finale's two leaked ObjectDB objects remain open. This is a follow-up
+Current state: independently source verified; all three final refined captures pass
+strict execution. Independent normal-speed usefulness review remains pending.
+The earlier coarse finale warning is preserved and unexplained. This is a follow-up
 to DESIGN_INCREMENT.md, not an approval or replacement for failed evidence.
 
 Actual campaign step() reproduces two gaps in the original straight 6.8m charge
@@ -48,8 +49,33 @@ successful avoidance of one charge is not a claim of overall invulnerability.
 The coarse finale had functional 6/0, actual defeat and 3 simultaneous charges,
 but its strict receipt remains failed for 2 ObjectDB objects leaked at exit.
 Two verbose headless natural-defeat controls did not reproduce that leak;
-they do not clear a rendered shutdown warning. Independent source proof clears
-undercoverage, while useful dense warnings still require final rendered review.
+they do not clear a rendered shutdown warning. The final refined verbose capture
+below now has clean shutdown; no speculative lifecycle fix or suppression was made.
+Independent source proof clears undercoverage, while dense warning usefulness
+still requires independent normal-speed review.
 All automated audio uses Dummy. Physical touch/folding, audible sound, measured
 phone FPS and human fun remain unverified. Root owns integration, native checks
 and release. Production is not frozen for publication here.
+
+## Final refined captures
+
+All three 720x1280, 60fps, 1x clips pass strict execution with unchanged source,
+Dummy audio, no warnings/errors and clean complete movie decode. Source-before
+and source-after manifests are identical across the three runs. The receipt
+paths and exact clip identities are bound in the JSON amendment.
+
+| Capture | Checks | Duration / frames | Evidence limits |
+| --- | --- | --- | --- |
+| `004033301720Z` | 16 / 0 | 8.566667s / 514 | Real opening target hull24→24 miss then24→12 hit; separately labelled armor/line/rock-charge/projectile fixtures. |
+| `004104204583Z` | 6 / 0 | 12.016667s / 721 | Hash-authenticated earned stage09, actual touch inside→outside sidestep; one of two recorded charge windows passes avoidance, later other attacks still damage hull. |
+| `004147777153Z` | 6 / 0 | 10.85s / 651 | Hash-authenticated earned finale, two target-charge sidesteps, three simultaneous charges, genuine defeat. Verbose shutdown is clean; prior2ObjectDB classes cannot be identified because the warning did not recur. |
+
+These suffixes identify `.artifacts/feedback-motion-20261024T<suffix>/`.
+The refined rock fixture preserves a clear opposite side. The finale still shows
+dense overlap between boss rings, charge envelopes and other attacks. Successful
+input checks do not establish human readability, fun or overall no-damage play.
+The original failed coarse finale receipt is unchanged and remains failed.
+No production or harness source changed between the committed source verification
+and these final captures. All renderer processes exited, the GPU slot was returned
+to root, and disposable PNG frame sequences were removed only after verified full
+movie decode; frame hashes and representative original PNGs remain.

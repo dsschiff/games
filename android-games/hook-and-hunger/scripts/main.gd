@@ -18,6 +18,7 @@ var drag_start := Vector2.ZERO
 var movement := Vector2.ZERO
 var save_clock := 0.0
 var save_error := ""
+var save_io: Variant = null
 var camera: Camera3D
 var player: Node3D
 var weapon_node: Node3D
@@ -59,7 +60,7 @@ var projectiles := {}
 var world_clock := 0.0
 
 func _ready() -> void:
-	var loaded := Store.read()
+	var loaded := Store.read(Store.PATH, save_io)
 	if loaded.ok:
 		state = loaded.state
 		settings = loaded.settings
@@ -489,7 +490,7 @@ func _transfer(action: String) -> void:
 		var imported := Store.decode(transfer.text)
 		if not imported.ok:
 			transfer_status.text = "Invalid save. Current progress retained."
-		elif not Store.write(imported.state, imported.settings, Store.PATH, null, true, imported.profile):
+		elif not Store.write(imported.state, imported.settings, Store.PATH, save_io, true, imported.profile):
 			transfer_status.text = "Storage failed. Current progress retained."
 		else:
 			state = imported.state
@@ -502,7 +503,7 @@ func _transfer(action: String) -> void:
 			_sync()
 
 func _save() -> bool:
-	var okay := Store.write(state, settings, Store.PATH, null, false, profile)
+	var okay := Store.write(state, settings, Store.PATH, save_io, false, profile)
 	save_error = "" if okay else "SAVE FAILED • progress is still in memory. Export a copy."
 	return okay
 

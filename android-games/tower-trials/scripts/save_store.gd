@@ -127,6 +127,18 @@ static func encode(data: Dictionary) -> String:
 static func checked_write(io: Variant, path: String, source: String) -> bool:
 	return io.write_text(path, source) and io.read_text(path) == source and decode(source).ok
 
+static func checked_rename(io: Variant, from: String, to: String, source: String) -> bool:
+	var renamed: bool = io.rename(from, to)
+	var stored: String = io.read_text(to) if io.exists(to) else ""
+	if renamed and stored == source and decode(stored).ok:
+		return true
+	# A lying/partial rename may consume the sole valid staged backup. Restore
+	# its checked bytes before returning failure; failed imports stay excluded
+	# from .tmp recovery through their existing recoverable=false marker.
+	if not io.exists(from) or io.read_text(from) != source:
+		checked_write(io, from, source)
+	return false
+
 static func read(path: String = PATH, backend: Variant = null) -> Dictionary:
 	var io: Variant = Files.new() if backend == null else backend
 	var best := {"ok": false, "message": "No valid local save"}
@@ -155,8 +167,8 @@ static func write(data: Dictionary, path: String = PATH, backend: Variant = null
 		if not io.exists(path + ".bak.tmp") or io.read_text(path + ".bak.tmp") != previous.source:
 			if not checked_write(io, path + ".bak.tmp", previous.source):
 				return false
-		if not io.rename(path + ".bak.tmp", path + ".bak"):
+		if not checked_rename(io, path + ".bak.tmp", path + ".bak", previous.source):
 			return false
 	if not checked_write(io, path + ".tmp", source):
 		return false
-	return io.rename(path + ".tmp", path)
+	return checked_rename(io, path + ".tmp", path, source)
