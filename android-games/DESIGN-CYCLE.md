@@ -118,3 +118,9 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
   signed native export check. A newly reproduced Dead retry-marker sequence
   requires equivalent Gear/Hook/Frontline regressions before new APK builds.
   Existing successful packets remain bounded historical evidence.
+
+- Hook now exposes selected arena best-clear feedback using the existing
+  canonical/legacy-aware lookup, including zero records and honest no-clear text.
+  Root573/0 and independent source/evidence review pass. Saves, combat and ranking
+  are unchanged. Native/render review follows the separate retry-marker fix and
+  later signed candidate; no new APK is included in this source increment.

@@ -674,7 +674,7 @@
     "independent_terminal": 12,
     "failures": 0,
     "limits": "Synthetic faults/headless input; existing cache explicitly used. Android/render/power loss/cloud unverified.",
-    "next": "Separate explicit arena Continue key-format bug, then candidate build/native recovery."
+    "next": "Equivalent retry-marker admission regression/fix and independent review, then higher-version build/native recovery. Arena identity correction is landed and visible feedback is integrated source-only."
   },
   "hook_arena_score_identity": {
     "reviewed_commit": "ced33668fb5c9ab093b893d5f81a8e623a5cad12",
@@ -703,6 +703,36 @@
     "independent_failures": 0,
     "review": "Astra source and all15 artifacts/168 source pins/12 unchanged source files/protected code sections clear; final checkpoint review-text-only update qualified.",
     "status": "Source/CPU only; no new APK or Android acceptance.",
-    "next": "Build a higher-version candidate with recovery and score correction, verify Android update/native behavior. Arena best-score feedback is not yet visible in the UI."
+    "next": "Equivalent retry-marker regression/fix before higher-version candidate/native update. The separately reviewed arena feedback source is now integrated."
+  },
+  "hook_arena_feedback": {
+    "reviewed_source_commit": "5fab554717e19ec748fb9f148a7b79644e37219e",
+    "checkpoint": {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\ARENA_FEEDBACK_CHECKPOINT.json",
+      "sha256": "2c5de0a5cb856460c373dd44dc1325b587cefaea761536a4aece21d6af88aab8",
+      "bytes": 24358
+    },
+    "scope": "Six additive controller lines show selected seed/loadout best clear or honest no-clear feedback, explicit zero records and hits-before-time ranking cue. No writes, buttons, combat, ranking, codec/schema/version/build changes.",
+    "worker_checks": {
+      "arena_feedback": 573,
+      "arena_score_key": 188,
+      "import_recovery": 871
+    },
+    "failures_each": 0,
+    "root_report": {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T061338579301Z\\report.json",
+      "sha256": "030810edc56bfa6b17dc4d99bb2df7b1d9d557f00ac5eab83b149480d5a4a0ef",
+      "bytes": 1086
+    },
+    "root_assertions": {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T061338579301Z\\arena-feedback.json",
+      "sha256": "4b4e63d3a5a4f3ccae7ebdf4ade1a7ed7b7346796f393edb469eca2748e8b64e",
+      "bytes": 4247451
+    },
+    "root_checks": 573,
+    "root_failures": 0,
+    "root_source_unchanged": true,
+    "review": "Astra source/CPU/final pins clear:18 artifact hashes,170 executed source pins,191 unchanged files and exact base-controller reconstruction without six UI lines.",
+    "limits": "Synthetic validated profiles, actual touch input and whole-profile/parked-finale/backend-byte checks; CPU layout only. No newly earned arena victory, native/render/phone or APK acceptance. Existing retry-marker risk separately open."
   }
 }
