@@ -56,3 +56,10 @@ The full actual-input route has 174 checks, all 12 campaign clears, natural loss
 `-- --capture-dir=<existing absolute directory>` preserves input events and earned checkpoints. `tests/motion.gd -- --checkpoint=<earned checkpoint> --seconds=24 --capture-dir=<directory>` continues a checked actual-input checkpoint through ordinary loading and new touch/GUI events. Add `--write-movie <ignored path.avi> --fixed-fps 60` for motion. Fixed-rate NVIDIA desktop movies are not measured phone FPS or audible-output evidence.
 
 The original first loop, full-candidate visual direction and code3's two P2 fixes were independently cleared. Exact historical source/artifact hashes remain in the code2/code3 indexes; code4's bindings and narrow regression results are in `evidence/native-input-code4.json`. The coordinator reports a successful 24-check real code2→code3 update and a native first-passage victory; this builder did not operate Android. Coordinator owns code3→code4 install-over update, Android keyboard/clipboard/lifecycle/navigation and final integration. Physical Fold7 touch/folding/sound/performance and human pacing/fun remain outstanding. Runtime is frozen at this checkpoint; no push or shared-file changes were made.
+
+Local signed candidate 0.3.3/code9 includes the reviewed whole-save recovery,
+fresh retry-marker/archive admission and canonical/legacy-aware selected arena
+best-clear feedback. Existing save schemas, combat rules and scoring stay pinned.
+Source/CPU evidence is in the recovery, marker and arena checkpoints. Packaging
+and native update/recovery/clipboard/readability remain separate checks; this
+candidate has not been uploaded. Physical and human acceptance remain open.

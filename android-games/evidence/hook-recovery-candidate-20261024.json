@@ -1,0 +1,47 @@
+{
+  "scope": "Local signed Hook0.3.3/code9 combines reviewed whole local recovery, fresh marker/archive admission, arena score identity and best-clear feedback. No gameplay rule/save schema change.",
+  "source_commit": "449582d812b1c63f665fd48a15fadff084b9e6d0",
+  "reviewed_runtime_commit": "2467cd60e707ca5614de98b1a3e4af286468ea4f",
+  "version": "0.3.3",
+  "version_code": 9,
+  "manifest": {
+    "path": "F:\\games-workspaces\\hook-finale-20261024\\.artifacts\\hook-and-hunger\\20261024T082350904653Z\\manifest.json",
+    "sha256": "840db75be7f28905fd15c9555c8f433b5e89334f4b147998a087ea1d1c95f66d",
+    "bytes": 1822
+  },
+  "artifact": {
+    "path": "F:\\games-workspaces\\hook-finale-20261024\\.artifacts\\hook-and-hunger\\20261024T082350904653Z\\hook-and-hunger.apk",
+    "sha256": "f3ba7a8111bb21c7f440b506de7b3a793104a3ab37802eae18050207fe144f22",
+    "bytes": 53746099
+  },
+  "inspection": {
+    "package": "com.dsschiff.hookandhunger",
+    "version_code": "9",
+    "version_name": "0.3.3",
+    "permissions": [],
+    "internet_permission": false,
+    "signature_verified": true,
+    "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
+    "debuggable": false
+  },
+  "source_sha256": "ef236bc1ebf9730ef565b08a223258196e1732ce080d3fbd8d6c517443f19288",
+  "source_clean": true,
+  "source_unchanged": true,
+  "independent_review": "Astra actual APK/hash/size/raw source/pipeline/effective config/signature/inspection/import/build logs CLEAR. Runtime/tests exactly equal reviewed2467cd60;449582d changes only version/README. Min24/target36,arm64+x86_64,no permissions/nondebug,existing2527signer v2/v3.",
+  "source_evidence": [
+    "android-games/evidence/hook-local-recovery-20261024.json",
+    "android-games/evidence/hook-marker-retry-20261024.json",
+    "android-games/hook-and-hunger/ARENA_SCORE_KEY_CHECKPOINT.json",
+    "android-games/hook-and-hunger/ARENA_FEEDBACK_CHECKPOINT.json"
+  ],
+  "checks": "Root marker172/0, arena identity188/0, selected feedback573/0 and recovery871/0 retained in source indexes; no unnecessary version-only rerun.",
+  "status": "Signed local candidate and packaging clear. Native code8to9/recovery/clipboard/arena feedback readability remain unverified. No upload.",
+  "remaining": [
+    "Actual signed code8to9 and full native update/Home/cold",
+    "Normal Import/pending explicit choices with complete campaign/projectiles/parked ending/profile contexts and native clipboard",
+    "Selected arena best-clear/no-clear native readability",
+    "Real storage interruption,physical Fold7/sound/FPS/human fun",
+    "Configured optional Google account/cloud sync",
+    "Specific authorization for this exact0.3.3/code9 private transfer"
+  ]
+}

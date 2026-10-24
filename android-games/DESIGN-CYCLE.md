@@ -171,3 +171,8 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
   use genuine ready/battle contexts; no real I/O fault or earned-profile claim.
   Original battle restored/cold, emulator closed. Bounded independent audit clear;
   shader warning and external full-code bridge readback remain open. No upload.
+
+- Hook0.3.3/code9 local signed candidate packaging independently clear; runtime
+  equals reviewed2467cd60 and only version/README changed. Recovery/arena identity/
+  best-clear feedback included. Native update/full recovery/clipboard/readability
+  and exact-transfer authorization remain separate; no upload.

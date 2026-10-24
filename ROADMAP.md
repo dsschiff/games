@@ -137,3 +137,7 @@ verification, independent visual review or phone feedback waits.
   roundtrips. Original battle/ten bullets restored, owned emulator closed. Sealed
   packet independently audited; shader-warning and external large-code clipboard gates
   remain failed/unresolved. No upload.
+
+- Hook0.3.3/code9 signed local candidate built from reviewed recovery/marker/
+  arena feedback source. Actual APK/source/signer/raw logs independently clear.
+  Native8to9/full-context choices/clipboard/readability next; no upload.

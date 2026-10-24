@@ -659,7 +659,7 @@
   },
   "hook_local_recovery": {
     "evidence": "android-games/evidence/hook-local-recovery-20261024.json",
-    "status": "Source/CPU clear; no new build/native acceptance; older exact0.3.2 candidate unchanged.",
+    "status": "Source/CPU clear; later signed0.3.3/code9 candidate packaging/source clear, native9 unverified.",
     "checks": {
       "import_recovery": 871,
       "terminal_commit": 12,
@@ -674,7 +674,7 @@
     "independent_terminal": 12,
     "failures": 0,
     "limits": "Synthetic faults/headless input; existing cache explicitly used. Android/render/power loss/cloud unverified.",
-    "next": "Retry-marker source correction reviewed; higher-version signed candidate/native checks remain next."
+    "next": "Actual native code8to9/full-context recovery/clipboard and selected arena feedback readability; see hook_recovery_candidate."
   },
   "hook_arena_score_identity": {
     "reviewed_commit": "ced33668fb5c9ab093b893d5f81a8e623a5cad12",
@@ -703,7 +703,8 @@
     "independent_failures": 0,
     "review": "Astra source and all15 artifacts/168 source pins/12 unchanged source files/protected code sections clear; final checkpoint review-text-only update qualified.",
     "status": "Source/CPU only; no new APK or Android acceptance.",
-    "next": "Recovery marker correction source reviewed; build higher-version candidate with recovery, score identity and visible best-clear feedback, then verify native update."
+    "next": "Recovery marker correction source reviewed; build higher-version candidate with recovery, score identity and visible best-clear feedback, then verify native update.",
+    "later_candidate": "Reviewed source now included in local signed0.3.3/code9; packaging clear, native feedback/readability unverified. See hook_recovery_candidate."
   },
   "hook_arena_feedback": {
     "reviewed_source_commit": "5fab554717e19ec748fb9f148a7b79644e37219e",
@@ -733,7 +734,8 @@
     "root_failures": 0,
     "root_source_unchanged": true,
     "review": "Astra source/CPU/final pins clear:18 artifact hashes,170 executed source pins,191 unchanged files and exact base-controller reconstruction without six UI lines.",
-    "limits": "Synthetic validated profiles, actual touch input and whole-profile/parked-finale/backend-byte checks; CPU layout only. No newly earned arena victory, native/render/phone or APK acceptance. Existing retry-marker risk separately open."
+    "limits": "Synthetic validated profiles, actual touch input and whole-profile/parked-finale/backend-byte checks; CPU layout only. No newly earned arena victory, native/render/phone or APK acceptance. Existing retry-marker risk separately open.",
+    "later_candidate": "Reviewed source now included in local signed0.3.3/code9; packaging clear, native feedback/readability unverified. See hook_recovery_candidate."
   },
   "dead_local_recovery": {
     "evidence": "android-games/evidence/dead-local-recovery-20261024.json",
@@ -751,7 +753,7 @@
   "hook_marker_retry": {
     "evidence": "android-games/evidence/hook-marker-retry-20261024.json",
     "status": "Source/CPU independently clear; root172/0. Whole recovery, arena identity and feedback regressions pass871/188/573. No version or new APK.",
-    "next": "Higher-version signed candidate/native update, explicit recovery choices and arena feedback readability; existing0.3.2/code8 unchanged.",
+    "next": "Actual native code8to9/full-context recovery/clipboard and selected arena feedback readability; see hook_recovery_candidate.",
     "limit": "Synthetic complete contexts/typed faults/actual engine input/materialized owners, no native storage fault, power loss, physical or cloud acceptance."
   },
   "tower_local_recovery": {
@@ -765,5 +767,11 @@
     "status": "Source/CPU clear: independent874/0 and338touch events, final five suites874/167/56/127/44 and4fresh-file directions6/0. Complete context ownership and direct Copy/View implemented.",
     "next": "Higher signed candidate/native/rendered recovery and exact OS clipboard;0.3.1/code5 unchanged.",
     "limits": "Repeated historical headlessAV and standalone nullUI failures retained; bounded source corrections pass final/current input. No Android/render/clipboard/powerloss/physical/cloud acceptance."
+  },
+  "hook_recovery_candidate": {
+    "evidence": "android-games/evidence/hook-recovery-candidate-20261024.json",
+    "version": "0.3.3",
+    "version_code": 9,
+    "status": "Local signed candidate packaging/source independently clear. Native8to9/recovery/clipboard/best-clear feedback readability remain next; no upload."
   }
 }

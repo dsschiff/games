@@ -818,3 +818,9 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   Original tick251 battle/ten bullets restored; exact91660/77432 graceful stop
   verified absent.347packet/8updater/20runtime pins independently audited. Cold splash stills
   are excluded from UI-readiness; equality stays at full decoded meaning.
+
+- Hook0.3.3/code9 prepared at449582d;53,746,099B APK SHA256f3ba7a81…
+  fe144f22. Astra actual packaging/source/pipeline/config/raw-log/signature audit
+  clear; no permissions/nondebug and existing2527signer retained. Runtime/tests
+  exactly reviewed2467cd60. Native8to9/recovery/clipboard/arena feedback display
+  remain next. Local candidate only; no new private transfer or phone acceptance.
