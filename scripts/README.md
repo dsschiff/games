@@ -366,7 +366,7 @@ eight simulation seconds. Actual controls set sound off/reduced effects on;
 Home retained the whole state/settings. This is an old-version fixture from
 the original pre-import-fix APK, not a full-game or update acceptance result.
 
-Tower's tested code1→2 fixture is
+Tower's tested code1â†’2 fixture is
 `tower-trials-code2-from-prepared-code1.json`, with
 `tower-trials-code2-upgrade-expectations.json` as `--new-expectations`.
 Use `--schema-path schema --expected-version 2` and preserve every old saved
@@ -436,7 +436,9 @@ The pipeline copies only clean tracked game sources into its own staging folder.
 Only that copy receives Gradle/AAB/unsigned export overrides. It verifies the
 official pinned template archive and source ZIP, prepares the pinned engine's
 Android template layout before import, then runs headless/Dummy import/export.
-Every raw log is retained; Godot warning/error markers fail the build.
+Raw stdout and stderr are retained separately, so Java environment notices cannot
+corrupt structured manifest output. Godot warning/error markers on either stream
+fail the build.
 
 Signed bundles use [jarsigner](https://developer.android.com/build/building-cmdline#sign_cmdline),
 environment-only passwords, strict verification against the existing private

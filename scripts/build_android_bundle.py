@@ -277,13 +277,15 @@ def main() -> int:
                  "process_tree_stopped": False}
         record["commands"].append(entry)
         save_record()
-        with log.open("wb") as output:
-            outcome = run_owned(argv, env=child_env or env, log=output)
+        stderr_log = run / (label + ".stderr.log")
+        with log.open("wb") as output, stderr_log.open("wb") as errors:
+            outcome = run_owned(argv, env=child_env or env, log=output, stderr_log=errors)
         entry.update(outcome, state="timed_out" if outcome["timed_out"] else "returned")
         text = log.read_text(encoding="utf-8", errors="replace")
-        markers = [line for line in text.splitlines() if any(word in line for word in MARKERS)]
+        combined = text + "\n" + stderr_log.read_text(encoding="utf-8", errors="replace")
+        markers = [line for line in combined.splitlines() if any(word in line for word in MARKERS)]
         entry.update(engine_markers=markers if engine else [],
-                     raw_warning_lines=[line for line in text.splitlines() if "warning" in line.lower()])
+                     raw_warning_lines=[line for line in combined.splitlines() if "warning" in line.lower()])
         save_record()
         print(label, outcome["exit_code"], flush=True)
         if (outcome["exit_code"] != 0 or outcome["timed_out"] or outcome.get("process_error")
@@ -311,6 +313,11 @@ def main() -> int:
         command("bundle", [godot, "--headless", "--audio-driver", "Dummy", "--path",
                            str(stage), "--export-release", config["export_preset"],
                            str(unsigned)], engine=True)
+        # Check all game bytes before admitting private-key use.
+        record["staged_source_after_export"] = staged_sources(stage)
+        record["source_after_export"] = tracked_sources(root, project)
+        if record["staged_source_after_export"] != staged_before or record["source_after_export"] != original:
+            raise ValueError("Game source changed before signing")
         artifact = unsigned
         if args.signing_env:
             values = read_signing_env(args.signing_env)

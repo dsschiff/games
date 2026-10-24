@@ -95,7 +95,7 @@ class _Job:
             self.handle = None
 
 
-def run_owned(argv, *, env, log, timeout=900, cleanup_timeout=30):
+def run_owned(argv, *, env, log, stderr_log=None, timeout=900, cleanup_timeout=30):
     """Drain the owned tree or explicitly report uncertainty before cleanup.
 
     Isolated Python blocks on stdin before spawning anything. No argv is sent
@@ -111,7 +111,8 @@ def run_owned(argv, *, env, log, timeout=900, cleanup_timeout=30):
     try:
         job = _Job()
         process = subprocess.Popen([sys.executable, "-I", "-S", "-u", "-c", _GATE],
-                                   stdin=subprocess.PIPE, stdout=log, stderr=subprocess.STDOUT,
+                                   stdin=subprocess.PIPE, stdout=log,
+                                   stderr=stderr_log if stderr_log is not None else subprocess.STDOUT,
                                    env=env, creationflags=subprocess.CREATE_NO_WINDOW)
         outcome.update(wrapper_pid=process.pid, process_tree_stopped=False)
         job.assign(process)
@@ -157,4 +158,6 @@ def run_owned(argv, *, env, log, timeout=900, cleanup_timeout=30):
             if job is not None:
                 job.close()
             log.flush()
+            if stderr_log is not None:
+                stderr_log.flush()
     return outcome

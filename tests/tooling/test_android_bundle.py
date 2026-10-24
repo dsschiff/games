@@ -180,6 +180,24 @@ class BundleTests(unittest.TestCase):
             bundle.tracked_sources(self.home, project)
 
 
+
+    @unittest.skipUnless(os.name == "nt", "Windows Job Object integration")
+    def test_structured_stdout_stays_separate_from_raw_stderr_banner(self):
+        expected = bundle.preset_info(PRESET, "Android")[1]
+        stdout = self.home / "structured.log"
+        stderr = self.home / "structured.stderr.log"
+        command = [sys.executable, "-I", "-S", "-c",
+                   "import sys;sys.stderr.write('Picked up JAVA_TOOL_OPTIONS: controlled fixture\\n');"
+                   "sys.stdout.write(" + repr(XML) + ")"]
+        with stdout.open("wb") as output, stderr.open("wb") as errors:
+            value = owned_process.run_owned(command, env=os.environ.copy(), log=output,
+                                            stderr_log=errors, timeout=5)
+        self.assertEqual(value["exit_code"], 0)
+        self.assertTrue(value["process_tree_stopped"])
+        self.assertEqual(bundle.inspect_manifest(stdout.read_text(), NAMES, expected)["package"],
+                         expected["package"])
+        self.assertIn("Picked up JAVA_TOOL_OPTIONS: controlled fixture", stderr.read_text())
+
     @unittest.skipUnless(os.name == "nt", "Windows Job Object integration")
     def test_timeout_drains_actual_child_and_grandchild_without_touching_sentinel(self):
         pids = self.home / "pids.json"
