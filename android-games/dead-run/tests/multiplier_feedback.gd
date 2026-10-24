@@ -2,20 +2,68 @@ extends "res://tests/campaign_input.gd"
 ## Fresh production owner and real ScreenTouch/Drag only. Typed label fixtures
 ## are tested separately after the earned opening and never saved as progress.
 const Adapter = preload("res://scripts/presentation/adapter.gd")
+class InputClock extends Node:
+	var events: Array = []
+	func _input(event: InputEvent) -> void:
+		if not (event is InputEventScreenTouch or event is InputEventScreenDrag): return
+		var row := {"physics_frame": Engine.get_physics_frames(), "process_frame": Engine.get_process_frames(),
+			"index": event.index, "position": [event.position.x, event.position.y]}
+		row.kind = "touch" if event is InputEventScreenTouch else "drag"
+		if event is InputEventScreenTouch: row.pressed = event.pressed
+		events.append(row)
+
+var route_only := false
+var native_frames := false
+var input_clock: InputClock
+var clock_physics := 0
+var clock_process := 0
+var capture_active := false
+var capture_ok := true
+var capture_last_tick := -1
+var duplicate_live_draws := 0
+var capture_rows: Array = []
+var capture_marks: Array = []
+var pending_marks: Array = []
+
+func _initialize() -> void:
+	for arg in OS.get_cmdline_user_args():
+		if arg == "--route-only": route_only = true
+		if arg == "--native-frames": native_frames = true
+	super._initialize()
+
 var observations: Array = []
 var tick_contexts: Array = []
 var crossings: Array = []
 var mismatches: Array = []
+var charge_views: Array = []
 
 func observe(label: String) -> void:
 	var info: Dictionary = scene.presentation.gates[3]
 	observations.append({"label": label, "tick": scene.state.tick, "context": scene.ctx.duplicate(true),
 		"number": info.number.text, "caption": info.caption.text, "caption_font": info.caption.font_size})
+	if route_only:
+		pending_marks.append({"label": label, "requested_tick": scene.state.tick,
+			"requested_physics": Engine.get_physics_frames() - clock_physics,
+			"requested_process": Engine.get_process_frames() - clock_process,
+			"requested_context_sha256": JSON.stringify(scene.ctx, "", true, true).sha256_text()})
+		if label == "started":
+			capture_active = true
+			if native_frames: RenderingServer.frame_post_draw.connect(sample_capture)
+			else: process_frame.connect(sample_capture)
 
 func run() -> void:
 	root.size = Vector2i(720, 1280)
 	scene = load("res://campaign.tscn").instantiate()
 	root.add_child(scene)
+	if route_only:
+		check(Engine.time_scale == 1.0 and Engine.physics_ticks_per_second == 60, "route capture uses unscaled60Hz simulation")
+		clock_physics = Engine.get_physics_frames()
+		clock_process = Engine.get_process_frames()
+		input_clock = InputClock.new()
+		root.add_child(input_clock)
+		if native_frames:
+			DirAccess.make_dir_recursive_absolute(folder.path_join("frames"))
+			DirAccess.make_dir_recursive_absolute(folder.path_join("stills"))
 	await dwell(6)
 	check(scene.journey_visible and scene.ctx.profile.clears.is_empty(), "fresh production owner has no invented progress")
 	await click(scene.stage_buttons[0].text)
@@ -82,12 +130,19 @@ func run() -> void:
 		for suffix in ["", ".tmp"]:
 			var path: String = Store.PATH + str(i) + suffix
 			if FileAccess.file_exists(path): raw[path] = FileAccess.get_file_as_string(path)
+	var route_capture := {}
 	var fixture_context: Dictionary = scene.ctx.duplicate(true)
-	label_fixtures()
-	check(Data.same(scene.ctx, fixture_context), "isolated label fixtures leave complete earned context unchanged")
+	if route_only:
+		route_capture = await finish_capture()
+		check(Data.same(scene.ctx, fixture_context) and Data.same(Store.read(), saved), "final held draw flush preserves complete live and durable context")
+		for path in raw:
+			check(FileAccess.get_file_as_string(path) == raw[path], "final held draw flush preserves raw slot " + path)
+	else:
+		label_fixtures()
+		check(Data.same(scene.ctx, fixture_context), "isolated label fixtures leave complete earned context unchanged")
 	write("multiplier-feedback.json", {"checks": checks, "failures": failures, "details": details,
 		"observations": observations, "crossings": crossings, "tick_contexts": tick_contexts,
-		"mismatches": mismatches, "context": scene.ctx.duplicate(true), "saved": saved, "raw_slots": raw,
+		"route_only": route_only, "route_capture": route_capture, "charge_views": charge_views, "mismatches": mismatches, "context": scene.ctx.duplicate(true), "saved": saved, "raw_slots": raw,
 		"scope": "Fresh actual production input opening; no injected progress. CPU is not rendered/native/human acceptance."})
 	write("raw-input-events.json", events)
 	scene.queue_free()
@@ -112,6 +167,7 @@ func label_fixtures() -> void:
 				var captions := true
 				var fits := true
 				var unchanged := true
+				var charge_truthful := true
 				for i in s.gates.size():
 					var gd: Dictionary = s.definition.gates[i]
 					var g: Dictionary = s.gates[i]
@@ -131,9 +187,17 @@ func label_fixtures() -> void:
 						var caption: Label3D = p.gates[i].caption
 						var expected := "CREW"
 						if mul and g.value < gd.cap:
-							expected = "NEXT %d/%d" % [hits, (int(g.value) + 1 - int(gd.initial)) * int(gd.step)]
+							expected = "%d/%d" % [hits, (int(g.value) + 1 - int(gd.initial)) * int(gd.step)]
 						captions = captions and caption.text == expected
 						if mul:
+							var fill: MeshInstance3D = p.gates[i].charge
+							charge_truthful = charge_truthful and (fill.get_parent() as Node3D).visible == (g.value < gd.cap)
+							if g.value < gd.cap:
+								var threshold: int = (int(g.value) + 1 - int(gd.initial)) * int(gd.step)
+								var ratio := clampf(float(hits) / threshold, 0.0, 1.0)
+								charge_truthful = charge_truthful and fill.visible == (hits > 0) and is_equal_approx(fill.scale.x, maxf(.001, ratio))
+								var back: MeshInstance3D = fill.get_parent().get_child(0)
+								charge_truthful = charge_truthful and is_equal_approx(back.mesh.size.y, .48) and back.mesh.size.x <= p.gates[i].panel.mesh.size.x
 							var measured: float = (caption.font.get_string_size(caption.text, HORIZONTAL_ALIGNMENT_LEFT, -1, caption.font_size).x + 2 * caption.outline_size) * caption.pixel_size
 							if g.value < gd.cap: fits = fits and measured <= p.gates[i].panel.mesh.size.x - .1
 							captions = captions and p.gates[i].number.text == char(215) + str(int(g.value))
@@ -142,6 +206,106 @@ func label_fixtures() -> void:
 					p._sync_gates(s, s.definition, true)
 					captions = captions and not p.gates[i].node.visible
 				check(captions, "catalog%d road%d seed%d: next threshold/cap, applied numeral, add gate and crossed visibility" % [catalog, road, seed])
+				check(charge_truthful, "catalog%d road%d seed%d: actual cumulative charge, zero/cap visibility and thick contained track" % [catalog, road, seed])
 				check(fits, "catalog%d road%d seed%d: measured caption and outline stay inside original panel" % [catalog, road, seed])
 				check(unchanged, "catalog%d road%d seed%d: hydration reads pinned state without mutation" % [catalog, road, seed])
 				p.root.queue_free()
+
+func capture_metadata() -> Dictionary:
+	var camera: Camera3D = scene.camera
+	return {"tick": scene.state.tick, "physics": Engine.get_physics_frames() - clock_physics,
+		"process": Engine.get_process_frames() - clock_process, "paused": scene.paused,
+		"context_sha256": JSON.stringify(scene.ctx, "", true, true).sha256_text(),
+		"camera": {"position": [camera.position.x, camera.position.y, camera.position.z],
+			"rotation": [camera.rotation.x, camera.rotation.y, camera.rotation.z], "fov": camera.fov,
+			"projection": camera.projection, "keep_aspect": camera.keep_aspect,
+			"viewport": [root.size.x, root.size.y]}}
+
+func sample_capture() -> void:
+	if not capture_active or not is_instance_valid(scene): return
+	var tick: int = scene.state.tick
+	if not scene.paused and scene.state.phase == "playing" and tick >= 2 and tick % 2 == 0 and tick == capture_last_tick:
+		duplicate_live_draws += 1
+		capture_ok = false
+	capture_ok = capture_ok and Engine.time_scale == 1.0 and Engine.physics_ticks_per_second == 60
+	var sample: bool = not scene.paused and scene.state.phase == "playing" and tick >= 2 and tick % 2 == 0 and tick != capture_last_tick
+	if not sample and pending_marks.is_empty(): return
+	var row := capture_metadata()
+	var image: Image
+	if native_frames:
+		image = root.get_texture().get_image()
+		capture_ok = capture_ok and image.get_size() == Vector2i(720, 1280)
+		row.image_size = [image.get_width(), image.get_height()]
+	if sample:
+		capture_ok = capture_ok and tick == (2 if capture_last_tick < 0 else capture_last_tick + 2)
+		capture_last_tick = tick
+		var filename := "frames/%06d.png" % capture_rows.size()
+		row.file = filename
+		if native_frames: capture_ok = image.save_png(folder.path_join(filename)) == OK and capture_ok
+		capture_rows.append(row)
+	for mark in pending_marks:
+		var filename: String = "stills/" + mark.label + ".png"
+		mark.actual = capture_metadata()
+		mark.file = filename
+		if native_frames:
+			mark.actual.image_size = [image.get_width(), image.get_height()]
+			capture_ok = image.save_png(folder.path_join(filename)) == OK and capture_ok
+		capture_marks.append(mark)
+		if mark.label in ["partial-before-away", "return-to-gate"]:
+			charge_views.append(charge_geometry(mark.label))
+	pending_marks.clear()
+
+func finish_capture() -> Dictionary:
+	check(scene.paused and scene.state.tick == 2737, "capture ends only at the original actual paused boundary")
+	# No live-route await: finish the last marked still only after actual Pause.
+	if native_frames: await RenderingServer.frame_post_draw
+	else: await process_frame
+	capture_active = false
+	if RenderingServer.frame_post_draw.is_connected(sample_capture): RenderingServer.frame_post_draw.disconnect(sample_capture)
+	if process_frame.is_connected(sample_capture): process_frame.disconnect(sample_capture)
+	check(capture_ok and capture_rows.size() == 1368 and capture_last_tick == 2736, "every two simulation ticks forms the complete 45.6s30fps route without gaps")
+	check(pending_marks.is_empty() and capture_marks.size() == 5, "all five real route marks flush without a gameplay hold")
+	var timed_inputs: Array = input_clock.events.duplicate(true)
+	for event in timed_inputs:
+		event.physics_frame -= clock_physics
+		event.process_frame -= clock_process
+	input_clock.queue_free()
+	return {"rendered": native_frames, "time_scale": Engine.time_scale, "simulation_hz": Engine.physics_ticks_per_second, "video_fps": 30, "duration_seconds": 45.6, "duplicate_live_draws": duplicate_live_draws,
+		"clock_origin_physics": clock_physics, "clock_origin_process": clock_process,
+		"observer": "frame_post_draw" if native_frames else "headless process_frame plan; no pixels",
+		"frames": capture_rows, "marks": capture_marks, "timed_inputs": timed_inputs,
+		"limits": "No resizing, frame interpolation, live-route waits or typed fixture tail. Fixed-step video is not measured FPS, native Android or human pacing."}
+
+func projected_box(node: Node3D, bounds: AABB, billboard: bool = false) -> Rect2:
+	var points := PackedVector2Array()
+	var basis: Basis = scene.camera.global_basis.orthonormalized() * Basis.from_scale(node.global_basis.get_scale())
+	for x in [bounds.position.x, bounds.end.x]:
+		for y in [bounds.position.y, bounds.end.y]:
+			for z in [bounds.position.z, bounds.end.z]:
+				var local := Vector3(x, y, z)
+				var point: Vector3 = node.global_position + basis * local if billboard else node.to_global(local)
+				points.append(scene.camera.unproject_position(point))
+	var rectangle := Rect2(points[0], Vector2.ZERO)
+	for point in points: rectangle = rectangle.expand(point)
+	return rectangle
+
+func charge_geometry(label: String) -> Dictionary:
+	var info: Dictionary = scene.presentation.gates[3]
+	var fill: MeshInstance3D = info.get("charge")
+	var row := {"mark": label, "tick": scene.state.tick, "exists": fill != null}
+	if fill == null: return row
+	var back: MeshInstance3D = fill.get_parent().get_child(0)
+	var track := projected_box(back, back.get_aabb())
+	var counter := projected_box(info.caption, info.caption.get_aabb(), true)
+	var number := projected_box(info.number, info.number.get_aabb(), true)
+	var panel := projected_box(info.panel, info.panel.get_aabb())
+	row.panel = [panel.position.x, panel.position.y, panel.size.x, panel.size.y]
+	row.contained = panel.grow(.5).encloses(track)
+	row.track = [track.position.x, track.position.y, track.size.x, track.size.y]
+	row.counter = [counter.position.x, counter.position.y, counter.size.x, counter.size.y]
+	row.number = [number.position.x, number.position.y, number.size.x, number.size.y]
+	row.counter_font = info.caption.font_size
+	row.caption = info.caption.text
+	row.ratio = fill.scale.x
+	row.visible = fill.is_visible_in_tree()
+	return row

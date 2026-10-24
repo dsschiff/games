@@ -223,6 +223,16 @@
       "not_in_packaged_apks": "Google Play native SDK remains unbundled/unconfigured; the UI reports unavailable honestly."
     },
     "latest_console_recheck": {
+      "observed_by_utc": "2026-10-24T13:38:00Z",
+      "timestamp_basis": "Clock read immediately after loaded first-party account page observation; exact browser observation timestamp is slightly earlier.",
+      "account": "ShifTech",
+      "url": "https://play.google.com/console/u/0/developers/7131275228301962897/home",
+      "identity": "Action required: upload an official document so Google can verify identity",
+      "phone": "Action required: complete other verification tasks, including identity and document approval",
+      "apps": "Create your first app; none shown",
+      "scope": "Read-only existing signed-in first-party console. No identity upload, app creation, consent/account change. Temporary task tab413132772 closed; no browser groups/pins/bookmarks."
+    },
+    "prior_console_recheck_20261024_morning": {
       "recorded_utc": "2026-10-24T10:27:02Z",
       "observation_window_utc": {
         "after": "2026-10-24T09:36:45Z",
@@ -760,7 +770,7 @@
   "frontline_marker_retry": {
     "evidence": "android-games/evidence/frontline-marker-retry-20261024.json",
     "status": "Signed0.3.5/code9 bounded native update/retry admission/normal Import independently clear:37whole/13admission/0 and5native exact14file rejection pairs; original restored,9archives preserved. Strict shader-warning gate FAIL.",
-    "next": "Normal-rate rendered review and a later higher-version build for the separate recap/Journey source; native storage faults, nonempty parked/skirmish cases, physical/cloud and exact transfer remain open.",
+    "next": "Later recap/Journey desktop review and local signed0.3.6/code10 packaging are clear; new code9to10/native presentation, native storage faults, nonempty parked/skirmish, physical/cloud and exact transfer remain open.",
     "limit": "Fault cases remain CPU typed/materialized; bounded native healthy-storage and explicit metadata/archive fixtures are separately verified. No native storage-fault/power-loss/physical/cloud acceptance."
   },
   "hook_marker_retry": {
@@ -854,9 +864,12 @@
     "state": "Source/CPU independently clear; actual cumulative hit progress in existing multiplier panel,300/0 plus22/0. Complete paired gameplay/rawsave/input parity;2734tick hashes and28events exact.",
     "checkpoint": "android-games/dead-run/MULTIPLIER_FEEDBACK_CHECKPOINT.json",
     "natural_crossing": "35to40 actual hits, not39to40",
-    "new_apk": false,
-    "rendered_acceptance": false,
-    "next": "Normal1x approach/caption salience review, then higher-version signed/native candidate. Existing0.4.2/code8 APK predates this source."
+    "new_apk": true,
+    "rendered_acceptance": "Qualified bounded desktop approach only; native/physical/human remain open.",
+    "next": "Verify exact code8to9 Android update/full context and native multiplier feedback; preserve strict shader gate and physical/human/cloud/transfer separation.",
+    "later_rendered_review": "Original60515 NEXT caption has a retained P2 readability finding. Reviewed shortfraction/contrasting-fill correction preserves complete2734tick/28input/rawsave parity and passes bounded matched35to45.6s1x approach. Cyan is contrast, independent analog-bar readability unproven.",
+    "later_correction_source": "b6e737fb8722cf1e04a6f4e7699cb1e5f671c918",
+    "candidate": "Local signed0.4.3/code9 fromb8fc68c; actual packaging/source/signer/rawlogs independently clear; native8to9 and upload open."
   },
   "frontline_record_feedback": {
     "source_commit": "606e0a49cc9c78fda534ade85f8e3258a937fb46",
@@ -868,7 +881,27 @@
       "checkpoint": "android-games/frontline-foundry/VICTORY_CRITERIA_CHECKPOINT.json",
       "state": "Independently reviewed one-string universal On victory qualification; focused current-source423/0,34pins, font20/86px criteria3profiles and last Journey row/Close pass. Prior416/870 remain606e source evidence."
     },
-    "new_apk": false,
-    "next": "Normal1x rendered recap/Journey/scroll review, then higher-version signed/native candidate."
+    "new_apk": true,
+    "next": "Verify exact code9to10 Android update/full-context/native feedback; keep physical/human/cloud and private transfer separate.",
+    "rendered_review": "Matched old/current38/0each and qualified full1x desktop recap/Journey/latest-clear review clear; separate independent nine-still and encoding/retention audit. See first-pair-rendered evidence.",
+    "candidate": "Local signed0.3.6/code10 fromf2b1a64; packaging/source/signer/rawlogs independently clear. Native9to10 and upload remain open."
+  },
+  "native_shader_diagnosis": {
+    "state": "Unresolved; strict native log gate still fails. Engine-source inspection narrows the next diagnostic, without establishing the device/driver cause.",
+    "engine_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+    "source": "https://github.com/godotengine/godot/blob/ed1daf0bf001b61586d9930840f2f1394092c079/drivers/gles3/shader_gles3.cpp#L506-L581",
+    "source_observation": "The exact warning follows glProgramBinary and a non-true GL_LINK_STATUS. Header/version/short-read validation has different exits. WARN_PRINT_ONCE does not report every failed record.",
+    "missing_evidence": [
+      "Rejected shader name, base/version key, variant and specialization",
+      "Binary format/length/hash and GL error/program info log at the rejection"
+    ],
+    "next": "If native warning diagnosis is pursued, use an isolated diagnostic engine build that records the missing tuple while preserving normal cache policy and source fallback; retain the original app/cache and treat the build as diagnostic only. More identical cold starts do not identify the cause.",
+    "limits": "Existing Tower raw cache framing/regeneration evidence does not identify the rejected record. Software-renderer fragment-uniform-limit failure is separate. No cache deletion, warning suppression, persistent graphics change or release acceptance."
+  },
+  "first_pair_rendered": {
+    "evidence": "android-games/evidence/first-pair-rendered-20261024.json",
+    "state": "Qualified desktop first-pair presentation review and final integration enclosure clear; local signed Frontline0.3.6/code10 and Dead0.4.3/code9 packaging independently clear with existing signing identity. No new upload or Android/physical/cloud acceptance.",
+    "physical_acceptance": false,
+    "cloud_acceptance": false
   }
 }
