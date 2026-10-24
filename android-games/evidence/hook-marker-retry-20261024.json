@@ -1,0 +1,47 @@
+{
+  "scope": "Hook local retry-marker admission only; complete state/projectiles/profile ending/parked finale/settings/codes retained. No Store/codec/schema/rules/UI/arena feedback/version/export change.",
+  "reviewed_source_commit": "2467cd60e707ca5614de98b1a3e4af286468ea4f",
+  "checkpoint": {
+    "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\MARKER_RETRY_CHECKPOINT.json",
+    "sha256": "326972831c0debfc92b824a4d5b3f75bd2db2c73c2d52f1b1a6e45bd3d278562",
+    "bytes": 48910
+  },
+  "behavior": "Reset stale read readiness, freshly admit every resolve, require every present base/stage marker to match the full intended transaction, reuse matching survivors without consuming them, verify every complete archive before active write. Conflicting/torn metadata stays intact and paused.",
+  "independent_review": "Astra source/checkpoint clear:170 source pins,193 unchanged actual base files,43 artifacts. Root integrated game tree equals reviewed commit.",
+  "retained_baseline": {
+    "checks": 174,
+    "failures": 35,
+    "actual_touch_events": 16,
+    "scope": "Actual source-stable production Retry/Keep across campaign projectile and arena parked-ending originals plus typed marker faults; assertions/raw error output retained as failed."
+  },
+  "worker_final": {
+    "marker": 172,
+    "actual_marker_touch_events": 16,
+    "import_recovery": 871,
+    "arena_score_key": 188,
+    "arena_feedback": 573,
+    "failures_each": 0,
+    "source_unchanged": true,
+    "scope": "Final marker and one named regression batch on identical frozen source with existing cache; no import/render."
+  },
+  "root_independent": {
+    "report": {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T070558526447Z\\report.json",
+      "sha256": "624afdd4912a58b85e9fe9a3bde3bdb978f432bc12a322ebe5494815164cd444",
+      "bytes": 1115
+    },
+    "assertions": {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T070558526447Z\\marker-retry.json",
+      "sha256": "bf36437b86a0ab3849f4906949ad8a5744f4a648d464458bbe1f8325f69bc333",
+      "bytes": 22570
+    },
+    "checks": 172,
+    "failures": 0,
+    "source_unchanged": true,
+    "scope": "Actual engine touch and complete immediate live/disk comparisons plus same-process materialized production owners; typed faults, not native OS/storage interruption."
+  },
+  "limits": [
+    "Known owner can export retained validated codes; cold undecodable marker retry-read only",
+    "No native/build/render/physical/cloud acceptance; existing signed0.3.2/code8 unchanged"
+  ]
+}

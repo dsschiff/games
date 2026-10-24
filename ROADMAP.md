@@ -102,3 +102,27 @@ verification, independent visual review or phone feedback waits.
   campaign/legacy/bullets/profile/settings retained and retries freshly validate
   every marker/copy. Direct pending export usability and new signed native
   candidate remain next. Existing0.4.1/code7 private APK is unchanged.
+
+- Frontline recovery retry admission source clear: every current marker/copy
+  validated before each choice. Root107/0 helper and26/0 actual-input/fresh-owner
+  checks pass using existing cache; earlier worker cache failure retained.
+  Higher-version signed/native candidate remains next;0.3.4/code8 unchanged.
+
+- Hook marker retries now freshly verify every surviving record and complete
+  archived code. Root172/0 and source/evidence review clear; existing871/188/573
+  recovery/arena/feedback regressions pass. New signed/native candidate next.
+
+- Gear0.4.3/code12 local signed candidate now independently audited for bounded
+  update/Import/recovery/copy behavior:10 owning-context comparisons/0,7 pending
+  and7 cleared markers,2 exact whole-code clipboard copies. Retry-marker source
+  root437/0 clear. Shader warning still fails strict log gate; rendering, real
+  storage interruption, physical/cloud and exact private transfer remain open.
+
+- Dead direct retained-code Copy controls now independently source/CPU reviewed,
+  root434/0 actual-touch checks pass. Signed0.4.2/code8 packaging/source clear;
+  actual native7to8/full-context/Copy and transfer gates remain open. Existing
+  private0.4.1/code7 stays available; no newer upload.
+
+- Tower whole local recovery source/CPU reviewed: root608/0 with208 actual touch
+  events. Complete campaign/challenge/parked data and uncertain animation gated;
+  verified choices adopt paused. New signed/native/OS clipboard checks remain.

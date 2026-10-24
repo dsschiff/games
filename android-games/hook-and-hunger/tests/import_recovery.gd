@@ -135,6 +135,8 @@ func freeze_checks(io: Faults,before: Dictionary,label: String) -> void:
 	check(io.active_writes==writes,"pending blocks autosave, terminalSync, direct saves and lifecycle writes: "+label)
 
 func run() -> void:
+	if "--marker-retry" in OS.get_cmdline_user_args():
+		await run_marker_retry(); return
 	root.size=Vector2i(720,1280)
 	var list := full_contexts()
 	for context in list: check(S.decode(code(context)).ok,"complete synthetic fixture validates "+context.name)
@@ -216,7 +218,10 @@ func run() -> void:
 			await freeze_checks(io,before,mode)
 			io.mode=""; io.promoted=""
 			await tap("KEEP PREVIOUS")
-			check(not scene.import_pending and scene.paused and whole()==before,"retry previous resolves exact full context "+mode)
+			if mode=="journal_corrupt":
+				check(scene.import_pending and scene.paused and whole()==before,"persistently torn marker stays blocked without destructive repair")
+			else:
+				check(not scene.import_pending and scene.paused and whole()==before,"retry previous resolves exact full context "+mode)
 		check(io.markerless_writes==0,"all active writes had durable journal admission "+mode)
 	# A failed scene handoff cannot reuse the cleanup-cleared admission on retry.
 	var io := fresh_io(list[2]); await open_owner(io,true)
@@ -253,3 +258,113 @@ func run() -> void:
 func reload_disk(expected: Dictionary,label: String) -> void:
 	await super.reload_disk(expected,label)
 	if not matches(whole(),expected): observations.append({"case":label,"expected":expected,"actual":whole()})
+
+class RetryFault extends Faults:
+	var blocked: Array[String] = []
+	var marker_failure := ""
+	func read_text(file: String) -> String:
+		return "unreadable" if file in blocked else super.read_text(file)
+	func rename(from: String,to: String) -> bool:
+		var okay:=super.rename(from,to)
+		if to==T.PATH:
+			if marker_failure=="missing": files.erase(to)
+			elif marker_failure=="corrupt": files[to]="torn"
+		return okay
+func marker_code(context: Dictionary,tag: String) -> String:
+	var full: Dictionary=context.duplicate(true); full.settings.extra=tag
+	return code(full)
+func marker_set(io: RetryFault) -> Dictionary:
+	var result: Dictionary={}
+	for path in [T.PATH,T.PATH+".tmp"]:
+		if io.files.has(path): result[path]=io.files[path]
+	return result
+func run_marker_retry() -> void:
+	root.size=Vector2i(720,1280)
+	var list:=full_contexts()
+	# Real Import/Retry/Keep, fresh owning controllers and materialized production reload.
+	for original_index in [1,2]:
+		for use_import in [false,true]:
+			var original: Dictionary=list[original_index]; var incoming: Dictionary=list[0]
+			var io:=RetryFault.new(); io.files=fresh_io(original).files.duplicate(true)
+			await open_owner(io); scene.settings.extra="unsaved whole live setting"
+			var before:=whole(); var live_code:=S.encode(scene.state,scene.settings,0,true,scene.profile)
+			var target: String=" \n"+code(incoming)+" \n"; var raw: Array=io.files.values().duplicate()
+			io.mode="clear_partial" if use_import else "clear_failure"; scene.transfer.text=target; await tap("IMPORT")
+			check(scene.import_pending and scene.paused and whole()==before,"actual Import retains entire original through unconfirmed cleanup")
+			for text in raw+[live_code,target]: check(io.files.get(Copies.PREFIX+str(text).sha256_text())==text,"actual Import preserves every opaque raw/live/incoming code exactly")
+			io.mode=""; io.promoted=""; io.marker_failure="missing" if use_import else "corrupt"
+			await tap("RETRY IMPORT" if use_import else "KEEP PREVIOUS")
+			var expected: Dictionary=S.decode(target if use_import else live_code)
+			check(not scene.import_pending and scene.paused and matches(whole(),expected) and matches(S.read(S.PATH,io),expected),"actual Retry/Keep verifies complete immediate live/disk context and paused adoption")
+			materialize(io); await reload_disk(expected,"marker retry actual production reload")
+			check(not scene.import_pending and scene.paused and matches(whole(),expected),"fresh materialized production owner retains complete chosen context")
+			observations.append({"case":"actual marker retry","original":original.name,"use_import":use_import,"whole_equal":matches(whole(),expected),"projectiles":original.state.get("projectiles",[]).size(),"parked_finale":not original.profile.ending.is_empty(),"scope":"synthetic complete records, actual ScreenTouch and fresh production owner from real files; not OS kill/native"})
+	# Typed admission matrix is separate from the actual production-input cases above.
+	var source:=marker_code(list[2],"unsaved arena with parked finale"); var target:=marker_code(list[1],"campaign projectile")
+	check(S.decode(source).ok and S.decode(target).ok and not S.decode(target).state.projectiles.is_empty() and not S.decode(source).profile.ending.is_empty(),"owning decoder accepts complete parked-finale and projectile-bearing contexts")
+	for stage in [false,true]:
+		for use_import in [false,true]:
+			var io:=RetryFault.new(); io.files=fresh_io(list[2]).files.duplicate(true); var helper:=T.new(io); var raw: Array=io.files.values().duplicate()
+			check(helper.begin(source,target).ok and helper.record.copies.size()==6,"six distinct complete raw/live/incoming codes archived before active mutation")
+			if stage: io.files[T.PATH+".tmp"]=io.files[T.PATH]
+			io.mode="clear_partial" if stage else "clear_failure"
+			check(not helper.resolve(true).ok and matches(S.read(S.PATH,io),S.decode(target)),"verified incoming write stays pending after failed or partial cleanup")
+			io.mode=""; io.promoted=""; io.marker_failure="missing"
+			check(helper.resolve(use_import).ok and matches(S.read(S.PATH,io),S.decode(target if use_import else source)),"sole matching base/stage permits either verified whole choice without promotion")
+			for text in raw+[source,target]: check(helper.copies.get_code(str(text).sha256_text()).get("text")==text,"all complete opaque codes remain exact after explicit choice")
+			check(not helper.journal_ready and marker_set(io).is_empty(),"confirmed clear invalidates retained helper readiness")
+			io.marker_failure=""; io.mode="active_verify"
+			check(not helper.resolve(not use_import).ok and not marker_set(io).is_empty(),"retained helper establishes new marker before uncertain later write")
+	for location in ["base","stage","both"]:
+		for fault in ["unreadable","invalid","conflict"]:
+			var io:=RetryFault.new(); io.files=fresh_io(list[2]).files.duplicate(true); var helper:=T.new(io); helper.begin(source,target)
+			if location=="stage": io.files[T.PATH+".tmp"]=io.files[T.PATH]; io.files.erase(T.PATH)
+			elif location=="both": io.files[T.PATH+".tmp"]=io.files[T.PATH]
+			var path: String=T.PATH+".tmp" if location in ["stage","both"] else T.PATH
+			if fault=="unreadable": io.blocked.append(path)
+			elif fault=="invalid": io.files[path]="torn"
+			else:
+				var other:=T.new(RetryFault.new()); other.begin(marker_code(list[0],"other original"),marker_code(list[1],"other incoming")); io.files[path]=other.io.files[T.PATH]
+			var prior: Dictionary=io.files.duplicate(true); var writes:=io.active_writes
+			check(not helper.resolve(false).ok and io.files==prior and io.active_writes==writes,"all existing artifacts must fully agree before write: "+location+" / "+fault)
+	for intended_first in [false,true]:
+		var io:=RetryFault.new(); io.files=fresh_io(list[2]).files.duplicate(true); var helper:=T.new(io); helper.begin(source,target); var intended: String=io.files[T.PATH]
+		var other:=T.new(RetryFault.new()); other.begin(marker_code(list[0],"other"),marker_code(list[1],"other incoming"))
+		for path in other.io.files:
+			if path.begins_with(Copies.PREFIX): io.files[path]=other.io.files[path]
+		io.files[T.PATH]=intended if intended_first else other.io.files[T.PATH]; io.files[T.PATH+".tmp"]=other.io.files[T.PATH] if intended_first else intended; io.mode="clear_partial"
+		var prior: Dictionary=io.files.duplicate(true); var writes:=io.active_writes
+		check(not helper.resolve(true).ok and io.files==prior and io.active_writes==writes,"reverse conflicting records cannot expose a different transaction through partial cleanup")
+	for post_store in [false,true]:
+		for changed in ["invalid","unreadable","missing","conflict"]:
+			var io:=RetryFault.new(); io.files=fresh_io(list[2]).files.duplicate(true); var helper:=T.new(io); helper.begin(source,target); io.mode="active_after_store" if post_store else "active_verify"
+			check(not helper.resolve(true).ok,"owning-Store or later readback uncertainty keeps recovery pending")
+			io.mode=""; io.promoted=""
+			if changed=="invalid": io.files[T.PATH]="torn"
+			elif changed=="unreadable": io.blocked.append(T.PATH)
+			elif changed=="missing": io.files.erase(T.PATH); io.marker_failure="missing"
+			else:
+				var other:=T.new(RetryFault.new()); other.begin(marker_code(list[0],"other"),marker_code(list[1],"other incoming")); io.files[T.PATH]=other.io.files[T.PATH]
+			var prior: Dictionary=io.files.duplicate(true); var writes:=io.active_writes
+			check(not helper.resolve(false).ok and io.files==prior and io.active_writes==writes,"same owner refreshes admission after write uncertainty: "+changed)
+	var io:=RetryFault.new(); var helper:=T.new(io); helper.begin(source,target); io.files[T.PATH]="torn"
+	check(not helper.read().ok and not helper.journal_ready,"failed read cannot retain stale durable readiness")
+	var stale_io:=RetryFault.new(); stale_io.files=fresh_io(list[2]).files.duplicate(true); var stale:=T.new(stale_io); stale.begin(source,target)
+	var changed_record: Dictionary=stale.record.duplicate(true); changed_record.copies=[changed_record.original,changed_record.incoming]
+	var stale_payload:=JSON.stringify(changed_record); stale_io.files[T.PATH]=JSON.stringify({"payload":stale_payload,"sha256":stale_payload.sha256_text()}); var stale_prior: Dictionary=stale_io.files.duplicate(true)
+	check(T.decode(stale_io.files[T.PATH]).ok and not stale.resolve(true).ok and stale_io.files==stale_prior,"same original/incoming with stale whole archive list cannot admit active write")
+	for copy_kind in ["original","incoming","raw_ending","raw_projectile"]:
+		var broken_io:=RetryFault.new(); broken_io.files=fresh_io(list[2]).files.duplicate(true)
+		var projectile_raw: String=S.encode(list[1].state,list[1].settings,5,true,list[1].profile); broken_io.files[S.PATH+"0"]=projectile_raw
+		var ending_raw: String=broken_io.files[S.PATH+"1"]; var broken:=T.new(broken_io); broken.begin(source,target)
+		var raw: String=projectile_raw if copy_kind=="raw_projectile" else ending_raw
+		if copy_kind.begins_with("raw_"):
+			var decoded:=S.decode(raw)
+			check(decoded.ok and (not decoded.state.projectiles.is_empty() if copy_kind=="raw_projectile" else not decoded.profile.ending.is_empty()),"opaque raw fixture contains its real projectile/parked-ending fields")
+		var id: String=broken.record.original if copy_kind=="original" else (broken.record.incoming if copy_kind=="incoming" else raw.sha256_text()); broken_io.files[Copies.PREFIX+id]="torn"
+		var prior: Dictionary=broken_io.files.duplicate(true); var writes:=broken_io.active_writes
+		check(not broken.resolve(true).ok and broken_io.files==prior and broken_io.active_writes==writes,"every whole archive reverified before active write: "+copy_kind)
+	if is_instance_valid(scene): scene.free()
+	await process_frame
+	FileAccess.open(capture_dir.path_join("marker-retry.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failures":failures,"details":report,"events":events,"observations":observations,"scope":"CPU/headless/Dummy, synthetic complete projectile/profile.ending/settings contexts; actual touch, typed faults and materialized production owner reload; not OS kill/native/render/cloud proof."},"  "))
+	print("MARKER_RETRY ",checks," failures=",failures); print("SUITE_COMPLETE: ","PASS" if failures==0 else "FAIL"); quit(0 if failures==0 else 1)

@@ -26,6 +26,7 @@ def sources():
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--skip-import", action="store_true", help="Use the existing imported cache; record skipped editor import explicitly")
+    parser.add_argument("--marker-retry", action="store_true", help="Run only the bounded Import retry-marker part")
     parser.add_argument("suites", nargs="*", default=["presentation_tests"])
     args = parser.parse_args()
     if any(not (PROJECT / "tests" / (name + ".gd")).is_file() or "/" in name or "\\" in name for name in args.suites):
@@ -58,7 +59,7 @@ def main():
                 report["drift_before_suite"] = name
                 break
             result = invoke([str(GODOT), "--headless", "--audio-driver", "Dummy", "--fixed-fps", "60", "--path", str(PROJECT), "--script", "res://tests/" + name + ".gd",
-                             "--", "--capture-dir=" + str(run)], name, timeout=360)
+                             "--", "--capture-dir=" + str(run)] + (["--marker-retry"] if args.marker_retry and name=="import_recovery" else []), name, timeout=360)
             result["passed"] = result["passed"] and result["suite_complete"]
             result["suite"] = name
             report["suites"].append(result)

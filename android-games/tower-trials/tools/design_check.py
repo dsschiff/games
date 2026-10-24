@@ -19,6 +19,8 @@ def sources():
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("suites", nargs="+", help="Existing test script basenames")
+    parser.add_argument("--skip-import", action="store_true", help="Use existing cache without running editor import")
+    parser.add_argument("--part", choices=("all","core","animation","copies","faults","admission","bootstrap"), help="bounded recovery test part")
     parser.add_argument("--viewport", help="optional WxH user argument for viewport-aware input suites")
     args = parser.parse_args()
     if args.viewport and (len(args.viewport.split("x")) != 2 or not all(p.isdigit() and 100 <= int(p) <= 4000 for p in args.viewport.split("x"))):
@@ -41,17 +43,17 @@ def main():
             except subprocess.TimeoutExpired:
                 code = -99
         output = (run / (label + ".log")).read_text(encoding="utf-8", errors="replace")
-        errors = [x for x in output.splitlines() if any(t in x for t in ["ERROR:", "FAIL:", "Parse Error:"])]
+        errors = [x for x in output.splitlines() if any(t in x for t in ["ERROR:", "FAIL:", "Parse Error:", "WARNING:", "ObjectDB instances leaked"])]
         passed = code == 0 and not errors and (label == "import" or "SUITE_COMPLETE: PASS" in output)
         return {"name": label, "command": command, "exit_code": code, "errors": errors, "passed": passed}
-    report["import"] = invoke(["--editor", "--import", "--quit"], "import")
+    report["import"] = {"passed":True,"skipped":True,"reason":"Existing cache; no editor import"} if args.skip_import else invoke(["--editor", "--import", "--quit"], "import")
     before = sources()
     (run / "source-before.json").write_text(json.dumps(before, indent=2), encoding="utf-8")
     if report["import"]["passed"]:
         for suite in args.suites:
             if sources() != before:
                 break
-            report["suites"].append(invoke(["--fixed-fps", "60", "--script", "tests/" + suite + ".gd", "--", "--capture-dir=" + str(run)] + (["--viewport=" + args.viewport] if args.viewport else []), suite))
+            report["suites"].append(invoke(["--fixed-fps", "60", "--script", "tests/" + suite + ".gd", "--", "--capture-dir=" + str(run)] + (["--viewport=" + args.viewport] if args.viewport else []) + (["--part="+args.part] if args.part else []), suite))
     report["source_unchanged"] = sources() == before
     report["passed"] = report["import"]["passed"] and report["source_unchanged"] and len(report["suites"]) == len(args.suites) and all(s["passed"] for s in report["suites"])
     (run / "report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")

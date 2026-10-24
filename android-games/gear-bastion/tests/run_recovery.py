@@ -28,7 +28,7 @@ def sources():
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     group = parser.add_mutually_exclusive_group()
-    for mode in ("journal", "rules", "phase-input", "input"):
+    for mode in ("journal", "marker", "rules", "phase-input", "input"):
         group.add_argument("--" + mode, action="store_true")
     parser.add_argument("--prepare", action="store_true")
     args = parser.parse_args()
@@ -57,6 +57,8 @@ def main():
     script, report_name = "save_recovery.gd", "save-recovery.json"
     if args.journal:
         script, report_name = "import_recovery.gd", "import-recovery.json"
+    elif args.marker:
+        script, report_name = "marker_retry.gd", "marker-retry.json"
     elif args.rules:
         script, report_name = "run_tests.gd", "rules.json"
     elif args.phase_input:

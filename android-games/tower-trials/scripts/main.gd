@@ -5,6 +5,7 @@ const Rules = preload("res://scripts/rules.gd")
 const Saves = preload("res://scripts/save_store.gd")
 const Challenge = preload("res://scripts/challenge_v1.gd")
 const Audio = preload("res://scripts/local_audio.gd")
+const Recovery = preload("res://scripts/import_recovery.gd")
 const TowerView = preload("res://scripts/presentation/tower_view.gd")
 const INK := Color("102c42")
 const SAND := Color("edddbc")
@@ -18,6 +19,19 @@ const CHAPTER_NAMES := ["Lantern Coast", "Salt Archives", "Glass March", "Last M
 const FAMILY_NAMES := {"key": "Keys", "shell": "Shell / sun", "rescue": "Rescue fork", "finale": "Woven finale"}
 
 var save_path := Saves.PATH
+var save_io: Variant = null
+var import_pending := false
+var import_recovery: Recovery
+var recovery_status := {}
+var recovery_root: Control
+var recovery_panel: PanelContainer
+var recovery_summary: Label
+var recovery_message: Label
+var recovery_copy_feedback: Label
+var recovery_code: TextEdit
+var recovery_scroll: ScrollContainer
+var recovery_buttons := {}
+var recovery_copy_backend: Variant = null
 var data := Saves.fresh()
 var level: Dictionary
 var state: Dictionary
@@ -56,12 +70,14 @@ var view: Node3D = TowerView.new()
 func _ready() -> void:
 	get_tree().auto_accept_quit = false
 	get_tree().quit_on_go_back = false
-	var restored := Saves.read(save_path)
-	if restored.ok:
-		data = restored.data
-	elif FileAccess.file_exists(save_path):
-		save_error = "Save damaged; no valid recovery. Import a saved route."
-	load_run()
+	import_recovery=Recovery.new(save_io,Recovery.path_for(save_path),save_path)
+	recovery_status=import_recovery.read(); import_pending=recovery_status.pending
+	var restored: Dictionary=recovery_status.original if recovery_status.ok else ({"ok":false} if import_pending else Saves.read(save_path,save_io))
+	if restored.ok: data=restored.data
+	elif not import_pending and (FileAccess.file_exists(save_path) if save_io==null else save_io.exists(save_path)):
+		save_error="Save damaged; no valid recovery. Import a saved route."
+	if not import_pending or recovery_status.ok: load_run()
+	if import_pending: paused=true
 	add_child(view)
 	add_child(player)
 	add_child(editor)
@@ -76,8 +92,10 @@ func _ready() -> void:
 	editor.add_theme_font_size_override("font_size", 20)
 	editor.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
 	editor.visible = false
+	build_recovery_ui()
 	get_viewport().size_changed.connect(layout)
 	layout()
+	if import_pending: show_recovery()
 	queue_redraw()
 
 func _exit_tree() -> void:
@@ -107,10 +125,16 @@ func layout() -> void:
 	scale = Vector2.ONE * factor
 	position = (area - Vector2(600, 1066) * factor) * 0.5
 	view.frame(area)
+	if is_instance_valid(recovery_root):
+		recovery_root.size=area
+		var width:=minf(640,area.x-24)
+		recovery_panel.position=Vector2((area.x-width)*.5,12)
+		recovery_panel.size=Vector2(width,area.y-24)
 	queue_redraw()
 
 ## Read-only snapshot for the 3D presentation; rules and saves are untouched.
 func sync_view() -> void:
+	if import_pending: return
 	var rects := {}
 	var blocked := {}
 	for room in level.rooms:
@@ -159,7 +183,8 @@ func _notification(what: int) -> void:
 		get_tree().quit()
 
 func persist(recoverable: bool = true) -> bool:
-	var ok := Saves.write(data, save_path, null, recoverable)
+	if import_pending: return false
+	var ok := Saves.write(data, save_path, save_io, recoverable)
 	save_error = "" if ok else "SAVE FAILED — keep this app open; export your route."
 	queue_redraw()
 	return ok
@@ -170,6 +195,7 @@ func tone(hz: float) -> void:
 		player.play()
 
 func _process(delta: float) -> void:
+	if import_pending: return
 	if paused or menu or transfer or guide or details or screen != "game":
 		return
 	if not pending.is_empty():
@@ -191,6 +217,7 @@ func _process(delta: float) -> void:
 	phase += delta
 
 func award() -> void:
+	if import_pending: return
 	var medals := 1
 	if int(state.moves) <= int(level.par):
 		medals |= 2
@@ -215,6 +242,7 @@ func award() -> void:
 	data.profile[level.id] = {"best": mini(int(prior.best), int(state.moves)), "medals": int(prior.medals) | medals}
 
 func buttons() -> Dictionary:
+	if import_pending: return {}
 	if details:
 		return {"close_details": Rect2(42, 910, 516, 80)}
 	if guide:
@@ -274,6 +302,7 @@ func home_point() -> Vector2:
 	return Vector2(89, 637 - state.claimed.size() * home_stride())
 
 func _unhandled_input(event: InputEvent) -> void:
+	if import_pending: return
 	# Native text editing needs touch-to-mouse emulation; avoid handling it twice.
 	if event is InputEventMouse and event.device == InputEvent.DEVICE_ID_EMULATION:
 		return
@@ -334,6 +363,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				return
 
 func back() -> void:
+	if import_pending: return
 	if details:
 		details = false
 	elif guide:
@@ -362,6 +392,7 @@ func back() -> void:
 	queue_redraw()
 
 func action(key: String) -> void:
+	if import_pending: return
 	if key == "settings":
 		menu = true
 		hide_seed()
@@ -397,19 +428,7 @@ func action(key: String) -> void:
 	elif key == "paste":
 		editor.text = DisplayServer.clipboard_get()
 	elif key == "import":
-		var decoded := Saves.decode(editor.text)
-		if decoded.ok and Saves.write(decoded.data, save_path, null, false):
-			data = decoded.data
-			load_run()
-			transfer = false
-			editor.visible = false
-			menu = false
-			screen = "game"
-			hide_seed()
-			note = "Imported route and earned progress."
-			save_error = ""
-		else:
-			note = decoded.get("message", "Import could not be saved; current route kept.")
+		begin_import(editor.text)
 	elif key == "resume":
 		screen = "game"
 		paused = false
@@ -803,6 +822,7 @@ func draw_ending() -> void:
 	button("map", "Explore your journey", TEAL)
 
 func _draw() -> void:
+	if import_pending: return
 	if state == null:
 		return
 	if view != null and view.is_inside_tree():
@@ -862,6 +882,7 @@ func current_run() -> Dictionary:
 	return data.challenge_run if data.kind == "challenge" else data
 
 func start_challenge(family: String, seed_value: int, options: Dictionary) -> void:
+	if import_pending: return
 	var result := Challenge.generate(family, seed_value, options)
 	if not result.ok:
 		note = result.message
@@ -924,3 +945,89 @@ func medal_labels(bits: int) -> String:
 	for pair in [[1, "Rescue"], [2, "Par"], [4, "Treasure"], [8, "Clean"]]:
 		if bits & int(pair[0]): names.append(pair[1])
 	return " · ".join(names)
+
+func build_recovery_ui() -> void:
+	var layer:=CanvasLayer.new(); layer.layer=20; add_child(layer)
+	recovery_root=Control.new(); recovery_root.mouse_filter=Control.MOUSE_FILTER_STOP; layer.add_child(recovery_root); recovery_root.hide()
+	var backplate:=ColorRect.new(); backplate.color=Color("102c42"); backplate.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); recovery_root.add_child(backplate)
+	recovery_panel=PanelContainer.new(); recovery_root.add_child(recovery_panel)
+	var surface:=StyleBoxFlat.new(); surface.bg_color=Color("102c42"); surface.content_margin_left=16; surface.content_margin_right=16; surface.content_margin_top=16; surface.content_margin_bottom=16
+	recovery_panel.add_theme_stylebox_override("panel",surface)
+	recovery_scroll=ScrollContainer.new(); recovery_scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED; recovery_panel.add_child(recovery_scroll)
+	var col:=VBoxContainer.new(); col.size_flags_horizontal=Control.SIZE_EXPAND_FILL; col.add_theme_constant_override("separation",14); recovery_scroll.add_child(col)
+	var title:=recovery_label(col,"Choose your complete save",28); title.add_theme_color_override("font_color",GOLD)
+	recovery_message=recovery_label(col,"",23); recovery_summary=recovery_label(col,"",23)
+	for item in [["retry","Retry Import",finish_import.bind(true)],["previous","Keep Previous",finish_import.bind(false)],["read","Retry Recovery Read",retry_recovery_read],["copy_previous","Copy Previous",copy_recovery_code.bind(false)],["copy_incoming","Copy Imported",copy_recovery_code.bind(true)],["view_previous","View Previous Code",show_recovery_code.bind(false)],["view_incoming","View Imported Code",show_recovery_code.bind(true)]]:
+		var control:=Button.new(); control.text=item[1]; control.custom_minimum_size=Vector2(0,90); control.add_theme_font_size_override("font_size",24); control.pressed.connect(item[2]); col.add_child(control); recovery_buttons[item[0]]=control
+		if item[0]=="read":
+			recovery_copy_feedback=recovery_label(col,"",22); recovery_copy_feedback.custom_minimum_size.y=112
+	recovery_label(col,"Copying or viewing a code keeps recovery paused. An unfinished room step has not been counted; either choice restarts from its saved route.",21)
+	recovery_code=TextEdit.new(); recovery_code.editable=false; recovery_code.wrap_mode=TextEdit.LINE_WRAPPING_BOUNDARY; recovery_code.custom_minimum_size=Vector2(0,230); recovery_code.add_theme_font_size_override("font_size",18); col.add_child(recovery_code); recovery_code.hide()
+func recovery_label(parent: Node,text: String,size: int) -> Label:
+	var result:=Label.new(); result.text=text; result.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART; result.add_theme_font_size_override("font_size",size); result.add_theme_color_override("font_color",WHITE); parent.add_child(result); return result
+func show_recovery() -> void:
+	if not import_pending or not is_instance_valid(recovery_root): return
+	paused=true; map_touch_pending=false; map_dragged=false; editor.hide(); hide_seed(); view.visible=false
+	recovery_root.show(); recovery_message.text=import_recovery.message
+	var known:=not import_recovery.record.is_empty()
+	for id in recovery_buttons: recovery_buttons[id].visible=(id=="read") if not known else id!="read"
+	recovery_summary.text="PREVIOUS COMPLETE SAVE\n"+Recovery.describe(import_recovery.original)+"\n\nIMPORTED COMPLETE SAVE\n"+Recovery.describe(import_recovery.incoming) if known else "Play and local saving are paused. No default route will be saved."
+func begin_import(text: String) -> void:
+	if import_pending: return
+	var decoded:=Saves.decode(text)
+	if not decoded.ok: note=decoded.get("message","Invalid save"); return
+	# No await: the admitted room animation cannot advance across this boundary.
+	import_pending=true; paused=true; map_touch_pending=false
+	import_recovery=Recovery.new(save_io,Recovery.path_for(save_path),save_path)
+	recovery_status=import_recovery.begin(Saves.encode(data),text); import_pending=recovery_status.pending
+	if not import_pending: note=import_recovery.message; return
+	recovery_code.hide(); recovery_copy_feedback.text=""; show_recovery()
+	if recovery_status.ok: finish_import(true)
+func finish_import(use_import: bool) -> void:
+	if not import_pending: return
+	var result:=import_recovery.resolve(use_import)
+	if not result.ok: show_recovery(); return
+	# Complete saved history is authority; an uncommitted animation never appends later.
+	var had_step:=not pending.is_empty()
+	data=result.decoded.data.duplicate(true); load_run(); paused=true
+	transfer=false; menu=false; guide=false; details=false; screen="game"; editor.hide(); hide_seed()
+	map_touch_pending=false; map_dragged=false; pending_room=""; save_error=""
+	import_pending=false; recovery_root.hide(); view.visible=true
+	note=("Imported" if use_import else "Previous")+" complete save checked. Play is paused."+(" The unfinished step was not counted." if had_step else "")
+	queue_redraw()
+func retry_recovery_read() -> void:
+	if not import_pending or not import_recovery.record.is_empty(): return
+	recovery_status=import_recovery.read()
+	if recovery_status.ok: data=recovery_status.original.data.duplicate(true); load_run(); paused=true
+	elif not recovery_status.pending: import_recovery.message="The saved choices are unavailable. Local copies remain; play and saving stay paused. Keep this app installed for recovery."
+	show_recovery()
+func show_recovery_code(use_import: bool) -> void:
+	if not import_pending or import_recovery.record.is_empty(): return
+	recovery_code.text=import_recovery.incoming_code if use_import else import_recovery.original_code
+	recovery_code.show(); call_deferred("scroll_recovery_code")
+func scroll_recovery_code() -> void:
+	await get_tree().process_frame
+	if import_pending and recovery_code.is_visible_in_tree(): recovery_scroll.ensure_control_visible(recovery_code)
+func copy_recovery_code(use_import: bool) -> void:
+	if not import_pending or import_recovery.record.is_empty(): return
+	var transaction:=import_recovery
+	var text: String=transaction.incoming_code if use_import else transaction.original_code
+	var id: String=transaction.record.incoming if use_import else transaction.record.original
+	var name: String="Imported" if use_import else "Previous"
+	if text.sha256_text()!=id or not Saves.decode(text).ok:
+		recovery_copy_notice(name+" code is unavailable. Recovery stays paused."); return
+	var available: bool=recovery_copy_backend.available() if recovery_copy_backend!=null else DisplayServer.get_name()!="headless" and DisplayServer.has_feature(DisplayServer.FEATURE_CLIPBOARD)
+	if not available:
+		recovery_copy_notice("Clipboard unavailable. Use View "+name+" Code to export manually. Recovery stays paused."); return
+	var accepted:=true
+	if recovery_copy_backend!=null: accepted=recovery_copy_backend.put(text)
+	else: DisplayServer.clipboard_set(text)
+	var observed: String=recovery_copy_backend.get_text() if recovery_copy_backend!=null else DisplayServer.clipboard_get()
+	if not import_pending or import_recovery!=transaction: return
+	recovery_copy_notice(name+" code copied and checked. Recovery stays paused." if accepted and observed==text else "Copy not confirmed. Use View "+name+" Code or try again. Recovery stays paused.")
+
+func recovery_copy_notice(text: String) -> void:
+	if not import_pending: return
+	recovery_copy_feedback.text=text
+	# A permanently allocated row makes the synchronous acknowledgment reachable.
+	recovery_scroll.ensure_control_visible(recovery_copy_feedback)

@@ -763,3 +763,39 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   cold unreadable-copy usability limit retained. Old code7 native baseline2/0
   includes ten active bullets; repeated shader warning already present.
   No version/build/upload; candidate/native/physical/cloud gates remain open.
+
+- Frontline retry-marker fix integrated from eecc057. Root107/0 helper and26/0
+  actual-input checks pass with24 touch events over campaign/legacy fixture kinds and
+  Retry/Keep choices; complete career/parked legacy contexts survive fresh
+  materialized production owners. Existing coordinator model cache used; worker
+  missing-cache2/1/0-touch failure remains failed. Astra source/evidence clear,
+  no schema/rules/UI/version/build/upload/native acceptance change.
+
+- Hook retry-marker admission integrated from2467cd6, preserving full campaign
+  projectiles/profile/parked ending and arena feedback. Root172/0 passes; worker
+  marker172/0 plus one frozen871/188/573 regression batch clear. Astra170-source/
+  193-unchanged-file/43-artifact audit clear. Baseline174/35 retained.
+  No Store/rules/schema/UI/version/build/native acceptance change.
+
+- Gear0.4.3/code12 signed from clean9d7e35f after root437/0 marker rerun.
+  Native11to12/normal Import/both explicit choices/original restoration pass10
+  complete owning-context comparisons;7 pending and7 cleared markers verified.
+  Actual Copy Previous2870-byte raw andCopy Imported2268-byte portable readbacks
+  exact;12 pending file hashes stable throughcopy/Back/Home/cold. Astra355+8
+  artifact/18 runtime-binding audit clear. Strict cached-shader warning gate
+  remains failed; empty profile/metadata-fixture/driver failures qualified.
+  Exact owned emulator stopped cleanly; no upload/physical/cloud acceptance.
+
+- Dead retained-code Copy controls integrated fromafee254; root434/0 with184
+  actual touch events, strict clean and unchanged executed source. Astra source/
+  checkpoint audit clear11 artifacts/230 unchanged Git-LF/four changed LF pins.
+  Signed0.4.2/code8 atf962be6 is54,363,095B, SHA256b6b9fedf…288edfe; actual
+  packaging/source/raw logs/same signer independently clear. Candidate native
+  update/clipboard/physical/cloud remain open; no upload.
+
+- Tower recovery integrated froma244948; Astra81-artifact/148LF/160unchanged-
+  binding audit clear. Root608/0,208 actual ScreenTouch events, strict clean and
+  stable source. Full pinned campaign/challenge/Undo/profile/settings preserved;
+  uncommitted pending/beat stay frozen while uncertain, reset only on verified
+  paused adoption under existing cold-save semantics. Store/decoder/rules/schema/
+  version/export unchanged. Baseline16/6 and scroll/parse failures retained.

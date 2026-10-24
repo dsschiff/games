@@ -45,6 +45,8 @@ var recovery: ImportRecovery
 var recovery_status:={}
 var recovery_panel: PanelContainer
 var recovery_summary: Label
+var recovery_copy_feedback: Label
+var recovery_copy_help: Label
 var recovery_buttons:={}
 var recovery_code: TextEdit
 var recovery_code_visible:=false
@@ -557,21 +559,43 @@ func build_recovery_ui() -> void:
 	var col:=VBoxContainer.new(); col.size_flags_horizontal=Control.SIZE_EXPAND_FILL; col.add_theme_constant_override("separation",12); scroll.add_child(col)
 	text(col,"WHOLE RESCUE RECOVERY / PLAY PAUSED",30)
 	recovery_summary=text(col,"",24)
-	for item in [["retry","RETRY IMPORT",finish_import.bind(true)],["previous","KEEP PREVIOUS WHOLE SAVE",finish_import.bind(false)],["read","RETRY RECOVERY READ",retry_recovery_read],["view_previous","VIEW / EXPORT PREVIOUS CODE",show_recovery_code.bind(false)],["view_incoming","VIEW / EXPORT IMPORTED CODE",show_recovery_code.bind(true)]]:
+	recovery_copy_feedback=text(col,"",22); recovery_copy_feedback.hide()
+	for item in [["retry","RETRY IMPORT",finish_import.bind(true)],["previous","KEEP PREVIOUS WHOLE SAVE",finish_import.bind(false)],["read","RETRY RECOVERY READ",retry_recovery_read],["copy_previous","COPY PREVIOUS CODE",copy_recovery_code.bind(false)],["copy_incoming","COPY IMPORTED CODE",copy_recovery_code.bind(true)],["view_previous","VIEW / EXPORT PREVIOUS CODE",show_recovery_code.bind(false)],["view_incoming","VIEW / EXPORT IMPORTED CODE",show_recovery_code.bind(true)]]:
 		recovery_buttons[item[0]]=button(col,item[1],item[2])
 	recovery_code=TextEdit.new(); recovery_code.editable=false; recovery_code.wrap_mode=TextEdit.LINE_WRAPPING_BOUNDARY; recovery_code.custom_minimum_size=Vector2(0,220); col.add_child(recovery_code); recovery_code.hide()
-	text(col,"Complete codes stay on this device. Select and copy a displayed code to export. This does not change the pending choice.",22)
+	recovery_copy_help=text(col,"Copy a complete code, or use View / Export to select it manually. This does not change the pending choice.",22)
 func show_recovery() -> void:
 	if not recovery_pending or not is_instance_valid(recovery_panel): return
 	paused=true; drag_index=-1; mouse_drag=false
 	for node in [title,info,warning,notice,pause_button,overlay,transfer]: node.hide()
 	recovery_panel.show(); recovery_code.visible=recovery_code_visible
 	var known:=not recovery.record.is_empty()
+	recovery_copy_feedback.visible=known and not recovery_copy_feedback.text.is_empty(); recovery_copy_help.visible=known
+	recovery_buttons.copy_previous.disabled=recovery.original_code.is_empty(); recovery_buttons.copy_incoming.disabled=recovery.incoming_code.is_empty()
 	for key in recovery_buttons: recovery_buttons[key].visible=(key=="read") if not known else key!="read"
 	recovery_summary.text=recovery.message
 	if known:
 		recovery_summary.text+="\n\nPREVIOUS WHOLE SAVE\n"+ImportRecovery.describe(recovery.original)+"\n\nIMPORTED WHOLE SAVE\n"+ImportRecovery.describe(recovery.incoming)+"\n\nThe campaign, legacy bridge, all progress, loadout and settings move together."
 	else: recovery_summary.text+="\nNo default rescue will be saved while recovery is blocked."
+func copy_recovery_code(use_import: bool) -> void:
+	if not recovery_pending or recovery.record.is_empty(): return
+	# Export the retained validated archive, independently of either text field.
+	var code: String=recovery.incoming_code if use_import else recovery.original_code
+	var source_name: String="Imported" if use_import else "Previous"
+	if code.is_empty():
+		recovery_copy_feedback.text=source_name+" code unavailable. Recovery stays paused."
+	elif not DisplayServer.has_feature(DisplayServer.FEATURE_CLIPBOARD):
+		recovery_copy_feedback.text="Clipboard unavailable. Use View / Export "+source_name.to_lower()+" code to select it manually. Recovery stays paused."
+	else:
+		DisplayServer.clipboard_set(code)
+		recovery_copy_feedback.text=(source_name+" code copied. Clipboard readback verified; keep it somewhere safe.") if DisplayServer.clipboard_get()==code else "Copy not verified. Use View / Export "+source_name.to_lower()+" code or try again. Recovery stays paused."
+	show_recovery()
+	call_deferred("reveal_recovery_copy_feedback")
+func reveal_recovery_copy_feedback() -> void:
+	if not recovery_pending or not is_instance_valid(recovery_panel) or not recovery_panel.visible: return
+	if not is_instance_valid(recovery_copy_feedback) or not recovery_copy_feedback.visible: return
+	var scroll: ScrollContainer=recovery_copy_feedback.get_parent().get_parent()
+	if is_instance_valid(scroll): scroll.ensure_control_visible(recovery_copy_feedback)
 func show_recovery_code(use_import: bool) -> void:
 	if not recovery_pending or recovery.record.is_empty(): return
 	recovery_code_visible=true; recovery_code.text=recovery.incoming_code if use_import else recovery.original_code; show_recovery()
@@ -584,7 +608,7 @@ func begin_import(code: String) -> void:
 	recovery_status=recovery.begin(capture_recovery_code(),prepared.code,code)
 	recovery_pending=recovery_status.pending
 	if not recovery_pending: import_notice(recovery.message); return
-	recovery_code_visible=false; show_recovery()
+	recovery_code_visible=false; recovery_copy_feedback.text=""; show_recovery()
 	if recovery_status.ok: finish_import(true)
 func retry_recovery_read() -> void:
 	if not recovery_pending: return
@@ -599,7 +623,7 @@ func finish_import(use_import: bool) -> void:
 	var result:=recovery.resolve(use_import)
 	if not result.ok: show_recovery(); return
 	adopt_recovery(result.decoded)
-	recovery_pending=false; recovery_code_visible=false; recovery_panel.hide(); save_message=""
+	recovery_pending=false; recovery_code_visible=false; recovery_copy_feedback.text=""; recovery_panel.hide(); save_message=""
 	for node in [title,info,warning,notice]: node.show()
 	refresh(); import_notice(("Imported" if use_import else "Previous")+" whole rescue verified. "+recovery_next_action())
 func adopt_recovery(value: Dictionary) -> void:
