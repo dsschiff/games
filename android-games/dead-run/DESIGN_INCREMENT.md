@@ -94,3 +94,8 @@ behavior, physical Fold7 touch/folding/safe areas,
 surge frame rate, audible sound or human fun. No APK was exported or installed.
 The coordinator owns independent review, serialized rendered/native validation,
 higher-version packaging and private delivery. Physical testing remains deferred.
+
+
+## Bounded transition movie review
+
+See [TRANSITION_CAPTURE.md](TRANSITION_CAPTURE.md) for the source-bound 15.25-second silent 1x movie, strict 11/0 run, actual new Retry/drag after genuine prior loss restoration, and separately labelled frozen warning/49-crew fixtures. Astra completed playback and found no new blocking visual P1/P2. This supplements the reviewed 54/0 fixture gate; physical/human and production stress-leak limits remain.
