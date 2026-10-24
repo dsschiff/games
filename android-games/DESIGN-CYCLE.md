@@ -92,4 +92,13 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
 
 - Followup source: Frontline local Import870/0 and Tower floor association62/0 independently rerun after integration. Full source review and Tower matched1x motion clear; both need new version/build/native verification before delivery. Optional cloud remains unlinked and live-unverified.
 
-- Frontline0.3.4/code8 and Hook0.3.2/code8 now source-clean/same-signer/native-qualified;19 whole-context comparisons and264 artifact pins independently clear. Summary-first pending recovery and read-only local copies work in the unconfigured Android build. Same-context archive restore/cold verified; distinct-context cloud restore/live SDK sync remains open. Tower0.4.2 native association packet also independently clear. All three await source landing/private publication. Gear verified-write/Import prerequisite starts independently; no game rules or progress reset.
+- Frontline0.3.4/code8 and Hook0.3.2/code8 now source-clean/same-signer/native-qualified;19 whole-context comparisons and264 artifact pins independently clear. Summary-first pending recovery and read-only local copies work in the unconfigured Android build. Same-context archive restore/cold verified; distinct-context cloud restore/live SDK sync remains open. Tower0.4.2 native association packet also independently clear. All three source changes landed in PR18; their exact private transfers await specific approval. Gear verified-write/Import prerequisite starts independently; no game rules or progress reset.
+
+- Gear local Import durability prerequisite is implemented and source/CPU reviewed;
+  complete context and explicit recovery choices are verified by synthetic fault
+  and actual GUI-input checks. Signed0.4.2/code11 retains the existing identity.
+  Android update/recovery remains unqualified after test-emulator raw-save capture
+  stalled following successful boot/app launch; no install occurred, owned runtime
+  stopped and app data was not reset. Optional
+  cloud is separate. Earlier three refinement sources landedPR18; exact private
+  transfers await specific approval. See evidence/gear-local-recovery-20261024.json.

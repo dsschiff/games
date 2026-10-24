@@ -177,9 +177,23 @@ static func write(state: Dictionary, settings: Dictionary, path: String = PATH, 
 				return false
 			if not io.rename(path + ".bak.tmp", path + ".bak"):
 				return false
+			if not checked_read(io, path + ".bak", backup_source):
+				# A lying/uncertain promotion may have consumed the sole good stage.
+				# Re-establish its exact bytes before reporting failure.
+				if previous.path == path + ".bak.tmp":
+					checked_write(io, path + ".bak.tmp", backup_source)
+				return false
 	if not checked_write(io, path + ".tmp", source):
 		return false
-	return io.rename(path + ".tmp", path)
+	if not io.rename(path + ".tmp", path):
+		return false
+	return checked_read(io, path, source)
+
+static func checked_read(io: Variant, path: String, source: String) -> bool:
+	if not io.exists(path):
+		return false
+	var confirmed: String = io.read_text(path)
+	return confirmed == source and decode(confirmed).ok
 
 static func checked_write(io: Variant, path: String, source: String) -> bool:
 	if not io.write_text(path, source):

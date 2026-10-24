@@ -78,3 +78,7 @@ verification, independent visual review or phone feedback waits.
   Tower0.4.2/code8 with101/0 tooling checks and independent raw-artifact review.
   Existing signing identity retained. Account verification, separate upload-key/
   Play App Signing setup and genuine Play acceptance remain open; no upload.
+
+- Gear0.4.2/code11 local recovery candidate: exact destination checks and whole-save
+  Import journal source/CPU/signature clear. Native update/recovery remains pending
+  after owned emulator capture-shell stall under observed host memory pressure. No upload.

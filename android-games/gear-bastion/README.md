@@ -1,3 +1,9 @@
+> **Local recovery candidate 0.4.2 / code11 (2026-10-24).** Whole-save Import
+> recovery keeps play paused until a verified explicit choice; complete local
+> copies preserve the original and imported contexts. CPU/source checks pass;
+> signed Android update and native recovery acceptance are still pending.
+> See [recovery amendment](RECOVERY_AMENDMENT.md).
+
 > **Design candidate 0.4.1 / code10 (2026-10-23).** Begin starts combat after
 > ready-state Menu, Guide, Save, Home and Pause flows. Returning to an active
 > battle still requires Resume. Existing rules, layouts and full earned progress
@@ -80,3 +86,7 @@ Read `WORKLOG.md` and `progress.json` for exact checks and local artifact paths.
 The design follows the observed split portrait composition and connected-board → real production → visible army → wall-defense loop in [the source brief](../references/gear-defenders.md). The numeric equation, direct merge/undo, resource prices, troop designs and gate allocation are original rules. The primitive art, tutorial pacing, army abundance and late-game fidelity have not been accepted by an independent review.
 
 Next gate: coordinator/Astra review before campaign expansion. The three-region campaign, 30–60-minute progression, strategic unlocks, additional distinct roles, bosses, seeded challenge/replay and final sound/animation polish remain unfinished. The coordinator reports a real 0.1→0.2 APK upgrade passed; it does not validate the 0.2.1 staged-backup amendment. Current-version Android runtime acceptance, interrupted Android write recovery, physical Fold7 transitions, clipboard/keyboard behavior, Android Back handling and measured phone performance remain pending. Corrupt-save, storage-failure and prior-version tests are injected fixtures, distinct from app-owned save/reload input tests.
+
+## Local Import recovery amendment
+
+The current source verifies exact promoted save bytes and owns uncertain Imports through a durable local recovery journal. Both explicit choices retain the complete active run, profile and settings; gameplay/autosaves stay blocked while the choice is unconfirmed. Read [the recovery amendment](RECOVERY_AMENDMENT.md) and [source/evidence pins](RECOVERY_CHECKPOINT.json) for the retained failure baselines, 65/353/1466 focused checks and CPU/native limits. This is a prerequisite for optional backup work; no cloud transport or protection is enabled.
