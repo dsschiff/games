@@ -44,7 +44,10 @@ decoded context, retains every opaque save byte and rejects future schemas even
 when both inner and transport checksums are recomputed. Final Hook/Tower store
 hashes were refreshed after write hardening. The manifest pins the test script,
 codec, six logs/results and inputs; `.artifacts/cloud-save-bindings/manifest.json`
-is machine-local evidence, not network or account acceptance.
+is historical machine-local evidence. The refreshed committed-LF receipt is
+`.artifacts/cloud-save-bindings-lf-20261024T020550Z/manifest.json`;60/0 and all26
+pins were independently verified. The original CRLF bytes normalize exactly
+to committed LF and remain preserved. Neither receipt proves network/account acceptance.
 
 Run with the owning project as `--path`, the absolute shared test script after
 `--script`, and these arguments after `--`:

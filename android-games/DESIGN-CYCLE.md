@@ -31,7 +31,7 @@ and Tower. Preserve each selected ad loop with original assets.
 | Gear | One Begin after ready utilities/Home now starts production; active return stays paused. Signed0.4.1/code10 verified and delivered. | Private update delivered |
 | Hearthguard | Save destination readback and failed import/mode-switch preservation pass167 complete-value checks and signed4-to5 native context comparison. |0.3.1/code5 privately delivered |
 | Hook | Hit/miss/block feedback corrected; obstacle-deflected charge gap reproduced. Conservative warning correction covers actual stepped paths. | 0.3.1/code7 privately delivered; dense finale readability followup |
-| Tower | Resolved encounter arithmetic stays nonoverlapping at earliest legal chaining across all36 towers. | 0.4.1/code7 privately delivered; floor association followup |
+| Tower | Resolved encounter arithmetic stays nonoverlapping at earliest legal chaining across all36 towers. | 0.4.1/code7 privately delivered; source floor-association improvement reviewed, next native build pending |
 
 ## Operating loop
 
@@ -89,3 +89,5 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
   active run. Both pre-update earned profiles were empty. Independent review
   verifies71 native files plus exact private assets/notes/README. Dense Hook
   finale and Tower floor association stay open; optional live cloud is separate.
+
+- Followup source: Frontline local Import870/0 and Tower floor association62/0 independently rerun after integration. Full source review and Tower matched1x motion clear; both need new version/build/native verification before delivery. Optional cloud remains unlinked and live-unverified.

@@ -210,7 +210,7 @@
   "next": [
     "First six game increments privately delivered; continue bounded design/save and cloud integration work without claiming first cycle complete",
     "Run bounded rendered/native Frontline Import recovery checks, then version/build/update verified candidate; source870/0 and review clear",
-    "Review matched Tower source-association movies; preserve same input sequence and arithmetic/timing",
+    "Version/build/native-validate the reviewed Tower source-association increment; preserve subtle/shared-gutter readability limitation",
     "Prepare local Android App Bundle tooling while identity/phone verification blocks Play app setup",
     "Complete game cloud UI/native/client/tester/Saved Games setup and real account/device/offline/conflict sync before claiming recovery acceptance",
     "Continue bounded dense Hook finale readability followup"
@@ -464,6 +464,26 @@
       "bytes": 53107219,
       "shared": false,
       "scope": "Owner-only metadata readback verified. No independent remote checksum, phone installation, play, physical acceptance or public sharing claim. Private file identifier retained only in ignored local receipt."
+    },
+    "floor_association_followup": {
+      "source_commits": [
+        "6b3995373b29d4c96109159445247aa6bfd39da5",
+        "62805f00754fb247fdf9cb7e17ec43cce89182bd"
+      ],
+      "integration_commits": [
+        "29aca58",
+        "bf87c54"
+      ],
+      "checkpoint": "android-games/tower-trials/FLOOR_ASSOCIATION.json",
+      "coordinator_report": "F:\\games-workspaces\\design-cycle-20261023\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T024440098958Z\\report.json",
+      "coordinator_checks": 62,
+      "coordinator_failures": 0,
+      "matched_movie_seconds": 13.016667,
+      "matched_actual_input_events": 42,
+      "before_failed_assertions": 5,
+      "after_failed_assertions": 0,
+      "review": "Astra bounded normal1x source/input/motion review clear as improvement; same popup placement/arithmetic/timing, thin masked/shared-gutter leaders still demand attention; no universal instant association.",
+      "scope": "Source integrated; not in published0.4.1/code7. Version/build/native validation pending; no phone/human acceptance."
     }
   },
   "hook": {
