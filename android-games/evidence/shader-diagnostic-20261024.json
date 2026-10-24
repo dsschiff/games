@@ -1,0 +1,93 @@
+{
+  "scope": "Internal shader diagnostic preparation and qualified engine compilation; native diagnosis remains unfinished.",
+  "base": "eb790dd6b9e5bf68282c3cd012a76d0828f4b884",
+  "branch": "codex/native-shader-diagnostic-20261024",
+  "engine_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
+  "original_shader_sha256": "17c01277dc3468a1d53081f01a6f7665f5d0f82e7882a8198e1f486ee344d5d8",
+  "diagnostic_shader_sha256": "d5abab4a87c73c4c51be3b6f7b9f18c471707235bd74926b884e9145a3410a80",
+  "source_review": "Independent Astra review clears the exact opt-in patch, framing, decoder, build-only runner and recipe for an isolated build. It does not establish compilation or native behavior.",
+  "checks": {
+    "synthetic_transport_cases": 9,
+    "failures": 0,
+    "macro_disabled_reconstructs_original_utf8": true,
+    "reverse_apply_check": true,
+    "clang_format_dry_run": true,
+    "python_sources_parse": true
+  },
+  "prepared_sources": {
+    "build_shader_engine.py": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\build_shader_engine.py",
+      "bytes": 6129,
+      "sha256": "ad1e318ae2277c93e65cb70e0eade8d8f97369dc7865ed139f1129c41084e3b5"
+    },
+    "decode_shader_cache.py": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\decode_shader_cache.py",
+      "bytes": 6504,
+      "sha256": "464e3ba9a978ad484f50b9be05d7e46b1e4286cbc726e86c3cc045c03f6dd81d"
+    },
+    "godot-shader-cache.patch": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\godot-shader-cache.patch",
+      "bytes": 10495,
+      "sha256": "e567ac376b599bd9beed6e8e9cef44ad45adb779de3da19a56c4dea4fbf00bfc"
+    },
+    "README.md": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\README.md",
+      "bytes": 5366,
+      "sha256": "6d6798356dd1937e91a82e0678932e508c58a6a5c47c244926d53bd6ee2755d1"
+    },
+    "test_decode_shader_cache.py": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\test_decode_shader_cache.py",
+      "bytes": 3411,
+      "sha256": "9d2dc3868aeb3419e14942de9b825e943848af82804d79ce84bd6232d3dc7755"
+    }
+  },
+  "build": {
+    "state": "compiled_output_qualified_after_retained_runner_inspection_failure",
+    "run_directory": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\shader-engine-20261024T1813014756796Z",
+    "started": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\shader-engine-20261024T1813014756796Z\\started.json",
+      "bytes": 3545,
+      "sha256": "200d07598cc3d8a00fde3914af540f0795a81e2f59199493469898f22e09eed5"
+    },
+    "source_before": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\shader-engine-20261024T1813014756796Z\\source-before.json",
+      "bytes": 2223380,
+      "sha256": "cca8690ff673063306e2a09aabe81f085bf3fba3781b4ab584af0434dc3a4539"
+    },
+    "jobs": 4,
+    "manifest_expected": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\shader-engine-20261024T1813014756796Z\\manifest.json",
+    "source_after_expected": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\shader-engine-20261024T1813014756796Z\\source-after.json",
+    "qualification": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\shader-engine-20261024T1813014756796Z\\compiled-output-qualification.json",
+      "bytes": 3689,
+      "sha256": "180c8943034a3e83557016f9cb607b1720bba71b86e4a9ab8117a768c6a4adc9"
+    },
+    "manifest": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\shader-engine-20261024T1813014756796Z\\manifest.json",
+      "bytes": 4257,
+      "sha256": "7675c47c3b62382026961e547f951f2848a57a446d81cca3a51eb007618d3ad0"
+    },
+    "source_after": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\shader-engine-20261024T1813014756796Z\\source-after.json",
+      "bytes": 2223380,
+      "sha256": "cca8690ff673063306e2a09aabe81f085bf3fba3781b4ab584af0434dc3a4539"
+    },
+    "actual_library": {
+      "path": "F:\\games-workspaces\\tooling\\godot-shader-diagnostic\\platform\\android\\java\\lib\\libs\\release\\x86_64\\libgodot_android.so",
+      "bytes": 74078280,
+      "sha256": "fb0771f6d1f890ce66ff6fa86f4d1203b1bcc196f931b66517b1359e27d636f3"
+    },
+    "inspection_failure_retained": true,
+    "independent_review": "Astra qualified the actual ELF, all13,989 unchanged engine inputs, exact executed runner and build log after the original runner inspected the wrong output directory. Original failed runner receipt is retained."
+  },
+  "log_protocol": "Entire JSON payload framed as 1536-byte raw chunks with base64, atomic per-process record IDs, index/count, whole length and SHA256. Decoder requires expected threadtime PID, contiguous observed IDs from zero and complete valid frames. Missing trailing whole records remain a native collection qualification.",
+  "observation_limits": "Only reached nonempty glProgramBinary loads are counted. GL error consumption and non-null export length pointer are diagnostic perturbations. Raw driver info is capped with truncation explicit and exact captured bytes retained separately. No production cache or warning policy changes.",
+  "native_tested": false,
+  "diagnostic_apk_prepared": false,
+  "root_cause_established": false,
+  "strict_native_shader_gate": "FAIL remains open",
+  "production_game_source_changed": false,
+  "official_template_replaced": false,
+  "new_upload": false,
+  "next": "Prepare a local engine-only diagnostic copy of the exact Tower APK while retaining its original libc++ runtime, inspect/sign/verify exact ZIP delta, then run a bounded cache/save-preserving native probe and restore the exact original APK."
+}

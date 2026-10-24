@@ -1,0 +1,236 @@
+--- a/drivers/gles3/shader_gles3.cpp
++++ b/drivers/gles3/shader_gles3.cpp
+@@ -33,6 +33,12 @@
+ #ifdef GLES3_ENABLED
+ 
+ #include "core/io/dir_access.h"
++#ifdef GAMES_SHADER_CACHE_DIAGNOSTIC
++#include "core/crypto/crypto_core.h"
++#include "core/io/json.h"
++
++#include <atomic>
++#endif
+ #include "core/string/string_builder.h"
+ #include "drivers/gles3/rasterizer_util_gles3.h"
+ #include "drivers/gles3/storage/config.h"
+@@ -543,6 +549,112 @@
+ static const char *shader_file_header = "GLSC";
+ static const uint32_t cache_file_version = 3;
+ #endif
++#if defined(GAMES_SHADER_CACHE_DIAGNOSTIC) && !defined(WEB_ENABLED)
++// Opt-in observation: reads consume GL error flags; no cache or link decision changes.
++static Array _games_cache_errors() {
++	Array errors;
++	for (int i = 0; i < 16; i++) {
++		GLenum error = glGetError();
++		if (error == GL_NO_ERROR) {
++			return errors;
++		}
++		errors.push_back(int64_t(error));
++	}
++	errors.push_back("error_query_limit_reached");
++	return errors;
++}
++
++static String _games_cache_hash(const uint8_t *p_bytes, int p_size) {
++	unsigned char hash[32] = {};
++	Error result = CryptoCore::sha256(p_bytes, p_size, hash);
++	return result == OK ? String::hex_encode_buffer(hash, 32) : "hash_failed";
++}
++
++static Dictionary _games_cache_record(const String &p_name, const String &p_path, const String &p_base, const String &p_version, int p_variant, uint64_t p_specialization, GLenum p_format, const uint8_t *p_bytes, int p_size) {
++	Dictionary record;
++	record["schema"] = 1;
++	record["shader"] = p_name;
++	record["path"] = p_path;
++	record["base_sha256"] = p_base;
++	record["version_sha1"] = p_version;
++	record["variant"] = p_variant;
++	record["specialization_hex"] = String::num_uint64(p_specialization, 16);
++	record["binary_format"] = int64_t(p_format);
++	record["binary_bytes"] = p_size;
++	record["binary_sha256"] = _games_cache_hash(p_bytes, p_size);
++	return record;
++}
++
++static void _games_cache_print(const Dictionary &p_record) {
++	static std::atomic<uint64_t> next_record_id{ 0 };
++	const uint64_t record_id = next_record_id.fetch_add(1, std::memory_order_relaxed);
++	const CharString payload = JSON::stringify(p_record).utf8();
++	const int payload_size = payload.length();
++	const String payload_hash = _games_cache_hash((const uint8_t *)payload.ptr(), payload_size);
++	const int chunk_bytes = 1536;
++	const int chunk_count = MAX(1, (payload_size + chunk_bytes - 1) / chunk_bytes);
++	for (int i = 0; i < chunk_count; i++) {
++		const int offset = i * chunk_bytes;
++		const int size = MIN(chunk_bytes, payload_size - offset);
++		Dictionary frame;
++		frame["schema"] = 1;
++		frame["record_id"] = String::num_uint64(record_id);
++		frame["payload_bytes"] = payload_size;
++		frame["payload_sha256"] = payload_hash;
++		frame["chunk_index"] = i;
++		frame["chunk_count"] = chunk_count;
++		frame["encoding"] = "base64";
++		frame["chunk_base64"] = CryptoCore::b64_encode_str((const uint8_t *)payload.ptr() + offset, size);
++		// Only fixed ASCII metadata and <=2048 base64 bytes reach AndroidLogger.
++		print_line("GAMES_SHADER_CACHE_DIAGNOSTIC " + JSON::stringify(frame));
++	}
++}
++
++static void _games_cache_load_log(Dictionary p_record, GLuint p_program, GLint p_link_status, const Array &p_before_create, const Array &p_before_binary, const Array &p_after_binary, const Array &p_after_status, const Array &p_feedback) {
++	GLint reported_length = 0;
++	GLsizei written_length = 0;
++	glGetProgramiv(p_program, GL_INFO_LOG_LENGTH, &reported_length);
++	Vector<char> info;
++	info.resize(CLAMP(reported_length, 1, 65536));
++	info.fill(0);
++	glGetProgramInfoLog(p_program, info.size(), &written_length, info.ptrw());
++	p_record["event"] = "load";
++	p_record["link_status"] = p_link_status;
++	p_record["errors_before_create"] = p_before_create;
++	p_record["errors_before_binary"] = p_before_binary;
++	p_record["errors_after_binary"] = p_after_binary;
++	p_record["errors_after_status"] = p_after_status;
++	p_record["feedback"] = p_feedback;
++	p_record["info_reported_bytes"] = reported_length;
++	p_record["info_written_bytes"] = written_length;
++	p_record["info_truncated"] = reported_length > info.size();
++	const int captured_bytes = CLAMP(written_length, 0, int(info.size()));
++	p_record["info_captured_bytes"] = captured_bytes;
++	p_record["info_sha256"] = _games_cache_hash((const uint8_t *)info.ptr(), captured_bytes);
++	p_record["info_base64"] = CryptoCore::b64_encode_str((const uint8_t *)info.ptr(), captured_bytes);
++	p_record["info_log"] = String::utf8(info.ptr(), captured_bytes);
++	p_record["vendor"] = String::utf8((const char *)glGetString(GL_VENDOR));
++	p_record["renderer"] = String::utf8((const char *)glGetString(GL_RENDERER));
++	p_record["gl_version"] = String::utf8((const char *)glGetString(GL_VERSION));
++	p_record["glsl_version"] = String::utf8((const char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
++	GLint format_count = 0;
++	glGetIntegerv(GL_NUM_PROGRAM_BINARY_FORMATS, &format_count);
++	Array formats;
++	if (format_count > 0 && format_count <= 256) {
++		Vector<GLint> supported;
++		supported.resize(format_count);
++		glGetIntegerv(GL_PROGRAM_BINARY_FORMATS, supported.ptrw());
++		for (int i = 0; i < format_count; i++) {
++			formats.push_back(int64_t(supported[i]));
++		}
++	}
++	p_record["supported_format_count"] = format_count;
++	p_record["supported_formats"] = formats;
++	p_record["format_query_bounded"] = format_count >= 0 && format_count <= 256;
++	p_record["errors_diagnostic_queries"] = _games_cache_errors();
++	_games_cache_print(p_record);
++}
++#endif
+ 
+ bool ShaderGLES3::_load_from_cache(Version *p_version) {
+ #ifdef WEB_ENABLED // not supported in webgl
+@@ -587,12 +699,19 @@
+ 			Vector<uint8_t> variant_bytes;
+ 			variant_bytes.resize(variant_size);
+ 
++#ifdef GAMES_SHADER_CACHE_DIAGNOSTIC
++			const uint64_t diagnostic_offset = f->get_position();
++#endif
+ 			uint32_t br = f->get_buffer(variant_bytes.ptrw(), variant_size);
+ 
+ 			ERR_FAIL_COND_V(br != variant_size, false);
+ 
+ 			Version::Specialization specialization;
+ 
++#ifdef GAMES_SHADER_CACHE_DIAGNOSTIC
++			Array diagnostic_before_create = _games_cache_errors();
++			Array diagnostic_feedback;
++#endif
+ 			specialization.id = glCreateProgram();
+ 			if (feedback_count) {
+ 				Vector<const char *> feedback;
+@@ -600,6 +719,9 @@
+ 					if (feedbacks[feedback_index].specialization == 0 || (feedbacks[feedback_index].specialization & specialization_key)) {
+ 						// Specialization for this feedback is enabled.
+ 						feedback.push_back(feedbacks[feedback_index].name);
++#ifdef GAMES_SHADER_CACHE_DIAGNOSTIC
++						diagnostic_feedback.push_back(String::utf8(feedbacks[feedback_index].name));
++#endif
+ 					}
+ 				}
+ 
+@@ -607,10 +729,24 @@
+ 					glTransformFeedbackVaryings(specialization.id, feedback.size(), feedback.ptr(), GL_INTERLEAVED_ATTRIBS);
+ 				}
+ 			}
++#ifdef GAMES_SHADER_CACHE_DIAGNOSTIC
++			Array diagnostic_before_binary = _games_cache_errors();
++#endif
+ 			glProgramBinary(specialization.id, variant_format, variant_bytes.ptr(), variant_bytes.size());
++#ifdef GAMES_SHADER_CACHE_DIAGNOSTIC
++			Array diagnostic_after_binary = _games_cache_errors();
++#endif
+ 
+ 			GLint link_status = 0;
+ 			glGetProgramiv(specialization.id, GL_LINK_STATUS, &link_status);
++#ifdef GAMES_SHADER_CACHE_DIAGNOSTIC
++			Array diagnostic_after_status = _games_cache_errors();
++			Dictionary diagnostic = _games_cache_record(name, path, base_sha256, sha1, i, specialization_key, variant_format, variant_bytes.ptr(), variant_bytes.size());
++			diagnostic["binary_offset"] = String::num_uint64(diagnostic_offset);
++			diagnostic["cache_variant_count"] = cache_variant_count;
++			diagnostic["cache_specialization_count"] = int64_t(cache_specialization_count);
++			_games_cache_load_log(diagnostic, specialization.id, link_status, diagnostic_before_create, diagnostic_before_binary, diagnostic_after_binary, diagnostic_after_status, diagnostic_feedback);
++#endif
+ 			if (link_status != GL_TRUE) {
+ 				WARN_PRINT_ONCE("Failed to load cached shader, recompiling.");
+ 				return false;
+@@ -659,8 +795,27 @@
+ 			f->store_64(specialization_key);
+ 
+ 			const Version::Specialization *specialization = &kv.value;
++#ifdef GAMES_SHADER_CACHE_DIAGNOSTIC
++			Array diagnostic_before_size = _games_cache_errors();
++#endif
+ 			GLint program_size = 0;
+ 			glGetProgramiv(specialization->id, GL_PROGRAM_BINARY_LENGTH, &program_size);
++#ifdef GAMES_SHADER_CACHE_DIAGNOSTIC
++			Array diagnostic_after_size = _games_cache_errors();
++			Dictionary size_diagnostic;
++			size_diagnostic["schema"] = 1;
++			size_diagnostic["event"] = "size_query";
++			size_diagnostic["shader"] = name;
++			size_diagnostic["path"] = path;
++			size_diagnostic["base_sha256"] = base_sha256;
++			size_diagnostic["version_sha1"] = sha1;
++			size_diagnostic["variant"] = i;
++			size_diagnostic["specialization_hex"] = String::num_uint64(specialization_key, 16);
++			size_diagnostic["reported_bytes"] = program_size;
++			size_diagnostic["errors_before_size"] = diagnostic_before_size;
++			size_diagnostic["errors_after_size"] = diagnostic_after_size;
++			_games_cache_print(size_diagnostic);
++#endif
+ 			if (program_size == 0) {
+ 				f->store_32(0);
+ 				continue;
+@@ -668,7 +823,24 @@
+ 			PackedByteArray compiled_program;
+ 			compiled_program.resize(program_size);
+ 			GLenum binary_format = 0;
++#ifdef GAMES_SHADER_CACHE_DIAGNOSTIC
++			Array diagnostic_before_export = _games_cache_errors();
++			GLsizei diagnostic_written = -1;
++			glGetProgramBinary(specialization->id, program_size, &diagnostic_written, &binary_format, compiled_program.ptrw());
++			Array diagnostic_after_export = _games_cache_errors();
++			Dictionary diagnostic = _games_cache_record(name, path, base_sha256, sha1, i, specialization_key, binary_format, compiled_program.ptr(), compiled_program.size());
++			diagnostic["event"] = "save";
++			diagnostic["driver_written_bytes"] = diagnostic_written;
++			diagnostic["written_within_buffer"] = diagnostic_written >= 0 && diagnostic_written <= program_size;
++			if (diagnostic_written >= 0 && diagnostic_written <= program_size) {
++				diagnostic["written_sha256"] = _games_cache_hash(compiled_program.ptr(), diagnostic_written);
++			}
++			diagnostic["errors_before_export"] = diagnostic_before_export;
++			diagnostic["errors_after_export"] = diagnostic_after_export;
++			_games_cache_print(diagnostic);
++#else
+ 			glGetProgramBinary(specialization->id, program_size, nullptr, &binary_format, compiled_program.ptrw());
++#endif
+ 			if (program_size != compiled_program.size()) {
+ 				f->store_32(0);
+ 				continue;
