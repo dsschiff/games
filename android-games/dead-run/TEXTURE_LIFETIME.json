@@ -698,7 +698,98 @@
         "source-hashes-lf.json": "967eead69734867568ac7d48e89195d0a0493d9aee5faa406a37cfa1db3d8815",
         "texture-lifetime.json": "22621b4f2ce8d93acf3e1c57555d7aef9add4c102f442fee80cace845853b9c8"
       }
+    },
+    {
+      "run": ".artifacts/graphics/cadence-control-lifetime-20261024T011329Z",
+      "strict_passed": true,
+      "errors": [],
+      "scenario": "geometry-only",
+      "headless": true,
+      "drain_between_rebuilds": false,
+      "drain_after_fixtures": false,
+      "fixture_drains": 0,
+      "checks": 24,
+      "failures": 0,
+      "after": {
+        "fixture_drains": 0,
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "owned_alive": [],
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "de510ec1686375664c59520c32fd69ebb2ac3bd2de5aea485d44e219da44cf77",
+        "godot.log": "c63044123e52c2598c374017dbe2732fb432c594cab9ce0a3b5733878be4c7fe",
+        "source-hashes-lf.json": "e214f0100fa4b4adc1b81f13dddbc33edf728a09517516c941004003f525ec79",
+        "texture-lifetime.json": "0c2b42d78629b42325a03b876284a7718f3b132c361ac0621761853f71059848"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/cadence-between-lifetime-20261024T011333Z",
+      "strict_passed": true,
+      "errors": [],
+      "scenario": "geometry-only",
+      "headless": true,
+      "drain_between_rebuilds": true,
+      "drain_after_fixtures": false,
+      "fixture_drains": 3,
+      "checks": 27,
+      "failures": 0,
+      "after": {
+        "fixture_drains": 3,
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "owned_alive": [],
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "5f7f0c82d578d4225fbdbe451a50ca380e410a6bf6e28d3e926df951e4aac8b8",
+        "godot.log": "8cae67c272180a1ec5b9a52333b0bfacf0d8ec5d5bfedcce5e95381b8fa90c7a",
+        "source-hashes-lf.json": "e214f0100fa4b4adc1b81f13dddbc33edf728a09517516c941004003f525ec79",
+        "texture-lifetime.json": "c103ff1d3d1081c5de7be4bd54cbd762d7703fa238327a58d008e0b70bf3a1ae"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/cadence-after-lifetime-20261024T011335Z",
+      "strict_passed": true,
+      "errors": [],
+      "scenario": "geometry-only",
+      "headless": true,
+      "drain_between_rebuilds": false,
+      "drain_after_fixtures": true,
+      "fixture_drains": 3,
+      "checks": 25,
+      "failures": 0,
+      "after": {
+        "fixture_drains": 3,
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "owned_alive": [],
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "2c8221f747f15610fec39787ef0ca9c65587baa8d0b9159f07c447669c13c992",
+        "godot.log": "36745da3904c88b93761716f7ae464ac20fe10449175213ed9b1de6588655066",
+        "source-hashes-lf.json": "e214f0100fa4b4adc1b81f13dddbc33edf728a09517516c941004003f525ec79",
+        "texture-lifetime.json": "a94b6a03016cfc2ca5ea0cdcc8dfc3b908759ff0ae4b105f3298abaf5440bb27"
+      }
     }
   ],
-  "caveat": "Default-font caches are not represented by explicit-font WeakRefs; node/resource counts do not prove GL texture lifetimes. CPU warning_pixels returns before rendered fixture rebuilds. Higher baseline25 resources after inheriting terminal_design reflects additional test script, not a measured live font."
+  "caveat": "Default-font caches are not represented by explicit-font WeakRefs; node/resource counts do not prove GL texture lifetimes. CPU warning_pixels returns before rendered fixture rebuilds. Higher baseline25 resources after inheriting terminal_design reflects additional test script, not a measured live font.",
+  "glb_inventory": {
+    "path": ".artifacts/graphics/glb-texture-inventory.json",
+    "sha256": "d098ef87012345d48da9b55923e220f44ef8585d1ded04a2513d2639cfe6a0a2",
+    "files": 43,
+    "images": 0,
+    "textures": 0
+  }
 }

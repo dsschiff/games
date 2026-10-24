@@ -119,3 +119,51 @@ fault. The disproven p=null intervention remains reverted. GPU was returned
 immediately after these two results; no further probe was run. A possible future
 matched comparison is normal frame/render draining between fixture rebuilds,
 which has not been implemented or tested here.
+
+## CPU-ready cadence comparison and ownership trace
+
+No renderer was run for this preparation. The same `geometry-only` harness now
+accepts mutually exclusive optional flags:
+
+- No flag: original repeated rebuild/capture cadence, CPU 24 checks pass.
+- `--drain-between-rebuilds`: one normal process frame, a frame_post_draw await
+  only when rendered, then another process frame after each fixture world;
+  CPU 27 checks pass. Complete fixture-state equality is checked across drains.
+- `--drain-after-fixtures`: the same three added drain cycles after all fixture
+  rebuilds, rather than between them; CPU 25 checks pass. This controls for
+  merely waiting longer before teardown. Default final teardown is unchanged.
+
+All resource observations store WeakRefs only. They read the source's ownership
+chains: `campaign.gd:65` removes and queues the previous world, then replaces
+its Adapter; Adapter owns Kit, Street, Fx and the explicit SystemFont; its world
+nodes include Label3Ds referencing that font. Street and its WorldEnvironment
+node both reference Environment, which references Sky and ProceduralSkyMaterial.
+Kit caches loaded PackedScenes, shared mesh parts and original materials. Fx
+uses pooled Label3Ds with implicit/default fonts; those engine-side font/cache
+objects and GL allocation ownership are not exposed by these weak observations.
+No cache clearing, explicit resource purge or runtime lifecycle edit was added.
+
+The no-drain CPU control reaches four simultaneously live observed world/font/
+environment/sky generations before its first frame. Old Adapter/Street/Fx/Kit
+instances already expire as replacements occur; queued old world nodes still
+reference their font/environment resources. Between-rebuild drains reduce the
+observed live generations to one after each fixture. Matched end-only drains
+also eventually reduce them to one. Every watched object expires after final
+teardown in all three CPU cases. This identifies concrete concurrent reference
+owners, but does not map a leaked GL texture ID to one of them or prove a fix.
+
+A byte-level metadata inventory of all 43 original GLBs reports zero image and
+texture entries. Imported bitmap resources are therefore absent from those GLB
+files; this does not exclude generated sky, font or renderer textures. The small
+ignored inventory and exact binary hashes are indexed by TEXTURE_LIFETIME.json.
+
+CPU packets: cadence-control-lifetime-20261024T011329Z,
+cadence-between-lifetime-20261024T011333Z, and
+cadence-after-lifetime-20261024T011335Z. All previous strict rendered failures
+remain retained. These new cases are CPU-ready only, awaiting coordinator grant.
+
+```powershell
+python android-games/dead-run/tests/run_graphics.py lifetime --headless --label cadence-control --scenario geometry-only
+python android-games/dead-run/tests/run_graphics.py lifetime --headless --label cadence-between --scenario geometry-only --drain-between-rebuilds
+python android-games/dead-run/tests/run_graphics.py lifetime --headless --label cadence-after --scenario geometry-only --drain-after-fixtures
+```
