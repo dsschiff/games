@@ -785,3 +785,10 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   artifact/18 runtime-binding audit clear. Strict cached-shader warning gate
   remains failed; empty profile/metadata-fixture/driver failures qualified.
   Exact owned emulator stopped cleanly; no upload/physical/cloud acceptance.
+
+- Dead retained-code Copy controls integrated fromafee254; root434/0 with184
+  actual touch events, strict clean and unchanged executed source. Astra source/
+  checkpoint audit clear11 artifacts/230 unchanged Git-LF/four changed LF pins.
+  Signed0.4.2/code8 atf962be6 is54,363,095B, SHA256b6b9fedf…288edfe; actual
+  packaging/source/raw logs/same signer independently clear. Candidate native
+  update/clipboard/physical/cloud remain open; no upload.
