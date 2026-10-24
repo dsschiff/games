@@ -13,6 +13,20 @@ func run() -> void:
 	root.size = Vector2i(720, 1280)
 	fixtures = build_fixtures()
 	check(fixtures.source.campaign.clears.size() == 1 and fixtures.source.profile.wins > 0, "synthetic fixtures carry real rule-derived nonempty campaign and legacy records")
+	# Independent success precedes faults that deliberately retain corrupt immutable archives.
+	for mode in [1, 2]:
+		for target_mode in [1, 2]:
+			await load_fixture(mode)
+			await click("SAVE / TRANSFER")
+			var expected := S.decode(code_for(fixtures.incoming, target_mode))
+			scene.code_edit.text = code_for(fixtures.incoming, target_mode)
+			await click("IMPORT")
+			await dwell(3)
+			scene = game_root.get_node("Battle")
+			check(live_matches(expected), "successful import restores exact whole meaning %d->%d" % [mode,target_mode])
+			await cold_reload(expected, "successful import %d->%d" % [mode,target_mode])
+	# These unqualified rename faults now fail earliest preservation; active Store faults
+	# are separately armed after journal admission in import_recovery.gd.
 	for mode in [1, 2]:
 		for target_mode in [1, 2]:
 			for fault in ["missing_destination", "corrupt_destination"]:
@@ -34,15 +48,6 @@ func run() -> void:
 				observations.append({"mode":mode,"target":target_mode,"fault":fault,"live":whole_memory(),"cold":S.read(S.PATH,io)})
 				materialize_fault(io)
 				await cold_reload(old, "materialized failed import %d->%d %s" % [mode,target_mode,fault])
-			await load_fixture(mode)
-			await click("SAVE / TRANSFER")
-			var expected := S.decode(code_for(fixtures.incoming, target_mode))
-			scene.code_edit.text = code_for(fixtures.incoming, target_mode)
-			await click("IMPORT")
-			await dwell(3)
-			scene = game_root.get_node("Battle")
-			check(live_matches(expected), "successful import restores exact whole meaning %d->%d" % [mode,target_mode])
-			await cold_reload(expected, "successful import %d->%d" % [mode,target_mode])
 	for mode in [1, 2]:
 		for fault in ["fail_write", "fail_rename", "missing_destination", "corrupt_destination"]:
 			await load_fixture(mode)

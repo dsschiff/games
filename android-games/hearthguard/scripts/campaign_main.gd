@@ -25,7 +25,9 @@ var seen_terminal := false
 var action_latches := ["", "", ""]
 
 func _ready() -> void:
-	var saved := S.read()
+	var saved := initial_save()
+	if recovery_pending and not saved.ok:
+		recovery_only(); return
 	if saved.ok:
 		state = saved.state
 		profile = saved.profile
@@ -34,16 +36,18 @@ func _ready() -> void:
 	else:
 		state = C.fresh(Cat.definition(0))
 	read_options()
-	paused = state.phase == "playing"
+	paused = force_boot_pause or recovery_pending or state.phase == "playing"
 	make_world()
 	make_ui()
 	get_viewport().size_changed.connect(layout)
 	setup_audio()
 	layout()
 	sync_world(0)
+	build_recovery_ui()
 	refresh()
 	menu.visible = paused
-	save_now()
+	if not skip_boot_save and not recovery_pending: save_now()
+	boot_ok=true
 
 func make_world() -> void:
 	super.make_world()
@@ -141,6 +145,7 @@ func layout() -> void:
 			child.size = Vector2(588, 96)
 
 func refresh() -> void:
+	if recovery_pending: show_recovery(); return
 	if action_buttons.is_empty():
 		return
 	refresh_resume_action()
@@ -228,6 +233,7 @@ func refresh() -> void:
 	pause_button.disabled = transfer.visible or journey.visible or confirm_panel.visible or ending_panel.visible
 
 func invest(choice: int) -> void:
+	if recovery_pending: return
 	var latched: String = action_latches[choice]
 	action_latches[choice] = ""
 	if not paused and not latched.is_empty() and latched == action_context() and C.action(state, C.nearby(state), choice):
@@ -243,6 +249,7 @@ func action_context() -> String:
 	return "%d:%d:%d:%d:%d" % [near, t.family, t.fork, t.invested, t.priority]
 
 func arm_action(choice: int) -> void:
+	if recovery_pending: return
 	action_latches[choice] = action_context() if not paused and state.phase == "playing" else ""
 
 func stop_move() -> void:
@@ -251,12 +258,14 @@ func stop_move() -> void:
 		stick.position = safe_rect.position + Vector2(20, safe_rect.size.y - 360)
 
 func begin() -> void:
+	if recovery_pending: return
 	state.phase = "playing"
 	paused = false
 	save_now()
 	refresh()
 
 func retry() -> void:
+	if recovery_pending: return
 	state = C.fresh(state.definition)
 	state.phase = "playing"
 	paused = false
@@ -267,26 +276,31 @@ func retry() -> void:
 	refresh()
 
 func open_journey() -> void:
+	if recovery_pending: return
 	paused = true
 	stop_move()
 	journey.show()
 	refresh()
 
 func close_journey() -> void:
+	if recovery_pending: return
 	journey.hide()
 	menu.show()
 	paused = true
 
 func choose_stage(stage: int) -> void:
+	if recovery_pending: return
 	if stage > campaign_profile.clears.size():
 		return
 	request_definition(Cat.definition(stage, seed_option, budget_option, mirror_option))
 
 func choose_endless() -> void:
+	if recovery_pending: return
 	if campaign_profile.ending:
 		request_definition(Cat.definition(9, seed_option, budget_option, mirror_option, 0))
 
 func request_definition(d: Dictionary) -> void:
+	if recovery_pending: return
 	pending = d
 	if state.phase == "playing":
 		confirm_panel.show()
@@ -294,6 +308,7 @@ func request_definition(d: Dictionary) -> void:
 		confirm_replace()
 
 func confirm_replace() -> void:
+	if recovery_pending: return
 	state = C.fresh(pending)
 	read_options()
 	pending = {}
@@ -307,10 +322,12 @@ func confirm_replace() -> void:
 	refresh()
 
 func cancel_replace() -> void:
+	if recovery_pending: return
 	pending = {}
 	confirm_panel.hide()
 
 func cycle_seed() -> void:
+	if recovery_pending: return
 	seed_option = seed_option % 1000000 + 1
 	refresh()
 
@@ -320,14 +337,17 @@ func read_options() -> void:
 	mirror_option = state.definition.mirror
 
 func cycle_budget() -> void:
+	if recovery_pending: return
 	budget_option = 1 if budget_option == 0 else (-1 if budget_option == 1 else 0)
 	refresh()
 
 func cycle_mirror() -> void:
+	if recovery_pending: return
 	mirror_option = not mirror_option
 	refresh()
 
 func next_watch() -> void:
+	if recovery_pending: return
 	var d: Dictionary = state.definition
 	if d.endless >= 0:
 		request_definition(Cat.definition(9, d.seed, d.budget, d.mirror, mini(1000, int(d.endless) + 1)))
@@ -337,16 +357,19 @@ func next_watch() -> void:
 		show_ending()
 
 func show_ending() -> void:
+	if recovery_pending: return
 	if campaign_profile.ending:
 		paused = true
 		stop_move()
 		ending_panel.show()
 
 func close_ending() -> void:
+	if recovery_pending: return
 	ending_panel.hide()
 	open_journey()
 
 func return_legacy() -> void:
+	if recovery_pending: return
 	if campaign_profile.legacy_snapshot.is_empty():
 		return
 	var staged := campaign_profile.duplicate(true)
@@ -358,6 +381,7 @@ func return_legacy() -> void:
 	refresh()
 
 func back() -> void:
+	if recovery_pending: return
 	if confirm_panel.visible:
 		cancel_replace()
 	elif ending_panel.visible:
@@ -368,30 +392,11 @@ func back() -> void:
 		super.back()
 
 func import_code() -> void:
-	var decoded := S.decode(code_edit.text)
-	if not decoded.ok:
-		notice.text = "Invalid code. Current save kept."
-		return
-	if not S.write(decoded.state, decoded.profile, decoded.settings, S.PATH, save_io, true, decoded.campaign):
-		save_problem = true
-		notice.text = "Storage failed. Current save kept."
-		refresh()
-		return
-	save_problem = false
-	if decoded.state.schema == 1:
-		route_reload()
-		return
-	state = decoded.state
-	profile = decoded.profile
-	settings = decoded.settings
-	campaign_profile = decoded.campaign
-	read_options()
-	close_transfer()
-	make_world()
-	sync_world(0)
-	refresh()
+	if recovery_pending: return
+	begin_import(code_edit.text)
 
 func _physics_process(delta: float) -> void:
+	if recovery_pending: return
 	if not is_node_ready() or world == null:
 		return
 	if not paused and state.phase == "playing":

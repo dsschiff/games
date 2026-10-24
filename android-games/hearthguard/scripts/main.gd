@@ -1,6 +1,7 @@
 extends Node3D
 const R = preload("res://scripts/rules.gd")
 const S = preload("res://scripts/save_store.gd")
+const Recovery = preload("res://scripts/import_recovery.gd")
 var state := R.fresh()
 var profile := R.profile()
 var settings := {"sound": true, "reduced_effects": false}
@@ -54,20 +55,40 @@ var expedition_button: Button
 var resume_button: Button
 var world_label_clearance := preload("res://scripts/presentation/label_clearance.gd").new()
 
+var boot_bound:=false
+var boot_context:={}
+var force_boot_pause:=false
+var skip_boot_save:=false
+var boot_ok:=false
+var recovery: RefCounted
+var recovery_status:={}
+var recovery_pending:=false
+var recovery_layer: CanvasLayer
+var recovery_panel: PanelContainer
+var recovery_summary: Label
+var recovery_feedback: Label
+var recovery_help: Label
+var recovery_code: TextEdit
+var recovery_buttons:={}
+var recovery_code_visible:=false
+
 func _ready() -> void:
-	var saved := S.read()
+	var saved := initial_save()
+	if recovery_pending and not saved.ok:
+		recovery_only(); return
 	if saved.ok:
 		state = saved.state
 		profile = saved.profile
 		settings = saved.settings
 		campaign_profile = saved.campaign
-		paused = state.phase == "playing"
+		paused = force_boot_pause or recovery_pending or state.phase == "playing"
 	make_world()
 	make_ui()
 	get_viewport().size_changed.connect(layout)
 	setup_audio()
 	layout()
 	sync_world(0)
+	build_recovery_ui()
 	refresh()
 	if paused:
 		menu.show()
@@ -77,9 +98,11 @@ func _ready() -> void:
 		expedition_button.size = Vector2(572, 96)
 		menu.size.y = 770
 		layout()
-	save_now()
+	if not skip_boot_save and not recovery_pending: save_now()
+	boot_ok=true
 
 func open_campaign() -> void:
+	if recovery_pending: return
 	var C = preload("res://scripts/campaign_rules.gd")
 	var Cat = preload("res://scripts/campaign_catalog.gd")
 	var staged := campaign_profile.duplicate(true)
@@ -95,7 +118,9 @@ func open_campaign() -> void:
 	refresh()
 
 func route_reload() -> void:
+	if recovery_pending: return
 	if get_parent().has_method("reload_saved"):
+		get_parent().save_io=save_io
 		get_parent().call_deferred("reload_saved")
 
 func mat(color: String, metallic: float = 0.0) -> StandardMaterial3D:
@@ -298,6 +323,7 @@ func make_ui() -> void:
 	transfer.hide()
 
 func _process(_delta: float) -> void:
+	if recovery_pending: return
 	update_control_clearance()
 
 func update_control_clearance() -> void:
@@ -317,6 +343,7 @@ func usable_rect() -> Rect2:
 	return area.grow(-18)
 
 func layout() -> void:
+	layout_recovery()
 	if ui == null:
 		return
 	stop_move()
@@ -370,6 +397,7 @@ func layout() -> void:
 		presenter.fit(Rect2(origin + Vector2(10, 210), Vector2(w - 20, h - 480)))
 
 func _input(event: InputEvent) -> void:
+	if recovery_pending: return
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		back()
 	if event is InputEventMouse and event.device == InputEvent.DEVICE_ID_EMULATION:
@@ -419,12 +447,14 @@ func stop_move() -> void:
 		stick.position = Vector2(safe_rect.position.x + 20, h - 378)
 
 func begin() -> void:
+	if recovery_pending: return
 	state.phase = "playing"
 	stop_move()
 	save_now()
 	refresh()
 
 func build_nearby() -> void:
+	if recovery_pending: return
 	if paused:
 		return
 	var pad := R.nearby_pad(state)
@@ -434,6 +464,7 @@ func build_nearby() -> void:
 		refresh()
 
 func retry() -> void:
+	if recovery_pending: return
 	state = R.fresh()
 	state.phase = "playing"
 	paused = false
@@ -444,6 +475,7 @@ func retry() -> void:
 	refresh()
 
 func toggle_pause() -> void:
+	if recovery_pending: return
 	if transfer.visible:
 		close_transfer()
 		return
@@ -454,6 +486,7 @@ func toggle_pause() -> void:
 	refresh()
 
 func back() -> void:
+	if recovery_pending: return
 	if transfer.visible:
 		close_transfer()
 	else:
@@ -461,6 +494,10 @@ func back() -> void:
 
 func _notification(what: int) -> void:
 	if not is_node_ready():
+		return
+	if recovery_pending and what in [NOTIFICATION_WM_GO_BACK_REQUEST,NOTIFICATION_APPLICATION_PAUSED,NOTIFICATION_APPLICATION_FOCUS_OUT,NOTIFICATION_WM_CLOSE_REQUEST]:
+		paused=true; stop_move(); show_recovery()
+		if what==NOTIFICATION_WM_CLOSE_REQUEST: get_tree().quit()
 		return
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		back()
@@ -475,6 +512,7 @@ func _notification(what: int) -> void:
 			get_tree().quit()
 
 func toggle_sound() -> void:
+	if recovery_pending: return
 	settings.sound = not settings.sound
 	save_now()
 	refresh()
@@ -482,16 +520,19 @@ func toggle_sound() -> void:
 		tone(660, 0.15)
 
 func toggle_effects() -> void:
+	if recovery_pending: return
 	settings.reduced_effects = not settings.reduced_effects
 	save_now()
 	refresh()
 
 func save_now() -> bool:
+	if recovery_pending: return false
 	var saved := S.write(state, profile, settings, S.PATH, save_io, false, campaign_profile)
 	save_problem = not saved
 	return saved
 
 func open_transfer() -> void:
+	if recovery_pending: return
 	stop_move()
 	paused = true
 	code_edit.text = S.encode(state, profile, settings, 0, true, campaign_profile)
@@ -499,6 +540,7 @@ func open_transfer() -> void:
 	transfer.show()
 
 func close_transfer() -> void:
+	if recovery_pending: return
 	transfer.hide()
 	code_edit.release_focus()
 	menu.show()
@@ -506,6 +548,7 @@ func close_transfer() -> void:
 	refresh()
 
 func copy_code() -> void:
+	if recovery_pending: return
 	if not DisplayServer.has_feature(DisplayServer.FEATURE_CLIPBOARD):
 		code_edit.select_all()
 		notice.text = "Select and copy the code on this device."
@@ -515,6 +558,7 @@ func copy_code() -> void:
 	notice.text = "Code copied." if DisplayServer.clipboard_get() == code_edit.text else "Clipboard unavailable. Select and copy the code."
 
 func paste_code() -> void:
+	if recovery_pending: return
 	if not DisplayServer.has_feature(DisplayServer.FEATURE_CLIPBOARD):
 		notice.text = "Clipboard unavailable. Current code kept."
 		return
@@ -526,33 +570,11 @@ func paste_code() -> void:
 		notice.text = "Pasted. Import checks before replacing."
 
 func import_code() -> void:
-	var decoded := S.decode(code_edit.text)
-	if not decoded.ok:
-		notice.text = "Invalid code. Current save kept."
-		return
-	if not S.write(decoded.state, decoded.profile, decoded.settings, S.PATH, save_io, true, decoded.campaign):
-		save_problem = true
-		notice.text = "Storage failed. Current save kept."
-		refresh()
-		return
-	save_problem = false
-	var changed_mode: bool = state.schema != decoded.state.schema
-	state = decoded.state
-	profile = decoded.profile
-	settings = decoded.settings
-	campaign_profile = decoded.campaign
-	if changed_mode:
-		paused = true
-		set_physics_process(false)
-		set_process_input(false)
-		route_reload()
-		return
-	close_transfer()
-	make_world()
-	sync_world(0)
-	refresh()
+	if recovery_pending: return
+	begin_import(code_edit.text)
 
 func _physics_process(delta: float) -> void:
+	if recovery_pending: return
 	if not paused and state.phase == "playing":
 		var before: String = state.phase
 		var events := R.tick(state, input_vector, delta)
@@ -583,6 +605,7 @@ func refresh_resume_action() -> void:
 		resume_button.text = "RESUME" if state.phase == "playing" else ("BACK TO BRIEF" if state.phase == "ready" else "BACK TO RESULT")
 
 func refresh() -> void:
+	if recovery_pending: show_recovery(); return
 	if wallet_label == null:
 		return
 	refresh_resume_action()
@@ -662,3 +685,105 @@ func _exit_tree() -> void:
 	if audio != null:
 		audio.stop()
 	audio_playback = null
+
+func initial_save() -> Dictionary:
+	if boot_bound: return boot_context.duplicate(true)
+	recovery=Recovery.new(save_io); recovery_status=recovery.read()
+	var saved: Dictionary=recovery_status.original if recovery_status.ok else (S.read(S.PATH,save_io) if not recovery_status.pending else {"ok":false})
+	recovery_pending=recovery_status.pending or (not saved.ok and recovery.active_present())
+	if recovery_pending and not recovery_status.pending: recovery.message="Local saves cannot be read. Play and saves stay paused. Retry reading recovery. Keep the app installed to retain its files."
+	return saved
+func recovery_only() -> void:
+	paused=true; build_recovery_ui(); show_recovery(); boot_ok=true
+func recovery_label(parent: Node,value: String,size: int=22) -> Label:
+	var label:=Label.new(); label.text=value; label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+	label.add_theme_font_size_override("font_size",size); label.size_flags_horizontal=Control.SIZE_EXPAND_FILL
+	label.mouse_filter=Control.MOUSE_FILTER_IGNORE; parent.add_child(label); return label
+func build_recovery_ui() -> void:
+	if is_instance_valid(recovery_layer): return
+	recovery_layer=CanvasLayer.new(); recovery_layer.layer=100; add_child(recovery_layer)
+	var cover:=Control.new(); cover.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT); recovery_layer.add_child(cover)
+	recovery_panel=PanelContainer.new(); cover.add_child(recovery_panel)
+	var style:=StyleBoxFlat.new(); style.bg_color=Color("102d3b"); style.set_content_margin_all(16); recovery_panel.add_theme_stylebox_override("panel",style)
+	var scroll:=ScrollContainer.new(); scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED; recovery_panel.add_child(scroll)
+	var col:=VBoxContainer.new(); col.size_flags_horizontal=Control.SIZE_EXPAND_FILL; col.add_theme_constant_override("separation",12); scroll.add_child(col)
+	recovery_label(col,"WHOLE SAVE RECOVERY / PLAY PAUSED",26)
+	recovery_summary=recovery_label(col,"")
+	# Allocate the wrapping row before touch feedback changes its text.
+	recovery_feedback=recovery_label(col,""); recovery_feedback.custom_minimum_size.y=60
+	for item in [["retry","RETRY IMPORT",finish_import.bind(true)],["previous","KEEP PREVIOUS WHOLE SAVE",finish_import.bind(false)],["read","RETRY RECOVERY READ",retry_recovery_read],["copy_previous","COPY PREVIOUS CODE",copy_recovery_code.bind(false)],["copy_incoming","COPY IMPORTED CODE",copy_recovery_code.bind(true)],["view_previous","VIEW PREVIOUS CODE",view_recovery_code.bind(false)],["view_incoming","VIEW IMPORTED CODE",view_recovery_code.bind(true)]]:
+		var b:=Button.new(); b.text=item[1]; b.custom_minimum_size=Vector2(0,88); b.add_theme_font_size_override("font_size",22)
+		b.pressed.connect(item[2]); col.add_child(b); recovery_buttons[item[0]]=b
+	recovery_code=TextEdit.new(); recovery_code.editable=false; recovery_code.wrap_mode=TextEdit.LINE_WRAPPING_BOUNDARY; recovery_code.custom_minimum_size=Vector2(0,220); col.add_child(recovery_code); recovery_code.hide()
+	recovery_help=recovery_label(col,"Your watch, saved passes, progress and settings move together. Copy a complete code or use View to select it manually.")
+	recovery_layer.hide(); get_viewport().size_changed.connect(layout_recovery); layout_recovery()
+func layout_recovery() -> void:
+	if not is_instance_valid(recovery_panel): return
+	var safe:=usable_rect(); recovery_panel.position=Vector2(safe.get_center().x-minf(680,safe.size.x)*.5,safe.position.y)
+	recovery_panel.size=Vector2(minf(680,safe.size.x),safe.size.y)
+func show_recovery() -> void:
+	if not recovery_pending: return
+	paused=true; stop_move(); build_recovery_ui()
+	if is_instance_valid(ui): ui.hide()
+	recovery_layer.show(); var known: bool=not recovery.record.is_empty()
+	recovery_summary.text=recovery.message
+	if known: recovery_summary.text+="\n\nPREVIOUS WHOLE SAVE\n"+Recovery.describe(recovery.original)+"\n\nIMPORTED WHOLE SAVE\n"+Recovery.describe(recovery.incoming)
+	else: recovery_summary.text+="\nNo new watch will be saved while recovery is blocked."
+	recovery_code.visible=known and recovery_code_visible; recovery_help.visible=known; recovery_feedback.visible=known
+	for key in recovery_buttons: recovery_buttons[key].visible=(key!="read") if known else key=="read"
+	recovery_buttons.copy_previous.disabled=recovery.original_code.is_empty(); recovery_buttons.copy_incoming.disabled=recovery.incoming_code.is_empty()
+	if is_instance_valid(notice): notice.text=recovery.message
+func begin_import(code: String) -> void:
+	if recovery_pending: return
+	if not S.decode(code).ok: notice.text="Invalid code. Current save kept."; return
+	paused=true; stop_move(); recovery_pending=true; recovery=Recovery.new(save_io)
+	recovery_status=recovery.begin(S.encode(state,profile,settings,0,true,campaign_profile),code)
+	recovery_pending=recovery_status.pending
+	if not recovery_pending: notice.text=recovery.message; save_problem=true; return
+	recovery_code_visible=false; recovery_feedback.text=""; show_recovery()
+	if recovery_status.ok: finish_import(true)
+func view_recovery_code(use_import: bool) -> void:
+	if not recovery_pending or recovery.record.is_empty(): return
+	recovery_code.text=recovery.incoming_code if use_import else recovery.original_code; recovery_code_visible=true; show_recovery()
+func copy_recovery_code(use_import: bool) -> void:
+	if not recovery_pending or recovery.record.is_empty(): return
+	var code: String=recovery.incoming_code if use_import else recovery.original_code
+	var name: String="Imported" if use_import else "Previous"
+	if code.is_empty(): recovery_feedback.text=name+" code unavailable. Play stays paused."
+	elif not DisplayServer.has_feature(DisplayServer.FEATURE_CLIPBOARD): recovery_feedback.text="Clipboard unavailable. Use View "+name.to_lower()+" code to select it manually. Play stays paused."
+	else:
+		DisplayServer.clipboard_set(code)
+		recovery_feedback.text=name+" code copied. Clipboard readback verified." if DisplayServer.clipboard_get()==code else "Copy not verified. Use View code or try again. Play stays paused."
+	show_recovery(); call_deferred("reveal_recovery_feedback")
+func reveal_recovery_feedback() -> void:
+	if not recovery_pending or not is_instance_valid(recovery_panel) or not recovery_panel.is_visible_in_tree() or not is_instance_valid(recovery_feedback) or not recovery_feedback.visible: return
+	var scroll: ScrollContainer=recovery_panel.get_child(0); scroll.ensure_control_visible(recovery_feedback)
+func retry_recovery_read() -> void:
+	if not recovery_pending: return
+	recovery_status=recovery.read()
+	if recovery_status.ok: show_recovery(); return
+	if not recovery_status.pending and recovery.record.is_empty():
+		var saved:=S.read(S.PATH,save_io)
+		if saved.ok:
+			var code:=S.encode(saved.state,saved.profile,saved.settings,saved.revision,saved.committed,saved.campaign)
+			if handoff_recovery(code): return
+	recovery.message="Recovery cannot be read yet. Play and saves stay paused. Keep the app installed to retain its files."
+	show_recovery()
+func finish_import(use_import: bool) -> void:
+	if not recovery_pending: return
+	var result: Dictionary=recovery.resolve(use_import)
+	if not result.ok: show_recovery(); return
+	if not handoff_recovery(result.code):
+		recovery.message="The chosen save was verified, but it could not be opened. Play stays paused. Retry your choice."; show_recovery()
+func handoff_recovery(code: String) -> bool:
+	if get_parent().has_method("adopt_verified"): return get_parent().adopt_verified(code,save_io)
+	var chosen:=S.decode(code)
+	if not chosen.ok: return false
+	if chosen.state.schema!=state.schema or not is_instance_valid(ui):
+		get_tree().set_meta("hearth_verified_context",{"code":code,"backend":save_io})
+		if get_tree().change_scene_to_file("res://main.tscn")!=OK:
+			get_tree().remove_meta("hearth_verified_context"); return false
+		return true
+	state=chosen.state; profile=chosen.profile; settings=chosen.settings; campaign_profile=chosen.campaign
+	recovery_pending=false; recovery_feedback.text=""; recovery_layer.hide(); recovery_code_visible=false; save_problem=false; paused=true
+	ui.show(); transfer.hide(); menu.show(); make_world(); sync_world(0); refresh(); return true
