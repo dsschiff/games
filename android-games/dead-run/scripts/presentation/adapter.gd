@@ -293,7 +293,18 @@ func _build_gates(d: Dictionary) -> void:
 		node.add_child(panel)
 		var number := label(node, "", Vector3(0, 1.25, .05), 175)
 		var caption := label(node, "CREW", Vector3(0, .42, .05), 50)
-		gates.append({"node": node, "panel": panel, "number": number, "caption": caption, "pulse": 0.0})
+		var charge: MeshInstance3D
+		if g.get("kind", "add") == "mul":
+			number.position.y = 1.37
+			caption.position.y = .48
+			charge = bar(node, Vector3(0, .44, .08), panel.mesh.size.x - .12, Color("7fe0ff"))
+			(charge.mesh as BoxMesh).size.y = .36
+			var back: MeshInstance3D = charge.get_parent().get_child(0)
+			(back.mesh as BoxMesh).size.y = .48
+			(charge.material_override as StandardMaterial3D).disable_fog = true
+			(back.material_override as StandardMaterial3D).disable_fog = true
+			charge.hide()
+		gates.append({"node": node, "panel": panel, "number": number, "caption": caption, "charge": charge, "pulse": 0.0})
 		actors["gate" + str(g.id)] = node
 
 func _build_sides(d: Dictionary) -> void:
@@ -681,17 +692,22 @@ func _sync_gates(s: Dictionary, d: Dictionary, hydrate: bool) -> void:
 			info.number.text = "×%d" % g.value
 			info.number.outline_modulate = Color("6a4a00") if live_mul else Color("33475a")
 			var caption := "CREW"
+			var charge: MeshInstance3D = info.charge
+			(charge.get_parent() as Node3D).visible = g.value < d.gates[i].cap
 			if g.value < d.gates[i].cap:
 				# Hits are cumulative, as is the next pinned gate-value threshold.
 				var threshold: int = (int(g.value) + 1 - int(d.gates[i].initial)) * int(d.gates[i].step)
-				caption = "NEXT %d/%d" % [g.hits, threshold]
+				caption = "%d/%d" % [g.hits, threshold]
+				var ratio := clampf(float(g.hits) / threshold, 0.0, 1.0)
+				charge.visible = ratio > 0.0
+				set_fill(charge, ratio)
 			if info.caption.text != caption:
 				info.caption.text = caption
-				info.caption.font_size = 50 if caption == "CREW" else 32
-				info.caption.outline_size = 10 if caption == "CREW" else 6
+				info.caption.font_size = 50 if caption == "CREW" else 72
+				info.caption.outline_size = 10 if caption == "CREW" else 9
 				while caption != "CREW" and info.caption.font_size > 12 and (label_font.get_string_size(caption, HORIZONTAL_ALIGNMENT_LEFT, -1, info.caption.font_size).x + 2 * info.caption.outline_size) * info.caption.pixel_size > info.panel.mesh.size.x - .1:
 					info.caption.font_size -= 1
-					info.caption.outline_size = maxi(2, info.caption.font_size / 5)
+					info.caption.outline_size = maxi(3, info.caption.font_size / 8)
 			(info.panel.material_override as StandardMaterial3D).albedo_color = Color(Color("ffc23a") if live_mul else Color("9ab4c8"), .46)
 		else:
 			info.number.text = "%+d" % g.value if g.value != 0 else "0"

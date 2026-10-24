@@ -54,6 +54,8 @@ def cache_hashes():
     return {p.relative_to(PROJECT).as_posix(): sha(p) for p in sorted((PROJECT / ".godot").rglob("*")) if p.is_file()}
 
 
+CURRENT_ADAPTER_LF = "46010d6fe751c7d13da16978db685b45d688bf1d6f5b2e06514a5cdd1e7108e0"
+PREFIX_ADAPTER_LF = "a5f0a35cb1398c89fc0d2df78972e1acfd2bf9273e4ffd4925cd5f4e55b61a12"
 BASE_ADAPTER_LF = "94c14e440a355b737148f1d86c1b95c110fc8e7a8587ee23b340ddc74b73d18d"
 BASE_REPORT_SHA = "7c47967cbff5a286894547b42dcea80d9b28508d1077c0221db35aa658b8d0be"
 
@@ -64,15 +66,17 @@ def source_variant(name):
     candidate = path.read_bytes()
     record = {"name": name, "candidate_raw_sha256": hashlib.sha256(candidate).hexdigest()}
     try:
-        if name == "baseline":
-            original = subprocess.check_output(["git", "-C", str(PROJECT), "show", "64cd050:android-games/dead-run/scripts/presentation/adapter.gd"])
-            if hashlib.sha256(original.replace(b"\r\n", b"\n")).hexdigest() != BASE_ADAPTER_LF:
+        if name != "current":
+            revision = "64cd050" if name == "baseline" else "60515b1438e08b55c893002b0f99e433d9dd5441"
+            original = subprocess.check_output(["git", "-C", str(PROJECT), "show", revision + ":android-games/dead-run/scripts/presentation/adapter.gd"])
+            wanted = BASE_ADAPTER_LF if name == "baseline" else PREFIX_ADAPTER_LF
+            if hashlib.sha256(original.replace(b"\r\n", b"\n")).hexdigest() != wanted:
                 raise ValueError("Trusted baseline adapter blob mismatch")
             path.write_bytes(original)
         record["executed_raw_sha256"] = sha(path)
         yield record
     finally:
-        if name == "baseline": path.write_bytes(candidate)
+        if name != "current": path.write_bytes(candidate)
         record["restored_raw_sha256"] = sha(path)
         record["restored"] = path.read_bytes() == candidate
 
@@ -92,7 +96,8 @@ def authenticate_route(folder, variant):
     current_lf = lf_hashes()
     for name in expected:
         binary = Path(name).suffix in (".glb", ".png", ".jpg", ".ttf", ".woff", ".ico")
-        if (expected[name] != actual[name]) if binary else (frozen_lf[name] != current_lf[name]):
+        wanted_lf = CURRENT_ADAPTER_LF if name == "scripts/presentation/adapter.gd" else frozen_lf[name]
+        if (expected[name] != actual[name]) if binary else (wanted_lf != current_lf[name]):
             raise ValueError("Production runtime changed: " + name)
     baseline = None
     if variant == "baseline":
@@ -116,6 +121,21 @@ def route_identity(run, reference, native, variant):
     if variant == "baseline":
         original = json.loads(Path(reference["baseline"]["path"]).read_text(encoding="utf-8"))
         equal["observations"] = actual["observations"] == original["observations"]
+    if variant == "current":
+        equal["observations"] = len(expected["observations"]) == len(actual["observations"]) and all(
+            all(a[k] == e[k] for k in ("label", "tick", "context", "number")) for e,a in zip(expected["observations"], actual["observations"]))
+        for e,a in zip(expected["observations"], actual["observations"]):
+            gate = a["context"]["campaign"]["gates"][3]
+            definition = a["context"]["campaign"]["definition"]["gates"][3]
+            cap = gate["value"] >= definition["cap"]
+            caption = "CREW" if cap else "%d/%d" % (gate["hits"], (gate["value"] + 1 - definition["initial"]) * definition["step"])
+            equal["observations"] &= a["caption"] == caption and (a["caption_font"] == 50 if cap else a["caption_font"] > e["caption_font"])
+    views = actual.get("charge_views", [])
+    equal["charge_projection"] = len(views) == 2 and [v["tick"] for v in views] == [2252, 2312]
+    if variant == "current":
+        equal["charge_projection"] &= all(v["exists"] and v["visible"] and v["contained"] and v["track"][2] >= 20 and v["track"][3] >= 6 for v in views)
+    else:
+        equal["charge_projection"] &= all(not v["exists"] for v in views)
     capture = actual["route_capture"]
     frames = capture["frames"]
     equal["complete_tick_route"] = len(actual["tick_contexts"]) == 2734
@@ -160,7 +180,7 @@ def main():
     parser.add_argument("--label", default="run")
     parser.add_argument("--scenario", default="all")
     parser.add_argument("--headless", action="store_true")
-    parser.add_argument("--source-variant", choices=("current", "baseline"), default="current", help="route only: trusted old adapter swap with exact finally restoration")
+    parser.add_argument("--source-variant", choices=("current", "pre-fix", "baseline"), default="current", help="route only: trusted old adapter swap with exact finally restoration")
     parser.add_argument("--route-only", action="store_true", help="multiplier only: preserve exact earned route, omit all typed fixtures")
     parser.add_argument("--native-frames", action="store_true", help="route only: post-draw native720x1280 PNG every two simulation ticks")
     parser.add_argument("--route-reference", type=Path, help="route only: existing authenticated canonical final packet; no copied source/assets")

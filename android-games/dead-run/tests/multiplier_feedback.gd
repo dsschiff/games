@@ -35,6 +35,7 @@ var observations: Array = []
 var tick_contexts: Array = []
 var crossings: Array = []
 var mismatches: Array = []
+var charge_views: Array = []
 
 func observe(label: String) -> void:
 	var info: Dictionary = scene.presentation.gates[3]
@@ -141,7 +142,7 @@ func run() -> void:
 		check(Data.same(scene.ctx, fixture_context), "isolated label fixtures leave complete earned context unchanged")
 	write("multiplier-feedback.json", {"checks": checks, "failures": failures, "details": details,
 		"observations": observations, "crossings": crossings, "tick_contexts": tick_contexts,
-		"route_only": route_only, "route_capture": route_capture, "mismatches": mismatches, "context": scene.ctx.duplicate(true), "saved": saved, "raw_slots": raw,
+		"route_only": route_only, "route_capture": route_capture, "charge_views": charge_views, "mismatches": mismatches, "context": scene.ctx.duplicate(true), "saved": saved, "raw_slots": raw,
 		"scope": "Fresh actual production input opening; no injected progress. CPU is not rendered/native/human acceptance."})
 	write("raw-input-events.json", events)
 	scene.queue_free()
@@ -166,6 +167,7 @@ func label_fixtures() -> void:
 				var captions := true
 				var fits := true
 				var unchanged := true
+				var charge_truthful := true
 				for i in s.gates.size():
 					var gd: Dictionary = s.definition.gates[i]
 					var g: Dictionary = s.gates[i]
@@ -185,9 +187,17 @@ func label_fixtures() -> void:
 						var caption: Label3D = p.gates[i].caption
 						var expected := "CREW"
 						if mul and g.value < gd.cap:
-							expected = "NEXT %d/%d" % [hits, (int(g.value) + 1 - int(gd.initial)) * int(gd.step)]
+							expected = "%d/%d" % [hits, (int(g.value) + 1 - int(gd.initial)) * int(gd.step)]
 						captions = captions and caption.text == expected
 						if mul:
+							var fill: MeshInstance3D = p.gates[i].charge
+							charge_truthful = charge_truthful and (fill.get_parent() as Node3D).visible == (g.value < gd.cap)
+							if g.value < gd.cap:
+								var threshold: int = (int(g.value) + 1 - int(gd.initial)) * int(gd.step)
+								var ratio := clampf(float(hits) / threshold, 0.0, 1.0)
+								charge_truthful = charge_truthful and fill.visible == (hits > 0) and is_equal_approx(fill.scale.x, maxf(.001, ratio))
+								var back: MeshInstance3D = fill.get_parent().get_child(0)
+								charge_truthful = charge_truthful and is_equal_approx(back.mesh.size.y, .48) and back.mesh.size.x <= p.gates[i].panel.mesh.size.x
 							var measured: float = (caption.font.get_string_size(caption.text, HORIZONTAL_ALIGNMENT_LEFT, -1, caption.font_size).x + 2 * caption.outline_size) * caption.pixel_size
 							if g.value < gd.cap: fits = fits and measured <= p.gates[i].panel.mesh.size.x - .1
 							captions = captions and p.gates[i].number.text == char(215) + str(int(g.value))
@@ -196,6 +206,7 @@ func label_fixtures() -> void:
 					p._sync_gates(s, s.definition, true)
 					captions = captions and not p.gates[i].node.visible
 				check(captions, "catalog%d road%d seed%d: next threshold/cap, applied numeral, add gate and crossed visibility" % [catalog, road, seed])
+				check(charge_truthful, "catalog%d road%d seed%d: actual cumulative charge, zero/cap visibility and thick contained track" % [catalog, road, seed])
 				check(fits, "catalog%d road%d seed%d: measured caption and outline stay inside original panel" % [catalog, road, seed])
 				check(unchanged, "catalog%d road%d seed%d: hydration reads pinned state without mutation" % [catalog, road, seed])
 				p.root.queue_free()
@@ -240,6 +251,8 @@ func sample_capture() -> void:
 			mark.actual.image_size = [image.get_width(), image.get_height()]
 			capture_ok = image.save_png(folder.path_join(filename)) == OK and capture_ok
 		capture_marks.append(mark)
+		if mark.label in ["partial-before-away", "return-to-gate"]:
+			charge_views.append(charge_geometry(mark.label))
 	pending_marks.clear()
 
 func finish_capture() -> Dictionary:
@@ -262,3 +275,37 @@ func finish_capture() -> Dictionary:
 		"observer": "frame_post_draw" if native_frames else "headless process_frame plan; no pixels",
 		"frames": capture_rows, "marks": capture_marks, "timed_inputs": timed_inputs,
 		"limits": "No resizing, frame interpolation, live-route waits or typed fixture tail. Fixed-step video is not measured FPS, native Android or human pacing."}
+
+func projected_box(node: Node3D, bounds: AABB, billboard: bool = false) -> Rect2:
+	var points := PackedVector2Array()
+	var basis: Basis = scene.camera.global_basis.orthonormalized() * Basis.from_scale(node.global_basis.get_scale())
+	for x in [bounds.position.x, bounds.end.x]:
+		for y in [bounds.position.y, bounds.end.y]:
+			for z in [bounds.position.z, bounds.end.z]:
+				var local := Vector3(x, y, z)
+				var point: Vector3 = node.global_position + basis * local if billboard else node.to_global(local)
+				points.append(scene.camera.unproject_position(point))
+	var rectangle := Rect2(points[0], Vector2.ZERO)
+	for point in points: rectangle = rectangle.expand(point)
+	return rectangle
+
+func charge_geometry(label: String) -> Dictionary:
+	var info: Dictionary = scene.presentation.gates[3]
+	var fill: MeshInstance3D = info.get("charge")
+	var row := {"mark": label, "tick": scene.state.tick, "exists": fill != null}
+	if fill == null: return row
+	var back: MeshInstance3D = fill.get_parent().get_child(0)
+	var track := projected_box(back, back.get_aabb())
+	var counter := projected_box(info.caption, info.caption.get_aabb(), true)
+	var number := projected_box(info.number, info.number.get_aabb(), true)
+	var panel := projected_box(info.panel, info.panel.get_aabb())
+	row.panel = [panel.position.x, panel.position.y, panel.size.x, panel.size.y]
+	row.contained = panel.grow(.5).encloses(track)
+	row.track = [track.position.x, track.position.y, track.size.x, track.size.y]
+	row.counter = [counter.position.x, counter.position.y, counter.size.x, counter.size.y]
+	row.number = [number.position.x, number.position.y, number.size.x, number.size.y]
+	row.counter_font = info.caption.font_size
+	row.caption = info.caption.text
+	row.ratio = fill.scale.x
+	row.visible = fill.is_visible_in_tree()
+	return row
