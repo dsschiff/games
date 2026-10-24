@@ -1,0 +1,131 @@
+{
+  "scope": "Signed Tower8to9to10 native save/recovery/medal verification and transfer-note layout correction; local candidate, active six-game goal.",
+  "source": {
+    "medals": "a124b32b7323589985c55d08d56fa0db815bfd9e",
+    "recovery": "a244948",
+    "transfer_layout_worker": "837206334d38c51f0c661f599b5fcdf3495a93d0",
+    "transfer_layout_integrated": "106a23e",
+    "candidate": "903f7fcb3a5b43f3139d83ca00aa086c9f20906e"
+  },
+  "candidate": {
+    "manifest": {
+      "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-trials\\20261024T102237771325Z\\manifest.json",
+      "bytes": 1812,
+      "sha256": "5a66e8fb874148c31d021c35a4ee7b7e9776f95a9722ef3be879c8e0f35a0f1b"
+    },
+    "apk": {
+      "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-trials\\20261024T102237771325Z\\tower-trials.apk",
+      "bytes": 53193857,
+      "sha256": "6e1b744e96fba08b1c2f56bfa034a8009aee5e110fefe510142d1c623d70b845"
+    },
+    "raw_source_sha256": "ab117541a144d29054f99ffa78cc31663cbf219b8d5331973e81a4f05a85498b",
+    "source": "903f7fcb3a5b43f3139d83ca00aa086c9f20906e",
+    "build_files": {
+      "apk-inspection.log": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-trials\\20261024T102237771325Z\\apk-inspection.log",
+        "bytes": 5112,
+        "sha256": "6a067beba20bf34c4b5e13ba2bcb04020542de00e73ca79b2d853bbb9a7cb27b"
+      },
+      "build.log": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-trials\\20261024T102237771325Z\\build.log",
+        "bytes": 6127,
+        "sha256": "08a3b75509593e431ac0c7fe82bada9a4354aa763b5b0b4dd099b897fecd43b1"
+      },
+      "import.log": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-trials\\20261024T102237771325Z\\import.log",
+        "bytes": 1315,
+        "sha256": "97d3a98b638bde96129f72c0aa2c73756b531bcc790e7a75a73508fdf8f980e1"
+      },
+      "manifest.json": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-trials\\20261024T102237771325Z\\manifest.json",
+        "bytes": 1812,
+        "sha256": "5a66e8fb874148c31d021c35a4ee7b7e9776f95a9722ef3be879c8e0f35a0f1b"
+      },
+      "signature.log": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-trials\\20261024T102237771325Z\\signature.log",
+        "bytes": 1079,
+        "sha256": "854ec828c2fe963c7f9a12ddef092440beff2bb60ce1b195cd8d25d61adfe498"
+      },
+      "tower-trials.apk.idsig": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\.artifacts\\tower-trials\\20261024T102237771325Z\\tower-trials.apk.idsig",
+        "bytes": 424454,
+        "sha256": "0fcdb93d5723329d9cdad1690a30a4b1581041f5179beadff35be0f511de6d62"
+      }
+    }
+  },
+  "native": {
+    "packet": {
+      "path": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-tower-code9-20261024\\report.json",
+      "bytes": 299387,
+      "sha256": "3e16be274a251627c35dc45f4e5165b23be7c5bb2e40167f10e4cfa655ed8648"
+    },
+    "packet_pins": 402,
+    "update_pins": 16,
+    "whole_context_comparisons": 20,
+    "failures": 0,
+    "pending_exact_validations": 11,
+    "resolved_pending_absences": 13,
+    "basis": "Production Store.read/decode with whole data+derived replay state. Only revision and recoverable excluded according to owning Recovery.meaning; no gameplay masks or tolerance.",
+    "earned_medal_proof": "Two Chimes actual pair,loft,light clear3 vspar4, currentRescue/Par/NoUndo, cumulative11,best3. Actual Undo then pair,loft,reverse,star,light slower5moves/2treasure/usedUndo true, currentRescue+Treasure,cumulative15,best3unchanged. Won/cold/Journey native pixels accepted.",
+    "roundtrips": {
+      "previous": "Copy Previous exact281B; Back/Home/cold preserves pending; View Previous accepted. Opposite Retry chooses entire native won code, then actual Paste/Import without another SET restores complete original, cold confirms.",
+      "imported": "Copy Imported exact2795B rich code; actual View settled accepted. Opposite Keep chooses entire original, then actual Paste/Import without SET restores entire rich context including twoChallenge records/parkedcampaign, cold confirms. Final explicit original SET and normal Paste/Import/cold restores original.",
+      "fixtures": "Only explicit marker/archive setup, no active slot writes or native storage failure. Immutable existing copies reused only byte-exactly; two pending file groups unchanged.",
+      "readonly_receipt": "pending-readonly-files.json"
+    },
+    "native_layout": {
+      "failed_code9": "native-export-open and native-export-copied retain P2 transfer-note baseline overlapping Return.",
+      "fixed_code10": "code10-export-open/code10-export-copied inspected; note fully below Return, input and all four controls reachable, exact282B code copied.",
+      "checkpoint": {
+        "path": "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\TRANSFER_LAYOUT.json",
+        "bytes": 105455,
+        "sha256": "4c8561e99f1e1ca37ac560f5b7ad81636da400a8d7d199a92e2215f2d36272a0"
+      },
+      "remaining": "Native pending Copy UI roundtrips oncode9; code10 only transfer-note layout changed, pending/store/rules sources unchanged. Physical cover/unfolded/folding still unverified."
+    },
+    "strict_engine_gate": false,
+    "strict_warning": "Failed to load cached shader, recompiling; finalPID5735",
+    "final_original_restored": true,
+    "owned_emulator_stopped_creation_verified": true
+  },
+  "root_cpu": {
+    "packet": {
+      "path": "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T102035724467Z\\report.json",
+      "bytes": 1560,
+      "sha256": "580bd2b2c8812c52ad6b881564da8dd4a32ac107389de115d06019ed5cc18739"
+    },
+    "layout_checks": 235,
+    "medal_checks": 793,
+    "failures": 0,
+    "strict_clean": true,
+    "limit": "Executed before metadata-only0.4.4/code10 version bump. Recorded runner source hash algorithm LF-normalizes bytes; actual packaging independently pins raw project inputs."
+  },
+  "shader_cache": {
+    "gate_passed": false,
+    "strict_log": "strict-engine-log.json",
+    "read_only_probe": "shader-cache-before.json and after.json plus exact raw changed binaries;13samepaths/6053771B,60GLSCv3binaryrecords format36385. Ninefiles48binaries changed667binary-bodybytes after ordinarycode9cold; framing/sizeunchanged. Whole game context unchanged. No cache/settings edits.",
+    "inference": "Structurally intact reuse/regeneration in same exposed renderer/cache-key namespace; does not identify failing shader, root cause or significance of667bytes. WARN_PRINT_ONCE prevents counting failures. APK ZIP/PCK contains no shader-cache entry.",
+    "primary_source": "https://github.com/godotengine/godot/blob/ed1daf0bf001b61586d9930840f2f1394092c079/drivers/gles3/shader_gles3.cpp#L547-L717",
+    "renderer_source": "https://github.com/godotengine/godot/blob/ed1daf0bf001b61586d9930840f2f1394092c079/drivers/gles3/rasterizer_gles3.cpp#L336-L365",
+    "warning_persists_final_code10": true
+  },
+  "source_and_packaging_review": "Independent Astra source/layout/checkpoint and actualcode10 packaging/source/pipeline/config/rawlogs/signer clear. Sealed native packet qualifiedCLEAR:617distinctpath pins,352Gitbindings,20complete comparisons,11journals13absences, exactclipboardpayloads and whole original restoration independently verified. Strict engine gate remainsFAILED.",
+  "retained_failures": [
+    "First old launch screenshot shows launcher/no PID despite commandexit0; excluded UI acceptance, exactdata still preserved; amstartW relaunch accepted.",
+    "Initial stat argument split failed before cache copy or cold; corrected separate stat calls, no cache writes.",
+    "First CPU rich encoder overstrict rawJSON-data assertion timed out35s; owned child terminated, corrected productiondecode/reencode full value check passes; no native writes during failure.",
+    "pending-imported-view first tap struck Android clipboard overlay and opened Quick Share; excluded View UI acceptance. Backed out without selecting a recipient or transfer target; later pending-imported-view-settled accepted. No claim about unobserved system networking.",
+    "P2 builder defaultencoding mojibake caused793/8; retainedfailedCPU packets, exactbase793/0 then bytewiseASCIIonlyfix235/0+793/0.",
+    "Earlier root inspection commands used wrong coordinatorcwd, failed read-only; no packet/source mutation."
+  ],
+  "remaining": [
+    "Strict cached-shader warning and native writefault/powerloss",
+    "Normal Export unavailable/unconfirmed protocol still legacy",
+    "Physical Fold7 dimensions/folding/FPS/sound/human pacing/fun",
+    "Configured Google Play account/cloud; identity and phone actions still pending",
+    "Specific private transfer authorization for Tower0.4.4/code10; no upload"
+  ],
+  "no_new_upload": true,
+  "physical_phone_accepted": false,
+  "cloud_accepted": false
+}
