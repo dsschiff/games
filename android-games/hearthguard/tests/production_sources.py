@@ -32,16 +32,17 @@ def acceptance_index_identity(plan, raw=None):
             "policy": "Tracked acceptance index only: exact CRLF-to-LF replacement; no stripping, JSON reserialization, whitespace or content normalization. Artifact/receipt/envelope/save-slot identities remain byte-exact."}
 
 
-def resolve(key):
+def resolve(key, artifact_root=None):
     plan = json.loads(PLAN.read_text(encoding="utf-8"))
     entry = plan["earned_sources"][key]
     index = PROJECT / plan["acceptance_index"]
     identity = acceptance_index_identity(plan)
     accepted = json.loads(index.read_bytes().decode("utf-8"))["accepted_receipts"]
     assert any(row["path"] == entry["receipt"] and row["sha256"] == entry["receipt_sha256"] for row in accepted)
-    path = (PROJECT / entry["path"]).resolve()
-    assert path.is_relative_to((PROJECT / ".artifacts").resolve())
-    receipt_path = PROJECT / entry["receipt"]
+    origin = Path(artifact_root).resolve() if artifact_root is not None else PROJECT
+    path = (origin / entry["path"]).resolve()
+    assert path.is_relative_to((origin / ".artifacts").resolve())
+    receipt_path = origin / entry["receipt"]
     assert sha(receipt_path) == entry["receipt_sha256"]
     receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
     assert receipt["passed"] and receipt["source_unchanged"]
@@ -54,7 +55,7 @@ def resolve(key):
     assert hashlib.sha256(code.encode()).hexdigest() == entry["selected_envelope_sha256"]
     packet = envelope(code)
     assert packet["revision"] == entry["revision"]
-    return code, packet, {**entry, "acceptance_index_identity": identity}
+    return code, packet, {**entry, "artifact_root": str(origin), "acceptance_index_identity": identity}
 
 
 def summarize(packet, seconds=40):

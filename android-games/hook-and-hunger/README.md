@@ -1,3 +1,5 @@
+> Current local candidate source: **0.3.4 / Android code10** adds reviewed bounded clipboard confirmation and exact retained recovery Copy/View controls to code9 recovery and arena feedback. Source/CPU checks pass; this version awaits signed packaging and actual native update/clipboard/layout checks. No new private upload or phone acceptance.
+
 > Save reliability follow-up: [SAVE_COMMIT_AMENDMENT.md](SAVE_COMMIT_AMENDMENT.md). Failed promotion no longer reports a successful import. CPU fault/context regressions pass; root owns combined-candidate rebuild and native acceptance.
 
 > Current charge feedback follow-up: [CHARGE_WARNING_AMENDMENT.md](CHARGE_WARNING_AMENDMENT.md). Source/CPU coverage and final strict captures pass; independent rendered usefulness review remains open. The historical coarse finale shutdown warning is preserved and did not recur in the final verbose capture. No new APK or release is implied.

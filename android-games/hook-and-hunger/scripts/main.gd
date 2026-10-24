@@ -3,6 +3,8 @@ const Rules = preload("res://scripts/engine.gd")
 const Campaign = preload("res://scripts/campaign_rules.gd")
 const Data = preload("res://scripts/campaign_data.gd")
 const Store = preload("res://scripts/save_store.gd")
+const CopyConfirm = preload("res://scripts/copy_confirm.gd")
+const ClipboardBackend = preload("res://scripts/clipboard_backend.gd")
 const ImportRecovery = preload("res://scripts/import_recovery.gd")
 const Presentation = preload("res://scripts/presentation/adapter.gd")
 var presentation: Node3D
@@ -20,6 +22,16 @@ var movement := Vector2.ZERO
 var save_clock := 0.0
 var save_error := ""
 var save_io: Variant = null
+var clipboard_backend: RefCounted = ClipboardBackend.new()
+var copy_confirm := CopyConfirm.new(clipboard_backend)
+var copy_destination: Label
+var copy_identity := ""
+var copy_ticket := -1
+var copy_recovery: RefCounted
+var recovery_copy_feedback: Label
+var recovery_code: TextEdit
+var recovery_scroll: ScrollContainer
+var recovery_exports := {}
 var import_recovery: RefCounted
 var import_pending := false
 var recovery_layer: CanvasLayer
@@ -290,6 +302,8 @@ func _ui() -> void:
 		var b := _button(text, transfer_row, _transfer.bind(text))
 		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	transfer_status = _label("Two local recovery slots. No account or connection.", 26)
+	transfer_status.custom_minimum_size.y = 160
+	transfer.text_changed.connect(_cancel_copy)
 	options.add_child(transfer_status)
 	menu.visible = false
 
@@ -347,6 +361,7 @@ func _physics_process(delta: float) -> void:
 	if periodic_save: _save()
 
 func _process(delta: float) -> void:
+	_poll_copy(delta)
 	_layout_recovery()
 	if import_pending or not is_instance_valid(presentation): return
 	world_clock += delta
@@ -462,6 +477,7 @@ func _rebuild() -> void:
 
 func _continue() -> void:
 	if import_pending: return
+	_cancel_copy()
 	if state.phase != "victory":
 		return
 	Campaign.record(profile, state)
@@ -485,18 +501,21 @@ func _continue() -> void:
 
 func _cycle_seed() -> void:
 	if import_pending: return
+	_cancel_copy()
 	profile.arena_seed = 1701 + (int(profile.arena_seed) - 1700) % 20
 	_sync()
 	_save()
 
 func _cycle_weapon() -> void:
 	if import_pending: return
+	_cancel_copy()
 	profile.arena_weapon = 1 + int(profile.arena_weapon) % 3
 	_sync()
 	_save()
 
 func _arena() -> void:
 	if import_pending: return
+	_cancel_copy()
 	if not profile.completed or state.schema == 2 and state.definition.arena:
 		return
 	profile.ending = state.duplicate(true)
@@ -509,6 +528,7 @@ func _arena() -> void:
 
 func _buy() -> void:
 	if import_pending: return
+	_cancel_copy()
 	if Rules.purchase(state):
 		_tone(880)
 		_save()
@@ -516,6 +536,7 @@ func _buy() -> void:
 
 func _retry() -> void:
 	if import_pending: return
+	_cancel_copy()
 	if Rules.retry(state):
 		presentation.hydrate(state)
 		_stop()
@@ -524,6 +545,7 @@ func _retry() -> void:
 
 func _toggle_menu() -> void:
 	if import_pending: return
+	_cancel_copy()
 	paused = not paused
 	menu.visible = paused
 	menu_button.text = "MENU" if paused else "PAUSE"
@@ -533,17 +555,14 @@ func _toggle_menu() -> void:
 
 func _transfer(action: String) -> void:
 	if import_pending: return
+	_cancel_copy()
 	if action == "EXPORT":
 		transfer.text = Store.encode(state, settings, 0, true, profile)
 		transfer.select_all()
-		if DisplayServer.has_feature(DisplayServer.FEATURE_CLIPBOARD):
-			DisplayServer.clipboard_set(transfer.text)
-			transfer_status.text = "Copied save code to clipboard. Keep a private backup." if DisplayServer.clipboard_get() == transfer.text else "Exported in this field. Clipboard unavailable; copy the selected code."
-		else:
-			transfer_status.text = "Exported in this field. Clipboard unavailable on this display."
+		_start_copy(transfer.text,"export:"+str(transfer.get_instance_id()),transfer_status,"Select and copy the save code manually.")
 	elif action == "PASTE":
-		if DisplayServer.has_feature(DisplayServer.FEATURE_CLIPBOARD):
-			transfer.text = DisplayServer.clipboard_get()
+		if clipboard_backend.available():
+			transfer.text = clipboard_backend.get_text()
 		else:
 			transfer_status.text = "Clipboard unavailable on this display. Type a save code here."
 	else:
@@ -561,8 +580,58 @@ func _transfer(action: String) -> void:
 			_show_import_recovery()
 			if pending.ok: _finish_import(true)
 
+func _cancel_copy() -> void:
+	if copy_confirm.pending and is_instance_valid(copy_destination): copy_destination.text="Copy not confirmed. "+copy_confirm.manual_help
+	copy_confirm.cancel(); copy_destination=null; copy_identity=""; copy_ticket=-1; copy_recovery=null
+func _copy_target_valid() -> bool:
+	if not is_inside_tree() or is_queued_for_deletion() or not is_instance_valid(copy_destination) or copy_identity!=copy_confirm.target: return false
+	if copy_destination==transfer_status:
+		return not import_pending and menu.visible and transfer.text==copy_confirm.expected
+	return import_pending and recovery_layer.visible and copy_recovery==import_recovery and not import_recovery.record.is_empty() and copy_confirm.expected.sha256_text() in [import_recovery.record.original,import_recovery.record.incoming]
+func _start_copy(text: String,identity: String,destination: Label,help: String) -> void:
+	_cancel_copy(); copy_identity=identity; copy_destination=destination
+	if import_pending: copy_recovery=import_recovery
+	copy_confirm.backend=clipboard_backend
+	var token:=copy_confirm.begin(text,identity,help)
+	if not is_instance_valid(self) or token!=copy_confirm.generation or copy_identity!=identity: return
+	copy_ticket=token
+	if _copy_target_valid(): _copy_notice()
+func _poll_copy(delta: float) -> void:
+	if not copy_confirm.pending: return
+	if not _copy_target_valid(): _cancel_copy(); return
+	if copy_confirm.poll(delta) and copy_ticket==copy_confirm.generation and _copy_target_valid(): _copy_notice()
+func _copy_notice() -> void:
+	copy_destination.text=copy_confirm.feedback
+	var node: Node=copy_destination.get_parent()
+	while node!=null:
+		if node is ScrollContainer: node.ensure_control_visible(copy_destination); return
+		node=node.get_parent()
+func _retained_code(use_import: bool) -> String:
+	if not import_pending or import_recovery.record.is_empty(): return ""
+	var text: String=import_recovery.incoming_code if use_import else import_recovery.original_code
+	var id: String=import_recovery.record.incoming if use_import else import_recovery.record.original
+	return text if text.sha256_text()==id and Store.decode(text).ok else ""
+func _copy_recovery_code(use_import: bool) -> void:
+	if not import_pending or import_recovery.record.is_empty(): return
+	_cancel_copy()
+	var text:=_retained_code(use_import)
+	if text.is_empty():
+		recovery_copy_feedback.text="This retained code cannot be read. Recovery stays paused."; recovery_scroll.ensure_control_visible(recovery_copy_feedback); return
+	var name: String="Imported" if use_import else "Previous"
+	_start_copy(text,"recovery:"+str(import_recovery.get_instance_id())+":"+text.sha256_text(),recovery_copy_feedback,"Use View "+name+" Code to select and copy it manually. Recovery stays paused.")
+func _view_recovery_code(use_import: bool) -> void:
+	if not import_pending or import_recovery.record.is_empty(): return
+	_cancel_copy(); var text:=_retained_code(use_import)
+	if text.is_empty():
+		recovery_copy_feedback.text="This retained code cannot be read. Recovery stays paused."; recovery_scroll.ensure_control_visible(recovery_copy_feedback); return
+	recovery_code.text=text; recovery_code.show(); recovery_code.select_all(); _reveal_recovery_code.call_deferred()
+func _reveal_recovery_code() -> void:
+	await get_tree().process_frame
+	if import_pending and recovery_code.is_visible_in_tree(): recovery_scroll.ensure_control_visible(recovery_code)
+
 func _setting(value: bool, key: String) -> void:
 	if import_pending: return
+	_cancel_copy()
 	settings[key] = value
 	_save()
 
@@ -580,6 +649,7 @@ func _recovery_ui() -> void:
 	recovery_panel.add_theme_stylebox_override("panel",_panel())
 	blocker.add_child(recovery_panel)
 	var scroll := ScrollContainer.new()
+	recovery_scroll = scroll
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	recovery_panel.add_child(scroll)
 	var box := VBoxContainer.new()
@@ -591,6 +661,16 @@ func _recovery_ui() -> void:
 	box.add_child(recovery_message)
 	recovery_retry = _button("RETRY IMPORT",box,_retry_import)
 	recovery_keep = _button("KEEP PREVIOUS",box,_finish_import.bind(false))
+	recovery_copy_feedback = _label("",22)
+	recovery_copy_feedback.custom_minimum_size.y = 140
+	box.add_child(recovery_copy_feedback)
+	for item in [["COPY PREVIOUS",false],["COPY IMPORTED",true]]:
+		recovery_exports[item[0]] = _button(item[0],box,_copy_recovery_code.bind(item[1]))
+	for item in [["VIEW PREVIOUS CODE",false],["VIEW IMPORTED CODE",true]]:
+		recovery_exports[item[0]] = _button(item[0],box,_view_recovery_code.bind(item[1]))
+	recovery_code = TextEdit.new(); recovery_code.editable=false; recovery_code.wrap_mode=TextEdit.LINE_WRAPPING_BOUNDARY
+	recovery_code.custom_minimum_size=Vector2(0,230); recovery_code.add_theme_font_size_override("font_size",17)
+	box.add_child(recovery_code); recovery_code.hide()
 	recovery_layer.hide()
 	_layout_recovery()
 
@@ -615,6 +695,8 @@ func _show_import_recovery() -> void:
 	var known: bool = not import_recovery.record.is_empty()
 	recovery_retry.text = "RETRY IMPORT" if known else "RETRY RECOVERY READ"
 	recovery_keep.visible = known
+	for button in recovery_exports.values(): button.visible=known
+	if not known: recovery_code.hide()
 	recovery_message.text = import_recovery.message
 	if known:
 		recovery_message.text += "\n\nPREVIOUS WHOLE SAVE\n"+ImportRecovery.describe(import_recovery.original)+"\n\nIMPORTED WHOLE SAVE\n"+ImportRecovery.describe(import_recovery.incoming)
@@ -622,6 +704,7 @@ func _show_import_recovery() -> void:
 
 func _retry_import() -> void:
 	if not import_pending: return
+	_cancel_copy()
 	if not import_recovery.record.is_empty():
 		_finish_import(true)
 		return
@@ -633,6 +716,7 @@ func _retry_import() -> void:
 
 func _finish_import(use_import: bool) -> void:
 	if not import_pending: return
+	_cancel_copy()
 	var result: Dictionary = import_recovery.resolve(use_import)
 	if result.ok: _reopen_import(result.decoded.source,use_import)
 	_show_import_recovery()
@@ -672,6 +756,7 @@ func _tone(frequency: int) -> void:
 	audio.play()
 
 func _exit_tree() -> void:
+	_cancel_copy()
 	if is_instance_valid(audio):
 		audio.stop()
 		audio.stream = null
@@ -679,6 +764,7 @@ func _exit_tree() -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_APPLICATION_PAUSED or what == NOTIFICATION_APPLICATION_FOCUS_OUT or what == NOTIFICATION_WM_GO_BACK_REQUEST or what == NOTIFICATION_WM_CLOSE_REQUEST:
+		_cancel_copy()
 		if import_pending:
 			if what == NOTIFICATION_WM_CLOSE_REQUEST: get_tree().quit()
 			return

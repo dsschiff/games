@@ -1,0 +1,40 @@
+{
+  "scope": "Hearth harness-only preparation for matched normal30fps rendered preview comparisons; no runtime/rules/save/version changes. Existing historical production recipes retain oldfreeze and import behavior.",
+  "reviewed_source_commit": "40427f0b977e670d86da952cd3d4aaffff1b40fb",
+  "checkpoint": {
+    "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hearthguard\\tests\\PREVIEW_CAPTURE_20261024.md",
+    "bytes": 34712,
+    "sha256": "9792fe93b90b55123ddb1953f76f0ff987f563488f9334b39c931a77d09620c0"
+  },
+  "independent_review": "Astra final CLEAR:3harnessfiles/doc and76artifactpins, baseline168Git/3sameharness/67cache bindings; full104-file runtime path sets detect missing files, strict warning/leak/crash checks, process/physics/input/full-context/rawsave parity.",
+  "matched_cpu": {
+    "opening": {
+      "before_checks": 17,
+      "after_checks": 17,
+      "failures_each": 0,
+      "identical_raw_events": 138
+    },
+    "boss": {
+      "before_checks": 22,
+      "after_checks": 22,
+      "failures_each": 0,
+      "identical_raw_events": 2982
+    },
+    "comparison": "All8 timeline marks: entire context and app-written packets, absolute/relativeprocess+physics counts, identicalactualinput events, complete start/endcontext and final raw slots. No field masks.",
+    "preflight_guards": 6,
+    "source_runtime_differences": [
+      "scripts/campaign_main.gd",
+      "scripts/presentation/settlement.gd"
+    ]
+  },
+  "sources": "Opening fresh actual Begin/18gold collection/joystick approach. Boss exact authenticated historical Ram restoration plus ordinary policy/joystick/paidSell; no position/economy injection.",
+  "baseline_project": "F:/games-workspaces/hearth-preview-capture-20261024/.artifacts/matched-baseline-be6423c/project",
+  "baseline_policy": "One required9.06MB source/cache copy for laterroot matchedrender. Preserve nested unique CPU/render evidence ifsourcecachelaterremoved. No fullrepo/data/APKcopy.",
+  "remaining": [
+    "Root serialized before/after opening andboss normal1x renderer runs, fresh exact pair parity and full decode/hash",
+    "Independent actualnormal1x visual review of hold/cancel/purchase/range/bosswarning",
+    "Signed higher version and actual native preview/recovery tests",
+    "Physical/human/cloud acceptance"
+  ],
+  "status": "CPU/source clear; rendering/native not run in this increment."
+}

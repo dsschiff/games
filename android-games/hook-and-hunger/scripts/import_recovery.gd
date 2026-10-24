@@ -12,6 +12,7 @@ var save_path: String
 var record := {}
 var original := {}
 var incoming := {}
+var original_code := ""
 var incoming_code := ""
 var journal_ready := false
 var message := ""
@@ -33,7 +34,7 @@ func read() -> Dictionary:
 		var b := copies.get_code(parsed.record.incoming)
 		if not a.ok or not b.ok: continue
 		record = parsed.record.duplicate(true)
-		original = Store.decode(a.text); incoming = Store.decode(b.text); incoming_code = b.text
+		original = Store.decode(a.text); incoming = Store.decode(b.text); original_code = a.text; incoming_code = b.text
 		journal_ready = suffix.is_empty()
 		message = "Import recovery is pending. Choose which complete save to use."
 		return {"pending":true,"ok":true,"original":original.duplicate(true),"incoming":incoming.duplicate(true)}
@@ -42,7 +43,7 @@ func read() -> Dictionary:
 
 func begin(live_code: String, import_code: String) -> Dictionary:
 	if read().pending: return {"pending":true,"ok":false}
-	original = Store.decode(live_code); incoming = Store.decode(import_code); incoming_code = import_code
+	original = Store.decode(live_code); incoming = Store.decode(import_code); original_code = live_code; incoming_code = import_code
 	if not original.ok or not incoming.ok: return {"pending":false,"ok":false}
 	var codes: Array[String] = [live_code,import_code]
 	for slot in 2:
