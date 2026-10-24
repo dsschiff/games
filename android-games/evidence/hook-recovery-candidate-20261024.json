@@ -31,7 +31,8 @@
   "source_evidence": [
     "android-games/evidence/hook-local-recovery-20261024.json",
     "android-games/evidence/hook-marker-retry-20261024.json",
-    "android-games/evidence/hook-arena-feedback-20261024.json"
+    "android-games/hook-and-hunger/ARENA_SCORE_KEY_CHECKPOINT.json",
+    "android-games/hook-and-hunger/ARENA_FEEDBACK_CHECKPOINT.json"
   ],
   "checks": "Root marker172/0, arena identity188/0, selected feedback573/0 and recovery871/0 retained in source indexes; no unnecessary version-only rerun.",
   "status": "Signed local candidate and packaging clear. Native code8to9/recovery/clipboard/arena feedback readability remain unverified. No upload.",

@@ -703,7 +703,8 @@
     "independent_failures": 0,
     "review": "Astra source and all15 artifacts/168 source pins/12 unchanged source files/protected code sections clear; final checkpoint review-text-only update qualified.",
     "status": "Source/CPU only; no new APK or Android acceptance.",
-    "next": "Recovery marker correction source reviewed; build higher-version candidate with recovery, score identity and visible best-clear feedback, then verify native update."
+    "next": "Recovery marker correction source reviewed; build higher-version candidate with recovery, score identity and visible best-clear feedback, then verify native update.",
+    "later_candidate": "Reviewed source now included in local signed0.3.3/code9; packaging clear, native feedback/readability unverified. See hook_recovery_candidate."
   },
   "hook_arena_feedback": {
     "reviewed_source_commit": "5fab554717e19ec748fb9f148a7b79644e37219e",
@@ -733,7 +734,8 @@
     "root_failures": 0,
     "root_source_unchanged": true,
     "review": "Astra source/CPU/final pins clear:18 artifact hashes,170 executed source pins,191 unchanged files and exact base-controller reconstruction without six UI lines.",
-    "limits": "Synthetic validated profiles, actual touch input and whole-profile/parked-finale/backend-byte checks; CPU layout only. No newly earned arena victory, native/render/phone or APK acceptance. Existing retry-marker risk separately open."
+    "limits": "Synthetic validated profiles, actual touch input and whole-profile/parked-finale/backend-byte checks; CPU layout only. No newly earned arena victory, native/render/phone or APK acceptance. Existing retry-marker risk separately open.",
+    "later_candidate": "Reviewed source now included in local signed0.3.3/code9; packaging clear, native feedback/readability unverified. See hook_recovery_candidate."
   },
   "dead_local_recovery": {
     "evidence": "android-games/evidence/dead-local-recovery-20261024.json",
