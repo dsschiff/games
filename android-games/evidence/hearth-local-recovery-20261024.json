@@ -1,0 +1,63 @@
+{
+  "scope": "Hearth-local complete uncertain Import recovery, startup ownership, read-only direct Copy/View and verified paused replacement across campaign/legacy and standalone owners. Store/decoder/schema/rules/catalog/version/export unchanged.",
+  "reviewed_source_commit": "f8dbb169fa9a58382d08355fc1e72acea067f3e7",
+  "checkpoint": {
+    "path": "F:\\games-workspaces\\hearth-design-20261023\\android-games\\hearthguard\\IMPORT_RECOVERY_CHECKPOINT.json",
+    "sha256": "ab0313e5db4a92ff37c4c3ff129bcb39f077a3838adf2f1ced79ce8f45db4fa6",
+    "bytes": 52677
+  },
+  "independent_review": "Astra final whole-increment source/pin CLEAR:136 artifacts,15 changed LF files,151 unchanged base bindings,16 retained failed reports and165 identical source maps across five final receipts. Checkpoint review-status text predates this completed final audit.",
+  "root": {
+    "report": {
+      "path": "F:\\games-workspaces\\hearth-design-20261023\\android-games\\hearthguard\\.artifacts\\recovery-cpu-20261024T080400933180Z\\report.json",
+      "sha256": "08886a6d79a5e8f371501f3f0f3335486d584ed05646effc37bbeb4485572062",
+      "bytes": 35065
+    },
+    "assertions": {
+      "path": "F:\\games-workspaces\\hearth-design-20261023\\android-games\\hearthguard\\.artifacts\\recovery-cpu-20261024T080400933180Z\\import-recovery.json",
+      "sha256": "caf40089d22548f4a21eb8146c896e3e070b88475b402f733b06278b9b90ef5a",
+      "bytes": 157975
+    },
+    "log": {
+      "path": "F:\\games-workspaces\\hearth-design-20261023\\android-games\\hearthguard\\.artifacts\\recovery-cpu-20261024T080400933180Z\\import_recovery.log",
+      "sha256": "81e8e307b1f1bc17361df775a5b6a2af7ace51ef1509ce50d60b85af6dbad7f5",
+      "bytes": 647
+    },
+    "checks": 874,
+    "failures": 0,
+    "actual_touch_events": 338,
+    "strict_clean": true,
+    "source_unchanged": true
+  },
+  "worker_checks": {
+    "recovery": 874,
+    "save_reliability": 167,
+    "legacy_rules": 56,
+    "campaign_rules": 127,
+    "input": 44,
+    "four_fresh_file_directions_each": 6,
+    "failures_each": 0
+  },
+  "behavior": [
+    "Retain exact complete live/intake and every valid raw save candidate before active replacement",
+    "Every explicit choice freshly validates all present full journal records and every archived code; no consuming re-promotion of surviving markers",
+    "Read and bind pending ownership once before ordinary active/default/upgrade saves; freeze both owners and lifecycle/settings/mode writes",
+    "Verify whole chosen disk context and complete journal cleanup before paused replacement; initialize replacement before removing old owner",
+    "Unknown cold owner offers Retry Read only; known codes stay exportable with separate uncertainty and readback feedback"
+  ],
+  "failed_evidence": {
+    "baseline": "24checks/12failures over4directions, actual touch, false current-save-kept vs fresh imported selection.",
+    "layout": "Repeated Win32 Godot headless access violations on first720x1280 legacy Copy; raw backtraces/progress retained. Omitting deferred reveal alone still failed. Stable allocated feedback row passes original4layouts/both owners/long text/unknown-to-known and final874/0 plus independent874/0. No Android-native crash or engine/font root-cause attribution.",
+    "standalone": "Unknown standalone legacy had no normal UI; later same-schema choice cleared journal then hit null UI. Narrow missing-UI guard selects existing validated fresh bootstrap with exact backend/code once; both actual choices now pass. Shipping bootstrap did not take the failing standalone path.",
+    "save_reliability": "All167 assertions retained; success-import cases precede deliberate shared immutable-archive corruption. Earliest archive-preservation faults and separately armed post-journal active write/rename/missing/corrupt/stale/readback cases explicitly covered. Existing corrupt archive blocks honestly; no repair/deletion to obtain success."
+  },
+  "limits": "Cached headless/Dummy actual input, typed faults, same-process fresh materialized owners and real-file direction probes. Clipboard unsupported branch only; geometry is not rendered readability. Permanently torn/conflicting metadata stays paused; ordinary no-journal default policy unchanged.",
+  "version": "0.3.1/code5 unchanged; no new binary or upload.",
+  "remaining": [
+    "Higher-version signed candidate and independently reviewed packaging",
+    "Actual native update/full-context/normal Import/both choices/Home/cold and OS clipboard",
+    "Rendered readability after layout correction and actual interruption/power-loss evidence",
+    "Physical Fold7/folding/sound/FPS and human pacing/fun",
+    "Configured optional Google account/cloud sync"
+  ]
+}
