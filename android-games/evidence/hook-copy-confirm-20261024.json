@@ -1,0 +1,101 @@
+{
+  "scope": "Hook one-write bounded nonblocking clipboard confirmation shared by ordinary Export and exact retained pending Copy/View. No Store/codec/rule/schema/admission policy change.",
+  "reviewed_source_commit": "f47e097ffe5ca8a519f80fe8b265b674c378139a",
+  "candidate_source_commit": "8ede5cdf15ca241a4da51d25b32dab70460c53be",
+  "version": "0.3.4",
+  "version_code": 10,
+  "checkpoint": {
+    "path": "F:\\games-workspaces\\hook-copy-confirm-20261024\\android-games\\hook-and-hunger\\COPY_CONFIRM.json",
+    "bytes": 112321,
+    "sha256": "05aa922a582adacc2a6bb6736fb5cf4b6800f400c786746aefb9cd2cabcff5fb"
+  },
+  "manifest": {
+    "path": "F:\\games-workspaces\\hook-copy-confirm-20261024\\.artifacts\\hook-and-hunger\\20261024T095326910746Z\\manifest.json",
+    "bytes": 1835,
+    "sha256": "ea223d3bfa97f171c31f88d8f6e44c1aa85297d5da318ddfbe39e09638d8f23b"
+  },
+  "apk": {
+    "path": "F:\\games-workspaces\\hook-copy-confirm-20261024\\.artifacts\\hook-and-hunger\\20261024T095326910746Z\\hook-and-hunger.apk",
+    "bytes": 53779265,
+    "sha256": "bd2093821e96b05ce7ec66019e8e205cbc98b33fbef26920cae281389805d687"
+  },
+  "inspection": {
+    "package": "com.dsschiff.hookandhunger",
+    "version_code": "10",
+    "version_name": "0.3.4",
+    "permissions": [],
+    "internet_permission": false,
+    "signature_verified": true,
+    "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
+    "debuggable": false
+  },
+  "independent_source_review": "Astra CLEAR05aa922a:178currentraw/LF,196basebindings,65artifacts. Exact retained strings; backend/generation/target lifecycle and reentry guards.",
+  "independent_packaging_review": "Astra actual APK ZIP/hash/size/sourcefingerprints/pipeline/config/raw import+build logs/signature/badging CLEAR.8ede5cd differs fromf47e097 only versions/README. Existing2527signer v2/v3,min24target36,arm64+x86_64,no permissions/nondebug.",
+  "root": {
+    "report": {
+      "path": "F:\\games-workspaces\\hook-copy-confirm-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T094730713189Z\\report.json",
+      "bytes": 2562,
+      "sha256": "08a1b1c7bad31cc48e751372a760f9800370a6a554e884b6416261663f6ad885"
+    },
+    "ui": {
+      "path": "F:\\games-workspaces\\hook-copy-confirm-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T094730713189Z\\copy-confirm.json",
+      "bytes": 171192,
+      "sha256": "31f3819f1bd7e73f3f21ecdbc28bcd69b896800733c6e4765168bfe94f55a8b0"
+    },
+    "contract": {
+      "path": "F:\\games-workspaces\\hook-copy-confirm-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T094730713189Z\\copy-contract.json",
+      "bytes": 355,
+      "sha256": "87207197770eacfb6c5a4d715f2e3c33da5ec79c8ead1e24ba0705464b095321"
+    },
+    "recovery": {
+      "path": "F:\\games-workspaces\\hook-copy-confirm-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T094730713189Z\\import-recovery.json",
+      "bytes": 144361,
+      "sha256": "8933e5438afdcd4246e7618c289843a1da0bee32bf18a75893e1c444746937c7"
+    },
+    "source_before": {
+      "path": "F:\\games-workspaces\\hook-copy-confirm-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T094730713189Z\\source-before.json",
+      "bytes": 17950,
+      "sha256": "de601026958401827b42a1b3a4d2ab514430261e519d169a595a7f268c153f6c"
+    },
+    "source_after": {
+      "path": "F:\\games-workspaces\\hook-copy-confirm-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T094730713189Z\\source-after.json",
+      "bytes": 17950,
+      "sha256": "de601026958401827b42a1b3a4d2ab514430261e519d169a595a7f268c153f6c"
+    },
+    "checks": {
+      "contract": 42,
+      "copy_ui": 1028,
+      "import_recovery": 871,
+      "failures_each": 0
+    },
+    "actual_touch_taps": 154,
+    "actual_touch_events": 308,
+    "typed_key_events": 4,
+    "source_unchanged": true,
+    "strict_clean": true
+  },
+  "behavior": [
+    "One set; normal frame polls at80ms through640ms; exact byte equality only confirms; unavailable and unconfirmed distinct",
+    "Immediate selected Export field; stable separate recovery feedback and read-only selectable View",
+    "Known pending uses exact original/intake text including whitespace; unknown marker remains retry-read only",
+    "New/edit/Paste/Import/menu/choice/focus/owner exit and backend reentry invalidate old UI feedback",
+    "Polling continues paused without rules/save writes; choice still verifies full owning context and journal absence"
+  ],
+  "worker_regressions": {
+    "contract": 42,
+    "copy_ui": 1028,
+    "recovery": 871,
+    "arena_identity": 188,
+    "arena_feedback": 573,
+    "failures_each": 0
+  },
+  "historical_native": "Code9 first Export wrong-unavailable feedback retained in hook-native-recovery-20261024.json; code9 native24/0 does not clear code10 clipboard timing/layout.",
+  "remaining": [
+    "Actual signed9to10 update and complete native retained context",
+    "First-tap Export OS confirmation and pending both Copy/View opposite-choice Paste/Import/cold whole contexts",
+    "Rendered cover/inner/wide readable controls/ack/View",
+    "Strict shader-warning, real storage interruption,physical/human/cloud",
+    "Specific authorization for this exact0.3.4/code10 private APK transfer"
+  ],
+  "delivery": "Signed local candidate only; no new upload."
+}
