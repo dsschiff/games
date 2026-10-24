@@ -4,7 +4,7 @@ Daniel's seven personal Android apps (the six games here plus Planetfall from `d
 
 | App | Version | Package id | Release tag |
 |-----|---------|-----------|-------------|
-| Gear Bastion | 0.4.0 (code 9) | `com.dsschiff.gearbastion` | `gear-bastion-v0.4.0` |
+| Gear Bastion | 0.4.1 (code 10) | `com.dsschiff.gearbastion` | `gear-bastion-v0.4.1` |
 | Tower Trials | 0.4.0 (code 6) | `com.dsschiff.towertrials` | `tower-trials-v0.4.0` |
 | Hook and Hunger | 0.3.0 (code 6) | `com.dsschiff.hookandhunger` | `hook-and-hunger-v0.3.0` |
 | Hearthguard | 0.3.0 (code 4) | `com.dsschiff.hearthguard` | `hearthguard-v0.3.0` |

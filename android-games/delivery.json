@@ -5,14 +5,14 @@
   "games": [
     {
       "slug": "gear-bastion",
-      "version": "0.4.0",
-      "version_code": 9,
+      "version": "0.4.1",
+      "version_code": 10,
       "package": "com.dsschiff.gearbastion",
       "state": "release_signed_published_private_obtainium",
-      "apk": "https://github.com/dsschiff/android-games-releases/releases/download/gear-bastion-v0.4.0/gear-bastion-v0.4.0.apk",
-      "apk_sha256": "674409c10b9b746bb3ffbce26ccc306510aabedf6a7921405d8cd638b0c0aebb",
-      "source_sha256": "f60040f4942c80aea4b64f94d01eb28c1a34499fa1bbc46bcc540a6340988ea2",
-      "evidence": "android-games/evidence/release-signing-20261022.json",
+      "apk": "https://github.com/dsschiff/android-games-releases/releases/download/gear-bastion-v0.4.1/gear-bastion-v0.4.1.apk",
+      "apk_sha256": "413410e47a1dbc0cd5aa3cdca530005eb43134f29df7fc203e5577896861603e",
+      "source_sha256": "7359395cd673f3bc4607f04b9e5f3dcf4f16e254b7f8704d934952752b221fdd",
+      "evidence": "android-games/evidence/design-cycle-20261023.json",
       "physical_phone_tested": false,
       "sound_verified_on_phone": false,
       "phone_performance_measured": false,
@@ -37,14 +37,13 @@
         },
         "note": "Debug-signed builds cannot be updated in place by the release-signed line; uninstall once after exporting the portable save code."
       },
-      "source_version_code": 8,
       "signing": "release",
       "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
-      "release_tag": "gear-bastion-v0.4.0",
-      "release_url": "https://github.com/dsschiff/android-games-releases/releases/tag/gear-bastion-v0.4.0",
-      "apk_asset": "gear-bastion-v0.4.0.apk",
-      "build_git_revision": "280bc6e628bccf4b5ab35939bb964f2fc7617505",
-      "source_text_lf_sha256": "f60040f4942c80aea4b64f94d01eb28c1a34499fa1bbc46bcc540a6340988ea2"
+      "release_tag": "gear-bastion-v0.4.1",
+      "release_url": "https://github.com/dsschiff/android-games-releases/releases/tag/gear-bastion-v0.4.1",
+      "apk_asset": "gear-bastion-v0.4.1.apk",
+      "build_git_revision": "c2efb7a41d7f590b295bd357fc6dee31cd20cc29",
+      "emulator_installed_version_code": 10
     },
     {
       "slug": "tower-trials",

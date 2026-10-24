@@ -624,3 +624,11 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   coordinator51/0 input checks pass; real emulator signed5-to6/offline/Home/cold
   process smoke and bounded native screen inspection pass. Raw Android whole-save
   comparison and physical/human acceptance remain separate. Public website unchanged.
+
+- Gear0.4.1/code10 privately published and exact digest/size/notes/README verified.
+  Signed9-to10 emulator update retains all decoded ready values except revision;
+  actual Menu/Home/one Begin yields6 defenders in8.633s, full active context stays
+  frozen through Home/cold. Hearth0.3.1/code5 signed/native update and result/log
+  restoration pass; source landing/private delivery next. Native prior profiles
+  empty: no native earned-profile update claim. Tower popup fixes source-cleared
+  and integrated; earliest legal chaining1603/0, motion/native remain open.

@@ -26,12 +26,12 @@ and Tower. Preserve each selected ad loop with original assets.
 
 | Game | Design question and initial task | Status |
 | --- | --- | --- |
-| Dead Run | Does Retry/return flow make sense after an ending, and is the growing crew readable under pressure? Correct phase-blind Resume and verify terminal controls. | Builder active |
+| Dead Run | Terminal Retry, warning priority and crew clearance source fixes landed; strict full-route render teardown still leaks four textures. | Release held; focused isolation active |
 | Frontline | Tested solo8/12 vs funded12/12, tutorial-only idle win; delivered actual recruit feedback, HQ marker and committed-save verification as signed0.3.2/code6. | Private update delivered; physical acceptance deferred |
-| Gear | Do board, role and exit choices remain consequential and visibly connected to the army? | Queued |
-| Hearthguard | Does gathering versus investing stay meaningful through distinct later maps? | Queued |
-| Hook | Do chained hits, recovery and enemy telegraphs reward positioning? | Queued |
-| Tower | Do arithmetic, route choice and Undo remain readable as puzzle ideas develop? | Queued |
+| Gear | One Begin after ready utilities/Home now starts production; active return stays paused. Signed0.4.1/code10 verified and delivered. | Private update delivered |
+| Hearthguard | Save destination readback and failed import/mode-switch preservation pass167 complete-value checks and signed4-to5 native context comparison. |0.3.1/code5 delivery pending |
+| Hook | Hit/miss/block feedback corrected; obstacle-deflected charge gap reproduced. Conservative warning correction covers actual stepped paths. | Authored motion usefulness and strict finale teardown review active |
+| Tower | Resolved encounter arithmetic stays nonoverlapping at earliest legal chaining across all36 towers. | Signed0.4.1/code7 candidate; motion/native pending |
 
 ## Operating loop
 
@@ -72,3 +72,9 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
 - Dead Run source fixes integrated locally; full focused rendered route passes51
   assertions but fails strict shutdown gate on four leaked texture allocations.
   Keep release gate open. Gear ready-phase Begin defect independently reproduced.
+
+- Gear0.4.1/code10 privately delivered with same signer. Actual Android Menu/Home
+  then one Begin produces6 defenders; complete ready context retained across
+  update, complete active context frozen across Home and cold restart. Baseline
+  profile empty; earned-profile retention is separate desktop evidence. Hearth
+  signed4-to5 context equality and real natural result/log/cold checks pass.
