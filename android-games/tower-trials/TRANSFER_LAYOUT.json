@@ -1,0 +1,1700 @@
+{
+  "scope": "Tower transfer status placement and note-only font-height spacing. CPU font/control geometry, actual touch, no native/render acceptance.",
+  "base": "b38fa2e67d5578b39c55ce89e15aef9b417bd0e5",
+  "source_raw": {
+    "art/manifest.json": "6ec846edadc008d9465fddc3f1c78a9723c9c7691c4f2c9e32290bafaff3a454",
+    "art/models/archive.glb": "9da52298e9995d7ba28fcdea2acaa53dcabbfe3c7c65c60f386c1f38b28a6d4e",
+    "art/models/archive.glb.import": "e0356b1c249068b8d0f278abee7946f040437b800264af9e72d712db97a0989d",
+    "art/models/banner.glb": "109c9b6500f39ae7e3f3041d171cf03be36dec7c2eb6658741acd37363b0eafb",
+    "art/models/banner.glb.import": "6fefcbc926c0651ff0904e46a7002e5015a4a9218a43582dc9e5c5754af27c13",
+    "art/models/cage.glb": "956b7928d55e6e8947c05cc1a71315b342c113612a712202dbd17b8d01cfc7b1",
+    "art/models/cage.glb.import": "32533c1d9647fde1d53deb4ada03544542410bcd37dcb5b7612c59dbe5efd3bd",
+    "art/models/cliff.glb": "e31721f64d81cc7b63e53aecb65510ef4c6a02703b2cda164dad5f8bccf87c87",
+    "art/models/cliff.glb.import": "06e8fd14eca5f410d9701861e7a78249ad6a3fda6f7c7212c84a342268a2fdd1",
+    "art/models/cottage.glb": "d30f5b5b634089d5a4e9441a6f86c827f1b44ee9252e2bc3af7fcc79fc070fec",
+    "art/models/cottage.glb.import": "4b0458fc682c765a555082bf0ef43b9675701ff956673801194971ff17e3a537",
+    "art/models/courier_arm.glb": "5bb55506ecf968bd803c57d18984b663c4f40bc4ee416f5f3da712a5eeb9b0aa",
+    "art/models/courier_arm.glb.import": "4c5581985e7deb54a1effb07888d6becb7c05626a879a370a270417b600ff53f",
+    "art/models/courier_body.glb": "70bc1b3b4c9a78bfbe6dfef40b7918a4b7381927ccfdc0a15033367a848e269f",
+    "art/models/courier_body.glb.import": "f79c11eef91f288f8c18bae655b1ef25ed64533018892cf4968b740ab43e9051",
+    "art/models/courier_leg.glb": "21b1b997c175148aff6a71a229ecee607cb3558e90744d95bc6abd1856ac2b02",
+    "art/models/courier_leg.glb.import": "e486fb9f3c45e869048e5c531902eb43c9b545f367fb30f8bf60d22aa493725a",
+    "art/models/crystal.glb": "69265cd86eba3f8a321e9d3c8f0584f04dd167e0387c1f4505b0e77bfeacd85b",
+    "art/models/crystal.glb.import": "e47686bda3806d59811449020c2bfdf58d4d5bc60bee44dd32cdbb958bf03a62",
+    "art/models/home_floor.glb": "b00122d415cec651d2818092b5431e285a7c1ede30dcb22699d7d826ecc8dca0",
+    "art/models/home_floor.glb.import": "c0c4ea3342a1753a2213b568fa106c66e8e9e5dbd33d107fc210df1e8005c29d",
+    "art/models/home_roof.glb": "52eeac2c808d3b0819e15a931a0833b0ed6c7c3fee4d78986644308754a5d38b",
+    "art/models/home_roof.glb.import": "d69d4951b13eca2cebc23ae5664b30c1705eabc4b71a7474351b183a92b98bc3",
+    "art/models/keeper.glb": "ebfdc9ff5b81ea0195f27959e5dcef3eff8ac576c2998aea8c4b7c15bc7b5f7f",
+    "art/models/keeper.glb.import": "7fa577c25ca45fe837f1f8001dc59fbda9924d70c9ca6c375e0cb909c542ae22",
+    "art/models/lighthouse.glb": "8d7537c671523b7a69b757eb94ab287c2f3634bcdc61f5f22cc04b2237d7b98d",
+    "art/models/lighthouse.glb.import": "6a06c0c0a086e7648256cd383e8a089c42a8973a2b34bbcbabe2f8935078bb2c",
+    "art/models/meridian.glb": "c8c345e0b2ffb7b2f98049191865f08440a9d2a09a01e7d0b2e6fd81e75bc996",
+    "art/models/meridian.glb.import": "83a559f7aaaefb54e9f7df636ed88e559464f47e5dd334af4f86d00357ee9469",
+    "art/models/moon.glb": "dee7663da6d86ec2fde007ccb1ae674dfb4b18e53ae36185a2668bb3defef626",
+    "art/models/moon.glb.import": "f69a334dfb58fb6d4326b4f05b8af21f6d7e3285d1bba2781c7c62bdd561215e",
+    "art/models/room.glb": "f325ed710a72f1b29d2b135aef43f46a09cda35667090a28bf516ee1ce637183",
+    "art/models/room.glb.import": "b0fac37a988210292ca8b959f79ac6d3abe00db239b69d746a5f8dc539b11f7e",
+    "art/models/spirit.glb": "a32b4743d73871ee13bac332ac281add74611c51af190e19f306d056d1648e5c",
+    "art/models/spirit.glb.import": "0755ce748aa30aa2f1ac58e1aafb18be959a8332fe7d91673871d992b2f04a25",
+    "art/models/spirit_golem.glb": "6799785ea22024bd85e4e9e74a39c257ee188d06ad8546a2b394ebf8fbab0233",
+    "art/models/spirit_golem.glb.import": "4379e307b79071a242aabcac1bddb33bf4982bb5cbdf345a7ae43aaa6f8f0509",
+    "art/models/spirit_knight.glb": "0fb4cc4b7fa79f9ef5888670fecd648ab130883702a37b6afda231887172fdc4",
+    "art/models/spirit_knight.glb.import": "4d9fa6646bbd225d1bc0dc17c09e86e0dc5d9b99b030ab535b0837790f273191",
+    "art/models/tower_column.glb": "71ce7763451b06d8b9c6d4c2d392751961abc17f957ceacec7dd2e6147a377ef",
+    "art/models/tower_column.glb.import": "ec2aad782db0018162c8e04ee4a250ec9f1016eca8fdc5f5fe4486a0bafedfea",
+    "art/models/tower_roof.glb": "e71a8a2b4fd6c1b6bca6c25ec9fef8a1cbe2aef46dbe4ffd4f4f900042393c6d",
+    "art/models/tower_roof.glb.import": "7ecd7174b3c9f91d9178c904743aac5aff4cab9a5f0b6473ab664b22f1350f60",
+    "art/models/tower_segment.glb": "3e163d7075f6f9f3f2c93f0898a0c1a7e8553134ffdf73eedcdeaa6d0a4d2dad",
+    "art/models/tower_segment.glb.import": "ef1f6c02b1939fc90712aab0d239a6598922899e2036244badd7913cf886ac13",
+    "art/source/build_assets.py": "9847b374fad8709b2bf178c3033238df92af557eb75b7328c6528904c6af57e9",
+    "BACK_POLICY_CHECKPOINT.md": "022990f82f4a7982f7211a0c4ae79e0681b7c1d5eba48fcc578d557998ddd475",
+    "CAMPAIGN_CHECKPOINT.md": "654624b438048e4050fcdedb8e01fd9b90e7693ab787c4fcf8fafef8659cf1ca",
+    "CHALLENGE_CHECKPOINT.md": "16fe5e9041653943d360edbdbe1f6b9f69214a8966185c959409c2dd22788852",
+    "CHECKPOINT.md": "675fac0c8195066338ad5bb29cd2697dd21e809bf8cebb2b124a10a3010b3feb",
+    "design/CAMPAIGN_PLAN.md": "2a35ebc7b19abd4a7b9024eea7601ae40082fd101bc09b3a0ded78a10ef130c7",
+    "design/prepared_cases.gd": "d06a857d45adf9e8f04deffa484c2e95497b489cb08ba591b684386ad9bd6867",
+    "design/prepared_cases.gd.uid": "bf2dd28198a064a43d466850aa353bf94aa7debf58c7ed5a352e93d2b3e95ed4",
+    "DESIGN_INCREMENT.json": "937caf249ce57cecc6ae5ef98832cdb5f300c94b486ca89a60b0b3feb3d9b866",
+    "DESIGN_INCREMENT.md": "dcd7cdbf43912be543ec6553737cc2b4dee3357e73156576e148870055ee2bb2",
+    "evidence/campaign.json": "ae1f716c511a4db6aba148e19b1603635439eb1abbd432c3f0c880ec64ff42fc",
+    "evidence/challenge-v1.json": "8e60409289b4e198232036c64d1ecd90db46ad273f5122ee541142b93277148b",
+    "evidence/code4-back.json": "cdb42e7b98357428bb11e198d044fcb88d0144428280773ccdfd6843fa6987ac",
+    "evidence/prototype.json": "c48bed92d2530fabb53887f1bf72842c1889756c5bf8dbd455918486c1f211d1",
+    "export_presets.cfg": "41765f5d6c4b75c120f774e4d18daad8e5ec2860acf0d875d85bdcb62a496fa1",
+    "FLOOR_ASSOCIATION.json": "187967df939c5d3a81fdaeaa7cec631428db4bca0301a5820c99c2a9086b2246",
+    "FLOOR_ASSOCIATION.md": "56c1ecb8928718541b55e871a71634b5f07732963de0bee1b0a04447a0edd778",
+    "GRAPHICS_PRODUCTION.md": "8b761055e4d555f9cc820e3612f1661d06a79a66ed547dbb9a544fa6a5405bce",
+    "icon.svg": "6bca3ee031a419daa07bd4b2790d6ce481b5686cff75a0ee197ebcc9f7053d1b",
+    "icon.svg.import": "3847de679c56f4fcad0e14fb11b5eb0f45f068b7c59f489254b5c2c75c1b2320",
+    "LOCAL_RECOVERY.json": "f108015f981aca5ddbe3e5a69ce5e6c4bb4a300d4e29773c784640ffef706350",
+    "LOCAL_RECOVERY.md": "a9d95de8c07998481839e2208648923080c87ff24ecee25e8205857563b3c4f2",
+    "main.tscn": "539a74d0621571fab563c8871aad99acdf0158e9202a9453217fb7bf17a4a5df",
+    "MEDAL_FEEDBACK.json": "24c1964e4b81c05867929f3b0055ffae4e2715d8029ac97dfed8e809894329d8",
+    "MEDAL_FEEDBACK.md": "743871fa7226053c7729621b3d8852859cfb0e62b7248127445064362ffe334f",
+    "progress.json": "5bc74a1aca56d0b325153b9adcdebed3798f90369fa598ea33bcb37ae6d1abda",
+    "project.godot": "41259ffb75a6d0026508b00ea2e9ec2d3625e508a776efd51bc581bc5b7ffc89",
+    "README.md": "a8633667fd4b1a4e7760b611436677654abb039691ccb87dd726e455421d50bd",
+    "SAVE_COMMIT.json": "8266a1be463629d2b7d56b302413724d64776b40b80cf08fa029f86b7b918b57",
+    "SAVE_COMMIT.md": "5941b757f2b8b4829989432eba4b1850844d0e0b894620a5288015cefc12fa3c",
+    "scripts/catalog_v1.gd": "cacac155762576b19d295a4cb98a900bf7f0a4ba418cff35d132b202923eb7e4",
+    "scripts/catalog_v1.gd.uid": "06b7209b6113ae43f26a8a34359abc8d292cd4f2c0fb0382be2cfece5d7f1313",
+    "scripts/catalog_v2.gd": "f9e558d173c64f6a37dfa996efc6075c6279f520b968406cb7234cce614aa9e9",
+    "scripts/catalog_v2.gd.uid": "868ed66e8974a6bdb486191bd9c4a265b09a4409abfff4a09532fa658d7708e6",
+    "scripts/challenge_v1.gd": "3706f76799c3eccf8a8739d02bd74a226edd274e6cdbd1358f58f97767812071",
+    "scripts/challenge_v1.gd.uid": "f318e9801a652b1e9e5102c13e26a030470a1b2a94e3de1d95ca10b25448f19a",
+    "scripts/content.gd": "a7a15f49be61f36c28e3d5301effa4185cca27871fc7362361ac7b2ba9fae868",
+    "scripts/content.gd.uid": "2090f499c7cdeb2093df29a2ce8448caefcde09d6a6c13d2b2317b109ef2374d",
+    "scripts/import_recovery.gd": "3cb9f9c204edefc6975d33eefe28fa770b2b178852864001cb34e6af6c8be5e0",
+    "scripts/import_recovery.gd.uid": "263408238ca66ccaaf69235c328324a224ff41fa940319c3cdcf8d0d564f0d3d",
+    "scripts/local_audio.gd": "62e5b953ef6f18148f279028e454a5546074d5692dc5e378368f12764ac18bf9",
+    "scripts/local_audio.gd.uid": "a8c0c2c84080c34bac60f9d017e40759cd0f5a47b20b93fce6f75006d05a050e",
+    "scripts/main.gd": "f2f2108380704098e3adb7149803e40e325dadcca5dc759a34b65170f50c2b83",
+    "scripts/main.gd.uid": "814681d5bf55ea28a102a3c53c7176d636a272c31f8947c448fb1cf73512f486",
+    "scripts/presentation/tower_view.gd": "128077a87661d8c8291335db109eee9a19e6ef1d394c5ac17d3eff8cc6a4b1b0",
+    "scripts/presentation/tower_view.gd.uid": "2670772294ed6bf8bfa3aee9083495af66cc76c0ede742decc7ef7ca409b4764",
+    "scripts/recovery_copies.gd": "76963432b41925f7d664172cdd59b5bcba8a8948f62c77b54b3c9e30a3d36afa",
+    "scripts/recovery_copies.gd.uid": "858390b723618f128681f12dc1b207ed21e30bd19b661d06e3cca30b1315fa8d",
+    "scripts/rules.gd": "5db58d5d73e2a8b584d12548dba71c864be0d6302ac2c9f84ca1ca4ad5b6f8f6",
+    "scripts/rules.gd.uid": "0f0da31b6f4b0164d53f22234d2e228b740294f4e9929aa73b6355b36bc710e8",
+    "scripts/rules_v1.gd": "5432339e42e95e02b14d64871cade704ccbb87f89a5c002412deed797291d950",
+    "scripts/rules_v1.gd.uid": "fe8e014622b836b5a4e92d5db70b2368ef4241702788e144c94431755f99bc70",
+    "scripts/save_files.gd": "fe8b3833f92e0ffba9bb165683bc88ba01819f05cc059ee27f1dfbe9a94cf2c0",
+    "scripts/save_files.gd.uid": "b1be48ebc254694afe695f6332e8f7cd498af14fd3926377cae93d9e861bf37e",
+    "scripts/save_store.gd": "d536cdb0649752bae4b2c002aa1408dddd64533282c525096eb2240fb165c721",
+    "scripts/save_store.gd.uid": "6983810b6668e5705d11e88ab7b7d6494086044a9599ef5e929ea98cb4c1a887",
+    "tests/association_motion.gd": "af56a9d7480b9a857c1bdeafd1f974d9f4e6399bb825aca1ad5be478a0440ed8",
+    "tests/association_motion.gd.uid": "20f9aee166d0c6de74c7e234eb10446c0be7bc790be2f09e57afd0b557100026",
+    "tests/back_policy.gd": "d769d33679752c5afe20cfaf9cf1ee4b1615e3af5bbd1bac9beae7eb0be61d80",
+    "tests/back_policy.gd.uid": "13fb66e4cdba02f49bf08829c4258bb7504daceac5b8ba21843f9240a1b6f7b3",
+    "tests/campaign_motion.gd": "bee986099fa0acdd451d7f37372c7f4a027792bafee87cb3e0b534b8263c70fb",
+    "tests/campaign_motion.gd.uid": "36c6d6d964926168c89ab46de1db4f11337324b01b9b51ffdec907c2cc0037db",
+    "tests/campaign_playthrough.gd": "7e50459080d8de711c035892ff3f3ead83c5d24d1772046f495e09d5a4dee8a1",
+    "tests/campaign_playthrough.gd.uid": "82de2bc2822e65bda6e43153a31d5f256d529a141a9172b91a0698f02928e5a1",
+    "tests/challenge_cases.gd": "c2e07bc7d1d5dfc0a9396fc372b4b05925b6174b5f14bd86238c388cf3ebd028",
+    "tests/challenge_cases.gd.uid": "dc4e443ce541a33d949e6368b3be5f6bafc77a7868332db18cf09cc954dd568f",
+    "tests/challenge_flow.gd": "35f15b17291e2357cdde84c842348282582a5a03dc100274d92a09ab4448192e",
+    "tests/challenge_flow.gd.uid": "cd57e77d9f59a326971efc8e4c6aa1684ef78848f98e0f602fe9700242120907",
+    "tests/challenge_motion.gd": "9f5ca0a089ee770dd4002097f0f445117ddcfa0dfaf8e1770e4313182803b79a",
+    "tests/challenge_motion.gd.uid": "6e3cee635e370a65db6c44457e7f8e2dc7a318b0389f86e44525241483eb8cc9",
+    "tests/challenge_playthrough.gd": "8e92d458b4b8fd3c245f1ebe02aa4ab7ba2a6a1c9c6f72cd635ecdeb6b8ee644",
+    "tests/challenge_playthrough.gd.uid": "dd1385f6b6153e41d166dded3086ce65379e74f410f054332eb0ad3aa7e7ae97",
+    "tests/challenge_rules.gd": "4459cfa012d736698872d724702e1dd4a2d4350eaff98b4f51123b1686d5d449",
+    "tests/challenge_rules.gd.uid": "1e3ddd486a49a025b5b809b8773762a2655a57e815f65e3d34d314fcf2b2433b",
+    "tests/create_challenge_fixture.gd": "3fe92de03787e28421b714f7b2ac2757e967abf9c27c1b3a77da22ea109e9a42",
+    "tests/create_challenge_fixture.gd.uid": "4c74672938c570bb4fa7604f03ca537a0ce77fd88dde136fac92d67de7da0c8f",
+    "tests/create_code2_fixture.gd": "2bc6f0988f9b11d2a716d2f4da7afec97f57df0eadf9636c11aa06677d60279b",
+    "tests/create_code2_fixture.gd.uid": "fa6fc48aa19270ff8861f20788a36295cf68184687a7761e43be7494485f0bc0",
+    "tests/create_legacy_fixture.gd": "a6c9f790c09113aa15e6a6dad45ed085842278d2c79753e37c519bccf1ddd46f",
+    "tests/create_legacy_fixture.gd.uid": "089c402a963afed06292fb38c044fb607420cde237792912b1dae1b37d538472",
+    "tests/fault_files.gd": "230aa713e890074394edeb86819078f703a1189a023b8ddf1d167caadc8eb2a7",
+    "tests/fault_files.gd.uid": "1640215fc56b9294bffa536d71f18cb82fdb1964f71a39e63f3dae1dbb1ed8e1",
+    "tests/feedback_association.gd": "7d03fbfcf202dd2c154bf882cf3f0d2e34e2380d2ee0c5ad7345013f5dd6198b",
+    "tests/feedback_association.gd.uid": "5544377fe6f6b1dc92214004d592c1a3c7a131a9161d27754dbf122592490588",
+    "tests/feedback_association_full.gd": "4ff3a7613640477aaf3d61899641d8462a5416f3f095fc0f2b3c4b5b6e4ae571",
+    "tests/feedback_association_full.gd.uid": "185505fc9b0119c31c977226955c243b3294b9e5aab9ed36f7f220962156c9dd",
+    "tests/feedback_readability.gd": "9fc0e58c9e03ce01e5909dc8a2de5a8b57de4eceaf0cb3a1408442176c784d35",
+    "tests/feedback_readability.gd.uid": "86b46926298d7f603090db1eea06128e1eaa203c82d7d5b95a22c4d4932ce1a2",
+    "tests/fixtures/challenge-v1-active.json": "df6d120859f1c9be9844c6974fa370b3cbe069857ec0c467af82ef7b0e924137",
+    "tests/fixtures/challenge-v1-active.provenance.json": "3c050990c3675712294c1343f036dccad680a392edd33c65d75cea40bf6a8018",
+    "tests/fixtures/challenge-v1-fallback.json": "ceff269844c20ae3901cfcd1fceea49515106c0c35aff928f58c595e51021a31",
+    "tests/fixtures/code1-active-route.json": "7ca9a01904e82629d72c62f91897cdd32be0bb50c6a9c21ad38d890f4cf045d5",
+    "tests/fixtures/code1-active-route.json.expected.json": "9203621fa9b31bf1d7313e8a1add8732357026ad57a024c3067f73741819fac4",
+    "tests/fixtures/code2-active-route.json": "b615fa67fcff48789dde24e334b91c6f42fde2feecdc038a8b904a78e2391927",
+    "tests/fixtures/code2-active-route.json.expected.json": "21ff85fbfb0eaf234dedcb2357d9fc54fcb73d66d182fbcedec51cfcaa2cbf0f",
+    "tests/fixtures/save-commit-before.json": "17572021887bf8982e1a2196588eca7b2025d2583f95c6288dfa153d4e4c4116",
+    "tests/fixtures/save-commit-before.provenance.json": "70e775577244caaad7295b413ef5d806c64bbdbd13f9b8d4b9374a0cc3abc0d4",
+    "tests/graphics_tour.gd": "4001deb09761e35bc651348d73d0138fc418b91a370132813980b256349880cb",
+    "tests/graphics_tour.gd.uid": "5d8adcb546e5a6735eed658bac0cfc16357fff89e197209a63a6f92359ffc0e2",
+    "tests/graphics_view.gd": "3d096a5f547806532676146d372a8ddd9e14821e1ee0059ab2a61a41585186d5",
+    "tests/graphics_view.gd.uid": "aeb7c3e79b2dd40fe1da7df85472eb9e25d84cf0ef4605a6e426b48c205c1445",
+    "tests/import_backup_probe.gd": "3f3f39a4d7f825db013e4afc1188b347a3a64696d6b8aaf00e248460f0470503",
+    "tests/import_backup_probe.gd.uid": "cdd978f62c9ffb6afa2b7c25d55e5da2049ab182e7e31feb1478f3629119668a",
+    "tests/import_recovery.gd": "e306128e62c63b95b67cea959148dba0a452e8279db39df0814bbf00c3f4b989",
+    "tests/import_recovery.gd.uid": "68bab286f6a502b891952523dd892d3af7ee33bd6eb5e3273664e47f7a25ad6c",
+    "tests/input_base.gd": "86e29715d9de512cbf7a408e2ab74913804b54f2280a4fb344daa0d9ed57be8e",
+    "tests/input_base.gd.uid": "3b7c9adbfd0026fa702238609679dbe1f20fd30b27b2cdf7b86dc4dc2da68ce5",
+    "tests/layout_probe.gd": "8ab4f22c2d8c14d75b6c4c8bfff3e3ebf02a267c7390dfd053f638e18f14d4e2",
+    "tests/layout_probe.gd.uid": "82cd324bd9aa68de42d686d8163e69555dcdc6fd780794f44ffdc7cb9c066f86",
+    "tests/legacy_update_input.gd": "42ad8c3d2eb451878c6c14c7d667183c613f13e76f2f22ca24e5fb290da46a86",
+    "tests/legacy_update_input.gd.uid": "53119ab6d3cfb9752cd7dc5ed8254f921339612780d51274f2eca462c2a3f1d9",
+    "tests/medal_feedback.gd": "75655234ffcc232b22c0370b3e42cbdf717b0932e4ddce1487c14e6e51f3d0ba",
+    "tests/medal_feedback.gd.uid": "430da34c7d9eae8133d49cd06ffb84c18440937bc48800f3e65194e18e6990ab",
+    "tests/motion.gd": "2a1e9ac2d99449799b1ec4971e25755b38b14ff4977da5412ec77502e3c87141",
+    "tests/motion.gd.uid": "dbf01c19540c458ec75449b46cbc57dcf4bd5ed719a9e92df5870cdb9f0978c6",
+    "tests/playthrough.gd": "3a85e700145c112b3ba830c66b6729a9c7ff40a75eea39e9b2e2ff8b29684a46",
+    "tests/playthrough.gd.uid": "66b700d6cf0a31a9f810a27c889ef9de8d0f76da2464d19fdaeaddd89094f739",
+    "tests/preparation.gd": "1248f2740dfea14addeb9500cf51be70689a9ca2477a0c190f9ac75dc88109aa",
+    "tests/preparation.gd.uid": "3f8a1086c50d128caedeb80fa5d45014d2056d1d42cf24aedbb0160e5a4ee40a",
+    "tests/run_tests.gd": "682b41325f4d3bafd4dca16df43d5ab0353d39cddadd6e04afd883f0364098b9",
+    "tests/run_tests.gd.uid": "83bcb327fd121e34d059d662a0a9743250335f4e195f75375a466ced854d05fa",
+    "tests/save_commit.gd": "8b09795127415576cad12287b3e8dd98408baf60ca1e46209278baa86e92d3c9",
+    "tests/save_commit.gd.uid": "940fd2a4a5d86bf2347eed6ded00df35d1a31e972b4597253bf0a7235c3983ca",
+    "tools/association_capture.py": "f2c52588dfd6febea883445082a8278632b45aef5db8ae45009257332392c343",
+    "tools/capture.py": "5a4bc1881b98b7f62927f3cbb1cda287bd006ffad2ff7a2c7833f535599e0fa1",
+    "tools/check.py": "32881d3bb35437be85caacb6b910b9522188f155ca3865b144b9b9acc26f787b",
+    "tools/design_check.py": "2c55b864f03ee6bf3cf72f7792ab37d037a087f358bf1da4ac761811858d3ff3",
+    "tools/graphics_check.py": "34d9ff4bc916c1aa41d2a623bb762799072ccf676b7722d38a799c7b58e27041",
+    "WORKLOG.md": "77ef98e70ee9116f127e8ce3f9ca9b05df7bcda5763ef0a7d3ab54b406f6c502"
+  },
+  "source_lf": {
+    "art/manifest.json": "6ec846edadc008d9465fddc3f1c78a9723c9c7691c4f2c9e32290bafaff3a454",
+    "art/models/archive.glb": "aa88e6b6177de6519e4d35889c47997751cfef1fd8529ebd79b6e101d18035d6",
+    "art/models/archive.glb.import": "e0356b1c249068b8d0f278abee7946f040437b800264af9e72d712db97a0989d",
+    "art/models/banner.glb": "109c9b6500f39ae7e3f3041d171cf03be36dec7c2eb6658741acd37363b0eafb",
+    "art/models/banner.glb.import": "6fefcbc926c0651ff0904e46a7002e5015a4a9218a43582dc9e5c5754af27c13",
+    "art/models/cage.glb": "956b7928d55e6e8947c05cc1a71315b342c113612a712202dbd17b8d01cfc7b1",
+    "art/models/cage.glb.import": "32533c1d9647fde1d53deb4ada03544542410bcd37dcb5b7612c59dbe5efd3bd",
+    "art/models/cliff.glb": "cd67fbe746d4e1977a5e8b4f3d60a63f32b0b6cf6f77954d182898822fdfc221",
+    "art/models/cliff.glb.import": "06e8fd14eca5f410d9701861e7a78249ad6a3fda6f7c7212c84a342268a2fdd1",
+    "art/models/cottage.glb": "d30f5b5b634089d5a4e9441a6f86c827f1b44ee9252e2bc3af7fcc79fc070fec",
+    "art/models/cottage.glb.import": "4b0458fc682c765a555082bf0ef43b9675701ff956673801194971ff17e3a537",
+    "art/models/courier_arm.glb": "5bb55506ecf968bd803c57d18984b663c4f40bc4ee416f5f3da712a5eeb9b0aa",
+    "art/models/courier_arm.glb.import": "4c5581985e7deb54a1effb07888d6becb7c05626a879a370a270417b600ff53f",
+    "art/models/courier_body.glb": "70bc1b3b4c9a78bfbe6dfef40b7918a4b7381927ccfdc0a15033367a848e269f",
+    "art/models/courier_body.glb.import": "f79c11eef91f288f8c18bae655b1ef25ed64533018892cf4968b740ab43e9051",
+    "art/models/courier_leg.glb": "21b1b997c175148aff6a71a229ecee607cb3558e90744d95bc6abd1856ac2b02",
+    "art/models/courier_leg.glb.import": "e486fb9f3c45e869048e5c531902eb43c9b545f367fb30f8bf60d22aa493725a",
+    "art/models/crystal.glb": "69265cd86eba3f8a321e9d3c8f0584f04dd167e0387c1f4505b0e77bfeacd85b",
+    "art/models/crystal.glb.import": "e47686bda3806d59811449020c2bfdf58d4d5bc60bee44dd32cdbb958bf03a62",
+    "art/models/home_floor.glb": "b00122d415cec651d2818092b5431e285a7c1ede30dcb22699d7d826ecc8dca0",
+    "art/models/home_floor.glb.import": "c0c4ea3342a1753a2213b568fa106c66e8e9e5dbd33d107fc210df1e8005c29d",
+    "art/models/home_roof.glb": "52eeac2c808d3b0819e15a931a0833b0ed6c7c3fee4d78986644308754a5d38b",
+    "art/models/home_roof.glb.import": "d69d4951b13eca2cebc23ae5664b30c1705eabc4b71a7474351b183a92b98bc3",
+    "art/models/keeper.glb": "ebfdc9ff5b81ea0195f27959e5dcef3eff8ac576c2998aea8c4b7c15bc7b5f7f",
+    "art/models/keeper.glb.import": "7fa577c25ca45fe837f1f8001dc59fbda9924d70c9ca6c375e0cb909c542ae22",
+    "art/models/lighthouse.glb": "8d7537c671523b7a69b757eb94ab287c2f3634bcdc61f5f22cc04b2237d7b98d",
+    "art/models/lighthouse.glb.import": "6a06c0c0a086e7648256cd383e8a089c42a8973a2b34bbcbabe2f8935078bb2c",
+    "art/models/meridian.glb": "ab06d72d161c0c77ba9c1454519279dd1189bd62f704f2a9dfc2f547656494e1",
+    "art/models/meridian.glb.import": "83a559f7aaaefb54e9f7df636ed88e559464f47e5dd334af4f86d00357ee9469",
+    "art/models/moon.glb": "dee7663da6d86ec2fde007ccb1ae674dfb4b18e53ae36185a2668bb3defef626",
+    "art/models/moon.glb.import": "f69a334dfb58fb6d4326b4f05b8af21f6d7e3285d1bba2781c7c62bdd561215e",
+    "art/models/room.glb": "6897dd55a8d873a9b143b0e48139f4882338f8c4918f0b50def33824481eb749",
+    "art/models/room.glb.import": "b0fac37a988210292ca8b959f79ac6d3abe00db239b69d746a5f8dc539b11f7e",
+    "art/models/spirit.glb": "a32b4743d73871ee13bac332ac281add74611c51af190e19f306d056d1648e5c",
+    "art/models/spirit.glb.import": "0755ce748aa30aa2f1ac58e1aafb18be959a8332fe7d91673871d992b2f04a25",
+    "art/models/spirit_golem.glb": "6799785ea22024bd85e4e9e74a39c257ee188d06ad8546a2b394ebf8fbab0233",
+    "art/models/spirit_golem.glb.import": "4379e307b79071a242aabcac1bddb33bf4982bb5cbdf345a7ae43aaa6f8f0509",
+    "art/models/spirit_knight.glb": "0fb4cc4b7fa79f9ef5888670fecd648ab130883702a37b6afda231887172fdc4",
+    "art/models/spirit_knight.glb.import": "4d9fa6646bbd225d1bc0dc17c09e86e0dc5d9b99b030ab535b0837790f273191",
+    "art/models/tower_column.glb": "64ecc1fb0a4aa2a64529137d427e545688fea0902da620839bb876ebeabc86ed",
+    "art/models/tower_column.glb.import": "ec2aad782db0018162c8e04ee4a250ec9f1016eca8fdc5f5fe4486a0bafedfea",
+    "art/models/tower_roof.glb": "e71a8a2b4fd6c1b6bca6c25ec9fef8a1cbe2aef46dbe4ffd4f4f900042393c6d",
+    "art/models/tower_roof.glb.import": "7ecd7174b3c9f91d9178c904743aac5aff4cab9a5f0b6473ab664b22f1350f60",
+    "art/models/tower_segment.glb": "9de5469c631f1055f2fd8b21ce2e1d3ae5d523ccf804bf93b3c6fac9091c9d3d",
+    "art/models/tower_segment.glb.import": "ef1f6c02b1939fc90712aab0d239a6598922899e2036244badd7913cf886ac13",
+    "art/source/build_assets.py": "9847b374fad8709b2bf178c3033238df92af557eb75b7328c6528904c6af57e9",
+    "BACK_POLICY_CHECKPOINT.md": "022990f82f4a7982f7211a0c4ae79e0681b7c1d5eba48fcc578d557998ddd475",
+    "CAMPAIGN_CHECKPOINT.md": "654624b438048e4050fcdedb8e01fd9b90e7693ab787c4fcf8fafef8659cf1ca",
+    "CHALLENGE_CHECKPOINT.md": "16fe5e9041653943d360edbdbe1f6b9f69214a8966185c959409c2dd22788852",
+    "CHECKPOINT.md": "675fac0c8195066338ad5bb29cd2697dd21e809bf8cebb2b124a10a3010b3feb",
+    "design/CAMPAIGN_PLAN.md": "2a35ebc7b19abd4a7b9024eea7601ae40082fd101bc09b3a0ded78a10ef130c7",
+    "design/prepared_cases.gd": "d06a857d45adf9e8f04deffa484c2e95497b489cb08ba591b684386ad9bd6867",
+    "design/prepared_cases.gd.uid": "bf2dd28198a064a43d466850aa353bf94aa7debf58c7ed5a352e93d2b3e95ed4",
+    "DESIGN_INCREMENT.json": "937caf249ce57cecc6ae5ef98832cdb5f300c94b486ca89a60b0b3feb3d9b866",
+    "DESIGN_INCREMENT.md": "dcd7cdbf43912be543ec6553737cc2b4dee3357e73156576e148870055ee2bb2",
+    "evidence/campaign.json": "ae1f716c511a4db6aba148e19b1603635439eb1abbd432c3f0c880ec64ff42fc",
+    "evidence/challenge-v1.json": "8e60409289b4e198232036c64d1ecd90db46ad273f5122ee541142b93277148b",
+    "evidence/code4-back.json": "cdb42e7b98357428bb11e198d044fcb88d0144428280773ccdfd6843fa6987ac",
+    "evidence/prototype.json": "c48bed92d2530fabb53887f1bf72842c1889756c5bf8dbd455918486c1f211d1",
+    "export_presets.cfg": "41765f5d6c4b75c120f774e4d18daad8e5ec2860acf0d875d85bdcb62a496fa1",
+    "FLOOR_ASSOCIATION.json": "187967df939c5d3a81fdaeaa7cec631428db4bca0301a5820c99c2a9086b2246",
+    "FLOOR_ASSOCIATION.md": "56c1ecb8928718541b55e871a71634b5f07732963de0bee1b0a04447a0edd778",
+    "GRAPHICS_PRODUCTION.md": "8b761055e4d555f9cc820e3612f1661d06a79a66ed547dbb9a544fa6a5405bce",
+    "icon.svg": "6bca3ee031a419daa07bd4b2790d6ce481b5686cff75a0ee197ebcc9f7053d1b",
+    "icon.svg.import": "3847de679c56f4fcad0e14fb11b5eb0f45f068b7c59f489254b5c2c75c1b2320",
+    "LOCAL_RECOVERY.json": "f108015f981aca5ddbe3e5a69ce5e6c4bb4a300d4e29773c784640ffef706350",
+    "LOCAL_RECOVERY.md": "a9d95de8c07998481839e2208648923080c87ff24ecee25e8205857563b3c4f2",
+    "main.tscn": "539a74d0621571fab563c8871aad99acdf0158e9202a9453217fb7bf17a4a5df",
+    "MEDAL_FEEDBACK.json": "24c1964e4b81c05867929f3b0055ffae4e2715d8029ac97dfed8e809894329d8",
+    "MEDAL_FEEDBACK.md": "743871fa7226053c7729621b3d8852859cfb0e62b7248127445064362ffe334f",
+    "progress.json": "5bc74a1aca56d0b325153b9adcdebed3798f90369fa598ea33bcb37ae6d1abda",
+    "project.godot": "41259ffb75a6d0026508b00ea2e9ec2d3625e508a776efd51bc581bc5b7ffc89",
+    "README.md": "a8633667fd4b1a4e7760b611436677654abb039691ccb87dd726e455421d50bd",
+    "SAVE_COMMIT.json": "8266a1be463629d2b7d56b302413724d64776b40b80cf08fa029f86b7b918b57",
+    "SAVE_COMMIT.md": "5941b757f2b8b4829989432eba4b1850844d0e0b894620a5288015cefc12fa3c",
+    "scripts/catalog_v1.gd": "cacac155762576b19d295a4cb98a900bf7f0a4ba418cff35d132b202923eb7e4",
+    "scripts/catalog_v1.gd.uid": "06b7209b6113ae43f26a8a34359abc8d292cd4f2c0fb0382be2cfece5d7f1313",
+    "scripts/catalog_v2.gd": "f9e558d173c64f6a37dfa996efc6075c6279f520b968406cb7234cce614aa9e9",
+    "scripts/catalog_v2.gd.uid": "868ed66e8974a6bdb486191bd9c4a265b09a4409abfff4a09532fa658d7708e6",
+    "scripts/challenge_v1.gd": "3706f76799c3eccf8a8739d02bd74a226edd274e6cdbd1358f58f97767812071",
+    "scripts/challenge_v1.gd.uid": "f318e9801a652b1e9e5102c13e26a030470a1b2a94e3de1d95ca10b25448f19a",
+    "scripts/content.gd": "a7a15f49be61f36c28e3d5301effa4185cca27871fc7362361ac7b2ba9fae868",
+    "scripts/content.gd.uid": "2090f499c7cdeb2093df29a2ce8448caefcde09d6a6c13d2b2317b109ef2374d",
+    "scripts/import_recovery.gd": "3cb9f9c204edefc6975d33eefe28fa770b2b178852864001cb34e6af6c8be5e0",
+    "scripts/import_recovery.gd.uid": "263408238ca66ccaaf69235c328324a224ff41fa940319c3cdcf8d0d564f0d3d",
+    "scripts/local_audio.gd": "62e5b953ef6f18148f279028e454a5546074d5692dc5e378368f12764ac18bf9",
+    "scripts/local_audio.gd.uid": "a8c0c2c84080c34bac60f9d017e40759cd0f5a47b20b93fce6f75006d05a050e",
+    "scripts/main.gd": "c2d046a77fc6ee24736e543a98f74ad3ead13a56de37cb92daf1b2ec8643a722",
+    "scripts/main.gd.uid": "814681d5bf55ea28a102a3c53c7176d636a272c31f8947c448fb1cf73512f486",
+    "scripts/presentation/tower_view.gd": "128077a87661d8c8291335db109eee9a19e6ef1d394c5ac17d3eff8cc6a4b1b0",
+    "scripts/presentation/tower_view.gd.uid": "2670772294ed6bf8bfa3aee9083495af66cc76c0ede742decc7ef7ca409b4764",
+    "scripts/recovery_copies.gd": "76963432b41925f7d664172cdd59b5bcba8a8948f62c77b54b3c9e30a3d36afa",
+    "scripts/recovery_copies.gd.uid": "858390b723618f128681f12dc1b207ed21e30bd19b661d06e3cca30b1315fa8d",
+    "scripts/rules.gd": "5db58d5d73e2a8b584d12548dba71c864be0d6302ac2c9f84ca1ca4ad5b6f8f6",
+    "scripts/rules.gd.uid": "0f0da31b6f4b0164d53f22234d2e228b740294f4e9929aa73b6355b36bc710e8",
+    "scripts/rules_v1.gd": "5432339e42e95e02b14d64871cade704ccbb87f89a5c002412deed797291d950",
+    "scripts/rules_v1.gd.uid": "fe8e014622b836b5a4e92d5db70b2368ef4241702788e144c94431755f99bc70",
+    "scripts/save_files.gd": "fe8b3833f92e0ffba9bb165683bc88ba01819f05cc059ee27f1dfbe9a94cf2c0",
+    "scripts/save_files.gd.uid": "b1be48ebc254694afe695f6332e8f7cd498af14fd3926377cae93d9e861bf37e",
+    "scripts/save_store.gd": "d536cdb0649752bae4b2c002aa1408dddd64533282c525096eb2240fb165c721",
+    "scripts/save_store.gd.uid": "6983810b6668e5705d11e88ab7b7d6494086044a9599ef5e929ea98cb4c1a887",
+    "tests/association_motion.gd": "af56a9d7480b9a857c1bdeafd1f974d9f4e6399bb825aca1ad5be478a0440ed8",
+    "tests/association_motion.gd.uid": "20f9aee166d0c6de74c7e234eb10446c0be7bc790be2f09e57afd0b557100026",
+    "tests/back_policy.gd": "d769d33679752c5afe20cfaf9cf1ee4b1615e3af5bbd1bac9beae7eb0be61d80",
+    "tests/back_policy.gd.uid": "13fb66e4cdba02f49bf08829c4258bb7504daceac5b8ba21843f9240a1b6f7b3",
+    "tests/campaign_motion.gd": "bee986099fa0acdd451d7f37372c7f4a027792bafee87cb3e0b534b8263c70fb",
+    "tests/campaign_motion.gd.uid": "36c6d6d964926168c89ab46de1db4f11337324b01b9b51ffdec907c2cc0037db",
+    "tests/campaign_playthrough.gd": "7e50459080d8de711c035892ff3f3ead83c5d24d1772046f495e09d5a4dee8a1",
+    "tests/campaign_playthrough.gd.uid": "82de2bc2822e65bda6e43153a31d5f256d529a141a9172b91a0698f02928e5a1",
+    "tests/challenge_cases.gd": "c2e07bc7d1d5dfc0a9396fc372b4b05925b6174b5f14bd86238c388cf3ebd028",
+    "tests/challenge_cases.gd.uid": "dc4e443ce541a33d949e6368b3be5f6bafc77a7868332db18cf09cc954dd568f",
+    "tests/challenge_flow.gd": "35f15b17291e2357cdde84c842348282582a5a03dc100274d92a09ab4448192e",
+    "tests/challenge_flow.gd.uid": "cd57e77d9f59a326971efc8e4c6aa1684ef78848f98e0f602fe9700242120907",
+    "tests/challenge_motion.gd": "9f5ca0a089ee770dd4002097f0f445117ddcfa0dfaf8e1770e4313182803b79a",
+    "tests/challenge_motion.gd.uid": "6e3cee635e370a65db6c44457e7f8e2dc7a318b0389f86e44525241483eb8cc9",
+    "tests/challenge_playthrough.gd": "8e92d458b4b8fd3c245f1ebe02aa4ab7ba2a6a1c9c6f72cd635ecdeb6b8ee644",
+    "tests/challenge_playthrough.gd.uid": "dd1385f6b6153e41d166dded3086ce65379e74f410f054332eb0ad3aa7e7ae97",
+    "tests/challenge_rules.gd": "4459cfa012d736698872d724702e1dd4a2d4350eaff98b4f51123b1686d5d449",
+    "tests/challenge_rules.gd.uid": "1e3ddd486a49a025b5b809b8773762a2655a57e815f65e3d34d314fcf2b2433b",
+    "tests/create_challenge_fixture.gd": "3fe92de03787e28421b714f7b2ac2757e967abf9c27c1b3a77da22ea109e9a42",
+    "tests/create_challenge_fixture.gd.uid": "4c74672938c570bb4fa7604f03ca537a0ce77fd88dde136fac92d67de7da0c8f",
+    "tests/create_code2_fixture.gd": "2bc6f0988f9b11d2a716d2f4da7afec97f57df0eadf9636c11aa06677d60279b",
+    "tests/create_code2_fixture.gd.uid": "fa6fc48aa19270ff8861f20788a36295cf68184687a7761e43be7494485f0bc0",
+    "tests/create_legacy_fixture.gd": "a6c9f790c09113aa15e6a6dad45ed085842278d2c79753e37c519bccf1ddd46f",
+    "tests/create_legacy_fixture.gd.uid": "089c402a963afed06292fb38c044fb607420cde237792912b1dae1b37d538472",
+    "tests/fault_files.gd": "230aa713e890074394edeb86819078f703a1189a023b8ddf1d167caadc8eb2a7",
+    "tests/fault_files.gd.uid": "1640215fc56b9294bffa536d71f18cb82fdb1964f71a39e63f3dae1dbb1ed8e1",
+    "tests/feedback_association.gd": "7d03fbfcf202dd2c154bf882cf3f0d2e34e2380d2ee0c5ad7345013f5dd6198b",
+    "tests/feedback_association.gd.uid": "5544377fe6f6b1dc92214004d592c1a3c7a131a9161d27754dbf122592490588",
+    "tests/feedback_association_full.gd": "4ff3a7613640477aaf3d61899641d8462a5416f3f095fc0f2b3c4b5b6e4ae571",
+    "tests/feedback_association_full.gd.uid": "185505fc9b0119c31c977226955c243b3294b9e5aab9ed36f7f220962156c9dd",
+    "tests/feedback_readability.gd": "9fc0e58c9e03ce01e5909dc8a2de5a8b57de4eceaf0cb3a1408442176c784d35",
+    "tests/feedback_readability.gd.uid": "86b46926298d7f603090db1eea06128e1eaa203c82d7d5b95a22c4d4932ce1a2",
+    "tests/fixtures/challenge-v1-active.json": "df6d120859f1c9be9844c6974fa370b3cbe069857ec0c467af82ef7b0e924137",
+    "tests/fixtures/challenge-v1-active.provenance.json": "3c050990c3675712294c1343f036dccad680a392edd33c65d75cea40bf6a8018",
+    "tests/fixtures/challenge-v1-fallback.json": "ceff269844c20ae3901cfcd1fceea49515106c0c35aff928f58c595e51021a31",
+    "tests/fixtures/code1-active-route.json": "7ca9a01904e82629d72c62f91897cdd32be0bb50c6a9c21ad38d890f4cf045d5",
+    "tests/fixtures/code1-active-route.json.expected.json": "9203621fa9b31bf1d7313e8a1add8732357026ad57a024c3067f73741819fac4",
+    "tests/fixtures/code2-active-route.json": "b615fa67fcff48789dde24e334b91c6f42fde2feecdc038a8b904a78e2391927",
+    "tests/fixtures/code2-active-route.json.expected.json": "21ff85fbfb0eaf234dedcb2357d9fc54fcb73d66d182fbcedec51cfcaa2cbf0f",
+    "tests/fixtures/save-commit-before.json": "17572021887bf8982e1a2196588eca7b2025d2583f95c6288dfa153d4e4c4116",
+    "tests/fixtures/save-commit-before.provenance.json": "70e775577244caaad7295b413ef5d806c64bbdbd13f9b8d4b9374a0cc3abc0d4",
+    "tests/graphics_tour.gd": "4001deb09761e35bc651348d73d0138fc418b91a370132813980b256349880cb",
+    "tests/graphics_tour.gd.uid": "5d8adcb546e5a6735eed658bac0cfc16357fff89e197209a63a6f92359ffc0e2",
+    "tests/graphics_view.gd": "3d096a5f547806532676146d372a8ddd9e14821e1ee0059ab2a61a41585186d5",
+    "tests/graphics_view.gd.uid": "aeb7c3e79b2dd40fe1da7df85472eb9e25d84cf0ef4605a6e426b48c205c1445",
+    "tests/import_backup_probe.gd": "3f3f39a4d7f825db013e4afc1188b347a3a64696d6b8aaf00e248460f0470503",
+    "tests/import_backup_probe.gd.uid": "cdd978f62c9ffb6afa2b7c25d55e5da2049ab182e7e31feb1478f3629119668a",
+    "tests/import_recovery.gd": "e306128e62c63b95b67cea959148dba0a452e8279db39df0814bbf00c3f4b989",
+    "tests/import_recovery.gd.uid": "68bab286f6a502b891952523dd892d3af7ee33bd6eb5e3273664e47f7a25ad6c",
+    "tests/input_base.gd": "86e29715d9de512cbf7a408e2ab74913804b54f2280a4fb344daa0d9ed57be8e",
+    "tests/input_base.gd.uid": "3b7c9adbfd0026fa702238609679dbe1f20fd30b27b2cdf7b86dc4dc2da68ce5",
+    "tests/layout_probe.gd": "d2e7c7d398e04b610ddd186c33ad5b2167b69087abe298c711299f7b53afb62d",
+    "tests/layout_probe.gd.uid": "82cd324bd9aa68de42d686d8163e69555dcdc6fd780794f44ffdc7cb9c066f86",
+    "tests/legacy_update_input.gd": "42ad8c3d2eb451878c6c14c7d667183c613f13e76f2f22ca24e5fb290da46a86",
+    "tests/legacy_update_input.gd.uid": "53119ab6d3cfb9752cd7dc5ed8254f921339612780d51274f2eca462c2a3f1d9",
+    "tests/medal_feedback.gd": "75655234ffcc232b22c0370b3e42cbdf717b0932e4ddce1487c14e6e51f3d0ba",
+    "tests/medal_feedback.gd.uid": "430da34c7d9eae8133d49cd06ffb84c18440937bc48800f3e65194e18e6990ab",
+    "tests/motion.gd": "2a1e9ac2d99449799b1ec4971e25755b38b14ff4977da5412ec77502e3c87141",
+    "tests/motion.gd.uid": "dbf01c19540c458ec75449b46cbc57dcf4bd5ed719a9e92df5870cdb9f0978c6",
+    "tests/playthrough.gd": "3a85e700145c112b3ba830c66b6729a9c7ff40a75eea39e9b2e2ff8b29684a46",
+    "tests/playthrough.gd.uid": "66b700d6cf0a31a9f810a27c889ef9de8d0f76da2464d19fdaeaddd89094f739",
+    "tests/preparation.gd": "1248f2740dfea14addeb9500cf51be70689a9ca2477a0c190f9ac75dc88109aa",
+    "tests/preparation.gd.uid": "3f8a1086c50d128caedeb80fa5d45014d2056d1d42cf24aedbb0160e5a4ee40a",
+    "tests/run_tests.gd": "682b41325f4d3bafd4dca16df43d5ab0353d39cddadd6e04afd883f0364098b9",
+    "tests/run_tests.gd.uid": "83bcb327fd121e34d059d662a0a9743250335f4e195f75375a466ced854d05fa",
+    "tests/save_commit.gd": "8b09795127415576cad12287b3e8dd98408baf60ca1e46209278baa86e92d3c9",
+    "tests/save_commit.gd.uid": "940fd2a4a5d86bf2347eed6ded00df35d1a31e972b4597253bf0a7235c3983ca",
+    "tools/association_capture.py": "f2c52588dfd6febea883445082a8278632b45aef5db8ae45009257332392c343",
+    "tools/capture.py": "5a4bc1881b98b7f62927f3cbb1cda287bd006ffad2ff7a2c7833f535599e0fa1",
+    "tools/check.py": "32881d3bb35437be85caacb6b910b9522188f155ca3865b144b9b9acc26f787b",
+    "tools/design_check.py": "2c55b864f03ee6bf3cf72f7792ab37d037a087f358bf1da4ac761811858d3ff3",
+    "tools/graphics_check.py": "34d9ff4bc916c1aa41d2a623bb762799072ccf676b7722d38a799c7b58e27041",
+    "WORKLOG.md": "77ef98e70ee9116f127e8ce3f9ca9b05df7bcda5763ef0a7d3ab54b406f6c502"
+  },
+  "unchanged_base": {
+    ".gitattributes": {
+      "current_raw": "4bbf193eca4c8aa4230b5c504a09e49e6d712485c4a1ccf40a38bd6654be1636",
+      "git_blob": "4bbf193eca4c8aa4230b5c504a09e49e6d712485c4a1ccf40a38bd6654be1636",
+      "lf": "4bbf193eca4c8aa4230b5c504a09e49e6d712485c4a1ccf40a38bd6654be1636"
+    },
+    "BACK_POLICY_CHECKPOINT.md": {
+      "current_raw": "022990f82f4a7982f7211a0c4ae79e0681b7c1d5eba48fcc578d557998ddd475",
+      "git_blob": "022990f82f4a7982f7211a0c4ae79e0681b7c1d5eba48fcc578d557998ddd475",
+      "lf": "022990f82f4a7982f7211a0c4ae79e0681b7c1d5eba48fcc578d557998ddd475"
+    },
+    "CAMPAIGN_CHECKPOINT.md": {
+      "current_raw": "654624b438048e4050fcdedb8e01fd9b90e7693ab787c4fcf8fafef8659cf1ca",
+      "git_blob": "654624b438048e4050fcdedb8e01fd9b90e7693ab787c4fcf8fafef8659cf1ca",
+      "lf": "654624b438048e4050fcdedb8e01fd9b90e7693ab787c4fcf8fafef8659cf1ca"
+    },
+    "CHALLENGE_CHECKPOINT.md": {
+      "current_raw": "16fe5e9041653943d360edbdbe1f6b9f69214a8966185c959409c2dd22788852",
+      "git_blob": "16fe5e9041653943d360edbdbe1f6b9f69214a8966185c959409c2dd22788852",
+      "lf": "16fe5e9041653943d360edbdbe1f6b9f69214a8966185c959409c2dd22788852"
+    },
+    "CHECKPOINT.md": {
+      "current_raw": "675fac0c8195066338ad5bb29cd2697dd21e809bf8cebb2b124a10a3010b3feb",
+      "git_blob": "675fac0c8195066338ad5bb29cd2697dd21e809bf8cebb2b124a10a3010b3feb",
+      "lf": "675fac0c8195066338ad5bb29cd2697dd21e809bf8cebb2b124a10a3010b3feb"
+    },
+    "DESIGN_INCREMENT.json": {
+      "current_raw": "937caf249ce57cecc6ae5ef98832cdb5f300c94b486ca89a60b0b3feb3d9b866",
+      "git_blob": "937caf249ce57cecc6ae5ef98832cdb5f300c94b486ca89a60b0b3feb3d9b866",
+      "lf": "937caf249ce57cecc6ae5ef98832cdb5f300c94b486ca89a60b0b3feb3d9b866"
+    },
+    "DESIGN_INCREMENT.md": {
+      "current_raw": "dcd7cdbf43912be543ec6553737cc2b4dee3357e73156576e148870055ee2bb2",
+      "git_blob": "dcd7cdbf43912be543ec6553737cc2b4dee3357e73156576e148870055ee2bb2",
+      "lf": "dcd7cdbf43912be543ec6553737cc2b4dee3357e73156576e148870055ee2bb2"
+    },
+    "FLOOR_ASSOCIATION.json": {
+      "current_raw": "187967df939c5d3a81fdaeaa7cec631428db4bca0301a5820c99c2a9086b2246",
+      "git_blob": "187967df939c5d3a81fdaeaa7cec631428db4bca0301a5820c99c2a9086b2246",
+      "lf": "187967df939c5d3a81fdaeaa7cec631428db4bca0301a5820c99c2a9086b2246"
+    },
+    "FLOOR_ASSOCIATION.md": {
+      "current_raw": "56c1ecb8928718541b55e871a71634b5f07732963de0bee1b0a04447a0edd778",
+      "git_blob": "56c1ecb8928718541b55e871a71634b5f07732963de0bee1b0a04447a0edd778",
+      "lf": "56c1ecb8928718541b55e871a71634b5f07732963de0bee1b0a04447a0edd778"
+    },
+    "GRAPHICS_PRODUCTION.md": {
+      "current_raw": "8b761055e4d555f9cc820e3612f1661d06a79a66ed547dbb9a544fa6a5405bce",
+      "git_blob": "8b761055e4d555f9cc820e3612f1661d06a79a66ed547dbb9a544fa6a5405bce",
+      "lf": "8b761055e4d555f9cc820e3612f1661d06a79a66ed547dbb9a544fa6a5405bce"
+    },
+    "LOCAL_RECOVERY.json": {
+      "current_raw": "f108015f981aca5ddbe3e5a69ce5e6c4bb4a300d4e29773c784640ffef706350",
+      "git_blob": "f108015f981aca5ddbe3e5a69ce5e6c4bb4a300d4e29773c784640ffef706350",
+      "lf": "f108015f981aca5ddbe3e5a69ce5e6c4bb4a300d4e29773c784640ffef706350"
+    },
+    "LOCAL_RECOVERY.md": {
+      "current_raw": "a9d95de8c07998481839e2208648923080c87ff24ecee25e8205857563b3c4f2",
+      "git_blob": "a9d95de8c07998481839e2208648923080c87ff24ecee25e8205857563b3c4f2",
+      "lf": "a9d95de8c07998481839e2208648923080c87ff24ecee25e8205857563b3c4f2"
+    },
+    "MEDAL_FEEDBACK.json": {
+      "current_raw": "24c1964e4b81c05867929f3b0055ffae4e2715d8029ac97dfed8e809894329d8",
+      "git_blob": "24c1964e4b81c05867929f3b0055ffae4e2715d8029ac97dfed8e809894329d8",
+      "lf": "24c1964e4b81c05867929f3b0055ffae4e2715d8029ac97dfed8e809894329d8"
+    },
+    "MEDAL_FEEDBACK.md": {
+      "current_raw": "743871fa7226053c7729621b3d8852859cfb0e62b7248127445064362ffe334f",
+      "git_blob": "743871fa7226053c7729621b3d8852859cfb0e62b7248127445064362ffe334f",
+      "lf": "743871fa7226053c7729621b3d8852859cfb0e62b7248127445064362ffe334f"
+    },
+    "README.md": {
+      "current_raw": "a8633667fd4b1a4e7760b611436677654abb039691ccb87dd726e455421d50bd",
+      "git_blob": "a8633667fd4b1a4e7760b611436677654abb039691ccb87dd726e455421d50bd",
+      "lf": "a8633667fd4b1a4e7760b611436677654abb039691ccb87dd726e455421d50bd"
+    },
+    "SAVE_COMMIT.json": {
+      "current_raw": "8266a1be463629d2b7d56b302413724d64776b40b80cf08fa029f86b7b918b57",
+      "git_blob": "8266a1be463629d2b7d56b302413724d64776b40b80cf08fa029f86b7b918b57",
+      "lf": "8266a1be463629d2b7d56b302413724d64776b40b80cf08fa029f86b7b918b57"
+    },
+    "SAVE_COMMIT.md": {
+      "current_raw": "5941b757f2b8b4829989432eba4b1850844d0e0b894620a5288015cefc12fa3c",
+      "git_blob": "5941b757f2b8b4829989432eba4b1850844d0e0b894620a5288015cefc12fa3c",
+      "lf": "5941b757f2b8b4829989432eba4b1850844d0e0b894620a5288015cefc12fa3c"
+    },
+    "WORKLOG.md": {
+      "current_raw": "77ef98e70ee9116f127e8ce3f9ca9b05df7bcda5763ef0a7d3ab54b406f6c502",
+      "git_blob": "77ef98e70ee9116f127e8ce3f9ca9b05df7bcda5763ef0a7d3ab54b406f6c502",
+      "lf": "77ef98e70ee9116f127e8ce3f9ca9b05df7bcda5763ef0a7d3ab54b406f6c502"
+    },
+    "art/manifest.json": {
+      "current_raw": "6ec846edadc008d9465fddc3f1c78a9723c9c7691c4f2c9e32290bafaff3a454",
+      "git_blob": "6ec846edadc008d9465fddc3f1c78a9723c9c7691c4f2c9e32290bafaff3a454",
+      "lf": "6ec846edadc008d9465fddc3f1c78a9723c9c7691c4f2c9e32290bafaff3a454"
+    },
+    "art/models/archive.glb": {
+      "current_raw": "9da52298e9995d7ba28fcdea2acaa53dcabbfe3c7c65c60f386c1f38b28a6d4e",
+      "git_blob": "9da52298e9995d7ba28fcdea2acaa53dcabbfe3c7c65c60f386c1f38b28a6d4e",
+      "lf": "aa88e6b6177de6519e4d35889c47997751cfef1fd8529ebd79b6e101d18035d6"
+    },
+    "art/models/archive.glb.import": {
+      "current_raw": "e0356b1c249068b8d0f278abee7946f040437b800264af9e72d712db97a0989d",
+      "git_blob": "e0356b1c249068b8d0f278abee7946f040437b800264af9e72d712db97a0989d",
+      "lf": "e0356b1c249068b8d0f278abee7946f040437b800264af9e72d712db97a0989d"
+    },
+    "art/models/banner.glb": {
+      "current_raw": "109c9b6500f39ae7e3f3041d171cf03be36dec7c2eb6658741acd37363b0eafb",
+      "git_blob": "109c9b6500f39ae7e3f3041d171cf03be36dec7c2eb6658741acd37363b0eafb",
+      "lf": "109c9b6500f39ae7e3f3041d171cf03be36dec7c2eb6658741acd37363b0eafb"
+    },
+    "art/models/banner.glb.import": {
+      "current_raw": "6fefcbc926c0651ff0904e46a7002e5015a4a9218a43582dc9e5c5754af27c13",
+      "git_blob": "6fefcbc926c0651ff0904e46a7002e5015a4a9218a43582dc9e5c5754af27c13",
+      "lf": "6fefcbc926c0651ff0904e46a7002e5015a4a9218a43582dc9e5c5754af27c13"
+    },
+    "art/models/cage.glb": {
+      "current_raw": "956b7928d55e6e8947c05cc1a71315b342c113612a712202dbd17b8d01cfc7b1",
+      "git_blob": "956b7928d55e6e8947c05cc1a71315b342c113612a712202dbd17b8d01cfc7b1",
+      "lf": "956b7928d55e6e8947c05cc1a71315b342c113612a712202dbd17b8d01cfc7b1"
+    },
+    "art/models/cage.glb.import": {
+      "current_raw": "32533c1d9647fde1d53deb4ada03544542410bcd37dcb5b7612c59dbe5efd3bd",
+      "git_blob": "32533c1d9647fde1d53deb4ada03544542410bcd37dcb5b7612c59dbe5efd3bd",
+      "lf": "32533c1d9647fde1d53deb4ada03544542410bcd37dcb5b7612c59dbe5efd3bd"
+    },
+    "art/models/cliff.glb": {
+      "current_raw": "e31721f64d81cc7b63e53aecb65510ef4c6a02703b2cda164dad5f8bccf87c87",
+      "git_blob": "e31721f64d81cc7b63e53aecb65510ef4c6a02703b2cda164dad5f8bccf87c87",
+      "lf": "cd67fbe746d4e1977a5e8b4f3d60a63f32b0b6cf6f77954d182898822fdfc221"
+    },
+    "art/models/cliff.glb.import": {
+      "current_raw": "06e8fd14eca5f410d9701861e7a78249ad6a3fda6f7c7212c84a342268a2fdd1",
+      "git_blob": "06e8fd14eca5f410d9701861e7a78249ad6a3fda6f7c7212c84a342268a2fdd1",
+      "lf": "06e8fd14eca5f410d9701861e7a78249ad6a3fda6f7c7212c84a342268a2fdd1"
+    },
+    "art/models/cottage.glb": {
+      "current_raw": "d30f5b5b634089d5a4e9441a6f86c827f1b44ee9252e2bc3af7fcc79fc070fec",
+      "git_blob": "d30f5b5b634089d5a4e9441a6f86c827f1b44ee9252e2bc3af7fcc79fc070fec",
+      "lf": "d30f5b5b634089d5a4e9441a6f86c827f1b44ee9252e2bc3af7fcc79fc070fec"
+    },
+    "art/models/cottage.glb.import": {
+      "current_raw": "4b0458fc682c765a555082bf0ef43b9675701ff956673801194971ff17e3a537",
+      "git_blob": "4b0458fc682c765a555082bf0ef43b9675701ff956673801194971ff17e3a537",
+      "lf": "4b0458fc682c765a555082bf0ef43b9675701ff956673801194971ff17e3a537"
+    },
+    "art/models/courier_arm.glb": {
+      "current_raw": "5bb55506ecf968bd803c57d18984b663c4f40bc4ee416f5f3da712a5eeb9b0aa",
+      "git_blob": "5bb55506ecf968bd803c57d18984b663c4f40bc4ee416f5f3da712a5eeb9b0aa",
+      "lf": "5bb55506ecf968bd803c57d18984b663c4f40bc4ee416f5f3da712a5eeb9b0aa"
+    },
+    "art/models/courier_arm.glb.import": {
+      "current_raw": "4c5581985e7deb54a1effb07888d6becb7c05626a879a370a270417b600ff53f",
+      "git_blob": "4c5581985e7deb54a1effb07888d6becb7c05626a879a370a270417b600ff53f",
+      "lf": "4c5581985e7deb54a1effb07888d6becb7c05626a879a370a270417b600ff53f"
+    },
+    "art/models/courier_body.glb": {
+      "current_raw": "70bc1b3b4c9a78bfbe6dfef40b7918a4b7381927ccfdc0a15033367a848e269f",
+      "git_blob": "70bc1b3b4c9a78bfbe6dfef40b7918a4b7381927ccfdc0a15033367a848e269f",
+      "lf": "70bc1b3b4c9a78bfbe6dfef40b7918a4b7381927ccfdc0a15033367a848e269f"
+    },
+    "art/models/courier_body.glb.import": {
+      "current_raw": "f79c11eef91f288f8c18bae655b1ef25ed64533018892cf4968b740ab43e9051",
+      "git_blob": "f79c11eef91f288f8c18bae655b1ef25ed64533018892cf4968b740ab43e9051",
+      "lf": "f79c11eef91f288f8c18bae655b1ef25ed64533018892cf4968b740ab43e9051"
+    },
+    "art/models/courier_leg.glb": {
+      "current_raw": "21b1b997c175148aff6a71a229ecee607cb3558e90744d95bc6abd1856ac2b02",
+      "git_blob": "21b1b997c175148aff6a71a229ecee607cb3558e90744d95bc6abd1856ac2b02",
+      "lf": "21b1b997c175148aff6a71a229ecee607cb3558e90744d95bc6abd1856ac2b02"
+    },
+    "art/models/courier_leg.glb.import": {
+      "current_raw": "e486fb9f3c45e869048e5c531902eb43c9b545f367fb30f8bf60d22aa493725a",
+      "git_blob": "e486fb9f3c45e869048e5c531902eb43c9b545f367fb30f8bf60d22aa493725a",
+      "lf": "e486fb9f3c45e869048e5c531902eb43c9b545f367fb30f8bf60d22aa493725a"
+    },
+    "art/models/crystal.glb": {
+      "current_raw": "69265cd86eba3f8a321e9d3c8f0584f04dd167e0387c1f4505b0e77bfeacd85b",
+      "git_blob": "69265cd86eba3f8a321e9d3c8f0584f04dd167e0387c1f4505b0e77bfeacd85b",
+      "lf": "69265cd86eba3f8a321e9d3c8f0584f04dd167e0387c1f4505b0e77bfeacd85b"
+    },
+    "art/models/crystal.glb.import": {
+      "current_raw": "e47686bda3806d59811449020c2bfdf58d4d5bc60bee44dd32cdbb958bf03a62",
+      "git_blob": "e47686bda3806d59811449020c2bfdf58d4d5bc60bee44dd32cdbb958bf03a62",
+      "lf": "e47686bda3806d59811449020c2bfdf58d4d5bc60bee44dd32cdbb958bf03a62"
+    },
+    "art/models/home_floor.glb": {
+      "current_raw": "b00122d415cec651d2818092b5431e285a7c1ede30dcb22699d7d826ecc8dca0",
+      "git_blob": "b00122d415cec651d2818092b5431e285a7c1ede30dcb22699d7d826ecc8dca0",
+      "lf": "b00122d415cec651d2818092b5431e285a7c1ede30dcb22699d7d826ecc8dca0"
+    },
+    "art/models/home_floor.glb.import": {
+      "current_raw": "c0c4ea3342a1753a2213b568fa106c66e8e9e5dbd33d107fc210df1e8005c29d",
+      "git_blob": "c0c4ea3342a1753a2213b568fa106c66e8e9e5dbd33d107fc210df1e8005c29d",
+      "lf": "c0c4ea3342a1753a2213b568fa106c66e8e9e5dbd33d107fc210df1e8005c29d"
+    },
+    "art/models/home_roof.glb": {
+      "current_raw": "52eeac2c808d3b0819e15a931a0833b0ed6c7c3fee4d78986644308754a5d38b",
+      "git_blob": "52eeac2c808d3b0819e15a931a0833b0ed6c7c3fee4d78986644308754a5d38b",
+      "lf": "52eeac2c808d3b0819e15a931a0833b0ed6c7c3fee4d78986644308754a5d38b"
+    },
+    "art/models/home_roof.glb.import": {
+      "current_raw": "d69d4951b13eca2cebc23ae5664b30c1705eabc4b71a7474351b183a92b98bc3",
+      "git_blob": "d69d4951b13eca2cebc23ae5664b30c1705eabc4b71a7474351b183a92b98bc3",
+      "lf": "d69d4951b13eca2cebc23ae5664b30c1705eabc4b71a7474351b183a92b98bc3"
+    },
+    "art/models/keeper.glb": {
+      "current_raw": "ebfdc9ff5b81ea0195f27959e5dcef3eff8ac576c2998aea8c4b7c15bc7b5f7f",
+      "git_blob": "ebfdc9ff5b81ea0195f27959e5dcef3eff8ac576c2998aea8c4b7c15bc7b5f7f",
+      "lf": "ebfdc9ff5b81ea0195f27959e5dcef3eff8ac576c2998aea8c4b7c15bc7b5f7f"
+    },
+    "art/models/keeper.glb.import": {
+      "current_raw": "7fa577c25ca45fe837f1f8001dc59fbda9924d70c9ca6c375e0cb909c542ae22",
+      "git_blob": "7fa577c25ca45fe837f1f8001dc59fbda9924d70c9ca6c375e0cb909c542ae22",
+      "lf": "7fa577c25ca45fe837f1f8001dc59fbda9924d70c9ca6c375e0cb909c542ae22"
+    },
+    "art/models/lighthouse.glb": {
+      "current_raw": "8d7537c671523b7a69b757eb94ab287c2f3634bcdc61f5f22cc04b2237d7b98d",
+      "git_blob": "8d7537c671523b7a69b757eb94ab287c2f3634bcdc61f5f22cc04b2237d7b98d",
+      "lf": "8d7537c671523b7a69b757eb94ab287c2f3634bcdc61f5f22cc04b2237d7b98d"
+    },
+    "art/models/lighthouse.glb.import": {
+      "current_raw": "6a06c0c0a086e7648256cd383e8a089c42a8973a2b34bbcbabe2f8935078bb2c",
+      "git_blob": "6a06c0c0a086e7648256cd383e8a089c42a8973a2b34bbcbabe2f8935078bb2c",
+      "lf": "6a06c0c0a086e7648256cd383e8a089c42a8973a2b34bbcbabe2f8935078bb2c"
+    },
+    "art/models/meridian.glb": {
+      "current_raw": "c8c345e0b2ffb7b2f98049191865f08440a9d2a09a01e7d0b2e6fd81e75bc996",
+      "git_blob": "c8c345e0b2ffb7b2f98049191865f08440a9d2a09a01e7d0b2e6fd81e75bc996",
+      "lf": "ab06d72d161c0c77ba9c1454519279dd1189bd62f704f2a9dfc2f547656494e1"
+    },
+    "art/models/meridian.glb.import": {
+      "current_raw": "83a559f7aaaefb54e9f7df636ed88e559464f47e5dd334af4f86d00357ee9469",
+      "git_blob": "83a559f7aaaefb54e9f7df636ed88e559464f47e5dd334af4f86d00357ee9469",
+      "lf": "83a559f7aaaefb54e9f7df636ed88e559464f47e5dd334af4f86d00357ee9469"
+    },
+    "art/models/moon.glb": {
+      "current_raw": "dee7663da6d86ec2fde007ccb1ae674dfb4b18e53ae36185a2668bb3defef626",
+      "git_blob": "dee7663da6d86ec2fde007ccb1ae674dfb4b18e53ae36185a2668bb3defef626",
+      "lf": "dee7663da6d86ec2fde007ccb1ae674dfb4b18e53ae36185a2668bb3defef626"
+    },
+    "art/models/moon.glb.import": {
+      "current_raw": "f69a334dfb58fb6d4326b4f05b8af21f6d7e3285d1bba2781c7c62bdd561215e",
+      "git_blob": "f69a334dfb58fb6d4326b4f05b8af21f6d7e3285d1bba2781c7c62bdd561215e",
+      "lf": "f69a334dfb58fb6d4326b4f05b8af21f6d7e3285d1bba2781c7c62bdd561215e"
+    },
+    "art/models/room.glb": {
+      "current_raw": "f325ed710a72f1b29d2b135aef43f46a09cda35667090a28bf516ee1ce637183",
+      "git_blob": "f325ed710a72f1b29d2b135aef43f46a09cda35667090a28bf516ee1ce637183",
+      "lf": "6897dd55a8d873a9b143b0e48139f4882338f8c4918f0b50def33824481eb749"
+    },
+    "art/models/room.glb.import": {
+      "current_raw": "b0fac37a988210292ca8b959f79ac6d3abe00db239b69d746a5f8dc539b11f7e",
+      "git_blob": "b0fac37a988210292ca8b959f79ac6d3abe00db239b69d746a5f8dc539b11f7e",
+      "lf": "b0fac37a988210292ca8b959f79ac6d3abe00db239b69d746a5f8dc539b11f7e"
+    },
+    "art/models/spirit.glb": {
+      "current_raw": "a32b4743d73871ee13bac332ac281add74611c51af190e19f306d056d1648e5c",
+      "git_blob": "a32b4743d73871ee13bac332ac281add74611c51af190e19f306d056d1648e5c",
+      "lf": "a32b4743d73871ee13bac332ac281add74611c51af190e19f306d056d1648e5c"
+    },
+    "art/models/spirit.glb.import": {
+      "current_raw": "0755ce748aa30aa2f1ac58e1aafb18be959a8332fe7d91673871d992b2f04a25",
+      "git_blob": "0755ce748aa30aa2f1ac58e1aafb18be959a8332fe7d91673871d992b2f04a25",
+      "lf": "0755ce748aa30aa2f1ac58e1aafb18be959a8332fe7d91673871d992b2f04a25"
+    },
+    "art/models/spirit_golem.glb": {
+      "current_raw": "6799785ea22024bd85e4e9e74a39c257ee188d06ad8546a2b394ebf8fbab0233",
+      "git_blob": "6799785ea22024bd85e4e9e74a39c257ee188d06ad8546a2b394ebf8fbab0233",
+      "lf": "6799785ea22024bd85e4e9e74a39c257ee188d06ad8546a2b394ebf8fbab0233"
+    },
+    "art/models/spirit_golem.glb.import": {
+      "current_raw": "4379e307b79071a242aabcac1bddb33bf4982bb5cbdf345a7ae43aaa6f8f0509",
+      "git_blob": "4379e307b79071a242aabcac1bddb33bf4982bb5cbdf345a7ae43aaa6f8f0509",
+      "lf": "4379e307b79071a242aabcac1bddb33bf4982bb5cbdf345a7ae43aaa6f8f0509"
+    },
+    "art/models/spirit_knight.glb": {
+      "current_raw": "0fb4cc4b7fa79f9ef5888670fecd648ab130883702a37b6afda231887172fdc4",
+      "git_blob": "0fb4cc4b7fa79f9ef5888670fecd648ab130883702a37b6afda231887172fdc4",
+      "lf": "0fb4cc4b7fa79f9ef5888670fecd648ab130883702a37b6afda231887172fdc4"
+    },
+    "art/models/spirit_knight.glb.import": {
+      "current_raw": "4d9fa6646bbd225d1bc0dc17c09e86e0dc5d9b99b030ab535b0837790f273191",
+      "git_blob": "4d9fa6646bbd225d1bc0dc17c09e86e0dc5d9b99b030ab535b0837790f273191",
+      "lf": "4d9fa6646bbd225d1bc0dc17c09e86e0dc5d9b99b030ab535b0837790f273191"
+    },
+    "art/models/tower_column.glb": {
+      "current_raw": "71ce7763451b06d8b9c6d4c2d392751961abc17f957ceacec7dd2e6147a377ef",
+      "git_blob": "71ce7763451b06d8b9c6d4c2d392751961abc17f957ceacec7dd2e6147a377ef",
+      "lf": "64ecc1fb0a4aa2a64529137d427e545688fea0902da620839bb876ebeabc86ed"
+    },
+    "art/models/tower_column.glb.import": {
+      "current_raw": "ec2aad782db0018162c8e04ee4a250ec9f1016eca8fdc5f5fe4486a0bafedfea",
+      "git_blob": "ec2aad782db0018162c8e04ee4a250ec9f1016eca8fdc5f5fe4486a0bafedfea",
+      "lf": "ec2aad782db0018162c8e04ee4a250ec9f1016eca8fdc5f5fe4486a0bafedfea"
+    },
+    "art/models/tower_roof.glb": {
+      "current_raw": "e71a8a2b4fd6c1b6bca6c25ec9fef8a1cbe2aef46dbe4ffd4f4f900042393c6d",
+      "git_blob": "e71a8a2b4fd6c1b6bca6c25ec9fef8a1cbe2aef46dbe4ffd4f4f900042393c6d",
+      "lf": "e71a8a2b4fd6c1b6bca6c25ec9fef8a1cbe2aef46dbe4ffd4f4f900042393c6d"
+    },
+    "art/models/tower_roof.glb.import": {
+      "current_raw": "7ecd7174b3c9f91d9178c904743aac5aff4cab9a5f0b6473ab664b22f1350f60",
+      "git_blob": "7ecd7174b3c9f91d9178c904743aac5aff4cab9a5f0b6473ab664b22f1350f60",
+      "lf": "7ecd7174b3c9f91d9178c904743aac5aff4cab9a5f0b6473ab664b22f1350f60"
+    },
+    "art/models/tower_segment.glb": {
+      "current_raw": "3e163d7075f6f9f3f2c93f0898a0c1a7e8553134ffdf73eedcdeaa6d0a4d2dad",
+      "git_blob": "3e163d7075f6f9f3f2c93f0898a0c1a7e8553134ffdf73eedcdeaa6d0a4d2dad",
+      "lf": "9de5469c631f1055f2fd8b21ce2e1d3ae5d523ccf804bf93b3c6fac9091c9d3d"
+    },
+    "art/models/tower_segment.glb.import": {
+      "current_raw": "ef1f6c02b1939fc90712aab0d239a6598922899e2036244badd7913cf886ac13",
+      "git_blob": "ef1f6c02b1939fc90712aab0d239a6598922899e2036244badd7913cf886ac13",
+      "lf": "ef1f6c02b1939fc90712aab0d239a6598922899e2036244badd7913cf886ac13"
+    },
+    "art/source/build_assets.py": {
+      "current_raw": "9847b374fad8709b2bf178c3033238df92af557eb75b7328c6528904c6af57e9",
+      "git_blob": "9847b374fad8709b2bf178c3033238df92af557eb75b7328c6528904c6af57e9",
+      "lf": "9847b374fad8709b2bf178c3033238df92af557eb75b7328c6528904c6af57e9"
+    },
+    "design/CAMPAIGN_PLAN.md": {
+      "current_raw": "2a35ebc7b19abd4a7b9024eea7601ae40082fd101bc09b3a0ded78a10ef130c7",
+      "git_blob": "2a35ebc7b19abd4a7b9024eea7601ae40082fd101bc09b3a0ded78a10ef130c7",
+      "lf": "2a35ebc7b19abd4a7b9024eea7601ae40082fd101bc09b3a0ded78a10ef130c7"
+    },
+    "design/prepared_cases.gd": {
+      "current_raw": "d06a857d45adf9e8f04deffa484c2e95497b489cb08ba591b684386ad9bd6867",
+      "git_blob": "d06a857d45adf9e8f04deffa484c2e95497b489cb08ba591b684386ad9bd6867",
+      "lf": "d06a857d45adf9e8f04deffa484c2e95497b489cb08ba591b684386ad9bd6867"
+    },
+    "design/prepared_cases.gd.uid": {
+      "current_raw": "bf2dd28198a064a43d466850aa353bf94aa7debf58c7ed5a352e93d2b3e95ed4",
+      "git_blob": "bf2dd28198a064a43d466850aa353bf94aa7debf58c7ed5a352e93d2b3e95ed4",
+      "lf": "bf2dd28198a064a43d466850aa353bf94aa7debf58c7ed5a352e93d2b3e95ed4"
+    },
+    "evidence/campaign.json": {
+      "current_raw": "ae1f716c511a4db6aba148e19b1603635439eb1abbd432c3f0c880ec64ff42fc",
+      "git_blob": "ae1f716c511a4db6aba148e19b1603635439eb1abbd432c3f0c880ec64ff42fc",
+      "lf": "ae1f716c511a4db6aba148e19b1603635439eb1abbd432c3f0c880ec64ff42fc"
+    },
+    "evidence/challenge-v1.json": {
+      "current_raw": "8e60409289b4e198232036c64d1ecd90db46ad273f5122ee541142b93277148b",
+      "git_blob": "8e60409289b4e198232036c64d1ecd90db46ad273f5122ee541142b93277148b",
+      "lf": "8e60409289b4e198232036c64d1ecd90db46ad273f5122ee541142b93277148b"
+    },
+    "evidence/code4-back.json": {
+      "current_raw": "cdb42e7b98357428bb11e198d044fcb88d0144428280773ccdfd6843fa6987ac",
+      "git_blob": "cdb42e7b98357428bb11e198d044fcb88d0144428280773ccdfd6843fa6987ac",
+      "lf": "cdb42e7b98357428bb11e198d044fcb88d0144428280773ccdfd6843fa6987ac"
+    },
+    "evidence/prototype.json": {
+      "current_raw": "c48bed92d2530fabb53887f1bf72842c1889756c5bf8dbd455918486c1f211d1",
+      "git_blob": "c48bed92d2530fabb53887f1bf72842c1889756c5bf8dbd455918486c1f211d1",
+      "lf": "c48bed92d2530fabb53887f1bf72842c1889756c5bf8dbd455918486c1f211d1"
+    },
+    "export_presets.cfg": {
+      "current_raw": "41765f5d6c4b75c120f774e4d18daad8e5ec2860acf0d875d85bdcb62a496fa1",
+      "git_blob": "41765f5d6c4b75c120f774e4d18daad8e5ec2860acf0d875d85bdcb62a496fa1",
+      "lf": "41765f5d6c4b75c120f774e4d18daad8e5ec2860acf0d875d85bdcb62a496fa1"
+    },
+    "icon.svg": {
+      "current_raw": "6bca3ee031a419daa07bd4b2790d6ce481b5686cff75a0ee197ebcc9f7053d1b",
+      "git_blob": "6bca3ee031a419daa07bd4b2790d6ce481b5686cff75a0ee197ebcc9f7053d1b",
+      "lf": "6bca3ee031a419daa07bd4b2790d6ce481b5686cff75a0ee197ebcc9f7053d1b"
+    },
+    "icon.svg.import": {
+      "current_raw": "3847de679c56f4fcad0e14fb11b5eb0f45f068b7c59f489254b5c2c75c1b2320",
+      "git_blob": "3847de679c56f4fcad0e14fb11b5eb0f45f068b7c59f489254b5c2c75c1b2320",
+      "lf": "3847de679c56f4fcad0e14fb11b5eb0f45f068b7c59f489254b5c2c75c1b2320"
+    },
+    "main.tscn": {
+      "current_raw": "539a74d0621571fab563c8871aad99acdf0158e9202a9453217fb7bf17a4a5df",
+      "git_blob": "539a74d0621571fab563c8871aad99acdf0158e9202a9453217fb7bf17a4a5df",
+      "lf": "539a74d0621571fab563c8871aad99acdf0158e9202a9453217fb7bf17a4a5df"
+    },
+    "progress.json": {
+      "current_raw": "5bc74a1aca56d0b325153b9adcdebed3798f90369fa598ea33bcb37ae6d1abda",
+      "git_blob": "5bc74a1aca56d0b325153b9adcdebed3798f90369fa598ea33bcb37ae6d1abda",
+      "lf": "5bc74a1aca56d0b325153b9adcdebed3798f90369fa598ea33bcb37ae6d1abda"
+    },
+    "project.godot": {
+      "current_raw": "41259ffb75a6d0026508b00ea2e9ec2d3625e508a776efd51bc581bc5b7ffc89",
+      "git_blob": "41259ffb75a6d0026508b00ea2e9ec2d3625e508a776efd51bc581bc5b7ffc89",
+      "lf": "41259ffb75a6d0026508b00ea2e9ec2d3625e508a776efd51bc581bc5b7ffc89"
+    },
+    "scripts/catalog_v1.gd": {
+      "current_raw": "cacac155762576b19d295a4cb98a900bf7f0a4ba418cff35d132b202923eb7e4",
+      "git_blob": "cacac155762576b19d295a4cb98a900bf7f0a4ba418cff35d132b202923eb7e4",
+      "lf": "cacac155762576b19d295a4cb98a900bf7f0a4ba418cff35d132b202923eb7e4"
+    },
+    "scripts/catalog_v1.gd.uid": {
+      "current_raw": "06b7209b6113ae43f26a8a34359abc8d292cd4f2c0fb0382be2cfece5d7f1313",
+      "git_blob": "06b7209b6113ae43f26a8a34359abc8d292cd4f2c0fb0382be2cfece5d7f1313",
+      "lf": "06b7209b6113ae43f26a8a34359abc8d292cd4f2c0fb0382be2cfece5d7f1313"
+    },
+    "scripts/catalog_v2.gd": {
+      "current_raw": "f9e558d173c64f6a37dfa996efc6075c6279f520b968406cb7234cce614aa9e9",
+      "git_blob": "f9e558d173c64f6a37dfa996efc6075c6279f520b968406cb7234cce614aa9e9",
+      "lf": "f9e558d173c64f6a37dfa996efc6075c6279f520b968406cb7234cce614aa9e9"
+    },
+    "scripts/catalog_v2.gd.uid": {
+      "current_raw": "868ed66e8974a6bdb486191bd9c4a265b09a4409abfff4a09532fa658d7708e6",
+      "git_blob": "868ed66e8974a6bdb486191bd9c4a265b09a4409abfff4a09532fa658d7708e6",
+      "lf": "868ed66e8974a6bdb486191bd9c4a265b09a4409abfff4a09532fa658d7708e6"
+    },
+    "scripts/challenge_v1.gd": {
+      "current_raw": "3706f76799c3eccf8a8739d02bd74a226edd274e6cdbd1358f58f97767812071",
+      "git_blob": "3706f76799c3eccf8a8739d02bd74a226edd274e6cdbd1358f58f97767812071",
+      "lf": "3706f76799c3eccf8a8739d02bd74a226edd274e6cdbd1358f58f97767812071"
+    },
+    "scripts/challenge_v1.gd.uid": {
+      "current_raw": "f318e9801a652b1e9e5102c13e26a030470a1b2a94e3de1d95ca10b25448f19a",
+      "git_blob": "f318e9801a652b1e9e5102c13e26a030470a1b2a94e3de1d95ca10b25448f19a",
+      "lf": "f318e9801a652b1e9e5102c13e26a030470a1b2a94e3de1d95ca10b25448f19a"
+    },
+    "scripts/content.gd": {
+      "current_raw": "a7a15f49be61f36c28e3d5301effa4185cca27871fc7362361ac7b2ba9fae868",
+      "git_blob": "a7a15f49be61f36c28e3d5301effa4185cca27871fc7362361ac7b2ba9fae868",
+      "lf": "a7a15f49be61f36c28e3d5301effa4185cca27871fc7362361ac7b2ba9fae868"
+    },
+    "scripts/content.gd.uid": {
+      "current_raw": "2090f499c7cdeb2093df29a2ce8448caefcde09d6a6c13d2b2317b109ef2374d",
+      "git_blob": "2090f499c7cdeb2093df29a2ce8448caefcde09d6a6c13d2b2317b109ef2374d",
+      "lf": "2090f499c7cdeb2093df29a2ce8448caefcde09d6a6c13d2b2317b109ef2374d"
+    },
+    "scripts/import_recovery.gd": {
+      "current_raw": "3cb9f9c204edefc6975d33eefe28fa770b2b178852864001cb34e6af6c8be5e0",
+      "git_blob": "3cb9f9c204edefc6975d33eefe28fa770b2b178852864001cb34e6af6c8be5e0",
+      "lf": "3cb9f9c204edefc6975d33eefe28fa770b2b178852864001cb34e6af6c8be5e0"
+    },
+    "scripts/import_recovery.gd.uid": {
+      "current_raw": "263408238ca66ccaaf69235c328324a224ff41fa940319c3cdcf8d0d564f0d3d",
+      "git_blob": "263408238ca66ccaaf69235c328324a224ff41fa940319c3cdcf8d0d564f0d3d",
+      "lf": "263408238ca66ccaaf69235c328324a224ff41fa940319c3cdcf8d0d564f0d3d"
+    },
+    "scripts/local_audio.gd": {
+      "current_raw": "62e5b953ef6f18148f279028e454a5546074d5692dc5e378368f12764ac18bf9",
+      "git_blob": "62e5b953ef6f18148f279028e454a5546074d5692dc5e378368f12764ac18bf9",
+      "lf": "62e5b953ef6f18148f279028e454a5546074d5692dc5e378368f12764ac18bf9"
+    },
+    "scripts/local_audio.gd.uid": {
+      "current_raw": "a8c0c2c84080c34bac60f9d017e40759cd0f5a47b20b93fce6f75006d05a050e",
+      "git_blob": "a8c0c2c84080c34bac60f9d017e40759cd0f5a47b20b93fce6f75006d05a050e",
+      "lf": "a8c0c2c84080c34bac60f9d017e40759cd0f5a47b20b93fce6f75006d05a050e"
+    },
+    "scripts/main.gd.uid": {
+      "current_raw": "814681d5bf55ea28a102a3c53c7176d636a272c31f8947c448fb1cf73512f486",
+      "git_blob": "814681d5bf55ea28a102a3c53c7176d636a272c31f8947c448fb1cf73512f486",
+      "lf": "814681d5bf55ea28a102a3c53c7176d636a272c31f8947c448fb1cf73512f486"
+    },
+    "scripts/presentation/tower_view.gd": {
+      "current_raw": "128077a87661d8c8291335db109eee9a19e6ef1d394c5ac17d3eff8cc6a4b1b0",
+      "git_blob": "128077a87661d8c8291335db109eee9a19e6ef1d394c5ac17d3eff8cc6a4b1b0",
+      "lf": "128077a87661d8c8291335db109eee9a19e6ef1d394c5ac17d3eff8cc6a4b1b0"
+    },
+    "scripts/presentation/tower_view.gd.uid": {
+      "current_raw": "2670772294ed6bf8bfa3aee9083495af66cc76c0ede742decc7ef7ca409b4764",
+      "git_blob": "2670772294ed6bf8bfa3aee9083495af66cc76c0ede742decc7ef7ca409b4764",
+      "lf": "2670772294ed6bf8bfa3aee9083495af66cc76c0ede742decc7ef7ca409b4764"
+    },
+    "scripts/recovery_copies.gd": {
+      "current_raw": "76963432b41925f7d664172cdd59b5bcba8a8948f62c77b54b3c9e30a3d36afa",
+      "git_blob": "76963432b41925f7d664172cdd59b5bcba8a8948f62c77b54b3c9e30a3d36afa",
+      "lf": "76963432b41925f7d664172cdd59b5bcba8a8948f62c77b54b3c9e30a3d36afa"
+    },
+    "scripts/recovery_copies.gd.uid": {
+      "current_raw": "858390b723618f128681f12dc1b207ed21e30bd19b661d06e3cca30b1315fa8d",
+      "git_blob": "858390b723618f128681f12dc1b207ed21e30bd19b661d06e3cca30b1315fa8d",
+      "lf": "858390b723618f128681f12dc1b207ed21e30bd19b661d06e3cca30b1315fa8d"
+    },
+    "scripts/rules.gd": {
+      "current_raw": "5db58d5d73e2a8b584d12548dba71c864be0d6302ac2c9f84ca1ca4ad5b6f8f6",
+      "git_blob": "5db58d5d73e2a8b584d12548dba71c864be0d6302ac2c9f84ca1ca4ad5b6f8f6",
+      "lf": "5db58d5d73e2a8b584d12548dba71c864be0d6302ac2c9f84ca1ca4ad5b6f8f6"
+    },
+    "scripts/rules.gd.uid": {
+      "current_raw": "0f0da31b6f4b0164d53f22234d2e228b740294f4e9929aa73b6355b36bc710e8",
+      "git_blob": "0f0da31b6f4b0164d53f22234d2e228b740294f4e9929aa73b6355b36bc710e8",
+      "lf": "0f0da31b6f4b0164d53f22234d2e228b740294f4e9929aa73b6355b36bc710e8"
+    },
+    "scripts/rules_v1.gd": {
+      "current_raw": "5432339e42e95e02b14d64871cade704ccbb87f89a5c002412deed797291d950",
+      "git_blob": "5432339e42e95e02b14d64871cade704ccbb87f89a5c002412deed797291d950",
+      "lf": "5432339e42e95e02b14d64871cade704ccbb87f89a5c002412deed797291d950"
+    },
+    "scripts/rules_v1.gd.uid": {
+      "current_raw": "fe8e014622b836b5a4e92d5db70b2368ef4241702788e144c94431755f99bc70",
+      "git_blob": "fe8e014622b836b5a4e92d5db70b2368ef4241702788e144c94431755f99bc70",
+      "lf": "fe8e014622b836b5a4e92d5db70b2368ef4241702788e144c94431755f99bc70"
+    },
+    "scripts/save_files.gd": {
+      "current_raw": "fe8b3833f92e0ffba9bb165683bc88ba01819f05cc059ee27f1dfbe9a94cf2c0",
+      "git_blob": "fe8b3833f92e0ffba9bb165683bc88ba01819f05cc059ee27f1dfbe9a94cf2c0",
+      "lf": "fe8b3833f92e0ffba9bb165683bc88ba01819f05cc059ee27f1dfbe9a94cf2c0"
+    },
+    "scripts/save_files.gd.uid": {
+      "current_raw": "b1be48ebc254694afe695f6332e8f7cd498af14fd3926377cae93d9e861bf37e",
+      "git_blob": "b1be48ebc254694afe695f6332e8f7cd498af14fd3926377cae93d9e861bf37e",
+      "lf": "b1be48ebc254694afe695f6332e8f7cd498af14fd3926377cae93d9e861bf37e"
+    },
+    "scripts/save_store.gd": {
+      "current_raw": "d536cdb0649752bae4b2c002aa1408dddd64533282c525096eb2240fb165c721",
+      "git_blob": "d536cdb0649752bae4b2c002aa1408dddd64533282c525096eb2240fb165c721",
+      "lf": "d536cdb0649752bae4b2c002aa1408dddd64533282c525096eb2240fb165c721"
+    },
+    "scripts/save_store.gd.uid": {
+      "current_raw": "6983810b6668e5705d11e88ab7b7d6494086044a9599ef5e929ea98cb4c1a887",
+      "git_blob": "6983810b6668e5705d11e88ab7b7d6494086044a9599ef5e929ea98cb4c1a887",
+      "lf": "6983810b6668e5705d11e88ab7b7d6494086044a9599ef5e929ea98cb4c1a887"
+    },
+    "tests/association_motion.gd": {
+      "current_raw": "af56a9d7480b9a857c1bdeafd1f974d9f4e6399bb825aca1ad5be478a0440ed8",
+      "git_blob": "af56a9d7480b9a857c1bdeafd1f974d9f4e6399bb825aca1ad5be478a0440ed8",
+      "lf": "af56a9d7480b9a857c1bdeafd1f974d9f4e6399bb825aca1ad5be478a0440ed8"
+    },
+    "tests/association_motion.gd.uid": {
+      "current_raw": "20f9aee166d0c6de74c7e234eb10446c0be7bc790be2f09e57afd0b557100026",
+      "git_blob": "20f9aee166d0c6de74c7e234eb10446c0be7bc790be2f09e57afd0b557100026",
+      "lf": "20f9aee166d0c6de74c7e234eb10446c0be7bc790be2f09e57afd0b557100026"
+    },
+    "tests/back_policy.gd": {
+      "current_raw": "d769d33679752c5afe20cfaf9cf1ee4b1615e3af5bbd1bac9beae7eb0be61d80",
+      "git_blob": "d769d33679752c5afe20cfaf9cf1ee4b1615e3af5bbd1bac9beae7eb0be61d80",
+      "lf": "d769d33679752c5afe20cfaf9cf1ee4b1615e3af5bbd1bac9beae7eb0be61d80"
+    },
+    "tests/back_policy.gd.uid": {
+      "current_raw": "13fb66e4cdba02f49bf08829c4258bb7504daceac5b8ba21843f9240a1b6f7b3",
+      "git_blob": "13fb66e4cdba02f49bf08829c4258bb7504daceac5b8ba21843f9240a1b6f7b3",
+      "lf": "13fb66e4cdba02f49bf08829c4258bb7504daceac5b8ba21843f9240a1b6f7b3"
+    },
+    "tests/campaign_motion.gd": {
+      "current_raw": "bee986099fa0acdd451d7f37372c7f4a027792bafee87cb3e0b534b8263c70fb",
+      "git_blob": "bee986099fa0acdd451d7f37372c7f4a027792bafee87cb3e0b534b8263c70fb",
+      "lf": "bee986099fa0acdd451d7f37372c7f4a027792bafee87cb3e0b534b8263c70fb"
+    },
+    "tests/campaign_motion.gd.uid": {
+      "current_raw": "36c6d6d964926168c89ab46de1db4f11337324b01b9b51ffdec907c2cc0037db",
+      "git_blob": "36c6d6d964926168c89ab46de1db4f11337324b01b9b51ffdec907c2cc0037db",
+      "lf": "36c6d6d964926168c89ab46de1db4f11337324b01b9b51ffdec907c2cc0037db"
+    },
+    "tests/campaign_playthrough.gd": {
+      "current_raw": "7e50459080d8de711c035892ff3f3ead83c5d24d1772046f495e09d5a4dee8a1",
+      "git_blob": "7e50459080d8de711c035892ff3f3ead83c5d24d1772046f495e09d5a4dee8a1",
+      "lf": "7e50459080d8de711c035892ff3f3ead83c5d24d1772046f495e09d5a4dee8a1"
+    },
+    "tests/campaign_playthrough.gd.uid": {
+      "current_raw": "82de2bc2822e65bda6e43153a31d5f256d529a141a9172b91a0698f02928e5a1",
+      "git_blob": "82de2bc2822e65bda6e43153a31d5f256d529a141a9172b91a0698f02928e5a1",
+      "lf": "82de2bc2822e65bda6e43153a31d5f256d529a141a9172b91a0698f02928e5a1"
+    },
+    "tests/challenge_cases.gd": {
+      "current_raw": "c2e07bc7d1d5dfc0a9396fc372b4b05925b6174b5f14bd86238c388cf3ebd028",
+      "git_blob": "c2e07bc7d1d5dfc0a9396fc372b4b05925b6174b5f14bd86238c388cf3ebd028",
+      "lf": "c2e07bc7d1d5dfc0a9396fc372b4b05925b6174b5f14bd86238c388cf3ebd028"
+    },
+    "tests/challenge_cases.gd.uid": {
+      "current_raw": "dc4e443ce541a33d949e6368b3be5f6bafc77a7868332db18cf09cc954dd568f",
+      "git_blob": "dc4e443ce541a33d949e6368b3be5f6bafc77a7868332db18cf09cc954dd568f",
+      "lf": "dc4e443ce541a33d949e6368b3be5f6bafc77a7868332db18cf09cc954dd568f"
+    },
+    "tests/challenge_flow.gd": {
+      "current_raw": "35f15b17291e2357cdde84c842348282582a5a03dc100274d92a09ab4448192e",
+      "git_blob": "35f15b17291e2357cdde84c842348282582a5a03dc100274d92a09ab4448192e",
+      "lf": "35f15b17291e2357cdde84c842348282582a5a03dc100274d92a09ab4448192e"
+    },
+    "tests/challenge_flow.gd.uid": {
+      "current_raw": "cd57e77d9f59a326971efc8e4c6aa1684ef78848f98e0f602fe9700242120907",
+      "git_blob": "cd57e77d9f59a326971efc8e4c6aa1684ef78848f98e0f602fe9700242120907",
+      "lf": "cd57e77d9f59a326971efc8e4c6aa1684ef78848f98e0f602fe9700242120907"
+    },
+    "tests/challenge_motion.gd": {
+      "current_raw": "9f5ca0a089ee770dd4002097f0f445117ddcfa0dfaf8e1770e4313182803b79a",
+      "git_blob": "9f5ca0a089ee770dd4002097f0f445117ddcfa0dfaf8e1770e4313182803b79a",
+      "lf": "9f5ca0a089ee770dd4002097f0f445117ddcfa0dfaf8e1770e4313182803b79a"
+    },
+    "tests/challenge_motion.gd.uid": {
+      "current_raw": "6e3cee635e370a65db6c44457e7f8e2dc7a318b0389f86e44525241483eb8cc9",
+      "git_blob": "6e3cee635e370a65db6c44457e7f8e2dc7a318b0389f86e44525241483eb8cc9",
+      "lf": "6e3cee635e370a65db6c44457e7f8e2dc7a318b0389f86e44525241483eb8cc9"
+    },
+    "tests/challenge_playthrough.gd": {
+      "current_raw": "8e92d458b4b8fd3c245f1ebe02aa4ab7ba2a6a1c9c6f72cd635ecdeb6b8ee644",
+      "git_blob": "8e92d458b4b8fd3c245f1ebe02aa4ab7ba2a6a1c9c6f72cd635ecdeb6b8ee644",
+      "lf": "8e92d458b4b8fd3c245f1ebe02aa4ab7ba2a6a1c9c6f72cd635ecdeb6b8ee644"
+    },
+    "tests/challenge_playthrough.gd.uid": {
+      "current_raw": "dd1385f6b6153e41d166dded3086ce65379e74f410f054332eb0ad3aa7e7ae97",
+      "git_blob": "dd1385f6b6153e41d166dded3086ce65379e74f410f054332eb0ad3aa7e7ae97",
+      "lf": "dd1385f6b6153e41d166dded3086ce65379e74f410f054332eb0ad3aa7e7ae97"
+    },
+    "tests/challenge_rules.gd": {
+      "current_raw": "4459cfa012d736698872d724702e1dd4a2d4350eaff98b4f51123b1686d5d449",
+      "git_blob": "4459cfa012d736698872d724702e1dd4a2d4350eaff98b4f51123b1686d5d449",
+      "lf": "4459cfa012d736698872d724702e1dd4a2d4350eaff98b4f51123b1686d5d449"
+    },
+    "tests/challenge_rules.gd.uid": {
+      "current_raw": "1e3ddd486a49a025b5b809b8773762a2655a57e815f65e3d34d314fcf2b2433b",
+      "git_blob": "1e3ddd486a49a025b5b809b8773762a2655a57e815f65e3d34d314fcf2b2433b",
+      "lf": "1e3ddd486a49a025b5b809b8773762a2655a57e815f65e3d34d314fcf2b2433b"
+    },
+    "tests/create_challenge_fixture.gd": {
+      "current_raw": "3fe92de03787e28421b714f7b2ac2757e967abf9c27c1b3a77da22ea109e9a42",
+      "git_blob": "3fe92de03787e28421b714f7b2ac2757e967abf9c27c1b3a77da22ea109e9a42",
+      "lf": "3fe92de03787e28421b714f7b2ac2757e967abf9c27c1b3a77da22ea109e9a42"
+    },
+    "tests/create_challenge_fixture.gd.uid": {
+      "current_raw": "4c74672938c570bb4fa7604f03ca537a0ce77fd88dde136fac92d67de7da0c8f",
+      "git_blob": "4c74672938c570bb4fa7604f03ca537a0ce77fd88dde136fac92d67de7da0c8f",
+      "lf": "4c74672938c570bb4fa7604f03ca537a0ce77fd88dde136fac92d67de7da0c8f"
+    },
+    "tests/create_code2_fixture.gd": {
+      "current_raw": "2bc6f0988f9b11d2a716d2f4da7afec97f57df0eadf9636c11aa06677d60279b",
+      "git_blob": "2bc6f0988f9b11d2a716d2f4da7afec97f57df0eadf9636c11aa06677d60279b",
+      "lf": "2bc6f0988f9b11d2a716d2f4da7afec97f57df0eadf9636c11aa06677d60279b"
+    },
+    "tests/create_code2_fixture.gd.uid": {
+      "current_raw": "fa6fc48aa19270ff8861f20788a36295cf68184687a7761e43be7494485f0bc0",
+      "git_blob": "fa6fc48aa19270ff8861f20788a36295cf68184687a7761e43be7494485f0bc0",
+      "lf": "fa6fc48aa19270ff8861f20788a36295cf68184687a7761e43be7494485f0bc0"
+    },
+    "tests/create_legacy_fixture.gd": {
+      "current_raw": "a6c9f790c09113aa15e6a6dad45ed085842278d2c79753e37c519bccf1ddd46f",
+      "git_blob": "a6c9f790c09113aa15e6a6dad45ed085842278d2c79753e37c519bccf1ddd46f",
+      "lf": "a6c9f790c09113aa15e6a6dad45ed085842278d2c79753e37c519bccf1ddd46f"
+    },
+    "tests/create_legacy_fixture.gd.uid": {
+      "current_raw": "089c402a963afed06292fb38c044fb607420cde237792912b1dae1b37d538472",
+      "git_blob": "089c402a963afed06292fb38c044fb607420cde237792912b1dae1b37d538472",
+      "lf": "089c402a963afed06292fb38c044fb607420cde237792912b1dae1b37d538472"
+    },
+    "tests/fault_files.gd": {
+      "current_raw": "230aa713e890074394edeb86819078f703a1189a023b8ddf1d167caadc8eb2a7",
+      "git_blob": "230aa713e890074394edeb86819078f703a1189a023b8ddf1d167caadc8eb2a7",
+      "lf": "230aa713e890074394edeb86819078f703a1189a023b8ddf1d167caadc8eb2a7"
+    },
+    "tests/fault_files.gd.uid": {
+      "current_raw": "1640215fc56b9294bffa536d71f18cb82fdb1964f71a39e63f3dae1dbb1ed8e1",
+      "git_blob": "1640215fc56b9294bffa536d71f18cb82fdb1964f71a39e63f3dae1dbb1ed8e1",
+      "lf": "1640215fc56b9294bffa536d71f18cb82fdb1964f71a39e63f3dae1dbb1ed8e1"
+    },
+    "tests/feedback_association.gd": {
+      "current_raw": "7d03fbfcf202dd2c154bf882cf3f0d2e34e2380d2ee0c5ad7345013f5dd6198b",
+      "git_blob": "7d03fbfcf202dd2c154bf882cf3f0d2e34e2380d2ee0c5ad7345013f5dd6198b",
+      "lf": "7d03fbfcf202dd2c154bf882cf3f0d2e34e2380d2ee0c5ad7345013f5dd6198b"
+    },
+    "tests/feedback_association.gd.uid": {
+      "current_raw": "5544377fe6f6b1dc92214004d592c1a3c7a131a9161d27754dbf122592490588",
+      "git_blob": "5544377fe6f6b1dc92214004d592c1a3c7a131a9161d27754dbf122592490588",
+      "lf": "5544377fe6f6b1dc92214004d592c1a3c7a131a9161d27754dbf122592490588"
+    },
+    "tests/feedback_association_full.gd": {
+      "current_raw": "4ff3a7613640477aaf3d61899641d8462a5416f3f095fc0f2b3c4b5b6e4ae571",
+      "git_blob": "4ff3a7613640477aaf3d61899641d8462a5416f3f095fc0f2b3c4b5b6e4ae571",
+      "lf": "4ff3a7613640477aaf3d61899641d8462a5416f3f095fc0f2b3c4b5b6e4ae571"
+    },
+    "tests/feedback_association_full.gd.uid": {
+      "current_raw": "185505fc9b0119c31c977226955c243b3294b9e5aab9ed36f7f220962156c9dd",
+      "git_blob": "185505fc9b0119c31c977226955c243b3294b9e5aab9ed36f7f220962156c9dd",
+      "lf": "185505fc9b0119c31c977226955c243b3294b9e5aab9ed36f7f220962156c9dd"
+    },
+    "tests/feedback_readability.gd": {
+      "current_raw": "9fc0e58c9e03ce01e5909dc8a2de5a8b57de4eceaf0cb3a1408442176c784d35",
+      "git_blob": "9fc0e58c9e03ce01e5909dc8a2de5a8b57de4eceaf0cb3a1408442176c784d35",
+      "lf": "9fc0e58c9e03ce01e5909dc8a2de5a8b57de4eceaf0cb3a1408442176c784d35"
+    },
+    "tests/feedback_readability.gd.uid": {
+      "current_raw": "86b46926298d7f603090db1eea06128e1eaa203c82d7d5b95a22c4d4932ce1a2",
+      "git_blob": "86b46926298d7f603090db1eea06128e1eaa203c82d7d5b95a22c4d4932ce1a2",
+      "lf": "86b46926298d7f603090db1eea06128e1eaa203c82d7d5b95a22c4d4932ce1a2"
+    },
+    "tests/fixtures/challenge-v1-active.json": {
+      "current_raw": "df6d120859f1c9be9844c6974fa370b3cbe069857ec0c467af82ef7b0e924137",
+      "git_blob": "df6d120859f1c9be9844c6974fa370b3cbe069857ec0c467af82ef7b0e924137",
+      "lf": "df6d120859f1c9be9844c6974fa370b3cbe069857ec0c467af82ef7b0e924137"
+    },
+    "tests/fixtures/challenge-v1-active.provenance.json": {
+      "current_raw": "3c050990c3675712294c1343f036dccad680a392edd33c65d75cea40bf6a8018",
+      "git_blob": "3c050990c3675712294c1343f036dccad680a392edd33c65d75cea40bf6a8018",
+      "lf": "3c050990c3675712294c1343f036dccad680a392edd33c65d75cea40bf6a8018"
+    },
+    "tests/fixtures/challenge-v1-fallback.json": {
+      "current_raw": "ceff269844c20ae3901cfcd1fceea49515106c0c35aff928f58c595e51021a31",
+      "git_blob": "ceff269844c20ae3901cfcd1fceea49515106c0c35aff928f58c595e51021a31",
+      "lf": "ceff269844c20ae3901cfcd1fceea49515106c0c35aff928f58c595e51021a31"
+    },
+    "tests/fixtures/code1-active-route.json": {
+      "current_raw": "7ca9a01904e82629d72c62f91897cdd32be0bb50c6a9c21ad38d890f4cf045d5",
+      "git_blob": "7ca9a01904e82629d72c62f91897cdd32be0bb50c6a9c21ad38d890f4cf045d5",
+      "lf": "7ca9a01904e82629d72c62f91897cdd32be0bb50c6a9c21ad38d890f4cf045d5"
+    },
+    "tests/fixtures/code1-active-route.json.expected.json": {
+      "current_raw": "9203621fa9b31bf1d7313e8a1add8732357026ad57a024c3067f73741819fac4",
+      "git_blob": "9203621fa9b31bf1d7313e8a1add8732357026ad57a024c3067f73741819fac4",
+      "lf": "9203621fa9b31bf1d7313e8a1add8732357026ad57a024c3067f73741819fac4"
+    },
+    "tests/fixtures/code2-active-route.json": {
+      "current_raw": "b615fa67fcff48789dde24e334b91c6f42fde2feecdc038a8b904a78e2391927",
+      "git_blob": "b615fa67fcff48789dde24e334b91c6f42fde2feecdc038a8b904a78e2391927",
+      "lf": "b615fa67fcff48789dde24e334b91c6f42fde2feecdc038a8b904a78e2391927"
+    },
+    "tests/fixtures/code2-active-route.json.expected.json": {
+      "current_raw": "21ff85fbfb0eaf234dedcb2357d9fc54fcb73d66d182fbcedec51cfcaa2cbf0f",
+      "git_blob": "21ff85fbfb0eaf234dedcb2357d9fc54fcb73d66d182fbcedec51cfcaa2cbf0f",
+      "lf": "21ff85fbfb0eaf234dedcb2357d9fc54fcb73d66d182fbcedec51cfcaa2cbf0f"
+    },
+    "tests/fixtures/save-commit-before.json": {
+      "current_raw": "17572021887bf8982e1a2196588eca7b2025d2583f95c6288dfa153d4e4c4116",
+      "git_blob": "17572021887bf8982e1a2196588eca7b2025d2583f95c6288dfa153d4e4c4116",
+      "lf": "17572021887bf8982e1a2196588eca7b2025d2583f95c6288dfa153d4e4c4116"
+    },
+    "tests/fixtures/save-commit-before.provenance.json": {
+      "current_raw": "70e775577244caaad7295b413ef5d806c64bbdbd13f9b8d4b9374a0cc3abc0d4",
+      "git_blob": "70e775577244caaad7295b413ef5d806c64bbdbd13f9b8d4b9374a0cc3abc0d4",
+      "lf": "70e775577244caaad7295b413ef5d806c64bbdbd13f9b8d4b9374a0cc3abc0d4"
+    },
+    "tests/graphics_tour.gd": {
+      "current_raw": "4001deb09761e35bc651348d73d0138fc418b91a370132813980b256349880cb",
+      "git_blob": "4001deb09761e35bc651348d73d0138fc418b91a370132813980b256349880cb",
+      "lf": "4001deb09761e35bc651348d73d0138fc418b91a370132813980b256349880cb"
+    },
+    "tests/graphics_tour.gd.uid": {
+      "current_raw": "5d8adcb546e5a6735eed658bac0cfc16357fff89e197209a63a6f92359ffc0e2",
+      "git_blob": "5d8adcb546e5a6735eed658bac0cfc16357fff89e197209a63a6f92359ffc0e2",
+      "lf": "5d8adcb546e5a6735eed658bac0cfc16357fff89e197209a63a6f92359ffc0e2"
+    },
+    "tests/graphics_view.gd": {
+      "current_raw": "3d096a5f547806532676146d372a8ddd9e14821e1ee0059ab2a61a41585186d5",
+      "git_blob": "3d096a5f547806532676146d372a8ddd9e14821e1ee0059ab2a61a41585186d5",
+      "lf": "3d096a5f547806532676146d372a8ddd9e14821e1ee0059ab2a61a41585186d5"
+    },
+    "tests/graphics_view.gd.uid": {
+      "current_raw": "aeb7c3e79b2dd40fe1da7df85472eb9e25d84cf0ef4605a6e426b48c205c1445",
+      "git_blob": "aeb7c3e79b2dd40fe1da7df85472eb9e25d84cf0ef4605a6e426b48c205c1445",
+      "lf": "aeb7c3e79b2dd40fe1da7df85472eb9e25d84cf0ef4605a6e426b48c205c1445"
+    },
+    "tests/import_backup_probe.gd": {
+      "current_raw": "3f3f39a4d7f825db013e4afc1188b347a3a64696d6b8aaf00e248460f0470503",
+      "git_blob": "3f3f39a4d7f825db013e4afc1188b347a3a64696d6b8aaf00e248460f0470503",
+      "lf": "3f3f39a4d7f825db013e4afc1188b347a3a64696d6b8aaf00e248460f0470503"
+    },
+    "tests/import_backup_probe.gd.uid": {
+      "current_raw": "cdd978f62c9ffb6afa2b7c25d55e5da2049ab182e7e31feb1478f3629119668a",
+      "git_blob": "cdd978f62c9ffb6afa2b7c25d55e5da2049ab182e7e31feb1478f3629119668a",
+      "lf": "cdd978f62c9ffb6afa2b7c25d55e5da2049ab182e7e31feb1478f3629119668a"
+    },
+    "tests/import_recovery.gd": {
+      "current_raw": "e306128e62c63b95b67cea959148dba0a452e8279db39df0814bbf00c3f4b989",
+      "git_blob": "e306128e62c63b95b67cea959148dba0a452e8279db39df0814bbf00c3f4b989",
+      "lf": "e306128e62c63b95b67cea959148dba0a452e8279db39df0814bbf00c3f4b989"
+    },
+    "tests/import_recovery.gd.uid": {
+      "current_raw": "68bab286f6a502b891952523dd892d3af7ee33bd6eb5e3273664e47f7a25ad6c",
+      "git_blob": "68bab286f6a502b891952523dd892d3af7ee33bd6eb5e3273664e47f7a25ad6c",
+      "lf": "68bab286f6a502b891952523dd892d3af7ee33bd6eb5e3273664e47f7a25ad6c"
+    },
+    "tests/input_base.gd": {
+      "current_raw": "86e29715d9de512cbf7a408e2ab74913804b54f2280a4fb344daa0d9ed57be8e",
+      "git_blob": "86e29715d9de512cbf7a408e2ab74913804b54f2280a4fb344daa0d9ed57be8e",
+      "lf": "86e29715d9de512cbf7a408e2ab74913804b54f2280a4fb344daa0d9ed57be8e"
+    },
+    "tests/input_base.gd.uid": {
+      "current_raw": "3b7c9adbfd0026fa702238609679dbe1f20fd30b27b2cdf7b86dc4dc2da68ce5",
+      "git_blob": "3b7c9adbfd0026fa702238609679dbe1f20fd30b27b2cdf7b86dc4dc2da68ce5",
+      "lf": "3b7c9adbfd0026fa702238609679dbe1f20fd30b27b2cdf7b86dc4dc2da68ce5"
+    },
+    "tests/layout_probe.gd.uid": {
+      "current_raw": "82cd324bd9aa68de42d686d8163e69555dcdc6fd780794f44ffdc7cb9c066f86",
+      "git_blob": "82cd324bd9aa68de42d686d8163e69555dcdc6fd780794f44ffdc7cb9c066f86",
+      "lf": "82cd324bd9aa68de42d686d8163e69555dcdc6fd780794f44ffdc7cb9c066f86"
+    },
+    "tests/legacy_update_input.gd": {
+      "current_raw": "42ad8c3d2eb451878c6c14c7d667183c613f13e76f2f22ca24e5fb290da46a86",
+      "git_blob": "42ad8c3d2eb451878c6c14c7d667183c613f13e76f2f22ca24e5fb290da46a86",
+      "lf": "42ad8c3d2eb451878c6c14c7d667183c613f13e76f2f22ca24e5fb290da46a86"
+    },
+    "tests/legacy_update_input.gd.uid": {
+      "current_raw": "53119ab6d3cfb9752cd7dc5ed8254f921339612780d51274f2eca462c2a3f1d9",
+      "git_blob": "53119ab6d3cfb9752cd7dc5ed8254f921339612780d51274f2eca462c2a3f1d9",
+      "lf": "53119ab6d3cfb9752cd7dc5ed8254f921339612780d51274f2eca462c2a3f1d9"
+    },
+    "tests/medal_feedback.gd": {
+      "current_raw": "75655234ffcc232b22c0370b3e42cbdf717b0932e4ddce1487c14e6e51f3d0ba",
+      "git_blob": "75655234ffcc232b22c0370b3e42cbdf717b0932e4ddce1487c14e6e51f3d0ba",
+      "lf": "75655234ffcc232b22c0370b3e42cbdf717b0932e4ddce1487c14e6e51f3d0ba"
+    },
+    "tests/medal_feedback.gd.uid": {
+      "current_raw": "430da34c7d9eae8133d49cd06ffb84c18440937bc48800f3e65194e18e6990ab",
+      "git_blob": "430da34c7d9eae8133d49cd06ffb84c18440937bc48800f3e65194e18e6990ab",
+      "lf": "430da34c7d9eae8133d49cd06ffb84c18440937bc48800f3e65194e18e6990ab"
+    },
+    "tests/motion.gd": {
+      "current_raw": "2a1e9ac2d99449799b1ec4971e25755b38b14ff4977da5412ec77502e3c87141",
+      "git_blob": "2a1e9ac2d99449799b1ec4971e25755b38b14ff4977da5412ec77502e3c87141",
+      "lf": "2a1e9ac2d99449799b1ec4971e25755b38b14ff4977da5412ec77502e3c87141"
+    },
+    "tests/motion.gd.uid": {
+      "current_raw": "dbf01c19540c458ec75449b46cbc57dcf4bd5ed719a9e92df5870cdb9f0978c6",
+      "git_blob": "dbf01c19540c458ec75449b46cbc57dcf4bd5ed719a9e92df5870cdb9f0978c6",
+      "lf": "dbf01c19540c458ec75449b46cbc57dcf4bd5ed719a9e92df5870cdb9f0978c6"
+    },
+    "tests/playthrough.gd": {
+      "current_raw": "3a85e700145c112b3ba830c66b6729a9c7ff40a75eea39e9b2e2ff8b29684a46",
+      "git_blob": "3a85e700145c112b3ba830c66b6729a9c7ff40a75eea39e9b2e2ff8b29684a46",
+      "lf": "3a85e700145c112b3ba830c66b6729a9c7ff40a75eea39e9b2e2ff8b29684a46"
+    },
+    "tests/playthrough.gd.uid": {
+      "current_raw": "66b700d6cf0a31a9f810a27c889ef9de8d0f76da2464d19fdaeaddd89094f739",
+      "git_blob": "66b700d6cf0a31a9f810a27c889ef9de8d0f76da2464d19fdaeaddd89094f739",
+      "lf": "66b700d6cf0a31a9f810a27c889ef9de8d0f76da2464d19fdaeaddd89094f739"
+    },
+    "tests/preparation.gd": {
+      "current_raw": "1248f2740dfea14addeb9500cf51be70689a9ca2477a0c190f9ac75dc88109aa",
+      "git_blob": "1248f2740dfea14addeb9500cf51be70689a9ca2477a0c190f9ac75dc88109aa",
+      "lf": "1248f2740dfea14addeb9500cf51be70689a9ca2477a0c190f9ac75dc88109aa"
+    },
+    "tests/preparation.gd.uid": {
+      "current_raw": "3f8a1086c50d128caedeb80fa5d45014d2056d1d42cf24aedbb0160e5a4ee40a",
+      "git_blob": "3f8a1086c50d128caedeb80fa5d45014d2056d1d42cf24aedbb0160e5a4ee40a",
+      "lf": "3f8a1086c50d128caedeb80fa5d45014d2056d1d42cf24aedbb0160e5a4ee40a"
+    },
+    "tests/run_tests.gd": {
+      "current_raw": "682b41325f4d3bafd4dca16df43d5ab0353d39cddadd6e04afd883f0364098b9",
+      "git_blob": "682b41325f4d3bafd4dca16df43d5ab0353d39cddadd6e04afd883f0364098b9",
+      "lf": "682b41325f4d3bafd4dca16df43d5ab0353d39cddadd6e04afd883f0364098b9"
+    },
+    "tests/run_tests.gd.uid": {
+      "current_raw": "83bcb327fd121e34d059d662a0a9743250335f4e195f75375a466ced854d05fa",
+      "git_blob": "83bcb327fd121e34d059d662a0a9743250335f4e195f75375a466ced854d05fa",
+      "lf": "83bcb327fd121e34d059d662a0a9743250335f4e195f75375a466ced854d05fa"
+    },
+    "tests/save_commit.gd": {
+      "current_raw": "8b09795127415576cad12287b3e8dd98408baf60ca1e46209278baa86e92d3c9",
+      "git_blob": "8b09795127415576cad12287b3e8dd98408baf60ca1e46209278baa86e92d3c9",
+      "lf": "8b09795127415576cad12287b3e8dd98408baf60ca1e46209278baa86e92d3c9"
+    },
+    "tests/save_commit.gd.uid": {
+      "current_raw": "940fd2a4a5d86bf2347eed6ded00df35d1a31e972b4597253bf0a7235c3983ca",
+      "git_blob": "940fd2a4a5d86bf2347eed6ded00df35d1a31e972b4597253bf0a7235c3983ca",
+      "lf": "940fd2a4a5d86bf2347eed6ded00df35d1a31e972b4597253bf0a7235c3983ca"
+    },
+    "tools/association_capture.py": {
+      "current_raw": "f2c52588dfd6febea883445082a8278632b45aef5db8ae45009257332392c343",
+      "git_blob": "f2c52588dfd6febea883445082a8278632b45aef5db8ae45009257332392c343",
+      "lf": "f2c52588dfd6febea883445082a8278632b45aef5db8ae45009257332392c343"
+    },
+    "tools/capture.py": {
+      "current_raw": "5a4bc1881b98b7f62927f3cbb1cda287bd006ffad2ff7a2c7833f535599e0fa1",
+      "git_blob": "5a4bc1881b98b7f62927f3cbb1cda287bd006ffad2ff7a2c7833f535599e0fa1",
+      "lf": "5a4bc1881b98b7f62927f3cbb1cda287bd006ffad2ff7a2c7833f535599e0fa1"
+    },
+    "tools/check.py": {
+      "current_raw": "32881d3bb35437be85caacb6b910b9522188f155ca3865b144b9b9acc26f787b",
+      "git_blob": "32881d3bb35437be85caacb6b910b9522188f155ca3865b144b9b9acc26f787b",
+      "lf": "32881d3bb35437be85caacb6b910b9522188f155ca3865b144b9b9acc26f787b"
+    },
+    "tools/design_check.py": {
+      "current_raw": "2c55b864f03ee6bf3cf72f7792ab37d037a087f358bf1da4ac761811858d3ff3",
+      "git_blob": "2c55b864f03ee6bf3cf72f7792ab37d037a087f358bf1da4ac761811858d3ff3",
+      "lf": "2c55b864f03ee6bf3cf72f7792ab37d037a087f358bf1da4ac761811858d3ff3"
+    },
+    "tools/graphics_check.py": {
+      "current_raw": "34d9ff4bc916c1aa41d2a623bb762799072ccf676b7722d38a799c7b58e27041",
+      "git_blob": "34d9ff4bc916c1aa41d2a623bb762799072ccf676b7722d38a799c7b58e27041",
+      "lf": "34d9ff4bc916c1aa41d2a623bb762799072ccf676b7722d38a799c7b58e27041"
+    }
+  },
+  "notes": {
+    "sha256": "a3b6362ba1d867519f4950f4719a0ce450dd6a0353d90590af4011809143dd80",
+    "bytes": 4161
+  },
+  "runner": {
+    "path": ".artifacts/run-transfer-layout.py",
+    "sha256": "a912984bfb06f80e678c4699dc8774bc09dba834a6c299c21bfff6df5fabc75f",
+    "bytes": 1866
+  },
+  "receipts": [
+    {
+      "path": ".artifacts/transfer-layout-base-medals-20261024T101113393886Z",
+      "artifacts": {
+        "appdata/Godot/app_userdata/Tower Trials/logs/godot.log": {
+          "sha256": "4f90102ccffa45459ec9f4c34c73b7dd04d3b9c25c6a309bb5ebf6cfc50fdbfa",
+          "bytes": 134
+        },
+        "appdata/Godot/app_userdata/Tower Trials/tower-medal-feedback.json": {
+          "sha256": "c5f8569f08e31461abfee1e3ad7c14d25194c763db1aa4741bf9f00016c15bd4",
+          "bytes": 2795
+        },
+        "appdata/Godot/app_userdata/Tower Trials/tower-medal-feedback.json.bak": {
+          "sha256": "a41447181c4970f9a905cfb2cd892f59ae11c6560412523c97f77a4cff3492a2",
+          "bytes": 2787
+        },
+        "layout.log": {
+          "sha256": "721d99123fe5cf800ad0f677eb3ccde3e5fdd088f3c1ba84d0e48b50cb34148e",
+          "bytes": 138
+        },
+        "medal-feedback.json": {
+          "sha256": "ff6362a39a42379032ae5ec114d31b924137975cb2dc20efcc6e898bd6cc4b11",
+          "bytes": 46636
+        },
+        "report.json": {
+          "sha256": "f8d8412ac1178c09ece516b1fdbec3eb3d3e968f0888c34841599d996eafa43d",
+          "bytes": 629
+        },
+        "source-after.json": {
+          "sha256": "fc0aa876e5c5ca4c63ee6367f6fb1f9530f9878228b6f31669b441b566312a2c",
+          "bytes": 17493
+        },
+        "source-before.json": {
+          "sha256": "fc0aa876e5c5ca4c63ee6367f6fb1f9530f9878228b6f31669b441b566312a2c",
+          "bytes": 17493
+        }
+      }
+    },
+    {
+      "path": ".artifacts/transfer-layout-baseline-20261024T100551784071Z",
+      "artifacts": {
+        "00-cover-boundaries.json": {
+          "sha256": "4cfa59a10adf288633b00c3f1d8915bd3db95b1b6681b943f9d92513852db221",
+          "bytes": 650
+        },
+        "01-cover-map-footer.json": {
+          "sha256": "05ebbe28078a4b650c6b716d19708ac78c7e76d8e09abfde923069eefd1da495",
+          "bytes": 649
+        },
+        "02-unfolded-input.json": {
+          "sha256": "4d0e21e20d4cc3c149ec3c5ee5543931e7d1e60d4f92305222872bbd49e08235",
+          "bytes": 675
+        },
+        "appdata/Godot/app_userdata/Tower Trials/logs/godot.log": {
+          "sha256": "c88609e9aed328df8197a159cdd41425398a053f0891cf787dac23641e1cf9e7",
+          "bytes": 6715
+        },
+        "appdata/Godot/app_userdata/Tower Trials/tower-layout-input.json": {
+          "sha256": "83cb9af4a4a026f9767a6912cfc6e72460e70c09cd57ee02251406ddf336cb1f",
+          "bytes": 247
+        },
+        "appdata/Godot/app_userdata/Tower Trials/tower-layout-input.json.bak": {
+          "sha256": "d6c96faf70614ee0ade95da924761f76014864b6bcd6a5e7c2a5d6146a24309d",
+          "bytes": 241
+        },
+        "layout.log": {
+          "sha256": "c123a35b1b14e7cfa1f0d30e2e418598b618dc2d65a490c59dd79ed68c9ad5aa",
+          "bytes": 6826
+        },
+        "report.json": {
+          "sha256": "d130c4b364ecbbb8f7054f3ceaecfa28ce0c8551e14a0b58ccb4bf2462ce3d5c",
+          "bytes": 625
+        },
+        "result.json": {
+          "sha256": "2cbd818ea83e8eb64eda6c1402bef694f303c2a456e4a144926bded7dc9adc69",
+          "bytes": 17968
+        },
+        "source-after.json": {
+          "sha256": "caa6d739f038617ee027911a30d2230a38a440024bfa680d233b636affcb78f4",
+          "bytes": 17493
+        },
+        "source-before.json": {
+          "sha256": "caa6d739f038617ee027911a30d2230a38a440024bfa680d233b636affcb78f4",
+          "bytes": 17493
+        }
+      }
+    },
+    {
+      "path": ".artifacts/transfer-layout-final-20261024T100756391303Z",
+      "artifacts": {
+        "00-cover-boundaries.json": {
+          "sha256": "4cfa59a10adf288633b00c3f1d8915bd3db95b1b6681b943f9d92513852db221",
+          "bytes": 650
+        },
+        "01-cover-map-footer.json": {
+          "sha256": "05ebbe28078a4b650c6b716d19708ac78c7e76d8e09abfde923069eefd1da495",
+          "bytes": 649
+        },
+        "02-unfolded-input.json": {
+          "sha256": "4d0e21e20d4cc3c149ec3c5ee5543931e7d1e60d4f92305222872bbd49e08235",
+          "bytes": 675
+        },
+        "appdata/Godot/app_userdata/Tower Trials/logs/godot.log": {
+          "sha256": "7484f0921b738f61fa619bde7c910885d6e1f5a7b6bbf27ab6792d70c3d0c43c",
+          "bytes": 137
+        },
+        "appdata/Godot/app_userdata/Tower Trials/tower-layout-input.json": {
+          "sha256": "83cb9af4a4a026f9767a6912cfc6e72460e70c09cd57ee02251406ddf336cb1f",
+          "bytes": 247
+        },
+        "appdata/Godot/app_userdata/Tower Trials/tower-layout-input.json.bak": {
+          "sha256": "d6c96faf70614ee0ade95da924761f76014864b6bcd6a5e7c2a5d6146a24309d",
+          "bytes": 241
+        },
+        "layout.log": {
+          "sha256": "e93023c899869ea852f20f33b571b31b53764ebe39b88c40b6e0be39c6379c26",
+          "bytes": 141
+        },
+        "report.json": {
+          "sha256": "d8f77627905331c2c19d9759e39dc1a3b863741218e365ff0b66c2efa70c3416",
+          "bytes": 621
+        },
+        "result.json": {
+          "sha256": "cd3c3e66a58113efc190921036efb6759f8994915cb2bf3fc90b875e4d000502",
+          "bytes": 10227
+        },
+        "source-after.json": {
+          "sha256": "6c040262628e2df80cc9706dbd27a5e25e6f7bb910311d38b96fcffccf7b3537",
+          "bytes": 17493
+        },
+        "source-before.json": {
+          "sha256": "6c040262628e2df80cc9706dbd27a5e25e6f7bb910311d38b96fcffccf7b3537",
+          "bytes": 17493
+        }
+      }
+    },
+    {
+      "path": ".artifacts/transfer-layout-final-medals-20261024T101159121026Z",
+      "artifacts": {
+        "appdata/Godot/app_userdata/Tower Trials/logs/godot.log": {
+          "sha256": "4f90102ccffa45459ec9f4c34c73b7dd04d3b9c25c6a309bb5ebf6cfc50fdbfa",
+          "bytes": 134
+        },
+        "appdata/Godot/app_userdata/Tower Trials/tower-medal-feedback.json": {
+          "sha256": "c5f8569f08e31461abfee1e3ad7c14d25194c763db1aa4741bf9f00016c15bd4",
+          "bytes": 2795
+        },
+        "appdata/Godot/app_userdata/Tower Trials/tower-medal-feedback.json.bak": {
+          "sha256": "a41447181c4970f9a905cfb2cd892f59ae11c6560412523c97f77a4cff3492a2",
+          "bytes": 2787
+        },
+        "layout.log": {
+          "sha256": "721d99123fe5cf800ad0f677eb3ccde3e5fdd088f3c1ba84d0e48b50cb34148e",
+          "bytes": 138
+        },
+        "medal-feedback.json": {
+          "sha256": "ff6362a39a42379032ae5ec114d31b924137975cb2dc20efcc6e898bd6cc4b11",
+          "bytes": 46636
+        },
+        "report.json": {
+          "sha256": "21b3f052c09cb4d73743ef58d22dda185e022566502750843cf5da6485341cd9",
+          "bytes": 630
+        },
+        "source-after.json": {
+          "sha256": "37f70b8637806b39e7bde12ea2deb3e41a4bdd93025ed0b5711a9477f49629b2",
+          "bytes": 17493
+        },
+        "source-before.json": {
+          "sha256": "37f70b8637806b39e7bde12ea2deb3e41a4bdd93025ed0b5711a9477f49629b2",
+          "bytes": 17493
+        }
+      }
+    },
+    {
+      "path": ".artifacts/transfer-layout-final-separated-20261024T101000822775Z",
+      "artifacts": {
+        "00-cover-boundaries.json": {
+          "sha256": "4cfa59a10adf288633b00c3f1d8915bd3db95b1b6681b943f9d92513852db221",
+          "bytes": 650
+        },
+        "01-cover-map-footer.json": {
+          "sha256": "05ebbe28078a4b650c6b716d19708ac78c7e76d8e09abfde923069eefd1da495",
+          "bytes": 649
+        },
+        "02-unfolded-input.json": {
+          "sha256": "4d0e21e20d4cc3c149ec3c5ee5543931e7d1e60d4f92305222872bbd49e08235",
+          "bytes": 675
+        },
+        "appdata/Godot/app_userdata/Tower Trials/logs/godot.log": {
+          "sha256": "0bf2e11eb5c99d6ea8df50d8e423483f9149b84c0a9a7e952d77fd2d4661c44e",
+          "bytes": 137
+        },
+        "appdata/Godot/app_userdata/Tower Trials/tower-layout-input.json": {
+          "sha256": "83cb9af4a4a026f9767a6912cfc6e72460e70c09cd57ee02251406ddf336cb1f",
+          "bytes": 247
+        },
+        "appdata/Godot/app_userdata/Tower Trials/tower-layout-input.json.bak": {
+          "sha256": "d6c96faf70614ee0ade95da924761f76014864b6bcd6a5e7c2a5d6146a24309d",
+          "bytes": 241
+        },
+        "layout.log": {
+          "sha256": "67e90c9239905689e5ac4824bd0b2b6d96860b1a1a9caac0eb6a2f56b32b002c",
+          "bytes": 141
+        },
+        "report.json": {
+          "sha256": "7ee4b88cee6bb6fb9c2c958ed8395191511ac6676bacfc3bd41b0780c150dcda",
+          "bytes": 631
+        },
+        "result.json": {
+          "sha256": "ace3d24c1b74829695489102edf6289dcb18b47a62b6e53f65b201243eafe04f",
+          "bytes": 10227
+        },
+        "source-after.json": {
+          "sha256": "c7720b8e12cae6f1d8a582ca606c2bea6a4d10362266e7b567719d460fdd6118",
+          "bytes": 17493
+        },
+        "source-before.json": {
+          "sha256": "c7720b8e12cae6f1d8a582ca606c2bea6a4d10362266e7b567719d460fdd6118",
+          "bytes": 17493
+        }
+      }
+    },
+    {
+      "path": ".artifacts/transfer-layout-final-utf8-20261024T101158008851Z",
+      "artifacts": {
+        "00-cover-boundaries.json": {
+          "sha256": "4cfa59a10adf288633b00c3f1d8915bd3db95b1b6681b943f9d92513852db221",
+          "bytes": 650
+        },
+        "01-cover-map-footer.json": {
+          "sha256": "05ebbe28078a4b650c6b716d19708ac78c7e76d8e09abfde923069eefd1da495",
+          "bytes": 649
+        },
+        "02-unfolded-input.json": {
+          "sha256": "4d0e21e20d4cc3c149ec3c5ee5543931e7d1e60d4f92305222872bbd49e08235",
+          "bytes": 675
+        },
+        "appdata/Godot/app_userdata/Tower Trials/logs/godot.log": {
+          "sha256": "0bf2e11eb5c99d6ea8df50d8e423483f9149b84c0a9a7e952d77fd2d4661c44e",
+          "bytes": 137
+        },
+        "appdata/Godot/app_userdata/Tower Trials/tower-layout-input.json": {
+          "sha256": "83cb9af4a4a026f9767a6912cfc6e72460e70c09cd57ee02251406ddf336cb1f",
+          "bytes": 247
+        },
+        "appdata/Godot/app_userdata/Tower Trials/tower-layout-input.json.bak": {
+          "sha256": "d6c96faf70614ee0ade95da924761f76014864b6bcd6a5e7c2a5d6146a24309d",
+          "bytes": 241
+        },
+        "layout.log": {
+          "sha256": "67e90c9239905689e5ac4824bd0b2b6d96860b1a1a9caac0eb6a2f56b32b002c",
+          "bytes": 141
+        },
+        "report.json": {
+          "sha256": "392b95372c6b64a44390a090e4876fec615a394e5eb05c9ec590bd10ed520a01",
+          "bytes": 626
+        },
+        "result.json": {
+          "sha256": "ace3d24c1b74829695489102edf6289dcb18b47a62b6e53f65b201243eafe04f",
+          "bytes": 10227
+        },
+        "source-after.json": {
+          "sha256": "37f70b8637806b39e7bde12ea2deb3e41a4bdd93025ed0b5711a9477f49629b2",
+          "bytes": 17493
+        },
+        "source-before.json": {
+          "sha256": "37f70b8637806b39e7bde12ea2deb3e41a4bdd93025ed0b5711a9477f49629b2",
+          "bytes": 17493
+        }
+      }
+    },
+    {
+      "path": ".artifacts/transfer-layout-import-20261024T100512221383Z",
+      "artifacts": {
+        "import.log": {
+          "sha256": "5962c1fc6cbd5b095cc9386a724d2c7baa481a9f87eb629a329f5559695dbb47",
+          "bytes": 15879
+        },
+        "report.json": {
+          "sha256": "01e12aed1eda3115d156c61f95724e56ad20bf5827f3856d1d74ab44105bd9e6",
+          "bytes": 421
+        },
+        "source-after.json": {
+          "sha256": "cb07d8dd33d77fa0b202cdae541462afb9a7c66ac33097dd1393b579566dabf3",
+          "bytes": 22307
+        },
+        "source-before.json": {
+          "sha256": "cb07d8dd33d77fa0b202cdae541462afb9a7c66ac33097dd1393b579566dabf3",
+          "bytes": 22307
+        }
+      }
+    },
+    {
+      "path": ".artifacts/transfer-layout-isolated-baseline-20261024T100636229993Z",
+      "artifacts": {
+        "00-cover-boundaries.json": {
+          "sha256": "4cfa59a10adf288633b00c3f1d8915bd3db95b1b6681b943f9d92513852db221",
+          "bytes": 650
+        },
+        "01-cover-map-footer.json": {
+          "sha256": "05ebbe28078a4b650c6b716d19708ac78c7e76d8e09abfde923069eefd1da495",
+          "bytes": 649
+        },
+        "02-unfolded-input.json": {
+          "sha256": "4d0e21e20d4cc3c149ec3c5ee5543931e7d1e60d4f92305222872bbd49e08235",
+          "bytes": 675
+        },
+        "appdata/Godot/app_userdata/Tower Trials/logs/godot.log": {
+          "sha256": "64761141c11c2f27e43f21bebac6344817c4cb46560b47f7d6dd59a0096f86c3",
+          "bytes": 4419
+        },
+        "appdata/Godot/app_userdata/Tower Trials/tower-layout-input.json": {
+          "sha256": "83cb9af4a4a026f9767a6912cfc6e72460e70c09cd57ee02251406ddf336cb1f",
+          "bytes": 247
+        },
+        "appdata/Godot/app_userdata/Tower Trials/tower-layout-input.json.bak": {
+          "sha256": "d6c96faf70614ee0ade95da924761f76014864b6bcd6a5e7c2a5d6146a24309d",
+          "bytes": 241
+        },
+        "layout.log": {
+          "sha256": "9a09602bb26b787184c6caaca0381ffdc6ae94392ca2cce3fbb0242caa7afa93",
+          "bytes": 4494
+        },
+        "report.json": {
+          "sha256": "ef59e9a2dafb9fa42d6d496f76347cdedb84d22cd3ba8580adc9a197d762ba53",
+          "bytes": 634
+        },
+        "result.json": {
+          "sha256": "4b8981e65d633887cee2945f9057bfeab3df053b7a0137910c8b988e5e84466d",
+          "bytes": 14458
+        },
+        "source-after.json": {
+          "sha256": "1bc9ab0820b5101c6f9f6594d26b85b1aedfeff38074c812c35ea5f3c26c3e11",
+          "bytes": 17493
+        },
+        "source-before.json": {
+          "sha256": "1bc9ab0820b5101c6f9f6594d26b85b1aedfeff38074c812c35ea5f3c26c3e11",
+          "bytes": 17493
+        }
+      }
+    },
+    {
+      "path": ".artifacts/transfer-layout-scoped-baseline-20261024T100737528081Z",
+      "artifacts": {
+        "00-cover-boundaries.json": {
+          "sha256": "4cfa59a10adf288633b00c3f1d8915bd3db95b1b6681b943f9d92513852db221",
+          "bytes": 650
+        },
+        "01-cover-map-footer.json": {
+          "sha256": "05ebbe28078a4b650c6b716d19708ac78c7e76d8e09abfde923069eefd1da495",
+          "bytes": 649
+        },
+        "02-unfolded-input.json": {
+          "sha256": "4d0e21e20d4cc3c149ec3c5ee5543931e7d1e60d4f92305222872bbd49e08235",
+          "bytes": 675
+        },
+        "appdata/Godot/app_userdata/Tower Trials/logs/godot.log": {
+          "sha256": "912c326b76914c404993b84bd8ecebbfecb5903ad531aa60150c9bd6830b3112",
+          "bytes": 3465
+        },
+        "appdata/Godot/app_userdata/Tower Trials/tower-layout-input.json": {
+          "sha256": "83cb9af4a4a026f9767a6912cfc6e72460e70c09cd57ee02251406ddf336cb1f",
+          "bytes": 247
+        },
+        "appdata/Godot/app_userdata/Tower Trials/tower-layout-input.json.bak": {
+          "sha256": "d6c96faf70614ee0ade95da924761f76014864b6bcd6a5e7c2a5d6146a24309d",
+          "bytes": 241
+        },
+        "layout.log": {
+          "sha256": "ca60b7fdb56b08be1d676a67a7166330a4d77585c3493e21a1403fe76c816f33",
+          "bytes": 3522
+        },
+        "report.json": {
+          "sha256": "a2d6cdfc13e6064ccddbf7b4447e027e3c8e63a42c5f8bfb4b49095600e50325",
+          "bytes": 632
+        },
+        "result.json": {
+          "sha256": "0a47041d7604423dc468d1769cebecebc329e722a38612c9f5205d46f4739ed9",
+          "bytes": 13522
+        },
+        "source-after.json": {
+          "sha256": "26708300001dbd6ae2d7d4ce269e28de915ec0f98bed126cfc18961cce486829",
+          "bytes": 17493
+        },
+        "source-before.json": {
+          "sha256": "26708300001dbd6ae2d7d4ce269e28de915ec0f98bed126cfc18961cce486829",
+          "bytes": 17493
+        }
+      }
+    },
+    {
+      "path": ".artifacts/transfer-layout-unchanged-medals-20261024T101032512394Z",
+      "artifacts": {
+        "appdata/Godot/app_userdata/Tower Trials/logs/godot.log": {
+          "sha256": "7ce3647e462bd06b61f3bc708b26d04a32e847cd39ee576eeea6f66ff1f786dd",
+          "bytes": 577
+        },
+        "appdata/Godot/app_userdata/Tower Trials/tower-medal-feedback.json": {
+          "sha256": "c5f8569f08e31461abfee1e3ad7c14d25194c763db1aa4741bf9f00016c15bd4",
+          "bytes": 2795
+        },
+        "appdata/Godot/app_userdata/Tower Trials/tower-medal-feedback.json.bak": {
+          "sha256": "a41447181c4970f9a905cfb2cd892f59ae11c6560412523c97f77a4cff3492a2",
+          "bytes": 2787
+        },
+        "layout.log": {
+          "sha256": "d390ee6e7e250b7233781f960e16820b37718aea9967d1bc2e4ead0a782dc491",
+          "bytes": 588
+        },
+        "medal-feedback.json": {
+          "sha256": "6933541a49401b1156824fc2ae37d4a6f2763addc9072e108a3addeac4e0bbdc",
+          "bytes": 47485
+        },
+        "report.json": {
+          "sha256": "27274ece3e30947270c2eff580ec4bb196add19c8c233edf5352b717fa574bc2",
+          "bytes": 635
+        },
+        "source-after.json": {
+          "sha256": "c7720b8e12cae6f1d8a582ca606c2bea6a4d10362266e7b567719d460fdd6118",
+          "bytes": 17493
+        },
+        "source-before.json": {
+          "sha256": "c7720b8e12cae6f1d8a582ca606c2bea6a4d10362266e7b567719d460fdd6118",
+          "bytes": 17493
+        }
+      }
+    }
+  ],
+  "native_reference": {
+    "path": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-tower-code9-20261024\\native-export-copied\\screen.png",
+    "sha256": "208b9954af39667fe0fe966f47f68862355915b07ac91bf4580981969ce57762",
+    "bytes": 365043
+  },
+  "final": {
+    "geometry": {
+      "checks": 235,
+      "failures": 0,
+      "touch_taps": 17
+    },
+    "medals": {
+      "checks": 793,
+      "failures": 0,
+      "touch_taps": 163
+    },
+    "font19": {
+      "ascent": 21,
+      "height": 27,
+      "baseline": 913,
+      "cell_top": 892,
+      "three_row_cell_bottom": 973
+    },
+    "return": "Rect2(42,804,516,80)",
+    "logical_canvas": "600x1066",
+    "note_width": 516,
+    "max_lines": 3
+  },
+  "retained_failures": [
+    "289/108 polluted observer included underlying result text",
+    "235/72 isolated original baseline includes18 font-cell overlap failures",
+    "211/54 reduced Return-only baseline;211/0 is partial only",
+    "793/8 intermediate Windows decoder text corruption; exact base793/0; final source reconstructed bytewise"
+  ],
+  "limits": [
+    "Font-cell bounds, not glyph-pixel/rendered readability",
+    "No clipboard API invocation; preexisting unconditional normal Copy claim is separate",
+    "Validated synthetic whole contexts plus actual engine touch; no natural play claim for injected fixtures",
+    "No native/Android/OSclipboard/build/version/publication"
+  ]
+}

@@ -580,19 +580,20 @@ func centered(value: String, rect: Rect2, size: int, color: Color = WHITE) -> vo
 	var width := font.get_string_size(value, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
 	text_at(value, Vector2(rect.get_center().x - width * 0.5, rect.position.y + rect.size.y * 0.5 + size * 0.34), size, color)
 
-func lines(value: String, at: Vector2, width: float, size: int, color: Color = WHITE, max_lines: int = 3) -> void:
+func lines(value: String, at: Vector2, width: float, size: int, color: Color = WHITE, max_lines: int = 3, line_height: float = 0.0) -> void:
 	var line := ""
 	var row := 0
+	var step := line_height if line_height > 0 else size + 5.0
 	for word in value.split(" "):
 		if font.get_string_size(line + " " + word, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x > width:
-			text_at(line, at + Vector2(0, row * (size + 5)), size, color)
+			text_at(line, at + Vector2(0, row * step), size, color)
 			row += 1
 			line = word
 			if row >= max_lines:
 				return
 		else:
 			line = word if line == "" else line + " " + word
-	text_at(line, at + Vector2(0, row * (size + 5)), size, color)
+	text_at(line, at + Vector2(0, row * step), size, color)
 
 func button(key: String, label: String, color: Color = Color("24485e")) -> void:
 	if buttons().has(key):
@@ -849,7 +850,7 @@ func _draw() -> void:
 		button("paste", "Paste")
 		button("import", "Import", TEAL)
 		button("close_transfer", "Return")
-		lines(note, Vector2(42, 893), 516, 19, WHITE, 3)
+		lines(note, Vector2(42, buttons().close_transfer.end.y + font.get_ascent(19) + 8), 516, 19, WHITE, 3, font.get_height(19))
 
 	if guide:
 		draw_rect(Rect2(0, 0, 600, 1066), Color("0b2037"))
