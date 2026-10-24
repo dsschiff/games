@@ -1,0 +1,51 @@
+{
+  "scope": "Named campaign/Challenge medal feedback only. This clear separate from collected medals, Best/Par retained, Journey names eligible remaining goals. No controls/rules/awards/Store/schema/version changes.",
+  "reviewed_source_commit": "a124b32b7323589985c55d08d56fa0db815bfd9e",
+  "checkpoint": {
+    "path": "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\MEDAL_FEEDBACK.json",
+    "sha256": "e75e6f11e151b40e0c0e4a398a4f2b4e7f2ac308d67c03a831dc0437289d2e68",
+    "bytes": 105707
+  },
+  "independent_review": "Astra final source/checkpoint CLEAR:150 current LF/raw pins,170 unchanged base bindings,68 artifacts includingUID; display-onlymain diff, medal semantics and cold reload preserved.",
+  "root": {
+    "report": {
+      "path": "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T090930257537Z\\report.json",
+      "sha256": "8de690a5abf2603533266f3103eedaf8a2e12209f15a5a687d92dd076bb76daa",
+      "bytes": 885
+    },
+    "assertions": {
+      "path": "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T090930257537Z\\medal-feedback.json",
+      "sha256": "ff6362a39a42379032ae5ec114d31b924137975cb2dc20efcc6e898bd6cc4b11",
+      "bytes": 46636
+    },
+    "log": {
+      "path": "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T090930257537Z\\medal_feedback.log",
+      "sha256": "721d99123fe5cf800ad0f677eb3ccde3e5fdd088f3c1ba84d0e48b50cb34148e",
+      "bytes": 138
+    },
+    "checks": 793,
+    "failures": 0,
+    "actual_touch_taps": 163,
+    "actual_touch_events": 326,
+    "source_unchanged": true,
+    "strict_clean": true
+  },
+  "meaning": "archive_02 par3 route11/best3; slower treasure route current13/collected15/best3. No newly-earned claim after cold replay. Actual authored eligibility controls Journey goals.",
+  "worker_regressions": {
+    "medal_feedback": 793,
+    "import_recovery": 608,
+    "rules_save": 3503,
+    "campaign_input": 1364,
+    "challenge_input": 176,
+    "graphics_correspondence": 252,
+    "failures_each": 0
+  },
+  "limits": "Headless/Dummy actual engine ScreenTouch input and emitted labels with production drawing delegated; font/coordinate geometry only, no raster/native/human acceptance. Typed layout-only cases explicitly labeled.",
+  "remaining": [
+    "Normal-speed rendered/native readability and comprehension",
+    "Higher-version signed candidate and native update/full saves/clipboard",
+    "Real storage interruption,physical Fold7/folding/sound/FPS/human fun",
+    "Configured optional cloud recovery"
+  ],
+  "existing_binary": "0.4.2/code8 unchanged; no new APK or private transfer."
+}

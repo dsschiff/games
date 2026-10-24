@@ -744,12 +744,10 @@ func draw_game() -> void:
 	draw_board()
 	box(Rect2(24, 792, 552, 158), Color("091d32"), 16)
 	if state.status == "won":
-		text_at("KEEPER RESCUED", Vector2(40, 826), 29, TEAL)
-		var record := current_challenge_record()
-		var count := 0
-		for bit in [1, 2, 4, 8]:
-			if int(record.get("medals", 0)) & bit: count += 1
-		text_at("Best %d · par %d · medals %d/%d" % [int(record.get("best", 0)), level.par, count, 4 if data.challenge_run.bundle.options.treasure else 3] if data.kind == "challenge" else "Your watch stands %d rooms tall. Par: %d moves" % [state.claimed.size() + 1, int(level.par)], Vector2(40, 850), 17, SAND)
+		var feedback:=clear_feedback()
+		text_at(feedback[0],Vector2(40,820),19,TEAL)
+		text_at(feedback[1],Vector2(40,850),17,SAND)
+		text_at(feedback[2],Vector2(560-font.get_string_size(feedback[2],HORIZONTAL_ALIGNMENT_LEFT,-1,17).x,850),17,MUTED)
 		button("next", "Replay this exact watch" if data.kind == "challenge" else ("Next watch" if Content.index_of(data.level_id) + 1 < Content.levels().size() else "The ending · all lanterns rise"), TEAL)
 	elif paused:
 		text_at("ROUTE PAUSED", Vector2(40, 829), 27, GOLD)
@@ -798,11 +796,7 @@ func draw_map() -> void:
 		text_at("%02d" % (i + 1), rect.position + Vector2(16, 32), 24, GOLD if available else MUTED)
 		text_at(all[i].name, rect.position + Vector2(70, 29), 23, WHITE if available else MUTED)
 		var medals: Dictionary = data.profile.get(all[i].id, {})
-		var possible: int = 4 if all[i].rooms.any(func(room): return room.treasure) else 3
-		var count := 0
-		for bit in [1, 2, 4, 8]:
-			if int(medals.get("medals", 0)) & bit: count += 1
-		text_at("Best %d · medals %d/%d" % [int(medals.best), count, possible] if earned else ("Par %d%s" % [int(all[i].par), " · chapter finale" if bool(all[i].get("finale", false)) else ""] if available else "Rescue the previous keepers"), rect.position + Vector2(70, 55), 17, TEAL if available else MUTED)
+		text_at(journey_medals(all[i],medals) if earned else ("Par %d%s" % [int(all[i].par), " · chapter finale" if bool(all[i].get("finale", false)) else ""] if available else "Rescue the previous keepers"), rect.position + Vector2(70, 55), 17, TEAL if available else MUTED)
 	text_at("Drag the list to see all nine watches", Vector2(26, 945), 18, SAND)
 	button("resume", "Return to current route", TEAL)
 	text_at("%d / 36 rescued · rules and medal guide in •••" % data.profile.size(), Vector2(26, 962), 15, MUTED)
@@ -942,9 +936,24 @@ func hide_seed() -> void:
 
 func medal_labels(bits: int) -> String:
 	var names: Array = []
-	for pair in [[1, "Rescue"], [2, "Par"], [4, "Treasure"], [8, "Clean"]]:
+	for pair in [[1, "Rescue"], [2, "Par"], [4, "Treasure"], [8, "No Undo"]]:
 		if bits & int(pair[0]): names.append(pair[1])
 	return " · ".join(names)
+
+# Presentation reads the current clear separately from accumulated replay records.
+func clear_feedback() -> Array[String]:
+	if state.status!="won": return []
+	var bits:=1
+	if int(state.moves)<=int(level.par): bits|=2
+	if int(state.treasure)>0: bits|=4
+	if not current_run().used_undo: bits|=8
+	var record: Dictionary=current_challenge_record() if data.kind=="challenge" else data.profile.get(level.id,{})
+	return ["This clear · "+medal_labels(bits),"Collected · "+medal_labels(int(record.get("medals",0)) & eligible_medals(level)),"Best %d · Par %d" % [int(record.get("best",0)),level.par]]
+func eligible_medals(definition: Dictionary) -> int:
+	return 15 if definition.rooms.any(func(room): return room.treasure) else 11
+func journey_medals(definition: Dictionary,record: Dictionary) -> String:
+	var missing:=eligible_medals(definition) & ~int(record.get("medals",0))
+	return "Best %d · " % int(record.get("best",0))+("All medals earned" if missing==0 else "To earn: "+medal_labels(missing))
 
 func build_recovery_ui() -> void:
 	var layer:=CanvasLayer.new(); layer.layer=20; add_child(layer)

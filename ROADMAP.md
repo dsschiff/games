@@ -141,3 +141,5 @@ verification, independent visual review or phone feedback waits.
 - Hook0.3.3/code9 signed local candidate built from reviewed recovery/marker/
   arena feedback source. Actual APK/source/signer/raw logs independently clear.
   Native8to9/full-context choices/clipboard/readability next; no upload.
+
+- Tower named medal feedback source/CPU independently clear:793/0 root repeat,163 actual taps/326 touch events; this-clear vs collected/best and eligible Journey goals preserved. Normal rendered/native readability, higher signed/native candidate and human comprehension remain next.
