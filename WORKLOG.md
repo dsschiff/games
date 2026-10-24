@@ -664,3 +664,12 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   survives cold load and a fresh live Home commit. All71 native packet pins clear.
   Dense Hook finale warnings and Tower floating-total floor association remain
   followups; no phone, power-loss, sound, FPS, fun or live-cloud acceptance.
+
+- Dead Run matched rendered cadence experiment separates same-frame synthetic
+  fixture rebuilds from normal rendering: baseline and equal end-only delays
+  retain4textures; between-fixture cadence passes. Seven test-only lines preserve
+  all51original assertions and add3whole-state checks: fullstrict54/0/10PNGs,
+  independently cleared. No product/font/cache/error-filter edits or exact GL
+  owner attribution. Same-signer0.4.1/code7 clean candidate built atd75fc37;
+  first export failedsourcegate on generated testUID, then committed and rebuilt.
+  Bounded transition review, native update and private delivery remain pending.
