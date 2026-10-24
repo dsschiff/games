@@ -18,6 +18,8 @@ import java.security.MessageDigest
 class PlayCloudPlugin(godot: Godot) : GodotPlugin(godot) {
     private val lifecycle = RequestLifecycle()
     private val resources = CloseRegistry<Snapshot>()
+    private val flights = SdkFlights(onError = { android.util.Log.e("PlayCloud", "SDK callback failed", it) })
+    private var remoteMutationDispatched = false
     private var initialized = false
     private data class Held(val conflict: SnapshotsClient.SnapshotConflict, val player: String, val client: SnapshotsClient)
     private var held: Held? = null
@@ -38,6 +40,41 @@ class PlayCloudPlugin(godot: Godot) : GodotPlugin(godot) {
         val text = if (value is Int) runCatching { a.getString(value) }.getOrDefault("") else value.toString()
         return text.trim().matches(Regex("[1-9][0-9]+"))
     }
+    @UsedByGodot
+    fun is_configured(): Boolean = runCatching { configured() }.getOrDefault(false)
+
+    @UsedByGodot
+    fun cancel(id: String) {
+        if (id.length !in 1..128) {
+            emitSignal("completed", id.take(128), JSONObject().put("status", "invalid_request").toString()); return
+        }
+        val a = activity
+        if (a == null) { emitSignal("completed", id, JSONObject().put("status", "unavailable").toString()); return }
+        a.runOnUiThread {
+            val ticket = lifecycle.beginCancellation(id)
+            if (ticket == null) {
+                if (!lifecycle.sameCancellation(id)) emitSignal("completed", id, JSONObject().put("status", "busy").toString())
+                return@runOnUiThread
+            }
+            val effect = if (remoteMutationDispatched) "unknown" else "none"
+            flights.whenIdle {
+                resources.close { okay ->
+                    if (!lifecycle.currentCancellation(ticket)) return@close
+                    if (okay && resources.handles().isEmpty()) {
+                        held = null
+                        remoteMutationDispatched = false
+                        if (lifecycle.finishCancellation(ticket)) emitSignal("completed", id,
+                            JSONObject().put("status", "cancelled").put("remote_effect", effect).toString())
+                    } else {
+                        // Failed cleanup remains owned and rejects new work until explicit cancel retry.
+                        lifecycle.failCancellation(ticket)
+                        emitSignal("completed", id, JSONObject().put("status", "close_failed").put("remote_effect", effect).toString())
+                    }
+                }
+            }
+        }
+    }
+
     private fun reply(ticket: RequestLifecycle.Ticket, body: JSONObject) {
         if (lifecycle.finish(ticket)) emitSignal("completed", ticket.id, body.toString())
     }
@@ -68,27 +105,27 @@ class PlayCloudPlugin(godot: Godot) : GodotPlugin(godot) {
     private fun guard(ticket: RequestLifecycle.Ticket) = lifecycle.current(ticket)
     private fun account(ticket: RequestLifecycle.Ticket, a: Activity, owner: String, next: () -> Unit) {
         if (!guard(ticket)) return
-        PlayGames.getGamesSignInClient(a).isAuthenticated.addOnSuccessListener { auth ->
-            if (!guard(ticket)) return@addOnSuccessListener
-            if (!auth.isAuthenticated) { fail(ticket, "signed_out"); return@addOnSuccessListener }
-            PlayGames.getPlayersClient(a).currentPlayer.addOnSuccessListener { player ->
-                if (!guard(ticket)) return@addOnSuccessListener
-                if (!lifecycle.accountMatches(ticket, owner, player.playerId)) fail(ticket, "account_changed")
+        flights.observe({ PlayGames.getGamesSignInClient(a).isAuthenticated }, authDone@ { task ->
+            if (!guard(ticket)) return@authDone
+            if (!task.result.isAuthenticated) { fail(ticket, "signed_out"); return@authDone }
+            flights.observe({ PlayGames.getPlayersClient(a).currentPlayer }, playerDone@ { playerTask ->
+                if (!guard(ticket)) return@playerDone
+                if (!lifecycle.accountMatches(ticket, owner, playerTask.result.playerId)) fail(ticket, "account_changed")
                 else try { next() } catch (_: Exception) { fail(ticket, "invalid_snapshot") }
-            }.addOnFailureListener { fail(ticket, "account_unavailable") }
-        }.addOnFailureListener { fail(ticket, "authentication_unavailable") }
+            }, { fail(ticket, "account_unavailable") })
+        }, { fail(ticket, "authentication_unavailable") })
     }
     @UsedByGodot
     fun request(id: String, operation: String, arguments: String) {
         if (id.length !in 1..128 || operation !in operations || !RequestBounds.arguments(arguments)) {
             emitSignal("completed", id.take(128), JSONObject().put("status", "invalid_request").toString()); return
         }
-        val ticket = lifecycle.begin(id)
-        if (ticket == null) { emitSignal("completed", id, JSONObject().put("status", "busy").toString()); return }
         val a = activity
-        if (a == null) { fail(ticket, "unavailable"); return }
+        if (a == null) { emitSignal("completed", id, JSONObject().put("status", "unavailable").toString()); return }
+        // Admission, cancellation and SDK dispatch share the same UI dispatcher.
         a.runOnUiThread {
-            if (!guard(ticket)) return@runOnUiThread
+            val ticket = lifecycle.begin(id)
+            if (ticket == null) { emitSignal("completed", id, JSONObject().put("status", "busy").toString()); return@runOnUiThread }
             try {
                 if (!configured()) { fail(ticket, "not_configured"); return@runOnUiThread }
                 if (!initialized) { PlayGamesSdk.initialize(a); initialized = true }
@@ -108,25 +145,25 @@ class PlayCloudPlugin(godot: Godot) : GodotPlugin(godot) {
                         if (!guard(ticket)) return@close
                         if (!okay) { fail(ticket, "close_failed"); return@close }
                         held = null
-                        signIn.signIn().addOnSuccessListener { result ->
-                            if (guard(ticket)) reply(ticket, JSONObject().put("status", if (result.isAuthenticated) "authenticated" else "signed_out"))
-                        }.addOnFailureListener { fail(ticket, "sign_in_failed") }
+                        flights.observe({ signIn.signIn() }, { task ->
+                            if (guard(ticket)) reply(ticket, JSONObject().put("status", if (task.result.isAuthenticated) "authenticated" else "signed_out"))
+                        }, { fail(ticket, "sign_in_failed") })
                     }
                     return@runOnUiThread
                 }
-                signIn.isAuthenticated.addOnSuccessListener { auth ->
-                    if (!guard(ticket)) return@addOnSuccessListener
-                    if (!auth.isAuthenticated) { fail(ticket, "signed_out"); return@addOnSuccessListener }
-                    PlayGames.getPlayersClient(a).currentPlayer.addOnSuccessListener { player ->
-                        if (!guard(ticket)) return@addOnSuccessListener
-                        val owner = player.playerId
+                flights.observe({ signIn.isAuthenticated }, authDone@ { task ->
+                    if (!guard(ticket)) return@authDone
+                    if (!task.result.isAuthenticated) { fail(ticket, "signed_out"); return@authDone }
+                    flights.observe({ PlayGames.getPlayersClient(a).currentPlayer }, playerDone@ { playerTask ->
+                        if (!guard(ticket)) return@playerDone
+                        val owner = playerTask.result.playerId
                         if (operation == "status") {
                             if (held != null && held!!.player != owner) fail(ticket, "account_changed")
                             else reply(ticket, JSONObject().put("status", "authenticated").put("player", owner))
                         } else if (args.optString("player") != owner) fail(ticket, "account_changed")
                         else try { operate(ticket, operation, args, bytes, owner, a) } catch (_: Exception) { fail(ticket, "invalid_request") }
-                    }.addOnFailureListener { fail(ticket, "account_unavailable") }
-                }.addOnFailureListener { fail(ticket, "authentication_unavailable") }
+                    }, { fail(ticket, "account_unavailable") })
+                }, { fail(ticket, "authentication_unavailable") })
             } catch (_: Exception) { fail(ticket, "invalid_request") }
         }
     }
@@ -142,11 +179,15 @@ class PlayCloudPlugin(godot: Godot) : GodotPlugin(godot) {
             account(ticket, a, owner) {
                 val originals = identityDistinct(listOf(current.conflict.snapshot, current.conflict.conflictingSnapshot))
                 originals.forEach { resources.use(it) }
-                try { current.client.resolveConflict(current.conflict.conflictId, selected).addOnSuccessListener { result ->
+                flights.observe({
+                    remoteMutationDispatched = true
+                    current.client.resolveConflict(current.conflict.conflictId, selected)
+                }, resolved@ { task ->
                     try {
+                        val result = task.result
                         val returned = acquired(result, current.client)
                         val old = resources.resolved(originals, selected, returned, selected.snapshotContents.isClosed)
-                        if (!guard(ticket)) { resources.close(returned + old) { }; return@addOnSuccessListener }
+                        if (!guard(ticket)) { resources.close(returned + old) { }; return@resolved }
                         resources.close(old) { okay ->
                             if (!guard(ticket)) return@close
                             if (!okay) { fail(ticket, "close_failed"); return@close }
@@ -154,8 +195,7 @@ class PlayCloudPlugin(godot: Godot) : GodotPlugin(godot) {
                             account(ticket, a, owner) { deliver(ticket, result, owner, current.client) }
                         }
                     } catch (_: Exception) { originals.forEach { resources.available(it) }; fail(ticket, "invalid_snapshot") }
-                }.addOnFailureListener { originals.forEach { resources.available(it) }; fail(ticket, "resolve_failed") }
-                } catch (_: Exception) { originals.forEach { resources.available(it) }; fail(ticket, "resolve_failed") }
+                }, { originals.forEach { resources.available(it) }; fail(ticket, "resolve_failed") })
             }
             return
         }
@@ -167,16 +207,17 @@ class PlayCloudPlugin(godot: Godot) : GodotPlugin(godot) {
             if (op == "discard_conflict") { reply(ticket, JSONObject().put("status", "discarded")); return@close }
             account(ticket, a, owner) {
                 val client = PlayGames.getSnapshotsClient(a)
-                client.open(args.getString("slot"), op == "write", SnapshotsClient.RESOLUTION_POLICY_MANUAL).addOnSuccessListener { result ->
+                flights.observe({ client.open(args.getString("slot"), op == "write", SnapshotsClient.RESOLUTION_POLICY_MANUAL) }, opened@ { task ->
                     try {
+                        val result = task.result
                         val handles = acquired(result, client)
-                        if (!guard(ticket)) { resources.close(handles) { }; return@addOnSuccessListener }
+                        if (!guard(ticket)) { resources.close(handles) { }; return@opened }
                         account(ticket, a, owner) {
                             if (result.isConflict || op == "read") deliver(ticket, result, owner, client)
                             else write(ticket, result.data!!, args.getString("expected_sha256"), bytes, owner, client)
                         }
                     } catch (_: Exception) { fail(ticket, "invalid_snapshot") }
-                }.addOnFailureListener { fail(ticket, "snapshot_unavailable") }
+                }, { fail(ticket, "snapshot_unavailable") })
             }
         }
     }
@@ -197,11 +238,13 @@ class PlayCloudPlugin(godot: Godot) : GodotPlugin(godot) {
                 { snapshot.snapshotContents.writeBytes(it) }, { snapshot.snapshotContents.readFully() }, {
                     check(guard(ticket))
                     resources.use(snapshot)
-                    try { client.commitAndClose(snapshot, SnapshotMetadataChange.Builder().build()).addOnSuccessListener {
+                    flights.observe({
+                        remoteMutationDispatched = true
+                        client.commitAndClose(snapshot, SnapshotMetadataChange.Builder().build())
+                    }, {
                         resources.consumed(snapshot)
                         if (guard(ticket)) reply(ticket, JSONObject().put("status", "submitted").put("player", owner).put("sha256", hash(bytes)))
-                    }.addOnFailureListener { resources.available(snapshot); fail(ticket, "write_failed") }
-                    } catch (error: Exception) { resources.available(snapshot); throw error }
+                    }, { resources.available(snapshot); fail(ticket, "write_failed") })
                 })
             if (!staged) fail(ticket, "write_failed")
         }

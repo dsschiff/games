@@ -19,7 +19,7 @@ The active portfolio goal is defined in `GOAL.md`. Status reflects evidence, not
 1. Final selected-reference implementation fidelity is accepted for all six in `android-games/reviews/portfolio-final-fidelity-astra.md`. Exact commercial equations, advertiser provenance and human pacing remain qualified; physical acceptance remains separate.
 2. Keep verified foundation/prototype evidence landed. Physical Samsung checks remain separate from emulator evidence.
 3. Keep Gear's verified code6 software candidate frozen for physical-phone testing. Dense/cap-heavy formations, human fun, audible sound and measured physical-phone performance remain explicit limits.
-4. Keep Tower's accepted code4 software candidate frozen for phone testing. Required seeded Challenge and prior authored/full-rule checks remain verified; Back correction passes independent67/71checks and review. Actual3→4 preserves every prior save field exceptrevision, including generated snapshot/record and separate campaign. Native modal Back/clipboard/Home/cold/cover-inner emulated resize pass. Human pacing/fun and physical Fold7 touch/folding/safe areas/sound/performance remain open.
+4. Keep Tower's accepted code4 software candidate frozen for phone testing. Required seeded Challenge and prior authored/full-rule checks remain verified; Back correction passes independent67/71checks and review. Actual3â†’4 preserves every prior save field exceptrevision, including generated snapshot/record and separate campaign. Native modal Back/clipboard/Home/cold/cover-inner emulated resize pass. Human pacing/fun and physical Fold7 touch/folding/safe areas/sound/performance remain open.
 5. Keep Hook's conditional code4 candidate frozen. Actual update and native typing/rejection/transfer/lifecycle checks pass; physical on-screen IME and other phone checks remain required.
 6. Keep Hearthguard code2 conditional candidate frozen for phone testing. Independent full campaign headless/Astra and actual1-to2/native loss/Retry/win/transfer/active resize/cold pass. Windows clipboard failures remain separate; native clipboard success does not erase them. Physical IME/touch/folding/safe areas/sound/FPS and human pacing/fun remain required.
 7. Keep Frontline code2 conditional software candidate frozen for physical testing. Actual update, paid victory, separate natural loss/Retry, real clipboard import/rejection, native Back, settings, active Home/cold and cover-inner resize pass bounded review. Later rejected previews have identical clear nonuniform PNGs; earlier actual graphics failures remain separately retained. Keep Dead Run code3 frozen: camera P2 closed, real2-to3 whole-earned-save retention and unfolded live field verified. Inherited code2 win/loss/Retry/progression/transfer/Back remain retained. Six phone-test candidates are frozen.
@@ -37,7 +37,7 @@ The active portfolio goal is defined in `GOAL.md`. Status reflects evidence, not
 
 The current work is `android-games/GRAPHICS-OVERHAUL.md`; status/ownership is in
 `android-games/graphics-overhaul.json`. Additional phone testing is deferred by
-the user and cannot block G0–G3. Existing baseline approvals do not establish the
+the user and cannot block G0â€“G3. Existing baseline approvals do not establish the
 new visual standard. Keep screenshots, normal-speed motion review and measured
 frame timing distinct from headless correctness and physical/human acceptance.
 
@@ -66,8 +66,10 @@ Authoritative priorities and acceptance: `android-games/DESIGN-CYCLE.md`.
 | D0 Baseline | Current origin/main 4552e7b inspected; six release-signed APKs exist; old status records lag current source | Current baseline and explicit unresolved gates recorded |
 | D1 Leading pair | Frontline0.3.2 privately delivered; Dead Run source fixes and strict54/0 harness correction reviewed; signed0.4.1 privately delivered after bounded motion/native clearance | Actual input and independent review support one meaningful private update per game |
 | D2 Portfolio | Gear0.4.1, Hearthguard0.3.1, Hook0.3.1 and Tower0.4.1 privately delivered; bounded feedback/motion/save/native checks verified | One meaningful verified design-and-polish release per game |
-| D3 Cloud recovery | Reviewed native transport21JVM/27codec plus60 real-decoder checks; game adapter work active; live account sync unverified | Offline-safe optional cloud path and genuine account/device sync verified; external blockers explicit |
-| D4 Delivery | Existing private Obtainium path retained; Play account identity/phone pending as of live 2026-10-23 check | Higher-version signed private updates retain real progress; Daniel-only Play testing when available |
+| D3 Cloud recovery | Reviewed native cancellation31JVM/27codec plus60 real-decoder checks; Frontline optional UI151/0 and native local recovery reviewed; configured account sync unverified | Offline-safe optional cloud path and genuine account/device sync verified; external blockers explicit |
+| D4 Delivery | Existing private Obtainium path retained; Play account identity/phone pending as of live2026-10-24T04:01Z check; owner-only Tower Drive handoff verified | Higher-version signed private updates retain real progress; Daniel-only Play testing when available |
 
 Physical/human acceptance remains separate. Development continues while account
 verification, independent visual review or phone feedback waits.
+
+- Qualified unpublished refinements: Frontline0.3.4/code8 and Hook0.3.2/code8 signed7to8,19 whole-context comparisons and264 pins clear. Tower0.4.2/code8 earned7to8/claim/cold plus bounded native1x association clear. Optional cloud remains unconfigured; Gear local Import durability prerequisite active. See cycle evidence for exact manifests and fixture limits.

@@ -154,3 +154,8 @@ Local Import pending/retry/verified-rollback behavior is documented in
 [IMPORT_RECOVERY_AMENDMENT.md](IMPORT_RECOVERY_AMENDMENT.md). This local-only
 recovery change preserves whole contexts across uncertain writes and bootstrap;
 it does not enable the dormant cloud adapter. Native/rendered acceptance remains separate.
+
+Optional Play Games UI/typed native-port work is described in
+[CLOUD_UI_AMENDMENT.md](CLOUD_UI_AMENDMENT.md). Missing native lifecycle APIs or
+per-game configuration stays explicitly unavailable. CPU fake/real-input evidence
+is separate from packaged native and genuine account/cross-device acceptance.

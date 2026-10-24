@@ -22,3 +22,11 @@ func rename(from: String, to: String) -> bool:
 
 func remove(path: String) -> bool:
 	return not exists(path) or (DirAccess.remove_absolute(path) == OK and not exists(path))
+
+func list_paths(prefix: String) -> Array[String]:
+	var result: Array[String] = []
+	var folder := prefix.get_base_dir()
+	for name in DirAccess.get_files_at(folder):
+		var path := folder.path_join(name)
+		if path.begins_with(prefix): result.append(path)
+	return result

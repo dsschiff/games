@@ -1,3 +1,8 @@
+> Historical dormant increment at `bd6e6e7`. Its local Import boundary was
+> fixed separately. Current optional game-side UI work is described in
+> [CLOUD_UI_AMENDMENT.md](CLOUD_UI_AMENDMENT.md). This retained snapshot does not
+> describe current delivery or establish live cloud sync.
+
 # Dormant cloud recovery adapter
 
 This source increment adds a testable recovery controller. The released game does

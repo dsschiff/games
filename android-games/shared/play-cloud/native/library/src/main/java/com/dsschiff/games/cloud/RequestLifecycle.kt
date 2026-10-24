@@ -6,8 +6,10 @@ internal class RequestLifecycle {
     private var generation = 0L
     private var destroyed = false
     private var active: Ticket? = null
+    private var cancellation: Ticket? = null
+    private var cancelFailed = false
     @Synchronized fun begin(id: String): Ticket? {
-        if (destroyed || active != null) return null
+        if (destroyed || active != null || cancellation != null) return null
         return Ticket(id, ++generation).also { active = it }
     }
     @Synchronized fun current(ticket: Ticket) = !destroyed && active === ticket
@@ -16,7 +18,24 @@ internal class RequestLifecycle {
         active = null
         return true
     }
-    @Synchronized fun destroy() { destroyed = true; generation++ }
+    @Synchronized fun beginCancellation(id: String): Ticket? {
+        if (destroyed || (cancellation != null && !cancelFailed)) return null
+        active = null
+        cancelFailed = false
+        return Ticket(id, ++generation).also { cancellation = it }
+    }
+    @Synchronized fun sameCancellation(id: String) = !destroyed && cancellation?.id == id
+    @Synchronized fun currentCancellation(ticket: Ticket) = !destroyed && cancellation === ticket
+    @Synchronized fun failCancellation(ticket: Ticket) {
+        if (currentCancellation(ticket)) cancelFailed = true
+    }
+    @Synchronized fun finishCancellation(ticket: Ticket): Boolean {
+        if (!currentCancellation(ticket)) return false
+        cancellation = null
+        cancelFailed = false
+        return true
+    }
+    @Synchronized fun destroy() { destroyed = true; generation++; active = null; cancellation = null }
     fun accountMatches(ticket: Ticket, expected: String, actual: String) = current(ticket) && expected == actual
 }
 

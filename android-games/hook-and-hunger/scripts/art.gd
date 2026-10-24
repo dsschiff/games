@@ -97,6 +97,26 @@ static func label(text: String, at: Vector3, size: int = 42) -> Label3D:
 	l.no_depth_test = true
 	return l
 
+## Inset rims preserve the strip's exact outer footprint. They carry contrast
+## while the translucent interior leaves terrain and overlapping attacks legible.
+static func warning_boundary(strip: MeshInstance3D) -> void:
+	var boundary := Node3D.new()
+	boundary.name = "Boundary"
+	strip.add_child(boundary)
+	var size: Vector3 = strip.mesh.size
+	var width := .045
+	for side in [-1, 1]:
+		var edge := box(Vector3(width, .008, size.z), Color.WHITE, Vector3(side * (size.x - width) * .5, .026, 0))
+		edge.set_meta("rim_axis", 0)
+		edge.set_meta("rim_side", side)
+		decal(edge, Color(1, 1, 1, .72))
+		boundary.add_child(edge)
+		var cap := box(Vector3(size.x, .008, width), Color.WHITE, Vector3(0, .026, side * (size.z - width) * .5))
+		cap.set_meta("rim_axis", 2)
+		cap.set_meta("rim_side", side)
+		decal(cap, Color(1, 1, 1, .72))
+		boundary.add_child(cap)
+
 static func warning() -> Node3D:
 	var root := Node3D.new()
 	for key in ["Solid", "Outer", "Inner"]:
@@ -121,6 +141,7 @@ static func warning() -> Node3D:
 	var line := box(Vector3(1.15, 0.035, 8.5), Color("e48e79"), Vector3(0, 0, 4.25))
 	line.name = "Line"
 	decal(line, Color(.95, .38, .28, .26))
+	warning_boundary(line)
 	root.add_child(line)
 	for side in [-1, 1]:
 		var angle: float = side * 0.32
@@ -128,5 +149,6 @@ static func warning() -> Node3D:
 		branch.name = "Left" if side < 0 else "Right"
 		branch.rotation.y = angle
 		decal(branch, Color(.95, .38, .28, .22))
+		warning_boundary(branch)
 		root.add_child(branch)
 	return root

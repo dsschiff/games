@@ -68,3 +68,15 @@ Primary implementation references:
 - https://developer.android.com/games/pgs/android/saved-games
 - https://developers.google.com/android/reference/com/google/android/gms/games/SnapshotsClient
 - https://docs.godotengine.org/en/stable/tutorials/platform/android/android_plugin.html
+
+Native optional integration now exposes metadata-only `is_configured()` and
+`cancel(id)`. Cancellation invalidates the previous request, waits for all
+admitted SDK callbacks to finish ownership work, then closes original-client
+handles. `close_failed` keeps new cloud admission blocked until explicit retry.
+The response records `remote_effect: unknown` after a dispatched write/resolve;
+cancel is not remote undo. Game UI must release local play independently after
+irrevocably cancelling adoption, while retained native ownership finishes cleanup.
+The local Import journal still blocks play until its whole-save choice is verified.
+Compiled/JVM31/0 and independent review are recorded in `CANCELLATION.json`; no
+configured account/device sync is inferred. Use `--output <fresh-ignored-directory>`
+with `scripts/build_play_cloud.py` to preserve earlier receipts and pinned XML.

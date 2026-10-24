@@ -1,0 +1,173 @@
+{
+  "base_commit": "226db6ec6b43abb12a933a231ee8c15b9bab5b32",
+  "runtime_changes": [
+    "scripts/art.gd",
+    "scripts/presentation/adapter.gd"
+  ],
+  "geometry_proof": {
+    "original_telegraph_geometry_commands_equal_except_style_calls": true,
+    "original_warning_geometry_commands_equal_except_inset_child_construction": true,
+    "charge_envelope_helpers_exact_lf_equal": true,
+    "charge_envelope_helpers_lf_sha256": "eea8160caba07a3e8bdbef551a5a24546b4630fc25b3a3f4066e1dd7b9dae6c5"
+  },
+  "runtime_lf_sha256": {
+    "scripts/art.gd": "ddac90ead100a9e377cffc984bdc62c46885c2f34a48ca8f28617cb1abb7f726",
+    "scripts/presentation/adapter.gd": "ef96ae308b1612e946482c800c7160fc8ef16c00d5672a4efac740210fe36c2c"
+  },
+  "earned_input": {
+    "checkpoint": "C:/projects/active/_worktrees/games-hook-and-hunger-20261018/android-games/hook-and-hunger/.artifacts/campaign-code2-final/stage-11-wave-5.json",
+    "checkpoint_sha256": "ac6cc58f220e66bbeadd56d46cfa27eb7b6af65c22b131fc6267411c933b1980",
+    "baseline": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\feedback-motion-20261024T025615997640Z",
+    "after": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\feedback-motion-20261024T030434200480Z",
+    "actual_input_events": 725,
+    "input_events_exactly_equal": true,
+    "final_state_exactly_equal": true,
+    "continued_save_sha256": "b24d49183b32ffed1d58df3f3ed1802b9fb5cc6320369571f92740ac39f31f2a",
+    "continued_save_bytes_equal": true
+  },
+  "runs": [
+    {
+      "role": "original static-warning hierarchy; failed",
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\feedback-motion-20261024T025615997640Z\\receipt.json",
+      "sha256": "c8de8dd0bed74f911156e87b13debbc5664ca4cf73cb6ce01271512d26de2f53"
+    },
+    {
+      "role": "thin-rim coverage/rules/input checks; passed",
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T025933212369Z\\report.json",
+      "sha256": "31d16f4287658962fa90a71fcb4f934e7b685317e0eb60d5ea3a4b28703dc175"
+    },
+    {
+      "role": "exact decimal mesh-storage assertion; failed test-only",
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\feedback-motion-20261024T030020014269Z\\receipt.json",
+      "sha256": "2b3492aab9830ae6e3edd693bb58bbe3405fd2b65f5c7472fa65f93f146cf5d9"
+    },
+    {
+      "role": "current earned finale hierarchy; passed88/0",
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\feedback-motion-20261024T030434200480Z\\receipt.json",
+      "sha256": "a1d3fe65c6527ad9d8065a513cf592a02a73f596fdcc5e51ac071c1e0a86fab2"
+    },
+    {
+      "role": "current opening actual input; passed18/0",
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T030442432152Z\\report.json",
+      "sha256": "b67079b66e9dfcbc445f23172ecf64d2286cd6a0f061fe9b1f369273f92b457a"
+    }
+  ],
+  "design_review": "Astra independently source-cleared 72be7b for a bounded matched visual trial, not visual/release acceptance. Verified both runtime LF pins and all five failed/current run receipt pins; no geometry/rule/hit change found. Early low-alpha and overlap salience remain open for rendered judgement.",
+  "visual_status": "Astra independently cleared bounded normal1x visual improvement of exact matched clips; not universal all-threat comprehension or release/phone/human/FPS/audio acceptance.",
+  "historical_warning": {
+    "preserved": true,
+    "path": "F:/games-workspaces/hook-design-20261023/android-games/hook-and-hunger/.artifacts/feedback-motion-20261024T001610936675Z/receipt.json",
+    "status": "Coarse finale two-ObjectDB shutdown warning remains failed, unexplained, unsuppressed; not reclassified by later runs."
+  },
+  "unchanged": [
+    "rules/collision/charge timing/attack cadence",
+    "full existing strip caps/widths/ring safehole/conservative stepped envelope",
+    "save schema/profile/catalog/version/export/signing",
+    "no warning in initial idle state; no HUD safe-route recommendation"
+  ],
+  "source_commit": "72be7b77ddc42992767bc2df29c03489e2fa6c0a",
+  "rendered_comparison": {
+    "source_commit": "72be7b77ddc42992767bc2df29c03489e2fa6c0a",
+    "documentation_commit": "81ce6eb",
+    "baseline_runtime_commit": "226db6ec6b43abb12a933a231ee8c15b9bab5b32",
+    "driver": "tests/charge_play.gd; unchanged for both captures",
+    "checkpoint_sha256": "ac6cc58f220e66bbeadd56d46cfa27eb7b6af65c22b131fc6267411c933b1980",
+    "baseline": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\feedback-motion-20261024T032322685674Z",
+    "after": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\feedback-motion-20261024T032510386903Z",
+    "baseline_receipt_sha256": "f5be00831af6e3635f4a0bd17e232efd19aeb1a06eeb4d7b54d4e6042fd5b4aa",
+    "after_receipt_sha256": "4a0c81b6a75f8cc5999930117e8104192a8bf3d0da0d717a5d8d8706e736d1a5",
+    "baseline_mp4_sha256": "08eca0ee80c03487330f3487af2511d4e09c28c8b9723f25383aaefc39ae8c69",
+    "after_mp4_sha256": "65f214bdc3e6f4f785174bfe35ddb2a742dcc2d2745de129a83a9d92744fcf1b",
+    "native_frame_size": [
+      720,
+      1280
+    ],
+    "frame_count_each": 651,
+    "cadence": 60,
+    "duration_seconds_each": 10.85,
+    "strict_checks_each": 6,
+    "failures_each": 0,
+    "raw_errors_and_warnings_each": [],
+    "encode_full_decode_verified": true,
+    "raw_frames_removed_before_next_capture": true,
+    "source_files_each": 156,
+    "source_differences": [
+      "scripts/art.gd",
+      "scripts/presentation/adapter.gd"
+    ],
+    "current_sources_equal_after_map": true,
+    "events_each": 655,
+    "events_exactly_equal": true,
+    "markers_exactly_equal": true,
+    "initial_context_exactly_equal": true,
+    "final_state_exactly_equal": true,
+    "continued_save_bytes_exactly_equal": true,
+    "continued_save_sha256": "5992362809cdab36b006e66bdf78a3f0d090de773e8bea6a39da570daf96db4b",
+    "input_events_canonical_sha256": "d454d96ab9ac9825ecdaf89c0f86134a2d3d8ba6f40790b4abf53b6b2c799311",
+    "maximum_simultaneous_charges": 3,
+    "two_charge_windows_success_each": true,
+    "actual_final_phase": "defeat",
+    "markers_frame": [
+      0,
+      111,
+      526,
+      637
+    ],
+    "scope": "Authenticated previously earned checkpoint normally loaded; new actual touch continuation. Not an uninterrupted fresh run or human/device performance acceptance."
+  },
+  "visual_review": {
+    "reviewer": "Astra (/root/design_review)",
+    "disposition": "Bounded normal1x visual CLEAR as improvement; no new blocking visual P1/P2 reported.",
+    "observations": [
+      "Floor and actors less washed out.",
+      "Charge strip edges and side exits easier to trace in opening three-charge overlap and second charge around8.9-10.6s.",
+      "Native720x1280 charge-1-windup still inspected."
+    ],
+    "remaining_limits": [
+      "Intersecting rims remain busy; early amber edges subtle.",
+      "Do not infer instant all-threat comprehension or quantify urgency perception.",
+      "Selected-charge dodges are not all-attacks-safe; hull67 to19 to6 to0 and natural defeat retained.",
+      "Sampled playback and still inspection, not every-frame review or human/phone/FPS/audio acceptance.",
+      "Historical coarse-finale shutdown warning stays failed and unexplained."
+    ],
+    "baseline_sample_seconds": [
+      0.19,
+      0.997,
+      1.795,
+      3.593,
+      6.59,
+      7.992,
+      8.797,
+      9.794,
+      10.602,
+      10.85
+    ],
+    "current_sample_seconds": [
+      0.092,
+      0.686,
+      1.495,
+      2.284,
+      3.085,
+      3.881,
+      4.685,
+      5.481,
+      6.292,
+      7.284,
+      8.086,
+      8.886,
+      9.694,
+      10.287,
+      10.85
+    ],
+    "playback_rate": 1,
+    "ended_each": true,
+    "ended_seconds_each": 10.85,
+    "screenshot_sampling_limit": "Screenshots sometimes follow AX time by about0.2s; baseline opening1.8s also sampled densely.",
+    "browser_ownership": "Reviewer closed own tab and returned GPU; root owns review server. Builder opened no server/browser."
+  },
+  "cleanup": {
+    "removed": "Three superseded successful CPU scratch packets, duplicate runner JSON logs and tests/__pycache__; all five pinned CPU records, failed evidence and both matched rendered packets retained.",
+    "raw_frames": "Each set hash-bound then removed after verified full decode, serially before another capture. No AVI/WAV created.",
+    "leftovers_scan": "No files >=1GB written in last24h under this worktree."
+  }
+}

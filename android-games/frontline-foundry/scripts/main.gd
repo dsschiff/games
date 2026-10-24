@@ -1,6 +1,9 @@
 extends Node3D
 const R = preload("res://scripts/rules.gd")
 const S = preload("res://scripts/save_store.gd")
+const CloudFlow = preload("res://scripts/cloud/game_flow.gd")
+const CloudPanel = preload("res://scripts/cloud/cloud_panel.gd")
+const NativePort = preload("res://scripts/cloud/native_port.gd")
 const ImportRecovery = preload("res://scripts/import_recovery.gd")
 var state := R.fresh()
 var profile := R.profile()
@@ -52,6 +55,11 @@ var startup_bound := false
 var startup_context := {}
 var startup_status := {}
 var startup_paused := false
+var cloud_held := false
+var cloud_flow: CloudFlow
+var cloud_panel: CloudPanel
+var cloud_transport: RefCounted
+var cloud_entry: Button
 var import_pending := false
 var import_recovery: ImportRecovery
 var import_status := {}
@@ -195,6 +203,8 @@ func make_ui() -> void:
 		transfer_buttons.append(b)
 		row += 1
 	transfer.hide()
+	cloud_entry = button(transfer,"OPTIONAL CLOUD / LOCAL COPIES",open_cloud)
+	cloud_entry.position = Vector2(24,655); cloud_entry.size = Vector2(572,96)
 
 func layout() -> void:
 	var view := get_viewport().get_visible_rect().size
@@ -218,7 +228,7 @@ func layout() -> void:
 	start_button.size = Vector2(w - 140, 112)
 	for p in [menu, terminal, transfer]:
 		p.position = Vector2((w - 620) / 2, 245 if p != terminal else h * 0.34)
-		p.size = Vector2(620, 660 if p != terminal else 410)
+		p.size = Vector2(620, 770 if p == transfer else (660 if p == menu else 410))
 	for child in menu.get_children():
 		if child.has_meta("row"):
 			child.position = Vector2(24, 126 + int(child.get_meta("row")) * 105)
@@ -228,14 +238,15 @@ func layout() -> void:
 			child.size = Vector2(572, 96)
 	code_edit.position = Vector2(22, 80)
 	code_edit.size = Vector2(576, 220 if import_pending else 300)
-	notice.position.y = 305 if import_pending else 385
-	notice.size.y = 230 if import_pending else 55
+	notice.position.y = 80 if import_pending else 385
+	notice.size.y = 440 if import_pending else 55
 	notice.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	for child in transfer.get_children():
 		if child.has_meta("transfer"):
 			var n := int(child.get_meta("transfer"))
 			child.position = Vector2(22 + (n % 2) * 295, 445 + int(n / 2) * 105)
 			child.size = Vector2(281, 96)
+	if cloud_panel!=null: layout_cloud()
 	stop_move()
 
 func _input(event: InputEvent) -> void:
@@ -288,14 +299,14 @@ func stop_move() -> void:
 		stick.position = Vector2(35, get_viewport().get_visible_rect().size.y - 205)
 
 func begin() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	state.phase = "playing"
 	stop_move()
 	save_now()
 	refresh()
 
 func enter_campaign() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	var C = load("res://scripts/campaign_rules.gd")
 	var D = load("res://scripts/definitions.gd")
 	var saved := S.read()
@@ -315,7 +326,7 @@ func build_nearby() -> void:
 		refresh()
 
 func retry() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	state = R.fresh()
 	make_world()
 	layout()
@@ -329,7 +340,7 @@ func retry() -> void:
 	refresh()
 
 func toggle_pause() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	if transfer.visible:
 		close_transfer()
 		return
@@ -340,7 +351,7 @@ func toggle_pause() -> void:
 	refresh()
 
 func back() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	if transfer.visible:
 		close_transfer()
 	else:
@@ -354,31 +365,33 @@ func _notification(what: int) -> void:
 	elif what in [NOTIFICATION_APPLICATION_PAUSED, NOTIFICATION_APPLICATION_FOCUS_OUT, NOTIFICATION_WM_CLOSE_REQUEST]:
 		paused = true
 		stop_move()
-		menu.show()
+		if not import_pending and not cloud_held: menu.show()
+		else: menu.hide()
 		save_now()
 		refresh()
 		if what == NOTIFICATION_WM_CLOSE_REQUEST:
 			get_tree().quit()
 
 func toggle_sound() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	settings.sound = not settings.sound
 	save_now()
 	refresh()
 
 func toggle_effects() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	settings.reduced_effects = not settings.reduced_effects
 	save_now()
 	refresh()
 
 func save_now() -> bool:
-	if import_pending: return false
+	if import_pending or cloud_held: return false
 	var saved := S.write(state, profile, settings, S.PATH, save_io, false, current_career())
 	save_problem = not saved
 	return saved
 
 func open_transfer() -> void:
+	if cloud_held: return
 	if import_pending: show_import_pending(); return
 	reset_transfer_controls()
 	stop_move()
@@ -388,7 +401,7 @@ func open_transfer() -> void:
 	transfer.show()
 
 func close_transfer() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	transfer.hide()
 	code_edit.release_focus()
 	menu.show()
@@ -396,7 +409,7 @@ func close_transfer() -> void:
 	refresh()
 
 func copy_code() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	# Export always regenerates from progress, never copies an edited invalid code.
 	code_edit.text = S.encode(state, profile, settings, 0, true, current_career())
 	if not DisplayServer.has_feature(DisplayServer.FEATURE_CLIPBOARD):
@@ -410,7 +423,7 @@ func copy_code() -> void:
 	notice.text = "Code copied." if DisplayServer.clipboard_get() == code_edit.text else "Copy unconfirmed. Select and copy the code."
 
 func paste_code() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	if not DisplayServer.has_feature(DisplayServer.FEATURE_CLIPBOARD):
 		notice.text = "Clipboard unavailable. Current code kept."
 		return
@@ -422,22 +435,31 @@ func paste_code() -> void:
 		notice.text = "Pasted. Import checks before replacing."
 
 func import_code() -> void:
+	if cloud_held: return
 	if import_pending:
 		finish_import(true)
 		return
-	var decoded := S.decode(code_edit.text)
+	start_local_import(code_edit.text)
+
+func start_local_import(code: String) -> bool:
+	var decoded := S.decode(code)
 	if not decoded.ok:
 		notice.text = "Invalid code. Entire current save kept."
-		return
+		return false
 	paused = true; stop_move()
 	import_recovery = ImportRecovery.new(save_io)
-	import_status = import_recovery.begin(S.encode(state,profile,settings,0,true,current_career()),code_edit.text)
+	import_status = import_recovery.begin(S.encode(state,profile,settings,0,true,current_career()),code)
 	import_pending = import_status.pending
 	if not import_pending:
 		notice.text = import_recovery.message
-		return
+		return false
+	# The durable Import journal now owns the freeze, including failures/reloads.
+	cloud_held = false
+	if cloud_flow!=null: cloud_flow.dispose()
+	if cloud_panel!=null: cloud_panel.hide()
 	show_import_pending()
 	if import_status.ok: finish_import(true)
+	return true
 
 func read_startup() -> Dictionary:
 	if startup_bound:
@@ -480,10 +502,10 @@ func finish_import(use_import: bool) -> void:
 func show_import_pending() -> void:
 	if not import_pending or transfer == null: return
 	paused = true; stop_move(); menu.hide(); terminal.hide(); transfer.show(); transfer.move_to_front()
+	cloud_entry.text="VIEW / EXPORT RECOVERY COPIES"; cloud_entry.show()
 	transfer_title.text = "IMPORT RECOVERY"
-	code_edit.editable = false
-	code_edit.size.y = 220
-	notice.position.y = 305; notice.size.y = 230
+	code_edit.editable = false; code_edit.hide()
+	notice.position.y = 80; notice.size.y = 440
 	for index in transfer_buttons.size():
 		var b := transfer_buttons[index]
 		b.visible = index >= 2
@@ -493,21 +515,24 @@ func show_import_pending() -> void:
 			b.visible = not import_recovery.record.is_empty()
 	if not import_recovery.record.is_empty():
 		code_edit.text = import_recovery.incoming_code
-		notice.text = import_recovery.message+"\nPrevious: "+ImportRecovery.describe(import_recovery.original)+"\nImported: "+ImportRecovery.describe(import_recovery.incoming)+"\nComplete copies stay on this device."
+		notice.text = import_recovery.message+"\n\nPREVIOUS WHOLE SAVE\n"+CloudFlow.describe(import_recovery.original)+"\n\nIMPORTED WHOLE SAVE\n"+CloudFlow.describe(import_recovery.incoming)+"\nComplete copies stay on this device."
 	else:
 		code_edit.text = "Recovery copies are retained on this device."
 		notice.text = import_recovery.message+"\nIf the recovery record remains damaged, keep the app installed to retain its local copies for recovery."
 
+	if cloud_panel!=null and cloud_panel.read_only: cloud_panel.move_to_front()
+
 func reset_transfer_controls() -> void:
 	if transfer_title==null: return
-	transfer_title.text = "LOCAL SAVE CODE"; code_edit.editable = true
+	cloud_entry.text="OPTIONAL CLOUD / LOCAL COPIES"; cloud_entry.show()
+	transfer_title.text = "LOCAL SAVE CODE"; code_edit.editable = true; code_edit.show()
 	for index in transfer_buttons.size():
 		transfer_buttons[index].show()
 		transfer_buttons[index].text = ["EXPORT","PASTE","IMPORT","CLOSE"][index]
 
 
 func _physics_process(delta: float) -> void:
-	if not import_pending and not paused and state.phase == "playing":
+	if not import_pending and not cloud_held and not paused and state.phase == "playing":
 		var events := R.tick(state, input_vector, delta)
 		presentation.queue_events(events)
 		for e in events:
@@ -612,5 +637,50 @@ func fill_audio() -> void:
 		audio_playback.push_frame(Vector2(value, value))
 
 func _exit_tree() -> void:
+	if cloud_flow!=null: cloud_flow.dispose()
 	if audio != null:
 		audio.stop()
+
+func cloud_capture() -> String:
+	return S.encode(state,profile,settings,0,true,current_career())
+
+func open_cloud() -> void:
+	if import_pending: open_pending_copies(); return
+	if cloud_held: return
+	paused = true; stop_move(); menu.hide(); terminal.hide(); transfer.hide(); code_edit.release_focus()
+	cloud_held = true
+	cloud_flow = CloudFlow.new()
+	cloud_flow.setup(cloud_capture,save_io,cloud_transport if cloud_transport!=null else (NativePort.owner if NativePort.owner!=null else NativePort.new()),cloud_restore)
+	cloud_flow.closed.connect(close_cloud)
+	cloud_panel = CloudPanel.new(); cloud_panel.setup(cloud_flow); ui.add_child(cloud_panel)
+	layout_cloud(); cloud_flow.open(); cloud_panel.rebuild(); refresh()
+
+func layout_cloud() -> void:
+	var view := get_viewport().get_visible_rect().size
+	cloud_panel.position = Vector2((view.x-620)/2,185)
+	cloud_panel.size = Vector2(620,maxf(500,view.y-220))
+
+func close_cloud() -> void:
+	if cloud_flow!=null: cloud_flow.dispose()
+	if cloud_panel!=null: cloud_panel.queue_free(); cloud_panel=null
+	cloud_flow=null; cloud_held=false; paused=true; menu.show(); refresh()
+
+func cloud_restore(code: String) -> bool:
+	if not cloud_held or import_pending: return false
+	return start_local_import(code)
+
+func open_pending_copies() -> void:
+	if not import_pending: return
+	if cloud_panel!=null:
+		if cloud_flow!=null: cloud_flow.dispose()
+		cloud_panel.queue_free()
+	cloud_flow=CloudFlow.new()
+	cloud_flow.setup(cloud_capture,save_io,preload("res://scripts/cloud/port.gd").new(),Callable())
+	cloud_flow.phase="unavailable"; cloud_flow.message="Read-only recovery copies. Import remains paused until Retry Import or Keep Previous is verified."
+	cloud_panel=CloudPanel.new(); cloud_panel.read_only=true; cloud_panel.archives=true; cloud_panel.close_view=close_pending_copies
+	cloud_panel.setup(cloud_flow); ui.add_child(cloud_panel); layout_cloud(); cloud_panel.rebuild()
+
+func close_pending_copies() -> void:
+	if cloud_flow!=null: cloud_flow.dispose()
+	if cloud_panel!=null: cloud_panel.queue_free(); cloud_panel=null
+	cloud_flow=null; show_import_pending()

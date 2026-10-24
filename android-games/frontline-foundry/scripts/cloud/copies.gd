@@ -24,3 +24,12 @@ func get_code(id: String) -> Dictionary:
 	if not io.exists(path): return {"ok":false}
 	var text: String = io.read_text(path)
 	return {"ok":true,"text":text} if text.sha256_text()==id and Store.decode(text).ok else {"ok":false}
+
+func list_ids() -> Array[String]:
+	var ids: Array[String] = []
+	if not io.has_method("list_paths"): return ids
+	for path in io.list_paths(PREFIX):
+		var id: String = str(path).trim_prefix(PREFIX)
+		if id.length()==64 and id.is_valid_hex_number(false): ids.append(id)
+	ids.sort()
+	return ids

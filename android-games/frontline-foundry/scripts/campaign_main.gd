@@ -187,7 +187,7 @@ func stop_move() -> void:
 		stick.position.y = get_viewport().get_visible_rect().size.y - 220
 
 func begin() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	state.phase = "playing"
 	paused = false
 	menu.hide()
@@ -196,7 +196,7 @@ func begin() -> void:
 	refresh()
 
 func retry() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	var support: String = state.planned_support
 	state = C.fresh(state.definition)
 	state.planned_support = support
@@ -216,7 +216,7 @@ func build_nearby() -> void:
 		refresh()
 
 func enter_campaign() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	paused = true
 	stop_move()
 	menu.hide()
@@ -234,13 +234,13 @@ func enter_campaign() -> void:
 	refresh()
 
 func select_mission(index: int) -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	if index > career.clears.size():
 		return
 	start_definition(D.mission(index))
 
 func start_definition(definition: Dictionary) -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	state = C.fresh(definition)
 	paused = false
 	stop_move()
@@ -252,14 +252,14 @@ func start_definition(definition: Dictionary) -> void:
 	refresh()
 
 func next_mission() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	if state.definition.mode == "campaign" and state.definition.index < 11:
 		select_mission(int(state.definition.index) + 1)
 	else:
 		enter_campaign()
 
 func open_support() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	paused = true
 	stop_move()
 	menu.hide()
@@ -267,14 +267,14 @@ func open_support() -> void:
 	refresh()
 
 func choose_support(key: String) -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	if state.support == "none":
 		state.planned_support = key
 		save_now()
 	close_modals()
 
 func open_seed() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	paused = true
 	stop_move()
 	menu.hide()
@@ -283,21 +283,21 @@ func open_seed() -> void:
 	refresh()
 
 func change_seed(amount: int) -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	seed_value = clampi(seed_value + amount, 0, 999999)
 	seed_label.text = "SEED %06d  /  %s" % [seed_value, seed_style.to_upper()]
 
 func choose_style(key: String) -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	seed_style = key
 	change_seed(0)
 
 func start_seed() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	start_definition(D.skirmish(seed_value, seed_style))
 
 func close_modals() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	for p in [support_panel, journey, seed_panel]:
 		p.hide()
 	menu.visible = state.phase != "ready"
@@ -305,25 +305,26 @@ func close_modals() -> void:
 	refresh()
 
 func back() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	if support_panel.visible or journey.visible or seed_panel.visible:
 		close_modals()
 	else:
 		super.back()
 
 func save_now() -> bool:
-	if import_pending: return false
+	if import_pending or cloud_held: return false
 	var okay := S.write(state, profile, settings, S.PATH, save_io, false, career)
 	save_problem = not okay
 	return okay
 
 func open_transfer() -> void:
+	if cloud_held: return
 	if import_pending: show_import_pending(); return
 	super.open_transfer()
 	code_edit.text = S.encode(state, profile, settings, 0, true, career)
 
 func copy_code() -> void:
-	if import_pending: return
+	if import_pending or cloud_held: return
 	code_edit.text = S.encode(state, profile, settings, 0, true, career)
 	if not DisplayServer.has_feature(DisplayServer.FEATURE_CLIPBOARD):
 		code_edit.select_all()
@@ -346,7 +347,7 @@ func adopt_career(value: Dictionary) -> void:
 	career = value.duplicate(true)
 
 func _physics_process(delta: float) -> void:
-	if not import_pending and not paused and state.phase == "playing":
+	if not import_pending and not cloud_held and not paused and state.phase == "playing":
 		var events := C.tick(state, input_vector, delta)
 		presentation.queue_events(events)
 		var heard := {}
