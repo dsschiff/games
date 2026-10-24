@@ -49,5 +49,9 @@
     "version_unchanged": "0.3.5/code9",
     "native_packet_predates_feedback": true,
     "next": "Normal1x rendered recap/Journey review; next higher-version signed/native candidate."
+  },
+  "later_rendered_cycle": {
+    "evidence": "android-games/evidence/first-pair-rendered-20261024.json",
+    "scope": "Historical source/CPU results above remain bound to their source commits. Later matched rendered review found and corrected Dead caption readability; Frontline desktop recap/Journey review clear. New signed/native candidates are recorded separately."
   }
 }

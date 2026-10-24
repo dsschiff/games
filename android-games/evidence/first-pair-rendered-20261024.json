@@ -1,0 +1,115 @@
+{
+  "scope": "Qualified first-pair desktop presentation review and local signed feedback candidates. Existing delivered APK links remain unchanged; native/physical/cloud and private-transfer gates are separate.",
+  "frontline": {
+    "runtime_source": "c1ab02109f23d2deded54591b940a91b5fe7e4bc",
+    "capture_worker_commit": "2f7b98f53377f75c4028f1e14850d7a1b43c8926",
+    "capture_integration_commit": "ddf821b",
+    "checkpoint": "android-games/frontline-foundry/RECORD_CAPTURE_CHECKPOINT.json",
+    "checkpoint_raw_worker_sha256": "49e59651f5d571e82905048e8d133e54e0bbbb7fd96ab26e3659116de2d7b65b",
+    "render_checks": [
+      38,
+      38
+    ],
+    "render_failures": 0,
+    "complete_state_input_raw_save_parity": true,
+    "motion_review": {
+      "path": "F:/games-workspaces/hearth-preview-capture-20261024/.artifacts/frontline-normal1x-readback-20261024.json",
+      "sha256": "a2623e8090e38587f5d0887acb827e7c5c4048463669e898f36e3f39fabf6065",
+      "disposition": "Root assistant sampled complete matched1x desktop passages; bounded recap/Journey/latest-clear readability clear; independent Astra nine-native-still review separate."
+    },
+    "retention": {
+      "original_movie_pngs": 1410,
+      "removed": 1342,
+      "kept": 68,
+      "removed_bytes": 568993989,
+      "kept_bytes": 28626514,
+      "all_four_movies_preserved": true,
+      "manifest_sha256": "38510a3f1fdb17708d0e2277fcab0022f45e4f522e76b1c657541111614aa633"
+    },
+    "candidate": {
+      "version": "0.3.6",
+      "version_code": 10,
+      "metadata_source": "f2b1a64b1c5d47bf4a7333e8c30636a18309cd0e",
+      "manifest": {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\frontline-foundry\\20261024T143308984333Z\\manifest.json",
+        "bytes": 1862,
+        "sha256": "c82542d81a529d0dbe99d7b45ada66147aa47229417bb0b82cb9c7b0ae4cdda4"
+      },
+      "apk": {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\frontline-foundry\\20261024T143308984333Z\\frontline-foundry.apk",
+        "bytes": 56259152,
+        "sha256": "371d7c482022f448d9b5bae379685e6891f3aa1304cfeb84856f99ab101128e6"
+      },
+      "project_fingerprint": "86b86886d78b1f2613a2b95a9f85ca99ecc2fab67baca6f824975082a6466de7",
+      "packaging_review": "Astra actualZIP274entries/source268files/rawlogs/apksigner v2v3/aapt CLEAR; min24/target36,arm64+x86_64,no permissions/nondebug,same2527signer.",
+      "native_update_verified": false,
+      "uploaded": false
+    },
+    "limits": "Restored prior genuinely input-earned campaign/skirmish contexts, desktop touch/wheel and admitted Pause/Resume saves. No new victory, measured FPS, audio, native Android, physical/human or configured cloud acceptance."
+  },
+  "dead": {
+    "first_render_source": "60515b1438e08b55c893002b0f99e433d9dd5441",
+    "capture_integration_commit": "2aed1fc",
+    "first_render_finding": {
+      "path": "F:/games-workspaces/hearth-preview-capture-20261024/.artifacts/dead-multiplier-first-render-finding-20261024.json",
+      "sha256": "43cfc886b27d143c614e386ba90930ed9c8c6149fa873d81bf2d5a172041ab2b"
+    },
+    "correction_adapter_lf_sha256": "46010d6fe751c7d13da16978db685b45d688bf1d6f5b2e06514a5cdd1e7108e0",
+    "checks": {
+      "typed_and_route": 396,
+      "root_route_before": 18,
+      "root_route_after": 18,
+      "failures": 0
+    },
+    "parity": {
+      "whole_tick_contexts": 2734,
+      "actual_input_events": 28,
+      "complete_observations": 5,
+      "raw_slots_equal": true,
+      "natural_threshold": "35to40, not39to40"
+    },
+    "motion_review": {
+      "path": "F:/games-workspaces/hearth-preview-capture-20261024/.artifacts/dead-multiplier-normal1x-readback-20261024.json",
+      "sha256": "4a7395c72de5f26edd7dd74c6c4e2e592ad3e1d00e20ada17ab80a1a3bdf5417",
+      "disposition": "Bounded matched35to45.6s1x approach: shorter partial fractions followable, applied multiplier separate, threshold conspicuous. Cyan region credited as contrast; independent analog-bar readability unproven."
+    },
+    "source_commit": "b6e737fb8722cf1e04a6f4e7699cb1e5f671c918",
+    "native_verified": false,
+    "uploaded": false,
+    "limits": "Fresh actual-input route/full unchanged gameplay and saved meaning; complete45.6s movies fixed60Hz/30fps are not measured FPS, other viewport/native/physical/audio/humanfun or cloud acceptance.",
+    "integration_commit": "75ff7baafa3759a383fd2a0340d5918b9d017e9d",
+    "checkpoint": "android-games/dead-run/MULTIPLIER_BAR_CHECKPOINT.json",
+    "checkpoint_raw_worker_sha256": "8a864deed6d40a8bf6aa7284748814ec6f2c438c7f639332df7e5f092c821ddc",
+    "reviewed_checkpoint_before_disposition_sha256": "9c3444ddea927d182dbdbc30f6ba4ec18069a4a3f4eda0620bd9138322f5ac22",
+    "retention": {
+      "original_movie_pngs": 2736,
+      "removed": 2676,
+      "kept": 60,
+      "removed_bytes": 1367011590,
+      "kept_bytes": 30791673,
+      "marked_stills_kept": 10,
+      "both_movies_preserved": true,
+      "manifest_sha256": "97433a4ab777e59bd5aa6249e3e1bc28e11817365945972a2a750dc29158ab54"
+    },
+    "candidate": {
+      "version": "0.4.3",
+      "version_code": 9,
+      "metadata_source": "b8fc68c249d4fa0a164a6ff028d677570175b922",
+      "manifest": {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\dead-run\\20261024T145847305539Z\\manifest.json",
+        "bytes": 1789,
+        "sha256": "1a35698678b7ad66224a196703333869e8321a80fd6e52efdd9a02b51ae3e475"
+      },
+      "apk": {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\dead-run\\20261024T145847305539Z\\dead-run.apk",
+        "bytes": 54416601,
+        "sha256": "45adc346f2942f001dd232aeb15784b00a1423599e1042b2938fe4b6af5e4895"
+      },
+      "project_fingerprint": "712d79b25b956348749fb11bb333bf94425b7d693c3f18021babd02e5440f8c8",
+      "packaging_review": "Astra actualZIP243entries/source244files/rawlogs/fresh apksigner v2v3/aapt CLEAR; min24/target36,arm64+x86_64,no permissions/nondebug,same2527signer. Runtime exact reviewed b6e737 except three version literals.",
+      "native_update_verified": false,
+      "uploaded": false
+    }
+  },
+  "integration_review": "Astra six-file root enclosure and seven explicit path/hash records CLEAR; final Dead checkpoint differs prior reviewed checkpoint only in disposition; retained inventory arithmetic and delivered-link invariance verified."
+}
