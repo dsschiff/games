@@ -706,7 +706,7 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   candidate ce8a88f. Root353/0 journal and65/0 destination checks independently
   pass with unchanged source; worker whole-context transfer/rules/lifecycle
   checks retained. Existing-signer APK185a7d1a…d378d (56,083,160 bytes) is clean
-  and independently verified. Native startup stalled before capture/update;
+  and independently verified. Native raw-save capture shell stalled after boot/app launch; no update;
   observed low host memory, graceful console kill timed out, exact owned test
   processes stopped and verified absent. No app reset/update/upload; native
   recovery remains pending. See android-games/evidence/gear-local-recovery-20261024.json.
