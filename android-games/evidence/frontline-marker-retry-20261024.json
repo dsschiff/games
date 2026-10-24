@@ -62,11 +62,12 @@
     "production_touch": "2 checks/1 failure/0 events, strict engine-log failure due missing imported watchtower and related model .scn cache in worker worktree; retained unchanged",
     "fixture_setup": "Earlier invalid synthetic best_kills fixture and incomplete packet retained as failed"
   },
-  "actual_input_scope": "Coordinator has exact existing watchtower.glb-4b55c4b99c903385d584b7479e8cb30f.scn and prior code8 imported assets. No import/asset substitution. Actual ScreenTouch Import/Retry/Keep covers original catalogs2/3 and both choices, full state/profile/settings/career/parked legacy, pending freeze and same-process fresh production bootstrap over materialized files. This closes only the deferred CPU actual-input gate.",
+  "actual_input_scope": "Coordinator has exact existing watchtower.glb-4b55c4b99c903385d584b7479e8cb30f.scn and prior code8 imported assets. No import/asset substitution. Actual ScreenTouch Import/Retry/Keep covers fixture kinds2/3 (active campaign/active legacy) and both choices, full state/profile/settings/career/parked legacy, pending freeze and same-process fresh production bootstrap over materialized files. This closes only the deferred CPU actual-input gate.",
   "limits": [
     "CPU/headless/Dummy with typed faults and synthetic full contexts; not newly earned progress",
     "Materialized fresh owners are not native OS kill, storage fault or power loss",
     "Known owner can export retained validated codes; cold undecodable marker retry-read only",
     "No higher version/APK/native update or cloud/physical acceptance; existing signed0.3.4/code8 unchanged"
-  ]
+  ],
+  "report_field_interpretation": "The immutable raw report field original_catalog contains fixture kind indices2/3, mapping to active campaign/active legacy. These are not actual saved catalog values; raw receipts remain unchanged."
 }

@@ -765,7 +765,7 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   No version/build/upload; candidate/native/physical/cloud gates remain open.
 
 - Frontline retry-marker fix integrated from eecc057. Root107/0 helper and26/0
-  actual-input checks pass with24 touch events over both original catalogs and
+  actual-input checks pass with24 touch events over campaign/legacy fixture kinds and
   Retry/Keep choices; complete career/parked legacy contexts survive fresh
   materialized production owners. Existing coordinator model cache used; worker
   missing-cache2/1/0-touch failure remains failed. Astra source/evidence clear,
