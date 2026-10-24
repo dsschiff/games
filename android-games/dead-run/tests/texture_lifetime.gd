@@ -10,20 +10,20 @@ var root_host: Node
 func run() -> void:
     for arg in OS.get_cmdline_user_args():
         if arg.begins_with("--scenario="): scenario = arg.trim_prefix("--scenario=")
-    check(scenario in ["campaign-start20", "campaign-start60", "campaign-defeat", "campaign-terminal", "campaign-retry20", "campaign-win", "campaign-win-reload", "campaign-reload20", "campaign-defeat-reload", "legacy-start20", "legacy-defeat", "legacy-retry-leave", "full-runtime-prefix", "geometry-before-warning"], "Known discriminating prefix")
+    check(scenario in ["campaign-start20", "campaign-start60", "campaign-defeat", "campaign-terminal", "campaign-retry20", "campaign-win", "campaign-win-reload", "campaign-reload20", "campaign-defeat-reload", "legacy-start20", "legacy-defeat", "legacy-retry-leave", "full-runtime-prefix", "geometry-before-warning", "geometry-only", "single49-before-warning", "single49-only", "geometry-no-pixel-before-warning"], "Known discriminating prefix")
     root.size = Vector2i(720, 1280)
     scene = load("res://campaign.tscn").instantiate()
     root.add_child(scene)
     root_host = scene
     await dwell(5)
     observe("ready")
-    if scenario == "geometry-before-warning":
+    if scenario in ["geometry-before-warning", "geometry-only", "single49-before-warning", "single49-only", "geometry-no-pixel-before-warning"]:
         # Explicit synthetic fixture tail only: no claimed progress or save.
         # Keep the same local adapter lifetime as the full harness; p=null
         # has already failed its matched intervention and is not a fix.
         scene.set_physics_process(false)
         warning_checks()
-        for count in [5, 25, 49]:
+        for count in ([49] if scenario.begins_with("single49") else [5, 25, 49]):
             scene.state = C.fresh(0, "rivet")
             scene.state.crew = count
             scene.state.phase = "defeat"
@@ -38,7 +38,7 @@ func run() -> void:
             for i in count:
                 front = minf(front, Kit.bounds(adapter.crew[i].model, scene.world).position.z)
             check(barrier.end.z + .2 <= front, "Synthetic geometry clearance " + str(count))
-            if count == 49:
+            if count == 49 and scenario != "geometry-no-pixel-before-warning":
                 scene.overlay.hide()
                 scene.notice.text = "GEOMETRY FIXTURE - 49 crew / frozen blockade. Not earned progress."
                 await pixel("fixture-prefix-49-crew")
@@ -48,8 +48,8 @@ func run() -> void:
             scene.refresh()
             check(adapter.boss.position == Vector3(scene.state.boss.x, 0, -scene.state.boss.z), "Synthetic active target relation " + str(count))
             observe("synthetic-geometry-" + str(count))
-        await warning_pixels()
-        observe("synthetic-geometry-then-warnings")
+        if not scenario.ends_with("-only"): await warning_pixels()
+        observe("synthetic-tail-complete")
         call_deferred("complete_probe")
         return
     if scenario.begins_with("legacy-"):

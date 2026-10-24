@@ -73,3 +73,31 @@ python android-games/dead-run/tests/run_graphics.py lifetime --headless --label 
 ```
 
 The coordinator must grant the renderer slot before omitting --headless.
+
+## Minimal rendered reproduction
+
+The next granted comparisons separated real play from the synthetic tail:
+
+- `render-win-reload-lifetime-20261024T005933Z`: actual Start, natural defeat,
+  Retry, policy-earned victory and complete app-written cold reload pass seven
+  checks and the strict raw shutdown gate. Final drain: one node, 25 resources,
+  no observed explicit-font survivors.
+- `render-geometry-before-warning-lifetime-20261024T010245Z`: fresh app plus only
+  the 5/25/49-crew geometry fixtures followed by the original warning fixtures
+  passes 25 assertions but FAILS strict shutdown with four 349,524-byte textures
+  (GL IDs 25-28). Final drain also reports one node, 25 resources and no observed
+  explicit-font survivors. Original full-run IDs were 33-36; GL IDs do not prove
+  these are the same individual allocations, only the same count and sizes.
+
+Actual gameplay, terminal transfer, victory, cold reload and legacy are not
+required for this smaller reproduction. It narrows the fault to this fixture
+sequence/render-resource interaction; it does not yet establish a runtime owner,
+font issue, engine defect, or a correction. The GPU was returned immediately
+after this isolation. No runtime source changed.
+
+CPU-ready smaller reductions preserve the unmodified runtime: `geometry-only`
+(23 checks), `single49-before-warning` (19), `single49-only` (19), and
+`geometry-no-pixel-before-warning` (23). They vary repeated fixture rebuilds,
+the 49-crew capture/yield and the warning tail. Their headless success only
+validates setup/teardown; warning_pixels does not execute its rendered branch
+headlessly. No further rendered result is claimed for these prepared cases.

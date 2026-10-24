@@ -1,5 +1,5 @@
 {
-  "status": "Original strict full GL leak reproduced; explicit p=null matched intervention also fails; investigation remains open",
+  "status": "Strict leak isolated to synthetic geometry-before-warning fixture tail; actual earned victory/cold reload strictly passes; exact owner unresolved",
   "runtime_changes": false,
   "runs": [
     {
@@ -503,6 +503,149 @@
         "nodes": 1.0,
         "orphan_nodes": 0.0,
         "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/cpu-geometry-no-pixel-before-warning-lifetime-20261024T010540Z",
+      "strict_passed": true,
+      "errors": [],
+      "scenario": "geometry-no-pixel-before-warning",
+      "headless": true,
+      "checks": 23,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "b5729d570a51728424962b76b75b7c6fc2ae5b7f5d0d2305ae3b11bb3fccbc5d",
+        "godot.log": "fc6bc691824f86edd03a2454ba01b94e46dde180c029e098fca4a44cb7bd88f8",
+        "source-hashes-lf.json": "2810629b7ca4b2a0df069f17d0152c1b361d78c76e23692631bd34075f479202",
+        "texture-lifetime.json": "83bfd972e8f1e5c1a20dfa29084c3c698f9e6ec9519997bee0d96a0ba33d9a23"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/cpu-geometry-only-lifetime-20261024T010531Z",
+      "strict_passed": true,
+      "errors": [],
+      "scenario": "geometry-only",
+      "headless": true,
+      "checks": 23,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "f8bb7f91d0b4e9267cdfd36c6604a9b37386ac75b2306d203874e38ac9172c92",
+        "godot.log": "5dbf8b71dc2703e69d62842444171110a66a200fe733c2b0f18d4ca8e73ef53c",
+        "source-hashes-lf.json": "2810629b7ca4b2a0df069f17d0152c1b361d78c76e23692631bd34075f479202",
+        "texture-lifetime.json": "3fb493b2db59e6fe53da9b811815414e3d56cfb6f7763aba13714e1ba03f3d7f"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/cpu-single49-before-warning-lifetime-20261024T010537Z",
+      "strict_passed": true,
+      "errors": [],
+      "scenario": "single49-before-warning",
+      "headless": true,
+      "checks": 19,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "7091ae840fda0a866aa3a6f0cc49ad42cde379294c91697fa1fe7dc75cf5f155",
+        "godot.log": "ccfeb4fc5a7a2223c7379e9bcbc5b536873b2965865eb75e8397f83db61f92ea",
+        "source-hashes-lf.json": "2810629b7ca4b2a0df069f17d0152c1b361d78c76e23692631bd34075f479202",
+        "texture-lifetime.json": "c3fda08a3250a7b34d051f2168261854afd9090e5d4e586da35397eb85d94976"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/cpu-single49-only-lifetime-20261024T010539Z",
+      "strict_passed": true,
+      "errors": [],
+      "scenario": "single49-only",
+      "headless": true,
+      "checks": 19,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "3a30e8e29b0f3f3f74f724d7ea9758d112f6d0ae8730d2929318281591f03148",
+        "godot.log": "d4ffb3b554b780deb754b5f78b7616538c16cf2f9ac9c0af51f990c9af0caba8",
+        "source-hashes-lf.json": "2810629b7ca4b2a0df069f17d0152c1b361d78c76e23692631bd34075f479202",
+        "texture-lifetime.json": "88ba949d9f6956543917c63b91e8f794231f5f5c72c684515a4cd151ccba1ee1"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-geometry-before-warning-lifetime-20261024T010245Z",
+      "strict_passed": false,
+      "errors": [
+        "ERROR: Texture with GL ID of 25: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 26: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 27: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 28: leaked 349524 bytes."
+      ],
+      "scenario": "geometry-before-warning",
+      "headless": false,
+      "checks": 25,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "568c9638416403e36d86d0664c4082c0cb20d0b0cf04914e84cf61ebabce6fc8",
+        "godot.log": "cf60ec1ef6478218cb979ee1ca61667bd104278ba3513ea610f19ca7ec9b149b",
+        "source-hashes-lf.json": "ad1174ae2ae358bc11779b2457a717df7a209b7f581f9bf7ec0669d5ce7019d6",
+        "texture-lifetime.json": "5efe5ee1fd5dcd87d31b7428639e04eab712c6986c49cc8235a05b8ffd65cd98"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-win-reload-lifetime-20261024T005933Z",
+      "strict_passed": true,
+      "errors": [],
+      "scenario": "campaign-win-reload",
+      "headless": false,
+      "checks": 7,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "a941c62ddd5e93e8104a2c0fc678b937847fbb46d5c7cb86ba76a910c7b6c78e",
+        "godot.log": "a13e56e8992df5544cdf32bd40fe5f840598ea19551e1cb81a5339039a722540",
+        "source-hashes-lf.json": "ad1174ae2ae358bc11779b2457a717df7a209b7f581f9bf7ec0669d5ce7019d6",
+        "texture-lifetime.json": "e8634aababc5e94fb3a268f5eaeda579772cc9cfb2334a69e14b937ff6a9c79a"
       }
     }
   ],
