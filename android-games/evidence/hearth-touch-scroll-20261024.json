@@ -72,8 +72,63 @@
     "24checks/3STOP-row failures",
     "262checks/4kinetic-navigation harness failures"
   ],
-  "version_unchanged": "0.3.2/code6; existing signed APK predates this touch fix.",
-  "limits": "CPU/headless synthetic capability only; no native pixels/touch, OS clipboard, physical-file cold start or human/physical/cloud acceptance. No Store/rules/schema/layout/version/export change or new upload.",
-  "next": "Prepare higher same-signer Hearth candidate, then actual Android Journey/recovery swipes and full-context choices/lifecycle checks.",
-  "uploaded": false
+  "limits": "CPU full rich contexts remain distinct from actual native Copper Pass defeat/ready contexts with no earned clears, legacy or parked save. Native fixture copies two real elected app-written slot codes to immutable names and adds a legal journal, without active-slot injection, normal Import/clipboard admission or induced storage failure. Production Store/Recovery owning complete-context comparison has no added masks/tolerance. Temporary short viewport tests recovery overflow and is restored. No physical Fold7/folding, measured FPS/audio/human/cloud or newer upload acceptance.",
+  "next": "Continue Hook code9to10 firstCopy/pendingCopy/View and Tower code10to11 normalCopy native gates; Hearth normal Import/OSclipboard and shader diagnosis remain separate.",
+  "uploaded": false,
+  "previous_candidate": "0.3.2/code6; existing signed APK predates this touch fix.",
+  "candidate": {
+    "version": "0.3.3",
+    "version_code": 7,
+    "source": "5721fbecec084c41da335f02b29cf51909f44947",
+    "manifest": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\hearthguard\\20261024T164418068816Z\\manifest.json",
+      "bytes": 1814,
+      "sha256": "aefef5c3a0f0e9558d2ad06fa709faed9b49ccf3f9b10ae533577a5112a757e0"
+    },
+    "apk_bytes": 54474527,
+    "apk_sha256": "424a220c62f4e2b11bf656817db27428d4cd327ecade4bb641fd2d2e012b419f",
+    "packaging_review": "Astra actual ZIP204entry/CRC/signature/aapt/rawlogs/source179/pipeline/config CLEAR; same2527signer/no permissions/nondebug."
+  },
+  "native": {
+    "packet": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\native-hearth-touch-code7-20261024\\report.json",
+      "bytes": 92551,
+      "sha256": "cd9f0e26f3998e8ebb3a136ce1c0d49a636c5f699b7252605aaa03de7e291836"
+    },
+    "pins": 292,
+    "whole_context_comparisons": 40,
+    "failures": 0,
+    "phases": 41,
+    "pending_context_checks": 17,
+    "resolved_journal_checks": 7,
+    "install_exact_files": 2,
+    "pending_exact_files_per_choice": 5,
+    "immutable_copies": 2,
+    "immutable_copy_phases": 24,
+    "choice_revisions": {
+      "journey": [
+        49,
+        50
+      ],
+      "keep": [
+        50,
+        51
+      ],
+      "retry": [
+        56,
+        57
+      ]
+    },
+    "review": "Astra qualified CLEAR: all292pins/actual owner comparator, fixture/motion/config, all41elected payloads and complete domain contexts,17journals/7absence/2archives, selected native pixels/geometry/tempabsence/shutdown independently verified.",
+    "original_viewport_restored": true,
+    "owned_emulator_shutdown_verified": true,
+    "strict_log_gate": "FAIL: nine retained warning-containing log observations; not nine distinct events.",
+    "comparison_breakdown": {
+      "original_cross_phase_pairs": 19,
+      "selected_ready_code_comparisons": 21,
+      "selected_ready_self_read_decode_consistency": 1,
+      "other_cross_phase_or_source_comparisons": 39,
+      "qualification": "Journey-selected compares Store.read with its own elected raw code: consistency, not an independent expected-fresh-reset oracle. Ordinary selection commits once49to50; focused CPU334 covers selection semantics separately."
+    }
+  }
 }

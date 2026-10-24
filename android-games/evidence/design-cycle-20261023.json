@@ -915,8 +915,9 @@
   },
   "hearth_touch_scroll": {
     "evidence": "android-games/evidence/hearth-touch-scroll-20261024.json",
-    "state": "Three-line Journey/recovery row touch propagation independently source/checkpoint CLEAR; root focused334/0,1280events/20activations, strict clean and176sourcefiles unchanged. Existing0.3.2/code6 predates fix; higher signed/native touch next.",
+    "state": "Signed0.3.3/code7 packaging and bounded native6to7 touch/recovery independently CLEAR.40owning comparisons/0 (39cross-phase/source plus1read/decode consistency),41phases,17pending/7resolved checks, both explicitchoices and originaldefeat restoration.292pins audited, viewport restored/emulator stopped; shader strictFAIL, no upload.",
     "native_accepted": false,
-    "new_apk": false
+    "new_apk": true,
+    "bounded_native_touch_accepted": true
   }
 }
