@@ -1,0 +1,154 @@
+{
+  "scope": "Current signed Hook recovery-touch correction plus bounded actual Android Hook/Tower clipboard/update evidence.",
+  "base": "d15f8240960ff34ae278aa9c5ce673693f6bf840",
+  "worker_source": "aa4592b54a1de9440064bd0d91f78eedac6c52c7",
+  "root_integration": "a51179c",
+  "candidate_source": "7e0d6dbd884a491544764ac2752127ab2851441c",
+  "checkpoint": {
+    "path": "android-games/hook-and-hunger/RECOVERY_TOUCH_CHECKPOINT.json",
+    "worker_final_raw_sha256": "2401ff99e37037bcc0b4ef5641fb0050674a24cf551cbc8e697ad4dae30e842b"
+  },
+  "runtime_delta": "Exactly two-line local loop sets PASS on six existing recovery buttons. Original UTF8 main.gd reconstructs exactly by removal; no global helper, layout, clipboard protocol, Store/rules/schema change.",
+  "source_review": "Astra207baseLF/35binary/46local+30nativefailure artifacts/3source pins and180current+116cache exact; source and final disposition-only amendment CLEAR.",
+  "root_focused_repeat": {
+    "checks": 1395,
+    "failures": 0,
+    "cases": 24,
+    "events": 8616,
+    "strict_clean": true,
+    "source_unchanged": true,
+    "report": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T173355202825Z\\report.json",
+      "bytes": 1119,
+      "sha256": "e21333564432b074b9ae0edd9807739caf4aa430f89c1cc5c5964511558b715b"
+    },
+    "observations": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T173355202825Z\\recovery-touch.json",
+      "bytes": 8421733,
+      "sha256": "75a639d07b6bffe7db76c71cc9dd7164f481e37280c651d4d697ff8d8a3da2a0"
+    },
+    "source_before": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T173355202825Z\\source-before.json",
+      "bytes": 18150,
+      "sha256": "dfdb02c07048629f89e80cb883391f040ce6e5c9634085ec21f08395a3e8c1d1"
+    },
+    "source_after": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T173355202825Z\\source-after.json",
+      "bytes": 18150,
+      "sha256": "dfdb02c07048629f89e80cb883391f040ce6e5c9634085ec21f08395a3e8c1d1"
+    },
+    "raw_log": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T173355202825Z\\recovery_touch.log",
+      "bytes": 127,
+      "sha256": "1c6bcc5afce961859147bcf1ee8850aca7e41397dbde68f2961034ab3464e526"
+    },
+    "materialized_context_files": [
+      {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T173355202825Z\\appdata\\Godot\\app_userdata\\Hook and Hunger\\hook-recovery-copy-0992a56d81e96f2751c14c12c3fd388f0df9924fece3a8526a2b4444fc2ccf4a",
+        "bytes": 30479,
+        "sha256": "0992a56d81e96f2751c14c12c3fd388f0df9924fece3a8526a2b4444fc2ccf4a"
+      },
+      {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T173355202825Z\\appdata\\Godot\\app_userdata\\Hook and Hunger\\hook-recovery-copy-3ba51de318bd85799d1258619d29dd45679cb452ffd5ed5a39a7e273fd1b5aab",
+        "bytes": 30474,
+        "sha256": "3ba51de318bd85799d1258619d29dd45679cb452ffd5ed5a39a7e273fd1b5aab"
+      },
+      {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T173355202825Z\\appdata\\Godot\\app_userdata\\Hook and Hunger\\hook-recovery-copy-4a52a0514b6ba3698ee69a6b4a558b229710778939a4458d9d0f7ae173555faa",
+        "bytes": 30474,
+        "sha256": "4a52a0514b6ba3698ee69a6b4a558b229710778939a4458d9d0f7ae173555faa"
+      },
+      {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T173355202825Z\\appdata\\Godot\\app_userdata\\Hook and Hunger\\hook-recovery-copy-4f3c06e05ec93f25568275ecc92380ce1f7efaa1071f60ea73c7773e3aa47f04",
+        "bytes": 1734,
+        "sha256": "4f3c06e05ec93f25568275ecc92380ce1f7efaa1071f60ea73c7773e3aa47f04"
+      },
+      {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T173355202825Z\\appdata\\Godot\\app_userdata\\Hook and Hunger\\hook-recovery-copy-915721ae13a2795ce41442c60202e77a2cd00ac558210d65c0c77b420b023fa8",
+        "bytes": 30474,
+        "sha256": "915721ae13a2795ce41442c60202e77a2cd00ac558210d65c0c77b420b023fa8"
+      },
+      {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T173355202825Z\\appdata\\Godot\\app_userdata\\Hook and Hunger\\hook-recovery-copy-9f1b9a1bf0902490b30760b9c564365de738e19c0122b39c2b96ef5673695e80",
+        "bytes": 31190,
+        "sha256": "9f1b9a1bf0902490b30760b9c564365de738e19c0122b39c2b96ef5673695e80"
+      },
+      {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T173355202825Z\\appdata\\Godot\\app_userdata\\Hook and Hunger\\hook-save0",
+        "bytes": 1735,
+        "sha256": "1fa3ca55b2fc8c81ace91c31cac236ea133c4ddece8da7168b6ec62234b19909"
+      },
+      {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T173355202825Z\\appdata\\Godot\\app_userdata\\Hook and Hunger\\hook-save1",
+        "bytes": 1735,
+        "sha256": "b7daa9e3f01242f59a0f83e8239cd4377e5917c0cf99b068158ecc9f826b8100"
+      }
+    ]
+  },
+  "hook_candidate": {
+    "version": "0.3.5",
+    "code": 11,
+    "manifest": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\hook-and-hunger\\20261024T173233346872Z\\manifest.json",
+      "bytes": 1845,
+      "sha256": "70669847317d148a03bcf7c5551ab8fe8b223539ba448e2064d16dfefe1a0996"
+    },
+    "apk_bytes": 53791636,
+    "apk_sha256": "1a083cc8cd9021fa5aabf7da85890c360050913ab820d4c23add3ab9d3eeee67",
+    "review": "Independent actual ZIP218entry/CRC/signature/aapt/rawlogs/source212/pipeline/config CLEAR; same2527signer, no permissions/nondebug."
+  },
+  "native_packet": {
+    "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\native-hook-tower-copy-20261024\\report.json",
+    "bytes": 517158,
+    "sha256": "6a4355a6636c437a51de18b8eb93e7fe00ae35388670e87509d11288fe0e9028"
+  },
+  "native_review": "Astra qualified CLEAR: all1549 native pins/3manifest refs,18recursive owner dependencies against build/root/worker cache, complete32/14/28 comparisons and17warnings/retained failures, actualcommands/selectedpixels/clipboard/choices/shutdown independently audited.",
+  "native_results": {
+    "hook_code10": {
+      "whole_comparisons": 32,
+      "failures": 0,
+      "accepted_phases": 33,
+      "pending": 13,
+      "resolved": 16,
+      "install_exact_files": 12,
+      "original_archives_unchanged": 10,
+      "copy_roundtrips": "FirstExport1755; Previous1755 and Imported1450 exact OS GET+ack, both opposite-choice Paste/Import/cold whole contexts pass. Row-body scrolling fails; original restored after retained navigation errors."
+    },
+    "tower_code11": {
+      "whole_comparisons": 14,
+      "failures": 0,
+      "phases": 16,
+      "install_exact_files": 11,
+      "original_archives_unchanged": 9,
+      "copy_roundtrip": "FirstCopy282B exact GET+ack; ordinaryUndo then normalPaste/Import/cold restores original full route, Undo flag, medals and settings. SoftIME/manual popup not observed."
+    },
+    "hook_code11": {
+      "whole_comparisons": 28,
+      "comparison_breakdown": "27 cross-phase/chosen-defeat plus original baseline compared with the already retained original code.",
+      "failures": 0,
+      "phases": 28,
+      "pending": 16,
+      "resolved": 8,
+      "install_exact_files": 18,
+      "pending_exact_files_each_choice": 19,
+      "original_archives_unchanged": 16,
+      "choice_revisions": {
+        "keep": [
+          165,
+          166
+        ],
+        "retry": [
+          168,
+          169
+        ]
+      },
+      "touch_and_copy": "Formerly failed Retry-body swipe now moves; row-body reach/reverse/dragreturn/CANCEL/Back/Home/cold preserve full journal+files. FirstExport/Previous1755, Imported1450 exact GET. Both choices commit once; app-copiedPrevious normalImport/cold restores original."
+    }
+  },
+  "retained_failures": "Old native row-swipe P2; initial View-field mistap misnamed previous-opposite-defeat remains pending. Failed original-restored/home/cold navigation expectations retained30/3 and excluded from acceptance; later verified-original phases establish restoration. CPU parse/baseline10/1/premature-inertia failures preserved.",
+  "strict_native_shader_gate": "FAIL:17 warning-containing log observations, not unique events.",
+  "limits": "Actual Hook legacy has zero projectiles/no earned profile/parked ending; rich campaign/projectile/arena contexts are CPU fixtures. Tower native Challenge fields empty. Pending journals reference two actual retained codes, with no active-slot injection or I/O-failure/powerloss induction. Normal Imports create additional immutable raw-slot copies; original archives unchanged. Exact loopback emulator clipboard only; no host clipboard/external service. No native unavailable/delayed/unconfirmed failure injection, softIME/manual selection, physical Fold7/folding/FPS/audio/human/cloud or newer-upload acceptance.",
+  "owned_emulator_shutdown_verified": true,
+  "uploaded": false,
+  "next": "Investigate the shared native shader-cache rejection without suppressing warnings or deleting caches; native Dead multiplier/Frontline recap presentation and externally configured optional cloud remain open."
+}

@@ -668,6 +668,8 @@ func _recovery_ui() -> void:
 		recovery_exports[item[0]] = _button(item[0],box,_copy_recovery_code.bind(item[1]))
 	for item in [["VIEW PREVIOUS CODE",false],["VIEW IMPORTED CODE",true]]:
 		recovery_exports[item[0]] = _button(item[0],box,_view_recovery_code.bind(item[1]))
+	for button in [recovery_retry,recovery_keep]+recovery_exports.values():
+		button.mouse_filter=Control.MOUSE_FILTER_PASS
 	recovery_code = TextEdit.new(); recovery_code.editable=false; recovery_code.wrap_mode=TextEdit.LINE_WRAPPING_BOUNDARY
 	recovery_code.custom_minimum_size=Vector2(0,230); recovery_code.add_theme_font_size_override("font_size",17)
 	box.add_child(recovery_code); recovery_code.hide()
