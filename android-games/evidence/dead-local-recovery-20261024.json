@@ -1,0 +1,85 @@
+{
+  "scope": "Dead local Import recovery across shipping campaign owner and legacy child, standalone legacy format, complete contexts/bullets/settings/profile/loadout. Offline prerequisite, no cloud/rules/schema/version/export/art change.",
+  "reviewed_source_commit": "1e65d260cfed4369cff973e8c79cfd0199985428",
+  "checkpoint": {
+    "path": "F:\\games-workspaces\\dead-run-design-20261023\\android-games\\dead-run\\RECOVERY_CHECKPOINT.json",
+    "sha256": "95f38c3e888d1816bc78a438f440a969c9e81d015fd79e1ce5b7751c8c7e714c",
+    "bytes": 56818
+  },
+  "independent_review": "Astra final whole-increment source/checkpoint clear:115 LF source pins,97 compatibility pins,38 receipts,222 nested artifacts and UID generation receipt independently verified.",
+  "verified_behavior": [
+    "Freeze both owners before joining admitted autosave and capturing live complete code",
+    "Preserve exact original/imported/raw alternating-slot codes before active replacement; preserve original intake separately from existing ready-road upgrade",
+    "Freshly validate every existing marker as the same complete transaction on every resolve; no destructive re-promotion of surviving marker",
+    "Revalidate all complete archived codes before active write; verify full chosen owning context and marker cleanup before paused adoption",
+    "Cold pending bootstrap prevents normal upgrade/default save/legacy child write; conflicting or unreadable markers retain files and block mutation"
+  ],
+  "focused_final": {
+    "marker_admission": 53,
+    "storage_faults": 93,
+    "edges": 48,
+    "admitted_worker": 11,
+    "summary_input": 12,
+    "failures_each": 0,
+    "source_limit": "These final focused packets precede only the exact two-line active-legacy next-action guidance override. Final phase7/0 and both root reruns bind full current source; checkpoint preserves exact prior/final deltas."
+  },
+  "root_reruns": [
+    {
+      "receipt": {
+        "path": "F:\\games-workspaces\\dead-run-design-20261023\\android-games\\dead-run\\.artifacts\\recovery-cpu-20261024T062959950227Z\\receipt.json",
+        "sha256": "13b4a0e366dbf429c966fb769e297c76beee93e5b7debfe674a7f439e6c5787e",
+        "bytes": 50483
+      },
+      "checks": 53,
+      "failures": 0,
+      "source_unchanged": true
+    },
+    {
+      "receipt": {
+        "path": "F:\\games-workspaces\\dead-run-design-20261023\\android-games\\dead-run\\.artifacts\\recovery-cpu-20261024T063024301180Z\\receipt.json",
+        "sha256": "2cd3e60ab608b5cd1ecdad5b1b8b9b358f166b548b78487e49ba173dffddf43c",
+        "bytes": 50236
+      },
+      "checks": 7,
+      "failures": 0,
+      "source_unchanged": true
+    }
+  ],
+  "historical_broader_passes": {
+    "whole_choice_matrix": 199,
+    "formats": 10,
+    "compatibility": 15,
+    "original_regression": 36,
+    "raw_rules_storage": 139,
+    "platform_input": 9,
+    "genuine_code4_contract": 10,
+    "scope": "Historical source-bound CPU passes; not relabeled as current full reruns. Exact source deltas and all failures remain in checkpoint."
+  },
+  "failure_history": "Initial16/6 with nonempty parked/active bullets;29/10 marker consumption;41/1 precedence,41/3 transient read,44/2 cached admission,53/3 reverse precedence; phase7/2 and incomplete180s combined run retained.",
+  "native_preparation": {
+    "status": "Real preserved old-code7 app data captured; no candidate install yet.",
+    "report": {
+      "path": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-dead-recovery-20261024T0631Z\\baseline-contexts.json",
+      "sha256": "67433db756af0b860527c66b71fb895828af9089cf8d203975c7de9c16d04932",
+      "bytes": 368978
+    },
+    "complete_context_comparisons": 2,
+    "failures": 0,
+    "actual_context": "First Riggers active campaign tick251,crew5,ten campaign bullets,empty earned profile,legacy parked; full mode/campaign/legacy/profile/settings/loadout equality through production decoder.",
+    "old_warning": "Old installed code7 logs already contain Failed to load cached shader, recompiling. Strict old log-clean=false; cause/render safety not established.",
+    "engine_log": {
+      "path": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-dead-recovery-20261024T0631Z\\old-app-logcat.log",
+      "sha256": "7c2db22a7579b9012400e3c57295b550baf1a1cf8c14cb06add47e7289712ffa",
+      "bytes": 44114
+    },
+    "limit": "Old native baseline only; source increment/native storage faults, OS interruption, power loss, clipboard, phone and cloud unverified."
+  },
+  "usability_limit": "Known pending choices expose read-only codes for manual selection/export. Cold unreadable recovery cannot enumerate copies. Persistently torn/conflicting markers stay paused and preserve files; no automatic repair/delete or default adoption. Direct archive copy controls need separate evaluation.",
+  "remaining": [
+    "Review pending export usability, then higher-version signed candidate and packaging checks",
+    "Actual native update/full context/normal Import/pending fixture/Retry/Keep/Home/cold behavior",
+    "Repeated shader warning diagnosis and rendering/performance qualification",
+    "Real native interrupted storage/power loss; physical Fold7/folding/IME/sound/FPS/human fun",
+    "Configured optional Google account/cloud sync"
+  ]
+}

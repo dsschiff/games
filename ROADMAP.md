@@ -97,3 +97,8 @@ verification, independent visual review or phone feedback waits.
   failed. Read-only recovery copy buttons pass source/root386/0, native export
   pending. New APK builds held while equivalent retry-marker regressions/fixes
   follow a newly reproduced Dead failure. No upload or phone acceptance added.
+
+- Dead whole local recovery source/CPU clear with independent53/0+7/0; full
+  campaign/legacy/bullets/profile/settings retained and retries freshly validate
+  every marker/copy. Direct pending export usability and new signed native
+  candidate remain next. Existing0.4.1/code7 private APK is unchanged.
