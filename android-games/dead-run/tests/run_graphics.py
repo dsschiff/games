@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 
 PROJECT = Path(__file__).resolve().parents[1]
 GODOT = Path("C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe")
-SCRIPTS = {"rules": "res://tests/run_tests.gd", "campaign-rules": "res://tests/campaign_tests.gd",
+SCRIPTS = {"lifetime": "res://tests/texture_lifetime.gd", "rules": "res://tests/run_tests.gd", "campaign-rules": "res://tests/campaign_tests.gd",
            "platform": "res://tests/platform_input.gd", "code4": "res://tests/code4_upgrade.gd", "design": "res://tests/terminal_design.gd", "lineup": "res://tests/art_lineup.gd", "frames": "res://tests/graphics_frames.gd",
            "presentation": "res://tests/presentation_tests.gd", "timing": "res://tests/horde_timing.gd"}
 
