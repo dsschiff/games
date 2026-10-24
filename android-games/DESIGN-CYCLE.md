@@ -165,3 +165,9 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
   directions pass. Repeated historical headless AVs are retained with bounded
   allocated-row correction; standalone missing-UI handoff fixed. No Android crash/
   engine-cause conclusion. Version/native/render/clipboard gates stay open.
+
+- Dead0.4.2/code8 bounded native14/0 with10pending/10cleared journals and both
+  Android-app code roundtrips now recorded. Explicit fixture archives/metadata
+  use genuine ready/battle contexts; no real I/O fault or earned-profile claim.
+  Original battle restored/cold, emulator closed. Bounded independent audit clear;
+  shader warning and external full-code bridge readback remain open. No upload.
