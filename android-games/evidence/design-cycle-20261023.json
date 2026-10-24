@@ -157,7 +157,7 @@
     }
   },
   "cloud": {
-    "state": "Compiled native transport and six real codecs reviewed; dormant Frontline adapter and local Import uncertainty fix integrated; game cloud UI/native account and live Google sync pending",
+    "state": "Reviewed native transport/cancellation plus Frontline optional controls and local copies implemented; unconfigured normal APK has no native SDK/network permission. Real account/device cloud sync remains pending.",
     "not_in_current_apks": true,
     "native_jvm_tests": 21,
     "native_jvm_failures": 0,
@@ -171,7 +171,7 @@
     "real_decoder_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\cloud-save-bindings-lf-20261024T020550Z\\manifest.json",
     "real_decoder_manifest_sha256": "2c68f7d70a5a6f28e21fad1faca6755d643dc907cd2ec562b1b808d1c72cb990",
     "live_console_check": {
-      "observed_utc": "2026-10-24T01:34:32Z",
+      "observed_utc": "2026-10-24T04:01:37Z",
       "account": "ShifTech",
       "identity": "Action required: official identity document upload",
       "phone": "Action required: waits for identity tasks and document approval",
@@ -212,15 +212,22 @@
       "jvm_checks": 31,
       "jvm_failures": 0,
       "scope": "Metadata-only readiness; UI-serialized cancellable SDK callback/resource ownership. Pure JVM/real compile review clear; game offline-cancel release being implemented; no configured Android plugin/live account acceptance."
+    },
+    "frontline_optional_controls": {
+      "checkpoint": "android-games/frontline-foundry/CLOUD_UI_CHECKPOINT.json",
+      "source_commit": "ab73aa0",
+      "coordinator_receipt": "F:\\games-workspaces\\design-cycle-20261023\\android-games\\frontline-foundry\\.artifacts\\cloud-ui-cpu-20261024T034209999322Z\\receipt.json",
+      "checks": 151,
+      "failures": 0,
+      "independent_review": "Astra source/integration/native UI clear. Explicit local Close releases offline play independently of retained SDK cleanup; synthetic canceled/late Tasks are not real account sync.",
+      "not_in_packaged_apks": "Google Play native SDK remains unbundled/unconfigured; the UI reports unavailable honestly."
     }
   },
   "next": [
-    "First six game increments privately delivered; continue bounded design/save and cloud integration work without claiming first cycle complete",
-    "Finish independent native followup packet review and source landing; private higher-version candidates remain unpublished",
-    "Finish configured-path Frontline game UI/port and offline-cancel recovery review; native clients/real sync remain external gates",
-    "Prepare local Android App Bundle tooling while identity/phone verification blocks Play app setup",
-    "Complete game cloud UI/native/client/tester/Saved Games setup and real account/device/offline/conflict sync before claiming recovery acceptance",
-    "Review matched Hook dense-finale warning hierarchy; source CPU clear, bounded1x visual review active"
+    "Land reviewed source and privately deliver Frontline0.3.4,Hook0.3.2,Tower0.4.2 after gates.",
+    "Continue Gear local verified-write/import transaction prerequisite before optional cloud port.",
+    "Complete source-clean signed AAB/configured native packaging and genuine Play account/device sync when identity and phone setup permit.",
+    "Keep deferred physical/human checks explicit and Planetfall separate."
   ],
   "gear": {
     "version": "0.4.1",
@@ -585,7 +592,7 @@
   "native_followup_candidates": {
     "report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-followups-20261024\\report.json",
     "report_sha256": "b0d7b8a54ed8e6984be6eac30c66a94b71c0d97bc61d2ebf71d6b8a18a232a3c",
-    "independent_audit": "Pending final packet/movie review;262 file pins",
+    "independent_audit": "Astra clear: exact frozen report and all262 file pins verified; Frontline12/Tower2 owning-decoder whole contexts and settled UI/normal1x Tower movie reviewed. Original artifact remains immutable with historical Pending field.",
     "frontline": {
       "version": "0.3.3",
       "version_code": 7,
@@ -594,7 +601,8 @@
       "bytes": 56135359,
       "native_complete_context_comparisons": 12,
       "native_complete_context_failures": 0,
-      "scope": "Actual signed6to7 and earned Import/native choices; pending journals explicitly fixtures from genuine app-created archives. No real native I/O fault or power-loss claim. New summary-first/cloud UI not in this APK."
+      "scope": "Actual signed6to7 and earned Import/native choices; pending journals explicitly fixtures from genuine app-created archives. No real native I/O fault or power-loss claim. New summary-first/cloud UI not in this APK.",
+      "status": "Historical qualified unpublished0.3.3/code7 candidate, superseded for delivery by0.3.4/code8 with summary-first UI."
     },
     "tower": {
       "version": "0.4.2",
@@ -604,8 +612,43 @@
       "bytes": 53119582,
       "native_complete_context_comparisons": 2,
       "native_complete_context_failures": 0,
-      "scope": "Actual signed7to8 earnedwatch01 whole-save retention, actual next-watch Twin Chimes claim and cold. Native VFR movie7.442611s full demux decode, initialnullmuxerwarningsretained; native1xreviewpending."
+      "scope": "Actual signed7to8 earnedwatch01 whole-save retention, next-watch Twin Chimes claim/cold. Native7.442611s VFR movie fully demux-decoded and independently viewed at1x: actual flight,+3/+7/+10,power5to15,stable claimed floor. Initial0.55s forecast screenshot is not leader proof."
     },
-    "private_publication": "Not uploaded; same signer; source landing and final independent native qualification required."
+    "private_publication": "Not uploaded; same signer; source landing and final independent native qualification required.",
+    "remote_temp_cleanup": "Exact retained original SHA matched remote; later supported su0 rm succeeded and test confirms absent. Earlier shell rm Bad address remains failed in its separate receipt."
+  },
+  "qualified_refinements": {
+    "report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-ui-20261024\\report.json",
+    "report_sha256": "8d0e3742d755ea4b65211a51b986c34aa9f0c2b8a63d0a3c688247814e148725",
+    "pins": 264,
+    "independent_audit": "Astra clear: all264 pins, production comparator, six genuine archive bytes and settled screens independently verified; raw frozen packet retains historical Pending field.",
+    "frontline": {
+      "version": "0.3.4",
+      "version_code": 8,
+      "manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\frontline-foundry\\20261024T034417265675Z\\manifest.json",
+      "apk_sha256": "e893c7e1be9f3d53a36b7601e7a6bf572217db5d10c43990d9a7000b1871d898",
+      "bytes": 56160515,
+      "complete_context_comparisons": 16,
+      "failures": 0,
+      "native_scope": "Signed7to8 with genuine earned campaign win retained; truthful unavailable cloud, six genuine local copies, separate confirmation and same-context ready copy restore/cold. Explicit journal metadata fixture demonstrates readable ready/victory summaries/read-only export/Back/Home/cold/Keep Previous; not a distinct-context native cloud restore or real I/O fault.",
+      "known_nonblocking": "Local-only confirmation repeats generic cloud-change/cached-upload caveats despite unavailable cloud. Correct in later UI increment."
+    },
+    "hook": {
+      "version": "0.3.2",
+      "version_code": 8,
+      "manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\hook-and-hunger\\20261024T034441665348Z\\manifest.json",
+      "apk_sha256": "690fcd75c70f151024ce458d1b1e3e3f772ec5985abc97aad4f4f0eb8c25a10f",
+      "bytes": 53700381,
+      "complete_context_comparisons": 3,
+      "failures": 0,
+      "native_scope": "Signed7to8, actual Resume/rightdrag advances16.9833to20.5333s/x0to2.9704; complete paused contexts identical after Home/cold. Native profile initially has no clears.",
+      "finale_evidence": "android-games/hook-and-hunger/FINALE_READABILITY.json",
+      "coordinator_cpu_receipt": "F:\\games-workspaces\\design-cycle-20261023\\android-games\\hook-and-hunger\\.artifacts\\feedback-motion-20261024T034345798922Z\\receipt.json",
+      "cpu_checks": 88,
+      "cpu_failures": 0,
+      "visual_scope": "Astra matched normal1x before/after bounded improvement;655 actual events, whole final state/save identical. Overlapping rims still busy, early amber subtle; no all-attacks-safe/fun claim."
+    },
+    "private_publication": "Not uploaded; source landing and exact private asset verification remain.",
+    "limits": "No configured SDK/account, cross-device sync, real native I/O failure, hard power loss, Fold7/sound/FPS/human acceptance."
   }
 }
