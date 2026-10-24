@@ -167,3 +167,28 @@ python android-games/dead-run/tests/run_graphics.py lifetime --headless --label 
 python android-games/dead-run/tests/run_graphics.py lifetime --headless --label cadence-between --scenario geometry-only --drain-between-rebuilds
 python android-games/dead-run/tests/run_graphics.py lifetime --headless --label cadence-after --scenario geometry-only --drain-after-fixtures
 ```
+
+## Reviewed bounded strict closure
+
+The three rendered cases executed identical 214 LF source hashes: baseline
+strict FAIL (24 assertions), between-rebuild drains strict PASS (27), and the
+same three added drain cycles only at the end strict FAIL (25). Both failures
+retain four 349,524-byte allocations. This distinguishes fixture scheduling
+from simply delaying final shutdown, without a resource purge or error filter.
+
+Only seven lines in the original terminal_design geometry loop were changed:
+each separate frozen fixture now receives process_frame / frame_post_draw /
+process_frame cadence, plus a whole-state equality assertion. Product source
+remains identical to edeb2d1. CPU full passes 52 checks; rendered full passes
+54 (all original 51 plus three state checks), zero raw errors, exit zero,
+source unchanged, and all ten PNGs fully decode. Successful packet:
+`.artifacts/graphics/cadence-full-render-design-20261024T012650Z`.
+
+Astra independently verified the matched/full source maps, exact seven-line
+diff, raw 54/0, all ten PNG hashes/decodes, and empty product-source delta. Final
+disposition: **bounded strict rendered gate clear**. The review receipt is
+`astra-disposition.json` in the successful packet. The correction concerns
+synthetic fixture scheduling. Old failed stress receipts remain FAIL and retained.
+No exact GL allocation owner, font/engine bug or production stress-leak guarantee
+is inferred. Native Android, physical performance, sound and human acceptance
+remain separate. No additional renderer run is authorized by this record.

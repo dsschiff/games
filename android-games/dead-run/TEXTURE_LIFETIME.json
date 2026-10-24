@@ -1,5 +1,5 @@
 {
-  "status": "Repeated5/25/49 geometry fixture rebuilds before first awaited render reproduce strict leak; single49 plus warnings and real victory/reload controls strictly pass. Exact owner/fix unresolved.",
+  "status": "Astra independently clears bounded strict rendered gate after harness-only per-fixture cadence correction; historical stress failures retained; exactGLowner unproven",
   "runtime_changes": false,
   "runs": [
     {
@@ -782,6 +782,76 @@
         "source-hashes-lf.json": "e214f0100fa4b4adc1b81f13dddbc33edf728a09517516c941004003f525ec79",
         "texture-lifetime.json": "a94b6a03016cfc2ca5ea0cdcc8dfc3b908759ff0ae4b105f3298abaf5440bb27"
       }
+    },
+    {
+      "run": ".artifacts/graphics/render-cadence-control-lifetime-20261024T012429Z",
+      "strict_passed": false,
+      "errors": [
+        "ERROR: Texture with GL ID of 25: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 26: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 27: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 28: leaked 349524 bytes."
+      ],
+      "source_unchanged": true,
+      "hashes": {
+        "receipt.json": "38a137f5f71b1459d933e897a24bbad30963260d618110e819a3e5ce480858a3",
+        "godot.log": "d2a30e8de19ce71cc64ffc584d31fc3b7e4e5bbf4acce0edfc4ae702be2117a2",
+        "source-hashes-lf.json": "a30857c9e572e0fcb1e95e5de0e330e9b3d2c5d8cf141e1478814e70af896445",
+        "texture-lifetime.json": "f41f0975c18ebd5713c56a8491c018f314ad88d9130525bfc05ac6cdd3b521ba"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-cadence-between-lifetime-20261024T012445Z",
+      "strict_passed": true,
+      "errors": [],
+      "source_unchanged": true,
+      "hashes": {
+        "receipt.json": "a50ce22d454e1b763f8aaca476f6c3c2a5936959066adb4e5b203d60885b26cb",
+        "godot.log": "76f84c5372a6fb6e8b69090ad69e5b29d8daa5f44f1b1e6d5a95ad3a05327191",
+        "source-hashes-lf.json": "a30857c9e572e0fcb1e95e5de0e330e9b3d2c5d8cf141e1478814e70af896445",
+        "texture-lifetime.json": "d9e096d7b0f783c66002dcb145efaadacddcdf0e7050c6f0e4933993d10b4080"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-cadence-after-lifetime-20261024T012502Z",
+      "strict_passed": false,
+      "errors": [
+        "ERROR: Texture with GL ID of 25: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 26: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 27: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 28: leaked 349524 bytes."
+      ],
+      "source_unchanged": true,
+      "hashes": {
+        "receipt.json": "3f4eaaaa02e703a0a4160b754b66cb0d886e25ae66a1b8c548f1b41ad9ae7c4a",
+        "godot.log": "1f2c3ed3f3d64c6962d2543d0d72511e3638d7f597c92be28001154638e57ade",
+        "source-hashes-lf.json": "a30857c9e572e0fcb1e95e5de0e330e9b3d2c5d8cf141e1478814e70af896445",
+        "texture-lifetime.json": "18214053825916ad8c8e5c9857d6c0e5b4341c4a84421f358c15f93959c0bef3"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/cadence-full-cpu-design-20261024T012604Z",
+      "strict_passed": true,
+      "errors": [],
+      "source_unchanged": true,
+      "hashes": {
+        "receipt.json": "599bb5410f88ea74fcd8f60a4880a651497387fff24cd6aa3f6132f97d1b1b2f",
+        "godot.log": "1b7ccea7bdd16aa5866f301a09e05c3470494f7c03428033f6ee3e4319f0b665",
+        "source-hashes-lf.json": "43c70c6c86aae5629a4fd9eef4162765365c05c681016516776cb71aed1ea9b2"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/cadence-full-render-design-20261024T012650Z",
+      "strict_passed": true,
+      "errors": [],
+      "source_unchanged": true,
+      "hashes": {
+        "receipt.json": "7b063efc8f268800ee92e06032d080dadda396a26a5f2cad5085a81c4b213aa9",
+        "godot.log": "f1cc3f9ea9f647399686a4b28153c3ed0aba8e563b81134315952156bba6dfa4",
+        "source-hashes-lf.json": "43c70c6c86aae5629a4fd9eef4162765365c05c681016516776cb71aed1ea9b2",
+        "decoded-pngs.json": "e7c49d99c5b0dd46656cd7a477df98587567f55351bae122ab5f1beee1db572d",
+        "astra-disposition.json": "a7957f287357afdbbfabee22727ff5bf079725253beb6265ab7e5e949ec1a640"
+      }
     }
   ],
   "caveat": "Default-font caches are not represented by explicit-font WeakRefs; node/resource counts do not prove GL texture lifetimes. CPU warning_pixels returns before rendered fixture rebuilds. Higher baseline25 resources after inheriting terminal_design reflects additional test script, not a measured live font.",
@@ -791,5 +861,16 @@
     "files": 43,
     "images": 0,
     "textures": 0
+  },
+  "review": {
+    "reviewer": "/root/design_review (Astra)",
+    "recorded_utc": "2026-10-24T01:37:24.105035+00:00",
+    "disposition": "Bounded strict rendered gate clear",
+    "verified": "All214 current source hashes; matched maps identical; final differs only terminal_design.gd; exact7line diff retains original51 +3state checks; raw54/0,exit0,zeroERROR;10PNGs decode/hash-match; product diff againstedeb2d1 empty",
+    "limits": [
+      "Synthetic fixture scheduling correction supported by matched end-only failure",
+      "Original failures retained",
+      "No exactGLowner,font/enginebug,or production stress-leak guarantee inferred"
+    ]
   }
 }

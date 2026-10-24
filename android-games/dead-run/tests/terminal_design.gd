@@ -88,6 +88,13 @@ func run() -> void:
 		scene.refresh()
 		check(p.boss.position == Vector3(scene.state.boss.x, 0, -scene.state.boss.z), "active blockade keeps original visual-to-projectile relation for %d crew" % count)
 		check(Kit.bounds(p.boss_visual, scene.world).end.z > -2.0, "active modeled target is not shifted by terminal clearance")
+		# Each synthetic world gets normal render/free cadence before the next
+		# rebuild. Matched end-only drains do not replace this scheduling.
+		var fixture_state: Dictionary = scene.state.duplicate(true)
+		await process_frame
+		if DisplayServer.get_name() != "headless": await RenderingServer.frame_post_draw
+		await process_frame
+		check(Data.same(scene.state, fixture_state), "fixture frame cadence preserves whole authoritative state for %d crew" % count)
 	await warning_pixels()
 	write_report_campaign("Actual Godot GUI touch/drag Start, natural defeat, Retry and victory. Synthetic Home/close notifications and desktop cold restoration are distinct from Android lifecycle. Terminal blockade geometry uses explicitly synthetic nonpersistent states; no rendered/phone acceptance.")
 	call_deferred("complete_design")
