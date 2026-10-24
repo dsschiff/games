@@ -27,8 +27,17 @@ Historical receipts
 Checkpoint receipts record the source at the time they were written, and the source has moved
 on since. A recorded hash therefore passes if it equals the LF hash of the current file OR of
 any committed revision of that path (``git log -- path``, deleted files included). A hash that
-matches no revision fails. In a shallow clone the history half cannot be evaluated, so that
-test is skipped there; the current-file half still runs.
+matches no revision fails. In a shallow clone the history is unavailable: pairs that match
+the current file (or whatever history exists) are still asserted, and only the pairs that need
+missing history are left unverified; the test then skips AFTER its assertions, listing them.
+
+What this cannot catch
+----------------------
+Any-revision matching proves only that the hash once described this path's content. It does not
+prove the receipt cites the revision it claims to, so a receipt pointing at a stale (but real)
+revision passes. It also cannot catch a hash that is the right file under the wrong path, a hash
+that equals a different tracked file's content, or a CRLF-form hash under an LF key when that
+file was never committed with CRLF content (such cases are listed in KNOWN_UNMATCHED instead).
 """
 import hashlib
 import json
@@ -43,22 +52,26 @@ ARTIFACT_DIRS = {".artifacts", ".references"}
 
 # (json path relative to android-games, member, recorded path) -> reason. Findings only:
 # a recorded hash that matches no revision of its file. Reported in the track checkpoint.
+# The hashes are NOT re-recorded here; fixing the receipt makes the stale-exception test fail.
+_CRLF_REASON = ("recorded hash is sha256 of the current file converted to CRLF, stored under "
+                "an LF-named key (matches no LF revision)")
 KNOWN_UNMATCHED = {
     ("delivery.json", "tracked_LF_sha256", "android-games/reviews/portfolio-final-fidelity-astra.md"):
-        "matches no committed revision (file has a single revision)",
+        _CRLF_REASON,
     ("evidence/dead-run-code2-native-campaign.json", "tracked_LF_sha256",
-     "android-games/reviews/dead-run-code2-native-platform-astra.md"):
-        "matches no committed revision (file has a single revision)",
+     "android-games/reviews/dead-run-code2-native-platform-astra.md"): _CRLF_REASON,
     ("evidence/dead-run-code3-candidate.json", "tracked_LF_sha256",
-     "android-games/reviews/dead-run-code3-native-candidate-astra.md"):
-        "matches no committed revision (file has a single revision)",
+     "android-games/reviews/dead-run-code3-native-candidate-astra.md"): _CRLF_REASON,
 }
 
 
+def lf_sha256_bytes_raw(raw: bytes) -> bytes:
+    """Bytes with CRLF replaced by LF (binary files, i.e. containing NUL, unchanged)."""
+    return raw if b"\0" in raw else raw.replace(b"\r\n", b"\n")
+
+
 def lf_sha256_bytes(raw: bytes) -> str:
-    if b"\0" not in raw:
-        raw = raw.replace(b"\r\n", b"\n")
-    return hashlib.sha256(raw).hexdigest()
+    return hashlib.sha256(lf_sha256_bytes_raw(raw)).hexdigest()
 
 
 def is_lf_key(key: str) -> bool:
@@ -155,23 +168,40 @@ class LfSha256SiblingTests(unittest.TestCase):
         return out
 
     def test_every_lf_sha256_matches_current_or_committed_revision(self):
-        unresolved = self._unresolved()
-        if unresolved and _git("rev-parse", "--is-shallow-repository").stdout.strip() == b"true":
-            self.skipTest("shallow clone: committed history unavailable")
-        bad = []
-        for json_rel, key, recorded, rel, expected in unresolved:
+        shallow = _git("rev-parse", "--is-shallow-repository").stdout.strip() == b"true"
+        bad, needs_history = [], []
+        for json_rel, key, recorded, rel, expected in self._unresolved():
             if expected in history_hashes(rel):
                 continue
             if (json_rel, key, recorded) in KNOWN_UNMATCHED:
                 continue
-            bad.append(f"{json_rel}: {key}={expected[:12]} does not match any revision of {rel}")
+            line = f"{json_rel}: {key}={expected[:12]} does not match any revision of {rel}"
+            (needs_history if shallow else bad).append(line)
         self.assertEqual(bad, [])
+        if needs_history:
+            self.skipTest("shallow clone, history needed for: " + "; ".join(needs_history))
 
     def test_known_unmatched_entries_are_still_unmatched(self):
         """A KNOWN_UNMATCHED entry that now matches (or vanished) must be removed."""
-        seen = {(j, k, r) for j, k, r, _, _ in collect()}
+        found = {(j, k, r): (rel, h) for j, k, r, rel, h in collect()}
         for entry in KNOWN_UNMATCHED:
-            self.assertIn(entry, seen, f"stale exception: {entry}")
+            self.assertIn(entry, found, f"stale exception: {entry}")
+            rel, recorded = found[entry]
+            current = ROOT / rel
+            if current.is_file():
+                self.assertNotEqual(lf_sha256_bytes(current.read_bytes()), recorded,
+                                    f"receipt now matches current file, remove: {entry}")
+            self.assertNotIn(recorded, history_hashes(rel),
+                             f"receipt now matches a committed revision, remove: {entry}")
+
+    def test_known_unmatched_are_crlf_hash_under_lf_key(self):
+        """The finding is explicit: each is sha256 of the current file's CRLF form."""
+        for (json_rel, key, recorded), (rel, h) in (
+                ((j, k, r), (rel, h)) for j, k, r, rel, h in collect()
+                if (j, k, r) in KNOWN_UNMATCHED):
+            lf = lf_sha256_bytes_raw((ROOT / rel).read_bytes())
+            raw = lf.replace(b"\n", b"\r\n")
+            self.assertEqual(hashlib.sha256(raw).hexdigest(), h, f"{json_rel} {recorded}")
 
 
 if __name__ == "__main__":
