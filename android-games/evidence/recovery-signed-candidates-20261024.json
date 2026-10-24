@@ -271,7 +271,15 @@
       "state": "local_signed_candidate_not_uploaded",
       "native_new_protocol_verified": false,
       "physical_acceptance": false,
-      "cloud_acceptance": false
+      "cloud_acceptance": false,
+      "bounded_native_followup": {
+        "evidence": "android-games/evidence/frontline-native-marker-20261024.json",
+        "whole_comparisons": 37,
+        "failures": 0,
+        "read_only_admission_replays": 13,
+        "strict_log_gate": false,
+        "new_presentation_in_this_apk": false
+      }
     }
   ],
   "hearth_native_update": {
@@ -290,9 +298,11 @@
   },
   "remaining": [
     "Hearth normal Import, both pending recovery choices and exact OS retained-code Copy/View",
-    "Tower code10to11 native normal Copy and manual fallback; Frontline code8to9 native retry admission",
     "Native engine shader warning qualification remains open",
     "Exact new-version private transfer authorization and delivery readback",
-    "Physical/human and configured optional cloud acceptance remain separate and unverified"
-  ]
+    "Physical/human and configured optional cloud acceptance remain separate and unverified",
+    "Tower code10to11 normal Copy native verification",
+    "Normal-rate rendered review and later higher-version signed/native builds for the new first-pair feedback source"
+  ],
+  "later_source_refinements": "Separate Dead multiplier and Frontline recap/Journey source increments are not included in these APKs. Source-match fields above bind the historical coordinator_source/build preparation, not future HEAD."
 }

@@ -248,7 +248,8 @@
         "source_commit": "bc5e0c5e00f4c8579b433a891d9a33c498f2f884",
         "evidence": "android-games/evidence/recovery-signed-candidates-20261024.json",
         "ready_for_phone_testing": false,
-        "note": "Packaging reviewed; new native protocol and strict warning gates remain open. Delivered URL/version above is the previous release."
+        "note": "Code9 bounded native marker/Import checks pass; strict shader warning remains failed. This APK predates the separate recap/Journey feedback source. Delivered URL/version above remains the previous release.",
+        "bounded_native_evidence": "android-games/evidence/frontline-native-marker-20261024.json"
       }
     },
     {

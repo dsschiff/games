@@ -1,0 +1,35 @@
+{
+  "scope": "Bounded native Frontline0.3.5/code9 marker-retry update and whole-save restoration, distinct from the later unbuilt recap/Journey source.",
+  "candidate_source": "bc5e0c5e00f4c8579b433a891d9a33c498f2f884",
+  "apk": {
+    "path": "F:\\games-workspaces\\frontline-cloud-ui-20261024\\.artifacts\\frontline-foundry\\20261024T115850647489Z\\frontline-foundry.apk",
+    "bytes": 56176980,
+    "sha256": "6475791b39146acc7e2bb30636fd5af3a99204e35d485affaa2fd74aad4c333e"
+  },
+  "manifest": {
+    "path": "F:\\games-workspaces\\frontline-cloud-ui-20261024\\.artifacts\\frontline-foundry\\20261024T115850647489Z\\manifest.json",
+    "bytes": 1853,
+    "sha256": "dee6510f2422ac2abe4ce143bae2ce43071cc36bf11bd4a48907ad3736d5a172"
+  },
+  "packet": {
+    "path": "F:\\games-workspaces\\frontline-cloud-ui-20261024\\.artifacts\\native-frontline-code9-20261024-hostcold\\report.json",
+    "bytes": 175715,
+    "sha256": "0f97ffef37a9fe8e4c45e0e90766ba4a50160a4c9f9ba5d131e58e75cc583f14"
+  },
+  "independent_review": "Astra qualified CLEAR:527 distinct artifact/APK/manifest pins,257 unchanged raw source bindings and exact build tree; independent raw envelope elections,37 complete state/profile/settings/career comparisons,13 all-record/all-archive admission replays and5 exact14-file/owner-PID rejected-choice pairs verified. Actual settled pending/result/Paste/original-ready controls readable.",
+  "whole_context_comparisons": 37,
+  "failures": 0,
+  "read_only_admission_replays": 13,
+  "actual_rejected_choice_pairs": 5,
+  "original_restored_through_normal_paste_import": true,
+  "clipboard_bytes": 8248,
+  "clipboard_sha256": "f79d67c98b798732373ec251f49eca0b5b1759c255d441a376a8140dff2136ca",
+  "preexisting_archives_preserved": 9,
+  "strict_native_gate": "FAIL: cached-shader warning in code8 and code9; initial host and separate software uniform-limit diagnostic failures preserved.",
+  "owned_emulator_stopped": true,
+  "limits": [
+    "Genuine native contexts have one campaign clear but empty parked legacy/skirmish fields; complete comparison is not nonempty native parked/skirmish coverage.",
+    "Explicit marker/archive fixtures and healthy-storage admission are not native false-success writes, intermittent reads, cleanup faults or power-loss proof.",
+    "No new recap/Journey presentation, physical/folding/FPS/audio/human/cloud/upload acceptance."
+  ]
+}
