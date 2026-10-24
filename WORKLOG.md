@@ -710,3 +710,12 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   observed low host memory, graceful console kill timed out, exact owned test
   processes stopped and verified absent. No app reset/update/upload; native
   recovery remains pending. See android-games/evidence/gear-local-recovery-20261024.json.
+
+
+- Frontline source-only confirmation correction: local archive restores now
+  explain whole-save replacement, paused verified Import and offline operation;
+  cloud-action warnings remain on cloud actions. One-file panel diff reviewed
+  by Astra; controls/flow/rules/version unchanged. Existing UI attempt could not
+  boot without imported resources and remains failed (worker receipt
+  a8e6cc4996dc307fd7cb8790940ca43504630db8248b768ea1f408bb328681fd).
+  No new test/build/native acceptance or changed APK delivery claimed.
