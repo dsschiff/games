@@ -1,0 +1,980 @@
+{
+  "runtime_ref": "c1ab02109f23d2deded54591b940a91b5fe7e4bc",
+  "old_ref": "64cd050331613604fb3489468dd758264e1bfe15",
+  "shipping_sources_unchanged": {
+    "scripts/campaign_main.gd": {
+      "sha256": "71c59b62ea7e71c3d20ff0902355c92136b25fd03e6d27f10a5100965afbb621",
+      "size": 18028
+    },
+    "scripts/reinforcement_feedback.gd": {
+      "sha256": "c39d579da408e235d932f5706c88d33c250a12dcfc3f526d6bf3353e98f124ee",
+      "size": 5872
+    }
+  },
+  "harness": {
+    "tests/record_capture.gd": {
+      "sha256": "9db4703ba1a769b751d5de42d9eaf9bd6214fe85948c7567b47b7b8332d92f99",
+      "size": 9891
+    },
+    "tests/record_capture.gd.uid": {
+      "sha256": "05127b9c8c71dea38f49a36f5686d457b708c78974f9955a3cb2d8e666ea12e5",
+      "size": 20
+    },
+    "tests/run_record_capture.py": {
+      "sha256": "9ec2e2f777fd4593de51c7e41bd73faf26ac6cb588723ad6bb547d9a0659fe29",
+      "size": 10629
+    }
+  },
+  "notes": {
+    "sha256": "6c62f1c3cc40cbc948ed06b32f5e8e590989b14bc44fc2dd6fa44f3060748e96",
+    "size": 7917
+  },
+  "final_packet": ".artifacts/record-matched-20261024T133928060350Z",
+  "final_receipt": {
+    "sha256": "9f747a73720575f84b04f1f94b986df07317afe2dd7aff83019f5968fcb62f08",
+    "size": 5192
+  },
+  "retained_artifacts": {
+    ".artifacts/record-matched-20261024T133155498195Z/current/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-0": {
+      "sha256": "5218207c0f421444842f937a0ecaa4d46cb2ad6f79f40333b8b3f4c07512b1e9",
+      "size": 11826
+    },
+    ".artifacts/record-matched-20261024T133155498195Z/current/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-1": {
+      "sha256": "01962e507d1b0c4ffeb5bb65cd380be38312e52cd7fb7a1b31805f37881494f9",
+      "size": 11826
+    },
+    ".artifacts/record-matched-20261024T133155498195Z/current/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log": {
+      "sha256": "620aeb75bd6b169f08199b9ed96ca0338d488abba3bedc989db4a2899cfb05d9",
+      "size": 126
+    },
+    ".artifacts/record-matched-20261024T133155498195Z/current/capture-report.json": {
+      "sha256": "c2a1d052d1c5e6d7113339fc3d3d5fb8f9ace11b6579a62822e36238b3e05973",
+      "size": 887286
+    },
+    ".artifacts/record-matched-20261024T133155498195Z/current/godot.log": {
+      "sha256": "494312d82628049d1d4b4a466d17d93aee41cf419b36573d4d2235c4b42c42c6",
+      "size": 130
+    },
+    ".artifacts/record-matched-20261024T133155498195Z/current/receipt.json": {
+      "sha256": "4762dd66ccf8f979aae74215df5bcfc4fabd55b88b8688299c1c657eaecc87eb",
+      "size": 835
+    },
+    ".artifacts/record-matched-20261024T133155498195Z/current/source-after.json": {
+      "sha256": "41cde593392dee482a18f0a3b43ebd68e89ec24c9346337e8ea4cb0c6e124f8e",
+      "size": 26861
+    },
+    ".artifacts/record-matched-20261024T133155498195Z/current/source-before.json": {
+      "sha256": "41cde593392dee482a18f0a3b43ebd68e89ec24c9346337e8ea4cb0c6e124f8e",
+      "size": 26861
+    },
+    ".artifacts/record-matched-20261024T133155498195Z/old/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-0": {
+      "sha256": "5218207c0f421444842f937a0ecaa4d46cb2ad6f79f40333b8b3f4c07512b1e9",
+      "size": 11826
+    },
+    ".artifacts/record-matched-20261024T133155498195Z/old/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-1": {
+      "sha256": "01962e507d1b0c4ffeb5bb65cd380be38312e52cd7fb7a1b31805f37881494f9",
+      "size": 11826
+    },
+    ".artifacts/record-matched-20261024T133155498195Z/old/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log": {
+      "sha256": "620aeb75bd6b169f08199b9ed96ca0338d488abba3bedc989db4a2899cfb05d9",
+      "size": 126
+    },
+    ".artifacts/record-matched-20261024T133155498195Z/old/capture-report.json": {
+      "sha256": "4d00153d21dc2452dd186905f275715a0ee3f18239c97acf6b6d59cee5d6c26e",
+      "size": 886960
+    },
+    ".artifacts/record-matched-20261024T133155498195Z/old/godot.log": {
+      "sha256": "494312d82628049d1d4b4a466d17d93aee41cf419b36573d4d2235c4b42c42c6",
+      "size": 130
+    },
+    ".artifacts/record-matched-20261024T133155498195Z/old/receipt.json": {
+      "sha256": "fe0b2eca23b2033d2337a4b686119df5adef51dfad7b97cc182773438b3ed3e1",
+      "size": 831
+    },
+    ".artifacts/record-matched-20261024T133155498195Z/old/source-after.json": {
+      "sha256": "41ba8ce5bf64e08baec358113763f3b7b7525d7ad15d592b202a848d783ae1b3",
+      "size": 26861
+    },
+    ".artifacts/record-matched-20261024T133155498195Z/old/source-before.json": {
+      "sha256": "41ba8ce5bf64e08baec358113763f3b7b7525d7ad15d592b202a848d783ae1b3",
+      "size": 26861
+    },
+    ".artifacts/record-matched-20261024T133155498195Z/preflight.json": {
+      "sha256": "2108a9c8c434ed3bbb1a18ea68f2b6ee07e62806c71adae83f552d360c1c4475",
+      "size": 94330
+    },
+    ".artifacts/record-matched-20261024T133155498195Z/receipt.json": {
+      "sha256": "01d3d14668c54b5d05f04f93d777440b080b17098d70b6712f65f1be1d3b6e3a",
+      "size": 5103
+    },
+    ".artifacts/record-matched-20261024T133155498195Z/restoration.json": {
+      "sha256": "c56ae76851e9df7527153269f9f651440a0c8e440ee9b182b7de3ab9f532d6be",
+      "size": 27453
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/current/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-0": {
+      "sha256": "5218207c0f421444842f937a0ecaa4d46cb2ad6f79f40333b8b3f4c07512b1e9",
+      "size": 11826
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/current/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-1": {
+      "sha256": "01962e507d1b0c4ffeb5bb65cd380be38312e52cd7fb7a1b31805f37881494f9",
+      "size": 11826
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/current/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log": {
+      "sha256": "620aeb75bd6b169f08199b9ed96ca0338d488abba3bedc989db4a2899cfb05d9",
+      "size": 126
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/current/capture-report.json": {
+      "sha256": "d8dd325cbc350c692df42059cee4b8cd7e269a5a2e418c442182fe81543068f8",
+      "size": 887303
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/current/godot.log": {
+      "sha256": "494312d82628049d1d4b4a466d17d93aee41cf419b36573d4d2235c4b42c42c6",
+      "size": 130
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/current/receipt.json": {
+      "sha256": "ec80324fe19a8b9dd459feb4fd896540f80010b800194545ecceee65f8c96df2",
+      "size": 835
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/current/source-after.json": {
+      "sha256": "e80652d39ceedac1cf5678717ae6042590ad2caa225caad5fcfa7b29cf80a219",
+      "size": 26861
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/current/source-before.json": {
+      "sha256": "e80652d39ceedac1cf5678717ae6042590ad2caa225caad5fcfa7b29cf80a219",
+      "size": 26861
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/old/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-0": {
+      "sha256": "5218207c0f421444842f937a0ecaa4d46cb2ad6f79f40333b8b3f4c07512b1e9",
+      "size": 11826
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/old/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-1": {
+      "sha256": "01962e507d1b0c4ffeb5bb65cd380be38312e52cd7fb7a1b31805f37881494f9",
+      "size": 11826
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/old/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log": {
+      "sha256": "620aeb75bd6b169f08199b9ed96ca0338d488abba3bedc989db4a2899cfb05d9",
+      "size": 126
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/old/capture-report.json": {
+      "sha256": "c289e99ee12f0c55a58c28a1afb8a145e9a4c784389d268a496b93acee9fb76a",
+      "size": 887000
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/old/godot.log": {
+      "sha256": "494312d82628049d1d4b4a466d17d93aee41cf419b36573d4d2235c4b42c42c6",
+      "size": 130
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/old/receipt.json": {
+      "sha256": "2e7955dd7cee34eed9457fb4d7fb09d3a55747f2a97a81846c7e35096f99d6b3",
+      "size": 831
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/old/source-after.json": {
+      "sha256": "8bc0a536836c23f6f9be0421bcaa7a9c4cbb0c573f1724a5af0d7c25bbc99772",
+      "size": 26861
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/old/source-before.json": {
+      "sha256": "8bc0a536836c23f6f9be0421bcaa7a9c4cbb0c573f1724a5af0d7c25bbc99772",
+      "size": 26861
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/preflight.json": {
+      "sha256": "ca6a77a127cb5f7e7a8da4c2e2f7dd9eac928579b634d437c190002128cd0f5c",
+      "size": 94330
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/receipt.json": {
+      "sha256": "53d4b872be077585bde9a077b7658ba2871657966eddcb7df407f04167fb9d1f",
+      "size": 5102
+    },
+    ".artifacts/record-matched-20261024T133342062083Z/restoration.json": {
+      "sha256": "e4e390cd2aaa96dcd25fe6627d935b223778c091a34d6eb8bafaa25f03023d8f",
+      "size": 27453
+    },
+    ".artifacts/record-matched-20261024T133726318492Z/executed-runner.py": {
+      "sha256": "0212c0906335a9d9f76041b741e065995a8dfa44558ffa31262d42aa1a7fc3a7",
+      "size": 10395
+    },
+    ".artifacts/record-matched-20261024T133726318492Z/failure.json": {
+      "sha256": "22c5e41a281bc4edf1085f76d363d965602fe4eb25d96c83c2c118069cbb1dbb",
+      "size": 444
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/current/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-0": {
+      "sha256": "5218207c0f421444842f937a0ecaa4d46cb2ad6f79f40333b8b3f4c07512b1e9",
+      "size": 11826
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/current/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-1": {
+      "sha256": "01962e507d1b0c4ffeb5bb65cd380be38312e52cd7fb7a1b31805f37881494f9",
+      "size": 11826
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/current/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log": {
+      "sha256": "620aeb75bd6b169f08199b9ed96ca0338d488abba3bedc989db4a2899cfb05d9",
+      "size": 126
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/current/capture-report.json": {
+      "sha256": "af98298a713b1f6a7d9ccd70d0d43a806351e107bcbdb84963f8ebd5969a4956",
+      "size": 887367
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/current/godot.log": {
+      "sha256": "494312d82628049d1d4b4a466d17d93aee41cf419b36573d4d2235c4b42c42c6",
+      "size": 130
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/current/receipt.json": {
+      "sha256": "5ed78105028ffebcb61f641c49099d9e495651a43cc18084226233909f226236",
+      "size": 835
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/current/source-after.json": {
+      "sha256": "fa8d98d5873eb9b0117701942d8a16e5468d739d4497097dbc472db9f211ddd3",
+      "size": 26963
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/current/source-before.json": {
+      "sha256": "fa8d98d5873eb9b0117701942d8a16e5468d739d4497097dbc472db9f211ddd3",
+      "size": 26963
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/old/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-0": {
+      "sha256": "5218207c0f421444842f937a0ecaa4d46cb2ad6f79f40333b8b3f4c07512b1e9",
+      "size": 11826
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/old/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-1": {
+      "sha256": "01962e507d1b0c4ffeb5bb65cd380be38312e52cd7fb7a1b31805f37881494f9",
+      "size": 11826
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/old/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log": {
+      "sha256": "620aeb75bd6b169f08199b9ed96ca0338d488abba3bedc989db4a2899cfb05d9",
+      "size": 126
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/old/capture-report.json": {
+      "sha256": "c8550b535bda3209fc851e354bba3c1d617c0c4602c2155b733664182df8641c",
+      "size": 887110
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/old/godot.log": {
+      "sha256": "494312d82628049d1d4b4a466d17d93aee41cf419b36573d4d2235c4b42c42c6",
+      "size": 130
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/old/receipt.json": {
+      "sha256": "991598b026ad515e76246c710f33d8e30020d6e8f97bdc5261320a5e7284caf5",
+      "size": 831
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/old/source-after.json": {
+      "sha256": "d479129f75c359fa914d1e872e477e17da3e0ca0aa2cc07a48c5209af120e185",
+      "size": 26963
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/old/source-before.json": {
+      "sha256": "d479129f75c359fa914d1e872e477e17da3e0ca0aa2cc07a48c5209af120e185",
+      "size": 26963
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/preflight.json": {
+      "sha256": "ad9d9c361f3a276b794c6f13d7ae42e4854df5d73de6951de4e8a6a762e9d270",
+      "size": 100572
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/receipt.json": {
+      "sha256": "9f747a73720575f84b04f1f94b986df07317afe2dd7aff83019f5968fcb62f08",
+      "size": 5192
+    },
+    ".artifacts/record-matched-20261024T133928060350Z/restoration.json": {
+      "sha256": "75b1262a14533c4f505b5a8efea9c8c12954fdd65319dcf023e622901b22d7ea",
+      "size": 27557
+    }
+  },
+  "uid_receipt": {
+    "sha256": "12dd677306e33e3ace2e979efbd6c1cb7be4f4a96f1d7defdfa5f3671f2e5bc0",
+    "size": 366
+  },
+  "limits": "Original CPU proof plus root rendered/static/completed1x desktop review qualified separately. Current rendered pins exclude1342 intentionally removed PNGs, original1410pins are historical. No native/human acceptance.",
+  "historical_cpu_checkpoint": {
+    "path": ".artifacts/record-capture-cpu-checkpoint-ce16.json",
+    "sha256": "ce16be4290a88e39d2093a06f18ea4632f34e6619fd88d28c981ab472811cbd6",
+    "size": 13506,
+    "scope": "Original ce16 checkpoint, maps and qualifications preserved unchanged."
+  },
+  "historical_cpu_notes": {
+    "path": ".artifacts/record-capture-cpu-notes-80fb64e8.md",
+    "sha256": "80fb64e80a675796062e184097f619dc6698d7cf58b578f0633e6edab0979ae0",
+    "size": 4798
+  },
+  "rendered_qualification": {
+    "packet": ".artifacts/record-matched-20261024T134518947480Z",
+    "result": "old38/0,current38/0; strict clean; exact finally restoration; full context/raw/input-relative-physics parity",
+    "original_render_receipt": {
+      "path": ".artifacts/record-matched-20261024T134518947480Z/receipt.json",
+      "sha256": "bb5ac7b37627ce2745d37ebd51d3f2034f7725b8b48ae3cc017090c45be677bc",
+      "size": 259740,
+      "raw_frame_pins_scope": "All1410 original raw PNG pins historical before exact retention cleanup; removed paths intentionally absent."
+    },
+    "encodings": {
+      "old/restored-earned-campaign-B": {
+        "encoding": {
+          "path": ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/encoding.json",
+          "sha256": "4ff08a6f2685b37fb59ca0b9804405b40bad255080df8a781a8cb41355d99f20",
+          "size": 118462
+        },
+        "movie": {
+          "path": ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/continuous.mp4",
+          "sha256": "a56628bd16f55ddd07698d0b92ea78634d46e71f2d3a08f02ec38743ff39a749",
+          "size": 472730
+        },
+        "frames": 353,
+        "duration_seconds": 11.766666666666667,
+        "uniform_pts_verified": true,
+        "full_decode_verified": true
+      },
+      "old/restored-earned-skirmish": {
+        "encoding": {
+          "path": ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/encoding.json",
+          "sha256": "e498a2df015f7dd8fbb0ea7b28b5964856f1d4bf43bc7b26c2b6be9546e34621",
+          "size": 117410
+        },
+        "movie": {
+          "path": ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/continuous.mp4",
+          "sha256": "17016f470f121cc1224fd4b41fcb0902a23d51ec7212d15f3fdef6c7ee88bad3",
+          "size": 458891
+        },
+        "frames": 352,
+        "duration_seconds": 11.733333333333333,
+        "uniform_pts_verified": true,
+        "full_decode_verified": true
+      },
+      "current/restored-earned-campaign-B": {
+        "encoding": {
+          "path": ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/encoding.json",
+          "sha256": "9072005be7a47f8a4668ac405371007d5065f60673a1e7ef34bcb60318fc5d6f",
+          "size": 119926
+        },
+        "movie": {
+          "path": ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/continuous.mp4",
+          "sha256": "39b832aa5d9742617a429485c41a6bb5c45b19bd2acec7d502f23a83d9ccb4fd",
+          "size": 551846
+        },
+        "frames": 353,
+        "duration_seconds": 11.766666666666667,
+        "uniform_pts_verified": true,
+        "full_decode_verified": true
+      },
+      "current/restored-earned-skirmish": {
+        "encoding": {
+          "path": ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/encoding.json",
+          "sha256": "eb7dd1ac46588926395ef787a565d9ffb67291140455d8e165ec65abdae5674c",
+          "size": 118870
+        },
+        "movie": {
+          "path": ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/continuous.mp4",
+          "sha256": "86362374e99182e42096c9dc66045f279beac5dca1a532792e211912d2ab11b4",
+          "size": 549936
+        },
+        "frames": 352,
+        "duration_seconds": 11.733333333333333,
+        "uniform_pts_verified": true,
+        "full_decode_verified": true
+      }
+    },
+    "playback_reference": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\frontline-normal1x-readback-20261024.json",
+      "sha256": "a2623e8090e38587f5d0887acb827e7c5c4048463669e898f36e3f39fabf6065",
+      "size": 4401,
+      "reviewer": "Root assistant visual review, not human acceptance",
+      "scope": "Accepted complete-pair1x playback/readbacks; early partial/start-end and late-marker timeout excluded. Native chat preserves actual tool screenshots/readbacks."
+    },
+    "retention_manifest": {
+      "path": ".artifacts/record-matched-20261024T134518947480Z/png-retention.json",
+      "sha256": "38510a3f1fdb17708d0e2277fcab0022f45e4f522e76b1c657541111614aa633",
+      "size": 291151
+    },
+    "cleanup_summary": {
+      "deleted_count": 1342,
+      "deleted_bytes": 568993989,
+      "remaining_count": 68,
+      "remaining_bytes": 28626514
+    },
+    "current_artifacts": {
+      ".artifacts/record-matched-20261024T134518947480Z/current/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-0": {
+        "sha256": "5218207c0f421444842f937a0ecaa4d46cb2ad6f79f40333b8b3f4c07512b1e9",
+        "size": 11826
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-1": {
+        "sha256": "01962e507d1b0c4ffeb5bb65cd380be38312e52cd7fb7a1b31805f37881494f9",
+        "size": 11826
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log": {
+        "sha256": "3408d843df1aca14da4dbba231ffd27cc3caf5c5d67f63ccf43e16727887b343",
+        "size": 225
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/CanvasShaderGLES3/5c2a443430aed63756000ed4fdb23f02b8d89e1b28bd9ba01ddd60635f2085ac/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache": {
+        "sha256": "cd856d9bf3cc65b8eba5259fbce564eb561a5c1cf53da735187270683a305eea",
+        "size": 32624
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/CopyShaderGLES3/b69dbe566cf70bccd27fd9bee4f59d5f4c3b4b0bf0afc490c771cad63be608ad/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache": {
+        "sha256": "07b64c6acde186585da5d6db9bd66e11603693b82c8536989cd7ad2a866b3b67",
+        "size": 118055
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/FeedShaderGLES3/04959e861c350b844d43ff6438c41d016246b8bb1c7ce08d02bc8891823f37dc/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache": {
+        "sha256": "1cfc1d66f87dac7a2e1787537f91ceaca58ee4f4ab8659d5de27c2799c4ac66a",
+        "size": 8261
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/PostShaderGLES3/1548e0d952e335627b9be9dd73291d4d4e68ba4a81fafbfb14e7a07898d5c9c1/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache": {
+        "sha256": "ce68aa7824f72ffb0cbf718ea7e696d2ad727fb4a28dfbe36a799346b7749842",
+        "size": 13656
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/45c5f55afc52417d34561d8b3112b70cc6bd60b5.cache": {
+        "sha256": "7775588600752870c5d7541846a959b5b1183a6f4811331e4371630b9f4c79aa",
+        "size": 880634
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache": {
+        "sha256": "9f5268a71f86e5ee4d4e7288c0ef67b6792a4a919308d493956912d42f9eac81",
+        "size": 800909
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/75dbda390b4d6b8d1bba67e8943ace8a4f64f756.cache": {
+        "sha256": "7dbdc0d55eefcbebd0900ad5f05c9079032064feca21668dfbbdf0162a520af0",
+        "size": 930192
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/77047cd41f429f33ceff24e890e174f5465e755e.cache": {
+        "sha256": "3e2ea1e483c5a0f8cff8a570785cc5cb56c366391b8204f781516ce9878e4712",
+        "size": 822095
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/86e1472f860733f12c175aabe6647fe0a3503e46.cache": {
+        "sha256": "a347297694499c66676b4aa81529cbd3486bf7dcd87b27bcb81e0bda2a992b23",
+        "size": 794505
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/f2e328ac8a780a17a0c65e242b0c8bc4fc063f03.cache": {
+        "sha256": "d964574f16b0a5c6a6ad1945ef80be17e124c832d35b0bbc473a1fa67390dd33",
+        "size": 929748
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SkeletonShaderGLES3/970fe26b11b78d44548b61268ebac68162e1323b4486fac1e64104917f487957/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache": {
+        "sha256": "15afeac02208eeb79408fffa463a5ab9a6cdceb0d9944ead3386eeb03f5a5934",
+        "size": 28067
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SkyShaderGLES3/19e57a3f64e00830e2c0814833d58ae66e04e83ab60848231e509fe0c0faa603/2229459719c74ebf3cbbc709ebed1ef53beb9417.cache": {
+        "sha256": "da2c0d5dd639e0621c231e024b9add33778bf6cc7bd520ba78299f5ffe1d28e7",
+        "size": 42809
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/capture-report.json": {
+        "sha256": "c3611bd333cec0a6c38ccfb2997e017a7c39c36ae31b4ce05bcdc0b893ccd55d",
+        "size": 1124830
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/godot.log": {
+        "sha256": "a9ba713dfd55e2a12212ad92a7522ab9c68bd7eec6ff6f9b2cd2149be3fb411b",
+        "size": 230
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/receipt.json": {
+        "sha256": "55f69017025fbc36c40d6f2fb6bd0d3b127976adcf6076f9b188a2719dca0cc9",
+        "size": 910
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/continuous.mp4": {
+        "sha256": "39b832aa5d9742617a429485c41a6bb5c45b19bd2acec7d502f23a83d9ccb4fd",
+        "size": 551846
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/decoded.framemd5": {
+        "sha256": "9bf9dc287953bef2235ca8168c8ee021595c6917077d4712034183e6988f7f00",
+        "size": 28456
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/encode.stderr": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/encode.stdout": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/encoding.json": {
+        "sha256": "9072005be7a47f8a4668ac405371007d5065f60673a1e7ef34bcb60318fc5d6f",
+        "size": 119926
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/frames/000000.png": {
+        "sha256": "07b8e9bc788fef22727d206a71efed7a90e7c90414e353debc178584d9fb2fc0",
+        "size": 477589
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/frames/000030.png": {
+        "sha256": "07b8e9bc788fef22727d206a71efed7a90e7c90414e353debc178584d9fb2fc0",
+        "size": 477589
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/frames/000060.png": {
+        "sha256": "07b8e9bc788fef22727d206a71efed7a90e7c90414e353debc178584d9fb2fc0",
+        "size": 477589
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/frames/000069.png": {
+        "sha256": "07b8e9bc788fef22727d206a71efed7a90e7c90414e353debc178584d9fb2fc0",
+        "size": 477589
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/frames/000090.png": {
+        "sha256": "fedc14e840ecb162990edd847e8ab60f7f40734605724c1579b07c6751516501",
+        "size": 376945
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/frames/000120.png": {
+        "sha256": "42277a9b903e45610691bda8308026adf79089e4403c411924aaf69d6a01b7a3",
+        "size": 433191
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/frames/000140.png": {
+        "sha256": "42277a9b903e45610691bda8308026adf79089e4403c411924aaf69d6a01b7a3",
+        "size": 433191
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/frames/000150.png": {
+        "sha256": "42277a9b903e45610691bda8308026adf79089e4403c411924aaf69d6a01b7a3",
+        "size": 433191
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/frames/000180.png": {
+        "sha256": "c0f4c5755802ea7954a757b6ffbd1f9b9a8c28cc047d4cb55e16bbf412f5003d",
+        "size": 433597
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/frames/000210.png": {
+        "sha256": "c0f4c5755802ea7954a757b6ffbd1f9b9a8c28cc047d4cb55e16bbf412f5003d",
+        "size": 433597
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/frames/000217.png": {
+        "sha256": "c0f4c5755802ea7954a757b6ffbd1f9b9a8c28cc047d4cb55e16bbf412f5003d",
+        "size": 433597
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/frames/000240.png": {
+        "sha256": "c0f4c5755802ea7954a757b6ffbd1f9b9a8c28cc047d4cb55e16bbf412f5003d",
+        "size": 433597
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/frames/000270.png": {
+        "sha256": "c0f4c5755802ea7954a757b6ffbd1f9b9a8c28cc047d4cb55e16bbf412f5003d",
+        "size": 433597
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/frames/000290.png": {
+        "sha256": "c0f4c5755802ea7954a757b6ffbd1f9b9a8c28cc047d4cb55e16bbf412f5003d",
+        "size": 433597
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/frames/000300.png": {
+        "sha256": "c0f4c5755802ea7954a757b6ffbd1f9b9a8c28cc047d4cb55e16bbf412f5003d",
+        "size": 433597
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/frames/000330.png": {
+        "sha256": "07b8e9bc788fef22727d206a71efed7a90e7c90414e353debc178584d9fb2fc0",
+        "size": 477589
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/frames/000352.png": {
+        "sha256": "07b8e9bc788fef22727d206a71efed7a90e7c90414e353debc178584d9fb2fc0",
+        "size": 477589
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/full-decode.stderr": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/full-decode.stdout": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/probe.stderr": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-campaign-B/probe.stdout": {
+        "sha256": "16390d4c8a9eaea21d698d28f2aa15ce6c3f0e5515efa099dd960abb46d02c92",
+        "size": 28651
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/continuous.mp4": {
+        "sha256": "86362374e99182e42096c9dc66045f279beac5dca1a532792e211912d2ab11b4",
+        "size": 549936
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/decoded.framemd5": {
+        "sha256": "9403019e48b7dfad38920f731eb4734f6b87b818b71852adc2ba60bceedfda00",
+        "size": 28376
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/encode.stderr": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/encode.stdout": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/encoding.json": {
+        "sha256": "eb7dd1ac46588926395ef787a565d9ffb67291140455d8e165ec65abdae5674c",
+        "size": 118870
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/frames/000000.png": {
+        "sha256": "13e236738b8f8ffca896b66bf34dd922a4a60bd9c20bdfa0ee4767a425810027",
+        "size": 453389
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/frames/000030.png": {
+        "sha256": "13e236738b8f8ffca896b66bf34dd922a4a60bd9c20bdfa0ee4767a425810027",
+        "size": 453389
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/frames/000060.png": {
+        "sha256": "13e236738b8f8ffca896b66bf34dd922a4a60bd9c20bdfa0ee4767a425810027",
+        "size": 453389
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/frames/000069.png": {
+        "sha256": "13e236738b8f8ffca896b66bf34dd922a4a60bd9c20bdfa0ee4767a425810027",
+        "size": 453389
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/frames/000090.png": {
+        "sha256": "e27405ed20ad4847ece3a4932e4b1fa8612ddc3467c3a983731c7eec190e5df3",
+        "size": 402779
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/frames/000120.png": {
+        "sha256": "e27405ed20ad4847ece3a4932e4b1fa8612ddc3467c3a983731c7eec190e5df3",
+        "size": 402779
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/frames/000140.png": {
+        "sha256": "e27405ed20ad4847ece3a4932e4b1fa8612ddc3467c3a983731c7eec190e5df3",
+        "size": 402779
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/frames/000150.png": {
+        "sha256": "62016515d32d29a0dc4d5d84765385514a932060dc8ded5e4c28b8b060b13494",
+        "size": 403655
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/frames/000180.png": {
+        "sha256": "c03a7acbe4a194ee8778a6b66f7d0a7ca5e92be9ba4ec2454d45aab36faae62b",
+        "size": 417008
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/frames/000210.png": {
+        "sha256": "c03a7acbe4a194ee8778a6b66f7d0a7ca5e92be9ba4ec2454d45aab36faae62b",
+        "size": 417008
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/frames/000217.png": {
+        "sha256": "c03a7acbe4a194ee8778a6b66f7d0a7ca5e92be9ba4ec2454d45aab36faae62b",
+        "size": 417008
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/frames/000240.png": {
+        "sha256": "c03a7acbe4a194ee8778a6b66f7d0a7ca5e92be9ba4ec2454d45aab36faae62b",
+        "size": 417008
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/frames/000270.png": {
+        "sha256": "c03a7acbe4a194ee8778a6b66f7d0a7ca5e92be9ba4ec2454d45aab36faae62b",
+        "size": 417008
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/frames/000290.png": {
+        "sha256": "c03a7acbe4a194ee8778a6b66f7d0a7ca5e92be9ba4ec2454d45aab36faae62b",
+        "size": 417008
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/frames/000300.png": {
+        "sha256": "c03a7acbe4a194ee8778a6b66f7d0a7ca5e92be9ba4ec2454d45aab36faae62b",
+        "size": 417008
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/frames/000330.png": {
+        "sha256": "13e236738b8f8ffca896b66bf34dd922a4a60bd9c20bdfa0ee4767a425810027",
+        "size": 453389
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/frames/000351.png": {
+        "sha256": "13e236738b8f8ffca896b66bf34dd922a4a60bd9c20bdfa0ee4767a425810027",
+        "size": 453389
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/full-decode.stderr": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/full-decode.stdout": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/probe.stderr": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/restored-earned-skirmish/probe.stdout": {
+        "sha256": "e46b06fa76e9c8907c2d029aa551eeb02c3734ad316bdd9223bc731db2a0d169",
+        "size": 28573
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/source-after.json": {
+        "sha256": "216fd96c2586e75117efe36617231ac807e0a40432b6d565fbe42c169d24e17a",
+        "size": 27160
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/current/source-before.json": {
+        "sha256": "216fd96c2586e75117efe36617231ac807e0a40432b6d565fbe42c169d24e17a",
+        "size": 27160
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-0": {
+        "sha256": "5218207c0f421444842f937a0ecaa4d46cb2ad6f79f40333b8b3f4c07512b1e9",
+        "size": 11826
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-1": {
+        "sha256": "01962e507d1b0c4ffeb5bb65cd380be38312e52cd7fb7a1b31805f37881494f9",
+        "size": 11826
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log": {
+        "sha256": "3408d843df1aca14da4dbba231ffd27cc3caf5c5d67f63ccf43e16727887b343",
+        "size": 225
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/CanvasShaderGLES3/5c2a443430aed63756000ed4fdb23f02b8d89e1b28bd9ba01ddd60635f2085ac/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache": {
+        "sha256": "b9d52b04d7d35dcdffc8b9196373256a706c0003eeb53b297c0e169175242ae1",
+        "size": 32624
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/CopyShaderGLES3/b69dbe566cf70bccd27fd9bee4f59d5f4c3b4b0bf0afc490c771cad63be608ad/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache": {
+        "sha256": "11be4901b8eefa2a8b8e147bf9e97de2949304f3fbcc3fd461416616b9061bda",
+        "size": 118055
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/FeedShaderGLES3/04959e861c350b844d43ff6438c41d016246b8bb1c7ce08d02bc8891823f37dc/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache": {
+        "sha256": "3e87b8792082f81c2b862e70ec80d6e1d3a05a77288f4fa35c5f72e7b848ea75",
+        "size": 8261
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/PostShaderGLES3/1548e0d952e335627b9be9dd73291d4d4e68ba4a81fafbfb14e7a07898d5c9c1/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache": {
+        "sha256": "3dd8615c39e7f4da50b4ce5a90604e622466d3b2eb0abc2dab70688d40a89311",
+        "size": 13656
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/45c5f55afc52417d34561d8b3112b70cc6bd60b5.cache": {
+        "sha256": "61b3f88ca016da4dd101187b2cf598e6d616e313e8f67ddfa2af16036a48f733",
+        "size": 880634
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache": {
+        "sha256": "84b78a59645eec7b5f3d6b4851519be3a431c1b3c16b41e911d992a02e88d220",
+        "size": 800909
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/75dbda390b4d6b8d1bba67e8943ace8a4f64f756.cache": {
+        "sha256": "05415b204a62cdb4989a02ef0fed49f920261282fb2deb51186dba4029fefb2c",
+        "size": 930192
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/77047cd41f429f33ceff24e890e174f5465e755e.cache": {
+        "sha256": "06650f796a7bc0e8638d468ca3b3a5e1bb209c518306e0c4f872ad79897b6779",
+        "size": 822095
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/86e1472f860733f12c175aabe6647fe0a3503e46.cache": {
+        "sha256": "7d4042b3847b64346f4e95c111788e929136e88c5949c16faf1a6615180d88d0",
+        "size": 794505
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SceneShaderGLES3/9b19357dfa9172b7542ea3efeae4577941551fce5e92f1e1ab4a23c720ad45ac/f2e328ac8a780a17a0c65e242b0c8bc4fc063f03.cache": {
+        "sha256": "e11cb0c1e578aa4131a426d4393532094d0b685848bc6fabbb47c2e007c2b21b",
+        "size": 929748
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SkeletonShaderGLES3/970fe26b11b78d44548b61268ebac68162e1323b4486fac1e64104917f487957/6bb7c9a2fd1c4a8fa77cb96555b9b4a720209981.cache": {
+        "sha256": "d0ce3bf78e0bb8e73ce6f70eec5e782d1bb4ed524469a3b168e22be63cabfeaa",
+        "size": 28067
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/appdata/Godot/app_userdata/Frontline Foundry/shader_cache/SkyShaderGLES3/19e57a3f64e00830e2c0814833d58ae66e04e83ab60848231e509fe0c0faa603/2229459719c74ebf3cbbc709ebed1ef53beb9417.cache": {
+        "sha256": "9cf028ccca6e4ba5df95a7e8e85f6546b07a6f64fee5fc003c66088e4ed7801b",
+        "size": 42809
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/capture-report.json": {
+        "sha256": "42bf63272fb09e98a9fe702100d8fed58d40cfc85e09050be18d8c9cd79fb8db",
+        "size": 1124604
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/godot.log": {
+        "sha256": "a9ba713dfd55e2a12212ad92a7522ab9c68bd7eec6ff6f9b2cd2149be3fb411b",
+        "size": 230
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/receipt.json": {
+        "sha256": "08909c59929ea1c523d56b569cf7ce1a585e9540adaa83d1ff4fee9ddb1c41c3",
+        "size": 906
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/continuous.mp4": {
+        "sha256": "a56628bd16f55ddd07698d0b92ea78634d46e71f2d3a08f02ec38743ff39a749",
+        "size": 472730
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/decoded.framemd5": {
+        "sha256": "e27105459c3679395af8ebc5d37c79f2303eb87017be305e4c4ca0b0c95b9f77",
+        "size": 28456
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/encode.stderr": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/encode.stdout": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/encoding.json": {
+        "sha256": "4ff08a6f2685b37fb59ca0b9804405b40bad255080df8a781a8cb41355d99f20",
+        "size": 118462
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/frames/000000.png": {
+        "sha256": "b7576d98e6298ed5579019f9a06500dbf2c0aef250e8357b969cd9b2eb129f56",
+        "size": 473768
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/frames/000030.png": {
+        "sha256": "b7576d98e6298ed5579019f9a06500dbf2c0aef250e8357b969cd9b2eb129f56",
+        "size": 473768
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/frames/000060.png": {
+        "sha256": "b7576d98e6298ed5579019f9a06500dbf2c0aef250e8357b969cd9b2eb129f56",
+        "size": 473768
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/frames/000069.png": {
+        "sha256": "b7576d98e6298ed5579019f9a06500dbf2c0aef250e8357b969cd9b2eb129f56",
+        "size": 473768
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/frames/000090.png": {
+        "sha256": "fedc14e840ecb162990edd847e8ab60f7f40734605724c1579b07c6751516501",
+        "size": 376945
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/frames/000120.png": {
+        "sha256": "d54f009a9ed74957732e7df0b697793a873441e4b4b7563c10b6f9a86aac1e65",
+        "size": 391778
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/frames/000140.png": {
+        "sha256": "d54f009a9ed74957732e7df0b697793a873441e4b4b7563c10b6f9a86aac1e65",
+        "size": 391778
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/frames/000150.png": {
+        "sha256": "d54f009a9ed74957732e7df0b697793a873441e4b4b7563c10b6f9a86aac1e65",
+        "size": 391778
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/frames/000180.png": {
+        "sha256": "2af42a68c305fd45a28377a1e52f1eddc1fa4d9f96c7218ba2f33797d1fae93c",
+        "size": 393184
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/frames/000210.png": {
+        "sha256": "2af42a68c305fd45a28377a1e52f1eddc1fa4d9f96c7218ba2f33797d1fae93c",
+        "size": 393184
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/frames/000217.png": {
+        "sha256": "2af42a68c305fd45a28377a1e52f1eddc1fa4d9f96c7218ba2f33797d1fae93c",
+        "size": 393184
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/frames/000240.png": {
+        "sha256": "2af42a68c305fd45a28377a1e52f1eddc1fa4d9f96c7218ba2f33797d1fae93c",
+        "size": 393184
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/frames/000270.png": {
+        "sha256": "2af42a68c305fd45a28377a1e52f1eddc1fa4d9f96c7218ba2f33797d1fae93c",
+        "size": 393184
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/frames/000290.png": {
+        "sha256": "2af42a68c305fd45a28377a1e52f1eddc1fa4d9f96c7218ba2f33797d1fae93c",
+        "size": 393184
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/frames/000300.png": {
+        "sha256": "2af42a68c305fd45a28377a1e52f1eddc1fa4d9f96c7218ba2f33797d1fae93c",
+        "size": 393184
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/frames/000330.png": {
+        "sha256": "b7576d98e6298ed5579019f9a06500dbf2c0aef250e8357b969cd9b2eb129f56",
+        "size": 473768
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/frames/000352.png": {
+        "sha256": "b7576d98e6298ed5579019f9a06500dbf2c0aef250e8357b969cd9b2eb129f56",
+        "size": 473768
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/full-decode.stderr": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/full-decode.stdout": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/probe.stderr": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-campaign-B/probe.stdout": {
+        "sha256": "16390d4c8a9eaea21d698d28f2aa15ce6c3f0e5515efa099dd960abb46d02c92",
+        "size": 28651
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/continuous.mp4": {
+        "sha256": "17016f470f121cc1224fd4b41fcb0902a23d51ec7212d15f3fdef6c7ee88bad3",
+        "size": 458891
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/decoded.framemd5": {
+        "sha256": "8ac3fed2f8ccbab04d53d110249d380abc473affeacb2c7357b4b7ee9f55edb6",
+        "size": 28376
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/encode.stderr": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/encode.stdout": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/encoding.json": {
+        "sha256": "e498a2df015f7dd8fbb0ea7b28b5964856f1d4bf43bc7b26c2b6be9546e34621",
+        "size": 117410
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/frames/000000.png": {
+        "sha256": "6d5628d1444507d82759fbd2f5bf80f93b826eedaa660e2a8fbfb4fb829fe206",
+        "size": 448483
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/frames/000030.png": {
+        "sha256": "6d5628d1444507d82759fbd2f5bf80f93b826eedaa660e2a8fbfb4fb829fe206",
+        "size": 448483
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/frames/000060.png": {
+        "sha256": "6d5628d1444507d82759fbd2f5bf80f93b826eedaa660e2a8fbfb4fb829fe206",
+        "size": 448483
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/frames/000069.png": {
+        "sha256": "6d5628d1444507d82759fbd2f5bf80f93b826eedaa660e2a8fbfb4fb829fe206",
+        "size": 448483
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/frames/000090.png": {
+        "sha256": "e00816e9f832242a10b84798ecfb619daf833173b8c51834de82cbc86bc5c452",
+        "size": 359413
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/frames/000120.png": {
+        "sha256": "e00816e9f832242a10b84798ecfb619daf833173b8c51834de82cbc86bc5c452",
+        "size": 359413
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/frames/000140.png": {
+        "sha256": "e00816e9f832242a10b84798ecfb619daf833173b8c51834de82cbc86bc5c452",
+        "size": 359413
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/frames/000150.png": {
+        "sha256": "1499ee61e0c5d8536133d15a2769c34213504e9cc15708cada6f58c4f003ae53",
+        "size": 360448
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/frames/000180.png": {
+        "sha256": "236debe3cfa6dbbcc683ba99a013433e7c4ba45e3ab41049dd21b81d6d547620",
+        "size": 360163
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/frames/000210.png": {
+        "sha256": "236debe3cfa6dbbcc683ba99a013433e7c4ba45e3ab41049dd21b81d6d547620",
+        "size": 360163
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/frames/000217.png": {
+        "sha256": "236debe3cfa6dbbcc683ba99a013433e7c4ba45e3ab41049dd21b81d6d547620",
+        "size": 360163
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/frames/000240.png": {
+        "sha256": "236debe3cfa6dbbcc683ba99a013433e7c4ba45e3ab41049dd21b81d6d547620",
+        "size": 360163
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/frames/000270.png": {
+        "sha256": "236debe3cfa6dbbcc683ba99a013433e7c4ba45e3ab41049dd21b81d6d547620",
+        "size": 360163
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/frames/000290.png": {
+        "sha256": "236debe3cfa6dbbcc683ba99a013433e7c4ba45e3ab41049dd21b81d6d547620",
+        "size": 360163
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/frames/000300.png": {
+        "sha256": "236debe3cfa6dbbcc683ba99a013433e7c4ba45e3ab41049dd21b81d6d547620",
+        "size": 360163
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/frames/000330.png": {
+        "sha256": "6d5628d1444507d82759fbd2f5bf80f93b826eedaa660e2a8fbfb4fb829fe206",
+        "size": 448483
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/frames/000351.png": {
+        "sha256": "6d5628d1444507d82759fbd2f5bf80f93b826eedaa660e2a8fbfb4fb829fe206",
+        "size": 448483
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/full-decode.stderr": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/full-decode.stdout": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/probe.stderr": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/restored-earned-skirmish/probe.stdout": {
+        "sha256": "e46b06fa76e9c8907c2d029aa551eeb02c3734ad316bdd9223bc731db2a0d169",
+        "size": 28573
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/source-after.json": {
+        "sha256": "cbf19b6679a7f9c8e891455beaa9a171a78d73b893dee04a125eee41db998b73",
+        "size": 27160
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/old/source-before.json": {
+        "sha256": "cbf19b6679a7f9c8e891455beaa9a171a78d73b893dee04a125eee41db998b73",
+        "size": 27160
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/png-retention.json": {
+        "sha256": "38510a3f1fdb17708d0e2277fcab0022f45e4f522e76b1c657541111614aa633",
+        "size": 291151
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/preflight.json": {
+        "sha256": "ad9d9c361f3a276b794c6f13d7ae42e4854df5d73de6951de4e8a6a762e9d270",
+        "size": 100572
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/receipt.json": {
+        "sha256": "bb5ac7b37627ce2745d37ebd51d3f2034f7725b8b48ae3cc017090c45be677bc",
+        "size": 259740
+      },
+      ".artifacts/record-matched-20261024T134518947480Z/restoration.json": {
+        "sha256": "4e40ed3ae0dce7c0fdad3fc5c4f6b3300542c20236df3c5851f3feebfdcbb40e",
+        "size": 27758
+      }
+    },
+    "limits": "Desktop720x1680 fixed60 capture/30fps completed1x assistant review only; no new victory/native Android/phone FPS/audio/human fun/cloud acceptance."
+  }
+}
