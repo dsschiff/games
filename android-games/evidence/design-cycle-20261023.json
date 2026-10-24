@@ -205,15 +205,22 @@
       "campaign_rules_checks": 416,
       "campaign_input_checks": 276,
       "scope": "Independently source-reviewed full-context local journal, explicit Retry Import/Keep Previous and paused bootstrap/adoption. Current root focused rerun870/0. Native OS-kill/background/update/render recovery checks pending; unchanged rules/Store/schema/version/export. Not in published0.3.2 APK."
+    },
+    "native_cancellation": {
+      "source_commit": "4742b31",
+      "checkpoint": "android-games/shared/play-cloud/CANCELLATION.json",
+      "jvm_checks": 31,
+      "jvm_failures": 0,
+      "scope": "Metadata-only readiness; UI-serialized cancellable SDK callback/resource ownership. Pure JVM/real compile review clear; game offline-cancel release being implemented; no configured Android plugin/live account acceptance."
     }
   },
   "next": [
     "First six game increments privately delivered; continue bounded design/save and cloud integration work without claiming first cycle complete",
-    "Run bounded rendered/native Frontline Import recovery checks, then version/build/update verified candidate; source870/0 and review clear",
-    "Version/build/native-validate the reviewed Tower source-association increment; preserve subtle/shared-gutter readability limitation",
+    "Finish independent native followup packet review and source landing; private higher-version candidates remain unpublished",
+    "Finish configured-path Frontline game UI/port and offline-cancel recovery review; native clients/real sync remain external gates",
     "Prepare local Android App Bundle tooling while identity/phone verification blocks Play app setup",
     "Complete game cloud UI/native/client/tester/Saved Games setup and real account/device/offline/conflict sync before claiming recovery acceptance",
-    "Continue bounded dense Hook finale readability followup"
+    "Review matched Hook dense-finale warning hierarchy; source CPU clear, bounded1x visual review active"
   ],
   "gear": {
     "version": "0.4.1",
@@ -574,5 +581,31 @@
       "scope": "Signed offline6to7/Home/cold, complete update contexts; actual post-update Tower earned clear and Hook movement cold/live retention. Initial earned profiles empty. No physical/power-loss/human acceptance."
     }
   },
-  "bounded_motion_review": "android-games/reviews/design-feedback-20261023.md"
+  "bounded_motion_review": "android-games/reviews/design-feedback-20261023.md",
+  "native_followup_candidates": {
+    "report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-followups-20261024\\report.json",
+    "report_sha256": "b0d7b8a54ed8e6984be6eac30c66a94b71c0d97bc61d2ebf71d6b8a18a232a3c",
+    "independent_audit": "Pending final packet/movie review;262 file pins",
+    "frontline": {
+      "version": "0.3.3",
+      "version_code": 7,
+      "build_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\frontline-foundry\\20261024T025455548045Z\\manifest.json",
+      "apk_sha256": "30fb2aaf60ed54fe1224758c0bdf2311b2e367dc77a588bd4742d40b1f14e1b6",
+      "bytes": 56135359,
+      "native_complete_context_comparisons": 12,
+      "native_complete_context_failures": 0,
+      "scope": "Actual signed6to7 and earned Import/native choices; pending journals explicitly fixtures from genuine app-created archives. No real native I/O fault or power-loss claim. New summary-first/cloud UI not in this APK."
+    },
+    "tower": {
+      "version": "0.4.2",
+      "version_code": 8,
+      "build_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\tower-trials\\20261024T025123423901Z\\manifest.json",
+      "apk_sha256": "efdea7f926dad658be78583880564f6fa96b86b4015ab2fa21591356a840dc5b",
+      "bytes": 53119582,
+      "native_complete_context_comparisons": 2,
+      "native_complete_context_failures": 0,
+      "scope": "Actual signed7to8 earnedwatch01 whole-save retention, actual next-watch Twin Chimes claim and cold. Native VFR movie7.442611s full demux decode, initialnullmuxerwarningsretained; native1xreviewpending."
+    },
+    "private_publication": "Not uploaded; same signer; source landing and final independent native qualification required."
+  }
 }
