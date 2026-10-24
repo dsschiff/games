@@ -122,3 +122,7 @@ verification, independent visual review or phone feedback waits.
   root434/0 actual-touch checks pass. Signed0.4.2/code8 packaging/source clear;
   actual native7to8/full-context/Copy and transfer gates remain open. Existing
   private0.4.1/code7 stays available; no newer upload.
+
+- Tower whole local recovery source/CPU reviewed: root608/0 with208 actual touch
+  events. Complete campaign/challenge/parked data and uncertain animation gated;
+  verified choices adopt paused. New signed/native/OS clipboard checks remain.

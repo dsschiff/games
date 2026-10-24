@@ -154,3 +154,8 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
   APK/source/signer/raw-log audit pass. Native update/exact clipboard checks
   await host resources; code7 baseline and its existing warning are retained.
   No new upload or native/phone/cloud acceptance.
+
+- Tower complete local recovery is source/CPU reviewed, including exact code
+  archives, fresh all-marker/all-copy admission and startup before active saves.
+  Root608/0 with208touch events; pinned old regressions clear. Native/rendered
+  recovery, clipboard and higher-version candidate remain separate; no new APK.

@@ -753,5 +753,11 @@
     "status": "Source/CPU independently clear; root172/0. Whole recovery, arena identity and feedback regressions pass871/188/573. No version or new APK.",
     "next": "Higher-version signed candidate/native update, explicit recovery choices and arena feedback readability; existing0.3.2/code8 unchanged.",
     "limit": "Synthetic complete contexts/typed faults/actual engine input/materialized owners, no native storage fault, power loss, physical or cloud acceptance."
+  },
+  "tower_local_recovery": {
+    "evidence": "android-games/evidence/tower-local-recovery-20261024.json",
+    "status": "Source/CPU independently clear; root608/0 and208touch events, complete campaign/challenge/parked route preserved. Unfinished animation freezes until verified choice, then existing cold-save reset applies.",
+    "next": "Higher-version signed candidate/packaging and actual native update/recovery/clipboard/readability. Existing0.4.2/code8 unchanged.",
+    "limits": "Synthetic faults/headless touch/materialized same-process owners and fake clipboard; native storage fault/power loss/physical/cloud unverified."
   }
 }

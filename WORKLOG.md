@@ -792,3 +792,10 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   Signed0.4.2/code8 atf962be6 is54,363,095B, SHA256b6b9fedf…288edfe; actual
   packaging/source/raw logs/same signer independently clear. Candidate native
   update/clipboard/physical/cloud remain open; no upload.
+
+- Tower recovery integrated froma244948; Astra81-artifact/148LF/160unchanged-
+  binding audit clear. Root608/0,208 actual ScreenTouch events, strict clean and
+  stable source. Full pinned campaign/challenge/Undo/profile/settings preserved;
+  uncommitted pending/beat stay frozen while uncertain, reset only on verified
+  paused adoption under existing cold-save semantics. Store/decoder/rules/schema/
+  version/export unchanged. Baseline16/6 and scroll/parse failures retained.
