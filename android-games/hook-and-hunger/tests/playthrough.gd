@@ -223,6 +223,8 @@ func release() -> void:
 	await process_frame
 
 func click(text: String) -> void:
+	if not is_instance_valid(current_scene): current_scene = scene
+	if text == "IMPORT": current_scene = scene
 	await process_frame
 	await process_frame
 	var target: Button
@@ -248,6 +250,9 @@ func click(text: String) -> void:
 		Input.parse_input_event(event)
 		events.append({"time": scene.state.time, "kind": "mouse_press" if pressed else "mouse_release", "button": text, "position": [event.position.x, event.position.y]})
 		await process_frame
+
+	if current_scene == null: await scene_changed
+	if is_instance_valid(current_scene) and current_scene != scene: scene = current_scene
 
 func snap(name: String) -> void:
 	print("INPUT_SNAPSHOT ", name, " time=", scene.state.time, " dead=", scene.state.dead, " tier=", scene.state.tier)

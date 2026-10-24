@@ -26,3 +26,7 @@ func rename(from: String, to: String) -> bool:
 	if not missing_destination:
 		files[to] = "torn destination" if corrupt_destination else replacement_text if wrong_destination else source
 	return true
+
+func remove(path: String) -> bool:
+	files.erase(path)
+	return true

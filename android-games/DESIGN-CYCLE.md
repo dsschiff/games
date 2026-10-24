@@ -102,3 +102,11 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
   stopped and app data was not reset. Optional
   cloud is separate. Earlier three refinement sources landedPR18; exact private
   transfers await specific approval. See evidence/gear-local-recovery-20261024.json.
+
+- Hook local recovery now preserves complete opaque codes and whole contexts,
+  freezes pending play/writes, and offers explicit verified Retry/Keep choices.
+  Terminal loading and due-save ordering fixes pass independent871/12 checks;
+  eight strict worker suites/source and artifact audit are clear. No version,
+  binary, native, rendered or cloud acceptance is added. Explicit arena Continue
+  float-seed score key remains a separate next fix. See
+  evidence/hook-local-recovery-20261024.json.

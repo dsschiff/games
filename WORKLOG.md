@@ -719,3 +719,14 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   boot without imported resources and remains failed (worker receipt
   a8e6cc4996dc307fd7cb8790940ca43504630db8248b768ea1f408bb328681fd).
   No new test/build/native acceptance or changed APK delivery claimed.
+
+
+- Hook local recovery source: reviewed49853f1 plus independent871/0 journal and
+  12/0 terminal-commit rerun. Eight strict worker suites pass with166 unchanged
+  source pins; Astra verifies16 final artifacts and14 preserved failures. Complete
+  legacy/campaign/arena/projectile/profile/parked-finale contexts are retained.
+  Cold result viewing no longer records again; periodic save follows terminal
+  synchronization. Codec/rules/schema/version/export unchanged; prior0.3.2 APK
+  remains an older exact candidate. New build/native/render acceptance pending.
+  Explicit arena Continue float-key defect remains next. See
+  android-games/evidence/hook-local-recovery-20261024.json.

@@ -1,0 +1,64 @@
+{
+  "scope": "Hook-local complete Import recovery, terminal bootstrap preservation and terminal-save ordering. Source/CPU only; no new binary or cloud connection.",
+  "reviewed_commit": "49853f14acfad50156e8690e7f507c9065e54f3d",
+  "integrated_revision": "b2b289178cccd0280c8d7e8b2a9281c4b4ad1d2f",
+  "checkpoint": {
+    "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\IMPORT_RECOVERY_CHECKPOINT.json",
+    "sha256": "f83563b404fc1048e334464ca5c590e65f19c647e656c740643d5029ce3ffc39",
+    "bytes": 11341
+  },
+  "amendment": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\IMPORT_RECOVERY_AMENDMENT.md",
+  "final_worker_report": {
+    "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T050339303400Z\\report.json",
+    "sha256": "cc205b7c206b2b5709a17700c5c9f29b9306c42324d51aa4cd2fb3c5cd13e997",
+    "suites": {
+      "import_recovery": 871,
+      "terminal_commit": 12,
+      "save_commit": 444,
+      "run_tests": 57,
+      "campaign_checks": 81,
+      "import_regression": 8,
+      "native_transfer": 32,
+      "graphics_input": 108
+    },
+    "failures_each": 0,
+    "source_pins": 166,
+    "raw_error_warning_objectdb": 0
+  },
+  "independent_report": {
+    "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T050756931119Z\\report.json",
+    "sha256": "8a3ccf65d2a68548985791333b92b0bfce4078029c80b14afcd874bf154b871b",
+    "bytes": 1809
+  },
+  "independent_checks": {
+    "recovery": 871,
+    "terminal_commit": 12,
+    "failures": 0,
+    "source_unchanged": true,
+    "editor_import": "Explicitly skipped; existing imported cache used"
+  },
+  "independent_review": "Astra source/final checkpoint clear:16 final artifact hashes,14 preserved failure reports,4 runtime LF pins,9 unchanged LF pins and root independent report verified.",
+  "exact_preserved_failures": {
+    "uncertain_import": [
+      54,
+      24
+    ],
+    "terminal_bootstrap": [
+      807,
+      1
+    ],
+    "terminal_commit_order": [
+      12,
+      2
+    ]
+  },
+  "compatibility": "Owning Store/decoder, combat rules, definitions/catalog, all state fields including projectiles, save schema and version0.3.2/code8 unchanged. Complete legacy/campaign/arena/profile/parked finale retained; no second legacy run invented.",
+  "delivery": "Previous0.3.2/code8 APK remains the same older candidate awaiting separate approval. It does not contain this recovery source. No new build/version/upload performed.",
+  "native": "Not run; host resource pressure observed. CPU synthetic faults, actual engine input, materialized-file fresh owners and transformed bounds do not establish rendered/native I/O failure, OS restart, power loss, physical Fold7, sound/FPS or human acceptance.",
+  "next": [
+    "Reproduce actual explicit arena Continue key duplication, then fix canonical key formatting without deleting historic score keys",
+    "Bump/build only after next source qualification; verify signed Android update and native recovery while preserving app data",
+    "Actual normal Import paused; labeled pending summary/Back/Home/cold/both whole-context choices and read-only code export",
+    "Configured Google SDK/account/cloud sync remains separate"
+  ]
+}

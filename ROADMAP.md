@@ -82,3 +82,7 @@ verification, independent visual review or phone feedback waits.
 - Gear0.4.2/code11 local recovery candidate: exact destination checks and whole-save
   Import journal source/CPU/signature clear. Native update/recovery remains pending
   after owned emulator capture-shell stall under observed host memory pressure. No upload.
+
+- Hook local Import recovery and terminal bootstrap/commit source are CPU/source
+  reviewed, including independent871/0 +12/0. Existing0.3.2 APK unchanged. Next:
+  explicit arena Continue key-format defect, then new build/native recovery.

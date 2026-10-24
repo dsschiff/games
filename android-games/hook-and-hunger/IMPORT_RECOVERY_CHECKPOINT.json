@@ -1,0 +1,158 @@
+{
+  "base_commit": "c2dd0ca78457e20fddc02b8f7c76ba6923a6a647",
+  "scope": "Hook local Import recovery prerequisite only; no cloud connection/UI/native/build/upload/version/export or publication. Existing0.3.2/code8 binary is an older unchanged candidate, not this source.",
+  "runtime_paths": [
+    "scripts/main.gd",
+    "scripts/save_files.gd",
+    "scripts/import_recovery.gd",
+    "scripts/recovery_copies.gd"
+  ],
+  "unchanged_lf_sha256": {
+    "scripts/save_store.gd": "326b6743331b1cdf6f21e420e2ce192d363245c93ce75c39f2561ec8bf49c00e",
+    "scripts/engine.gd": "afce6acc3217797633ad5c3c0f56f9751fbf75a1f5dc3163848b72c4fb832f5f",
+    "scripts/rules.gd": "f8d440b8dbb82fb8bc526cf80b50b219edbe6d5a6e7bc3b58037b45433aa78c0",
+    "scripts/campaign_rules.gd": "00c989583174e3d3171ec1c2d3b57cac2da05f21bb35713cd4bc18863b2d6321",
+    "scripts/campaign_data.gd": "eb73e677adcf8e5e7c66f52cb2d2de901b30b963dd3f2b6c7d5e81a15437ccb5",
+    "scripts/art.gd": "ddac90ead100a9e377cffc984bdc62c46885c2f34a48ca8f28617cb1abb7f726",
+    "scripts/presentation/adapter.gd": "ef96ae308b1612e946482c800c7160fc8ef16c00d5672a4efac740210fe36c2c",
+    "project.godot": "4e50aa1e1aeb2e9d0a33d425e4ba24be0ccb344c2d504ad39bf179144a91196e",
+    "export_presets.cfg": "aa8e8ba32e8071d39823f3bc75605c7bbe47d8186bd0e93a2221f32c620e49cd"
+  },
+  "runtime_lf_sha256": {
+    "scripts/main.gd": "5e663c70a7a7ef725e85af4619b390c3839ed1ee7382d8de5b2ed961aa2c2811",
+    "scripts/save_files.gd": "67bcaa62474ed0c3458e83174d0eba53cfed7d1ec629e228b51ea29da37a6dd8",
+    "scripts/import_recovery.gd": "668c5dba5d02e6671a4c3848a3d3472a449c3cd5c02318cf9dbc0854bbd3f3b0",
+    "scripts/recovery_copies.gd": "6a9674422cc24d5441e8b5c5de062a3b0d03724f063808c04116fa03eff66066"
+  },
+  "final_report": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T050339303400Z\\report.json",
+  "final_report_sha256": "cc205b7c206b2b5709a17700c5c9f29b9306c42324d51aa4cd2fb3c5cd13e997",
+  "source_pins_count": 166,
+  "source_map_sha256": "87aabce87d6fb6fcce9784d9f31879e747f62a2ff5a902477db09e0689d21c91",
+  "final_source_maps_equal_current": true,
+  "headless_audio": "Dummy",
+  "editor_import": "Explicitly skipped for final run using existing imported cache after earlier timeout; not claimed as successful final editor import. New test UID generated with pinned engine before freeze.",
+  "suite_checks": {
+    "import_recovery": 871,
+    "terminal_commit": 12,
+    "save_commit": 444,
+    "run_tests": 57,
+    "campaign_checks": 81,
+    "import_regression": 8,
+    "native_transfer": 32,
+    "graphics_input": 108
+  },
+  "suite_failures_each": 0,
+  "raw_error_warning_objectdb_markers": [],
+  "final_files": {
+    "campaign_checks.log": "1ed01f1baac080cf7c5739fe1f89aeeac70c887fc5a58b7ab830bd99b921f7dc",
+    "graphics-input-report.json": "801999d4326c3ae2e0645ac6a5f7031929d3db6ec44b1b2011cee7c63ff012a2",
+    "graphics_input.log": "366fd7de11b5d6c646eeae2f167274a878e5fa1d5aa7a41772ea9ce9c239d5ba",
+    "import-recovery.json": "48d3ad70f408caec9ea890389d90ca96938605122dd0a69a61d0a9e66a7fab75",
+    "import_recovery.log": "bc031a481b4f979dceeafb21d9e7076aed38acff3ce3dee00a6cdeec447dbc39",
+    "import_regression.log": "34fa9be2fc9231b5804e7b37cd61e7d5fe807b0b80f30eb0b69ab0cf546093b4",
+    "native-transfer.json": "78ab1bc7dc4c998910a22d0bcd3a8afaed2f11c76753a0462a4123834fd9cb17",
+    "native_transfer.log": "ec9eecd6ded10655f99e2b6bafb4a7640eb38156dc623c4b04582070b8bc71c3",
+    "report.json": "cc205b7c206b2b5709a17700c5c9f29b9306c42324d51aa4cd2fb3c5cd13e997",
+    "run_tests.log": "5ca0d8aa422e4a1f8366f036e38678b3dcb7fe7800db7aa35560c0137450f690",
+    "save-commit-report.json": "a6b098887f6e94ec66301fa1ab9427ea3fd32636b2faa2b88db0cc0fd4219ea2",
+    "save_commit.log": "8db282f462d1db6ccf28b0446b249513cd590b332d65aa0e1c49223de2094fe0",
+    "source-after.json": "87aabce87d6fb6fcce9784d9f31879e747f62a2ff5a902477db09e0689d21c91",
+    "source-before.json": "87aabce87d6fb6fcce9784d9f31879e747f62a2ff5a902477db09e0689d21c91",
+    "terminal-commit.json": "e9a1b989fe16f8581cb6f62f6eb58f7e08998cc91fde9cd3ec6ae5e4846233f7",
+    "terminal_commit.log": "99038ebe268b35675adc9f08bf7a6011e06a6bb686bf1c020a75adc6c1f3a081"
+  },
+  "preserved_failures": [
+    {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T043634740131Z\\report.json",
+      "sha256": "afa35410cf95fb5ad7e766953e2cfcb3d7a8998f6b528dad495d47e7a67ece91",
+      "reason": "Actual Import uncertainty before runtime changes:54 checks/24 failures,9 whole-context pairs; six distinct cold context mismatches."
+    },
+    {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T044426352797Z\\report.json",
+      "sha256": "600dbe19cf8bb58b35538e31b8dc812605ae43f046815bab8436cac41501688e",
+      "reason": "Test notification-constant parse failure."
+    },
+    {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T044501743688Z\\report.json",
+      "sha256": "710a90a0670533b1b4275936d72670edd9d6d0241af20b8eef84a79dd20df023",
+      "reason": "Test fault armed against earlier terminal startup promotion;21 failures preserved."
+    },
+    {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T044638494675Z\\report.json",
+      "sha256": "c430026d68c4faaebebf72771166b9bc8b52fde72c09047e7c91a81520cde25c",
+      "reason": "Expanded807/1 actual arena terminal bootstrap profile mutation."
+    },
+    {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T044945950921Z\\report.json",
+      "sha256": "c5fbebea71f14268f5bc47cfa6915768dc10b149f87fbe92220e700ce9f108f0",
+      "reason": "Reserved test constant parse failure."
+    },
+    {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T045008162523Z\\report.json",
+      "sha256": "ddf84a7e70324fd66e97e477d481a79be11655a06b2062366782ffb515d297d2",
+      "reason": "Two mixed logical/physical coordinate assertions; actual recovery choices succeeded."
+    },
+    {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T045113155926Z\\report.json",
+      "sha256": "b245976b3d1f7845f7c29dc23a7f262d85c425beb24a0992317143b8eef6c5d0",
+      "reason": "Headless editor import timeout180s before suite; own child exited. Host memory pressure separately confirmed by coordinator."
+    },
+    {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T045658991698Z\\report.json",
+      "sha256": "a725c90d616ca933392ab4f13eef5f3446c8203b1df076c6f1deaeb7db3dd1e0",
+      "reason": "Initial terminal writer probe12/3: true pre-record commits plus noncanonical float expectation."
+    },
+    {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T045736114351Z\\report.json",
+      "sha256": "7e181ad97569f2801d4d82b71ad52c7105e2b101bd508509e73d48ce83cf955f",
+      "reason": "Post-order probe12/2: expected profile recomputed after JSON float conversion, corrected using full owning-decoder canonical context."
+    },
+    {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T045821291225Z\\report.json",
+      "sha256": "015e9bc74f0117af4ddbb7e066670f0b7d0b4b7cc1c3c46755a717cf828da543",
+      "reason": "Temporary matched baseline parser failure; not ordering evidence."
+    },
+    {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T045855611155Z\\report.json",
+      "sha256": "a7d2534b6ee77a5d5f946df6f2156cebf27f805592bd83ab99341f0cddf7778f",
+      "reason": "Functional871/0 but one raw unsafe reused input-event WARNING: not strict acceptance."
+    },
+    {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T045938720224Z\\report.json",
+      "sha256": "18c3bb4415933bf4d70f5d03fb41e3e5e6e559f5808541c2e3de3346cddfd3ad",
+      "reason": "Matched pre-sync periodic-save ordering baseline12/2: one incomplete terminal profile envelope per campaign/arena win."
+    },
+    {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T045956401103Z\\report.json",
+      "sha256": "7557264c69aa57f55016e857f55f2916306ba44002300f847d380faded9b6ece",
+      "reason": "Terminal12/0 followed by six stale-controller test-pointer failures after real Import scene replacement."
+    },
+    {
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T050108457147Z\\report.json",
+      "sha256": "9fe0cb9fb376982327bd56cd89839a3d334e75cbfe31ccba787cf770924cbb87",
+      "reason": "Earlier broader batch fails at stalled old test scene-wait helper; exact owned child55836/console38708 stopped after identity/creation-date check. Test-driver source edit also invalidates whole-batch freeze; never accepted."
+    }
+  ],
+  "source_review": "Astra independently source-cleared current runtime/test diff and final166 raw source pins/eight strict suite logs before commit.",
+  "review_limits": [
+    "Headless native_transfer32 is actual engine touch/text validation, not Android or clipboard proof.",
+    "Synthetic full contexts/faults and materialized-file reloads in one engine process, not OS kill/power-loss/native fault evidence.",
+    "Recovery UI bounds/actual touch checks are CPU; rendered/native/readability acceptance remains deferred.",
+    "Explicit arena Continue retains its existing float-seed score-key formatting behavior; startup viewing no longer rerecords.",
+    "No physical Fold7, measured FPS, audible sound, configured cloud or user-fun acceptance."
+  ],
+  "archive_contract": "Byte-exact incoming and pre-import live code plus all valid raw stable/tmp candidates; separate Hook namespaced content-addressed immutable files and journal. Every state/profile/settings field compared; no projectile clearing or field masks. Hook has no ready schema or parked legacy run; dock/paused playing is its ready analogue, and arena profile.ending is the complete parked campaign finale.",
+  "coordinator_independent_check": {
+    "report": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T050756931119Z\\report.json",
+    "sha256": "8a3ccf65d2a68548985791333b92b0bfce4078029c80b14afcd874bf154b871b",
+    "passed": true,
+    "source_unchanged": true,
+    "suites": [
+      "import_recovery871/0",
+      "terminal_commit12/0"
+    ],
+    "raw_errors_and_warnings": [],
+    "source_pins": 166,
+    "scope": "Independent coordinator existing-cache headless/Dummy rerun; no native/build/version/export."
+  }
+}

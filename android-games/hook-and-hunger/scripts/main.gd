@@ -3,6 +3,7 @@ const Rules = preload("res://scripts/engine.gd")
 const Campaign = preload("res://scripts/campaign_rules.gd")
 const Data = preload("res://scripts/campaign_data.gd")
 const Store = preload("res://scripts/save_store.gd")
+const ImportRecovery = preload("res://scripts/import_recovery.gd")
 const Presentation = preload("res://scripts/presentation/adapter.gd")
 var presentation: Node3D
 var ui_root: Control
@@ -19,6 +20,13 @@ var movement := Vector2.ZERO
 var save_clock := 0.0
 var save_error := ""
 var save_io: Variant = null
+var import_recovery: RefCounted
+var import_pending := false
+var recovery_layer: CanvasLayer
+var recovery_panel: PanelContainer
+var recovery_message: Label
+var recovery_retry: Button
+var recovery_keep: Button
 var camera: Camera3D
 var player: Node3D
 var weapon_node: Node3D
@@ -60,17 +68,45 @@ var projectiles := {}
 var world_clock := 0.0
 
 func _ready() -> void:
-	var loaded := Store.read(Store.PATH, save_io)
+	import_recovery = ImportRecovery.new(save_io)
+	var handoff: bool = get_tree().has_meta("hook_import_context")
+	var loaded := {"ok":false}
+	var imported_notice := true
+	if handoff:
+		var handed: Variant = get_tree().get_meta("hook_import_context")
+		get_tree().remove_meta("hook_import_context")
+		if handed is Dictionary and handed.get("code") is String and handed.get("imported") is bool:
+			loaded = Store.decode(handed.code)
+			imported_notice = handed.imported
+		if not loaded.ok:
+			import_pending = true
+			import_recovery.message = "The verified save handoff could not be read. Play and local saving stay paused. Retry recovery."
+	else:
+		var pending: Dictionary = import_recovery.read()
+		import_pending = pending.pending
+		loaded = pending.original if pending.ok else Store.read(Store.PATH,save_io)
+	if not loaded.ok and not import_pending and import_recovery.active_present():
+		import_pending = true
+		import_recovery.message = "Local saves could not be read. Play and local saving stay paused. Retry recovery. Keep the app installed to retain its files."
 	if loaded.ok:
 		state = loaded.state
 		settings = loaded.settings
 		profile = loaded.profile
-		paused = state.phase == "playing"
+	paused = import_pending or handoff or loaded.ok and state.phase == "playing"
+	if import_pending and not loaded.ok:
+		_recovery_ui()
+		_show_import_recovery()
+		return
 	last_dead = state.dead.size()
 	last_hp = state.hp
+	# A loaded whole save is already authoritative; merely viewing its result
+	# must not record it again. Runtime transitions and Continue still record.
+	if loaded.ok: phase_seen = state.phase
 	_world()
 	_ui()
+	_recovery_ui()
 	menu.visible = paused
+	if handoff: transfer_status.text = "Imported. Resume when ready." if imported_notice else "Previous whole save restored. Resume when ready."
 	_sync()
 
 func _world() -> void:
@@ -222,7 +258,7 @@ func _ui() -> void:
 	sound.button_pressed = settings.sound
 	sound.custom_minimum_size.y = 100
 	sound.add_theme_font_size_override("font_size", 25)
-	sound.toggled.connect(func(value: bool) -> void: settings.sound = value; _save())
+	sound.toggled.connect(_setting.bind("sound"))
 	options.add_child(sound)
 	sound_toggle = sound
 	var effects := CheckButton.new()
@@ -230,7 +266,7 @@ func _ui() -> void:
 	effects.button_pressed = settings.reduced_effects
 	effects.custom_minimum_size.y = 100
 	effects.add_theme_font_size_override("font_size", 25)
-	effects.toggled.connect(func(value: bool) -> void: settings.reduced_effects = value; _save())
+	effects.toggled.connect(_setting.bind("reduced_effects"))
 	options.add_child(effects)
 	effects_toggle = effects
 	options.add_child(_label("Drag to move. Nearby attacks are automatic.\nLeave solid circles; step inside hollow rings. Sidestep lines. Rocks stop shots.\nUse the dock to buy power or repair.", 26))
@@ -255,6 +291,7 @@ func _ui() -> void:
 	menu.visible = false
 
 func _input(event: InputEvent) -> void:
+	if import_pending: return
 	# A tracked finger can finish over a GUI panel. Releases must reach movement
 	# ownership before the GUI consumes them; new presses still use unhandled input.
 	if event is InputEventScreenTouch and not event.pressed and event.index == finger:
@@ -269,7 +306,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	# the original finger events and must not process their mouse copies.
 	if event is InputEventMouse and event.device == InputEvent.DEVICE_ID_EMULATION:
 		return
-	if paused or state.phase != "playing":
+	if import_pending or paused or state.phase != "playing":
 		return
 	if event is InputEventScreenTouch:
 		if event.pressed and finger == -1:
@@ -293,21 +330,30 @@ func _stop() -> void:
 	movement = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
+	if import_pending: return
+	var periodic_save := false
 	if not paused:
 		var keys := Vector2(float(Input.is_physical_key_pressed(KEY_D)) - float(Input.is_physical_key_pressed(KEY_A)), float(Input.is_physical_key_pressed(KEY_S)) - float(Input.is_physical_key_pressed(KEY_W)))
 		Rules.step(state, movement if dragging else keys, delta)
 		save_clock += delta
 		if save_clock >= 2.0:
 			save_clock = 0
-			_save()
+			periodic_save = true
 	_sync()
+	# A winning step must record its profile before any terminal autosave.
+	if periodic_save: _save()
 
 func _process(delta: float) -> void:
+	_layout_recovery()
+	if import_pending or not is_instance_valid(presentation): return
 	world_clock += delta
 	presentation.present(delta)
 	_layout()
 
 func _sync() -> void:
+	if import_pending:
+		_show_import_recovery()
+		return
 	var p := Rules.position(state)
 	var viewport := get_viewport().get_visible_rect().size
 	# Close tilted follow: the full weapon reach always fits across the narrow
@@ -409,6 +455,7 @@ func _rebuild() -> void:
 	_world()
 
 func _continue() -> void:
+	if import_pending: return
 	if state.phase != "victory":
 		return
 	Campaign.record(profile, state)
@@ -431,16 +478,19 @@ func _continue() -> void:
 	_save()
 
 func _cycle_seed() -> void:
+	if import_pending: return
 	profile.arena_seed = 1701 + (int(profile.arena_seed) - 1700) % 20
 	_sync()
 	_save()
 
 func _cycle_weapon() -> void:
+	if import_pending: return
 	profile.arena_weapon = 1 + int(profile.arena_weapon) % 3
 	_sync()
 	_save()
 
 func _arena() -> void:
+	if import_pending: return
 	if not profile.completed or state.schema == 2 and state.definition.arena:
 		return
 	profile.ending = state.duplicate(true)
@@ -452,12 +502,14 @@ func _arena() -> void:
 	_save()
 
 func _buy() -> void:
+	if import_pending: return
 	if Rules.purchase(state):
 		_tone(880)
 		_save()
 	_sync()
 
 func _retry() -> void:
+	if import_pending: return
 	if Rules.retry(state):
 		presentation.hydrate(state)
 		_stop()
@@ -465,6 +517,7 @@ func _retry() -> void:
 	_sync()
 
 func _toggle_menu() -> void:
+	if import_pending: return
 	paused = not paused
 	menu.visible = paused
 	menu_button.text = "MENU" if paused else "PAUSE"
@@ -473,6 +526,7 @@ func _toggle_menu() -> void:
 	_sync()
 
 func _transfer(action: String) -> void:
+	if import_pending: return
 	if action == "EXPORT":
 		transfer.text = Store.encode(state, settings, 0, true, profile)
 		transfer.select_all()
@@ -490,19 +544,106 @@ func _transfer(action: String) -> void:
 		var imported := Store.decode(transfer.text)
 		if not imported.ok:
 			transfer_status.text = "Invalid save. Current progress retained."
-		elif not Store.write(imported.state, imported.settings, Store.PATH, save_io, true, imported.profile):
-			transfer_status.text = "Storage failed. Current progress retained."
 		else:
-			state = imported.state
-			profile = imported.profile
-			_rebuild()
-			settings = imported.settings
-			sound_toggle.set_pressed_no_signal(settings.sound)
-			effects_toggle.set_pressed_no_signal(settings.reduced_effects)
-			transfer_status.text = "Imported. Resume when ready."
-			_sync()
+			paused = true
+			_stop()
+			var pending: Dictionary = import_recovery.begin(Store.encode(state,settings,0,true,profile),transfer.text)
+			import_pending = pending.pending
+			if not import_pending:
+				transfer_status.text = import_recovery.message
+				return
+			_show_import_recovery()
+			if pending.ok: _finish_import(true)
+
+func _setting(value: bool, key: String) -> void:
+	if import_pending: return
+	settings[key] = value
+	_save()
+
+func _recovery_ui() -> void:
+	recovery_layer = CanvasLayer.new()
+	recovery_layer.layer = 200
+	add_child(recovery_layer)
+	var blocker := ColorRect.new()
+	blocker.color = Color(0.02,0.08,0.12,.95)
+	blocker.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	blocker.mouse_filter = Control.MOUSE_FILTER_STOP
+	recovery_layer.add_child(blocker)
+	recovery_panel = PanelContainer.new()
+	recovery_panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	recovery_panel.add_theme_stylebox_override("panel",_panel())
+	blocker.add_child(recovery_panel)
+	var scroll := ScrollContainer.new()
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	recovery_panel.add_child(scroll)
+	var box := VBoxContainer.new()
+	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(box)
+	box.add_child(_label("IMPORT RECOVERY",32))
+	recovery_message = _label("",25)
+	recovery_message.custom_minimum_size.y = 300
+	box.add_child(recovery_message)
+	recovery_retry = _button("RETRY IMPORT",box,_retry_import)
+	recovery_keep = _button("KEEP PREVIOUS",box,_finish_import.bind(false))
+	recovery_layer.hide()
+	_layout_recovery()
+
+func _layout_recovery() -> void:
+	if not is_instance_valid(recovery_panel): return
+	var extent := get_viewport().get_visible_rect().size
+	var width := minf(680,extent.x-48)
+	var height := minf(760,extent.y-64)
+	recovery_panel.offset_left = -width*.5
+	recovery_panel.offset_right = width*.5
+	recovery_panel.offset_top = -height*.5
+	recovery_panel.offset_bottom = height*.5
+
+func _show_import_recovery() -> void:
+	paused = true
+	_stop()
+	if is_instance_valid(menu): menu.hide()
+	if is_instance_valid(terminal): terminal.hide()
+	if is_instance_valid(presentation): presentation.set_paused(true,state)
+	if is_instance_valid(transfer_status): transfer_status.text = import_recovery.message
+	recovery_layer.show()
+	var known: bool = not import_recovery.record.is_empty()
+	recovery_retry.text = "RETRY IMPORT" if known else "RETRY RECOVERY READ"
+	recovery_keep.visible = known
+	recovery_message.text = import_recovery.message
+	if known:
+		recovery_message.text += "\n\nPREVIOUS WHOLE SAVE\n"+ImportRecovery.describe(import_recovery.original)+"\n\nIMPORTED WHOLE SAVE\n"+ImportRecovery.describe(import_recovery.incoming)
+	recovery_message.text += "\n\nComplete recovery copies stay on this device. Keep the app installed while recovery is pending."
+
+func _retry_import() -> void:
+	if not import_pending: return
+	if not import_recovery.record.is_empty():
+		_finish_import(true)
+		return
+	var pending: Dictionary = import_recovery.read()
+	if not pending.pending:
+		var saved := Store.read(Store.PATH,save_io)
+		if saved.ok: _reopen_import(saved.source)
+	_show_import_recovery()
+
+func _finish_import(use_import: bool) -> void:
+	if not import_pending: return
+	var result: Dictionary = import_recovery.resolve(use_import)
+	if result.ok: _reopen_import(result.decoded.source,use_import)
+	_show_import_recovery()
+
+func _reopen_import(code: String, imported: bool = false) -> void:
+	# The old owner remains frozen; the fresh owner consumes this code once.
+	get_tree().set_meta("hook_import_context",{"code":code,"imported":imported})
+	var error := _change_import_scene()
+	if error != OK:
+		get_tree().remove_meta("hook_import_context")
+		import_recovery.message = "The chosen save was verified, but reopening failed. Play stays paused. Retry your choice."
+
+func _change_import_scene() -> Error:
+	return get_tree().change_scene_to_file("res://main.tscn")
 
 func _save() -> bool:
+	if import_pending: return false
 	var okay := Store.write(state, settings, Store.PATH, save_io, false, profile)
 	save_error = "" if okay else "SAVE FAILED • progress is still in memory. Export a copy."
 	return okay
@@ -532,6 +673,9 @@ func _exit_tree() -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_APPLICATION_PAUSED or what == NOTIFICATION_APPLICATION_FOCUS_OUT or what == NOTIFICATION_WM_GO_BACK_REQUEST or what == NOTIFICATION_WM_CLOSE_REQUEST:
+		if import_pending:
+			if what == NOTIFICATION_WM_CLOSE_REQUEST: get_tree().quit()
+			return
 		if not is_instance_valid(menu):
 			return
 		paused = true

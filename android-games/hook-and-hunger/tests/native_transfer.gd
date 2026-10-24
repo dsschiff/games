@@ -132,6 +132,8 @@ func movement_check() -> void:
 	check(not scene.dragging and scene.movement == Vector2.ZERO and is_equal_approx(scene.state.x, stopped), "real finger release stops movement")
 
 func tap_button(text: String) -> void:
+	if not is_instance_valid(current_scene): current_scene = scene
+	if text == "IMPORT": current_scene = scene
 	await process_frame
 	await process_frame
 	var button: Button
@@ -150,6 +152,9 @@ func tap_button(text: String) -> void:
 	var before: int = presses[id]
 	await touch_at(button.get_global_rect().get_center())
 	check(int(presses[id]) == before + 1, "native " + text + " tap invokes exactly one GUI action")
+
+	if current_scene == null: await scene_changed
+	if is_instance_valid(current_scene) and current_scene != scene: scene = current_scene
 
 func reveal_control(control: Control) -> void:
 	var scroll: ScrollContainer = scene.menu.find_children("*", "ScrollContainer", true, false)[0]

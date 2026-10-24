@@ -656,5 +656,24 @@
     "status": "Source/CPU/signature clear; local0.4.2/code11 native update/recovery pending. Not uploaded.",
     "checks": "Independent353/0 and65/0; worker1466/0transfer,164/0rules,39/0lifecycle. Synthetic faults/fresh owners do not establish native power loss.",
     "native_limit": "Owned emulator boot/app launch succeeded, then raw-save capture shell stalled before update; observed low host memory; exact owned processes stopped after graceful timeout."
+  },
+  "hook_local_recovery": {
+    "evidence": "android-games/evidence/hook-local-recovery-20261024.json",
+    "status": "Source/CPU clear; no new build/native acceptance; older exact0.3.2 candidate unchanged.",
+    "checks": {
+      "import_recovery": 871,
+      "terminal_commit": 12,
+      "save_commit": 444,
+      "run_tests": 57,
+      "campaign_checks": 81,
+      "import_regression": 8,
+      "native_transfer": 32,
+      "graphics_input": 108
+    },
+    "independent_recovery": 871,
+    "independent_terminal": 12,
+    "failures": 0,
+    "limits": "Synthetic faults/headless input; existing cache explicitly used. Android/render/power loss/cloud unverified.",
+    "next": "Separate explicit arena Continue key-format bug, then candidate build/native recovery."
   }
 }
