@@ -9,7 +9,7 @@ def source():
  return {f.relative_to(P).as_posix():hashlib.sha256(f.read_bytes()).hexdigest() for f in sorted(P.rglob("*")) if f.is_file() and not any(x.startswith(".") or x=="__pycache__" for x in f.relative_to(P).parts)}
 def main():
  parser=argparse.ArgumentParser();parser.add_argument("--baseline",action="store_true");args=parser.parse_args()
- run=P/".artifacts"/("journey-touch-"+("baseline-" if args.baseline else "current-")+datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ"));run.mkdir()
+ run=P/".artifacts"/("journey-touch-"+("baseline-" if args.baseline else "current-")+datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ"));run.mkdir(parents=True)
  env=os.environ.copy()
  for key in ["APPDATA","LOCALAPPDATA","TEMP","TMP"]:
   d=run/key.lower();d.mkdir();env[key]=str(d)
