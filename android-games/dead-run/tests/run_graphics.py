@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 
 PROJECT = Path(__file__).resolve().parents[1]
 GODOT = Path("C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe")
-SCRIPTS = {"lifetime": "res://tests/texture_lifetime.gd", "rules": "res://tests/run_tests.gd", "campaign-rules": "res://tests/campaign_tests.gd",
+SCRIPTS = {"transition": "res://tests/terminal_transition.gd", "lifetime": "res://tests/texture_lifetime.gd", "rules": "res://tests/run_tests.gd", "campaign-rules": "res://tests/campaign_tests.gd",
            "platform": "res://tests/platform_input.gd", "code4": "res://tests/code4_upgrade.gd", "design": "res://tests/terminal_design.gd", "lineup": "res://tests/art_lineup.gd", "frames": "res://tests/graphics_frames.gd",
            "presentation": "res://tests/presentation_tests.gd", "timing": "res://tests/horde_timing.gd"}
 
@@ -31,6 +31,7 @@ def main():
     parser.add_argument("--label", default="run")
     parser.add_argument("--scenario", default="all")
     parser.add_argument("--headless", action="store_true")
+    parser.add_argument("--input-dir", type=Path, help="transition only: prior genuine app-written defeat slots")
     drain = parser.add_mutually_exclusive_group()
     drain.add_argument("--drain-between-rebuilds", action="store_true", help="lifetime fixture comparison only: await normal process/render frames after each geometry world")
     drain.add_argument("--drain-after-fixtures", action="store_true", help="lifetime end-only control: same added drain count after all geometry worlds")
@@ -38,6 +39,10 @@ def main():
     args = parser.parse_args()
     if (args.drain_between_rebuilds or args.drain_after_fixtures) and args.mode != "lifetime":
         parser.error("Fixture drain comparisons apply only to lifetime mode")
+    if (args.mode == "transition") != (args.input_dir is not None):
+        parser.error("transition requires --input-dir; other modes do not accept it")
+    if args.mode == "transition" and len(list(args.input_dir.glob("dead-run-save-*"))) != 2:
+        parser.error("transition needs exactly two app-written slots")
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     run = PROJECT / ".artifacts" / "graphics" / f"{args.label}-{args.mode}-{stamp}"
     run.mkdir(parents=True)
@@ -46,12 +51,13 @@ def main():
         env[key] = str(run / key.lower())
         Path(env[key]).mkdir()
     inputs = []
-    if args.mode == "code4":
+    if args.mode in ("code4", "transition"):
         destination = Path(env["APPDATA"]) / "Godot/app_userdata/Dead Run"
         destination.mkdir(parents=True)
-        for original in sorted((PROJECT / "tests/fixtures/code4-midroad").glob("dead-run-save-*")):
+        source = args.input_dir if args.mode == "transition" else PROJECT / "tests/fixtures/code4-midroad"
+        for original in sorted(source.glob("dead-run-save-*")):
             (destination / original.name).write_bytes(original.read_bytes())
-            inputs.append({"kind": "genuine-code4-app-written-slot", "source": str(original),
+            inputs.append({"kind": "genuine-prior-app-written-defeat-slot" if args.mode == "transition" else "genuine-code4-app-written-slot", "source": str(original),
                            "sha256": hashlib.sha256(original.read_bytes()).hexdigest()})
     # Sound stays off in every automated run (Daniel works at this computer).
     command = [str(GODOT), "--path", str(PROJECT), "--audio-driver", "Dummy"]
