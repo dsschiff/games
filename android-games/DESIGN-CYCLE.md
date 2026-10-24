@@ -176,3 +176,5 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
   equals reviewed2467cd60 and only version/README changed. Recovery/arena identity/
   best-clear feedback included. Native update/full recovery/clipboard/readability
   and exact-transfer authorization remain separate; no upload.
+
+- Tower0.4.4/code10 now has signed8to9to10 native full-context evidence,20 comparisons/0,11pending13cleared journals, real earned medal feedback and corrected transfer-note layout. Both Copy/opposite-choice/Paste/Import/cold roundtrips preserve the complete chosen context; rich Challenge/parked case is explicitly CPU-derived. Original native route restored and owned emulator shut down. Strict cached-shader warning remains failed; no private upload or physical/cloud acceptance. See evidence/tower-native-recovery-20261024.json. Latest read-only ShifTech console still requires identity/phone verification before app setup.

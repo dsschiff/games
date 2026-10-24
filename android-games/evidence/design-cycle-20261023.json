@@ -221,6 +221,19 @@
       "failures": 0,
       "independent_review": "Astra source/integration/native UI clear. Explicit local Close releases offline play independently of retained SDK cleanup; synthetic canceled/late Tasks are not real account sync.",
       "not_in_packaged_apks": "Google Play native SDK remains unbundled/unconfigured; the UI reports unavailable honestly."
+    },
+    "latest_console_recheck": {
+      "recorded_utc": "2026-10-24T10:27:02Z",
+      "observation_window_utc": {
+        "after": "2026-10-24T09:36:45Z",
+        "before": "2026-10-24T10:03:27Z"
+      },
+      "timestamp_basis": "Read-only browser observation occurred during this interval; no exact observation clock was recorded. Prior precise04:01:37Z check remains historical.",
+      "account": "ShifTech",
+      "identity": "Action required: upload an official identity document",
+      "phone": "Action required: waits for identity tasks and Google document approval",
+      "apps": "Create your first app; none shown",
+      "scope": "Read-only existing signed-in first-party console. No identity upload, app creation, consent/account change. One temporary task tab closed; no browser groups/pins/bookmarks."
     }
   },
   "next": [
@@ -773,5 +786,20 @@
     "version": "0.3.3",
     "version_code": 9,
     "status": "Local signed candidate packaging/source independently clear. Native8to9/recovery/clipboard/best-clear feedback readability remain next; no upload."
+  },
+  "tower_recovery_candidate": {
+    "version": "0.4.4",
+    "version_code": 10,
+    "state": "Local signed candidate; native8to9to10 whole-save/medal/transfer-layout checks pass; strict shader warning remains failed; no new upload",
+    "source": "903f7fcb3a5b43f3139d83ca00aa086c9f20906e",
+    "evidence": "android-games/evidence/tower-native-recovery-20261024.json",
+    "apk_sha256": "6e1b744e96fba08b1c2f56bfa034a8009aee5e110fefe510142d1c623d70b845",
+    "whole_comparisons": 20,
+    "failures": 0,
+    "pending_validations": 11,
+    "resolved_journals": 13,
+    "original_restored": true,
+    "physical_acceptance": false,
+    "cloud_acceptance": false
   }
 }
