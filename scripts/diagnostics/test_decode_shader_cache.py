@@ -4,14 +4,14 @@ import hashlib
 import json
 import unittest
 
-from decode_shader_cache import CHUNK_BYTES, PREFIX, decode
+from decode_shader_cache import CHUNK_BYTES, MAX_MESSAGE_BYTES, MAX_PAYLOAD_BYTES, PREFIX, TRANSPORT_SCHEMA, decode
 
 
 def frames(payload, record_id="0", pid=123):
     raw = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
     chunks = [raw[i:i + CHUNK_BYTES] for i in range(0, len(raw), CHUNK_BYTES)]
     return [f"10-24 18:00:00.000 {pid} 456 I godot : " + PREFIX + json.dumps({
-        "schema": 1, "record_id": record_id, "payload_bytes": len(raw),
+        "schema": TRANSPORT_SCHEMA, "record_id": record_id, "payload_bytes": len(raw),
         "payload_sha256": hashlib.sha256(raw).hexdigest(), "chunk_index": i,
         "chunk_count": len(chunks), "encoding": "base64",
         "chunk_base64": base64.b64encode(chunk).decode("ascii"),
@@ -27,7 +27,35 @@ class DecodeTests(unittest.TestCase):
         result = decode("unrelated engine warning\n" + "\n".join(self.lines), expected_pid=123)
         self.assertEqual(result["records"][0]["observation"], self.payload)
         self.assertGreater(result["frames"], 2)
-        self.assertTrue(all(len(line.split(PREFIX)[1]) + len(PREFIX) < 3072 for line in self.lines))
+        self.assertTrue(all(len(line.split(PREFIX)[1]) + len(PREFIX) <= MAX_MESSAGE_BYTES for line in self.lines))
+
+    def test_android_observed_print_budget_with_max_record_id(self):
+        payload = {"schema": 1, "event": "load", "info_log": ""}
+        overhead = len(json.dumps(payload, separators=(",", ":")).encode("utf-8"))
+        payload["info_log"] = "a" * (MAX_PAYLOAD_BYTES - overhead)
+        lines = frames(payload, record_id="18446744073709551615")
+        messages = [line.split(" I godot : ", 1)[1] for line in lines]
+        self.assertTrue(all(len(message.encode("ascii")) <= MAX_MESSAGE_BYTES < 1023 for message in messages))
+        self.assertTrue(all(message[:1023] == message for message in messages))
+
+    def test_transport_epoch_one_rejected(self):
+        line = frames({"schema": 1, "event": "load"})[0]
+        header, framed = line.split(PREFIX, 1)
+        value = json.loads(framed)
+        value["schema"] = 1
+        with self.assertRaisesRegex(ValueError, "unsupported frame protocol"):
+            decode(header + PREFIX + json.dumps(value), expected_pid=123)
+
+    def test_observed_1023_byte_truncation_rejected(self):
+        raw = b"a" * 1536
+        frame = {"schema": 1, "record_id": "0", "payload_bytes": len(raw), "payload_sha256": hashlib.sha256(raw).hexdigest(), "chunk_index": 0, "chunk_count": 1, "encoding": "base64", "chunk_base64": base64.b64encode(raw).decode("ascii")}
+        truncated = (PREFIX + json.dumps(frame, separators=(",", ":")))[:1023]
+        with self.assertRaisesRegex(ValueError, "Android message framing"):
+            decode("10-24 18:00:00.000 123 456 I godot : " + truncated, expected_pid=123)
+
+    def test_oversized_message_rejected(self):
+        with self.assertRaisesRegex(ValueError, "Android message framing"):
+            decode("10-24 18:00:00.000 123 456 I godot : " + PREFIX + " " * MAX_MESSAGE_BYTES, expected_pid=123)
 
     def test_out_of_order_chunks_preserve_payload(self):
         self.assertEqual(decode("\n".join(reversed(self.lines)), expected_pid=123)["records"][0]["observation"], self.payload)

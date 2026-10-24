@@ -1,3 +1,5 @@
+diff --git a/drivers/gles3/shader_gles3.cpp b/drivers/gles3/shader_gles3.cpp
+index 4fe333e..293d5d3 100644
 --- a/drivers/gles3/shader_gles3.cpp
 +++ b/drivers/gles3/shader_gles3.cpp
 @@ -33,6 +33,12 @@
@@ -13,7 +15,7 @@
  #include "core/string/string_builder.h"
  #include "drivers/gles3/rasterizer_util_gles3.h"
  #include "drivers/gles3/storage/config.h"
-@@ -543,6 +549,112 @@
+@@ -543,6 +549,114 @@ String ShaderGLES3::_version_get_sha1(Version *p_version) const {
  static const char *shader_file_header = "GLSC";
  static const uint32_t cache_file_version = 3;
  #endif
@@ -59,13 +61,13 @@
 +	const CharString payload = JSON::stringify(p_record).utf8();
 +	const int payload_size = payload.length();
 +	const String payload_hash = _games_cache_hash((const uint8_t *)payload.ptr(), payload_size);
-+	const int chunk_bytes = 1536;
++	const int chunk_bytes = 384;
 +	const int chunk_count = MAX(1, (payload_size + chunk_bytes - 1) / chunk_bytes);
 +	for (int i = 0; i < chunk_count; i++) {
 +		const int offset = i * chunk_bytes;
 +		const int size = MIN(chunk_bytes, payload_size - offset);
 +		Dictionary frame;
-+		frame["schema"] = 1;
++		frame["schema"] = 2;
 +		frame["record_id"] = String::num_uint64(record_id);
 +		frame["payload_bytes"] = payload_size;
 +		frame["payload_sha256"] = payload_hash;
@@ -73,8 +75,10 @@
 +		frame["chunk_count"] = chunk_count;
 +		frame["encoding"] = "base64";
 +		frame["chunk_base64"] = CryptoCore::b64_encode_str((const uint8_t *)payload.ptr() + offset, size);
-+		// Only fixed ASCII metadata and <=2048 base64 bytes reach AndroidLogger.
-+		print_line("GAMES_SHADER_CACHE_DIAGNOSTIC " + JSON::stringify(frame));
++		// Fixed ASCII metadata and <=512 base64 bytes stay below the observed 1023-byte log bound.
++		const String message = "GAMES_SHADER_CACHE_DIAGNOSTIC " + JSON::stringify(frame);
++		ERR_FAIL_COND_MSG(message.utf8().length() > 960, "Shader diagnostic frame exceeds the observed Android log budget.");
++		print_line(message);
 +	}
 +}
 +
@@ -126,7 +130,7 @@
  
  bool ShaderGLES3::_load_from_cache(Version *p_version) {
  #ifdef WEB_ENABLED // not supported in webgl
-@@ -587,12 +699,19 @@
+@@ -587,12 +701,19 @@ bool ShaderGLES3::_load_from_cache(Version *p_version) {
  			Vector<uint8_t> variant_bytes;
  			variant_bytes.resize(variant_size);
  
@@ -146,7 +150,7 @@
  			specialization.id = glCreateProgram();
  			if (feedback_count) {
  				Vector<const char *> feedback;
-@@ -600,6 +719,9 @@
+@@ -600,6 +721,9 @@ bool ShaderGLES3::_load_from_cache(Version *p_version) {
  					if (feedbacks[feedback_index].specialization == 0 || (feedbacks[feedback_index].specialization & specialization_key)) {
  						// Specialization for this feedback is enabled.
  						feedback.push_back(feedbacks[feedback_index].name);
@@ -156,7 +160,7 @@
  					}
  				}
  
-@@ -607,10 +729,24 @@
+@@ -607,10 +731,24 @@ bool ShaderGLES3::_load_from_cache(Version *p_version) {
  					glTransformFeedbackVaryings(specialization.id, feedback.size(), feedback.ptr(), GL_INTERLEAVED_ATTRIBS);
  				}
  			}
@@ -181,7 +185,7 @@
  			if (link_status != GL_TRUE) {
  				WARN_PRINT_ONCE("Failed to load cached shader, recompiling.");
  				return false;
-@@ -659,8 +795,27 @@
+@@ -659,8 +797,27 @@ void ShaderGLES3::_save_to_cache(Version *p_version) {
  			f->store_64(specialization_key);
  
  			const Version::Specialization *specialization = &kv.value;
@@ -209,7 +213,7 @@
  			if (program_size == 0) {
  				f->store_32(0);
  				continue;
-@@ -668,7 +823,24 @@
+@@ -668,7 +825,24 @@ void ShaderGLES3::_save_to_cache(Version *p_version) {
  			PackedByteArray compiled_program;
  			compiled_program.resize(program_size);
  			GLenum binary_format = 0;

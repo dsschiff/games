@@ -1,47 +1,62 @@
 {
   "scope": "Internal shader diagnostic preparation and qualified engine compilation; native diagnosis remains unfinished.",
-  "base": "eb790dd6b9e5bf68282c3cd012a76d0828f4b884",
-  "branch": "codex/native-shader-diagnostic-20261024",
+  "base": "5ce739f58ac210f73f747a69791ac6d304ea206a",
+  "branch": "codex/shader-native-probe-20261024",
   "engine_commit": "ed1daf0bf001b61586d9930840f2f1394092c079",
   "original_shader_sha256": "17c01277dc3468a1d53081f01a6f7665f5d0f82e7882a8198e1f486ee344d5d8",
-  "diagnostic_shader_sha256": "d5abab4a87c73c4c51be3b6f7b9f18c471707235bd74926b884e9145a3410a80",
-  "source_review": "Independent Astra review clears the exact opt-in patch, framing, decoder, build-only runner and recipe for an isolated build. It does not establish compilation or native behavior.",
+  "diagnostic_shader_sha256": "3910d99e05237527675855b23a9a3992df0dd744dc548a14c8beb24ed44e6d68",
+  "source_review": "Astra CLEAR for schema2producer/decoder/13tests, exactmacro-disabledoriginal, archivedinitialsources, compiledengine and signedengine-onlyAPK. Nativeobservations separatelyqualified.",
   "checks": {
-    "synthetic_transport_cases": 9,
+    "synthetic_transport_cases": 13,
     "failures": 0,
     "macro_disabled_reconstructs_original_utf8": true,
     "reverse_apply_check": true,
     "clang_format_dry_run": true,
     "python_sources_parse": true
   },
-  "prepared_sources": {
+  "log_protocol": "Current384 raw-byte chunks/base64<=512 with960-byte ASCII message ceiling, after actual initial1023-byte truncation. Strict complete-PID/record-zero/chunk/length/hash/JSON validation remains required; no partial-driver inference accepted.",
+  "observation_limits": "Only reached nonempty glProgramBinary loads are counted. GL error consumption and non-null export length pointer are diagnostic perturbations. Raw driver info is capped with truncation explicit and exact captured bytes retained separately. No production cache or warning policy changes.",
+  "native_tested": true,
+  "diagnostic_apk_prepared": true,
+  "root_cause_established": false,
+  "strict_native_shader_gate": "FAIL remains open",
+  "production_game_source_changed": false,
+  "official_template_replaced": false,
+  "new_upload": false,
+  "next": "Trace installed host/guest capability provenance without forcing the compatibility flag. Continue Dead three-line label fix3bd3d0f rendered/native validation and Frontline native presentation; shaderwarning remains a separate open gate.",
+  "initial_prepared_sources": {
     "build_shader_engine.py": {
-      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\build_shader_engine.py",
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\native-shader-probe-20261024\\initial-transport-sources\\build_shader_engine.py",
       "bytes": 6129,
-      "sha256": "ad1e318ae2277c93e65cb70e0eade8d8f97369dc7865ed139f1129c41084e3b5"
+      "sha256": "ad1e318ae2277c93e65cb70e0eade8d8f97369dc7865ed139f1129c41084e3b5",
+      "path_at_initial_review": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\build_shader_engine.py"
     },
     "decode_shader_cache.py": {
-      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\decode_shader_cache.py",
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\native-shader-probe-20261024\\initial-transport-sources\\decode_shader_cache.py",
       "bytes": 6504,
-      "sha256": "464e3ba9a978ad484f50b9be05d7e46b1e4286cbc726e86c3cc045c03f6dd81d"
+      "sha256": "464e3ba9a978ad484f50b9be05d7e46b1e4286cbc726e86c3cc045c03f6dd81d",
+      "path_at_initial_review": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\decode_shader_cache.py"
     },
     "godot-shader-cache.patch": {
-      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\godot-shader-cache.patch",
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\native-shader-probe-20261024\\initial-transport-sources\\godot-shader-cache.patch",
       "bytes": 10495,
-      "sha256": "e567ac376b599bd9beed6e8e9cef44ad45adb779de3da19a56c4dea4fbf00bfc"
+      "sha256": "e567ac376b599bd9beed6e8e9cef44ad45adb779de3da19a56c4dea4fbf00bfc",
+      "path_at_initial_review": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\godot-shader-cache.patch"
     },
     "README.md": {
-      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\README.md",
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\native-shader-probe-20261024\\initial-transport-sources\\README.md",
       "bytes": 5366,
-      "sha256": "6d6798356dd1937e91a82e0678932e508c58a6a5c47c244926d53bd6ee2755d1"
+      "sha256": "6d6798356dd1937e91a82e0678932e508c58a6a5c47c244926d53bd6ee2755d1",
+      "path_at_initial_review": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\README.md"
     },
     "test_decode_shader_cache.py": {
-      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\test_decode_shader_cache.py",
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\native-shader-probe-20261024\\initial-transport-sources\\test_decode_shader_cache.py",
       "bytes": 3411,
-      "sha256": "9d2dc3868aeb3419e14942de9b825e943848af82804d79ce84bd6232d3dc7755"
+      "sha256": "9d2dc3868aeb3419e14942de9b825e943848af82804d79ce84bd6232d3dc7755",
+      "path_at_initial_review": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\test_decode_shader_cache.py"
     }
   },
-  "build": {
+  "initial_build": {
     "state": "compiled_output_qualified_after_retained_runner_inspection_failure",
     "run_directory": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\shader-engine-20261024T1813014756796Z",
     "started": {
@@ -73,21 +88,107 @@
       "sha256": "cca8690ff673063306e2a09aabe81f085bf3fba3781b4ab584af0434dc3a4539"
     },
     "actual_library": {
-      "path": "F:\\games-workspaces\\tooling\\godot-shader-diagnostic\\platform\\android\\java\\lib\\libs\\release\\x86_64\\libgodot_android.so",
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\shader-engine-20261024T1813014756796Z\\libgodot_android.initial.so",
       "bytes": 74078280,
-      "sha256": "fb0771f6d1f890ce66ff6fa86f4d1203b1bcc196f931b66517b1359e27d636f3"
+      "sha256": "fb0771f6d1f890ce66ff6fa86f4d1203b1bcc196f931b66517b1359e27d636f3",
+      "path_at_build": "F:\\games-workspaces\\tooling\\godot-shader-diagnostic\\platform\\android\\java\\lib\\libs\\release\\x86_64\\libgodot_android.so"
     },
     "inspection_failure_retained": true,
     "independent_review": "Astra qualified the actual ELF, all13,989 unchanged engine inputs, exact executed runner and build log after the original runner inspected the wrong output directory. Original failed runner receipt is retained."
   },
-  "log_protocol": "Entire JSON payload framed as 1536-byte raw chunks with base64, atomic per-process record IDs, index/count, whole length and SHA256. Decoder requires expected threadtime PID, contiguous observed IDs from zero and complete valid frames. Missing trailing whole records remain a native collection qualification.",
-  "observation_limits": "Only reached nonempty glProgramBinary loads are counted. GL error consumption and non-null export length pointer are diagnostic perturbations. Raw driver info is capped with truncation explicit and exact captured bytes retained separately. No production cache or warning policy changes.",
-  "native_tested": false,
-  "diagnostic_apk_prepared": false,
-  "root_cause_established": false,
-  "strict_native_shader_gate": "FAIL remains open",
-  "production_game_source_changed": false,
-  "official_template_replaced": false,
-  "new_upload": false,
-  "next": "Prepare a local engine-only diagnostic copy of the exact Tower APK while retaining its original libc++ runtime, inspect/sign/verify exact ZIP delta, then run a bounded cache/save-preserving native probe and restore the exact original APK."
+  "initial_source_review": "Independent Astra review clears the exact opt-in patch, framing, decoder, build-only runner and recipe for an isolated build. It does not establish compilation or native behavior.",
+  "prepared_sources": {
+    "build_shader_engine.py": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\build_shader_engine.py",
+      "bytes": 6233,
+      "sha256": "bc60be5cb782913d7590baac8f85ee4f648232b4a738ecda882cf69a0f5ea8b5"
+    },
+    "decode_shader_cache.py": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\decode_shader_cache.py",
+      "bytes": 6704,
+      "sha256": "05e218e7e7a45aeb34b4958f2a18966569aab3aff5f2f5c86a7a98201ba7305d"
+    },
+    "godot-shader-cache.patch": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\godot-shader-cache.patch",
+      "bytes": 11122,
+      "sha256": "039a5ff2008a19bbe42634d72811c9d561d0a8c804be8136f31c908ba45ceda0"
+    },
+    "README.md": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\README.md",
+      "bytes": 7124,
+      "sha256": "7a99398b40381c4de52ff686a53fbb82c82c85c70641726cd7b562444acfee34"
+    },
+    "test_decode_shader_cache.py": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\scripts\\diagnostics\\test_decode_shader_cache.py",
+      "bytes": 5385,
+      "sha256": "42faf8d90bb844c2dca0e2050bb2ccd2edaa497f211988b71ed2050cd54452b7"
+    }
+  },
+  "build": {
+    "state": "Compiled and independently qualified",
+    "run_directory": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\shader-engine-smallframes-20261024T1937Z",
+    "manifest": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\shader-engine-smallframes-20261024T1937Z\\manifest.json",
+      "bytes": 4601,
+      "sha256": "2e59fd4c87a42896447efc9d52dfe7c8971c744fb40ecfee84570417b36058ad"
+    },
+    "source_before": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\shader-engine-smallframes-20261024T1937Z\\source-before.json",
+      "bytes": 2223380,
+      "sha256": "c9fc79df18fce3f4b4f5740194a9c714a7ee4bf930489050de14d8dc9141743d"
+    },
+    "source_after": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\shader-engine-smallframes-20261024T1937Z\\source-after.json",
+      "bytes": 2223380,
+      "sha256": "c9fc79df18fce3f4b4f5740194a9c714a7ee4bf930489050de14d8dc9141743d"
+    },
+    "actual_library": {
+      "path": "F:\\games-workspaces\\tooling\\godot-shader-diagnostic\\platform\\android\\java\\lib\\libs\\release\\x86_64\\libgodot_android.so",
+      "bytes": 74078728,
+      "sha256": "0ad6d6dce6100a0c82653d3dc872232b0edeac9089d37c92d578f07dd2619df8"
+    },
+    "source_files": 13989,
+    "independent_review": "Astra verified current source/maps/ELF/dependencies; incremental compile41.08s, unchangedinputs, no build warnings/errors."
+  },
+  "native_transport_accepted": true,
+  "initial_native_attempt": {
+    "root": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\native-shader-probe-20261024",
+    "diagnostic_apk_sha256": "4e6a40ca48aacb915db472a003d5bb3484938323e3120f555aaccfb37369e98d",
+    "original_installed_apk_actual_sha256": "f74ce294c9201a0f951859f689ff4f002f44a5c8aab4de7bb0fcbf1acc9a3c87",
+    "unchanged_install_save_files": 14,
+    "unchanged_install_cache_files": 13,
+    "actual_prefix_frames": 208,
+    "messages_truncated_at_1023": 110,
+    "failed_decode": "Line79 malformed/truncated frame; raw log retained, no driver records accepted",
+    "original_restored_exact_apk": true,
+    "whole_context_comparisons_after_restore": 5,
+    "whole_context_failures": 0,
+    "initial_library_preserved": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\shader-engine-20261024T1813014756796Z\\libgodot_android.initial.so",
+      "bytes": 74078280,
+      "sha256": "fb0771f6d1f890ce66ff6fa86f4d1203b1bcc196f931b66517b1359e27d636f3"
+    },
+    "initial_transport_sources": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\native-shader-probe-20261024\\initial-transport-sources"
+  },
+  "transport_schema": 2,
+  "initial_preparation_base": "eb790dd6b9e5bf68282c3cd012a76d0828f4b884",
+  "native_probe_reports": [
+    {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\native-shader-probe-20261024\\report.json",
+      "bytes": 10697,
+      "sha256": "3764392d3f02892c6322abe093518c1ce1d9be2c3446f8b5d3cb834cf9c55081"
+    },
+    {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\native-shader-probe-smallframes-20261024\\report.json",
+      "bytes": 12406,
+      "sha256": "86f2933a7aeba10a0a8d94e018b254556bcd8aa4fab3adef7060047dbec7eb25"
+    }
+  ],
+  "upstream_hypothesis": {
+    "scope": "Plausible guest/translator status-bookkeeping match; installed-build attribution/effectiveguardstate unresolved. No override attempted.",
+    "official_correction": "https://github.com/google/gfxstream/commit/affc45b269dc3ab498fda604236c44bf700e9beb",
+    "examined_tree": "0884d2d224bfe2e46cbb13b71d68d7c66e2f7dc9",
+    "observed_guest_binary_format": 36385,
+    "corrected_guest_wrapper_format_in_examined_source": 1
+  }
 }
