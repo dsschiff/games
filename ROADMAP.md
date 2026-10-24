@@ -149,3 +149,5 @@ verification, independent visual review or phone feedback waits.
 - Hearth held build-range preview source/CPU independently clear:root1111/874/44,366actualpreviewevents, strict clean/stable source. Exact pinned base range, ordinarytapbuy and context/multitouch cancellation preserve rules/saves. Matched normal1x rendered/native usefulness and higher signed candidate remain next.
 
 - Hook clipboard confirmation and exact retained pendingCopy/View source+packaging reviewed. Root42/1028/871strictclean; signed0.3.4/code10 prepared at8ede5cd withsame2527signer. Actual native9to10/firstExport/pendingCopy/View/wholecontexts next; no upload.
+
+- Hearth matched preview capture harness source/CPU independently clear:exact17/17opening and22/22boss contexts/input/frames/bytes,76artifact audit. Rootnormal1x serialrender before/after and pixelusefulness next; historical recipes failclosed, no runtime change.
