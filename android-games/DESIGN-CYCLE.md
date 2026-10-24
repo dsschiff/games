@@ -30,8 +30,8 @@ and Tower. Preserve each selected ad loop with original assets.
 | Frontline | Tested solo8/12 vs funded12/12, tutorial-only idle win; delivered actual recruit feedback, HQ marker and committed-save verification as signed0.3.2/code6. | Private update delivered; physical acceptance deferred |
 | Gear | One Begin after ready utilities/Home now starts production; active return stays paused. Signed0.4.1/code10 verified and delivered. | Private update delivered |
 | Hearthguard | Save destination readback and failed import/mode-switch preservation pass167 complete-value checks and signed4-to5 native context comparison. |0.3.1/code5 privately delivered |
-| Hook | Hit/miss/block feedback corrected; obstacle-deflected charge gap reproduced. Conservative warning correction covers actual stepped paths. | 0.3.1/code7 privately delivered; dense finale readability followup |
-| Tower | Resolved encounter arithmetic stays nonoverlapping at earliest legal chaining across all36 towers. | 0.4.1/code7 privately delivered; source floor-association improvement reviewed, next native build pending |
+| Hook | Hit/miss/block feedback corrected; obstacle-deflected charge gap reproduced. Conservative warning correction covers actual stepped paths. | 0.3.1/code7 privately delivered; finale improvement reviewed and0.3.2/code8 native-qualified, unpublished |
+| Tower | Resolved encounter arithmetic stays nonoverlapping at earliest legal chaining across all36 towers. | 0.4.1/code7 privately delivered;0.4.2/code8 association/native update reviewed, unpublished |
 
 ## Operating loop
 
@@ -91,3 +91,5 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
   finale and Tower floor association stay open; optional live cloud is separate.
 
 - Followup source: Frontline local Import870/0 and Tower floor association62/0 independently rerun after integration. Full source review and Tower matched1x motion clear; both need new version/build/native verification before delivery. Optional cloud remains unlinked and live-unverified.
+
+- Frontline0.3.4/code8 and Hook0.3.2/code8 now source-clean/same-signer/native-qualified;19 whole-context comparisons and264 artifact pins independently clear. Summary-first pending recovery and read-only local copies work in the unconfigured Android build. Same-context archive restore/cold verified; distinct-context cloud restore/live SDK sync remains open. Tower0.4.2 native association packet also independently clear. All three await source landing/private publication. Gear verified-write/Import prerequisite starts independently; no game rules or progress reset.

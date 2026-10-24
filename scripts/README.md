@@ -366,7 +366,7 @@ eight simulation seconds. Actual controls set sound off/reduced effects on;
 Home retained the whole state/settings. This is an old-version fixture from
 the original pre-import-fix APK, not a full-game or update acceptance result.
 
-Tower's tested code1→2 fixture is
+Tower's tested code1â†’2 fixture is
 `tower-trials-code2-from-prepared-code1.json`, with
 `tower-trials-code2-upgrade-expectations.json` as `--new-expectations`.
 Use `--schema-path schema --expected-version 2` and preserve every old saved
@@ -418,3 +418,45 @@ CRLF/LF differences, and binary source bytes stay exact. Keep delivery folders u
 ## Authored GLB structural inventory
 
 `python -B scripts/inspect_glb.py <model.glb> [<other.glb>] --output .artifacts/glb-inventory.json` records exact file hashes, mesh triangle counts, material names, skeleton joint counts and exported animation channels/durations. It accepts GLB2 containers and rejects truncated or inconsistent headers/chunks. This is structural evidence only: original source/provenance and actual rendered locomotion, contact, lighting and gameplay must still be reviewed. Articulated runtime animation may exist without exported animation clips; the report does not infer its presence or quality.
+
+## Local Android App Bundles
+
+On this Windows host, for an offline game, build a signed AAB without modifying its source project:
+
+```powershell
+python scripts/build_android_bundle.py tower-trials --output F:/games-workspaces/android-bundles/tower-trials-code8 --bundletool F:/games-workspaces/tooling/bundletool/bundletool-all-1.18.3.jar --gradle-cache F:/games-workspaces/tooling/gradle-cache --signing-env <private-signing-env> --expect-signer-sha256 <approved-certificate-sha256>
+```
+
+Use a fresh output directory; the command refuses an existing destination.
+Use either the signing arguments above or `--unsigned`. Both output and the
+shared Gradle cache stay on F: because a generated build can exceed1GB. No
+download, account setup or upload command is included.
+
+The pipeline copies only clean tracked game sources into its own staging folder.
+Only that copy receives Gradle/AAB/unsigned export overrides. It verifies the
+official pinned template archive and source ZIP, prepares the pinned engine's
+Android template layout before import, then runs headless/Dummy import/export.
+Raw stdout and stderr are retained separately, so Java environment notices cannot
+corrupt structured manifest output. Godot warning/error markers on either stream
+fail the build.
+
+Signed bundles use [jarsigner](https://developer.android.com/build/building-cmdline#sign_cmdline),
+environment-only passwords, strict verification against the existing private
+keystore/alias, and an explicit certificate SHA256 pin. The raw Java signing and
+verification logs remain separate from the engine warning gate; normal
+self-signed-certificate or missing-timestamp notices are not proof of Play
+acceptance. Pinned bundletool validates the result, and its dumped manifest must
+match the exact game package/version/ABIs, minSDK24/targetSDK36, no permissions
+and nondebuggable release policy. Configured cloud builds need their own explicit
+permission/SDK qualification and are not supported by this offline command yet.
+
+The manifest records original/staged source maps and exact artifact/log hashes.
+Both source maps must stay stable. The generated project is removed after the
+attempt, including failures, within its verified owned directory. Every child command
+and its descendants are contained in a task-owned Windows Job Object; timeout
+and terminal outcomes are persisted before cleanup. If tree exit cannot be
+proved, staging is retained and the build fails. The failed logs
+and any produced candidate remain for diagnosis. After verified signed output,
+the unsigned intermediate is removed. A local signed AAB does not establish
+Play App Signing setup, a separate upload key, store acceptance, installed-device
+behavior or cloud sync.
