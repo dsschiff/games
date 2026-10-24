@@ -83,6 +83,17 @@
         "release_tag": "tower-trials-v0.4.0",
         "apk_sha256": "21c1072fbd9f88345280678b2f4793afd56a98f7c224b96e443bc0b33b69f2a2",
         "build_git_revision": "280bc6e628bccf4b5ab35939bb964f2fc7617505"
+      },
+      "local_candidate": {
+        "version": "0.4.5",
+        "version_code": 11,
+        "state": "local_signed_candidate_not_uploaded",
+        "apk": "F:\\games-workspaces\\tower-copy-confirm-20261024\\.artifacts\\tower-trials\\20261024T115748082326Z\\tower-trials.apk",
+        "apk_sha256": "f74ce294c9201a0f951859f689ff4f002f44a5c8aab4de7bb0fcbf1acc9a3c87",
+        "source_commit": "0828f9ffb274b300e237837597fd854b31669782",
+        "evidence": "android-games/evidence/recovery-signed-candidates-20261024.json",
+        "ready_for_phone_testing": false,
+        "note": "Packaging reviewed; new native protocol and strict warning gates remain open. Delivered URL/version above is the previous release."
       }
     },
     {
@@ -161,7 +172,18 @@
       "release_url": "https://github.com/dsschiff/android-games-releases/releases/tag/hearthguard-v0.3.1",
       "apk_asset": "hearthguard-v0.3.1.apk",
       "build_git_revision": "20416c9febe9e20fbb7a0c0f9c01b71def55f0e0",
-      "emulator_installed_version_code": 5
+      "emulator_installed_version_code": 5,
+      "local_candidate": {
+        "version": "0.3.2",
+        "version_code": 6,
+        "state": "local_signed_candidate_not_uploaded",
+        "apk": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\hearthguard\\20261024T115530573851Z\\hearthguard.apk",
+        "apk_sha256": "9bd8b78d2f2e24771f79e6190a5dab7deef67bf224156a89fccb02191bea0b1e",
+        "source_commit": "3a6c49a31b6d1b5abb032bdabde6527e6183e524",
+        "evidence": "android-games/evidence/recovery-signed-candidates-20261024.json",
+        "ready_for_phone_testing": false,
+        "note": "Packaging reviewed; new native protocol and strict warning gates remain open. Delivered URL/version above is the previous release."
+      }
     },
     {
       "slug": "frontline-foundry",
@@ -216,6 +238,17 @@
         "release_tag": "frontline-foundry-v0.3.1",
         "apk_sha256": "0fc1705e39c8222279e40b4a9097dd224367b099f17d4f79c479cb700789001f",
         "build_git_revision": "280bc6e628bccf4b5ab35939bb964f2fc7617505"
+      },
+      "local_candidate": {
+        "version": "0.3.5",
+        "version_code": 9,
+        "state": "local_signed_candidate_not_uploaded",
+        "apk": "F:\\games-workspaces\\frontline-cloud-ui-20261024\\.artifacts\\frontline-foundry\\20261024T115850647489Z\\frontline-foundry.apk",
+        "apk_sha256": "6475791b39146acc7e2bb30636fd5af3a99204e35d485affaa2fd74aad4c333e",
+        "source_commit": "bc5e0c5e00f4c8579b433a891d9a33c498f2f884",
+        "evidence": "android-games/evidence/recovery-signed-candidates-20261024.json",
+        "ready_for_phone_testing": false,
+        "note": "Packaging reviewed; new native protocol and strict warning gates remain open. Delivered URL/version above is the previous release."
       }
     },
     {

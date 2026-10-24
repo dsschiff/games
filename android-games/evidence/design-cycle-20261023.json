@@ -759,8 +759,8 @@
   },
   "frontline_marker_retry": {
     "evidence": "android-games/evidence/frontline-marker-retry-20261024.json",
-    "status": "Reviewed helper source with worker/root107/0; deferred actual-input gate passes root26/0,24 touch events using existing coordinator cache. Existing source/failed worker cache packet remains preserved.",
-    "next": "Higher-version signed candidate and complete native update/recovery checks; existing0.3.4/code8 APK unchanged.",
+    "status": "Local signed0.3.5/code9 packaging/source independently clear, including reviewed retry fix; existing root helper107/0 and actual-input26/0 retained. Native code8to9 retry checks remain open.",
+    "next": "0.3.5/code9 local signed candidate packaging independently clear; native8to9/full recovery retry admission remains open; no upload.",
     "limit": "CPU typed faults/materialized owner only, no native storage fault/power loss/physical/cloud acceptance."
   },
   "hook_marker_retry": {
@@ -772,13 +772,13 @@
   "tower_local_recovery": {
     "evidence": "android-games/evidence/tower-local-recovery-20261024.json",
     "status": "Source/CPU independently clear; root608/0 and208touch events, complete campaign/challenge/parked route preserved. Unfinished animation freezes until verified choice, then existing cold-save reset applies.",
-    "next": "Higher-version signed candidate/packaging and actual native update/recovery/clipboard/readability. Existing0.4.2/code8 unchanged.",
+    "next": "Existing0.4.4/code10 bounded native recovery20whole/0 remains historical; local0.4.5/code11 packaging clear includes new normalCopy. Native new Copy protocol remains open; see signed_recovery_batch.",
     "limits": "Synthetic faults/headless touch/materialized same-process owners and fake clipboard; native storage fault/power loss/physical/cloud unverified."
   },
   "hearth_local_recovery": {
     "evidence": "android-games/evidence/hearth-local-recovery-20261024.json",
     "status": "Source/CPU clear: independent874/0 and338touch events, final five suites874/167/56/127/44 and4fresh-file directions6/0. Complete context ownership and direct Copy/View implemented.",
-    "next": "Higher signed candidate/native/rendered recovery and exact OS clipboard;0.3.1/code5 unchanged.",
+    "next": "0.3.2/code6 packaging independently clear; genuine native5to6/Home/cold whole context5/0. Native Import/bothchoices/OSclipboard/rendered recovery remain open; strict shader warning FAIL.",
     "limits": "Repeated historical headlessAV and standalone nullUI failures retained; bounded source corrections pass final/current input. No Android/render/clipboard/powerloss/physical/cloud acceptance."
   },
   "hook_recovery_candidate": {
@@ -803,7 +803,7 @@
     "cloud_acceptance": false
   },
   "hearth_normal1x_preview": {
-    "state": "Source-reviewed preview with four strict-clean rendered passages and qualified sampled1x visualreview; higher-version native candidate stillopen",
+    "state": "Source and four strict-clean normal1x rendered passages reviewed; local signed0.3.2/code6 packaging clear and bounded native update5whole/0. Native preview/recovery/clipboard checks remain open; strict native shader warning FAIL.",
     "evidence": "android-games/evidence/hearth-normal1x-preview-20261024.json",
     "game_runtime": "d27f03c8354f855da694965d41448ce811f09ff9",
     "harness_cleanup": "1c657cfc15a6aa4a1645a4ba073f7dd68b5a25b8",
@@ -814,12 +814,12 @@
       26,
       26
     ],
-    "new_apk": false,
+    "new_apk": true,
     "physical_acceptance": false,
     "cloud_acceptance": false
   },
   "tower_normal_copy": {
-    "state": "Source-reviewed truthful normalCopy confirmation; contract42/owner638 root checks pass; higher-version signed/native candidate open",
+    "state": "Local signed0.4.5/code11 candidate packaging/source independently clear; root contract42/owner638 CPU checks pass. New normal Copy native protocol remains open; no upload.",
     "evidence": "android-games/evidence/tower-copy-confirm-20261024.json",
     "worker_source": "e87a02291bf6245ecedd512f5b7b8ac3f5a7c6a7",
     "root_source": "abd7a30",
@@ -829,7 +829,17 @@
     ],
     "failures": 0,
     "pending_protocol_unchanged": true,
-    "new_apk": false,
-    "native_protocol_accepted": false
+    "new_apk": true,
+    "native_protocol_accepted": false,
+    "candidate": "0.4.5/code11 local signed packaging independently clear; native normal Copy gate open; no upload."
+  },
+  "signed_recovery_batch": {
+    "evidence": "android-games/evidence/recovery-signed-candidates-20261024.json",
+    "state": "Local signed metadata-only candidates, independent actual packaging/source CLEAR; Hearth native5whole/0 bounded update; strict native shader warning FAIL; exact new protocol gates remain open; no upload",
+    "versions": {
+      "hearthguard": "0.3.2/code6",
+      "tower-trials": "0.4.5/code11",
+      "frontline-foundry": "0.3.5/code9"
+    }
   }
 }
