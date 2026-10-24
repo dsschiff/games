@@ -14,9 +14,15 @@ from datetime import datetime, timezone
 
 PROJECT = Path(__file__).resolve().parents[1]
 GODOT = Path("C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe")
-SCRIPTS = {"transition": "res://tests/terminal_transition.gd", "lifetime": "res://tests/texture_lifetime.gd", "rules": "res://tests/run_tests.gd", "campaign-rules": "res://tests/campaign_tests.gd",
+SCRIPTS = {"multiplier": "res://tests/multiplier_feedback.gd", "transition": "res://tests/terminal_transition.gd", "lifetime": "res://tests/texture_lifetime.gd", "rules": "res://tests/run_tests.gd", "campaign-rules": "res://tests/campaign_tests.gd",
            "platform": "res://tests/platform_input.gd", "code4": "res://tests/code4_upgrade.gd", "design": "res://tests/terminal_design.gd", "lineup": "res://tests/art_lineup.gd", "frames": "res://tests/graphics_frames.gd",
            "presentation": "res://tests/presentation_tests.gd", "timing": "res://tests/horde_timing.gd"}
+
+
+def raw_hashes():
+    return {str(p.relative_to(PROJECT)).replace("\\", "/"): hashlib.sha256(p.read_bytes()).hexdigest()
+            for p in sorted(PROJECT.rglob("*")) if p.is_file()
+            and not any(part.startswith(".") or part == "__pycache__" for part in p.relative_to(PROJECT).parts)}
 
 
 def lf_hashes():
@@ -74,14 +80,15 @@ def main():
         if args.drain_between_rebuilds: command.append("--drain-between-rebuilds")
         if args.drain_after_fixtures: command.append("--drain-after-fixtures")
     before = lf_hashes()
+    raw_before = raw_hashes() if args.mode == "multiplier" else {}
     (run / "source-hashes-lf.json").write_text(json.dumps(before, indent=2))
     with (run / "godot.log").open("w", encoding="utf-8") as log:
         code = subprocess.call(command, env=env, stdout=log, stderr=subprocess.STDOUT, timeout=1800)
     output = (run / "godot.log").read_text(encoding="utf-8", errors="replace")
-    errors = [line for line in output.splitlines() if line.startswith(("ERROR:", "SCRIPT ERROR:"))]
+    errors = [line for line in output.splitlines() if line.startswith(("ERROR:", "SCRIPT ERROR:")) or (args.mode == "multiplier" and any(token in line for token in ("WARNING:", "ObjectDB instances leaked")))]
     okay = code == 0 and not errors and (args.mode == "import" or "SUITE_COMPLETE: PASS" in output)
     after = lf_hashes()
-    receipt = {"command": command, "exit_code": code, "passed": okay, "errors": errors[:40],
+    receipt = {"source_before_raw": raw_before, "source_after_raw": raw_hashes() if args.mode == "multiplier" else {}, "command": command, "exit_code": code, "passed": okay, "errors": errors[:40],
                "source_unchanged": {k: v for k, v in before.items() if not k.startswith("art/models/") or k.endswith(".glb")} ==
                                    {k: v for k, v in after.items() if not k.startswith("art/models/") or k.endswith(".glb")},
                "inputs": inputs, "pngs": sorted(p.name for p in run.glob("*.png"))}
