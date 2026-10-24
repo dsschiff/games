@@ -653,9 +653,9 @@
   },
   "gear_local_recovery": {
     "evidence": "android-games/evidence/gear-local-recovery-20261024.json",
-    "status": "Code11 bounded native functional audit verified16 owning-context comparisons; strict shader-warning gate failed. Copy controls source-only386/0. New builds held for retry-marker regression/fix; not uploaded.",
-    "checks": "Independent353/0 and65/0; worker1466/0transfer,164/0rules,39/0lifecycle. Synthetic faults/fresh owners do not establish native power loss.",
-    "native_limit": "Four update-related1-ULP raw JSON changes remain distinct from owning-decoder equality; empty earned profile, same-mission ready/battle journal metadata fixture, no native fault/power loss/phone proof. Earlier stalled attempt preserved."
+    "status": "Signed0.4.3/code12 local candidate: marker/copy source and packaging clear; qualified native10 owning-context comparisons/0,7 pending/7 cleared markers,2 complete clipboard copies. Strict repeated shader warning gate failed. Not uploaded.",
+    "checks": "Root437/0 marker; worker437/353/65/386 all0 on frozen source. Native artifacts355+8 and18 runtime bindings independently verified.",
+    "native_limit": "Same-mission ready/battle metadata fixture, empty earned profile; owning-decoder equality differs from raw byte equality. Real storage-fault/power loss/physical/cloud remain open; original native failures and code11 packet retained."
   },
   "hook_local_recovery": {
     "evidence": "android-games/evidence/hook-local-recovery-20261024.json",
@@ -674,7 +674,7 @@
     "independent_terminal": 12,
     "failures": 0,
     "limits": "Synthetic faults/headless input; existing cache explicitly used. Android/render/power loss/cloud unverified.",
-    "next": "Equivalent retry-marker admission regression/fix and independent review, then higher-version build/native recovery. Arena identity correction is landed and visible feedback is integrated source-only."
+    "next": "Retry-marker source correction reviewed; higher-version signed candidate/native checks remain next."
   },
   "hook_arena_score_identity": {
     "reviewed_commit": "ced33668fb5c9ab093b893d5f81a8e623a5cad12",
@@ -703,7 +703,7 @@
     "independent_failures": 0,
     "review": "Astra source and all15 artifacts/168 source pins/12 unchanged source files/protected code sections clear; final checkpoint review-text-only update qualified.",
     "status": "Source/CPU only; no new APK or Android acceptance.",
-    "next": "Equivalent retry-marker regression/fix before higher-version candidate/native update. The separately reviewed arena feedback source is now integrated."
+    "next": "Recovery marker correction source reviewed; build higher-version candidate with recovery, score identity and visible best-clear feedback, then verify native update."
   },
   "hook_arena_feedback": {
     "reviewed_source_commit": "5fab554717e19ec748fb9f148a7b79644e37219e",
@@ -737,9 +737,9 @@
   },
   "dead_local_recovery": {
     "evidence": "android-games/evidence/dead-local-recovery-20261024.json",
-    "status": "Whole local recovery source/CPU independently clear; root53/0+7/0. No new build/version/upload or native candidate acceptance.",
+    "status": "Whole recovery plus direct retained-code Copy controls source/CPU clear; root53/0+7/0+434/0. Signed0.4.2/code8 packaging/source independently clear; local candidate only, not uploaded.",
     "scope": "Complete campaign+legacy/bullets/profile/settings/loadout, freeze and real admitted-worker join, fresh all-marker/all-archive admission, verified paused adoption.",
-    "next": "Evaluate direct pending archive export usability; higher-version candidate/native checks. Old installed code7 native context captured, warning already present.",
+    "next": "Actual signed7to8 and full native recovery/Copy checks after host resources permit; preserve captured real code7 baseline and ten active bullets.",
     "limits": "Typed faults/actual headless input and old native baseline do not establish native storage fault, power loss, physical or cloud acceptance."
   },
   "frontline_marker_retry": {
@@ -747,5 +747,11 @@
     "status": "Reviewed helper source with worker/root107/0; deferred actual-input gate passes root26/0,24 touch events using existing coordinator cache. Existing source/failed worker cache packet remains preserved.",
     "next": "Higher-version signed candidate and complete native update/recovery checks; existing0.3.4/code8 APK unchanged.",
     "limit": "CPU typed faults/materialized owner only, no native storage fault/power loss/physical/cloud acceptance."
+  },
+  "hook_marker_retry": {
+    "evidence": "android-games/evidence/hook-marker-retry-20261024.json",
+    "status": "Source/CPU independently clear; root172/0. Whole recovery, arena identity and feedback regressions pass871/188/573. No version or new APK.",
+    "next": "Higher-version signed candidate/native update, explicit recovery choices and arena feedback readability; existing0.3.2/code8 unchanged.",
+    "limit": "Synthetic complete contexts/typed faults/actual engine input/materialized owners, no native storage fault, power loss, physical or cloud acceptance."
   }
 }
