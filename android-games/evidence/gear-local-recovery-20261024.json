@@ -186,7 +186,8 @@
     },
     "root_checks": 386,
     "failures": 0,
-    "scope": "Actual touch input in headless/Dummy, complete context/files unchanged; unsupported clipboard branch only. Native export success remains unverified. Source-only; no version/build change."
+    "cpu_scope": "Actual touch input in headless/Dummy, complete context/files unchanged; unsupported clipboard branch only. Native export success remains unverified. Source-only; no version/build change.",
+    "native_status": "Later signed0.4.3/code12 verifies both actual Android-emulator Copy actions by exact clipboard getter readback; see current native record. CPU-only scope above describes the earlier source increment."
   },
   "retry_marker_followup": {
     "status": "Corrected source/CPU and code12 functional native proof; real native storage-fault/active-write interruption remains unverified.",
