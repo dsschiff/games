@@ -824,3 +824,5 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   clear; no permissions/nondebug and existing2527signer retained. Runtime/tests
   exactly reviewed2467cd60. Native8to9/recovery/clipboard/arena feedback display
   remain next. Local candidate only; no new private transfer or phone acceptance.
+
+- Tower medal feedback integrated froma124b32: runtime main presentation only, separate This clear/Collected/Best/Par, No Undo wording and eligible Journey goals. Astra150current/170base/68artifact audit clear; root793/0 with163taps326events strict clean and stable source; existing608/3503/1364/176/252 regressions pass. Failed harness/layout packets retained; emitted labels/font geometry are not rendered/native/fun acceptance. Existing0.4.2/code8 unchanged.
