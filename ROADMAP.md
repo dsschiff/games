@@ -111,3 +111,9 @@ verification, independent visual review or phone feedback waits.
 - Hook marker retries now freshly verify every surviving record and complete
   archived code. Root172/0 and source/evidence review clear; existing871/188/573
   recovery/arena/feedback regressions pass. New signed/native candidate next.
+
+- Gear0.4.3/code12 local signed candidate now independently audited for bounded
+  update/Import/recovery/copy behavior:10 owning-context comparisons/0,7 pending
+  and7 cleared markers,2 exact whole-code clipboard copies. Retry-marker source
+  root437/0 clear. Shader warning still fails strict log gate; rendering, real
+  storage interruption, physical/cloud and exact private transfer remain open.
