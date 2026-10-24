@@ -700,3 +700,13 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   1,322,127,002-byte project and unsigned intermediate removed. Earlier XML trial
   stays failed. No upload, Play App Signing/account, installed-device or cloud
   acceptance. See evidence/signed-bundle-pipeline-20261024.json.
+
+
+- Gear local Import recovery: reviewed f34d77e runtime plus version-only0.4.2/code11
+  candidate ce8a88f. Root353/0 journal and65/0 destination checks independently
+  pass with unchanged source; worker whole-context transfer/rules/lifecycle
+  checks retained. Existing-signer APK185a7d1a…d378d (56,083,160 bytes) is clean
+  and independently verified. Native startup stalled before capture/update;
+  observed low host memory, graceful console kill timed out, exact owned test
+  processes stopped and verified absent. No app reset/update/upload; native
+  recovery remains pending. See android-games/evidence/gear-local-recovery-20261024.json.

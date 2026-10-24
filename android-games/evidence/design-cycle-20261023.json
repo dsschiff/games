@@ -648,7 +648,13 @@
       "cpu_failures": 0,
       "visual_scope": "Astra matched normal1x before/after bounded improvement;655 actual events, whole final state/save identical. Overlapping rims still busy, early amber subtle; no all-attacks-safe/fun claim."
     },
-    "private_publication": "Not uploaded; source landing and exact private asset verification remain.",
+    "private_publication": "Source landed in PR18/c2dd0ca. Three exact APKs remain local pending specific private-transfer approval; prior Dead0.4.1 approval does not cover them.",
     "limits": "No configured SDK/account, cross-device sync, real native I/O failure, hard power loss, Fold7/sound/FPS/human acceptance."
+  },
+  "gear_local_recovery": {
+    "evidence": "android-games/evidence/gear-local-recovery-20261024.json",
+    "status": "Source/CPU/signature clear; local0.4.2/code11 native update/recovery pending. Not uploaded.",
+    "checks": "Independent353/0 and65/0; worker1466/0transfer,164/0rules,39/0lifecycle. Synthetic faults/fresh owners do not establish native power loss.",
+    "native_limit": "Owned emulator boot/app launch succeeded, then raw-save capture shell stalled before update; observed low host memory; exact owned processes stopped after graceful timeout."
   }
 }
