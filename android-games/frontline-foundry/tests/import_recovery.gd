@@ -108,6 +108,9 @@ func raw_slots() -> Dictionary:
 			if FileAccess.file_exists(path): result[path]=FileAccess.get_file_as_string(path)
 	return result
 func run() -> void:
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--marker-part="):
+			await run_marker_retry(arg.trim_prefix("--marker-part=")); return
 	root.size=Vector2i(720,1280)
 	var own_user := ProjectSettings.globalize_path("user://").replace("\\","/").to_lower()
 	if not own_user.begins_with(folder.replace("\\","/").to_lower()):
@@ -175,8 +178,13 @@ func run() -> void:
 		else:
 			check(not helper.record.is_empty(),"complete identities retained for explicit retry: "+mode)
 			io.mode=""
-			check(helper.resolve(false).ok and T.same_values(S.read(S.PATH,io),S.decode(old)),"verified rollback recovers from fault: "+mode)
-			check(not T.new(io).read().pending,"rollback settles marker: "+mode)
+			if mode=="journal_corrupt":
+				var raw: Dictionary=io.files.duplicate(true)
+				check(not helper.resolve(false).ok and io.files==raw,"persistently torn marker blocks rollback without destructive repair")
+				check(T.new(io).read().pending,"torn marker remains pending for retry-read/local retention")
+			else:
+				check(helper.resolve(false).ok and T.same_values(S.read(S.PATH,io),S.decode(old)),"verified rollback recovers from fault: "+mode)
+				check(not T.new(io).read().pending,"rollback settles marker: "+mode)
 	# Preserve unsaved live settings separately from older raw disk context.
 	var unsaved_io:=Fault.new(); unsaved_io.files[S.PATH+"0"]=fixture(1)
 	var unsaved_app: Node=await boot(unsaved_io); var unsaved_scene: Node=unsaved_app.session
@@ -239,3 +247,143 @@ func run() -> void:
 	output.store_string(JSON.stringify({"checks":checks,"failures":failures,"cases":cases,"raw_inputs":events,"scope":"CPU/headless/Dummy; synthetic full contexts and explicit fault backend; real ScreenTouch; process-style bootstrap from materialized files, no OS-kill/native/render acceptance"},"  ")); output.close()
 	print("IMPORT_RECOVERY ",checks," checks / ",failures.size()," failures")
 	await ticks(3); quit(0 if failures.is_empty() else 1)
+
+class RetryFault extends Fault:
+	var marker_fault := ""
+	var cleanup_base := false
+	var cleanup_stage := false
+	var unreadable: Array[String] = []
+	var stale_marker := ""
+	func read_text(file: String) -> String:
+		return "unreadable" if file in unreadable else super.read_text(file)
+	func rename(from: String,to: String) -> bool:
+		var okay := super.rename(from,to)
+		if to==T.PATH:
+			if marker_fault=="missing": files.erase(to)
+			elif marker_fault=="corrupt": files[to]="torn"
+			elif marker_fault=="stale": files[to]=stale_marker
+		return okay
+	func remove(file: String) -> bool:
+		if (cleanup_base and file==T.PATH) or (cleanup_stage and file==T.PATH+".tmp"): return false
+		return super.remove(file)
+func complete_code(kind: int,tag: String,revision: int=900) -> String:
+	var value:=S.decode(fixture(kind)); value.settings.note=tag
+	value.career.legacy_state.phase="playing"
+	for frame in 5: R.tick(value.career.legacy_state,Vector2.ZERO,.05)
+	value.career.legacy_profile.attempts=7; value.career.legacy_profile.best_kills=10
+	if value.state.phase=="playing":
+		for frame in 5:
+			if value.state.catalog==1: R.tick(value.state,Vector2.ZERO,.05)
+			else: C.tick(value.state,Vector2.ZERO,.05)
+	return S.encode(value.state,value.profile,value.settings,revision,true,value.career)
+func check_copies(helper: RefCounted,codes: Array[String]) -> void:
+	for code in codes:
+		var kept: Dictionary=helper.copies.get_code(code.sha256_text())
+		check(kept.ok and kept.text==code,"retained whole-context code remains byte-exact")
+func marker_files(io: RetryFault) -> Dictionary:
+	var result: Dictionary={}
+	for file in [T.PATH,T.PATH+".tmp"]:
+		if io.files.has(file): result[file]=io.files[file]
+	return result
+func run_marker_retry(part: String) -> void:
+	root.size=Vector2i(720,1280)
+	var own_user:=ProjectSettings.globalize_path("user://").replace("\\","/").to_lower()
+	check(own_user.begins_with(folder.replace("\\","/").to_lower()),"isolated full-context marker test data only")
+	if not failures.is_empty(): quit(1); return
+	if part=="touch":
+		# Exact production assets and bootstrap; no presentation substitute or import.
+		var resource: Resource=load("res://art/models/watchtower.glb")
+		check(resource!=null,"production touch prerequisite: imported watchtower.glb resource must load")
+		if resource!=null:
+			for original_kind in [2,3]:
+				for use_import in [false,true]:
+					var source:=complete_code(original_kind,"touch original"); var target:=complete_code(5-original_kind,"touch imported")
+					var io:=RetryFault.new(); io.files[S.PATH+"0"]=source; var app: Node=await boot(io); var scene: Node=app.session
+					await touch(scene,"SAVE / TRANSFER"); scene.code_edit.text=target; io.cleanup_base=true; await touch(scene,"IMPORT")
+					check(scene.import_pending and scene.paused and T.same_values(live(scene),S.decode(source)),"actual Import stays pending with entire original after cleanup failure")
+					check(scene.import_recovery.copies.get_code(source.sha256_text()).text==source and scene.import_recovery.copies.get_code(target.sha256_text()).text==target,"actual Import retains both exact complete codes")
+					await stop(app); io.cleanup_base=false; io.marker_fault="missing"; app=await boot(io); scene=app.session
+					check(scene.import_pending and scene.paused and T.same_values(live(scene),S.decode(source)),"fresh production bootstrap binds complete original before explicit retry")
+					await touch(scene,"RETRY IMPORT" if use_import else "KEEP PREVIOUS"); await ticks(4)
+					var expected:=S.decode(target if use_import else source)
+					check(current_scene.session.paused and not current_scene.session.import_pending and T.same_values(live(current_scene.session),expected) and T.same_values(S.read(S.PATH,io),expected),"actual Retry/Keep adopts verified full live/disk context paused")
+					if current_scene!=null and is_instance_valid(current_scene): await stop(current_scene)
+					io.marker_fault=""; materialize(io); app=await boot(); scene=app.session
+					check(not scene.import_pending and T.same_values(live(scene),expected),"fresh materialized production bootstrap retains entire chosen context")
+					await stop(app)
+					cases.append({"original_catalog":original_kind,"use_import":use_import,"scope":"actual touch with typed faults and fresh production owners; materialized-file bootstrap is same process, not OS kill/native"})
+	else:
+		var source:=complete_code(2,"unsaved live settings"); var target:=complete_code(3,"incoming full legacy")
+		for stage in [false,true]:
+			for fault in ["missing","corrupt","stale"]:
+				var io:=RetryFault.new(); var codes: Array[String]=[source,target]
+				for slot in 2:
+					for suffix in ["", ".tmp"]:
+						var code:=complete_code(slot,"raw "+str(slot)+str(suffix),10+codes.size()); io.files[S.PATH+str(slot)+str(suffix)]=code; codes.append(code)
+				var helper:=T.new(io); check(helper.begin(source,target).ok and helper.record.copies.size()==6,"six distinct live/intake/raw whole codes preserved before active write")
+				if stage: io.files[T.PATH+".tmp"]=io.files[T.PATH]
+				io.cleanup_stage=stage; io.cleanup_base=not stage
+				check(not helper.resolve(true).ok and T.same_values(S.read(S.PATH,io),S.decode(target)),"verified incoming write remains pending after cleanup failure")
+				io.cleanup_stage=false; io.cleanup_base=false; io.marker_fault=fault; io.stale_marker="torn stale marker"
+				var result: Dictionary=helper.resolve(false)
+				check(result.ok or not marker_files(io).is_empty(),"explicit rollback retry never consumes the sole valid marker")
+				io.marker_fault=""; materialize(io); var fresh:=T.new(); var pending:=fresh.read(); var selected: Dictionary=pending.original if pending.ok else S.read()
+				check(T.same_values(selected,S.decode(source)),"fresh materialized journal/Store decision retains entire previous context after rollback retry")
+				check_copies(helper,codes)
+		for use_import in [false,true]:
+			for stage in [false,true]:
+				var io:=RetryFault.new(); io.files[S.PATH+"0"]=source; var helper:=T.new(io); helper.begin(source,target)
+				if stage: io.files[T.PATH+".tmp"]=io.files[T.PATH]
+				io.cleanup_stage=stage; io.cleanup_base=not stage; helper.resolve(true)
+				io.cleanup_stage=false; io.cleanup_base=false
+				check(helper.resolve(use_import).ok and T.same_values(S.read(S.PATH,io),S.decode(target if use_import else source)),"either explicit choice verifies complete meaning from sole base/stage")
+				check(not helper.journal_ready and marker_files(io).is_empty(),"successful choice confirms complete cleanup and invalidates retained readiness")
+				io.mode="active_second_read"; check(not helper.resolve(not use_import).ok and not marker_files(io).is_empty(),"retained helper recreates durable marker before later uncertain choice")
+		for intended_first in [false,true]:
+			var io:=RetryFault.new(); io.files[S.PATH+"0"]=source; var helper:=T.new(io); helper.begin(source,target); var intended: String=io.files[T.PATH]
+			var other_io:=RetryFault.new(); var other:=T.new(other_io); other.begin(complete_code(0,"other original"),complete_code(1,"other incoming")); var unrelated: String=other_io.files[T.PATH]
+			for file in other_io.files:
+				if file.begins_with("user://frontline-cloud-copy-"): io.files[file]=other_io.files[file]
+			io.files[T.PATH]=intended if intended_first else unrelated; io.files[T.PATH+".tmp"]=unrelated if intended_first else intended; io.cleanup_stage=true
+			var prior: Dictionary=io.files.duplicate(true); var writes:=io.active_writes
+			check(not helper.resolve(true).ok and io.files==prior and io.active_writes==writes,"reverse conflicting artifacts cannot admit write or expose another transaction through partial cleanup")
+		for placement in ["base","stage","both"]:
+			for fault in ["unreadable","invalid","unrelated"]:
+				var io:=RetryFault.new(); io.files[S.PATH+"0"]=source; var helper:=T.new(io); helper.begin(source,target)
+				var intended: String=io.files[T.PATH]
+				var other_io:=RetryFault.new(); var other:=T.new(other_io); other.begin(complete_code(1,"other original"),complete_code(0,"other incoming")); var unrelated: String=other_io.files[T.PATH]
+				for file in other_io.files:
+					if file.begins_with("user://frontline-cloud-copy-"): io.files[file]=other_io.files[file]
+				if placement=="stage": io.files[T.PATH+".tmp"]=intended; io.files.erase(T.PATH)
+				elif placement=="both": io.files[T.PATH+".tmp"]=intended
+				var bad: String=T.PATH+".tmp" if placement in ["stage","both"] else T.PATH
+				if fault=="unreadable": io.unreadable.append(bad)
+				else: io.files[bad]="torn" if fault=="invalid" else unrelated
+				var prior: Dictionary=io.files.duplicate(true); var writes:=io.active_writes
+				check(not helper.resolve(true).ok and io.files==prior and io.active_writes==writes,"every existing artifact must agree before active write: "+placement+" / "+fault)
+		for changed in ["invalid","unreadable","missing","unrelated","after_store_invalid","after_store_missing"]:
+			var io:=RetryFault.new(); io.files[S.PATH+"0"]=source; var helper:=T.new(io); helper.begin(source,target); io.mode="active_after_store" if changed.begins_with("after_store_") else "active_second_read"
+			check(not helper.resolve(true).ok,"unconfirmed active write retains journal ownership")
+			io.mode=""; io.promoted=""
+			if changed in ["invalid","after_store_invalid"]: io.files[T.PATH]="torn"
+			elif changed=="unreadable": io.unreadable.append(T.PATH)
+			elif changed in ["missing","after_store_missing"]: io.files.erase(T.PATH); io.marker_fault="missing"
+			else:
+				var other:=T.new(RetryFault.new()); other.begin(complete_code(0,"other"),complete_code(1,"other incoming")); io.files[T.PATH]=other.io.files[T.PATH]
+			var prior: Dictionary=io.files.duplicate(true); var writes:=io.active_writes
+			check(not helper.resolve(false).ok and io.files==prior and io.active_writes==writes,"same owner must freshly admit each retry: "+changed)
+		var stale_io:=RetryFault.new(); stale_io.files[S.PATH+"0"]=complete_code(0,"extra original raw"); var stale:=T.new(stale_io); stale.begin(source,target)
+		var changed_record: Dictionary=stale.record.duplicate(true); changed_record.copies=[changed_record.original,changed_record.incoming]
+		var payload:=JSON.stringify(changed_record); stale_io.files[T.PATH]=JSON.stringify({"payload":payload,"sha256":payload.sha256_text()})
+		var stale_prior: Dictionary=stale_io.files.duplicate(true)
+		check(T.decode(stale_io.files[T.PATH]).ok and not stale.resolve(true).ok and stale_io.files==stale_prior,"same original/incoming with stale archive-list record cannot authorize write")
+		var io:=RetryFault.new(); var helper:=T.new(io); helper.begin(source,target); io.files[T.PATH]="torn"
+		check(not helper.read().ok and not helper.journal_ready,"failed journal reread clears stale durable readiness")
+		for location in ["original","incoming","other_raw"]:
+			var broken_io:=RetryFault.new(); broken_io.files[S.PATH+"0"]=complete_code(0,"parked raw"); var broken:=T.new(broken_io); broken.begin(source,target)
+			var id: String=broken.record.original if location=="original" else (broken.record.incoming if location=="incoming" else broken.record.copies[2])
+			broken_io.files["user://frontline-cloud-copy-"+id]="torn"; var prior: Dictionary=broken_io.files.duplicate(true)
+			check(not broken.resolve(true).ok and broken_io.files==prior and broken_io.active_writes==0,"all archived whole codes verified before active write: "+location)
+	var report:={"checks":checks,"failures":failures,"raw_inputs":events,"cases":cases,"scope":"CPU/headless/Dummy; synthetic full contexts. Materialized journal/owning Store decisions are separate from actual production bootstrap/touch, OS kill/native/render. Touch cache failures stay failed."}
+	var output:=FileAccess.open(folder.path_join("marker-retry.json"),FileAccess.WRITE); output.store_string(JSON.stringify(report)); output.close()
+	print("MARKER_RETRY ",checks," / ",failures.size()," failures / ",events.size()," events"); await ticks(3); quit(0 if failures.is_empty() else 1)
