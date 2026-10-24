@@ -5,6 +5,10 @@ var expected_code := ""
 var lead_in := 0.0
 var timing_open := false
 var recording := false
+var preview_variant := ""
+var preview_timeline: Array = []
+var preview_first_frame := 0
+var preview_first_physics_frame := 0
 var start_context := {}
 var slot_snapshots := {}
 var observed := preload("res://tests/production_observer.gd").new()
@@ -22,6 +26,8 @@ func _initialize() -> void:
 			expected_code = arg.trim_prefix("--expected-code=")
 		elif arg.begins_with("--lead-in="):
 			lead_in = float(arg.trim_prefix("--lead-in="))
+		elif arg.begins_with("--preview-variant="):
+			preview_variant = arg.trim_prefix("--preview-variant=")
 		elif arg == "--native-frames":
 			native_frames = true
 	passage_mode = "closure" if production_stage == "lifecycle" else production_stage
@@ -50,6 +56,11 @@ func run() -> void:
 	start_context = whole_memory()
 	source_stage = int(scene.state.definition.stage) if scene.state.schema == 2 else -1
 	await snap("loaded-boundary")
+	if production_stage.begins_with("preview-"):
+		await prepare_preview()
+		if failures > 0:
+			finish_production()
+			return
 	if lead_in > 0:
 		await start_playing()
 		await play_for(lead_in)
@@ -62,7 +73,11 @@ func run() -> void:
 		DirAccess.make_dir_recursive_absolute(folder.path_join("frames"))
 		recording = true
 		RenderingServer.frame_post_draw.connect(capture_native_frame)
+	preview_first_frame = Engine.get_process_frames()
+	preview_first_physics_frame = Engine.get_physics_frames()
 	match production_stage:
+		"preview-opening", "preview-boss":
+			await preview_passage()
 		"retry":
 			await retry_passage()
 		"lifecycle":
@@ -93,6 +108,8 @@ func run() -> void:
 				check(report.all_frames.frames > 0 and report.heavy_frames.frames > 0, "real-time run contains eligible warmed active and declared-heavy samples")
 				f.store_string(JSON.stringify(report, "\t"))
 				f.close()
+	if production_stage.begins_with("preview-") and native_frames:
+		recording = false
 	await hold()
 	await retain_slots("final")
 	await snap("final-held-boundary")
@@ -100,6 +117,100 @@ func run() -> void:
 
 func _process(_delta: float) -> bool:
 	return false
+
+func preview_live_ram() -> bool:
+	for enemy in scene.state.enemies:
+		if scene.state.definition.roster[int(enemy.id)].role == "ram": return true
+	return false
+
+func prepare_preview() -> void:
+	await start_playing()
+	if production_stage == "preview-opening":
+		await gather_supply()
+		await move_to(C.pad_point(scene.state.definition, 2), 500)
+		check(scene.state.wallet == 18 and scene.state.collected.size() == 6 and scene.state.ledger.is_empty(), "actual fresh Begin and joystick lead-in earn18 gold without a purchase or injected state")
+	else:
+		check(scene.state.definition.stage == 2 and not expected_code.is_empty(), "boss preview requires authenticated genuine map3 restoration")
+		await play_for(maxf(0.0, 128.2 - float(scene.state.time)))
+		check(preview_live_ram(), "normal policy lead-in reaches the actual live Ram")
+		if failures > 0: return
+		var pad := 0
+		for i in scene.state.towers.size():
+			if scene.state.towers[i].invested > scene.state.towers[pad].invested: pad = i
+		await move_to(C.pad_point(scene.state.definition, pad), 600)
+		check(C.nearby(scene.state) == pad and scene.state.towers[pad].family >= 0, "actual joystick reaches an occupied pad for a legitimate paid refit")
+		if failures > 0: return
+		await click(scene.action_buttons[2].text)
+		check(scene.state.towers[pad].family == -1 and preview_live_ram() and scene.guidance.text.contains("RAM:"), "actual Sell releases a pad while the live boss warning remains truthful")
+	var near := C.nearby(scene.state)
+	var choice := 2 if production_stage == "preview-opening" else 0
+	check(scene.state.phase == "playing" and not scene.paused and not scene.recovery_pending and near >= 0 and scene.state.towers[near].family == -1 and not scene.action_buttons[choice].disabled, "preview lead-in ends at a real empty pad with an eligible existing build control")
+	preview_mark("prepared-empty-pad")
+
+func preview_mark(label: String) -> void:
+	var extra := {"visible": false, "text": ""}
+	if preview_variant == "after":
+		extra = {"visible": scene.build_preview_label.visible, "text": scene.build_preview_label.text}
+	preview_timeline.append({"label": label, "process_frame": Engine.get_process_frames(), "relative_frame": Engine.get_process_frames() - preview_first_frame, "physics_frame": Engine.get_physics_frames(), "relative_physics_frame": Engine.get_physics_frames() - preview_first_physics_frame,
+		"simulation_seconds": scene.state.time, "whole_context": whole_memory(), "app_written": S.read(), "guidance": scene.guidance.text,
+		"ring_visible": scene.presenter.range_ring.visible, "ring_position": scene.presenter.range_ring.position, "ring_scale": scene.presenter.range_ring.scale,
+		"preview_label": extra})
+
+func preview_wait(frames: int) -> void:
+	for frame in frames: await process_frame
+
+func preview_contact(point: Vector2, pressed: bool) -> void:
+	var event := InputEventScreenTouch.new()
+	event.index = 1; event.position = root.get_final_transform() * point; event.pressed = pressed
+	Input.parse_input_event(event); Input.flush_buffered_events()
+	events.append({"frame": Engine.get_physics_frames(), "process_frame": Engine.get_process_frames(), "kind": "gui_press" if pressed else "gui_release", "index": 1, "position": [event.position.x, event.position.y]})
+	await process_frame
+
+func preview_continue_matches(before: Dictionary) -> bool:
+	var expected: Dictionary = before.state.duplicate(true)
+	var ticks := roundi((float(scene.state.time) - float(expected.time)) * 60)
+	for tick in ticks: C.tick(expected, Vector2.ZERO, 1.0 / 60)
+	return C.equivalent(scene.state, expected) and scene.profile == before.legacy_profile and scene.campaign_profile == before.campaign_profile and scene.settings == before.settings and not scene.paused
+
+func preview_passage() -> void:
+	var choice := 2 if production_stage == "preview-opening" else 0
+	await preview_wait(30)
+	preview_mark("before-hold")
+	var before := whole_memory()
+	var near := C.nearby(scene.state)
+	var point: Vector2 = scene.action_buttons[choice].get_global_rect().get_center()
+	await preview_contact(point, true)
+	await preview_wait(45)
+	check(preview_continue_matches(before), "held preview advances normal rule ticks only, with complete profile/settings/parked context unchanged")
+	check(scene.state.ledger == before.state.ledger and scene.state.spent == before.state.spent, "press-only hold spends nothing and adds no purchase")
+	if preview_variant == "after":
+		check(scene.build_preview_choice == choice and scene.build_preview_label.visible and scene.presenter.range_ring.visible, "candidate held contact displays explicitly labelled prospective coverage")
+	else:
+		check(not scene.presenter.range_ring.visible, "historical baseline has no prospective ring at empty pad")
+	if production_stage == "preview-boss": check(preview_live_ram() and scene.guidance.text.contains("RAM:"), "live boss warning remains present during held preview")
+	preview_mark("held-before-cancel")
+	var outside := Vector2(690, 300)
+	var drag := InputEventScreenDrag.new(); drag.index = 1; drag.position = root.get_final_transform() * outside; drag.relative = root.get_final_transform().basis_xform(outside - point)
+	Input.parse_input_event(drag); Input.flush_buffered_events()
+	events.append({"frame": Engine.get_physics_frames(), "process_frame": Engine.get_process_frames(), "kind": "gui_drag", "index": 1, "position": [drag.position.x, drag.position.y]})
+	await process_frame
+	await preview_contact(outside, false)
+	await preview_wait(30)
+	check(preview_continue_matches(before) and scene.state.ledger == before.state.ledger and scene.state.towers[near].family == -1, "actual drag-off and release cancels without a ghost purchase while battle continues normally")
+	check(not scene.presenter.range_ring.visible, "empty-pad ring disappears after cancellation")
+	preview_mark("canceled-no-purchase")
+	before = whole_memory()
+	var expected: Dictionary = before.state.duplicate(true)
+	check(C.action(expected, near, choice), "expected ordinary quick-tap purchase is legal at the same real pad")
+	await preview_contact(point, true)
+	await preview_contact(point, false)
+	var ticks := roundi((float(scene.state.time) - float(before.state.time)) * 60)
+	for tick in ticks: C.tick(expected, Vector2.ZERO, 1.0 / 60)
+	check(C.equivalent(scene.state, expected) and scene.state.ledger.size() == before.state.ledger.size() + 1 and scene.profile == before.legacy_profile and scene.campaign_profile == before.campaign_profile and scene.settings == before.settings, "ordinary actual touch purchases exactly once with unchanged rules and full profiles/settings")
+	check(scene.presenter.range_ring.visible, "ordinary occupied-pad range remains after successful purchase")
+	preview_mark("one-ordinary-purchase")
+	await preview_wait(90)
+	preview_mark("occupied-range-linger")
 
 func start_playing() -> void:
 	if scene.paused:
@@ -254,6 +365,9 @@ func sample_timing_frame() -> void:
 
 func snap(name: String) -> void:
 	assert(not timing_open, "Frame readback is forbidden during timing")
+	if production_stage.begins_with("preview-"):
+		preview_mark(name)
+		return
 	await super.snap(name)
 
 func finish_production() -> void:
@@ -261,6 +375,7 @@ func finish_production() -> void:
 	var f := FileAccess.open(folder.path_join("production-report.json"), FileAccess.WRITE)
 	f.store_string(JSON.stringify({"stage": production_stage, "checks": checks, "failures": failures, "details": details,
 		"start_context": start_context, "end_context": whole_memory() if is_instance_valid(scene) else {}, "expected_code": expected_code,
+		"preview_variant": preview_variant, "preview_timeline": preview_timeline, "preview_input_scope": "Real bootstrap owner, normal30fps process frames/60Hz rules, actual joystick/touch/drag, no state injection or physics disabling",
 		"declared_lead_in_simulation_seconds": lead_in, "native_frame_count": native_inventory.size(),
 		"raw_slot_snapshots": slot_snapshots, "coverage": coverage,
 		"limits": "Actual input passages from fresh or authenticated earned bytes. Optional lead-in is normal real input before contiguous movie recording, never accelerated. Model coverage is projected observation, not independent visual acceptance. Cold restore is a separate process with prior raw slots. Fixed-cadence footage is not FPS."}, "\t"))
