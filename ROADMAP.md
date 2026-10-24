@@ -126,3 +126,8 @@ verification, independent visual review or phone feedback waits.
 - Tower whole local recovery source/CPU reviewed: root608/0 with208 actual touch
   events. Complete campaign/challenge/parked data and uncertain animation gated;
   verified choices adopt paused. New signed/native/OS clipboard checks remain.
+
+- Hearth complete local recovery source/CPU independently reviewed: root874/0,
+  338actual touch events. Stable feedback layout and standalone missing-UI
+  adoption corrections verified; historical failures retained. New signed/native/
+  rendered/OS clipboard checks remain;0.3.1/code5 unchanged.

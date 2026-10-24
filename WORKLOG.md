@@ -799,3 +799,11 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   uncommitted pending/beat stay frozen while uncertain, reset only on verified
   paused adoption under existing cold-save semantics. Store/decoder/rules/schema/
   version/export unchanged. Baseline16/6 and scroll/parse failures retained.
+
+- Hearth recovery integrated fromf8dbb169; Astra136-artifact/15changed-LF/
+  151base/165source-map audit clear. Root874/0,338actual touch events, strict
+  clean and stable source. Final worker874/167/56/127/44 plus4x6/0; all16
+  failed reports retained. Complete state/profile/settings/parked ownership,
+  refreshed journal/archive admission and verified paused replacement. Repeated
+  headless AV layout correction and standalone no-world adoption guard qualified;
+  no Store/decoder/schema/rules/version/export or native acceptance changes.

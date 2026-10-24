@@ -159,3 +159,9 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
   archives, fresh all-marker/all-copy admission and startup before active saves.
   Root608/0 with208touch events; pinned old regressions clear. Native/rendered
   recovery, clipboard and higher-version candidate remain separate; no new APK.
+
+- Hearth whole local recovery is independently source/pin reviewed, with root
+  874/0 and338actual touch events. Final old regressions and four real-file
+  directions pass. Repeated historical headless AVs are retained with bounded
+  allocated-row correction; standalone missing-UI handoff fixed. No Android crash/
+  engine-cause conclusion. Version/native/render/clipboard gates stay open.
