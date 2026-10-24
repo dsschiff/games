@@ -807,3 +807,14 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   refreshed journal/archive admission and verified paused replacement. Repeated
   headless AV layout correction and standalone no-world adoption guard qualified;
   no Store/decoder/schema/rules/version/export or native acceptance changes.
+
+- Dead code7to8 native packet sealed:14 whole owning-context comparisons/0,
+  10exact pending archive/context validations and10journal absences. Actual
+  native CopyPrevious/Imported followed by opposite choice and normal Paste/
+  Import/cold independently restores complete ready/battle contexts; app exact
+  clipboard acknowledgments inspected. External53402B gRPC/guest discrepancy
+  remains unresolved (51Bsentinel works); strict repeated shader-warning gate
+  failed. Four metadata+archive fixtures from genuine native contexts are explicit.
+  Original tick251 battle/ten bullets restored; exact91660/77432 graceful stop
+  verified absent.347packet/8updater/20runtime pins independently audited. Cold splash stills
+  are excluded from UI-readiness; equality stays at full decoded meaning.

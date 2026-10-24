@@ -74,10 +74,10 @@
     },
     "limit": "Old native baseline only; source increment/native storage faults, OS interruption, power loss, clipboard, phone and cloud unverified."
   },
-  "usability_limit": "Known pending choices offer direct Copy Previous/Imported with feature guard and exact clipboard readback, preserved original error plus separate feedback, and read-only manual View fallback. Cold unreadable recovery stays retry-only and cannot enumerate copies. Headless tests prove unsupported branch only; native copy remains open.",
+  "usability_limit": "Known pending CopyPrevious/Imported has exact app-internal native readback and independently verified whole-context Android-app Paste/Import roundtrips. External full-payload export remains unverified; gRPC set/get does not prove guest delivery for53402B. Cold unreadable recovery stays retry-only and cannot enumerate copies; permanently torn/conflicting metadata remains paused.",
   "remaining": [
-    "Actual signed7to8/full context/normal Import/pending fixture/Retry/Keep/Home/cold and exact native Copy readback",
-    "Repeated shader warning diagnosis and rendering/performance qualification",
+    "External full-payload export/clipboard bridge diagnosis",
+    "Repeated shader warning root cause and rendering/performance qualification",
     "Real native interrupted storage/power loss; physical Fold7/folding/IME/sound/FPS/human fun",
     "Configured optional Google account/cloud sync",
     "Specific private-transfer authorization for exact0.4.2/code8 APK"
@@ -103,7 +103,8 @@
     "runtime_binding": "Only main.gd runtime delta; exact LF pin in checkpoint matches candidate runtime. Helper/Store/codec/schema/rules unchanged. Version/README changes follow separately in candidate f962be6.",
     "review": "Astra independently verified11 artifacts,230 unchanged base Git-LF pins,four changed LF pins and234 identical raw source maps; final checkpoint binds reviewed prior. Root rerun434/0 strict clean.",
     "scope": "Headless/Dummy actual touch over full contexts and four layouts; unsupported clipboard branch only. Native clipboard/readability not yet verified.",
-    "failure_history": "Actual-touch baseline106/24 and earlier parse failure preserved in checkpoint."
+    "failure_history": "Actual-touch baseline106/24 and earlier parse failure preserved in checkpoint.",
+    "native_status": "Later signed0.4.2/code8 actual Android-app Copy/choice/Paste/Import roundtrips and immediate native readback succeed; independently exported large payload remains unverified because of documented emulator bridge discrepancy. Earlier CPU scope remains historical."
   },
   "candidate": {
     "version": "0.4.2",
@@ -133,6 +134,66 @@
     "source_unchanged": true,
     "source_sha256": "7179672d9736e8314173fd9432e775b045e5bea0237290cae1c238d393215164",
     "review": "Astra actual APK/hash/size/source/pipeline/effective config and raw import/build logs clear; same existing v2/v3 signer,min24/target36,arm64+x86_64,no permissions/nondebug. No candidate native or transfer clearance.",
-    "status": "Signed local candidate only. Not uploaded; native7to8 full-context and actual Copy checks remain."
+    "status": "Signed local0.4.2/code8; independently audited bounded native14/0 and both Android-app code roundtrips. Strict shader gate failed; external full-code export unresolved. Not uploaded."
+  },
+  "native": {
+    "status": "Independently audited bounded functional native evidence; strict engine-log gate FAILED. No upload.",
+    "report": {
+      "path": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-dead-recovery-20261024T0631Z\\report.json",
+      "sha256": "3d63e05357ec25a2f739ed1475b4a8fc0dcf85fcb76c5d6453edfdc21b6a1ee2",
+      "bytes": 142434
+    },
+    "packet_files": 347,
+    "updater_files": 8,
+    "runtime_lf_bindings": 20,
+    "full_tracked_bindings": 236,
+    "complete_context_comparisons": 14,
+    "failures": 0,
+    "pending_complete_validations": 10,
+    "resolved_journal_absences": 10,
+    "update": "Actual same-signer code7to8 offline/Home/cold; exact real pre-update campaign/legacy/profile/settings/loadout including ten campaign bullets preserved.",
+    "copy_roundtrip": {
+      "previous": {
+        "path": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-dead-recovery-20261024T0631Z\\update-session\\genuine-ready\\portable-code.txt",
+        "sha256": "c809b460a2705a763b21a120d49ec24ef7787daf7e9a2d208ebf0de037fa4df3",
+        "bytes": 52229
+      },
+      "imported": {
+        "path": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-dead-recovery-20261024T0631Z\\update-session\\code8-cold\\portable-code.txt",
+        "sha256": "5814bea2eadd857610886e6655fd6e5e937699dbcdd9fdfd7046d5caaa65afc0",
+        "bytes": 53402
+      },
+      "scope": "Actual native CopyPrevious\u2192chooseImported\u2192normalPaste/ImportPrevious\u2192cold and CopyImported\u2192choosePrevious\u2192normalPaste/ImportImported\u2192cold; entire owning contexts match. App Copy reports success only after immediate exact native clipboard readback. Independent external full-payload export bytes unverified.",
+      "acknowledgments_readable": true
+    },
+    "fixture_limit": "Setup writes only private exact archive codes and checksummed metadata while app stopped; never active slots. Existing copies reused only if byte-exact. These archives were materialized fixtures, not initially native-created or interrupted-I/O proof; later ordinary native Imports create their own additional genuine raw archives. Four exact setups preserve both chosen contexts.",
+    "profile_limit": "First Riggers same-mission ready0/battle251,crew5,ten campaign bullets,parkedlegacy0bullets,empty earned profile. No native earned-profile or new-victory coverage.",
+    "pending_retention": "Five files identical through CopyPrevious/Back/Home/cold; HomePID3727 retained,cold3916 different. Seven second-fixture files unchanged through CopyImported. Direct Retry/Keep also cold-verified.",
+    "restore": "Original complete pre-update battle restored by actual imported-code Paste/Import and cold, then directRetry/cold; final eight file hashes unchanged in settled paused view.",
+    "strict_engine_log_clean": false,
+    "warning": "Repeated Failed to load cached shader, recompiling in first code8PID3095 and final5100, also oldcode7 andGear. Strict warning gate failed; cause/rendering/performance unresolved. Raw warnings retained, no filtering.",
+    "external_clipboard": {
+      "status": "UNRESOLVED discrepancy; no independent full-code external export clearance.",
+      "observed": "Authenticated supported gRPC set/get53402B exact; focused actual Paste stays empty/preexisting. Short51B sentinel pastes correctly. Guest full Export and pending Copy confirm exact internal readback, but gRPC getter retains prior host-side value. Port8554 belongs to exact owned77432. No payload-size/engine/app cause conclusion.",
+      "failures": "Initial empty normalImport correctly rejected and complete ready context retained. All failed Paste/screens/external-get receipts remain. No shell clipboard implementation on this image, no probe app/host clipboard workaround, no truncation/schema/compression change.",
+      "references": [
+        "https://github.com/google/android-emulator-webrtc/blob/master/proto/emulator_controller.proto",
+        "https://android.googlesource.com/platform/frameworks/base/+/refs/heads/android16-release/services/core/java/com/android/server/clipboard/EmulatorClipboardMonitor.java"
+      ]
+    },
+    "source_binding": "Actual build checkout raw fingerprint matches7179672d\u2026; coordinator raw fingerprint differs only29 checkout text line endings. All236 tracked files LF/exact-binary equivalent and clean Git tree diff;20 scripts match immutablef962be6. Initial raw-fingerprint assertion failure retained, no source mutation.",
+    "visual_limit": "Old-settled and immediate final-cold stills are splash, not acceptance. Settled code8 pause/pending/Copy acknowledgment/result/final-original-settled screens reviewed separately. Some immediate choice stills show old UI during world rebuild; later settled views and full owning comparisons distinguish them. The direct-keep-cold/screen.png capture is also a splash: valid saved-context cold evidence only, excluded from UI-readiness acceptance.",
+    "shutdown": {
+      "path": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-dead-recovery-20261024T0631Z\\update-session\\shutdown.json",
+      "sha256": "9137f13f12c0ffa689c7e449e79604ce090940bdf70b7bf73f13cf196b1cb217",
+      "bytes": 861
+    },
+    "owned_stop": {
+      "path": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-dead-recovery-20261024T0631Z\\update-session\\owned-stop.json",
+      "sha256": "bba5df899c4e129ecb18668f94bcfedab87b38492e2cf5289de7cfdd4b146fe3",
+      "bytes": 124
+    },
+    "independent_review": "Astra qualified audit verifies347packet+8updater pins,236complete tracked-file bindings and20immutable runtime LF pins,14whole decoded comparisons,10pending/10cleared journals, exact frozen5/7/8-file sets, both app-internal Copy roundtrips, readable acknowledgments/final paused battle and exact owned graceful shutdown. No external full-code export or blanket rendering/release clearance.",
+    "equality_limit": "Exact complete owning-context equality is evaluated inside Godot before report serialization, without tolerance/masks. Raw JSON decimal spellings can differ from reserialized comparator output. This is decoded meaning equality, not raw numeric/byte equality; byte equality is claimed only for the named frozen file sets."
   }
 }

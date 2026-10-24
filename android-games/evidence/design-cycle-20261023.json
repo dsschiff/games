@@ -737,9 +737,9 @@
   },
   "dead_local_recovery": {
     "evidence": "android-games/evidence/dead-local-recovery-20261024.json",
-    "status": "Whole recovery plus direct retained-code Copy controls source/CPU clear; root53/0+7/0+434/0. Signed0.4.2/code8 packaging/source independently clear; local candidate only, not uploaded.",
+    "status": "Signed0.4.2/code8 local candidate: source/CPU/packaging clear; bounded native14/0,10pending/10cleared and both Android-app Copy/Paste/Import roundtrips pass. Bounded native artifact/source audit clear; strict shader warning failed; external large-code clipboard discrepancy unresolved. Not uploaded.",
     "scope": "Complete campaign+legacy/bullets/profile/settings/loadout, freeze and real admitted-worker join, fresh all-marker/all-archive admission, verified paused adoption.",
-    "next": "Actual signed7to8 and full native recovery/Copy checks after host resources permit; preserve captured real code7 baseline and ten active bullets.",
+    "next": "External full-code export diagnosis, shader/rendering qualification and physical/human/cloud gates.",
     "limits": "Typed faults/actual headless input and old native baseline do not establish native storage fault, power loss, physical or cloud acceptance."
   },
   "frontline_marker_retry": {

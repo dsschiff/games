@@ -131,3 +131,9 @@ verification, independent visual review or phone feedback waits.
   338actual touch events. Stable feedback layout and standalone missing-UI
   adoption corrections verified; historical failures retained. New signed/native/
   rendered/OS clipboard checks remain;0.3.1/code5 unchanged.
+
+- Dead0.4.2/code8 native update/recovery passes14 full-context comparisons/0,
+  10pending/10cleared journals and both actual Android-app Copy/Paste/Import
+  roundtrips. Original battle/ten bullets restored, owned emulator closed. Sealed
+  packet independently audited; shader-warning and external large-code clipboard gates
+  remain failed/unresolved. No upload.
