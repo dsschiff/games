@@ -2,7 +2,7 @@
   "base_commit": "4552e7b",
   "scope": "First continuous-design increment: terminal action clarity, warning priority, defeated blockade clearance",
   "phase": "CPU verified; reviewed harness scheduling correction now strict54/0 renderedPASS with10decodedPNGs; historical stress failures retained; native/update/phone acceptance separate",
-  "authoritative_rules_catalogs_save_stores_and_export_preset": "unchanged from base",
+  "authoritative_rules_catalogs_save_stores_and_export_preset": "Rules/catalogs/save stores unchanged frombase; export version metadata only0.4.1/code7; package/signing unchanged",
   "runtime_sha256_lf": {
     "scripts/main.gd": "0cf96866f7852583aa008993cec57f437555e116445dcd4b9db8a2bf246018ce",
     "scripts/campaign.gd": "795205b70a32dd9e9533993f99847be5ea2985911e1ef302c29a000114fabc87",
@@ -660,5 +660,12 @@
         }
       }
     }
-  ]
+  ],
+  "release_metadata": {
+    "version": "0.4.1",
+    "android_version_code": 7,
+    "package": "com.dsschiff.deadrun",
+    "build": "Not built here; coordinator integration/build/native acceptance pending",
+    "strict_packet_metadata": "Full54check packet executed0.4.0/code6; gameplay/test code unchanged by version-only bump"
+  }
 }
