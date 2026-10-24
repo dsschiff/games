@@ -1,0 +1,91 @@
+{
+  "scope": "Bounded Android emulator update retention and touch usability; desktop and physical/cloud evidence stay separate.",
+  "baseline": {
+    "report": {
+      "path": "F:/games-workspaces/hearth-preview-capture-20261024/.artifacts/native-first-pair-20261024/report.json",
+      "bytes": 108056,
+      "sha256": "d6cc93c2b94d5461b03e2aef5ef2483fdde379c5af5f43d53a50843286401da7"
+    },
+    "updates": {
+      "dead": "0.4.2/code8 to0.4.3/code9",
+      "frontline": "0.3.5/code9 to0.3.6/code10"
+    },
+    "owning_context_comparisons": {
+      "dead": 7,
+      "frontline": 4
+    },
+    "failures": 0,
+    "install_raw_files_exact": {
+      "dead": 8,
+      "frontline": 15
+    },
+    "native_ui": {
+      "dead": "Separate settled before/after Home pair PID4604 clear. Earlier black/splash observations retained; no multiplier approach acceptance.",
+      "frontline": "Criteria/earned record readable; narrow thumb reaches lastrow and separate Close. Ordinary row swipes fail; code10 held for touch correction."
+    },
+    "limits": "Dead profile has0clears/legacybullets0; campaigntick251/crew5/rivet/10bullets preserved. FrontlineSwitchyardready/AshGate3of3/132.35s record retained; parked/skirmish empty. No native storage fault, power loss, physical/IME/audio/FPS/humanfun/cloud or upload acceptance.",
+    "review": "Astra rehashed all335 pins and independently verified complete7Dead/4Frontline comparisons, actual APK/source/decoder bindings and accepted4604 before/after Home frames. Prior black/splash retained. Process absence is explicitly root-observed after normal emu-kill.",
+    "owned_emulator_closed": true
+  },
+  "strict_native_log_gate": "FAIL: cached-shader warning in both apps.",
+  "frontline_touch_correction": {
+    "worker_commit": "42b27994066a96c393c8b9c72097516d50c29dc7",
+    "root_integration": "e2123c9",
+    "root_runner_correction": "08cb076",
+    "runtime_delta": "One Journey mission-row MOUSE_FILTER_PASS line; existing engine gesture/deadzone/button cancellation preserved.",
+    "checkpoint": {
+      "path": "android-games/frontline-foundry/JOURNEY_TOUCH_CHECKPOINT.json",
+      "worker_raw_sha256": "2ab2366f24cdd3369949f5cf99e81fd5cc28b61ef4384dfc0b55c0c5744b8709"
+    },
+    "root_repeat": {
+      "checks": 172,
+      "failures": 0,
+      "receipt": {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\frontline-foundry\\.artifacts\\journey-touch-current-20261024T153910014567Z\\receipt.json",
+        "bytes": 771,
+        "sha256": "1e9d398160690c78510e287901d36cd8fbb5827a9085445fc99b5a20a426c8fb"
+      },
+      "observations": {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\frontline-foundry\\.artifacts\\journey-touch-current-20261024T153910014567Z\\journey-touch.json",
+        "bytes": 3452071,
+        "sha256": "f0eff2fb5f3b1cb2504bacab0f63922b5f3eec49e178c465784ccf7227b0fbe1"
+      },
+      "limits": "Headless synthetic touchscreen capability and real engine GUI events; native packet is separate. Fresh-directory runner setup corrected before this pass."
+    },
+    "candidate": {
+      "version": "0.3.7",
+      "version_code": 11,
+      "source": "2e13a0c62f3c2658cb20501adea27a9b4dcf5771",
+      "manifest": {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\frontline-foundry\\20261024T154042853347Z\\manifest.json",
+        "bytes": 1862,
+        "sha256": "22a7a0e1cfe381d1bdef17b7d6124a3be651cbe8383f65fe2faf2bed825faa41"
+      },
+      "apk": {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\frontline-foundry\\20261024T154042853347Z\\frontline-foundry.apk",
+        "bytes": 56292002,
+        "sha256": "6f7880a15c11a135506285f2bcd701c73e2d1e5498962987cc44e0f93d2ddda9"
+      },
+      "project_fingerprint": "9d48a9949fe157f9a4226a8a3f5cd73621b968b909f2262c0ac0a21e087e9e15",
+      "packaging_review": "Astra actual APK/source/signature/metadata/rawlogs/pipeline/config CLEAR; same2527 signer.",
+      "uploaded": false
+    },
+    "native": {
+      "packet": {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\native-frontline-scroll-code11-20261024\\report.json",
+        "bytes": 110684,
+        "sha256": "a44e686ed2c1624a752556ab6c2bb53a71e23cc167e18521e543910cdf971c1f"
+      },
+      "whole_comparisons": 16,
+      "failures": 0,
+      "archives_exact": 13,
+      "phases": 17,
+      "scope": "Actual Android10to11 update, matching row-body swipes reach lastrow; drag-return and CANCEL preserve15rawfiles/PID; stationary taps commit once, original Switchyard context restored through ordinary selection; Close/Back/Home/cold checked.",
+      "review": "Astra sealed318pin/rawinput/14original+2expected whole-context/17phase/13archive/screenshot/shutdown audit CLEAR for bounded Journey touch/update scope. Strict shader warning remains FAIL; recap/skirmish presentation and physical/cloud/upload stay open.",
+      "physical_acceptance": false,
+      "cloud_acceptance": false
+    },
+    "integrated_game_tree": "4ce9778dd8006bae45bc039b1b4a0e6f649a2550"
+  },
+  "integration_review": "Astra seven root records/eight explicit path-hash refs/exact game subtree linkage/Gear repeat and unchanged19 delivered-published-link entries CLEAR."
+}
