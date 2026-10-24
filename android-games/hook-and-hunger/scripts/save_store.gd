@@ -89,4 +89,7 @@ static func write(state: Dictionary, settings: Dictionary, path: String = PATH, 
 		return false
 	if io.read_text(file + ".tmp") != source:
 		return false
-	return io.rename(file + ".tmp", file)
+	if not io.rename(file + ".tmp", file) or not io.exists(file):
+		return false
+	var committed: String = io.read_text(file)
+	return committed == source and decode(committed).ok

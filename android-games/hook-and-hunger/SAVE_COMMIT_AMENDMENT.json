@@ -1,0 +1,37 @@
+{
+  "status": "CPU verified; independent source review, combined-candidate rebuild and native checks remain root-owned",
+  "parent_commit": "114185b31ab65bc67dab390de89f47866ec4bb96",
+  "runtime": {
+    "scripts/main.gd": {
+      "sha256": "292612ef99aefbc412e266588b9ff994f72f1030650f36796586b01119c616d1",
+      "lf_sha256": "79b26f564239650fd4a54e4e6bbdd365dcc838a21e2ab799caba435125de8698"
+    },
+    "scripts/save_store.gd": {
+      "sha256": "ed0004bf038b346b1551766dbb8138a3dbb8a6518a28ae4569fd1dc949e202a8",
+      "lf_sha256": "326b6743331b1cdf6f21e420e2ce192d363245c93ce75c39f2561ec8bf49c00e"
+    }
+  },
+  "adapter_lf_sha256_unchanged": "00b6d5376c4f03dfc112c0455e7701433689f59b6a0faad96e274c83ce1037bb",
+  "runs": [
+    {
+      "role": "Baseline writer after default-null IO seam;444checks63failures",
+      "path": ".artifacts/graphics-cpu-20261024T005308746142Z/report.json",
+      "sha256": "1ecdff34f303bfe5a4420df09e1c05424c919db1673dac6d5bbc02aa91840d2f"
+    },
+    {
+      "role": "Final save444/0 plus rules57/campaign81/import8/save-review31",
+      "path": ".artifacts/graphics-cpu-20261024T005358371574Z/report.json",
+      "sha256": "4f0283da4690b7e423aa16b007b3a1f28e53b7cd504324b37be1d4bdb14d85d1"
+    },
+    {
+      "role": "retained failed batch: contact probe inherited prior saved state and stalled; verified headless child stopped",
+      "path": ".artifacts/graphics-cpu-20261024T005512326849Z/report.json",
+      "sha256": "4b1dd926a5470a6f3c064f47cc2765e199e5bc250787c583ae43ea4c0889951c"
+    },
+    {
+      "role": "final opening18/resize108/contact37/presentation214 pass after test-only fresh-save isolation",
+      "path": ".artifacts/graphics-cpu-20261024T005836520143Z/report.json",
+      "sha256": "317b7580acd1494ed9bb7647d51e28a8a422c2a1570e67e91159013edf2da776"
+    }
+  ]
+}

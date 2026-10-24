@@ -5,6 +5,11 @@ var observations: Array = []
 
 func run() -> void:
 	root.size = Vector2i(720,1280)
+	# This fresh-opening probe must not inherit another suite's active save.
+	for slot in 2:
+		for suffix in ["", ".tmp"]:
+			var path: String = S.PATH + str(slot) + suffix
+			if FileAccess.file_exists(path): DirAccess.remove_absolute(path)
 	scene = load("res://main.tscn").instantiate()
 	root.add_child(scene)
 	await dwell(4)
