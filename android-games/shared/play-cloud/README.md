@@ -36,6 +36,24 @@ roundtrip, wrong package, malformed/truncated data, UTF-8 byte limits, recompute
 corrupt-save checksums and future-schema rejection. This is not native network,
 authentication, conflict or device acceptance.
 
+`tests/real_save_bindings.gd` adds60 local checks across all six owning game
+decoders. Representative records include a genuine old Dead Run active road,
+actual Android active/result saves, fresh Tower input-earned progress and
+explicitly qualified feedback/checkpoint fixtures. It compares the entire
+decoded context, retains every opaque save byte and rejects future schemas even
+when both inner and transport checksums are recomputed. Final Hook/Tower store
+hashes were refreshed after write hardening. The manifest pins the test script,
+codec, six logs/results and inputs; `.artifacts/cloud-save-bindings/manifest.json`
+is machine-local evidence, not network or account acceptance.
+
+Run with the owning project as `--path`, the absolute shared test script after
+`--script`, and these arguments after `--`:
+`--decoder=res://scripts/save_store.gd --save-file=<complete-save-file>
+--package=<actual-app-package> --report=<output-json>`. Dead Run uses
+`res://scripts/campaign_store.gd`. Use `--headless --audio-driver Dummy`.
+Choose a real or explicitly labelled app-written fixture; never treat these
+local checks as a restore commit, plugin UI, live authentication or cloud sync.
+
 Before shipping: serialize restoration with
 Dead Run autosaves; commit through each existing imported-save transaction and
 confirm exact destination readback before replacing live state; resume restored

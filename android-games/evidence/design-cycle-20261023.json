@@ -77,7 +77,7 @@
     "raw_android_whole_save_comparison": false
   },
   "dead_run": {
-    "state": "Source fixes landed PR10; strict full-render gate fails four texture leaks. Minimal actual-play prefix investigation active; release held.",
+    "state": "Source fixes landed. All tested actual-play lifecycle prefixes clean; synthetic geometry-before-warning tail alone reproduces4strictGLtextureleaks. Further minimal isolation active; release held.",
     "commit": "7532385"
   },
   "cloud": {
@@ -89,7 +89,11 @@
     "codec_failures": 0,
     "native_receipt": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\cloud-native\\receipt.json",
     "native_receipt_sha256": "9de1f3d169171ab43bd530a6621c92938304701734cd4623ceff882e07917524",
-    "native_aar_sha256": "414f1d90bca0147524e586f6d9cf0e0fa808b373d77cb49b04821f9d5e7c1a01"
+    "native_aar_sha256": "414f1d90bca0147524e586f6d9cf0e0fa808b373d77cb49b04821f9d5e7c1a01",
+    "real_decoder_binding_checks": 60,
+    "real_decoder_binding_failures": 0,
+    "real_decoder_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\cloud-save-bindings\\manifest.json",
+    "real_decoder_manifest_sha256": "d5e59188f163758f5bcd29cd7a14ab8b5685fe145f9721cffe6190c5eb4d4811"
   },
   "next": [
     "Finish Tower motion/native verification and private delivery",
@@ -252,7 +256,7 @@
   "tower": {
     "version": "0.4.1",
     "version_code": 7,
-    "state": "reviewed_source_integrated_signed_candidate_render_and_native_pending",
+    "state": "Motion/source cleared with room-association caveat;70savefault and252graphics checks pass; rebuild/native pending",
     "source_commits": [
       "173d79d",
       "5a432c6"
@@ -266,14 +270,19 @@
       "overlaps": 0,
       "clipped": 0
     },
-    "build_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\tower-trials\\20261024T001356437179Z\\manifest.json"
+    "build_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\tower-trials\\20261024T001356437179Z\\manifest.json",
+    "save_checks": {
+      "checks": 70,
+      "failures": 0,
+      "source_commit": "56c5c90"
+    }
   },
   "hook": {
-    "state": "Refined conservative charge envelope source independently cleared and integrated; signed0.3.1/code7 candidate held for final refined normal-speed usefulness and strict rendered shutdown",
+    "state": "Motion/source cleared with density caveat;444failed-import checks pass; rebuild/new native update pending",
     "open": [
-      "Conservative obstacle charge warning usefulness in authored motion",
-      "Final strict rendered teardown; current finale has2ObjectDB leaks",
-      "Signed update and private delivery"
+      "Final storage-reviewed signed rebuild and native update",
+      "Dense boss-ring/multiple-charge readability remains a followup",
+      "Physical/human acceptance deferred"
     ],
     "source_commit": "4898fb3",
     "adapter_lf_sha256": "00b6d5376c4f03dfc112c0455e7701433689f59b6a0faad96e274c83ce1037bb",
@@ -283,6 +292,12 @@
       "failures": 0,
       "contact_checks": 37,
       "presentation_checks": 214
+    },
+    "save_checks": {
+      "checks": 444,
+      "failures": 0,
+      "source_commit": "5b768ed"
     }
-  }
+  },
+  "bounded_motion_review": "android-games/reviews/design-feedback-20261023.md"
 }
