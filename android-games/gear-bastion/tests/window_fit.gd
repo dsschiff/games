@@ -186,7 +186,7 @@ func transfer_case() -> void:
 		check(game.save_dialog.visible and before == JSON.parse_string(Saves.encode(game.state, game.settings, 0, true, game.profile)), "Invalid Import button retains entire run/settings/profile")
 		game.save_text.text = exported
 		await tap(game.to_local(Vector2(game.save_dialog.position) + import_button.get_global_rect().get_center()))
-		check(not game.save_dialog.visible and game.paused == (phase == "battle") and before == JSON.parse_string(Saves.encode(game.state, game.settings, 0, true, game.profile)), "App-produced " + phase + " export retains whole context and phase-aware pause through actual Import button")
+		check(not game.save_dialog.visible and game.paused and before == JSON.parse_string(Saves.encode(game.state, game.settings, 0, true, game.profile)), "App-produced " + phase + " export retains whole context and deliberate paused adoption through actual Import button")
 
 func run() -> void:
 	DirAccess.make_dir_recursive_absolute(evidence)
