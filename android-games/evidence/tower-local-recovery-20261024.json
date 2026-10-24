@@ -1,0 +1,66 @@
+{
+  "scope": "Complete Tower-local uncertain Import recovery across campaign/challenge/parked data and unfinished room animation. Offline; existing Store/decoder/rules/schema/version/export unchanged.",
+  "reviewed_source_commit": "a244948a55bc0191a1e14c744813d55c8196e9c8",
+  "checkpoint": {
+    "path": "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\LOCAL_RECOVERY.json",
+    "sha256": "7ac1707bdd2e9f9694fd166065af610282d5713980f0b137bd2ef8b15cb19b3e",
+    "bytes": 90567
+  },
+  "independent_review": "Astra verified81 retained artifact pins,148 current LF source pins,160 unchanged raw/base bindings and strict final/regression logs.",
+  "root": {
+    "report": {
+      "path": "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T075304381664Z\\report.json",
+      "sha256": "c573c069025421affb0fc090173764dcec700c28658ccf1a468358e1d0ebc4ef",
+      "bytes": 887
+    },
+    "assertions": {
+      "path": "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T075304381664Z\\import-recovery.json",
+      "sha256": "5ffbdbaacb12055e39eb80104b00dffc18008c848deb8891f5989b297abb7f9f",
+      "bytes": 9359
+    },
+    "source_before": {
+      "path": "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T075304381664Z\\source-before.json",
+      "sha256": "944d6ac1ff96553fbfd79896e0e78102e642c293543be4e094bcbd3df8dd9946",
+      "bytes": 15035
+    },
+    "log": {
+      "path": "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T075304381664Z\\import_recovery.log",
+      "sha256": "e526110b48c1cc396daa3f7a0856c8073ff9e77fbda43ea3bb596767c43752a7",
+      "bytes": 134
+    },
+    "checks": 608,
+    "failures": 0,
+    "actual_touch_events": 208,
+    "source_unchanged": true,
+    "strict_clean": true
+  },
+  "worker": {
+    "recovery": 608,
+    "touch_events": 208,
+    "save_commit": 70,
+    "rules_save": 3503,
+    "challenge_rules": 3105,
+    "campaign_input": 1364,
+    "challenge_input": 176,
+    "back_policy": 67,
+    "geometry": 252,
+    "failures_each": 0
+  },
+  "behavior": [
+    "Freeze complete live data and uncommitted animation until explicit durable choice; no stale completion appends into the adopted route",
+    "Archive complete live code, exact intake and four valid raw candidate codes; six immutable identities maximum",
+    "Single pending decision before active save/default selection; unknown recovery blocks play/saves without active reads",
+    "Fresh all-present/full-record/all-archive admission every choice; verify entire owning meaning then journal absence before paused adoption",
+    "Summary-first known choices with direct exact-readback Copy and guarded View fallback; unknown cold recovery offers Retry Read only"
+  ],
+  "baseline": "Actual old owner16checks/6failures/12touch events; false current-route-kept vs higher imported fresh-owner selection retained in checkpoint. Earlier scroll/parse packets remain failed.",
+  "scope_limit": "Headless/Dummy actual touch and same-process materialized fresh production owners; real earned campaign fixture plus labeled generated challenge/parked variants. Copy uses fake clipboard and geometry is not rendered readability. After verified choice, pending/beat reset follows existing cold-save semantics; those transient values are not serialized route actions.",
+  "remaining": [
+    "Signed higher-version candidate and independently reviewed packaging",
+    "Actual Android update/full context/normal Import/explicit choices/Home/cold and OS clipboard",
+    "Real interrupted storage/power loss",
+    "Physical Fold7/folding/sound/FPS and human pacing/fun",
+    "Configured optional Google account/cloud sync"
+  ],
+  "existing_binary": "Previously qualified0.4.2/code8 remains unchanged; its exact private-transfer approval is separate. No new APK/upload/native clearance in this increment."
+}
