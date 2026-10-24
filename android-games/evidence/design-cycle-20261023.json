@@ -674,7 +674,7 @@
     "independent_terminal": 12,
     "failures": 0,
     "limits": "Synthetic faults/headless input; existing cache explicitly used. Android/render/power loss/cloud unverified.",
-    "next": "Equivalent retry-marker admission regression/fix and independent review, then higher-version build/native recovery. Arena identity correction is landed and visible feedback is integrated source-only."
+    "next": "Retry-marker source correction reviewed; higher-version signed candidate/native checks remain next."
   },
   "hook_arena_score_identity": {
     "reviewed_commit": "ced33668fb5c9ab093b893d5f81a8e623a5cad12",
@@ -703,7 +703,7 @@
     "independent_failures": 0,
     "review": "Astra source and all15 artifacts/168 source pins/12 unchanged source files/protected code sections clear; final checkpoint review-text-only update qualified.",
     "status": "Source/CPU only; no new APK or Android acceptance.",
-    "next": "Equivalent retry-marker regression/fix before higher-version candidate/native update. The separately reviewed arena feedback source is now integrated."
+    "next": "Recovery marker correction source reviewed; build higher-version candidate with recovery, score identity and visible best-clear feedback, then verify native update."
   },
   "hook_arena_feedback": {
     "reviewed_source_commit": "5fab554717e19ec748fb9f148a7b79644e37219e",
@@ -747,5 +747,11 @@
     "status": "Reviewed helper source with worker/root107/0; deferred actual-input gate passes root26/0,24 touch events using existing coordinator cache. Existing source/failed worker cache packet remains preserved.",
     "next": "Higher-version signed candidate and complete native update/recovery checks; existing0.3.4/code8 APK unchanged.",
     "limit": "CPU typed faults/materialized owner only, no native storage fault/power loss/physical/cloud acceptance."
+  },
+  "hook_marker_retry": {
+    "evidence": "android-games/evidence/hook-marker-retry-20261024.json",
+    "status": "Source/CPU independently clear; root172/0. Whole recovery, arena identity and feedback regressions pass871/188/573. No version or new APK.",
+    "next": "Higher-version signed candidate/native update, explicit recovery choices and arena feedback readability; existing0.3.2/code8 unchanged.",
+    "limit": "Synthetic complete contexts/typed faults/actual engine input/materialized owners, no native storage fault, power loss, physical or cloud acceptance."
   }
 }

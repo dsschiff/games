@@ -107,3 +107,7 @@ verification, independent visual review or phone feedback waits.
   validated before each choice. Root107/0 helper and26/0 actual-input/fresh-owner
   checks pass using existing cache; earlier worker cache failure retained.
   Higher-version signed/native candidate remains next;0.3.4/code8 unchanged.
+
+- Hook marker retries now freshly verify every surviving record and complete
+  archived code. Root172/0 and source/evidence review clear; existing871/188/573
+  recovery/arena/feedback regressions pass. New signed/native candidate next.

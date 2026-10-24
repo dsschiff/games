@@ -770,3 +770,9 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   materialized production owners. Existing coordinator model cache used; worker
   missing-cache2/1/0-touch failure remains failed. Astra source/evidence clear,
   no schema/rules/UI/version/build/upload/native acceptance change.
+
+- Hook retry-marker admission integrated from2467cd6, preserving full campaign
+  projectiles/profile/parked ending and arena feedback. Root172/0 passes; worker
+  marker172/0 plus one frozen871/188/573 regression batch clear. Astra170-source/
+  193-unchanged-file/43-artifact audit clear. Baseline174/35 retained.
+  No Store/rules/schema/UI/version/build/native acceptance change.

@@ -136,3 +136,8 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
   contexts;24 real engine touch events, same-process materialized fresh owners.
   Worker cache failure is retained; no import or asset substitution. New signed
   native candidate remains separate: evidence/frontline-marker-retry-20261024.json.
+
+- Hook marker safety source is independently reviewed with root172/0 and one
+  frozen871/188/573 regression batch. Full projectile/ending/parked contexts
+  retained; no Store/rules/UI/version/build/native claims added.
+  See evidence/hook-marker-retry-20261024.json.
