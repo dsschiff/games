@@ -85,14 +85,20 @@ verification, independent visual review or phone feedback waits.
 
 - Hook local Import recovery and terminal bootstrap/commit source are CPU/source
   reviewed, including independent871/0 +12/0. Existing0.3.2 APK unchanged. Next:
-  explicit arena Continue key-format defect, then new build/native recovery.
+  arena identity correction landed; equivalent retry-marker safety comes before new build/native recovery.
 
 - Hook arena score identity source/CPU correction complete: historical aliases
   and best scores preserved, root188/0 and independent review clear. New signed
-  candidate/native update remain next; no new binary or UI score display yet.
+  candidate/native update awaits retry-marker safety. Selected best-clear feedback
+  is now source/CPU reviewed573/0; no new binary or native display acceptance.
 
 - Gear code11 bounded native update/Import/both recovery choices are independently
   audited16/0 owning-context comparisons; strict engine warning gate remains
   failed. Read-only recovery copy buttons pass source/root386/0, native export
   pending. New APK builds held while equivalent retry-marker regressions/fixes
   follow a newly reproduced Dead failure. No upload or phone acceptance added.
+
+- Dead whole local recovery source/CPU clear with independent53/0+7/0; full
+  campaign/legacy/bullets/profile/settings retained and retries freshly validate
+  every marker/copy. Direct pending export usability and new signed native
+  candidate remain next. Existing0.4.1/code7 private APK is unchanged.

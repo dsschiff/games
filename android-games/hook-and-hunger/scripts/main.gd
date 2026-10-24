@@ -64,6 +64,7 @@ var continue_button: Button
 var arena_panel: VBoxContainer
 var arena_seed_button: Button
 var arena_weapon_button: Button
+var arena_best_label: Label
 var projectiles := {}
 var world_clock := 0.0
 
@@ -275,6 +276,8 @@ func _ui() -> void:
 	arena_panel.add_child(_label("HARBOR ARENA • REPLAY", 30))
 	arena_seed_button = _button("", arena_panel, _cycle_seed)
 	arena_weapon_button = _button("", arena_panel, _cycle_weapon)
+	arena_best_label = _label("", 24)
+	arena_panel.add_child(arena_best_label)
 	_button("SAIL TO ARENA", arena_panel, _arena)
 	transfer = TextEdit.new()
 	transfer.placeholder_text = "Local save code • export or paste here"
@@ -391,6 +394,9 @@ func _sync() -> void:
 	arena_panel.visible = profile.completed
 	arena_seed_button.text = "ARENA SEED " + str(profile.arena_seed)
 	arena_weapon_button.text = "LOADOUT: " + str(Data.WEAPONS[int(profile.arena_weapon)].name)
+	var best := Campaign.arena_best(profile, int(profile.arena_seed), int(profile.arena_weapon))
+	arena_best_label.text = ("Best clear: %d %s · %.2f s" % [int(best.score.hits), "hit" if int(best.score.hits) == 1 else "hits", float(best.score.time)]) if best.found else "No clear yet for this seed and loadout."
+	arena_best_label.text += "\nFewer hits first; faster time breaks ties."
 	if state.schema == 2:
 		_campaign_ui(p)
 	var dock_action: bool = state.phase == "playing" and p.distance_to(Rules.pad(state)) <= 1.8 and (state.schema == 2 or state.tier == 0)

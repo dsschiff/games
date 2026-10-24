@@ -747,3 +747,19 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   warning remain explicit; strict log-clean failed. Initial stalled attempt is
   preserved. New builds held for equivalent retry-marker regression/fix following
   Dead29/10 reproduction. No version/build/upload or physical acceptance added.
+
+- Hook arena feedback: selected seed/loadout now shows the best clear or an honest
+  no-clear state and explains hits-before-time ranking. Six additive controller
+  lines; no new buttons, writes or combat changes. Astra18-artifact/170-source/
+  191-unchanged-file audit clear. Worker573/188/871 and root independent573/0
+  pass; complete profiles/parked finale/slots preserved. CPU geometry is not
+  rendered/native readability. No version/build/upload; retry-marker risk open.
+
+- Dead local Import recovery integrated from1e65d26. Complete host/legacy state,
+  both bullet arrays, profile/settings/loadout and exact raw codes remain bound.
+  Fresh all-marker/all-archive admission closes consuming and cached retry cases;
+  real admitted autosave is joined after freeze. Astra final checkpoint/source
+  clear; root53/0 marker and7/0 active-phase reruns pass. Failed packets and
+  cold unreadable-copy usability limit retained. Old code7 native baseline2/0
+  includes ten active bullets; repeated shader warning already present.
+  No version/build/upload; candidate/native/physical/cloud gates remain open.

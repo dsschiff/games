@@ -35,22 +35,25 @@ var autosave_ok := true
 func _ready() -> void:
 	get_tree().auto_accept_quit = false
 	get_tree().quit_on_go_back = false
-	var saved := Store.read(Store.PATH, files)
-	if saved.ok: ctx = saved.context
+	recovery=new_recovery(); recovery_status=recovery.read(); recovery_pending=recovery_status.pending
+	var saved: Dictionary=recovery_status.original if recovery_status.ok else (Store.read(Store.PATH,files) if not recovery_pending else {"ok":false})
+	if saved.ok: ctx=saved.context
 	# A code4 road that was never started opens under the current rules; a
 	# road in progress keeps its own pinned catalog1 rules (Store.upgrade).
-	Store.upgrade(ctx)
+	if not recovery_pending: Store.upgrade(ctx)
 	state = ctx.campaign
 	settings = ctx.settings
-	paused = state.phase == "playing"
+	paused = recovery_pending or state.phase == "playing"
 	journey_visible = not saved.ok
 	build_world()
 	build_ui()
 	get_viewport().size_changed.connect(layout)
 	layout()
 	refresh()
-	persist()
-	if ctx.mode == "legacy": enter_legacy()
+	if recovery_pending: show_recovery()
+	else:
+		persist()
+		if ctx.mode == "legacy": enter_legacy()
 
 func button(parent: Node, value: String, action: Callable) -> Button:
 	var b := super.button(parent, value, action)
@@ -178,11 +181,13 @@ func layout() -> void:
 		journey.size = Vector2(minf(size.x - 32, 680), size.y - 205)
 
 func choose_weapon(weapon: String) -> void:
+	if recovery_blocked(): return
 	ctx.loadout = weapon
 	persist()
 	refresh()
 
 func open_journey() -> void:
+	if recovery_blocked(): return
 	suspend_run()
 	drag_index = -1
 	journey_visible = true
@@ -191,6 +196,7 @@ func open_journey() -> void:
 	refresh()
 
 func select_road(index: int) -> void:
+	if recovery_blocked(): return
 	if index > ctx.profile.clears.size(): return
 	if state.phase == "playing" and state.tick > 0:
 		pending_road = index
@@ -198,9 +204,11 @@ func select_road(index: int) -> void:
 	else: load_road(index)
 
 func confirm_selection() -> void:
+	if recovery_blocked(): return
 	if pending_road >= 0: load_road(pending_road)
 
 func load_road(index: int, seed: int = 0) -> void:
+	if recovery_blocked(): return
 	if (seed == 0 and index > ctx.profile.clears.size()) or (seed > 0 and not ctx.profile.ending): return
 	state = C.fresh(index, ctx.loadout, seed)
 	ctx.campaign = state
@@ -213,6 +221,7 @@ func load_road(index: int, seed: int = 0) -> void:
 	refresh()
 
 func start_run() -> void:
+	if recovery_blocked(): return
 	# Retry preserves the exact selected snapshot/options, independently of map loadout.
 	state = C.fresh(state.definition.index, state.weapon, state.definition.seed)
 	state.phase = "playing"
@@ -225,10 +234,12 @@ func start_run() -> void:
 	refresh()
 
 func next_road() -> void:
+	if recovery_blocked(): return
 	if state.phase == "victory" and not state.definition.replay and state.definition.index < 23:
 		load_road(state.definition.index + 1)
 
 func persist() -> bool:
+	if recovery_blocked(): return false
 	finish_autosave(true)
 	ctx.campaign = state
 	if ctx.mode == "campaign": ctx.settings = settings
@@ -251,6 +262,7 @@ func autosave_snapshot() -> Dictionary:
 	return copy
 
 func autosave() -> void:
+	if recovery_blocked(): return
 	if autosave_task >= 0 and not WorkerThreadPool.is_task_completed(autosave_task): return
 	finish_autosave(false)
 	var snapshot := autosave_snapshot()
@@ -268,17 +280,17 @@ func _exit_tree() -> void:
 	finish_autosave(true)
 
 func enter_legacy() -> void:
+	if recovery_blocked(): return
 	if is_instance_valid(legacy_view): return
 	suspend_run()
 	ctx.mode = "legacy"
 	persist()
 	hud.hide()
 	world.hide()
-	legacy_view = LegacyView.new()
-	legacy_view.host = self
-	add_child(legacy_view)
+	spawn_legacy(false)
 
 func leave_legacy() -> void:
+	if recovery_blocked(): return
 	if is_instance_valid(legacy_view):
 		legacy_view.persist()
 		legacy_view.queue_free()
@@ -293,36 +305,22 @@ func leave_legacy() -> void:
 	refresh()
 
 func export_code() -> void:
+	if recovery_blocked(): return
 	var code := Store.encode(ctx, int(Store.read(Store.PATH, files).revision))
 	code_box.text = code
 	copy_service.begin(code)
 	transfer_status.text = copy_service.feedback
 
 func import_code() -> void:
-	copy_service.cancel()
-	var saved := Store.decode(code_box.text)
-	if not saved.ok:
-		transfer_status.text = "Invalid code. Journey unchanged."
-		return
-	Store.upgrade(saved.context)
-	if not Store.write(saved.context, Store.PATH, files, true):
-		transfer_status.text = "Import could not be stored. Journey unchanged."
-		return
-	ctx = saved.context
-	state = ctx.campaign
-	settings = ctx.settings
-	suspend_run()
-	journey_visible = false
-	build_world()
-	transfer_status.text = imported_feedback()
-	save_message = ""
-	refresh()
+	begin_import(code_box.text)
 
 func close_transfer() -> void:
+	if recovery_blocked(): return
 	super.close_transfer()
 	if ctx.mode == "legacy": enter_legacy()
 
 func back() -> void:
+	if recovery_blocked(): return
 	if ctx.mode == "legacy" or is_instance_valid(legacy_view): return
 	if transfer.visible: close_transfer()
 	elif journey_visible:
@@ -331,9 +329,11 @@ func back() -> void:
 	else: toggle_pause()
 
 func _input(event: InputEvent) -> void:
+	if recovery_blocked(): return
 	if not is_instance_valid(legacy_view) and ctx.mode != "legacy": super._input(event)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if recovery_blocked(): return
 	if ctx.mode == "legacy" or state.phase != "playing" or paused or journey_visible or transfer.visible: return
 	var size := get_viewport().get_visible_rect().size
 	if event is InputEventScreenTouch:
@@ -352,6 +352,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		C.steer(state, anchor_x + (event.position.x - anchor.x) / size.x * 9.0)
 
 func _physics_process(delta: float) -> void:
+	if recovery_blocked(): return
 	if ctx.mode == "legacy" or is_instance_valid(legacy_view): return
 	if copy_service.poll(delta) and transfer.visible: transfer_status.text = copy_service.feedback
 	var before: String = state.phase
@@ -396,6 +397,8 @@ func road_warning() -> String:
 	return "Drag sideways - fit the whole gold footprint through gaps"
 
 func refresh() -> void:
+	if recovery_blocked(): show_recovery(); return
+	if is_instance_valid(legacy_view): legacy_view.refresh(); return
 	if hud == null: return
 	var d: Dictionary = state.definition
 	title.text = "%02d  %s" % [d.index + 1, d.title.to_upper()]
@@ -435,5 +438,51 @@ func refresh() -> void:
 	footprint.scale = Vector3(C.half_width(state.crew) * 2, 0.04, 1.9)
 
 func _process(delta: float) -> void:
+	if recovery_blocked(): return
 	if presentation == null: return
 	presentation.frame(delta, paused or journey_visible or transfer.visible or ctx.mode == "legacy" or is_instance_valid(legacy_view))
+
+func new_recovery() -> ImportRecovery: return ImportRecovery.new(files)
+func prepare_import_code(code: String) -> Dictionary:
+	var decoded:=Store.decode(code)
+	if not decoded.ok: return {"ok":false}
+	# Existing unstarted-catalog upgrade policy; keep the byte-exact intake separately.
+	var upgraded:=Store.upgrade(decoded.context)
+	return {"ok":true,"code":Store.encode(decoded.context,decoded.revision,decoded.committed) if upgraded else code}
+func capture_recovery_code() -> String:
+	var full: Dictionary=ctx.duplicate(true); full.campaign=state.duplicate(true)
+	if is_instance_valid(legacy_view):
+		full.legacy=legacy_view.state.duplicate(true); full.settings=legacy_view.settings.duplicate(true)
+	else: full.settings=settings.duplicate(true)
+	return Store.encode(full,0)
+func prepare_recovery_sources() -> void:
+	super.prepare_recovery_sources()
+	if is_instance_valid(legacy_view):
+		legacy_view.paused=true; legacy_view.drag_index=-1; legacy_view.mouse_drag=false; legacy_view.copy_service.cancel()
+	# Admission was frozen above; the last admitted worker retains its original backend.
+	finish_autosave(true)
+func recovery_next_action() -> String:
+	return legacy_view.recovery_next_action() if is_instance_valid(legacy_view) else super.recovery_next_action()
+func import_notice(value: String) -> void:
+	if is_instance_valid(legacy_view): legacy_view.transfer_status.text=value
+	else: transfer_status.text=value
+func show_recovery() -> void:
+	if not recovery_pending: return
+	if is_instance_valid(legacy_view): legacy_view.hud.hide()
+	if is_instance_valid(world): world.hide()
+	if is_instance_valid(journey): journey.hide()
+	if is_instance_valid(hud): hud.show()
+	super.show_recovery()
+func adopt_recovery_original(value: Dictionary) -> void:
+	ctx=value.context.duplicate(true); state=ctx.campaign; settings=ctx.settings; paused=true
+	if is_instance_valid(legacy_view):
+		remove_child(legacy_view); legacy_view.queue_free(); legacy_view=null
+func adopt_recovery(value: Dictionary) -> void:
+	adopt_recovery_original(value)
+	drag_index=-1; mouse_drag=false; pending_road=-1; journey_visible=false; previous_crew=state.crew
+	build_world(); hud.show(); world.show(); camera.current=true
+	transfer.visible=true; code_box.text=Store.encode(ctx,0)
+	if ctx.mode=="legacy":
+		hud.hide(); world.hide(); spawn_legacy(true); legacy_view.transfer.visible=true; legacy_view.code_box.text=Store.encode(ctx,0)
+func spawn_legacy(recovered: bool) -> void:
+	legacy_view=LegacyView.new(); legacy_view.host=self; legacy_view.recovered_start=recovered; add_child(legacy_view)
