@@ -19,6 +19,7 @@ func _init(backend: RefCounted=null,active_path: String=Store.PATH) -> void:
 	io=backend if backend!=null else Files.new(); copies=Copies.new(io)
 	save_path=active_path; path=active_path+".import-pending"
 func read() -> Dictionary:
+	journal_ready=false
 	var present:=false
 	for suffix in ["", ".tmp"]:
 		var file: String=path+str(suffix)
@@ -59,9 +60,12 @@ func begin(live_code: String,import_code: String) -> Dictionary:
 func resolve(use_import: bool) -> Dictionary:
 	if record.is_empty():
 		if not read().ok: return {"ok":false}
-	if not journal_ready:
-		journal_ready=persist()
-		if not journal_ready: message="Recovery storage is unconfirmed. Play and local saves stay paused."; return {"ok":false}
+	journal_ready=persist()
+	if not journal_ready: message="Recovery storage is unconfirmed. Play and local saves stay paused."; return {"ok":false}
+	for id in record.copies:
+		if not copies.get_code(id).ok:
+			message="A retained whole save cannot be verified. Play and local saves stay paused."
+			return {"ok":false}
 	var chosen: Dictionary=incoming if use_import else original
 	if not Store.write(chosen.state,chosen.settings,save_path,io,false,chosen.profile):
 		message="The chosen save write is unconfirmed. Play and local saves stay paused. Retry your choice."
@@ -76,7 +80,18 @@ func resolve(use_import: bool) -> Dictionary:
 	return {"ok":true,"decoded":checked}
 func persist() -> bool:
 	var payload:=JSON.stringify(record); var text:=JSON.stringify({"payload":payload,"sha256":payload.sha256_text()})
-	if not decode(text).ok or not io.write_text(path+".tmp",text) or io.read_text(path+".tmp")!=text: return false
+	var intended:=decode(text)
+	if not intended.ok: return false
+	var present:=false
+	# Every possible partial-cleanup survivor must identify this whole transaction.
+	for suffix in ["", ".tmp"]:
+		var file: String=path+str(suffix)
+		if not io.exists(file): continue
+		present=true
+		var saved:=decode(io.read_text(file))
+		if not saved.ok or saved.record!=intended.record: return false
+	if present: return true
+	if not io.write_text(path+".tmp",text) or io.read_text(path+".tmp")!=text: return false
 	if not io.rename(path+".tmp",path) or not io.exists(path): return false
 	var checked: String=io.read_text(path)
 	return checked==text and decode(checked).ok

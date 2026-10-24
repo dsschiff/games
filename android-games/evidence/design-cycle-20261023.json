@@ -653,9 +653,9 @@
   },
   "gear_local_recovery": {
     "evidence": "android-games/evidence/gear-local-recovery-20261024.json",
-    "status": "Code11 bounded native functional audit verified16 owning-context comparisons; strict shader-warning gate failed. Copy controls source-only386/0. New builds held for retry-marker regression/fix; not uploaded.",
-    "checks": "Independent353/0 and65/0; worker1466/0transfer,164/0rules,39/0lifecycle. Synthetic faults/fresh owners do not establish native power loss.",
-    "native_limit": "Four update-related1-ULP raw JSON changes remain distinct from owning-decoder equality; empty earned profile, same-mission ready/battle journal metadata fixture, no native fault/power loss/phone proof. Earlier stalled attempt preserved."
+    "status": "Signed0.4.3/code12 local candidate: marker/copy source and packaging clear; qualified native10 owning-context comparisons/0,7 pending/7 cleared markers,2 complete clipboard copies. Strict repeated shader warning gate failed. Not uploaded.",
+    "checks": "Root437/0 marker; worker437/353/65/386 all0 on frozen source. Native artifacts355+8 and18 runtime bindings independently verified.",
+    "native_limit": "Same-mission ready/battle metadata fixture, empty earned profile; owning-decoder equality differs from raw byte equality. Real storage-fault/power loss/physical/cloud remain open; original native failures and code11 packet retained."
   },
   "hook_local_recovery": {
     "evidence": "android-games/evidence/hook-local-recovery-20261024.json",

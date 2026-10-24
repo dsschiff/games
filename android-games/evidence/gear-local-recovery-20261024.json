@@ -1,24 +1,24 @@
 {
   "scope": "Gear-local exact save destination verification and whole-context Import recovery. Offline; no rules/schema/account/cloud change.",
-  "reviewed_runtime_commit": "f34d77eae1491f0e1040ac6478a4e716cebcff28",
-  "candidate_revision": "ce8a88f79b7dfb87cdb72f3586e7b0626863e856",
+  "reviewed_runtime_commit": "f881ff9fbc4b9d0b2d6532b8cf7a4de163ad5eb9",
+  "candidate_revision": "9d7e35f8b630b73bf82db2d616a5de70a75f0a29",
   "candidate": {
-    "version": "0.4.2",
-    "version_code": 11,
+    "version": "0.4.3",
+    "version_code": 12,
     "manifest": {
-      "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\gear-bastion\\20261024T044913920381Z\\manifest.json",
-      "sha256": "9a86f8adfa42aae7af0cf808d5f670f66a36037a11c081afd5e7b63b9fa7b10d",
+      "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\gear-bastion\\20261024T064137787523Z\\manifest.json",
+      "sha256": "75177040c845361105b0852bf2ab67530e1f3bfab992494e12e7065f38a66d39",
       "bytes": 1804
     },
     "artifact": {
-      "path": "F:/games-workspaces/gear-recovery-20261024/.artifacts/gear-bastion/20261024T044913920381Z/gear-bastion.apk",
-      "bytes": 56083160,
-      "sha256": "185a7d1ab5a4ab2be4d1e838a57a501f8c1b22a760f6c6f75971a851db0d378d"
+      "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\gear-bastion\\20261024T064137787523Z\\gear-bastion.apk",
+      "bytes": 56107899,
+      "sha256": "6ae983e1752ccb7fe6c37bca7543b1b9342cb3bbe9fc86f2b8007a5b8c286b04"
     },
     "inspection": {
       "package": "com.dsschiff.gearbastion",
-      "version_code": "11",
-      "version_name": "0.4.2",
+      "version_code": "12",
+      "version_name": "0.4.3",
       "permissions": [],
       "internet_permission": false,
       "signature_verified": true,
@@ -27,7 +27,7 @@
     },
     "clean_source": true,
     "source_unchanged": true,
-    "status": "Local signed code11 functional packet audited with strict log-clean failure. New retry-marker fault sequence is outside prior packet coverage; future builds held for regression/fix. Not uploaded."
+    "status": "Signed local candidate; qualified functional native evidence independently audited. Strict engine-log gate FAILED on repeated cache warning, rendering/performance open. Not uploaded."
   },
   "worker_checkpoint": {
     "path": "F:\\games-workspaces\\gear-recovery-20261024\\android-games\\gear-bastion\\RECOVERY_CHECKPOINT.json",
@@ -67,43 +67,71 @@
       "preparation_source_unchanged": null
     }
   ],
-  "independent_review": "Astra source and CPU checkpoint clear; signed candidate APK/hash/size/signer/raw engine logs/manifest/source fingerprint independently verified. Runtime unchanged from f34d77e; candidate changes only version metadata and README.",
+  "independent_review": "Astra cleared focused marker/copy/source checkpoint and actual signed code12 APK/source/metadata/raw logs. Qualified native audit matches355 packet pins,8 updater pins,4 external pins and18 runtime LF bindings to immutable9d7e35f. No blanket release/render/physical/cloud clearance.",
   "native": {
-    "status": "Independently audited bounded functional evidence; strict engine log-clean FAILED. No upload or blanket release/render clearance.",
+    "status": "Independently audited bounded functional results; strict app-engine log-clean FAILED.",
     "report": {
-      "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\native-gear-recovery-20261024T0522Z\\report.json",
-      "sha256": "c353795ec209cebab5d78da2b0eafe544808337e999e07bf1e347cbe1ea881d4",
-      "bytes": 45161
+      "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\native-gear-code12-20261024T0644Z\\report.json",
+      "sha256": "a2bba89ecc4f9f8d2faf8ee3fb9739de87b55162eccce26f5fb6305d5d34989a",
+      "bytes": 78582
     },
-    "packet_files": 212,
+    "packet_files": 355,
     "update_files": 8,
-    "complete_owning_context_comparisons": 16,
+    "runtime_build_bindings": 18,
+    "complete_owning_context_comparisons": 10,
     "failures": 0,
     "pending_complete_context_validations": 7,
-    "resolved_journal_absence_checks": 8,
-    "scope": "Actual signed10to11, offline/Home/cold process checks passed; process screenshots alone were black/splash and do not establish visual acceptance. Later settled screens show working game/pending UI. Actual native Paste/Import from genuine ready to genuine battle context in First Spark, complete active run/settings/profile verified; subsequent Home/cold stays at12.9333333333333s and paused.",
-    "pending_fixture": "Journal metadata explicitly materialized referencing exact archives genuinely created by normal native Import. Previous ready vs incoming battle in same first mission; no native I/O fault or power loss induced. Earlier typed-old-practice folder name was an incorrect initial assumption corrected by owning decode.",
-    "pending_controls": "Summary-first native panel readable; Back/Home/app-process cold launch retain exact first-fixture file bytes; read-only code view and explicit Retry Import/Keep Previous verified. Copy export controls absent in code11 and being added separately.",
-    "restore": "Original pre-update complete battle context restored through actual Paste/Import and owning Store verified before shutdown.",
-    "equality_limit": "Complete production owning-decoder state/settings/profile equality, without extra masks. Independent raw JSON comparison finds four update-related unit-x 1-ULP serialization changes (103.10927135131051 to 103.10927135131053); do not claim raw-value or byte equality for those comparisons.",
-    "profile_limit": "Earned campaign/medal/challenge profile is empty. This packet proves exact preservation of that profile, not native earned-profile coverage.",
+    "resolved_journal_absence_checks": 7,
+    "actual_copy_checks": 2,
+    "copy_previous": {
+      "scope": "Supported authenticated loopback clipboard of exact owned silent emulator; no host clipboard or external service",
+      "mode": "get",
+      "owned_parent": 40380,
+      "owned_child": 11584,
+      "bytes": 2870,
+      "sha256": "7d14f614dde9cdca0330414106dd822303243516254c633691cfa16389d16568",
+      "expected_sha256": "7d14f614dde9cdca0330414106dd822303243516254c633691cfa16389d16568",
+      "exact_equal": true,
+      "grpcio_version": "1.76.0"
+    },
+    "copy_imported": {
+      "scope": "Supported authenticated loopback clipboard of exact owned silent emulator; no host clipboard or external service",
+      "mode": "get",
+      "owned_parent": 40380,
+      "owned_child": 11584,
+      "bytes": 2268,
+      "sha256": "6acfaab30335caa78d6f321f5eb554550ac12b4b2349ce831ad6238437863ca8",
+      "expected_sha256": "6acfaab30335caa78d6f321f5eb554550ac12b4b2349ce831ad6238437863ca8",
+      "exact_equal": true,
+      "grpcio_version": "1.76.0"
+    },
+    "pending_file_retention": "All12 captured active slots, retained archive codes and journal names/bytes/hash values identical across summary/both Copy actions/Back/Home/cold. Home process retained; cold replaced it.",
+    "fixture": "Explicit journal metadata only, two separately materialized choices referencing exact native-retained raw revision0 ready original and portable incoming battle. Both full owning contexts match genuine native ready/battle in same First Spark mission. These codes already existed from genuine native imports; not all newly created by code12. No native storage failure/power-loss induced.",
+    "restore": "Original pre-update battle at12.9333333333333s restored by actual Paste/Import and verified through cold launch before graceful shutdown.",
+    "profile_limit": "All earned cleared/medal/challenge profiles are empty; no native earned-profile or newly earned victory claim.",
+    "equality_limit": "Complete owning production state/settings/profile; only revision/decoder bookkeeping excluded. Gear owning decoder clears transient projectiles by existing semantics. No extra masks/epsilon. Raw JSON numeric serialization may differ; owning equality is not byte equality.",
     "strict_engine_log_clean": false,
-    "warning": "First and later warm cold app logs retain WARNING Failed to load cached shader, recompiling. Warm log-clean assertion failed, not reclassified. Godot source shows cached OpenGL binary link failure triggers recompilation; cause of incompatibility here remains unproven. No blanket cache disabling or warning filtering.",
+    "warning": "Repeated Failed to load cached shader, recompiling appears in first and final code12 cold app logs. It also existed in code11 native packet and old Dead code7. Cause and rendering/performance qualification remain open; warning not filtered or reclassified.",
     "engine_source": "https://raw.githubusercontent.com/godotengine/godot/4.7.2-stable/drivers/gles3/shader_gles3.cpp",
-    "independent_review": "Astra verified all212 packet pins,8 updater pins,APK/build,17 decoder bindings,16 owning-context comparisons,7 exact archive/marker validations,8 journal absences and settled summary/read-only/Keep Previous cold stills. No native fault/power-loss or physical acceptance.",
+    "failed_driver_probes": "First confirmation tap used displayed-image coordinates instead of1080x2400 pixels; premature campaign-ready capture remains actual battle, unchanged full context verified. A later diagnostic incorrectly expected original archive to equal GB4 portable export, then incorrectly treated flat Gear JSON as an envelope (KeyError payload). Source confirms recovery uses exact raw Saves.encode for original. Failed expectation record retained; corrected raw archive and portable incoming independently matched complete native contexts. No app defect or state mutation from those probes.",
     "shutdown": {
-      "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\native-gear-recovery-20261024T0522Z-cleanup.json",
-      "sha256": "253db25fb760dfd5fd605df8678b974f51bbbf0450a9cc57dff215a47e686d6f",
-      "bytes": 216
-    }
+      "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\native-gear-code12-20261024T0644Z\\shutdown.json",
+      "sha256": "db4060488d1282f4a5a3f8d79224ca520eba36cb2ee4dcd763426c96b16ce346",
+      "bytes": 1429
+    },
+    "owned_stop": {
+      "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\native-gear-code12-20261024T0644Z\\owned-stop.json",
+      "sha256": "cd08401f980b2dcf8d1db35556096768c1d0be32c9c275bd6a2c441864f4c487",
+      "bytes": 107
+    },
+    "independent_review": "Astra verified all pins, full owning comparator, exact marker/archive identities, clipboard getter receipts (not setters), pending file bytes, settled acknowledgment/choices/Keep-cold stills and graceful owned shutdown. Native cold force-stop/relaunch covers stable saved contexts, not interruption during active write."
   },
   "remaining": [
-    "Equivalent retry-marker fault regression/fix and independent source review",
-    "Higher-version build and actual Android copy export/readback",
     "Repeated shader warning root cause and rendering/performance qualification",
     "Real native interrupted-storage/power-loss evidence",
     "Physical Fold7 touch/folding/sound/FPS and human fun",
-    "Configured optional Google account/cloud sync"
+    "Configured optional Google account/cloud sync",
+    "Specific private-transfer authorization for exact0.4.3/code12 APK"
   ],
   "native_initial_attempt": {
     "status": "Not qualified. Owned emulator boot/app launch returned successfully; raw-save capture shell then timed out before update.",
@@ -148,7 +176,12 @@
     "checkpoint": {
       "path": "android-games\\gear-bastion\\RECOVERY_COPY_CHECKPOINT.json",
       "sha256": "09aae85e6da8bd45bed225ddb90dff0c0ad551933d6fd308b0874762906b11a9",
-      "bytes": 30492
+      "bytes": 30492,
+      "basis": "Git LF-normalized blob bytes; CRLF checkout normalizes to this exact hash and size.",
+      "checkout_raw": {
+        "sha256": "4f35cfff2cf389931bd53026ed729502fafcad60a6772510cb6306bf59406c8e",
+        "bytes": 30768
+      }
     },
     "worker_checks": 386,
     "root_receipt": {
@@ -158,11 +191,90 @@
     },
     "root_checks": 386,
     "failures": 0,
-    "scope": "Actual touch input in headless/Dummy, complete context/files unchanged; unsupported clipboard branch only. Native export success remains unverified. Source-only; no version/build change."
+    "cpu_scope": "Actual touch input in headless/Dummy, complete context/files unchanged; unsupported clipboard branch only. Native export success remains unverified. Source-only; no version/build change.",
+    "native_status": "Later signed0.4.3/code12 verifies both actual Android-emulator Copy actions by exact clipboard getter readback; see current native record. CPU-only scope above describes the earlier source increment."
   },
   "retry_marker_followup": {
-    "status": "OPEN; new APK build held",
-    "observed": "Dead Run reproduced29 checks/10 failures after verified active write, failed marker cleanup, explicit later choice and false-success marker promotion consuming the sole surviving valid marker. Gear, Hook and Frontline share the persist retry structure; equivalent regressions pending, no unexecuted game failure claimed.",
-    "next": "Require non-destructive admission of the exact intended existing marker, preserve unreadable/conflicting markers, verify every archived context, both choices and fresh bootstrap before new build."
-  }
+    "status": "Corrected source/CPU and code12 functional native proof; real native storage-fault/active-write interruption remains unverified.",
+    "reviewed_source_commit": "f881ff9fbc4b9d0b2d6532b8cf7a4de163ad5eb9",
+    "checkpoint": {
+      "path": "F:\\games-workspaces\\gear-recovery-20261024\\android-games\\gear-bastion\\MARKER_RETRY_CHECKPOINT.json",
+      "sha256": "dbcf40069d63c4cb145cf18889d8e4f1ac2c56218daf0acb0c200c8282c02d4a",
+      "bytes": 28020
+    },
+    "baseline": "141/22 actual-touch reproduction and303/18 observer failures retained.",
+    "worker_checks": {
+      "marker": 437,
+      "journal": 353,
+      "destination": 65,
+      "copy_controls": 386,
+      "failures_each": 0
+    },
+    "root_marker_receipt": {
+      "path": "F:\\games-workspaces\\gear-recovery-20261024\\android-games\\gear-bastion\\.artifacts\\recovery-cpu-20261024T064011127773Z\\receipt.json",
+      "sha256": "259a7f0d09f50e9f6568cc770a8dd5d2d3d46c936486dffb62d978b93aff8dfb",
+      "bytes": 400299
+    },
+    "root_checks": 437,
+    "root_failures": 0,
+    "review": "Astra18-artifact/214-unchanged-base-file/four-changed-LF-pin and218 identical raw maps audit clear. Final checkpoint review-status-only update binds prior reviewed checkpoint."
+  },
+  "candidate_code11": {
+    "version": "0.4.2",
+    "version_code": 11,
+    "manifest": {
+      "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\gear-bastion\\20261024T044913920381Z\\manifest.json",
+      "sha256": "9a86f8adfa42aae7af0cf808d5f670f66a36037a11c081afd5e7b63b9fa7b10d",
+      "bytes": 1804
+    },
+    "artifact": {
+      "path": "F:/games-workspaces/gear-recovery-20261024/.artifacts/gear-bastion/20261024T044913920381Z/gear-bastion.apk",
+      "bytes": 56083160,
+      "sha256": "185a7d1ab5a4ab2be4d1e838a57a501f8c1b22a760f6c6f75971a851db0d378d"
+    },
+    "inspection": {
+      "package": "com.dsschiff.gearbastion",
+      "version_code": "11",
+      "version_name": "0.4.2",
+      "permissions": [],
+      "internet_permission": false,
+      "signature_verified": true,
+      "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
+      "debuggable": false
+    },
+    "clean_source": true,
+    "source_unchanged": true,
+    "status": "Local signed code11 functional packet audited with strict log-clean failure. New retry-marker fault sequence is outside prior packet coverage; future builds held for regression/fix. Not uploaded."
+  },
+  "native_code11": {
+    "status": "Independently audited bounded functional evidence; strict engine log-clean FAILED. No upload or blanket release/render clearance.",
+    "report": {
+      "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\native-gear-recovery-20261024T0522Z\\report.json",
+      "sha256": "c353795ec209cebab5d78da2b0eafe544808337e999e07bf1e347cbe1ea881d4",
+      "bytes": 45161
+    },
+    "packet_files": 212,
+    "update_files": 8,
+    "complete_owning_context_comparisons": 16,
+    "failures": 0,
+    "pending_complete_context_validations": 7,
+    "resolved_journal_absence_checks": 8,
+    "scope": "Actual signed10to11, offline/Home/cold process checks passed; process screenshots alone were black/splash and do not establish visual acceptance. Later settled screens show working game/pending UI. Actual native Paste/Import from genuine ready to genuine battle context in First Spark, complete active run/settings/profile verified; subsequent Home/cold stays at12.9333333333333s and paused.",
+    "pending_fixture": "Journal metadata explicitly materialized referencing exact archives genuinely created by normal native Import. Previous ready vs incoming battle in same first mission; no native I/O fault or power loss induced. Earlier typed-old-practice folder name was an incorrect initial assumption corrected by owning decode.",
+    "pending_controls": "Summary-first native panel readable; Back/Home/app-process cold launch retain exact first-fixture file bytes; read-only code view and explicit Retry Import/Keep Previous verified. Copy export controls absent in code11 and being added separately.",
+    "restore": "Original pre-update complete battle context restored through actual Paste/Import and owning Store verified before shutdown.",
+    "equality_limit": "Complete production owning-decoder state/settings/profile equality, without extra masks. Independent raw JSON comparison finds four update-related unit-x 1-ULP serialization changes (103.10927135131051 to 103.10927135131053); do not claim raw-value or byte equality for those comparisons.",
+    "profile_limit": "Earned campaign/medal/challenge profile is empty. This packet proves exact preservation of that profile, not native earned-profile coverage.",
+    "strict_engine_log_clean": false,
+    "warning": "First and later warm cold app logs retain WARNING Failed to load cached shader, recompiling. Warm log-clean assertion failed, not reclassified. Godot source shows cached OpenGL binary link failure triggers recompilation; cause of incompatibility here remains unproven. No blanket cache disabling or warning filtering.",
+    "engine_source": "https://raw.githubusercontent.com/godotengine/godot/4.7.2-stable/drivers/gles3/shader_gles3.cpp",
+    "independent_review": "Astra verified all212 packet pins,8 updater pins,APK/build,17 decoder bindings,16 owning-context comparisons,7 exact archive/marker validations,8 journal absences and settled summary/read-only/Keep Previous cold stills. No native fault/power-loss or physical acceptance.",
+    "shutdown": {
+      "path": "F:\\games-workspaces\\gear-recovery-20261024\\.artifacts\\native-gear-recovery-20261024T0522Z-cleanup.json",
+      "sha256": "253db25fb760dfd5fd605df8678b974f51bbbf0450a9cc57dff215a47e686d6f",
+      "bytes": 216
+    }
+  },
+  "initial_reviewed_runtime_commit": "f34d77eae1491f0e1040ac6478a4e716cebcff28",
+  "initial_independent_review": "Astra source and CPU checkpoint clear; signed candidate APK/hash/size/signer/raw engine logs/manifest/source fingerprint independently verified. Runtime unchanged from f34d77e; candidate changes only version metadata and README."
 }

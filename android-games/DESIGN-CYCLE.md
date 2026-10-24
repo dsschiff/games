@@ -141,3 +141,10 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
   frozen871/188/573 regression batch. Full projectile/ending/parked contexts
   retained; no Store/rules/UI/version/build/native claims added.
   See evidence/hook-marker-retry-20261024.json.
+
+- Gear0.4.3/code12 includes reviewed safe copy controls and fresh all-marker/
+  all-archive retry admission. Signed/native update and explicit choices verified
+  with10 whole owning-context comparisons/0,7 pending/7 cleared markers,2 exact
+  Android-emulator clipboard reads. All355 packet+8 update pins reviewed.
+  Shader warning remains failed; no blanket rendering/physical/cloud acceptance
+  or new upload. Earlier code11 and failed driver/native packets are preserved.
