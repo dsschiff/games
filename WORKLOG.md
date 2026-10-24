@@ -763,3 +763,16 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   cold unreadable-copy usability limit retained. Old code7 native baseline2/0
   includes ten active bullets; repeated shader warning already present.
   No version/build/upload; candidate/native/physical/cloud gates remain open.
+
+- Frontline retry-marker fix integrated from eecc057. Root107/0 helper and26/0
+  actual-input checks pass with24 touch events over campaign/legacy fixture kinds and
+  Retry/Keep choices; complete career/parked legacy contexts survive fresh
+  materialized production owners. Existing coordinator model cache used; worker
+  missing-cache2/1/0-touch failure remains failed. Astra source/evidence clear,
+  no schema/rules/UI/version/build/upload/native acceptance change.
+
+- Hook retry-marker admission integrated from2467cd6, preserving full campaign
+  projectiles/profile/parked ending and arena feedback. Root172/0 passes; worker
+  marker172/0 plus one frozen871/188/573 regression batch clear. Astra170-source/
+  193-unchanged-file/43-artifact audit clear. Baseline174/35 retained.
+  No Store/rules/schema/UI/version/build/native acceptance change.
