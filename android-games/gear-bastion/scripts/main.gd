@@ -656,7 +656,7 @@ func _build_save_dialog() -> void:
 	recovery_copy_feedback.size_flags_horizontal=Control.SIZE_EXPAND_FILL; content.add_child(recovery_copy_feedback); recovery_copy_feedback.hide()
 	recovery_choices=VBoxContainer.new(); content.add_child(recovery_choices); recovery_choices.hide()
 	for item in [["retry","Retry Import",finish_import.bind(true)],["previous","Keep previous whole save",finish_import.bind(false)],["read","Retry recovery read",retry_recovery_read],["copy_previous","Copy Previous",copy_recovery_code.bind(false)],["copy_incoming","Copy Imported",copy_recovery_code.bind(true)],["view_previous","View previous code",show_recovery_code.bind(false)],["view_incoming","View imported code",show_recovery_code.bind(true)]]:
-		var recovery_button:=Button.new(); recovery_button.text=item[1]; recovery_button.custom_minimum_size=Vector2(180,80)
+		var recovery_button:=Button.new(); recovery_button.text=item[1]; recovery_button.custom_minimum_size=Vector2(180,80); recovery_button.mouse_filter=Control.MOUSE_FILTER_PASS
 		recovery_button.pressed.connect(item[2]); recovery_choices.add_child(recovery_button); recovery_buttons[item[0]]=recovery_button
 	save_text = TextEdit.new()
 	save_text.custom_minimum_size = Vector2(280, 320)

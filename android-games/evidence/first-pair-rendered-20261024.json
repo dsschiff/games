@@ -111,5 +111,6 @@
       "uploaded": false
     }
   },
-  "integration_review": "Astra six-file root enclosure and seven explicit path/hash records CLEAR; final Dead checkpoint differs prior reviewed checkpoint only in disposition; retained inventory arithmetic and delivered-link invariance verified."
+  "integration_review": "Astra six-file root enclosure and seven explicit path/hash records CLEAR; final Dead checkpoint differs prior reviewed checkpoint only in disposition; retained inventory arithmetic and delivered-link invariance verified.",
+  "later_android_evidence": "android-games/evidence/first-pair-native-20261024.json; candidate/build fields above preserve the historical rendered-cycle versions. Later0.3.7 includes the native-discovered Journey row-touch correction."
 }

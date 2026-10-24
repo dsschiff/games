@@ -1,0 +1,31 @@
+{
+  "worker_commit": "2c8359da861278525391a39c0bcf2b3c6331197b",
+  "root_integration": "1b7d981",
+  "checkpoint": {
+    "path": "android-games/gear-bastion/TOUCH_NAVIGATION_CHECKPOINT.json",
+    "worker_raw_sha256": "a4eab4a5118709d571bd4691c3610c90424212cfdbbc48ceb2243461f34dfa75"
+  },
+  "runtime_delta": "Only pending-recovery buttons pass pointer input upward to their existing ScrollContainer; original UTF8 base reconstructs exactly after removing the one append.",
+  "review": "Astra exact source/checkpoint/23artifact/219base/28binary bindings and final467/0 CLEAR; final review-disposition-only amendment recorded.",
+  "coordinator_repeat": {
+    "worktree": "F:/games-workspaces/gear-design-20261023",
+    "reason": "Current root has no Gear asset cache. Source-identical clean worker cache reused without import/copy.",
+    "checks": 467,
+    "failures": 0,
+    "receipt": {
+      "path": "F:\\games-workspaces\\gear-design-20261023\\android-games\\gear-bastion\\.artifacts\\touch-navigation-current-20261024T155152313034Z\\receipt.json",
+      "bytes": 82985,
+      "sha256": "659d703f95fb2cb838f0c8bcc645d6f1178c98da83ae2bfae0018ef315cc76ef"
+    },
+    "observations": {
+      "path": "F:\\games-workspaces\\gear-design-20261023\\android-games\\gear-bastion\\.artifacts\\touch-navigation-current-20261024T155152313034Z\\touch-navigation.json",
+      "bytes": 741639,
+      "sha256": "b5946ff59f3662f34c6654889f0f0606899bfd278fc95b8a097325a23cfff03d"
+    }
+  },
+  "version_unchanged": "0.4.3/code12; existing APK predates touch fix.",
+  "limits": "Headless synthetic touchscreen capability, typed storage fault and complete owning fixtures. No native Gear swipe/pixels/clipboard/fault/physical or cloud acceptance. Earlier encoding-error source packets are historical, not final acceptance.",
+  "next": "Prepare higher signed Gear candidate and verify actual code12to13 full-context recovery-button swipes/choices without accidental activation.",
+  "uploaded": false,
+  "integrated_game_tree": "89ca0f66539bdae18042655a7167d844d0060a35"
+}

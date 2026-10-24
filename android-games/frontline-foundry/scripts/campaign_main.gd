@@ -227,6 +227,7 @@ func enter_campaign() -> void:
 	ending_label.text = "THE FOUNDRY IS FREE\nTwelve districts liberated. Replay for medals or skirmish." if career.ending else "JOURNEY  %d / 12\nSelecting resets this sortie; earned records stay." % career.clears.size()
 	for i in 12:
 		var b := button(journey_list, F.campaign_row(i, career), select_mission.bind(i))
+		b.mouse_filter = Control.MOUSE_FILTER_PASS
 		b.add_theme_font_size_override("font_size", 24)
 		b.custom_minimum_size = Vector2(560, 96)
 		b.disabled = i > career.clears.size()
