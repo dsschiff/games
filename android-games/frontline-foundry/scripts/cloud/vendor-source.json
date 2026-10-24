@@ -1,0 +1,6 @@
+{
+  "source": "android-games/shared/play-cloud/cloud_backup.gd",
+  "vendored": "android-games/frontline-foundry/scripts/cloud/codec.gd",
+  "sha256": "a2fa77e5066fe226b441dcaa199cb4ed9c45b365adc2470959cea6d1e24d5b43",
+  "reason": "Godot res:// project isolation; exact source copy, no independent envelope logic. Coordinator owns future packaging/staging."
+}

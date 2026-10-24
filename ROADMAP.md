@@ -64,7 +64,7 @@ Authoritative priorities and acceptance: `android-games/DESIGN-CYCLE.md`.
 | Milestone | Current state | Exit condition |
 | --- | --- | --- |
 | D0 Baseline | Current origin/main 4552e7b inspected; six release-signed APKs exist; old status records lag current source | Current baseline and explicit unresolved gates recorded |
-| D1 Leading pair | Frontline0.3.2 privately delivered; Dead Run source fixes and strict54/0 harness correction reviewed; signed0.4.1 candidate awaiting motion/native | Actual input and independent review support one meaningful private update per game |
+| D1 Leading pair | Frontline0.3.2 privately delivered; Dead Run source fixes and strict54/0 harness correction reviewed; signed0.4.1 privately delivered after bounded motion/native clearance | Actual input and independent review support one meaningful private update per game |
 | D2 Portfolio | Gear0.4.1, Hearthguard0.3.1, Hook0.3.1 and Tower0.4.1 privately delivered; bounded feedback/motion/save/native checks verified | One meaningful verified design-and-polish release per game |
 | D3 Cloud recovery | Reviewed native transport21JVM/27codec plus60 real-decoder checks; game adapter work active; live account sync unverified | Offline-safe optional cloud path and genuine account/device sync verified; external blockers explicit |
 | D4 Delivery | Existing private Obtainium path retained; Play account identity/phone pending as of live 2026-10-23 check | Higher-version signed private updates retain real progress; Daniel-only Play testing when available |

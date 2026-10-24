@@ -38,6 +38,7 @@ CHECKPOINT_SLUGS = {
     "tower_design_checkpoint": "tower-trials",
     "hook_graphics_checkpoint": "hook-and-hunger",
     "dead_run_graphics_checkpoint": "dead-run",
+    "dead_run_design_checkpoint": "dead-run",
     "tower_graphics_checkpoint": "tower-trials",
     "dead_run_horde_checkpoint": "dead-run",
     "gear_3d_checkpoint": "gear-bastion",

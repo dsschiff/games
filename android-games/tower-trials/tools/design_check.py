@@ -19,7 +19,10 @@ def sources():
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("suites", nargs="+", help="Existing test script basenames")
+    parser.add_argument("--viewport", help="optional WxH user argument for viewport-aware input suites")
     args = parser.parse_args()
+    if args.viewport and (len(args.viewport.split("x")) != 2 or not all(p.isdigit() and 100 <= int(p) <= 4000 for p in args.viewport.split("x"))):
+        parser.error("viewport must be WxH with sides from100 to4000")
     if any("/" in n or chr(92) in n or not (ROOT / "tests" / (n + ".gd")).is_file() for n in args.suites):
         parser.error("Use existing test script basenames")
     run = ROOT / ".artifacts" / ("design-cpu-" + datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ"))
@@ -48,7 +51,7 @@ def main():
         for suite in args.suites:
             if sources() != before:
                 break
-            report["suites"].append(invoke(["--fixed-fps", "60", "--script", "tests/" + suite + ".gd", "--", "--capture-dir=" + str(run)], suite))
+            report["suites"].append(invoke(["--fixed-fps", "60", "--script", "tests/" + suite + ".gd", "--", "--capture-dir=" + str(run)] + (["--viewport=" + args.viewport] if args.viewport else []), suite))
     report["source_unchanged"] = sources() == before
     report["passed"] = report["import"]["passed"] and report["source_unchanged"] and len(report["suites"]) == len(args.suites) and all(s["passed"] for s in report["suites"])
     (run / "report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")

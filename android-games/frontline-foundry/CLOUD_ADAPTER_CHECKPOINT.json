@@ -1,0 +1,86 @@
+{
+  "base": "ac0526ef4ea89d454f487eef44118229976583ca",
+  "scope": "Dormant, unconnected Frontline recovery adapter; no working sync/UI/native/export claim",
+  "vendor": {
+    "source": "android-games/shared/play-cloud/cloud_backup.gd",
+    "vendored": "android-games/frontline-foundry/scripts/cloud/codec.gd",
+    "sha256": "a2fa77e5066fe226b441dcaa199cb4ed9c45b365adc2470959cea6d1e24d5b43",
+    "reason": "Godot res:// project isolation; exact source copy, no independent envelope logic. Coordinator owns future packaging/staging."
+  },
+  "current_checks": {
+    "adapter": 989,
+    "adapter_failures": 0,
+    "known_unfixed_local_import_observations_included": 8,
+    "campaign_rules": 416,
+    "campaign_input": 276,
+    "campaign_input_touch_taps": 177,
+    "campaign_input_engine_time_scale": 8
+  },
+  "source": {
+    "scripts/cloud/backup.gd": "f394fdc5e226930fe30596bf289e2e05588b2c7be53fcc43c0791f2f4a33b052",
+    "scripts/cloud/backup.gd.uid": "92418b12b8995501d0ac4e5403fd2efe21cfb78cd51770bd762767207b0e1afe",
+    "scripts/cloud/codec.gd": "a2fa77e5066fe226b441dcaa199cb4ed9c45b365adc2470959cea6d1e24d5b43",
+    "scripts/cloud/copies.gd": "b87630f285fb8de74ea60d57b87693851ec597989dadcd8c43d266f842f06aa0",
+    "scripts/cloud/copies.gd.uid": "7f4c9272ab6825507d176062c989a8873184e68d7ccd41a493208812ebe62d91",
+    "scripts/cloud/port.gd": "251f9733a3f5c854df78b94757fdceca7fe21813ccf3ff01c52bfe6306b58d69",
+    "scripts/cloud/port.gd.uid": "608a73f996377f66bb271930368aa5e3b6f63b23289b94c67b1f149029558936",
+    "scripts/cloud/recovery.gd": "4831cfd7c9e5e1ef0559389cbc3c2e953ce189c7a2af20ebc6749906721292ff",
+    "scripts/cloud/recovery.gd.uid": "4a56db43e03bb62970ec66843c26642244861d9c6932f119dfda93ba158649e2",
+    "scripts/cloud/vendor-source.json": "57fbae32484cb456221edfb4278ea597ce9ae6413f65affcec80b948968fface",
+    "tests/cloud_recovery.gd": "e0e6badca93cf1a0e929746e82c18e907914fa4f1f1e3c9a6999e8d9015a7d87",
+    "tests/run_cloud.py": "b60a88bfabd18b3d3d9ad4f0771bb82e04ec508d6b8cc30a6b1b8e49de6306b8",
+    "CLOUD_ADAPTER.md": "1bd95cabaafde82e7974b194d0ee4675c0e43a7b94ac73978d66c752f5091d91",
+    "README.md": "16d3fe22593dcb4aae9bb582681ab0e734785ad8cdeb34adeff1c8bdcb34db19"
+  },
+  "unchanged_offline_source": {
+    "scripts/rules.gd": "284c88908f6d1946ba3483a330b4bd5cac14936cf0a94684dc46ef28c6544190",
+    "scripts/campaign_rules.gd": "eb2a03da120c1731b9ae3a1c37d990a3b919261398bffd32bceb694eb6dfc8e4",
+    "scripts/definitions.gd": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+    "scripts/save_store.gd": "eb77a40c48ea44ffd542ce4a9ce0400946c04971e2710012b43c78f1e8d7641b",
+    "scripts/main.gd": "3968fcdc86e6e44b3728e8dd34b8f9ac2dec146f7d461ab188e62bc9b59481df",
+    "scripts/campaign_main.gd": "b7935cea7335a9f45305d34d169909dd5f93aa13c27de6b87001e3525dca9a28",
+    "scripts/boot.gd": "fbd79a339e92b94faef9cdfe7914652a2718853d047d80df1b65dcddb3d9ec16",
+    "boot.tscn": "bf7ff2c538b3d0c285d265e3a9f2b22ed7d13c4f4ed36fd479399acc95356c06",
+    "project.godot": "0d66726cc249e331e24296d923c084771dbcf83fd4b5855b3d3b80121d86356f",
+    "export_presets.cfg": "1be86bd34d907ed479705a9350063e69abd210fb06dbc1284513c4faf16b67d4"
+  },
+  "receipts": {
+    "adapter": {
+      "path": ".artifacts/cloud-cpu-20261024T015237608705Z/receipt.json",
+      "sha256": "fb2052da355030fb578666f1f347e4cb84c3cbd96d6b05c3889b0e1a3ce5d352"
+    },
+    "campaign_rules": {
+      "path": ".artifacts/cloud-regression-rules-20261024T013351496191Z/receipt.json",
+      "sha256": "6bdb8802f1e8819e1968bc405c6539bdfd17d53aa581300c58f7247d64f7cc62"
+    },
+    "campaign_input": {
+      "path": ".artifacts/cloud-offline-input-20261024T013606502667Z/receipt.json",
+      "sha256": "7f9f0dfd1ea289fb892edac41dc5ead20a500c0b7795ccdfa4e613d7284edef0"
+    },
+    "preservation_failure": {
+      "path": ".artifacts/cloud-cpu-20261024T013036714463Z/receipt.json",
+      "sha256": "77bca1e27312191dbec63e64273fc31a88ce17e399ba4be685c466a63904f2d3"
+    },
+    "ambiguous_write_failure": {
+      "path": ".artifacts/cloud-cpu-20261024T014428504056Z/receipt.json",
+      "sha256": "9a520b6c3e45f1e063ed218f3ad1a35eb1c44e0c5196139261fa7083a944f8fd"
+    },
+    "legacy_missing_fixture": {
+      "path": ".artifacts/cloud-regression-legacy-20261024T013356959966Z/receipt.json",
+      "sha256": "a209ddf25a6de5ea5e917a0c97db9c0d3046cc9f84e253e41f8ef2a108bc8b57"
+    },
+    "initial_parse_timeout": {
+      "path": ".artifacts/cloud-cpu-20261024T012800161883Z/failure.txt",
+      "sha256": "a8efb950b32f6550c2d176d08239915e8feff7fbdf619b087181e2e3863e5bf8"
+    }
+  },
+  "review": "Independent design_review source clear: final receipt fb2052da355030fb578666f1f347e4cb84c3cbd96d6b05c3889b0e1a3ce5d352,48 source pins/six outputs,before-after equality,989/0. No scene/native/UI/online approval; existing local Import defect remains unfixed.",
+  "remaining": [
+    "existing local Import transient post-rename false-result recovery",
+    "real native port/resource staging and close lifecycle",
+    "required owner freeze/adoption integration and recovery-copy UI",
+    "per-game Play IDs/signing-OAuth/tester/Saved Games/privacy configuration",
+    "real account and two-device/offline/cached tests",
+    "signed Android update and rendered UX acceptance"
+  ]
+}

@@ -1,0 +1,1587 @@
+{
+  "base_commit": "b4a5899",
+  "runtime_changed": [
+    "scripts/presentation/tower_view.gd"
+  ],
+  "unchanged": [
+    "popup_layout placement/font/text/growth/rise",
+    "all arithmetic/rules/timing and earliest legal input",
+    "main/catalog/levels/save/profile/seeded challenge snapshots",
+    "version/signing/export"
+  ],
+  "packets": {
+    "design-cpu-20261024T021308525473Z": {
+      "files": {
+        "association-result.json": "44c50f6d314cfd3a609c0e59492a977d4f334e23d028237bbc63b7c089df1e3b",
+        "feedback_association.log": "c107ed81d67d74f575a7bae4075c75c0bdd10c469a57d578b9d9bc7ac6064a15",
+        "import.log": "b728de0c23f24d9aa31bc7608b177d7ca13857d7c3aca862a08506d00675123b",
+        "report.json": "1d20ace6bef2910329b583d43aef9ffe3f12a85dfad5a8656e9f64bae59732c5",
+        "source-before.json": "91411a4bcc1958ac71fc2e91e89047f87b37af47ef11904ff3349c965044910f"
+      },
+      "report": {
+        "cpu_only": true,
+        "suites": [
+          {
+            "name": "feedback_association",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/feedback_association.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T021308525473Z"
+            ],
+            "exit_code": 1,
+            "errors": [
+              "FAIL: Displaced feedback retains visible association with its actual source floor",
+              "FAIL: Every room feedback event retains exact room identity and bounds at birth"
+            ],
+            "passed": false
+          }
+        ],
+        "import": {
+          "name": "import",
+          "command": [
+            "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+            "--headless",
+            "--audio-driver",
+            "Dummy",
+            "--path",
+            "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+            "--editor",
+            "--import",
+            "--quit"
+          ],
+          "exit_code": 0,
+          "errors": [],
+          "passed": true
+        },
+        "source_unchanged": true,
+        "passed": false
+      }
+    },
+    "design-cpu-20261024T021923559484Z": {
+      "files": {
+        "association-full-result.json": "07cac9ef1e9dada085392d8670f4a556d466a2f9116f43b9b2010e2032669917",
+        "association-result.json": "ba507938c602d2535d03b63b8e66aaf0710e2d9476bff99dd53be8ab5c860fbf",
+        "campaign_playthrough.log": "af8856e0670393267dcfbf3f5cdb97335bfe4232c05c126274d7c87a1ee6f0a1",
+        "challenge_playthrough.log": "9acd885eedc6c0cc8c6a501a74c6d392f078d7d5ecbe97193b00dfb42cf1b83a",
+        "feedback-result.json": "e4ea3b0d3bb27319d84897c3c673b50bceff779a04d655e7e5bb210af92348ae",
+        "feedback_association.log": "8fa31c9b5b3fdfb02ce53260a02c5d15b25f7b97da736d3565a98faeaec5da8f",
+        "feedback_association_full.log": "fc78f7aac493bf3e860f83ba3729ca16c53a5cbcad49356d829768071e8b92ea",
+        "feedback_readability.log": "07d748ccb24f51eed623ce29de22b0b44bd7bbe800efafb20a48650fc9db192a",
+        "graphics_view.log": "b90b2420e0c9cab7195ff3dd09574e79455f241b54901d98fbf6f1c98dd7e116",
+        "import.log": "97d3a98b638bde96129f72c0aa2c73756b531bcc790e7a75a73508fdf8f980e1",
+        "report.json": "fa5ab54c6e6f48ce053f398e643fb68702822b74a3b3ab91b7ad1327bfe72a27",
+        "run_tests.log": "2613834009f299150f4362eefa749ab093830bcbab77e99d6d77bc3c2ce64a1b",
+        "source-before.json": "f9dd52ded2cde91f939d8c30b11bc6fd8a8097e1ff77c50002d6747691f23a0f"
+      },
+      "report": {
+        "cpu_only": true,
+        "suites": [
+          {
+            "name": "feedback_association",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/feedback_association.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T021923559484Z"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          },
+          {
+            "name": "feedback_association_full",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/feedback_association_full.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T021923559484Z"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          },
+          {
+            "name": "feedback_readability",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/feedback_readability.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T021923559484Z"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          },
+          {
+            "name": "run_tests",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/run_tests.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T021923559484Z"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          },
+          {
+            "name": "campaign_playthrough",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/campaign_playthrough.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T021923559484Z"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          },
+          {
+            "name": "challenge_playthrough",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/challenge_playthrough.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T021923559484Z"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          },
+          {
+            "name": "graphics_view",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/graphics_view.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T021923559484Z"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          }
+        ],
+        "import": {
+          "name": "import",
+          "command": [
+            "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+            "--headless",
+            "--audio-driver",
+            "Dummy",
+            "--path",
+            "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+            "--editor",
+            "--import",
+            "--quit"
+          ],
+          "exit_code": 0,
+          "errors": [],
+          "passed": true
+        },
+        "source_unchanged": true,
+        "passed": true
+      }
+    },
+    "design-cpu-20261024T022056713958Z": {
+      "files": {
+        "association-result.json": "ba507938c602d2535d03b63b8e66aaf0710e2d9476bff99dd53be8ab5c860fbf",
+        "feedback_association.log": "8fa31c9b5b3fdfb02ce53260a02c5d15b25f7b97da736d3565a98faeaec5da8f",
+        "import.log": "b728de0c23f24d9aa31bc7608b177d7ca13857d7c3aca862a08506d00675123b",
+        "report.json": "23e936abb572630a23ec83028741d98a2fb3de760808e6279ee8eb0b99cc85cb",
+        "source-before.json": "f9dd52ded2cde91f939d8c30b11bc6fd8a8097e1ff77c50002d6747691f23a0f"
+      },
+      "report": {
+        "cpu_only": true,
+        "suites": [
+          {
+            "name": "feedback_association",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/feedback_association.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T022056713958Z",
+              "--viewport=1080x2520"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          }
+        ],
+        "import": {
+          "name": "import",
+          "command": [
+            "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+            "--headless",
+            "--audio-driver",
+            "Dummy",
+            "--path",
+            "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+            "--editor",
+            "--import",
+            "--quit"
+          ],
+          "exit_code": 0,
+          "errors": [],
+          "passed": true
+        },
+        "source_unchanged": true,
+        "passed": true
+      }
+    },
+    "design-cpu-20261024T022102644114Z": {
+      "files": {
+        "association-result.json": "ba507938c602d2535d03b63b8e66aaf0710e2d9476bff99dd53be8ab5c860fbf",
+        "feedback_association.log": "8fa31c9b5b3fdfb02ce53260a02c5d15b25f7b97da736d3565a98faeaec5da8f",
+        "import.log": "b728de0c23f24d9aa31bc7608b177d7ca13857d7c3aca862a08506d00675123b",
+        "report.json": "27b4b70f23636381dc2301a3b94ebaa41e98e7b00ea941b1c87fd130d01747ff",
+        "source-before.json": "f9dd52ded2cde91f939d8c30b11bc6fd8a8097e1ff77c50002d6747691f23a0f"
+      },
+      "report": {
+        "cpu_only": true,
+        "suites": [
+          {
+            "name": "feedback_association",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/feedback_association.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T022102644114Z",
+              "--viewport=1968x2184"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          }
+        ],
+        "import": {
+          "name": "import",
+          "command": [
+            "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+            "--headless",
+            "--audio-driver",
+            "Dummy",
+            "--path",
+            "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+            "--editor",
+            "--import",
+            "--quit"
+          ],
+          "exit_code": 0,
+          "errors": [],
+          "passed": true
+        },
+        "source_unchanged": true,
+        "passed": true
+      }
+    },
+    "design-cpu-20261024T022107721026Z": {
+      "files": {
+        "association-result.json": "ba507938c602d2535d03b63b8e66aaf0710e2d9476bff99dd53be8ab5c860fbf",
+        "feedback_association.log": "8fa31c9b5b3fdfb02ce53260a02c5d15b25f7b97da736d3565a98faeaec5da8f",
+        "import.log": "b728de0c23f24d9aa31bc7608b177d7ca13857d7c3aca862a08506d00675123b",
+        "report.json": "751ddecf8fc002d6ecd8fe5f109af3b6e9085b82c5f7606554649fa852af7703",
+        "source-before.json": "f9dd52ded2cde91f939d8c30b11bc6fd8a8097e1ff77c50002d6747691f23a0f"
+      },
+      "report": {
+        "cpu_only": true,
+        "suites": [
+          {
+            "name": "feedback_association",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/feedback_association.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T022107721026Z",
+              "--viewport=1600x900"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          }
+        ],
+        "import": {
+          "name": "import",
+          "command": [
+            "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+            "--headless",
+            "--audio-driver",
+            "Dummy",
+            "--path",
+            "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+            "--editor",
+            "--import",
+            "--quit"
+          ],
+          "exit_code": 0,
+          "errors": [],
+          "passed": true
+        },
+        "source_unchanged": true,
+        "passed": true
+      }
+    },
+    "design-cpu-20261024T022336918845Z": {
+      "files": {
+        "association-result.json": "ba507938c602d2535d03b63b8e66aaf0710e2d9476bff99dd53be8ab5c860fbf",
+        "association_motion.log": "8fa31c9b5b3fdfb02ce53260a02c5d15b25f7b97da736d3565a98faeaec5da8f",
+        "import.log": "b728de0c23f24d9aa31bc7608b177d7ca13857d7c3aca862a08506d00675123b",
+        "observed-input-events.json": "777d7d7fa0e2c87d6bf0ba4d535fd9703b836bf87a3e194c82b98fdefbac12ea",
+        "picture-timeline.json": "78bb2a94567ac27866d7cc5724965293c68dda86ce78054deb03f5d66fd42954",
+        "report.json": "326c6f41a4d2aa454ee1611bf63b9c04d748a81822cf88704839b7d868ddbd96",
+        "source-before.json": "7a0c5e2a6bfef4440587d216451dbeead61095f8361ec14846641b99d9d86a72"
+      },
+      "report": {
+        "cpu_only": true,
+        "suites": [
+          {
+            "name": "association_motion",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/association_motion.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T022336918845Z"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          }
+        ],
+        "import": {
+          "name": "import",
+          "command": [
+            "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+            "--headless",
+            "--audio-driver",
+            "Dummy",
+            "--path",
+            "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+            "--editor",
+            "--import",
+            "--quit"
+          ],
+          "exit_code": 0,
+          "errors": [],
+          "passed": true
+        },
+        "source_unchanged": true,
+        "passed": true
+      }
+    }
+  },
+  "review": {
+    "design": "Astra accepted bounded event-time origin pin/connector concept; current source disposition pending",
+    "render": "Completed: before62/5FAILretained; afterstrict62/0PASS. Matched781frames,60fps,13.016667seconds; bothfullydecoded. Exact42inputeventparity; onlyexecutedviewsource differs.",
+    "source": "Astra source clear: bounded capture approved; no source P1/P2, actual room/rect captured at event time, existing popup layout/text/timing unchanged. Fragmented/shared gutters/hidden markers keep visual acceptance open.",
+    "visual": {
+      "reviewer": "Astra /root/design_review",
+      "disposition": "Bounded visual CLEAR as improvement; no new blocking P1/P2.",
+      "independent_verification": "Both17artifacthashesmatch;42observedScreenToucheventsexactlyequal; onlyexecutedtower_viewdiffers.",
+      "before_sample_seconds": [
+        0.063,
+        1.114,
+        2.46,
+        3.526,
+        4.584,
+        5.63,
+        6.7,
+        7.757,
+        8.831,
+        9.89,
+        10.947,
+        12.271,
+        13.017
+      ],
+      "after_sample_seconds": [
+        0,
+        1.062,
+        2.044,
+        3.111,
+        4.169,
+        5.232,
+        6.563,
+        7.372,
+        8.442,
+        9.762,
+        10.572,
+        11.904,
+        12.697,
+        13.017
+      ],
+      "playback": {
+        "rate": 1,
+        "before_ended": true,
+        "after_ended": true,
+        "displayed_end_seconds": 13.017,
+        "screenshot_lag_qualification": "Nearby screenshots follow AX by about0.27seconds; bounded sampled playback, not every-frame review."
+      },
+      "inspected_stills": [
+        "earned-twin-chimes-60.png",
+        "natural-order-defeat-60.png"
+      ],
+      "observations": [
+        "At first reward, displaced+10, defeat and rapid chaining, leaders give a traceable source without a new legend.",
+        "No obvious anchor jump or new text obstruction."
+      ],
+      "limits": [
+        "+10 still visually occupies untouched Bell loft.",
+        "Thin or masked shared-gutter leaders demand attention in rapid chaining; not universal instant association.",
+        "No human-phone, measuredFPS, audible-sound or whole-game fun acceptance.",
+        "Historical baseline62/5 remains failed."
+      ],
+      "own_browser_tab_closed": "413132735",
+      "gpu_released_to": "root"
+    }
+  },
+  "limits": [
+    "CPU font/outline/stroke geometry is not visual acceptance.",
+    "Historical expected-failure baseline and interrupted/stronger-test failures retained.",
+    "Some origin markers are masked when text would cover them; exercised ambiguous numbers retain nonempty source leader paint, but visual clarity needs matched1x review."
+  ],
+  "executed_runtime_lf_sha256": "128077a87661d8c8291335db109eee9a19e6ef1d394c5ac17d3eff8cc6a4b1b0",
+  "source_freeze_commit": "6b3995373b29d4c96109159445247aa6bfd39da5",
+  "motion": {
+    "before": {
+      "packet": "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\association-before-20261024T022540Z",
+      "receipt_sha256": "0e5fc24a499e3f49f0a6b21839de76f8578de409d0d3c022f0caef2bbf143cdd",
+      "receipt": {
+        "mode": "before",
+        "candidate_commit": "6b3995373b29d4c96109159445247aa6bfd39da5",
+        "baseline_commit": "b4a5899",
+        "passed": false,
+        "scope": "Same fresh actual touch route, fixed60fps1x; no measured device FPS, human acceptance, save/version change or synthetic earned progress.",
+        "command": [
+          "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+          "--audio-driver",
+          "Dummy",
+          "--path",
+          "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+          "--fixed-fps",
+          "60",
+          "--resolution",
+          "600x1066",
+          "--position",
+          "0,0",
+          "--write-movie",
+          "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\association-before-20261024T022540Z\\capture.avi",
+          "--script",
+          "tests/association_motion.gd",
+          "--",
+          "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\association-before-20261024T022540Z"
+        ],
+        "exit_code": 1,
+        "raw_errors": [],
+        "source_unchanged_during_capture": true,
+        "functional": {
+          "above_origin_seen": false,
+          "ambiguous_frames": 499,
+          "bad_origins": 1148,
+          "below_origin_seen": false,
+          "checks": 62,
+          "failures": [
+            "Ordered components and total retain a shared event source",
+            "Leaders exercise both upward and downward displacement",
+            "Ambiguous numbers have actual nonempty leader paint, not only metadata",
+            "Displaced feedback retains visible association with its actual source floor",
+            "Every room feedback event retains exact room identity and bounds at birth"
+          ],
+          "first_ambiguities": [
+            {
+              "bounds": "[P: (241.5149, 566.0222), S: (62.0, 71.0)]",
+              "frame": 49,
+              "linked": false,
+              "move": "",
+              "painted_over_unclaimed": "rope",
+              "source_rect": "[P: (182.0, 620.0), S: (180.0, 122.0)]",
+              "source_room": "bell",
+              "text": "+2"
+            },
+            {
+              "bounds": "[P: (241.5149, 417.0142), S: (62.0, 71.0)]",
+              "frame": 104,
+              "linked": false,
+              "move": "",
+              "painted_over_unclaimed": "clock",
+              "source_rect": "[P: (182.0, 480.0), S: (180.0, 122.0)]",
+              "source_room": "rope",
+              "text": "+3"
+            },
+            {
+              "bounds": "[P: (212.0666, 566.0222), S: (62.0, 71.0)]",
+              "frame": 347,
+              "linked": false,
+              "move": "earned-twin-chimes",
+              "painted_over_unclaimed": "loft",
+              "source_rect": "[P: (182.0, 620.0), S: (180.0, 122.0)]",
+              "source_room": "pair",
+              "text": "+3"
+            },
+            {
+              "bounds": "[P: (198.0, 418.2698), S: (148.0, 124.0)]",
+              "frame": 368,
+              "linked": false,
+              "move": "earned-twin-chimes",
+              "painted_over_unclaimed": "loft",
+              "source_rect": "[P: (182.0, 620.0), S: (180.0, 122.0)]",
+              "source_room": "pair",
+              "text": "+10"
+            },
+            {
+              "bounds": "[P: (270.9632, 471.2698), S: (62.0, 71.0)]",
+              "frame": 381,
+              "linked": false,
+              "move": "earned-twin-chimes",
+              "painted_over_unclaimed": "loft",
+              "source_rect": "[P: (182.0, 620.0), S: (180.0, 122.0)]",
+              "source_room": "pair",
+              "text": "+7"
+            },
+            {
+              "bounds": "[P: (336.8886, 574.4774), S: (205.0, 54.0)]",
+              "frame": 513,
+              "linked": false,
+              "move": "natural-order-defeat",
+              "painted_over_unclaimed": "star",
+              "source_rect": "[P: (382.0, 620.0), S: (180.0, 122.0)]",
+              "source_room": "reverse",
+              "text": "TOO STRONG"
+            },
+            {
+              "bounds": "[P: (212.0666, 566.0222), S: (62.0, 71.0)]",
+              "frame": 651,
+              "linked": false,
+              "move": "earliest-pair",
+              "painted_over_unclaimed": "loft",
+              "source_rect": "[P: (182.0, 620.0), S: (180.0, 122.0)]",
+              "source_room": "pair",
+              "text": "+3"
+            },
+            {
+              "bounds": "[P: (212.0666, 550.8378), S: (62.0, 71.0)]",
+              "frame": 667,
+              "linked": false,
+              "move": "earliest-loft",
+              "painted_over_unclaimed": "loft",
+              "source_rect": "[P: (182.0, 620.0), S: (180.0, 122.0)]",
+              "source_room": "pair",
+              "text": "+3"
+            },
+            {
+              "bounds": "[P: (198.0, 418.2698), S: (148.0, 124.0)]",
+              "frame": 672,
+              "linked": false,
+              "move": "earliest-loft",
+              "painted_over_unclaimed": "loft",
+              "source_rect": "[P: (182.0, 620.0), S: (180.0, 122.0)]",
+              "source_room": "pair",
+              "text": "+10"
+            },
+            {
+              "bounds": "[P: (270.9632, 471.2698), S: (62.0, 71.0)]",
+              "frame": 685,
+              "linked": false,
+              "move": "earliest-loft",
+              "painted_over_unclaimed": "loft",
+              "source_rect": "[P: (182.0, 620.0), S: (180.0, 122.0)]",
+              "source_room": "pair",
+              "text": "+7"
+            }
+          ],
+          "first_clip": {},
+          "first_missing": {
+            "layout": "[{ \"text\": \"+2\", \"size\": 40, \"outline\": 8, \"bounds\": [P: (241.5149, 566.0222), S: (62.0, 71.0)], \"where\": (249.5149, 617.0222), \"alpha\": 1.0, \"color\": (1.0, 0.8196, 0.4902, 1.0) }]",
+            "links": "[]",
+            "source": "bell",
+            "source_rect": "[P: (182.0, 620.0), S: (180.0, 122.0)]",
+            "text": "+2"
+          },
+          "frames": 774,
+          "hidden_markers": 0,
+          "link_clipped": 0,
+          "link_text_intersections": 0,
+          "max_links": 0,
+          "missing_leaders": 499,
+          "repeated_origin_seen": false,
+          "samples": [
+            {
+              "clipped_frames": 0,
+              "first_clipped": {},
+              "frames": 150,
+              "label": "earned-twin-chimes",
+              "overlap_frames": 0,
+              "peak": 3,
+              "stack_height": 301.0,
+              "texts": [
+                "+3",
+                "+7",
+                "+10"
+              ]
+            },
+            {
+              "clipped_frames": 0,
+              "first_clipped": {},
+              "frames": 150,
+              "label": "natural-order-defeat",
+              "overlap_frames": 0,
+              "peak": 2,
+              "stack_height": 169.0,
+              "texts": [
+                "TOO STRONG",
+                "LANTERN OUT"
+              ]
+            },
+            {
+              "clipped_frames": 0,
+              "first_clipped": {},
+              "frames": 54,
+              "label": "earliest-pair",
+              "overlap_frames": 0,
+              "peak": 3,
+              "stack_height": 301.0,
+              "texts": [
+                "+3",
+                "+7",
+                "+10"
+              ]
+            },
+            {
+              "clipped_frames": 0,
+              "first_clipped": {},
+              "frames": 54,
+              "label": "earliest-loft",
+              "overlap_frames": 0,
+              "peak": 3,
+              "stack_height": 324.0,
+              "texts": [
+                "+3",
+                "+7",
+                "+10",
+                "+12"
+              ]
+            },
+            {
+              "clipped_frames": 0,
+              "first_clipped": {},
+              "frames": 54,
+              "label": "earliest-light",
+              "overlap_frames": 0,
+              "peak": 4,
+              "stack_height": 449.0,
+              "texts": [
+                "+10",
+                "+12",
+                "+25",
+                "KEEPER RESCUED"
+              ]
+            }
+          ],
+          "scope": "Fresh actual input earns first tower, ordered components/total, natural defeat, Undo, earliest legal chaining. CPU font/outline association geometry; no rendered/native claim.",
+          "taps": 21,
+          "unlinked_frames": 499,
+          "viewport": "(600, 1066)",
+          "visible_rect": "[P: (0.0, 0.0), S: (600.0, 1066.0)]"
+        },
+        "strict_run_passed": false,
+        "candidate_restored_exactly": true,
+        "raw_movie": {
+          "bytes": 41975254,
+          "sha256": "41d128e137d8b4f2086f1d5e700843148ab04d07f4f12f846c0d8c498dbc557a"
+        },
+        "encode_command": [
+          "C:/Users/Daniel/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe",
+          "-y",
+          "-i",
+          "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\association-before-20261024T022540Z\\capture.avi",
+          "-vf",
+          "pad=ceil(iw/2)*2:ceil(ih/2)*2",
+          "-an",
+          "-c:v",
+          "libx264",
+          "-preset",
+          "medium",
+          "-crf",
+          "18",
+          "-pix_fmt",
+          "yuv420p",
+          "-movflags",
+          "+faststart",
+          "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\association-before-20261024T022540Z\\association-1x.mp4"
+        ],
+        "decode_command": [
+          "C:/Users/Daniel/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe",
+          "-v",
+          "error",
+          "-i",
+          "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\association-before-20261024T022540Z\\association-1x.mp4",
+          "-f",
+          "null",
+          "-"
+        ],
+        "movie": {
+          "bytes": 1806598,
+          "sha256": "14262bbde8155c18f40498e24379ec518db2c54bcee5849be67d9ce3a78705f3",
+          "metadata": {
+            "streams": [
+              {
+                "index": 0,
+                "codec_name": "h264",
+                "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+                "profile": "High",
+                "codec_type": "video",
+                "codec_tag_string": "avc1",
+                "codec_tag": "0x31637661",
+                "mime_codec_string": "avc1.64001f",
+                "width": 480,
+                "height": 854,
+                "coded_width": 480,
+                "coded_height": 864,
+                "has_b_frames": 2,
+                "sample_aspect_ratio": "1:1",
+                "display_aspect_ratio": "240:427",
+                "pix_fmt": "yuvj420p",
+                "level": 31,
+                "color_range": "pc",
+                "color_space": "bt470bg",
+                "chroma_location": "left",
+                "field_order": "progressive",
+                "refs": 4,
+                "is_avc": "true",
+                "nal_length_size": "4",
+                "id": "0x1",
+                "r_frame_rate": "60/1",
+                "avg_frame_rate": "60/1",
+                "time_base": "1/15360",
+                "start_pts": 0,
+                "start_time": "0.000000",
+                "duration_ts": 199936,
+                "duration": "13.016667",
+                "bit_rate": "1104372",
+                "bits_per_raw_sample": "8",
+                "nb_frames": "781",
+                "nb_read_frames": "781",
+                "extradata_size": 51,
+                "disposition": {
+                  "default": 1,
+                  "dub": 0,
+                  "original": 0,
+                  "comment": 0,
+                  "lyrics": 0,
+                  "karaoke": 0,
+                  "forced": 0,
+                  "hearing_impaired": 0,
+                  "visual_impaired": 0,
+                  "clean_effects": 0,
+                  "attached_pic": 0,
+                  "timed_thumbnails": 0,
+                  "non_diegetic": 0,
+                  "captions": 0,
+                  "descriptions": 0,
+                  "metadata": 0,
+                  "dependent": 0,
+                  "still_image": 0,
+                  "multilayer": 0
+                },
+                "tags": {
+                  "language": "und",
+                  "handler_name": "VideoHandler",
+                  "encoder": "Lavc62.28.101 libx264"
+                }
+              }
+            ],
+            "format": {
+              "filename": "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\association-before-20261024T022540Z\\association-1x.mp4",
+              "nb_streams": 1,
+              "nb_programs": 0,
+              "nb_stream_groups": 0,
+              "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+              "format_long_name": "QuickTime / MOV",
+              "start_time": "0.000000",
+              "duration": "13.016667",
+              "size": "1806598",
+              "bit_rate": "1110329",
+              "probe_score": 100,
+              "tags": {
+                "major_brand": "isom",
+                "minor_version": "512",
+                "compatible_brands": "isomiso2avc1mp41",
+                "encoder": "Lavf62.12.101"
+              }
+            }
+          },
+          "fully_decoded": true
+        },
+        "pngs": [
+          {
+            "file": "earliest-light-45.png",
+            "size": [
+              600,
+              1066
+            ],
+            "sha256": "762316cb2aedaf534dc6956121125e359e33fdaade748a92ea0ded92bd8f4114"
+          },
+          {
+            "file": "earliest-loft-45.png",
+            "size": [
+              600,
+              1066
+            ],
+            "sha256": "62508e8f684265aa7c84a67dfa904a7656d8eb89607bb28ee1439f5570dcc99e"
+          },
+          {
+            "file": "earliest-pair-45.png",
+            "size": [
+              600,
+              1066
+            ],
+            "sha256": "52bd3958d7331df0f56bf910ad2d78aa9c81a78d30ee57b0049ea1ca91b6e068"
+          },
+          {
+            "file": "earned-twin-chimes-45.png",
+            "size": [
+              600,
+              1066
+            ],
+            "sha256": "235521bed9a3fd910a3e85d7b944b512514f87e0161c9eb48278812259479779"
+          },
+          {
+            "file": "earned-twin-chimes-60.png",
+            "size": [
+              600,
+              1066
+            ],
+            "sha256": "de9db157487e834248e03d7b0e5ca148042887f0359f55ebcccc03ae1db8fdac"
+          },
+          {
+            "file": "earned-twin-chimes-75.png",
+            "size": [
+              600,
+              1066
+            ],
+            "sha256": "81c339393cf56d8a21a9bbf470647a312d237545bbb116621dfcce3cc1143190"
+          },
+          {
+            "file": "natural-order-defeat-45.png",
+            "size": [
+              600,
+              1066
+            ],
+            "sha256": "fb2bf7ddbe81c4fbe4a0a8752411c12aef459ab5961d53e357b898d0fbe24584"
+          },
+          {
+            "file": "natural-order-defeat-60.png",
+            "size": [
+              600,
+              1066
+            ],
+            "sha256": "896e3e63f7d2e9588b51e8bb275685e9ef6e1bf10d90e684b9cfad0d06a09538"
+          },
+          {
+            "file": "natural-order-defeat-75.png",
+            "size": [
+              600,
+              1066
+            ],
+            "sha256": "fa21434071d5f7c05374e16741c05bccbc582e633812f4a8d31a1d73e284c66f"
+          }
+        ],
+        "artifacts": {
+          "association-1x.mp4": {
+            "bytes": 1806598,
+            "sha256": "14262bbde8155c18f40498e24379ec518db2c54bcee5849be67d9ce3a78705f3"
+          },
+          "association-result.json": {
+            "bytes": 5793,
+            "sha256": "be03a2bf7cbb38d60f939e8db630b83b2677091c67f9e7d7c2404cd8e5ebf3ec"
+          },
+          "decode.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "earliest-light-45.png": {
+            "bytes": 252317,
+            "sha256": "762316cb2aedaf534dc6956121125e359e33fdaade748a92ea0ded92bd8f4114"
+          },
+          "earliest-loft-45.png": {
+            "bytes": 247013,
+            "sha256": "62508e8f684265aa7c84a67dfa904a7656d8eb89607bb28ee1439f5570dcc99e"
+          },
+          "earliest-pair-45.png": {
+            "bytes": 239862,
+            "sha256": "52bd3958d7331df0f56bf910ad2d78aa9c81a78d30ee57b0049ea1ca91b6e068"
+          },
+          "earned-twin-chimes-45.png": {
+            "bytes": 240045,
+            "sha256": "235521bed9a3fd910a3e85d7b944b512514f87e0161c9eb48278812259479779"
+          },
+          "earned-twin-chimes-60.png": {
+            "bytes": 255804,
+            "sha256": "de9db157487e834248e03d7b0e5ca148042887f0359f55ebcccc03ae1db8fdac"
+          },
+          "earned-twin-chimes-75.png": {
+            "bytes": 262239,
+            "sha256": "81c339393cf56d8a21a9bbf470647a312d237545bbb116621dfcce3cc1143190"
+          },
+          "encode.log": {
+            "bytes": 6322,
+            "sha256": "ee2e7aae5b0af468709c5b20336fa03a41fe9a7d5f1f3774bbe0116256e546f3"
+          },
+          "godot.log": {
+            "bytes": 1258,
+            "sha256": "48b175ac40b179be4b087f241b1821a157d84822d53ff66d1f24b45c67585880"
+          },
+          "natural-order-defeat-45.png": {
+            "bytes": 243489,
+            "sha256": "fb2bf7ddbe81c4fbe4a0a8752411c12aef459ab5961d53e357b898d0fbe24584"
+          },
+          "natural-order-defeat-60.png": {
+            "bytes": 251699,
+            "sha256": "896e3e63f7d2e9588b51e8bb275685e9ef6e1bf10d90e684b9cfad0d06a09538"
+          },
+          "natural-order-defeat-75.png": {
+            "bytes": 252495,
+            "sha256": "fa21434071d5f7c05374e16741c05bccbc582e633812f4a8d31a1d73e284c66f"
+          },
+          "observed-input-events.json": {
+            "bytes": 5895,
+            "sha256": "4ee582cf288211ca4d0406126968f5f463d1c064374b40b98bd9bd07ee602737"
+          },
+          "picture-timeline.json": {
+            "bytes": 7808,
+            "sha256": "b4ebad4558294925bebbeedd1a045b667f411a7b3c591ad6dbc84045ca3bb3cd"
+          },
+          "source-executed.json": {
+            "bytes": 14421,
+            "sha256": "bf67d3aa416eb0fb2ed5822fc6a8f0ccca0652c1a822b2feb65809d2e72d22fc"
+          }
+        },
+        "verified_superseded_raw_deleted": true
+      }
+    },
+    "after": {
+      "packet": "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\association-after-20261024T022618Z",
+      "receipt_sha256": "49f11d7daacdc2e313d6c9bceb931e073924791c53370d6192c8a99611176ba5",
+      "receipt": {
+        "mode": "after",
+        "candidate_commit": "6b3995373b29d4c96109159445247aa6bfd39da5",
+        "baseline_commit": "b4a5899",
+        "passed": true,
+        "scope": "Same fresh actual touch route, fixed60fps1x; no measured device FPS, human acceptance, save/version change or synthetic earned progress.",
+        "command": [
+          "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+          "--audio-driver",
+          "Dummy",
+          "--path",
+          "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+          "--fixed-fps",
+          "60",
+          "--resolution",
+          "600x1066",
+          "--position",
+          "0,0",
+          "--write-movie",
+          "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\association-after-20261024T022618Z\\capture.avi",
+          "--script",
+          "tests/association_motion.gd",
+          "--",
+          "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\association-after-20261024T022618Z"
+        ],
+        "exit_code": 0,
+        "raw_errors": [],
+        "source_unchanged_during_capture": true,
+        "functional": {
+          "above_origin_seen": true,
+          "ambiguous_frames": 499,
+          "bad_origins": 0,
+          "below_origin_seen": true,
+          "checks": 62,
+          "failures": [],
+          "first_ambiguities": [
+            {
+              "bounds": "[P: (241.5149, 566.0222), S: (62.0, 71.0)]",
+              "frame": 49,
+              "linked": true,
+              "move": "",
+              "painted_over_unclaimed": "rope",
+              "source_rect": "[P: (182.0, 620.0), S: (180.0, 122.0)]",
+              "source_room": "bell",
+              "text": "+2"
+            },
+            {
+              "bounds": "[P: (241.5149, 417.0142), S: (62.0, 71.0)]",
+              "frame": 104,
+              "linked": true,
+              "move": "",
+              "painted_over_unclaimed": "clock",
+              "source_rect": "[P: (182.0, 480.0), S: (180.0, 122.0)]",
+              "source_room": "rope",
+              "text": "+3"
+            },
+            {
+              "bounds": "[P: (212.0666, 566.0222), S: (62.0, 71.0)]",
+              "frame": 347,
+              "linked": true,
+              "move": "earned-twin-chimes",
+              "painted_over_unclaimed": "loft",
+              "source_rect": "[P: (182.0, 620.0), S: (180.0, 122.0)]",
+              "source_room": "pair",
+              "text": "+3"
+            },
+            {
+              "bounds": "[P: (198.0, 418.2698), S: (148.0, 124.0)]",
+              "frame": 368,
+              "linked": true,
+              "move": "earned-twin-chimes",
+              "painted_over_unclaimed": "loft",
+              "source_rect": "[P: (182.0, 620.0), S: (180.0, 122.0)]",
+              "source_room": "pair",
+              "text": "+10"
+            },
+            {
+              "bounds": "[P: (270.9632, 471.2698), S: (62.0, 71.0)]",
+              "frame": 381,
+              "linked": true,
+              "move": "earned-twin-chimes",
+              "painted_over_unclaimed": "loft",
+              "source_rect": "[P: (182.0, 620.0), S: (180.0, 122.0)]",
+              "source_room": "pair",
+              "text": "+7"
+            },
+            {
+              "bounds": "[P: (336.8886, 574.4774), S: (205.0, 54.0)]",
+              "frame": 513,
+              "linked": true,
+              "move": "natural-order-defeat",
+              "painted_over_unclaimed": "star",
+              "source_rect": "[P: (382.0, 620.0), S: (180.0, 122.0)]",
+              "source_room": "reverse",
+              "text": "TOO STRONG"
+            },
+            {
+              "bounds": "[P: (212.0666, 566.0222), S: (62.0, 71.0)]",
+              "frame": 651,
+              "linked": true,
+              "move": "earliest-pair",
+              "painted_over_unclaimed": "loft",
+              "source_rect": "[P: (182.0, 620.0), S: (180.0, 122.0)]",
+              "source_room": "pair",
+              "text": "+3"
+            },
+            {
+              "bounds": "[P: (212.0666, 550.8378), S: (62.0, 71.0)]",
+              "frame": 667,
+              "linked": true,
+              "move": "earliest-loft",
+              "painted_over_unclaimed": "loft",
+              "source_rect": "[P: (182.0, 620.0), S: (180.0, 122.0)]",
+              "source_room": "pair",
+              "text": "+3"
+            },
+            {
+              "bounds": "[P: (198.0, 418.2698), S: (148.0, 124.0)]",
+              "frame": 672,
+              "linked": true,
+              "move": "earliest-loft",
+              "painted_over_unclaimed": "loft",
+              "source_rect": "[P: (182.0, 620.0), S: (180.0, 122.0)]",
+              "source_room": "pair",
+              "text": "+10"
+            },
+            {
+              "bounds": "[P: (270.9632, 471.2698), S: (62.0, 71.0)]",
+              "frame": 685,
+              "linked": true,
+              "move": "earliest-loft",
+              "painted_over_unclaimed": "loft",
+              "source_rect": "[P: (182.0, 620.0), S: (180.0, 122.0)]",
+              "source_room": "pair",
+              "text": "+7"
+            }
+          ],
+          "first_clip": {},
+          "first_missing": {},
+          "frames": 774,
+          "hidden_markers": 55,
+          "link_clipped": 0,
+          "link_text_intersections": 0,
+          "max_links": 3,
+          "missing_leaders": 0,
+          "repeated_origin_seen": true,
+          "samples": [
+            {
+              "clipped_frames": 0,
+              "first_clipped": {},
+              "frames": 150,
+              "label": "earned-twin-chimes",
+              "overlap_frames": 0,
+              "peak": 3,
+              "stack_height": 301.0,
+              "texts": [
+                "+3",
+                "+7",
+                "+10"
+              ]
+            },
+            {
+              "clipped_frames": 0,
+              "first_clipped": {},
+              "frames": 150,
+              "label": "natural-order-defeat",
+              "overlap_frames": 0,
+              "peak": 2,
+              "stack_height": 169.0,
+              "texts": [
+                "TOO STRONG",
+                "LANTERN OUT"
+              ]
+            },
+            {
+              "clipped_frames": 0,
+              "first_clipped": {},
+              "frames": 54,
+              "label": "earliest-pair",
+              "overlap_frames": 0,
+              "peak": 3,
+              "stack_height": 301.0,
+              "texts": [
+                "+3",
+                "+7",
+                "+10"
+              ]
+            },
+            {
+              "clipped_frames": 0,
+              "first_clipped": {},
+              "frames": 54,
+              "label": "earliest-loft",
+              "overlap_frames": 0,
+              "peak": 3,
+              "stack_height": 324.0,
+              "texts": [
+                "+3",
+                "+7",
+                "+10",
+                "+12"
+              ]
+            },
+            {
+              "clipped_frames": 0,
+              "first_clipped": {},
+              "frames": 54,
+              "label": "earliest-light",
+              "overlap_frames": 0,
+              "peak": 4,
+              "stack_height": 449.0,
+              "texts": [
+                "+10",
+                "+12",
+                "+25",
+                "KEEPER RESCUED"
+              ]
+            }
+          ],
+          "scope": "Fresh actual input earns first tower, ordered components/total, natural defeat, Undo, earliest legal chaining. CPU font/outline association geometry; no rendered/native claim.",
+          "taps": 21,
+          "unlinked_frames": 0,
+          "viewport": "(600, 1066)",
+          "visible_rect": "[P: (0.0, 0.0), S: (600.0, 1066.0)]"
+        },
+        "strict_run_passed": true,
+        "candidate_restored_exactly": true,
+        "raw_movie": {
+          "bytes": 42182848,
+          "sha256": "0bd5892988bf7edaf5e4cf9abed7d55125e2d4e2396dcdf53660d167268b374c"
+        },
+        "encode_command": [
+          "C:/Users/Daniel/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe",
+          "-y",
+          "-i",
+          "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\association-after-20261024T022618Z\\capture.avi",
+          "-vf",
+          "pad=ceil(iw/2)*2:ceil(ih/2)*2",
+          "-an",
+          "-c:v",
+          "libx264",
+          "-preset",
+          "medium",
+          "-crf",
+          "18",
+          "-pix_fmt",
+          "yuv420p",
+          "-movflags",
+          "+faststart",
+          "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\association-after-20261024T022618Z\\association-1x.mp4"
+        ],
+        "decode_command": [
+          "C:/Users/Daniel/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe",
+          "-v",
+          "error",
+          "-i",
+          "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\association-after-20261024T022618Z\\association-1x.mp4",
+          "-f",
+          "null",
+          "-"
+        ],
+        "movie": {
+          "bytes": 1868391,
+          "sha256": "353b79ef0ae4a6e43b229438944f608a783a60d52677685b8d623350db554661",
+          "metadata": {
+            "streams": [
+              {
+                "index": 0,
+                "codec_name": "h264",
+                "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+                "profile": "High",
+                "codec_type": "video",
+                "codec_tag_string": "avc1",
+                "codec_tag": "0x31637661",
+                "mime_codec_string": "avc1.64001f",
+                "width": 480,
+                "height": 854,
+                "coded_width": 480,
+                "coded_height": 864,
+                "has_b_frames": 2,
+                "sample_aspect_ratio": "1:1",
+                "display_aspect_ratio": "240:427",
+                "pix_fmt": "yuvj420p",
+                "level": 31,
+                "color_range": "pc",
+                "color_space": "bt470bg",
+                "chroma_location": "left",
+                "field_order": "progressive",
+                "refs": 4,
+                "is_avc": "true",
+                "nal_length_size": "4",
+                "id": "0x1",
+                "r_frame_rate": "60/1",
+                "avg_frame_rate": "60/1",
+                "time_base": "1/15360",
+                "start_pts": 0,
+                "start_time": "0.000000",
+                "duration_ts": 199936,
+                "duration": "13.016667",
+                "bit_rate": "1142364",
+                "bits_per_raw_sample": "8",
+                "nb_frames": "781",
+                "nb_read_frames": "781",
+                "extradata_size": 51,
+                "disposition": {
+                  "default": 1,
+                  "dub": 0,
+                  "original": 0,
+                  "comment": 0,
+                  "lyrics": 0,
+                  "karaoke": 0,
+                  "forced": 0,
+                  "hearing_impaired": 0,
+                  "visual_impaired": 0,
+                  "clean_effects": 0,
+                  "attached_pic": 0,
+                  "timed_thumbnails": 0,
+                  "non_diegetic": 0,
+                  "captions": 0,
+                  "descriptions": 0,
+                  "metadata": 0,
+                  "dependent": 0,
+                  "still_image": 0,
+                  "multilayer": 0
+                },
+                "tags": {
+                  "language": "und",
+                  "handler_name": "VideoHandler",
+                  "encoder": "Lavc62.28.101 libx264"
+                }
+              }
+            ],
+            "format": {
+              "filename": "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\association-after-20261024T022618Z\\association-1x.mp4",
+              "nb_streams": 1,
+              "nb_programs": 0,
+              "nb_stream_groups": 0,
+              "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+              "format_long_name": "QuickTime / MOV",
+              "start_time": "0.000000",
+              "duration": "13.016667",
+              "size": "1868391",
+              "bit_rate": "1148306",
+              "probe_score": 100,
+              "tags": {
+                "major_brand": "isom",
+                "minor_version": "512",
+                "compatible_brands": "isomiso2avc1mp41",
+                "encoder": "Lavf62.12.101"
+              }
+            }
+          },
+          "fully_decoded": true
+        },
+        "pngs": [
+          {
+            "file": "earliest-light-45.png",
+            "size": [
+              600,
+              1066
+            ],
+            "sha256": "e42bb1912d26cb86ed98f3f902d5ec659f84322ab9cc51012dabe4c20ea03050"
+          },
+          {
+            "file": "earliest-loft-45.png",
+            "size": [
+              600,
+              1066
+            ],
+            "sha256": "0ab1f13a288d0d5ed18963e242974b559220204f8cfa125ad3ce2bb7c8a24429"
+          },
+          {
+            "file": "earliest-pair-45.png",
+            "size": [
+              600,
+              1066
+            ],
+            "sha256": "69545057bd24c087562f79e8b8c5eab074224a53473cdb5f71da59e49243eabe"
+          },
+          {
+            "file": "earned-twin-chimes-45.png",
+            "size": [
+              600,
+              1066
+            ],
+            "sha256": "a49d08813059de59c04d8cafdfd936a751ac864160335b89110f123fa6862644"
+          },
+          {
+            "file": "earned-twin-chimes-60.png",
+            "size": [
+              600,
+              1066
+            ],
+            "sha256": "726eb8dcb518953d2d5b8ead4f460cf00a7a54bd42ce1a1435f8d1e1fc5f0c54"
+          },
+          {
+            "file": "earned-twin-chimes-75.png",
+            "size": [
+              600,
+              1066
+            ],
+            "sha256": "78f76f718bdd86461cb26200b0662cd55ef3b701a1fcaabc7189187212aa444e"
+          },
+          {
+            "file": "natural-order-defeat-45.png",
+            "size": [
+              600,
+              1066
+            ],
+            "sha256": "364b52c6bc5472e114eb00a1f64f979ca2dd9ce3e8e437c529853c14491902c5"
+          },
+          {
+            "file": "natural-order-defeat-60.png",
+            "size": [
+              600,
+              1066
+            ],
+            "sha256": "46c5a0aa6223c1bbf135adc44aa6b156225131b17b1e6f31eff6e2b3b5366f96"
+          },
+          {
+            "file": "natural-order-defeat-75.png",
+            "size": [
+              600,
+              1066
+            ],
+            "sha256": "31bcc853ab3da76044ae0ed83aafcd8c0cec574e00af3eb238735942df548478"
+          }
+        ],
+        "artifacts": {
+          "association-1x.mp4": {
+            "bytes": 1868391,
+            "sha256": "353b79ef0ae4a6e43b229438944f608a783a60d52677685b8d623350db554661"
+          },
+          "association-result.json": {
+            "bytes": 5067,
+            "sha256": "bac8b5dec75fec8216b12fbd8308097bcaff9a4dc8761f61f1c923e9d4f6d14b"
+          },
+          "decode.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "earliest-light-45.png": {
+            "bytes": 252793,
+            "sha256": "e42bb1912d26cb86ed98f3f902d5ec659f84322ab9cc51012dabe4c20ea03050"
+          },
+          "earliest-loft-45.png": {
+            "bytes": 247486,
+            "sha256": "0ab1f13a288d0d5ed18963e242974b559220204f8cfa125ad3ce2bb7c8a24429"
+          },
+          "earliest-pair-45.png": {
+            "bytes": 240219,
+            "sha256": "69545057bd24c087562f79e8b8c5eab074224a53473cdb5f71da59e49243eabe"
+          },
+          "earned-twin-chimes-45.png": {
+            "bytes": 240611,
+            "sha256": "a49d08813059de59c04d8cafdfd936a751ac864160335b89110f123fa6862644"
+          },
+          "earned-twin-chimes-60.png": {
+            "bytes": 256235,
+            "sha256": "726eb8dcb518953d2d5b8ead4f460cf00a7a54bd42ce1a1435f8d1e1fc5f0c54"
+          },
+          "earned-twin-chimes-75.png": {
+            "bytes": 262892,
+            "sha256": "78f76f718bdd86461cb26200b0662cd55ef3b701a1fcaabc7189187212aa444e"
+          },
+          "encode.log": {
+            "bytes": 6320,
+            "sha256": "f296fae206101ade5bbfc622f21b5e7324075dd1386b93c33a7fe3f2b62e8001"
+          },
+          "godot.log": {
+            "bytes": 888,
+            "sha256": "0214411aa49b709fc700380cb876fe97b4c03356f2c3a3a13447815449bfdecb"
+          },
+          "natural-order-defeat-45.png": {
+            "bytes": 243813,
+            "sha256": "364b52c6bc5472e114eb00a1f64f979ca2dd9ce3e8e437c529853c14491902c5"
+          },
+          "natural-order-defeat-60.png": {
+            "bytes": 252062,
+            "sha256": "46c5a0aa6223c1bbf135adc44aa6b156225131b17b1e6f31eff6e2b3b5366f96"
+          },
+          "natural-order-defeat-75.png": {
+            "bytes": 253086,
+            "sha256": "31bcc853ab3da76044ae0ed83aafcd8c0cec574e00af3eb238735942df548478"
+          },
+          "observed-input-events.json": {
+            "bytes": 5895,
+            "sha256": "4ee582cf288211ca4d0406126968f5f463d1c064374b40b98bd9bd07ee602737"
+          },
+          "picture-timeline.json": {
+            "bytes": 13598,
+            "sha256": "5c6378db560b43903d0a15bddbe3e5a624fe2768777ec9493fe0e831cb280f03"
+          },
+          "source-executed.json": {
+            "bytes": 14421,
+            "sha256": "2cad02d3f36e25368d8c350deb06fdad647c970b06d686f4ad2f353921546718"
+          }
+        },
+        "verified_superseded_raw_deleted": true
+      }
+    },
+    "matched_comparison": {
+      "source_candidate": "6b3995373b29d4c96109159445247aa6bfd39da5",
+      "baseline": "b4a5899",
+      "changed_executed_sources": [
+        "scripts/presentation/tower_view.gd"
+      ],
+      "observed_input_events": 42,
+      "observed_input_events_equal": true,
+      "before_input_sha256": "4ee582cf288211ca4d0406126968f5f463d1c064374b40b98bd9bd07ee602737",
+      "after_input_sha256": "4ee582cf288211ca4d0406126968f5f463d1c064374b40b98bd9bd07ee602737",
+      "before": "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\association-before-20261024T022540Z",
+      "after": "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\association-after-20261024T022618Z",
+      "scope": "Fresh actual touch route inboth; identical42observedpress/releaseevents(frame+positions),onlyviewsource differs. Matched781frames60fps13.016667s. No earnedstateinjection or native/human/FPSclaim."
+    }
+  },
+  "cleanup": {
+    "one_avi_at_a_time": true,
+    "both_verified_superseded_avi_wav_removed": true,
+    "python_bytecode_cache_removed": true,
+    "review_server_session": 72168,
+    "review_server_pid": 99600,
+    "review_port": 50299,
+    "review_server_stopped_and_connection_refused": true,
+    "temporary_page_directory_removed": "C:/projects/active/.artifacts/tower-association-review-20261024",
+    "review_tab_closed": "413132735",
+    "scoped_leftovers": "No files>=1GB; necessary rawfailed/passing evidence retained."
+  }
+}

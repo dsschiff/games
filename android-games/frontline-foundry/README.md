@@ -144,3 +144,13 @@ Independent acceptance, native update/platform tests and physical Fold7 cover/
 inner touch, folding, safe areas, IME, audible sound, FPS and human pacing/fun
 remain separate gates. Historical `CHECKPOINT.*` describes the first playable;
 `CAMPAIGN_CHECKPOINT.*` describes this campaign candidate.
+
+
+Dormant optional cloud recovery adapter: see [CLOUD_ADAPTER.md](CLOUD_ADAPTER.md).
+This source increment has no game UI/native linkage or working cloud-sync claim.
+Its default port reports Not configured; existing offline scenes and exports are unchanged.
+
+Local Import pending/retry/verified-rollback behavior is documented in
+[IMPORT_RECOVERY_AMENDMENT.md](IMPORT_RECOVERY_AMENDMENT.md). This local-only
+recovery change preserves whole contexts across uncertain writes and bootstrap;
+it does not enable the dormant cloud adapter. Native/rendered acceptance remains separate.

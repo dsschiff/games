@@ -696,24 +696,24 @@ func _strike_effects(slot: Dictionary) -> void:
 		"win":
 			_burst(where, GOLD, 12, 1.0)
 			_ring(where, Color(1, .86, .5, .9), .5)
-			_pop("+%d" % int(slot.value), board_point(where) + Vector2(0, -40), 40, GOLD, .9)
+			_pop("+%d" % int(slot.value), board_point(where) + Vector2(0, -40), 40, GOLD, .9, false, encounter)
 			for i in 6:
 				_orb(where + Vector3(randf_range(-.08, .08), randf_range(-.05, .1), 0), i * .035, Color("ffe7a0"))
 		"lose":
 			_burst(where, RED, 14, 1.0)
 			_ring(where, Color(1, .4, .35, .9), .5)
-			_pop("EQUAL LOSES" if int(slot.before) == int(slot.value) else "TOO STRONG", board_point(where) + Vector2(0, -40), 30, RED, 1.1)
+			_pop("EQUAL LOSES" if int(slot.before) == int(slot.value) else "TOO STRONG", board_point(where) + Vector2(0, -40), 30, RED, 1.1, false, encounter)
 		"trap":
 			var feet: Vector3 = courier.position
 			for i in 5:
 				_burst(feet + Vector3(-.15 + i * .08, .02, 0), Color("bff3ff"), 3, .8)
 			_ring(feet + Vector3(0, .05, 0), Color(1, .4, .35, .8), .45)
-			_pop("TRAP -%d" % int(slot.value), board_point(feet) + Vector2(0, -70), 32, RED, 1.0)
+			_pop("TRAP -%d" % int(slot.value), board_point(feet) + Vector2(0, -70), 32, RED, 1.0, false, encounter)
 		"shield":
 			var body: Vector3 = courier.position + Vector3(0, .3, 0)
 			_ring(body, Color(.55, .9, 1, .9), .7)
 			_burst(body, Color("9fe8ff"), 10, .8)
-			_pop("SHIELD", board_point(body) + Vector2(0, -50), 30, Color("9fe8ff"), 1.0)
+			_pop("SHIELD", board_point(body) + Vector2(0, -50), 30, Color("9fe8ff"), 1.0, false, encounter)
 
 func _resolve(view: Dictionary) -> void:
 	var state: Dictionary = view.state
@@ -723,7 +723,7 @@ func _resolve(view: Dictionary) -> void:
 	if resolved and room_id in state.claimed:
 		var gain := int(state.power) - int(encounter.power)
 		var rect: Rect2 = encounter.rect
-		_pop(("+%d" % gain) if gain >= 0 else str(gain), Vector2(rect.get_center().x, rect.position.y + 4), 54, GOLD, 1.3, true)
+		_pop(("+%d" % gain) if gain >= 0 else str(gain), Vector2(rect.get_center().x, rect.position.y + 4), 54, GOLD, 1.3, true, encounter)
 		hud_pulse = 1.0
 		hud_gain = gain
 		if not reduced:
@@ -737,7 +737,7 @@ func _resolve(view: Dictionary) -> void:
 			celebrate = 2.2 if not reduced else 0.0
 			_pop("KEEPER RESCUED", Vector2(300, 300), 44, TEAL, 2.0, true)
 	elif resolved and state.status == "lost":
-		_pop("LANTERN OUT", board_point(start + Vector3(0, .7, 0)), 40, RED, 1.4, true)
+		_pop("LANTERN OUT", board_point(start + Vector3(0, .7, 0)), 40, RED, 1.4, true, encounter)
 	encounter = {}
 	if not reduced and start.distance_to(courier_base) > .05:
 		returning = {"t": 0.0, "from": start}
@@ -862,8 +862,9 @@ func _orb(from: Vector3, delay: float, color: Color, to: Variant = null, duratio
 	item.node.position = from
 	item.node.visible = false
 
-func _pop(text: String, where: Vector2, size: int, color: Color, life: float, big: bool = false) -> void:
-	pops.append({"text": text, "at": where, "size": size, "color": color, "t": 0.0, "life": life, "big": big})
+func _pop(text: String, where: Vector2, size: int, color: Color, life: float, big: bool = false, source: Dictionary = {}) -> void:
+	pops.append({"text": text, "at": where, "size": size, "color": color, "t": 0.0, "life": life, "big": big,
+		"origin_room": source.get("room", ""), "origin_rect": source.get("rect", Rect2())})
 	if pops.size() > 12:
 		pops.pop_front()
 
@@ -951,9 +952,83 @@ func _draw_fx() -> void:
 		var y := 205.0 - (1.0 - hud_pulse) * 18.0
 		fx.draw_string_outline(font, Vector2(196, y), text, HORIZONTAL_ALIGNMENT_LEFT, -1, 30, 8, Color(INK, hud_pulse))
 		fx.draw_string(font, Vector2(196, y), text, HORIZONTAL_ALIGNMENT_LEFT, -1, 30, Color(GOLD, hud_pulse))
-	for item in popup_layout():
+	var layout := popup_layout()
+	# Leaders sit behind the unchanged arithmetic; a persistent floor-edge pin
+	# identifies the encounter even when collision avoidance moves its number.
+	for link in popup_links(layout):
+		for segment in link.segments:
+			fx.draw_line(segment[0], segment[1], Color(INK, link.alpha * .8), 4.5, true)
+			fx.draw_line(segment[0], segment[1], Color(link.color, link.alpha * .65), 1.5, true)
+		if link.marker_visible:
+			fx.draw_circle(link.origin, 5.0, Color(INK, link.alpha * .9))
+			fx.draw_circle(link.origin, 3.0, Color(link.color, link.alpha * .8))
+	for item in layout:
 		fx.draw_string_outline(font, item.where, item.text, HORIZONTAL_ALIGNMENT_LEFT, -1, item.size, item.outline, Color(INK, item.alpha))
 		fx.draw_string(font, item.where, item.text, HORIZONTAL_ALIGNMENT_LEFT, -1, item.size, Color(item.color, item.alpha))
+
+## Event-time room bounds survive rapid chaining and vertical popup packing.
+## Route outside the captured room edge, then mask every text/outline rectangle.
+func popup_links(layout: Array = []) -> Array:
+	if layout.is_empty(): layout = popup_layout()
+	var result: Array = []
+	var area := Rect2(11, 227, 578, 514)
+	for i in pops.size():
+		var pop: Dictionary = pops[i]
+		if pop.origin_room == "": continue
+		var room: Rect2 = pop.origin_rect
+		# Fixed corners keep the pin stable while numbers grow/rise. Failure
+		# copy is wide and low; its top-right pin stays above that copy.
+		var failure: bool = pop.color == RED
+		var origin := Vector2(room.end.x, room.position.y + 8.0) if failure else Vector2(room.position.x, room.end.y - 8.0)
+		var gutter := origin.x + (12.0 if failure else -12.0)
+		var rect: Rect2 = layout[i].bounds
+		var target := Vector2(rect.position.x - 4.0, rect.get_center().y)
+		if gutter > rect.end.x: target.x = rect.end.x + 4.0
+		elif gutter >= rect.position.x:
+			target = Vector2(gutter, rect.end.y + 4.0 if origin.y >= rect.get_center().y else rect.position.y - 4.0)
+		target = target.clamp(area.position, area.end)
+		var points := [origin, Vector2(gutter, origin.y), Vector2(gutter, target.y), target]
+		var segments: Array = []
+		for j in range(1, points.size()):
+			if points[j - 1].distance_to(points[j]) > .01:
+				segments.append([points[j - 1], points[j]])
+		# The leader stroke is 4.5px wide including its dark backing. The 5px
+		# mask leaves a gap around all numbers, even at crossing leaders.
+		for item in layout:
+			var masked: Array = []
+			for segment in segments: masked.append_array(_mask_popup_segment(segment, item.bounds.grow(5.0)))
+			segments = masked
+		result.append({"room": pop.origin_room, "origin_rect": room, "origin": origin, "segments": segments,
+			"marker_visible": not layout.any(func(item): return item.bounds.grow(5.0).has_point(origin)),
+			"color": pop.color, "alpha": layout[i].alpha})
+	return result
+
+## Subtract a rectangle from an axis-aligned leader without painting over text.
+func _mask_popup_segment(segment: Array, rect: Rect2) -> Array:
+	var a: Vector2 = segment[0]
+	var b: Vector2 = segment[1]
+	var axis := 1 if is_equal_approx(a.x, b.x) else 0
+	var cross := 1 - axis
+	if a[cross] < rect.position[cross] or a[cross] > rect.end[cross]: return [segment]
+	var low := minf(a[axis], b[axis])
+	var high := maxf(a[axis], b[axis])
+	var cut_low := maxf(low, rect.position[axis])
+	var cut_high := minf(high, rect.end[axis])
+	if cut_low >= cut_high: return [segment]
+	var result: Array = []
+	if cut_low > low:
+		var from := a
+		var to := b
+		from[axis] = low
+		to[axis] = cut_low
+		result.append([from, to])
+	if high > cut_high:
+		var from := a
+		var to := b
+		from[axis] = cut_high
+		to[axis] = high
+		result.append([from, to])
+	return result
 
 ## Use the same font/outline bounds for placement and paint. Older values keep
 ## their natural rise; later values take the nearest free vertical position.

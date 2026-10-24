@@ -80,3 +80,8 @@ both each encounter and aggregate frame counters; no real overflow reproduced.
 No presentation/rule/timing change is justified by this result. The capacity
 assertion applies to exercised authored routes, not arbitrary synthetic popup
 injections or future content. Rendered/native/human limits above still apply.
+
+
+## Floor association follow-up
+
+The next bounded presentation increment is recorded in [FLOOR_ASSOCIATION.md](FLOOR_ASSOCIATION.md): exact encounter-origin pins/leaders preserve the existing popup placement and arithmetic. Matched real-input movies and Astra review clear it as an improvement, while thin/shared leaders and text still occupying another floor remain explicit limits. No version or native build is included in that source increment.

@@ -9,7 +9,7 @@ Daniel's seven personal Android apps (the six games here plus Planetfall from `d
 | Hook and Hunger | 0.3.1 (code 7) | `com.dsschiff.hookandhunger` | `hook-and-hunger-v0.3.1` |
 | Hearthguard | 0.3.1 (code 5) | `com.dsschiff.hearthguard` | `hearthguard-v0.3.1` |
 | Frontline Foundry | 0.3.2 (code 6) | `com.dsschiff.frontlinefoundry` | `frontline-foundry-v0.3.2` |
-| Dead Run | 0.4.0 (code 6) | `com.dsschiff.deadrun` | `dead-run-v0.4.0` |
+| Dead Run | 0.4.1 (code 7) | `com.dsschiff.deadrun` | `dead-run-v0.4.1` |
 | Planetfall | 1.0.0 (code 1) | `com.dsschiff.planetfall` | `planetfall-v1.0.0` |
 
 All seven are signed with one release key (certificate SHA-256 `25:27:B2:60:9A:62:20:58:B0:19:83:18:B8:AD:D4:41:64:6E:A4:2A:B9:D5:20:C5:36:13:1F:58:28:1B:F0:3F`), kept outside Git; its location is in the agentic-workflow credentials map. None requests an Android permission (Planetfall declares only an app-private AndroidX receiver permission) and all work offline.

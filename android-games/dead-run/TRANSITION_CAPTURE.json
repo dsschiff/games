@@ -1,0 +1,302 @@
+{
+  "source_commit": "4bca26f07ec13dd663fda1a2c4d0446263a8f1c4",
+  "packet": "F:\\games-workspaces\\dead-run-design-20261023\\android-games\\dead-run\\.artifacts\\graphics\\transition-review-transition-20261024T014458Z",
+  "cpu_packet": "F:\\games-workspaces\\dead-run-design-20261023\\android-games\\dead-run\\.artifacts\\graphics\\transition-cpu-transition-20261024T014353Z",
+  "strict": {
+    "command": [
+      "C:\\projects\\active\\.game-toolchain\\godot\\4.7.2\\Godot_v4.7.2-stable_win64_console.exe",
+      "--path",
+      "F:\\games-workspaces\\dead-run-design-20261023\\android-games\\dead-run",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "720x1280",
+      "--position",
+      "0,0",
+      "--fixed-fps",
+      "60",
+      "--script",
+      "res://tests/terminal_transition.gd",
+      "--write-movie",
+      "F:\\games-workspaces\\dead-run-design-20261023\\android-games\\dead-run\\.artifacts\\graphics\\transition-review-transition-20261024T014458Z\\clip.avi",
+      "--",
+      "--capture-dir=F:\\games-workspaces\\dead-run-design-20261023\\android-games\\dead-run\\.artifacts\\graphics\\transition-review-transition-20261024T014458Z",
+      "--scenario=all",
+      "--report=F:\\games-workspaces\\dead-run-design-20261023\\android-games\\dead-run\\.artifacts\\graphics\\transition-review-transition-20261024T014458Z\\rules-report.json"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "errors": [],
+    "source_unchanged": true,
+    "inputs": [
+      {
+        "kind": "genuine-prior-app-written-defeat-slot",
+        "source": ".artifacts\\graphics\\render-defeat-lifetime-20261024T001939Z\\appdata\\Godot\\app_userdata\\Dead Run\\dead-run-save-0",
+        "sha256": "90dea7baf6297f6ad3821467df7604fd179d60e9146d4861305e639ee9a794c9"
+      },
+      {
+        "kind": "genuine-prior-app-written-defeat-slot",
+        "source": ".artifacts\\graphics\\render-defeat-lifetime-20261024T001939Z\\appdata\\Godot\\app_userdata\\Dead Run\\dead-run-save-1",
+        "sha256": "ff7560a6751c29293f87e6e6994084e378b14ea1c3dd0a62c955b13d2c12f2ac"
+      }
+    ],
+    "pngs": [
+      "transition-actual-retry-drag.png",
+      "transition-fixture-49-crew-clearance.png",
+      "transition-fixture-warning-road-12.png",
+      "transition-fixture-warning-road-24.png",
+      "transition-restored-prior-defeat.png"
+    ]
+  },
+  "checks": 11,
+  "failures": 0,
+  "movie": {
+    "passed": true,
+    "source_commit": "4bca26f07ec13dd663fda1a2c4d0446263a8f1c4",
+    "commands": [
+      [
+        "C:/Users/Daniel/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe",
+        "-y",
+        "-i",
+        ".artifacts\\graphics\\transition-review-transition-20261024T014458Z\\clip.avi",
+        "-an",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "medium",
+        "-crf",
+        "18",
+        "-pix_fmt",
+        "yuv420p",
+        "-movflags",
+        "+faststart",
+        ".artifacts\\graphics\\transition-review-transition-20261024T014458Z\\transition-review-1x.mp4"
+      ],
+      [
+        "C:/Users/Daniel/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe",
+        "-v",
+        "error",
+        "-i",
+        ".artifacts\\graphics\\transition-review-transition-20261024T014458Z\\transition-review-1x.mp4",
+        "-f",
+        "null",
+        "-"
+      ]
+    ],
+    "raw_movie": {
+      "path": "F:\\games-workspaces\\dead-run-design-20261023\\android-games\\dead-run\\.artifacts\\graphics\\transition-review-transition-20261024T014458Z\\clip.avi",
+      "bytes": 57713716,
+      "sha256": "d6140ff655562ccfa3f9f17abd5122f7682b13122e0f802f9daf6c37462ff7f2"
+    },
+    "mp4": {
+      "path": "F:\\games-workspaces\\dead-run-design-20261023\\android-games\\dead-run\\.artifacts\\graphics\\transition-review-transition-20261024T014458Z\\transition-review-1x.mp4",
+      "bytes": 2372174,
+      "sha256": "e14ece19fea8fcfa8e9b1696b22364dbc43d1d91fe8463167ad604cf043370fa"
+    },
+    "probe": {
+      "streams": [
+        {
+          "index": 0,
+          "codec_name": "h264",
+          "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+          "profile": "High",
+          "codec_type": "video",
+          "codec_tag_string": "avc1",
+          "codec_tag": "0x31637661",
+          "mime_codec_string": "avc1.64001f",
+          "width": 450,
+          "height": 800,
+          "coded_width": 464,
+          "coded_height": 800,
+          "has_b_frames": 2,
+          "sample_aspect_ratio": "1:1",
+          "display_aspect_ratio": "9:16",
+          "pix_fmt": "yuvj420p",
+          "level": 31,
+          "color_range": "pc",
+          "color_space": "bt470bg",
+          "chroma_location": "left",
+          "field_order": "progressive",
+          "refs": 4,
+          "is_avc": "true",
+          "nal_length_size": "4",
+          "id": "0x1",
+          "r_frame_rate": "60/1",
+          "avg_frame_rate": "60/1",
+          "time_base": "1/15360",
+          "start_pts": 0,
+          "start_time": "0.000000",
+          "duration_ts": 234240,
+          "duration": "15.250000",
+          "bit_rate": "1238205",
+          "bits_per_raw_sample": "8",
+          "nb_frames": "915",
+          "nb_read_frames": "915",
+          "extradata_size": 51,
+          "disposition": {
+            "default": 1,
+            "dub": 0,
+            "original": 0,
+            "comment": 0,
+            "lyrics": 0,
+            "karaoke": 0,
+            "forced": 0,
+            "hearing_impaired": 0,
+            "visual_impaired": 0,
+            "clean_effects": 0,
+            "attached_pic": 0,
+            "timed_thumbnails": 0,
+            "non_diegetic": 0,
+            "captions": 0,
+            "descriptions": 0,
+            "metadata": 0,
+            "dependent": 0,
+            "still_image": 0,
+            "multilayer": 0
+          },
+          "tags": {
+            "language": "und",
+            "handler_name": "VideoHandler",
+            "encoder": "Lavc62.28.101 libx264"
+          }
+        }
+      ],
+      "format": {
+        "filename": ".artifacts\\graphics\\transition-review-transition-20261024T014458Z\\transition-review-1x.mp4",
+        "nb_streams": 1,
+        "nb_programs": 0,
+        "nb_stream_groups": 0,
+        "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+        "format_long_name": "QuickTime / MOV",
+        "start_time": "0.000000",
+        "duration": "15.250000",
+        "size": "2372174",
+        "bit_rate": "1244419",
+        "probe_score": 100,
+        "tags": {
+          "major_brand": "isom",
+          "minor_version": "512",
+          "compatible_brands": "isomiso2avc1mp41",
+          "encoder": "Lavf62.12.101"
+        }
+      }
+    },
+    "fully_decoded_pngs": [
+      {
+        "name": "transition-actual-retry-drag.png",
+        "size": [
+          720,
+          1280
+        ],
+        "sha256": "3131b60bc3fa39de9ef339f66da0005ee6c41daeb7882237ab94f54dd2d6d898"
+      },
+      {
+        "name": "transition-fixture-49-crew-clearance.png",
+        "size": [
+          720,
+          1280
+        ],
+        "sha256": "f63ecddc1b18641cfdad7170e447e4920adfa8200e88e81cf7e861d1d95894c2"
+      },
+      {
+        "name": "transition-fixture-warning-road-12.png",
+        "size": [
+          720,
+          1280
+        ],
+        "sha256": "75bcf03b4e3adbac7d17c3bfcb9fc9f54f5ebe938ccb07bad639e932649fdf7b"
+      },
+      {
+        "name": "transition-fixture-warning-road-24.png",
+        "size": [
+          720,
+          1280
+        ],
+        "sha256": "ed2b59337fb13a86f8ef3eacac4d3845845707ca53533882b67e36ae9c063364"
+      },
+      {
+        "name": "transition-restored-prior-defeat.png",
+        "size": [
+          720,
+          1280
+        ],
+        "sha256": "c5022f0324615a525ef8736767a2c671130dccfa35d749da0d3474ac0bf1b0b5"
+      }
+    ],
+    "scope": "Fixed60 1x playback; Dummy silent. Movie viewport is450x800, requested window/root720x1280. Genuine previously app-written natural defeat hydration, actual NEW Retry+right/left drags, then labelled frozen synthetic warnings/49crew. Not uninterrupted fresh-play victory; no native/phone/human/FPS/sound claims.",
+    "verified_superseded_raw_deleted": true
+  },
+  "files": {
+    "receipt.json": "ae33f5063a084b09ecb6d2cc3f0428d444fe75e5ae6f1528933398b4e02b91c3",
+    "godot.log": "15e393e0ed92e975d731a09cbb7fd7b2e877eb2e5c2bf0c7323b25b5ac06c4e0",
+    "source-hashes-lf.json": "5c41060e60a74c81faf8de29f4adea06d96c2ad115b6f8d01adb39f950aeacb4",
+    "transition-timeline.json": "3bc8ef6886b280d0b3d05b025c7f32613357833feaa0144000f540e81eda57b3",
+    "input-report.json": "b650769b99c1e5f06083484e1a5af84914026fa263f45eb35ba0cc2ad4021cad",
+    "raw-input-events.json": "9941def6c1a9cbfccd44b7446c9c193ca4ea119c7a1dcdecc941ffb7971106c5",
+    "movie-verification.json": "80efb89d81ca60d355e0dff29a2a8938bd5953d50771ac249f6f13222693deef",
+    "transition-review-1x.mp4": "e14ece19fea8fcfa8e9b1696b22364dbc43d1d91fe8463167ad604cf043370fa"
+  },
+  "review": {
+    "reviewer": "Astra /root/design_review",
+    "disposition": "bounded visual review clear; no new blocking visual P1/P2",
+    "movie_meter": {
+      "time": 15.25,
+      "duration": 15.25,
+      "rate": 1,
+      "ended": true
+    },
+    "sampled_geometry_seconds": [
+      12.772,
+      13.834,
+      14.631
+    ],
+    "findings": [
+      "Result/Retry clear.",
+      "Normal lateral movement visible.",
+      "RAM/FERRY text prominent; orange threat distinguishable.",
+      "Crew/barrier distinct but tight at450px."
+    ],
+    "provenance_limits": "Prior genuine loss hydration, actual new Retry/drag, frozen synthetic warnings/geometry remain separate.",
+    "own_review_tab_closed": "413132731",
+    "gpu_released_to": "root",
+    "temporary_server_session": "84587 stopped with Ctrl-C;60555 connection refused after stop",
+    "sampled_movie_seconds": [
+      1.086,
+      2.158,
+      3.217,
+      4.285,
+      5.341,
+      6.397,
+      7.459,
+      8.535,
+      9.588,
+      10.648,
+      11.717,
+      12.772,
+      13.834,
+      14.631
+    ],
+    "review_granularity": "Bounded sampled1x playback plus still inspection, not every-frame visual review.",
+    "still_followup": [
+      "Cover defeat and inner victory result copy/actions readable.",
+      "Inner victory has awkward isolated0. wrapping; no hidden action.",
+      "Persistent gameplay tip behind result is a minor hierarchy follow-up.",
+      "Cover Ferry warning readable; orange strip distinct."
+    ]
+  },
+  "limits": [
+    "Restored loss is genuine prior app-written defeat at tick2754, not newly played during the movie.",
+    "Retry and two drags are actual new GUI/input with normal engine advancement.",
+    "Road12/24 warning and49crew clearance are frozen synthetic presentation fixtures, never saved.",
+    "Movie fixed60 playback at1x450x800; window/root and five stills720x1280. No measured FPS, native Android, phone, audibility, human pacing or fun inference.",
+    "Historical strict stress failures remain failed and preserved; this capture does not establish exact GL ownership or production stress-leak absence."
+  ],
+  "temporary_review_cleanup": {
+    "server_session": 84587,
+    "stopped": true,
+    "own_tab_closed": true,
+    "directory": "C:/projects/active/.artifacts/dead-run-review-20261024",
+    "directory_removed": true,
+    "unrelated_listener_8768_preserved": true
+  }
+}

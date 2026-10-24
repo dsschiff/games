@@ -77,7 +77,7 @@
     "raw_android_whole_save_comparison": false
   },
   "dead_run": {
-    "state": "Bounded strict rendered gate independently cleared after harness-only fixture cadence correction; clean signed0.4.1/code7 candidate built; motion/native/private pending",
+    "state": "private_release_delivered",
     "commit": "7532385",
     "version": "0.4.1",
     "version_code": 7,
@@ -131,10 +131,33 @@
     "original_assertions_retained": 51,
     "rendered_packet": "F:/games-workspaces/dead-run-design-20261023/android-games/dead-run/.artifacts/graphics/cadence-full-render-design-20261024T012650Z/receipt.json",
     "qualification": "Original same-frame stress failures retained. Equal end-only delays still fail; between-fixture cadence passes. No exact GL owner, font/engine attribution or production stress-leak guarantee. Native/phone/audio/FPS/fun separate.",
-    "first_build_failure": "Generated untracked texture_lifetime.gd.uid changed source during import; failed receipt retained; UID committed d75fc37 and clean rebuild unchanged."
+    "first_build_failure": "Generated untracked texture_lifetime.gd.uid changed source during import; failed receipt retained; UID committed d75fc37 and clean rebuild unchanged.",
+    "native_report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\dead-native-retention\\report.json",
+    "native_report_sha256": "b265185c27d65d13a197072cfcaf7d23d60db8b93fd3e6903614380571c9d6da",
+    "native_scope": "Signed in-place code6to7 offline emulator update. Actual Start/natural defeat/Home/Back/transfer/cold/Retry/Resume/drag; no injected progress, state or altered game clock. Emulator su0 only reads original app files. No phone/power-loss/FPS/sound/fun/cloud acceptance.",
+    "native_complete_context_comparisons": 8,
+    "native_complete_context_failures": 0,
+    "initial_earned_profile_empty": true,
+    "transition_capture": "android-games/dead-run/TRANSITION_CAPTURE.json",
+    "transition_scope": "Reviewed sampled normal1x15.25s movie: genuine prior loss hydration, actual new Retry/two drags, separately frozen synthetic warnings/49crew. Eleven checks pass; no uninterrupted fresh-play victory claim.",
+    "native_review": "All85 artifact pins, signed6to7, settled terminal Retry through Home/Back/transfer/cold, actual Retry then Resume/right drag to tick251, complete own-decoder comparisons through cold/new-live Home independently verified. Raw JSON cold rewrites have decimal representation differences; no epsilon or selective mask in decoded comparisons.",
+    "publication_gate": "Explicit user approval received for exact signed APK and private GitHub repository/tag after automatic-review rejection; upload, digest/size, release notes and private README readback verified.",
+    "published": {
+      "release": "https://github.com/dsschiff/android-games-releases/releases/tag/dead-run-v0.4.1",
+      "tag": "dead-run-v0.4.1",
+      "asset": "dead-run-v0.4.1.apk",
+      "asset_url": "https://github.com/dsschiff/android-games-releases/releases/download/dead-run-v0.4.1/dead-run-v0.4.1.apk",
+      "sha256": "27acee9c26f3936d86837e4807630fb82d31490f3e73d098e2fa5f0014f010a9",
+      "bytes": 54317474,
+      "release_id": 422469588,
+      "asset_id": 671056921,
+      "private": true,
+      "notes_readback_verified": true,
+      "readme_readback_verified": true
+    }
   },
   "cloud": {
-    "state": "independently reviewed compiled native transport and codec; gameUI/liveGoogleverification pending",
+    "state": "Compiled native transport and six real codecs reviewed; dormant Frontline adapter and local Import uncertainty fix integrated; game cloud UI/native account and live Google sync pending",
     "not_in_current_apks": true,
     "native_jvm_tests": 21,
     "native_jvm_failures": 0,
@@ -145,8 +168,8 @@
     "native_aar_sha256": "414f1d90bca0147524e586f6d9cf0e0fa808b373d77cb49b04821f9d5e7c1a01",
     "real_decoder_binding_checks": 60,
     "real_decoder_binding_failures": 0,
-    "real_decoder_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\cloud-save-bindings\\manifest.json",
-    "real_decoder_manifest_sha256": "d5e59188f163758f5bcd29cd7a14ab8b5685fe145f9721cffe6190c5eb4d4811",
+    "real_decoder_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\cloud-save-bindings-lf-20261024T020550Z\\manifest.json",
+    "real_decoder_manifest_sha256": "2c68f7d70a5a6f28e21fad1faca6755d643dc907cd2ec562b1b808d1c72cb990",
     "live_console_check": {
       "observed_utc": "2026-10-24T01:34:32Z",
       "account": "ShifTech",
@@ -155,13 +178,42 @@
       "apps": "Create your first app; no apps present",
       "scope": "Read-only browser check; no identity upload, app creation, consent or account change",
       "authoritative_pending_card": "P-games-20261023-1753; old internal-testing card is merged/closed"
+    },
+    "historical_real_decoder_manifest": {
+      "path": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\cloud-save-bindings\\manifest.json",
+      "sha256": "d5e59188f163758f5bcd29cd7a14ab8b5685fe145f9721cffe6190c5eb4d4811",
+      "qualification": "Historical shared working-file CRLF bytes normalize exactly to current committed LF codec; retained historical bytes and receipt."
+    },
+    "frontline_dormant_adapter": {
+      "source_commit": "bd6e6e7d50c12ffab905205054308dd31dff017c",
+      "checkpoint": "android-games/frontline-foundry/CLOUD_ADAPTER_CHECKPOINT.json",
+      "coordinator_receipt": "F:\\games-workspaces\\design-cycle-20261023\\android-games\\frontline-foundry\\.artifacts\\cloud-cpu-20261024T020412183757Z\\receipt.json",
+      "checks": 989,
+      "failures": 0,
+      "scope": "Historical unlinked default-NotConfigured explicit full-save choice/immutable archives/verified local adoption snapshot; simulated transport only. Eight historical tests demonstrate the former local Import uncertainty bug; separate current fix below supersedes that boundary without enabling cloud."
+    },
+    "local_play_bundle_preparation": "android-games/evidence/play-bundle-preparation-20261024.json",
+    "frontline_local_import_fix": {
+      "source_commit": "0855a237653ab08f017f13ce77da54cdcfe7d330",
+      "integration_commit": "6e57853",
+      "checkpoint": "android-games/frontline-foundry/IMPORT_RECOVERY_CHECKPOINT.json",
+      "coordinator_receipt": "F:\\games-workspaces\\design-cycle-20261023\\android-games\\frontline-foundry\\.artifacts\\import-cpu-20261024T023924345553Z\\receipt.json",
+      "coordinator_receipt_sha256": "feb203d803707e1bedf99f00d0915eba877a53295122ba748fa4c58632fb8308",
+      "local_checks": 870,
+      "local_failures": 0,
+      "current_cloud_simulated_checks": 989,
+      "campaign_rules_checks": 416,
+      "campaign_input_checks": 276,
+      "scope": "Independently source-reviewed full-context local journal, explicit Retry Import/Keep Previous and paused bootstrap/adoption. Current root focused rerun870/0. Native OS-kill/background/update/render recovery checks pending; unchanged rules/Store/schema/version/export. Not in published0.3.2 APK."
     }
   },
   "next": [
-    "Complete bounded Dead Run transition review and signed native/private update after independently cleared strict harness gate",
-    "Finish dormant Frontline optional-recovery adapter with explicit full-save choice and verified commit; no production/native linkage claim",
-    "Complete per-game Play identity/client/tester/Saved Games setup when account approval permits; verify genuine account/device/offline/conflict sync before claiming cloud acceptance",
-    "Continue dense Hook finale readability and Tower floating-total floor association as bounded design followups"
+    "First six game increments privately delivered; continue bounded design/save and cloud integration work without claiming first cycle complete",
+    "Run bounded rendered/native Frontline Import recovery checks, then version/build/update verified candidate; source870/0 and review clear",
+    "Version/build/native-validate the reviewed Tower source-association increment; preserve subtle/shared-gutter readability limitation",
+    "Prepare local Android App Bundle tooling while identity/phone verification blocks Play app setup",
+    "Complete game cloud UI/native/client/tester/Saved Games setup and real account/device/offline/conflict sync before claiming recovery acceptance",
+    "Continue bounded dense Hook finale readability followup"
   ],
   "gear": {
     "version": "0.4.1",
@@ -404,7 +456,35 @@
       "Floating total floor association remains a followup",
       "Optional Play Games integration/live sync unverified",
       "Physical/human acceptance deferred"
-    ]
+    ],
+    "phone_handoff": {
+      "method": "Explicitly approved private Drive APK transfer",
+      "version": "0.4.1",
+      "version_code": 7,
+      "bytes": 53107219,
+      "shared": false,
+      "scope": "Owner-only metadata readback verified. No independent remote checksum, phone installation, play, physical acceptance or public sharing claim. Private file identifier retained only in ignored local receipt."
+    },
+    "floor_association_followup": {
+      "source_commits": [
+        "6b3995373b29d4c96109159445247aa6bfd39da5",
+        "62805f00754fb247fdf9cb7e17ec43cce89182bd"
+      ],
+      "integration_commits": [
+        "29aca58",
+        "bf87c54"
+      ],
+      "checkpoint": "android-games/tower-trials/FLOOR_ASSOCIATION.json",
+      "coordinator_report": "F:\\games-workspaces\\design-cycle-20261023\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T024440098958Z\\report.json",
+      "coordinator_checks": 62,
+      "coordinator_failures": 0,
+      "matched_movie_seconds": 13.016667,
+      "matched_actual_input_events": 42,
+      "before_failed_assertions": 5,
+      "after_failed_assertions": 0,
+      "review": "Astra bounded normal1x source/input/motion review clear as improvement; same popup placement/arithmetic/timing, thin masked/shared-gutter leaders still demand attention; no universal instant association.",
+      "scope": "Source integrated; not in published0.4.1/code7. Version/build/native validation pending; no phone/human acceptance."
+    }
   },
   "hook": {
     "state": "Privately delivered; same signer; native offline6to7/Home/cold and full context comparisons pass; bounded feedback source/motion reviewed",
