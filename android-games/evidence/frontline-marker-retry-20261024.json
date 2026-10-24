@@ -1,0 +1,72 @@
+{
+  "scope": "Frontline local recovery retry admission only. No Store/codec/schema/rules/UI/version/export/shared/native change.",
+  "reviewed_source_commit": "eecc057c41e124d7dfa20a1b3c3f06ebcdda9367",
+  "checkpoint": {
+    "path": "F:\\games-workspaces\\frontline-cloud-ui-20261024\\android-games\\frontline-foundry\\MARKER_RETRY_CHECKPOINT.json",
+    "sha256": "c62db6842386ecd54f306e9c0dbc810cd4fd3eb86abbd0e8e45fa59e8ff81a4f",
+    "bytes": 40609
+  },
+  "behavior": "Every explicit choice freshly validates every existing marker as the intended complete transaction, reuses valid matching base/stage without consuming it, validates all archived full codes, and writes only after current admission. Read clears stale readiness. Conflicting/unreadable markers remain intact and block mutation.",
+  "independent_review": "Astra source/checkpoint clear:110 LF pins,252 unchanged actual base files,4 receipts,33 nested artifacts. Root integration game tree equals reviewed commit.",
+  "worker_helper_checks": 107,
+  "worker_failures": 0,
+  "root_reruns": [
+    {
+      "receipt": {
+        "path": "F:\\games-workspaces\\design-cycle-20261023\\android-games\\frontline-foundry\\.artifacts\\import-cpu-20261024T065121602438Z\\receipt.json",
+        "sha256": "01a7e3bafb11a1bc2d970570edddbcbdae4deb5d358591a4af8df919e6893631",
+        "bytes": 29306
+      },
+      "checks": 26,
+      "failures": 0,
+      "actual_touch_events": 24,
+      "cases": [
+        {
+          "original_catalog": 2,
+          "scope": "actual touch with typed faults and fresh production owners; materialized-file bootstrap is same process, not OS kill/native",
+          "use_import": false
+        },
+        {
+          "original_catalog": 2,
+          "scope": "actual touch with typed faults and fresh production owners; materialized-file bootstrap is same process, not OS kill/native",
+          "use_import": true
+        },
+        {
+          "original_catalog": 3,
+          "scope": "actual touch with typed faults and fresh production owners; materialized-file bootstrap is same process, not OS kill/native",
+          "use_import": false
+        },
+        {
+          "original_catalog": 3,
+          "scope": "actual touch with typed faults and fresh production owners; materialized-file bootstrap is same process, not OS kill/native",
+          "use_import": true
+        }
+      ],
+      "source_unchanged": true
+    },
+    {
+      "receipt": {
+        "path": "F:\\games-workspaces\\design-cycle-20261023\\android-games\\frontline-foundry\\.artifacts\\import-cpu-20261024T065352360051Z\\receipt.json",
+        "sha256": "76e83ba42a792572766b41a9d43955974ad372e0cba2fd6ec3627f0823e87f93",
+        "bytes": 25242
+      },
+      "checks": 107,
+      "failures": 0,
+      "actual_touch_events": 0,
+      "cases": [],
+      "source_unchanged": true
+    }
+  ],
+  "initial_failures": {
+    "helper_baseline": "88 checks/25 failures retained before runtime correction",
+    "production_touch": "2 checks/1 failure/0 events, strict engine-log failure due missing imported watchtower and related model .scn cache in worker worktree; retained unchanged",
+    "fixture_setup": "Earlier invalid synthetic best_kills fixture and incomplete packet retained as failed"
+  },
+  "actual_input_scope": "Coordinator has exact existing watchtower.glb-4b55c4b99c903385d584b7479e8cb30f.scn and prior code8 imported assets. No import/asset substitution. Actual ScreenTouch Import/Retry/Keep covers original catalogs2/3 and both choices, full state/profile/settings/career/parked legacy, pending freeze and same-process fresh production bootstrap over materialized files. This closes only the deferred CPU actual-input gate.",
+  "limits": [
+    "CPU/headless/Dummy with typed faults and synthetic full contexts; not newly earned progress",
+    "Materialized fresh owners are not native OS kill, storage fault or power loss",
+    "Known owner can export retained validated codes; cold undecodable marker retry-read only",
+    "No higher version/APK/native update or cloud/physical acceptance; existing signed0.3.4/code8 unchanged"
+  ]
+}
