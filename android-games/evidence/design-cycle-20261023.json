@@ -96,11 +96,10 @@
     "real_decoder_manifest_sha256": "d5e59188f163758f5bcd29cd7a14ab8b5685fe145f9721cffe6190c5eb4d4811"
   },
   "next": [
-    "Finish Tower motion/native verification and private delivery",
-    "Review Hook warning usefulness and strict finale teardown",
-    "Review Tower popup motion and signed Android update",
-    "Isolate and close Dead Run full-route renderer teardown failure",
-    "Offline-safe optional cloud game integration; live verification awaits Play identity/phone and per-game setup"
+    "Complete the independent disposition of Dead Run fixture cadence and strict full rendered gate, then signed native/private update",
+    "Finish dormant Frontline optional-recovery adapter with explicit full-save choice and verified commit; no production/native linkage claim",
+    "Complete per-game Play identity/client/tester/Saved Games setup when account approval permits; verify genuine account/device/offline/conflict sync before claiming cloud acceptance",
+    "Continue dense Hook finale readability and Tower floating-total floor association as bounded design followups"
   ],
   "gear": {
     "version": "0.4.1",
@@ -256,7 +255,7 @@
   "tower": {
     "version": "0.4.1",
     "version_code": 7,
-    "state": "Motion/source cleared with room-association caveat;70savefault and252graphics checks pass; rebuild/native pending",
+    "state": "Privately delivered; same signer; native offline6to7/Home/cold and full context comparisons pass; bounded feedback source/motion reviewed",
     "source_commits": [
       "173d79d",
       "5a432c6"
@@ -270,18 +269,86 @@
       "overlaps": 0,
       "clipped": 0
     },
-    "build_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\tower-trials\\20261024T001356437179Z\\manifest.json",
+    "build_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\tower-trials\\20261024T011146378998Z\\manifest.json",
     "save_checks": {
       "checks": 70,
       "failures": 0,
       "source_commit": "56c5c90"
-    }
+    },
+    "build": {
+      "schema_version": 1,
+      "game": "tower-trials",
+      "command": "build",
+      "godot_version": "4.7.2.stable.official.ed1daf0bf",
+      "started_utc": "20261024T011146378998Z",
+      "git_revision": "e13dfe873fc8c2170db95adfc773b5af9a5722c3",
+      "project": "android-games/tower-trials",
+      "build_type": "release",
+      "pipeline_sha256": "3a473050bd36928c58f959ae99e67b3d22f533d425426b62e058090cace63033",
+      "toolchain_config_sha256": "2c5788e6e8a2b963cb8cd512f4c192b84e78915e05403ed7d267ab8aec34a502",
+      "import_exit_code": 0,
+      "argv": [
+        "C:\\projects\\active\\.game-toolchain\\godot\\4.7.2\\Godot_v4.7.2-stable_win64_console.exe",
+        "--headless",
+        "--path",
+        "F:\\games-workspaces\\design-cycle-20261023\\android-games\\tower-trials",
+        "--export-release",
+        "Android",
+        "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\tower-trials\\20261024T011146378998Z\\tower-trials.apk"
+      ],
+      "exit_code": 0,
+      "result": "built",
+      "artifact": {
+        "path": ".artifacts/tower-trials/20261024T011146378998Z/tower-trials.apk",
+        "bytes": 53107219,
+        "sha256": "b0797572267fc600b559f7fd0896c364bcc29d254a74a1b2e6fcf4efba284b52"
+      },
+      "apk_inspection": {
+        "package": "com.dsschiff.towertrials",
+        "version_code": "7",
+        "version_name": "0.4.1",
+        "permissions": [],
+        "internet_permission": false,
+        "signature_verified": true,
+        "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
+        "debuggable": false
+      },
+      "project_source_sha256": "b3b12cce50fef38e05b0d62c435dbd5c289da2980bc9ab8dc167758db71625d1",
+      "project_source_sha256_after": "b3b12cce50fef38e05b0d62c435dbd5c289da2980bc9ab8dc167758db71625d1",
+      "source_unchanged": true,
+      "project_git_status": [],
+      "project_dirty": false
+    },
+    "published": {
+      "release": "https://github.com/dsschiff/android-games-releases/releases/tag/tower-trials-v0.4.1",
+      "tag": "tower-trials-v0.4.1",
+      "asset": "tower-trials-v0.4.1.apk",
+      "asset_url": "https://github.com/dsschiff/android-games-releases/releases/download/tower-trials-v0.4.1/tower-trials-v0.4.1.apk",
+      "sha256": "b0797572267fc600b559f7fd0896c364bcc29d254a74a1b2e6fcf4efba284b52",
+      "bytes": 53107219,
+      "release_id": 422442218,
+      "asset_id": 670924190,
+      "private": true,
+      "notes_readback_verified": true,
+      "readme_readback_verified": true
+    },
+    "source_landed": "60649e6",
+    "native_retention": {
+      "report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-final-retention\\report.json",
+      "sha256": "d3681090136383b45f3e4df5ceeb9754c0d9418450043159372666a6a0605240",
+      "scope": "Signed offline6to7/Home/cold, complete update contexts; actual post-update Tower earned clear and Hook movement cold/live retention. Initial earned profiles empty. No physical/power-loss/human acceptance."
+    },
+    "open": [
+      "Floating total floor association remains a followup",
+      "Optional Play Games integration/live sync unverified",
+      "Physical/human acceptance deferred"
+    ]
   },
   "hook": {
-    "state": "Motion/source cleared with density caveat;444failed-import checks pass; rebuild/new native update pending",
+    "state": "Privately delivered; same signer; native offline6to7/Home/cold and full context comparisons pass; bounded feedback source/motion reviewed",
     "open": [
-      "Final storage-reviewed signed rebuild and native update",
       "Dense boss-ring/multiple-charge readability remains a followup",
+      "Optional Play Games integration/live sync unverified",
       "Physical/human acceptance deferred"
     ],
     "source_commit": "4898fb3",
@@ -297,6 +364,72 @@
       "checks": 444,
       "failures": 0,
       "source_commit": "5b768ed"
+    },
+    "version": "0.3.1",
+    "version_code": 7,
+    "build_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\hook-and-hunger\\20261024T011146358382Z\\manifest.json",
+    "build": {
+      "schema_version": 1,
+      "game": "hook-and-hunger",
+      "command": "build",
+      "godot_version": "4.7.2.stable.official.ed1daf0bf",
+      "started_utc": "20261024T011146358382Z",
+      "git_revision": "e13dfe873fc8c2170db95adfc773b5af9a5722c3",
+      "project": "android-games/hook-and-hunger",
+      "build_type": "release",
+      "pipeline_sha256": "3a473050bd36928c58f959ae99e67b3d22f533d425426b62e058090cace63033",
+      "toolchain_config_sha256": "2c5788e6e8a2b963cb8cd512f4c192b84e78915e05403ed7d267ab8aec34a502",
+      "import_exit_code": 0,
+      "argv": [
+        "C:\\projects\\active\\.game-toolchain\\godot\\4.7.2\\Godot_v4.7.2-stable_win64_console.exe",
+        "--headless",
+        "--path",
+        "F:\\games-workspaces\\design-cycle-20261023\\android-games\\hook-and-hunger",
+        "--export-release",
+        "Android",
+        "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\hook-and-hunger\\20261024T011146358382Z\\hook-and-hunger.apk"
+      ],
+      "exit_code": 0,
+      "result": "built",
+      "artifact": {
+        "path": ".artifacts/hook-and-hunger/20261024T011146358382Z/hook-and-hunger.apk",
+        "bytes": 53696209,
+        "sha256": "99dee6e5d565d546a260b0d8567f538b197f5e867e94ad784337f347badc3c10"
+      },
+      "apk_inspection": {
+        "package": "com.dsschiff.hookandhunger",
+        "version_code": "7",
+        "version_name": "0.3.1",
+        "permissions": [],
+        "internet_permission": false,
+        "signature_verified": true,
+        "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
+        "debuggable": false
+      },
+      "project_source_sha256": "778f7fb5beb5ffe6895ff7d26d9a4890847f80124ff6942afce7d4d059dda664",
+      "project_source_sha256_after": "778f7fb5beb5ffe6895ff7d26d9a4890847f80124ff6942afce7d4d059dda664",
+      "source_unchanged": true,
+      "project_git_status": [],
+      "project_dirty": false
+    },
+    "published": {
+      "release": "https://github.com/dsschiff/android-games-releases/releases/tag/hook-and-hunger-v0.3.1",
+      "tag": "hook-and-hunger-v0.3.1",
+      "asset": "hook-and-hunger-v0.3.1.apk",
+      "asset_url": "https://github.com/dsschiff/android-games-releases/releases/download/hook-and-hunger-v0.3.1/hook-and-hunger-v0.3.1.apk",
+      "sha256": "99dee6e5d565d546a260b0d8567f538b197f5e867e94ad784337f347badc3c10",
+      "bytes": 53696209,
+      "release_id": 422441391,
+      "asset_id": 670919840,
+      "private": true,
+      "notes_readback_verified": true,
+      "readme_readback_verified": true
+    },
+    "source_landed": "60649e6",
+    "native_retention": {
+      "report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-final-retention\\report.json",
+      "sha256": "d3681090136383b45f3e4df5ceeb9754c0d9418450043159372666a6a0605240",
+      "scope": "Signed offline6to7/Home/cold, complete update contexts; actual post-update Tower earned clear and Hook movement cold/live retention. Initial earned profiles empty. No physical/power-loss/human acceptance."
     }
   },
   "bounded_motion_review": "android-games/reviews/design-feedback-20261023.md"

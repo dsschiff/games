@@ -328,5 +328,31 @@
       "Physical phone testing deferred",
       "Existing graphics review preserved; no new art direction or performance rating inferred"
     ]
+  },
+  "hook_design_checkpoint": {
+    "version": "0.3.1",
+    "version_code": 7,
+    "source_commit": "e13dfe873fc8c2170db95adfc773b5af9a5722c3",
+    "status": "bounded_feedback_and_verified_save_commit_privately_delivered_prior_graphics_history_retained",
+    "candidate_evidence": "android-games/evidence/design-cycle-20261023.json",
+    "apk_sha256": "99dee6e5d565d546a260b0d8567f538b197f5e867e94ad784337f347badc3c10",
+    "open": [
+      "Physical phone testing deferred",
+      "Dense finale warning readability remains open",
+      "Optional Play Games integration and live sync unverified"
+    ]
+  },
+  "tower_design_checkpoint": {
+    "version": "0.4.1",
+    "version_code": 7,
+    "source_commit": "e13dfe873fc8c2170db95adfc773b5af9a5722c3",
+    "status": "bounded_feedback_and_verified_save_commit_privately_delivered_prior_graphics_history_retained",
+    "candidate_evidence": "android-games/evidence/design-cycle-20261023.json",
+    "apk_sha256": "b0797572267fc600b559f7fd0896c364bcc29d254a74a1b2e6fcf4efba284b52",
+    "open": [
+      "Physical phone testing deferred",
+      "Floating total floor association remains open",
+      "Optional Play Games integration and live sync unverified"
+    ]
   }
 }

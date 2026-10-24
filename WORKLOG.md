@@ -654,3 +654,13 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   update/delivery. Shared cloudopaque tests now60/0 across6realdecoders; native
   plugin/UI/auth/live sync still unimplemented in games. Dead minimal geometry
   tail reproduces4textures; all tested realplay/reloadprefixes remain clean.
+
+- Hook0.3.1/code7 and Tower0.4.1/code7 privately delivered after PR13 landed
+  60649e6. Final clean signed builds preserve identities; exact uploaded asset
+  hashes, sizes, release notes and README readback independently verified.
+  Real offline6-to7/Home/cold updates retain full raw save meaning excluding only
+  revision. Both initial earned profiles empty. Post-update Tower touch earns
+  watch01 best4/medals11 and retains it after cold reload; Hook actual movement
+  survives cold load and a fresh live Home commit. All71 native packet pins clear.
+  Dense Hook finale warnings and Tower floating-total floor association remain
+  followups; no phone, power-loss, sound, FPS, fun or live-cloud acceptance.
