@@ -448,13 +448,34 @@ static func valid_profile(v: Variant) -> bool:
 				return false
 	return v.ending.is_empty() or v.completed and valid(v.ending) and int(v.ending.definition.stage) == 11 and not v.ending.definition.arena and v.ending.phase == "victory"
 
+static func arena_key(seed: int, tier: int) -> String:
+	return str(seed) + ":" + str(tier)
+
+static func _arena_alias(seed: int, tier: int) -> String:
+	return str(float(seed)) + ":" + str(tier)
+
+static func _arena_better(score: Dictionary, best: Dictionary) -> bool:
+	return score.hits < best.hits or score.hits == best.hits and score.time < best.time
+
+static func arena_best(profile_data: Dictionary, seed: int, tier: int) -> Dictionary:
+	var best := {}
+	for key in [arena_key(seed,tier), _arena_alias(seed,tier)]:
+		if not profile_data.arena_scores.has(key): continue
+		var score: Dictionary = profile_data.arena_scores[key]
+		if best.is_empty() or _arena_better(score,best): best = score
+	return {"found":not best.is_empty(), "score":best.duplicate(true)}
+
 static func record(profile_data: Dictionary, s: Dictionary) -> void:
 	if s.phase != "victory":
 		return
 	if s.get("schema") == 2 and s.definition.arena:
-		var key := str(s.definition.seed) + ":" + str(s.tier)
+		var key := arena_key(int(s.definition.seed),int(s.tier))
+		var alias := _arena_alias(int(s.definition.seed),int(s.tier))
+		var best := arena_best(profile_data,int(s.definition.seed),int(s.tier))
 		var score := {"time": s.time, "hits": s.hits, "rescues": s.deaths}
-		if not profile_data.arena_scores.has(key) or s.hits < profile_data.arena_scores[key].hits or s.hits == profile_data.arena_scores[key].hits and s.time < profile_data.arena_scores[key].time:
+		if not best.found or _arena_better(score,best.score):
+			# Preserve an alias-only historical slot instead of duplicating its identity.
+			if not profile_data.arena_scores.has(key) and profile_data.arena_scores.has(alias): key = alias
 			profile_data.arena_scores[key] = score
 		return
 	var stage := int(profile_data.stage)
