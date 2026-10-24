@@ -29,7 +29,7 @@ and Tower. Preserve each selected ad loop with original assets.
 | Dead Run | Terminal Retry, warning priority and crew clearance source fixes landed; strict full-route render teardown still leaks four textures. | Release held; focused isolation active |
 | Frontline | Tested solo8/12 vs funded12/12, tutorial-only idle win; delivered actual recruit feedback, HQ marker and committed-save verification as signed0.3.2/code6. | Private update delivered; physical acceptance deferred |
 | Gear | One Begin after ready utilities/Home now starts production; active return stays paused. Signed0.4.1/code10 verified and delivered. | Private update delivered |
-| Hearthguard | Save destination readback and failed import/mode-switch preservation pass167 complete-value checks and signed4-to5 native context comparison. |0.3.1/code5 delivery pending |
+| Hearthguard | Save destination readback and failed import/mode-switch preservation pass167 complete-value checks and signed4-to5 native context comparison. |0.3.1/code5 privately delivered |
 | Hook | Hit/miss/block feedback corrected; obstacle-deflected charge gap reproduced. Conservative warning correction covers actual stepped paths. | Authored motion usefulness and strict finale teardown review active |
 | Tower | Resolved encounter arithmetic stays nonoverlapping at earliest legal chaining across all36 towers. | Signed0.4.1/code7 candidate; motion/native pending |
 
@@ -78,3 +78,7 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
   update, complete active context frozen across Home and cold restart. Baseline
   profile empty; earned-profile retention is separate desktop evidence. Hearth
   signed4-to5 context equality and real natural result/log/cold checks pass.
+
+- Hearthguard0.3.1/code5 privately delivered after PR11 landed. Exact asset digest,
+  size, notes and private README readback verified. Failed-transaction desktop
+  checks and actual native update/log/result/cold checks remain separate evidence.

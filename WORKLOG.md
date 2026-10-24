@@ -632,3 +632,7 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   restoration pass; source landing/private delivery next. Native prior profiles
   empty: no native earned-profile update claim. Tower popup fixes source-cleared
   and integrated; earliest legal chaining1603/0, motion/native remain open.
+
+- PR11 merged cad6308; scoped30fe95c ancestry confirmed on origin/main.
+  Hearthguard0.3.1/code5 privately delivered; exact APK digest, size, notes and
+  private README readback pass. Optional cloud remains unconnected/live-unverified.
