@@ -83,5 +83,6 @@
   ],
   "existing_apk": "0.3.1/code5 remains unchanged and predates current preview/recovery source; no new build or upload.",
   "physical_phone_accepted": false,
-  "cloud_accepted": false
+  "cloud_accepted": false,
+  "independent_enclosure_audit": "Astra CLEAR: exact8feb509c report98633B,220 recursively referencedfilepins,416 runtimebindings and bothharnesscommitbindings match. Limits/failures/PNGcleanup/ownedservershutdown accurately recorded."
 }
