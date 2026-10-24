@@ -1,0 +1,47 @@
+{
+  "base": "5a490e6a605bedbd6f740265db92ada3ebbcb51c",
+  "runtime_scope": "save_store.gd checked rename only; schema/catalog/rules/main/painter/version/signing unchanged",
+  "runs": [
+    {
+      "path": ".artifacts/design-cpu-20261024T005512135998Z",
+      "passed": false,
+      "sha256": {
+        "report.json": "4032972eb15a6a9ba699d7a64546e41dda93288d97f3b6ca9ad3288a6d66afec",
+        "source-before.json": "9eaa162c557e6e6680538f9d08b3b2ed0907675fa36ba44c3f34f1edbb97f9d9",
+        "save_commit.log": "9ae9899dcf3f8b748840f5acf21ac553182330fba0fb2c10222f7667cbee139a",
+        "save-commit-result.json": "a1cc5130b1d288db1eb5723cf2cfe957dcf3b17676e0d73e019c98a93baf03b8"
+      }
+    },
+    {
+      "path": ".artifacts/design-cpu-20261024T005617428087Z",
+      "passed": true,
+      "sha256": {
+        "report.json": "015807d7d9a5c4266b3e2905c8e7631f764b8881f2e74026b1514475e49e8e38",
+        "source-before.json": "aee37f75fd988c01dcf753e87ff2e9611cd3925c1551492a58fc98ace93dc8ce",
+        "save_commit.log": "af26771eaca1c550402ee3d5ae3a9c0ded31b58475b2033e463b2343ce9a3478",
+        "run_tests.log": "2613834009f299150f4362eefa749ab093830bcbab77e99d6d77bc3c2ce64a1b",
+        "campaign_playthrough.log": "af8856e0670393267dcfbf3f5cdb97335bfe4232c05c126274d7c87a1ee6f0a1",
+        "challenge_playthrough.log": "9acd885eedc6c0cc8c6a501a74c6d392f078d7d5ecbe97193b00dfb42cf1b83a",
+        "save-commit-result.json": "db96cbf10a8453cf0fffa850b0fa02b8c3da6ae822462ea4b924732164105bc7"
+      }
+    },
+    {
+      "path": ".artifacts/design-cpu-20261024T005733366446Z",
+      "passed": true,
+      "sha256": {
+        "report.json": "eddca6be3b8676d09c8348d699b8d3360bb13f4ed0d5c79efcf0bdee16c30143",
+        "source-before.json": "ee94454894a0356434df25d81e68a5d73a1f75f2aeaab93d5c06a3405b67dbc9",
+        "save_commit.log": "af26771eaca1c550402ee3d5ae3a9c0ded31b58475b2033e463b2343ce9a3478",
+        "save-commit-result.json": "db96cbf10a8453cf0fffa850b0fa02b8c3da6ae822462ea4b924732164105bc7"
+      }
+    }
+  ],
+  "fixture": {
+    "source": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\tower-motion-after-20261024T004431Z\\appdata\\Godot\\app_userdata\\Tower Trials\\tower-motion-fresh.json",
+    "sha256": "17572021887bf8982e1a2196588eca7b2025d2583f95c6288dfa153d4e4c4116",
+    "label": "Actual desktop engine touch-earned Tower motion after-run save; watch_01 and watch_02 earned, Undo used; not Android/human acceptance",
+    "receipt": "F:/games-workspaces/design-cycle-20261023/.artifacts/tower-motion-after-20261024T004431Z/receipt.json",
+    "receipt_sha256": "1f39c192cb169fe72ea344db23f4ec7bc6368c861886c7ef361b058d8e6f586e"
+  },
+  "runtime_sha256_lf": "d536cdb0649752bae4b2c002aa1408dddd64533282c525096eb2240fb165c721"
+}
