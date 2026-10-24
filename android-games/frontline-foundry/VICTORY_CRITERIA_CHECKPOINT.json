@@ -1,0 +1,174 @@
+{
+  "base": "606e0a49cc9c78fda534ade85f8e3258a937fb46",
+  "runtime_delta": {
+    "path": "scripts/reinforcement_feedback.gd",
+    "old_raw_git_sha256": "dfdf899475d50df86a6a5ef44a981d393e8562f00e39d92d7de6b4529ee82dd9",
+    "old_lf_sha256": "dfdf899475d50df86a6a5ef44a981d393e8562f00e39d92d7de6b4529ee82dd9",
+    "current_raw_sha256": "c39d579da408e235d932f5706c88d33c250a12dcfc3f526d6bf3353e98f124ee",
+    "current_lf_sha256": "c39d579da408e235d932f5706c88d33c250a12dcfc3f526d6bf3353e98f124ee",
+    "old_line": "return \"3 stars: no escapes and commander HP at least 60%.\\nOtherwise 2 stars: HQ at least 50%.\\nOtherwise 1 star: victory.\"",
+    "new_line": "return \"On victory: 3 stars = no escapes + commander HP >=60%.\\nOtherwise 2 stars = HQ >=50%.\\nOtherwise 1 star.\"",
+    "reverse_only_line_reconstructs_base_lf": true
+  },
+  "prior_checkpoint": {
+    "path": "RECORD_FEEDBACK_CHECKPOINT.json",
+    "sha256": "4947b3ef67d8e49b3cd616831821fda97195113882804ac08112c4ea108f6edf",
+    "size": 296295,
+    "git_lf_sha256": "4225f24adc75155bfb39880f865e33276c28aa4eef86ff679203763153d10944",
+    "scope": "Prior423/416/870 and785 artifacts are linked, not rerun or reattributed to this amendment."
+  },
+  "notes": {
+    "sha256": "a4ee107e94a3ec571584e88e0ddbd745d0594f4f4056a0ee45fabdd1b921b494",
+    "size": 1751
+  },
+  "new_focused_packet": ".artifacts/record-victory-scope-route-20261024T130922016297Z",
+  "artifacts": {
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-0": {
+      "sha256": "dae031c404ab4876418f027c0e8d6b96ed9833419e85942e7ec220c56bc3b311",
+      "size": 11176
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/appdata/Godot/app_userdata/Frontline Foundry/frontline-save-1": {
+      "sha256": "01962e507d1b0c4ffeb5bb65cd380be38312e52cd7fb7a1b31805f37881494f9",
+      "size": 11826
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/appdata/Godot/app_userdata/Frontline Foundry/logs/godot.log": {
+      "sha256": "436836813dcc458a8f2d7c8b6145775fd209ace1293cbf7c88749e32a3dbcc1c",
+      "size": 3063
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/godot.log": {
+      "sha256": "3933d2b4f91eebdc54a2ebcd4b23940bff7eda608c5baee8edf0757e9bb5af15",
+      "size": 3099
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/record-feedback.json": {
+      "sha256": "887eb107187251cb0bfd18e579249b618499b3a85f74f17b991381b7807d408a",
+      "size": 1660950
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/report.json": {
+      "sha256": "e932bd5f367722452ae739934b6963841c31d9349e134c762df75e9d79361816",
+      "size": 791
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s01-m11-arming-slots.json": {
+      "sha256": "8b57a3a716f4983e8a546109c2040a2b25b86ab356f76b63ee7324044007afb8",
+      "size": 27312
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s01-m11-B-terminal-slots.json": {
+      "sha256": "7f0a2395cf78102d82412553745c39b4ef6f08f6e0e9c9d1a0819646cfb2e013",
+      "size": 28990
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s01-m11-incoming-damage-slots.json": {
+      "sha256": "0bfa43cb12dea8fc4bef0ac6c7b86fed99da66623f9ef6af7c683ac0f70fbfd4",
+      "size": 27928
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s01-m11-purchase-01-slots.json": {
+      "sha256": "8b57a3a716f4983e8a546109c2040a2b25b86ab356f76b63ee7324044007afb8",
+      "size": 27312
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s01-m11-purchase-02-slots.json": {
+      "sha256": "0bfa43cb12dea8fc4bef0ac6c7b86fed99da66623f9ef6af7c683ac0f70fbfd4",
+      "size": 27928
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s01-m11-purchase-03-slots.json": {
+      "sha256": "666178a7b92ede95ea4fe48c24d786575623055f97d0b491c70fd4bdb11de825",
+      "size": 28160
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s01-m11-purchase-06-slots.json": {
+      "sha256": "52445432fe4a16ea89bd17c886b85eaccee103953cacc57107767d18d597a087",
+      "size": 28302
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s01-m11-purchase-07-slots.json": {
+      "sha256": "9ff9671b38b052d07e1461747bdb2603f411f4507680a7f267ab80992408b752",
+      "size": 28849
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s01-m11-recruit-attacks-slots.json": {
+      "sha256": "67c29079ed9dadaf356db8a843df4b04934206ba33873a38131dc25c539051cf",
+      "size": 28303
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s01-m11-through-gate-slots.json": {
+      "sha256": "8fafd7be6dde958966fcf02831ec5c122cffac6a68bd8429a0f6830dc8e531f6",
+      "size": 28045
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s02-m11-arming-slots.json": {
+      "sha256": "7b5fdab94013b90863810b4d72bd302f1e04c897aeddad0a17be73ce2b75e291",
+      "size": 27295
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s02-m11-incoming-damage-slots.json": {
+      "sha256": "40d80fde925276dac49dff647544cfc0ceff12c5fb5bd94bd210fc9fc59f0c3c",
+      "size": 27919
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s02-m11-mistake-terminal-slots.json": {
+      "sha256": "70cb99a287fdf72663d9c2af411a29fcdc58ea0fe07be6a46152c7ca7c02df6e",
+      "size": 28628
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s02-m11-purchase-01-slots.json": {
+      "sha256": "7b5fdab94013b90863810b4d72bd302f1e04c897aeddad0a17be73ce2b75e291",
+      "size": 27295
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s02-m11-purchase-02-slots.json": {
+      "sha256": "afd94d111c7fb5cd51dfc52a1a5ca429a2c4d3ad3fc0f538828d44795b8b9577",
+      "size": 27641
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s02-m11-purchase-03-slots.json": {
+      "sha256": "40d80fde925276dac49dff647544cfc0ceff12c5fb5bd94bd210fc9fc59f0c3c",
+      "size": 27919
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s02-m11-through-gate-slots.json": {
+      "sha256": "05895efd4a9547f64e31e22ed3bcf82258811dbfabe736bbcd19fc07e274d2fe",
+      "size": 28281
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s03-m11-A-terminal-slots.json": {
+      "sha256": "67a03aad20ce767e2595dbe423cd4cfe09b112f81c2544fea5cb3651abaf1018",
+      "size": 28858
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s03-m11-arming-slots.json": {
+      "sha256": "a39df279135d4750579ca2401e3c5d3944897d0c4102b0e87a65462f723d643c",
+      "size": 27311
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s03-m11-incoming-damage-slots.json": {
+      "sha256": "5b7c5ffad701be3f823de1acc27d007bd06d35720a62f3fd725a57f8147b6366",
+      "size": 27908
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s03-m11-purchase-01-slots.json": {
+      "sha256": "a39df279135d4750579ca2401e3c5d3944897d0c4102b0e87a65462f723d643c",
+      "size": 27311
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s03-m11-purchase-02-slots.json": {
+      "sha256": "5b7c5ffad701be3f823de1acc27d007bd06d35720a62f3fd725a57f8147b6366",
+      "size": 27908
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s03-m11-purchase-03-slots.json": {
+      "sha256": "56ecf219477dcaf6643ebe24bf3b834d34d8599d6af186d41b48d77ec8234fef",
+      "size": 28119
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s03-m11-purchase-06-slots.json": {
+      "sha256": "aed091b502fd97048a7ba60c1b9894a9c31bc5a0bccbf27a89dc36816c8a7019",
+      "size": 28288
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s03-m11-recruit-attacks-slots.json": {
+      "sha256": "9c641db38402bd0ae70445b6934b8d0608ab5f1d5298feee713dc5239cd22c9a",
+      "size": 28244
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/s03-m11-through-gate-slots.json": {
+      "sha256": "56ecf219477dcaf6643ebe24bf3b834d34d8599d6af186d41b48d77ec8234fef",
+      "size": 28119
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/source-after.json": {
+      "sha256": "18c72c476e982f3e9d396a3394902959a630e346b61327cfc3c83a6da6d94034",
+      "size": 26450
+    },
+    ".artifacts/record-victory-scope-route-20261024T130922016297Z/source-before.json": {
+      "sha256": "18c72c476e982f3e9d396a3394902959a630e346b61327cfc3c83a6da6d94034",
+      "size": 26450
+    }
+  },
+  "result": {
+    "checks": 423,
+    "failures": 0,
+    "events": 3468,
+    "snapshots": 26,
+    "source_maps_equal_before_after_current": true,
+    "log": "strict clean",
+    "criteria": "Existing actual font minimum size fits572x86/font20 at all three profiles",
+    "last_row": "Existing actual scroll and Close input passed"
+  },
+  "limits": "CPU/Dummy8x policy, typed vs earned fixtures distinguished; font-cell queries and fresh-owner materialization are not raster/native/human/OS-kill acceptance."
+}

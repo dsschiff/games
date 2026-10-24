@@ -61,7 +61,7 @@ static func sortie_medal(s: Dictionary) -> int:
 	if s.phase != "victory": return 0
 	return 3 if s.escaped.is_empty() and s.hp >= s.definition.commander_hp * 0.6 else (2 if s.hq >= s.definition.hq * 0.5 else 1)
 static func criteria() -> String:
-	return "3 stars: no escapes and commander HP at least 60%.\nOtherwise 2 stars: HQ at least 50%.\nOtherwise 1 star: victory."
+	return "On victory: 3 stars = no escapes + commander HP >=60%.\nOtherwise 2 stars = HQ >=50%.\nOtherwise 1 star."
 static func campaign_row(index: int,c: Dictionary) -> String:
 	var title: String="%02d  %s" % [index+1,D.TITLES[index]]
 	if c.clears.has(D.IDS[index]): title+=" | Earned %d/3" % c.clears[D.IDS[index]]
