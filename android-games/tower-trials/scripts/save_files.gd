@@ -23,3 +23,6 @@ func write_text(path: String, source: String) -> bool:
 
 func rename(from: String, to: String) -> bool:
 	return DirAccess.rename_absolute(from, to) == OK
+
+func remove(path: String) -> bool:
+	return not exists(path) or (DirAccess.remove_absolute(path)==OK and not exists(path))
