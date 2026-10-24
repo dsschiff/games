@@ -124,3 +124,9 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
   Root573/0 and independent source/evidence review pass. Saves, combat and ranking
   are unchanged. Native/render review follows the separate retry-marker fix and
   later signed candidate; no new APK is included in this source increment.
+
+- Dead local Import recovery is source/CPU reviewed across actual campaign owner
+  and legacy child: complete contexts/bullets retained, admitted autosave joined
+  after freeze, all-marker/all-copy admission refreshed on every choice. Root
+  marker53/0 and phase7/0 pass; old native baseline2/0 preserves ten bullets.
+  No new APK/native-candidate acceptance. See evidence/dead-local-recovery-20261024.json.

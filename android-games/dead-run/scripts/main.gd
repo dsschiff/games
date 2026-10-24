@@ -1,6 +1,7 @@
 extends Node3D
 const R = preload("res://scripts/rules.gd")
 const S = preload("res://scripts/save_store.gd")
+const ImportRecovery=preload("res://scripts/import_recovery.gd")
 const Copy = preload("res://scripts/copy_confirm.gd")
 const CAMERA_PORTRAIT_ASPECT := 1080.0 / 2400.0
 var copy_service := Copy.new()
@@ -39,21 +40,33 @@ var code_box: TextEdit
 var transfer_status: Label
 var tone: AudioStreamPlayer
 var previous_crew := 3
+var recovery_pending:=false
+var recovery: ImportRecovery
+var recovery_status:={}
+var recovery_panel: PanelContainer
+var recovery_summary: Label
+var recovery_buttons:={}
+var recovery_code: TextEdit
+var recovery_code_visible:=false
 
 func _ready() -> void:
 	get_tree().auto_accept_quit = false
 	get_tree().quit_on_go_back = false
-	var saved := S.read(S.PATH, files)
+	recovery=new_recovery(); recovery_status=recovery.read(); recovery_pending=recovery_status.pending
+	var saved: Dictionary={"ok":false}
+	if recovery_status.ok: saved={"ok":true,"state":recovery_status.original.context.legacy,"settings":recovery_status.original.context.settings}
+	elif not recovery_pending: saved=S.read(S.PATH,files)
 	if saved.ok:
 		state = saved.state
 		settings = saved.settings
-		paused = state.phase == "playing"
+		paused = recovery_pending or state.phase == "playing"
 	build_world()
 	build_ui()
 	get_viewport().size_changed.connect(layout)
 	layout()
 	refresh()
-	persist()
+	if recovery_pending: show_recovery()
+	else: persist()
 
 func material(color: Color, glow: bool = false) -> StandardMaterial3D:
 	var m := StandardMaterial3D.new()
@@ -258,8 +271,8 @@ func build_ui() -> void:
 	start_button = button(col, "START RESCUE", start_run)
 	resume_button = button(col, "RESUME", toggle_pause)
 	retry_button = button(col, "RETRY BRIDGE", start_run)
-	sound_button = button(col, "", func(): settings.sound = not settings.sound; persist(); refresh())
-	effects_button = button(col, "", func(): settings.reduced_effects = not settings.reduced_effects; persist(); refresh())
+	sound_button = button(col, "", toggle_sound)
+	effects_button = button(col, "", toggle_effects)
 	button(col, "SAVE / TRANSFER", open_transfer)
 	transfer = panel()
 	# A fixed Control keeps long portable codes from growing the panel off-screen.
@@ -281,6 +294,7 @@ func build_ui() -> void:
 	transfer_status = text(tcol, "", 22)
 	button(tcol, "CLOSE TRANSFER", close_transfer).set_meta("transfer_row", 3)
 	transfer.visible = false
+	build_recovery_ui()
 
 func camera_base_fov() -> float:
 	return 58.0
@@ -327,9 +341,13 @@ func layout() -> void:
 		else:
 			child.position = Vector2(int(row) % 2 * (tw + 12) / 2, th - 200 + (int(row) / 2) * 100)
 			child.size = Vector2((tw - 12) / 2, 88)
+	if is_instance_valid(recovery_panel):
+		recovery_panel.position=Vector2(maxf(12,(v.x-680)/2),40)
+		recovery_panel.size=Vector2(minf(v.x-24,680),v.y-70)
 	frame_camera()
 
 func start_run() -> void:
+	if recovery_blocked(): return
 	state = R.fresh()
 	state.phase = "playing"
 	paused = false
@@ -338,11 +356,13 @@ func start_run() -> void:
 	refresh()
 
 func persist() -> bool:
+	if recovery_blocked(): return false
 	var okay := S.write(state, settings, S.PATH, files)
 	save_message = "" if okay else "SAVE FAILED — progress is only in memory. Free storage and retry Save."
 	return okay
 
 func suspend_run() -> void:
+	if recovery_blocked(): paused=true; drag_index=-1; mouse_drag=false; return
 	paused = state.phase == "playing"
 	drag_index = -1
 	mouse_drag = false
@@ -351,6 +371,7 @@ func imported_feedback() -> String:
 	return "Imported and stored. Close, then " + {"ready": "Start.", "playing": "Resume.", "victory": "choose your next road or Retry.", "defeat": "Retry."}[state.phase]
 
 func toggle_pause() -> void:
+	if recovery_blocked(): return
 	if state.phase != "playing":
 		suspend_run()
 		refresh()
@@ -362,6 +383,7 @@ func toggle_pause() -> void:
 	refresh()
 
 func open_transfer() -> void:
+	if recovery_blocked(): return
 	suspend_run()
 	transfer.visible = true
 	transfer_status.text = ""
@@ -369,18 +391,21 @@ func open_transfer() -> void:
 	refresh()
 
 func close_transfer() -> void:
+	if recovery_blocked(): return
 	copy_service.cancel()
 	transfer.visible = false
 	code_box.release_focus()
 	refresh()
 
 func export_code() -> void:
+	if recovery_blocked(): return
 	var code := S.encode(state, settings, int(S.read(S.PATH, files).revision))
 	code_box.text = code
 	copy_service.begin(code)
 	transfer_status.text = copy_service.feedback
 
 func paste_code() -> void:
+	if recovery_blocked(): return
 	copy_service.cancel()
 	if DisplayServer.get_name() == "headless":
 		transfer_status.text = "Clipboard is empty or unavailable."
@@ -389,24 +414,13 @@ func paste_code() -> void:
 	transfer_status.text = "Pasted. Review and Import." if not code_box.text.is_empty() else "Clipboard is empty or unavailable."
 
 func import_code() -> void:
-	copy_service.cancel()
-	var d := S.decode(code_box.text)
-	if not d.ok:
-		transfer_status.text = "Invalid code. Current rescue unchanged."
-		return
-	if not S.write(d.state, d.settings, S.PATH, files, true):
-		transfer_status.text = "Import could not be stored. Current rescue unchanged."
-		return
-	state = d.state
-	settings = d.settings
-	suspend_run()
-	transfer_status.text = imported_feedback()
-	save_message = ""
-	refresh()
+	begin_import(code_box.text)
 
 func _notification(what: int) -> void:
 	if not is_node_ready():
 		return
+	if recovery_blocked() and what in [NOTIFICATION_WM_GO_BACK_REQUEST,NOTIFICATION_APPLICATION_PAUSED,NOTIFICATION_WM_CLOSE_REQUEST]:
+		paused=true; drag_index=-1; mouse_drag=false; show_recovery(); return
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		back()
 	if what == NOTIFICATION_APPLICATION_PAUSED:
@@ -419,17 +433,20 @@ func _notification(what: int) -> void:
 		refresh()
 
 func back() -> void:
+	if recovery_blocked(): return
 	if transfer.visible:
 		close_transfer()
 	else:
 		toggle_pause()
 
 func _input(event: InputEvent) -> void:
+	if recovery_blocked(): return
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		back()
 		get_viewport().set_input_as_handled()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if recovery_blocked(): return
 	if state.phase != "playing" or paused or transfer.visible:
 		return
 	var v := get_viewport().get_visible_rect().size
@@ -450,6 +467,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		R.steer(state, anchor_x + (event.position.x - anchor.x) / v.x * 9.0)
 
 func _physics_process(_delta: float) -> void:
+	if recovery_blocked(): return
 	if copy_service.poll(_delta) and transfer.visible:
 		transfer_status.text = copy_service.feedback
 	var before: String = state.phase
@@ -463,6 +481,7 @@ func _physics_process(_delta: float) -> void:
 	refresh()
 
 func refresh() -> void:
+	if recovery_blocked(): show_recovery(); return
 	if hud == null:
 		return
 	info.text = "CREW %d / %d    •    BRIDGE %d%%\nCrane %d    |    Rescue line leaks %d" % [state.crew, R.CAP, state.tick * 100 / R.END_TICK, state.side_hp, state.leaks]
@@ -518,3 +537,72 @@ func refresh() -> void:
 			bullet_nodes[i].position = Vector3(state.bullets[i].x, 0.58, -state.bullets[i].z)
 	for i in 20:
 		actors["mark" + str(i)].position.z = -fposmod(i * 2.5 - state.tick / 60.0 * R.SPEED, 45)
+
+func recovery_blocked() -> bool: return recovery_pending
+func new_recovery() -> ImportRecovery: return ImportRecovery.new(files,true)
+func capture_recovery_code() -> String: return S.encode(state,settings,0)
+func prepare_import_code(code: String) -> Dictionary: return {"ok":S.decode(code).ok,"code":code}
+func prepare_recovery_sources() -> void:
+	paused=true; drag_index=-1; mouse_drag=false; copy_service.cancel()
+func import_notice(value: String) -> void: transfer_status.text=value
+func toggle_sound() -> void:
+	if recovery_blocked(): return
+	settings.sound=not settings.sound; persist(); refresh()
+func toggle_effects() -> void:
+	if recovery_blocked(): return
+	settings.reduced_effects=not settings.reduced_effects; persist(); refresh()
+func build_recovery_ui() -> void:
+	recovery_panel=panel(); recovery_panel.hide()
+	var scroll:=ScrollContainer.new(); scroll.horizontal_scroll_mode=ScrollContainer.SCROLL_MODE_DISABLED; recovery_panel.add_child(scroll)
+	var col:=VBoxContainer.new(); col.size_flags_horizontal=Control.SIZE_EXPAND_FILL; col.add_theme_constant_override("separation",12); scroll.add_child(col)
+	text(col,"WHOLE RESCUE RECOVERY / PLAY PAUSED",30)
+	recovery_summary=text(col,"",24)
+	for item in [["retry","RETRY IMPORT",finish_import.bind(true)],["previous","KEEP PREVIOUS WHOLE SAVE",finish_import.bind(false)],["read","RETRY RECOVERY READ",retry_recovery_read],["view_previous","VIEW / EXPORT PREVIOUS CODE",show_recovery_code.bind(false)],["view_incoming","VIEW / EXPORT IMPORTED CODE",show_recovery_code.bind(true)]]:
+		recovery_buttons[item[0]]=button(col,item[1],item[2])
+	recovery_code=TextEdit.new(); recovery_code.editable=false; recovery_code.wrap_mode=TextEdit.LINE_WRAPPING_BOUNDARY; recovery_code.custom_minimum_size=Vector2(0,220); col.add_child(recovery_code); recovery_code.hide()
+	text(col,"Complete codes stay on this device. Select and copy a displayed code to export. This does not change the pending choice.",22)
+func show_recovery() -> void:
+	if not recovery_pending or not is_instance_valid(recovery_panel): return
+	paused=true; drag_index=-1; mouse_drag=false
+	for node in [title,info,warning,notice,pause_button,overlay,transfer]: node.hide()
+	recovery_panel.show(); recovery_code.visible=recovery_code_visible
+	var known:=not recovery.record.is_empty()
+	for key in recovery_buttons: recovery_buttons[key].visible=(key=="read") if not known else key!="read"
+	recovery_summary.text=recovery.message
+	if known:
+		recovery_summary.text+="\n\nPREVIOUS WHOLE SAVE\n"+ImportRecovery.describe(recovery.original)+"\n\nIMPORTED WHOLE SAVE\n"+ImportRecovery.describe(recovery.incoming)+"\n\nThe campaign, legacy bridge, all progress, loadout and settings move together."
+	else: recovery_summary.text+="\nNo default rescue will be saved while recovery is blocked."
+func show_recovery_code(use_import: bool) -> void:
+	if not recovery_pending or recovery.record.is_empty(): return
+	recovery_code_visible=true; recovery_code.text=recovery.incoming_code if use_import else recovery.original_code; show_recovery()
+func begin_import(code: String) -> void:
+	if recovery_blocked(): return
+	copy_service.cancel(); var prepared:=prepare_import_code(code)
+	if not prepared.ok: import_notice("Invalid code. Current rescue unchanged."); return
+	# Freeze admission before waiting on an already admitted worker or child.
+	recovery_pending=true; prepare_recovery_sources(); recovery=new_recovery()
+	recovery_status=recovery.begin(capture_recovery_code(),prepared.code,code)
+	recovery_pending=recovery_status.pending
+	if not recovery_pending: import_notice(recovery.message); return
+	recovery_code_visible=false; show_recovery()
+	if recovery_status.ok: finish_import(true)
+func retry_recovery_read() -> void:
+	if not recovery_pending: return
+	recovery_status=recovery.read()
+	if recovery_status.ok: adopt_recovery_original(recovery_status.original)
+	elif not recovery_status.pending: recovery.message="Recovery marker is unavailable. Local copies remain; play and saves stay paused. Keep the app installed for recovery."
+	show_recovery()
+func adopt_recovery_original(value: Dictionary) -> void:
+	state=value.context.legacy.duplicate(true); settings=value.context.settings.duplicate(true); paused=true
+func finish_import(use_import: bool) -> void:
+	if not recovery_pending: return
+	var result:=recovery.resolve(use_import)
+	if not result.ok: show_recovery(); return
+	adopt_recovery(result.decoded)
+	recovery_pending=false; recovery_code_visible=false; recovery_panel.hide(); save_message=""
+	for node in [title,info,warning,notice]: node.show()
+	refresh(); import_notice(("Imported" if use_import else "Previous")+" whole rescue verified. "+recovery_next_action())
+func adopt_recovery(value: Dictionary) -> void:
+	adopt_recovery_original(value); drag_index=-1; mouse_drag=false; previous_crew=state.crew
+func recovery_next_action() -> String:
+	return "Start when ready." if state.phase=="ready" else ("Resume when ready." if state.phase=="playing" else "Retry when ready.")

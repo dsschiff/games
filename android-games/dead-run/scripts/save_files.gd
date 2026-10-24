@@ -19,3 +19,6 @@ func rename(from: String, to: String) -> bool:
 	if FileAccess.file_exists(to) and DirAccess.remove_absolute(to) != OK:
 		return false
 	return DirAccess.rename_absolute(from, to) == OK
+
+func remove(path: String) -> bool:
+	return not FileAccess.file_exists(path) or (DirAccess.remove_absolute(path)==OK and not FileAccess.file_exists(path))
