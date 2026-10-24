@@ -1,20 +1,21 @@
 extends "res://scripts/main.gd"
 const Store = preload("res://scripts/campaign_store.gd")
 var host: Node
+var recovered_start:=false
 func _ready() -> void:
 	state = host.ctx.legacy.duplicate(true)
 	settings = host.ctx.settings.duplicate(true)
-	paused = state.phase == "playing"
+	paused = recovered_start or state.phase == "playing"
 	build_world()
 	build_ui()
 	button(resume_button.get_parent(), "EVACUATION MAP", func(): host.leave_legacy())
 	get_viewport().size_changed.connect(layout)
 	layout()
 	refresh()
-	persist()
+	if not recovered_start: persist()
 
 func persist() -> bool:
-	if host == null: return false
+	if host == null or host.recovery_pending: return false
 	host.ctx.legacy = state.duplicate(true)
 	host.ctx.settings = settings.duplicate(true)
 	var okay: bool = host.persist()
@@ -22,6 +23,7 @@ func persist() -> bool:
 	return okay
 
 func export_code() -> void:
+	if recovery_blocked(): return
 	host.ctx.legacy = state.duplicate(true)
 	host.ctx.settings = settings.duplicate(true)
 	var code := Store.encode(host.ctx, int(Store.read(Store.PATH, host.files).revision))
@@ -30,30 +32,17 @@ func export_code() -> void:
 	transfer_status.text = copy_service.feedback
 
 func import_code() -> void:
-	copy_service.cancel()
-	var saved := Store.decode(code_box.text)
-	if not saved.ok:
-		transfer_status.text = "Invalid code. Journey unchanged."
-		return
-	var io: Variant = files if files != null else host.files
-	if not Store.write(saved.context, Store.PATH, io, true):
-		transfer_status.text = "Import could not be stored. Journey unchanged."
-		return
-	host.ctx = saved.context
-	host.state = host.ctx.campaign
-	host.settings = host.ctx.settings
-	state = host.ctx.legacy.duplicate(true)
-	settings = host.ctx.settings.duplicate(true)
-	suspend_run()
-	host.suspend_run()
-	host.build_world()
-	host.world.hide()
-	host.hud.hide()
-	camera.current = true
-	transfer_status.text = imported_feedback()
-	save_message = ""
-	refresh()
+	if recovery_blocked(): return
+	host.begin_import(code_box.text)
 
 func close_transfer() -> void:
+	if recovery_blocked(): return
 	super.close_transfer()
 	if host.ctx.mode == "campaign": host.leave_legacy()
+
+func recovery_blocked() -> bool: return host!=null and host.recovery_pending
+func show_recovery() -> void:
+	if host!=null: host.show_recovery()
+func refresh() -> void:
+	if recovery_blocked(): return
+	super.refresh()

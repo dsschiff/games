@@ -140,4 +140,6 @@ static func write(ctx: Dictionary, path: String = PATH, io: Variant = null, impo
 	var name := path + str(1 - int(best.slot))
 	var code := encode(ctx, int(best.revision) + 1, not imported)
 	if not decode(code).ok or not io.write_text(name + ".tmp", code) or io.read_text(name + ".tmp") != code: return false
-	return io.rename(name + ".tmp", name) and io.read_text(name) == code and decode(code).ok
+	if not io.rename(name + ".tmp", name) or not io.exists(name): return false
+	var confirmed: String=io.read_text(name)
+	return confirmed==code and decode(confirmed).ok

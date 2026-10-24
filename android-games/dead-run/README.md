@@ -173,3 +173,7 @@ No builder ADB/APK export/install, shared records, pushes, new chats/goals or ag
 Freeze the scoped campaign checkpoint for independent root/Astra/native update
 checks. Physical Fold7 touch/IME/folding/safe areas, audible sound, heavy-crowd FPS
 and human pacing/fun remain unverified; no automated result substitutes for them.
+
+## Local Import recovery source amendment
+
+The current source owns uncertain Imports through a checked local journal before adopting any whole journey. It preserves both campaign and legacy bullets/rules, all progress, loadout and settings; both Retry Import and Keep Previous require verified whole-context commit and cleanup. Pending summaries and read-only full codes remain available while play/autosaves stay blocked. See [the amendment](RECOVERY_AMENDMENT.md) and [exact source/evidence pins](RECOVERY_CHECKPOINT.json). This source-only prerequisite enables no cloud transport/protection and makes no new APK/native acceptance claim.

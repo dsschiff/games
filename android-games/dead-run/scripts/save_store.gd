@@ -63,4 +63,6 @@ static func write(state: Dictionary, settings: Dictionary, path: String = PATH, 
 	var text := encode(state, settings, int(best.revision) + 1, not imported)
 	if not decode(text).ok or not io.write_text(file + ".tmp", text) or io.read_text(file + ".tmp") != text:
 		return false
-	return io.rename(file + ".tmp", file) and io.read_text(file) == text and decode(io.read_text(file)).ok
+	if not io.rename(file + ".tmp", file) or not io.exists(file): return false
+	var confirmed: String=io.read_text(file)
+	return confirmed==text and decode(confirmed).ok
