@@ -653,9 +653,9 @@
   },
   "gear_local_recovery": {
     "evidence": "android-games/evidence/gear-local-recovery-20261024.json",
-    "status": "Source/CPU/signature clear; local0.4.2/code11 native update/recovery pending. Not uploaded.",
+    "status": "Code11 bounded native functional audit verified16 owning-context comparisons; strict shader-warning gate failed. Copy controls source-only386/0. New builds held for retry-marker regression/fix; not uploaded.",
     "checks": "Independent353/0 and65/0; worker1466/0transfer,164/0rules,39/0lifecycle. Synthetic faults/fresh owners do not establish native power loss.",
-    "native_limit": "Owned emulator boot/app launch succeeded, then raw-save capture shell stalled before update; observed low host memory; exact owned processes stopped after graceful timeout."
+    "native_limit": "Four update-related1-ULP raw JSON changes remain distinct from owning-decoder equality; empty earned profile, same-mission ready/battle journal metadata fixture, no native fault/power loss/phone proof. Earlier stalled attempt preserved."
   },
   "hook_local_recovery": {
     "evidence": "android-games/evidence/hook-local-recovery-20261024.json",

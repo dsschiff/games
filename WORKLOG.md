@@ -739,3 +739,11 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   Astra source/checkpoint audit clear. No UI, combat, decoder/schema, version,
   build or native acceptance change. Prior65/6 failure is retained in
   android-games/hook-and-hunger/ARENA_SCORE_KEY_CHECKPOINT.json.
+
+- Gear recovery follow-up: read-only Copy Previous/Imported source is independently
+  reviewed and root386/0 passes. Code11 native packet audit verifies212 pins,
+  16 complete owning-decoder comparisons,7 pending validations and8 journal
+  absences. Four update-related raw JSON ULP differences and repeated shader
+  warning remain explicit; strict log-clean failed. Initial stalled attempt is
+  preserved. New builds held for equivalent retry-marker regression/fix following
+  Dead29/10 reproduction. No version/build/upload or physical acceptance added.

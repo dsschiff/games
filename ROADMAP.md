@@ -79,9 +79,9 @@ verification, independent visual review or phone feedback waits.
   Existing signing identity retained. Account verification, separate upload-key/
   Play App Signing setup and genuine Play acceptance remain open; no upload.
 
-- Gear0.4.2/code11 local recovery candidate: exact destination checks and whole-save
-  Import journal source/CPU/signature clear. Native update/recovery remains pending
-  after owned emulator capture-shell stall under observed host memory pressure. No upload.
+- Gear0.4.2/code11: bounded native update/recovery now audited16/0 owning-context
+  comparisons; strict shader-warning gate failed. Initial capture stall is retained
+  as a separate failed attempt. New builds await retry-marker regression/fix. No upload.
 
 - Hook local Import recovery and terminal bootstrap/commit source are CPU/source
   reviewed, including independent871/0 +12/0. Existing0.3.2 APK unchanged. Next:
@@ -90,3 +90,9 @@ verification, independent visual review or phone feedback waits.
 - Hook arena score identity source/CPU correction complete: historical aliases
   and best scores preserved, root188/0 and independent review clear. New signed
   candidate/native update remain next; no new binary or UI score display yet.
+
+- Gear code11 bounded native update/Import/both recovery choices are independently
+  audited16/0 owning-context comparisons; strict engine warning gate remains
+  failed. Read-only recovery copy buttons pass source/root386/0, native export
+  pending. New APK builds held while equivalent retry-marker regressions/fixes
+  follow a newly reproduced Dead failure. No upload or phone acceptance added.

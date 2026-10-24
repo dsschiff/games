@@ -97,9 +97,9 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
 - Gear local Import durability prerequisite is implemented and source/CPU reviewed;
   complete context and explicit recovery choices are verified by synthetic fault
   and actual GUI-input checks. Signed0.4.2/code11 retains the existing identity.
-  Android update/recovery remains unqualified after test-emulator raw-save capture
-  stalled following successful boot/app launch; no install occurred, owned runtime
-  stopped and app data was not reset. Optional
+  Initial Android attempt stalled during raw-save capture after successful boot;
+  no install occurred in that failed attempt, owned runtime stopped and app data
+  was not reset. Later bounded native evidence is recorded below. Optional
   cloud is separate. Earlier three refinement sources landedPR18; exact private
   transfers await specific approval. See evidence/gear-local-recovery-20261024.json.
 
@@ -107,6 +107,14 @@ apps were present in the live 2026-10-23 check. Cloud sync is not implemented.
   freezes pending play/writes, and offers explicit verified Retry/Keep choices.
   Terminal loading and due-save ordering fixes pass independent871/12 checks;
   eight strict worker suites/source and artifact audit are clear. No version,
-  binary, native, rendered or cloud acceptance is added. Explicit arena Continue
-  float-seed score key remains a separate next fix. See
+  binary, native, rendered or cloud acceptance is added. The later arena Continue
+  score-identity correction landed in PR23; the earlier next-fix note is superseded. See
   evidence/hook-local-recovery-20261024.json.
+
+- Gear code11 native functional evidence is independently audited:16 complete
+  owning-decoder comparisons/0,7 pending validations,8 cleared journals,212 pins.
+  Strict shader-warning gate failed; raw JSON ULP changes remain qualified. New
+  safe Copy Previous/Imported controls pass root386/0 CPU checks, pending a later
+  signed native export check. A newly reproduced Dead retry-marker sequence
+  requires equivalent Gear/Hook/Frontline regressions before new APK builds.
+  Existing successful packets remain bounded historical evidence.
