@@ -747,3 +747,10 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   warning remain explicit; strict log-clean failed. Initial stalled attempt is
   preserved. New builds held for equivalent retry-marker regression/fix following
   Dead29/10 reproduction. No version/build/upload or physical acceptance added.
+
+- Hook arena feedback: selected seed/loadout now shows the best clear or an honest
+  no-clear state and explains hits-before-time ranking. Six additive controller
+  lines; no new buttons, writes or combat changes. Astra18-artifact/170-source/
+  191-unchanged-file audit clear. Worker573/188/871 and root independent573/0
+  pass; complete profiles/parked finale/slots preserved. CPU geometry is not
+  rendered/native readability. No version/build/upload; retry-marker risk open.
