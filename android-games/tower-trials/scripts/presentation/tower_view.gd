@@ -951,17 +951,60 @@ func _draw_fx() -> void:
 		var y := 205.0 - (1.0 - hud_pulse) * 18.0
 		fx.draw_string_outline(font, Vector2(196, y), text, HORIZONTAL_ALIGNMENT_LEFT, -1, 30, 8, Color(INK, hud_pulse))
 		fx.draw_string(font, Vector2(196, y), text, HORIZONTAL_ALIGNMENT_LEFT, -1, 30, Color(GOLD, hud_pulse))
+	for item in popup_layout():
+		fx.draw_string_outline(font, item.where, item.text, HORIZONTAL_ALIGNMENT_LEFT, -1, item.size, item.outline, Color(INK, item.alpha))
+		fx.draw_string(font, item.where, item.text, HORIZONTAL_ALIGNMENT_LEFT, -1, item.size, Color(item.color, item.alpha))
+
+## Use the same font/outline bounds for placement and paint. Older values keep
+## their natural rise; later values take the nearest free vertical position.
+func popup_layout() -> Array:
+	var result: Array = []
+	var area := Rect2(8, 224, 584, 520)
 	for pop in pops:
 		var k: float = pop.t / pop.life
 		var grow_scale := 1.0 + (.5 * (1.0 - smoothstep(0.0, .18, k)) if pop.big else 0.0)
 		var size := int(pop.size * grow_scale)
-		var alpha := 1.0 - smoothstep(.7, 1.0, k)
-		var rise := (60.0 if pop.big else 46.0) * (1.0 - pow(1.0 - minf(1.0, k * 1.6), 2.0))
+		var outline := maxi(6, size / 5)
 		var width := font.get_string_size(pop.text, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
-		var where: Vector2 = pop.at + Vector2(-width * .5, -rise)
-		where.x = clampf(where.x, 8.0, 592.0 - width)
-		fx.draw_string_outline(font, where, pop.text, HORIZONTAL_ALIGNMENT_LEFT, -1, size, maxi(6, size / 5), Color(INK, alpha))
-		fx.draw_string(font, where, pop.text, HORIZONTAL_ALIGNMENT_LEFT, -1, size, Color(pop.color, alpha))
+		while width + outline * 2 > area.size.x and size > 12:
+			size -= 1
+			outline = maxi(6, size / 5)
+			width = font.get_string_size(pop.text, HORIZONTAL_ALIGNMENT_LEFT, -1, size).x
+		var rise := (60.0 if pop.big else 46.0) * (1.0 - pow(1.0 - minf(1.0, k * 1.6), 2.0))
+		var extent := Vector2(width + outline * 2, font.get_height(size) + outline * 2)
+		var desired: Vector2 = pop.at - Vector2(width * .5 + outline, rise + font.get_ascent(size) + outline)
+		desired.x = clampf(desired.x, area.position.x, area.end.x - extent.x)
+		desired.y = clampf(desired.y, area.position.y, area.end.y - extent.y)
+		var candidates := [desired.y, area.position.y, area.end.y - extent.y]
+		for other in result:
+			candidates.append(other.bounds.position.y - extent.y - 8.0)
+			candidates.append(other.bounds.end.y + 8.0)
+		var best := INF
+		var rect := Rect2(desired, extent)
+		for y in candidates:
+			var candidate := Rect2(Vector2(desired.x, y), extent)
+			if not area.encloses(candidate): continue
+			if result.any(func(other): return candidate.grow(3.0).intersects(other.bounds)): continue
+			var distance := absf(y - desired.y)
+			if distance < best:
+				best = distance
+				rect = candidate
+		result.append({"text": pop.text, "size": size, "outline": outline, "bounds": rect,
+			"where": rect.position + Vector2(outline, font.get_ascent(size) + outline),
+			"alpha": 1.0 - smoothstep(.7, 1.0, k), "color": pop.color})
+	# A dense encounter can leave small gaps. Repack the whole stack rather
+	# than hide arithmetic or delay the rule's resolution.
+	var collision := false
+	for i in result.size():
+		for j in range(i):
+			if result[i].bounds.intersects(result[j].bounds): collision = true
+	if collision:
+		var y := area.position.y
+		for item in result:
+			item.bounds.position.y = y
+			item.where.y = y + font.get_ascent(item.size) + item.outline
+			y = item.bounds.end.y + 8.0
+	return result
 
 # ------------------------------------------------------------------ ending
 func _finale() -> void:

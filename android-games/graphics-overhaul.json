@@ -304,5 +304,17 @@
       "Physical phone testing deferred",
       "Full historical art-direction motion review remains separate; this pass reviews feedback/HQ layout"
     ]
+  },
+  "gear_design_checkpoint": {
+    "version": "0.4.1",
+    "version_code": 10,
+    "source_commit": "c2efb7a41d7f590b295bd357fc6dee31cd20cc29",
+    "status": "bounded_Begin_lifecycle_fix_privately_delivered_old_graphics_review_retained",
+    "candidate_evidence": "android-games/evidence/design-cycle-20261023.json",
+    "apk_sha256": "413410e47a1dbc0cd5aa3cdca530005eb43134f29df7fc203e5577896861603e",
+    "open": [
+      "Physical phone testing deferred",
+      "This control-only change does not re-rate historical art direction or phone performance"
+    ]
   }
 }

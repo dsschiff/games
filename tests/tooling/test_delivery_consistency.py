@@ -32,6 +32,7 @@ CHECKPOINT_SLUGS = {
     "gear_fit_checkpoint": "gear-bastion",
     "frontline_pooling_checkpoint": "frontline-foundry",
     "frontline_design_checkpoint": "frontline-foundry",
+    "gear_design_checkpoint": "gear-bastion",
     "hook_graphics_checkpoint": "hook-and-hunger",
     "dead_run_graphics_checkpoint": "dead-run",
     "tower_graphics_checkpoint": "tower-trials",

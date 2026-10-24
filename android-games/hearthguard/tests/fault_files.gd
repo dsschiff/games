@@ -3,6 +3,8 @@ var files := {}
 var fail_write := false
 var fail_rename := false
 var corrupt_readback := false
+var missing_destination := false
+var corrupt_destination := false
 
 func exists(path: String) -> bool:
 	return files.has(path)
@@ -17,6 +19,8 @@ func write_text(path: String, text: String) -> bool:
 func rename(from: String, to: String) -> bool:
 	if fail_rename:
 		return false
-	files[to] = files[from]
+	files.erase(to)
+	if not missing_destination:
+		files[to] = "torn destination" if corrupt_destination else files[from]
 	files.erase(from)
 	return true

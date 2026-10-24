@@ -76,4 +76,7 @@ static func write(s: Dictionary, p: Dictionary, settings: Dictionary, path: Stri
 	var text := encode(s, p, settings, int(best.revision) + 1, not imported, campaign)
 	if not decode(text).ok or not io.write_text(file + ".tmp", text) or io.read_text(file + ".tmp") != text:
 		return false
-	return io.rename(file + ".tmp", file)
+	if not io.rename(file + ".tmp", file) or not io.exists(file):
+		return false
+	var committed: String = io.read_text(file)
+	return committed == text and decode(committed).ok

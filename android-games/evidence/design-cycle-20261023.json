@@ -77,7 +77,7 @@
     "raw_android_whole_save_comparison": false
   },
   "dead_run": {
-    "state": "source fixes integrated locally; strict full-render release gate remains failed with four texture leaks",
+    "state": "Source fixes landed PR10; strict full-render gate fails four texture leaks. Minimal actual-play prefix investigation active; release held.",
     "commit": "7532385"
   },
   "cloud": {
@@ -92,9 +92,120 @@
     "native_aar_sha256": "414f1d90bca0147524e586f6d9cf0e0fa808b373d77cb49b04821f9d5e7c1a01"
   },
   "next": [
-    "Gear ready-phase Begin/input fix",
-    "Hearthguard save commit/readback and failed mode-switch handling",
-    "Close Dead Run strict renderer teardown failure",
-    "Finish cloud review then offline-safe opt-in game integration"
-  ]
+    "Land and privately deliver verified Hearthguard candidate",
+    "Review Hook warning usefulness and strict finale teardown",
+    "Review Tower popup motion and signed Android update",
+    "Isolate and close Dead Run full-route renderer teardown failure",
+    "Offline-safe optional cloud game integration; live verification awaits Play identity/phone and per-game setup"
+  ],
+  "gear": {
+    "version": "0.4.1",
+    "version_code": 10,
+    "state": "private_release_delivered",
+    "build_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\gear-bastion\\20261023T234703246462Z\\manifest.json",
+    "build": {
+      "schema_version": 1,
+      "game": "gear-bastion",
+      "command": "build",
+      "godot_version": "4.7.2.stable.official.ed1daf0bf",
+      "started_utc": "20261023T234703246462Z",
+      "git_revision": "c2efb7a41d7f590b295bd357fc6dee31cd20cc29",
+      "project": "android-games/gear-bastion",
+      "build_type": "release",
+      "pipeline_sha256": "3a473050bd36928c58f959ae99e67b3d22f533d425426b62e058090cace63033",
+      "toolchain_config_sha256": "2c5788e6e8a2b963cb8cd512f4c192b84e78915e05403ed7d267ab8aec34a502",
+      "import_exit_code": 0,
+      "argv": [
+        "C:\\projects\\active\\.game-toolchain\\godot\\4.7.2\\Godot_v4.7.2-stable_win64_console.exe",
+        "--headless",
+        "--path",
+        "F:\\games-workspaces\\design-cycle-20261023\\android-games\\gear-bastion",
+        "--export-release",
+        "Android",
+        "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\gear-bastion\\20261023T234703246462Z\\gear-bastion.apk"
+      ],
+      "exit_code": 0,
+      "result": "built",
+      "artifact": {
+        "path": ".artifacts/gear-bastion/20261023T234703246462Z/gear-bastion.apk",
+        "bytes": 56066369,
+        "sha256": "413410e47a1dbc0cd5aa3cdca530005eb43134f29df7fc203e5577896861603e"
+      },
+      "apk_inspection": {
+        "package": "com.dsschiff.gearbastion",
+        "version_code": "10",
+        "version_name": "0.4.1",
+        "permissions": [],
+        "internet_permission": false,
+        "signature_verified": true,
+        "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
+        "debuggable": false
+      },
+      "project_source_sha256": "7359395cd673f3bc4607f04b9e5f3dcf4f16e254b7f8704d934952752b221fdd",
+      "project_source_sha256_after": "7359395cd673f3bc4607f04b9e5f3dcf4f16e254b7f8704d934952752b221fdd",
+      "source_unchanged": true,
+      "project_git_status": [],
+      "project_dirty": false
+    },
+    "published": {
+      "release": "https://github.com/dsschiff/android-games-releases/releases/tag/gear-bastion-v0.4.1",
+      "tag": "gear-bastion-v0.4.1",
+      "asset": "gear-bastion-v0.4.1.apk",
+      "asset_url": "https://github.com/dsschiff/android-games-releases/releases/download/gear-bastion-v0.4.1/gear-bastion-v0.4.1.apk",
+      "sha256": "413410e47a1dbc0cd5aa3cdca530005eb43134f29df7fc203e5577896861603e",
+      "bytes": 56066369,
+      "release_id": 422414777,
+      "asset_id": 670794034,
+      "private": true,
+      "notes_readback_verified": true,
+      "readme_readback_verified": true
+    },
+    "native_report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\release-updates\\com.dsschiff.gearbastion\\20261024T000416Z\\report.json",
+    "whole_save_native_report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-save-retention\\report.json",
+    "native_scope": "Signed9-to10/offline/Home/cold; complete existing ready save retained. Actual guard drag/Menu/Home/oneBegin produces6; whole active context freezes across Home/cold. Initial profile empty, not native earned-profile update proof.",
+    "whole_save_report_sha256": "92703ec274bef75621f85bf364ed07524891a9f3e554df320cd07ee1f557e2cd",
+    "physical_acceptance": false
+  },
+  "hearthguard": {
+    "version": "0.3.1",
+    "version_code": 5,
+    "state": "signed_native_verified_candidate_awaiting_source_landing_and_private_delivery",
+    "build_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\hearthguard\\20261023T235824674521Z\\manifest.json",
+    "native_report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\release-updates\\com.dsschiff.hearthguard\\20261024T000520Z\\report.json",
+    "whole_save_native_report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-save-retention\\report.json",
+    "native_scope": "Signed4-to5/offline/Home/cold; complete existing ready context retained. Actual natural defeat/logBackToResult/cold result equality. Baseline earned profile empty.",
+    "independent_complete_value_regression": {
+      "checks": 167,
+      "failures": 0,
+      "receipt": "F:\\games-workspaces\\design-cycle-20261023\\android-games\\hearthguard\\.artifacts\\coordinator-release-reliability-20261023T235951560805Z\\receipt.json"
+    },
+    "physical_acceptance": false
+  },
+  "tower": {
+    "version": "0.4.1",
+    "version_code": 7,
+    "state": "reviewed_source_integrated_signed_candidate_render_and_native_pending",
+    "source_commits": [
+      "173d79d",
+      "5a432c6"
+    ],
+    "earliest_input_regression": {
+      "checks": 1603,
+      "input_events": 412,
+      "observed_engine_frames": 10550,
+      "maximum_stack_pixels": 465,
+      "available_height_pixels": 520,
+      "overlaps": 0,
+      "clipped": 0
+    },
+    "build_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\tower-trials\\20261024T001356437179Z\\manifest.json"
+  },
+  "hook": {
+    "state": "reviewed_hit_feedback_source_integrated_charge_undercoverage_reproduced_and_source_correction_in_review",
+    "open": [
+      "Conservative obstacle charge warning usefulness in authored motion",
+      "Final strict rendered teardown; current finale has2ObjectDB leaks",
+      "Signed update and private delivery"
+    ]
+  }
 }
