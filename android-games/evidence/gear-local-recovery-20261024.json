@@ -176,7 +176,12 @@
     "checkpoint": {
       "path": "android-games\\gear-bastion\\RECOVERY_COPY_CHECKPOINT.json",
       "sha256": "09aae85e6da8bd45bed225ddb90dff0c0ad551933d6fd308b0874762906b11a9",
-      "bytes": 30492
+      "bytes": 30492,
+      "basis": "Git LF-normalized blob bytes; CRLF checkout normalizes to this exact hash and size.",
+      "checkout_raw": {
+        "sha256": "4f35cfff2cf389931bd53026ed729502fafcad60a6772510cb6306bf59406c8e",
+        "bytes": 30768
+      }
     },
     "worker_checks": 386,
     "root_receipt": {
