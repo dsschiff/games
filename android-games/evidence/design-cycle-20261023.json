@@ -96,11 +96,10 @@
     "real_decoder_manifest_sha256": "d5e59188f163758f5bcd29cd7a14ab8b5685fe145f9721cffe6190c5eb4d4811"
   },
   "next": [
-    "Finish Tower motion/native verification and private delivery",
-    "Review Hook warning usefulness and strict finale teardown",
-    "Review Tower popup motion and signed Android update",
-    "Isolate and close Dead Run full-route renderer teardown failure",
-    "Offline-safe optional cloud game integration; live verification awaits Play identity/phone and per-game setup"
+    "Complete the independent disposition of Dead Run fixture cadence and strict full rendered gate, then signed native/private update",
+    "Finish dormant Frontline optional-recovery adapter with explicit full-save choice and verified commit; no production/native linkage claim",
+    "Complete per-game Play identity/client/tester/Saved Games setup when account approval permits; verify genuine account/device/offline/conflict sync before claiming cloud acceptance",
+    "Continue dense Hook finale readability and Tower floating-total floor association as bounded design followups"
   ],
   "gear": {
     "version": "0.4.1",
