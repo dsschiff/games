@@ -372,13 +372,7 @@ func synchronize(state: Dictionary, held: bool, dt: float, reduced_effects: bool
 			if not campaign:
 				title.text = "BOLT" if i == 0 else "HEAVY"
 			title.modulate = Color("ff927b" if spec.jam > 0 else ["ffe2a0", "ffbf91", "c4fff0"][int(spec.family)])
-	var near := C.nearby(state) if campaign else L.nearby_pad(state)
-	range_ring.visible = campaign and near >= 0 and snap.towers[near].family >= 0 and not held
-	if range_ring.visible:
-		var stats: Dictionary = definition.families[int(snap.towers[near].family)].stats[int(snap.towers[near].fork)]
-		range_ring.scale = Vector3.ONE * float(stats.range) / 5
-		var p := pad_point(near)
-		range_ring.position = Vector3(p.x, .10, p.y)
+	synchronize_range(state,held)
 	var drops := {}
 	for coin in snap.coins:
 		var key := str(int(coin.id))
@@ -574,6 +568,18 @@ func framing_points() -> Array[Vector3]:
 		for corner in 8:
 			points.append(silhouette.grow(.55).get_endpoint(corner))
 	return points
+
+func synchronize_range(state: Dictionary, held: bool, preview_pad: int = -1, preview_family: int = -1) -> void:
+	var near := C.nearby(state) if campaign else L.nearby_pad(state)
+	var preview: bool=campaign and state.phase=="playing" and near>=0 and preview_pad==near and preview_family>=0 and preview_family<state.definition.families.size() and state.towers[near].family<0
+	range_ring.visible=campaign and near>=0 and not held and (state.towers[near].family>=0 or preview)
+	if not range_ring.visible: return
+	var family: int=preview_family if preview else int(state.towers[near].family)
+	var fork: int=0 if preview else int(state.towers[near].fork)
+	var stats: Dictionary=state.definition.families[family].stats[fork]
+	range_ring.scale=Vector3.ONE*float(stats.range)/5
+	var point: Vector2=C.pad_point(state.definition,near)
+	range_ring.position=Vector3(point.x,.10,point.y)
 
 func fit(rect: Rect2) -> void:
 	field_rect = rect

@@ -1,0 +1,466 @@
+{
+  "base": "be6423c7ecc12db4b3f8b1c3405902b73e976d82",
+  "scope": "Read-only prospective build coverage with existing touch purchase controls; source/CPU candidate",
+  "version": "0.3.1/code5 unchanged",
+  "final_receipt": {
+    "path": ".artifacts/recovery-cpu-20261024T091100211813Z/report.json",
+    "sha256": "9f10126c4ba0b6b3c8c20259eb87feac1c0a0739be8f19f15d0449e63c34cc0e"
+  },
+  "checks": {
+    "preview": 1111,
+    "recovery": 874,
+    "legacy_input": 44
+  },
+  "preview_input_events": 366,
+  "source_count": 167,
+  "source_maps_equal": true,
+  "strict_errors": [],
+  "changed_files_lf_sha256": {
+    "scripts/campaign_main.gd": "9e318e1095053eaeaef9c6c32fd7af10556f3945f15b376932d72173222dae6f",
+    "scripts/presentation/settlement.gd": "5cad221c3fcdbdfea0032c850f0ec83f797099424a80eb96c82ac4edff5055a5",
+    "tests/run_recovery.py": "852a7f7025ebe63f247d42075725719a0d45919048bf1e2037e30d58f7fd6317",
+    "tests/build_preview.gd": "b7b4be282b5677935e45fd17449dd0a4204ff704e26ef18707d81aaaedced487",
+    "tests/build_preview.gd.uid": "e2071d52939891072fcec68c7bb890f2a2c4b16a21ae05b6ded08d488c943f5f"
+  },
+  "unchanged_base_files_lf_sha256": {
+    ".gitattributes": "4bbf193eca4c8aa4230b5c504a09e49e6d712485c4a1ccf40a38bd6654be1636",
+    "CAMPAIGN-CHECKPOINT.md": "802f12e4d6275a6f0ba62f2b5410da86be39eaeb439693d0baa6f2745881d338",
+    "CHECKPOINT.json": "3f0ffa84d42840ed33fa82d7e19e5427b79297bab9dccf74057c2cc1dad4efb1",
+    "CHECKPOINT.md": "e2ab30f503395333125fff4c199a023621effe053019fc9587232b77511fe0cc",
+    "DELIVERY-METADATA.md": "3557ba2e908018b8c4501622ae47fc83c703ce689f3ee35e8933dd04aba5d88a",
+    "GRAPHICS_PRODUCTION.md": "a5a3f3bc447aca3252e7f7776f1798fb1683ef8cceff15d6630c7869a3d910a2",
+    "IMPORT_RECOVERY_AMENDMENT.md": "44dc7cddafe445155ef0bac9e165df1b6f147a011bd341f30ccc9bc80db0f0b1",
+    "IMPORT_RECOVERY_CHECKPOINT.json": "ab0313e5db4a92ff37c4c3ff129bcb39f077a3838adf2f1ced79ce8f45db4fa6",
+    "README.md": "e37543ae6630f7ca4a14b2ad1394ab33dd32cd21a4aa99dcae2e5908dfb4b8d0",
+    "SAVE_RETURN_CHECKPOINT.json": "cd601f630fb3d81e54c95aebad455788ac0f7b3dc4268ab2b8e9c21616d7eef9",
+    "SAVE_RETURN_CHECKPOINT.md": "a02d2e3015b4a4d5eeb0a31a424eab73deffff877acabdb79d62c210a53ec290",
+    "SESSION_WRAPUP.md": "8c25342d0e3d04f2e29d54b74aefae87ead029a8ac15e445851460abf550cc76",
+    "art/hearth-crest.svg": "9b1e7c8538f3718f1e7456bd015f8ccbd7e5cbee94f93f6985cc1f63a7587067",
+    "art/hearth-crest.svg.import": "26c431e88aefd159f3014f929bd4425974ad29f6bccce5e524d1ad0e4ee9a0cd",
+    "art/manifest.json": "b2cdead986009489937f8319de5ad47f32ef90b5961eb0fe52b92b62db14bbad",
+    "art/models/actor_armor.glb": "2956dac8a1886df3aa92933fa2cb31507cbe8211972c7f5028c7c55c00703d5a",
+    "art/models/actor_armor.glb.import": "607bb0c7acfdfcc83faf7bab84f34a5d907cd9476dda23e1575055cb704d5d0e",
+    "art/models/actor_citizen.glb": "6134f63b54b6918dc5a7683c84be86dffd697bc4b6eae3a7bbc96e92a645acda",
+    "art/models/actor_citizen.glb.import": "8560afe1bddde2e0e0a01cff044d076e5ca5d3359c33718474020d632d796093",
+    "art/models/actor_commander.glb": "c71554172a808b53f88d2821e23c7b57b9d3e47ca3362b1ab911805a36e96800",
+    "art/models/actor_commander.glb.import": "0f7891f5922bba5ff1371b11a96af1d4b865afd442cd93d2efd3d79c9ed2f789",
+    "art/models/actor_defender.glb": "705ba23c8fca3b84e32ae36cbbf2d5d6f57b6b5d684773099e8151e0503b43c1",
+    "art/models/actor_defender.glb.import": "652c7bca527cd2bccb21b5982ebca48020ad24fc4f10c51df6d1d70f044394cd",
+    "art/models/actor_matriarch.glb": "d31b80eb7a6c9597e2abc43792cc5e0b94a32bb58e2248e3d0d8449aca1d1995",
+    "art/models/actor_matriarch.glb.import": "90931a5c635f3af426caf98a91c55776e1e5a652c416c5d1179aeed19e035f61",
+    "art/models/actor_mender.glb": "48c5eed502c6e928b1b137a42000522e9a0538792adf97bc22a93564f83526d8",
+    "art/models/actor_mender.glb.import": "01964bfa749d326a00e8df5527aaeeea1636174d59e5f51b58c727d300b81d2c",
+    "art/models/actor_raider.glb": "a17d906deb30d3f4e22b780e2fb9a1126f8e4710d5cdc20d543144f42a1bfa1d",
+    "art/models/actor_raider.glb.import": "5a680f679d269aa445c257539433bcc8f2423328424f2bc36fb86c74bd3e55ef",
+    "art/models/actor_ram.glb": "e744a8a00ec30b524bb6028734895fa63f1bbecee3d2deb93c1891fc16f53085",
+    "art/models/actor_ram.glb.import": "7cede1335b45f474744d483f185640c8f09e07d02273a27c3001b11153d5a77f",
+    "art/models/actor_regent.glb": "8135f9d8650a1a19e75f632d5f9d3d14182ca1d737b5c81ce4dbd1c000b7c226",
+    "art/models/actor_regent.glb.import": "ba1b4eb33aa8765bced305d6aa1c3f235094250939015509c77ef4de755d4129",
+    "art/models/actor_runner.glb": "bd57b9f91203161e38823d39bce70eddd4e522429e2e970a0ec97cb4702a2c68",
+    "art/models/actor_runner.glb.import": "e5a6e1801b66552d8726ae7db70f541602d933b7584c62ea32639a8c1f3fb17f",
+    "art/models/actor_shade.glb": "52e0640bf44085c006f3dd49720483551ed1a5d731e7fea995014e33fe5ab346",
+    "art/models/actor_shade.glb.import": "b8b1cd5b0df5eb2d1502a3ca91d7fa9d5ae6c7706047a7d3a79ba485af282029",
+    "art/models/actor_swarm.glb": "cce0d503ab48ded4fc855c087b35dc7d094a325ae0bdd734c76b86736f33035c",
+    "art/models/actor_swarm.glb.import": "3d043fabc689c4700898cd69fd8c47da68b523bd82fcef5feaafef26d2842d8d",
+    "art/models/anvil.glb": "91e40ccba54e1d99548ba2cbe382d82c629556b4279e7b18c5281dde35487c8c",
+    "art/models/anvil.glb.import": "a3bccf3cebfcea8d551185f55540c0dc1e6102abeb827eb34197d9c69fd2ce63",
+    "art/models/banner.glb": "bdfecbdc6935e6e47b4a7ab559646d62b6698819c60fb074383990054bdd4ba2",
+    "art/models/banner.glb.import": "43f838eb7eff8b021a3e1345bdc4b1fc6e782b25c886cd584255eff40ee5a845",
+    "art/models/boulder.glb": "20fff9f9ef19a5ff17347fe0a2d34bf67119240b12e5b16bdaffe7c590108599",
+    "art/models/boulder.glb.import": "07ab03af12df36b3df98665dc8594ab8617db85571ac57c903455313c25ebabb",
+    "art/models/coin.glb": "a37bfaf8ac7dbcf19d25fa11ccd4f4923586c1d7c3ee955ba29ff235c1898962",
+    "art/models/coin.glb.import": "81ee8f82a154520ed325855eaa5b8f4081186eafcd34b38366d9f70bd8668385",
+    "art/models/cottage.glb": "7ea0b640abffe11f5bf3835cdb7a06cf3a8a09946a5a77f52591028ff4b4238f",
+    "art/models/cottage.glb.import": "adb442f7a0ffb1f8248e0e42402d194e7b4db8d58cea8fbf64196f6c573a8b9f",
+    "art/models/lantern.glb": "070d966c5b10ed34b186d201f58582abe7adb1c8e26b92c2e5d94308510bba8d",
+    "art/models/lantern.glb.import": "7051b41e25db2f6ea8b34f64080342189233d9c522c120a9b212068ae3addac5",
+    "art/models/market.glb": "20902fb6c8c51b331d6e5cea09ea6cd08022bd6ab25d5b92dabaca2a36a31375",
+    "art/models/market.glb.import": "4e4ad1d66b66cb3a2138bc346816c0fcd93b595d059dfe70decbc2dda0a7255d",
+    "art/models/monolith.glb": "fae076717fb01bca891cef59883c232e2f2b41d4e9919d32cc228700e927552c",
+    "art/models/monolith.glb.import": "65d77c29f3dbfe92c9adea17348dcfc90d52a13595826c7d588df9ac73d610d6",
+    "art/models/oak.glb": "b07601ced5b71bd2b1f6ceef3932efd4481ed5de4f5c00397003e168943ac0ae",
+    "art/models/oak.glb.import": "5115d55ef7a6758d991e62a2e254e7a42f0a9643623a95caeeba9f9cf13c4380",
+    "art/models/pine.glb": "d41b042a97bbf0ae51c215281363ab79d7582c5975f3244f7d36fe1a2247116b",
+    "art/models/pine.glb.import": "8f5c36b79cf967766bb441651592fe114f5f95c4a1d51ead3a79add0e7fcbd4b",
+    "art/models/reeds.glb": "69b41c555abcb9e33574530a52f51b395fe842b4c0269e2aa9bb039a529219f8",
+    "art/models/reeds.glb.import": "0a762bc541a724cc4666f7026a4d53065c274ceddaa6c17f4503481759c881cb",
+    "art/models/ridge_house.glb": "52d9cfc74fe1f542c216769227441ca4d2b0879b43a5ebf544ad655c011a6353",
+    "art/models/ridge_house.glb.import": "ff2412420c3f18e65f7a0811dfbdb024cc59357c2cdb097697227c2dbd5fff77",
+    "art/models/stilt_house.glb": "4c226f023a3f90bd9eff636517bc75aab3c493744222899efe46be50a97f2430",
+    "art/models/stilt_house.glb.import": "5c9aa2ff47e132b7ed39a71ea11767c3ff872c625ce1ed8901ac0635031613bb",
+    "art/models/tower_beacon.glb": "a138e60577d702c0dd916f6825afe1e8ae860367bcdb5132ca1c17fd0d9e7aa5",
+    "art/models/tower_beacon.glb.import": "c2e1ea9aa1b367aa2cc93f10b156b6d23b9fb426c36d1dd92e04778518646c43",
+    "art/models/tower_bolt.glb": "f44b36664fc2384d75150beb72141a34d892c9b1fbaa56c14b157d8caad69e79",
+    "art/models/tower_bolt.glb.import": "601a3955ce1bf051b5696f2855e893eb0df15fb9cd8b2b189abff79e75a97e1a",
+    "art/models/tower_mortar.glb": "9eb5fc3beb94473438e5d4e5aba68b6f5fcd03f885999800c4444fa458f8c3ca",
+    "art/models/tower_mortar.glb.import": "7c8be69f2bbd7e14d8a5d00ffd010574a58e9ac2f6a1a7173fe1bb665ff1606f",
+    "art/models/wall.glb": "323968f5494c79cbc28e2c3ec8cd8a4a8acffb3d0af2c93d80f22d226dfc737e",
+    "art/models/wall.glb.import": "50f674a4495e6758d4e1edf522e4f738f97f10827030a1e2fa18a7cf1147201e",
+    "art/models/well.glb": "5c253fb3e89f954265b8039690178ea7706af09cd83a1470a7f35046810975c5",
+    "art/models/well.glb.import": "41d4e84ca43fb7c3dea88b3023686fa7d70c3e800fd6e605f2f0c1be0bcbd05f",
+    "art/source/build_assets.py": "6780efbf622b1c72d6422eb74a32ce804416dcce2fe6cefef095c8febcd9c0e7",
+    "campaign-checkpoint.json": "66a45f7ec813544732e237427ed93c4e35be99aa76111ace72d5e526991d912e",
+    "delivery-metadata.json": "e2acb9c9ed41cf7a36de530d9f781ca19c6f045ac2bbe7753886ad7c1ed1439b",
+    "export_presets.cfg": "86958972e004ee5dc6a538a26d550ddd78c4c09a6d3444312d319fd272148086",
+    "icon.svg": "1fe2f709f71be5250ecbe223a0e12eb785952e6c13b470a0392d8fb5e70c4b2f",
+    "icon.svg.import": "2ecc2a4e347e48a82b31c3dd497996dba5fe2c318b0f135d9d6e8875fcd5f11f",
+    "legacy.tscn": "24360a50f67b8c2aea5a7fc5fc39e97cd790226647a4ac43732a54df806fe8bc",
+    "main.tscn": "9eadab4e604e34c48c84eb3813b4ccf4d691b97fc0e0736eb4f03a02a1978120",
+    "project.godot": "58c640c5c978fc793598bd5d4217f3edd6cacd9203aa44ff48082e32c4e70838",
+    "scripts/bootstrap.gd": "f326f9a05b4564412f0459dc74d2de06f6359472d2ef2496bbfa4569b9743dd5",
+    "scripts/bootstrap.gd.uid": "a9c6edf66f32c03f593735b53157687c9df44672497d3ee6c9e729ee95a7211d",
+    "scripts/campaign_catalog.gd": "e97f1a54e95ccadca2bce77c3ed47d380b79d83318f41fd2585480457e1882ec",
+    "scripts/campaign_catalog.gd.uid": "d31c0c726aa7098bcc4284b38aeeb51b71f1dc40651d2043333b5bcb32f3fa65",
+    "scripts/campaign_main.gd.uid": "b94d5b2ab335211c76a6ce77e712b11166df33a62aae288eaef147d389e36c9d",
+    "scripts/campaign_rules.gd": "6b2a2e16113491e4c44c0cbebcd92762cd78ca8dd28c0a8f5ce02f6358b5a01e",
+    "scripts/campaign_rules.gd.uid": "837b9f9df66e27449d9117a4bbd0e88481d5c0d86fc79fb897046d1567d6926c",
+    "scripts/import_recovery.gd": "85f554728f35fc79f16bd9edbb3392797e6eb1ea25c9e08a5da5b56ea165c036",
+    "scripts/import_recovery.gd.uid": "3a54240da70b599452e67d6ebbd55a6ff157ad14d88deba634747a77d18531a9",
+    "scripts/main.gd": "0a9354dc803cd0e2648e297841399b22ad6779cac8a3ebce967fefba1af43bc0",
+    "scripts/main.gd.uid": "350af2db92aa9754ab3da2043d5d0f9c2175e2a4655025a65dc54ce0e6b7add3",
+    "scripts/presentation/actor.gd": "07bbafb26d8eb5f49c354df5eded80938ea4d789082590e9e844b581193385cd",
+    "scripts/presentation/actor.gd.uid": "bf1165299d75f88a80e2d1aff9dd4da00df7dec8f23613b0e3051ca26bcb41dc",
+    "scripts/presentation/adapter.gd": "ed79b6365060fa1f33b2b350ed6ca5308d6e6172bd15960deea0c05e4dd0cd63",
+    "scripts/presentation/adapter.gd.uid": "411ce4b9ec7b1adac7ecf19249c8f573b114a14b30061a712ac31fa13967cd21",
+    "scripts/presentation/label_clearance.gd": "20d81663b6f8b574e5601073033fed4d36db1e4aa3e937876287a84796abc27d",
+    "scripts/presentation/label_clearance.gd.uid": "da544237a47fa5acf3a30b6e98460f0ab245510b7806f8dccc5a306e22bff908",
+    "scripts/presentation/node_pool.gd": "793c6fe42f2d6f9b5407782aa6075b74a3fd667b9bd9b7a3d1193858d527ce3e",
+    "scripts/presentation/node_pool.gd.uid": "fbcc1c9e84a63ec62fc722110bb06962fe79245181d3f552547f7b2394e74b27",
+    "scripts/presentation/regions.gd": "f86171e824c48af90530ecb3733c5a8c37bc7431e770225d8bcb1ca569a145c1",
+    "scripts/presentation/regions.gd.uid": "471ee3042c7708afc37c6cd7864f1b4f14909c50af92b4cdb8ada14af0bc301b",
+    "scripts/presentation/settlement.gd.uid": "01dbe46e7b13ff9e587c1e549b63478048c02248e521eee6266fd186679d8698",
+    "scripts/recovery_copies.gd": "2a11e158fee9c9a60525f736e22a06caf6ab4ec8e1f880941033cab6e0ab1fd8",
+    "scripts/recovery_copies.gd.uid": "89d5c91e0315d3eddaf1c863a7777caf4a8d98bba616ea3d6f6230261884a870",
+    "scripts/recovery_files.gd": "5a447d6262b798bdcddaa23c44286394cdcf8b4da4b070d6c1204d8a1264a48b",
+    "scripts/recovery_files.gd.uid": "35dd2d5760286836458a42e16462ae070d3cb9ac7b5c0f1f106efd87144dfdfb",
+    "scripts/rules.gd": "64ec77aa1e43f3d0ceda2c4404286de74c16dcb530da1427619ecfc5c8f57483",
+    "scripts/rules.gd.uid": "8940d66b4d4cdc6f2b2e288d8d58f437a3e6966b6ca02cbdc995c9d54d40f060",
+    "scripts/save_files.gd": "207f08a69e6c9e435367bf0b394be53fead3461ecfaa7ec124fff5b0172e4eac",
+    "scripts/save_files.gd.uid": "c06b0c067af1acb748e472c798741e585fd355b31f690a4fee168a21260123f9",
+    "scripts/save_store.gd": "ba0d69d3b6d4cf9794b40df3996bc32aca7c22c241ca0db2af71095af3537a87",
+    "scripts/save_store.gd.uid": "b4f8aa18421f8dd3ae5b3994f5d4acd73faa50e1e213fa81a6aae3c276be4733",
+    "tests/PRODUCTION.md": "d8878a6aaab724a4965b8819f029854877af7e3c84608ae5b7243c60ed1c4499",
+    "tests/PRODUCTION_RESULTS_20261018.md": "52b9c3f3b0b7e4c11c6404a876289bd054e34e38bc623f466cae8fa7be908162",
+    "tests/campaign_checks.gd": "b0f1a8c759e75d43797f2fb490d7252abafb3163915884b28246ad8693daabf0",
+    "tests/campaign_checks.gd.uid": "a2f9118185f2877fed185c3dbbda09dc625fd8a6e15f212be37f8497bdcf8a18",
+    "tests/campaign_journey.gd": "94fa75b36f4777cfb26b417c78b6133e4b53dec54516772faaf99dd87bda7897",
+    "tests/campaign_journey.gd.uid": "6f2ae9a5669fda239a79a5a78543f4bd8c471351702d6ce5d800042ac65c8485",
+    "tests/campaign_policy.gd": "22f372400340d816a3a8810e34e93c93e95871284a4da08452d2dfc761fb790c",
+    "tests/campaign_policy.gd.uid": "31faa899315f45cebfceaffcda594dff9d415127190cde3e06ca117f4e993bf1",
+    "tests/composition_tests.gd": "e39274458bcfcdad01a9860b8bc8f9867e9d8197039fddb39012680bbf76167b",
+    "tests/composition_tests.gd.uid": "7fba114f4188ad36b64fa0baeefcaa04a62cedf2e3110552a13e28bdd97afe87",
+    "tests/fault_files.gd": "4ce4e69951091f42693af2e8494f8a31c12f4b05766bbb0b765e67f13d9b8bf1",
+    "tests/fault_files.gd.uid": "775f943b4e9e6a6093785332bbcbb2c53260cb66997ededc5cb3ce6e63c0e166",
+    "tests/frame_sampler.gd": "0fea195dd174f76b52e96cf528e0ba773a26eb19568e7e6f3bff501a3a47fa24",
+    "tests/frame_sampler.gd.uid": "0cce3d9df513e142ea70e0f8ea0c5cbaf80ada84f24e714093357e1ea45cced4",
+    "tests/graphics_passage.gd": "b8afb96de23d03fd6b5e5d5579b4c482c57469cdb8b0c3f38c55742ce84b9826",
+    "tests/graphics_passage.gd.uid": "0c792a71fd31716beb857ed7bf952d0e1aa5a9e50bdccc5f56739ffbf1868b3f",
+    "tests/import_recovery.gd": "5a1989bfff5626d814ab409074b0ee51bc596c21fb9aa2f07c00e022bf6db007",
+    "tests/import_recovery.gd.uid": "f842d4be8e693fc99ff0aabccb5f3af33febee0edc0a8411d7f8e125919a8956",
+    "tests/import_uncertainty.gd": "ee5f7dedcefb53e8f2d2d89f3fad11fe666bb9277aedaf6b57e70f8067e8afa0",
+    "tests/import_uncertainty.gd.uid": "caa2ef6ac51639260680dd19c4e1b1e230acbe623bf9e1bcf83c59763c8bc215",
+    "tests/joystick_tests.gd": "6715a54c818822620743466da066f9031c65ac6edf4ca750402d481bc1fa3ad9",
+    "tests/joystick_tests.gd.uid": "7921ac33319eca16840a6bb11b04643ee0dd52eb7925f21a815a8a8d05316d80",
+    "tests/legacy_compatibility.gd": "f55e4203308e1897cf2c7d117c1621462654c16b33d9e43f03d158fffeccf38e",
+    "tests/legacy_compatibility.gd.uid": "a2266546e4145212752d2d68e3ab4501101ad7d4de631ee74d3bca07bdd05662",
+    "tests/playthrough.gd": "0bf57958ee910b32770e3d51c0257753c6a396d926c21772a56b0fb58b3da0d2",
+    "tests/playthrough.gd.uid": "952ca44910e0ce8c9657b4645e62cad3b218c3c19d62201ef8ae1466cf5003f2",
+    "tests/pool_tests.gd": "0090627e8bc1000f7c3a77ffdd3abb590ce97eab75b39f0341411b4883fde3b4",
+    "tests/pool_tests.gd.uid": "c5d6557784f07e554206d313aae20d300d086fed224f1075758594210ac224df",
+    "tests/presentation_tests.gd": "19c9c41fb93fbbee1c40c74c8235aacc28e4053e07724713ec6f934fc57e4b1d",
+    "tests/presentation_tests.gd.uid": "f79c03fe45c043f0411206bfa491096397a2559613ede946bb1c91af1bc2d697",
+    "tests/production-accepted-runs-20261018.json": "0d0fa62b4a2b33ccb9e34b206f5b289812df682647060e82c3e92ac953bdc503",
+    "tests/production-plan.json": "c8e19fdc7105e03ead734ca8ad66a6034982c4214f61d2d76290b6e9b4402bb5",
+    "tests/production_checks.gd": "5898357533fae2d83e18906707051ea667b144dc52cd9c8a5dd61984aa495520",
+    "tests/production_checks.gd.uid": "a65cbc095b4fd53fa334ea55127e8419f09d20208f82a99d9e30396d1c064f0e",
+    "tests/production_coverage.py": "87133cc18f33bd25652349ff72eade844d81e42ac4cd0fe0c09b6e846f9acd14",
+    "tests/production_observer.gd": "705ed0d102191518e984fecc8eef984931caa5322c56c396526900fe1e16e5d3",
+    "tests/production_observer.gd.uid": "bdca85588a2d0408aa4a97d92c4377831fd9687eec6a9a14d88bf77ca2a49cf2",
+    "tests/production_passage.gd": "c619783660474e41156b657e7fa0de5ebd49004c5238ec3ad3cebaf5e825e0a5",
+    "tests/production_passage.gd.uid": "c5d4d299aaae6fab786c64543d35dafb843f3eb66ad5331082efa74e24fe4954",
+    "tests/production_sources.py": "523d3adaad591f8b83e34508556fa86566bf1a6d1560c45d7df7516018d0e149",
+    "tests/run_campaign.py": "43d90a8f1e9514faf41953295d0d14f2e83cba0c37010143d29ec5c44ac7cde4",
+    "tests/run_desktop.py": "9f920b543ef5c81bd135d0a0940ae777e6a5808109cfd8d23fcdab37c2b97ad4",
+    "tests/run_graphics.py": "5bbd32d6692900a2ee9e99064400991f6469ec9350c7188e5fdb8fa0d27d3ea1",
+    "tests/run_production.py": "1f05cfd1de09960e5a7b1415ec14212e4beb93752eab20cb62a2844dd737890f",
+    "tests/run_tests.gd": "a3ec30b5b0e5f97be649bb131a27b4b6ef035e85b3dfa9cc9192d738188cc3c6",
+    "tests/run_tests.gd.uid": "3b5e8eae81237d2d6307e97934c00b4a8bcb6f4054518af22c98f6d7b04290d0",
+    "tests/save_reliability.gd": "65870c57097b89a5e3f248f925fbc5beb29abcd77510533811fc0c9184441268",
+    "tests/save_reliability.gd.uid": "9f41a63667adeb61b14ce2b89101f87ca4b27afadb9d13d9fdaee7a4d5e24708",
+    "tests/source_index_checks.py": "418e49b403cda7eb69fce447e8795d6dc8d4bd69a7a9179d4ff1d87feae541ad"
+  },
+  "retained_failed_reports": [
+    {
+      "path": ".artifacts/recovery-cpu-20261024T084741791120Z/report.json",
+      "sha256": "6541612ddf9a5ce6559c17fae9d4d9748ea7eacc6d44f6a5e312b4ff377d7071"
+    },
+    {
+      "path": ".artifacts/recovery-cpu-20261024T084822809337Z/report.json",
+      "sha256": "a9e39d6bf0c4e0710248ba3ea9f16cf81f764af3123a0c38a9b5078fc2762fdd"
+    },
+    {
+      "path": ".artifacts/recovery-cpu-20261024T085632060289Z/report.json",
+      "sha256": "cc34f6d88d8da0433c4bf29f9f6de0ec588db9946ce8f979fa22e669c1be5f04"
+    },
+    {
+      "path": ".artifacts/recovery-cpu-20261024T085655172572Z/report.json",
+      "sha256": "8f5bb5419094a18978283dd2bd2cf59c66e148f9e1866ffd48b770f28cedb274"
+    },
+    {
+      "path": ".artifacts/recovery-cpu-20261024T085802112167Z/report.json",
+      "sha256": "1af8ffb0f3a88676648ffaa8b3de937d6b476e3abbd20952e13e48aa3426f4e7"
+    },
+    {
+      "path": ".artifacts/recovery-cpu-20261024T090225792113Z/report.json",
+      "sha256": "8cfed427a963e291d2b74b6e816f5f4161a9f5de123b6083465fc1c9ef823244"
+    },
+    {
+      "path": ".artifacts/recovery-cpu-20261024T090256315265Z/report.json",
+      "sha256": "491246c5273bca714f18047742bf4c37988e60c950f03b216e65d33a2a2cfe67"
+    }
+  ],
+  "artifacts": {
+    ".artifacts/recovery-cpu-20261024T091100211813Z/01-ready-saves.json": {
+      "bytes": 1182,
+      "sha256": "014df0060640aa983c030b210d556e8817f1a9c7a79578bb8f2227c919c104ce"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/02-natural-defeat-saves.json": {
+      "bytes": 3752,
+      "sha256": "ae1f35f9ded93396fa54afde389dc394087c35e33f3e386212099b06bdae70d8"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/03-actual-retry-saves.json": {
+      "bytes": 3062,
+      "sha256": "86ff760e5d2d9aad0670c33b2929392716766b68f45facad1afa5176a8704fba"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/04-pickup-wallet-saves.json": {
+      "bytes": 3062,
+      "sha256": "86ff760e5d2d9aad0670c33b2929392716766b68f45facad1afa5176a8704fba"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/05-before-bolt-saves.json": {
+      "bytes": 2090,
+      "sha256": "c2fa4f25f490393a1d6d5318aa1d92abedc3bd80621e4c12089639ef82db725b"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/06-bolt-constructed-saves.json": {
+      "bytes": 1860,
+      "sha256": "10c882604bbd1f76d3bd3828c945b2cfa95d8df6a97e22b64c7e6dae5ba37ec1"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/06a-active-inner-paused-saves.json": {
+      "bytes": 1859,
+      "sha256": "917b9674265643d72ae94aadb77ca56af8ecc742953357945faa1028eb31c185"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/06b-active-inner-saves.json": {
+      "bytes": 1846,
+      "sha256": "126feccbede4af01499bb59081d7831e10dbc60430b6fb9ddf8aa2e8be5cd6c9"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/06c-active-tall-cover-saves.json": {
+      "bytes": 1848,
+      "sha256": "04a83c8e2e9799c8ddaa1ab2b96f5b1b75dc17122616a5c9324cc0986f14af89"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/06d-active-reloaded-saves.json": {
+      "bytes": 1910,
+      "sha256": "6890734702416754b0fe796285d67a5070e5006469bbc8d463583ea3c273601d"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/07-visible-firing-saves.json": {
+      "bytes": 2204,
+      "sha256": "218b877c88e3dea5d4ac8d357bac7285c6578135972add07e0675eedc0bfeb45"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/08-earned-road-gold-saves.json": {
+      "bytes": 2330,
+      "sha256": "f998c6324ff1546154ed49b0ea24ee1774facea1afa51f3835ed6ffc3b71df72"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/09-before-heavy-saves.json": {
+      "bytes": 2397,
+      "sha256": "bde3ad10d616edf146393ae834402e670c6940819543f88e62b7ed6b68c2b29e"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/10-heavy-investment-saves.json": {
+      "bytes": 2483,
+      "sha256": "6e91081e59c6e438b34301f366ab08d6494e4c835aac8ef7d0b0cbaa7ccb8185"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/11-natural-victory-saves.json": {
+      "bytes": 2311,
+      "sha256": "752d28ff2008c486403625b43d75fc5672f4541bd7af18cd6df51fb739f0f641"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/12-invalid-import-retention-saves.json": {
+      "bytes": 2345,
+      "sha256": "af8731f3ced0448e028933f644101ce2ad5ec9b280aa5548ca84dd85f13b0e9d"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/13-inner-paused-saves.json": {
+      "bytes": 2516,
+      "sha256": "d33e26d486ab981d54aac584daeb19a65193b10ef9827a249a851ecbb3b753dc"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/14-inner-victory-saves.json": {
+      "bytes": 2516,
+      "sha256": "1230a842a5a7d1f155170654bff98b90db62a95b3ec330ec7db54932112ecbd5"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/15-tall-cover-paused-saves.json": {
+      "bytes": 2516,
+      "sha256": "e62d808a3dd401200ca97b7f87c26d26886a38b9111f7696b7373beef3c0456f"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/16-tall-cover-victory-saves.json": {
+      "bytes": 2516,
+      "sha256": "50a71ab767e9c0665520efce22090c6267fe4271ee4f380e61df7db465cbb562"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/build-preview.json": {
+      "bytes": 251417,
+      "sha256": "31fe9e04138b3417966ff3725a7f57d6c0d504001d9707a3bc4d8097208a8398"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/build_preview.log": {
+      "bytes": 1593,
+      "sha256": "11c9f86525c44c45458eb18991ce264f66e246f26034fd791e46b4415d5db3be"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/final-saves.json": {
+      "bytes": 2516,
+      "sha256": "9c52b9a8194c79b138fafb49960cde377f0f70ae0ae4bb677c50918d3244d57f"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/import-recovery.json": {
+      "bytes": 157975,
+      "sha256": "caf40089d22548f4a21eb8146c896e3e070b88475b402f733b06278b9b90ef5a"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/import_recovery.log": {
+      "bytes": 647,
+      "sha256": "81e8e307b1f1bc17361df775a5b6a2af7ace51ef1509ce50d60b85af6dbad7f5"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/input-report.json": {
+      "bytes": 76954,
+      "sha256": "70c60b6bdb734e7a5c8667d020bc92f68cdb47e257637d56756f4fa8030d30c2"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/playthrough.log": {
+      "bytes": 2459,
+      "sha256": "91619d38fd9201319b432b8752dfde009c20d3678632a1a2e68b44038fe0fc4f"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/raw-input-events.json": {
+      "bytes": 238561,
+      "sha256": "5ee5f30681ce486555d955a75d60206322b1e91e6af605017d4d94dffa40b976"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/report.json": {
+      "bytes": 39518,
+      "sha256": "9f10126c4ba0b6b3c8c20259eb87feac1c0a0739be8f19f15d0449e63c34cc0e"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/playthrough/appdata/Godot/app_userdata/Hearthguard/hearth-recovery-copy-5d60f9fdb988df21cf0f6d35d99ec17da0642a05131c4f3eeb17d988ed20aa41": {
+      "bytes": 957,
+      "sha256": "5d60f9fdb988df21cf0f6d35d99ec17da0642a05131c4f3eeb17d988ed20aa41"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/playthrough/appdata/Godot/app_userdata/Hearthguard/hearth-recovery-copy-6fc7b43671ecf7fa7db1fbffbad339feeb77a4c0b0b9c0c7d6c6bb8564afdd4d": {
+      "bytes": 958,
+      "sha256": "6fc7b43671ecf7fa7db1fbffbad339feeb77a4c0b0b9c0c7d6c6bb8564afdd4d"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/playthrough/appdata/Godot/app_userdata/Hearthguard/hearth-recovery-copy-d7bb593d70d424c66bf1bf6d13e52c374251feedd4d850c5ec57db3fbde8751b": {
+      "bytes": 956,
+      "sha256": "d7bb593d70d424c66bf1bf6d13e52c374251feedd4d850c5ec57db3fbde8751b"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/playthrough/appdata/Godot/app_userdata/Hearthguard/hearth-save-0": {
+      "bytes": 1043,
+      "sha256": "efa79357882b8de8d4afc0b8d349f83424593a2aafe17b87b184ac19c59dc398"
+    },
+    ".artifacts/recovery-cpu-20261024T091100211813Z/playthrough/appdata/Godot/app_userdata/Hearthguard/hearth-save-1": {
+      "bytes": 1043,
+      "sha256": "32b3ab189d0763e36ab1cc0e667abdbf1ea37581dc0ce13169998114d8ee9d11"
+    },
+    ".artifacts/recovery-cpu-20261024T084741791120Z/build-preview.json": {
+      "bytes": 77430,
+      "sha256": "e6cb4d677b77b59af519a0749a4f933502aded779fa6e88df757da90dfc4b216"
+    },
+    ".artifacts/recovery-cpu-20261024T084741791120Z/build_preview.log": {
+      "bytes": 982,
+      "sha256": "9bda811dab690f22000ff8c2fcdd9d0a20d3977d81ef5e7543355846376a8c55"
+    },
+    ".artifacts/recovery-cpu-20261024T084741791120Z/report.json": {
+      "bytes": 35736,
+      "sha256": "6541612ddf9a5ce6559c17fae9d4d9748ea7eacc6d44f6a5e312b4ff377d7071"
+    },
+    ".artifacts/recovery-cpu-20261024T084822809337Z/build-preview.json": {
+      "bytes": 77563,
+      "sha256": "0897f6c1ecaf1d407389816cdcba57aea799cdbbbd4e46339957d82b8212c885"
+    },
+    ".artifacts/recovery-cpu-20261024T084822809337Z/build_preview.log": {
+      "bytes": 715,
+      "sha256": "02d6be84f21362751c6c48bfd9645cfa69e307e1d6096b2fc51762ead18fa6b7"
+    },
+    ".artifacts/recovery-cpu-20261024T084822809337Z/report.json": {
+      "bytes": 35666,
+      "sha256": "a9e39d6bf0c4e0710248ba3ea9f16cf81f764af3123a0c38a9b5078fc2762fdd"
+    },
+    ".artifacts/recovery-cpu-20261024T085632060289Z/build_preview.log": {
+      "bytes": 401,
+      "sha256": "eb9d449fe86deb487429c101db66423d44286c9ab6b723a9737bf2f953f46cf7"
+    },
+    ".artifacts/recovery-cpu-20261024T085632060289Z/report.json": {
+      "bytes": 35606,
+      "sha256": "cc34f6d88d8da0433c4bf29f9f6de0ec588db9946ce8f979fa22e669c1be5f04"
+    },
+    ".artifacts/recovery-cpu-20261024T085655172572Z/build-preview.json": {
+      "bytes": 78272,
+      "sha256": "bd1e4295fa6b5dfafd1a707ea0fdede9ad24525e7c73e64d614588e75bad66cd"
+    },
+    ".artifacts/recovery-cpu-20261024T085655172572Z/build_preview.log": {
+      "bytes": 8360,
+      "sha256": "6e4e585ddb2fc5126f4fa8f6c2d05f1080535c36783bd5a7597c434e8d3580f0"
+    },
+    ".artifacts/recovery-cpu-20261024T085655172572Z/report.json": {
+      "bytes": 36972,
+      "sha256": "8f5bb5419094a18978283dd2bd2cf59c66e148f9e1866ffd48b770f28cedb274"
+    },
+    ".artifacts/recovery-cpu-20261024T085802112167Z/build-preview.json": {
+      "bytes": 78272,
+      "sha256": "bd1e4295fa6b5dfafd1a707ea0fdede9ad24525e7c73e64d614588e75bad66cd"
+    },
+    ".artifacts/recovery-cpu-20261024T085802112167Z/build_preview.log": {
+      "bytes": 9420,
+      "sha256": "bd42b673c49cf163ea7a5f9cd5c1bee22ac235ae0b65ce08da30184704365535"
+    },
+    ".artifacts/recovery-cpu-20261024T085802112167Z/report.json": {
+      "bytes": 36972,
+      "sha256": "1af8ffb0f3a88676648ffaa8b3de937d6b476e3abbd20952e13e48aa3426f4e7"
+    },
+    ".artifacts/recovery-cpu-20261024T090225792113Z/build-preview.json": {
+      "bytes": 250805,
+      "sha256": "a6f5c8459c747f1694ff86528864e4a77913eff9298622e8f21dde0bc8576bb3"
+    },
+    ".artifacts/recovery-cpu-20261024T090225792113Z/build_preview.log": {
+      "bytes": 2024,
+      "sha256": "c40a85f3001f7afc41efbc1e6eeb9f4580103690fa6c8d9412279a9ad845df53"
+    },
+    ".artifacts/recovery-cpu-20261024T090225792113Z/report.json": {
+      "bytes": 35869,
+      "sha256": "8cfed427a963e291d2b74b6e816f5f4161a9f5de123b6083465fc1c9ef823244"
+    },
+    ".artifacts/recovery-cpu-20261024T090256315265Z/build-preview.json": {
+      "bytes": 250805,
+      "sha256": "a6f5c8459c747f1694ff86528864e4a77913eff9298622e8f21dde0bc8576bb3"
+    },
+    ".artifacts/recovery-cpu-20261024T090256315265Z/build_preview.log": {
+      "bytes": 2872,
+      "sha256": "991fea7ba54958967b368ba2c68756d8526128b3ac5536b1781d1c9ae5c93426"
+    },
+    ".artifacts/recovery-cpu-20261024T090256315265Z/report.json": {
+      "bytes": 35869,
+      "sha256": "491246c5273bca714f18047742bf4c37988e60c950f03b216e65d33a2a2cfe67"
+    },
+    ".artifacts/recovery-cpu-20261024T090423107500Z/build-preview.json": {
+      "bytes": 250801,
+      "sha256": "704d6c056ebd3b9b845cc8586c49eae01e83a007bb70e1ba5f33e2aea018246c"
+    },
+    ".artifacts/recovery-cpu-20261024T090423107500Z/build_preview.log": {
+      "bytes": 1593,
+      "sha256": "440d7a4a069338a84260a6ef860f58569b18889dc2d3c2e70af6497446c80e6f"
+    },
+    ".artifacts/recovery-cpu-20261024T090423107500Z/report.json": {
+      "bytes": 35461,
+      "sha256": "f6bad011548d9146dd8a0ab37af164fa37e36a243ed42bbfbf01592c65c7f381"
+    }
+  },
+  "amendment_sha256": "308b5f87520ea33ad70c86dcd59cb26605f93dd811b458a8718247ceced44819",
+  "acceptance_limits": [
+    "Cached headless/Dummy; no import/editor/native/renderer/OSclipboard/build/export/upload/push.",
+    "Synthetic family/road/phase geometry fixtures are distinct from fresh actual-input-funded initial route.",
+    "840 sampled road positions are not a universal collision proof.",
+    "Matched normal-rate visual/native/human discoverability/comfort/fun remain coordinator gates."
+  ],
+  "input_contract": [
+    "Preview has no authoritative state/save effects; exact pinned family/range and captured pad.",
+    "Ordinary button_up preserves valid purchase latch; explicit invalidation cancels matching latch.",
+    "Latest build contact owns preview; other contact release and joystick remain independent.",
+    "Existing occupied range and boss warning retained; disabled choices not enabled."
+  ],
+  "review": "Astra architecture/runtime source cleared; exact final checkpoint audit required before scoped commit."
+}

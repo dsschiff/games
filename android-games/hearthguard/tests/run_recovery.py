@@ -10,7 +10,7 @@ PROJECT=Path(__file__).resolve().parents[1]
 GODOT=Path("C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe")
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def sources():
-    return {p.relative_to(PROJECT).as_posix():sha(p) for p in sorted(PROJECT.rglob("*")) if p.is_file() and p.name not in {"IMPORT_RECOVERY_CHECKPOINT.json","IMPORT_RECOVERY_AMENDMENT.md"} and not any(c.startswith(".") or c=="__pycache__" for c in p.relative_to(PROJECT).parts)}
+    return {p.relative_to(PROJECT).as_posix():sha(p) for p in sorted(PROJECT.rglob("*")) if p.is_file() and p.name not in {"IMPORT_RECOVERY_CHECKPOINT.json","IMPORT_RECOVERY_AMENDMENT.md","BUILD_PREVIEW_CHECKPOINT.json","BUILD_PREVIEW_AMENDMENT.md"} and not any(c.startswith(".") or c=="__pycache__" for c in p.relative_to(PROJECT).parts)}
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("suites",nargs="+",help="Existing test script basenames")

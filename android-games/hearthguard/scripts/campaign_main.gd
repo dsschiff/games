@@ -23,6 +23,10 @@ var legacy_button: Button
 var ending_journey_button: Button
 var seen_terminal := false
 var action_latches := ["", "", ""]
+var build_preview_choice := -1
+var build_preview_pad := -1
+var build_preview_context := ""
+var build_preview_label: Label
 
 func _ready() -> void:
 	var saved := initial_save()
@@ -50,6 +54,7 @@ func _ready() -> void:
 	boot_ok=true
 
 func make_world() -> void:
+	clear_build_preview(true)
 	super.make_world()
 
 func make_ui() -> void:
@@ -62,7 +67,11 @@ func make_ui() -> void:
 	for choice in 3:
 		var b := button(ui, "", invest.bind(choice), 26)
 		b.button_down.connect(arm_action.bind(choice))
+		b.button_up.connect(release_build_preview.bind(choice))
 		action_buttons.append(b)
+	build_preview_label=text_label(ui,"",18,"a6f1e4")
+	build_preview_label.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
+	build_preview_label.hide()
 	next_button = button(terminal, "NEXT WATCH", next_watch, 26)
 	journey = panel(ui, "102d3bfc")
 	text_label(journey, "TEN HEARTHS / JOURNEY", 30).position = Vector2(22, 18)
@@ -100,6 +109,7 @@ func make_ui() -> void:
 	ending_panel.hide()
 
 func layout() -> void:
+	clear_build_preview(true)
 	super.layout()
 	if journey == null:
 		return
@@ -109,8 +119,10 @@ func layout() -> void:
 	for i in 3:
 		action_buttons[i].position = origin + Vector2(i * (w + 6) / 3, h - 120)
 		action_buttons[i].size = Vector2((w - 12) / 3, 112)
-	guidance.position = origin + Vector2(0, h - 232)
-	guidance.size = Vector2(w, 90)
+	guidance.position = origin + Vector2(0, h - 250)
+	guidance.size = Vector2(w, 64)
+	build_preview_label.position=origin+Vector2(0,h-182)
+	build_preview_label.size=Vector2(w,56)
 	stick.position = origin + Vector2(20, h - 360)
 	terminal.size.y = 575
 	terminal.position.y = origin.y + (h - terminal.size.y) / 2
@@ -145,7 +157,7 @@ func layout() -> void:
 			child.size = Vector2(588, 96)
 
 func refresh() -> void:
-	if recovery_pending: show_recovery(); return
+	if recovery_pending: clear_build_preview(true); show_recovery(); return
 	if action_buttons.is_empty():
 		return
 	refresh_resume_action()
@@ -231,6 +243,7 @@ func refresh() -> void:
 	budget_button.text = "BUDGET  " + ["STANDARD", "RICH +3", "LEAN −3"][budget_option if budget_option >= 0 else 2]
 	mirror_button.text = "ROADS  " + ("MIRRORED" if mirror_option else "ORIGINAL")
 	pause_button.disabled = transfer.visible or journey.visible or confirm_panel.visible or ending_panel.visible
+	update_build_preview()
 
 func invest(choice: int) -> void:
 	if recovery_pending: return
@@ -250,9 +263,39 @@ func action_context() -> String:
 
 func arm_action(choice: int) -> void:
 	if recovery_pending: return
+	clear_build_preview(true)
 	action_latches[choice] = action_context() if not paused and state.phase == "playing" else ""
+	var near := C.nearby(state)
+	if not action_latches[choice].is_empty() and near>=0 and state.towers[near].family<0:
+		build_preview_choice=choice; build_preview_pad=near; build_preview_context=action_latches[choice]
+		update_build_preview()
+
+func release_build_preview(choice: int) -> void:
+	# Button-up precedes pressed; a valid purchase still needs its original latch.
+	if choice==build_preview_choice: clear_build_preview(false)
+
+func clear_build_preview(cancel_action: bool) -> void:
+	if build_preview_choice>=0 and cancel_action: action_latches[build_preview_choice]=""
+	build_preview_choice=-1; build_preview_pad=-1; build_preview_context=""
+	if is_instance_valid(build_preview_label): build_preview_label.hide()
+	if is_instance_valid(presenter) and is_instance_valid(presenter.range_ring): presenter.synchronize_range(state,paused or recovery_pending)
+
+func update_build_preview() -> void:
+	if build_preview_choice<0: return
+	var choice: int=build_preview_choice
+	if recovery_pending or paused or state.phase!="playing" or not is_instance_valid(ui) or not ui.is_visible_in_tree() or choice>=action_buttons.size() or not action_buttons[choice].is_visible_in_tree() or action_buttons[choice].disabled or build_preview_context!=action_context():
+		clear_build_preview(true); return
+	var family: Dictionary=state.definition.families[choice]
+	build_preview_label.text="PREVIEW %s / RANGE %.1f\nRelease off button to cancel" % [family.name,family.stats[0].range]
+	build_preview_label.show()
+	presenter.synchronize_range(state,false,build_preview_pad,choice)
+
+func _process(delta: float) -> void:
+	super._process(delta)
+	update_build_preview()
 
 func stop_move() -> void:
+	if paused or recovery_pending: clear_build_preview(true)
 	super.stop_move()
 	if stick != null:
 		stick.position = safe_rect.position + Vector2(20, safe_rect.size.y - 360)
@@ -423,3 +466,4 @@ func _physics_process(delta: float) -> void:
 
 func sync_world(dt: float) -> void:
 	super.sync_world(dt)
+	update_build_preview()
