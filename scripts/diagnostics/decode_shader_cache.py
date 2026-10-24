@@ -10,7 +10,9 @@ from pathlib import Path
 import re
 
 PREFIX = "GAMES_SHADER_CACHE_DIAGNOSTIC "
-CHUNK_BYTES = 1536
+TRANSPORT_SCHEMA = 2
+CHUNK_BYTES = 384
+MAX_MESSAGE_BYTES = 960
 MAX_PAYLOAD_BYTES = 2 * 1024 * 1024
 FIELDS = {"schema", "record_id", "payload_bytes", "payload_sha256", "chunk_index", "chunk_count", "encoding", "chunk_base64"}
 
@@ -41,7 +43,7 @@ def decode(text, expected_pid=None):
             header = re.match(r"^\s*(?:\d{4}-)?\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2}\.\d+\s+(\d+)\s+\d+\s+[VDIWEFA]\s+[^:]*:\s*$", before)
             if not header or int(header.group(1)) != expected_pid:
                 raise ValueError(f"Line {line_number}: diagnostic PID/header mismatch")
-        if not framed.isascii() or len((PREFIX + framed).encode("ascii")) > 3072:
+        if not framed.isascii() or len((PREFIX + framed).encode("ascii")) > MAX_MESSAGE_BYTES:
             raise ValueError(f"Line {line_number}: invalid Android message framing")
         try:
             frame = _json(framed)
@@ -49,7 +51,7 @@ def decode(text, expected_pid=None):
             raise ValueError(f"Line {line_number}: malformed or truncated frame") from error
         if not isinstance(frame, dict) or set(frame) != FIELDS:
             raise ValueError(f"Line {line_number}: unexpected frame fields")
-        if type(frame["schema"]) is not int or frame["schema"] != 1 or frame["encoding"] != "base64":
+        if type(frame["schema"]) is not int or frame["schema"] != TRANSPORT_SCHEMA or frame["encoding"] != "base64":
             raise ValueError(f"Line {line_number}: unsupported frame protocol")
         record_id = frame["record_id"]
         if not isinstance(record_id, str) or not re.fullmatch(r"0|[1-9][0-9]{0,19}", record_id) or int(record_id) > 2**64 - 1:

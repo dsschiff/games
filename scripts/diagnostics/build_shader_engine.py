@@ -12,7 +12,7 @@ import subprocess
 import sys
 
 ENGINE_COMMIT = "ed1daf0bf001b61586d9930840f2f1394092c079"
-PATCHED_SHADER = "d5abab4a87c73c4c51be3b6f7b9f18c471707235bd74926b884e9145a3410a80"
+PATCHED_SHADER = "3910d99e05237527675855b23a9a3992df0dd744dc548a14c8beb24ed44e6d68"
 FLAGS = ["platform=android", "target=template_release", "arch=x86_64", "production=no", "debug_symbols=no", "lto=none", "swappy=yes", "cppdefines=GAMES_SHADER_CACHE_DIAGNOSTIC", "extra_suffix=games_shader_diag", "-j4"]
 
 
