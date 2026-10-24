@@ -1,0 +1,84 @@
+{
+  "status": "Source verified; refined rendered usefulness and verbose finale shutdown check pending",
+  "base_runtime": "6f1b9816c39c44e0c7db85e3d8957bf1525508e3",
+  "adapter_lf_sha256": "00b6d5376c4f03dfc112c0455e7701433689f59b6a0faad96e274c83ce1037bb",
+  "rules_unchanged": [
+    "scripts/rules.gd",
+    "scripts/campaign_rules.gd",
+    "scripts/campaign_data.gd",
+    "scripts/engine.gd",
+    "scripts/save_store.gd"
+  ],
+  "runs": [
+    {
+      "role": "original charge undercoverage; failed",
+      "path": ".artifacts/graphics-cpu-20261024T000419521536Z/report.json",
+      "sha256": "c7fe4beb53dc2b9aa14079892f2a8422925830f6c4388626759296c78466f368"
+    },
+    {
+      "role": "coarse warning overpaint; failed",
+      "path": ".artifacts/graphics-cpu-20261024T002155844423Z/report.json",
+      "sha256": "1e8f090b48be4d4a6b850ece2f84d71ebb73dd65973b15f5182c06493623b3ea"
+    },
+    {
+      "role": "refined charge1643/contact37/presentation214; passed",
+      "path": ".artifacts/graphics-cpu-20261024T002310238865Z/report.json",
+      "sha256": "b2d9ad23157079fd21acf0c8544aa3a1d455adf83a628dd154a4c97a4e919bb8"
+    },
+    {
+      "role": "unchanged rules57/campaign81/openinginput18; passed",
+      "path": ".artifacts/graphics-cpu-20261024T001009777811Z/report.json",
+      "sha256": "ef5d8b3268fdb3a6ddb58ce2487b375abc18a0fa3b8d153232303c8d19a0be3b"
+    },
+    {
+      "role": "30Hz intended miss actually hit; failed/excluded",
+      "path": ".artifacts/feedback-motion-20261023T235922168511Z/receipt.json",
+      "sha256": "502b2e6b25103026be67199a6967039b33c41d9b6b6e1a9d49ade184bee544d0"
+    },
+    {
+      "role": "corrected60Hz initial production6f1b981; charge partial",
+      "path": ".artifacts/feedback-motion-20261024T000031627862Z/receipt.json",
+      "sha256": "dbf23f9591d7568eb51d8b6430995457e41054b6169eb35bf709b6dddff78572"
+    },
+    {
+      "role": "coarse warning hit/miss/armor/geometry movie; passed but overpaint rejected",
+      "path": ".artifacts/feedback-motion-20261024T001454428633Z/receipt.json",
+      "sha256": "76124be83fa0997419cbc18589768b253fce41670966fe1a3d486aac4804a7d2"
+    },
+    {
+      "role": "coarse actual earned passage movie; functional/strict pass; overpaint gate open",
+      "path": ".artifacts/feedback-motion-20261024T001524219613Z/receipt.json",
+      "sha256": "87eca07378a937bedececd38e9ba1cd711c82798770e30e6080c79ac563cfbd4"
+    },
+    {
+      "role": "coarse actual finale movie; functional6/0 but2ObjectDB leak warning; failed strict",
+      "path": ".artifacts/feedback-motion-20261024T001610936675Z/receipt.json",
+      "sha256": "50aa901e5bde968d2fbdcddf9b6fc9a94fbb9ce4ab307b7da3220aecadc57698"
+    },
+    {
+      "role": "headless verbose natural defeat immediate teardown; no leak repro",
+      "path": ".artifacts/feedback-motion-20261024T001833237319Z/receipt.json",
+      "sha256": "a640bb39633b89c305215a033f9d1612f3d1ff870847404524b04604ae4bc4f9"
+    },
+    {
+      "role": "headless verbose natural defeat audio-drain control; no leak repro",
+      "path": ".artifacts/feedback-motion-20261024T001912704703Z/receipt.json",
+      "sha256": "05e42a66ccd73b72c68606abff4a464898c0321e092da9eb31669132e8603f77"
+    },
+    {
+      "role": "refined headless actual opening plus synthetic fixture15/0",
+      "path": ".artifacts/feedback-motion-20261024T002510434935Z/receipt.json",
+      "sha256": "4c8c193ccc400ea3f04f7ddde326b087244a0b8319f15bc24692ff98ef6bfc03"
+    },
+    {
+      "role": "refined headless earned passage09 strict sidestep5/0",
+      "path": ".artifacts/feedback-motion-20261024T002511578089Z/receipt.json",
+      "sha256": "46b09e747c9c57012d9c97dbcfc2ff64215f0c01af70970b041a45947e41019e"
+    },
+    {
+      "role": "refined headless earned finale strict sidestep5/0",
+      "path": ".artifacts/feedback-motion-20261024T002513396217Z/receipt.json",
+      "sha256": "426cc576c16b693f841d96048b43ad5047d80ca20543874e382bae30ff92037c"
+    }
+  ]
+}

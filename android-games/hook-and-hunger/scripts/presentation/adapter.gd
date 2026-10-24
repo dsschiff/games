@@ -242,7 +242,19 @@ func _telegraph(actor: Node3D, data: Dictionary, definition: Dictionary, legacy:
 	else:
 		var length := 8.5 if definition.get("boss", false) else 5.3
 		if attack == "charge":
-			length = 6.8
+			var envelope := _charge_envelope(snapshot, data)
+			length = envelope.length
+			if not envelope.straight:
+				# Rocks and field clamping can redirect the committed charge.
+				# Paint its conservative reachable box, rather than a safe-looking
+				# strip beside a damaging deflected path.
+				var bounds: Rect2 = envelope.bounds
+				var line := warning.get_node("Line") as MeshInstance3D
+				line.show()
+				warning.global_rotation.y = 0
+				line.position = Vector3(bounds.get_center().x - data.ax, .01, bounds.get_center().y - data.az)
+				line.scale = Vector3(bounds.size.x / line.mesh.size.x, 1, bounds.size.y / line.mesh.size.z)
+				return
 		for key in ["Line", "Left", "Right"]:
 			var line := warning.get_node(key) as Node3D
 			line.visible = key == "Line" or attack == "burst" or definition.get("boss", false) and attack == "shot"
@@ -255,6 +267,64 @@ func _telegraph(actor: Node3D, data: Dictionary, definition: Dictionary, legacy:
 			line.scale.z = (length + 2.0 * half_width) / 8.5
 			var angle := -.32 if key == "Left" else (.32 if key == "Right" else 0.0)
 			line.position = Vector3(sin(angle) * length * .5, .01, cos(angle) * length * .5)
+
+# Pinned campaign charge: speed8, clock.85, step cap.05, enemy radius.6,
+# hit radius.9. The final full step may overshoot the nominal6.8m route.
+# An obstacle projection resets the centre anywhere on its expanded disk.
+# Close over every intersected disk plus its maximum subsequent travel; this
+# also covers repeated same-rock projections and several rocks in one tick.
+func _charge_envelope(state: Dictionary, data: Dictionary) -> Dictionary:
+	var start := Vector2(data.x, data.z)
+	var travel := Vector2(data.tx, data.tz) * (8.0 * (.85 + .05))
+	var field := Rect2(Vector2(-6.0, -12.0), Vector2(12.0, 15.9))
+	var bounds := _charge_sweep(Rect2(start, Vector2.ZERO), travel)
+	var straight := start.is_equal_approx(Vector2(data.ax, data.az)) and field.has_point(start) and field.has_point(start + travel)
+	var rocks: Array = state.get("definition", {}).get("obstacles", [])
+	# Projection away from a rock preserves the incoming coordinate side.
+	# Revisit all disks as bounds expand: another rock can relax that side.
+	for pass_index in rocks.size() * 4 + 4:
+		var previous := bounds
+		for rock in rocks:
+			var disk := _charge_disk(rock)
+			if not bounds.grow(.00001).intersects(disk, true): continue
+			straight = false
+			var low := disk.position
+			var high := disk.end
+			var center := Vector2(rock.x, rock.z)
+			if bounds.end.x < center.x: high.x = clampf(bounds.end.x, low.x, high.x)
+			elif bounds.position.x > center.x: low.x = clampf(bounds.position.x, low.x, high.x)
+			if bounds.end.y < center.y: high.y = clampf(bounds.end.y, low.y, high.y)
+			elif bounds.position.y > center.y: low.y = clampf(bounds.position.y, low.y, high.y)
+			bounds = bounds.merge(_charge_sweep(Rect2(low, high - low), travel))
+		if bounds == previous:
+			return {"straight": straight, "bounds": bounds.grow(.9), "length": travel.length()}
+	# Never use a partially converged refinement. Whole-disk closure remains a
+	# conservative fallback if the bounded exact fixed-point search exhausts.
+	var included := {}
+	for pass_index in rocks.size() + 1:
+		var changed := false
+		for i in rocks.size():
+			if included.has(i): continue
+			var disk := _charge_disk(rocks[i])
+			if not bounds.grow(.00001).intersects(disk, true): continue
+			included[i] = true
+			bounds = bounds.merge(_charge_sweep(disk, travel))
+			changed = true
+		if not changed: break
+	return {"straight": false, "bounds": bounds.grow(.9), "length": travel.length()}
+
+func _charge_disk(rock: Dictionary) -> Rect2:
+	var radius := float(rock.radius) + .6
+	return Rect2(Vector2(rock.x, rock.z) - Vector2.ONE * radius, Vector2.ONE * radius * 2)
+
+func _charge_sweep(origins: Rect2, travel: Vector2) -> Rect2:
+	# constrain clamps BEFORE obstacle projection. Keep the original disk
+	# untrimmed: its post-projection points can lie beyond field bounds.
+	var a := origins.position + travel
+	var b := origins.end + travel
+	a = Vector2(clampf(a.x, -6, 6), clampf(a.y, -12, 3.9))
+	b = Vector2(clampf(b.x, -6, 6), clampf(b.y, -12, 3.9))
+	return origins.merge(Rect2(a, b - a))
 
 func set_paused(value: bool, state: Dictionary) -> void:
 	if frozen != value:

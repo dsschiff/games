@@ -316,5 +316,17 @@
       "Physical phone testing deferred",
       "This control-only change does not re-rate historical art direction or phone performance"
     ]
+  },
+  "hearth_design_checkpoint": {
+    "version": "0.3.1",
+    "version_code": 5,
+    "source_commit": "20416c9febe9e20fbb7a0c0f9c01b71def55f0e0",
+    "status": "bounded_save_transaction_and_return_fix_privately_delivered_prior_graphics_reviews_retained",
+    "candidate_evidence": "android-games/evidence/design-cycle-20261023.json",
+    "apk_sha256": "6263535e53dd32a0d91fed9fe1b48ccf431881605a53702200fcb3b855c4c951",
+    "open": [
+      "Physical phone testing deferred",
+      "Existing graphics review preserved; no new art direction or performance rating inferred"
+    ]
   }
 }

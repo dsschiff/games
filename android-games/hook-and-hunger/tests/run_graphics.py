@@ -48,7 +48,7 @@ def main():
         errors = [line for line in output.splitlines() if any(s in line for s in ("ERROR:", "SCRIPT ERROR:", "Parse Error:"))]
         return {"command": command, "exit_code": code, "errors": errors, "passed": code == 0 and not errors, "suite_complete": "SUITE_COMPLETE: PASS" in output}
 
-    report["import"] = invoke([str(GODOT), "--headless", "--editor", "--import", "--quit", "--path", str(PROJECT)], "import")
+    report["import"] = invoke([str(GODOT), "--headless", "--audio-driver", "Dummy", "--editor", "--import", "--quit", "--path", str(PROJECT)], "import")
     if report["import"]["passed"]:
         frozen = sources()
         (run / "source-before.json").write_text(json.dumps(frozen, indent=2) + "\n")

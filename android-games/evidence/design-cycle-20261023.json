@@ -92,7 +92,7 @@
     "native_aar_sha256": "414f1d90bca0147524e586f6d9cf0e0fa808b373d77cb49b04821f9d5e7c1a01"
   },
   "next": [
-    "Land and privately deliver verified Hearthguard candidate",
+    "Finish Tower motion/native verification and private delivery",
     "Review Hook warning usefulness and strict finale teardown",
     "Review Tower popup motion and signed Android update",
     "Isolate and close Dead Run full-route renderer teardown failure",
@@ -164,12 +164,17 @@
     "whole_save_native_report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-save-retention\\report.json",
     "native_scope": "Signed9-to10/offline/Home/cold; complete existing ready save retained. Actual guard drag/Menu/Home/oneBegin produces6; whole active context freezes across Home/cold. Initial profile empty, not native earned-profile update proof.",
     "whole_save_report_sha256": "92703ec274bef75621f85bf364ed07524891a9f3e554df320cd07ee1f557e2cd",
-    "physical_acceptance": false
+    "physical_acceptance": false,
+    "settled_cold_followup": {
+      "report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-save-retention\\settled-followup\\report.json",
+      "sha256": "9a539ae3c8bfecfae0963f295bf5313db6bcde277ab089361fb8d18efdf09c18",
+      "scope": "Settled game controls and fresh live-context Home commit, excluding earlier splash screenshots. Gear owning decoder exact whole equality; Hearth all parsed values exact. Gear explicit Resume advances6to9 defenders."
+    }
   },
   "hearthguard": {
     "version": "0.3.1",
     "version_code": 5,
-    "state": "signed_native_verified_candidate_awaiting_source_landing_and_private_delivery",
+    "state": "private_release_delivered",
     "build_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\hearthguard\\20261023T235824674521Z\\manifest.json",
     "native_report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\release-updates\\com.dsschiff.hearthguard\\20261024T000520Z\\report.json",
     "whole_save_native_report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-save-retention\\report.json",
@@ -179,7 +184,70 @@
       "failures": 0,
       "receipt": "F:\\games-workspaces\\design-cycle-20261023\\android-games\\hearthguard\\.artifacts\\coordinator-release-reliability-20261023T235951560805Z\\receipt.json"
     },
-    "physical_acceptance": false
+    "physical_acceptance": false,
+    "build": {
+      "schema_version": 1,
+      "game": "hearthguard",
+      "command": "build",
+      "godot_version": "4.7.2.stable.official.ed1daf0bf",
+      "started_utc": "20261023T235824674521Z",
+      "git_revision": "20416c9febe9e20fbb7a0c0f9c01b71def55f0e0",
+      "project": "android-games/hearthguard",
+      "build_type": "release",
+      "pipeline_sha256": "3a473050bd36928c58f959ae99e67b3d22f533d425426b62e058090cace63033",
+      "toolchain_config_sha256": "2c5788e6e8a2b963cb8cd512f4c192b84e78915e05403ed7d267ab8aec34a502",
+      "import_exit_code": 0,
+      "argv": [
+        "C:\\projects\\active\\.game-toolchain\\godot\\4.7.2\\Godot_v4.7.2-stable_win64_console.exe",
+        "--headless",
+        "--path",
+        "F:\\games-workspaces\\design-cycle-20261023\\android-games\\hearthguard",
+        "--export-release",
+        "Android",
+        "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\hearthguard\\20261023T235824674521Z\\hearthguard.apk"
+      ],
+      "exit_code": 0,
+      "result": "built",
+      "artifact": {
+        "path": ".artifacts/hearthguard/20261023T235824674521Z/hearthguard.apk",
+        "bytes": 54404155,
+        "sha256": "6263535e53dd32a0d91fed9fe1b48ccf431881605a53702200fcb3b855c4c951"
+      },
+      "apk_inspection": {
+        "package": "com.dsschiff.hearthguard",
+        "version_code": "5",
+        "version_name": "0.3.1",
+        "permissions": [],
+        "internet_permission": false,
+        "signature_verified": true,
+        "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
+        "debuggable": false
+      },
+      "project_source_sha256": "d4be781f2d4739067988b42d7cb117e049c0d4932cd7418eb4766ecea5a52614",
+      "project_source_sha256_after": "d4be781f2d4739067988b42d7cb117e049c0d4932cd7418eb4766ecea5a52614",
+      "source_unchanged": true,
+      "project_git_status": [],
+      "project_dirty": false
+    },
+    "published": {
+      "release": "https://github.com/dsschiff/android-games-releases/releases/tag/hearthguard-v0.3.1",
+      "tag": "hearthguard-v0.3.1",
+      "asset": "hearthguard-v0.3.1.apk",
+      "asset_url": "https://github.com/dsschiff/android-games-releases/releases/download/hearthguard-v0.3.1/hearthguard-v0.3.1.apk",
+      "sha256": "6263535e53dd32a0d91fed9fe1b48ccf431881605a53702200fcb3b855c4c951",
+      "bytes": 54404155,
+      "release_id": 422418159,
+      "asset_id": 670808460,
+      "private": true,
+      "notes_readback_verified": true,
+      "readme_readback_verified": true
+    },
+    "source_landed": "cad6308d39d431e7982b2b7c9c5164ae4b1c57f0",
+    "settled_cold_followup": {
+      "report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-save-retention\\settled-followup\\report.json",
+      "sha256": "9a539ae3c8bfecfae0963f295bf5313db6bcde277ab089361fb8d18efdf09c18",
+      "scope": "Settled game controls and fresh live-context Home commit, excluding earlier splash screenshots. Gear owning decoder exact whole equality; Hearth all parsed values exact. Gear explicit Resume advances6to9 defenders."
+    }
   },
   "tower": {
     "version": "0.4.1",
@@ -201,11 +269,20 @@
     "build_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\tower-trials\\20261024T001356437179Z\\manifest.json"
   },
   "hook": {
-    "state": "reviewed_hit_feedback_source_integrated_charge_undercoverage_reproduced_and_source_correction_in_review",
+    "state": "Refined conservative charge envelope source independently cleared and integrated; signed0.3.1/code7 candidate held for final refined normal-speed usefulness and strict rendered shutdown",
     "open": [
       "Conservative obstacle charge warning usefulness in authored motion",
       "Final strict rendered teardown; current finale has2ObjectDB leaks",
       "Signed update and private delivery"
-    ]
+    ],
+    "source_commit": "4898fb3",
+    "adapter_lf_sha256": "00b6d5376c4f03dfc112c0455e7701433689f59b6a0faad96e274c83ce1037bb",
+    "actual_step_regressions": {
+      "checks": 1643,
+      "routes": 814,
+      "failures": 0,
+      "contact_checks": 37,
+      "presentation_checks": 214
+    }
   }
 }
