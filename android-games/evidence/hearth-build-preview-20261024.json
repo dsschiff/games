@@ -1,0 +1,61 @@
+{
+  "scope": "Hold an existing eligible build choice to preview exact pinned base range at its captured empty pad. Ordinary taps retain one normal purchase; drag-off/context loss cancel without ghost purchases. Presentation/input ownership only, no rules/Store/schema/version changes.",
+  "reviewed_source_commit": "d27f03c8354f855da694965d41448ce811f09ff9",
+  "checkpoint": {
+    "path": "F:\\games-workspaces\\hearth-design-20261023\\android-games\\hearthguard\\BUILD_PREVIEW_CHECKPOINT.json",
+    "bytes": 31500,
+    "sha256": "30b6ee46f0d98b1aa68ecfd5d70068cb4a6ee5a0a52f746fcee12029edf42a14"
+  },
+  "independent_review": "Astra final CLEAR30b6ee46...2a14:57artifacts,165unchangedbase/current,167matching source maps,5changedLF. Documentation-onlyASCII correction verified after runtime audit.",
+  "root": {
+    "report": {
+      "path": "F:\\games-workspaces\\hearth-design-20261023\\android-games\\hearthguard\\.artifacts\\recovery-cpu-20261024T092434998749Z\\report.json",
+      "bytes": 39518,
+      "sha256": "074db4a9f591287e1e4f74bafc02290ccf5cca618b66877c0d5751a331482a0f"
+    },
+    "preview": {
+      "path": "F:\\games-workspaces\\hearth-design-20261023\\android-games\\hearthguard\\.artifacts\\recovery-cpu-20261024T092434998749Z\\build-preview.json",
+      "bytes": 251417,
+      "sha256": "31fe9e04138b3417966ff3725a7f57d6c0d504001d9707a3bc4d8097208a8398"
+    },
+    "preview_log": {
+      "path": "F:\\games-workspaces\\hearth-design-20261023\\android-games\\hearthguard\\.artifacts\\recovery-cpu-20261024T092434998749Z\\build_preview.log",
+      "bytes": 1593,
+      "sha256": "11c9f86525c44c45458eb18991ce264f66e246f26034fd791e46b4415d5db3be"
+    },
+    "recovery": {
+      "path": "F:\\games-workspaces\\hearth-design-20261023\\android-games\\hearthguard\\.artifacts\\recovery-cpu-20261024T092434998749Z\\import-recovery.json",
+      "bytes": 157975,
+      "sha256": "caf40089d22548f4a21eb8146c896e3e070b88475b402f733b06278b9b90ef5a"
+    },
+    "legacy_input": {
+      "path": "F:\\games-workspaces\\hearth-design-20261023\\android-games\\hearthguard\\.artifacts\\recovery-cpu-20261024T092434998749Z\\input-report.json",
+      "bytes": 76954,
+      "sha256": "70c60b6bdb734e7a5c8667d020bc92f68cdb47e257637d56756f4fa8030d30c2"
+    },
+    "checks": {
+      "preview": 1111,
+      "import_recovery": 874,
+      "legacy_input": 44,
+      "failures_each": 0
+    },
+    "actual_preview_input_events": 366,
+    "source_unchanged": true,
+    "strict_clean": true
+  },
+  "behavior": [
+    "Pinned family range and pad geometry reused from real definitions; temporary PREVIEW label and ring",
+    "Quick taps buy once through unchanged invest/action gate; button_up preserves valid pending pressed purchase",
+    "Hold/cancel leaves full authoritative context and files unchanged; ordinary simulation continues normally",
+    "Stale pad/context/focus/pause/resize/recovery/world/phase cancellation and multi-touch ownership verified",
+    "Reserved footer bounds retain boss guidance and controls"
+  ],
+  "limits": "Cached headless/Dummy only. Fresh Begin/joystick18gold earned through actual input; later families/mirrors/pads are separately labeled typed/rule-funded fixtures. Sampled840roadpoints agree with authoritative targeting; this is not formal collision proof or rendered/native usefulness. Matched135+normal physics ticks verified.",
+  "remaining": [
+    "Matched normal1x rendered before/after hold/cancel/purchase/boss warning",
+    "Higher-version same-signer APK and native update/whole-save/clipboard/recovery checks",
+    "Human discoverability/comfort/fun and physical Fold7/folding/sound/FPS",
+    "Real storage interruption and configured optional cloud recovery"
+  ],
+  "existing_binary": "0.3.1/code5 unchanged; no build or upload."
+}
