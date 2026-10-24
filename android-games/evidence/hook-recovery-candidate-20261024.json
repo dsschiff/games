@@ -35,13 +35,14 @@
     "android-games/hook-and-hunger/ARENA_FEEDBACK_CHECKPOINT.json"
   ],
   "checks": "Root marker172/0, arena identity188/0, selected feedback573/0 and recovery871/0 retained in source indexes; no unnecessary version-only rerun.",
-  "status": "Signed local candidate and packaging clear. Native code8to9/recovery/clipboard/arena feedback readability remain unverified. No upload.",
+  "status": "Actual bounded native code8to9/update/Import/choices/arena feedback independently audited24/0; first Export wrong feedback, missing pendingCopy/View and shader-warning gates remain open. No upload.",
   "remaining": [
-    "Actual signed code8to9 and full native update/Home/cold",
-    "Normal Import/pending explicit choices with complete campaign/projectiles/parked ending/profile contexts and native clipboard",
-    "Selected arena best-clear/no-clear native readability",
-    "Real storage interruption,physical Fold7/sound/FPS/human fun",
-    "Configured optional Google account/cloud sync",
-    "Specific authorization for this exact0.3.3/code9 private transfer"
-  ]
+    "Fix/retest normal Export confirmation and add pending exact-codeCopy/View",
+    "Strict shader-warning and real interrupted storage/power-loss",
+    "Nonempty native campaign projectile recovery",
+    "Cover/unfolded/folding,physical sound/FPS/human pacing/fun",
+    "Configured optional Google account/cloud recovery",
+    "Specific private-transfer authorization for0.3.3/code9; no upload"
+  ],
+  "native_evidence": "android-games/evidence/hook-native-recovery-20261024.json"
 }
