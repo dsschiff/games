@@ -43,7 +43,8 @@
     "Every explicit choice freshly validates all present full journal records and every archived code; no consuming re-promotion of surviving markers",
     "Read and bind pending ownership once before ordinary active/default/upgrade saves; freeze both owners and lifecycle/settings/mode writes",
     "Verify whole chosen disk context and complete journal cleanup before paused replacement; initialize replacement before removing old owner",
-    "Unknown cold owner offers Retry Read only; known codes stay exportable with separate uncertainty and readback feedback"
+    "Unknown cold owner offers Retry Read only; known codes stay exportable with separate uncertainty and readback feedback",
+    "Fresh installs retain ordinary startup; existing unreadable active candidates block default saving even without a recovery journal"
   ],
   "failed_evidence": {
     "baseline": "24checks/12failures over4directions, actual touch, false current-save-kept vs fresh imported selection.",
@@ -51,7 +52,7 @@
     "standalone": "Unknown standalone legacy had no normal UI; later same-schema choice cleared journal then hit null UI. Narrow missing-UI guard selects existing validated fresh bootstrap with exact backend/code once; both actual choices now pass. Shipping bootstrap did not take the failing standalone path.",
     "save_reliability": "All167 assertions retained; success-import cases precede deliberate shared immutable-archive corruption. Earliest archive-preservation faults and separately armed post-journal active write/rename/missing/corrupt/stale/readback cases explicitly covered. Existing corrupt archive blocks honestly; no repair/deletion to obtain success."
   },
-  "limits": "Cached headless/Dummy actual input, typed faults, same-process fresh materialized owners and real-file direction probes. Clipboard unsupported branch only; geometry is not rendered readability. Permanently torn/conflicting metadata stays paused; ordinary no-journal default policy unchanged.",
+  "limits": "Cached headless/Dummy actual input, typed faults, same-process fresh materialized owners and real-file direction probes. Clipboard unsupported branch only; geometry is not rendered readability. Permanently torn/conflicting metadata stays paused; fresh install behavior is unchanged; existing unreadable active candidates block default saving even without a journal.",
   "version": "0.3.1/code5 unchanged; no new binary or upload.",
   "remaining": [
     "Higher-version signed candidate and independently reviewed packaging",
