@@ -1,0 +1,87 @@
+{
+  "scope": "Normal-speed rendered before/after proof for prospective Hearth tower coverage; harness-only audio teardown correction, current game runtime unchanged.",
+  "source": {
+    "worker": "1c657cfc15a6aa4a1645a4ba073f7dd68b5a25b8",
+    "worker_checkpoint_commit": "66811079da60ece5eb3a40953e56ad09fe62f1cf",
+    "coordinator_head": "42b90b96d7a2a42d43d25e4cc8d7729e6a55405c",
+    "checkpoint": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hearthguard\\tests\\PREVIEW_CLEANUP_20261024.md",
+      "bytes": 108123,
+      "sha256": "9afd37c0cc7769d930651bb0a44051201770f9b2cd4878af016a7957b017a95a"
+    },
+    "two_harness_files": {
+      "tests/production_passage.gd": {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hearthguard\\tests\\production_passage.gd",
+        "bytes": 23103,
+        "sha256": "9f7d70e9c39745edc799234ba0b0358428415fe678792100edfd72d8000bdcb2"
+      },
+      "tests/run_production.py": {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hearthguard\\tests\\run_production.py",
+        "bytes": 18014,
+        "sha256": "dd72c15d046d7bcc084efa9f5e59dc48fddbc9d6e99e7fb3212abc28d9c0ca14"
+      }
+    },
+    "resolver": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hearthguard\\tests\\production_sources.py",
+      "bytes": 4151,
+      "sha256": "56cac1f9bf1184d7bfe9af497b09cf9fe932c8d52d96229cd3afd53802096a44"
+    },
+    "game_runtime_unchanged": true
+  },
+  "packet": {
+    "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\hearth-normal1x-review-20261024\\report.json",
+    "bytes": 98633,
+    "sha256": "8feb509c3e0de97957eda1a54e94b77f8612996e86e98ab91d5eebce2b081217"
+  },
+  "four_rendered_passages": {
+    "opening_checks_each": 21,
+    "boss_checks_each": 26,
+    "failures_each": 0,
+    "input_events_opening_each": 138,
+    "input_events_boss_each": 2982,
+    "native_frames_each": 200,
+    "native_dimensions": [
+      720,
+      1280
+    ],
+    "cadence_fps": 30,
+    "strict_clean_each": true,
+    "complete_start_end_gameplay_appwritten_timing_rawinput_rawsave_pair_equality": true,
+    "presentation_differences_explicit": true,
+    "runtime_bindings_each": 104
+  },
+  "independent_review": {
+    "method": "Independent Astra browser observation of both full-duration pairs at playbackRate1, with sampled full-portrait screenshots during running playback and final media state for all four clips currentTime=duration6.666667/endedtrue. This is sampled normal-speed browser observation, not every-frame/human/physical review.",
+    "opening_sample_times": "0.256to6.667s around0.45to0.59s intervals",
+    "boss_sample_times": "0.139/0.175to6.667s around0.41to0.52s intervals; paired startup skew around36ms",
+    "finding": "No bounded visual blocker. After-only empty-pad ring and PREVIEW/range/cancel text appear; drag-off removes ring without spending; one ordinary purchase produces occupied ring. Boss warning remains separate/readable through held preview.",
+    "limits": "Four silent6.67s fixed30fps clips. Boss is separately authenticated historical save then normal policy/joystick/paidSell, not uninterrupted fresh play. No physicalAndroid/folding/FPS/audio/humanpacing/fun/cloud acceptance."
+  },
+  "observed_feedback": {
+    "opening": "Sampled1.31to2.25s previewBeaconRange4.7. Around2.70to3.18s cancellation removesring withGold18. By3.66s oneBeacon,Gold9,occupiedrange.",
+    "boss": "Sampled1.18to2.55s previewBoltRange5.0 with separateRamguidance. By3.01s canceled/Gold32. By3.93s oneBolt/Gold22 whileRam/projectilescontinue."
+  },
+  "cleanup": {
+    "actual_playback_release_milliseconds": [
+      60,
+      10,
+      63,
+      28
+    ],
+    "extra_captured_frames_each": 0,
+    "positive_raw_pngs_retained": 84,
+    "exact_superseded_raw_pngs_verified_removed": 716,
+    "original_strict_failures_preserved": true,
+    "temporary_review_server_pid57952_stopped_verified": true,
+    "reviewer_owned_tab_closed": true
+  },
+  "remaining": [
+    "Higher-version signed Hearth candidate and native whole-save/update/recovery checks",
+    "Native IME/clipboard/import and genuine storage-interruption evidence",
+    "Physical Fold7/cover/unfolded/folding/FPS/sound/humanfun",
+    "Configured optional Googlecloud recovery"
+  ],
+  "existing_apk": "0.3.1/code5 remains unchanged and predates current preview/recovery source; no new build or upload.",
+  "physical_phone_accepted": false,
+  "cloud_accepted": false
+}
