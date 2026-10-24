@@ -1,0 +1,53 @@
+{
+  "scope": "Source/CPU acceptance for first-pair gameplay feedback, separate from existing signed binaries and Frontline native-code9 packet. Normal-rate rendered/native and human acceptance remain open.",
+  "dead": {
+    "source_commit": "60515b1438e08b55c893002b0f99e433d9dd5441",
+    "checkpoint": {
+      "path": "F:\\games-workspaces\\dead-run-design-20261023\\android-games\\dead-run\\MULTIPLIER_FEEDBACK_CHECKPOINT.json",
+      "bytes": 94843,
+      "sha256": "2311f529fc5adc75ae607a014138027a9455d7794ef5f60c42d7f5a24d1a0248"
+    },
+    "review": "Astra source/pins CLEAR,74artifact/234base/4changedpins; disposition-only document update from auditedadae620c is explicit in checkpoint.",
+    "checks": {
+      "multiplier": 300,
+      "presentation": 22,
+      "failures": 0
+    },
+    "parity": {
+      "complete_contexts": 5,
+      "whole_tick_hashes": 2734,
+      "raw_input_events": 28,
+      "raw_slots_equal": true,
+      "actual_boundary": "35to40, not39to40"
+    },
+    "version_unchanged": "0.4.2/code8",
+    "next": "Normal1x camera approach/salience review; next higher-version signed/native candidate."
+  },
+  "frontline": {
+    "source_commit": "606e0a49cc9c78fda534ade85f8e3258a937fb46",
+    "checkpoint": {
+      "path": "F:\\games-workspaces\\frontline-design-20261023\\android-games\\frontline-foundry\\RECORD_FEEDBACK_CHECKPOINT.json",
+      "bytes": 296295,
+      "sha256": "4947b3ef67d8e49b3cd616831821fda97195113882804ac08112c4ea108f6edf"
+    },
+    "review": "Astra source/pins CLEAR:222current/255base/785artifacts+8genuine provenance; current-sortie/record/lower-record-vs-earned medal pairing/latest clear/objective failure semantics and full save meaning retained.",
+    "checks_at_606e": {
+      "route": 423,
+      "rules": 416,
+      "recovery": 870,
+      "failures": 0
+    },
+    "victory_amendment": {
+      "source_commit": "c1ab02109f23d2deded54591b940a91b5fe7e4bc",
+      "checkpoint": {
+        "path": "F:\\games-workspaces\\frontline-design-20261023\\android-games\\frontline-foundry\\VICTORY_CRITERIA_CHECKPOINT.json",
+        "bytes": 9177,
+        "sha256": "e4ef3e63694412585aeac2c4511b61ccc8697afdf028cf841fa15d41f30a6e9f"
+      },
+      "review": "Astra exact one-string diff/34artifacts/current423/0 strict/font20criteria86px3profiles/scroll/fullcontext CLEAR; prior rules/recovery explicitly historical606e."
+    },
+    "version_unchanged": "0.3.5/code9",
+    "native_packet_predates_feedback": true,
+    "next": "Normal1x rendered recap/Journey review; next higher-version signed/native candidate."
+  }
+}

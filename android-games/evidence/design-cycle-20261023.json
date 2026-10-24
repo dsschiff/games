@@ -759,9 +759,9 @@
   },
   "frontline_marker_retry": {
     "evidence": "android-games/evidence/frontline-marker-retry-20261024.json",
-    "status": "Local signed0.3.5/code9 packaging/source independently clear, including reviewed retry fix; existing root helper107/0 and actual-input26/0 retained. Native code8to9 retry checks remain open.",
-    "next": "0.3.5/code9 local signed candidate packaging independently clear; native8to9/full recovery retry admission remains open; no upload.",
-    "limit": "CPU typed faults/materialized owner only, no native storage fault/power loss/physical/cloud acceptance."
+    "status": "Signed0.3.5/code9 bounded native update/retry admission/normal Import independently clear:37whole/13admission/0 and5native exact14file rejection pairs; original restored,9archives preserved. Strict shader-warning gate FAIL.",
+    "next": "Normal-rate rendered review and a later higher-version build for the separate recap/Journey source; native storage faults, nonempty parked/skirmish cases, physical/cloud and exact transfer remain open.",
+    "limit": "Fault cases remain CPU typed/materialized; bounded native healthy-storage and explicit metadata/archive fixtures are separately verified. No native storage-fault/power-loss/physical/cloud acceptance."
   },
   "hook_marker_retry": {
     "evidence": "android-games/evidence/hook-marker-retry-20261024.json",
@@ -835,11 +835,40 @@
   },
   "signed_recovery_batch": {
     "evidence": "android-games/evidence/recovery-signed-candidates-20261024.json",
-    "state": "Local signed metadata-only candidates, independent actual packaging/source CLEAR; Hearth native5whole/0 bounded update; strict native shader warning FAIL; exact new protocol gates remain open; no upload",
+    "state": "Local signed candidates packaging reviewed; Hearth5whole/0 and Frontline37whole/13admission/0 bounded native evidence clear. Strict native shader warning FAIL; Tower normalCopy native remains open; no upload.",
     "versions": {
       "hearthguard": "0.3.2/code6",
       "tower-trials": "0.4.5/code11",
       "frontline-foundry": "0.3.5/code9"
     }
+  },
+  "frontline_native_marker": {
+    "evidence": "android-games/evidence/frontline-native-marker-20261024.json",
+    "state": "Bounded signed8to9/native choices/normal8248B PasteImport/cold and original restoration independently clear;37whole/13admission/0,5exact14file+PID rejection pairs; strict shader-warning gate FAIL.",
+    "new_presentation_in_binary": false,
+    "physical_acceptance": false,
+    "cloud_acceptance": false
+  },
+  "dead_multiplier_feedback": {
+    "source_commit": "60515b1438e08b55c893002b0f99e433d9dd5441",
+    "state": "Source/CPU independently clear; actual cumulative hit progress in existing multiplier panel,300/0 plus22/0. Complete paired gameplay/rawsave/input parity;2734tick hashes and28events exact.",
+    "checkpoint": "android-games/dead-run/MULTIPLIER_FEEDBACK_CHECKPOINT.json",
+    "natural_crossing": "35to40 actual hits, not39to40",
+    "new_apk": false,
+    "rendered_acceptance": false,
+    "next": "Normal1x approach/caption salience review, then higher-version signed/native candidate. Existing0.4.2/code8 APK predates this source."
+  },
+  "frontline_record_feedback": {
+    "source_commit": "606e0a49cc9c78fda534ade85f8e3258a937fb46",
+    "state": "Source/CPU independently clear: current-sortie vs retained record/time, truthful latest-clear skirmish records, exact victory medal conditions and objective-specific failure guidance;423/416/870 checks zero.",
+    "checkpoint": "android-games/frontline-foundry/RECORD_FEEDBACK_CHECKPOINT.json",
+    "limits": "8x CPU policy/input and typed font bounds are not normal1x/pixel/native/human acceptance. Current code9 native packet predates this presentation.",
+    "victory_wording_amendment": {
+      "source_commit": "c1ab02109f23d2deded54591b940a91b5fe7e4bc",
+      "checkpoint": "android-games/frontline-foundry/VICTORY_CRITERIA_CHECKPOINT.json",
+      "state": "Independently reviewed one-string universal On victory qualification; focused current-source423/0,34pins, font20/86px criteria3profiles and last Journey row/Close pass. Prior416/870 remain606e source evidence."
+    },
+    "new_apk": false,
+    "next": "Normal1x rendered recap/Journey/scroll review, then higher-version signed/native candidate."
   }
 }
