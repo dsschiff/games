@@ -1,0 +1,298 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-24",
+  "scope": "Three higher-version private/local signed candidates with reviewed runtime fixes. Only version metadata changes since b8bce61; no new release upload. Existing delivered release URLs remain unchanged.",
+  "coordinator_source": "05c7e647b3565c203e31fa08ac87df449b75b590",
+  "base": "b8bce61355c852a90b5815667ff71ab08ac460d1",
+  "candidates": [
+    {
+      "game": "hearthguard",
+      "version": "0.3.2",
+      "version_code": 6,
+      "package": "com.dsschiff.hearthguard",
+      "source_commit": "3a6c49a31b6d1b5abb032bdabde6527e6183e524",
+      "project_source_sha256": "e1c4a1670e1ed1890cd940b8d5833a94b8bb2a846cee71ceafb49a78bef6fee5",
+      "coordinator_project_source_sha256": "e1c4a1670e1ed1890cd940b8d5833a94b8bb2a846cee71ceafb49a78bef6fee5",
+      "integrated_git_game_tree": "5e89fe66606a9856425cc54f5ce1f9492070d043",
+      "source_matches_integrated_git_game_tree": true,
+      "coordinator_line_ending_only_differences": [],
+      "manifest": {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\hearthguard\\20261024T115530573851Z\\manifest.json",
+        "bytes": 1814,
+        "sha256": "2f1a18f8b15f94e6a4c78cfb6226bf6712475f0a63601ee3a5c05c2e8e1f1a7d"
+      },
+      "apk": {
+        "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\hearthguard\\20261024T115530573851Z\\hearthguard.apk",
+        "bytes": 54449870,
+        "sha256": "9bd8b78d2f2e24771f79e6190a5dab7deef67bf224156a89fccb02191bea0b1e"
+      },
+      "logs": [
+        {
+          "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\hearthguard\\20261024T115530573851Z\\apk-inspection.log",
+          "bytes": 5021,
+          "sha256": "c7da1ec39cfef0b1cd1286e6929d8b013a6e3aa2cf066fa0579e54387d130904"
+        },
+        {
+          "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\hearthguard\\20261024T115530573851Z\\build.log",
+          "bytes": 6130,
+          "sha256": "64f7816835f6f4d5f87d5573a23f0616ac110f6584a0250091b60bcc4b9f6812"
+        },
+        {
+          "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\hearthguard\\20261024T115530573851Z\\import.log",
+          "bytes": 5773,
+          "sha256": "11c80220a72ea74f28caffcc42ae52ac577525d83bebd084955710035d33538d"
+        },
+        {
+          "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\hearthguard\\20261024T115530573851Z\\signature.log",
+          "bytes": 1079,
+          "sha256": "854ec828c2fe963c7f9a12ddef092440beff2bb60ce1b195cd8d25d61adfe498"
+        }
+      ],
+      "packaging_review": "Independent Astra actual artifact ZIP CRC, aapt/apksigner rerun, metadata-only source diff, pipeline/config/fingerprint and strict raw-log review CLEAR. v2/v3, min24/target36, arm64-v8a+x86_64, existing signer, no permissions/nondebug.",
+      "pipeline_sha256": "3a473050bd36928c58f959ae99e67b3d22f533d425426b62e058090cace63033",
+      "toolchain_config_sha256": "2c5788e6e8a2b963cb8cd512f4c192b84e78915e05403ed7d267ab8aec34a502",
+      "state": "local_signed_candidate_not_uploaded",
+      "native_new_protocol_verified": false,
+      "physical_acceptance": false,
+      "cloud_acceptance": false
+    },
+    {
+      "game": "tower-trials",
+      "version": "0.4.5",
+      "version_code": 11,
+      "package": "com.dsschiff.towertrials",
+      "source_commit": "0828f9ffb274b300e237837597fd854b31669782",
+      "project_source_sha256": "346ac66bf6dd7154cf5f21bce7dc854ba6ef9746a84372dc3db2334cb638fe3b",
+      "coordinator_project_source_sha256": "346ac66bf6dd7154cf5f21bce7dc854ba6ef9746a84372dc3db2334cb638fe3b",
+      "integrated_git_game_tree": "72f750543f235b516a6a7fbce27159914d86c198",
+      "source_matches_integrated_git_game_tree": true,
+      "coordinator_line_ending_only_differences": [],
+      "manifest": {
+        "path": "F:\\games-workspaces\\tower-copy-confirm-20261024\\.artifacts\\tower-trials\\20261024T115748082326Z\\manifest.json",
+        "bytes": 1814,
+        "sha256": "0102203794189a782ae785348b1afb1a323001e12657cb337a76805209b94e45"
+      },
+      "apk": {
+        "path": "F:\\games-workspaces\\tower-copy-confirm-20261024\\.artifacts\\tower-trials\\20261024T115748082326Z\\tower-trials.apk",
+        "bytes": 53218831,
+        "sha256": "f74ce294c9201a0f951859f689ff4f002f44a5c8aab4de7bb0fcbf1acc9a3c87"
+      },
+      "logs": [
+        {
+          "path": "F:\\games-workspaces\\tower-copy-confirm-20261024\\.artifacts\\tower-trials\\20261024T115748082326Z\\apk-inspection.log",
+          "bytes": 5112,
+          "sha256": "7d324709c96f39fbe8efccad890291f7c822875b5b26c06276222a0391d9bc85"
+        },
+        {
+          "path": "F:\\games-workspaces\\tower-copy-confirm-20261024\\.artifacts\\tower-trials\\20261024T115748082326Z\\build.log",
+          "bytes": 6128,
+          "sha256": "a3ce07704a1863a70dfc5113352cc15c60a149a56c4a7be4365cfd2e89186dba"
+        },
+        {
+          "path": "F:\\games-workspaces\\tower-copy-confirm-20261024\\.artifacts\\tower-trials\\20261024T115748082326Z\\import.log",
+          "bytes": 5716,
+          "sha256": "ad790edf63456d71e695813955a1990024339ea84b9e1399658a902e5b257c88"
+        },
+        {
+          "path": "F:\\games-workspaces\\tower-copy-confirm-20261024\\.artifacts\\tower-trials\\20261024T115748082326Z\\signature.log",
+          "bytes": 1079,
+          "sha256": "854ec828c2fe963c7f9a12ddef092440beff2bb60ce1b195cd8d25d61adfe498"
+        }
+      ],
+      "packaging_review": "Independent Astra actual artifact ZIP CRC, aapt/apksigner rerun, metadata-only source diff, pipeline/config/fingerprint and strict raw-log review CLEAR. v2/v3, min24/target36, arm64-v8a+x86_64, existing signer, no permissions/nondebug.",
+      "pipeline_sha256": "3a473050bd36928c58f959ae99e67b3d22f533d425426b62e058090cace63033",
+      "toolchain_config_sha256": "2c5788e6e8a2b963cb8cd512f4c192b84e78915e05403ed7d267ab8aec34a502",
+      "state": "local_signed_candidate_not_uploaded",
+      "native_new_protocol_verified": false,
+      "physical_acceptance": false,
+      "cloud_acceptance": false
+    },
+    {
+      "game": "frontline-foundry",
+      "version": "0.3.5",
+      "version_code": 9,
+      "package": "com.dsschiff.frontlinefoundry",
+      "source_commit": "bc5e0c5e00f4c8579b433a891d9a33c498f2f884",
+      "project_source_sha256": "104528f6d60b4e44d459bb112b168c7c82bac8078189bc5035b565807e955562",
+      "coordinator_project_source_sha256": "3cf36baf0811bfc518fc7fcee6d594d16f66c3c0ce9a0e61523d4e917498ba86",
+      "integrated_git_game_tree": "452a312ca24e10490aae18f538f49a3890b2f475",
+      "source_matches_integrated_git_game_tree": true,
+      "coordinator_line_ending_only_differences": [
+        {
+          "path": "android-games/frontline-foundry/CLOUD_ADAPTER.md",
+          "coordinator_bytes": 7008,
+          "candidate_bytes": 7116,
+          "lf_equal": true
+        },
+        {
+          "path": "android-games/frontline-foundry/CLOUD_UI_AMENDMENT.md",
+          "coordinator_bytes": 7413,
+          "candidate_bytes": 7526,
+          "lf_equal": true
+        },
+        {
+          "path": "android-games/frontline-foundry/CLOUD_UI_CHECKPOINT.json",
+          "coordinator_bytes": 6990,
+          "candidate_bytes": 7104,
+          "lf_equal": true
+        },
+        {
+          "path": "android-games/frontline-foundry/MARKER_RETRY_AMENDMENT.md",
+          "coordinator_bytes": 4307,
+          "candidate_bytes": 4334,
+          "lf_equal": true
+        },
+        {
+          "path": "android-games/frontline-foundry/MARKER_RETRY_CHECKPOINT.json",
+          "coordinator_bytes": 40166,
+          "candidate_bytes": 40609,
+          "lf_equal": true
+        },
+        {
+          "path": "android-games/frontline-foundry/README.md",
+          "coordinator_bytes": 10684,
+          "candidate_bytes": 10845,
+          "lf_equal": true
+        },
+        {
+          "path": "android-games/frontline-foundry/scripts/campaign_main.gd",
+          "coordinator_bytes": 17925,
+          "candidate_bytes": 18375,
+          "lf_equal": true
+        },
+        {
+          "path": "android-games/frontline-foundry/scripts/cloud/cloud_panel.gd",
+          "coordinator_bytes": 6503,
+          "candidate_bytes": 6608,
+          "lf_equal": true
+        },
+        {
+          "path": "android-games/frontline-foundry/scripts/cloud/copies.gd",
+          "coordinator_bytes": 1529,
+          "candidate_bytes": 1564,
+          "lf_equal": true
+        },
+        {
+          "path": "android-games/frontline-foundry/scripts/cloud/game_flow.gd",
+          "coordinator_bytes": 12856,
+          "candidate_bytes": 13101,
+          "lf_equal": true
+        },
+        {
+          "path": "android-games/frontline-foundry/scripts/cloud/native_port.gd",
+          "coordinator_bytes": 2633,
+          "candidate_bytes": 2693,
+          "lf_equal": true
+        },
+        {
+          "path": "android-games/frontline-foundry/scripts/cloud/port.gd",
+          "coordinator_bytes": 505,
+          "candidate_bytes": 521,
+          "lf_equal": true
+        },
+        {
+          "path": "android-games/frontline-foundry/scripts/import_recovery.gd",
+          "coordinator_bytes": 6710,
+          "candidate_bytes": 6850,
+          "lf_equal": true
+        },
+        {
+          "path": "android-games/frontline-foundry/scripts/main.gd",
+          "coordinator_bytes": 25029,
+          "candidate_bytes": 25715,
+          "lf_equal": true
+        },
+        {
+          "path": "android-games/frontline-foundry/scripts/save_files.gd",
+          "coordinator_bytes": 1044,
+          "candidate_bytes": 1076,
+          "lf_equal": true
+        },
+        {
+          "path": "android-games/frontline-foundry/tests/cloud_ui.gd",
+          "coordinator_bytes": 24417,
+          "candidate_bytes": 24699,
+          "lf_equal": true
+        },
+        {
+          "path": "android-games/frontline-foundry/tests/import_recovery.gd",
+          "coordinator_bytes": 28689,
+          "candidate_bytes": 29078,
+          "lf_equal": true
+        },
+        {
+          "path": "android-games/frontline-foundry/tests/run_cloud_ui.py",
+          "coordinator_bytes": 2577,
+          "candidate_bytes": 2608,
+          "lf_equal": true
+        },
+        {
+          "path": "android-games/frontline-foundry/tests/run_import.py",
+          "coordinator_bytes": 3014,
+          "candidate_bytes": 3047,
+          "lf_equal": true
+        }
+      ],
+      "manifest": {
+        "path": "F:\\games-workspaces\\frontline-cloud-ui-20261024\\.artifacts\\frontline-foundry\\20261024T115850647489Z\\manifest.json",
+        "bytes": 1853,
+        "sha256": "dee6510f2422ac2abe4ce143bae2ce43071cc36bf11bd4a48907ad3736d5a172"
+      },
+      "apk": {
+        "path": "F:\\games-workspaces\\frontline-cloud-ui-20261024\\.artifacts\\frontline-foundry\\20261024T115850647489Z\\frontline-foundry.apk",
+        "bytes": 56176980,
+        "sha256": "6475791b39146acc7e2bb30636fd5af3a99204e35d485affaa2fd74aad4c333e"
+      },
+      "logs": [
+        {
+          "path": "F:\\games-workspaces\\frontline-cloud-ui-20261024\\.artifacts\\frontline-foundry\\20261024T115850647489Z\\apk-inspection.log",
+          "bytes": 5566,
+          "sha256": "3174eeef6a876283d6c1daf7d6610f4ca7b38de60ee8807523fb0e0cb19718b8"
+        },
+        {
+          "path": "F:\\games-workspaces\\frontline-cloud-ui-20261024\\.artifacts\\frontline-foundry\\20261024T115850647489Z\\build.log",
+          "bytes": 6138,
+          "sha256": "95d59de7c88e880b85baddf0d4bcd67472a1b0cd8f3724edcc01f54ef168cac3"
+        },
+        {
+          "path": "F:\\games-workspaces\\frontline-cloud-ui-20261024\\.artifacts\\frontline-foundry\\20261024T115850647489Z\\import.log",
+          "bytes": 34430,
+          "sha256": "a05459261f906b4be45912b29826f10e719ae40ddf0f0e90aee7944d46211214"
+        },
+        {
+          "path": "F:\\games-workspaces\\frontline-cloud-ui-20261024\\.artifacts\\frontline-foundry\\20261024T115850647489Z\\signature.log",
+          "bytes": 1079,
+          "sha256": "854ec828c2fe963c7f9a12ddef092440beff2bb60ce1b195cd8d25d61adfe498"
+        }
+      ],
+      "packaging_review": "Independent Astra actual artifact ZIP CRC, aapt/apksigner rerun, metadata-only source diff, pipeline/config/fingerprint and strict raw-log review CLEAR. v2/v3, min24/target36, arm64-v8a+x86_64, existing signer, no permissions/nondebug.",
+      "pipeline_sha256": "3a473050bd36928c58f959ae99e67b3d22f533d425426b62e058090cace63033",
+      "toolchain_config_sha256": "2c5788e6e8a2b963cb8cd512f4c192b84e78915e05403ed7d267ab8aec34a502",
+      "state": "local_signed_candidate_not_uploaded",
+      "native_new_protocol_verified": false,
+      "physical_acceptance": false,
+      "cloud_acceptance": false
+    }
+  ],
+  "hearth_native_update": {
+    "packet": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\native-hearth-code6-20261024-boot2\\report.json",
+      "bytes": 18344,
+      "sha256": "ccf5ecb96c0bfa04578d951e0c637f45e8a3aed1b64cebb54d8cc46b885a748a"
+    },
+    "whole_context_comparisons": 5,
+    "failures": 0,
+    "scope": "Existing genuine campaign defeat; entire state/profile/settings/campaign across code5to6/Home/cold. No native state injection or gameplay in this route.",
+    "strict_native_gate": "FAIL: cached shader warning occurs in old code5 and new code6 raw logs.",
+    "independent_review": "Astra qualified CLEAR: exact sealed packet18344B/ccf5ecb9...a748a,45 referenced records rehashed, all six native raw captures checksummed/elected/whole-compared against production output,5whole/0; actual settled baseline/cold controls readable, exact lifecycle/install/shutdown verified. Strict cached-shader warning gate FAIL in both versions; all stated protocol/physical/cloud limits preserved.",
+    "owned_emulator_stopped": true,
+    "pending_choices_and_clipboard_verified": false
+  },
+  "remaining": [
+    "Hearth normal Import, both pending recovery choices and exact OS retained-code Copy/View",
+    "Tower code10to11 native normal Copy and manual fallback; Frontline code8to9 native retry admission",
+    "Native engine shader warning qualification remains open",
+    "Exact new-version private transfer authorization and delivery readback",
+    "Physical/human and configured optional cloud acceptance remain separate and unverified"
+  ]
+}
