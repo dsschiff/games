@@ -1,0 +1,55 @@
+{
+  "base": "ca7efe6",
+  "scope": "Presentation popup placement only; runtime main/rules/save/catalog/signing/version unchanged",
+  "evidence": [
+    {
+      "path": ".artifacts/design-cpu-20261023T235938013147Z",
+      "passed": false,
+      "files": {
+        "report.json": "f8f912bb78350de5294fc2b8e72ad28635fbe73e3a1f7aab3b543e999a4be656",
+        "source-before.json": "a0f54329441f28c4a022d53765c2914676bc33dd903322c1da94183d34e182b2",
+        "feedback_readability.log": "23245b1ace6b5322d52f48f80242418eb7fe1220bf69b3d44966fd5a5a9249d5",
+        "feedback-result.json": "ee53b14ef70a58040d0522ddac8dc5b4aa68316f7adc7fe0c9d7cf96bfe8f933"
+      }
+    },
+    {
+      "path": ".artifacts/design-cpu-20261024T000211317275Z",
+      "passed": true,
+      "files": {
+        "report.json": "0339b2a37d20fc1175f893b05d23cfe784083a2069101cea7d359e2af6591c9f",
+        "source-before.json": "bc231363c21c91c43ed93bdc0bbf4ac7ffe635fed8405b3d8112f98c3687b28e",
+        "feedback_readability.log": "4eec7c724be56b2dd453b232602cf57d8308bd588839c7948befe180b94f6496",
+        "run_tests.log": "2613834009f299150f4362eefa749ab093830bcbab77e99d6d77bc3c2ce64a1b",
+        "campaign_playthrough.log": "af8856e0670393267dcfbf3f5cdb97335bfe4232c05c126274d7c87a1ee6f0a1",
+        "feedback-result.json": "f8a02969e16d2548412b72e3b8bffa6af2d2e937c5792e5e85d9c741901df30d"
+      }
+    },
+    {
+      "path": ".artifacts/design-cpu-20261024T000403604055Z",
+      "passed": true,
+      "files": {
+        "report.json": "58e05b7681dd9dea91c02c93487128b5daa37c9e08245763e9e1ef0fbe0be610",
+        "source-before.json": "bc231363c21c91c43ed93bdc0bbf4ac7ffe635fed8405b3d8112f98c3687b28e",
+        "challenge_playthrough.log": "9acd885eedc6c0cc8c6a501a74c6d392f078d7d5ecbe97193b00dfb42cf1b83a",
+        "graphics_view.log": "b90b2420e0c9cab7195ff3dd09574e79455f241b54901d98fbf6f1c98dd7e116"
+      }
+    }
+  ],
+  "limits": [
+    "CPU font and outline geometry, not rendered readability or motion acceptance",
+    "No GPU, native Android, ADB, physical device, sound, human pacing or fun acceptance"
+  ],
+  "runtime_sources": {
+    "scripts/catalog_v1.gd": "cacac155762576b19d295a4cb98a900bf7f0a4ba418cff35d132b202923eb7e4",
+    "scripts/catalog_v2.gd": "f9e558d173c64f6a37dfa996efc6075c6279f520b968406cb7234cce614aa9e9",
+    "scripts/challenge_v1.gd": "3706f76799c3eccf8a8739d02bd74a226edd274e6cdbd1358f58f97767812071",
+    "scripts/content.gd": "a7a15f49be61f36c28e3d5301effa4185cca27871fc7362361ac7b2ba9fae868",
+    "scripts/local_audio.gd": "62e5b953ef6f18148f279028e454a5546074d5692dc5e378368f12764ac18bf9",
+    "scripts/main.gd": "3fd5947bd84dd3fcc5eaa55b017f4b36fa3f23f417b899264274b9ac877f5406",
+    "scripts/presentation/tower_view.gd": "4e3bb248eef1d74b55234453a9dc47b0a74cb39125cc5bdf75ca87f863eabaa4",
+    "scripts/rules.gd": "5db58d5d73e2a8b584d12548dba71c864be0d6302ac2c9f84ca1ca4ad5b6f8f6",
+    "scripts/rules_v1.gd": "5432339e42e95e02b14d64871cade704ccbb87f89a5c002412deed797291d950",
+    "scripts/save_files.gd": "67b532124aab977b2fb103c12d05a9a9152f6d9aee93113b8476796f880859db",
+    "scripts/save_store.gd": "75fbf10cc8e8276237007593e08ac6b8706fc5a3ce78c4ea3ab30a4f7489080b"
+  }
+}
