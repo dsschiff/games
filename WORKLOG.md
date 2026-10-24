@@ -776,3 +776,12 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
   marker172/0 plus one frozen871/188/573 regression batch clear. Astra170-source/
   193-unchanged-file/43-artifact audit clear. Baseline174/35 retained.
   No Store/rules/schema/UI/version/build/native acceptance change.
+
+- Gear0.4.3/code12 signed from clean9d7e35f after root437/0 marker rerun.
+  Native11to12/normal Import/both explicit choices/original restoration pass10
+  complete owning-context comparisons;7 pending and7 cleared markers verified.
+  Actual Copy Previous2870-byte raw andCopy Imported2268-byte portable readbacks
+  exact;12 pending file hashes stable throughcopy/Back/Home/cold. Astra355+8
+  artifact/18 runtime-binding audit clear. Strict cached-shader warning gate
+  remains failed; empty profile/metadata-fixture/driver failures qualified.
+  Exact owned emulator stopped cleanly; no upload/physical/cloud acceptance.

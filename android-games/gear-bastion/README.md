@@ -1,3 +1,11 @@
+> **Local recovery candidate 0.4.3 / code12 (2026-10-24).** Recovery retries
+> freshly verify every retained marker and complete archive before writing. Safe
+> Copy Previous / Copy Imported controls export the retained whole codes without
+> changing the pending choice. Source/CPU checks and independent review pass;
+> this candidate still requires signed Android update and native copy verification.
+> Prior code11 native functional evidence remains qualified by its shader warning.
+> See [marker retry](MARKER_RETRY_AMENDMENT.md) and [copy controls](RECOVERY_COPY_AMENDMENT.md).
+
 > **Local recovery candidate 0.4.2 / code11 (2026-10-24).** Whole-save Import
 > recovery keeps play paused until a verified explicit choice; complete local
 > copies preserve the original and imported contexts. CPU/source checks pass;
