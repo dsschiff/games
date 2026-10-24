@@ -9,6 +9,7 @@ var preview_variant := ""
 var preview_timeline: Array = []
 var preview_first_frame := 0
 var preview_first_physics_frame := 0
+var preview_finishing := false
 var start_context := {}
 var slot_snapshots := {}
 var observed := preload("res://tests/production_observer.gd").new()
@@ -43,7 +44,7 @@ func run() -> void:
 		var actual := S.read()
 		check(expected.ok and actual.ok and actual.revision == expected.revision and actual.committed == expected.committed and actual.version == expected.version and C.equivalent(actual.state, expected.state) and C.equivalent(actual.profile, expected.profile) and C.equivalent(actual.campaign, expected.campaign) and actual.settings == expected.settings, "whole authentic start agrees before boot can write anything")
 		if failures > 0:
-			finish_production()
+			await finish_production()
 			return
 	await load_app()
 	if not expected_code.is_empty():
@@ -51,7 +52,7 @@ func run() -> void:
 	else:
 		check(scene.state.schema == 2 and scene.state.phase == "ready" and scene.campaign_profile.clears.is_empty() and scene.profile.attempts == 0, "fresh production opening invents no earned progression")
 	if failures > 0:
-		finish_production()
+		await finish_production()
 		return
 	start_context = whole_memory()
 	source_stage = int(scene.state.definition.stage) if scene.state.schema == 2 else -1
@@ -59,7 +60,7 @@ func run() -> void:
 	if production_stage.begins_with("preview-"):
 		await prepare_preview()
 		if failures > 0:
-			finish_production()
+			await finish_production()
 			return
 	if lead_in > 0:
 		await start_playing()
@@ -94,7 +95,7 @@ func run() -> void:
 				check(not native_frames and Engine.get_write_movie_path().is_empty(), "timing excludes native readback and movie writer")
 				check(Engine.max_fps == 0 and DisplayServer.window_get_vsync_mode() == DisplayServer.VSYNC_DISABLED, "declared unpaced timing actually disables VSync and FPS cap")
 				if failures > 0:
-					finish_production()
+					await finish_production()
 					return
 				sampler.start(root, scene)
 				timing_open = true
@@ -113,7 +114,7 @@ func run() -> void:
 	await hold()
 	await retain_slots("final")
 	await snap("final-held-boundary")
-	finish_production()
+	await finish_production()
 
 func _process(_delta: float) -> bool:
 	return false
@@ -370,17 +371,55 @@ func snap(name: String) -> void:
 		return
 	await super.snap(name)
 
+func cleanup_preview() -> Dictionary:
+	var count := native_inventory.size()
+	recording = false
+	native_finished = true
+	if RenderingServer.frame_post_draw.is_connected(capture_native_frame):
+		RenderingServer.frame_post_draw.disconnect(capture_native_frame)
+	if RenderingServer.frame_post_draw.is_connected(sample_timing_frame):
+		RenderingServer.frame_post_draw.disconnect(sample_timing_frame)
+	check(not is_instance_valid(scene) or scene.paused or scene.state.phase != "playing", "preview cleanup starts only after the final held/terminal boundary")
+	var owner_weak: WeakRef = weakref(game_root) if is_instance_valid(game_root) else null
+	var playback_weak: WeakRef = null
+	if is_instance_valid(scene) and scene.audio_playback != null:
+		playback_weak = weakref(scene.audio_playback)
+	if is_instance_valid(game_root): game_root.queue_free()
+	var begin := Time.get_ticks_msec()
+	var frames := 0
+	while Time.get_ticks_msec() - begin < 2000 and ((owner_weak != null and owner_weak.get_ref() != null) or (playback_weak != null and playback_weak.get_ref() != null)):
+		await process_frame
+		frames += 1
+	var owner_freed: bool = owner_weak == null or owner_weak.get_ref() == null
+	var playback_released: bool = playback_weak == null or playback_weak.get_ref() == null
+	var elapsed := Time.get_ticks_msec() - begin
+	var acknowledged_before_deadline: bool = owner_freed and playback_released and elapsed < 2000
+	check(owner_freed, "preview bootstrap deletion completes before exit")
+	check(acknowledged_before_deadline, "preview audio playback release is observed before the two-second deadline")
+	check(native_inventory.size() == count, "preview teardown adds zero captured frames after the frozen final boundary")
+	return {"owner_freed": owner_freed, "audio_was_present": playback_weak != null, "playback_released": playback_released,
+		"acknowledged_before_deadline": acknowledged_before_deadline, "ordinary_process_frames": frames, "wall_milliseconds": elapsed, "post_final_captured_frames": native_inventory.size() - count}
+
 func finish_production() -> void:
+	var preview := production_stage.begins_with("preview-")
+	if preview:
+		if preview_finishing: return
+		preview_finishing = true
 	var coverage := observed.report()
-	var f := FileAccess.open(folder.path_join("production-report.json"), FileAccess.WRITE)
-	f.store_string(JSON.stringify({"stage": production_stage, "checks": checks, "failures": failures, "details": details,
+	var report := {"stage": production_stage, "checks": checks, "failures": failures, "details": details,
 		"start_context": start_context, "end_context": whole_memory() if is_instance_valid(scene) else {}, "expected_code": expected_code,
 		"preview_variant": preview_variant, "preview_timeline": preview_timeline, "preview_input_scope": "Real bootstrap owner, normal30fps process frames/60Hz rules, actual joystick/touch/drag, no state injection or physics disabling",
 		"declared_lead_in_simulation_seconds": lead_in, "native_frame_count": native_inventory.size(),
 		"raw_slot_snapshots": slot_snapshots, "coverage": coverage,
-		"limits": "Actual input passages from fresh or authenticated earned bytes. Optional lead-in is normal real input before contiguous movie recording, never accelerated. Model coverage is projected observation, not independent visual acceptance. Cold restore is a separate process with prior raw slots. Fixed-cadence footage is not FPS."}, "\t"))
+		"limits": "Actual input passages from fresh or authenticated earned bytes. Optional lead-in is normal real input before contiguous movie recording, never accelerated. Model coverage is projected observation, not independent visual acceptance. Cold restore is a separate process with prior raw slots. Fixed-cadence footage is not FPS."}
+	if preview:
+		report["cleanup"] = await cleanup_preview()
+		report.checks = checks
+		report.failures = failures
+	var f := FileAccess.open(folder.path_join("production-report.json"), FileAccess.WRITE)
+	f.store_string(JSON.stringify(report, "\t"))
 	f.close()
-	# The parent writes native inventory, complete input trace and standard report.
-	# Its old timing path stays disabled; this harness uses the proven frame sampler.
+	# Historical passages retain the original synchronous teardown. Preview has
+	# already acknowledged its real audio playback release after capture stopped.
 	measure = false
 	super.finish_passage()
