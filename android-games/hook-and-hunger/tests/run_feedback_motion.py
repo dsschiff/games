@@ -14,8 +14,13 @@ def main():
     parser.add_argument('--verbose',action='store_true')
     parser.add_argument('--force-defeat',action='store_true')
     parser.add_argument('--drain-audio',action='store_true')
+    parser.add_argument('--suite',choices=['feedback_motion','charge_play','finale_readability'])
     parser.add_argument('--route',choices=['stage-09-start','stage-11-wave-5'])
     args = parser.parse_args()
+    if args.suite in ('charge_play', 'finale_readability') and not args.route:
+        parser.error('Earned continuation suites require --route')
+    if args.route and args.suite == 'feedback_motion':
+        parser.error('The opening fixture suite does not consume an earned route')
     run = PROJECT / '.artifacts' / ('feedback-motion-' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ'))
     run.mkdir(parents=True)
     env = os.environ.copy()
@@ -33,7 +38,7 @@ def main():
             raise RuntimeError('Historical earned checkpoint hash mismatch')
     frozen = sources()
     (run / 'source-before.json').write_text(json.dumps(frozen, indent=2)+'\n')
-    command = [str(GODOT),'--audio-driver','Dummy','--fixed-fps','60','--path',str(PROJECT),'--resolution','720x1280','--position','0,0','--script','res://tests/'+('charge_play.gd' if args.route else 'feedback_motion.gd')]
+    command = [str(GODOT),'--audio-driver','Dummy','--fixed-fps','60','--path',str(PROJECT),'--resolution','720x1280','--position','0,0','--script','res://tests/'+((args.suite + '.gd') if args.suite else ('charge_play.gd' if args.route else 'feedback_motion.gd'))]
     if args.verbose:
         command += ['--verbose']
     if not args.execute:

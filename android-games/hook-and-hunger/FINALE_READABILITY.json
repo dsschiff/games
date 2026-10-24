@@ -1,0 +1,68 @@
+{
+  "base_commit": "226db6ec6b43abb12a933a231ee8c15b9bab5b32",
+  "runtime_changes": [
+    "scripts/art.gd",
+    "scripts/presentation/adapter.gd"
+  ],
+  "geometry_proof": {
+    "original_telegraph_geometry_commands_equal_except_style_calls": true,
+    "original_warning_geometry_commands_equal_except_inset_child_construction": true,
+    "charge_envelope_helpers_exact_lf_equal": true,
+    "charge_envelope_helpers_lf_sha256": "eea8160caba07a3e8bdbef551a5a24546b4630fc25b3a3f4066e1dd7b9dae6c5"
+  },
+  "runtime_lf_sha256": {
+    "scripts/art.gd": "ddac90ead100a9e377cffc984bdc62c46885c2f34a48ca8f28617cb1abb7f726",
+    "scripts/presentation/adapter.gd": "ef96ae308b1612e946482c800c7160fc8ef16c00d5672a4efac740210fe36c2c"
+  },
+  "earned_input": {
+    "checkpoint": "C:/projects/active/_worktrees/games-hook-and-hunger-20261018/android-games/hook-and-hunger/.artifacts/campaign-code2-final/stage-11-wave-5.json",
+    "checkpoint_sha256": "ac6cc58f220e66bbeadd56d46cfa27eb7b6af65c22b131fc6267411c933b1980",
+    "baseline": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\feedback-motion-20261024T025615997640Z",
+    "after": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\feedback-motion-20261024T030434200480Z",
+    "actual_input_events": 725,
+    "input_events_exactly_equal": true,
+    "final_state_exactly_equal": true,
+    "continued_save_sha256": "b24d49183b32ffed1d58df3f3ed1802b9fb5cc6320369571f92740ac39f31f2a",
+    "continued_save_bytes_equal": true
+  },
+  "runs": [
+    {
+      "role": "original static-warning hierarchy; failed",
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\feedback-motion-20261024T025615997640Z\\receipt.json",
+      "sha256": "c8de8dd0bed74f911156e87b13debbc5664ca4cf73cb6ce01271512d26de2f53"
+    },
+    {
+      "role": "thin-rim coverage/rules/input checks; passed",
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T025933212369Z\\report.json",
+      "sha256": "31d16f4287658962fa90a71fcb4f934e7b685317e0eb60d5ea3a4b28703dc175"
+    },
+    {
+      "role": "exact decimal mesh-storage assertion; failed test-only",
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\feedback-motion-20261024T030020014269Z\\receipt.json",
+      "sha256": "2b3492aab9830ae6e3edd693bb58bbe3405fd2b65f5c7472fa65f93f146cf5d9"
+    },
+    {
+      "role": "current earned finale hierarchy; passed88/0",
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\feedback-motion-20261024T030434200480Z\\receipt.json",
+      "sha256": "a1d3fe65c6527ad9d8065a513cf592a02a73f596fdcc5e51ac071c1e0a86fab2"
+    },
+    {
+      "role": "current opening actual input; passed18/0",
+      "path": "F:\\games-workspaces\\hook-finale-20261024\\android-games\\hook-and-hunger\\.artifacts\\graphics-cpu-20261024T030442432152Z\\report.json",
+      "sha256": "b67079b66e9dfcbc445f23172ecf64d2286cd6a0f061fe9b1f369273f92b457a"
+    }
+  ],
+  "design_review": "Astra approved bounded thin-interior/inset-edge/actual-seconds treatment direction. Final source disposition pending.",
+  "visual_status": "Not rendered this increment; root grant required after source freeze and source clear. CPU alpha arithmetic is not perceived readability.",
+  "historical_warning": {
+    "preserved": true,
+    "path": "F:/games-workspaces/hook-design-20261023/android-games/hook-and-hunger/.artifacts/feedback-motion-20261024T001610936675Z/receipt.json",
+    "status": "Coarse finale two-ObjectDB shutdown warning remains failed, unexplained, unsuppressed; not reclassified by later runs."
+  },
+  "unchanged": [
+    "rules/collision/charge timing/attack cadence",
+    "full existing strip caps/widths/ring safehole/conservative stepped envelope",
+    "save schema/profile/catalog/version/export/signing",
+    "no warning in initial idle state; no HUD safe-route recommendation"
+  ]
+}

@@ -229,6 +229,7 @@ func _telegraph(actor: Node3D, data: Dictionary, definition: Dictionary, legacy:
 	warning.global_position = Vector3(data.ax, .04, data.az)
 	warning.global_rotation.y = atan2(float(data.get("tx", 0)), float(data.get("tz", 1)))
 	var attack := "slam" if legacy else str(data.attack)
+	_warning_ink(warning, attack, float(data.clock))
 	for key in ["Solid", "Outer", "Inner", "Line", "Left", "Right"]:
 		warning.get_node(key).hide()
 	if attack == "slam":
@@ -254,6 +255,7 @@ func _telegraph(actor: Node3D, data: Dictionary, definition: Dictionary, legacy:
 				warning.global_rotation.y = 0
 				line.position = Vector3(bounds.get_center().x - data.ax, .01, bounds.get_center().y - data.az)
 				line.scale = Vector3(bounds.size.x / line.mesh.size.x, 1, bounds.size.y / line.mesh.size.z)
+				_warning_rims(warning)
 				return
 		for key in ["Line", "Left", "Right"]:
 			var line := warning.get_node(key) as Node3D
@@ -267,6 +269,46 @@ func _telegraph(actor: Node3D, data: Dictionary, definition: Dictionary, legacy:
 			line.scale.z = (length + 2.0 * half_width) / 8.5
 			var angle := -.32 if key == "Left" else (.32 if key == "Right" else 0.0)
 			line.position = Vector3(sin(angle) * length * .5, .01, cos(angle) * length * .5)
+	_warning_rims(warning)
+
+## Keep border width constant in world space when a constrained charge widens
+## its conservative box; inherited strip scale must not make a broad opaque rim.
+func _warning_rims(warning: Node3D) -> void:
+	for key in ["Line", "Left", "Right"]:
+		var strip := warning.get_node(key) as MeshInstance3D
+		if not strip.visible: continue
+		for rim in strip.get_node("Boundary").get_children():
+			var axis: int = rim.get_meta("rim_axis")
+			var side: float = rim.get_meta("rim_side")
+			var size: Vector3 = strip.mesh.size
+			var width := minf(.075 / maxf(absf(strip.scale[axis]), .001), size[axis] * .5)
+			size.y = .008
+			size[axis] = width
+			if rim.mesh.size != size: rim.mesh.size = size
+			var point := Vector3(0, .026, 0)
+			point[axis] = side * (strip.mesh.size[axis] - width) * .5
+			rim.position = point
+
+## Styling describes release urgency, never a successful impact. Projectiles
+## can travel after this windup ends; no hit cue or safe-route advice is added.
+func _warning_ink(warning: Node3D, attack: String, seconds: float) -> void:
+	var urgency := 1.0 - clampf(seconds / .65, 0.0, 1.0)
+	var base := Color("db9a58") if attack == "charge" else Color("d97576")
+	var ink := base.lerp(Color("ffe2bc"), urgency * .55)
+	var fill := Color(ink, .11 + .06 * urgency)
+	var edge := Color(ink, .72 + .24 * urgency)
+	# Assign absolute values on every capture so reused actors cannot retain
+	# an imminent cue when their next, longer windup begins.
+	var solid := warning.get_node("Solid")
+	(solid.get_child(0).material_override as StandardMaterial3D).albedo_color = edge
+	(solid.get_child(1).material_override as StandardMaterial3D).albedo_color = fill
+	for key in ["Outer", "Inner"]:
+		(warning.get_node(key).material_override as StandardMaterial3D).albedo_color = edge
+	for key in ["Line", "Left", "Right"]:
+		var strip := warning.get_node(key) as MeshInstance3D
+		(strip.material_override as StandardMaterial3D).albedo_color = fill
+		for rim in strip.get_node("Boundary").get_children():
+			(rim.material_override as StandardMaterial3D).albedo_color = edge
 
 # Pinned campaign charge: speed8, clock.85, step cap.05, enemy radius.6,
 # hit radius.9. The final full step may overshoot the nominal6.8m route.
