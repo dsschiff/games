@@ -354,5 +354,18 @@
       "Floating total floor association remains open",
       "Optional Play Games integration and live sync unverified"
     ]
+  },
+  "dead_run_design_checkpoint": {
+    "version": "0.4.1",
+    "version_code": 7,
+    "source_commit": "d75fc375bc79bae26d6d80175e89eb29d42522de",
+    "status": "bounded_design_motion_native_update_privately_delivered_prior_graphics_history_retained",
+    "candidate_evidence": "android-games/evidence/design-cycle-20261023.json",
+    "apk_sha256": "27acee9c26f3936d86837e4807630fb82d31490f3e73d098e2fa5f0014f010a9",
+    "open": [
+      "Minor result text wrapping and terminal-tip hierarchy",
+      "Phone, measured FPS, sound and human fun deferred",
+      "Optional Play Games integration and live sync unverified"
+    ]
   }
 }

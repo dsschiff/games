@@ -1,0 +1,34 @@
+{
+  "scope": "Local unsigned AAB preparation only; no Play upload, signing, cloud integration or installed Android acceptance. The initial receipt passed only its narrow export/ZIP predicate and retained two shutdown warnings; cached export without reinstalling the template has no warning/error markers and exactly the same bundle hash. No exact warning-owner attribution.",
+  "qualification": "F:\\games-workspaces\\play-bundle-20261023\\.artifacts\\aab-cached-20261024T023052Z\\qualification.json",
+  "qualification_sha256": "9953a64c0b54fc1be953d04ce0daccb1ade55b4a3f6ef0cfcef84ee341b55c32",
+  "artifact": {
+    "path": "F:\\games-workspaces\\play-bundle-20261023\\.artifacts\\aab-cached-20261024T023052Z\\tower-trials-unsigned.aab",
+    "bytes": 53049437,
+    "sha256": "bb71a2bce37bfc99831effa1cf20cf6c663aa25af832b67d9db00de571db1908"
+  },
+  "base_revision": "b4a58998fab05537e3517c1dc5cfea283db962bc",
+  "bundle_validation_passed": true,
+  "package": "com.dsschiff.towertrials",
+  "version_code": 7,
+  "version_name": "0.4.1",
+  "target_sdk": 36,
+  "min_sdk": 24,
+  "abis": [
+    "arm64-v8a",
+    "x86_64"
+  ],
+  "permissions": [],
+  "debuggable": false,
+  "unsigned": true,
+  "cached_warning_error_markers": {
+    "import.log": 0,
+    "bundle.log": 0
+  },
+  "same_initial_cached_bundle_sha256": true,
+  "remaining": [
+    "Reusable source-clean build/signature pipeline and independent review",
+    "Approved signer continuity for AAB and Play app signing setup",
+    "Account identity/phone verification, app/client/tester setup, real Play acceptance"
+  ]
+}

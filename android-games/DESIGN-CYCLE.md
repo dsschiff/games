@@ -26,7 +26,7 @@ and Tower. Preserve each selected ad loop with original assets.
 
 | Game | Design question and initial task | Status |
 | --- | --- | --- |
-| Dead Run | Terminal Retry, warning priority and crew clearance source fixes landed; corrected fixture cadence passes strict54/0 with all original checks. | Clean signed0.4.1/code7; motion/native/private pending |
+| Dead Run | Terminal Retry, warning priority and crew clearance source fixes landed; corrected fixture cadence passes strict54/0 with all original checks. | 0.4.1/code7 privately delivered; bounded motion/native review clear |
 | Frontline | Tested solo8/12 vs funded12/12, tutorial-only idle win; delivered actual recruit feedback, HQ marker and committed-save verification as signed0.3.2/code6. | Private update delivered; physical acceptance deferred |
 | Gear | One Begin after ready utilities/Home now starts production; active return stays paused. Signed0.4.1/code10 verified and delivered. | Private update delivered |
 | Hearthguard | Save destination readback and failed import/mode-switch preservation pass167 complete-value checks and signed4-to5 native context comparison. |0.3.1/code5 privately delivered |

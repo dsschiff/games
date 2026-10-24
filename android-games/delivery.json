@@ -224,15 +224,15 @@
       "thread_id": "01a14d53-a3ae-7f61-ab87-0006aaa25dd4",
       "ready_for_phone_testing": true,
       "physical_phone_tested": false,
-      "evidence": "android-games/evidence/release-signing-20261022.json",
-      "apk": "https://github.com/dsschiff/android-games-releases/releases/download/dead-run-v0.4.0/dead-run-v0.4.0.apk",
-      "apk_sha256": "baf2a0bf8afcbf56da4e77820526460a039d3f8012dbae2d635f4fd4a0b4884b",
-      "version": "0.4.0",
-      "version_code": 6,
-      "source_sha256": "ec27dce61ae475e2d4befdde6a3d66b28ef43bc2b07c6dc570b30784f1504e6e",
-      "emulator_installed_version_code": 6,
-      "qualification": "Conditional code3 candidate: camera P2 closed by independent source/projection and actual native view/update review. Code2 outcomes/platform carry forward through unchanged rules/save/input. Actual code3 crew5 visible; crew20/extremes are headless geometry coverage. Physical/human acceptance remains pending.",
-      "native_update_evidence": "android-games/evidence/dead-run-code3-candidate.json",
+      "evidence": "android-games/evidence/design-cycle-20261023.json",
+      "apk": "https://github.com/dsschiff/android-games-releases/releases/download/dead-run-v0.4.1/dead-run-v0.4.1.apk",
+      "apk_sha256": "27acee9c26f3936d86837e4807630fb82d31490f3e73d098e2fa5f0014f010a9",
+      "version": "0.4.1",
+      "version_code": 7,
+      "source_sha256": "05d01f208f350c7cdc21bede3929fbf6b1b0ed351128734335e1c2e36f53bcef",
+      "emulator_installed_version_code": 7,
+      "qualification": "Design increment: terminal Retry, threat-priority warnings and defeat crew clearance; strict54/0 fixture cadence and bounded normal1x transition review clear. Actual signed6to7/offline/Home/cold, natural defeat/Back/transfer/Retry/Resume/right drag and eight complete own-decoder context comparisons independently verified. Initial native earned profile empty; no earned-profile migration, phone, power-loss, FPS, sound, fun or cloud claim.",
+      "native_update_evidence": "android-games/evidence/design-cycle-20261023.json",
       "package": "com.dsschiff.deadrun",
       "debug_signed_line": {
         "last_delivered": {
@@ -245,14 +245,12 @@
         },
         "note": "Debug-signed builds cannot be updated in place by the release-signed line; uninstall once after exporting the portable save code."
       },
-      "source_version_code": 5,
       "signing": "release",
       "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
-      "release_tag": "dead-run-v0.4.0",
-      "release_url": "https://github.com/dsschiff/android-games-releases/releases/tag/dead-run-v0.4.0",
-      "apk_asset": "dead-run-v0.4.0.apk",
-      "build_git_revision": "280bc6e628bccf4b5ab35939bb964f2fc7617505",
-      "source_text_lf_sha256": "ec27dce61ae475e2d4befdde6a3d66b28ef43bc2b07c6dc570b30784f1504e6e"
+      "release_tag": "dead-run-v0.4.1",
+      "release_url": "https://github.com/dsschiff/android-games-releases/releases/tag/dead-run-v0.4.1",
+      "apk_asset": "dead-run-v0.4.1.apk",
+      "build_git_revision": "d75fc375bc79bae26d6d80175e89eb29d42522de"
     }
   ],
   "local_bundle": "C:/projects/active/games/.artifacts/releases/portfolio-20261018",
