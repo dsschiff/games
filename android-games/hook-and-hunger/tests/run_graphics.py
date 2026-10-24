@@ -25,6 +25,7 @@ def sources():
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--skip-import", action="store_true", help="Use the existing imported cache; record skipped editor import explicitly")
     parser.add_argument("suites", nargs="*", default=["presentation_tests"])
     args = parser.parse_args()
     if any(not (PROJECT / "tests" / (name + ".gd")).is_file() or "/" in name or "\\" in name for name in args.suites):
@@ -45,10 +46,10 @@ def main():
             except subprocess.TimeoutExpired:
                 code = -99
         output = (run / (label + ".log")).read_text(encoding="utf-8", errors="replace")
-        errors = [line for line in output.splitlines() if any(s in line for s in ("ERROR:", "SCRIPT ERROR:", "Parse Error:"))]
+        errors = [line for line in output.splitlines() if any(s in line for s in ("ERROR:", "SCRIPT ERROR:", "Parse Error:", "WARNING:", "ObjectDB instances leaked"))]
         return {"command": command, "exit_code": code, "errors": errors, "passed": code == 0 and not errors, "suite_complete": "SUITE_COMPLETE: PASS" in output}
 
-    report["import"] = invoke([str(GODOT), "--headless", "--audio-driver", "Dummy", "--editor", "--import", "--quit", "--path", str(PROJECT)], "import")
+    report["import"] = {"passed":True,"skipped":True,"reason":"Explicit existing-cache run; editor import was not run"} if args.skip_import else invoke([str(GODOT), "--headless", "--audio-driver", "Dummy", "--editor", "--import", "--quit", "--path", str(PROJECT)], "import")
     if report["import"]["passed"]:
         frozen = sources()
         (run / "source-before.json").write_text(json.dumps(frozen, indent=2) + "\n")
