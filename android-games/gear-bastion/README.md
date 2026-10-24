@@ -1,3 +1,9 @@
+> **Local recovery candidate 0.4.2 / code11 (2026-10-24).** Whole-save Import
+> recovery keeps play paused until a verified explicit choice; complete local
+> copies preserve the original and imported contexts. CPU/source checks pass;
+> signed Android update and native recovery acceptance are still pending.
+> See [recovery amendment](RECOVERY_AMENDMENT.md).
+
 > **Design candidate 0.4.1 / code10 (2026-10-23).** Begin starts combat after
 > ready-state Menu, Guide, Save, Home and Pause flows. Returning to an active
 > battle still requires Resume. Existing rules, layouts and full earned progress
