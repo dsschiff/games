@@ -145,3 +145,5 @@ verification, independent visual review or phone feedback waits.
 - Tower named medal feedback source/CPU independently clear:793/0 root repeat,163 actual taps/326 touch events; this-clear vs collected/best and eligible Journey goals preserved. Normal rendered/native readability, higher signed/native candidate and human comprehension remain next.
 
 - Hook0.3.3/code9 bounded native packet independently audited24/0 whole contexts,7pending/21cleared markers, four selected arena score views and full original restoration. FirstExport false-unavailable feedback, missing pendingCopy/View and strict shader-warning remain open; physical/cloud/real interrupted storage unverified.
+
+- Hearth held build-range preview source/CPU independently clear:root1111/874/44,366actualpreviewevents, strict clean/stable source. Exact pinned base range, ordinarytapbuy and context/multitouch cancellation preserve rules/saves. Matched normal1x rendered/native usefulness and higher signed candidate remain next.
