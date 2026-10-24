@@ -10,7 +10,7 @@ const D = preload("res://scripts/definitions.gd")
 var checks := 0
 var failures: Array[String] = []
 var folder := ""
-var local_import_boundary: Array[Dictionary] = []
+var local_import_recovery: Array[Dictionary] = []
 
 class FakePort extends Port:
 	var calls: Array[Dictionary] = []
@@ -148,17 +148,18 @@ func existing_import_boundary() -> void:
 		if kind==1: scene.career = Store.decode(old).career
 		scene.save_io = io; scene.code_edit = TextEdit.new(); scene.notice = Label.new(); scene.code_edit.text = code
 		scene.import_code()
-		check(scene.notice.text=="Storage failed. Entire current save kept.","existing import reports false write")
+		check(scene.import_pending and scene.paused,"fixed local import reports pending and remains paused after false write")
 		check(scene.settings==Store.decode(old).settings,"existing import keeps old live settings after false")
 		io.transient = false
 		var live_disk_diverge: bool = Store.read(Store.PATH,io).settings!=scene.settings
-		check(live_disk_diverge,"KNOWN BOUNDARY existing import cold selection differs after transient verification fault")
-		var cold_path := folder.path_join("known-import-"+str(kind)+"-")
-		for slot in 2:
-			var output := FileAccess.open(cold_path+str(slot),FileAccess.WRITE)
-			output.store_string(io.files[Store.PATH+str(slot)]); output.close()
-		check(Store.read(cold_path).settings!=scene.settings,"real file Store.read reproduces immediate cold selection divergence")
-		local_import_boundary.append({"catalog":1 if kind==0 else 2,"handler":"main.import_code" if kind==0 else "campaign_main.import_code","fault":"rename succeeds, second destination read temporarily unreadable","status":scene.notice.text,"live_old":true,"cold_selects_remote":true,"scope":"Existing-handler call plus production Store.read from materialized files; no production fix, actual touch, process restart or native proof."})
+		check(live_disk_diverge,"uncertain imported raw slot is not treated as old disk or adopted live state")
+		for path in io.files:
+			var output := FileAccess.open(path,FileAccess.WRITE)
+			output.store_string(io.files[path]); output.close()
+		var transaction: RefCounted = load("res://scripts/import_recovery.gd").new()
+		var pending: Dictionary = transaction.read()
+		check(pending.ok and pending.pending and pending.original.settings==scene.settings,"fixed production startup decision preserves original context while pending despite higher imported slot")
+		local_import_recovery.append({"catalog":1 if kind==0 else 2,"handler":"main.import_code" if kind==0 else "campaign_main.import_code","fault":"rename succeeds, second destination read temporarily unreadable","pending":true,"live_old":true,"bootstrap_original":true,"scope":"Current fixed handler plus production pending startup from materialized files; no touch/process/native proof in this unit check."})
 		scene.code_edit.free(); scene.notice.free(); scene.free()
 
 func run() -> void:
@@ -296,6 +297,6 @@ func run() -> void:
 	replacement.recovery.cancel(); replacement.port.reply({"status":"unavailable"}); dispose(replacement)
 	if not folder.is_empty():
 		var output := FileAccess.open(folder.path_join("cloud-recovery.json"),FileAccess.WRITE)
-		output.store_string(JSON.stringify({"checks":checks,"failures":failures,"known_local_import_boundary":local_import_boundary,"scope":"CPU-only dormant adapter, synthetic contexts and fake async port; no UI/native/auth/network"},"  ")); output.close()
+		output.store_string(JSON.stringify({"checks":checks,"failures":failures,"known_local_import_recovery":local_import_recovery,"scope":"CPU-only dormant adapter, synthetic contexts and fake async port; no UI/native/auth/network"},"  ")); output.close()
 	print("CLOUD_RECOVERY ",checks," checks / ",failures.size()," failures")
 	quit(0 if failures.is_empty() else 1)

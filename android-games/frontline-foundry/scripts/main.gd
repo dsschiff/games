@@ -1,6 +1,7 @@
 extends Node3D
 const R = preload("res://scripts/rules.gd")
 const S = preload("res://scripts/save_store.gd")
+const ImportRecovery = preload("res://scripts/import_recovery.gd")
 var state := R.fresh()
 var profile := R.profile()
 var settings := {"sound": true, "reduced_effects": false}
@@ -47,16 +48,27 @@ var tone_pitch := 0.0
 var save_io: Variant = null
 var save_problem := false
 var event_log: Array = []
+var startup_bound := false
+var startup_context := {}
+var startup_status := {}
+var startup_paused := false
+var import_pending := false
+var import_recovery: ImportRecovery
+var import_status := {}
+var retained_career := {}
+var transfer_title: Label
+var transfer_buttons: Array[Button] = []
 var presentation: Node3D
 const Outpost = preload("res://scripts/presentation/outpost.gd")
 
 func _ready() -> void:
-	var saved := S.read()
+	var saved := read_startup()
 	if saved.ok:
 		state = saved.state
 		profile = saved.profile
 		settings = saved.settings
-		paused = state.phase == "playing"
+		retained_career = saved.career
+		paused = startup_paused or import_pending or state.phase == "playing"
 	make_world()
 	make_ui()
 	get_viewport().size_changed.connect(layout)
@@ -64,7 +76,7 @@ func _ready() -> void:
 	layout()
 	sync_world(0)
 	refresh()
-	menu.visible = paused
+	menu.visible = paused and not import_pending
 	save_now()
 
 func make_world() -> void:
@@ -170,16 +182,17 @@ func make_ui() -> void:
 	retry_button.position = Vector2(24, 285)
 	terminal.hide()
 	transfer = panel(ui)
-	label(transfer, "LOCAL SAVE CODE", Vector2(22, 18), Vector2(570, 40), 32)
+	transfer_title = label(transfer, "LOCAL SAVE CODE", Vector2(22, 18), Vector2(570, 40), 32)
 	code_edit = TextEdit.new()
 	code_edit.add_theme_font_size_override("font_size", 23)
 	code_edit.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
 	transfer.add_child(code_edit)
 	notice = label(transfer, "", Vector2(22, 385), Vector2(576, 55), 22, "ffe1a0")
 	row = 0
-	for spec in [["EXPORT", copy_code], ["PASTE", paste_code], ["IMPORT", import_code], ["CLOSE", close_transfer]]:
+	for spec in [["EXPORT", copy_code], ["PASTE", paste_code], ["IMPORT", import_code], ["CLOSE", transfer_close_pressed]]:
 		var b := button(transfer, spec[0], spec[1])
 		b.set_meta("transfer", row)
+		transfer_buttons.append(b)
 		row += 1
 	transfer.hide()
 
@@ -214,7 +227,10 @@ func layout() -> void:
 		if child is Button:
 			child.size = Vector2(572, 96)
 	code_edit.position = Vector2(22, 80)
-	code_edit.size = Vector2(576, 300)
+	code_edit.size = Vector2(576, 220 if import_pending else 300)
+	notice.position.y = 305 if import_pending else 385
+	notice.size.y = 230 if import_pending else 55
+	notice.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	for child in transfer.get_children():
 		if child.has_meta("transfer"):
 			var n := int(child.get_meta("transfer"))
@@ -272,12 +288,14 @@ func stop_move() -> void:
 		stick.position = Vector2(35, get_viewport().get_visible_rect().size.y - 205)
 
 func begin() -> void:
+	if import_pending: return
 	state.phase = "playing"
 	stop_move()
 	save_now()
 	refresh()
 
 func enter_campaign() -> void:
+	if import_pending: return
 	var C = load("res://scripts/campaign_rules.gd")
 	var D = load("res://scripts/definitions.gd")
 	var saved := S.read()
@@ -297,6 +315,7 @@ func build_nearby() -> void:
 		refresh()
 
 func retry() -> void:
+	if import_pending: return
 	state = R.fresh()
 	make_world()
 	layout()
@@ -310,6 +329,7 @@ func retry() -> void:
 	refresh()
 
 func toggle_pause() -> void:
+	if import_pending: return
 	if transfer.visible:
 		close_transfer()
 		return
@@ -320,6 +340,7 @@ func toggle_pause() -> void:
 	refresh()
 
 func back() -> void:
+	if import_pending: return
 	if transfer.visible:
 		close_transfer()
 	else:
@@ -340,29 +361,34 @@ func _notification(what: int) -> void:
 			get_tree().quit()
 
 func toggle_sound() -> void:
+	if import_pending: return
 	settings.sound = not settings.sound
 	save_now()
 	refresh()
 
 func toggle_effects() -> void:
+	if import_pending: return
 	settings.reduced_effects = not settings.reduced_effects
 	save_now()
 	refresh()
 
 func save_now() -> bool:
-	var saved := S.write(state, profile, settings, S.PATH, save_io)
+	if import_pending: return false
+	var saved := S.write(state, profile, settings, S.PATH, save_io, false, current_career())
 	save_problem = not saved
 	return saved
 
 func open_transfer() -> void:
+	if import_pending: show_import_pending(); return
+	reset_transfer_controls()
 	stop_move()
 	paused = true
-	var saved := S.read()
-	code_edit.text = S.encode(state, profile, settings, 0, true, saved.career if saved.ok else {})
+	code_edit.text = S.encode(state, profile, settings, 0, true, current_career())
 	notice.text = "Local code. Import replaces this save after validation."
 	transfer.show()
 
 func close_transfer() -> void:
+	if import_pending: return
 	transfer.hide()
 	code_edit.release_focus()
 	menu.show()
@@ -370,9 +396,9 @@ func close_transfer() -> void:
 	refresh()
 
 func copy_code() -> void:
+	if import_pending: return
 	# Export always regenerates from progress, never copies an edited invalid code.
-	var saved := S.read()
-	code_edit.text = S.encode(state, profile, settings, 0, true, saved.career if saved.ok else {})
+	code_edit.text = S.encode(state, profile, settings, 0, true, current_career())
 	if not DisplayServer.has_feature(DisplayServer.FEATURE_CLIPBOARD):
 		code_edit.select_all()
 		notice.text = "Clipboard unavailable. Select and copy the code."
@@ -384,6 +410,7 @@ func copy_code() -> void:
 	notice.text = "Code copied." if DisplayServer.clipboard_get() == code_edit.text else "Copy unconfirmed. Select and copy the code."
 
 func paste_code() -> void:
+	if import_pending: return
 	if not DisplayServer.has_feature(DisplayServer.FEATURE_CLIPBOARD):
 		notice.text = "Clipboard unavailable. Current code kept."
 		return
@@ -395,27 +422,92 @@ func paste_code() -> void:
 		notice.text = "Pasted. Import checks before replacing."
 
 func import_code() -> void:
+	if import_pending:
+		finish_import(true)
+		return
 	var decoded := S.decode(code_edit.text)
 	if not decoded.ok:
 		notice.text = "Invalid code. Entire current save kept."
 		return
-	if not S.write(decoded.state, decoded.profile, decoded.settings, S.PATH, save_io, true, decoded.career):
-		notice.text = "Storage failed. Entire current save kept."
+	paused = true; stop_move()
+	import_recovery = ImportRecovery.new(save_io)
+	import_status = import_recovery.begin(S.encode(state,profile,settings,0,true,current_career()),code_edit.text)
+	import_pending = import_status.pending
+	if not import_pending:
+		notice.text = import_recovery.message
 		return
-	if decoded.state.catalog == 2:
-		get_tree().change_scene_to_file("res://boot.tscn")
+	show_import_pending()
+	if import_status.ok: finish_import(true)
+
+func read_startup() -> Dictionary:
+	if startup_bound:
+		import_status = startup_status.duplicate(true)
+		import_pending = import_status.get("pending",false)
+		return startup_context.duplicate(true)
+	import_recovery = ImportRecovery.new(save_io)
+	import_status = import_recovery.read()
+	import_pending = import_status.pending
+	if import_pending: paused = true
+	return import_status.original if import_status.ok else S.read(S.PATH,save_io)
+
+func current_career() -> Dictionary:
+	if not retained_career.is_empty(): return retained_career
+	var saved := S.read(S.PATH,save_io)
+	return saved.career if saved.ok else {}
+
+func adopt_career(value: Dictionary) -> void:
+	retained_career = value.duplicate(true)
+
+func transfer_close_pressed() -> void:
+	if import_pending: finish_import(false)
+	else: close_transfer()
+
+func finish_import(use_import: bool) -> void:
+	if not import_pending: return
+	var result := import_recovery.resolve(use_import)
+	if not result.ok:
+		show_import_pending()
 		return
-	state = decoded.state
-	make_world()
-	layout()
-	profile = decoded.profile
-	settings = decoded.settings
-	close_transfer()
-	sync_world(0)
-	refresh()
+	# Keep this owner frozen until it leaves. The next owner adopts the exact
+	# verified context, without a second transient disk read changing catalogs.
+	get_tree().set_meta("frontline_import_context",result.decoded.duplicate(true))
+	var error := get_tree().change_scene_to_file("res://boot.tscn")
+	if error != OK:
+		if get_tree().has_meta("frontline_import_context"): get_tree().remove_meta("frontline_import_context")
+		import_recovery.message = "The chosen save was verified, but reopening failed. Play stays paused. Retry your choice."
+		show_import_pending()
+
+func show_import_pending() -> void:
+	if not import_pending or transfer == null: return
+	paused = true; stop_move(); menu.hide(); terminal.hide(); transfer.show(); transfer.move_to_front()
+	transfer_title.text = "IMPORT RECOVERY"
+	code_edit.editable = false
+	code_edit.size.y = 220
+	notice.position.y = 305; notice.size.y = 230
+	for index in transfer_buttons.size():
+		var b := transfer_buttons[index]
+		b.visible = index >= 2
+		if index==2: b.text = "RETRY IMPORT" if not import_recovery.record.is_empty() else "RETRY RECOVERY READ"
+		if index==3:
+			b.text = "KEEP PREVIOUS"
+			b.visible = not import_recovery.record.is_empty()
+	if not import_recovery.record.is_empty():
+		code_edit.text = import_recovery.incoming_code
+		notice.text = import_recovery.message+"\nPrevious: "+ImportRecovery.describe(import_recovery.original)+"\nImported: "+ImportRecovery.describe(import_recovery.incoming)+"\nComplete copies stay on this device."
+	else:
+		code_edit.text = "Recovery copies are retained on this device."
+		notice.text = import_recovery.message+"\nIf the recovery record remains damaged, keep the app installed to retain its local copies for recovery."
+
+func reset_transfer_controls() -> void:
+	if transfer_title==null: return
+	transfer_title.text = "LOCAL SAVE CODE"; code_edit.editable = true
+	for index in transfer_buttons.size():
+		transfer_buttons[index].show()
+		transfer_buttons[index].text = ["EXPORT","PASTE","IMPORT","CLOSE"][index]
+
 
 func _physics_process(delta: float) -> void:
-	if not paused and state.phase == "playing":
+	if not import_pending and not paused and state.phase == "playing":
 		var events := R.tick(state, input_vector, delta)
 		presentation.queue_events(events)
 		for e in events:
@@ -484,6 +576,7 @@ func refresh() -> void:
 		terminal_detail.text = "%s\n%d stopped • %d escaped • %.0fs\nRetry restores supplies and recruits.\nYour record and settings stay." % [state.cause, state.killed.size(), state.leaked.size(), state.time]
 	guidance.visible = not paused and not terminal.visible
 	pause_button.disabled = transfer.visible
+	if import_pending: show_import_pending()
 
 func sync_world(dt: float) -> void:
 	if presentation != null:

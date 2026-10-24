@@ -1,0 +1,91 @@
+{
+  "base": "bd6e6e7d50c12ffab905205054308dd31dff017c",
+  "scope": "Local-only production Import pending/verified retry and rollback; dormant cloud remains unconnected",
+  "source": {
+    "scripts/boot.gd": "44a8aec0cd5b08eed89101f82a61bd1a14c57926e2b683c3db7af8483f79d99d",
+    "scripts/main.gd": "3a9c999f93f230f13565d9c92fcbdf05ea86856cb37f3262da9f5b683885546d",
+    "scripts/campaign_main.gd": "6f9ceed32695b390412598b9e0a79aef3d1d542c1f0d1230e46910a7461a3d74",
+    "scripts/import_recovery.gd": "67ade2d56acc86d025579a92c0d326f816fdb1bfbc050132563e20f14c7a507e",
+    "scripts/save_files.gd": "25d1182e4dcb327b4964648784f4717c83c3caca68df878a891fddb0a800bd01",
+    "tests/cloud_recovery.gd": "a3baa70a0371e68e83d2ea6a831a29334e60c70cb34f8685728f2019ef6c7266",
+    "tests/import_recovery.gd": "ea8c74695b4fe9913f0317ec60e9f048b43f0569ded7c2ea0edcfdc9a23d5d36",
+    "tests/run_import.py": "171c9227438b9fe6ce406938fc90d0ae634e3ba6bfcbf3b03d2c811817623715",
+    "README.md": "708f1022e69ad9c44f1633d09f601e07db8ef198010c7f05648269253f91f804",
+    "IMPORT_RECOVERY_AMENDMENT.md": "08cbd172710387b564ab35cb6e81071900db11231ac09c9dc2f7795f7b100822"
+  },
+  "unchanged_rules_store_schema_version_export": {
+    "scripts/rules.gd": "284c88908f6d1946ba3483a330b4bd5cac14936cf0a94684dc46ef28c6544190",
+    "scripts/campaign_rules.gd": "eb2a03da120c1731b9ae3a1c37d990a3b919261398bffd32bceb694eb6dfc8e4",
+    "scripts/definitions.gd": "62b48d99d842055d2f3a371b35042777f3b9c9b6a632f384e8f307927b7e7362",
+    "scripts/save_store.gd": "eb77a40c48ea44ffd542ce4a9ce0400946c04971e2710012b43c78f1e8d7641b",
+    "project.godot": "0d66726cc249e331e24296d923c084771dbcf83fd4b5855b3d3b80121d86356f",
+    "export_presets.cfg": "1be86bd34d907ed479705a9350063e69abd210fb06dbc1284513c4faf16b67d4"
+  },
+  "receipts": {
+    "local_import": {
+      "path": ".artifacts/import-cpu-20261024T022806105931Z/receipt.json",
+      "sha256": "ef4bbe21d56715b0b4d93613c9e9d94b3c498f438e665338f28f7130fc933a74"
+    },
+    "updated_cloud": {
+      "path": ".artifacts/cloud-cpu-20261024T022803336405Z/receipt.json",
+      "sha256": "44db7514eaf932586c1fc771d9f83fb93abc6ed158fe50fb681c0be810c76c32"
+    },
+    "campaign_rules": {
+      "path": ".artifacts/import-final-rules-20261024T022832724240Z/receipt.json",
+      "sha256": "450dcb6981305efea57ab22e7482cb1ab1cd6b249d8e46dff3afd27f574450a3"
+    },
+    "campaign_input": {
+      "path": ".artifacts/import-final-input-20261024T022838604082Z/receipt.json",
+      "sha256": "edf5525bb1c84eb69922816cb1907076c6558945580b5cb21cf9674ff38f8d11"
+    },
+    "historical_shipped_import_defect": {
+      "path": ".artifacts/cloud-cpu-20261024T015237608705Z/receipt.json",
+      "sha256": "fb2052da355030fb578666f1f347e4cb84c3cbd96d6b05c3889b0e1a3ce5d352"
+    },
+    "retained_helper_failure": {
+      "path": ".artifacts/import-cpu-20261024T022612762056Z/receipt.json",
+      "sha256": "4e2568a3046e3a945c7c4a7e27d0374579c2bbf9c4b1c2a455bc8b766dc17be7"
+    },
+    "inplace_legacy_material_failure": {
+      "path": ".artifacts/import-cpu-20261024T020831398186Z/receipt.json",
+      "sha256": "52b721c9616b47b2ebc660a40a60537bbbcadf9b226117cbbe3ad8c4382e265d"
+    },
+    "initial_harness_failure": {
+      "path": ".artifacts/import-cpu-20261024T020553582009Z/receipt.json",
+      "sha256": "8527d38ac4255c2334fbd73229042a53ff836114b1277c8a19061a0f5402a6bb"
+    },
+    "missing_meta_failure": {
+      "path": ".artifacts/import-cpu-20261024T021243540754Z/receipt.json",
+      "sha256": "cff2324db48ff252a4ff83e38b1a436957f266f3ea751cf2862d74533af03a58"
+    }
+  },
+  "validation": {
+    "local_import_checks": 870,
+    "local_import_failures": 0,
+    "actual_touch_choices": 32,
+    "local_input_press_release_events": 234,
+    "fault_interruption_boundaries": 13,
+    "one_read_windows": 4,
+    "updated_cloud_checks": 989,
+    "current_import_recovery_observations_included": 8,
+    "campaign_rules": 416,
+    "campaign_input": 276,
+    "campaign_input_taps": 177,
+    "campaign_engine_time_scale": 8
+  },
+  "historical_failures": {
+    "shipped_import": "bd6e6e7 raw989/0 included8passing observations of the unfixed bug; current8cases require pending recovery",
+    "retained_helper": "870checks/3failures before invalidating journal admission on successful clear",
+    "inplace_legacy": "409functional/0, strict failed on4dummy material errors; fixed by fresh boot adoption without presentation edits",
+    "initial": "Active-save harness incorrectly toggled Resume before seeking Save/Transfer; runtime error retained",
+    "missing_meta": "427functional/0, strict failed missing-metadata API logging; fixed has_meta conditional"
+  },
+  "review": "design_review final source CLEAR: verified870/0 local and989/0 cloud source/output pins,416/0 and276/0 artifact hashes; no remaining P1/P2 identified in scoped transaction/handoff. CPU/source only, not OS-kill/native/power-loss or visual acceptance.",
+  "limits": [
+    "Synthetic complete save codes/fault backend are not earned play",
+    "Materialized-file fresh production bootstrap, not OS-kill/native proof",
+    "CPU control/text bounds are not rendered or physical Fold7 acceptance",
+    "No renderer/emulator/ADB/browser/clipboard/network/auth/APK/export/version/push/publication",
+    "Unrelated unique SQLite temp data left untouched per coordinator instruction"
+  ]
+}

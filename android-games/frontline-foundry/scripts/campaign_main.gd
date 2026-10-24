@@ -25,14 +25,14 @@ var hq_indicator: Label
 var brief_scroll: ScrollContainer
 
 func _ready() -> void:
-	var saved := S.read()
+	var saved := read_startup()
 	state = C.fresh(D.mission(0))
 	if saved.ok and saved.state.catalog == 2:
 		state = saved.state
 		profile = saved.profile
 		settings = saved.settings
 		career = saved.career
-		paused = state.phase == "playing"
+		paused = startup_paused or import_pending or state.phase == "playing"
 	make_world()
 	make_ui()
 	get_viewport().size_changed.connect(layout)
@@ -40,7 +40,7 @@ func _ready() -> void:
 	layout()
 	sync_world(0)
 	refresh()
-	menu.visible = paused
+	menu.visible = paused and not import_pending
 	save_now()
 
 func make_world() -> void:
@@ -187,6 +187,7 @@ func stop_move() -> void:
 		stick.position.y = get_viewport().get_visible_rect().size.y - 220
 
 func begin() -> void:
+	if import_pending: return
 	state.phase = "playing"
 	paused = false
 	menu.hide()
@@ -195,6 +196,7 @@ func begin() -> void:
 	refresh()
 
 func retry() -> void:
+	if import_pending: return
 	var support: String = state.planned_support
 	state = C.fresh(state.definition)
 	state.planned_support = support
@@ -214,6 +216,7 @@ func build_nearby() -> void:
 		refresh()
 
 func enter_campaign() -> void:
+	if import_pending: return
 	paused = true
 	stop_move()
 	menu.hide()
@@ -231,11 +234,13 @@ func enter_campaign() -> void:
 	refresh()
 
 func select_mission(index: int) -> void:
+	if import_pending: return
 	if index > career.clears.size():
 		return
 	start_definition(D.mission(index))
 
 func start_definition(definition: Dictionary) -> void:
+	if import_pending: return
 	state = C.fresh(definition)
 	paused = false
 	stop_move()
@@ -247,12 +252,14 @@ func start_definition(definition: Dictionary) -> void:
 	refresh()
 
 func next_mission() -> void:
+	if import_pending: return
 	if state.definition.mode == "campaign" and state.definition.index < 11:
 		select_mission(int(state.definition.index) + 1)
 	else:
 		enter_campaign()
 
 func open_support() -> void:
+	if import_pending: return
 	paused = true
 	stop_move()
 	menu.hide()
@@ -260,12 +267,14 @@ func open_support() -> void:
 	refresh()
 
 func choose_support(key: String) -> void:
+	if import_pending: return
 	if state.support == "none":
 		state.planned_support = key
 		save_now()
 	close_modals()
 
 func open_seed() -> void:
+	if import_pending: return
 	paused = true
 	stop_move()
 	menu.hide()
@@ -274,17 +283,21 @@ func open_seed() -> void:
 	refresh()
 
 func change_seed(amount: int) -> void:
+	if import_pending: return
 	seed_value = clampi(seed_value + amount, 0, 999999)
 	seed_label.text = "SEED %06d  /  %s" % [seed_value, seed_style.to_upper()]
 
 func choose_style(key: String) -> void:
+	if import_pending: return
 	seed_style = key
 	change_seed(0)
 
 func start_seed() -> void:
+	if import_pending: return
 	start_definition(D.skirmish(seed_value, seed_style))
 
 func close_modals() -> void:
+	if import_pending: return
 	for p in [support_panel, journey, seed_panel]:
 		p.hide()
 	menu.visible = state.phase != "ready"
@@ -292,21 +305,25 @@ func close_modals() -> void:
 	refresh()
 
 func back() -> void:
+	if import_pending: return
 	if support_panel.visible or journey.visible or seed_panel.visible:
 		close_modals()
 	else:
 		super.back()
 
 func save_now() -> bool:
+	if import_pending: return false
 	var okay := S.write(state, profile, settings, S.PATH, save_io, false, career)
 	save_problem = not okay
 	return okay
 
 func open_transfer() -> void:
+	if import_pending: show_import_pending(); return
 	super.open_transfer()
 	code_edit.text = S.encode(state, profile, settings, 0, true, career)
 
 func copy_code() -> void:
+	if import_pending: return
 	code_edit.text = S.encode(state, profile, settings, 0, true, career)
 	if not DisplayServer.has_feature(DisplayServer.FEATURE_CLIPBOARD):
 		code_edit.select_all()
@@ -320,28 +337,16 @@ func copy_code() -> void:
 	notice.text = "Code copied." if DisplayServer.clipboard_get() == code_edit.text else "Copy unconfirmed. Select and copy the code."
 
 func import_code() -> void:
-	var decoded := S.decode(code_edit.text)
-	if not decoded.ok:
-		notice.text = "Invalid code. Entire current save kept."
-		return
-	if not S.write(decoded.state, decoded.profile, decoded.settings, S.PATH, save_io, true, decoded.career):
-		notice.text = "Storage failed. Entire current save kept."
-		return
-	if decoded.state.catalog == 1:
-		get_tree().change_scene_to_file("res://boot.tscn")
-		return
-	state = decoded.state
-	profile = decoded.profile
-	settings = decoded.settings
-	career = decoded.career
-	make_world()
-	layout()
-	close_transfer()
-	sync_world(0)
-	refresh()
+	super.import_code()
+
+func current_career() -> Dictionary:
+	return career
+
+func adopt_career(value: Dictionary) -> void:
+	career = value.duplicate(true)
 
 func _physics_process(delta: float) -> void:
-	if not paused and state.phase == "playing":
+	if not import_pending and not paused and state.phase == "playing":
 		var events := C.tick(state, input_vector, delta)
 		presentation.queue_events(events)
 		var heard := {}
@@ -429,6 +434,7 @@ func refresh() -> void:
 		next_button.text = "LIBERATION JOURNAL" if d.id == "foundry_liberation" else ("NEXT MISSION" if d.mode == "campaign" else "JOURNEY / RECORDS")
 	pause_button.disabled = modal
 	guidance.visible = guidance.visible and not terminal.visible
+	if import_pending: show_import_pending()
 
 func update_hq_indicator() -> void:
 	var point: Vector2 = camera.unproject_position(presentation.hq_socket.global_position)
