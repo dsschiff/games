@@ -1,0 +1,478 @@
+{
+  "base_commit": "b4a5899",
+  "runtime_changed": [
+    "scripts/presentation/tower_view.gd"
+  ],
+  "unchanged": [
+    "popup_layout placement/font/text/growth/rise",
+    "all arithmetic/rules/timing and earliest legal input",
+    "main/catalog/levels/save/profile/seeded challenge snapshots",
+    "version/signing/export"
+  ],
+  "packets": {
+    "design-cpu-20261024T021308525473Z": {
+      "files": {
+        "association-result.json": "44c50f6d314cfd3a609c0e59492a977d4f334e23d028237bbc63b7c089df1e3b",
+        "feedback_association.log": "c107ed81d67d74f575a7bae4075c75c0bdd10c469a57d578b9d9bc7ac6064a15",
+        "import.log": "b728de0c23f24d9aa31bc7608b177d7ca13857d7c3aca862a08506d00675123b",
+        "report.json": "1d20ace6bef2910329b583d43aef9ffe3f12a85dfad5a8656e9f64bae59732c5",
+        "source-before.json": "91411a4bcc1958ac71fc2e91e89047f87b37af47ef11904ff3349c965044910f"
+      },
+      "report": {
+        "cpu_only": true,
+        "suites": [
+          {
+            "name": "feedback_association",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/feedback_association.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T021308525473Z"
+            ],
+            "exit_code": 1,
+            "errors": [
+              "FAIL: Displaced feedback retains visible association with its actual source floor",
+              "FAIL: Every room feedback event retains exact room identity and bounds at birth"
+            ],
+            "passed": false
+          }
+        ],
+        "import": {
+          "name": "import",
+          "command": [
+            "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+            "--headless",
+            "--audio-driver",
+            "Dummy",
+            "--path",
+            "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+            "--editor",
+            "--import",
+            "--quit"
+          ],
+          "exit_code": 0,
+          "errors": [],
+          "passed": true
+        },
+        "source_unchanged": true,
+        "passed": false
+      }
+    },
+    "design-cpu-20261024T021923559484Z": {
+      "files": {
+        "association-full-result.json": "07cac9ef1e9dada085392d8670f4a556d466a2f9116f43b9b2010e2032669917",
+        "association-result.json": "ba507938c602d2535d03b63b8e66aaf0710e2d9476bff99dd53be8ab5c860fbf",
+        "campaign_playthrough.log": "af8856e0670393267dcfbf3f5cdb97335bfe4232c05c126274d7c87a1ee6f0a1",
+        "challenge_playthrough.log": "9acd885eedc6c0cc8c6a501a74c6d392f078d7d5ecbe97193b00dfb42cf1b83a",
+        "feedback-result.json": "e4ea3b0d3bb27319d84897c3c673b50bceff779a04d655e7e5bb210af92348ae",
+        "feedback_association.log": "8fa31c9b5b3fdfb02ce53260a02c5d15b25f7b97da736d3565a98faeaec5da8f",
+        "feedback_association_full.log": "fc78f7aac493bf3e860f83ba3729ca16c53a5cbcad49356d829768071e8b92ea",
+        "feedback_readability.log": "07d748ccb24f51eed623ce29de22b0b44bd7bbe800efafb20a48650fc9db192a",
+        "graphics_view.log": "b90b2420e0c9cab7195ff3dd09574e79455f241b54901d98fbf6f1c98dd7e116",
+        "import.log": "97d3a98b638bde96129f72c0aa2c73756b531bcc790e7a75a73508fdf8f980e1",
+        "report.json": "fa5ab54c6e6f48ce053f398e643fb68702822b74a3b3ab91b7ad1327bfe72a27",
+        "run_tests.log": "2613834009f299150f4362eefa749ab093830bcbab77e99d6d77bc3c2ce64a1b",
+        "source-before.json": "f9dd52ded2cde91f939d8c30b11bc6fd8a8097e1ff77c50002d6747691f23a0f"
+      },
+      "report": {
+        "cpu_only": true,
+        "suites": [
+          {
+            "name": "feedback_association",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/feedback_association.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T021923559484Z"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          },
+          {
+            "name": "feedback_association_full",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/feedback_association_full.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T021923559484Z"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          },
+          {
+            "name": "feedback_readability",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/feedback_readability.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T021923559484Z"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          },
+          {
+            "name": "run_tests",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/run_tests.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T021923559484Z"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          },
+          {
+            "name": "campaign_playthrough",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/campaign_playthrough.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T021923559484Z"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          },
+          {
+            "name": "challenge_playthrough",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/challenge_playthrough.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T021923559484Z"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          },
+          {
+            "name": "graphics_view",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/graphics_view.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T021923559484Z"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          }
+        ],
+        "import": {
+          "name": "import",
+          "command": [
+            "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+            "--headless",
+            "--audio-driver",
+            "Dummy",
+            "--path",
+            "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+            "--editor",
+            "--import",
+            "--quit"
+          ],
+          "exit_code": 0,
+          "errors": [],
+          "passed": true
+        },
+        "source_unchanged": true,
+        "passed": true
+      }
+    },
+    "design-cpu-20261024T022056713958Z": {
+      "files": {
+        "association-result.json": "ba507938c602d2535d03b63b8e66aaf0710e2d9476bff99dd53be8ab5c860fbf",
+        "feedback_association.log": "8fa31c9b5b3fdfb02ce53260a02c5d15b25f7b97da736d3565a98faeaec5da8f",
+        "import.log": "b728de0c23f24d9aa31bc7608b177d7ca13857d7c3aca862a08506d00675123b",
+        "report.json": "23e936abb572630a23ec83028741d98a2fb3de760808e6279ee8eb0b99cc85cb",
+        "source-before.json": "f9dd52ded2cde91f939d8c30b11bc6fd8a8097e1ff77c50002d6747691f23a0f"
+      },
+      "report": {
+        "cpu_only": true,
+        "suites": [
+          {
+            "name": "feedback_association",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/feedback_association.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T022056713958Z",
+              "--viewport=1080x2520"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          }
+        ],
+        "import": {
+          "name": "import",
+          "command": [
+            "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+            "--headless",
+            "--audio-driver",
+            "Dummy",
+            "--path",
+            "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+            "--editor",
+            "--import",
+            "--quit"
+          ],
+          "exit_code": 0,
+          "errors": [],
+          "passed": true
+        },
+        "source_unchanged": true,
+        "passed": true
+      }
+    },
+    "design-cpu-20261024T022102644114Z": {
+      "files": {
+        "association-result.json": "ba507938c602d2535d03b63b8e66aaf0710e2d9476bff99dd53be8ab5c860fbf",
+        "feedback_association.log": "8fa31c9b5b3fdfb02ce53260a02c5d15b25f7b97da736d3565a98faeaec5da8f",
+        "import.log": "b728de0c23f24d9aa31bc7608b177d7ca13857d7c3aca862a08506d00675123b",
+        "report.json": "27b4b70f23636381dc2301a3b94ebaa41e98e7b00ea941b1c87fd130d01747ff",
+        "source-before.json": "f9dd52ded2cde91f939d8c30b11bc6fd8a8097e1ff77c50002d6747691f23a0f"
+      },
+      "report": {
+        "cpu_only": true,
+        "suites": [
+          {
+            "name": "feedback_association",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/feedback_association.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T022102644114Z",
+              "--viewport=1968x2184"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          }
+        ],
+        "import": {
+          "name": "import",
+          "command": [
+            "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+            "--headless",
+            "--audio-driver",
+            "Dummy",
+            "--path",
+            "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+            "--editor",
+            "--import",
+            "--quit"
+          ],
+          "exit_code": 0,
+          "errors": [],
+          "passed": true
+        },
+        "source_unchanged": true,
+        "passed": true
+      }
+    },
+    "design-cpu-20261024T022107721026Z": {
+      "files": {
+        "association-result.json": "ba507938c602d2535d03b63b8e66aaf0710e2d9476bff99dd53be8ab5c860fbf",
+        "feedback_association.log": "8fa31c9b5b3fdfb02ce53260a02c5d15b25f7b97da736d3565a98faeaec5da8f",
+        "import.log": "b728de0c23f24d9aa31bc7608b177d7ca13857d7c3aca862a08506d00675123b",
+        "report.json": "751ddecf8fc002d6ecd8fe5f109af3b6e9085b82c5f7606554649fa852af7703",
+        "source-before.json": "f9dd52ded2cde91f939d8c30b11bc6fd8a8097e1ff77c50002d6747691f23a0f"
+      },
+      "report": {
+        "cpu_only": true,
+        "suites": [
+          {
+            "name": "feedback_association",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/feedback_association.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T022107721026Z",
+              "--viewport=1600x900"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          }
+        ],
+        "import": {
+          "name": "import",
+          "command": [
+            "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+            "--headless",
+            "--audio-driver",
+            "Dummy",
+            "--path",
+            "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+            "--editor",
+            "--import",
+            "--quit"
+          ],
+          "exit_code": 0,
+          "errors": [],
+          "passed": true
+        },
+        "source_unchanged": true,
+        "passed": true
+      }
+    },
+    "design-cpu-20261024T022336918845Z": {
+      "files": {
+        "association-result.json": "ba507938c602d2535d03b63b8e66aaf0710e2d9476bff99dd53be8ab5c860fbf",
+        "association_motion.log": "8fa31c9b5b3fdfb02ce53260a02c5d15b25f7b97da736d3565a98faeaec5da8f",
+        "import.log": "b728de0c23f24d9aa31bc7608b177d7ca13857d7c3aca862a08506d00675123b",
+        "observed-input-events.json": "777d7d7fa0e2c87d6bf0ba4d535fd9703b836bf87a3e194c82b98fdefbac12ea",
+        "picture-timeline.json": "78bb2a94567ac27866d7cc5724965293c68dda86ce78054deb03f5d66fd42954",
+        "report.json": "326c6f41a4d2aa454ee1611bf63b9c04d748a81822cf88704839b7d868ddbd96",
+        "source-before.json": "7a0c5e2a6bfef4440587d216451dbeead61095f8361ec14846641b99d9d86a72"
+      },
+      "report": {
+        "cpu_only": true,
+        "suites": [
+          {
+            "name": "association_motion",
+            "command": [
+              "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+              "--headless",
+              "--audio-driver",
+              "Dummy",
+              "--path",
+              "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+              "--fixed-fps",
+              "60",
+              "--script",
+              "tests/association_motion.gd",
+              "--",
+              "--capture-dir=F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials\\.artifacts\\design-cpu-20261024T022336918845Z"
+            ],
+            "exit_code": 0,
+            "errors": [],
+            "passed": true
+          }
+        ],
+        "import": {
+          "name": "import",
+          "command": [
+            "C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe",
+            "--headless",
+            "--audio-driver",
+            "Dummy",
+            "--path",
+            "F:\\games-workspaces\\tower-association-20261024\\android-games\\tower-trials",
+            "--editor",
+            "--import",
+            "--quit"
+          ],
+          "exit_code": 0,
+          "errors": [],
+          "passed": true
+        },
+        "source_unchanged": true,
+        "passed": true
+      }
+    }
+  },
+  "review": {
+    "design": "Astra accepted bounded event-time origin pin/connector concept; current source disposition pending",
+    "render": "Not run; root grant contingent on source freeze and Astra source clearance"
+  },
+  "limits": [
+    "CPU font/outline/stroke geometry is not visual acceptance.",
+    "Historical expected-failure baseline and interrupted/stronger-test failures retained.",
+    "Some origin markers are masked when text would cover them; exercised ambiguous numbers retain nonempty source leader paint, but visual clarity needs matched1x review."
+  ],
+  "executed_runtime_lf_sha256": "128077a87661d8c8291335db109eee9a19e6ef1d394c5ac17d3eff8cc6a4b1b0"
+}
