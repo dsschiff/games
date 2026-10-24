@@ -1,0 +1,79 @@
+{
+  "worker_commit": "7a22fd16b5256066d29bd85f32d3cede037ad548",
+  "root_integration": "76c158c",
+  "integrated_game_tree": "b697d7fe17d0cea2900c8e53d47915fb8f0d08af",
+  "checkpoint": {
+    "path": "android-games/hearthguard/TOUCH_SCROLL_CHECKPOINT.json",
+    "worker_raw_sha256": "82872e2230148192f664c83ee13ed2f0160ad1ceca7aa7e132661bf5b4eafe74"
+  },
+  "runtime_delta": "Only Journey selectable-row local loop and pending-recovery action buttons pass pointer input to existing ScrollContainers; three inserted lines across two runtime files. Exact original UTF8 base reconstructed by reverse removal.",
+  "review": "Astra source/checkpoint CLEAR:176current/172base/38artifact pins and complete focused proof independently audited.",
+  "coordinator_repeat": {
+    "checks": 334,
+    "failures": 0,
+    "events": 1280,
+    "activations": 20,
+    "strict_clean": true,
+    "source_files": 176,
+    "source_unchanged": true,
+    "worker_binding": "154 raw-exact files and22 text files exact after CRLF to LF normalization; all binary files raw-exact. Current root raw176 before/after maps match.",
+    "newline_only_worker_differences": [
+      "README.md",
+      "SAVE_RETURN_CHECKPOINT.json",
+      "SAVE_RETURN_CHECKPOINT.md",
+      "scripts/import_recovery.gd",
+      "scripts/import_recovery.gd.uid",
+      "scripts/recovery_copies.gd",
+      "scripts/recovery_copies.gd.uid",
+      "scripts/recovery_files.gd",
+      "scripts/recovery_files.gd.uid",
+      "scripts/save_store.gd",
+      "tests/campaign_checks.gd",
+      "tests/fault_files.gd",
+      "tests/import_recovery.gd.uid",
+      "tests/import_uncertainty.gd",
+      "tests/import_uncertainty.gd.uid",
+      "tests/playthrough.gd",
+      "tests/presentation_tests.gd",
+      "tests/run_campaign.py",
+      "tests/run_desktop.py",
+      "tests/run_graphics.py",
+      "tests/run_touch_scroll.py",
+      "tests/touch_scroll.gd"
+    ],
+    "receipt": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hearthguard\\.artifacts\\touch-scroll-current-20261024T163535885115Z\\receipt.json",
+      "bytes": 618,
+      "sha256": "25826007e112f783bb9c16e52d009b6647ca83ab47f81e293f911ecdf2561eb8"
+    },
+    "observations": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hearthguard\\.artifacts\\touch-scroll-current-20261024T163535885115Z\\touch-scroll.json",
+      "bytes": 4926998,
+      "sha256": "d124543ee75e50d6d3289218ddf64c7d2e28179376786708740e6e28f45e7bdd"
+    },
+    "source_before": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hearthguard\\.artifacts\\touch-scroll-current-20261024T163535885115Z\\source-before.json",
+      "bytes": 17800,
+      "sha256": "645d010c7dc5205d0881a803b135ab5b79bd95ce4cfffa8baeabc0746e4e9702"
+    },
+    "source_after": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hearthguard\\.artifacts\\touch-scroll-current-20261024T163535885115Z\\source-after.json",
+      "bytes": 17800,
+      "sha256": "645d010c7dc5205d0881a803b135ab5b79bd95ce4cfffa8baeabc0746e4e9702"
+    },
+    "raw_log": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\android-games\\hearthguard\\.artifacts\\touch-scroll-current-20261024T163535885115Z\\godot.log",
+      "bytes": 126,
+      "sha256": "6c21252bbf704770f5ebb0b6f2630ffb38b82bff3fa6224876de58e6781fdb18"
+    }
+  },
+  "scope": "Four layout profiles; real engine GUI touch dispatch with synthetic complete contexts and in-memory owning Store backend. Row-body swipe/drag-return/CANCEL/disabled and stationary choice once, last-row reachability/Close/Back/View and actual failed Retry/Keep once preserve applicable complete context/journal/code/raw backend bytes. Existing inertia allowed to settle60ticks without offset injection; tall recovery fitting viewport makes no scroll-defect claim.",
+  "historical_failures_retained": [
+    "24checks/3STOP-row failures",
+    "262checks/4kinetic-navigation harness failures"
+  ],
+  "version_unchanged": "0.3.2/code6; existing signed APK predates this touch fix.",
+  "limits": "CPU/headless synthetic capability only; no native pixels/touch, OS clipboard, physical-file cold start or human/physical/cloud acceptance. No Store/rules/schema/layout/version/export change or new upload.",
+  "next": "Prepare higher same-signer Hearth candidate, then actual Android Journey/recovery swipes and full-context choices/lifecycle checks.",
+  "uploaded": false
+}

@@ -713,6 +713,7 @@ func build_recovery_ui() -> void:
 	recovery_feedback=recovery_label(col,""); recovery_feedback.custom_minimum_size.y=60
 	for item in [["retry","RETRY IMPORT",finish_import.bind(true)],["previous","KEEP PREVIOUS WHOLE SAVE",finish_import.bind(false)],["read","RETRY RECOVERY READ",retry_recovery_read],["copy_previous","COPY PREVIOUS CODE",copy_recovery_code.bind(false)],["copy_incoming","COPY IMPORTED CODE",copy_recovery_code.bind(true)],["view_previous","VIEW PREVIOUS CODE",view_recovery_code.bind(false)],["view_incoming","VIEW IMPORTED CODE",view_recovery_code.bind(true)]]:
 		var b:=Button.new(); b.text=item[1]; b.custom_minimum_size=Vector2(0,88); b.add_theme_font_size_override("font_size",22)
+		b.mouse_filter=Control.MOUSE_FILTER_PASS
 		b.pressed.connect(item[2]); col.add_child(b); recovery_buttons[item[0]]=b
 	recovery_code=TextEdit.new(); recovery_code.editable=false; recovery_code.wrap_mode=TextEdit.LINE_WRAPPING_BOUNDARY; recovery_code.custom_minimum_size=Vector2(0,220); col.add_child(recovery_code); recovery_code.hide()
 	recovery_help=recovery_label(col,"Your watch, saved passes, progress and settings move together. Copy a complete code or use View to select it manually.")

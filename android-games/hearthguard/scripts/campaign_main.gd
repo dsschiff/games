@@ -91,6 +91,8 @@ func make_ui() -> void:
 	ending_journey_button.custom_minimum_size = Vector2(600, 96)
 	legacy_button = button(journey_list, "RETURN TO LEGACY PASS", return_legacy, 23)
 	legacy_button.custom_minimum_size = Vector2(600, 96)
+	for row in journey_list.get_children():
+		if row is Button: row.mouse_filter = Control.MOUSE_FILTER_PASS
 	seed_button = button(journey, "", cycle_seed, 22)
 	budget_button = button(journey, "", cycle_budget, 22)
 	mirror_button = button(journey, "", cycle_mirror, 22)

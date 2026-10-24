@@ -23,9 +23,50 @@
       "sha256": "b5946ff59f3662f34c6654889f0f0606899bfd278fc95b8a097325a23cfff03d"
     }
   },
-  "version_unchanged": "0.4.3/code12; existing APK predates touch fix.",
-  "limits": "Headless synthetic touchscreen capability, typed storage fault and complete owning fixtures. No native Gear swipe/pixels/clipboard/fault/physical or cloud acceptance. Earlier encoding-error source packets are historical, not final acceptance.",
-  "next": "Prepare higher signed Gear candidate and verify actual code12to13 full-context recovery-button swipes/choices without accidental activation.",
+  "limits": "Native emulator campaign has empty earned profile. Journal-only legal fixture uses previously retained native codes, not an induced I/O fault. Owner Store clears transient projectiles, with no additional comparison mask. Final cold view is Journey/Resume Defense with complete stored battle preserved. In-app View code is not OS clipboard acceptance. Earlier encoding-error source packets remain historical. No physical Fold7, FPS, audio, human fun, cloud or new upload acceptance.",
+  "next": "Continue Hearth higher signed/native touch and remaining portfolio gates; shader diagnostic remains independent.",
   "uploaded": false,
-  "integrated_game_tree": "89ca0f66539bdae18042655a7167d844d0060a35"
+  "integrated_game_tree": "89ca0f66539bdae18042655a7167d844d0060a35",
+  "candidate": {
+    "version": "0.4.4",
+    "version_code": 13,
+    "source": "5f7788886a797c31c283f7d0d6db6dcba5ee34b8",
+    "manifest": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\gear-bastion\\20261024T160818792745Z\\manifest.json",
+      "bytes": 1822,
+      "sha256": "1dbdda3e9f57e64951122aa808f09c95cbf9c236b2dfa38a79e26c59c8f0e458"
+    },
+    "apk_bytes": 56124368,
+    "apk_sha256": "e071ddf4b147a1525393e318987184eccc1d67286db52bcd2f9427865b491f6d",
+    "packaging_review": "Independent actual APK/source/signature/raw import+build logs CLEAR; same2527 signer, no permissions/nondebug."
+  },
+  "native": {
+    "packet": {
+      "path": "F:\\games-workspaces\\hearth-preview-capture-20261024\\.artifacts\\native-gear-touch-code13-20261024\\report.json",
+      "bytes": 152909,
+      "sha256": "86ca8880cddde893a9fd8b7b4a3da99ab27f8acf925ab0f297783744b935a41e"
+    },
+    "pins": 457,
+    "whole_context_comparisons": 25,
+    "failures": 0,
+    "phases": 26,
+    "pending_context_checks": 15,
+    "resolved_journal_checks": 6,
+    "install_exact_files": 13,
+    "pending_exact_files_per_choice": 14,
+    "archives_unchanged": 11,
+    "choice_revisions": {
+      "keep": [
+        642,
+        643
+      ],
+      "retry": [
+        644,
+        645
+      ]
+    },
+    "review": "Astra qualified CLEAR: all457 pins rehashed; actual source/commands/full-context and journal/archive calculations, selected native pixels and shutdown independently audited.",
+    "owned_emulator_shutdown_verified": true,
+    "strict_log_gate": "FAIL: nine retained warning-containing log observations; not nine distinct events."
+  }
 }

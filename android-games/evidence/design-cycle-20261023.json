@@ -911,6 +911,12 @@
   },
   "gear_touch_navigation": {
     "evidence": "android-games/evidence/gear-touch-navigation-20261024.json",
-    "state": "Source/CPU467/0 independently clear; pending recovery rows only. Higher signed/native candidate next."
+    "state": "Source/CPU467/0 and signed0.4.4/code13 packaging independently clear. Actual12to13 retains whole context25/0 across26phases,15pending/6resolved checks,11archives exact and both explicit recovery choices; sealed457pin packet independently qualified CLEAR. Native shader strictFAIL, no upload."
+  },
+  "hearth_touch_scroll": {
+    "evidence": "android-games/evidence/hearth-touch-scroll-20261024.json",
+    "state": "Three-line Journey/recovery row touch propagation independently source/checkpoint CLEAR; root focused334/0,1280events/20activations, strict clean and176sourcefiles unchanged. Existing0.3.2/code6 predates fix; higher signed/native touch next.",
+    "native_accepted": false,
+    "new_apk": false
   }
 }
