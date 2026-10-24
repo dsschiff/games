@@ -76,9 +76,10 @@ func paint_checks() -> void:
 			for branch in ["Left","Right"]:
 				var side: MeshInstance3D = actor.warning.get_node(branch)
 				check(side.mesh.size.x * absf(side.scale.x) / 2.0 >= .5 - .00001, branch + ": projectile branch covers collision radius")
-	# Sample the actual line-damage capsule in world space, including its caps
+	# Sample the line-damage capsule; charge_footprint uses actual constrained
+	# C.step routes instead of assuming a straight charge. Include line caps
 	# and a rotated aim. The rule tests player centres, not an added body radius.
-	for attack in ["line","charge"]:
+	for attack in ["line"]:
 		for boss in [false,true]:
 			var spec := definition.duplicate(true)
 			spec.boss = boss
