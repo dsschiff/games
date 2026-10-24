@@ -34,6 +34,15 @@
         "save_commit.log": "af26771eaca1c550402ee3d5ae3a9c0ded31b58475b2033e463b2343ce9a3478",
         "save-commit-result.json": "db96cbf10a8453cf0fffa850b0fa02b8c3da6ae822462ea4b924732164105bc7"
       }
+    },
+    {
+      "path": ".artifacts/design-cpu-20261024T010357212865Z",
+      "passed": true,
+      "sha256": {
+        "report.json": "7bae989637025ff6c505967c8125a789d0048f221118f7ee2827a839b0a78b81",
+        "source-before.json": "ee94454894a0356434df25d81e68a5d73a1f75f2aeaab93d5c06a3405b67dbc9",
+        "graphics_view.log": "b90b2420e0c9cab7195ff3dd09574e79455f241b54901d98fbf6f1c98dd7e116"
+      }
     }
   ],
   "fixture": {

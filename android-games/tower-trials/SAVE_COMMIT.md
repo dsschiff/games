@@ -54,3 +54,8 @@ Reproduce:
 ```powershell
 python android-games/tower-trials/tools/design_check.py save_commit run_tests campaign_playthrough challenge_playthrough
 ```
+
+Post-commit verification: `.artifacts/design-cpu-20261024T010357212865Z` also
+passes the existing headless graphics_view suite, 252 checks, three actual taps
+and two Back requests. No source pin or test expectation changed. Runtime save
+fix commit `69ca9f2` remained frozen, and no Dead Run Godot process overlapped.
