@@ -93,7 +93,16 @@
     "real_decoder_binding_checks": 60,
     "real_decoder_binding_failures": 0,
     "real_decoder_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\cloud-save-bindings\\manifest.json",
-    "real_decoder_manifest_sha256": "d5e59188f163758f5bcd29cd7a14ab8b5685fe145f9721cffe6190c5eb4d4811"
+    "real_decoder_manifest_sha256": "d5e59188f163758f5bcd29cd7a14ab8b5685fe145f9721cffe6190c5eb4d4811",
+    "live_console_check": {
+      "observed_utc": "2026-10-24T01:34:32Z",
+      "account": "ShifTech",
+      "identity": "Action required: official identity document upload",
+      "phone": "Action required: waits for identity tasks and document approval",
+      "apps": "Create your first app; no apps present",
+      "scope": "Read-only browser check; no identity upload, app creation, consent or account change",
+      "authoritative_pending_card": "P-games-20261023-1753; old internal-testing card is merged/closed"
+    }
   },
   "next": [
     "Complete the independent disposition of Dead Run fixture cadence and strict full rendered gate, then signed native/private update",
