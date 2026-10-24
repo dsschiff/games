@@ -1,0 +1,48 @@
+{
+  "scope": "Metadata-only readiness and explicit cancellation admission/flight/resource ownership; compiled against pinned real Android/GMS/Godot SDK with controllable JVM Tasks. No Android plugin instantiation, account/device/network/cloud-sync acceptance.",
+  "native_api": {
+    "is_configured()": "Metadata only; no SDK initialization or auth",
+    "cancel(id:String)": "Same completed(String,String JSON) signal. cancelled only after admitted SDK callback ownership and all original-client resources drain; close_failed retains blocked admission until explicit cancel retry; remote_effect unknown when commit/resolve was dispatched, else none."
+  },
+  "receipt": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\cloud-native-cancel-20261024T0314Z\\receipt.json",
+  "receipt_sha256": "31530b037532fd67f480f875fe6b8e7e853d778dcd080226282f14f8bef3e3a2",
+  "jvm_tests": {
+    "tests": 31,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "aar_sha256": "31ab4b4ec9d47fbacb1bca31e17050a1d5ae10383355eabd75e01bf3e864de13",
+  "source_pins": {
+    "android-games\\shared\\play-cloud\\native\\library\\src\\main\\java\\com\\dsschiff\\games\\cloud\\PlayCloudPlugin.kt": "503199408da1be2fd1736602824ae9910de24161bf0f8ad5cd76ef0231f6ac49",
+    "android-games\\shared\\play-cloud\\native\\library\\src\\main\\java\\com\\dsschiff\\games\\cloud\\RequestLifecycle.kt": "ecfdbe4482d2d38b362dfd0e7540568713845a191828f93812c92459abca0cc5",
+    "android-games\\shared\\play-cloud\\native\\library\\src\\main\\java\\com\\dsschiff\\games\\cloud\\SdkFlights.kt": "fd7370388abef1eef28a389506db4bd994d39f72e4c0c6f6331a41bcdee00cce",
+    "android-games\\shared\\play-cloud\\native\\library\\src\\main\\java\\com\\dsschiff\\games\\cloud\\VerifiedWrite.kt": "387ed67fbb52e9e1624b46368f798e8c5d446a5901a13dab26473620c1c86ab3",
+    "android-games\\shared\\play-cloud\\native\\library\\src\\test\\java\\com\\dsschiff\\games\\cloud\\RequestLifecycleTest.kt": "ee533c12afdbce2e226f31f25268054aa0406f1116fc6e01a2cc9cf34bfe2130",
+    "android-games\\shared\\play-cloud\\native\\library\\src\\test\\java\\com\\dsschiff\\games\\cloud\\SdkFlightsTest.kt": "d05cdbb091c535dd84b5396a1a039287eda8bae3029801e7278236f2c22fa67b",
+    "android-games\\shared\\play-cloud\\native\\library\\src\\test\\java\\com\\dsschiff\\games\\cloud\\VerifiedWriteTest.kt": "f67fa4a4ef9e4ebef93178b6c49971e3c402c14c0f0aa83068927826e7947d11",
+    "scripts\\build_play_cloud.py": "f9ed9818f2fd08bb4ff2361f336ca3b81b8ac1d243160b4024f07288b49774da",
+    "android-games\\shared\\play-cloud\\native\\build.gradle.kts": "30d0d99cbc20146ec23c725b3502dd7e7935f22358e34633f1fc1a9a4af2b44c",
+    "android-games\\shared\\play-cloud\\native\\settings.gradle.kts": "9f36688287c914073c44a4b21075094f53bb03afdd7930c94a5d977f69db0d54",
+    "android-games\\shared\\play-cloud\\native\\gradle.properties": "832cbc25c4caf5f144ffa2956b57818095bafd99b02b8eb53ce023f920d4c0bf",
+    "android-games\\shared\\play-cloud\\native\\library\\build.gradle.kts": "f924783b86df1a4b61a7af8f62056ea5d0bd029d1083645d18da1f6bc6230e2b",
+    "android-games\\shared\\play-cloud\\native\\library\\src\\main\\AndroidManifest.xml": "04a3a97d1db93b606c2df7f342ff3a768b7b4323ee8ce205ae0884563fa32e3d"
+  },
+  "independent_review": "Astra source/pins clear;31/0, source unchanged. Helper throw regressions cover success/failure/idle callbacks without duplicate terminal dispatch.",
+  "historical": [
+    {
+      "receipt": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\cloud-native-cancel-20261024T0305Z\\receipt.json",
+      "qualification": "Failed28/1: CancellationToken task factory itself requires Android main Looper unavailable in JVM. Failed XML and source retained; no runtime error suppression."
+    },
+    {
+      "receipt": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\cloud-native-cancel-20261024T0308Z\\receipt.json",
+      "qualification": "Passed28/0 before reviewer-requested once-only callback exception hardening; prior helper/test sources preserved."
+    }
+  ],
+  "limits": [
+    "A never-finishing SDK task can keep native cloud admission blocked; it is not forced to terminate.",
+    "Game explicit cancellation must disarm local adoption and release offline play independently; pending Import journal remains separate.",
+    "Cancellation is not remote undo after write or conflict resolution dispatch.",
+    "Per-game native packaging/project client IDs/privacy and genuine account/device/offline/conflict checks remain open."
+  ]
+}

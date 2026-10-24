@@ -20,6 +20,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--gradle-home", type=Path, default=Path("F:/games-workspaces/tooling/gradle"))
     parser.add_argument("--cache", type=Path, default=Path("F:/games-workspaces/tooling/gradle-cache"))
+    parser.add_argument("--output", type=Path, help="Fresh ignored output directory; preserves earlier native receipts")
     args = parser.parse_args()
     config = json.loads((ROOT / "toolchain.json").read_text(encoding="utf-8"))
     home = os.environ.get("GAME_TOOLCHAIN_ROOT", config["toolchain_root"])
@@ -53,7 +54,9 @@ def main():
         raise FileNotFoundError(f"Android SDK absent: {sdk}")
     (native / "local.properties").write_text("sdk.dir=" + sdk.as_posix() + "\n", encoding="utf-8")
     command = [str(executable), "--no-daemon", "--console=plain", "--max-workers=2", ":library:testReleaseUnitTest", ":library:assembleRelease"]
-    run = ROOT / ".artifacts/cloud-native"
+    run = args.output.resolve() if args.output else ROOT / ".artifacts/cloud-native"
+    if args.output and run.exists():
+        raise FileExistsError("Explicit output already exists; preserve its evidence")
     run.mkdir(parents=True, exist_ok=True)
     source_files = sorted((native / "library/src").rglob("*.kt")) + [Path(__file__).resolve(),
         native / "build.gradle.kts", native / "settings.gradle.kts", native / "gradle.properties",
@@ -67,6 +70,9 @@ def main():
     print(f"\nGradle exit: {result.returncode}; log: {run / 'build.log'}", flush=True)
     tests = {"tests": 0, "failures": 0, "errors": 0, "skipped": 0}
     for report in (native / "library/build/test-results/testReleaseUnitTest").glob("TEST-*.xml"):
+        saved_report = run / "reports" / report.name
+        saved_report.parent.mkdir(exist_ok=True)
+        saved_report.write_bytes(report.read_bytes())
         suite = ET.parse(report).getroot()
         for key in tests:
             tests[key] += int(suite.attrib.get(key, "0"))
@@ -75,6 +81,7 @@ def main():
     passed = result.returncode == 0 and tests["tests"] > 0 and tests["failures"] == tests["errors"] == tests["skipped"] == 0 and unchanged and aar.is_file()
     (run / "receipt.json").write_text(json.dumps({"passed": passed, "command": command, "exit_code": result.returncode,
         "source_unchanged": unchanged, "source_sha256": source_hashes, "jvm_tests": tests,
+        "jvm_reports": {str(p.relative_to(run)): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted((run / "reports").glob("TEST-*.xml"))},
         "aar_sha256": hashlib.sha256(aar.read_bytes()).hexdigest() if aar.is_file() else None,
         "scope": "Real pinned Android/GMS/Godot compile and controllable JVM resource/lifetime tests; no account/device/live cloud test."}, indent=2) + "\n", encoding="utf-8")
     print("Native receipt:", run / "receipt.json", "PASS" if passed else "FAIL", tests)
