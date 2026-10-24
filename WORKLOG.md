@@ -636,3 +636,12 @@ Current base is origin/main4552e7b. No new release or cloud/device acceptance ye
 - PR11 merged cad6308; scoped30fe95c ancestry confirmed on origin/main.
   Hearthguard0.3.1/code5 privately delivered; exact APK digest, size, notes and
   private README readback pass. Optional cloud remains unconnected/live-unverified.
+
+- Independent native review verified56file hashes/16Hearth envelopes/five whole
+  comparisons, then flagged early splash screenshots. Settled followup now shows
+  Gearpaused6army/Resume, actualResume to9; newliveHomecommit69 matches the whole
+  original active state/profile/settings through the real owning decoder (four
+  JSONposition representations differ at1ULP). Hearthcolddefeat/Retry and live
+  Homecommit37 exactly match the prior full result. Original early captures remain
+  excluded; settled report9a539ae3 is separate. Hook conservative charge refinement
+  source cleared/integrated;0.3.1/code7 built, final motion/strictshutdown pending.

@@ -164,7 +164,12 @@
     "whole_save_native_report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-save-retention\\report.json",
     "native_scope": "Signed9-to10/offline/Home/cold; complete existing ready save retained. Actual guard drag/Menu/Home/oneBegin produces6; whole active context freezes across Home/cold. Initial profile empty, not native earned-profile update proof.",
     "whole_save_report_sha256": "92703ec274bef75621f85bf364ed07524891a9f3e554df320cd07ee1f557e2cd",
-    "physical_acceptance": false
+    "physical_acceptance": false,
+    "settled_cold_followup": {
+      "report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-save-retention\\settled-followup\\report.json",
+      "sha256": "9a539ae3c8bfecfae0963f295bf5313db6bcde277ab089361fb8d18efdf09c18",
+      "scope": "Settled game controls and fresh live-context Home commit, excluding earlier splash screenshots. Gear owning decoder exact whole equality; Hearth all parsed values exact. Gear explicit Resume advances6to9 defenders."
+    }
   },
   "hearthguard": {
     "version": "0.3.1",
@@ -237,7 +242,12 @@
       "notes_readback_verified": true,
       "readme_readback_verified": true
     },
-    "source_landed": "cad6308d39d431e7982b2b7c9c5164ae4b1c57f0"
+    "source_landed": "cad6308d39d431e7982b2b7c9c5164ae4b1c57f0",
+    "settled_cold_followup": {
+      "report": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\native-save-retention\\settled-followup\\report.json",
+      "sha256": "9a539ae3c8bfecfae0963f295bf5313db6bcde277ab089361fb8d18efdf09c18",
+      "scope": "Settled game controls and fresh live-context Home commit, excluding earlier splash screenshots. Gear owning decoder exact whole equality; Hearth all parsed values exact. Gear explicit Resume advances6to9 defenders."
+    }
   },
   "tower": {
     "version": "0.4.1",
@@ -259,11 +269,20 @@
     "build_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\tower-trials\\20261024T001356437179Z\\manifest.json"
   },
   "hook": {
-    "state": "reviewed_hit_feedback_source_integrated_charge_undercoverage_reproduced_and_source_correction_in_review",
+    "state": "Refined conservative charge envelope source independently cleared and integrated; signed0.3.1/code7 candidate held for final refined normal-speed usefulness and strict rendered shutdown",
     "open": [
       "Conservative obstacle charge warning usefulness in authored motion",
       "Final strict rendered teardown; current finale has2ObjectDB leaks",
       "Signed update and private delivery"
-    ]
+    ],
+    "source_commit": "4898fb3",
+    "adapter_lf_sha256": "00b6d5376c4f03dfc112c0455e7701433689f59b6a0faad96e274c83ce1037bb",
+    "actual_step_regressions": {
+      "checks": 1643,
+      "routes": 814,
+      "failures": 0,
+      "contact_checks": 37,
+      "presentation_checks": 214
+    }
   }
 }
