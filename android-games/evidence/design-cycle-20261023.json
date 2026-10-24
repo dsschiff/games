@@ -829,7 +829,7 @@
     "cloud_acceptance": false
   },
   "tower_normal_copy": {
-    "state": "Local signed0.4.5/code11 candidate packaging/source independently clear; root contract42/owner638 CPU checks pass. New normal Copy native protocol remains open; no upload.",
+    "state": "Signed0.4.5/code11 exact current source packaging CLEAR; actual10to11 firstCopy282B GET+ack and normalUndo/PasteImport/cold full14/0 qualified native CLEAR.1549pin combinedpacket audited; manualIME/selection and shaderstrictFAIL remain open, no upload.",
     "evidence": "android-games/evidence/tower-copy-confirm-20261024.json",
     "worker_source": "e87a02291bf6245ecedd512f5b7b8ac3f5a7c6a7",
     "root_source": "abd7a30",
@@ -841,7 +841,9 @@
     "pending_protocol_unchanged": true,
     "new_apk": true,
     "native_protocol_accepted": false,
-    "candidate": "0.4.5/code11 local signed packaging independently clear; native normal Copy gate open; no upload."
+    "candidate": "0.4.5/code11 local signed packaging independently clear; native normal Copy gate open; no upload.",
+    "later_native_evidence": "android-games/evidence/hook-tower-native-copy-20261024.json",
+    "bounded_native_positive_protocol_passed": true
   },
   "signed_recovery_batch": {
     "evidence": "android-games/evidence/recovery-signed-candidates-20261024.json",
@@ -919,5 +921,11 @@
     "native_accepted": false,
     "new_apk": true,
     "bounded_native_touch_accepted": true
+  },
+  "hook_recovery_touch": {
+    "evidence": "android-games/evidence/hook-tower-native-copy-20261024.json",
+    "state": "Two-line local recovery-row touch fix independently source/root1395/0 and signed0.3.5/code11 packaging CLEAR. Actual10to11 corrected row reach/reverse/cancel/Copy/bothchoices/full28/0 qualified native CLEAR; earliercode10clipboard32/0 and failedrow/navigation observations retained.1549pin combinedpacket audited; shaderstrictFAIL, no upload.",
+    "physical_acceptance": false,
+    "cloud_acceptance": false
   }
 }
