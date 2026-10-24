@@ -63,7 +63,7 @@ The runner records LF source hashes, rejects source drift, and reuses source in
 place instead of making repeated source snapshots. It can run existing rules,
 campaign-rules and genuine code4 checks in isolated app data too.
 
-## Rendered evidence and unresolved failure
+## Rendered evidence and bounded harness closure
 
 The input-driven desktop run passes 51 assertions and produces natural loss,
 Retry and earned victory layouts, including cover/inner sizes. A distinct
@@ -72,14 +72,19 @@ its warning remains visible with world boss health. The 49-crew geometry image
 is explicitly labeled synthetic and hides the result card only for inspection.
 All saved PNGs fully decode; these are desktop pixels, not Android screenshots.
 
-**The strict full rendered run remains FAIL.** Four GL texture allocations of
-349,524 bytes each leak during engine shutdown (1,398,096 bytes total). Both the
-original failure and attempted closure logs/receipts remain indexed. Returning
-from the test scenario, freeing its scene and draining rendering did not remove
-these errors. The boss-only warning fixture exits cleanly; that narrower pass
-does not override the full failure. No log filters or expected-error exception
-were added. The pre-existing windowed teardown defect remains unresolved and
-requires a separate resource-lifetime diagnosis.
+The original strict full rendered packets remain recorded as FAIL: four GL
+allocations of 349,524 bytes each were reported at shutdown. Scene release,
+end-only render drains and the explicit local-adapter release did not resolve
+those historical failures; their raw logs and receipts remain retained.
+
+The later matched comparison isolated repeated synthetic geometry world rebuilds
+before normal frame/render cadence. Between-fixture drains passed while equal
+end-only drains still failed. A seven-line harness-only cadence/state check now
+preserves all original assertions and passes the full strict54/0 run with ten
+decoded PNGs. Astra independently clears this bounded rendered gate. Exact
+receipts, matched controls and review are in TEXTURE_LIFETIME.md/json. Product
+runtime is unchanged by this investigation. Exact GL allocation ownership and
+production stress-leak absence are not established; no font/engine bug is claimed.
 
 ## Remaining acceptance
 

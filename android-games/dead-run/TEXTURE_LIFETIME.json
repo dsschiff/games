@@ -1,0 +1,876 @@
+{
+  "status": "Astra independently clears bounded strict rendered gate after harness-only per-fixture cadence correction; historical stress failures retained; exactGLowner unproven",
+  "runtime_changes": false,
+  "runs": [
+    {
+      "run": ".artifacts/graphics/leak-probe-lifetime-20261024T001514Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "6f5cd124c38dada473b89ae4901c16917d7ef9826c9a164ea3df7977dee2ebf1",
+        "godot.log": "9abc3b96a91ae96a04a7ff60d7eaf1dce30e798316af897b6352abe22e768c3d",
+        "source-hashes-lf.json": "d86b222a171638e810af0fe54a3a92ebb383477e13887ee4c530aa4c55aab033",
+        "texture-lifetime.json": "7a02938ad1841722f6cc4ac804e04eab40b97fb377074e546088e8b580aded93"
+      },
+      "scenario": "campaign-start20",
+      "headless": true,
+      "checks": 2,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/ownership-observe-design-20261024T002503Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "49a4cb77254196ea26b6efcb6646eb6b2145a7d57900513eee4c01c9abb6363c",
+        "godot.log": "272e9e7702eef65700dfb70f551aa4af510077c95afc94ca42ac9d26bb57a96e",
+        "source-hashes-lf.json": "e31ed38b53269bb61b6599254ba3afc231fdb21d46586a96eabbd99d0d813fe0"
+      },
+      "scope": "Full terminal_design harness with weak geometry-font observations; ownership-release also temporarily p=null before rebuild (disproven; reverted)"
+    },
+    {
+      "run": ".artifacts/graphics/ownership-original-design-20261024T002540Z",
+      "strict_passed": false,
+      "errors": [
+        "ERROR: Texture with GL ID of 33: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 34: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 35: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 36: leaked 349524 bytes."
+      ],
+      "hashes": {
+        "receipt.json": "a48284f9c618cd0f43096c96c87a5c3fe195cd34f7f77f6ef9462c401f8ff1a9",
+        "godot.log": "c2772b17de516223bdd8ce318e038847df38eda6a3c634e84b1138199cbf568c",
+        "source-hashes-lf.json": "e31ed38b53269bb61b6599254ba3afc231fdb21d46586a96eabbd99d0d813fe0"
+      },
+      "scope": "Full terminal_design harness with weak geometry-font observations; ownership-release also temporarily p=null before rebuild (disproven; reverted)"
+    },
+    {
+      "run": ".artifacts/graphics/ownership-release-design-20261024T002933Z",
+      "strict_passed": false,
+      "errors": [
+        "ERROR: Texture with GL ID of 33: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 34: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 35: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 36: leaked 349524 bytes."
+      ],
+      "hashes": {
+        "receipt.json": "e80f90e9594647579ddadb0f6475c6b0d39c6b9b8a20ab7ddb69955ac3fe6680",
+        "godot.log": "c2772b17de516223bdd8ce318e038847df38eda6a3c634e84b1138199cbf568c",
+        "source-hashes-lf.json": "2b439a8dc2ede626fbb04a028fb74dcc633c5d1170179d932707da505120ae7a"
+      },
+      "scope": "Full terminal_design harness with weak geometry-font observations; ownership-release also temporarily p=null before rebuild (disproven; reverted)"
+    },
+    {
+      "run": ".artifacts/graphics/prefix-full-runtime-lifetime-20261024T003440Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "c09d6c43e95c923d65ecbe7e7f6f506aa9bb6566e82f5382b97b9991adde3421",
+        "godot.log": "2f30bf2155a067f6c090e27b581eac0e93338161c85856c091cc075608136d1e",
+        "source-hashes-lf.json": "550f18dee5c5aed1283b5b2ef2c0feb50ebc761248341b5370a33bdbf520b600",
+        "texture-lifetime.json": "26ebfcb3b0fcaf171150bd9957e79bfc3c8c855cef4c5f19bb975f9e27df8113"
+      },
+      "scenario": "full-runtime-prefix",
+      "headless": true,
+      "checks": 19,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 25.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/prefix-geometry-lifetime-20261024T003544Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "a60b3f00936fe4f4633d3c893e2c7b69596177a6fe583f8457dcb71399827bf7",
+        "godot.log": "cd73faf9eba59ea9f6a9150b83d09e2e0fb19f02bab0408ddb4107e5fa1a2191",
+        "source-hashes-lf.json": "3b8c4e6093572d80a499591e6494ab917d4a4d0e690664a2de016bbdf504f7e2",
+        "texture-lifetime.json": "87be23306d5a7e4689a9603ee2479cd8a05f2c337caf2e5638cd8153b3072b52"
+      },
+      "scenario": "geometry-before-warning",
+      "headless": true,
+      "checks": 23,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 25.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/probe-campaign-defeat-lifetime-20261024T001533Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "375ade2403f3b0f934ccc795303cbc952e91681f9019aa8bd5bf090b23e77786",
+        "godot.log": "e8b5535728e44fbc97fcde078879d319a0fea02018473c1e8212b412dea08318",
+        "source-hashes-lf.json": "d86b222a171638e810af0fe54a3a92ebb383477e13887ee4c530aa4c55aab033",
+        "texture-lifetime.json": "4f389e0221b53b3c7af879e4874636f74051e3888ded61112b5d46b661d5465a"
+      },
+      "scenario": "campaign-defeat",
+      "headless": true,
+      "checks": 3,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/probe-campaign-defeat-reload-lifetime-20261024T001533Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "e4185d5eeaabe6d172bd900e5c21f55d2371bf081016edfabe2ced44b63b92e5",
+        "godot.log": "f9c9dc21b70f7422562a23040c701dee06eeb3b96376542618ea00139e1c177a",
+        "source-hashes-lf.json": "d86b222a171638e810af0fe54a3a92ebb383477e13887ee4c530aa4c55aab033",
+        "texture-lifetime.json": "f86e311524ae2904d8a8504a183999f902722020cb21c5a09283bb33de7be247"
+      },
+      "scenario": "campaign-defeat-reload",
+      "headless": true,
+      "checks": 4,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/probe-campaign-reload20-lifetime-20261024T001532Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "a755d60a5d0266882fe26749367913d386dae9c51b6f71acc412ae67309625e2",
+        "godot.log": "8bec5e681ad561e031091eacdb84db0c62fd6a707ed95fb1eccb7c936d92d991",
+        "source-hashes-lf.json": "d86b222a171638e810af0fe54a3a92ebb383477e13887ee4c530aa4c55aab033",
+        "texture-lifetime.json": "314d3ff1baf4f1ae65196616939a82cacfe3445ce7cbd4c35211e7f7945f9656"
+      },
+      "scenario": "campaign-reload20",
+      "headless": true,
+      "checks": 3,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/probe-campaign-retry20-lifetime-20261024T001533Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "3cd5205f52f92de044699f88b57a2c94cff3f82756c5d6107f01abd4ab05d69b",
+        "godot.log": "ef5dde4ab04ca0bad3b282d271f627ee1d55317744f518537c2c40f4a19d88ac",
+        "source-hashes-lf.json": "d86b222a171638e810af0fe54a3a92ebb383477e13887ee4c530aa4c55aab033",
+        "texture-lifetime.json": "b7314e607e4e9a0c3c0fd55ea9962d00a677bace5b788b5ee5b4ee969c505c2e"
+      },
+      "scenario": "campaign-retry20",
+      "headless": true,
+      "checks": 4,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/probe-campaign-start60-lifetime-20261024T001532Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "46c2b368996dab599adff667bbbbc19c37e5b895e193529d7422787f711b4a68",
+        "godot.log": "6ce537c11a3e7781e28a0e596397fc98609769ed001d2e6222c1152a88892d59",
+        "source-hashes-lf.json": "d86b222a171638e810af0fe54a3a92ebb383477e13887ee4c530aa4c55aab033",
+        "texture-lifetime.json": "4ff95e22596efb85ec4af684c16c4fe45469a041dee073074f1c6fceea077d84"
+      },
+      "scenario": "campaign-start60",
+      "headless": true,
+      "checks": 2,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/probe-campaign-terminal-lifetime-20261024T001531Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "49dfdd17cdcdd1d3fabc4ee490db1904a9f231431e932c3427f135d6174b18ee",
+        "godot.log": "21f67c606f479a11bb57cb42bc7b1043c713961758bb9f55dbd343085ec28499",
+        "source-hashes-lf.json": "d86b222a171638e810af0fe54a3a92ebb383477e13887ee4c530aa4c55aab033",
+        "texture-lifetime.json": "ce26dfc953e60ade586b7c868835a002291bdeac291a89aa4737ecdc61cedd01"
+      },
+      "scenario": "campaign-terminal",
+      "headless": true,
+      "checks": 3,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/probe-campaign-win-lifetime-20261024T001532Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "d07493e556cfa456aa62d38da0a8b5da1034b0a96192e4eb80982a80c92a9000",
+        "godot.log": "1218caebca4f86d5f32f3e66de2e059343f8708bbc539c916bd112e9f1f521e0",
+        "source-hashes-lf.json": "d86b222a171638e810af0fe54a3a92ebb383477e13887ee4c530aa4c55aab033",
+        "texture-lifetime.json": "82353db7b967072700bf8d9abe5dbe5b263d3f311ce1d0f799e9871422b11a26"
+      },
+      "scenario": "campaign-win",
+      "headless": true,
+      "checks": 6,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/probe-campaign-win-reload-lifetime-20261024T001533Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "c8985a7884b071e1e8778a137cf9b2fdb7a05182df32ddce4c62646417dd653c",
+        "godot.log": "bcd67399b95c2a5ab1bb8d0ad12ef152ec65de00c7c7ba6e82113650698e4d74",
+        "source-hashes-lf.json": "d86b222a171638e810af0fe54a3a92ebb383477e13887ee4c530aa4c55aab033",
+        "texture-lifetime.json": "ce458195d67644fe5060113b5cd56d2f6b5d7d15bd1d1e1a060b76dcb36ead32"
+      },
+      "scenario": "campaign-win-reload",
+      "headless": true,
+      "checks": 7,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/probe-legacy-defeat-lifetime-20261024T001532Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "94bc826c4d29e88be3e11058f15874e05c6da017429bb4fb73feec35758a8cf5",
+        "godot.log": "fb5d5a2811cb53f2afe56af16b0c2c87937fea32a3b368bc42f110edf02422dd",
+        "source-hashes-lf.json": "d86b222a171638e810af0fe54a3a92ebb383477e13887ee4c530aa4c55aab033",
+        "texture-lifetime.json": "6313c9d8b85d5fe2c5aa14a972a6c4e3da6baf4dcef7280ea5c68652e83567cb"
+      },
+      "scenario": "legacy-defeat",
+      "headless": true,
+      "checks": 4,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/probe-legacy-retry-leave-lifetime-20261024T001533Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "13c99177769dc1db0918f1ca65c184b0cb7f12a09adb17b622907933c4301b4c",
+        "godot.log": "935553568485f89d67e82f750c33b923c3081acec020f61e8e02a34b74a4743c",
+        "source-hashes-lf.json": "d86b222a171638e810af0fe54a3a92ebb383477e13887ee4c530aa4c55aab033",
+        "texture-lifetime.json": "d3042781b58448776fd86529194c3d78436a4ac71e0e85b71f01a190d8ea360c"
+      },
+      "scenario": "legacy-retry-leave",
+      "headless": true,
+      "checks": 6,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/probe-legacy-start20-lifetime-20261024T001533Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "d732c2df4273eaf8ff69c82ace4f7ec6de921031f7c79fe77c27b9e3fd7736a4",
+        "godot.log": "6b86391197d1819ccd85101d5d002ecb179803752967b65842ac36e224972a65",
+        "source-hashes-lf.json": "d86b222a171638e810af0fe54a3a92ebb383477e13887ee4c530aa4c55aab033",
+        "texture-lifetime.json": "290682e496761acd42a930e636118e6ac71795a019f72fba168b3f96bc9a1a35"
+      },
+      "scenario": "legacy-start20",
+      "headless": true,
+      "checks": 3,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-defeat-lifetime-20261024T001939Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "b3ca0ff69586114bb0ac39f045124261578086c27d8bf3a29807508039f6dcc2",
+        "godot.log": "36ffa20296b8c41979b632277573fb8e47105b839d49859cf34dfa1f7ba8bedd",
+        "source-hashes-lf.json": "57b6dc1f18800409e3e44d90ea8e74ddb7522fa2f848b6730b793112a34c6f17",
+        "texture-lifetime.json": "5eee1dbb94dd66b597a83b3e4c125bf9cd842fe0576d470711ee1d0c3b8dbd85"
+      },
+      "scenario": "campaign-defeat",
+      "headless": false,
+      "checks": 3,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-legacy-retry-leave-lifetime-20261024T002354Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "c6aacf1042f579400368b0b93c71141bbe80be62de4bb04c576d29ef2d5d3881",
+        "godot.log": "e126f7914a868330e0cd151e7fddb0b096b9ec8adf734c51fe39d788a9d07232",
+        "source-hashes-lf.json": "57b6dc1f18800409e3e44d90ea8e74ddb7522fa2f848b6730b793112a34c6f17",
+        "texture-lifetime.json": "c77a73461e6ba56fc71f058fd3909cf7d8216281ed1297e3ce1eb4699068fb93"
+      },
+      "scenario": "legacy-retry-leave",
+      "headless": false,
+      "checks": 6,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-retry20-lifetime-20261024T002238Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "523ed65090e4bfdefe93f37fc18b7fe49089104b27988101e44ee5a8ea581884",
+        "godot.log": "dfb3de0795ca5f4945d63ba86d8154147870faf97e0f7255781c4c5224ae52cd",
+        "source-hashes-lf.json": "57b6dc1f18800409e3e44d90ea8e74ddb7522fa2f848b6730b793112a34c6f17",
+        "texture-lifetime.json": "7c1168665078f47dc1e6a9d01c1c68c4c4526fd1a05676b37c7335876c6cc083"
+      },
+      "scenario": "campaign-retry20",
+      "headless": false,
+      "checks": 4,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-start20-lifetime-20261024T001849Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "a2869440a93975af763ac6945a05c3a22215f03781491a5d4b571152cbc879b9",
+        "godot.log": "867aafaeec6cf1a536e4d305996c165750a2026cc6a749a206a408141fde42db",
+        "source-hashes-lf.json": "57b6dc1f18800409e3e44d90ea8e74ddb7522fa2f848b6730b793112a34c6f17",
+        "texture-lifetime.json": "c852aed581a183f6d5c1acf32936f0fe3aba1ec862d29f2c347e08cbff16f9e1"
+      },
+      "scenario": "campaign-start20",
+      "headless": false,
+      "checks": 2,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-start60-lifetime-20261024T001921Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "26cd10cb592ecb9aa6a59d79aa29d293ae82bd73e0908edf57b138f7f8d1d1dc",
+        "godot.log": "5798e7404861673e5224deb1f3cff3cee27532040e652f12b16fe57480607a1a",
+        "source-hashes-lf.json": "57b6dc1f18800409e3e44d90ea8e74ddb7522fa2f848b6730b793112a34c6f17",
+        "texture-lifetime.json": "b03fda2da1ebeedcbd7780135f679abdba9ee03c583b03d10f9cddb7ead904af"
+      },
+      "scenario": "campaign-start60",
+      "headless": false,
+      "checks": 2,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-terminal-lifetime-20261024T002053Z",
+      "strict_passed": true,
+      "errors": [],
+      "hashes": {
+        "receipt.json": "461868b5e0fad2776410da57e393ab2465550e9b75ceaf36e304958509af240c",
+        "godot.log": "6776d2b91931fac7dbbe5a7e50a846f4cebb95f415dea72adc93ebb4bd890c96",
+        "source-hashes-lf.json": "57b6dc1f18800409e3e44d90ea8e74ddb7522fa2f848b6730b793112a34c6f17",
+        "texture-lifetime.json": "c6c8bf1b71c655215509136b146f1ff143615c1f8f6af71e3838452d33e7aa6f"
+      },
+      "scenario": "campaign-terminal",
+      "headless": false,
+      "checks": 3,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 24.0
+      }
+    },
+    {
+      "run": ".artifacts/graphics/cpu-geometry-no-pixel-before-warning-lifetime-20261024T010540Z",
+      "strict_passed": true,
+      "errors": [],
+      "scenario": "geometry-no-pixel-before-warning",
+      "headless": true,
+      "checks": 23,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "b5729d570a51728424962b76b75b7c6fc2ae5b7f5d0d2305ae3b11bb3fccbc5d",
+        "godot.log": "fc6bc691824f86edd03a2454ba01b94e46dde180c029e098fca4a44cb7bd88f8",
+        "source-hashes-lf.json": "2810629b7ca4b2a0df069f17d0152c1b361d78c76e23692631bd34075f479202",
+        "texture-lifetime.json": "83bfd972e8f1e5c1a20dfa29084c3c698f9e6ec9519997bee0d96a0ba33d9a23"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/cpu-geometry-only-lifetime-20261024T010531Z",
+      "strict_passed": true,
+      "errors": [],
+      "scenario": "geometry-only",
+      "headless": true,
+      "checks": 23,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "f8bb7f91d0b4e9267cdfd36c6604a9b37386ac75b2306d203874e38ac9172c92",
+        "godot.log": "5dbf8b71dc2703e69d62842444171110a66a200fe733c2b0f18d4ca8e73ef53c",
+        "source-hashes-lf.json": "2810629b7ca4b2a0df069f17d0152c1b361d78c76e23692631bd34075f479202",
+        "texture-lifetime.json": "3fb493b2db59e6fe53da9b811815414e3d56cfb6f7763aba13714e1ba03f3d7f"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/cpu-single49-before-warning-lifetime-20261024T010537Z",
+      "strict_passed": true,
+      "errors": [],
+      "scenario": "single49-before-warning",
+      "headless": true,
+      "checks": 19,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "7091ae840fda0a866aa3a6f0cc49ad42cde379294c91697fa1fe7dc75cf5f155",
+        "godot.log": "ccfeb4fc5a7a2223c7379e9bcbc5b536873b2965865eb75e8397f83db61f92ea",
+        "source-hashes-lf.json": "2810629b7ca4b2a0df069f17d0152c1b361d78c76e23692631bd34075f479202",
+        "texture-lifetime.json": "c3fda08a3250a7b34d051f2168261854afd9090e5d4e586da35397eb85d94976"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/cpu-single49-only-lifetime-20261024T010539Z",
+      "strict_passed": true,
+      "errors": [],
+      "scenario": "single49-only",
+      "headless": true,
+      "checks": 19,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "3a30e8e29b0f3f3f74f724d7ea9758d112f6d0ae8730d2929318281591f03148",
+        "godot.log": "d4ffb3b554b780deb754b5f78b7616538c16cf2f9ac9c0af51f990c9af0caba8",
+        "source-hashes-lf.json": "2810629b7ca4b2a0df069f17d0152c1b361d78c76e23692631bd34075f479202",
+        "texture-lifetime.json": "88ba949d9f6956543917c63b91e8f794231f5f5c72c684515a4cd151ccba1ee1"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-geometry-before-warning-lifetime-20261024T010245Z",
+      "strict_passed": false,
+      "errors": [
+        "ERROR: Texture with GL ID of 25: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 26: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 27: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 28: leaked 349524 bytes."
+      ],
+      "scenario": "geometry-before-warning",
+      "headless": false,
+      "checks": 25,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "568c9638416403e36d86d0664c4082c0cb20d0b0cf04914e84cf61ebabce6fc8",
+        "godot.log": "cf60ec1ef6478218cb979ee1ca61667bd104278ba3513ea610f19ca7ec9b149b",
+        "source-hashes-lf.json": "ad1174ae2ae358bc11779b2457a717df7a209b7f581f9bf7ec0669d5ce7019d6",
+        "texture-lifetime.json": "5efe5ee1fd5dcd87d31b7428639e04eab712c6986c49cc8235a05b8ffd65cd98"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-win-reload-lifetime-20261024T005933Z",
+      "strict_passed": true,
+      "errors": [],
+      "scenario": "campaign-win-reload",
+      "headless": false,
+      "checks": 7,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "a941c62ddd5e93e8104a2c0fc678b937847fbb46d5c7cb86ba76a910c7b6c78e",
+        "godot.log": "a13e56e8992df5544cdf32bd40fe5f840598ea19551e1cb81a5339039a722540",
+        "source-hashes-lf.json": "ad1174ae2ae358bc11779b2457a717df7a209b7f581f9bf7ec0669d5ce7019d6",
+        "texture-lifetime.json": "e8634aababc5e94fb3a268f5eaeda579772cc9cfb2334a69e14b937ff6a9c79a"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-geometry-only-lifetime-20261024T010657Z",
+      "strict_passed": false,
+      "errors": [
+        "ERROR: Texture with GL ID of 25: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 26: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 27: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 28: leaked 349524 bytes."
+      ],
+      "scenario": "geometry-only",
+      "headless": false,
+      "checks": 23,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "95674f76c90047a4f3456bd52b6733098641209f26bec2d8d575f16369a1040e",
+        "godot.log": "b3acc93f7160ae856ff170b3891754c6039f10ecaced95af2d1aed8f33deed5a",
+        "source-hashes-lf.json": "967eead69734867568ac7d48e89195d0a0493d9aee5faa406a37cfa1db3d8815",
+        "texture-lifetime.json": "ac19df866ca91abad65523b94bbd4e89f4189c0155f55f3d751ea40d893d8491"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-single49-before-warning-lifetime-20261024T010719Z",
+      "strict_passed": true,
+      "errors": [],
+      "scenario": "single49-before-warning",
+      "headless": false,
+      "checks": 21,
+      "failures": 0,
+      "after": {
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "c6c1041fa3bbb29a577015ed2d369bb62475de877a0b050d9eb830627e7f8024",
+        "godot.log": "9aff04de55c39cf46b9c7b5a98a1f87794fc5ae6850b01769e97053b5d219e74",
+        "source-hashes-lf.json": "967eead69734867568ac7d48e89195d0a0493d9aee5faa406a37cfa1db3d8815",
+        "texture-lifetime.json": "22621b4f2ce8d93acf3e1c57555d7aef9add4c102f442fee80cace845853b9c8"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/cadence-control-lifetime-20261024T011329Z",
+      "strict_passed": true,
+      "errors": [],
+      "scenario": "geometry-only",
+      "headless": true,
+      "drain_between_rebuilds": false,
+      "drain_after_fixtures": false,
+      "fixture_drains": 0,
+      "checks": 24,
+      "failures": 0,
+      "after": {
+        "fixture_drains": 0,
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "owned_alive": [],
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "de510ec1686375664c59520c32fd69ebb2ac3bd2de5aea485d44e219da44cf77",
+        "godot.log": "c63044123e52c2598c374017dbe2732fb432c594cab9ce0a3b5733878be4c7fe",
+        "source-hashes-lf.json": "e214f0100fa4b4adc1b81f13dddbc33edf728a09517516c941004003f525ec79",
+        "texture-lifetime.json": "0c2b42d78629b42325a03b876284a7718f3b132c361ac0621761853f71059848"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/cadence-between-lifetime-20261024T011333Z",
+      "strict_passed": true,
+      "errors": [],
+      "scenario": "geometry-only",
+      "headless": true,
+      "drain_between_rebuilds": true,
+      "drain_after_fixtures": false,
+      "fixture_drains": 3,
+      "checks": 27,
+      "failures": 0,
+      "after": {
+        "fixture_drains": 3,
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "owned_alive": [],
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "5f7f0c82d578d4225fbdbe451a50ca380e410a6bf6e28d3e926df951e4aac8b8",
+        "godot.log": "8cae67c272180a1ec5b9a52333b0bfacf0d8ec5d5bfedcce5e95381b8fa90c7a",
+        "source-hashes-lf.json": "e214f0100fa4b4adc1b81f13dddbc33edf728a09517516c941004003f525ec79",
+        "texture-lifetime.json": "c103ff1d3d1081c5de7be4bd54cbd762d7703fa238327a58d008e0b70bf3a1ae"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/cadence-after-lifetime-20261024T011335Z",
+      "strict_passed": true,
+      "errors": [],
+      "scenario": "geometry-only",
+      "headless": true,
+      "drain_between_rebuilds": false,
+      "drain_after_fixtures": true,
+      "fixture_drains": 3,
+      "checks": 25,
+      "failures": 0,
+      "after": {
+        "fixture_drains": 3,
+        "label": "freed-drained",
+        "labels3d": [],
+        "live_explicit_fonts": [],
+        "nodes": 1.0,
+        "orphan_nodes": 0.0,
+        "owned_alive": [],
+        "resources": 25.0
+      },
+      "hashes": {
+        "receipt.json": "2c8221f747f15610fec39787ef0ca9c65587baa8d0b9159f07c447669c13c992",
+        "godot.log": "36745da3904c88b93761716f7ae464ac20fe10449175213ed9b1de6588655066",
+        "source-hashes-lf.json": "e214f0100fa4b4adc1b81f13dddbc33edf728a09517516c941004003f525ec79",
+        "texture-lifetime.json": "a94b6a03016cfc2ca5ea0cdcc8dfc3b908759ff0ae4b105f3298abaf5440bb27"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-cadence-control-lifetime-20261024T012429Z",
+      "strict_passed": false,
+      "errors": [
+        "ERROR: Texture with GL ID of 25: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 26: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 27: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 28: leaked 349524 bytes."
+      ],
+      "source_unchanged": true,
+      "hashes": {
+        "receipt.json": "38a137f5f71b1459d933e897a24bbad30963260d618110e819a3e5ce480858a3",
+        "godot.log": "d2a30e8de19ce71cc64ffc584d31fc3b7e4e5bbf4acce0edfc4ae702be2117a2",
+        "source-hashes-lf.json": "a30857c9e572e0fcb1e95e5de0e330e9b3d2c5d8cf141e1478814e70af896445",
+        "texture-lifetime.json": "f41f0975c18ebd5713c56a8491c018f314ad88d9130525bfc05ac6cdd3b521ba"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-cadence-between-lifetime-20261024T012445Z",
+      "strict_passed": true,
+      "errors": [],
+      "source_unchanged": true,
+      "hashes": {
+        "receipt.json": "a50ce22d454e1b763f8aaca476f6c3c2a5936959066adb4e5b203d60885b26cb",
+        "godot.log": "76f84c5372a6fb6e8b69090ad69e5b29d8daa5f44f1b1e6d5a95ad3a05327191",
+        "source-hashes-lf.json": "a30857c9e572e0fcb1e95e5de0e330e9b3d2c5d8cf141e1478814e70af896445",
+        "texture-lifetime.json": "d9e096d7b0f783c66002dcb145efaadacddcdf0e7050c6f0e4933993d10b4080"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/render-cadence-after-lifetime-20261024T012502Z",
+      "strict_passed": false,
+      "errors": [
+        "ERROR: Texture with GL ID of 25: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 26: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 27: leaked 349524 bytes.",
+        "ERROR: Texture with GL ID of 28: leaked 349524 bytes."
+      ],
+      "source_unchanged": true,
+      "hashes": {
+        "receipt.json": "3f4eaaaa02e703a0a4160b754b66cb0d886e25ae66a1b8c548f1b41ad9ae7c4a",
+        "godot.log": "1f2c3ed3f3d64c6962d2543d0d72511e3638d7f597c92be28001154638e57ade",
+        "source-hashes-lf.json": "a30857c9e572e0fcb1e95e5de0e330e9b3d2c5d8cf141e1478814e70af896445",
+        "texture-lifetime.json": "18214053825916ad8c8e5c9857d6c0e5b4341c4a84421f358c15f93959c0bef3"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/cadence-full-cpu-design-20261024T012604Z",
+      "strict_passed": true,
+      "errors": [],
+      "source_unchanged": true,
+      "hashes": {
+        "receipt.json": "599bb5410f88ea74fcd8f60a4880a651497387fff24cd6aa3f6132f97d1b1b2f",
+        "godot.log": "1b7ccea7bdd16aa5866f301a09e05c3470494f7c03428033f6ee3e4319f0b665",
+        "source-hashes-lf.json": "43c70c6c86aae5629a4fd9eef4162765365c05c681016516776cb71aed1ea9b2"
+      }
+    },
+    {
+      "run": ".artifacts/graphics/cadence-full-render-design-20261024T012650Z",
+      "strict_passed": true,
+      "errors": [],
+      "source_unchanged": true,
+      "hashes": {
+        "receipt.json": "7b063efc8f268800ee92e06032d080dadda396a26a5f2cad5085a81c4b213aa9",
+        "godot.log": "f1cc3f9ea9f647399686a4b28153c3ed0aba8e563b81134315952156bba6dfa4",
+        "source-hashes-lf.json": "43c70c6c86aae5629a4fd9eef4162765365c05c681016516776cb71aed1ea9b2",
+        "decoded-pngs.json": "e7c49d99c5b0dd46656cd7a477df98587567f55351bae122ab5f1beee1db572d",
+        "astra-disposition.json": "a7957f287357afdbbfabee22727ff5bf079725253beb6265ab7e5e949ec1a640"
+      }
+    }
+  ],
+  "caveat": "Default-font caches are not represented by explicit-font WeakRefs; node/resource counts do not prove GL texture lifetimes. CPU warning_pixels returns before rendered fixture rebuilds. Higher baseline25 resources after inheriting terminal_design reflects additional test script, not a measured live font.",
+  "glb_inventory": {
+    "path": ".artifacts/graphics/glb-texture-inventory.json",
+    "sha256": "d098ef87012345d48da9b55923e220f44ef8585d1ded04a2513d2639cfe6a0a2",
+    "files": 43,
+    "images": 0,
+    "textures": 0
+  },
+  "review": {
+    "reviewer": "/root/design_review (Astra)",
+    "recorded_utc": "2026-10-24T01:37:24.105035+00:00",
+    "disposition": "Bounded strict rendered gate clear",
+    "verified": "All214 current source hashes; matched maps identical; final differs only terminal_design.gd; exact7line diff retains original51 +3state checks; raw54/0,exit0,zeroERROR;10PNGs decode/hash-match; product diff againstedeb2d1 empty",
+    "limits": [
+      "Synthetic fixture scheduling correction supported by matched end-only failure",
+      "Original failures retained",
+      "No exactGLowner,font/enginebug,or production stress-leak guarantee inferred"
+    ]
+  }
+}

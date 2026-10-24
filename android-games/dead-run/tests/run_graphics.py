@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 
 PROJECT = Path(__file__).resolve().parents[1]
 GODOT = Path("C:/projects/active/.game-toolchain/godot/4.7.2/Godot_v4.7.2-stable_win64_console.exe")
-SCRIPTS = {"rules": "res://tests/run_tests.gd", "campaign-rules": "res://tests/campaign_tests.gd",
+SCRIPTS = {"lifetime": "res://tests/texture_lifetime.gd", "rules": "res://tests/run_tests.gd", "campaign-rules": "res://tests/campaign_tests.gd",
            "platform": "res://tests/platform_input.gd", "code4": "res://tests/code4_upgrade.gd", "design": "res://tests/terminal_design.gd", "lineup": "res://tests/art_lineup.gd", "frames": "res://tests/graphics_frames.gd",
            "presentation": "res://tests/presentation_tests.gd", "timing": "res://tests/horde_timing.gd"}
 
@@ -31,8 +31,13 @@ def main():
     parser.add_argument("--label", default="run")
     parser.add_argument("--scenario", default="all")
     parser.add_argument("--headless", action="store_true")
+    drain = parser.add_mutually_exclusive_group()
+    drain.add_argument("--drain-between-rebuilds", action="store_true", help="lifetime fixture comparison only: await normal process/render frames after each geometry world")
+    drain.add_argument("--drain-after-fixtures", action="store_true", help="lifetime end-only control: same added drain count after all geometry worlds")
     parser.add_argument("--movie", action="store_true", help="also write a fixed-60fps AVI via Godot's movie writer")
     args = parser.parse_args()
+    if (args.drain_between_rebuilds or args.drain_after_fixtures) and args.mode != "lifetime":
+        parser.error("Fixture drain comparisons apply only to lifetime mode")
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     run = PROJECT / ".artifacts" / "graphics" / f"{args.label}-{args.mode}-{stamp}"
     run.mkdir(parents=True)
@@ -60,6 +65,8 @@ def main():
             command += ["--write-movie", str(run / "clip.avi")]
         command += ["--",
                     "--capture-dir=" + str(run), "--scenario=" + args.scenario, "--report=" + str(run / "rules-report.json")]
+        if args.drain_between_rebuilds: command.append("--drain-between-rebuilds")
+        if args.drain_after_fixtures: command.append("--drain-after-fixtures")
     before = lf_hashes()
     (run / "source-hashes-lf.json").write_text(json.dumps(before, indent=2))
     with (run / "godot.log").open("w", encoding="utf-8") as log:

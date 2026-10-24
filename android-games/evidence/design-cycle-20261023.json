@@ -77,8 +77,61 @@
     "raw_android_whole_save_comparison": false
   },
   "dead_run": {
-    "state": "Source fixes landed. All tested actual-play lifecycle prefixes clean; synthetic geometry-before-warning tail alone reproduces4strictGLtextureleaks. Further minimal isolation active; release held.",
-    "commit": "7532385"
+    "state": "Bounded strict rendered gate independently cleared after harness-only fixture cadence correction; clean signed0.4.1/code7 candidate built; motion/native/private pending",
+    "commit": "7532385",
+    "version": "0.4.1",
+    "version_code": 7,
+    "build_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\dead-run\\20261024T013922133181Z\\manifest.json",
+    "build": {
+      "schema_version": 1,
+      "game": "dead-run",
+      "command": "build",
+      "godot_version": "4.7.2.stable.official.ed1daf0bf",
+      "started_utc": "20261024T013922133181Z",
+      "git_revision": "d75fc375bc79bae26d6d80175e89eb29d42522de",
+      "project": "android-games/dead-run",
+      "build_type": "release",
+      "pipeline_sha256": "3a473050bd36928c58f959ae99e67b3d22f533d425426b62e058090cace63033",
+      "toolchain_config_sha256": "2c5788e6e8a2b963cb8cd512f4c192b84e78915e05403ed7d267ab8aec34a502",
+      "import_exit_code": 0,
+      "argv": [
+        "C:\\projects\\active\\.game-toolchain\\godot\\4.7.2\\Godot_v4.7.2-stable_win64_console.exe",
+        "--headless",
+        "--path",
+        "F:\\games-workspaces\\design-cycle-20261023\\android-games\\dead-run",
+        "--export-release",
+        "Android",
+        "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\dead-run\\20261024T013922133181Z\\dead-run.apk"
+      ],
+      "exit_code": 0,
+      "result": "built",
+      "artifact": {
+        "path": ".artifacts/dead-run/20261024T013922133181Z/dead-run.apk",
+        "bytes": 54317474,
+        "sha256": "27acee9c26f3936d86837e4807630fb82d31490f3e73d098e2fa5f0014f010a9"
+      },
+      "apk_inspection": {
+        "package": "com.dsschiff.deadrun",
+        "version_code": "7",
+        "version_name": "0.4.1",
+        "permissions": [],
+        "internet_permission": false,
+        "signature_verified": true,
+        "signer_certificate_sha256": "2527b2609a622058b0198318b8add441646ea42ab9d520c536131f58281bf03f",
+        "debuggable": false
+      },
+      "project_source_sha256": "05d01f208f350c7cdc21bede3929fbf6b1b0ed351128734335e1c2e36f53bcef",
+      "project_source_sha256_after": "05d01f208f350c7cdc21bede3929fbf6b1b0ed351128734335e1c2e36f53bcef",
+      "source_unchanged": true,
+      "project_git_status": [],
+      "project_dirty": false
+    },
+    "rendered_checks": 54,
+    "rendered_failures": 0,
+    "original_assertions_retained": 51,
+    "rendered_packet": "F:/games-workspaces/dead-run-design-20261023/android-games/dead-run/.artifacts/graphics/cadence-full-render-design-20261024T012650Z/receipt.json",
+    "qualification": "Original same-frame stress failures retained. Equal end-only delays still fail; between-fixture cadence passes. No exact GL owner, font/engine attribution or production stress-leak guarantee. Native/phone/audio/FPS/fun separate.",
+    "first_build_failure": "Generated untracked texture_lifetime.gd.uid changed source during import; failed receipt retained; UID committed d75fc37 and clean rebuild unchanged."
   },
   "cloud": {
     "state": "independently reviewed compiled native transport and codec; gameUI/liveGoogleverification pending",
@@ -93,10 +146,19 @@
     "real_decoder_binding_checks": 60,
     "real_decoder_binding_failures": 0,
     "real_decoder_manifest": "F:\\games-workspaces\\design-cycle-20261023\\.artifacts\\cloud-save-bindings\\manifest.json",
-    "real_decoder_manifest_sha256": "d5e59188f163758f5bcd29cd7a14ab8b5685fe145f9721cffe6190c5eb4d4811"
+    "real_decoder_manifest_sha256": "d5e59188f163758f5bcd29cd7a14ab8b5685fe145f9721cffe6190c5eb4d4811",
+    "live_console_check": {
+      "observed_utc": "2026-10-24T01:34:32Z",
+      "account": "ShifTech",
+      "identity": "Action required: official identity document upload",
+      "phone": "Action required: waits for identity tasks and document approval",
+      "apps": "Create your first app; no apps present",
+      "scope": "Read-only browser check; no identity upload, app creation, consent or account change",
+      "authoritative_pending_card": "P-games-20261023-1753; old internal-testing card is merged/closed"
+    }
   },
   "next": [
-    "Complete the independent disposition of Dead Run fixture cadence and strict full rendered gate, then signed native/private update",
+    "Complete bounded Dead Run transition review and signed native/private update after independently cleared strict harness gate",
     "Finish dormant Frontline optional-recovery adapter with explicit full-save choice and verified commit; no production/native linkage claim",
     "Complete per-game Play identity/client/tester/Saved Games setup when account approval permits; verify genuine account/device/offline/conflict sync before claiming cloud acceptance",
     "Continue dense Hook finale readability and Tower floating-total floor association as bounded design followups"

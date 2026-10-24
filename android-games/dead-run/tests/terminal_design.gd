@@ -1,5 +1,6 @@
 extends "res://tests/campaign_input.gd"
 const Kit = preload("res://scripts/presentation/kit.gd")
+var observed_geometry_fonts: Array[WeakRef] = []
 
 func run() -> void:
 	root.size = Vector2i(720, 1280)
@@ -66,6 +67,7 @@ func run() -> void:
 		scene.build_world()
 		scene.refresh()
 		var p: RefCounted = scene.presentation
+		observed_geometry_fonts.append(weakref(p.label_font))
 		var barrier := Kit.bounds(p.boss_visual, scene.world)
 		var front := INF
 		for i in count:
@@ -86,6 +88,13 @@ func run() -> void:
 		scene.refresh()
 		check(p.boss.position == Vector3(scene.state.boss.x, 0, -scene.state.boss.z), "active blockade keeps original visual-to-projectile relation for %d crew" % count)
 		check(Kit.bounds(p.boss_visual, scene.world).end.z > -2.0, "active modeled target is not shifted by terminal clearance")
+		# Each synthetic world gets normal render/free cadence before the next
+		# rebuild. Matched end-only drains do not replace this scheduling.
+		var fixture_state: Dictionary = scene.state.duplicate(true)
+		await process_frame
+		if DisplayServer.get_name() != "headless": await RenderingServer.frame_post_draw
+		await process_frame
+		check(Data.same(scene.state, fixture_state), "fixture frame cadence preserves whole authoritative state for %d crew" % count)
 	await warning_pixels()
 	write_report_campaign("Actual Godot GUI touch/drag Start, natural defeat, Retry and victory. Synthetic Home/close notifications and desktop cold restoration are distinct from Android lifecycle. Terminal blockade geometry uses explicitly synthetic nonpersistent states; no rendered/phone acceptance.")
 	call_deferred("complete_design")
@@ -98,6 +107,7 @@ func complete_design() -> void:
 	await process_frame
 	if DisplayServer.get_name() != "headless": await RenderingServer.frame_post_draw
 	await process_frame
+	print("TERMINAL_OWNERSHIP resources=", Performance.get_monitor(Performance.OBJECT_RESOURCE_COUNT), " nodes=", Performance.get_monitor(Performance.OBJECT_NODE_COUNT), " surviving_geometry_fonts=", observed_geometry_fonts.map(func(reference): return reference.get_ref() != null))
 	print("TERMINAL_DESIGN ", checks, " failures=", failures)
 	print("SUITE_COMPLETE: ", "PASS" if failures == 0 else "FAIL")
 	quit(0 if failures == 0 else 1)

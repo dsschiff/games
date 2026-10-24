@@ -1,8 +1,8 @@
 {
   "base_commit": "4552e7b",
   "scope": "First continuous-design increment: terminal action clarity, warning priority, defeated blockade clearance",
-  "phase": "CPU verified and 51 rendered assertions pass; strict full render FAIL on four leaked GL textures at shutdown; native/update/phone acceptance pending",
-  "authoritative_rules_catalogs_save_stores_and_export_preset": "unchanged from base",
+  "phase": "CPU verified; reviewed harness scheduling correction now strict54/0 renderedPASS with10decodedPNGs; historical stress failures retained; native/update/phone acceptance separate",
+  "authoritative_rules_catalogs_save_stores_and_export_preset": "Rules/catalogs/save stores unchanged frombase; export version metadata only0.4.1/code7; package/signing unchanged",
   "runtime_sha256_lf": {
     "scripts/main.gd": "0cf96866f7852583aa008993cec57f437555e116445dcd4b9db8a2bf246018ce",
     "scripts/campaign.gd": "795205b70a32dd9e9533993f99847be5ea2985911e1ef302c29a000114fabc87",
@@ -579,6 +579,93 @@
           "sha256": "c536e8ab19a44c86174131963652c2b252d54614e4898b09da581363f17617e0"
         }
       }
+    },
+    {
+      "role": "reviewed_strict_fixture_cadence_closure",
+      "directory": ".artifacts/graphics/cadence-full-render-design-20261024T012650Z",
+      "passed": true,
+      "source_unchanged": true,
+      "files": {
+        ".artifacts/graphics/cadence-full-render-design-20261024T012650Z/actual-retry-playing.png": {
+          "bytes": 498482,
+          "sha256": "d4d75921ffac930507f25950da3e6302eadf9eaf860a0d2ab68bbf4fcc38513c"
+        },
+        ".artifacts/graphics/cadence-full-render-design-20261024T012650Z/astra-disposition.json": {
+          "bytes": 633,
+          "sha256": "a7957f287357afdbbfabee22727ff5bf079725253beb6265ab7e5e949ec1a640"
+        },
+        ".artifacts/graphics/cadence-full-render-design-20261024T012650Z/decoded-pngs.json": {
+          "bytes": 2325,
+          "sha256": "e7c49d99c5b0dd46656cd7a477df98587567f55351bae122ab5f1beee1db572d"
+        },
+        ".artifacts/graphics/cadence-full-render-design-20261024T012650Z/earned-checkpoints.json": {
+          "bytes": 2,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        ".artifacts/graphics/cadence-full-render-design-20261024T012650Z/earned-depleted-defeat-cover.png": {
+          "bytes": 380107,
+          "sha256": "74ba0f400fe829def8b63c6514f5e002185d793119be1182eb6e58cbf6124c5c"
+        },
+        ".artifacts/graphics/cadence-full-render-design-20261024T012650Z/earned-depleted-defeat.png": {
+          "bytes": 280453,
+          "sha256": "48d41a9858b2669dee38ff82a5d906b657304a441c748503a4e7c14119d63bfd"
+        },
+        ".artifacts/graphics/cadence-full-render-design-20261024T012650Z/earned-first-victory-inner.png": {
+          "bytes": 521528,
+          "sha256": "2570b8ed3bec83d64d697cfe064ef7e2e6a44f825d9280ce91431b3b143ed2cc"
+        },
+        ".artifacts/graphics/cadence-full-render-design-20261024T012650Z/earned-first-victory.png": {
+          "bytes": 282580,
+          "sha256": "79fd3ea014673eb5fa3a7c00ed82ad48578c4a51c5bb8b5f06d1af5bc07fc8ab"
+        },
+        ".artifacts/graphics/cadence-full-render-design-20261024T012650Z/fixture-49-crew-terminal-clearance.png": {
+          "bytes": 552152,
+          "sha256": "2769bbac925a20cb8be21668efefea3184479e0efe3f03ee61597776ecea2545"
+        },
+        ".artifacts/graphics/cadence-full-render-design-20261024T012650Z/fixture-road-12-warning-1000x1110.png": {
+          "bytes": 729009,
+          "sha256": "f6aee290b3ae5a193957f17acd69e266f536eee3d21c33f52fdfa602de256581"
+        },
+        ".artifacts/graphics/cadence-full-render-design-20261024T012650Z/fixture-road-12-warning-720x1680.png": {
+          "bytes": 650986,
+          "sha256": "2edf6a138ccc136c445b93b62d565c257325c8054fae22e05fe9b5c81d063d8c"
+        },
+        ".artifacts/graphics/cadence-full-render-design-20261024T012650Z/fixture-road-24-warning-1000x1110.png": {
+          "bytes": 705937,
+          "sha256": "af4d30d4428275ac2c85f15021d5bda55291682b87ed0f91399bb5f0a42d2196"
+        },
+        ".artifacts/graphics/cadence-full-render-design-20261024T012650Z/fixture-road-24-warning-720x1680.png": {
+          "bytes": 654648,
+          "sha256": "ba096015e3d218c66dcc124ec1080635b3583acb355e3076ddf68b1b80f05d6d"
+        },
+        ".artifacts/graphics/cadence-full-render-design-20261024T012650Z/godot.log": {
+          "bytes": 1070,
+          "sha256": "f1cc3f9ea9f647399686a4b28153c3ed0aba8e563b81134315952156bba6dfa4"
+        },
+        ".artifacts/graphics/cadence-full-render-design-20261024T012650Z/input-report.json": {
+          "bytes": 6056,
+          "sha256": "ba3bc27c474418109745d78c6ab412374e6792a899c1c2a4abfd8d3febfa04b6"
+        },
+        ".artifacts/graphics/cadence-full-render-design-20261024T012650Z/raw-input-events.json": {
+          "bytes": 19449,
+          "sha256": "8aac5cacdbe03e89b1c731d72d3d40d56082e0ff4b7f3698f39fef0eb3543ed7"
+        },
+        ".artifacts/graphics/cadence-full-render-design-20261024T012650Z/receipt.json": {
+          "bytes": 1310,
+          "sha256": "7b063efc8f268800ee92e06032d080dadda396a26a5f2cad5085a81c4b213aa9"
+        },
+        ".artifacts/graphics/cadence-full-render-design-20261024T012650Z/source-hashes-lf.json": {
+          "bytes": 21547,
+          "sha256": "43c70c6c86aae5629a4fd9eef4162765365c05c681016516776cb71aed1ea9b2"
+        }
+      }
     }
-  ]
+  ],
+  "release_metadata": {
+    "version": "0.4.1",
+    "android_version_code": 7,
+    "package": "com.dsschiff.deadrun",
+    "build": "Not built here; coordinator integration/build/native acceptance pending",
+    "strict_packet_metadata": "Full54check packet executed0.4.0/code6; gameplay/test code unchanged by version-only bump"
+  }
 }
